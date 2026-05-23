@@ -1,0 +1,55 @@
+-- If you don't use MCM, change your defaults from here.
+local defaults = {
+	["time_min"] = 5,
+	["time_max"] = 6,
+	["hud_enable"] = true,
+	["hud_icon"] = 1,
+	["sound_enable"] = true,
+	["sound_enable_vol"] = 1,
+	["sound_bg_enable"] = true,
+	["sound_bg_enable_vol"] = 1.25,
+	["debugx"] = false,
+}
+
+function get_config(key)
+	if ui_mcm then return ui_mcm.get("loot_searching/"..key) else return defaults[key] end
+end
+
+local mins_max_val = 15
+function on_option_change()
+	mins_max_val = this.get_config("time_max") > this.get_config("time_min") and 15 or this.get_config("time_max")
+end
+
+function on_game_start()
+	RegisterScriptCallback("on_option_change", on_option_change)
+end
+
+function on_mcm_load()
+	op = { id= "loot_searching",sh=true ,gr={
+			{ id= "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_loot_searching_title",size= {512,50},spacing= 20 },
+
+			{ id= "title"				   ,type= "title"	 ,text= "ui_mcm_loot_searching_header_time" 			,align= "c"	,clr= {255,200,200,200}	},
+			{id = "time_min", type = "track", val = 2, min=0,max=mins_max_val,step=1, def = 5},
+			{id = "time_max", type = "track", val = 2, min=1,max=25,step=1, def = 15},
+
+			{id= "divider", type = "line" },
+			{ id= "title"				   ,type= "title"	 ,text= "ui_mcm_loot_searching_header_hud" 			,align= "c"	,clr= {255,200,200,200}	},
+			{id = "hud_enable", type = "check", val = 1, def = true},
+			{id = "hud_icon", type= "list", val= 2, def= 1, 	content= { {1, "Нормальный"} , {2, "уменьшающийся"} } , no_str = true },
+
+			{id= "divider", type = "line" },
+			{ id= "title"				   ,type= "title"	 ,text= "ui_mcm_loot_searching_header_sound" 			,align= "c"	,clr= {255,200,200,200}	},
+			{id = "sound_enable", type = "check", val = 1, def = true},
+			{id = "sound_enable_vol", type = "track", val = 2, min=0.5,max=2,step=0.05, def = 1},
+			{id = "sound_bg_enable", type = "check", val = 1, def = true},
+			{id = "sound_bg_enable_vol", type = "track", val = 2, min=0.5,max=2,step=0.05, def = 1.25},
+
+			{id= "divider", type = "line" },
+			{id= "divider", type = "line" },
+			{ id= "title"				   ,type= "title"	 ,text= "ui_mcm_loot_searching_header_debug" 			,align= "c"	,clr= {255,200,200,200}	},
+			{id = "debugx", type = "check", val = 1, def = false},
+		}
+	}
+
+	return op
+end

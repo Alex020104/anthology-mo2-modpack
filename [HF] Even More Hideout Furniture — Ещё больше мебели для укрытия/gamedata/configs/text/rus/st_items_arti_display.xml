@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+   <string id="st_placeable_arti_display">
+		<text>Дисплей с отображением артефактов</text>
+	</string>
+	<string id="st_placeable_arti_display_descr">
+		<text>
+		%c[ui_gray_3]Свойства:\n
+		%c[d_blue] • %c[ui_gray_2] размещаемый предмет\n
+		%c[d_green] • %c[ui_gray_2] мебель\n
+		%c[0,250,250,0] • %c[0,250,250,0] ОБРАТИТЕ ВНИМАНИЕ: артефакты остаются невидимыми, пока детектор не будет в руках. \n</text>
+	</string>
+</string_table>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+
+	<!-- Promzone -->
+	<string id="st_prom_1_name">
+		<text>Промзона. Фабрика (запад)</text>
+	</string>
+	<string id="st_prom_2_name">
+		<text>Промзона. Фабрика (центр)</text>
+	</string>
+	<string id="st_prom_3_name">
+		<text>Промзона. Фабрика (восток)</text>
+	</string>
+	<string id="st_prom_4_name">
+		<text>Промзона. Фабрика КПП</text>
+	</string>
+	<string id="st_prom_5_name">
+		<text>Промзона. Задворки</text>
+	</string>
+	<string id="st_prom_6_name">
+		<text>Промзона. Междупутье</text>
+	</string>
+	<string id="st_prom_7_name">
+		<text>Промзона. Туннель</text>
+	</string>
+	<string id="st_prom_8_name">
+		<text>Промзона. Роща у вокзала</text>
+	</string>
+	<string id="st_prom_9_name">
+		<text>Промзона. Вокзал "Южный"</text>
+	</string>
+	<string id="st_prom_10_name">
+		<text>Промзона. Поляна под холмом</text>
+	</string>
+	<string id="st_prom_11_name">
+		<text>Промзона. Лагерь у вагончика</text>
+	</string>
+	<string id="st_prom_12_name">
+		<text>Промзона. Заправка</text>
+	</string>
+	<string id="st_prom_13_name">
+		<text>Промзона. Лагерь у радара</text>
+	</string>
+	<string id="st_prom_14_name">
+		<text>Промзона. Радиолокационная станция</text>
+	</string>
+	<string id="st_prom_15_name">
+		<text>Промзона. Трясина</text>
+	</string>
+
+
+	<!-- Grimwood -->
+	<string id="st_grim_1_name">
+		<text>Мрачный лес. Северный лагерь</text>
+	</string>
+	<string id="st_grim_2_name">
+		<text>Мрачный лес. Блокпост</text>
+	</string>
+	<string id="st_grim_3_name">
+		<text>Мрачный лес. Юго-западная роща</text>
+	</string>
+	<string id="st_grim_4_name">
+		<text>Мрачный лес. Северный лес</text>
+	</string>
+	<string id="st_grim_5_name">
+		<text>ЛМрачный лес. ес у блокпоста</text>
+	</string>
+	<string id="st_grim_6_name">
+		<text>Мрачный лес. Поляна под опорами ЛЭП</text>
+	</string>
+	<string id="st_grim_7_name">
+		<text>Мрачный лес. Южная тропа</text>
+	</string>
+	<string id="st_grim_8_name">
+		<text>Мрачный лес. Роща за пристанью</text>
+	</string>
+	<string id="st_grim_9_name">
+		<text>Мрачный лес. Пристань</text>
+	</string>
+	<string id="st_grim_10_name">
+		<text>Мрачный лес. Лагерь на главной дороге</text>
+	</string>
+	<string id="st_grim_11_name">
+		<text>Мрачный лес. Дорога к заброшенному зданию</text>
+	</string>
+	<string id="st_grim_12_name">
+		<text>Мрачный лес. Южный лес</text>
+	</string>
+	<string id="st_grim_13_name">
+		<text>Мрачный лес. Северо-восточный лес</text>
+	</string>
+	<string id="st_grim_14_name">
+		<text>Мрачный лес. Восточный лес</text>
+	</string>
+	<string id="st_grim_15_name">
+		<text>Мрачный лес. Лес над заброшенным зданием</text>
+	</string>
+	<string id="st_grim_16_name">
+		<text>Мрачный лес. Заброшенное здание</text>
+	</string>
+	<string id="st_grim_17_name">
+		<text>Мрачный лес. Лагерь у пруда</text>
+	</string>
+
+
+	<!-- Town Yuzhniy -->
+	<string id="st_posug_1_name">
+		<text>Поселок "Юг". Поляна за болотом</text>
+	</string>
+	<string id="st_posug_2_name">
+		<text>Поселок "Юг".Устье у болота</text>
+	</string>
+	<string id="st_posug_3_name">
+		<text>Поселок "Юг".Котельная</text>
+	</string>
+	<string id="st_posug_4_name">
+		<text>Поселок "Юг".Скотный двор</text>
+	</string>
+	<string id="st_posug_5_name">
+		<text>Поселок "Юг".Дикая роща</text>
+	</string>
+	<string id="st_posug_6_name">
+		<text>Поселок "Юг".Лагерь у каньона</text>
+	</string>
+	<string id="st_posug_7_name">
+		<text>Поселок "Юг".Гаражи</text>
+	</string>
+	<string id="st_posug_8_name">
+		<text>Поселок "Юг".Дом у гаражей</text>
+	</string>
+	<string id="st_posug_9_name">
+		<text>Поселок "Юг".Жилой блок</text>
+	</string>
+	<string id="st_posug_10_name">
+		<text>Поселок "Юг".Мертвая поляна</text>
+	</string>
+	<string id="st_posug_11_name">
+		<text>Поселок "Юг".Холм у подстанции</text>
+	</string>
+	<string id="st_posug_12_name">
+		<text>Поселок "Юг".Берег у болот</text>
+	</string>
+	<string id="st_posug_13_name">
+		<text>Поселок "Юг".Школа</text>
+	</string>
+	<string id="st_posug_14_name">
+		<text>Поселок "Юг".Детский сад</text>
+	</string>
+	<string id="st_posug_15_name">
+		<text>Поселок "Юг".Дом у детского сада</text>
+	</string>
+	<string id="st_posug_16_name">
+		<text>Поселок "Юг".Аптека</text>
+	</string>
+	<string id="st_posug_17_name">
+		<text>Поселок "Юг".Дом на холме</text>
+	</string>
+	<string id="st_posug_18_name">
+		<text>Поселок "Юг".Дом Культуры «Южный»</text>
+	</string>
+	<string id="st_posug_19_name">
+		<text>Поселок "Юг".Южный частный сектор</text>
+	</string>
+	<string id="st_posug_20_name">
+		<text>Поселок "Юг".Запустелая АЗС</text>
+	</string>
+	<string id="st_posug_21_name">
+		<text>Поселок "Юг".Магазин «Книги»</text>
+	</string>
+	<string id="st_posug_22_name">
+		<text>Поселок "Юг".Главная аллея</text>
+	</string>
+	<string id="st_posug_23_name">
+		<text>Поселок "Юг".Парк</text>
+	</string>
+	<string id="st_posug_24_name">
+		<text>Поселок "Юг".Старый барак</text>
+	</string>
+	<string id="st_posug_25_name">
+		<text>Поселок "Юг".Поляна у южной трассы</text>
+	</string>
+	<string id="st_posug_26_name">
+		<text>Поселок "Юг".Мертвые холмы</text>
+	</string>
+	<string id="st_posug_27_name">
+		<text>Поселок "Юг".Северный частный сектор</text>
+	</string>
+	<string id="st_posug_28_name">
+		<text>Поселок "Юг".Перекрёсток между дворами</text>
+	</string>
+	<string id="st_posug_29_name">
+		<text>Поселок "Юг".Жилой дом у парка</text>
+	</string>
+	<string id="st_posug_30_name">
+		<text>Поселок "Юг".Административные здания</text>
+	</string>
+	<string id="st_posug_31_name">
+		<text>Поселок "Юг".Двор с гаражами</text>
+	</string>
+	<string id="st_posug_32_name">
+		<text>Поселок "Юг".Тихие холмы</text>
+	</string>
+	<string id="st_posug_33_name">
+		<text>Поселок "Юг".Складская площадка</text>
+	</string>
+	<string id="st_posug_34_name">
+		<text>Поселок "Юг".Зловещая площадка</text>
+	</string>
+	<string id="st_posug_35_name">
+		<text>Поселок "Юг".СТО</text>
+	</string>
+	<string id="st_posug_36_name">
+		<text>Поселок "Юг".Восточный частный сектор</text>
+	</string>
+	<string id="st_posug_37_name">
+		<text>Поселок "Юг".Поляна на окраине</text>
+	</string>
+
+	<string id="st_bunker_1_name">
+		<text>Верхний ярус</text>
+	</string>
+	<string id="st_bunker_2_name">
+		<text>Нижний ярус</text>
+	</string>
+
+	<string id="st_collaider_1_name">
+		<text>Медицинский пункт</text>
+	</string>
+	<string id="st_collaider_2_name">
+		<text>Жилые помещения</text>
+	</string>
+	<string id="st_collaider_3_name">
+		<text>Вход к Коллайдеру</text>
+	</string>
+	<string id="st_collaider_4_name">
+		<text>Шахта</text>
+	</string>
+	<string id="st_collaider_5_name">
+		<text>У Коллайдера</text>
+	</string>
+	<string id="st_collaider_6_name">
+		<text>Центр управления</text>
+	</string>
+
+</string_table>

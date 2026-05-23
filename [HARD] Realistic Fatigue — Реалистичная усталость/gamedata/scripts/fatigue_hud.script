@@ -1,0 +1,87 @@
+HUD = nil
+
+function activate_hud(mode)
+
+	-- open with inventory only
+	if (not mode) or (mode ~= "inventory") then
+		return
+	end
+
+	-- check for inventory gui
+	if not (ui_inventory and ui_inventory.GUI) then
+		return
+	end
+
+	-- show hud
+	if HUD == nil then
+		HUD = Fatiguex()
+		get_hud():AddDialogToRender(HUD)
+	end
+end
+
+function deactivate_hud(gui)
+	if HUD ~= nil then
+		get_hud():RemoveDialogToRender(HUD)
+		HUD = nil
+	end
+end
+
+class "Fatiguex" (CUIScriptWnd)
+
+function Fatiguex:__init() super()
+	self:InitControls()
+end
+
+function Fatiguex:InitControls()
+	self:SetWndRect(Frect():set(0, 0, 1024, 768))
+	self:SetAutoDelete(true)
+
+	self.xml = CScriptXmlInit()
+	local xml = self.xml
+	xml:ParseFile("ui_fatigue_bar.xml")
+
+	self.bg = xml:InitStatic("fatigue_bg", self)
+	self.bar = xml:InitProgressBar("fatigue_bar", self.bg)
+	self.text = xml:InitTextWnd("fatigue_text_num", self.bg)
+	self.title = xml:InitTextWnd("fatigue_text_title", self.bg)
+
+	self:Update()
+end
+
+function Fatiguex:Update()
+	CUIScriptWnd.Update(self)
+
+	if not fatigue.fatigue_var then return end
+
+	local bar_val = normalize(fatigue.fatigue_var * 100, 0, fatigue_mcm.get_config("max_fatigue"))
+	self.bar:SetProgressPos(bar_val)
+
+	local text_val = math.floor(fatigue.fatigue_var * 100)
+	self.text:SetText( text_val .. "%" )
+	self.text:SetTextColor(GetARGB(255, 230, 230, 230))
+
+	if fatigue.fatigue_var * 100 >= (fatigue_mcm.get_config("max_fatigue") * 0.75) then
+		self.text:SetTextColor(GetARGB(255, 230, 70, 70))
+	end
+end
+
+function Fatiguex:__finalize()
+end
+
+local tmr = 0
+function actor_on_update()
+	local tg = time_global()
+	if tmr > tg then return end
+	tmr = tg + 2000
+
+	-- check every 2 sec if inventory is closed but our HUD isnt
+	if (HUD ~= nil) and (not (db.actor:has_info("inventory_wnd_open"))) then
+		deactivate_hud()
+	end
+end
+
+function on_game_start()
+	RegisterScriptCallback("ActorMenu_on_before_init_mode", activate_hud)
+	RegisterScriptCallback("GUI_on_hide", deactivate_hud)
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+end

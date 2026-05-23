@@ -1,0 +1,237 @@
+anim_item = nil
+active_slot = nil
+det_active = nil
+camp_obj = nil
+cur_fov = nil
+
+local original_bind_campfire = bind_campfire.actor_on_item_use
+function bind_campfire.actor_on_item_use(obj, _, cf)
+	if game.only_movekeys_allowed() then return end
+	---------------------------------------------------------------------------
+	-- Patch for Artifact Inspection
+	if af_inspect then 
+		if af_inspect.af_anim_item ~= nil then return end
+	end
+	---------------------------------------------------------------------------
+	-- Patch for Interactive Guitar
+	if hud_guitar then 
+		if hud_guitar.anim_item ~= nil then return end
+	end
+	---------------------------------------------------------------------------
+	-- Patch for FDDA Redone
+	if lam2 then
+		if lam2.cur_slot ~= nil then return end
+	end
+	---------------------------------------------------------------------------
+	-- Patch for WG
+	if western_goods_bind_lighter then
+		local wg_lighters = {
+		wg_lighter_zippo = true,
+		wg_lighter_bic = true
+		}
+
+		local has_valid_lighter = false
+
+		db.actor:iterate_inventory(function(_, item)
+			if wg_lighters[item:section()] and item:condition() >= 0.1 then
+				has_valid_lighter = true
+			end
+		end, nil)
+
+		if has_valid_lighter then
+			return
+		end
+	end
+	---------------------------------------------------------------------------
+	local sec = obj:section()
+	if (sec == "matches") or (sec == "box_matches") then
+		if zzz_matches_anim.check_no_nearby_campfire() then return end
+		
+		camp_obj = obj
+			
+		ignit()
+	end
+end
+
+local original_bind_campfire_use = bind_campfire.use_campfire
+function bind_campfire.use_campfire(actor,zone,p)
+	if anim_item ~= nil then
+		return 
+	end
+	original_bind_campfire_use(actor,zone,p)
+end
+
+local original_actor_effects = actor_effects.play_item_fx
+function actor_effects.play_item_fx(item)
+	if item == "matches_script" then
+		return 
+	end
+	original_actor_effects(item)
+end
+
+local original_xr_sound = xr_sound.set_sound_play
+function xr_sound.set_sound_play(npc_id, sound, faction, point)
+	if sound == "inv_matches" then
+		return 
+	end
+	original_xr_sound(npc_id, sound, faction, point)
+end
+----------------------------------------------------
+----------------------------------------------------
+----------------------------------------------------
+
+function get_campfire_binder(dist)
+    local pos = db.actor:position()
+    for id,binder in pairs(bind_campfire.campfires_all) do 
+        if (binder and binder.campfire) then
+            if (pos:distance_to_sqr(binder.object:position()) <= dist) then
+                return binder
+            end
+        end 
+    end
+end
+
+function check_no_nearby_campfire()
+	local nearby = bind_campfire.get_nearby_campfire(2)
+	return (not nearby)
+end
+
+function ignit()
+	level.disable_input()
+	
+	game.start_tutorial("tutorial_campfire_none")
+	
+	local campfire = get_campfire_binder(2)
+	local pos = campfire.object:position()
+	pos.y = pos.y + 1.0
+	db.actor:actor_look_at_point(pos)
+	
+	-- Patch for FDDA Backpack Animations
+	if zzz_ea_addon_backpack and zzz_ea_addon_backpack.anim_enabled then
+		zzz_ea_addon_backpack.actor_on_item_use(db.actor)
+	end
+	
+	if zzz_ea_addon_backpack and zzz_ea_addon_backpack.anim_enabled and zzz_ea_addon_backpack.active_slot ~= nil then
+		zzz_ea_addon_backpack.det_active = nil
+		active_slot = zzz_ea_addon_backpack.active_slot
+	else
+		active_slot = db.actor:active_slot()
+	end
+	
+	cur_fov = get_console():get_float("hud_fov")
+	anim_item = "tch_matches_fire_start_hud_anm"
+	get_hud():HideActorMenu()
+	db.actor:activate_slot(0)
+	
+	det_active = db.actor:active_detector() or nil
+	if det_active then det_active:switch_state(2) end
+	
+	level.add_call( function () return db.actor:active_slot() == 0 and not db.actor:active_detector() end, function ()
+		get_console():execute("hud_fov 0.6")
+		game.play_hud_motion(2, anim_item, "anm_show", false, 1)
+		level.add_cam_effector("camera_effects\\weapon\\hand_ignit.anm", 9665, false, "zzz_matches_anim.actor_on_hud_animation_end")
+		sound_object("hud_matches\\hud_matches"):play_no_feedback(db.actor, sound_object.s2d, 0, vector():set(0,0,0), 1.0, 1.0)	
+		CreateTimeEvent("AnimatedMatches","match_light",3,zzz_matches_anim.light_on,1,0.9,0.2,2,1,2,0.25,0.2)
+	end)
+end
+
+function actor_on_hud_animation_end()
+	bind_campfire.campfire_go_on(camp_obj)		
+	
+	game.stop_tutorial()
+	get_console():execute("hud_fov "..cur_fov)
+	db.actor:activate_slot(active_slot or 0)
+	if det_active then det_active:switch_state(1) end
+	anim_item = nil
+	active_slot = nil
+	camp_obj = nil
+	cur_fov = nil
+	level.enable_input()
+end
+
+function actor_on_first_update()
+	prefetch_anim()
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update",actor_on_first_update)
+end
+
+function prefetch_anim()
+	game.play_hud_motion(2, "tch_matches_fire_start_hud_anm", "anm_show", false, 1)
+	game.stop_hud_motion()
+end
+
+-- Patch for Quick Action Wheel
+if haru_quick_action_wheel_mcm then 
+	local originalQuickWheel = haru_quick_action_wheel_mcm.open_radial_menu
+	
+	function haru_quick_action_wheel_mcm.open_radial_menu(temp_tab)
+		if anim_item ~= nil then
+			return 
+		end
+		originalQuickWheel(temp_tab)
+	end
+end
+----------------------------------------------------
+----------------------------------------------------
+----------------------------------------------------
+--working with light from FDDA
+local light,light_flag,light_bright,light_range = nil
+function light_on(r,g,b,range,bright,time,y_pos,dirmult)
+	light = script_light()
+	light.type = 1
+	light.range = range
+	light_bright = bright
+	light_range = range 
+	light.lanim = "koster_01_electra"
+	light.lanim_brightness = 0.025
+	light.hud_mode = false
+	light.shadow = true -- Turn on/off
+	light.volumetric = false
+	light.enabled = true
+	-- Pos/Rot
+	light.color = fcolor():set(r,g,b,bright)
+	--light.color = fcolor():set(1,0.9,0.2,0.05)
+	local dir = device().cam_dir
+	local pos = device().cam_pos
+	pos = pos:add(dir:mul(dirmult)) --0.2
+	pos.y = pos.y - y_pos--0.2
+	light:set_position(pos)
+	light:set_direction(dir)
+	light:update()
+	CreateTimeEvent("ea_s_l1", "ea_s_l1", time, light_off)
+	CreateTimeEvent("ea_s_l_2move", "ea_l_2move", 0, light_move,r,g,b,y_pos,dirmult)
+	light_flag = true
+	return true
+end
+
+function light_move(r,g,b,y_pos,dirmult)
+	light_bright = light_bright - 0.02
+	light_range = light_range - 0.06
+	light.range = light_range
+	light.color = fcolor():set(r,g,b,light_bright)
+	local dir = device().cam_dir
+	local pos = device().cam_pos
+	pos = pos:add(dir:mul(dirmult))
+	pos.y = pos.y - y_pos
+	light:set_position(pos)
+	light:set_direction(dir)
+	light:update()
+	if light_flag then
+		return false
+	else
+		return true
+	end
+end
+
+function light_off()
+	light.enabled = false
+	light:update()
+	light_flag = false
+	return true
+end
+
+function e()
+	game.start_tutorial("tutorial_campfire_none")
+end

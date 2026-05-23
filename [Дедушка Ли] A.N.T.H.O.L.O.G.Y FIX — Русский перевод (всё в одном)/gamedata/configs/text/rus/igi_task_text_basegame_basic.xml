@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="igi_task_text_bs_assault_monster_online_title">
+        <text>Охота на мутантов</text>
+    </string>
+    <string id="igi_task_text_bs_assault_monster_online_job_descr">
+        <text>У нас тут в окресностях мутантов изрядно расплодилось. Есть желание поохотиться? Разумеется не бесплатно.</text>
+    </string>
+    <string id="igi_task_text_bs_assault_monster_online_finish">
+        <text>Вот твоя обещанная награда. Надеюсь эта охота принесла тебе удовольстие.</text>
+    </string>
+    
+    <string id="igi_task_text_bs_assault_stalker_online_title">
+        <text>Нападение</text>
+    </string>
+    <string id="igi_task_text_bs_assault_stalker_online_job_descr">
+        <text>Неподалёку наши разведчики обнаружили отряд противника. Их нужно ликвидировать. Справишься?</text>
+    </string>
+    <string id="igi_task_text_bs_assault_stalker_online_finish">
+        <text>Все мертвы? Отлично. Вот твой гонорар.</text>
+    </string>
+    
+    <string id="igi_task_text_bs_kill_stalker_nearby_title">
+        <text>Убить Сталкера</text>
+    </string>
+    <string id="igi_task_text_bs_kill_stalker_nearby_job_descr">
+        <text>Ходит тут она паскуда. Этого сталкера надо убрать. Деньгами не обижу.</text>
+    </string>
+    <string id="igi_task_text_bs_kill_stalker_nearby_finish">
+        <text>Ну, зона ему пухом. Принимай гонорар!</text>
+    </string>
+    
+    <string id="igi_task_text_bs_fetch_drugkit_title">
+        <text>Красный крест</text>
+    </string>
+    <string id="igi_task_text_bs_fetch_drugkit_job_descr">
+        <text>У меня заканчиаются медикаменты, а следующие крупные поставки от торговцев будут хрен-знает-когда. Если так пойдёт и дальше, мне нечем будет лечить других сталкеров. Конечно, я бы мог и сам приготовить часть необходимого, но для этого нужны соответствующие наборы. Будь добр, принеси один, а я за него тебе заплачу.</text>
+    </string>
+    <string id="igi_task_text_bs_fetch_drugkit_descr">
+        <text>Местный лекарь поручил мне доставить ему набор для создания медикаментов.</text>
+    </string>
+    <string id="igi_task_text_bs_fetch_drugkit_finish">
+        <text>Ай да молодца! С этим всё будет гораздо проще ... на какое-то время. Принимай оплату.</text>
+    </string>
+    
+    <string id="igi_task_text_bs_fetch_patches_title">
+        <text>Найти нашивки</text>
+    </string>
+    <string id="igi_task_text_bs_fetch_patches_job_descr">
+        <text>Мы тут с прочими товарищами и некоторыми торговцами периодически проводим чистку Зоны от всякой швали. На этот раз швалью является сброд в рядах наших противников. Принеси пачку нашивок с тел врагов в качестве наглядного результата проделанной работы, и получишь свой гонорар. Устраивает?</text>
+    </string>
+    <string id="igi_task_text_bs_fetch_patches_descr">
+        <text>За убийства целей, подтверждённые сданной нашивкой причитается награда.</text>
+    </string>
+    <string id="igi_task_text_bs_fetch_patches_finish">
+        <text>Угу. Отличная работа. Держи гонорар.</text>
+    </string>
+    
+    <string id="igi_task_text_bs_return_box_from_stash_title">
+        <text>Вернуть ящик</text>
+    </string>
+    <string id="igi_task_text_bs_return_box_from_stash_job_descr">
+        <text>Как насчёт поработать курьером? Предыдущий посыльный оставил в нашем тайнике специальный ящик. Приниси его.</text>
+    </string>
+    <string id="igi_task_text_bs_return_box_from_stash_descr">
+        <text>Необходимо доставить заказчику ящик из тайника.</text>
+    </string>
+    <string id="igi_task_text_bs_return_box_from_stash_finish">
+        <text>Так, искомое на месте, а ты получаешь оплату за доставку.</text>
+    </string>
+
+    <string id="igi_task_text_bs_return_document_from_stash_title">
+        <text>Возврат документов</text>
+    </string>
+    <string id="igi_task_text_bs_return_document_from_stash_job_descr">
+        <text>Для передачи сообщений некоторые торговцы Зоны пользуются пересылкой бумажных носителей. Недавно как раз один из посыльных вышел на связь и передал координаты тайника, в которых он остаил документы. Твоим заданием будет доставка этих документов.</text>
+    </string>
+    <string id="igi_task_text_bs_return_document_from_stash_descr">
+        <text>Необходимо доставить заказчику документы из тайника.</text>
+    </string>
+    <string id="igi_task_text_bs_return_document_from_stash_finish">
+        <text>Так-так ... это те самые. Ну, хорошо, ты заслужил награду.</text>
+    </string>
+
+    <string id="igi_task_text_bs_return_pda_from_stash_title">
+        <text>Вернуть КПК</text>
+    </string>
+    <string id="igi_task_text_bs_return_pda_from_stash_job_descr">
+        <text>Проста курьерская работёнка. Иногда для связи с другими сталкерами, особенно если те стараются не светиться, мы пользуемся пересылкой их КПК. Тебе нужно будет прийти в условленное место, где ты найдёшь один из таких, и передать найденное мне. Берёшься?</text>
+    </string>
+    <string id="igi_task_text_bs_return_pda_from_stash_descr">
+        <text>Необходимо доставить заказчику КПК из тайника.</text>
+    </string>
+    <string id="igi_task_text_bs_return_pda_from_stash_finish">
+        <text>Доставка курьером ысокотехнологичного носителя информации произведена успешно. Вот твоя оплата.</text>
+    </string>
+
+    <string id="igi_task_text_bs_kill_all_mutants_on_map_title">
+        <text>Убить всех мутантов</text>
+    </string>
+    <string id="igi_task_text_bs_kill_all_mutants_on_map_job_descr">
+        <text>Местность вокруг просто кишит тварями. Сталкеры то и дело говорят о них - шагу нельзя ступить! Это вредит поставкам. Я щедро заплачу, если ты зачистишь тут всё от мутантов.</text>
+    </string>
+    <string id="igi_task_text_bs_kill_all_mutants_on_map_descr">
+        <text>Необходимо зачистить локацию от всех мутантов.</text>
+    </string>
+    <string id="igi_task_text_bs_kill_all_mutants_on_map_finish">
+        <text>Отличная работа! Может этого не хватит надолго, но пока что можно вздохнуть с облегчением и пользоваться слоившейся обстановвкой. Ты заслужил свой гонорар.</text>
+    </string>
+</string_table>

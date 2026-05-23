@@ -1,0 +1,55 @@
+function on_mcm_load()
+  return {
+    id = "burnshit",
+    sh = true,
+    gr = {
+      {
+        id      = "title",
+        type    = "slide",
+        text    = "ui_mcm_menu_burnshit",
+        link    = "ui_options_slider_player",
+        size    = {512, 50},
+        spacing = 20,
+      },
+      {
+        val  = 1,
+        type = "check",
+        id   = "useMenu",
+        hint = "burnshit_useMenu",
+        def  = true,
+      },
+      {
+        val  = 1,
+        type = "check",
+        id   = "useDragDrop",
+        hint = "burnshit_useDragDrop",
+        def  = true,
+      },
+      {
+        val  = 1,
+        type = "check",
+        id   = "burnQuestItems",
+        hint = "burnshit_burnQuestItems",
+        def  = false,
+      },
+      {
+        val  = 1,
+        type = "check",
+        id   = "burnUntradeables",
+        hint = "burnshit_burnUntradeables",
+        def  = true,
+      },
+      {
+        id   = "burnAll",
+        type = ui_mcm.kb_mod_list,
+        val  = 0,
+        def  = "always",
+        content = {
+          {"never", "burnshit_never"},
+          {"always", "burnshit_always"},
+          {"multiple", "burnshit_multiple"},
+        }
+      },
+    }
+  }
+end

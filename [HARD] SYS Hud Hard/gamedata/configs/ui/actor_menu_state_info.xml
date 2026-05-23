@@ -1,0 +1,118 @@
+<actor_state_info x="14.5" y="576" width="318" height="148">
+	
+	<icon x="0" y="0">
+		<normal width="28" height="28" stretch="1"/>
+		<active width="28" height="28" stretch="1" light_anim="ui_slow_blinking_alpha"/>
+	</icon>
+	
+	<stats_txt x="28" y="5" width="122" height="18"/>
+	
+	<health_sensor x="0" y="4.25" width="28" height="28">
+		<state_progress x="28" y="5" width="282" height="18" horz="1" min="0" max="1" pos="0" stretch="1">
+			<texture r="26" g="26" b="26">ui_inGame2_inventory_health_bar_bg</texture>
+			<progress stretch="1">
+				<texture>ui_inGame2_inventory_health_bar</texture>
+			</progress>
+		</state_progress>
+	</health_sensor>
+	
+	<radia_sensor x="0" y="32" width="28" height="28">
+		<state_progress x="28" y="5" width="122" height="18" horz="1" min="0" max="1" pos="0" stretch="1">
+			<texture r="26" g="26" b="26">ui_inGame2_inventory_progress_bar_bg</texture>
+			<progress stretch="1">
+				<texture>ui_inGame2_inventory_progress_bar</texture>
+			</progress>
+		</state_progress>
+	</radia_sensor>
+	
+	<acid_sensor x="0" y="60" width="28" height="28">
+		<state_progress x="28" y="5" width="122" height="18" horz="1" min="0" max="1" pos="0" stretch="1">
+			<texture r="26" g="26" b="26">ui_inGame2_inventory_progress_bar_bg</texture>
+			<progress stretch="1">
+				<texture>ui_inGame2_inventory_progress_bar</texture>
+			</progress>
+		</state_progress>
+	</acid_sensor>
+	
+	<shock_sensor x="0" y="88.25" width="28" height="28">
+		<state_progress x="28" y="5" width="122" height="18" horz="1" min="0" max="1" pos="0" stretch="1">
+			<texture r="26" g="26" b="26">ui_inGame2_inventory_progress_bar_bg</texture>
+			<progress stretch="1">
+				<texture>ui_inGame2_inventory_progress_bar</texture>
+			</progress>
+		</state_progress>
+	</shock_sensor>
+	
+	<fire_sensor x="0" y="116" width="28" height="28">
+		<state_progress x="28" y="5" width="122" height="18" horz="1" min="0" max="1" pos="0" stretch="1">
+			<texture r="26" g="26" b="26">ui_inGame2_inventory_progress_bar_bg</texture>
+			<progress stretch="1">
+				<texture>ui_inGame2_inventory_progress_bar</texture>
+			</progress>
+		</state_progress>
+	</fire_sensor>
+	
+	<psi_sensor x="160" y="32" width="28" height="28">
+		<state_progress x="28" y="5" width="122" height="18" horz="1" min="0" max="1" pos="0" stretch="1">
+			<texture r="26" g="26" b="26">ui_inGame2_inventory_progress_bar_bg</texture>
+			<progress stretch="1">
+				<texture>ui_inGame2_inventory_progress_bar</texture>
+			</progress>
+		</state_progress>
+	</psi_sensor>
+	
+	<wound_sensor x="160" y="60" width="28" height="28">
+		<state_progress x="28" y="5" width="122" height="18" horz="1" min="0" max="1" pos="0" stretch="1">
+			<texture r="26" g="26" b="26">ui_inGame2_inventory_progress_bar_bg</texture>
+			<progress stretch="1">
+				<texture>ui_inGame2_inventory_progress_bar</texture>
+			</progress>
+		</state_progress>
+	</wound_sensor>
+	
+	<fire_wound_sensor x="160" y="88.25" width="28" height="28">
+		<state_progress x="28" y="5" width="122" height="18" horz="1" min="0" max="1" pos="0" stretch="1">
+			<texture r="26" g="26" b="26">ui_inGame2_inventory_progress_bar_bg</texture>
+			<progress stretch="1">
+				<texture>ui_inGame2_inventory_progress_bar</texture>
+			</progress>
+		</state_progress>
+	</fire_wound_sensor>
+	
+	<power_sensor x="160" y="116" width="28" height="28">
+		<state_progress x="28" y="5" width="122" height="18" horz="1" min="0" max="1" pos="0" stretch="1">
+			<texture r="26" g="26" b="26">ui_inGame2_inventory_progress_bar_bg</texture>
+			<progress stretch="1">
+				<texture>ui_inGame2_inventory_progress_bar</texture>
+			</progress>
+		</state_progress>
+	</power_sensor>
+	
+	<hunger_sensor x="160" y="116" width="28" height="28">
+		<state_progress x="28" y="5" width="22" height="18" horz="1" min="0" max="1" pos="0" stretch="1">
+			<texture r="26" g="26" b="26">ui_inGame2_inventory_hts_bar_bg</texture>
+			<progress stretch="1">
+				<texture>ui_inGame2_inventory_hts_bar</texture>
+			</progress>
+		</state_progress>
+	</hunger_sensor>
+	
+	<thirst_sensor x="210" y="116" width="28" height="28">
+		<state_progress x="28" y="5" width="22" height="18" horz="1" min="0" max="1" pos="0" stretch="1">
+			<texture r="26" g="26" b="26">ui_inGame2_inventory_hts_bar_bg</texture>
+			<progress stretch="1">
+				<texture>ui_inGame2_inventory_hts_bar</texture>
+			</progress>
+		</state_progress>
+	</thirst_sensor>
+	
+	<sleep_sensor x="260" y="116" width="28" height="28">
+		<state_progress x="28" y="5" width="22" height="18" horz="1" min="0" max="1" pos="0" stretch="1">
+			<texture r="26" g="26" b="26">ui_inGame2_inventory_hts_bar_bg</texture>
+			<progress stretch="1">
+				<texture>ui_inGame2_inventory_hts_bar</texture>
+			</progress>
+		</state_progress>
+	</sleep_sensor>
+	
+</actor_state_info>

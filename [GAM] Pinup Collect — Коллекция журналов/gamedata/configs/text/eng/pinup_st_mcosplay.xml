@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	
+	<string id="st_porn_mil1">
+		<text>Magazine "Tactical World"</text>
+	</string>
+	<string id="st_porn_mil1_descr">
+		<text>An American magazine about various tactical items. Here you will find news, information about tactical tools and weapons, self-defense and survival skills, tips on shooting, weapons and equipment used by law enforcement agencies and the military, as well as expert advice. Some magazines have posters with girls in the military style.n \n
+		%c[ui_gray_3]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] everyday item\n
+		</text>
+	</string>
+	<string id="st_porn_mil2">
+		<text>Magazine «Bratishka»</text>
+	</string>
+	<string id="st_porn_mil2_descr">
+		<text>A Russian private magazine covering the activities of law enforcement agencies and their elite units. More than 100 issues have been released. Some of them have posters with girls in the military style.\n \n
+		%c[ui_gray_3]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] everyday item\n
+		</text>
+	</string>
+	
+	<string id="pinup_mcosplay1">
+		<text>Poster №1</text>
+    	</string>
+	<string id="pinup_mcosplay2">
+		<text>Poster №2</text>
+	</string>
+	<string id="pinup_mcosplay3">
+		<text>Poster №3</text>
+	</string>
+	<string id="pinup_mcosplay4">
+		<text>Poster №4</text>
+	</string>
+	<string id="pinup_mcosplay5">
+		<text>Poster №5</text>
+	</string>
+	<string id="pinup_mcosplay6">
+		<text>Poster №6</text>
+	</string>
+	<string id="pinup_mcosplay7">
+		<text>Poster №7</text>
+	</string>
+	<string id="pinup_mcosplay8">
+		<text>Poster №8</text>
+	</string>
+	<string id="pinup_mcosplay9">
+		<text>Poster №9</text>
+	</string>
+	<string id="pinup_mcosplay10">
+		<text>Poster №10</text>
+	</string>
+	<string id="pinup_mcosplay11">
+		<text>Poster №11</text>
+	</string>
+	<string id="pinup_mcosplay12">
+		<text>Poster №12</text>
+	</string>
+	<string id="pinup_mcosplay13">
+		<text>Poster №13</text>
+	</string>
+	<string id="pinup_mcosplay14">
+		<text>Poster №14</text>
+	</string>
+	<string id="pinup_mcosplay15">
+		<text>Poster №15</text>
+	</string>
+	<string id="pinup_mcosplay16">
+		<text>Poster №16</text>
+	</string>
+	<string id="pinup_mcosplay17">
+		<text>Poster №17</text>
+	</string>
+	<string id="pinup_mcosplay18">
+		<text>Poster №18</text>
+	</string>
+	<string id="pinup_mcosplay19">
+		<text>Poster №19</text>
+	</string>
+	<string id="pinup_mcosplay20">
+		<text>Poster №20</text>
+	</string>
+	<string id="pinup_mcosplay21">
+		<text>Poster №21</text>
+	</string>
+	<string id="pinup_mcosplay22">
+		<text>Poster №22</text>
+	</string>
+	<string id="pinup_mcosplay23">
+		<text>Poster №23</text>
+	</string>
+	<string id="pinup_mcosplay24">
+		<text>Poster №24</text>
+	</string>
+	<string id="pinup_mcosplay25">
+		<text>Poster №25</text>
+	</string>
+	<string id="pinup_mcosplay26">
+		<text>Poster №26</text>
+	</string>
+	<string id="pinup_mcosplay27">
+		<text>Poster №27</text>
+	</string>
+	<string id="pinup_mcosplay28">
+		<text>Poster №28</text>
+	</string>
+	<string id="pinup_mcosplay29">
+		<text>Poster №29</text>
+	</string>
+	<string id="pinup_mcosplay30">
+		<text>Poster №30</text>
+	</string>
+	<string id="pinup_mcosplay31">
+		<text>Poster №31</text>
+	</string>
+	<string id="pinup_mcosplay32">
+		<text>Poster №32</text>
+	</string>
+	<string id="pinup_mcosplay33">
+		<text>Poster №33</text>
+	</string>
+	<string id="pinup_mcosplay34">
+		<text>Poster №34</text>
+	</string>
+	<string id="pinup_mcosplay35">
+		<text>Poster №35</text>
+	</string>
+	<string id="pinup_mcosplay36">
+		<text>Poster №36</text>
+	</string>
+	<string id="pinup_mcosplay37">
+		<text>Poster №37</text>
+	</string>
+	<string id="pinup_mcosplay38">
+		<text>Poster №38</text>
+	</string>
+	<string id="pinup_mcosplay39">
+		<text>Poster №39</text>
+	</string>
+	<string id="pinup_mcosplay40">
+		<text>Poster №40</text>
+	</string>
+	<string id="pinup_mcosplay41">
+		<text>Poster №41</text>
+	</string>
+	<string id="pinup_mcosplay42">
+		<text>Poster №42</text>
+	</string>
+	<string id="pinup_mcosplay43">
+		<text>Poster №43</text>
+	</string>
+	<string id="pinup_mcosplay44">
+		<text>Poster №44</text>
+	</string>
+	<string id="pinup_mcosplay45">
+		<text>Poster №45</text>
+	</string>
+	<string id="pinup_mcosplay46">
+		<text>Poster №46</text>
+	</string>
+	<string id="pinup_mcosplay47">
+		<text>Poster №47</text>
+	</string>
+	<string id="pinup_mcosplay48">
+		<text>Poster №48</text>
+	</string>
+	<string id="pinup_mcosplay49">
+		<text>Poster №49</text>
+	</string>
+	<string id="pinup_mcosplay50">
+		<text>Poster №50</text>
+	</string>
+	<string id="pinup_mcosplay51">
+		<text>Poster №51</text>
+	</string>
+	<string id="pinup_mcosplay52">
+		<text>Poster №52</text>
+	</string>
+	<string id="pinup_mcosplay53">
+		<text>Poster №53</text>
+	</string>
+	<string id="pinup_mcosplay54">
+		<text>Poster №54</text>
+	</string>
+	<string id="pinup_mcosplay55">
+		<text>Poster №55</text>
+	</string>
+	<string id="pinup_mcosplay56">
+		<text>Poster №56</text>
+	</string>
+	<string id="pinup_mcosplay57">
+		<text>Poster №57</text>
+	</string>
+	<string id="pinup_mcosplay58">
+		<text>Poster №58</text>
+	</string>
+	<string id="pinup_mcosplay59">
+		<text>Poster №59</text>
+	</string>
+	<string id="pinup_mcosplay60">
+		<text>Poster №60</text>
+	</string>
+	<string id="pinup_mcosplay61">
+		<text>Poster №61</text>
+	</string>
+	<string id="pinup_mcosplay62">
+		<text>Poster №62</text>
+	</string>
+	<string id="pinup_mcosplay63">
+		<text>Poster №63</text>
+	</string>
+	<string id="pinup_mcosplay64">
+		<text>Poster №64</text>
+	</string>
+	<string id="pinup_mcosplay65">
+		<text>Poster №65</text>
+	</string>
+	<string id="pinup_mcosplay66">
+		<text>Poster №66</text>
+	</string>
+	<string id="pinup_mcosplay67">
+		<text>Poster №67</text>
+	</string>
+	<string id="pinup_mcosplay68">
+		<text>Poster №68</text>
+	</string>
+	<string id="pinup_mcosplay69">
+		<text>Poster №69</text>
+	</string>
+	<string id="pinup_mcosplay70">
+		<text>Poster №70</text>
+	</string>
+	<string id="pinup_mcosplay71">
+		<text>Poster №71</text>
+	</string>
+	<string id="pinup_mcosplay72">
+		<text>Poster №72</text>
+	</string>
+	<string id="pinup_mcosplay73">
+		<text>Poster №73</text>
+	</string>
+	<string id="pinup_mcosplay74">
+		<text>Poster №74</text>
+	</string>
+	<string id="pinup_mcosplay75">
+		<text>Poster №75</text>
+	</string>
+	<string id="pinup_mcosplay76">
+		<text>Poster №76</text>
+	</string>
+	<string id="pinup_mcosplay77">
+		<text>Poster №77</text>
+	</string>
+	<string id="pinup_mcosplay78">
+		<text>Poster №78</text>
+	</string>
+	<string id="pinup_mcosplay79">
+		<text>Poster №79</text>
+	</string>
+	<string id="pinup_mcosplay80">
+		<text>Poster №80</text>
+	</string>
+	<string id="pinup_mcosplay81">
+		<text>Poster №81</text>
+	</string>
+	<string id="pinup_mcosplay82">
+		<text>Poster №82</text>
+	</string>
+	<string id="pinup_mcosplay83">
+		<text>Poster №83</text>
+	</string>
+	<string id="pinup_mcosplay84">
+		<text>Poster №84</text>
+	</string>
+	<string id="pinup_mcosplay85">
+		<text>Poster №85</text>
+	</string>
+	<string id="pinup_mcosplay86">
+		<text>Poster №86</text>
+	</string>
+	<string id="pinup_mcosplay87">
+		<text>Poster №87</text>
+	</string>
+	<string id="pinup_mcosplay88">
+		<text>Poster №88</text>
+	</string>
+	<string id="pinup_mcosplay89">
+		<text>Poster №89</text>
+	</string>
+	<string id="pinup_mcosplay90">
+		<text>Poster №90</text>
+	</string>
+	<string id="pinup_mcosplay91">
+		<text>Poster №91</text>
+	</string>
+	<string id="pinup_mcosplay92">
+		<text>Poster №92</text>
+	</string>
+	<string id="pinup_mcosplay93">
+		<text>Poster №93</text>
+	</string>
+	<string id="pinup_mcosplay94">
+		<text>Poster №94</text>
+	</string>
+	<string id="pinup_mcosplay95">
+		<text>Poster №95</text>
+	</string>
+	<string id="pinup_mcosplay96">
+		<text>Poster №96</text>
+	</string>
+	<string id="pinup_mcosplay97">
+		<text>Poster №97</text>
+	</string>
+	<string id="pinup_mcosplay98">
+		<text>Poster №98</text>
+	</string>
+	<string id="pinup_mcosplay99">
+		<text>Poster №99</text>
+	</string>
+	<string id="pinup_mcosplay100">
+		<text>Poster №100</text>
+	</string>
+	
+</string_table>

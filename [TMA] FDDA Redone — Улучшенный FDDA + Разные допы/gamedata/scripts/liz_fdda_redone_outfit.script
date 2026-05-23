@@ -1,0 +1,199 @@
+-- enable_animations = true -- false
+local uiio = zzzz_liz_fdda_redone_ui_inventory
+local mcm_allow_movement
+local mcm_enable_animation
+local handler_registered = false
+
+-- monkey patches
+------------------------------------------------------------------------------
+
+local originalPIF = actor_effects.play_item_fx
+function actor_effects.play_item_fx(name)
+	if name == "outfit" then return end
+	originalPIF(name)
+end
+
+------------------------------------------------------------------------------
+-- callbacks
+------------------------------------------------------------------------------
+function on_game_start()
+	RegisterScriptCallback("on_option_change", initialize)
+	RegisterScriptCallback("actor_on_first_update", initialize)
+end
+
+function initialize()
+	mcm_allow_movement = liz_fdda_redone_mcm.get_config("outfit_anm/allow_movement")
+	mcm_enable_animation = liz_fdda_redone_mcm.get_config("outfit_anm/enable_outfit_equip")
+	if not handler_registered then
+		uiio.Add_Handler("outfit", predicate, on_eqiup, on_unequip, on_drop, on_swap)
+		handler_registered = true
+	end
+end
+
+------------------------------------------------------------------------------
+-- main
+------------------------------------------------------------------------------
+
+function select_animation(sec)
+	return "outfit_animation_hud"
+end
+
+function predicate(obj)
+	if IsOutfit(obj) then
+		return true
+	end
+	return false
+end
+
+function on_eqiup(obj, bag)
+	if not mcm_enable_animation then
+		uiio.Equip(obj, bag)
+		return
+	end
+	uiio.Set_Item_in_Use(obj:id(), true)
+	if hide_hud_inventory then
+		hide_hud_inventory()
+	end
+	lam2.add_action(ta_equip(obj, bag))
+end
+
+function on_unequip(obj, bag)
+	if not mcm_enable_animation then
+		uiio.Unequip(obj, bag)
+		return
+	end
+	uiio.Set_Item_in_Use(obj:id(), true)
+	if hide_hud_inventory then
+		hide_hud_inventory()
+	end
+	lam2.add_action(ta_unequip(obj, bag, "unequip"))
+end
+
+function on_drop(obj, bag)
+	if not mcm_enable_animation or bag ~= "actor_equ" then
+		uiio.Drop(obj, bag)
+		return
+	end
+	uiio.Set_Item_in_Use(obj:id(), true)
+	if hide_hud_inventory then
+		hide_hud_inventory()
+	end
+	lam2.add_action(ta_unequip(obj, bag, "drop"))
+end
+
+function on_swap(obj_prev, obj_next, bag)
+	if not mcm_enable_animation then
+		db.actor:move_to_ruck(obj_prev)
+		uiio.Equip(obj_next, bag)
+		return
+	end
+	uiio.Set_Item_in_Use(obj_next:id(), true)
+	if hide_hud_inventory then
+		hide_hud_inventory()
+	end
+	lam2.add_action(ta_equip(obj_next, bag))
+end
+
+------------------------------------------------------------------------------
+-- action templates
+------------------------------------------------------------------------------
+
+function ta_equip(obj, bag)
+	local a = {}
+	a.obj_id = obj:id()
+	a.bag = bag
+	a.execute = function (self, time)
+		local item_obj_equip = level.object_by_id(self.obj_id)
+		if not item_obj_equip then
+			uiio.Set_Item_in_Use(self.obj_id, false)
+			return lam2.states.fail
+		end
+
+		local item_obj_unequip = db.actor:item_in_slot(7)
+		-- add_action_first executes the last inserted action first.
+		lam2.add_action_first(ta_animation_equip("outfit_animation_hud"))
+		lam2.add_action_first(ta_wait_for_outfit_visual_update())
+		lam2.add_action_first(ta_move_item(item_obj_equip, self.bag, "equip"))
+		if item_obj_unequip and item_obj_unequip:id() ~= item_obj_equip:id() then
+			lam2.add_action_first(ta_move_item(item_obj_unequip, nil, "move_to_ruck"))
+		end
+
+		return lam2.states.success
+	end
+	return a
+end
+
+function ta_unequip(obj, bag, action)
+	local a = {}
+	a.obj_id = obj:id()
+	a.bag = bag
+	a.action = action
+	a.execute = function (self, time)
+		local item_obj = db.actor:item_in_slot(7)
+		if item_obj and item_obj:id() == self.obj_id then
+			lam2.add_action_first(ta_move_item(item_obj, self.bag, self.action))
+			lam2.add_action_first(ta_animation_equip(select_animation(item_obj:section())))
+			return lam2.states.success
+		end
+
+		uiio.Set_Item_in_Use(self.obj_id, false)
+		return lam2.states.fail
+	end
+	return a
+end
+
+function ta_animation_equip(section)
+	local a = lam2.get_template_action_play_animation()
+	a.tag = "outfit_animation"
+	a.sec = section
+	a.anm = "anm_equip"
+	a.only_allow_movekeys = mcm_allow_movement
+	a.disable_input = not mcm_allow_movement
+	a.fallback_duration = 1.7
+	a.on_skip = function()
+		lam_fov_manager.restore_fov()
+		if a.disable_input then level.enable_input() end
+		if a.only_allow_movekeys then
+			liz_fdda_input_manager.is_input_disabled = false
+			game.set_actor_allow_ladder(true)
+		end
+	end
+	return a
+end
+
+function ta_wait_for_outfit_visual_update()
+	local a = lam2.get_template_action_wait_for_seconds(0.35)
+	a.tag = "outfit_visual_update_wait"
+	return a
+end
+
+function ta_move_item(obj, bag, action)
+	local a = {}
+	a.tag = "outfit_animation"
+	a.obj_id = obj:id()
+	a.bag = bag
+	a.action = action
+	a.enter = function (self)
+		local item_obj = level.object_by_id(self.obj_id)
+		if item_obj then
+			if self.action == "equip" then
+				uiio.Set_Item_in_Use(self.obj_id, false)
+				uiio.Equip(item_obj, self.bag)
+			elseif self.action == "unequip" then
+				uiio.Set_Item_in_Use(self.obj_id, false)
+				uiio.Unequip(item_obj, self.bag)
+			elseif self.action == "drop" then
+				uiio.Set_Item_in_Use(self.obj_id, false)
+				uiio.Drop(item_obj, self.bag)
+			elseif self.action == "move_to_ruck" then
+				db.actor:move_to_ruck(item_obj)
+			end
+		else
+			uiio.Set_Item_in_Use(self.obj_id, false)
+		end
+	end
+	a.on_skip = function(self)
+		uiio.Set_Item_in_Use(self.obj_id, false)
+	end
+	return a
+end

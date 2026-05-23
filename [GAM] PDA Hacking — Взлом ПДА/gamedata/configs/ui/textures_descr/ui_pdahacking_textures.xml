@@ -1,0 +1,21 @@
+<w>
+	<file name = "ui\ui_pdahacking">
+		<texture id = "ui_pdahack_bg_scriptload"	x="0"	y="0"	width="593"	height="128" />
+		<texture id = "ui_pdahack_bg_decryptlevel"	x="0"	y="128"	width="279"	height="128" />
+		<texture id = "ui_pdahack_bg_list"			x="0"	y="256"	width="780"	height="114" />
+		<texture id = "ui_pdahack_bar"				x="0"	y="370"	width="1024"	height="18" />
+
+		<texture id = "ui_pdahack_icon_cmd"			x="593"	y="0"	width="128"	height="128" />
+		<texture id = "ui_pdahack_icon_shield"		x="721"	y="0"	width="128"	height="128" />
+		<texture id = "ui_pdahack_icon_hack"		x="279"	y="128"	width="128"	height="128" />
+		<texture id = "ui_pdahack_icon_dice"		x="407"	y="128"	width="128"	height="128" />
+		<texture id = "ui_pdahack_icon_script"		x="535"	y="128"	width="128"	height="128" />
+		<texture id = "ui_pdahack_icon_money"		x="663"	y="128"	width="128"	height="128" />
+	</file>
+	<file name = "ui\pdahack_background">
+		<texture id = "ui_pdahack_wallpaper"		x="0"	y="0"	width="1024" height="576" />
+	</file>
+	<file name = "ui\encyclopdia_pdahack">
+		<texture id = "encyclopedia_features_pdahacking_image"		x="0"	y="0"	width="500" height="322" />
+	</file>
+</w>

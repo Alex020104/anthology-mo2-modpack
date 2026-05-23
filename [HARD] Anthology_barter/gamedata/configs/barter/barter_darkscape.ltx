@@ -1,0 +1,143 @@
+; Darkscape trader
+[darkscape_arty_jelly]
+trader          = dasc_trade_mlr
+give            = af_medusa
+take            = medkit:full,bandage:2,device_flashlight:1
+repeat          = fixed
+limit           = 1
+desc            = st_darkscape_arty
+desc_done       = st_darkscape_done
+
+[darkscape_arty_antirad]:darkscape_arty_jelly
+give            = af_chelust
+take            = itm_sleepbag:1,swiss_knife:1,antirad:2
+
+[darkscape_arty_drink]:darkscape_arty_jelly
+give            = af_cristall
+take            = vodka:full,beadspread:2,synthrope:2
+
+[darkscape_arty_food]:darkscape_arty_jelly
+give            = af_peas
+take            = bread:2,corn:1,tarpaulin:1,prt_o_fabrics_1:2
+
+[darkscape_arty_vodka]:darkscape_arty_jelly
+give            = af_medallion
+take            = detector_simple:1,batteries_dead:3,boots:1
+
+[darkscape_gas]:darkscape_arty_jelly
+give            = explo_jerrycan_fuel:2
+take            = bottle_metal,vodka,beer
+type            = anyOf
+repeat          = restock
+limit           = 10
+sort_rank       = 2
+desc            = st_darkscape_gas
+
+[darkscape_gas2]:darkscape_gas
+give            = explo_jerrycan_fuel:4
+take            = sewing_kit_b:2,cleaning_kit_s
+
+[darkscape_ammo]:darkscape_gas
+give            = meat_flesh_b
+take            = ammo_12x70_buck:2,ammo_12x76_zhekan
+sort_rank       = 3
+desc            = st_darkscape_ammo
+
+[darkscape_ammo2]:darkscape_ammo
+give            = meat_boar_b
+take            = ammo_7.62x54_7h1:2,ammo_7.92x33_fmj
+
+
+
+[darkscape_suit]
+trader          = dasc_tech_mlr
+give            = stalker_tigerstripe_outfit
+take            = stalker_outfit,upgr_o_1_durability,upgr_o_1_psi,sewing_kit_b:2
+repeat          = fixed
+limit           = 1
+faction         = stalker
+goodwill        = 400
+addon           = !kit_binder
+sort_rank       = 2
+desc            = st_darkscape_suit
+desc_done       = st_darkscape_done
+
+[darkscape_suit_alt]:darkscape_suit
+take            = stalker_outfit,upgr_o_1_physical,upgr_o_1_magical,sewing_kit_b:2
+addon           = kit_binder
+
+
+
+[darkscape_upgr_armor]
+trader          = dasc_tech_mlr
+give            = upgr_o_1_armor
+take            = upgr_o_1_damage:2,upgr_o_1_weight:2,upgr_o_1_durability:2
+repeat          = restock
+type            = anyOf
+addon           = !kit_binder
+limit           = 10
+desc            = st_dasc_swap
+
+[darkscape_upgr_damage]:darkscape_upgr_armor
+give            = upgr_o_1_damage
+take            = upgr_o_1_armor:2,upgr_o_1_weight:2,upgr_o_1_durability:2
+sort_rank       = 2
+
+[darkscape_upgr_durability]:darkscape_upgr_armor
+give            = upgr_o_1_durability
+take            = upgr_o_1_armor:2,upgr_o_1_weight:2,upgr_o_1_damage:2
+
+[darkscape_upgr_weight]:darkscape_upgr_armor
+give            = upgr_o_1_weight
+take            = upgr_o_1_armor:2,upgr_o_1_damage:2,upgr_o_1_durability:2
+
+[darkscape_upgr_chem]:darkscape_upgr_armor
+give            = upgr_o_1_chem
+take            = upgr_o_1_rad:2,upgr_o_1_burn:2,upgr_o_1_psi:2,upgr_o_1_shock:2
+sort_rank       = 3
+
+[darkscape_upgr_burn]:darkscape_upgr_chem
+give            = upgr_o_1_burn
+take            = upgr_o_1_rad:2,upgr_o_1_chem:2,upgr_o_1_psi:2,upgr_o_1_shock:2
+[darkscape_upgr_psi]:darkscape_upgr_chem
+give            = upgr_o_1_psi
+take            = upgr_o_1_rad:2,upgr_o_1_burn:2,upgr_o_1_chem:2,upgr_o_1_shock:2
+[darkscape_upgr_shock]:darkscape_upgr_chem
+give            = upgr_o_1_shock
+take            = upgr_o_1_rad:2,upgr_o_1_burn:2,upgr_o_1_psi:2,upgr_o_1_chem:2
+[darkscape_upgr_rad]:darkscape_upgr_chem
+give            = upgr_o_1_rad
+take            = upgr_o_1_chem:2,upgr_o_1_burn:2,upgr_o_1_psi:2,upgr_o_1_shock:2
+
+[darkscape_upgr_health]:darkscape_upgr_armor
+give            = upgr_o_1_health
+take            = upgr_o_1_health:2,upgr_o_1_bleed:2,upgr_o_1_carry:2,upgr_o_1_arty:2,upgr_o_1_power:2
+sort_rank       = 4
+[darkscape_upgr_bleed]:darkscape_upgr_health
+give            = upgr_o_1_bleed
+take            = upgr_o_1_health:2,upgr_o_1_carry:2,upgr_o_1_arty:2,upgr_o_1_power:2
+[darkscape_upgr_power]:darkscape_upgr_health
+give            = upgr_o_1_power
+take            = upgr_o_1_health:2,upgr_o_1_bleed:2,upgr_o_1_carry:2,upgr_o_1_arty:2
+[darkscape_upgr_carry]:darkscape_upgr_health
+give            = upgr_o_1_carry
+take            = upgr_o_1_health:2,upgr_o_1_bleed:2,upgr_o_1_arty:2,upgr_o_1_power:2
+[darkscape_upgr_arty]:darkscape_upgr_health
+give            = upgr_o_1_arty
+take            = upgr_o_1_health:2,upgr_o_1_bleed:2,upgr_o_1_carry:2,upgr_o_1_power:2
+
+
+[darkscape_upgr_physical]:darkscape_upgr_armor
+addon           = kit_binder
+limit           = 10
+give            = upgr_o_1_physical
+take            = upgr_o_1_magical:2,upgr_o_1_utility
+sort_rank       = 2
+
+[darkscape_upgr_magical]:darkscape_upgr_physical
+give            = upgr_o_1_magical
+take            = upgr_o_1_physical:2,upgr_o_1_utility:2
+
+[darkscape_upgr_utility]:darkscape_upgr_physical
+give            = upgr_o_1_utility
+take            = upgr_o_1_magical:2,upgr_o_1_physical:2

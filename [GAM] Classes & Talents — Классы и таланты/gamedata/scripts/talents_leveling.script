@@ -1,0 +1,226 @@
+--[[
+talents_leveling.talent_levels.offensive.points = 16 talents_leveling.talent_levels.offensive.lvl = 16
+talents_leveling.talent_levels.defensive.points = 16 talents_leveling.talent_levels.defensive.lvl = 16
+talents_leveling.talent_levels.endurance.points = 16 talents_leveling.talent_levels.endurance.lvl = 16
+talents_leveling.talent_levels.speech.points = 16 talents_leveling.talent_levels.speech.lvl = 16
+--]]
+
+local offensive_mult = talents_mcm.get_config("offensive")
+local defensive_mult = talents_mcm.get_config("defensive")
+local endurance_mult = talents_mcm.get_config("endurance")
+local speech_mult = talents_mcm.get_config("speech")
+
+local gt = game.translate_string
+
+typ_levels = {
+	[1] = 0,			-- 0
+	[2] = 1000,		-- 1000
+	[3] = 1500,		-- 2500
+	[4] = 2000,		-- 4500
+	[5] = 2500,		-- 7000
+	[6] = 3000,		-- 10000
+	[7] = 3500,		-- 13500
+	[8] = 4000,		-- 17500
+	[9] = 4500,		-- 22000
+	[10] = 5000,	-- 27000
+	[11] = 5500,	-- 32500
+	[12] = 6000,	-- 38500
+	[13] = 6500,	-- 45000
+	[14] = 7000,	-- 52000
+	[15] = 7500,	-- 59500
+	[16] = 8000,	-- 67500
+}
+
+talent_levels = {
+
+	["offensive"] = {
+		lvl = 1,
+		exp = 0,
+		points = 1,
+		spent_points = 0,
+	},
+
+	["defensive"] = {
+		lvl = 1,
+		exp = 0,
+		points = 1,
+		spent_points = 0,
+	},
+
+	["endurance"] = {
+		lvl = 1,
+		exp = 0,
+		points = 1,
+		spent_points = 0,
+	},
+
+	["speech"] = {
+		lvl = 1,
+		exp = 0,
+		points = 1,
+		spent_points = 0,
+	},
+
+}
+
+-- offensive
+function npc_on_before_hit(npc, s_hit, bone_id, flags)
+	local draft = s_hit.draftsman
+	local draft_fits = draft and (IsStalker(draft) or IsMonster(draft))
+	if not (draft_fits and draft.alive and draft:alive() and draft:id() == 0) then return end
+	if not (npc:alive()) then return end
+	if s_hit.power <= 0 then return end
+	if s_hit.power > 99 then return end	-- against wounded
+
+	add_exp("offensive", s_hit.power * 30 * offensive_mult)
+end
+
+function actor_on_weapon_fired(obj, wpn)
+	if not (obj and obj:id() == 0 and wpn) then return end
+
+	add_exp("offensive", 1 * offensive_mult)
+end
+
+-- defensive
+function actor_on_before_hit(s_hit, bone_id, flags)
+	if s_hit.power <= 0 then return end
+
+	add_exp("defensive", s_hit.power * 60 * defensive_mult)
+end
+
+-- endurance
+function actor_on_footstep(mat)
+	local weight_ratio = get_actor_weight_ratio()
+	add_exp("endurance", weight_ratio * 0.3 * endurance_mult)
+end
+
+function actor_on_jump()
+	local weight_ratio = get_actor_weight_ratio()
+	add_exp("endurance", weight_ratio * 3 * endurance_mult)
+end
+
+-- speech
+function actor_on_item_trade(item)
+	local cost = item and ini_sys:r_float_ex(item:section(), "cost")
+	if not cost then return end
+
+	add_exp("speech", cost / 500 * speech_mult)
+end
+
+-- total experience and levels manager
+function add_exp(typ, val)
+	if talents_functions.picked_class == "null" then return end
+
+	local cur_lvl = talent_levels[typ].lvl
+	if cur_lvl < #typ_levels then
+
+		-- add exp
+		talent_levels[typ].exp = talent_levels[typ].exp + val
+
+		-- level up
+		if talent_levels[typ].exp >= typ_levels[cur_lvl + 1] then
+			talent_levels[typ].exp = 0
+			talent_levels[typ].lvl = talent_levels[typ].lvl + 1
+			talent_levels[typ].points = talent_levels[typ].points + 1
+
+			-- send news
+			news_manager.send_tip(db.actor, string.format(gt("talents_levelup"), gt("tree_" .. typ), talent_levels[typ].lvl), 0, nil, 10000)
+
+			-- update UI on level up
+			if talents_gui and talents_gui.update_open_menus then
+				talents_gui.update_open_menus()
+			elseif talents_gui and talents_gui.GUI then
+				talents_gui.GUI:UpdateTalentsMenu()
+			end
+		end
+
+	end
+end
+-------------------------------------------------------------
+
+function save_state(m_data)
+	m_data.talent_levels = talent_levels
+end
+
+function load_state(m_data)
+	if m_data.talent_levels then
+		talent_levels = m_data.talent_levels
+	else
+		for k, _ in pairs(talent_levels) do
+			talent_levels[k] = {
+				lvl = 1,
+				exp = 0,
+				points = 1,
+				spent_points = 0,
+			}
+		end
+	end
+end
+
+function get_actor_weight_ratio()
+	local actor = db.actor
+	local outfit = actor:item_in_slot(7)
+	local backpack = actor:item_in_slot(13)
+
+	local tot_weight = actor:get_total_weight()
+	local max_weight = actor:get_actor_max_weight()
+
+	max_weight = max_weight + (outfit and outfit:get_additional_max_weight() or 0)
+	max_weight = max_weight + (backpack and backpack:get_additional_max_weight() or 0)
+
+	actor:iterate_belt( function(owner, obj)
+		local c_arty = obj:cast_Artefact()
+		max_weight = max_weight + (c_arty and c_arty:AdditionalInventoryWeight() or 0)
+	end)
+
+	actor:cast_Actor():conditions():BoosterForEach( function(booster_type, booster_time, booster_value)
+		if (booster_type == 4) then --eBoostMaxWeight
+			max_weight = max_weight + booster_value
+		end
+	end)
+
+	return tot_weight / max_weight
+end
+
+function ActorMenu_on_trade_started()
+    RegisterScriptCallback("actor_on_item_take", actor_on_item_trade)
+    RegisterScriptCallback("actor_on_item_drop", actor_on_item_trade)
+end
+
+function ActorMenu_on_trade_closed()
+    UnregisterScriptCallback("actor_on_item_take", actor_on_item_trade)
+    UnregisterScriptCallback("actor_on_item_drop", actor_on_item_trade)
+end
+
+function respec_levels()
+	for k, _ in pairs(talent_levels) do
+		talent_levels[k].lvl = math.ceil(talent_levels[k].lvl / 2)
+		talent_levels[k].exp = 0
+		talent_levels[k].spent_points = 0
+	end
+
+	for k, t in pairs(talent_levels) do
+		talent_levels[k].points = t.lvl
+	end
+end
+
+function on_option_change()
+	offensive_mult = talents_mcm.get_config("offensive")
+	defensive_mult = talents_mcm.get_config("defensive")
+	endurance_mult = talents_mcm.get_config("endurance")
+	speech_mult = talents_mcm.get_config("speech")
+end
+
+function on_game_start()
+	RegisterScriptCallback("save_state", save_state)
+	RegisterScriptCallback("load_state", load_state)
+	RegisterScriptCallback("npc_on_before_hit", npc_on_before_hit)
+	RegisterScriptCallback("monster_on_before_hit", npc_on_before_hit)
+	RegisterScriptCallback("actor_on_weapon_fired", actor_on_weapon_fired)
+	RegisterScriptCallback("actor_on_before_hit", actor_on_before_hit)
+	RegisterScriptCallback("actor_on_footstep", actor_on_footstep)
+	RegisterScriptCallback("actor_on_jump", actor_on_jump)
+	RegisterScriptCallback("ActorMenu_on_trade_started", ActorMenu_on_trade_started)
+	RegisterScriptCallback("ActorMenu_on_trade_closed", ActorMenu_on_trade_closed)
+	RegisterScriptCallback("on_option_change", on_option_change)
+end

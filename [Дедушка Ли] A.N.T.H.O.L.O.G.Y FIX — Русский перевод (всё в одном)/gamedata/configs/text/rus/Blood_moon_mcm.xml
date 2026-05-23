@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_menu_blood_moon">
+		<text>RE:D Moon</text>
+	</string>
+	<string id="ui_mcm_title_blood_moon">
+		<text>Кровавая луна</text>
+	</string>
+
+	<string id="ui_mcm_blood_moon_state">
+		<text>Включить "Кровавую луну"</text>
+	</string>
+
+	<string id="ui_mcm_blood_moon_frequency">
+		<text>Частота "Кровавой луны"</text>
+	</string>
+	<string id="ui_mcm_lst_every_day">
+		<text>Каждые 1-2 дня</text>
+	</string>
+
+	<string id="ui_mcm_lst_every_2d">
+		<text>Каждые 2-3 дня</text>
+	</string>
+
+	<string id="ui_mcm_lst_every_3d">
+		<text>Каждые 2-4 дня</text>
+	</string>
+	<string id="ui_mcm_lst_every_4d">
+		<text>Каждые 3-5 дней</text>
+	</string>
+
+	<string id="ui_mcm_lst_every_5d">
+		<text>Каждые 3-6 дней</text>
+	</string>
+	
+	<string id="ui_mcm_blood_moon_max_zombie_spawn_radius">
+		<text>Максимальное расстояние, на котором будут появляться зомби</text>
+	</string>
+	
+	<string id="ui_mcm_blood_moon_max_zombie_spawn_count">
+		<text>Максимальное количество зомби</text>
+	</string>
+	
+	<string id="ui_mcm_blood_moon_max_zombie_squad_size">
+		<text>Численность отряда зомби</text>
+	</string>
+	
+	<string id="ui_mcm_blood_moon_enable_debug">
+		<text>Режим отладки</text>
+	</string>
+	<string id="ui_mcm_blood_moon_news_during_event">
+		<text>Получать сообщения во время события</text>
+	</string>
+	<string id="ui_mcm_blood_moon_news_after_event">
+		<text>Получать сообщения с реакцией на событие</text>
+	</string>
+	<string id="ui_mcm_blood_moon_news_before_event">
+		<text>Получать сообщения, предсказывающие событие</text>
+	</string>
+	<string id="ui_mcm_blood_moon_safe_radius">
+		<text>Радиус безопасности</text>
+	</string>
+	<string id="ui_mcm_blood_moon_number_of_spawning_smarts">
+		<text>Количество умных зомби, которые будут появляться</text>
+	</string>
+	<string id="ui_mcm_blood_moon_sleepless_blood_moon">
+		<text>Сон во время события</text>
+	</string>
+
+</string_table>

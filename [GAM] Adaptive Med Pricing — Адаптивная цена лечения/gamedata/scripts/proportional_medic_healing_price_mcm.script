@@ -1,0 +1,516 @@
+--[[
+	Proportional Medic Healing Price by Coverdrave
+	Medic's healing price is now proportional to how injured you are, as well as ability to go in debt in exchange for a full heal.
+	
+	06/02/2023
+	- Release
+	
+	07/02/2023
+	- Slightly lowered heal prices by default
+	
+	10/07/2023
+	- Implemented proper support for Body Health System, now every damaged body part increases the heal price
+	- Fixed wrong medic responses
+--]]
+
+
+-- Don't touch
+local cached_healing_price_injured
+local cached_healing_price_irradiated
+local cached_healing_price_injured_irradiated
+
+local bhs_installed = false
+local is_bhs_damaged = false
+local health_bhs = {}
+local maxhp_bhs = {}
+local timedhp_bhs = {} -- NOTE: If body part has temporary points, they are also counted in health_bhs, so to get actual health points we do (health - timedhp)
+
+local medics_debt = {}
+
+-- Actor lines are cached because for some reason, when using <script_text> for actor replies, 
+-- functions are ran every second or so, and if text is chosen randomly it changes the text every time.
+-- Lines are cleared on every time actor starts dialog with NPC.
+local cached_lines = {}
+------------
+
+
+-- Multipliers (change values here if you don't use MCM)
+local injury_heal_price_multiplier = 1.0
+local radiation_heal_price_multiplier = 1.0
+
+local timedhp_bhs_heal_price_reduction_multiplier = 0.5
+local bhs_heal_bodypart_price_multiplier = {
+	["head"] = 1.0,
+	["torso"] = 0.8,
+	["leftarm"] = 0.55,
+	["rightarm"] = 0.55,
+	["leftleg"] = 0.45,
+	["rightleg"] = 0.45,
+}
+------------
+
+
+-- MCM
+function on_mcm_load()
+    opt = {
+        id = "proportional_medic_healing_price",
+        sh = true,
+        gr = {
+			{ id = "title", type = "slide", link= "ui_options_slider_player", text="ui_mcm_proportional_medic_healing_price_title", size = {512,50}, spacing = 20},
+			{ id = "injury_heal_price_multiplier", type = "track", val = 2, def = 1.0, min = 0.1, max = 5.0, step = 0.1},
+			{ id = "radiation_heal_price_multiplier", type = "track", val = 2, def = 1.0, min = 0.1, max = 5.0, step = 0.1},
+			
+			{ id = "title_bhs", type = "title", text = "ui_mcm_menu_proportional_medic_healing_price_bhs", align = "c"},
+			{ id = "bhs_heal_head_price_multiplier", type = "track", val = 2, def = 1.0, min = 0.1, max = 5.0, step = 0.1},
+			{ id = "bhs_heal_torso_price_multiplier", type = "track", val = 2, def = 0.8, min = 0.1, max = 5.0, step = 0.1},
+			{ id = "bhs_heal_arm_price_multiplier", type = "track", val = 2, def = 0.55, min = 0.1, max = 5.0, step = 0.1},
+			{ id = "bhs_heal_leg_price_multiplier", type = "track", val = 2, def = 0.45, min = 0.1, max = 5.0, step = 0.1},
+			{ id = "timedhp_bhs_heal_price_reduction_multiplier", type = "track", val = 2, def = 0.5, min = 0.1, max = 1.0, step = 0.1},
+        }
+    }
+    return opt
+end
+
+function on_option_change()
+    if ui_mcm then
+		injury_heal_price_multiplier = ui_mcm.get("proportional_medic_healing_price/injury_heal_price_multiplier")
+		radiation_heal_price_multiplier = ui_mcm.get("proportional_medic_healing_price/radiation_heal_price_multiplier")
+		bhs_heal_bodypart_price_multiplier["head"] =  ui_mcm.get("proportional_medic_healing_price/bhs_heal_head_price_multiplier")
+		bhs_heal_bodypart_price_multiplier["torso"] =  ui_mcm.get("proportional_medic_healing_price/bhs_heal_torso_price_multiplier")
+		bhs_heal_bodypart_price_multiplier["leftarm"] =  ui_mcm.get("proportional_medic_healing_price/bhs_heal_arm_price_multiplier")
+		bhs_heal_bodypart_price_multiplier["rightarm"] =  ui_mcm.get("proportional_medic_healing_price/bhs_heal_arm_price_multiplier")
+		bhs_heal_bodypart_price_multiplier["leftleg"] =  ui_mcm.get("proportional_medic_healing_price/bhs_heal_leg_price_multiplier")
+		bhs_heal_bodypart_price_multiplier["rightleg"] =  ui_mcm.get("proportional_medic_healing_price/bhs_heal_leg_price_multiplier")
+		timedhp_bhs_heal_price_reduction_multiplier = ui_mcm.get("proportional_medic_healing_price/timedhp_bhs_heal_price_reduction_multiplier")
+    end
+end
+------------
+
+
+-- Body Health System support
+local function bhs_heal()
+	timedhp_bhs.head = 0
+	health_bhs.head = maxhp_bhs.head
+	
+	timedhp_bhs.torso = 0
+	health_bhs.torso = maxhp_bhs.torso
+	
+	timedhp_bhs.leftarm = 0
+	health_bhs.leftarm = maxhp_bhs.leftarm
+	
+	timedhp_bhs.rightarm = 0
+	health_bhs.rightarm = maxhp_bhs.rightarm
+	
+	timedhp_bhs.leftleg = 0
+	health_bhs.leftleg = maxhp_bhs.leftleg
+	
+	timedhp_bhs.rightleg = 0
+	health_bhs.rightleg = maxhp_bhs.rightleg
+	
+	utils_obj.save_var(db.actor,"health.head",health_bhs.head)
+	utils_obj.save_var(db.actor,"health.torso",health_bhs.torso)
+	utils_obj.save_var(db.actor,"health.leftarm",health_bhs.leftarm)
+	utils_obj.save_var(db.actor,"health.rightarm",health_bhs.rightarm)
+	utils_obj.save_var(db.actor,"health.leftleg",health_bhs.leftleg)
+	utils_obj.save_var(db.actor,"health.rightleg",health_bhs.rightleg)
+	
+	is_bhs_damaged = false
+end
+
+local function is_any_bhs_body_part_damaged()
+	for k, v in pairs(health_bhs) do
+		if maxhp_bhs[k] - (health_bhs[k] - timedhp_bhs[k]) > 0 then return true end
+	end
+	
+	return false
+end
+
+local function total_bhs_health()
+	local health_total = 0
+	local maxhp_total = 0
+	
+	for k, v in pairs(health_bhs) do
+		health_total = health_total + (health_bhs[k] - timedhp_bhs[k])
+		maxhp_total = maxhp_total + maxhp_bhs[k]
+	end
+	
+	-- Returns value between 0 and 1
+	return health_total / maxhp_total
+end
+
+local function calculate_bhs_heal_bodypart_price(bodypart)
+	return 1000 * bhs_heal_bodypart_price_multiplier[bodypart] * (1 - ((health_bhs[bodypart] - (timedhp_bhs[bodypart] * timedhp_bhs_heal_price_reduction_multiplier)) / maxhp_bhs[bodypart]))
+end
+
+local function total_bhs_heal_price()
+	local sum = 0
+	
+	for bodypart, price in pairs(bhs_heal_bodypart_price_multiplier) do
+		sum = sum + calculate_bhs_heal_bodypart_price(bodypart)
+	end
+	
+	return round(sum)
+end
+------------
+
+
+-- String translation
+local function get_random_text(str, is_actor_response)
+	if is_actor_response then
+		if not cached_lines[str] then
+			cached_lines[str] = math.random(1, 5)
+		end
+	
+		return game.translate_string(str.."_"..cached_lines[str])
+	end
+	
+	return game.translate_string(str.."_"..math.random(1, 5))
+end
+
+local function get_injury_examine_string()
+	local text = ""
+	local bhs_health = 1
+	
+	if bhs_installed then
+		bhs_health = total_bhs_health()
+	end
+	
+	if db.actor.health < 0.25 or bhs_health < 0.25 then
+		text = game.translate_string("st_pmhp_injury_critical")
+		
+	elseif db.actor.health < 0.5 or bhs_health < 0.5 then
+		text = game.translate_string("st_pmhp_injury_heavy")
+		
+	elseif db.actor.health < 0.75 or bhs_health < 0.75 then
+		text = game.translate_string("st_pmhp_injury_medium")
+		
+	elseif db.actor.health < 1 or bhs_health < 1 then
+		text = game.translate_string("st_pmhp_injury_light")
+	
+	else
+		return game.translate_string("st_pmhp_injury_none")
+	end
+	
+	return text.." "..get_random_text("st_pmhp_injury_price")
+end
+
+local function get_radiation_examine_string()
+	local text = ""
+	
+	if db.actor.radiation == 0 then
+		return game.translate_string("st_pmhp_radiation_none")
+		
+	elseif db.actor.radiation > 0.4 then
+		text = game.translate_string("st_pmhp_radiation_critical")
+		
+	elseif db.actor.radiation > 0.25 then
+		text = game.translate_string("st_pmhp_radiation_heavy")
+		
+	elseif db.actor.radiation > 0.1 then
+		text = game.translate_string("st_pmhp_radiation_medium")
+		
+	elseif db.actor.radiation > 0 then
+		text = game.translate_string("st_pmhp_radiation_light")
+	end
+	
+	return text.." "..get_random_text("st_pmhp_radiation_price")
+end
+------------
+
+
+-- Precondition functions used in dialogs
+function is_actor_not_healthy(first_speaker, second_speaker)
+	if (db.actor.health < 1 or db.actor.bleeding > 0 or db.actor.radiation > 0 or (bhs_installed and is_bhs_damaged)) then return true end
+	return false
+end
+
+function is_actor_healthy(first_speaker, second_speaker)
+	return not is_actor_not_healthy(first_speaker, second_speaker)
+end
+
+function is_actor_injured(first_speaker, second_speaker)
+	if (db.actor.health < 1 or db.actor.bleeding > 0 or (bhs_installed and is_bhs_damaged))
+	and (db.actor:money() >= cached_healing_price_injured)
+	then
+		return true
+	end
+	return false
+end
+
+function is_actor_irradiated(first_speaker, second_speaker)
+	if (db.actor.radiation > 0)
+	and (db.actor:money() >= cached_healing_price_irradiated)
+	then
+		return true
+	end
+	return false
+end
+
+function is_actor_injured_irradiated(first_speaker, second_speaker)
+	if (db.actor.health < 1 or db.actor.bleeding > 0 or (bhs_installed and is_bhs_damaged)) and (db.actor.radiation > 0)
+	and (db.actor:money() >= cached_healing_price_injured_irradiated)
+	then
+		return true
+	end
+	return false
+end
+
+function is_actor_in_debt(first_speaker, second_speaker)
+	local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+	
+	if medics_debt[npc:name()] then return true end
+	return false
+end
+
+function is_actor_not_in_debt(first_speaker, second_speaker)
+	return not is_actor_in_debt(first_speaker, second_speaker)
+end
+
+function can_actor_pay_debt(first_speaker, second_speaker)
+	local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+	
+	return db.actor:money() >= medics_debt[npc:name()]
+end
+------------
+
+
+-- Action functions used in dialogs
+function cache_healing_price()
+	cached_healing_price_injured = round((1 - db.actor.health) * (1500 * injury_heal_price_multiplier)) + round(db.actor.bleeding * (1500 * injury_heal_price_multiplier))
+	
+	if bhs_installed then
+		is_bhs_damaged = is_any_bhs_body_part_damaged()
+		
+		if is_bhs_damaged then
+			cached_healing_price_injured = cached_healing_price_injured + total_bhs_heal_price()
+		end
+	end
+	
+	cached_healing_price_irradiated = round((db.actor.radiation * (6000 * radiation_heal_price_multiplier)))
+	cached_healing_price_injured_irradiated = cached_healing_price_injured + cached_healing_price_irradiated
+end
+
+function heal_actor_injury(first_speaker, second_speaker)
+	dialogs.relocate_money_from_actor (first_speaker, second_speaker, cached_healing_price_injured)
+	
+	bhs_heal()
+	db.actor.health = 1
+	db.actor.power = 1
+	db.actor.bleeding = 1
+end
+
+function heal_actor_radiation(first_speaker, second_speaker)
+	dialogs.relocate_money_from_actor (first_speaker, second_speaker, cached_healing_price_irradiated)
+	
+	db.actor.radiation = 0
+end
+
+function heal_actor_injury_radiation(first_speaker, second_speaker)
+	dialogs.relocate_money_from_actor (first_speaker, second_speaker, cached_healing_price_injured_irradiated)
+	
+	bhs_heal()
+	db.actor.health = 1
+	db.actor.power = 1
+	db.actor.radiation = 0
+	db.actor.bleeding = 1
+end
+
+function use_debt_heal(first_speaker, second_speaker)
+	bhs_heal()
+	db.actor.health = 1
+	db.actor.power = 1
+	db.actor.radiation = 0
+	db.actor.bleeding = 1
+	
+	local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+	medics_debt[npc:name()] = round(cached_healing_price_injured_irradiated * 1.5)
+end
+
+function pay_medic_debt(first_speaker, second_speaker)
+	local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+	local debt_price = medics_debt[npc:name()]
+	
+	dialogs.relocate_money_from_actor (first_speaker, second_speaker, debt_price)
+	medics_debt[npc:name()] = nil
+end
+------------
+
+
+-- Script text functions used in dialogs
+function get_medic_heal_text()
+	local injury_text = get_injury_examine_string()
+	local radiation_text = get_radiation_examine_string()
+
+	return utils_data.parse_string_keys(injury_text.."\\n"..radiation_text, { ["injured_price"] = cached_healing_price_injured, ["irradiated_price"] = cached_healing_price_irradiated })
+end
+
+function get_heal_actor_injured_text()
+	return utils_data.parse_string_keys(game.translate_string("st_pmhp_heal_actor_injured"), { ["injured_price"] = cached_healing_price_injured })
+end
+
+function get_heal_actor_irradiated_text()
+	return utils_data.parse_string_keys(game.translate_string("st_pmhp_heal_actor_irradiated"), { ["irradiated_price"] = cached_healing_price_irradiated })
+end
+
+function get_heal_actor_injured_irradiated_text()
+	return utils_data.parse_string_keys(game.translate_string("st_pmhp_heal_actor_injured_irradiated"), { ["injured_irradiated_price"] = cached_healing_price_injured_irradiated })
+end
+
+function get_heal_actor_decline_text()
+	return game.translate_string("st_pmhp_heal_actor_decline")
+end
+
+
+function get_actor_no_money_text()
+	return get_random_text("st_pmhp_no_money_actor", true)
+end
+
+function get_medic_offer_debt_heal_text()
+	return utils_data.parse_string_keys(get_random_text("st_pmhp_no_money_npc"), { ["debt_price"] = round(cached_healing_price_injured_irradiated * 1.5) })
+end
+
+function get_actor_debt_accept_text()
+	return get_random_text("st_pmhp_no_money_actor_response_accept", true)
+end
+
+function get_actor_debt_decline_text()
+	return get_random_text("st_pmhp_no_money_actor_response_decline", true)
+end
+
+function get_npc_debt_decline_response_text()
+	return get_random_text("st_pmhp_npc_debt_decline_response")
+end
+
+
+function get_actor_debt_pay_dialog_start_text()
+	return get_random_text("st_pmhp_debt_pay_dialog_start", true)
+end
+
+function get_npc_debt_pay_dialog_text(first_speaker, second_speaker)
+	local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+
+	return utils_data.parse_string_keys(get_random_text("st_pmhp_debt_pay_dialog_npc"), { ["debt_price"] = medics_debt[npc:name()] })
+end
+
+function get_actor_debt_pay_dialog_accept_text(first_speaker, second_speaker)
+	local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+
+	return utils_data.parse_string_keys(get_random_text("st_pmhp_debt_pay_actor_accept", true), { ["debt_price"] = medics_debt[npc:name()] })
+end
+
+function get_actor_debt_pay_dialog_decline_text()
+	return get_random_text("st_pmhp_debt_pay_actor_decline", true)
+end
+
+
+function get_npc_debt_reminder_text(first_speaker, second_speaker)
+	local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+
+	return utils_data.parse_string_keys(get_random_text("st_pmhp_debt_reminder"), { ["debt_price"] = medics_debt[npc:name()] })
+end
+
+function get_actor_debt_pay_accept_text()
+	return get_random_text("st_pmhp_debt_pay_response_accept", true)
+end
+
+function get_actor_debt_pay_decline_text()
+	return get_random_text("st_pmhp_debt_pay_response_decline", true)
+end
+
+function get_npc_debt_pay_accept_response_text()
+	return get_random_text("st_pmhp_debt_pay_accept_npc_response")
+end
+
+function get_npc_debt_pay_decline_response_text()
+	return get_random_text("st_pmhp_debt_pay_decline_npc_response")
+end
+------------
+
+
+-- Tests (uncomment line in on_game_start too)
+--[[
+local function hit_actor_wound()
+	local h = hit()
+	h.type = hit.fire_wound
+	h.impulse = 0
+	h.direction = VEC_Z
+	h.draftsman = db.actor
+	h.power = 0.1
+	db.actor:hit(h)
+end
+
+local function hit_actor_rad()
+	local h = hit()
+	h.type = hit.radiation
+	h.impulse = 0
+	h.direction = VEC_Z
+	h.draftsman = db.actor
+	h.power = 0.1
+	db.actor:hit(h)
+end
+
+local function print_status()
+	printf("!!! health: %s, bleeding: %s, radiation: %s", db.actor.health, db.actor.bleeding, db.actor.radiation)
+end
+
+local function print_medics_debt()
+	for k,v in pairs(medics_debt) do
+		printf("!!! k: %s, v: %s", k, v)
+	end
+end
+
+local function on_key_press(key)
+	if key == DIK_keys.DIK_P then print_status() return end
+	if key == DIK_keys.DIK_I then hit_actor_wound() return end
+	if key == DIK_keys.DIK_U then hit_actor_rad() return end
+	if key == DIK_keys.DIK_O then print_medics_debt() return end
+end
+--]]
+------------
+
+
+-- Callbacks
+local function GUI_on_show(name)
+	if name == "Dialog" then
+		cached_lines = {} -- Clear on every talk with NPC
+	end
+end
+
+local function save_state(m_data)
+	m_data.medics_debt = medics_debt
+end
+
+local function load_state(m_data)
+	medics_debt = m_data.medics_debt or {}
+end
+
+local function on_first_key_press()
+	if modxml_proportional_medic_healing_price and not modxml_proportional_medic_healing_price.enabled and db.actor then
+		db.actor:give_game_news("Proportional Medic Healing Price", "In order to replace dialog strings when using the DXML version, you need DXML from MrDemonized's Modded Exes. Otherwise, install the non-DXML version.", "ui_inGame2_D_Ohotnik_na_mutantov", 0, 15000, 0)
+	end
+	
+	if zzz_player_injuries then
+		if not zzz_player_injuries.health or not zzz_player_injuries.maxhp or not zzz_player_injuries.timedhp then 
+			db.actor:give_game_news("Proportional Medic Healing Price", "Please update to the latest version of Body Health System.", "ui_inGame2_D_Ohotnik_na_mutantov", 0, 20000, 0)
+		else
+			health_bhs = zzz_player_injuries.health
+			maxhp_bhs = zzz_player_injuries.maxhp
+			timedhp_bhs = zzz_player_injuries.timedhp
+			bhs_installed = true
+			is_bhs_damaged = is_any_bhs_body_part_damaged()
+		end
+	end
+	
+	UnregisterScriptCallback("on_key_press", on_first_key_press)
+end
+
+function on_game_start()
+	-- RegisterScriptCallback("on_key_press", on_key_press)
+	
+	RegisterScriptCallback("on_key_press", on_first_key_press)
+	RegisterScriptCallback("save_state", save_state)
+    RegisterScriptCallback("load_state", load_state)
+	RegisterScriptCallback("on_option_change", on_option_change)
+	RegisterScriptCallback("GUI_on_show", GUI_on_show)
+	on_option_change()
+end

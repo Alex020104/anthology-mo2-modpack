@@ -1,0 +1,1054 @@
+-- Field Mag Loading
+-- Enables magazine loading outside of the inventory screen.
+
+local is_mag_loading = false
+local active_magazine = nil
+local HUD = nil
+local StoresHUD = nil
+local mag_action_label = "Loading"
+local hooks_initialized = false
+local callbacks_registered = false
+local hud_is_visible = false
+local hud_next_update_time = 0
+local HUD_UPDATE_INTERVAL_MS = 75
+local pending_restore_slot = nil
+
+local direct_load_key_down_time = 0
+local direct_load_long_press_triggered = false
+local LONG_PRESS_DELAY_MS = 300
+local GUI_AmmoWheel = nil
+
+local tmp_allowed_mags_dict = {}
+local tmp_allowed_ammo_dict = {}
+
+local function safe_pcall(func, ...)
+    if type(func) ~= "function" then
+        return false, "not_a_function"
+    end
+    return pcall(func, ...)
+end
+
+local function clear_table(t)
+    for k in pairs(t) do
+        t[k] = nil
+    end
+    return t
+end
+
+local function fill_lookup(list, dst)
+    clear_table(dst)
+    if not list then
+        return dst
+    end
+    for i = 1, #list do
+        dst[list[i]] = true
+    end
+    return dst
+end
+
+local function get_mag_loaded_count(mag_id)
+    local ok, mag_data = safe_pcall(magazine_binder.get_data, mag_id)
+    if not ok then
+        printf("[Field Mag Loading][Compat] magazine_binder.get_data failed: " .. tostring(mag_data))
+        return 0
+    end
+    local loaded = mag_data and mag_data.loaded
+    return type(loaded) == "table" and #loaded or 0
+end
+
+local function is_load_hud_enabled()
+    if not ui_mcm then
+        return true
+    end
+    return ui_mcm.get("field_mag_loading/enable_load_hud")
+end
+
+local function try_restore_weapon_slot()
+    if not pending_restore_slot or not db.actor then
+        return
+    end
+
+    local restore_slot = pending_restore_slot
+    pending_restore_slot = nil
+
+    if db.actor:active_slot() == 0 then
+        db.actor:activate_slot(restore_slot)
+    end
+end
+
+local function reset_magload_state()
+    is_mag_loading = false
+    active_magazine = nil
+    mag_action_label = "Loading"
+    hud_next_update_time = 0
+    if HUD then
+        HUD:ShowHUD(false)
+    end
+    hud_is_visible = false
+    try_restore_weapon_slot()
+end
+
+function start_hud(magazine)
+    active_magazine = magazine
+    is_mag_loading = true
+    mag_action_label = "Loading"
+    hud_next_update_time = 0
+    if not HUD then
+        HUD = UIFieldMagHUD()
+        get_hud():AddDialogToRender(HUD)
+    end
+    if is_load_hud_enabled() and not hud_is_visible then
+        HUD:ShowHUD(true)
+        hud_is_visible = true
+    end
+end
+
+function stop_hud()
+    is_mag_loading = false
+    active_magazine = nil
+    if HUD then
+        HUD:ShowHUD(false)
+    end
+    hud_is_visible = false
+    hud_next_update_time = 0
+end
+
+function do_direct_mag_load(specific_ammo_sec)
+    local actor = db.actor
+    if not actor or is_mag_loading then
+        return
+    end
+
+    local weapon = actor:active_item()
+    if not weapon or not IsWeapon(weapon) or not magazine_binder.is_supported_weapon(weapon) then
+        return
+    end
+
+    local base_type = magazine_binder.get_weapon_base_type(weapon)
+    if not base_type then
+        return
+    end
+
+    local allowed_mags = magazine_binder.get_mags_for_basetype(base_type)
+    if not allowed_mags or #allowed_mags == 0 then
+        return
+    end
+
+    local allowed_mags_dict = fill_lookup(allowed_mags, tmp_allowed_mags_dict)
+    local best_mag = nil
+    local best_mag_missing = 9999
+
+    local function itr_mags(_, item)
+        if allowed_mags_dict[item:section()] and magazine_binder.is_carried_mag(item:id()) then
+            local capacity = SYS_GetParam(2, item:section(), "max_mag_size") or 30
+            local loaded = get_mag_loaded_count(item:id())
+            if loaded < capacity then
+                local missing = capacity - loaded
+                if missing < best_mag_missing then
+                    best_mag_missing = missing
+                    best_mag = item
+                end
+            end
+        end
+    end
+    actor:iterate_inventory(itr_mags)
+
+    if not best_mag then
+        return
+    end
+
+    local allowed_ammo = magazine_binder.get_magazine_caliber(best_mag:section())
+    if not allowed_ammo or #allowed_ammo == 0 then
+        return
+    end
+
+    -- FML sequential patch hook: if SLM is loaded AND there is a preset saved for this caliber,
+    -- use the sequential loader instead of picking a single ammo type.
+    if not specific_ammo_sec and sequential_load_magazine and type(sequential_load_magazine.perform_sequential_load) == "function" then
+        local caliber = sequential_load_magazine.get_mag_caliber and sequential_load_magazine.get_mag_caliber(best_mag)
+        if caliber and sequential_load_magazine.has_preset and sequential_load_magazine.has_preset(caliber) then
+            local ok_seq, seq_err = safe_pcall(sequential_load_magazine.perform_sequential_load, best_mag)
+            if not ok_seq then
+                printf("[Field Mag Loading] perform_sequential_load failed: " .. tostring(seq_err))
+            end
+            return
+        end
+    end
+
+    local allowed_ammo_dict = fill_lookup(allowed_ammo, tmp_allowed_ammo_dict)
+    local best_ammo = nil
+    local function itr_ammo(_, item)
+        if best_ammo then
+            return
+        end
+        if IsAmmo(item) and allowed_ammo_dict[item:section()] and not best_ammo then
+            if not specific_ammo_sec or item:section() == specific_ammo_sec then
+                best_ammo = item
+            end
+        end
+    end
+    actor:iterate_inventory(itr_ammo)
+
+    if not best_ammo or not magazines.on_item_drag_dropped then
+        -- Fallback: if we didn't find the specific ammo, but SLM is active (even without a preset),
+        -- we can let SLM build its default alphabetical pattern and load.
+        if not specific_ammo_sec and sequential_load_magazine and type(sequential_load_magazine.perform_sequential_load) == "function" then
+            local ok_seq, seq_err = safe_pcall(sequential_load_magazine.perform_sequential_load, best_mag)
+            if not ok_seq then
+                printf("[Field Mag Loading] perform_sequential_load failed: " .. tostring(seq_err))
+            end
+        end
+        return
+    end
+
+    local ok, err = safe_pcall(magazines.on_item_drag_dropped, best_ammo, best_mag, EDDListType.iActorBag, EDDListType.iActorBag)
+    if not ok then
+        printf("[Field Mag Loading] on_item_drag_dropped failed: " .. tostring(err))
+    end
+end
+
+class "UIFieldMagStoresHUD" (CUIScriptWnd)
+
+function UIFieldMagStoresHUD:__init() super()
+    self.is_drawn = false
+    self.hide_time = 0
+    self.mag_icons = {}
+    self.mag_texts = {}
+    self:SetWndRect(Frect():set(0, 0, 1024, 768))
+    self:SetAutoDelete(true)
+
+    self.dialog = CUIStatic()
+    self:AttachChild(self.dialog)
+    self.dialog:SetWndRect(Frect():set(0, 0, 1024, 768))
+    self.dialog:Show(false)
+end
+
+function UIFieldMagStoresHUD:__finalize()
+end
+
+function UIFieldMagStoresHUD:ClearIcons()
+    for i = 1, #self.mag_icons do
+        self.dialog:DetachChild(self.mag_icons[i])
+        self.dialog:DetachChild(self.mag_texts[i])
+    end
+    self.mag_icons = {}
+    self.mag_texts = {}
+end
+
+function UIFieldMagStoresHUD:ShowStores()
+    local actor = db.actor
+    if not actor then
+        return
+    end
+
+    local weapon = actor:active_item()
+    if not weapon or not IsWeapon(weapon) or not magazine_binder.is_supported_weapon(weapon) then
+        return
+    end
+
+    local base_type = magazine_binder.get_weapon_base_type(weapon)
+    if not base_type then
+        return
+    end
+
+    local allowed_mags = magazine_binder.get_mags_for_basetype(base_type)
+    if not allowed_mags or #allowed_mags == 0 then
+        return
+    end
+
+    local allowed_mags_dict = fill_lookup(allowed_mags, tmp_allowed_mags_dict)
+    local mags_found = {}
+    local function itr_mags(_, item)
+        if allowed_mags_dict[item:section()] then
+            local capacity = SYS_GetParam(2, item:section(), "max_mag_size") or 30
+            local loaded = get_mag_loaded_count(item:id())
+            mags_found[#mags_found + 1] = { sec = item:section(), loaded = loaded, capacity = capacity }
+        end
+    end
+    actor:iterate_inventory(itr_mags)
+
+    if #mags_found == 0 then
+        return
+    end
+
+    table.sort(mags_found, function(a, b) return a.loaded > b.loaded end)
+    self:ClearIcons()
+
+    local display_count = math.min(#mags_found, 8)
+    local icon_w = 60
+    local icon_h = 60
+    local spacing = 10
+    local total_w = display_count * icon_w + (display_count - 1) * spacing
+    local right_margin = 24
+    local bottom_margin = 24
+    local x_offset = ui_mcm and ui_mcm.get("field_mag_loading/check_hud_x_offset") or 0
+    local y_offset = ui_mcm and ui_mcm.get("field_mag_loading/check_hud_y_offset") or 0
+    local start_x = 1024 - total_w - right_margin + x_offset
+    local start_y = 768 - icon_h - 20 - bottom_margin + y_offset
+    local screen_ratio = utils_xml and utils_xml.screen_ratio and utils_xml.screen_ratio() or 1
+    local wide_comp = screen_ratio < 1 and screen_ratio or 1
+
+    for i = 1, display_count do
+        local mag = mags_found[i]
+        local icon = CUIStatic()
+        self.dialog:AttachChild(icon)
+        icon:SetStretchTexture(true)
+        local offset_x = start_x + (i - 1) * (icon_w + spacing)
+        icon:SetWndRect(Frect():set(offset_x, start_y, offset_x + icon_w, start_y + icon_h))
+
+        local tex = utils_xml.get_icons_texture(mag.sec)
+        if tex then
+            icon:InitTexture(tex)
+            local x1, y1, x2, y2 = utils_xml.get_item_axis(mag.sec, nil, true)
+            if x1 and y1 and x2 and y2 then
+                icon:SetTextureRect(Frect():set(x1, y1, x2, y2))
+                local tex_w = x2 - x1
+                local tex_h = y2 - y1
+                if tex_w > 0 and tex_h > 0 then
+                    local draw_w = icon_w * wide_comp
+                    local draw_h = icon_h
+                    if tex_w > tex_h then
+                        draw_h = icon_h * (tex_h / tex_w)
+                    else
+                        draw_w = draw_w * (tex_w / tex_h)
+                    end
+                    local draw_x = offset_x + ((icon_w - draw_w) / 2)
+                    local draw_y = start_y + ((icon_h - draw_h) / 2)
+                    icon:SetWndRect(Frect():set(draw_x, draw_y, draw_x + draw_w, draw_y + draw_h))
+                end
+            end
+        end
+
+        local ratio = mag.loaded / mag.capacity
+        if ratio > 0.8 then
+            icon:SetTextureColor(GetARGB(255, 255, 255, 255))
+        elseif ratio > 0.3 then
+            icon:SetTextureColor(GetARGB(255, 255, 255, 100))
+        elseif ratio > 0 then
+            icon:SetTextureColor(GetARGB(255, 255, 100, 100))
+        else
+            icon:SetTextureColor(GetARGB(150, 100, 100, 100))
+        end
+
+        self.mag_icons[#self.mag_icons + 1] = icon
+
+        local text = CUIStatic()
+        self.dialog:AttachChild(text)
+        text:SetWndRect(Frect():set(offset_x, start_y + icon_h + 5, offset_x + icon_w, start_y + icon_h + 20))
+        text:TextControl():SetFont(GetFontLetterica16Russian())
+        text:TextControl():SetTextColor(GetARGB(255, 200, 200, 200))
+        text:TextControl():SetText(tostring(mag.loaded))
+        self.mag_texts[#self.mag_texts + 1] = text
+    end
+
+    local duration = ui_mcm and ui_mcm.get("field_mag_loading/check_hud_duration") or 3
+    self.hide_time = time_global() + (duration * 1000)
+    self.dialog:Show(true)
+    self.is_drawn = true
+    self:Show(true)
+end
+
+function UIFieldMagStoresHUD:Update()
+    CUIScriptWnd.Update(self)
+    if self.is_drawn and time_global() > self.hide_time then
+        self.dialog:Show(false)
+        self.is_drawn = false
+        self:Show(false)
+    end
+end
+
+function custom_on_key_press(key, bind, dis, flags)
+    if not db.actor then
+        return
+    end
+
+    if ui_mcm then
+        local direct_load_enabled = ui_mcm.get("field_mag_loading/enable_direct_load")
+        if direct_load_enabled then
+            local direct_load_key = ui_mcm.get("field_mag_loading/keybind_direct_load")
+            local direct_load_mod = ui_mcm.get("field_mag_loading/modifier_direct_load") or 0
+            if key == direct_load_key and ui_mcm.get_mod_key(direct_load_mod) then
+                direct_load_key_down_time = time_global()
+                direct_load_long_press_triggered = false
+            end
+        end
+
+        local check_hud_enabled = ui_mcm.get("field_mag_loading/enable_check_hud")
+        if check_hud_enabled then
+            local check_hud_key = ui_mcm.get("field_mag_loading/keybind_check_hud")
+            local check_hud_mod = ui_mcm.get("field_mag_loading/modifier_check_hud") or 0
+            if key == check_hud_key and ui_mcm.get_mod_key(check_hud_mod) then
+                if not StoresHUD then
+                    StoresHUD = UIFieldMagStoresHUD()
+                    get_hud():AddDialogToRender(StoresHUD)
+                end
+                StoresHUD:ShowStores()
+            end
+        end
+    end
+
+    if is_mag_loading and bind == key_bindings.kWPN_ZOOM then
+        local actor_menu = GetActorMenu()
+        local inv_shown = actor_menu and actor_menu:IsShown()
+        if not inv_shown then
+            magazines.do_interrupt_magload()
+        end
+    end
+
+    if bind == key_bindings.kWPN_RELOAD then
+        local current_weapon = db.actor:item_in_slot(db.actor:active_slot())
+        if current_weapon and magazine_binder.is_supported_weapon(current_weapon) then
+            if magazines.is_jammed_weapon(current_weapon) then
+                local hud_section = SYS_GetParam(0, current_weapon:section(), "hud")
+                if SYS_GetParam(0, hud_section, "anm_reload_misfire") ~= nil then
+                    magazines.weapon_unjammed(current_weapon)
+                    return
+                end
+            end
+            local ok, err = safe_pcall(magazines.actor_on_weapon_reload, db.actor, current_weapon)
+            if not ok then
+                printf("[Field Mag Loading] actor_on_weapon_reload failed: " .. tostring(err))
+                return
+            end
+            if flags then
+                flags.ret_value = false
+            end
+        end
+    end
+end
+
+local function on_key_release(key)
+    if not db.actor or not ui_mcm then
+        return
+    end
+
+    local direct_load_enabled = ui_mcm.get("field_mag_loading/enable_direct_load")
+    if direct_load_enabled then
+        local direct_load_key = ui_mcm.get("field_mag_loading/keybind_direct_load")
+        local direct_load_mod = ui_mcm.get("field_mag_loading/modifier_direct_load") or 0
+        if key == direct_load_key and ui_mcm.get_mod_key(direct_load_mod) then
+            if direct_load_key_down_time > 0 and not direct_load_long_press_triggered then
+                do_direct_mag_load()
+            end
+            direct_load_key_down_time = 0
+            direct_load_long_press_triggered = false
+        end
+    end
+end
+
+function custom_actor_on_update()
+    local actor = db.actor
+    if not actor then
+        return
+    end
+    local now = time_global()
+
+    -- FML patch: Check if the sequential loader UI was just closed and we should start loading
+    if fml_should_start_loading_after_ui_close and sequential_load_magazine_ui and not sequential_load_magazine_ui.is_shown() then
+        fml_should_start_loading_after_ui_close = false
+        do_direct_mag_load()
+    end
+
+    if ui_mcm and direct_load_key_down_time > 0 and not direct_load_long_press_triggered then
+        if now - direct_load_key_down_time > LONG_PRESS_DELAY_MS then
+            direct_load_long_press_triggered = true
+            direct_load_key_down_time = 0
+            
+            -- If SLM is available, open its preset UI instead of the old ammo wheel
+            if sequential_load_magazine_ui and type(sequential_load_magazine_ui.show) == "function" then
+                -- Pre-select the caliber of the active weapon before opening the UI
+                if sequential_load_magazine_ui.GUI then
+                    local weapon = actor:active_item()
+                    if weapon and IsWeapon(weapon) and magazine_binder and magazine_binder.is_supported_weapon(weapon) then
+                        local base_type = magazine_binder.get_weapon_base_type(weapon)
+                        if base_type then
+                            local allowed_mags = magazine_binder.get_mags_for_basetype(base_type)
+                            if allowed_mags and #allowed_mags > 0 then
+                                local caliber = sequential_load_magazine.extract_caliber(magazine_binder.get_magazine_caliber(allowed_mags[1])[1])
+                                if caliber then
+                                    sequential_load_magazine_ui.GUI.current_caliber = caliber
+                                    sequential_load_magazine_ui.GUI:LoadPresetForCurrent()
+                                end
+                            end
+                        end
+                    end
+                else
+                    sequential_load_magazine_ui.show()
+                    -- Do the pre-select right after creating it for the first time
+                    if sequential_load_magazine_ui.GUI then
+                        local weapon = actor:active_item()
+                        if weapon and IsWeapon(weapon) and magazine_binder and magazine_binder.is_supported_weapon(weapon) then
+                            local base_type = magazine_binder.get_weapon_base_type(weapon)
+                            if base_type then
+                                local allowed_mags = magazine_binder.get_mags_for_basetype(base_type)
+                                if allowed_mags and #allowed_mags > 0 then
+                                    local caliber = sequential_load_magazine.extract_caliber(magazine_binder.get_magazine_caliber(allowed_mags[1])[1])
+                                    if caliber then
+                                        sequential_load_magazine_ui.GUI.current_caliber = caliber
+                                        -- Force update the combobox text to match the auto-selected caliber
+                                        if sequential_load_magazine_ui.GUI.caliber_combo then
+                                            sequential_load_magazine_ui.GUI.caliber_combo:SetText(caliber)
+                                        end
+                                        sequential_load_magazine_ui.GUI:LoadPresetForCurrent()
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+                if sequential_load_magazine_ui.GUI and not sequential_load_magazine_ui.GUI:IsShown() then
+                    sequential_load_magazine_ui.show()
+                end
+            else
+                -- Fallback to the old ammo wheel if SLM UI is not available
+                if not GUI_AmmoWheel then
+                    GUI_AmmoWheel = UIFieldMagAmmoWheelHUD()
+                end
+                if not GUI_AmmoWheel:IsShown() then
+                    GUI_AmmoWheel:ShowDialog(true)
+                    GUI_AmmoWheel:Reset()
+                    Register_UI("UIFieldMagAmmoWheelHUD", "field_mag_loading")
+                end
+            end
+        end
+    end
+
+    if StoresHUD and StoresHUD.is_drawn then
+        StoresHUD:Update()
+    end
+
+    if is_mag_loading then
+        local actor_menu = GetActorMenu()
+        local inv_shown = actor_menu and actor_menu:IsShown()
+        if not inv_shown then
+            local current_slot = actor:active_slot()
+            if current_slot ~= 0 then
+                if not pending_restore_slot then
+                    pending_restore_slot = current_slot
+                end
+                actor:activate_slot(0)
+            end
+
+            if HUD and is_load_hud_enabled() then
+                if not hud_is_visible then
+                    HUD:ShowHUD(true)
+                    hud_is_visible = true
+                end
+                if now >= hud_next_update_time then
+                    hud_next_update_time = now + HUD_UPDATE_INTERVAL_MS
+                    HUD:Update()
+                end
+            elseif HUD and hud_is_visible then
+                HUD:ShowHUD(false)
+                hud_is_visible = false
+            end
+        elseif HUD and hud_is_visible then
+            HUD:ShowHUD(false)
+            hud_is_visible = false
+        end
+    elseif HUD and hud_is_visible then
+        HUD:ShowHUD(false)
+        hud_is_visible = false
+    end
+end
+
+local orig_load_magazine = nil
+local orig_unload_magazine = nil
+local orig_action_start_magload = nil
+local orig_do_interrupt_magload = nil
+local orig_do_interrupt = nil
+local compat_guard_installed = false
+
+local function install_magazine_binder_compat_guard()
+    if compat_guard_installed then
+        return
+    end
+
+    if not magazine_binder or type(magazine_binder.is_supported_weapon) ~= "function" then
+        return
+    end
+
+    local original_is_supported_weapon = magazine_binder.is_supported_weapon
+    magazine_binder.is_supported_weapon = function(val)
+        local ok, result = pcall(original_is_supported_weapon, val)
+        if ok then
+            return result
+        end
+
+        printf("[Field Mag Loading][Compat] magazine_binder.is_supported_weapon failed: " .. tostring(result))
+        return false
+    end
+
+    compat_guard_installed = true
+    printf("[Field Mag Loading][Compat] Installed guard for magazine_binder.is_supported_weapon")
+end
+
+function init_hooks()
+    if hooks_initialized then
+        return
+    end
+
+    orig_load_magazine = magazines.load_magazine
+    magazines.load_magazine = function(magazine, capacity, delay)
+        active_magazine = magazine
+        mag_action_label = "Loading"
+
+        local orig_IsMoveState = IsMoveState
+        _G.IsMoveState = function() return false end
+        local ok, result = pcall(orig_load_magazine, magazine, capacity, delay)
+        _G.IsMoveState = orig_IsMoveState
+
+        if not ok then
+            active_magazine = nil
+            is_mag_loading = false
+            mag_action_label = "Loading"
+            try_restore_weapon_slot()
+            return true
+        end
+
+        if result == true then
+            active_magazine = nil
+            mag_action_label = "Loading"
+        end
+        return result
+    end
+
+    orig_unload_magazine = magazines.unload_magazine
+    magazines.unload_magazine = function(magazine, delay, boxes)
+        active_magazine = magazine
+        mag_action_label = "Unloading"
+
+        local orig_IsMoveState = IsMoveState
+        _G.IsMoveState = function() return false end
+        local ok, result = pcall(orig_unload_magazine, magazine, delay, boxes)
+        _G.IsMoveState = orig_IsMoveState
+
+        if not ok then
+            active_magazine = nil
+            is_mag_loading = false
+            mag_action_label = "Loading"
+            try_restore_weapon_slot()
+            return true
+        end
+
+        if result == true then
+            active_magazine = nil
+            mag_action_label = "Loading"
+        end
+        return result
+    end
+
+    orig_action_start_magload = magazines.action_start_magload
+    magazines.action_start_magload = function()
+        local ok, err = pcall(orig_action_start_magload)
+        if not ok then
+            printf("[Field Mag Loading] action_start_magload failed: " .. tostring(err))
+            is_mag_loading = false
+            active_magazine = nil
+            mag_action_label = "Loading"
+            return
+        end
+        is_mag_loading = true
+        hud_next_update_time = 0
+        pending_restore_slot = nil
+        if db.actor then
+            local current_slot = db.actor:active_slot()
+            if current_slot ~= 0 then
+                pending_restore_slot = current_slot
+            end
+        end
+        if not HUD then
+            HUD = UIFieldMagHUD()
+            get_hud():AddDialogToRender(HUD)
+        end
+        if is_load_hud_enabled() and not hud_is_visible then
+            HUD:ShowHUD(true)
+            hud_is_visible = true
+        end
+    end
+
+    orig_do_interrupt_magload = magazines.do_interrupt_magload
+    magazines.do_interrupt_magload = function()
+        local ok, err = pcall(orig_do_interrupt_magload)
+        if not ok then
+            printf("[Field Mag Loading] do_interrupt_magload failed: " .. tostring(err))
+        end
+        is_mag_loading = false
+        active_magazine = nil
+        mag_action_label = "Loading"
+        if HUD then
+            HUD:ShowHUD(false)
+        end
+        hud_is_visible = false
+        hud_next_update_time = 0
+        try_restore_weapon_slot()
+    end
+
+    orig_do_interrupt = magazines.do_interrupt
+    magazines.do_interrupt = function()
+        local ok, err = pcall(orig_do_interrupt)
+        if not ok then
+            printf("[Field Mag Loading] do_interrupt failed: " .. tostring(err))
+        end
+        is_mag_loading = false
+        active_magazine = nil
+        mag_action_label = "Loading"
+        if HUD then
+            HUD:ShowHUD(false)
+        end
+        hud_is_visible = false
+        hud_next_update_time = 0
+        try_restore_weapon_slot()
+    end
+
+    hooks_initialized = true
+end
+
+class "UIFieldMagHUD" (CUIScriptWnd)
+
+function UIFieldMagHUD:__init() super()
+    self.is_drawn = false
+    self.next_refresh_time = 0
+    self.refresh_interval_ms = 75
+    self.last_loaded = -1
+    self.last_capacity = -1
+    self.last_label = ""
+    self:SetWndRect(Frect():set(0, 0, 1024, 768))
+    self:SetAutoDelete(true)
+    self:InitControls()
+end
+
+function UIFieldMagHUD:__finalize()
+end
+
+function UIFieldMagHUD:InitControls()
+    local screen_w = 1024
+    local screen_h = 768
+    local ui_w = 200
+    local ui_h = 135
+    local start_x = (screen_w - ui_w) / 2
+    local start_y = screen_h - ui_h - 40
+
+    self.dialog = CUIStatic()
+    self:AttachChild(self.dialog)
+    self.dialog:SetWndRect(Frect():set(start_x, start_y, start_x + ui_w, start_y + ui_h))
+
+    self.mag_icon = CUIStatic()
+    self.dialog:AttachChild(self.mag_icon)
+    self.mag_icon:SetStretchTexture(true)
+
+    self.loading_text = CUIStatic()
+    self.dialog:AttachChild(self.loading_text)
+    self.loading_text:SetWndRect(Frect():set(20, 52, 180, 70))
+    self.loading_text:TextControl():SetFont(GetFontLetterica18Russian())
+    self.loading_text:TextControl():SetTextColor(GetARGB(255, 255, 200, 0))
+    self.loading_text:TextControl():SetText("Loading... 0 / 0")
+    self.dialog:Show(false)
+end
+
+function UIFieldMagHUD:ShowHUD(show)
+    self.is_drawn = show
+    self:Show(show)
+    if self.dialog then
+        self.dialog:Show(show)
+    end
+    if not show then
+        self.next_refresh_time = 0
+        self.last_sec = nil
+        self.last_loaded = -1
+        self.last_capacity = -1
+        self.last_label = ""
+    end
+end
+
+function UIFieldMagHUD:Update()
+    CUIScriptWnd.Update(self)
+    if not self.is_drawn or not active_magazine then
+        if self.dialog and self.dialog:IsShown() then
+            self.dialog:Show(false)
+        end
+        return
+    end
+
+    if self.dialog and not self.dialog:IsShown() then
+        self.dialog:Show(true)
+    end
+
+    local now = time_global()
+    if now < self.next_refresh_time then
+        return
+    end
+    self.next_refresh_time = now + self.refresh_interval_ms
+
+    local ok_sec, sec = safe_pcall(active_magazine.section, active_magazine)
+    local ok_id, id = safe_pcall(active_magazine.id, active_magazine)
+    if not ok_sec or not ok_id or not sec or not id then
+        reset_magload_state()
+        return
+    end
+    local capacity = SYS_GetParam(2, sec, "max_mag_size") or 30
+    local loaded = get_mag_loaded_count(id)
+
+    if self.last_sec ~= sec then
+        self.last_sec = sec
+        local tex = utils_xml.get_icons_texture(sec)
+        if tex then
+            self.mag_icon:InitTexture(tex)
+            local x1, y1, x2, y2 = utils_xml.get_item_axis(sec, nil, true)
+            if x1 and y1 and x2 and y2 then
+                self.mag_icon:SetTextureRect(Frect():set(x1, y1, x2, y2))
+
+                local tex_w = x2 - x1
+                local tex_h = y2 - y1
+                local max_dim = 80
+                local screen_ratio = utils_xml and utils_xml.screen_ratio and utils_xml.screen_ratio() or 1
+                local wide_comp = screen_ratio < 1 and screen_ratio or 1
+                local draw_w = max_dim * wide_comp
+                local draw_h = max_dim
+                if tex_w > tex_h then
+                    draw_h = max_dim * (tex_h / tex_w)
+                else
+                    draw_w = max_dim * (tex_w / tex_h)
+                end
+                local offset_x = (200 - draw_w) / 2
+                local offset_y = (100 - draw_h) / 2
+                self.mag_icon:SetWndRect(Frect():set(offset_x, offset_y, offset_x + draw_w, offset_y + draw_h))
+            end
+        end
+    end
+
+    if self.last_loaded ~= loaded or self.last_capacity ~= capacity or self.last_label ~= mag_action_label then
+        self.loading_text:TextControl():SetText(string.format("%s... %d / %d", mag_action_label, loaded, capacity))
+        self.last_loaded = loaded
+        self.last_capacity = capacity
+        self.last_label = mag_action_label
+    end
+end
+
+class "UIFieldMagAmmoWheelHUD" (CUIScriptWnd)
+
+function UIFieldMagAmmoWheelHUD:__init() super()
+    self.ammo_max = 12
+    self.show_verybad = (not _NO_DAMAGED_AMMO)
+    self.ammo_inv = {}
+    self.avail = {}
+    self.key = {}
+    self.ammo_list = {}
+    self.nums_dik = {}
+
+    for i=1,9 do
+        self.nums_dik[ DIK_keys["DIK_" .. i] ] = i
+        self.nums_dik[ DIK_keys["DIK_NUMPAD" .. i] ] = i
+    end
+
+    self:InitControls()
+    self:InitCallBacks()
+end
+
+function UIFieldMagAmmoWheelHUD:__finalize()
+end
+
+function UIFieldMagAmmoWheelHUD:InitControls()
+    self:SetWndRect(Frect():set(0,0,1024,768))
+    self:SetAutoDelete(true)
+    self:AllowMovement(true)
+
+    self.xml = CScriptXmlInit()
+    local xml = self.xml
+    xml:ParseFile("ui_wheel_ammo.xml")
+
+    self.dialog = xml:InitStatic("wheel", self)
+    self.background = xml:InitStatic("wheel:background", self.dialog)
+    self.extended = xml:InitStatic("wheel:extended", self.dialog)
+
+    local box_type = self.show_verybad and ":all" or ":alt"
+    self.box_r = xml:InitStatic("wheel:result", self.dialog)
+    self.box_icon_tmp_r = xml:InitStatic("ammo:icon", self.box_r)
+
+    self.box = {}
+    self.box_icon = {}
+    self.box_icon_r = {}
+    self.box_icon_tmp = {}
+    self.box_num = {}
+    self.box_txt = {}
+    self.box_txt_r = {}
+    self.box_btn = {}
+    self.box_hl_1 = {}
+    self.box_hl_2 = {}
+    for i=1,self.ammo_max do
+        self.box[i]          = xml:InitStatic("wheel" .. box_type .. ":box_" .. i, self.dialog)
+        self.box_hl_1[i]     = xml:InitStatic("ammo:highlight", self.box[i])
+        self.box_hl_2[i]     = xml:InitStatic("ammo:highlight", self.box[i])
+        self.box_icon[i]     = xml:InitStatic("ammo:icon", self.box[i])
+        self.box_icon_tmp[i] = xml:InitStatic("ammo:icon", self.box[i])
+        self.box_num[i]      = xml:InitTextWnd("ammo:num", self.box[i])
+        self.box_txt[i]      = xml:InitTextWnd("ammo:text", self.box[i])
+        self.box_btn[i]      = xml:Init3tButton("ammo:btn", self.box[i])
+        self:Register(self.box_btn[i],"btn_" .. i)
+
+        self.box_icon_r[i]   = xml:InitStatic("ammo:icon", self.box_r)
+        self.box_txt_r[i]    = xml:InitTextWnd("ammo:text_r", self.box_r)
+    end
+end
+
+function UIFieldMagAmmoWheelHUD:InitCallBacks()
+    for i=1,self.ammo_max do
+        local _wrapper = function(handler)
+            self:OnAmmo(i)
+        end
+        self:AddCallback("btn_" .. i, ui_events.BUTTON_CLICKED, _wrapper, self)
+    end
+end
+
+function UIFieldMagAmmoWheelHUD:Update()
+    CUIScriptWnd.Update(self)
+
+    for i=1,self.ammo_max do
+        if self.box_btn[i] then
+            if self.box_btn[i]:IsCursorOverWindow() then
+                self.box_icon_r[i]:Show(true)
+                self.box_txt_r[i]:Show(true)
+            else
+                self.box_icon_r[i]:Show(false)
+                self.box_txt_r[i]:Show(false)
+            end
+        end
+    end
+end
+
+function UIFieldMagAmmoWheelHUD:Reset()
+    local actor = db.actor
+    local weapon = actor and actor:active_item()
+    if not weapon or not IsWeapon(weapon) or not magazine_binder.is_supported_weapon(weapon) then
+        self:Close()
+        return
+    end
+
+    local base_type = magazine_binder.get_weapon_base_type(weapon)
+    if not base_type then self:Close(); return end
+
+    local allowed_mags = magazine_binder.get_mags_for_basetype(base_type)
+    if not allowed_mags or #allowed_mags == 0 then self:Close(); return end
+
+    local allowed_mags_dict = fill_lookup(allowed_mags, tmp_allowed_mags_dict)
+    local best_mag = nil
+    local function itr_mags(_, item)
+        if allowed_mags_dict[item:section()] and magazine_binder.is_carried_mag(item:id()) then
+            local capacity = SYS_GetParam(2, item:section(), "max_mag_size") or 30
+            local loaded = get_mag_loaded_count(item:id())
+            if loaded < capacity then
+                best_mag = item
+            end
+        end
+    end
+    actor:iterate_inventory(itr_mags)
+
+    if not best_mag then self:Close(); return end
+
+    local allowed_ammo = magazine_binder.get_magazine_caliber(best_mag:section())
+    if not allowed_ammo or #allowed_ammo == 0 then self:Close(); return end
+
+    self.ammo_list = allowed_ammo
+
+    empty_table(self.ammo_inv)
+    local allowed_ammo_dict = fill_lookup(allowed_ammo, tmp_allowed_ammo_dict)
+    local function itr(temp, itm)
+        local section = itm:section()
+        if IsItem("ammo",section) and allowed_ammo_dict[section] then
+            self.ammo_inv[section] = (self.ammo_inv[section] or 0) + itm:ammo_get_count()
+        end
+    end
+    actor:iterate_inventory(itr, nil)
+
+    self.extended:Show((#self.ammo_list > 9) and (self.ammo_list[10] ~= "ammo_12x70_buck_self"))
+    
+    local cnt = 0
+    empty_table(self.key)
+    for i=1,self.ammo_max do
+        local section = self.ammo_list[i]
+        local found_verybad = section and string.find(section,"verybad") and true or false
+        if section and (section ~= "ammo_12x70_buck_self") and ( self.show_verybad or ( (not self.show_verybad) and (not found_verybad) ) ) then
+            
+            self.box[i]:Show(true)
+            self.box_hl_1[i]:Show(false)
+            self.box_hl_2[i]:Show(false)
+            
+            self.avail[i] = self.ammo_inv[section] and (self.ammo_inv[section] > 0) and true or false
+            utils_xml.set_icon(section, (not self.avail[i]), self.box_icon[i], self.box_icon_tmp[i])
+            utils_xml.set_icon(section, nil, self.box_icon_tmp_r, self.box_icon_r[i])
+            
+            cnt = cnt + 1
+            self.key[cnt] = i
+            if self.avail[i] and i <= 9 then
+                self.box_num[i]:SetText(cnt)
+            else
+                self.box_num[i]:SetText("")
+            end
+            
+            self.box_txt[i]:SetText("x" .. (self.avail[i] and self.ammo_inv[section] or 0))
+            self.box_txt_r[i]:SetText( ui_item.get_sec_name(section) )
+        else
+            self.avail[i] = false
+            self.box[i]:Show(false)
+        end
+    end
+end
+
+function UIFieldMagAmmoWheelHUD:OnAmmo(n)
+    if self.avail[n] and self.ammo_list[n] then
+        local selected_ammo_sec = self.ammo_list[n]
+        self:Close()
+        do_direct_mag_load(selected_ammo_sec)
+    end
+end
+
+function UIFieldMagAmmoWheelHUD:OnKeyboard(dik, keyboard_action)
+    local res = CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+    if (res == false) then
+        if keyboard_action == ui_events.WINDOW_KEY_RELEASED then
+            local bind = dik_to_bind(dik)
+            local num = self.nums_dik[dik]
+            if num and self.key[num] then
+                self:OnAmmo( self.key[num] )
+            elseif (bind == key_bindings.kQUIT or bind == key_bindings.kUSE) then
+                self:Close()
+            end
+        end
+    end
+    return res
+end
+
+function UIFieldMagAmmoWheelHUD:Close()
+    if self:IsShown() then
+        self:HideDialog()
+        self:Show(false)
+        Unregister_UI("UIFieldMagAmmoWheelHUD")
+    end
+end
+
+function actor_on_first_update()
+    if callbacks_registered then
+        UnregisterScriptCallback("on_before_key_press", custom_on_key_press)
+        UnregisterScriptCallback("on_key_release", on_key_release)
+        UnregisterScriptCallback("actor_on_update", custom_actor_on_update)
+    end
+
+    if magazines.on_key_press then
+        UnregisterScriptCallback("on_before_key_press", magazines.on_key_press)
+    end
+    RegisterScriptCallback("on_before_key_press", custom_on_key_press)
+    RegisterScriptCallback("on_key_release", on_key_release)
+
+    if magazines.actor_on_update then
+        UnregisterScriptCallback("actor_on_update", magazines.actor_on_update)
+    end
+    RegisterScriptCallback("actor_on_update", custom_actor_on_update)
+    callbacks_registered = true
+end
+
+function on_game_start()
+    install_magazine_binder_compat_guard()
+    init_hooks()
+    UnregisterScriptCallback("actor_on_first_update", actor_on_first_update)
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+end

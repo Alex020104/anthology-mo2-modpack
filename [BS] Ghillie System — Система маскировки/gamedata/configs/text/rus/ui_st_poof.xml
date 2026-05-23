@@ -1,0 +1,37 @@
+<!-- 
+	Anomaly Modconfiguration Menu strings
+	
+-->
+
+<string_table>
+
+
+	<string id="ui_mcm_poof_title">
+		<text>Настройки видимости маскировочного костюма</text>
+	</string>
+	<string id="ui_mcm_menu_poof">
+		<text>Конфигурация маскировочного костюма</text>
+	</string>
+	<string id="ui_mcm_poof_enable_mask">
+		<text>Включить наложение растительности для маскировки на HUD</text>
+	</string>
+	<string id="ui_mcm_poof_visibility">
+		<text>Диапазон видимости НПС</text>
+	</string>
+	<string id="ui_mcm_poof_visibility_desc">
+		<text>Базовый множитель дальности видимости НПС. Чем ниже значение, тем меньше вас видно на расстоянии.</text>
+	</string>
+	<string id="ui_mcm_poof_angle">
+		<text>Диапазон поля зрения НПС</text>
+	</string>
+	<string id="ui_mcm_poof_angle_desc">
+		<text>Базовый множитель поля зрения НПС. Чем ниже значение, тем меньше вас видно сбоку.</text>
+	</string>
+
+	<string id="ui_mcm_poof_firing_alert">
+		<text>Коэффициент предупреждения об открытии огня</text>
+	</string>
+	<string id="ui_mcm_poof_firing_alert_desc">
+		<text>Множитель для оповещения неигровых персонажей при стрельбе из оружия без глушителя. Более высокие значения предупреждают их сильнее.</text>
+	</string>
+</string_table>

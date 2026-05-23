@@ -1,0 +1,308 @@
+local mapping = {
+    stimpack = {
+        hp = 2
+    },
+    stimpack_army = {
+        hp = 4
+    },
+    stimpack_scientic = {
+        hp = 4,
+        rads = 2
+    },
+    antirad = {
+        rads = 2
+    },
+    morphine = {
+        dmgres = 5
+    },
+    salicidic_acid = {
+        dmgres = 4
+    }
+}
+
+local autodoc_last_sip = 0
+-- track current autodoc if installed
+local current_autodoc = nil
+local cdr = nil
+gc = game.translate_string
+
+local autodoc_cap = {}
+
+get_config = arti_slot_control_mcm.get_config
+print_dbg = arti_slot_control_mcm.print_dbg
+
+function register(id)
+    if autodoc_cap[id] then 
+        if autodoc_cap[id].stimpack_n then
+            autodoc_cap[id].stimpack_n = nil
+            autodoc_cap[id].stimpack_army_n = nil
+        elseif autodoc_cap[id].cfg and autodoc_cap[id].cfg.hp_enabled then
+            autodoc_cap[id].cfg.hp_enabled = nil
+            autodoc_cap[id].cfg.rads_enabled = nil
+            autodoc_cap[id].cfg.dmgres_enabled = nil
+            autodoc_cap[id].cfg.hp = true
+            autodoc_cap[id].cfg.rads = true
+            autodoc_cap[id].cfg.dmgres = true
+        else
+            return 
+        end
+    end
+    print_dbg("Registering autodoc id %s", id)
+    autodoc_cap[id] = {
+        meds = {
+            hp = 0,
+            rads = 0,
+            dmgres = 0,
+        },
+        cfg = {
+            hp = true,
+            rads = true,
+            dmgres = true
+        }
+    }
+end
+
+function on_move(o)
+    local found = false
+    print_dbg("On move %s", o:section())
+    db.actor:iterate_belt(function(owner, obj)
+        if is_autodoc(obj) then
+            current_autodoc = obj:id()
+            cdr = SYS_GetParam(2, obj:section(), "stim_cooldown") * 1000
+            print_dbg("Current autodoc is %s, cooldown %s", current_autodoc, cdr)
+            found = true
+        end
+    end)
+    if not found then 
+        current_autodoc = nil
+        cdr = nil
+    else check_actor() end
+end
+
+local step = 1000
+
+function check_actor()
+    if not current_autodoc then return true end
+    local curr_time = time_global()
+    if curr_time - autodoc_last_sip < step then return true end
+    -- determine which medicines to administer
+    print_dbg("Checking actor condition, hp=%s, rads=%s", db.actor.health, db.actor.radiation)
+
+    local add = {}
+    if db.actor.health < get_config("hp_crit") then
+        add.hp = 2
+    elseif db.actor.health < get_config("hp") then
+        add.hp = 1
+    end
+
+    if add.hp and not (is_empty(xr_combat_ignore.fighting_with_actor_npcs)) then
+        add.dmgres = 1
+    end
+
+    if db.actor.radiation > get_config("rads")/3870 then
+        add.rads = 1
+    end
+
+    -- try to adminster them
+    local cooldown = false
+    for k,v in pairs(add) do
+        local med = get_med(current_autodoc, k, v)
+        if med then
+            print_dbg("Administering %s", med)
+            local se_med = alife_create_item(med, db.actor)
+            CreateTimeEvent("autodoc", "eat_stimpack"..se_med.id, 0, timer_eat, se_med.id)
+            cooldown = true
+        end
+    end
+    if cooldown then
+        autodoc_last_sip = curr_time + cdr
+        utils_obj.play_sound("attachments\\autodoc"..math.random(2), 2)
+    else
+        autodoc_last_sip = curr_time + step
+    end
+    return true
+end
+
+-- try to get a med of this type and level. doing so also reduces the reservoir
+function get_med(id, typ, level)
+    print_dbg("Getting med for %s, %s", typ, level)
+    local cap = autodoc_cap[id].meds
+    local cfg = autodoc_cap[id].cfg
+    if not cfg[typ] then 
+        print_dbg("%s is disabled", typ)
+        return 
+    end
+    while cap[typ] < level do
+        level = level - 1
+    end
+    if level > 0 then
+        print_dbg("Getting medicine %s, level %s", typ, level)
+        cap[typ] = cap[typ] - level
+        return "autodoc_" .. typ .. "_" .. level
+    end
+    print_dbg("No eligible medicine found for %s", typ)
+end
+
+function timer_eat(id)
+    local obj = level.object_by_id(id)
+    if not obj then return false end
+	db.actor:eat(obj)
+	return true
+end
+
+function is_autodoc(obj)
+    local is_autodoc = obj and SYS_GetParam(2, obj:section(), "stim_cooldown")
+    if is_autodoc then register(obj:id()) end
+    return is_autodoc
+end
+
+-- filter what can actually be filled
+function get_needed(autodoc_data, stim_data)
+    local copy = {}
+    copy_table(copy, stim_data)
+    for k,v in pairs(autodoc_data) do
+        if copy[k] and v == 10 then
+            copy[k] = nil
+        end 
+    end
+    return copy
+end
+
+function on_item_drag_dropped(stimpack, autodoc, slot_from, slot_to)
+    
+    local id = autodoc:id()
+    if not autodoc_cap[id] then register(id) end
+    local stim_sec = stimpack:section()
+    local mapped_stim = mapping[stim_sec]
+    if not mapped_stim or not is_autodoc(autodoc) then
+        return
+    end
+    local meds = autodoc_cap[id].meds
+    local to_fill = get_needed(meds, mapped_stim)
+    if is_empty(to_fill) then
+        news_manager.send_tip(db.actor, gc("st_autodoc_full"), nil, "swiss_knife", 6000)
+        return
+    end
+    for k,v in pairs(to_fill) do
+        meds[k] = clamp(meds[k] + v, 0, 10)
+        alife_release(stimpack)
+        if k == "hp" then
+            alife_create_item("e_syringe", db.actor)
+        end
+    end
+end
+
+function ed_hp(obj)
+    return ed_autodoc(obj:id(), "hp")
+end
+
+function ed_rads(obj)
+    return ed_autodoc(obj:id(), "rads")
+end
+
+function ed_dmgres(obj)
+    return ed_autodoc(obj:id(), "dmgres")
+end
+
+function do_ed_hp(obj)
+    return do_ed_autodoc(obj:id(), "hp")
+end
+
+function do_ed_rads(obj)
+    return do_ed_autodoc(obj:id(), "rads")
+end
+
+function do_ed_dmgres(obj)
+    return do_ed_autodoc(obj:id(), "dmgres")
+end
+
+function ed_autodoc(id, typ)
+    if not autodoc_cap[id] then register(id) end
+    local action = autodoc_cap[id].cfg[typ] and "_disable" or "_enable"
+    return gc("st_autodoc"..action) .. " " .. gc("st_autodoc_"..typ)
+end
+
+function do_ed_autodoc(id, typ)
+    if not autodoc_cap[id] then register(id) end
+    autodoc_cap[id].cfg[typ] = not autodoc_cap[id].cfg[typ] 
+end
+
+local clr_2  = utils_xml.get_color("ui_gray_1")
+-- monkey patch descriptor
+BuildHeader = ui_item.build_desc_header  -- obj needed
+function ui_item.build_desc_header(obj, sec, str)
+	str = str or gc(ini_sys:r_string_ex(sec,"description"))
+	if (not str) then return "" end
+	
+	local _str = ""
+    local id = obj:id()
+    if is_autodoc(obj) then
+        local con = autodoc_cap[id].meds or {}
+        local cfg = autodoc_cap[id].cfg
+        for k,v in pairs(con) do
+            local clr = utils_xml.get_color_con(v)
+            local ed = cfg[k] and "st_autodoc_enable" or "st_autodoc_disable"
+            local pad = k == "hp" and "  " or ""
+            _str = _str .. clr_2 .. " " .. gc("st_dot") .." " .. string.format("%-25s "..pad, gc("st_autodoc_capacity_"..k))  .. clr .. string.format("%2s", math.floor(v*10)) .. "% "  .. clr_2 ..  "(" .. gc(ed) .. "d)".. "\\n"
+        end
+        _str = _str .. " \\n" 
+        return _str .. str
+    else
+        return BuildHeader(obj, sec, str)
+    end
+
+end
+
+BuildFooter = ui_item.build_desc_footer  -- obj needed
+function ui_item.build_desc_footer(obj, sec, str)
+    
+	str = str or gc(ini_sys:r_string_ex(sec,"description"))
+	if (not str) then return "" end
+	str = BuildFooter(obj, sec, str)
+	local _str = ""
+
+    if is_autodoc(obj) then
+        _str = _str .. clr_2 .. "  " .. gc("st_dot") .." " .. gc("st_autodoc_compat") .. " "
+        for k,v in pairs(mapping) do
+            _str = _str .. ui_item.get_sec_short_name(k) .. ", "
+        end
+        _str = _str:sub(1, -3)
+        str = str .. _str
+    end
+    return str
+end
+
+local function save_state(mdata) 
+	mdata.autodoc_cap = autodoc_cap
+end
+
+local function load_state(mdata) 
+	autodoc_cap = mdata.autodoc_cap or {}
+end
+
+local function on_register(se_obj, typ)
+    local id = se_obj.id
+    local sec = se_obj:section_name()
+    if SYS_GetParam(2, sec, "stim_cooldown") then
+        register(id)
+    else
+        autodoc_cap[id] = nil
+    end
+end
+local function on_unregister(se_obj, typ)
+    local id = se_obj.id
+    autodoc_cap[id] = nil
+end
+
+function on_game_start()
+    RegisterScriptCallback("save_state",save_state)
+    RegisterScriptCallback("load_state",load_state)
+
+    RegisterScriptCallback("ActorMenu_on_item_drag_drop",on_item_drag_dropped)
+	RegisterScriptCallback("server_entity_on_unregister",on_unregister)
+	RegisterScriptCallback("server_entity_on_register",on_register)
+    RegisterScriptCallback("actor_on_update", check_actor)
+    RegisterScriptCallback("actor_item_to_belt",on_move)
+	RegisterScriptCallback("actor_item_to_ruck",on_move)
+
+end

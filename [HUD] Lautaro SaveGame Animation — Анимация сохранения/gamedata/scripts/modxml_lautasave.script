@@ -1,0 +1,36 @@
+function on_xml_read()
+    RegisterScriptCallback("on_xml_read", function(xml_file_name, xml_obj)
+        local xml_to_change = [[ui\ui_custom_msgs.xml]]
+
+        if xml_file_name == xml_to_change then
+            local res = xml_obj:query("game_saved")
+            if res[1] then
+                local el = res[1]
+                xml_obj:setElementAttr(el, {
+                    x = "969",
+                    y = "5",
+                    width = "49",
+                    height = "64",
+                    stretch = "1",
+                    light_anim = "ui_too_slow_blinking_2",
+                    la_cyclic = "1",
+                    la_texture = "1",
+                    la_text = "0",
+                    la_alpha = "1",
+                    ttl = "5.3"
+                })
+
+                el.kids = {}
+
+                xml_obj:insertFromXMLString(
+                    [[
+<texture>ui\ui_save_game</texture>
+<text x="-55" y="20.5" width="800" height="30" font="graffiti22" r="204" g="204" b="204" a="255" align="r"/>
+]],
+                    el,
+                    0
+                )
+            end
+        end
+    end)
+end

@@ -1,0 +1,26 @@
+-- Table of weapon sections to ignore, 
+-- Can be precise section or a partial one, beginning with "wpn_..."
+
+ignore_sections = {
+	wpn_mosin = true,
+	wpn_sks = true,
+	wpn_mp412 = true,
+	wpn_gauss = true,
+	pri_a17_gauss = true,
+	wpn_pkm = true,
+	wpn_pkp = true,
+	wpn_rpd = true,
+	wpn_m249 = true,
+	wpn_m60 = true,
+	wpn_ppsh = true,
+	wpn_mac10 = true,
+	wpn_thompson = true,
+	wpn_tompson = true,
+	wpn_tommygun = true,
+	wpn_tommy_gun = true,
+	wpn_mg34 = true,
+	wpn_mg42 = true,
+	wpn_aa12 = true,
+	wpn_mateba = true,
+	wpn_zzz_kbp_rsh12 = true
+}

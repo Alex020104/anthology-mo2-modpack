@@ -1,0 +1,23 @@
+-- If you don't use MCM, change your defaults from here.
+local defaults = {
+	["fight_chance"] = 0.7,
+	["stalker_team1_chance"] = 0.25,
+	["stalker_team2_chance"] = 0.25,
+}
+
+function get_config(key)
+	if ui_mcm then return ui_mcm.get("xcvb_arena/"..key) else return defaults[key] end
+end
+
+function on_mcm_load()
+	op = { id= "xcvb_arena",sh=true ,gr={
+			{ id= "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_xcvb_arena_title",size= {512,50},spacing= 20 },
+
+			{id = "fight_chance", type = "track", val = 2, min=0,max=1,step=0.05, def = 0.7},
+			{id = "stalker_team1_chance", type = "track", val = 2, min=0,max=1,step=0.05, def = 0.25},
+			{id = "stalker_team2_chance", type = "track", val = 2, min=0,max=1,step=0.05, def = 0.25},
+		}
+	}
+
+	return op
+end

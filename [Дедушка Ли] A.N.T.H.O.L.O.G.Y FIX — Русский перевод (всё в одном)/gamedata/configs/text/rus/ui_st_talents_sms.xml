@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+<string id="st_sms_talants_name">
+<text>%c[255,248,153,26]«Классы и таланты»:\n%c[default]Нажмите клавишу "минус" и выберите класс.</text>
+</string>
+
+</string_table>

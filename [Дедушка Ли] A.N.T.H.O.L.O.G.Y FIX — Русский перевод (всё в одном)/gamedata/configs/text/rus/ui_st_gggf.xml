@@ -1,0 +1,64 @@
+<!-- 
+	Anomaly Modconfiguration Menu strings
+	
+-->
+
+<string_table>
+
+	<string id="ui_mcm_gggf_title">
+		<text>Grok Gotta Go Fast - Настройка скорости ГГ</text>
+	</string>
+	<string id="ui_mcm_menu_gggf">
+		<text>Скорость ГГ</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_run">
+		<text>Множитель скорости бега</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_run_desc">
+		<text>Умножает скорость бега ГГ (когда вы двигаетесь без нажатия других клавиш) на заданный коэффициент.</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_sprint">
+		<text>Множитель скорости спринта</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_sprint_desc">
+		<text>Умножает скорость спринта ГГ (когда вы двигаетесь с нажатой клавишей "Спринт") на заданный коэффициент.</text>
+	</string>
+	
+	<string id="ui_mcm_gggf_gotta_go_fast_walk">
+		<text>Множитель скорости ходьбы</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_walk_desc">
+		<text>Умножает скорость ходьбы ГГ (когда вы двигаетесь с нажатой клавишей "Ходьба") на заданный коэффициент.</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_crouch">
+		<text>Множитель скорости приседания</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_crouch_desc">
+		<text>Умножает скорость приседания ГГ (когда вы двигаетесь с нажатой клавишей "Приседание") на заданный коэффициент.</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_prone">
+		<text>Увеличение скорости движения в положении "лёжа"</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_prone_desc">
+		<text>Увеличивает скорость передвижения ГГ (при движении с нажатой клавишей "Ходьба + Приседание") на определенный коэффициент.</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_climb">
+		<text>Множитель скорости подъема по лестнице</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_climb_desc">
+		<text>Умножает скорость подъема ГГ (когда вы поднимаетесь по лестнице) на заданный коэффициент.</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_lean">
+		<text>Множитель скорости при ходьбе с наклоном</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_lean_desc">
+		<text>Умножает скорость ходьбы ГГ при наклоне (когда вы двигаетесь с нажатой клавишей "Ходьба + Наклон влево/вправо") на заданный коэффициент.</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_scoped">
+		<text>Множитель скорости ADS (режим прицеливания)</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_scoped_desc">
+		<text>Увеличивает скорость перемещения ГГ при показе ADS /режима прицеливания/ (когда вы двигаетесь с нажатой клавишей "Прицелиться") на определенный коэффициент.</text>
+	</string>
+
+</string_table>

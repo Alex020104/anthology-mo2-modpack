@@ -1,0 +1,287 @@
+local gt = game.translate_string
+local bet_step = 1000
+
+GUI = nil
+
+xr_effects.open_arena_gui = function()
+	if (not GUI) then
+		GUI = XArena()
+	end
+
+	if (GUI) and (not GUI:IsShown()) then
+		GUI:ShowDialog(true)
+		Register_UI("XArena", "xcvb_arena")
+		GUI:Refresh()
+	end
+end
+
+class "XArena" (CUIScriptWnd)
+
+function XArena:__init() super()
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function XArena:InitControls()
+	self:SetWndRect(Frect():set(0, 0, 1024, 768))
+	self:SetAutoDelete(true)
+
+	self.xml = CScriptXmlInit()
+	self.xml:ParseFile("ui_xcvb_arena.xml")
+	local xml = self.xml
+
+	self.bg = xml:InitStatic("bg", self)
+	self.arena_start_btn = xml:Init3tButton("start_btn", self.bg)
+	self:Register(self.arena_start_btn, "arena_start_btn")
+
+	-- titles
+	self.title_cont = xml:InitStatic("title_cont", self.bg)
+	self.title_time = xml:InitStatic("title_cont:title_time", self.title_cont)
+	self.title_team_1 = xml:InitStatic("title_cont:title_team_1", self.title_cont)
+	self.title_team_2 = xml:InitStatic("title_cont:title_team_2", self.title_cont)
+	self.title_bet = xml:InitStatic("title_cont:title_bet", self.title_cont)
+	self.title_reward = xml:InitStatic("title_cont:title_reward", self.title_cont)
+
+	-- rows
+	self.rows = {}
+	for i, t in ipairs(xcvb_arena_main.arena_main_t) do
+		self.rows[i] = {}
+		self.rows[i].main = xml:InitStatic("row_cont", self.bg)
+
+		-- adjust row pos
+		local gap_y = 5 * (i-1)
+		local y_offset = self.rows[i].main:GetHeight() * (i-1) + gap_y
+		local old_pos = self.rows[i].main:GetWndPos()
+		self.rows[i].main:SetWndPos(vector2():set(old_pos.x, old_pos.y + y_offset))
+
+		-- time
+		self.rows[i].time = xml:InitStatic("row_cont:time", self.rows[i].main)
+		local time_str = string.format("%02d:00-%02d:00", t.min, t.max)
+		self.rows[i].time:TextControl():SetText(time_str)
+
+		-- team 1
+		self.rows[i].team1 = xml:InitStatic("row_cont:team_1", self.rows[i].main)
+
+		-- team 2
+		self.rows[i].team2 = xml:InitStatic("row_cont:team_2", self.rows[i].main)
+
+		-- bet cont
+		self.rows[i].bet_cont = xml:InitStatic("row_cont:bet_cont", self.rows[i].main)
+
+		self.rows[i].bet_title1 = xml:InitStatic("row_cont:bet_cont:bet_title1", self.rows[i].bet_cont)
+		self.rows[i].bet_min_btn1 = xml:Init3tButton("row_cont:bet_cont:bet_btn_min1", self.rows[i].bet_cont)
+		self:Register(self.rows[i].bet_min_btn1, "bet_btn_min1_" .. i)
+		self.rows[i].bet1 = xml:InitStatic("row_cont:bet_cont:bet1", self.rows[i].bet_cont)
+		self.rows[i].bet_plus_btn1 = xml:Init3tButton("row_cont:bet_cont:bet_btn_plus1", self.rows[i].bet_cont)
+		self:Register(self.rows[i].bet_plus_btn1, "bet_btn_plus1_" .. i)
+
+		self.rows[i].bet_title2 = xml:InitStatic("row_cont:bet_cont:bet_title2", self.rows[i].bet_cont)
+		self.rows[i].bet_min_btn2 = xml:Init3tButton("row_cont:bet_cont:bet_btn_min2", self.rows[i].bet_cont)
+		self:Register(self.rows[i].bet_min_btn2, "bet_btn_min2_" .. i)
+		self.rows[i].bet2 = xml:InitStatic("row_cont:bet_cont:bet2", self.rows[i].bet_cont)
+		self.rows[i].bet_plus_btn2 = xml:Init3tButton("row_cont:bet_cont:bet_btn_plus2", self.rows[i].bet_cont)
+		self:Register(self.rows[i].bet_plus_btn2, "bet_btn_plus2_" .. i)
+
+		-- reward
+		self.rows[i].reward = xml:InitStatic("row_cont:reward", self.rows[i].main)
+
+		-- row vertical lines
+		self.rows[i].vert1 = xml:InitStatic("vert_line1", self.rows[i].main)
+		self.rows[i].vert2 = xml:InitStatic("vert_line2", self.rows[i].main)
+		self.rows[i].vert3 = xml:InitStatic("vert_line3", self.rows[i].main)
+	end
+
+end
+
+function XArena:InitCallBacks()
+	-- start btn
+	self:AddCallback("arena_start_btn", ui_events.BUTTON_CLICKED, self.OnClickArenaStart, self)
+
+	-- bet btns
+	for i = 1, #self.rows do
+		XArena["OnClickBetMinus1_".. i] = function(self)
+			self:OnClickBetMinus1(i)
+		end
+		self:AddCallback("bet_btn_min1_" .. i, ui_events.BUTTON_CLICKED, self["OnClickBetMinus1_" .. i], self)
+
+		XArena["OnClickBetPlus1_".. i] = function(self)
+			self:OnClickBetPlus1(i)
+		end
+		self:AddCallback("bet_btn_plus1_" .. i, ui_events.BUTTON_CLICKED, self["OnClickBetPlus1_" .. i], self)
+
+		XArena["OnClickBetMinus2_".. i] = function(self)
+			self:OnClickBetMinus2(i)
+		end
+		self:AddCallback("bet_btn_min2_" .. i, ui_events.BUTTON_CLICKED, self["OnClickBetMinus2_" .. i], self)
+
+		XArena["OnClickBetPlus2_".. i] = function(self)
+			self:OnClickBetPlus2(i)
+		end
+		self:AddCallback("bet_btn_plus2_" .. i, ui_events.BUTTON_CLICKED, self["OnClickBetPlus2_" .. i], self)
+	end
+
+end
+
+function XArena:OnClickBetMinus1(i)
+	local cur_bet = tonumber(self.rows[i].bet1:TextControl():GetText())
+	local new_bet = clamp(cur_bet - bet_step, 0, 100000)
+	self.rows[i].bet1:TextControl():SetText(tostring(new_bet))
+	self:UpdReward(i)
+	self:UpdStartButton(new_bet)
+end
+
+function XArena:OnClickBetPlus1(i)
+	local team2_bet = tonumber(self.rows[i].bet2:TextControl():GetText())
+	if team2_bet > 0 then return end
+	local cur_bet = tonumber(self.rows[i].bet1:TextControl():GetText())
+	local new_bet = clamp(cur_bet + bet_step, 0, 100000)
+	if db.actor:money() <= new_bet then return end
+	self.rows[i].bet1:TextControl():SetText(tostring(new_bet))
+	self:UpdReward(i)
+	self:UpdStartButton(new_bet)
+end
+
+function XArena:OnClickBetMinus2(i)
+	local cur_bet = tonumber(self.rows[i].bet2:TextControl():GetText())
+	local new_bet = clamp(cur_bet - bet_step, 0, 100000)
+	self.rows[i].bet2:TextControl():SetText(tostring(new_bet))
+	self:UpdReward(i)
+	self:UpdStartButton(new_bet)
+end
+
+function XArena:OnClickBetPlus2(i)
+	local team1_bet = tonumber(self.rows[i].bet1:TextControl():GetText())
+	if team1_bet > 0 then return end
+	local cur_bet = tonumber(self.rows[i].bet2:TextControl():GetText())
+	local new_bet = clamp(cur_bet + bet_step, 0, 100000)
+	if db.actor:money() <= new_bet then return end
+	self.rows[i].bet2:TextControl():SetText(tostring(new_bet))
+	self:UpdReward(i)
+	self:UpdStartButton(new_bet)
+end
+
+function XArena:UpdReward(i)
+	local pwr_ar = xcvb_arena_main.arena_main_t[i].pwrs
+	local team1_bet = tonumber(self.rows[i].bet1:TextControl():GetText())
+	local team2_bet = tonumber(self.rows[i].bet2:TextControl():GetText())
+
+	local new_reward = 0
+	if team1_bet > 0 then
+	--	printf("team 1 bet || team1 pwr: %s || team2 pwr: %s || koef: %s", pwr_ar[1], pwr_ar[2], pwr_ar[2] / pwr_ar[1])
+		local koef = pwr_ar[2] / pwr_ar[1]
+		new_reward = team1_bet + team1_bet * koef
+	elseif team2_bet > 0 then
+	--	printf("team 2 bet || team1 pwr: %s || team2 pwr: %s || koef: %s", pwr_ar[1], pwr_ar[2], pwr_ar[1] / pwr_ar[2])
+		local koef = pwr_ar[1] / pwr_ar[2]
+		new_reward = team2_bet + team2_bet * koef
+	end
+	self.rows[i].reward:TextControl():SetText(tostring(math.ceil(new_reward)))
+end
+
+function XArena:UpdStartButton(new_bet)
+	self.arena_start_btn:Show(new_bet > 0)
+end
+
+function XArena:Refresh()
+	-- reset all
+	local new_period = xcvb_arena_utils.get_new_period()
+	xcvb_arena_main.cur_reward = 0
+	xcvb_arena_main.team_bet = 0
+
+	for i, t in pairs(xcvb_arena_main.arena_main_t) do
+		self.arena_start_btn:Show(false)
+
+		self.rows[i].team1:TextControl():SetText("")
+		self.rows[i].team1:SetTextureColor(GetARGB(0, 90, 0, 0))
+		self.rows[i].team2:TextControl():SetText("")
+		self.rows[i].team2:SetTextureColor(GetARGB(0, 0, 90, 90))
+
+		self.rows[i].time:SetTextureColor(GetARGB(0, 160, 160, 0))
+		self.rows[i].bet_cont:Show(false)
+		self.rows[i].bet1:TextControl():SetText(0)
+		self.rows[i].bet2:TextControl():SetText(0)
+		self.rows[i].reward:Show(false)
+		self.rows[i].reward:TextControl():SetText(0)
+
+		-- empty tables for early teams
+		if new_period and new_period > i then
+			iempty_table(xcvb_arena_main.arena_main_t[i].team1)
+			iempty_table(xcvb_arena_main.arena_main_t[i].team2)
+			iempty_table(xcvb_arena_main.arena_main_t[i].pwrs)
+		end
+	end
+
+	for i, t in ipairs(xcvb_arena_main.arena_main_t) do
+		-- update teams
+		local team_alph = 0
+		local team1_str, team2_str = "", ""
+		if #t.team1 > 0 then
+			local s1 = "x" .. #t.team1 .. " " .. gt(xcvb_arena_utils.get_team_str(t.team1))
+			self.rows[i].team1:TextControl():SetText(s1)
+			self.rows[i].team1:SetTextureColor(GetARGB(120, 90, 0, 0))
+			local s2 = "x" .. #t.team2 .. " " .. gt(xcvb_arena_utils.get_team_str(t.team2))
+			self.rows[i].team2:TextControl():SetText(s2)
+			self.rows[i].team2:SetTextureColor(GetARGB(120, 0, 90, 90))
+		end
+
+		-- highlight / enable bet
+		local cur_per = xcvb_arena_main.current_period
+		if cur_per == i then
+			self.rows[i].time:SetTextureColor(GetARGB(90, 160, 160, 0))
+			self.rows[i].bet_cont:Show(true)
+			self.rows[i].reward:Show(true)
+		end
+	end
+end
+
+function XArena:OnClickArenaStart()
+	local cur_period = xcvb_arena_main.current_period
+
+	-- store team bet and reward and take actor money
+	local team1_bet = tonumber(self.rows[cur_period].bet1:TextControl():GetText())
+	local team2_bet = tonumber(self.rows[cur_period].bet2:TextControl():GetText())
+	if team1_bet > team2_bet then
+		db.actor:give_money(-team1_bet)
+		xcvb_arena_main.team_bet = 1
+	elseif team2_bet > team1_bet then
+		db.actor:give_money(-team2_bet)
+		xcvb_arena_main.team_bet = 2
+	end
+	xcvb_arena_main.cur_reward = tonumber(self.rows[cur_period].reward:TextControl():GetText())
+
+	-- fade in / out
+	xcvb_arena_utils.arena_fade_in_out()
+
+	-- start fight
+	CreateTimeEvent("xcvb_start_arena_fight_e", "xcvb_start_arena_fight_a", 3, function()
+		xcvb_arena_fight.start_arena_fight(cur_period)
+		return true
+	end)
+
+	-- close ui
+	self:Close()
+
+end
+
+function XArena:OnKeyboard(key, keyboard_action)
+	local res = CUIScriptWnd.OnKeyboard(self, key, keyboard_action)
+	if (res == false) then
+		if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+			if key == DIK_keys.DIK_ESCAPE then
+				self:Close()
+			end
+		end
+	end
+	return res
+end
+
+function XArena:Close()
+	if self:IsShown() then
+		self:HideDialog()
+		self:Show(false)
+		Unregister_UI("XArena")
+	end
+end
+
+function XArena:__finalize()
+end

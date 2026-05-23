@@ -1,0 +1,44 @@
+local time_snd_prev = 0
+local snd_on_take = {}
+local snd_obj = nil
+
+itms_manager.play_item_sound = function(item, vol)
+	if (not item) then
+		printe("!ERROR itms_manager | play_item_sound | no object recieved!")
+	end
+
+	local snd_type = SYS_GetParam(0,item:section(),"snd_on_take")
+	if not (snd_type and snd_type ~= "") then
+		return
+	end
+	
+	local snd = snd_on_take[snd_type]
+	if (not snd) then
+		return
+	end
+	
+	if (#snd == 1) then
+		snd_obj = sound_object(snd[1])
+	else
+		snd_obj = sound_object(snd[1] .. tostring(math.random(snd[2],snd[3])))
+	end
+
+	local time_g = time_global()
+	if snd_obj and (time_g > time_snd_prev + 25) then
+		snd_obj:play(db.actor,0,sound_object.s2d)
+		snd_obj.volume = vol or 1
+	end
+	time_snd_prev = time_g
+end
+
+function on_game_start()
+    local ltx = ini_file_ex("items\\settings\\item_sounds\\base_item_sound.ltx")
+    local sections = ltx:get_sections()
+    for _, section in pairs(sections) do
+        local _section = ltx:collect_section(section)
+        for category, sounds in pairs(_section) do
+			local sound_data = str_explode(sounds, ",")
+            snd_on_take[category] = #sound_data == 1 and sound_data or { sound_data[1], tonumber(sound_data[2]), tonumber(sound_data[3]) }
+        end
+    end
+end

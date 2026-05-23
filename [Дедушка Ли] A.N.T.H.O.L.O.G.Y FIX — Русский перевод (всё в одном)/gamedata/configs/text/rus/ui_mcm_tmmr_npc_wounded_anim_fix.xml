@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="ui_mcm_menu_tmmr">
+		<text>Мини-моды от Tosox</text>
+	</string>
+
+    <string id="ui_mcm_menu_npc_wounded_anim_fix">
+        <text>Исправление ранения НПС</text>
+    </string>
+	<string id="ui_mcm_tmmr_npc_wounded_anim_fix_title">
+		<text>Исправление анимации ранения НПС</text>
+	</string>
+	<string id="ui_mcm_tmmr_npc_wounded_anim_fix_handle_weapon">
+		<text>Обращайтесь с оружием НПС</text>
+	</string>
+    <string id="ui_mcm_tmmr_npc_wounded_anim_fix_handle_weapon_desc">
+		<text>Инвентарь - перенести в инвентарь НПС \nБросить - бросить на землю \nАдаптация - перенести в инвентарь НПС, если установлен аддон "Weapons Drop on Bodies" («Оружие падает на тела»).</text>
+	</string>
+	
+    <string id="ui_mcm_lst_tmmr_inv_weapon">
+		<text>Инвентарь</text>
+	</string>
+	<string id="ui_mcm_lst_tmmr_drop_weapon">
+		<text>Бросить</text>
+	</string>
+    <string id="ui_mcm_lst_tmmr_adapt_weapon">
+		<text>Адаптация</text>
+	</string>
+</string_table>

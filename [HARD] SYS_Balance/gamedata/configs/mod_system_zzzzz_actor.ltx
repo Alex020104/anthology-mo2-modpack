@@ -1,0 +1,112 @@
+; ============================================================
+; ACTOR – Physics / Collision Boxes
+; ============================================================
+; ph_box0_size     – size of main collision box (width, height, depth)
+; ph_box1_center   – center position of second collision box relative to actor (x, y, z)
+; ph_box1_size     – size of second collision box (width, height, depth)
+; ph_box2_center   – center of third collision box (used when crouching)
+; ph_box2_size     – size of third collision box (used when crouching)
+; ============================================================
+
+![actor]
+;ph_box0_size = 0.25, 0.80, 0.25
+;ph_box1_center = 0.0, 0.60, 0.0
+;ph_box1_size = 0.30, 0.60, 0.25
+
+;ph_box2_center = 0.0,  0.45,  0.0     
+;ph_box2_size  = 0.22, 0.45,  0.22    
+
+; ============================================================
+; ============================================================
+; ACTOR – Conditions / Radiation / Environmental Effects
+; ============================================================
+; satiety_v                – rate at which hunger / satiety decreases over time
+; radiation_v              – rate at which actor accumulates radiation naturally
+; radiation_health_v       – effect of radiation on health over time
+; radio_zone_max_power     – max damage / effect power from radio anomalies
+; fire_zone_max_power      – max damage / effect power from fire anomalies
+; acid_zone_max_power      – max damage / effect power from acid anomalies
+; psi_zone_max_power       – max damage / effect power from psychic / psionic anomalies
+; electra_zone_max_power   – max damage / effect power from electricity / shock anomalies
+; ============================================================
+![actor_condition]
+satiety_v                   = 0.000033
+fire_zone_max_power			= 0.59
+acid_zone_max_power			= 0.55
+psi_zone_max_power			= 0.265
+electra_zone_max_power		= 1.32
+; ============================================================
+; ============================================================
+; ACTOR - DAMAGE / IMMUNITY
+; ============================================================
+; burn_immunity          – resistance to fire / heat anomalies
+; strike_immunity        – resistance to blunt impacts (mutant hits, falling, melee)
+; shock_immunity         – resistance to electricity anomalies
+; wound_immunity         – resistance to bullets, claws, cutting / piercing damage
+; radiation_immunity     – resistance to radiation exposure
+; telepatic_immunity     – resistance to psy / telepathic attacks (Controller, Burer)
+; chemical_burn_immunity – resistance to toxic gas / chemical anomalies
+; explosion_immunity     – resistance to explosion shockwaves (grenades, rockets)
+; fire_wound_immunity    – resistance to shrapnel / explosive fragments
+
+
+![actor_immunities_gd_novice]
+burn_immunity             = 3.45   
+strike_immunity           = 0.64   
+shock_immunity            = 0.95   
+wound_immunity            = 0.70   
+radiation_immunity        = 0.51   
+telepatic_immunity        = 1.25   
+chemical_burn_immunity    = 1.21   
+explosion_immunity        = 0.39  
+fire_wound_immunity       = 0.33   
+
+
+![actor_immunities_gd_stalker]
+burn_immunity             = 4.25   
+strike_immunity           = 0.85   
+shock_immunity            = 1.26   
+wound_immunity            = 0.90   
+radiation_immunity        = 0.68   
+telepatic_immunity        = 1.66   
+chemical_burn_immunity    = 1.61   
+explosion_immunity        = 0.52  
+fire_wound_immunity       = 0.50   
+
+
+![actor_immunities_gd_veteran]
+burn_immunity             = 6.1    
+strike_immunity           = 1.07   
+shock_immunity            = 1.59   
+wound_immunity            = 1.00   
+radiation_immunity        = 0.85   
+telepatic_immunity        = 2.09   
+chemical_burn_immunity    = 2.02   
+explosion_immunity        = 0.65  
+fire_wound_immunity       = 0.70   
+; ============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

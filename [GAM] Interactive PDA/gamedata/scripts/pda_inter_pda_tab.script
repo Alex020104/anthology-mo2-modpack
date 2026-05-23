@@ -1,0 +1,32 @@
+local section_id = "eptInteractivePDA"
+local current_wrapper = nil
+
+local function get_interactive_pda_ui()
+	local ui = rawget(_G, "pda_inter_gui")
+	if ui and ui.get_pda_ui then
+		return ui.get_pda_ui()
+	end
+end
+
+local function patch_pda_subdialog()
+	local pda_script = rawget(_G, "pda")
+	if not (pda_script and pda_script.set_active_subdialog) then return end
+	if pda_script.set_active_subdialog == current_wrapper then return end
+
+	local next_set_active_subdialog = pda_script.set_active_subdialog
+	current_wrapper = function(section)
+		if section == section_id then
+			local ui = get_interactive_pda_ui()
+			if ui then return ui end
+		end
+
+		return next_set_active_subdialog(section)
+	end
+
+	pda_script.set_active_subdialog = current_wrapper
+end
+
+function on_game_start()
+	patch_pda_subdialog()
+	RegisterScriptCallback("on_game_load", patch_pda_subdialog)
+end

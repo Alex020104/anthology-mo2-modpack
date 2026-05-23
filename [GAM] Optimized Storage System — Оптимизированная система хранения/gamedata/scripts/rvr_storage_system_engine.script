@@ -1,0 +1,1922 @@
+AddScriptCallback("on_actor_inventory_update_finished")
+AddScriptCallback("on_storage_inventory_update_finished")
+AddScriptCallback("rvr_storage_actor_on_stash_create")
+
+function on_game_start()
+    cfg = GetCfg()
+    categories = GetCategories()
+
+    RegisterScriptCallback("actor_on_first_update", init)
+    RegisterScriptCallback("on_key_press", on_key_press)
+    RegisterScriptCallback("on_key_release", on_key_release)
+    RegisterScriptCallback("save_state", save_state)
+    RegisterScriptCallback("load_state", load_state)
+    -- RegisterScriptCallback("actor_item_to_ruck", actor_item_to_ruck)
+    RegisterScriptCallback("on_actor_inventory_update_finished", on_actor_inventory_update_finished)
+    RegisterScriptCallback("on_storage_inventory_update_finished", on_storage_inventory_update_finished)
+    RegisterScriptCallback("rvr_storage_actor_on_stash_create", rvr_storage_actor_on_stash_create)
+    -- RegisterScriptCallback("physic_object_on_use_callback", physic_object_on_use_callback)
+    RegisterScriptCallback("on_option_change", on_option_change)
+    RegisterScriptCallback("on_localization_change", on_localization_change)
+end
+
+local weight_unit = game.translate_string("st_kg")
+local snd_open = sound_object([[interface\inv_open]])
+local snd_close = sound_object([[interface\inv_close]])
+local snd_item_to_slot = sound_object([[interface\inv_slot]])
+local snd_item_to_belt = sound_object([[interface\inv_belt]])
+local snd_item_to_ruck = sound_object([[interface\inv_ruck]])
+local snd_properties = sound_object([[interface\inv_properties_2]])
+local snd_drop_item = sound_object([[interface\inv_drop]])
+local snd_attach_addon = sound_object([[interface\inv_attach_addon]])
+local snd_detach_addon = sound_object([[interface\inv_detach_addon]])
+local snd_item_use = sound_object([[interface\inv_none]])
+
+mode_bank = "bank"
+mode_test_bank = "test_bank"
+mode_generic_container = "generic_container"
+mode_ammo_container = "ammo_container"
+mode_med_container = "med_container"
+mode_mats_container = "mats_container"
+mode_global_storage = "global_storage"
+-- possible variants: artifacts, w/a parts (has durability, seems bad)
+
+mark_favorite = 1
+mark_favorite_prefix = "[F] "
+
+mark_regular = 0
+
+mark_trash = -1
+mark_trash_prefix = "[T] "
+
+keep_favorite = false
+keep_regular = false
+keep_trash = false
+
+RVRData = nil
+GUI = nil
+ActiveStorages = nil
+Marks = {}
+
+is_shift_pressed = false
+is_control_pressed = false
+is_alt_pressed = false
+
+SpawnerEventSource = "rvr_spawner_event_source"
+
+global_storage_key = "global_storage"
+
+-----------
+--- Config Section
+-----------
+
+function GetCfg()
+    return {
+        dev_debug_mode = rvr_storage_system_mcm.get_config("debug_mode_check"),
+
+        ui_storage_min_reset_period_ms = 100,
+        ui_shift_multiplier = rvr_storage_system_mcm.get_config("shift_mult_slider"), -- multipliers from shift and ctrl are multiplicative. E.g. ctrl(x10) + shift(x5) = x10 * x5 = x50
+        ui_ctrl_multiplier = rvr_storage_system_mcm.get_config("ctrl_mult_slider"),   -- multipliers from shift and ctrl are multiplicative. E.g. ctrl(x10) + shift(x5) = x10 * x5 = x50
+        ui_show_pelts_condition = rvr_storage_system_mcm.get_config("show_pelts_condition_check"),
+        ui_show_arts_condition = rvr_storage_system_mcm.get_config("show_arts_condition_check"),
+
+        feature_global_storage = rvr_storage_system_mcm.get_config("global_storage_enabled_check"),
+
+        spawner_durability_set_delay_seconds = 0.1,
+
+        lister_item_width = 348, -- should be the same as list_box width (how the fuck it appeared in global cfg???)
+        lister_enable_merged_kinds = true,
+        lister_enable_kinds_separators = rvr_storage_system_mcm.get_config("experimental_enable_kinds_separators"),
+
+        storage_enable_weapon = rvr_storage_system_mcm.get_config("experimental_enable_weapon_storage_check"), -- not fully implemented yet
+        storage_enable_armor = rvr_storage_system_mcm.get_config("experimental_enable_armor_storage_check"),   -- not fully implemented yet
+    }
+end
+
+cfg = GetCfg()
+
+-----------
+--- Config Section end
+-----------
+
+-----
+--- Categories
+-----
+
+function GetCategories()
+    local cats = {
+        {
+            id = "c_weapons",
+            display_name = "st_c_weapons",
+            kinds = { "w_sniper", "w_rifle", "w_smg", "w_shotgun", "w_pistol", "w_melee", "w_misc", "w_base" },
+            opts = { hide_durability = false, hide_durability_exceptions = {} }
+        },
+        {
+            id = "c_ammo",
+            display_name = "st_c_ammo",
+            kinds = { "w_ammo", "w_explosive" },
+            opts = { hide_durability = false, hide_durability_exceptions = {} }
+        },
+        {
+            id = "c_armor",
+            display_name = "st_c_armor",
+            kinds = { "o_heavy", "o_sci", "o_medium", "o_light", "o_helmet" },
+            opts = { hide_durability = false, hide_durability_exceptions = {} }
+        },
+        {
+            id = "c_equipment",
+            display_name = "st_c_equipment",
+            kinds = { "i_backpack", "i_device" },
+            opts = { hide_durability = false, hide_durability_exceptions = {} }
+        },
+        {
+            id = "c_tech",
+            display_name = "st_c_tech",
+            kinds = { "i_tool", "i_repair", "i_upgrade", "i_kit" },
+            opts = { hide_durability = true, hide_durability_exceptions = { ["i_tool"] = true, } }
+        },
+        {
+            id = "c_trophies",
+            display_name = "st_c_trophies",
+            kinds = { "i_arty", "i_arty_junk", "i_arty_cont", "i_mutant_raw", "i_mutant_part", "i_mutant_belt" },
+            opts = { hide_durability = true, hide_durability_exceptions = {} }
+        },
+        {
+            id = "c_consumables",
+            display_name = "st_c_consumables",
+            kinds = { "i_food", "i_mutant_cooked", "i_drink", "i_medical" },
+            opts = { hide_durability = true, hide_durability_exceptions = {} }
+        },
+        {
+            id = "c_misc",
+            display_name = "st_c_misc",
+            kinds = { "i_letter", "i_quest", "i_misc", "i_part" },
+            opts = { hide_durability = false, hide_durability_exceptions = {} }
+        },
+        {
+            id = "c_unknown",
+            display_name = "st_c_unknown",
+            kinds = { "unknown" },
+            opts = { hide_durability = false, hide_durability_exceptions = {} }
+        },
+    }
+
+    if cfg.ui_show_arts_condition then
+        local kinds = { "i_arty", "i_arty_cont", "i_arty_junk" }
+
+        for _, k in pairs(kinds) do
+            AddKindToHideDurabilityExceptions(cats, k)
+        end
+    end
+
+    if cfg.ui_show_pelts_condition then
+        AddKindToHideDurabilityExceptions(cats, "i_mutant_belt")
+    end
+
+    return cats
+end
+
+function GetEnabledCategories()
+    local cats = {}
+
+    for _, cat in pairs(GetCategories()) do
+        if cat.id == "c_armor" and not cfg.storage_enable_armor then
+            printf("skipping c_armor: disabled by cfg")
+        elseif cat.id == "c_weapons" and not cfg.storage_enable_weapon then
+            printf("skipping c_weapons: disabled by cfg")
+        else
+            cats[#cats+1] = cat
+        end
+    end
+
+    return cats
+end
+
+categories = nil
+
+-----
+--- Categories end
+-----
+
+function start(storage)
+    local mode = storage.Mode
+    if (not mode) then
+        printdbg("nil mode received")
+
+        return
+    end
+
+    if (not GUI) then
+        GUI = UIStorage()
+    end
+
+    if (GUI) and (not GUI:IsShown()) and keybind_pass() then
+        GUI:Commons_Init()
+
+        if mode == mode_bank then
+            -- change_last_mode(1)
+            GUI:BankMode_Init(storage)
+        elseif mode == mode_test_bank then
+            GUI:TestBankMode_Init(storage)
+        elseif mode == mode_global_storage then
+            GUI:GlobalStorageMode_Init(storage)
+        elseif mode == mode_generic_container then
+            GUI:GenericCMode_Init(storage)
+        elseif mode == mode_ammo_container then
+            GUI:AmmoCMode_Init(storage)
+        elseif mode == mode_med_container then
+            GUI:MedCMode_Init(storage)
+        elseif mode == mode_mats_container then
+            GUI:MatsCMode_Init(storage)
+        else
+            printf("unexpected mode")
+
+            return
+        end
+
+        GUI:ShowDialog(true)
+
+        _GUIs_keyfree["UIStorage"] = true
+        Register_UI("UIStorage", "ui_storage")
+    end
+end
+
+function init()
+    if cfg.dev_debug_mode then
+        news_manager.send_tip(db.actor, "Reaver Storage System initialized", nil, nil, 30000)
+    end
+    InitDefaultStorages()
+    InitActiveStorages()
+    cfg = GetCfg()
+    categories = GetCategories()
+end
+
+function on_localization_change()
+    GUI = nil -- clear ui to force initing again
+end
+
+function actor_item_to_ruck()
+    if GUI and GUI:IsShown() then
+        GUI:Reset()
+    end
+end
+
+function on_option_change()
+    cfg = GetCfg()
+    categories = GetCategories()
+    if GUI then
+        GUI = UIStorage()
+    end
+end
+
+function on_actor_inventory_update_finished()
+    local delay_seconds = 0.1
+    -- local expiration_time = time_global() + 3 * delay_seconds * 1000
+    -- because fokin server objects have delayed unregistration
+    CreateTimeEvent(SpawnerEventSource, "update_storage_gui", delay_seconds, function()
+        if GUI and GUI:IsShown() then
+            GUI:Reset(true) --force update
+        end
+
+        return true -- needed to remove event from queue
+    end)
+end
+
+function on_storage_inventory_update_finished(storage)
+    if GUI and GUI:IsShown() then
+        GUI:Reset()
+    end
+end
+
+-- Function called when a key is pressed
+function on_key_press(dik)
+    if dik == DIK_keys.DIK_O then
+        if cfg.dev_debug_mode then
+            start(ActiveStorages["test_bank"])
+        end
+    end
+    if dik == DIK_keys.DIK_LSHIFT then
+        is_shift_pressed = true
+    end
+    if dik == DIK_keys.DIK_LCONTROL then
+        is_control_pressed = true
+    end
+    if dik == DIK_keys.DIK_LMENU then
+        is_alt_pressed = true
+    end
+
+    local bind = dik_to_bind(dik)
+    if bind == key_bindings.kINVENTORY then
+        if cfg.feature_global_storage and is_shift_pressed then
+            start(ActiveStorages[global_storage_key])
+        end
+
+        return
+    end
+end
+
+function on_key_release(dik)
+    if dik == DIK_keys.DIK_LSHIFT then
+        is_shift_pressed = false
+    end
+    if dik == DIK_keys.DIK_LCONTROL then
+        is_control_pressed = false
+    end
+    if dik == DIK_keys.DIK_LMENU then
+        is_alt_pressed = false
+    end
+end
+
+function save_state(m_data)
+    local rvr_storage_system_data = {
+        RVRData = RVRData,
+        keep_favorite = keep_favorite,
+        keep_regular = keep_regular,
+        keep_trash = keep_trash,
+        Marks = Marks,
+    }
+
+    m_data.rvr_storage_system_data = rvr_storage_system_data
+end
+
+function load_state(m_data)
+    if not m_data.rvr_storage_system_data then
+        return
+    end
+
+    RVRData = m_data.rvr_storage_system_data.RVRData
+    keep_favorite = m_data.rvr_storage_system_data.keep_favorite or false
+    keep_regular = m_data.rvr_storage_system_data.keep_regular or false
+    keep_trash = m_data.rvr_storage_system_data.keep_trash or false
+    Marks = m_data.rvr_storage_system_data.Marks or {}
+
+    cfg = GetCfg()
+end
+
+-----------------------------------------------------------------
+class "ItemListElement" (CUIListBoxItem)
+
+function ItemListElement:__init(section, width, name, durability, amount, opts)
+    local height = 22
+    local opts = opts or {}
+
+    super(section, width)
+
+    self.inactive        = opts.inactive or false
+    self.opts            = opts
+
+    self.name            = name
+    self.section         = section
+    self.durability      = ConvertPercentStrToNum(durability)
+    self.durability_text = durability
+    self.amount          = amount
+    self.width           = width
+
+    self:Reset()
+end
+
+function ItemListElement:Reset()
+    self.name_f = self:GetTextItem()
+    self.name_f:SetWndRect(Frect():set(0, 0, self.width, 22))
+    self.name_f:SetWndSize(vector2():set(self.width - 120, 22))
+    self.name_f:SetText(self.name)
+
+    if not self.opts.hide_durability then
+        self.durability_f = self:AddTextField(self.durability_text, 1)
+        self.durability_f:SetWndRect(Frect():set(0, 0, 50, 22))
+        self.durability_f:SetWndPos(vector2():set(self.width - 100, 0))
+        self.durability_f:SetText(self.durability_text)
+    end
+
+    if not self.opts.hide_amount then
+        self.amount_f = self:AddTextField(self.amount, 2)
+        self.amount_f:SetWndRect(Frect():set(0, 0, 50, 22))
+        self.amount_f:SetWndPos(vector2():set(self.width - 50, 0))
+        self.amount_f:SetText(self.amount)
+    end
+end
+
+-----------------------------------------------------------------
+class "ItemListSeparator" (CUIListBoxItem)
+
+function ItemListSeparator:__init(index, title, opts)
+    local width = cfg.lister_item_width
+    local opts = opts or {}
+    local line = "_________________________"
+    local text_color = opts.text_color or GetARGB(255, 255, 255, 255)
+
+    super(index, width)
+
+    self.inactive = opts.inactive or true
+
+    self.left_f = self:AddTextField(line, 1)
+    self.left_f:SetText(line)
+    self.left_f:SetTextColor(opts.text_color)
+    self.left_f:SetWndRect(Frect():set(0, 0, width, 22))
+    self.left_f:SetWndPos(vector2():set(0, 0))
+
+    self.title_f = self:AddTextField(title, 2)
+    self.title_f:SetText(title)
+    self.title_f:SetTextColor(opts.text_color)
+    self.title_f:SetWndRect(Frect():set(0, 0, width, 22))
+    self.title_f:SetWndPos(vector2():set(width / 2 - 50, 0))
+
+    self.right_f = self:AddTextField(line, 3)
+    self.right_f:SetText(line)
+    self.right_f:SetTextColor(opts.text_color)
+    self.right_f:SetWndRect(Frect():set(0, 0, width, 22))
+    self.right_f:SetWndPos(vector2():set(width / 2 + 50, 0))
+end
+
+-----------------------------------------------------------------
+class "UIStorage" (CUIScriptWnd)
+
+function UIStorage:__init()
+    super()
+    self.mode = mode_test_bank
+    self.next_reset_time = 0
+    self:InitControls()
+    self:InitCallBacks()
+end
+
+function UIStorage:__finalize()
+end
+
+function UIStorage:InitControls()
+    self:SetWndRect(Frect():set(0, 0, 1024, 768))
+
+    self.xml = CScriptXmlInit()
+    local xml = self.xml
+    xml:ParseFile("ui_rvr_storage.xml")
+
+    self.actor_d                = xml:InitStatic("stg_actor_inventory", self)
+    self.actor_d_frame          = xml:InitFrame("stg_actor_inventory:frame_base", self.actor_d)
+    self.actor_d_list           = xml:InitFrame("stg_actor_inventory:frame_list", self.actor_d)
+    self.actor_d_cap            = xml:InitStatic("stg_actor_inventory:cap", self.actor_d)
+    self.actor_d_durability_cap = xml:InitStatic("stg_actor_inventory:cap_durability", self.actor_d)
+    self.actor_d_amount_cap     = xml:InitStatic("stg_actor_inventory:cap_amount", self.actor_d)
+    self.actor_inv              = xml:InitListBox("stg_actor_inventory:list", self.actor_d_list)
+    self:Register(self.actor_inv, "move_actor_item_db_click")
+
+    self.storage_d                = xml:InitStatic("stg_storage_inventory", self)
+    self.storage_d_frame          = xml:InitFrame("stg_storage_inventory:frame_base", self.storage_d)
+    self.storage_d_list           = xml:InitFrame("stg_storage_inventory:frame_list", self.storage_d)
+    self.storage_d_cap            = xml:InitStatic("stg_storage_inventory:cap", self.storage_d)
+    self.storage_d_durability_cap = xml:InitStatic("stg_storage_inventory:cap_durability", self.storage_d)
+    self.storage_d_amount_cap     = xml:InitStatic("stg_storage_inventory:cap_amount", self.storage_d)
+    self.storage_inv              = xml:InitListBox("stg_storage_inventory:list", self.storage_d_list)
+    self:Register(self.storage_inv, "move_storage_item_db_click")
+
+    self:InitControls_CategorySelector(xml)
+    self:InitControls_Searchbox(xml)
+    self:InitControls_Footer(xml)
+end
+
+function UIStorage:InitControls_Footer(xml)
+    self.stg_footer_d       = xml:InitStatic("stg_footer", self)
+    self.stg_footer_d_frame = xml:InitFrame("stg_footer:frame_base", self.stg_footer_d)
+    self.stg_footer_cap     = xml:InitTextWnd("stg_footer:cap", self.stg_footer_d_frame)
+    self.stg_footer_hints   = xml:InitTextWnd("stg_footer:hints", self.stg_footer_d_frame)
+
+    self.stg_footer_hints:Show(true)
+
+    self.stg_footer_depositall_d = xml:InitStatic("stg_footer:depositall_frame", self.stg_footer_d_frame)
+    self.depositall_btn = xml:Init3tButton("stg_footer:depositall_frame:depositall_btn", self.stg_footer_depositall_d)
+    self:Register(self.depositall_btn, "depositall_btn")
+    self:AddCallback("depositall_btn", ui_events.BUTTON_CLICKED, self.DepositAll, self)
+
+    self.keep_favorite_cap = xml:InitStatic("stg_footer:depositall_frame:cap_check_keep_favorite",
+        self.stg_footer_depositall_d)
+    self.keep_favorite = xml:InitCheck("stg_footer:depositall_frame:check_keep_favorite",
+        self.stg_footer_depositall_d)
+    self:Register(self.keep_favorite, "keep_favorite")
+    self:AddCallback("keep_favorite", ui_events.BUTTON_CLICKED, self.KeepFilter, self, "keep_favorite")
+    -- self:AddCallback("keep_favorite", ui_events.CHECK_BUTTON_RESET, self.KeepFilter, self, "keep_favorite", false)
+
+    self.keep_regular_cap = xml:InitStatic("stg_footer:depositall_frame:cap_check_keep_regular",
+        self.stg_footer_depositall_d)
+    self.keep_regular = xml:InitCheck("stg_footer:depositall_frame:check_keep_regular",
+        self.stg_footer_depositall_d)
+    self:Register(self.keep_regular, "keep_regular")
+    self:AddCallback("keep_regular", ui_events.BUTTON_CLICKED, self.KeepFilter, self, "keep_regular")
+    -- self:AddCallback("keep_regular", ui_events.CHECK_BUTTON_RESET, self.KeepFilter, self, "keep_regular", false)
+
+    self.keep_trash_cap = xml:InitStatic("stg_footer:depositall_frame:cap_check_keep_trash",
+        self.stg_footer_depositall_d)
+    self.keep_trash = xml:InitCheck("stg_footer:depositall_frame:check_keep_trash",
+        self.stg_footer_depositall_d)
+    self:Register(self.keep_trash, "keep_trash")
+    self:AddCallback("keep_trash", ui_events.BUTTON_CLICKED, self.KeepFilter, self, "keep_trash")
+    -- self:AddCallback("keep_trash", ui_events.CHECK_BUTTON_RESET, self.KeepFilter, self, "keep_trash", false)
+end
+
+function UIStorage:InitControls_Searchbox(xml)
+    self.stg_searchbox_d       = xml:InitStatic("stg_searchbox", self)
+    self.stg_searchbox_d_frame = xml:InitFrame("stg_searchbox:frame_base", self.stg_searchbox_d)
+    self.searchbox             = xml:InitEditBox("stg_searchbox:input_searchbox", self.stg_searchbox_d_frame)
+    self:Register(self.searchbox, "input_searchbox")
+    self:AddCallback("input_searchbox", ui_events.EDIT_TEXT_COMMIT, self.OnNameSearchboxCommit, self)
+end
+
+function UIStorage:InitControls_CategorySelector(xml)
+    -- Category selector
+    self.stg_category_selector_d = xml:InitStatic("stg_category_selector", self)
+    self.stg_category_selector_d_frame = xml:InitFrame("stg_category_selector:frame_base", self.stg_category_selector_d)
+
+    self.cats_btn = {}
+    local btn_width = 88
+    local btn_height = 26
+    local btn_margin = 5
+    local x_offset = btn_margin
+    local y_offset = btn_margin
+
+    self.cats_btn["c_all"] = xml:Init3tButton("stg_category_selector:btn_c_all",
+        self.stg_category_selector_d_frame)
+
+    self.cats_btn["c_all"]:SetWndSize(vector2():set(btn_width, btn_height))
+    self.cats_btn["c_all"]:SetWndPos(vector2():set(x_offset, y_offset))
+    self.cats_btn["c_all"]:TextControl():SetTextST("1. " .. game.translate_string("st_c_all"))
+    self:Register(self.cats_btn["c_all"], "cats_btn_c_all")
+    self:AddCallback("cats_btn_c_all", ui_events.BUTTON_CLICKED, self.OnFilterCategory, self)
+
+    local enabled_cats = GetEnabledCategories()
+    for i, cat in ipairs(enabled_cats) do
+        x_offset = btn_margin + (btn_margin + btn_width) * (i % 2)
+        if i % 2 == 0 then
+            y_offset = y_offset + (btn_margin + btn_height)
+        end
+
+        printf("setting button for %s: x=%s y=%s", cat.id, x_offset, y_offset)
+
+        self.cats_btn[cat.id] = xml:Init3tButton("stg_category_selector:btn_" .. cat.id,
+            self.stg_category_selector_d_frame)
+        self.cats_btn[cat.id]:SetWndSize(vector2():set(btn_width, btn_height))
+        self.cats_btn[cat.id]:SetWndPos(vector2():set(x_offset, y_offset))
+        self.cats_btn[cat.id]:TextControl():SetTextST(tostring(i + 1) .. ". " .. game.translate_string(cat.display_name))
+        self.cats_btn[cat.id].category = cat
+
+        self:Register(self.cats_btn[cat.id], "cats_btn_" .. cat.id)
+
+        local cats_btn_on_click = function()
+            return self:OnFilterCategory(self.cats_btn[cat.id].category)
+        end
+
+        self:AddCallback("cats_btn_" .. cat.id, ui_events.BUTTON_CLICKED, cats_btn_on_click)
+    end
+end
+
+function UIStorage:InitCallBacks()
+    self:AddCallback("move_storage_item_db_click", ui_events.WINDOW_LBUTTON_DB_CLICK, self.OnStorageItemList, self)
+    self:AddCallback("move_actor_item_db_click", ui_events.WINDOW_LBUTTON_DB_CLICK, self.OnActorItemList, self)
+    -- self:AddCallback("itm_type", ui_events.LIST_ITEM_SELECT, self.OnItemType, self)
+    -- self:AddCallback("itm_list", ui_events.LIST_ITEM_SELECT, self.OnItemList, self)
+    -- self:AddCallback("button_name", ui_events.BUTTON_CLICKED, self.OnButton_Name, self)
+    -- self:AddCallback("check_inv", ui_events.BUTTON_CLICKED, self.OnButton_Inv, self)
+    -- self:AddCallback("check_point", ui_events.BUTTON_CLICKED, self.OnButton_Point, self)
+    -- self:AddCallback("list", ui_events.WINDOW_LBUTTON_DB_CLICK, self.OnStartAnim, self)
+end
+
+function UIStorage:Commons_Init()
+    self.selected_cat = nil
+    self.name_filter_str = nil
+end
+
+-- Test bank mode
+function UIStorage:TestBankMode_Init(storage)
+    self.mode = mode_test_bank
+    self.storage = storage
+    self.multiplier = 1
+
+    self:LogTr("TestBankMode_Init call")
+    self:Log("storage params: id=%s | weight_limit=%s", tostring(storage:GetID()), tostring(storage:GetWeightLimit()))
+
+    self:Reset()
+end
+
+function UIStorage:GlobalStorageMode_Init(storage)
+    self.mode = mode_global_storage
+    self.storage = storage
+    self.multiplier = 1
+
+    self:LogTr("GlobalStorageMode_Init call")
+    self:Log("storage params: id=%s | weight_limit=%s", tostring(storage:GetID()), tostring(storage:GetWeightLimit()))
+
+    self:Reset()
+end
+
+function UIStorage:GenericCMode_Init(storage)
+    self.mode = mode_generic_container
+    self.storage = storage
+    self.multiplier = 1
+
+    self:LogTr("GenericCMode_Init call")
+    self:Log("storage params: id=%s | weight_limit=%s", tostring(storage:GetID()), tostring(storage:GetWeightLimit()))
+
+    self:Reset()
+end
+
+function UIStorage:Close()
+    self:Log("Close")
+
+    self:HideDialog()
+    self:Show(false)
+
+    Unregister_UI("UIStorage")
+end
+
+function UIStorage:Reset(force)
+    if not force and self.next_reset_time > time_global() then
+        return
+    end
+
+    self.next_reset_time = time_global() + cfg.ui_storage_min_reset_period_ms
+
+    -- self:LogTr("Reset call")
+
+    local actor_inv_pos = self.actor_inv:GetCurrentScrollPos()
+    local storage_inv_pos = self.storage_inv:GetCurrentScrollPos()
+
+    self.storage_inv:Clear()
+    self.actor_inv:Clear()
+
+    self:RenderActorInv()
+    self:RenderStorageInv()
+
+    CUIScriptWnd.Update(self)
+    self:Update()
+
+    self.actor_inv:SetScrollPos(actor_inv_pos)
+    self.storage_inv:SetScrollPos(storage_inv_pos)
+    -- self.searchbox:CaptureFocus(searchbox_focus or false)
+
+    self.keep_favorite:SetCheck(keep_favorite)
+    self.keep_regular:SetCheck(keep_regular)
+    self.keep_trash:SetCheck(keep_trash)
+end
+
+-- Refresh UNIMPLEMENTED update counters without reset.
+function UIStorage:Refresh()
+    self:Log("Refresh")
+    -- todo update counters without reset
+end
+
+function UIStorage:RenderStorageInv()
+    local opts = {}
+
+    if self.selected_cat then
+        printf("RenderStorageInv: selected_cat defined")
+        opts.only_categories = { self.selected_cat }
+    end
+
+    if self.name_filter_str then
+        printf("RenderStorageInv: name_filter_str defined")
+        opts.name_filter_str = self.name_filter_str
+    end
+
+    local lister = Lister():FromStorage(self.storage, opts)
+    if not lister then
+        self:LogTr("nil lister")
+
+        return
+    end
+
+    local elements = lister:GetListElements()
+
+    self.storage_inv_elements = elements or {}
+
+    self:Render(self.storage_inv, elements)
+end
+
+function UIStorage:RenderActorInv()
+    local inv = GetInventoryListEntries(db.actor)
+    local opts = {}
+
+    if self.selected_cat then
+        printf("RenderActorInv: selected_cat defined")
+        opts.only_categories = { self.selected_cat }
+    end
+
+    if self.name_filter_str then
+        printf("RenderActorInv: name_filter_str defined")
+        opts.name_filter_str = self.name_filter_str
+    end
+
+    local lister = Lister():FromNPCInv(inv, opts)
+    if not lister then
+        self:LogTr("nil lister")
+
+        return
+    end
+
+    local elements = lister:GetListElements()
+
+    self.actor_inv_elements = elements or {}
+
+    self:Render(self.actor_inv, elements)
+end
+
+function UIStorage:Render(list_box, elements)
+    if not list_box then
+        self:LogTr("error: nil list_box")
+
+        return
+    end
+    if not elements then
+        self:LogTr("error: nil elements")
+
+        return
+    end
+
+    for _, el in pairs(elements) do
+        list_box:AddExistingItem(el)
+    end
+end
+
+function UIStorage:DepositAll()
+    for _, el in pairs(self.actor_inv_elements) do
+        if el.inactive then -- separators and other stuff
+            goto continue
+        end
+
+        local mark = Marks[el.section] or mark_regular
+
+        if keep_favorite and mark == mark_favorite then
+            goto continue
+        end
+        if keep_trash and mark == mark_trash then
+            goto continue
+        end
+        if keep_regular and mark == mark_regular then
+            goto continue
+        end
+
+        self:Deposit(el, el.amount)
+
+        ::continue::
+    end
+end
+
+function UIStorage:KeepFilter(filter)
+    printf("KeepFilter call {%s}", filter)
+
+    keep_favorite = self.keep_favorite:GetCheck()
+    keep_regular = self.keep_regular:GetCheck()
+    keep_trash = self.keep_trash:GetCheck()
+
+    printf("KeepFilter results {favorite=%s, regular=%s, trash=%s}", keep_favorite, keep_regular, keep_trash)
+end
+
+function UIStorage:OnKeyboard(dik, keyboard_action)
+    local res = CUIScriptWnd.OnKeyboard(self, dik, keyboard_action)
+    if res then
+        return res
+    end
+
+    if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+        if dik == DIK_keys.DIK_ESCAPE then
+            if self:IsShown() then
+                self:Close()
+            end
+
+            return
+        end
+
+        if dik == DIK_keys.DIK_LSHIFT then
+            self.multiplier = self.multiplier * cfg.ui_shift_multiplier
+
+            return
+        end
+
+        if dik == DIK_keys.DIK_LCONTROL then
+            self.multiplier = self.multiplier * cfg.ui_ctrl_multiplier
+
+            return
+        end
+
+        if dik == DIK_keys.DIK_F then
+            if is_control_pressed then
+                CreateTimeEvent("UIStorage", "remove_initial_inputs", 0.2,
+                    function() -- capture focus via hotkey causes initial input. Handle it.
+                        if is_shift_pressed then
+                            self.searchbox:SetText("")
+                        end
+                        self.searchbox:CaptureFocus(true)
+
+                        return true
+                    end)
+            end
+        end
+    end
+
+    if keyboard_action == ui_events.WINDOW_KEY_RELEASED then
+        if dik == DIK_keys.DIK_LSHIFT then
+            self.multiplier = math.max(self.multiplier / cfg.ui_shift_multiplier, 1)
+
+            return
+        end
+
+        if dik == DIK_keys.DIK_LCONTROL then
+            self.multiplier = math.max(self.multiplier / cfg.ui_ctrl_multiplier, 1)
+
+            return
+        end
+    end
+
+    local bind = dik_to_bind(dik)
+    if (bind == key_bindings.kINVENTORY or bind == key_bindings.kUSE) and not (is_shift_pressed or is_control_pressed) then
+        if self:IsShown() and keybind_pass() then
+            self:Close()
+        end
+
+        return
+    end
+end
+
+function UIStorage:OnFilterCategory(cat)
+    printf("OnFilterCategory call")
+    if not cat or cat.id == "c_all" then
+        printf("OnFilterCategory display all")
+        self.selected_cat = nil
+    else
+        printf("OnFilterCategory cat=%s", cat.id)
+        self.selected_cat = cat
+    end
+
+    self:Reset(true)
+end
+
+function UIStorage:OnNameSearchboxCommit()
+    printf("OnNameSearchboxCommit call")
+
+    local text = self.searchbox:GetText()
+    if text and text ~= "" then
+        self.name_filter_str = string.lower(text)
+    else
+        self.name_filter_str = nil
+    end
+
+    printf("OnNameSearchboxCommit text=%s", self.name_filter_str)
+
+    self:Reset(true)
+end
+
+function UIStorage:OnStorageItemList()
+    self:Log("OnStorageItemList call")
+
+    local pick = self.storage_inv:GetSelectedItem()
+    if not pick or pick.inactive then
+        return
+    end
+
+    if is_alt_pressed then
+        if is_shift_pressed then
+            self:CycleTrash(pick.section)
+        else
+            self:CycleFavorites(pick.section)
+        end
+    else
+        local amount = math.min(CalculatePutOrGetAmount(pick.section, pick.amount) * self.multiplier, pick.amount)
+        self:Withdraw(pick, amount)
+    end
+
+    self:Reset()
+end
+
+function UIStorage:OnActorItemList()
+    printf("OnActorItemList")
+
+    local pick = self.actor_inv:GetSelectedItem()
+    if not pick or pick.inactive then
+        return
+    end
+
+    if is_alt_pressed then
+        if is_shift_pressed then
+            self:CycleTrash(pick.section)
+        else
+            self:CycleFavorites(pick.section)
+        end
+    else
+        local amount = CalculatePutOrGetAmount(pick.section, pick.amount) * self.multiplier
+        self:Deposit(pick, amount)
+    end
+
+    self:Reset()
+end
+
+function UIStorage:Withdraw(pick, amount)
+    printf("withdraw request = {%s, %s, %s}", pick.section, amount, pick.durability_text)
+
+    local resp = self.storage:Get(pick.section, pick.durability_text, amount)
+
+    printf("withdraw response = {%s, %s, %s}", resp.section, resp.amount, resp.durability_text)
+
+    SpawnItem(db.actor, resp.section, resp.amount, resp.durability_text)
+end
+
+function UIStorage:Deposit(pick, amount)
+    printf("deposit request = {%s, %s, %s}", pick.section, amount, pick.durability)
+
+    local resp = RemoveItems(db.actor, pick.section, amount, pick.durability)
+
+    printf("deposit response = {%s, %s, %s}", resp.section, resp.remaining, resp.durability)
+
+    self.storage:Put(resp.section, pick.durability_text, amount - resp.remaining)
+end
+
+function UIStorage:CycleFavorites(section)
+    printf("CycleFavorites call on %s", section)
+
+    if Marks[section] == mark_favorite then
+        Marks[section] = nil
+    else
+        Marks[section] = mark_favorite
+    end
+end
+
+function UIStorage:CycleTrash(section)
+    printf("CycleTrash call on %s", section)
+
+    if Marks[section] == mark_trash then
+        Marks[section] = nil
+    else
+        Marks[section] = mark_trash
+    end
+end
+
+function UIStorage:Log(msg, ...)
+    if not msg then
+        return
+    end
+
+    -- mode, weight_limit, storage (id, weight_limit)
+    local st_id = "undefined"
+    local st_wl = "undefined"
+    if self.storage then
+        st_id = tostring(self.storage:GetID())
+        st_wl = tostring(self.storage:GetWeightLimit())
+    end
+
+    local ui_mode = "undefined"
+    if self.mode then
+        ui_mode = tostring(self.mode)
+    end
+
+    local ctx = string.format(
+        "[module: %s | mode: %s| st_id: %s | st__wl: %s]",
+        "UIStorage",
+        ui_mode,
+        st_id,
+        st_wl
+    )
+
+    msg = msg .. " |---| ctx=" .. ctx
+
+    log(msg, ...)
+end
+
+function UIStorage:LogTr(msg, ...)
+    log(debug.traceback())
+    self:Log(msg, ...)
+end
+
+----------------------------------------------------------------- Storage
+
+class "Storage"
+
+function Storage:__init(id, weight_limit, content, mode)
+    self.ID = id
+    self.WeightLimit = weight_limit
+    self.Content = content
+    self.Mode = mode
+end
+
+function Storage:__finalize()
+
+end
+
+-- Get returns {section, durability, amount} on success or nil
+function Storage:Get(section, durability_text, amount)
+    if self.Content[section] == nil then
+        return
+    end
+    if self.Content[section][durability_text] == nil then
+        return
+    end
+
+    amount = math.min(amount, self.Content[section][durability_text].amount)
+
+    self.Content[section][durability_text].amount = self.Content[section][durability_text].amount - amount
+
+    return {
+        section = section,
+        durability_text = durability_text,
+        amount = amount
+    }
+end
+
+function Storage:Put(section, durability, amount)
+    -- todo check max weight
+    if self.Content[section] == nil then
+        self.Content[section] = {}
+    end
+    if self.Content[section][durability] == nil then
+        self.Content[section][durability] = {
+            amount = 0
+        }
+    end
+
+
+    self.Content[section][durability].amount = self.Content[section][durability].amount + amount
+
+    SendScriptCallback("on_storage_inventory_update_finished", self)
+end
+
+function Storage:GetID()
+    return self.ID
+end
+
+function Storage:GetWeightLimit()
+    return self.WeightLimit
+end
+
+-- GetContent returns Content field which is a table[section][durability]{amount}
+function Storage:GetContent()
+    return self.Content
+end
+
+-----
+--- Lister
+-----
+
+class "Lister"
+
+function Lister:__init()
+    self.ListElements = {}
+end
+
+function Lister:__finalize()
+
+end
+
+function Lister:FromNPCInv(inv, opts)
+    if not inv then
+        return nil
+    end
+
+    self:SetOpts(opts)
+
+    for sec, by_sec in pairs(inv) do
+        for durability, by_durability in pairs(by_sec) do
+            local amount = CalculateItemsAmount(by_durability)
+
+            if amount > 0 then
+                local el = self:MakeListElement(sec, cfg.lister_item_width, GetObjectName(sec),
+                    durability, amount)
+                el:SetTextColor(GetARGB(255, 150, 150, 250))
+
+                self.ListElements[#self.ListElements+1] = el
+            end
+        end
+    end
+
+    return self
+end
+
+function Lister:FromStorage(storage, opts)
+    if not storage or not storage.GetContent then
+        return nil
+    end
+
+    self:SetOpts(opts)
+
+    for sec, by_durability in pairs(storage:GetContent()) do
+        for durability, item in pairs(by_durability) do
+            if item.amount > 0 then
+                local el = self:MakeListElement(sec, cfg.lister_item_width, GetObjectName(sec),
+                    durability, item.amount)
+                el:SetTextColor(GetARGB(255, 150, 150, 250))
+
+                self.ListElements[#self.ListElements+1] = el
+            end
+        end
+    end
+
+    return self
+end
+
+function Lister:SetOpts(opts)
+    if not opts then
+        return
+    end
+
+    self.only_categories = opts.only_categories
+    self.name_filter_str = opts.name_filter_str
+end
+
+function Lister:MakeListElement(section, width, name, durability, amount, opts)
+    local has_durability = self:HasDurability(section)
+    local opts = opts or {}
+
+    opts.hide_durability = not has_durability
+
+    local _E = ItemListElement(section, width, name, durability, amount, opts)
+    _E:SetTextColor(GetARGB(255, 150, 150, 250))
+
+    return self:GetMarkedName(_E)
+end
+
+function Lister:HasDurability(section)
+    local has_cond = SYS_GetParam(1, section, "use_condition") or false
+
+    local kind = SYS_GetParam(0, section, "kind") or "unknown"
+    local cats = GetCategoriesByKind()
+    local cat = cats[kind] or {}
+    local opts = cat.opts or {}
+
+    if opts.hide_durability then
+        has_cond = opts.hide_durability_exceptions[kind] or false
+    end
+
+    return has_cond
+end
+
+-- GetListElements returns ItemListElement table
+function Lister:GetListElements(opts)
+    return self:Sort(self.ListElements, opts)
+end
+
+function Lister:Sort(elements, opts)
+    local result = {}
+    local by_kind = self:GroupByKind(elements, opts)
+    local by_cat_kind = self:GroupByCategory(by_kind, opts)
+    local kind_order = {}
+
+    for _, cat in pairs(GetCategoriesOrder()) do
+        if cat.id == "c_armor" and not cfg.storage_enable_armor then
+            log("Lister: armor storage disabled, skipping")
+
+            goto continue
+        end
+
+        if cat.id == "c_weapons" and not cfg.storage_enable_armor then
+            log("Lister: weapon storage disabled, skipping")
+
+            goto continue
+        end
+
+        if not self:IsCategoryDisplayed(cat) then
+            printf("Lister: category filtered out: %s", cat.id)
+
+            goto continue
+        end
+
+        local bk = by_cat_kind[cat]
+        if bk then
+            -- add category separator
+            local name = game.translate_string(cat.display_name) or cat.display_name
+            result[#result+1] = self:MakeCategoryElement(name)
+
+            for _, kind in pairs(GetKindsOrder(bk)) do
+                if bk[kind] then
+                    if cfg.lister_enable_kinds_separators then
+                        -- add kind separator
+                        local name = game.translate_string("st_" .. kind) or ("st_" .. kind)
+                        result[#result+1] = self:MakeKindElement(name)
+                    end
+
+                    for _, el in pairs(bk[kind]) do
+                        printdbg("trying to filter %s with search=%s", el.name, self.name_filter_str)
+                        if not string.match(string.lower(el.name), self.name_filter_str or "") then
+                            printdbg("filtered out %s", el.name)
+                            goto skip_element
+                        end
+
+                        result[#result+1] = el
+                        ::skip_element::
+                    end
+                end
+            end
+        end
+
+        ::continue::
+    end
+
+    return result
+end
+
+function Lister:IsCategoryDisplayed(cat)
+    if not cat then return false end
+
+    return self:GetAllowedCategoriesIDIndex()[cat.id] ~= nil
+end
+
+function Lister:GetAllowedCategoriesIDIndex()
+    local index = {}
+    if self.only_categories and type(self.only_categories) == "table" then
+        for _, allowed_cat in pairs(self.only_categories) do
+            index[allowed_cat.id] = allowed_cat
+        end
+    else
+        for _, allowed_cat in pairs(GetCategories()) do
+            index[allowed_cat.id] = allowed_cat
+        end
+    end
+
+    return index
+end
+
+function Lister:GetMarkedName(el)
+    local prefix = ""
+
+    if Marks[el.section] == mark_favorite then
+        prefix = mark_favorite_prefix
+    end
+    if Marks[el.section] == mark_trash then
+        prefix = mark_trash_prefix
+    end
+
+    if el.name then
+        el.name = prefix .. el.name
+    else
+        printf("received nil name for section=%s!", el.section)
+    end
+
+    el:Reset()
+
+    return el
+end
+
+-- todo maybe "meta" sorting will be required in future
+-- GroupByKind returns table[kind]elements. Elements are sorted by name and durability
+function Lister:GroupByKind(elements, opts)
+    local result = {}
+
+    for _, el in pairs(elements) do
+        local sec = el.section
+        if not sec then
+            log("Lister: undefined section while grouping by kind!")
+            goto continue
+        end
+
+        local kind = SYS_GetParam(0, sec, "kind") or "unknown"
+        result[kind] = result[kind] or {}
+
+        result[kind][#result[kind]+1] = el
+
+        ::continue::
+    end
+
+    for kind, els in pairs(result) do
+        table.sort(result[kind], function(e1, e2)
+            local e1_name = e1.name
+            local e2_name = e2.name
+            local m1 = Marks[e1.section] or 0
+            local m2 = Marks[e2.section] or 0
+
+            if (e2_name == e1_name) then
+                return (e1.durability_text > e2.durability_text)
+            end
+
+            if m1 == m2 then
+                return e1_name < e2_name
+            end
+
+            return m1 > m2
+        end)
+    end
+
+    return result
+end
+
+-- GroupByCategory returns table[category][kind]elements. Expects table[kind]
+function Lister:GroupByCategory(grouped_by_kind_elements, opts)
+    local cat_by_kind_index = GetCategoriesByKind()
+    local result = {}
+
+    for kind, els in pairs(grouped_by_kind_elements) do
+        local cat = cat_by_kind_index[kind] or cat_by_kind_index["unknown"]
+
+        result[cat] = result[cat] or {}
+        result[cat][kind] = els
+    end
+
+    return result
+end
+
+function Lister:MakeCategoryElement(title)
+    local opts = {
+        inactive = true,
+        text_color = GetARGB(255, 0, 204, 204)
+    }
+
+    local el = ItemListSeparator(title, title, opts)
+
+    return el
+end
+
+function Lister:MakeKindElement(title)
+    local opts = {
+        inactive = true,
+        text_color = GetARGB(255, 0, 153, 153)
+    }
+
+    local el = ItemListSeparator(title, title, opts)
+
+    return el
+end
+
+----------------------------------------------------------------- utils
+
+-- GetInventoryListEntries returns a list of lists, grouped by section -> durability
+function GetInventoryListEntries(npc, all)
+    local inv = GetInventoryMergedBySection(npc, all)
+    local list_entries = {}
+
+    for sec, items in pairs(inv) do
+        for _, item in pairs(items) do
+            local durability = GetObjectDurability(item)
+
+            if list_entries[sec] == nil then
+                list_entries[sec] = {}
+            end
+            if list_entries[sec][durability] == nil then
+                list_entries[sec][durability] = {}
+            end
+
+            list_entries[sec][durability][#list_entries[sec][durability]+1] = item
+        end
+    end
+
+    return list_entries
+end
+
+function GetInventoryMergedBySection(npc, all)
+    local inv = GetInventory(npc, all)
+    local merged_inv = {}
+
+    for _, item in pairs(inv) do
+        local sec = item:section()
+
+        if merged_inv[sec] == nil then
+            merged_inv[sec] = {}
+        end
+
+        merged_inv[sec][#merged_inv[sec]+1] = item
+    end
+
+    return merged_inv
+end
+
+function GetInventory(npc, all)
+    local inv = {}
+
+    local sec, kind
+
+    local function iterate(owner, obj)
+        sec = obj:section()
+        log("GetInventory: got section: %s", sec)
+
+        inv[#inv+1] = obj
+    end
+
+    if all then
+        npc:iterate_inventory(iterate, nil)
+    else
+        npc:iterate_ruck(iterate, nil)
+    end
+
+    return inv
+end
+
+function GetObjectDurability(obj)
+    local durability = ""
+
+    if obj then
+        if obj.condition == nil then
+            printf(obj:section() .. " has no condition() method!")
+            return "-1"
+        end
+        durability = tostring(tonumber(math.floor(obj:condition() * 100))) .. "%"
+    end
+
+    return durability
+end
+
+-- GetObjectName returns localized object name by section. Parameter - string, section.
+function GetObjectName(section)
+    local inv_name = ui_item.get_sec_name(section)
+
+    if inv_name ~= "" then
+        return inv_name
+    end
+
+    return section
+end
+
+-- GetObjectAmount return an amount of items. Ex. for ammo it returns an amount of ammo in the box, for consumables - remaining number of uses.
+--
+-- Type - number
+function GetItemAmount(obj)
+    if not obj then
+        return 1
+    end
+
+    local kind = SYS_GetParam(0, obj:section(), "kind") or "na"
+
+    if kind == "w_ammo" then
+        return tonumber(obj:ammo_get_count())
+    end
+
+    local amount = 1
+    if obj:get_remaining_uses() > 0 then
+        amount = tonumber(obj:get_remaining_uses())
+    end
+
+    return amount
+end
+
+function CalculateItemsAmount(objects)
+    local amount = 0
+
+    for _, obj in pairs(objects) do
+        amount = amount + GetItemAmount(obj)
+    end
+
+    return amount
+end
+
+function InitDefaultStorages()
+    if RVRData == nil then
+        RVRData = {}
+    end
+
+    if RVRData.Storages == nil then
+        RVRData.Storages = {}
+    end
+
+    if RVRData.Storages["test_bank"] == nil then
+        RVRData.Storages["test_bank"] = {
+            id = "test_bank",
+            mode = mode_test_bank,
+            weight_limit = 0,
+            content = {
+                ["ammo_7.62x51_ap"] = {
+                    ["100%"] = {
+                        amount = 1500000
+                    }
+                },
+                ["medkit_army"] = {
+                    ["100%"] = {
+                        amount = 3000000
+                    }
+                },
+                ["grenade_rgd5"] = {
+                    ["100%"] = {
+                        amount = 3000000
+                    }
+                }
+            }
+        }
+    end
+
+    if RVRData.Storages[global_storage_key] == nil then
+        RVRData.Storages[global_storage_key] = {
+            id = global_storage_key,
+            mode = mode_global_storage,
+            weight_limit = 0,
+            content = {}
+        }
+    end
+end
+
+-- CreateNewStorage creates new persistent storage. Overrides if exists.
+function CreateNewStorage(mode, params)
+    RVRData.Storages[params.id] = {
+        id = params.id,
+        mode = mode,
+        weight_limit = params.weight_limit,
+        content = params.content
+    }
+
+    return MakeStorageFromData(mode, params)
+end
+
+function MakeStorageFromData(mode, params)
+    if mode == mode_test_bank then
+        local st = Storage(params.id, params.weight_limit, params.content, mode)
+
+        return st
+    end
+
+    if mode == mode_global_storage then
+        local st = Storage(params.id, params.weight_limit, params.content, mode)
+
+        return st
+    end
+
+    if mode == mode_generic_container then
+        local st = Storage(params.id, params.weight_limit, params.content, mode)
+
+        return st
+    end
+
+    printf("unknown storage mode: " .. tostring(mode))
+    return
+end
+
+function InitActiveStorages()
+    for id, storage in pairs(RVRData.Storages) do
+        if ActiveStorages == nil then
+            ActiveStorages = {}
+        end
+
+        ActiveStorages[storage.id] = MakeStorageFromData(storage.mode, {
+            id = storage.id,
+            weight_limit = storage.weight_limit,
+            content = storage.content
+        })
+
+        printf("initialized ActiveStorage id=" ..
+            tostring(storage.id) .. " val=" .. tostring(ActiveStorages[storage.id]:GetContent()))
+    end
+end
+
+function CalculatePutOrGetAmount(section, pickAmount)
+    local kind = SYS_GetParam(0, section, "kind") or "na"
+
+    if kind == "w_ammo" then
+        local num_in_box = ini_sys:r_u32(section, "box_size")
+
+        return math.min(num_in_box, pickAmount)
+    end
+
+    local max_uses = IsItem("multiuse", section) or 1
+
+    return math.min(max_uses, pickAmount)
+end
+
+-- SpawnItem expects numeric durability or string val in format xx%
+function SpawnItem(npc, section, amount, durability)
+    if type(durability) == "string" then
+        durability = ConvertPercentStrToNum(durability)
+    end
+
+    amount = amount or 1
+    local remaining = 0
+    local iterations = amount
+
+    local kind = SYS_GetParam(0, section, "kind") or "na"
+    if kind == "w_ammo" then
+        local box_size = ini_sys:r_u32(section, "box_size")
+        if box_size == 0 then
+            log("!! box_size is 0 for " .. section)
+            return
+        end
+
+        remaining = amount % box_size
+        iterations = math.floor((amount - remaining) / box_size)
+    else
+        local max_uses = IsItem("multiuse", section) or 1
+
+        remaining = amount % max_uses
+        iterations = math.floor((amount - remaining) / max_uses)
+    end
+
+    if remaining ~= 0 then
+        local se_obj = alife_create_item(section, npc, {
+            ["cond"] = durability,
+            ["uses"] = remaining,
+            ["ammo"] = remaining
+        })
+
+        if npc:id() == AC_ID then
+            SendScriptCallback("on_actor_inventory_update_finished")
+        end
+    end
+
+    printf("SpawnItem stats(amount, remaining, iterations): " .. amount .. " " .. remaining .. " " .. iterations)
+
+    while iterations > 0 do
+        local se_obj = alife_create_item(section, npc, {
+            ["cond"] = durability
+        })
+
+        iterations = iterations - 1
+        if npc:id() == AC_ID then
+            SendScriptCallback("on_actor_inventory_update_finished")
+        end
+
+        if se_obj then
+            CreateTimeEvent(SpawnerEventSource, "zzzzz", cfg.spawner_durability_set_delay_seconds, function()
+                local obj = get_object_by_id(se_obj.id)
+                printf("id=" .. obj:id())
+                printf("durability=" .. durability)
+                obj:set_condition(durability + 0.005) -- because sometimes it sets 1% lower, maybe precision issues
+
+                SendScriptCallback("on_actor_inventory_update_finished")
+
+                return true
+            end)
+        end
+    end
+end
+
+-- RemoveItems returns {section, remaining, durability}
+function RemoveItems(npc, section, amount, durability)
+    local kind = SYS_GetParam(0, section, "kind") or "na"
+    local cnt = amount or 0
+    local max_uses = IsItem("multiuse", section)
+    local keep_itr = true
+
+    local function itr_item(temp, obj)
+        if keep_itr and (obj and obj:section() == section and CheckDurability(obj:condition(), durability)) then
+            local uses = max_uses and obj:get_remaining_uses() or 1
+            printf("cnt=%s uses=%s max_uses=%s", tostring(cnt), tostring(uses), tostring(max_uses))
+            cnt = cnt - uses
+
+            alife_release_id(obj:id(), "released " .. obj:id())
+
+            if (cnt >= 0) then
+                if (cnt == 0) then
+                    keep_itr = false
+                end
+            else
+                local remain = -cnt
+                SpawnItem(npc, section, remain, durability)
+                keep_itr = false
+            end
+        end
+    end
+
+    local function itr_ammo(temp, obj)
+        if keep_itr and (obj and obj:section() == section) then
+            cnt = cnt - obj:ammo_get_count()
+            if (cnt >= 0) then
+                alife_release_id(obj:id(), "released " .. obj:id())
+
+                if (cnt == 0) then
+                    keep_itr = false
+                end
+            else
+                local remain = -cnt
+                SpawnItem(npc, section, remain, durability)
+                keep_itr = false
+            end
+        end
+    end
+
+    if kind == "w_ammo" then
+        npc:iterate_ruck(itr_ammo, nil)
+    else
+        npc:iterate_ruck(itr_item, nil)
+    end
+
+    if cnt > 0 then
+        log("RemoveItems cannot remove all items! Left: %d", cnt)
+    end
+
+    SendScriptCallback("on_actor_inventory_update_finished")
+
+    return {
+        section = section,
+        remaining = math.max(cnt, 0),
+        durability = durability,
+    }
+end
+
+-- ConvertPercentStrToNum converts "78%" to 0.78
+function ConvertPercentStrToNum(durStr)
+    if type(durStr) == "number" then
+        return durStr
+    end
+
+    durStr = durStr:gsub("%%$", "")
+    local num = tonumber(durStr)
+    if num == nil then
+        printf("ConvertPercentStrToNum: num is nil")
+
+        return 0
+    end
+
+    return num / 100
+end
+
+-- CheckDurability compares durabilities. Expected non-percent form of arguments (d1 and d2 < 1)
+function CheckDurability(d1, d2)
+    if not d1 or not d2 then
+        return false
+    end
+
+    if type(d1) == "number" and type(d2) == "number" then
+        return math.floor(d1 * 100) == math.floor(d2 * 100)
+    end
+
+    return false
+end
+
+function GetCategoriesByKind(cats)
+    cats = cats or categories or {}
+    local cat_index = {}
+    for _, cat in pairs(cats) do
+        for _, knd in pairs(cat.kinds) do
+            cat_index[knd] = cat
+        end
+    end
+
+    return cat_index
+end
+
+-- GetKindsOrder returns stable kind order from table[kind]
+function GetKindsOrder(by_kind)
+    local kinds = {}
+    for kind, _ in pairs(by_kind) do
+        kinds[#kinds+1] = kind
+    end
+
+    table.sort(kinds, function(k1, k2)
+        return k1 < k2
+    end)
+
+
+    return kinds
+end
+
+function GetCategoriesOrder()
+    local order = {}
+    for _, cat in pairs(categories) do
+        order[#order+1] = cat
+    end
+
+    return order
+end
+
+function AddKindToHideDurabilityExceptions(cats, kind)
+    if not kind then
+        return
+    end
+    if not categories then
+        printf("GetCategoriesOrder: categories is nil!")
+
+        return {}
+    end
+
+    for _, cat in pairs(cats) do
+        for _, k in pairs(cat.kinds) do
+            if k == kind then
+                cat.opts.hide_durability_exceptions = cat.opts.hide_durability_exceptions or {}
+                cat.opts.hide_durability_exceptions[k] = true
+                break
+            end
+        end
+    end
+end
+
+local K_Timer = false
+
+function keybind_pass()
+    -- I added this to prevent inventory closing after starting because of release keybind
+    if (K_Timer and (time_global() > K_Timer + 200)) or (not K_Timer) then
+        K_Timer = time_global()
+        return true
+    end
+    return false
+end
+
+function string.starts(String, Start)
+    return string.sub(String, 1, #Start) == Start
+end
+
+-----
+--- Create storage callback
+---
+function rvr_storage_actor_on_stash_create(data)
+    log("created enhanced storage: " .. data.stash_id)
+    log("name: " .. data.stash_name)
+    log("section: " .. data.stash_section)
+
+    if ActiveStorages[data.stash_id] then
+        log("stash with id=%s exists, it will be overridden", stash_id)
+    end
+
+    ActiveStorages[data.stash_id] = CreateNewStorage(mode_generic_container, {
+        id = data.stash_id,
+        weight_limit = 0,
+        content = {}
+    })
+end
+
+function physic_object_on_use_callback(obj, who)
+    if not obj or not who then
+        return
+    end
+
+    local stg = ActiveStorages[obj:id()]
+    if who:id() ~= AC_ID or not stg then
+        return
+    end
+
+    log("used adv stash: " .. who:id())
+    log("adv stash id: " .. obj:id())
+
+    start(stg)
+end
+
+-----
+--- Interceptors and monkey patches
+-----
+
+local uinv_orig_start = ui_inventory.start
+ui_inventory.start = function(mode, obj)
+    printf("monkey patching ui_inventory.start")
+
+    local stg
+    if obj then
+        stg = ActiveStorages[obj:id()]
+    end
+
+    if not stg then
+        return uinv_orig_start(mode, obj)
+    end
+
+    log("adv stash id: " .. obj:id())
+
+    start(stg)
+end
+
+item_backpack_orig_func_stash = item_backpack.func_stash
+item_backpack.func_stash = function(obj)
+    log("create stash handler intercepted")
+
+    item_backpack_orig_func_stash(obj)
+end
+
+orig_UICreateStashOnAccept_callback = item_backpack.UICreateStash.OnAccept
+item_backpack.UICreateStash.OnAccept = function(self, ...)
+    log("UICreateStash.OnAccept intercepted")
+
+    local args = ...
+
+    mb = CUIMessageBoxEx()
+    self:Register(mb, "rvr_storage_mb_set_stash_type")
+
+    mb:InitMessageBox("message_box_yes_no")
+    mb:SetText("st_rvr_ss_mb_set_stash_type_text")
+    mb:ShowDialog(true)
+
+    self:AddCallback("rvr_storage_mb_set_stash_type", ui_events.MESSAGE_BOX_YES_CLICKED, function()
+        log("create stash: mbox: enhanced storage selected")
+        local stash_section = "inv_backpack" -- todo change to new section
+
+
+        local se_obj = alife_create(stash_section, db.actor:position(), db.actor:level_vertex_id(),
+            db.actor:game_vertex_id())
+        if (se_obj) then
+            local txt = self.input:GetText()
+            txt = txt ~= "" and txt or
+                strformat(game.translate_string("st_itm_stash_of_character"), db.actor:character_name())
+
+            level.map_add_object_spot_ser(se_obj.id, "treasure", txt) -- todo maybe del
+            actor_menu.set_msg(1, game.translate_string("st_rvr_ss_mb_set_stash_created"), 4)
+
+            alife_release_id(self.id)
+
+            local data = {
+                stash_id = se_obj.id,
+                stash_name = txt,
+                stash_section = stash_section,
+            }
+
+            SendScriptCallback("rvr_storage_actor_on_stash_create", data)
+        end
+
+        self:Close()
+    end, self)
+
+    self:AddCallback("rvr_storage_mb_set_stash_type", ui_events.MESSAGE_BOX_NO_CLICKED, function()
+        log("create stash: mbox: default storage selected")
+
+        return orig_UICreateStashOnAccept_callback(self, args)
+    end, self)
+end
+
+-----
+--- Compatibility
+-----
+
+if zatura_autostack then
+    printf("zatura_autostack detected, detaching callback")
+
+    orig_zatura_autostack_GUI_on_show = zatura_autostack.GUI_on_show
+    zatura_autostack.GUI_on_show = function(name)
+        CreateTimeEvent("UIStorage", "zatura_autostack_delay_callback_call", 0.1, function()
+            if GUI and GUI:IsShown() then
+                return
+            end
+
+            orig_zatura_autostack_GUI_on_show(name)
+
+            return true
+        end)
+    end
+end

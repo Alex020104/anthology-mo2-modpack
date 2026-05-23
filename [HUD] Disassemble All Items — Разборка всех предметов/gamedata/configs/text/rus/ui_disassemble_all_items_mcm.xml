@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	
+	<string id="ui_mcm_disassemble_all_items_title">
+		<text>Разобрать все предметы</text>
+	</string>
+	<string id="ui_mcm_menu_disassemble_all_items">
+		<text>Разобрать все</text>
+	</string>
+
+	<string id="ui_mcm_disassemble_all_items_ammo_maker_compatibility">
+		<text>Ammo Maker Патч</text>
+	</string>
+	<string id="ui_mcm_disassemble_all_items_ammo_maker_compatibility_desc">
+		<text>Выключает "разобрать все" меню если установлен мод Ammo Maker</text>
+	</string>
+		
+</string_table>

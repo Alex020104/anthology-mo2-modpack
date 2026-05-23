@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_new_game_export_title">
+		<text>Новая игра экспорт</text>
+	</string>
+	<string id="ui_mcm_menu_new_game_export">
+		<text>Новая игра экспорт</text>
+	</string>
+
+	<!-- Main -->
+	<string id="ui_mcm_new_game_export_header">
+		<text>Нажмите "Экспорт" на одном сохранении, затем включите "Разрешить импорт", начните новую игру (или загрузите другую) и нажмите "Импорт клавишу". После этого желательно выключить "Разрешить импорт".</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_export">
+		<text>Экспорт (для сохранения информации)</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_allow_import">
+		<text>Разрешить импорт</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_import_key">
+		<text>Импорт клавиша (используется для спавна всего)</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_days_to_add">
+		<text>Добавить отображаемых дней</text>
+	</string>
+
+
+	<!-- Options -->
+	<string id="ui_mcm_new_game_export_header_2">
+		<text>Опции для экспорта</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_gear">
+		<text>Снаряжение</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_money">
+		<text>Деньги</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_companions">
+		<text>Напарники</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_stats">
+		<text>Статистика</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_rank">
+		<text>Ранг</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_reputation">
+		<text>Репутация</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_actor_goodwill">
+		<text>Отношения игрока</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_factions_goodwill">
+		<text>Отношения группировок</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_info_portions">
+		<text>Инфо поршни (открытые места и квесты на инструменты механика)</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_routes">
+		<text>Переходы</text>
+	</string>
+
+	<string id="ui_mcm_new_game_export_smart">
+		<text>Позиция (Beta)</text>
+	</string>
+	<string id="ng_export_teleport">
+		<text>Вы будете телепортированы на вашу прежнюю позицию через 30 секунд.</text>
+	</string>
+
+</string_table>

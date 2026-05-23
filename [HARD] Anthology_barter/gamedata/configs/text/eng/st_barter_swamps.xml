@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+    <string id="st_kalancha_meds">
+        <text>Swamp living tends to take its toll on us. Many of our people are coming down with illness owing to staying out late on recon and having to deal with the cold and wet. If you can help us with getting some over the counter medicine, we'll provide you some of the surplus scientific equipment we have.</text>
+    </string>
+    <string id="st_kalancha_meds_done">
+        <text>Your help is appreciated, stalker.</text>
+    </string>
+    
+    <string id="st_librarian_fuel">
+        <text>We've managed to restart the old pumping station and we can draw out a decent supply of natural gas. If you can bring us some meat, we'll be happy to trade.</text>
+    </string><string id="st_librarian_fuel_done">
+        <text>Your help is appreciated, man. We gotta keep our boys alive.</text>
+    </string>
+
+    
+    <string id="st_spore_weapons">
+        <text>There's a lot of territory to cover in these swamps, and we need a steady supply of equipment to stay effective in the field. If you can bring some gear for us, I'll give you a refurbished weapon.</text>
+    </string>
+    <string id="st_spore_weapons_done">
+        <text>Thanks, this will come in handy.</text>
+    </string>
+    
+    <string id="st_spore_repair">
+        <text>Being out here degrades our equipment rapidly, especially with all the mud and other things. If you can spare any cleaning or repairing supplies, we'll be very grateful.</text>
+    </string>
+    <string id="st_spore_repair_done">
+        <text>Thanks. Here's something to kill the time.</text>
+    </string>
+
+    <string id="st_novikov_1">
+        <text>An old man like me needs to keep busy, and I keep busy best by working on protective gear. That jacket of yours? That's not going to keep you alive long out here - bring me a few items and I'll fit that into a proper stalker's suit.</text>
+    </string>
+    
+    <string id="st_novikov_2a">
+        <text>How's that suit treating you? Want something better suited for anomalies? I can try and fit a gas mask or something on there, as well as add a simple protective layer. I have the gas mask, but I need a few more things in order to install it.</text>
+    </string>
+    <string id="st_novikov_2b">
+        <text>Is that a bullet hole? If you plan on getting into firefights, you'll need a plate carrier at least and not just a kevlar vest. I have the tools, but I'll need some material to put it together.</text>
+    </string>
+    <string id="st_novikov_2c">
+        <text>I can arrange to install an exoskeleton onto your suit. I have a contact working with Sakharov who can supply me the electroics, so in addition to the usual stuff I'm going to need a bottle of Nemiroff.</text>
+    </string>
+
+    <string id="st_novikov_3a">
+        <text>Our last shipment came with an SCBA and Screen helmet, which they salvaged from some poor Ecologist. If you get me a few more things, I might be able to upgrade that NBC suit into a SEVA.</text>
+    </string>
+    <string id="st_novikov_3b">
+        <text>That armored suit holding up ok? If you want some extended protection, I can arrange for that. Here's a list of what i need.</text>
+    </string>
+    <string id="st_novikov_4a">
+        <text>Hey stalker, I got some good news. One of my military contacts managed to trade me the schematics for advanced SKAT-9 armor for a few favors. I should be able to retrofit your heavy suit to incorporate most of the new features. It will end up being a well-rounded suit, but this is unfortunately the most I can do for it.</text>
+    </string>
+    <string id="st_novikov_4b">
+        <text>Three of my guys dragged in this military stalker in an exoskeleton that cooked to death in a steam anomaly. Most of the hardware was pretty badly damaged but we were able to salvage the helmet and some of the frag suit. I can upgrade your heavy armor into an Exosuit, but I'll need a lot of extra parts. Also, I can't guarantee the smell will go away.</text>
+    </string>
+    <string id="st_novikov_5a">
+        <text>I have an agreement with the Duty faction to supply them special suits in exchange for general supplies. If you bring me the right things, I can modify your suit to grant it enhanced protection. This will be tricky as the armor treatment makes use of a few artifacts, but we'll be able to upgrade more than just your suit if you help me out.</text>
+    </string>
+    <string id="st_novikov_5b">
+        <text>Good news, we got a replacement servomotor control unit. The one off the military stalker suffered too much steam damage. I had to call in a favor for it from one of our Ecologist contacts, so in addition to the usual stuff I'm going to need a bottle of Nemiroff.</text>
+    </string>
+    <string id="st_novikov_done">
+        <text>Wear it well, stalker. Come by later, I might think of further improvements.</text>
+    </string>
+</string_table>

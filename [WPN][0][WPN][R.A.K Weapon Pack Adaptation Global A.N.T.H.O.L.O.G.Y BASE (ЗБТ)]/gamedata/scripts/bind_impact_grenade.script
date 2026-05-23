@@ -1,0 +1,130 @@
+--[[
+    Script binding for EFPWP impact grenades
+    Author: HarukaSai
+
+    Created: 21-09-2022
+]]
+
+function bind(obj)
+    if (not alife_object(obj:id())) then
+        obj:bind_object(impact_grenade_binder(obj))
+    end
+end
+
+--------------------------------------------------------------------------------
+-- Class "impact_grenade_binder"
+--------------------------------------------------------------------------------
+
+class "impact_grenade_binder" (object_binder)
+
+function impact_grenade_binder:__init(obj) 
+    super(obj)
+
+    self.sec = self.object:section()
+
+    self.ray = efp_utils_mcm.geometry_ray(10, 1, nil, 1 + 2)
+    self.ray.ray:set_ignore_object(obj)
+    self.frags_r = SYS_GetParam(2, self.sec, "frags_r", 6)
+    self.velocity_threshold = SYS_GetParam(2, self.sec, "velocity_threshold", 0.36)
+    self.tg_period = 33
+    self.object:set_fastcall(self.fastcall, self)
+end
+
+function impact_grenade_binder:fastcall()
+    local obj = self.object
+
+    if obj:parent() then
+        return
+    end
+
+    -- shamelessly stolen from molotovs
+    if (not self.position) then
+        self.velocity = 0
+        self.position = obj:position()
+        self.direction = VEC_GROUND
+        self.tg = 0
+        self.tg_time = 0
+        return
+    end
+
+    self.tg = self.tg + device().time_delta
+
+    if self.tg < self.tg_time then
+        return
+    end
+
+    self.tg_time = self.tg + self.tg_period
+
+    local pos = obj:position()
+    local dir = vector():set(pos):sub(self.position)
+
+    self.velocity = dir:magnitude()
+    self.direction = dir:normalize()
+
+    local result = self.ray:get(pos, dir)
+
+    if (not result.in_contact) or (self.velocity < 0.36) then
+        return 
+    end
+    
+    self:explode()
+
+    self.object:destroy_object()
+end
+
+function impact_grenade_binder:explode()
+    local se = alife_create(self.object:section() .. "_explosion", self.object)
+
+    CreateTimeEvent("explode" .. se.id, "explode" .. se.id, 0, function()
+        local obj = level.object_by_id(se.id)
+        
+        if obj then
+            -- make living things angy
+            level.iterate_nearest(obj:position(), self.frags_r, function(_obj)
+                if (IsStalker(_obj) or IsMonster(_obj)) and _obj:id() ~= AC_ID then
+                    local h = hit()
+                    h.type = hit.fire_wound
+                    h.power = 0.0
+                    h.impulse = 0.0
+                    h.direction = VEC_Y
+                    h.draftsman = db.actor
+                    _obj:hit(h)
+                end
+            end)
+
+            obj:explode(0)
+
+            return true
+        end
+        
+        return false
+    end)
+end
+
+function impact_grenade_binder:net_spawn(se_abstract)
+    if (not object_binder.net_spawn(self, se_abstract)) then
+        return false
+    end
+	
+    return true
+end
+
+--[[
+function creature_hit(obj, shit, bone_id)
+    printf("obj: %s | s_hit data: [%s %s %s %s %s %s] | bone_id: %s", 
+        obj:section(), 
+        shit.power,
+        shit.impulse,
+        shit.type,
+        shit.direction and vec_to_str(shit.direction), 
+        shit.draftsman and shit.draftsman:name(),
+        shit.weapon_id,
+        bone_id
+    )
+end
+
+function on_game_start()
+    RegisterScriptCallback("npc_on_before_hit", creature_hit)
+    RegisterScriptCallback("monster_on_before_hit", creature_hit)
+end
+]]

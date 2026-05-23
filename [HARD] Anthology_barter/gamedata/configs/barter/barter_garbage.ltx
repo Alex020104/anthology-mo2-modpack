@@ -1,0 +1,149 @@
+; garbage
+
+; butcher
+[hunter_knoife] ; one time hunting knife
+trader          = hunter_gar_trader
+give            = wpn_knife3
+take            = hide_flesh:3
+repeat          = fixed
+limit           = 1
+sort_rank       = 2
+desc            = st_hunter_knife
+desc_done       = st_hunter_knife_done
+
+[hunter_toz34_mark4]
+trader          = hunter_gar_trader
+give            = wpn_toz34_mark4
+type            = anyOf
+take            = af_empty:1,af_fuzz_kolobok:1,af_electra_flash:1
+repeat          = fixed
+limit           = 1
+sort_rank       = 2
+desc            = st_hunter_toz34_mark4
+desc_done       = st_hunter_done
+
+[hunter_revolver357]
+trader          = hunter_gar_trader
+give            = wpn_revolver357
+take            = mutant_part_krovosos_jaw:3
+repeat          = fixed
+limit           = 1
+sort_rank       = 3
+desc            = st_hunter_revolver357
+desc_done       = st_hunter_done
+
+[hunter_sharps_j]
+trader          = hunter_gar_trader
+give            = wpn_sharps_j
+take            = mutant_part_pseudogigant_hand:2,mutant_part_pseudogigant_eye:2
+repeat          = fixed
+limit           = 1
+sort_rank       = 3
+desc            = st_hunter_sharps_j
+desc_done       = st_hunter_done
+
+[hunter_scope_sharps]
+trader          = hunter_gar_trader
+give            = wpn_addon_scope_sharps
+take            = mutant_part_chimera_claw:2,mutant_part_heart_chimera:1
+repeat          = fixed
+limit           = 1
+sort_rank       = 3
+desc            = st_hunter_scope_sharps
+desc_done       = st_hunter_done
+
+
+[hunter_meat_bandage] ; meat for bandage
+trader          = hunter_gar_trader
+type            = anyOf
+give            = bandage
+take            = mutant_part_dog_meat:2,mutant_part_flesh_meat:2
+repeat          = restock
+limit           = 6
+sort_rank       = 1
+desc            = st_hunter_meat
+desc_done       = st_hunter_meat_done
+
+[hunter_meat_stones]:hunter_meat_bandage ; meat for stones
+type            = anyOf
+give            = sharpening_stones
+take            = mutant_part_dog_meat:2,mutant_part_flesh_meat:2
+
+[hunter_meat_buck]:hunter_meat_bandage ; meat for buckshot
+give            = ammo_12x70_buck
+take            = mutant_part_boar_chop:1,mutant_part_psevdodog_meat:1
+limit           = 10
+
+[hunter_meat_magnum]:hunter_meat_bandage ; 
+give            = ammo_357_hp_mag
+take            = mutant_part_boar_chop:2,mutant_part_psevdodog_meat:2
+limit           = 10
+
+[hunter_meat_clean]:hunter_meat_bandage ; meat for cleaning kit
+give            = cleaning_kit_s
+take            = mutant_part_boar_chop:3,mutant_part_psevdodog_meat:3
+limit           = 1
+
+; flea market
+
+[flea_upgr_reliability]
+trader          = baraholka_trader
+give            = upgr_w_1_reliability
+take            = upgr_w_1_rpm:2,upgr_w_1_firemode:2,upgr_w_1_recoil:2
+repeat          = restock
+type            = anyOf
+addon           = !kit_binder
+limit           = 2
+desc            = st_flea_upgrades
+
+[flea_upgr_rpm]:flea_upgr_reliability
+give            = upgr_w_1_rpm
+take            = upgr_w_1_reliability:2,upgr_w_1_firemode:2,upgr_w_1_recoil:2
+
+[flea_upgr_recoil]:flea_upgr_reliability
+give            = upgr_w_1_recoil
+take            = upgr_w_1_reliability:2,upgr_w_1_firemode:2,upgr_w_1_rpm:2
+
+[flea_upgr_firemode]:flea_upgr_reliability
+give            = upgr_w_1_firemode
+take            = upgr_w_1_reliability:2,upgr_w_1_rpm:2,upgr_w_1_recoil:2
+
+[flea_upgr_weight]:flea_upgr_reliability
+give            = upgr_w_1_weight
+take            = upgr_w_1_speed:2,upgr_w_1_dispersion:2,upgr_w_1_inertion:2
+
+[flea_upgr_dispersion]:flea_upgr_reliability
+give            = upgr_w_1_dispersion
+take            = upgr_w_1_speed:2,upgr_w_1_weight:2,upgr_w_1_inertion:2
+
+[flea_upgr_inertion]:flea_upgr_reliability
+give            = upgr_w_1_inertion
+take            = upgr_w_1_speed:2,upgr_w_1_dispersion:2,upgr_w_1_weight:2
+
+[flea_upgr_internal]:flea_upgr_reliability
+addon           = kit_binder
+limit           = 3
+give            = upgr_w_1_internal
+take            = upgr_w_1_external:2,upgr_w_1_optical:2
+
+[flea_upgr_external]:flea_upgr_internal
+give            = upgr_w_1_external
+take            = upgr_w_1_optical:2,upgr_w_1_internal:2
+
+[flea_upgr_optical]:flea_upgr_internal
+give            = upgr_w_1_optical
+take            = upgr_w_1_external:2,upgr_w_1_internal:2
+
+[flea_ammo] ; artifacts for good ammo
+trader          = baraholka_trader_night
+give            = ammo_9x19_ap:6
+take            = af_medallion,af_medusa,af_ear,af_grapes,af_dummy_glassbeads
+repeat          = restock
+type            = anyOf
+limit           = 5
+desc            = st_flea_ammo
+
+[flea_ammo2]:flea_ammo
+give            = ammo_9x19_ap_bad:4
+take            = af_medallion,af_medusa,af_ear,af_grapes,af_dummy_glassbeads
+addon           = arti_ballistics

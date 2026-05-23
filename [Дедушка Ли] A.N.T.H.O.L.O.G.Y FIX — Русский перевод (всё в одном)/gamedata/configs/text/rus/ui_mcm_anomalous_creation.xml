@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="ui_mcm_anomalous_creation_title">
+		<text>Создание артефактов из мутантов</text>
+	</string>	
+	<string id="ui_mcm_menu_anomalous_creation">
+		<text>Anomalous Creation</text>
+	</string>
+	<string id="ui_mcm_anomalous_creation_enable">
+		<text>Включить аддон</text>
+	</string>
+
+	<string id="ui_mcm_anomalous_creation_spawn_chance_low_tier">
+		<text>Вероятность  появления артефакта для мутантов низкого уровня</text>
+	</string>
+
+	<string id="ui_mcm_anomalous_creation_spawn_chance_mid_tier">
+		<text>Вероятность  появления артефакта для мутантов среднего уровня</text>
+	</string>
+
+	<string id="ui_mcm_anomalous_creation_spawn_chance_high_tier">
+		<text>Вероятность  появления артефакта для мутантов высокого уровня</text>
+	</string>
+
+<!-- 	<string id="ui_mcm_anomalous_creation_spawn_chance_human">
+		<text>Вероятность  появления артефакта для сталкеров</text>
+	</string> -->
+
+	<string id="ui_mcm_anomalous_creation_debug">
+		<text>Дебаг</text>
+	</string>
+
+	<string id="ui_mcm_anomalous_creation_description">
+		<text>При смерти мутанта в аномалии в ней с определенным шансом появляется артефакт, соответствующий уровню погибшего мутанта и типу аномалии.\nНиже указаны шансы для мутантов разного уровня. Пояснения об уровне приведены у каждой настройки.\nУстановка вероятности появления артефакта на 0 отключает появление артефактов для этого типа мутантов.\nБаланс: рекомендуется установить вероятность появления для обычных и средних мутантов пониже, т.к. они довольно распространены, особенно, если используется аддон Perk Based Artefacts:\nC ним "мусорные" артефакты, в основном относящиеся в данном аддоне к мутантам низкого уровня, наделяются полезными свойствами, что сильно повышает их полезность и ценность по савнению с обычными.\n\nДополнительно:\nУчитывает новые аномалии из аддона Arrival и сборки Anthology\nМногие аномалии из Arrival имеют "смешанный" тип порождаемых артефактов\nРаботает с новыми мутантами из аддона Dynamic Mutants, как и с любыми другими, созданными на основе стандартных (этот аддон ориентируется на движковый класс монстра)</text>
+	</string>
+
+	<string id="ui_mcm_anomalous_creation_spawn_chance_low_tier_desc">
+		<text>Мутанты низкого уровня: кабан, кикимора, кот, слепой пес, псевдособака, плоть, зомби.</text>
+	</string>
+	<string id="ui_mcm_anomalous_creation_spawn_chance_mid_tier_desc">
+		<text>Мутанты среднего уровня: кровосос, пси-кровосос, карлик, пси-собака, снорк, излом.</text>
+	</string>
+	<string id="ui_mcm_anomalous_creation_spawn_chance_high_tier_desc">
+		<text>Мутанты высокого уровня: контролер, бюрер, химера, псевдогигант.</text>
+	</string>
+
+</string_table>

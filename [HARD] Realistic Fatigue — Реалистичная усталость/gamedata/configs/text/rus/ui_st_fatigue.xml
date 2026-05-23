@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+	<string id="ui_mcm_fatigue_title">
+		<text>Усталость</text>
+	</string>
+	<string id="ui_mcm_menu_fatigue">
+		<text>Усталость</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_campfire_regen">
+		<text>Множитель регенерации у костров</text>
+	</string>
+	<string id="ui_mcm_fatigue_campfire_regen_desc">
+		<text>Множитель снижения усталости, если в радиусе 5 метров горит костер. Значение "1" означает снижение на 6% в час. (По умолчанию: 1)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_increase_mult">
+		<text>Общий Множитель Усталости</text>
+	</string>
+	<string id="ui_mcm_fatigue_increase_mult_desc">
+		<text>Множитель для потери энергии, вызванной усталостью. Больший множитель быстрее истощает вашу силу. (По умолчанию: 1)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_walk_mult">
+		<text>Множитель Ходьбы</text>
+	</string>
+	<string id="ui_mcm_fatigue_walk_mult_desc">
+		<text>Множитель усталости при ходьбе. (По умолчанию: 1)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_run_mult">
+		<text>Множитель Бега</text>
+	</string>
+	<string id="ui_mcm_fatigue_run_mult_desc">
+		<text>Множитель усталости при беге. (По умолчанию: 1)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_sprint_mult">
+		<text>Множитель Спринта</text>
+	</string>
+	<string id="ui_mcm_fatigue_sprint_mult_desc">
+		<text>Множитель усталости при спринте. (По умолчанию: 1)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_jump_mult">
+		<text>Множитель Прыжка</text>
+	</string>
+	<string id="ui_mcm_fatigue_jump_mult_desc">
+		<text>Множитель усталости при прыжке. (По умолчанию: 1)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_sleep_regen_per_hour">
+		<text>Регенерация во сне в %</text>
+	</string>
+	<string id="ui_mcm_fatigue_sleep_regen_per_hour_desc">
+		<text>Регенерация за каждый час сна. (По умолчанию: 8)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_max_fatigue">
+		<text>Максимальная Усталость в %</text>
+	</string>
+	<string id="ui_mcm_fatigue_max_fatigue_desc">
+		<text>Максимальное количество, которого может достичь усталость. Не поднимется выше этого значения. (По умолчанию: 75)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_debug_mode">
+		<text>Дебаг</text>
+	</string>
+	<string id="ui_mcm_fatigue_debug_mode_desc">
+		<text>Активирует режим отладки. В режиме отладки вы можете видеть: общую усталость (внизу экрана); скорость передвижения (динамические новости); увеличение/уменьшение усталости от предметов (консоль). (По умолчанию: очевидно, "отключено" xd)</text>
+	</string>
+
+</string_table>

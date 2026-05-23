@@ -1,0 +1,32 @@
+<string_table>
+	<string id="st_player_skills_strength">
+		<text>Strength</text>
+	</string>
+	<string id="st_player_skills_endurance">
+		<text>Endurance</text>
+	</string>
+	<string id="st_player_skills_survival">
+		<text>Survival</text>
+	</string>
+	<string id="st_player_skills_scavenging">
+		<text>Perception</text>
+	</string>
+    <string id="st_haruka_skills_main">
+		<text>Character Skills</text>
+	</string>
+	<string id="st_new_level_endurance">
+		<text>$clr_green• $clr_whiteStamina drain reduced.\n$clr_cyan• $clr_whiteRun and sprint speed increased.</text>
+	</string>
+	<string id="st_new_level_strength">
+		<text>$clr_yellow• $clr_whiteCarry weight bonus increased.\n$clr_red• $clr_whiteMelee damage improved.\n</text>
+	</string>
+	<string id="st_new_level_scavenging">
+		<text>$clr_purple• $clr_whiteFind more loot on stalkers.</text>
+	</string>
+	<string id="st_new_level_survival">
+		<text>$clr_cyan• $clr_whiteDamage resistance improved.\n$clr_red• $clr_whiteBleeding control improved.\n$clr_purple• $clr_whiteFind more body parts on mutants.</text>
+	</string>
+	<string id="st_new_level_header">
+		<text>Skill $name leveled up to $level</text>
+	</string>
+</string_table>

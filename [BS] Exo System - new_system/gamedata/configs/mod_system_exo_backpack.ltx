@@ -1,0 +1,50 @@
+[exobackpack_exo_outfit]:exo_outfit
+kind = o_heavy
+
+visual = dynamics\outfit\exo_outfit
+actor_visual = actors\stalker_neutral\stalker_neutral_4.ogf
+npc_visual = actors\stalker_neutral\stalker_neutral_4.ogf
+player_hud_section = actor_hud_exo
+repair_type = outfit_exo
+inv_name = st_exobackpack_name
+inv_name_short = st_exobackpack_name
+description = st_exobackpack_descr
+community =
+use1_functor = exo_faction_patch.menu_remove_patch
+use1_action_functor = exo_faction_patch.action_remove_patch
+
+upgrades								 = up_gr_firstab_exolight_1, up_gr_seconab_exolight_1, up_gr_thirdab_exolight_1, up_gr_fourtab_exolight_1, up_gr_fifthab_exo_1
+installed_upgrades           			 =
+upgrade_scheme							 = up_scheme_exo_1
+
+inv_grid_width     = 2
+inv_grid_height    = 3
+inv_grid_x         = 0
+inv_grid_y         = 0
+icons_texture      = ui\ui_icon_exo_backpack
+
+slot = 6
+cost = 200000
+inv_weight = 25.0
+additional_inventory_weight = 180
+additional_inventory_weight2 = 180
+
+bonus_mutant_part_chance				 = 70
+disassemble_parts = prt_o_fabrics_2,		prt_o_retardant_1,		prt_o_retardant_11,		prt_o_ballistic_16,		prt_o_support_1
+
+immunities_sect                          = exobackpack_exo_outfit_immunities
+control_inertion_factor					 = 1.0
+power_loss								 = 0.04 ;NEW FORMULA ; power restore (0.0 base) * (0.5 + outfit power loss + helmet power loss + backpack power loss)
+backpack_avaliable                       = false
+
+[exobackpack_exo_outfit_immunities]
+burn_immunity                            = 0.0
+strike_immunity                          = 0.25
+shock_immunity                           = 0.0
+wound_immunity                           = 0.35
+wound_2_immunity                         = 0.2
+radiation_immunity                       = 0.0
+telepatic_immunity                       = 0.0
+chemical_burn_immunity                   = 0.0
+explosion_immunity                       = 0.3
+fire_wound_immunity                      = 0.0

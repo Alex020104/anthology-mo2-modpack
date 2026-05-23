@@ -1,0 +1,106 @@
+<w>
+	<background x="321.59375" y="250.5" width="380.8125" height="267" stretch="1">
+		<texture>ui_inGame2_message_box</texture>
+	</background>
+	
+	<sleep_static x="24.1875" y="32" width="332.4375" height="118" stretch="1">
+		<texture>ui_inGame2_sky_panorama</texture>
+	</sleep_static>
+	
+	<static_cover x="21.375" y="27.25" width="338.0625" height="128" stretch="1">
+		<texture>ui_inGame2_panorama_window</texture>
+	</static_cover>
+	
+	<st_marker x="0" y="5" width="16.875" height="118" stretch="1">
+		<texture>ui_inGame2_marker</texture>
+	</st_marker>
+	
+	<sleep_st_1 x="21.375" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_1>
+	<sleep_st_2 x="35.4375" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_2>
+	<sleep_st_3 x="49.5" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_3>
+	<sleep_st_4 x="63.5625" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_4>
+	<sleep_st_5 x="77.625" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_5>
+	<sleep_st_6 x="91.6875" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_6>
+	<sleep_st_7 x="105.75" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_7>
+	<sleep_st_8 x="119.8125" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_8>
+	<sleep_st_9 x="133.875" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_9>
+	<sleep_st_10 x="147.9375" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_10>
+	<sleep_st_11 x="162" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_11>
+	<sleep_st_12 x="176.0625" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_12>
+	<sleep_st_13 x="190.125" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_13>
+	<sleep_st_14 x="204.1875" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_14>
+	<sleep_st_15 x="218.25" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_15>
+	<sleep_st_16 x="232.3125" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_16>
+	<sleep_st_17 x="246.375" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_17>
+	<sleep_st_18 x="260.4375" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_18>
+	<sleep_st_19 x="274.5" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_19>
+	<sleep_st_20 x="288.5625" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_20>
+	<sleep_st_21 x="302.625" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_21>
+	<sleep_st_22 x="316.6875" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_22>
+	<sleep_st_23 x="330.75" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_23>
+	<sleep_st_24 x="344.8125" y="165" width="14.0625" height="16" complex_mode="0">
+		<text align="c" vert_align="c" font="letterica16" r="80" g="80" b="80"/>
+	</sleep_st_24>
+	
+	<time_track x="21.375" y="187" width="338.0625" height="16" is_integer="1" step="1">
+		<options_item entry="g_sleep_time" group="sleep" depend="runtime"/>
+	</time_track>
+	
+	<btn_sleep x="112.5" y="223" width="76.5" height="28" check_mode="0" stretch="1">
+		<window_name>button_yes</window_name>
+		<text y="2" font="letterica18">sleep_ok_button</text>
+		<texture>ui_button_ordinary</texture>
+	</btn_sleep>
+	
+	<btn_cancel x="191.8125" y="223" width="76.5" height="28" check_mode="0" stretch="1">
+		<window_name>button_no</window_name>
+		<text y="2" font="letterica18">Btn_Cancel</text>
+		<texture>ui_button_ordinary</texture>
+	</btn_cancel>
+</w>

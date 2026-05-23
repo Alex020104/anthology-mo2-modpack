@@ -1,0 +1,364 @@
+local ini_rel = ini_file("creatures\\game_relations.ltx")
+
+function get_new_period()
+	local hrs = level.get_time_hours()
+	for i, t in ipairs(xcvb_arena_main.arena_main_t) do
+		if hrs >= t.min and hrs < t.max then
+			return i
+		end
+	end
+end
+
+function spawn_board()
+	local pos = vector():set(149.2, 1.40, 70.81)
+	local se_obj = alife_create("xcvb_arena_board", pos, 2^32-1, 2233)
+	if not se_obj then return end
+
+	local data = utils_stpk.get_physic_data(se_obj)
+	data.custom_data = [[
+[collide]
+ignore_static
+ignore_small_objects
+
+[logic]
+cfg = scripts\arena_board_logic.ltx
+]]
+	utils_stpk.set_physic_data(data, se_obj)
+
+	se_obj.angle = vector():set(0, -2.06, 0)
+end
+
+function spawn_balcony()
+	local pos = vector():set(140.1, -13.51, 102.2)
+	local se_obj = alife_create("xcvb_arena_balcony", pos, 2^32-1, 2233)
+	if not se_obj then return end
+
+	local data = utils_stpk.get_physic_data(se_obj)
+	data.custom_data = [[
+[collide]
+ignore_static
+ignore_small_objects
+]]
+	utils_stpk.set_physic_data(data, se_obj)
+
+	se_obj.angle = vector():set(0, -1.5708, 0)
+end
+
+function handle_removed_teams()
+	for i, t in ipairs(xcvb_arena_main.arena_main_t) do
+		if #t.team1 > 0 then
+			remove_teams = false
+			for j, sec in ipairs(t.team1) do
+				if string.find(sec, "zombied") then
+					remove_teams = true
+					break
+				end
+			end
+			for j, sec in ipairs(t.team2) do
+				if string.find(sec, "zombied") then
+					remove_teams = true
+					break
+				end
+			end
+			if remove_teams then
+				iempty_table(xcvb_arena_main.arena_main_t[i].team1)
+				iempty_table(xcvb_arena_main.arena_main_t[i].team2)
+				iempty_table(xcvb_arena_main.arena_main_t[i].pwrs)
+			end
+		end
+	end
+end
+
+local stalkers_t = {
+	stalker = { 0, 1, 2, 3, 4 },		bandit = { 0, 1, 2, 3, 4 },		killer = { 0, 1, 2, 3, 4 },
+	duty = { 0, 1, 2, 3, 4 },		freedom = { 0, 1, 2, 3, 4 },		army = { 0, 1, 2, 3, 4 },
+	ecolog = { 0, 1, 2, 3, 4 },		csky = { 0, 1, 2, 3, 4 },		monolith = { 0, 1, 2, 3, 4 },
+	greh = { 0, 1, 2, 3, 4 },		renegade = { 0, 1, 2 },		-- zombied = { 1, 2, 3, 4 }
+}
+
+local stalkers_power_t = {
+	-- stalkers by rank
+	[0] = 1,	[1] = 3,	[2] = 5,	[3] = 8,	[4] = 10,
+}
+
+function get_stalker_team(amount)
+	local ret_ar = {}
+	local pwr = 0
+	-- pick random comm and fill from it
+	local k = random_key_table(stalkers_t)
+	for i = 1, amount do
+		local rnd_idx = math.random(1, #stalkers_t[k])
+		local rank_val = stalkers_t[k][rnd_idx]
+		local new_k = k == "army" and "military" or k
+		local sec = "sim_default_" .. new_k .. "_" .. rank_val
+		ret_ar[#ret_ar + 1] = sec
+		pwr = pwr + stalkers_power_t[rank_val]
+	end
+	return ret_ar, pwr
+end
+
+local mutants_t = {
+	zombie = {"_weak", "_normal", "_strong", "_blind"},
+	boar = {"_normal", "_strong", "_01a_weak", "_02a_weak", "_02a_strong", "_01a_hard", "_02a_hard"},
+	dog = {"_normal_red", "_normal_white", "_normal_brown", "_normal_bulterier", "_weak_red", "_weak_white",
+				"_weak_brown", "_weak_bulterier", "_strong_red", "_strong_white", "_strong_brown", "_strong_bulterier", "_strong_black"},
+	pseudodog = {"_grey_weak", "_normal", "_strong", "_grey_strong"},
+	cat = {"_weak_a", "_weak_b", "_weak_c", "_weak_d", "_weak_e", "_normal_a", "_normal_b", "_normal_c", "_normal_d", "_normal_e",
+				"_strong_a", "_strong_b", "_strong_c", "_strong_d", "_strong_e"},
+	fracture = {"_weak", "_normal", "_strong", "_2", "_3"},
+	snork = {"_weak", "_weak2", "_weak3", "_weak4", "_normal", "_normal2", "_normal3", "_normal4", "_strong", "_strong2", "_strong3", "_strong4"},
+	lurker = {"_1_weak", "_2_weak", "_3_weak", "_1_normal", "_2_normal", "_3_normal", "_1_strong", "_2_strong", "_3_strong" },
+	bloodsucker = {"_red_weak", "_green_weak", "_black_weak", "_red_normal", "_green_normal", "_black_normal",
+							"_red_strong", "_green_strong", "_black_strong"},
+	psysucker = {"_2_weak", "_3_weak", "_2_normal", "_3_normal", "_2_strong", "_3_strong"},
+	psy_dog = {"_normal"},
+	chimera = {"_weak", "_normal", "_strong", "_strong2", "_strong3", "_strong4"},
+}
+
+local mutants_power_t = {
+	zombie = 1, 		boar = 3, 		dog = 2, 		pseudodog = 4, 		cat = 4, 		fracture = 5,
+	snork = 5, 		lurker = 5, 		bloodsucker = 8, 		psysucker = 8, 		psy_dog = 8, 		chimera = 12
+}
+
+local mutant_relation_order = {
+	"actor","human","zoo_monstr","boar","bloodsucker","flesh","dog","pseudodog","cat","chimera","giant","zombie","burer","controller","poltergeist","snork","fracture","bird","rat","tushkano","corpse","trader","arena_monstr","komar","tark","medwed","rotan","fly","mwolf","psysucker","lurker","karlik"
+}
+
+local mutant_relations_t = {}
+
+function get_mutant_team(amount, team1_mutant_type)
+	local ret_ar = {}
+	local pwr = 0
+	local k
+
+	-- make relations table if not created
+	if is_empty(mutant_relations_t) then
+		fill_mutant_relations_table()
+	end
+
+	-- team1 is mutant - pick enemy mutant
+	if team1_mutant_type then
+		local team1_enemies_t = mutant_relations_t[team1_mutant_type]
+		local t_size = team1_enemies_t and size_table(team1_enemies_t) or 0
+		if t_size <= 0 then
+			return ret_ar, pwr, k
+		end
+		k = random_key_table(team1_enemies_t)
+	-- team1 is stalker - pick any mutant
+	else
+		k = random_key_table(mutants_t)
+	end
+
+	for i = 1, amount do
+		local rnd_idx = math.random(1, #mutants_t[k])
+		local sec = k .. mutants_t[k][rnd_idx]
+		ret_ar[#ret_ar + 1] = sec
+		pwr = pwr + mutants_power_t[k]
+	end
+	return ret_ar, pwr, k
+end
+
+function fill_mutant_relations_table()
+	-- collect and store mutants and their enemies
+	local n = ini_rel:line_count("monster_relations")
+	for i = 0, n - 1 do
+		local _, mutant, values = ini_rel:r_line_ex("monster_relations", i, "", "")
+		-- keep only possible fighters
+		if mutant and mutants_t[mutant] then
+			mutant_relations_t[mutant] = {}
+			-- fill it with enemies only
+			local rel_ar = str_explode(values, ",")		-- {-1, 0, 1}
+			for idx, val in ipairs(rel_ar) do
+				local enemy_mutant = mutant_relation_order[idx]
+				if tonumber(val) < 0 and enemy_mutant and mutants_t[enemy_mutant] then
+					mutant_relations_t[mutant][enemy_mutant] = true
+				end
+			end
+		end
+	end
+
+	-- exclude mutants that are not enemies to each other
+	for mutant1, t1 in pairs(mutant_relations_t) do
+		for mutant2, t2 in pairs(mutant_relations_t) do
+			if mutant1 ~= mutant2 and t2[mutant1] and (not t1[mutant2]) then
+				mutant_relations_t[mutant2][mutant1] = nil
+			end
+		end
+	end
+
+	-- copy psy_dog from pseudodog
+	mutant_relations_t["psy_dog"] = {}
+	mutant_relations_t["psy_dog"] = dup_table(mutant_relations_t["pseudodog"])
+end
+
+function get_team_str(ar)
+	for _, sec in ipairs(ar) do
+		-- stalkers
+		for k, __ in pairs(stalkers_t) do
+			if string.find(sec, k) then
+				return k == "duty" and "dolg" or k
+			elseif string.find(sec, "military") then
+				return "army"
+			end
+		end
+		-- mutants
+		for k, __ in pairs(mutants_t) do
+			if string.find(sec, "^" .. k) then
+				if k == "dog" then
+					return "encyclopedia_mutants_blind_dog"
+				elseif k == "psy_dog" then
+					return "encyclopedia_mutants_psydog"
+				end
+				return "encyclopedia_mutants_" .. k
+			end
+		end
+	end
+end
+
+function get_actor_arena_pos()
+--	local pos = vector():set(139.1, -13.37, 101.5)
+	local pos = vector():set(141.6, -13.35, 102.1)
+	local lvid = 37386
+	local gvid = 2233
+	return pos, lvid, gvid
+end
+
+function get_team_pos(n)
+	if n == 1 then
+		local pos = vector():set(151.45764160156, -21.007097244263, 131.42234802246)
+		local lvid = 75170
+		local gvid = 2233
+		return pos, lvid, gvid
+	elseif n == 2 then
+		local pos = vector():set(152.09324645996, -21.059066772461, 77.412223815918)
+		local lvid = 75372
+		local gvid = 2233
+		return pos, lvid, gvid
+	end
+end
+
+function arena_fade_in_out(in_dly)
+	local fade_in_delay = in_dly or 0
+	local fade_out_delay = fade_in_delay + 2
+
+	CreateTimeEvent("xcvb_arena_fade_in_e", "xcvb_arena_fade_in_a", fade_in_delay, function()
+		level.add_pp_effector("fade_in.ppe", 987123)
+		return true
+	end)
+	CreateTimeEvent("xcvb_arena_fade_out_e", "xcvb_arena_fade_out_a", fade_out_delay, function()
+		level.add_pp_effector("fade_out.ppe", 987124)
+		return true
+	end)
+end
+
+function set_teams_relation(squad_id1, squad_id2)
+	-- for stalkers only
+	local squad1 = squad_id1 and alife_object(squad_id1)
+	local squad2 = squad_id2 and alife_object(squad_id2)
+	if not (squad1 and squad1.commander_id and squad2 and squad2.commander_id) then return end
+	if string.find(squad1:section_name(), "mutant") or string.find(squad2:section_name(), "mutant") then return end
+
+	for m1 in squad1:squad_members() do
+		local npc1 = level.object_by_id(m1.id)
+		for m2 in squad2:squad_members() do
+			local npc2 = level.object_by_id(m2.id)
+			if npc1 and npc1:alive() and npc2 and npc2:alive() then
+				npc1:force_set_goodwill(-9999, npc2)
+				npc2:force_set_goodwill(-9999, npc1)
+			end
+		end
+	end
+end
+
+function set_out_restrictors(squad_id1, squad_id2)
+	local squad1 = squad_id1 and alife_object(squad_id1)
+	local squad2 = squad_id2 and alife_object(squad_id2)
+	if not (squad1 and squad1.commander_id and squad2 and squad2.commander_id) then return end
+
+	for m1 in squad1:squad_members() do
+		local npc1 = level.object_by_id(m1.id)
+		if npc1 and npc1:alive() then
+			npc1:add_restrictions("bar_arena_restrictor", "")
+		end
+	end
+
+	for m2 in squad2:squad_members() do
+		local npc2 = level.object_by_id(m2.id)
+		if npc2 and npc2:alive() then
+			npc2:add_restrictions("bar_arena_restrictor", "")
+		end
+	end
+end
+
+function hit_npcs(squad_id1, squad_id2)
+	local squad1 = squad_id1 and alife_object(squad_id1)
+	local squad2 = squad_id2 and alife_object(squad_id2)
+	if not (squad1 and squad1.commander_id and squad2 and squad2.commander_id) then return end
+
+	for m1 in squad1:squad_members() do
+		local npc1 = level.object_by_id(m1.id)
+		for m2 in squad2:squad_members() do
+			local npc2 = level.object_by_id(m2.id)
+			if npc1 and npc1:alive() and npc2 and npc2:alive() then
+				xcvb_arena_utils.scr_hit(npc1, npc2)
+				xcvb_arena_utils.scr_hit(npc2, npc1)
+			end
+		end
+	end
+end
+
+function scr_hit(npc, who)
+	if not (npc and who) then return end
+--	printf("%s [%s] hits %s [%s]", npc:section(), npc:id(), who:section(), who:id())
+	local h = hit()
+	h.type = hit.wound
+	h.power = 0
+	h.impulse = 0
+	h.direction = VEC_Z
+	h.draftsman = npc
+	who:hit(h)
+end
+
+
+-- override to fix
+function sim_squad_scripted.sim_squad_scripted.get_script_target(self)
+	--utils_data.debug_write("sim_squad_scripted:get_script_target")
+	local new_target 
+	if (self.scripted_target) then 
+		new_target = self.scripted_target
+	elseif (axr_task_manager.hostages_by_id[self:commander_id()]) then
+		return axr_task_manager.hostages_by_id[self:commander_id()]
+	elseif (self.random_targets) then
+		if (self.current_action == 0 and self.assigned_target_id == nil) then 
+			new_target = self.random_targets[math.random(#self.random_targets)]
+		else 
+			return self.assigned_target_id
+		end
+	elseif (self.action_condlist) then
+		new_target = xr_logic.pick_section_from_condlist(db.actor, self, self.action_condlist)
+	end 
+	
+	-- prevent companions from moving to actor if they cannot teleport and actor is not on same level
+	if (axr_companions.companion_squads[self.id]) then
+		local se_obj = alife_object(self:commander_id())
+		if (self.online ~= true) and (se_obj and se_load_var(se_obj.id,se_obj:name(),"companion_cannot_teleport")) then
+			return self.id
+		end
+		return 0
+	end
+		
+	if (new_target == "actor") then
+		return 0
+	end
+	
+	local smart = new_target and SIMBOARD.smarts_by_names[new_target]
+	if (smart) then
+		return smart.id
+	end
+	
+	local new_id = tonumber(new_target)
+	local se_target = new_id and alife_object(new_id)
+	if se_target and (se_target:clsid() == clsid.online_offline_group_s or se_target:clsid() == clsid.smart_terrain) then
+		return new_id
+	end
+end

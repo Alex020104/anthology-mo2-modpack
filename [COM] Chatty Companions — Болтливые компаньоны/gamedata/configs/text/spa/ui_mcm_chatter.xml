@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="ui_mcm_chatter_title">
+		<text>Opciones De Companeros Charlatan</text>
+	</string>
+	<string id="ui_mcm_menu_chatter">
+		<text>Companeros Charlaan</text>
+	</string>
+	<string id="ui_mcm_chatter_desc1">
+		<text>Ajustes Generales</text>
+	</string>
+
+	<string id="ui_mcm_chatter_show_time">
+		<text>Duracion Donde Mensajes Van A Aparecer</text>
+	</string>
+	<string id="ui_mcm_chatter_show_time_long">
+		<text>Duraction Donde Mensajes Largos Van Aparecer</text>
+	</string>
+	<string id="ui_mcm_chatter_beep_before">
+		<text>Emite un sonido cuando aparece un mensaje.</text>
+	</string>
+	<string id="ui_mcm_chatter_beep_after">
+		<text>Emite un sonido cuando un mensaje desaparece.</text>
+	</string>
+	<string id="ui_mcm_chatter_msg_state">
+		<text>Color de mensaje personalizado</text>
+	</string>
+	<string id="ui_mcm_chatter_msg_argb">
+		<text>Valor ARGB del mensaje personalizado</text>
+	</string>
+
+	<string id="ui_mcm_chatter_desc2">
+		<text>Ajustes De Respuestas Especificas</text>
+	</string>
+
+
+	<string id="ui_mcm_chatter_anomaly_state">
+		<text>Comentarios De Anormalidades</text>
+	</string>
+	<string id="ui_mcm_chatter_anomaly_timer">
+		<text>Tiempo Minimo Entre De Comentarios De Anormalidades</text>
+	</string>
+
+	<string id="ui_mcm_chatter_clear_state">
+		<text>Comentarios De Areas Vacias/Claras</text>
+	</string>
+
+	<string id="ui_mcm_chatter_campfire_state">
+		<text>Historias Alrededor Fuegos De Campamentos</text>
+	</string>
+	<string id="ui_mcm_chatter_wpm">
+		<text>Que Rapido (Palabras Por Minuto) Las Historias De Fuegos De Campamentos Son Dichas</text>
+	</string>
+
+	<string id="ui_mcm_chatter_npc_death_state">
+		<text>Comentarios De Los Companeros Cuando Mueren (Dicho Por Los Companeros Muertos)</text>
+	</string>
+
+	<string id="ui_mcm_chatter_npc_death_comment_state">
+		<text>Comentarios De Los Companeros Cuando Otro Companero Muere (Dicho Por Un Segundo Companero Si Disponible)</text>
+	</string>
+
+	<string id="ui_mcm_chatter_emission_state">
+		<text>Comentarios De Emisiones</text>
+	</string>
+
+	<string id="ui_mcm_chatter_enemy_state">
+		<text>Comentarios De Enemigos</text>
+	</string>
+
+	<string id="ui_mcm_chatter_headshot_state">
+		<text>Comentarios De Companeros Cuando Disparan A Un Enemigo Por La Cabeza</text>
+	</string>
+
+	<string id="ui_mcm_chatter_level_state">
+		<text>Comentarios De Niveles</text>
+	</string>
+	<string id="ui_mcm_chatter_level_chance">
+		<text>Oportunidad De Porciento De Un Comentario En El Nivel Presente</text>
+	</string>
+
+	<string id="ui_mcm_chatter_npc_health_state">
+		<text>Salud Baja (Salud De Companero)</text>
+	</string>
+
+	<string id="ui_mcm_chatter_player_death_state">
+		<text>Comentarios Sobre Muerte De Jugador</text>
+	</string>
+
+	<string id="ui_mcm_chatter_psistorm_state">
+		<text>Comentarios sobre tormentas psi</text>
+	</string>
+
+	<string id="ui_mcm_chatter_reload_state">
+		<text>Comentarios Cuando El Jugador Recarga Su Arma</text>
+	</string>
+	<string id="ui_mcm_chatter_reload_chance">
+		<text>Porciento De Oportunidad De Un Comentario Cuando En Jugador Recarga Su Arma</text>
+	</string>
+
+	<string id="ui_mcm_chatter_jammed_state">
+		<text>Comentarios Cuando La Arma Del Jugador Se Atasca</text>
+	</string>
+
+	<string id="ui_mcm_chatter_random_state">
+		<text>Comentarios Casuales/Aleatorios</text>
+	</string>
+	<string id="ui_mcm_chatter_random_chance">
+		<text>Multiplicador de frecuencia de mensajes aleatorios</text>
+	</string>
+
+	<string id="ui_mcm_chatter_safe_area_state">
+		<text>Comentarios De Area Segura</text>
+	</string>
+	<string id="ui_mcm_chatter_safe_area_chance">
+		<text>Porciento De La Oportunidad De Un Comentario En Area Segura</text>
+	</string>
+</string_table>

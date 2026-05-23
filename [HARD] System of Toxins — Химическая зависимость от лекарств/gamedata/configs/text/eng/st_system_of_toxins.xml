@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="ui_toxine">
+		<text>Intoxication</text>
+	</string>
+	
+	<string id="ui_boost_detox">
+		<text>Enhanced detoxification</text>
+	</string>
+	
+	<string id="ui_boost_detox_time">
+		<text>Duration of the effect</text>
+	</string>
+	
+	<string id="ui_nat_detox">
+		<text>Natural detoxification</text>
+	</string>
+	
+	<string id="ui_toxine_time">
+		<text>%/sec</text>
+	</string>
+	
+	<string id="ui_toxins_status_0">
+		<text>Ugh, I think I've let go</text>
+	</string>
+	
+	<string id="ui_toxins_status_1">
+		<text>Something makes me feel sick</text>
+	</string>
+	
+	<string id="ui_toxins_status_2">
+		<text>Wow, the food is begging to come out</text>
+	</string>
+	
+	<string id="ui_toxins_status_3">
+		<text>Damn, I feel pretty bad</text>
+	</string>
+	
+	<string id="ui_toxins_status_4">
+		<text>I feel so sick that I'm going to die soon!</text>
+	</string>
+	
+	<string id="ui_toxins_status_5">
+		<text>Just a little more and I'll definitely die!</text>
+	</string>
+	
+	<string id="ui_toxins_status_6">
+		<text>I don't want to die like this...</text>
+	</string>
+
+
+	<string id="st_dm_medic_general_text_17">
+		<text>I don't feel well...</text>
+	</string>
+
+	<string id="st_dm_medic_general_text_19">
+		<text>Remove the toxins %c[d_orange][880 RU]</text>
+	</string>
+
+	<string id="st_dm_medic_general_text_20">
+		<text>No, thanks. I'd better just go lie down then.</text>
+	</string>
+
+	<string id="st_dm_medic_general_text_21">
+		<text>Okay, never mind.</text>
+	</string>
+
+	<string id="st_dm_medic_general_text_7_0">
+		<text>Okay. I can remove intoxication without any problems, but it will cost you 880 RU. But it will feel better in a moment. I had the right medications here somewhere... But if you've managed to get a radiation, then it's useless to remove only toxins - after a while it will get bad again. I'll remove the radiation out of you for a separate 1,480 RU.\nSo, what have you decided?</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_7_1">
+		<text>I'm going to take a device to measure the amount of toxins in your blood and see what's wrong with you... uh-huh, I see. Did you eat something wrong, did you drink too much, or did you abuse various drugs?</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_7_2">
+		<text>Okay, roll up your sleeve, we'll check the level of toxins. If you notice again that the world around you has turned yellow and your eyes are blurred, then this is a clear sign of intoxication. Overdose is not to be trifled with. If you get poisoned again and find yourself far from the base, then at least carry activated charcoal with you in such a case.</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_7_3">
+		<text>Well, let's see how bad it is. If the intoxication is not too strong, you can just sleep. Or take an antidote. But it's better to leave it in case it turns out to be a long way to go to the doctor, and intoxication needs to be removed urgently.</text>
+	</string>
+
+
+	<string id="st_dm_medic_general_text_70_0">
+		<text>The device shows the minimum level of toxins, everything is within the normal range.</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_70_1">
+		<text>Are you sure you're intoxicated? Your condition is normal.</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_70_2">
+		<text>You see, he feels bad, but there's not even a hint of intoxication! Admit it, did you drink yesterday? You'd better go drink some mineral water.</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_70_3">
+		<text>Will the hallucinations still not let you go after another overdose? There are no signs of intoxication, you'd better get some sleep.</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_70_4">
+		<text>Relax. You don't have any hints of intoxication. What were you worried about?</text>
+	</string>
+	
+</string_table>

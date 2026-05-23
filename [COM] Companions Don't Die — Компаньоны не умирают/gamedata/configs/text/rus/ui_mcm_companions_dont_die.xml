@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="ui_mcm_menu_companions_dont_die">
+        <text>Компаньоны не умирают</text>
+    </string>
+    <string id="ui_mcm_companions_dont_die_header">
+        <text>Компаньоны не умирают</text>
+    </string>
+    <string id="ui_mcm_companions_dont_die_toggle">
+        <text>Бессмертные компаньоны</text>
+    </string>
+    <string id="ui_mcm_companions_dont_die_toggle_desc">
+        <text>Если включено, компаньоны не умирают, а переходят в состояние ранения. Если выключено, компаньоны снова могут умереть.</text>
+    </string>
+    <string id="ui_mcm_companions_dont_die_immortal_companions">
+        <text>Бессмертные компаньоны</text>
+    </string>
+    <string id="ui_mcm_companions_dont_die_immortal_companions_desc">
+        <text>Если включено, компаньоны не умирают, а переходят в состояние ранения. Если выключено, компаньоны снова могут умереть.</text>
+    </string>
+</string_table>

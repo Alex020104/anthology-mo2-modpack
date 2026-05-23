@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<string_table>
+    <string id="tb_kit_hunt">
+        <text>Набор охотника</text>
+    </string>
+    <string id="tb_kit_hunt_descr">
+        <text>Набор охотника (Охотничий Рюкзак). Целая сумка крючков, ножей и прочего снаряжения, используемого для снятия шкур и потрошения животных и мутантов. Мало кто из сталкеров носит с собой профессиональное снаряжение для охоты на мутантов. Возможно, именно поэтому многие жители Зоны страдают от несварения желудка после употребления мяса мутантов. Несмотря на свою тяжесть и громоздкость, эта сумка очень удобна при ношении и позволяет хранить части мутантов.\n \n
+        %c[ui_gray_3]ХАРАКТЕРИСТИКИ:\n
+    	%c[d_blue] • %c[ui_gray_2] эффективное хранение предметов\n
+    	%c[0,100,255,150] • %c[ui_gray_2] можно использовать как тайник\n
+    	%c[d_orange] • %c[ui_gray_2] специальное снаряжение\n
+    	%c[d_orange] • %c[ui_gray_2] значительно увеличивает время сбора трофеев, а также количество частей тела, полученных от мутантов\n
+    	%c[d_orange] • %c[ui_gray_2] Очень тяжелый, если не носить\n
+        </text>
+    </string>
+	<string id="ui_mcm_menu_tb_HuntKit">
+    	<text>Набор охотника</text>
+	</string>
+	<string id="ui_mcm_menu_tb_HuntKit_features">
+    	<text>Особенности</text>
+	</string>
+	<string id="ui_mcm_menu_tb_HuntKit_settings">
+    	<text>Настройки</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_disableExtraSounds">
+    	<text>Отключить повторное воспроизведение звуков</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_disableExtraSounds_desc">
+    	<text>Этот мод добавляет 9 неиспользуемых звуков рубки и воспроизводит их в случайном порядке. Вы можете отключить эту функцию, если вы заменили стандартный звук рубки и хотите слышать только его и ничего больше... или если вам просто очень нравится стандартный звук ;)</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_harvestHardcap">
+    	<text>Сбор трофеев</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_harvestHardcap_desc">
+		<text>Максимально возможный шанс спавна предмета. Даже если вы установите очень высокие модификаторы сложности, они будут снижены до этого значения.\n%c[d_orange]ПО УМОЛЧАНИЮ: 92%</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_harvestDifficulty">
+    	<text>Шкала сложности - Набор охотника</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_harvestDifficulty_desc">
+    	<text>Модификатор сбора трофеев, применяемый при ношении «Набора охотника»\n2=Двойной шанс выпадения\n0=Ничего не выпадет.\n%c[d_orange]ПО УМОЛЧАНИЮ: 1</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_minItems">
+    	<text>Распределение сбора трофеев</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_minItems_desc">
+    	<text>По умолчанию, первый предмет каждого типа всегда имеет максимальную вероятность выпадения. Вы можете изменить количество предметов с максимальным шансом: увеличить его или уменьшить, чтобы показать неумение персонажа пользоваться снаряжением для разделки.... или просто очень больные животные.\n \n 2=Первые 2 предмета получают максимальный шанс выпадения\n-2=Шансы снижаются, как если бы 2 предмета уже выпали.\n \n%c[d_red]ОСТОРОЖНО:%c[d_white] Снижение ниже 1 приведет к огромной разнице между наличием и отсутствием рюкзака. Уменьшение ниже -3 функционально отключает все масштабирование.\n \n%c[d_green]СОВЕТ:%c[d_white] Попробуйте значения от 0 до -2, чтобы получить более "жесткие" впечатления.\n \n%c[d_orange]ПО УМОЛЧАНИЮ: 1</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_muteHarvestSounds">
+    	<text>(FDDA) Исправление дублирующего звука разделки SoundFX</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_muteHarvestSounds_desc">
+    	<text>%c[d_orange]Используйте это, если у вас в FDDA "Анимация разделки мутантов"%c[d_green] ВКЛЮЧЕНА!\n \n%c[d_white]Это отключит звуки разделки основной игры. Полезно, если вы используете мод, который добавляет собственные звуки разделки.\n \n%c[d_red]ВНИМАНИЕ%c[d_orange] - Если вы используете анимации FDDA, вы не сможете воспользоваться функцией переменной скорости разделки, включенной этим модом. Если вы не знаете, что это значит, пожалуйста, прочитайте вкладку «Особенности» слева от вас.</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_scavengeDifficulty">
+    	<text>Шкала сложности - Сбор мусора</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_scavengeDifficulty_desc">
+		<text>Модификатор трофеев применяется, если %c[d_red]НЕ %c[d_white]носить/надеваеть «Набор охотника».\n2=Двойной шанс выпадения\n0=Ничего не выпадет.\n%c[d_orange]ПО УМОЛЧАНИЮ: 1</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_useHarvestSoundFallback">
+    	<text>(FDDA) Фиксация бесшумной разделки</text>
+	</string>
+	<string id="ui_mcm_tb_HuntKit_tb_HuntKit_settings_useHarvestSoundFallback_desc">
+		<text>c[d_orange]Используйте это, если у вас в FDDA "Анимация разделки мутантов"%c[d_red] ОТКЛЮЧЕНА!\n \n%c[d_white]В ранних версиях FDDA до 0.9 был фиктивный звуковой файл. Он заменял стандартный звук разделки на тишину и предотвращал дублирование звуков. Если вы играете с отключенной анимацией разделки мутантов в FDDA, вы можете вообще не услышать звуков разделки! Этот мод исправляет это, используя другой эффект.</text>
+	</string>
+</string_table>    

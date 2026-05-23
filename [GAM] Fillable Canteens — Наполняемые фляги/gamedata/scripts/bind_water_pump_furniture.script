@@ -1,0 +1,41 @@
+--[[
+	Functionality for water pump furniture
+
+    This work is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).
+    Author: HarukaSai (visit us at: https://discord.gg/efp)
+	19-06-2023
+]]
+
+function init(obj)
+    obj:bind_object(placeable_pump_binder_wrapper(obj).binder)
+end
+
+class "placeable_pump_binder_wrapper" (bind_hf_base.hf_binder_wrapper)
+
+function placeable_pump_binder_wrapper:__init(obj) super(obj) end
+
+function placeable_pump_binder_wrapper:update(delta)
+    bind_hf_base.hf_binder_wrapper.update(self, delta)
+    
+    self.object:set_tip_text(game.translate_string(db.actor:object("empty_canteen") and "st_water_pump_fill" or "st_water_pump_no_canteen"))
+end
+
+function placeable_pump_binder_wrapper:net_spawn()
+    bind_hf_base.hf_binder_wrapper.net_spawn(self)
+
+    level.map_add_object_spot(self.object:id(), "water_spot", "st_water_pump_spot")
+end
+
+function placeable_pump_binder_wrapper:net_destroy()
+    bind_hf_base.hf_binder_wrapper.net_destroy(self)
+    
+    level.map_remove_object_spot(id, "water_spot")
+end
+
+function on_simple_interaction()
+	local canteen = db.actor:object("empty_canteen")
+    
+    if canteen then
+        haruka_fill.fill(canteen)
+    end
+end

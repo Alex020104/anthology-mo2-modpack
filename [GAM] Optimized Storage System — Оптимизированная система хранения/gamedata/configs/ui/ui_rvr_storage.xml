@@ -1,0 +1,138 @@
+<w>
+	<stg_category_selector x="416" y="416" width="192" height="160" stretch="1">
+		<frame_base x="0" y="0" width="192" height="160" stretch="1">
+			<texture r="0" g="0" b="0" a="150">ui_icons_PDA_tooltips</texture>
+		</frame_base>
+
+		<btn_c_all x="0" y="0" width="88" height="28">
+			<texture>ui_button_ordinary</texture>
+		</btn_c_all>
+		<btn_c_ammo x="0" y="0" width="88" height="28">
+			<texture>ui_button_ordinary</texture>
+		</btn_c_ammo>
+		<btn_c_consumables x="0" y="0" width="88" height="28">
+			<texture>ui_button_ordinary</texture>
+		</btn_c_consumables>
+		<btn_c_equipment x="0" y="0" width="88" height="28">
+			<texture>ui_button_ordinary</texture>
+		</btn_c_equipment>
+		<btn_c_tech x="0" y="0" width="88" height="28">
+			<texture>ui_button_ordinary</texture>
+		</btn_c_tech>
+		<btn_c_trophies x="0" y="0" width="88" height="28">
+			<texture>ui_button_ordinary</texture>
+		</btn_c_trophies>
+		<btn_c_misc x="0" y="0" width="88" height="28">
+			<texture>ui_button_ordinary</texture>
+		</btn_c_misc>
+		<btn_c_unknown x="0" y="0" width="88" height="28">
+			<texture>ui_button_ordinary</texture>
+		</btn_c_unknown>
+		<btn_c_weapons x="0" y="0" width="88" height="28">
+			<texture>ui_button_ordinary</texture>
+		</btn_c_weapons>
+		<btn_c_armor x="0" y="0" width="88" height="28">
+			<texture>ui_button_ordinary</texture>
+		</btn_c_armor>
+	</stg_category_selector>
+
+	<stg_searchbox x="416" y="364" width="192" height="40" stretch="1">
+		<frame_base x="0" y="0" width="192" height="40" stretch="1">
+			<texture r="0" g="0" b="0" a="150">ui_icons_PDA_tooltips</texture>
+		</frame_base>
+
+		<input_searchbox x="5" y="5" width="182" height="30">
+			<text x="5" font="medium" vert_align="c" align="l"/>
+			<texture>ui_inGame2_edit_box_2</texture>
+		</input_searchbox>
+	</stg_searchbox>
+
+	<stg_storage_inventory x="32" y="32" width="368" height="544" stretch="1">
+		<frame_base x="0" y="0" width="368" height="544" stretch="1">
+			<texture r="0" g="0" b="0" a="150">ui_icons_PDA_tooltips</texture>
+		</frame_base>
+
+		<cap x="0" y="0" width="243" height="20" stretch="1">
+			<text r="250" g="250" b="250" font="letterica18" align="c" vert_align="c">st_rvr_ss_storage_inventory_title</text>
+		</cap>
+		<cap_durability x="243" y="0" width="50" height="20" stretch="1">
+			<text r="250" g="250" b="250" font="letterica18" align="c" vert_align="c">st_rvr_ss_durability_column_title</text>
+		</cap_durability>
+		<cap_amount x="293" y="0" width="50" height="20" stretch="1">
+			<text r="250" g="250" b="250" font="letterica18" align="c" vert_align="c">st_rvr_ss_amount_column_title</text>
+		</cap_amount>
+
+		<frame_list x="10" y="20" width="348" height="514" stretch="1">
+			<texture r="150" b="150" g="150">ui_icons_PDA_tooltips</texture>
+		</frame_list>
+		<list x="5" y="5" width="338" height="504" item_height="22" can_select="1">
+			<font font="letterica16" r="250" g="250" b="150"/>
+		</list>
+	</stg_storage_inventory>
+
+	<stg_actor_inventory x="624" y="32" width="368" height="544" stretch="1">
+		<frame_base x="0" y="0" width="368" height="544" stretch="1">
+			<texture r="0" g="0" b="0" a="150">ui_icons_PDA_tooltips</texture>
+		</frame_base>
+
+		<cap x="0" y="0" width="243" height="20" stretch="1">
+			<text r="250" g="250" b="250" font="letterica18" align="c" vert_align="c">st_rvr_ss_actor_inventory_title</text>
+		</cap>
+		<cap_durability x="243" y="0" width="50" height="20" stretch="1">
+			<text r="250" g="250" b="250" font="letterica18" align="c" vert_align="c">st_rvr_ss_durability_column_title</text>
+		</cap_durability>
+		<cap_amount x="293" y="0" width="50" height="20" stretch="1">
+			<text r="250" g="250" b="250" font="letterica18" align="c" vert_align="c">st_rvr_ss_amount_column_title</text>
+		</cap_amount>
+
+
+		<frame_list x="10" y="20" width="348" height="514" stretch="1">
+			<texture r="150" b="150" g="150">ui_icons_PDA_tooltips</texture>
+		</frame_list>
+		<list x="5" y="5" width="338" height="504" item_height="22" can_select="1">
+			<font font="letterica16" r="250" g="250" b="150"/>
+		</list>
+	</stg_actor_inventory>
+
+	<stg_footer x="32" y="592" width="960" height="144" stretch="1">
+		<frame_base x="0" y="0" width="960" height="144" stretch="1">
+			<texture r="0" g="0" b="0" a="150">ui_icons_PDA_tooltips</texture>
+		</frame_base>
+		<cap x="20" y="0" width="400" height="30" stretch="1">
+			<text r="150" g="250" b="250" font="letterica18" align="c" vert_align="c">rvr_ss_storage_footer_cap</text>
+		</cap>
+		<hints x="20" y="40" width="400" height="94" stretch="1">
+			<text complex_mode="1" r="250" g="250" b="250" align="l" vert_align="c" font="letterica16">rvr_ss_storage_footer_hints</text>
+		</hints>
+
+		<depositall_frame x="840" y="10" width="100" height="144" stretch="1">
+			<texture></texture>
+
+			<depositall_btn x="0" y="0" width="100" height="30">
+				<texture>ui_button_ordinary</texture>
+				<text font="graffiti22" align="c" vert_align="c">rvr_ss_storage_footer_depositall_btn</text>
+			</depositall_btn>
+
+			<cap_check_keep_favorite x="28" y="40" width="32" height="20" stretch="1">
+				<text r="170" g="170" b="170" font="letterica16" align="l" vert_align="c">rvr_ss_storage_footer_keep_favorite</text>
+			</cap_check_keep_favorite>
+			<check_keep_favorite x="0" y="38" width="28" height="23" stretch="1">
+				<texture>ui_inGame2_checkbox</texture>
+			</check_keep_favorite>
+
+			<cap_check_keep_regular x="28" y="70" width="32" height="20" stretch="1">
+				<text r="170" g="170" b="170" font="letterica16" align="l" vert_align="c">rvr_ss_storage_footer_keep_regular</text>
+			</cap_check_keep_regular>
+			<check_keep_regular x="0" y="68" width="28" height="23" stretch="1">
+				<texture>ui_inGame2_checkbox</texture>
+			</check_keep_regular>
+
+			<cap_check_keep_trash x="28" y="100" width="32" height="20" stretch="1">
+				<text r="170" g="170" b="170" font="letterica16" align="l" vert_align="c">rvr_ss_storage_footer_keep_trash</text>
+			</cap_check_keep_trash>
+			<check_keep_trash x="0" y="98" width="28" height="23" stretch="1">
+				<texture>ui_inGame2_checkbox</texture>
+			</check_keep_trash>
+		</depositall_frame>
+	</stg_footer>
+</w>

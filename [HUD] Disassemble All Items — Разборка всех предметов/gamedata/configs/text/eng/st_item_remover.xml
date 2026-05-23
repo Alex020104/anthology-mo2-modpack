@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="st_dai_disassemble_all">
+		<text>disassemble all [!]</text>
+	</string>
+
+	<string id="st_dai_disassemble_all_junk">
+		<text>disassemble all junk [!]</text>
+	</string>
+
+</string_table>

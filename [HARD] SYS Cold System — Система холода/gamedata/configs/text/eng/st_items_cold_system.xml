@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="st_food_very_hot">
+		<text>Very Hot</text>
+	</string>
+
+	<string id="st_food_hot">
+		<text>Hot</text>
+	</string>
+
+	<string id="st_food_warm">
+		<text>Warm</text>
+	</string>
+
+	<string id="st_cold_cold">
+		<text>Cold</text>
+	</string>
+
+	<string id="st_cold_fever">
+		<text>Fever</text>
+	</string>
+
+	<string id="cold_main_hud_value">
+		<text>Values</text>
+	</string>
+
+	<string id="cold_main_hud_percent">
+		<text>Percents</text>
+	</string>
+
+	<string id="cold_main_sickness_val">
+		<text>fever:</text>
+	</string>
+
+	<string id="cold_thermo_short_str">
+		<text>cold/sec: </text>
+	</string>
+
+	<string id="cold_thermo_long_env">
+		<text>Env: </text>
+	</string>
+
+	<string id="cold_thermo_long_prot">
+		<text>Prot: </text>
+	</string>
+
+	<string id="cold_thermo_long_tot">
+		<text>Total: </text>
+	</string>
+
+	<string id="cold_thermo_hud_short">
+		<text>Short</text>
+	</string>
+
+	<string id="cold_thermo_hud_long">
+		<text>Full</text>
+	</string>
+
+</string_table>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+  <string id="st_HideoutFurniture_furniture_craftingtitle">
+    <text>Furniture</text>
+  </string>
+  <string id="st_HideoutFurniture_lights_craftingtitle">
+    <text>Furniture, lights</text>
+  </string>  
+  <string id="st_HideoutFurniture_doors_craftingtitle">
+    <text>Furniture, doors</text>
+  </string>
+  <string id="st_HideoutFurniture_walls_craftingtitle">
+    <text>Furniture, walls</text>
+  </string>  
+  <string id="st_HideoutFurniture_utility_craftingtitle">
+    <text>Furniture, utility</text>
+  </string>
+  <string id="st_HideoutFurniture_electronics_craftingtitle">
+    <text>Furniture, electronics</text>
+  </string>  
+  <string id="st_HideoutFurniture_support_craftingtitle">
+    <text>Furniture, support</text>
+  </string>
+  <string id="st_HideoutFurniture_storage_craftingtitle">
+    <text>Furniture, storage</text>
+  </string>  
+  <string id="st_HideoutFurniture_posters_craftingtitle">
+    <text>Furniture, posters</text>
+  </string>
+  <string id="st_HideoutFurniture_stands_craftingtitle">
+    <text>Furniture, stands</text>
+  </string>  
+  <string id="st_HideoutFurniture_misc_craftingtitle">
+    <text>Furniture, misc</text>
+  </string>
+</string_table>

@@ -1,0 +1,208 @@
+local squad_team_1_id
+local squad_team_2_id
+
+local HI = has_alife_info
+local gt = game.translate_string
+
+function start_arena_fight(cur_per)
+	-- teleport actor
+	local ac_pos, ac_lvid, ac_givd = xcvb_arena_utils.get_actor_arena_pos()
+	db.actor:set_actor_position(ac_pos, ac_lvid, ac_gvid)
+	db.actor:set_actor_direction(device().cam_dir:getH())
+
+	-- spawn squads
+	local main_t = xcvb_arena_main.arena_main_t[cur_per]
+
+	local type1 = string.find(main_t.team1[1], "sim_default") and "stalker" or "mutant"
+	local sec1 = "arena_" .. type1 .. "_team_1"
+	local pos1, lvid1, gvid1 = xcvb_arena_utils.get_team_pos(1)
+	local squad1 = alife_create(sec1, pos1, lvid1, gvid1)
+	for i, sec in ipairs(main_t.team1) do
+	-- this one somehow dies on alife():create() in _g
+	--	squad1:add_squad_member(sec, squad1.position, squad1.m_level_vertex_id, squad1.m_game_vertex_id)
+		squad1:add_squad_member(sec, pos1, lvid1, gvid1)
+	end
+	squad1:set_squad_relation()
+	squad1:refresh()
+
+	squad_team_1_id = squad1.id
+
+	local type2 = string.find(main_t.team2[1], "sim_default") and "stalker" or "mutant"
+	local sec2 = "arena_" .. type2 .. "_team_2"
+	local pos2, lvid2, gvid2 = xcvb_arena_utils.get_team_pos(2)
+	local squad2 = alife_create(sec2, pos2, lvid2, gvid2)
+	for i, sec in ipairs(main_t.team2) do
+	--	squad2:add_squad_member(sec, squad2.position, squad2.m_level_vertex_id, squad2.m_game_vertex_id)
+		squad2:add_squad_member(sec, pos2, lvid2, gvid2)
+	end
+	squad2:set_squad_relation()
+	squad2:refresh()
+
+	squad_team_2_id = squad2.id
+
+	-- change squad relations, hit and add "out" restrictor
+	CreateTimeEvent("allow_relation_update_e", "allow_relation_update_a", 1, function()
+		give_info("xcvb_arena_started")
+		setup_teams()
+		return true
+	end)
+
+	-- reset tables and period
+	iempty_table(xcvb_arena_main.arena_main_t[cur_per].team1)
+	iempty_table(xcvb_arena_main.arena_main_t[cur_per].team2)
+	iempty_table(xcvb_arena_main.arena_main_t[cur_per].pwrs)
+	xcvb_arena_main.current_period = 0
+
+end
+
+function setup_teams()
+	if not HI("xcvb_arena_started") then return end
+	xcvb_arena_utils.set_out_restrictors(squad_team_1_id, squad_team_2_id)
+--	xcvb_arena_utils.hit_npcs(squad_team_1_id, squad_team_2_id)
+	local sq1 = alife_object(squad_team_1_id)
+	local sq2 = alife_object(squad_team_2_id)
+	if sq1 and sq2 then
+		sq1.scripted_target = squad_team_2_id
+		sq1.rush_to_target = true
+		sq2.scripted_target = squad_team_1_id
+		sq2.rush_to_target = true
+	end
+end
+
+function actor_on_update()
+	if not HI("xcvb_arena_started") then return end
+	xcvb_arena_utils.set_teams_relation(squad_team_1_id, squad_team_2_id)
+end
+
+function on_before_key_press(key, bind, dis, flags)
+	if not HI("xcvb_arena_started") then return end
+	local bind = dik_to_bind(key)
+	if bind == key_bindings.kFWD
+	or bind == key_bindings.kL_STRAFE
+	or bind == key_bindings.kR_STRAFE
+	or bind == key_bindings.kBACK
+	or bind == key_bindings.kCONSOLE		-- console
+	or bind == key_bindings.kQUIT then		-- esc
+		return
+	end
+	flags.ret_value = false
+end
+
+function on_enemy_eval(npc, enemy, flags)
+	if not HI("xcvb_arena_started") then return end
+
+	-- ignore enemy actor
+	if enemy:id() == 0 then
+		flags.override = true
+		flags.result = false
+		return
+	end
+
+	local npc_squad = get_object_squad(npc)
+	local enemy_squad = get_object_squad(enemy)
+	if not (npc_squad and enemy_squad) then return end
+
+	local npc_squad_is_arena = string.find(npc_squad:section_name(), "arena_")
+	local enemy_squad_is_arena = string.find(enemy_squad:section_name(), "arena_")
+
+	-- arena squad ignores everyone except enemy arena squad
+	if npc_squad_is_arena and (not enemy_squad_is_arena) then
+		flags.override = true
+		flags.result = false
+	end
+
+	-- and vice versa, regular npcs ignore arena squads
+	if (not npc_squad_is_arena) and enemy_squad_is_arena then
+		flags.override = true
+		flags.result = false
+	end
+
+end
+
+function npc_on_before_hit(npc, s_hit)
+	if not HI("xcvb_arena_started") then return end
+	local squad = get_object_squad(npc)
+	local arena_squad = squad and string.find(squad:section_name(), "arena_")
+	local draft_is_ac = s_hit.draftsman and s_hit.draftsman:id() == 0
+	if arena_squad and draft_is_ac then
+		-- message about ur disqualification
+		news_manager.send_tip(db.actor, gt("st_arena_kicked_out"), 0, nil, 15000)
+		xcvb_arena_utils.arena_fade_in_out()
+		CreateTimeEvent("xcvb_arena_end_fight_e", "xcvb_arena_end_fight_a", 2, end_arena_fight, 0)
+	end
+end
+
+function squad_on_npc_death(squad, se_obj, killer)
+	-- team 2 won
+	if squad_team_1_id and squad_team_1_id == squad.id and squad:npc_count() <= 1 then
+		-- message about team 2 winner
+		news_manager.send_tip(db.actor, gt("st_arena_team_2_won"), 0, nil, 10000)
+		xcvb_arena_utils.arena_fade_in_out(2)
+		CreateTimeEvent("xcvb_arena_end_fight_e", "xcvb_arena_end_fight_a", 4, end_arena_fight, 2)
+	-- team 1 won
+	elseif squad_team_2_id and squad_team_2_id == squad.id and squad:npc_count() <= 1 then
+		-- message about team 1 winner
+		news_manager.send_tip(db.actor, gt("st_arena_team_1_won"), 0, nil, 10000)
+		xcvb_arena_utils.arena_fade_in_out(2)
+		CreateTimeEvent("xcvb_arena_end_fight_e", "xcvb_arena_end_fight_a", 4, end_arena_fight, 1)
+	end
+end
+
+function end_arena_fight(winner_team)
+	-- teleport actor back
+	db.actor:set_actor_position(vector():set(151.9, 0.421, 68.6), 40590, 1684)
+
+	-- give money
+	local bet_team = xcvb_arena_main.team_bet
+	local reward = xcvb_arena_main.cur_reward
+	if bet_team == winner_team then
+		local str = string.format(gt("st_arena_your_reward"), reward)
+		news_manager.send_tip(db.actor, str, 0, nil, 15000)
+		db.actor:give_money(reward)
+	end
+
+	-- release squads
+	local squad1 = alife_object(squad_team_1_id)
+	if squad1 and string.find(squad1:section_name(), "arena_") then
+		alife_release(squad1)
+	end
+
+	local squad2 = alife_object(squad_team_2_id)
+	if squad2 and string.find(squad2:section_name(), "arena_") then
+		alife_release(squad2)
+	end
+
+	-- reset vars
+	disable_info("xcvb_arena_started")
+	xcvb_arena_main.cur_reward = 0
+	xcvb_arena_main.team_bet = 0
+	squad_team_1_id = nil
+	squad_team_2_id = nil
+
+	return true
+end
+
+function save_state(m_data)
+	m_data.xcvb_arena_squad_id_1 = squad_team_1_id
+	m_data.xcvb_arena_squad_id_2 = squad_team_2_id
+end
+
+function load_state(m_data)
+	squad_team_1_id = m_data.xcvb_arena_squad_id_1 or squad_team_1_id
+	squad_team_2_id = m_data.xcvb_arena_squad_id_2 or squad_team_2_id
+end
+
+function actor_on_first_update()
+	setup_teams()
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+	RegisterScriptCallback("on_enemy_eval", on_enemy_eval)
+	RegisterScriptCallback("squad_on_npc_death", squad_on_npc_death)
+	RegisterScriptCallback("npc_on_before_hit", npc_on_before_hit)
+	RegisterScriptCallback("on_before_key_press", on_before_key_press)
+	RegisterScriptCallback("save_state", save_state)
+	RegisterScriptCallback("load_state", load_state)
+	RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+end

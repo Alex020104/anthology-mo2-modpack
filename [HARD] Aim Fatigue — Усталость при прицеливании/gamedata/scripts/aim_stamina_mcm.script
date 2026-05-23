@@ -1,0 +1,63 @@
+--;---------------------------------------------------------------------------------------------
+--;-- Aim Stamina v0.9d by Private Pirate - MCM Script
+--;---------------------------------------------------------------------------------------------
+
+function on_mcm_load()
+    op ={ id= "aim_stamina", sh=true ,gr =
+		{
+			{ id = "title", type = "slide", link = "ui_options_slider_player", text="ui_mcm_aim_stamina_title", size= {512,50},spacing= 20 },
+			{ id = "AS_op_mode", type = "radio_h", val = 2, def = 1, content = { {1, "stop_aim"}, {2, "keep_aim"} } },
+			{ id = "AS_mode", type = "radio_h", val = 2, def = 1, content = { {1, "off"}, {2, "light"}, {3, "heavy"} } },
+			{ id = "aim_stamina", type = "track", val = 2, min = 10, max = 180, step = 1, def = 60},
+			{ id = "drain_weight_influence", type = "track", val = 2, min = 0, max = 10, step = 0.1, def = 5},
+			{ id = "recover_weight_influence", type = "track", val = 2, min = 0, max = 10, step = 0.1, def = 5},
+			{ id = "rate_range", type = "track", val = 2, min = 1, max = 10, step = 0.05, def = 10},
+			
+			{ id = "ASweaponsway", type = "slide", link = "ui_options_slider_player", text="ui_mcm_aim_stamina_ASweaponsway", size= {512,50},spacing= 20 },
+			{ id = "AS_wpn_sway_start", type = "track", val = 2, min = 0, step = 1, max = 30, def = 10},
+			{ id = "AS_wpn_sway_power", type = "track", val = 2, min = 0.1, step = 0.1, max = 5, def = 1},
+			
+			{ id = "AShudtitle", type = "slide", link = "ui_options_slider_player", text="ui_mcm_aim_stamina_AShudtitle", size= {512,50},spacing= 20 },
+			{ id = "show_AS_counter", type = "check", val = 1, def = true},
+			{ id = "show_AS_bar", type = "check", val = 1, def = true},
+			{ id = "AS_hud_hide_timer", type = "track", val = 2, min = 0, max = 10, step = 0.1, def = 5},
+			{ id = "AS_hud_x_pos", type = "input", val = 2, min = 0, max = 1024, step = 1, def = 462},
+			{ id = "AS_hud_y_pos", type = "input", val = 2, min = 0, max = 768, step = 1, def = 720},
+			{ id = "AS_counter_x_pos", type = "radio_h", val = 2, def = 2, content = { {1, "AS_counter_pos_left"}, {2, "AS_counter_pos_center"}, {3, "AS_counter_pos_right"} } },
+			{ id = "AS_counter_y_pos", type = "radio_v", val = 2, def = 1, content = { {1, "AS_counter_pos_above"}, {2, "AS_counter_pos_below"} } },
+			
+			{ id = "ASdebugtitle", type = "slide", link = "ui_options_slider_player", text="ui_mcm_aim_stamina_ASdebugtitle", size= {512,50},spacing= 20 },
+			{ id = "AS_disable", type = "check", val = 1, def = false},
+		}
+	}
+    return op
+end
+
+-- If you don't use MCM edit the values here.
+local defaults = {
+	["AS_op_mode"] = 1,
+	["AS_mode"] = 1,
+	["aim_stamina"] = 60,
+	["drain_weight_influence"] = 5,
+	["recover_weight_influence"] = 5,
+	["rate_range"] = 10,
+	
+	["AS_wpn_sway_start"] = 10,
+	["AS_wpn_sway_power"] = 1,
+	
+	["show_AS_counter"] = true,
+	["show_AS_bar"] = true,
+	["AS_hud_hide_timer"] = 5,
+	["AS_hud_x_pos"] = 462,
+	["AS_hud_y_pos"] = 710,
+	["AS_counter_x_pos"] = 2,
+	["AS_counter_y_pos"] = 1,
+	
+	["AS_disable"] = false,
+	
+}
+
+
+function get_config(key)
+    if ui_mcm then return ui_mcm.get("aim_stamina/"..key) else return defaults[key] end
+end

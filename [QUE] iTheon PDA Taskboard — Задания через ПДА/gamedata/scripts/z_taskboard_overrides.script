@@ -1,0 +1,158 @@
+local enable_override = false
+local id_counter = 1
+local id_counter_last = 0
+local stolen_goods = {} -- [id] = { func, params }
+local scripts_to_override = {
+    -- ----------- vanilla
+    tasks_agent_rescue = true,
+    -- tasks_anomaly_scanner = true,
+    tasks_assault = true,
+    tasks_bounty = true,
+    tasks_chimera_scan = true,
+    -- tasks_clear_map = true,
+    -- tasks_defense = true,
+    tasks_delivery = true,
+    tasks_dominance = true,
+    -- tasks_faction_control = true,
+    tasks_fate = true,
+    tasks_fetch = true,
+    -- tasks_guide = true,
+    tasks_measure = true,
+    tasks_multifetch = true,
+    -- tasks_pump_station_defense = true,
+    tasks_recover_item_on_corpse = true,
+    tasks_recover_mutant_data = true,
+    tasks_smart_control = true,
+    tasks_stash = true,
+    -- tasks_top_10 = true,
+    -- tasks_veh_destroy = true,
+    -- ---------- itheon
+    new_tasks_addon_tasks_utils = true,
+    tasks_intercept_artifact = true,
+}
+
+function create_overrides()
+    if not (db and db.actor and ActorMenu and mob_trade and pda) then
+        return
+    end
+
+    local original_give_talk_message2 = db.actor.give_talk_message2
+    db.actor.give_talk_message2 = function(...)
+        if ActorMenu.get_pda_menu():IsShown() and pda_taskboard.get_tasks_details_capture_next() then
+            local _, task_title, task_details, task_icon = ...
+            local details = {}
+            details.task_title = task_title
+            details.task_details = task_details
+            details.task_icon = task_icon
+            pda_taskboard.add_tasks_details(details)
+        else
+            original_give_talk_message2(...)
+        end
+    end
+
+    local original_GetTalkingNpc = mob_trade.GetTalkingNpc
+    mob_trade.GetTalkingNpc = function(...)
+        if pda_taskboard.get_currently_processed_npc_id() then
+            return level.object_by_id(pda_taskboard.get_currently_processed_npc_id())
+        else
+            return original_GetTalkingNpc(...)
+        end
+    end
+
+    local original_is_talking = db.actor.is_talking
+    db.actor.is_talking = function(...)
+        if pda_taskboard.get_currently_processed_npc_id() then
+            return true
+        else
+            return original_is_talking(...)
+        end
+    end
+
+    local original_get_speaker = _G.get_speaker
+    _G.get_speaker = function(...)
+        if pda_taskboard.get_currently_processed_npc_id() then
+            return level.object_by_id(pda_taskboard.get_currently_processed_npc_id())
+        else
+            return original_get_speaker(...)
+        end
+    end
+
+    local original_set_active_subdialog = pda.set_active_subdialog
+    pda.set_active_subdialog = function(section)
+        if (section == "eptTaskboard") then
+            if ui_pda_taskboard_tab and ui_pda_taskboard_tab.get_ui then
+                return ui_pda_taskboard_tab.get_ui()
+            end
+        else
+            return original_set_active_subdialog(section)
+        end
+        return original_set_active_subdialog(section)
+    end
+end
+
+--- ----------------------------------------------------
+--- task overrides to get proper quest details
+--- ----------------------------------------------------
+
+-- left only tasks that use news system and send details
+function CreateTimeEventOverride(id1, id2, time, func, ...)
+    if enable_override then
+        -- TODO: add table with checks of id1 and id2 just to be sure we not stealing something too important
+        if time == 0 then
+            stolen_goods[id_counter] = {
+                f = func,
+                p = {...},
+            }
+            id_counter = id_counter + 1
+            return
+        end
+    end
+    _G.CreateTimeEvent(id1, id2, time, func, ...)
+end
+
+function InstallOverride()
+    for script, _ in pairs(scripts_to_override) do
+        if _G[script] then
+            _G[script].CreateTimeEvent = CreateTimeEventOverride
+        end
+    end
+end
+
+function StartOverride()
+    enable_override = true
+    stolen_goods = {}
+    id_counter = 1
+    id_counter_last = 0
+end
+
+function StopOverride()
+    enable_override = false
+    CreateTimeEvent("z_list_programming_crimes", "process_stolen_goods", 0, ExecuteStolenFunctions)
+end
+
+function GetID()
+    local id = id_counter - 1
+    if id_counter_last == id then
+        return nil
+    end
+    id_counter_last = id
+    return id_counter_last
+end
+
+function ExecuteStolenFunctions()
+    for i, good in ipairs(stolen_goods) do
+        if pda_taskboard and pda_taskboard.set_tasks_details_capture_next then
+            pda_taskboard.set_tasks_details_capture_next(true)
+        end
+        if good and good.f then
+            good.f(unpack(good.p))
+        end
+    end
+    return true
+end
+
+
+function on_game_start()
+    RegisterScriptCallback("on_game_load", create_overrides)
+    InstallOverride()
+end

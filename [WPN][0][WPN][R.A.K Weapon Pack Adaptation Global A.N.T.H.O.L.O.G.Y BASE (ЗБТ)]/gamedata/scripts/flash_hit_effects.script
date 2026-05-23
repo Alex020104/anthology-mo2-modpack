@@ -1,0 +1,160 @@
+local killed_by = {}
+--Stores the blinded npcs
+blind_npc = {}
+blind_monsters = {}
+LoadScheme("xr_blinded_stalker", "blind_stalker", modules.stype_stalker)
+
+local animation_table = {
+    [clsid.bloodsucker_s] = "stand_scared_0",
+    [clsid.boar_s] ="lie_sleep_0",
+    [clsid.flesh_s] = "lie_idle_0",
+    [clsid.pseudodog_s] = "lie_sleep_0",
+    [clsid.cat_s] = "stand_look_around_0",
+    [clsid.psy_dog_s] = "lie_sleep_0",
+    [clsid.zombie_s] = "stand_die_0",
+    [clsid.controller_s] = "critical_hit_torso_0",
+}
+
+function actor_on_before_hit( hit, boneId, flags )
+	if not ( hit and hit.type and hit.power and boneId ) then return end
+	
+	if hit.weapon_id then
+		local wpn_obj = get_object_by_id(hit.weapon_id)
+		if wpn_obj then
+			actor_hit_by = wpn_obj:section()
+		end
+	end
+	local ply = db.actor
+	if not ( ply and ply:alive() ) then return end
+	if (actor_hit_by == "grenade_zarya2") or (actor_hit_by == "grenade_m84") or (actor_hit_by == "grenade_m-7290") then
+		level.add_pp_effector("flasher.ppe", 655920, false)
+	end
+end
+
+function npc_on_before_hit(npc, s_hit, bone_id, flags)
+	local npc_id = npc:id()
+    if not (npc_id and IsStalker(npc)) then return end
+	if not killed_by[npc_id] then
+		killed_by[npc_id] = {}
+	end
+	if s_hit.weapon_id then
+		local wpn_obj = get_object_by_id(s_hit.weapon_id)
+		if wpn_obj then
+			killed_by[npc_id].weapon_sec = wpn_obj:section()
+			if (killed_by[npc_id].weapon_sec == "grenade_zarya2") or (killed_by[npc_id].weapon_sec == "grenade_m84") or (killed_by[npc_id].weapon_sec == "grenade_m-7290") then
+
+			--Blinded Animation init
+				blind_npc[npc_id] = {
+					time_blind = game.get_game_time()
+				}
+				set_scheme(npc, db.storage[npc:id()], false, "scripts\\blind_stalker.ltx", "logic", "", modules.stype_stalker)
+			end
+		end
+	end
+end
+
+function monster_on_before_hit(monster, s_hit, bone_index)
+    local monster_id = monster:id()
+    if not (monster_id) then return end
+	if not killed_by[monster_id] then
+		killed_by[monster_id] = {}
+	end
+	if s_hit.weapon_id then
+		local wpn_obj = get_object_by_id(s_hit.weapon_id)
+		if wpn_obj then
+			killed_by[monster_id].weapon_sec = wpn_obj:section()
+			if (killed_by[monster_id].weapon_sec == "grenade_zarya2") or (killed_by[monster_id].weapon_sec == "grenade_m84") or (killed_by[monster_id].weapon_sec == "grenade_m-7290") then
+
+			--Blinded Animation init
+				printf('monster blinded')
+				blind_monsters[monster_id] = {
+					time_blind = game.get_game_time()
+				}
+			end
+		end
+	end
+end
+
+function actor_on_update()
+	for k, _ in pairs(blind_npc) do
+		local current_time = game.get_game_time()
+        	local npc = level.object_by_id(k)
+		if npc then
+			local npc_id = npc:id()
+        	if (current_time:diffSec(blind_npc[npc_id].time_blind) < 40) then
+				npc:movement_enabled(false)		
+			else
+				blind_npc[npc_id] = nil
+				disable_scheme(npc, "scripts\\blind_stalker.ltx")
+				set_scheme(npc, db.storage[npc:id()], false, "default_custom_data.ltx", "logic", "", modules.stype_stalker)
+				npc:movement_enabled(true)
+			end
+		end
+    end
+	for j, _ in pairs(blind_monsters) do
+        local monster = level.object_by_id(j)
+		local current_time = game.get_game_time()
+        if (monster and animation_table[monster:clsid()]) then
+			local monster_id = monster:id()
+            local animation = animation_table[monster:clsid()]
+            if (not animation) then return end
+
+            if (current_time:diffSec(blind_monsters[monster_id].time_blind) < 40) then
+                monster:set_override_animation(animation)
+	    else
+		blind_monsters[monster_id] = nil
+	    end
+       end
+	end
+end
+
+--Grabbed right from Arszi Controllers
+function set_scheme(npc, st, loaded, ltx_name, logic_name, gulag_name, stype)			
+	local ltx = ini_file(ltx_name)
+	if not (ltx) then 
+		trace_this("ERROR - AI SCHEME FILE DOES NOT EXIST!")
+		return
+	end
+	
+	local id = npc:id()
+	local sim = alife()
+	local se_npc = sim:object(id)
+	local unreg_id = se_npc and se_npc.m_smart_terrain_id
+	if (unreg_id and unreg_id ~= 65535) then
+		local unreg = sim:object(unreg_id)
+		if (unreg) then
+			unreg:unregister_npc(se_npc)
+		end
+	end
+	
+	xr_logic.configure_schemes(npc, ltx, ltx_name, stype, loaded and st.loaded_section_logic or logic_name, gulag_name)
+	local section = loaded and st.loaded_active_section or xr_logic.determine_section_to_activate(npc, ltx, logic_name, db.actor)
+	xr_logic.activate_by_section(npc, ltx, section, gulag_name, loaded)
+end
+
+function disable_scheme(npc,scheme)
+  if npc and scheme then
+  	local st = db.storage[npc:id()][scheme]
+  	if st then
+    		st.enabled = false
+  	end
+  end
+end
+
+
+function on_game_start()
+	RegisterScriptCallback("save_state",save_state)
+    	RegisterScriptCallback("load_state",load_state)
+	RegisterScriptCallback( "actor_on_before_hit", actor_on_before_hit )
+	RegisterScriptCallback("npc_on_before_hit", npc_on_before_hit)
+	RegisterScriptCallback("monster_on_before_hit", monster_on_before_hit)
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+end
+
+function save_state(m_data)
+	m_data.blind_npc = blind_npc
+end
+
+function load_state(m_data)
+	blind_npc = m_data.blind_npc or {}
+end

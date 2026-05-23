@@ -1,0 +1,170 @@
+local gt = game.translate_string
+local lerp = warfare.lerp
+
+HUD = nil
+
+function activate_hud()
+	if HUD == nil then
+		HUD = XAchieveHUD()
+		get_hud():AddDialogToRender(HUD)
+	end
+end
+
+function deactivate_hud()
+	if HUD ~= nil then
+		get_hud():RemoveDialogToRender(HUD)
+		HUD = nil
+	end
+end
+
+class "XAchieveHUD" (CUIScriptWnd)
+
+function XAchieveHUD:__init() super()
+	self:InitControls()
+end
+
+function XAchieveHUD:InitControls()
+	self:SetWndRect(Frect():set(0, 0, 1024, 768))
+	self:SetAutoDelete(true)
+
+	self.xml = CScriptXmlInit()
+	local xml = self.xml
+	xml:ParseFile("ui_xcvb_achievements_hud.xml")
+
+	self.elems = {}
+	self.elems[1] = xml:InitStatic("bg", self)
+	self.elems[1]:Show(false)
+	self.elems[2] = xml:InitStatic("bg:reward", self.elems[1])
+	self.elems[3] = xml:InitStatic("bg:descr", self.elems[1])
+	self.elems[4] = xml:InitStatic("bg:icon", self.elems[1])
+
+	self.cached = {}
+	for i = 1, #self.elems do
+		local pos, w, h = self.elems[i]:GetWndPos(), self.elems[i]:GetWidth(), self.elems[i]:GetHeight()
+		self.cached[i] = { x=pos.x, y=pos.y, w=w, h=h }
+	end
+
+	self.hud_stage = 0
+	self.snd_allow = true
+
+	self.hud_queue = {}
+
+end
+
+local time_var = 0
+function XAchieveHUD:Update()
+	CUIScriptWnd.Update(self)
+
+	if self.hud_stage == 0 then return end
+
+	time_var = time_var + 1
+
+	local move_by = self.cached[1].w + 10
+
+	local move_time = {
+		[1] = {25, 50},
+		[2] = {100, 150},
+		[3] = {125, 175},
+		[4] = {175, 200},
+	}
+
+	local fade_start = 550
+	local fade_end = 950
+
+	-- new elems pos
+	if time_var > 0 and time_var <= 25 and self.hud_stage == 1 then
+		self.hud_stage = 2
+		self.elems[1]:Show(true)
+
+		for i = 1, #self.elems do
+			self.elems[i]:SetWndPos(vector2():set(self.cached[i].x + move_by, self.cached[i].y))
+		end
+	end
+
+	-- move elements back
+	if self.hud_stage == 2 then
+		for i = 1, #self.elems do
+			local start_time = move_time[i][1]
+			local end_time = move_time[i][2]
+			if time_var > start_time and time_var <= end_time then
+				local unit_var = normalize(time_var, end_time, start_time)
+				local new_bg_x = lerp(self.cached[i].x, self.cached[i].x + move_by, unit_var)
+				self.elems[i]:SetWndPos(vector2():set(new_bg_x, self.cached[i].y))
+
+				-- snd
+				if self.snd_allow then
+					self.snd_allow = false
+					if achievements_mcm.get_config("hud_snd") then
+						local snd = sound_object("xcvb_achievements\\hud_effect")
+						snd:play_no_feedback(db.actor, sound_object.s3d, 0, db.actor:position(), 0.65, 1.0)
+					end
+				end
+			end
+		end
+	end
+
+	-- set fade stage
+	if self.hud_stage == 2 and time_var > fade_start then
+		self.hud_stage = 3
+	end
+
+	-- fade
+	if self.hud_stage == 3 then
+		local unit_var = normalize(time_var, fade_end, fade_start)
+		local new_alpha = lerp(0, 255, unit_var)
+		for i = 1, #self.elems do
+			self.elems[i]:SetTextureColor(GetARGB(new_alpha, 255, 255, 255))
+		end
+		self.elems[2]:TextControl():SetTextColor(GetARGB(new_alpha, 190, 190, 0))
+		self.elems[3]:TextControl():SetTextColor(GetARGB(new_alpha, 190, 190, 190))
+	end
+
+	-- end ui sodomy (reset everything back)
+	if self.hud_stage == 3 and time_var > fade_end then
+		time_var = 0
+		self.hud_stage = 0
+		self.snd_allow = true
+		self.elems[1]:Show(false)
+		for i = 1, #self.elems do
+			self.elems[i]:SetTextureColor(GetARGB(255, 255, 255, 255))
+		end
+		self.elems[2]:TextControl():SetTextColor(GetARGB(255, 190, 190, 0))
+		self.elems[3]:TextControl():SetTextColor(GetARGB(255, 190, 190, 190))
+
+		-- remove first (current) from queue
+		table.remove(self.hud_queue, 1)
+
+		-- check queue and start another one
+		if #self.hud_queue > 0 then
+			self.hud_stage = 1
+
+			self.elems[2]:TextControl():SetText(self.hud_queue[1].reward)
+			self.elems[3]:TextControl():SetText(self.hud_queue[1].descr)
+			self.elems[4]:InitTexture(self.hud_queue[1].icon)
+		end
+	end
+
+end
+
+function XAchieveHUD:StartAchieveAnim(reward, descr, icon)
+	if self.hud_stage == 0 then
+		self.hud_stage = 1
+
+		self.elems[2]:TextControl():SetText(reward)
+		self.elems[3]:TextControl():SetText(descr)
+		self.elems[4]:InitTexture(icon)
+	end
+
+	-- add to queue
+	self.hud_queue[#self.hud_queue + 1] = {}
+	self.hud_queue[#self.hud_queue] = { reward = reward, descr = descr, icon = icon }
+end
+
+function XAchieveHUD:__finalize()
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update", activate_hud)
+	RegisterScriptCallback("actor_on_net_destroy", deactivate_hud)
+	RegisterScriptCallback("actor_on_before_death", deactivate_hud)
+end

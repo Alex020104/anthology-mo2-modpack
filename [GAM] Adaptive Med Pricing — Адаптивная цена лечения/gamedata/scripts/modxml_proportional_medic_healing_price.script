@@ -1,0 +1,235 @@
+--[[
+	Proportional Medic Healing Price by Coverdrave
+	
+	This script uses DXML from TheMrDemonized's Modded Exes to replace/change medic dialogs.
+--]]
+
+if not dxml_core then
+	enabled = false
+else
+	enabled = true
+	
+	function on_game_start()
+		RegisterScriptCallback("on_specific_character_dialog_list", function(character_id, dialog_list)
+			if string.find(character_id, "medic") then
+				local res = dialog_list:add("medic_pay_debt")
+			end
+		end)
+	end
+	
+	function on_xml_read()
+		RegisterScriptCallback("on_xml_read", function(xml_file_name, xml_obj)
+			
+			if (xml_file_name == [[gameplay\dialogs.xml]]) then
+				-- "I want to pay my debt" dialog
+				local pay_debt_dialog = 
+				[[
+				<dialog id="medic_pay_debt">
+					<precondition>proportional_medic_healing_price_mcm.is_actor_in_debt</precondition>
+					
+					<phrase_list>
+						<phrase id="0"> <!-- actor - "I'm here to pay my debt." -->
+							<script_text>proportional_medic_healing_price_mcm.get_actor_debt_pay_dialog_start_text</script_text>
+							<next>1</next>
+						</phrase>
+						<phrase id="1"> <!-- npc - Remind actor of price -->
+							<script_text>proportional_medic_healing_price_mcm.get_npc_debt_pay_dialog_text</script_text>
+							<next>2</next>
+							<next>3</next>
+						</phrase>
+						<phrase id="2"> <!-- actor - Accept to pay debt -->
+							<precondition>proportional_medic_healing_price_mcm.can_actor_pay_debt</precondition>
+							<script_text>proportional_medic_healing_price_mcm.get_actor_debt_pay_dialog_accept_text</script_text>
+							<next>4</next>
+						</phrase>
+						
+						<phrase id="3"> <!-- actor - Decline to pay debt -->
+							<script_text>proportional_medic_healing_price_mcm.get_actor_debt_pay_dialog_decline_text</script_text>
+							<next>5</next>
+						</phrase>
+						
+						<phrase id="4"> <!-- Pay debt -->
+							<action>proportional_medic_healing_price_mcm.pay_medic_debt</action> 
+							<script_text>proportional_medic_healing_price_mcm.get_npc_debt_pay_accept_response_text</script_text>
+						</phrase>
+						
+						<phrase id="5"> <!-- npc - on actor decline to pay debt -->
+							<script_text>proportional_medic_healing_price_mcm.get_npc_debt_pay_decline_response_text</script_text>
+						</phrase>
+					</phrase_list>
+				</dialog>
+				]]
+				
+				xml_obj:insertFromXMLString(pay_debt_dialog)
+				
+				-- "I need medical assistance" dialog
+				local query = xml_obj:query("dialog[id=dm_medic_general] > phrase_list")
+				if is_not_empty(query) then
+					local element = query[1]
+					local to_insert = 
+					[[
+					<phrase id="0"> <!-- actor - "I need medical assistance." -->
+						<text>st_dm_medic_general_text_0</text> 
+						<action>proportional_medic_healing_price_mcm.cache_healing_price</action>
+						<next>15</next>
+						<next>1</next>
+						<next>10</next>
+					</phrase>
+					<phrase id="1"> <!-- npc - Medic examines you and gives you price for heal -->
+						<precondition>proportional_medic_healing_price_mcm.is_actor_not_healthy</precondition>
+						<precondition>proportional_medic_healing_price_mcm.is_actor_not_in_debt</precondition>
+						<script_text>proportional_medic_healing_price_mcm.get_medic_heal_text</script_text> 
+						<next>2</next>
+						<next>3</next>
+						<next>4</next>
+						<next>19</next>
+						<next>5</next>
+					</phrase>
+					
+					<phrase id="2"> <!-- actor - Heal injuries -->
+						<precondition>proportional_medic_healing_price_mcm.is_actor_injured</precondition>
+						<script_text>proportional_medic_healing_price_mcm.get_heal_actor_injured_text</script_text> 
+						<action>proportional_medic_healing_price_mcm.heal_actor_injury</action>
+						<action>medic_effects.medic_anim</action>
+						<next>6</next>
+					</phrase>
+					<phrase id="3"> <!-- actor - Heal radiation -->
+						<precondition>proportional_medic_healing_price_mcm.is_actor_irradiated</precondition>
+						<script_text>proportional_medic_healing_price_mcm.get_heal_actor_irradiated_text</script_text> 
+						<action>proportional_medic_healing_price_mcm.heal_actor_radiation</action>
+						<action>medic_effects.medic_rad_anim</action>
+						<next>6</next>
+					</phrase>
+					<phrase id="4"> <!-- actor - Heal injuries and radiation -->
+						<precondition>proportional_medic_healing_price_mcm.is_actor_injured_irradiated</precondition>
+						<script_text>proportional_medic_healing_price_mcm.get_heal_actor_injured_irradiated_text</script_text> 
+						<action>proportional_medic_healing_price_mcm.heal_actor_injury_radiation</action>
+						<action>medic_effects.medic_anim</action>
+						<next>6</next>
+					</phrase>
+					<phrase id="5"> <!-- actor - Decline heal -->
+						<script_text>proportional_medic_healing_price_mcm.get_heal_actor_decline_text</script_text> 
+						<next>7</next>
+					</phrase>
+					
+					<phrase id="6"> <!-- npc - Medic after healing -->
+						<text>st_dm_medic_general_text_6</text> 
+					</phrase>
+					<phrase id="7"> <!-- npc - Medic after decline healing -->
+						<text>st_dm_medic_general_text_7</text> 
+					</phrase>
+					
+					<phrase id="10">  <!-- npc - Medic if actor is healthy on ask for heal -->
+						<precondition>proportional_medic_healing_price_mcm.is_actor_healthy</precondition>
+						<precondition>proportional_medic_healing_price_mcm.is_actor_not_in_debt</precondition>
+						<script_text>dialogs.st_dm_medic_general_text_10</script_text> 
+					</phrase>
+					
+					<phrase id="11"> <!-- npc - Medic text offering actor to go in debt for a heal -->
+						<script_text>proportional_medic_healing_price_mcm.get_medic_offer_debt_heal_text</script_text> 
+						<next>12</next>
+						<next>13</next>
+					</phrase>
+					
+					<phrase id="12"> <!-- actor - Option to agree to go in debt -->
+						<script_text>proportional_medic_healing_price_mcm.get_actor_debt_accept_text</script_text> 
+						<next>14</next>
+					</phrase>
+					
+					<phrase id="13"> <!-- actor - Option to decline to go in debt -->
+						<script_text>proportional_medic_healing_price_mcm.get_actor_debt_decline_text</script_text>
+						<next>20</next>
+					</phrase>
+					
+					<phrase id="14"> <!-- Heal player for free and add debt -->
+						<action>proportional_medic_healing_price_mcm.use_debt_heal</action> 
+						<action>medic_effects.medic_anim</action>
+						<next>6</next>
+					</phrase>
+					
+					<phrase id="15"> <!-- npc - Remind actor if in debt -->
+						<precondition>proportional_medic_healing_price_mcm.is_actor_in_debt</precondition>
+						<script_text>proportional_medic_healing_price_mcm.get_npc_debt_reminder_text</script_text> 
+						<next>16</next>
+						<next>17</next>
+					</phrase>
+					
+					<phrase id="16"> <!-- actor - Option to pay debt -->
+						<precondition>proportional_medic_healing_price_mcm.can_actor_pay_debt</precondition>
+						<script_text>proportional_medic_healing_price_mcm.get_actor_debt_pay_accept_text</script_text> 
+						<next>18</next>
+					</phrase>
+					
+					<phrase id="17"> <!-- actor - Option to decline to pay debt -->
+						<script_text>proportional_medic_healing_price_mcm.get_actor_debt_pay_decline_text</script_text> 
+						<next>21</next>
+					</phrase>
+					
+					<phrase id="18"> <!-- Pay debt -->
+						<action>proportional_medic_healing_price_mcm.pay_medic_debt</action> 
+						<script_text>proportional_medic_healing_price_mcm.get_npc_debt_pay_accept_response_text</script_text>
+					</phrase>
+					
+					<phrase id="19"> <!-- actor - Claim actor doesn't have enough money -->
+						<script_text>proportional_medic_healing_price_mcm.get_actor_no_money_text</script_text> 
+						<next>11</next>
+					</phrase>
+					
+					<phrase id="20"> <!-- npc - Response on decline to go in debt -->
+						<script_text>proportional_medic_healing_price_mcm.get_npc_debt_decline_response_text</script_text>
+					</phrase>
+					
+					<phrase id="21"> <!-- npc - Response on decline to pay debt -->
+						<script_text>proportional_medic_healing_price_mcm.get_npc_debt_pay_decline_response_text</script_text>
+					</phrase>
+					]]
+					
+					xml_obj:insertFromXMLString(to_insert, element, 1)
+				end
+				
+				-- Debt dialog on attempt to trade
+				local query2 = xml_obj:query("dialog[id=dm_init_medic] > phrase_list")
+				if is_not_empty(query2) then
+					local element = query2[1]
+					local to_insert = 
+					[[
+					<phrase id="0"> <!-- actor -->
+						<text>st_medic_dialog_init</text>
+						<next>1</next>
+						<next>2</next>
+					</phrase>
+					<phrase id="1"> <!-- npc - Trade with actor if not in debt -->
+						<precondition>proportional_medic_healing_price_mcm.is_actor_not_in_debt</precondition>
+						<script_text>dialogs.st_medic_dialog_reply</script_text>
+						<action>dialogs.npc_is_trader</action>
+					</phrase>
+					<phrase id="2"> <!-- npc - Remind actor of debt -->
+						<precondition>proportional_medic_healing_price_mcm.is_actor_in_debt</precondition>
+						<script_text>proportional_medic_healing_price_mcm.get_npc_debt_reminder_text</script_text>
+						<next>3</next>
+						<next>4</next>
+					</phrase>
+					<phrase id="3"> <!-- actor - Accept to pay debt -->
+						<precondition>proportional_medic_healing_price_mcm.can_actor_pay_debt</precondition>
+						<script_text>proportional_medic_healing_price_mcm.get_actor_debt_pay_accept_text</script_text>
+						<next>5</next>
+					</phrase>
+					<phrase id="4"> <!-- actor - Decline to pay debt -->
+						<script_text>proportional_medic_healing_price_mcm.get_actor_debt_pay_decline_text</script_text>
+						<next>6</next>
+					</phrase>
+					<phrase id="5"> <!-- Pay debt -->
+						<action>proportional_medic_healing_price_mcm.pay_medic_debt</action>
+						<script_text>proportional_medic_healing_price_mcm.get_npc_debt_pay_accept_response_text</script_text>
+					</phrase>
+					<phrase id="6"> <!-- npc - Response on decline to pay debt -->
+						<script_text>proportional_medic_healing_price_mcm.get_npc_debt_pay_decline_response_text</script_text>
+					</phrase>
+					]]
+					
+					xml_obj:insertFromXMLString(to_insert, element, 1)
+				end
+			end
+		end)
+	end
+end

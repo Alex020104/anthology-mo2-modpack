@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="st_arena_use">
+		<text>Open ($$ACTION_USE$$)</text>
+	</string>
+
+	<string id="st_arena_team1">
+		<text>Team 1</text>
+	</string>
+
+	<string id="st_arena_team2">
+		<text>Team 2</text>
+	</string>
+
+	<string id="st_arena_bet">
+		<text>Bet</text>
+	</string>
+
+	<string id="st_arena_gain">
+		<text>Gain</text>
+	</string>
+
+	<string id="st_arena_start">
+		<text>Start</text>
+	</string>
+
+	<string id="st_arena_kicked_out">
+		<text>You were kicked out for attacking contestants and your bet is lost.</text>
+	</string>
+
+	<string id="st_arena_team_1_won">
+		<text>Team 1 won!</text>
+	</string>
+
+	<string id="st_arena_team_2_won">
+		<text>Team 2 won!</text>
+	</string>
+
+	<string id="st_arena_your_reward">
+		<text>You won %s RU.</text>
+	</string>
+
+
+	<!-- MCM -->
+	<string id="ui_mcm_xcvb_arena_title">
+		<text>Arena DLC</text>
+	</string>
+	<string id="ui_mcm_menu_xcvb_arena">
+		<text>Arena DLC</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_arena_fight_chance">
+		<text>Fight chance (for each time period)</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_arena_stalker_team1_chance">
+		<text>Team 1 stalkers chance</text>
+	</string>
+	<string id="ui_mcm_xcvb_arena_stalker_team1_chance_desc">
+		<text>Chance for stalkers to appear in team 1. If roll fails - mutants will appear instead.</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_arena_stalker_team2_chance">
+		<text>Team 2 stalkers chance</text>
+	</string>
+	<string id="ui_mcm_xcvb_arena_stalker_team2_chance_desc">
+		<text>Chance for stalkers to appear in team 2. If roll fails - mutants will appear instead.</text>
+	</string>
+
+</string_table>

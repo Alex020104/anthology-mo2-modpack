@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="respawn_amebap">
+		<text>Амёба</text>
+	</string>
+	<string id="respawn_burenkap">
+		<text>Бурёнка</text>
+	</string>
+	<string id="respawn_durielp">
+		<text>Дуриэль</text>
+	</string>
+	<string id="respawn_kannibalp">
+		<text>Каннибал</text>
+	</string>
+	<string id="respawn_krisap">
+		<text>Крыса</text>
+	</string>
+	<string id="respawn_strekozap">
+		<text>Стрекоза</text>
+	</string>
+	<string id="respawn_vebberp">
+		<text>Вэббер</text>
+	</string>
+    <string id="respawn_alghoulp">
+   		<text>Альгул</text>
+	</string>
+	<string id="respawn_muskulp">
+		<text>Мускул</text>
+	</string>
+	<string id="respawn_zeddevp">
+		<text>Зеддев</text>
+	</string>
+	<string id="respawn_yozhikp">
+		<text>Ёжик</text>
+	</string>
+	<string id="respawn_vendigop">
+		<text>Вендиго</text>
+	</string>
+	<string id="respawn_tarkp">
+		<text>Тарк</text>
+	</string>
+	<string id="respawn_pyatp">
+		<text>Пят</text>
+	</string>
+	<string id="respawn_svinyap">
+		<text>Свинья</text>
+	</string>
+	<string id="respawn_mutagenp">
+		<text>Мутаген</text>
+	</string>
+	<string id="respawn_latsertianp">
+		<text>Латзериан</text>
+	</string>
+	<string id="respawn_zhabap">
+		<text>Жаба</text>
+	</string>
+	<string id="respawn_koyotp">
+		<text>Койот</text>
+	</string>
+	<string id="respawn_gonchayap">
+		<text>Гончая</text>
+	</string>
+	<string id="respawn_bayunp">
+		<text>Баюн</text>
+	</string>
+	<string id="respawn_volkp">
+		<text>Волк</text>
+	</string>
+	<string id="respawn_tarakanp">
+		<text>Таракан</text>
+	</string>
+	<string id="respawn_silvanp">
+		<text>Сильван</text>
+	</string>
+	<string id="respawn_rogachp">
+		<text>Рогач</text>
+	</string>
+	<string id="respawn_obrazetp">
+		<text>Образет</text>
+	</string>
+	<string id="respawn_letalkap">
+		<text>Леталка</text>
+	</string>
+	<string id="respawn_komarp">
+		<text>Комар</text>
+	</string>
+	<string id="respawn_mizgirp">
+		<text>Мизгир</text>
+	</string>
+	<string id="respawn_juggerp">
+		<text>Джаггер</text>
+	</string>
+	<string id="respawn_gerudap">
+		<text>Геруда</text>
+	</string>
+	<string id="respawn_dobermanp">
+		<text>Доберман</text>
+	</string>
+	<string id="respawn_predatorp">
+		<text>Хищник</text>
+	</string>
+	<string id="respawn_iskatelp">
+		<text>Искатель</text>
+	</string>
+	<string id="respawn_hayzedp">
+		<text>Хейз</text>
+	</string>
+	<string id="respawn_zanozap">
+		<text>Заноза</text>
+	</string>
+	<string id="respawn_clawp">
+		<text>Коготь</text>
+	</string>
+	<string id="respawn_scalesp">
+		<text>Сом</text>
+	</string>
+	<string id="respawn_bonesp">
+		<text>Скелет</text>
+	</string>
+	<string id="respawn_jawp">
+		<text>Челюсти</text>
+	</string>
+	<string id="respawn_spikep">
+		<text>Шип</text>
+	</string>
+	<string id="respawn_specimenp">
+		<text>Особь</text>
+	</string>
+	<string id="respawn_fistp">
+		<text>Фист</text>
+	</string>
+	<string id="respawn_darkp">
+		<text>Тёмный</text>
+	</string>
+	<string id="respawn_furp">
+		<text>Фурри</text>
+	</string>
+	<string id="respawn_grotesquep">
+		<text>Гротеск</text>
+	</string>
+	<string id="respawn_watchmenp">
+		<text>Наблюдатель</text>
+	</string>
+	<string id="respawn_fevp">
+		<text>Лихорадка</text>
+	</string>
+	<string id="respawn_scuttlerp">
+		<text>Беглец</text>
+	</string>
+	<string id="respawn_templep">
+		<text>Храмовник</text>
+	</string>
+	<string id="respawn_slizenp">
+		<text>Слизень</text>
+	</string>
+	<string id="respawn_ratkingp">
+		<text>Кротокрыс</text>
+	</string>
+	<string id="respawn_cerbp">
+		<text>Церб</text>
+	</string>
+	<string id="respawn_henp">
+		<text>Курица</text>
+	</string>
+	<string id="respawn_hogp">
+		<text>Вепрь</text>
+	</string>
+	<string id="respawn_pigp">
+		<text>Свинья</text>
+	</string>
+	<string id="respawn_roosterp">
+		<text>Петух</text>
+	</string>
+	<string id="respawn_rotanp">
+		<text>Ротан</text>
+	</string>
+	<string id="respawn_canidp">
+		<text>Канид</text>
+	</string>
+	<string id="respawn_medwedp">
+		<text>Медвед</text>
+	</string>
+	<string id="respawn_fox">
+		<text>Лиса</text>
+	</string>
+	<string id="respawn_biryuk">
+		<text>Бирюк</text>
+	</string>
+	<string id="respawn_deer">
+		<text>Олень</text>
+	</string>
+	<string id="respawn_bear">
+		<text>Медведь</text>
+	</string>
+	<string id="respawn_shepherd">
+		<text>Овчарка</text>
+	</string>	
+</string_table>

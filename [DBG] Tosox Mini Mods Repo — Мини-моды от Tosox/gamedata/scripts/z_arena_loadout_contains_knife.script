@@ -1,0 +1,32 @@
+--[[
+	=====================================================================
+	Addon      : Tosox Mini Mods Repo: Arena Loadout contains Knife
+	Link       : https://www.moddb.com/mods/stalker-anomaly/addons/tosox-mini-mods-repo/
+	Author     : Tosox
+    Credits    : Jhon_Doe
+	Date       : 26.01.2024
+	Last Edit  : 26.01.2024
+	=====================================================================
+--]]
+
+KNIFE = "wpn_knife"
+
+orig_xr_effects_bar_arena_teleport = xr_effects.bar_arena_teleport
+xr_effects.bar_arena_teleport = function(...)
+    orig_xr_effects_bar_arena_teleport(...)
+
+    CreateTimeEvent("arena_loadout_contains_knife", "check_if_already_has_knife", 0.25, function()
+        local has_knife = false
+        db.actor:iterate_inventory(function(actor, itm)
+            if (not has_knife) and (IsMelee(itm)) then
+                has_knife = true
+            end
+        end, db.actor)
+
+        if not has_knife then
+            alife_create_item(KNIFE, db.actor)
+        end
+
+        return true
+    end)
+end

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!--
+	Ammunition
+-->
+
+<string_table>
+	<!-- descriptors -->
+	
+	<string id="st_ammo_7.92x33_fmj">
+		<text>8x33 FNM FMJ BT</text>
+	</string>
+	<string id="st_ammo_7.92x33_fmj_descr">
+		<text>An 8x33mm (7.92x33 Kurz) cartridge with an 8 gram full-metal-jacketed boat-tailed bullet with a lead core in a copper jacket and a brass case, produced by Fabrica Nacional de Municoes de Armas Ligeiras. This is a modern adaptaion of the Mauser Kurz cartridge and offers much greater accuracy than standard Wehrmacht rounds. It is able to penetrate basic ballistic protections, but it also has a moderate chance of bouncing off surfaces.</text>
+	</string>
+	<string id="st_ammo_7.92x33_fmj_s">
+		<text>8x33 FNM FMJ BT</text>
+	</string>			
+	
+	<string id="st_ammo_7.92x33_p43me">
+		<text>7.92x33 Kurzpatrone 43 m.E.</text>
+	</string>
+	<string id="st_ammo_7.92x33_p43me_descr">
+		<text>A 7.92x33mm Kurzpatrone 43 mit Eisenkern (Short Cartridge 1943 with Iron Core) cartridge with an 8.1 gram iron-core bullet with a lead layout and a bimetallic jacket in a steel case. 7.9 Kurz was the first mass-produced intermediate cartridge in the world and was achieved through shortening the standard 7.92x57mm Mauser round. It was made specially for Mkb 42 and Stg 44 assault rifles and saw great success despite its limited use. It is able to pierce through basic ballistic body protections as well as some intermediate models in addition to providing a significant stopping power effect, however, it has a high bounce probability off various surfaces.</text>
+	</string>
+	<string id="st_ammo_7.92x33_p43me_s">
+		<text>7.92x33 Kurzpatrone 43 m.E.</text>
+	</string>		
+
+	<string id="st_ammo_7.92x33_sp">
+		<text>7.92x33 SP</text>
+	</string>
+	<string id="st_ammo_7.92x33_sp_descr">
+		<text>A modern civillian adaptation of the 7.9 Kurz ammunition. The 7.92x33mm SP was designed as an expanding cartridge purposed for hunting and sport shooting. Features a soft-point projectile in a brass case. It deals much greater damage than standard 7.9x33, but its ballistic performance has worsened drastically.</text>
+	</string>
+	<string id="st_ammo_7.92x33_sp_s">
+		<text>7.92x33 SP</text>
+	</string>
+
+	<string id="st_ammo_7.92x33_p43mh">
+		<text>7.92x33 Kurzpatrone 43 m.H.</text>
+	</string>
+	<string id="st_ammo_7.92x33_p43mh_descr">
+		<text>A 7.92x33mm Kurzpatrone 43 mit Hartkern (Short Cartridge 1943 with Hard Core) cartridge with an 8 gram bullet with a tungsten core in a lead layout and a bimetallic jacket in a steel case. An armor-piercing variant of 7.9 Kurz, it was produced in very limited amounts for german assault troops during the last years of WW2. It is able to pierce through basic and intermediate ballistic body protections in addition to providing a significant stopping power effect, however, it has a high bounce probability off various surfaces.</text>
+	</string>
+	<string id="st_ammo_7.92x33_p43mh_s">
+		<text>7.92x33 Kurzpatrone 43 m.H.</text>
+	</string>
+	
+	<string id="st_mag_stg44_7.925x33">
+		<text>StG44 Magazine (7.92x33K)</text>
+	</string>
+	<string id="st_mag_stg44_7.925x33_descr">
+		<text>The magazine for the StG44 in 7.92x33 Kurzpatrone holds 30 rounds.</text>
+	</string>
+	
+
+</string_table>

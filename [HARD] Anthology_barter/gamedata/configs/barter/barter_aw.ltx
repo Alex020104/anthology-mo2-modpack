@@ -1,0 +1,158 @@
+
+; screw
+
+[screw_vz61]
+trader          = mil_smart_terrain_7_7_freedom_mechanic_stalker
+give            = wpn_vz61_freedom
+take            = wpn_vz61,marijuana
+repeat          = fixed
+limit           = 1
+faction         = freedom
+goodwill        = 200
+sort_rank       = 1
+desc            = st_screw_paint
+desc_done       = st_screw_paint_done
+[screw_m4]:screw_vz61
+give            = wpn_m4a1_freedom
+take            = wpn_m4a1:1,marijuana:2
+goodwill        = 300
+sort_rank       = 2
+[screw_aug]:screw_vz61
+give            = wpn_aug_freedom
+take            = wpn_aug:1,marijuana:3
+goodwill        = 400
+sort_rank       = 3
+
+[screw_mask]:screw_vz61
+give            = helm_ach7ex
+take            = helm_ach7,helm_respirator,helmet_repair_kit:1
+sort_rank       = 10
+
+[screw_ied]
+trader          = mil_smart_terrain_7_7_freedom_mechanic_stalker
+give            = sewing_kit_a
+take            = ied_new:2
+repeat          = restock
+limit           = 2
+desc            = st_screw_ied
+desc_done       = st_screw_ied_done
+
+[screw_ied2]:screw_ied
+give            = glue_e
+take            = ied_rpg_new:1
+limit           = 3
+
+[screw_ied3]:screw_ied
+give            = heavy_repair_kit
+take            = ied_rpg_new:2,ied_new:2
+repeat          = fixed
+
+[screw_ied4]:screw_ied
+give            = heavy_sewing_thread
+take            = explo_metalcan_powder
+limit           = 5
+
+[screw_radio]
+trader          = mil_smart_terrain_7_7_freedom_mechanic_stalker
+give            = gun_oil_ru
+take            = radio,radio2,walkie
+repeat          = fixed
+limit           = 4
+desc            = st_screw_radio
+
+[screw_radio2]:screw_radio
+give            = solvent:1
+
+; skinflint
+[skinflint_lottery] ; patches
+trader          = mil_smart_terrain_7_10_freedom_trader_stalker
+give            = ammo_5.56x45_fmj
+take            = monolith_patch:4
+repeat          = restock
+limit           = 16
+sort_rank       = 2
+desc            = st_skinflint_lottery
+desc_done       = st_skinflint_lottery_done
+
+[skinflint_lottery2]:skinflint_lottery
+give            = ammo_7.62x51_fmj
+take            = monolith_patch:6
+
+[skinflint_lottery2a]:skinflint_lottery2
+give            = ammo_11.43x23_fmj
+take            = monolith_patch:3
+
+[skinflint_lottery3]:skinflint_lottery2
+give            = ammo_357_hp_mag
+take            = monolith_patch:4
+
+[skinflint_lottery3a]:skinflint_lottery2
+give            = ammo_9x19_fmj
+take            = monolith_patch:2
+
+[skinflint_lottery4]:skinflint_lottery2
+give            = wpn_colt1911_modern
+take            = monolith_patch:10
+repeat          = fixed
+limit           = 1
+faction         = freedom
+goodwill        = 150
+
+[skinflint_lottery4a]:skinflint_lottery2
+give            = wpn_cz75
+take            = monolith_patch:10
+repeat          = fixed
+limit           = 1
+faction         = freedom
+goodwill        = 150
+
+[skinflint_lottery5]:skinflint_lottery4
+give            = wpn_fnx45
+take            = monolith_patch:15
+goodwill        = 300
+
+[skinflint_lottery5a]:skinflint_lottery4
+give            = wpn_mp5sd
+take            = monolith_patch:15
+goodwill        = 300
+
+[skinflint_lottery6]:skinflint_lottery4
+give            = wpn_aug
+take            = monolith_patch:30
+goodwill        = 500
+
+[skinflint_lottery7]:skinflint_lottery4
+give            = wpn_protecta
+take            = monolith_patch:30
+goodwill        = 500
+
+[skinflint_lottery8]:skinflint_lottery4
+give            = wpn_scar
+take            = monolith_patch:50
+goodwill        = 800
+
+[skinflint_lottery9]:skinflint_lottery4
+give            = wpn_trg
+take            = monolith_patch:50
+goodwill        = 800
+
+; solid
+
+[solid_supplies] ; med exchange
+trader          = mil_freedom_medic
+give            = antibio_sulfad:9
+take            = morphine
+repeat          = restock
+limit           = 4
+desc            = st_solid_supplies
+desc_done       = st_solid_supplies_done
+
+[solid_supplies2]:solid_supplies
+give            = antibio_chlor:2
+take            = jgut:1
+[solid_supplies3]:solid_supplies
+give            = antirad:3
+take            = medkit_army:1
+[solid_supplies4]:solid_supplies
+give            = drug_radioprotector:6
+take            = stimpack_army

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+  <string id="st_medicalvanillaheal_craftingtitle">
+    <text>Medical, healing</text>
+  </string>
+  <!-- <string id="st_medicalvanillabandage_craftingtitle"> -->
+    <!-- <text>Medical, healing</text> -->
+  <!-- </string> -->
+  <string id="st_medicalvanilladrug_craftingtitle">
+    <text>Medical, drugs</text>
+  </string>
+</string_table>

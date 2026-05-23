@@ -1,0 +1,85 @@
+<w>
+	<cook x="296" y="64" width="432" height="640" stretch="1">
+		<background x="0" y="0" width="432" height="640" stretch="1">
+			<texture>ui_inGame2_item_1_background</texture>
+		</background>
+		
+		<cap_tab x="20.25" y="8" width="391.5" height="28">
+			<text complex_mode="1" r="200" g="200" b="200" align="r" vert_align="c" font="letterica18"/>
+		</cap_tab>
+		
+		
+		<!-- ingrediens -->
+		<text_item_1_name x="246.9375" y="99" width="139.5" height="28">
+			<text complex_mode="1" r="150" g="150" b="150" align="c" vert_align="c" font="letterica16"/>
+		</text_item_1_name>
+		<text_item_2_name x="246.9375" y="223" width="139.5" height="28">
+			<text complex_mode="1" r="150" g="150" b="150" align="c" vert_align="c" font="letterica16"/>
+		</text_item_2_name>
+		<text_item_3_name x="246.9375" y="347" width="139.5" height="28">
+			<text complex_mode="1" r="150" g="150" b="150" align="c" vert_align="c" font="letterica16"/>
+		</text_item_3_name>
+			
+		<text_item_1_num x="335.8125" y="173" width="15.75" height="28">
+			<text complex_mode="1" r="150" g="150" b="150" align="c" vert_align="c" font="letterica16"/>
+		</text_item_1_num>
+		<text_item_2_num x="323.4375" y="251" width="28.125" height="74">
+			<text complex_mode="1" r="150" g="150" b="150" align="c" vert_align="c" font="letterica16"/>
+		</text_item_2_num>
+		<text_item_3_num x="323.4375" y="375" width="28.125" height="74">
+			<text complex_mode="1" r="150" g="150" b="150" align="c" vert_align="c" font="letterica16"/>
+		</text_item_3_num>
+			
+		<pic_item_1_b x="281.8125" y="127" width="69.75" height="74" stretch="1">
+			<texture>ui_inGame2_item_1_window_clean</texture>
+		</pic_item_1_b>
+		<pic_item_2_b x="281.8125" y="251" width="69.75" height="74" stretch="1">
+			<texture>ui_inGame2_item_1_window</texture>
+		</pic_item_2_b>
+		<pic_item_3_b x="281.8125" y="375" width="69.75" height="74" stretch="1">
+			<texture>ui_inGame2_item_1_window</texture>
+		</pic_item_3_b>
+		
+		<pic_item_1 x="281.8125" y="127" width="69.75" height="74" stretch="1"/>
+		<pic_item_2 x="284.0625" y="255" width="37.125" height="66" stretch="1"/>
+		<pic_item_3 x="284.0625" y="379" width="37.125" height="66" stretch="1"/>
+		
+		
+		<!-- meals -->
+		<cap_cook x="28.125" y="50" width="175.5" height="22">
+			<text r="200" g="200" b="200" font="letterica18" align="c" vert_align="c">st_ui_itm_cook_food</text>
+		</cap_cook>
+		<cont_inv x="30.375" y="77" width="173.8125" height="222" stretch="1"/>
+		<back_inv x="28.125" y="72" width="175.5" height="232" stretch="1">
+			<texture>ui_inGame2_item_1_inv</texture>
+		</back_inv>
+		
+		<box_item x="52.875" y="336" width="126" height="112" stretch="1"/>
+		<back_item x="48.9375" y="332" width="133.875" height="120" stretch="1">
+			<texture>ui_inGame2_item_1_box</texture>
+		</back_item>
+		
+		<text_item x="53.4375" y="414" width="124.875" height="40">
+			<text complex_mode="1" r="200" g="200" b="130" align="c" vert_align="c" font="letterica16"/>
+		</text_item>
+		<text_fuel_note x="28.125" y="458" width="175.5" height="46">
+			<text complex_mode="1" r="150" g="150" b="150" align="c" vert_align="t" font="letterica16"/>
+		</text_fuel_note>
+		
+		
+		<!-- Rest -->
+		<box_campfire x="0" y="0" width="0" height="0" stretch="1">
+			<texture>ui_inGame2_campfire</texture>
+		</box_campfire>
+		<pic_item_main x="253.125" y="516" width="126" height="112" stretch="1"/>
+		
+		<btn_cook x="64.6875" y="540" width="102.375" height="28">
+			<text y="2" r="150" g="150" b="150" font="letterica16" align="c" vert_align="c">ui_mm_cook</text>
+			<texture>ui_button_ordinary</texture>
+		</btn_cook>
+		<btn_back x="64.6875" y="576" width="102.375" height="28">
+			<text y="2" r="150" g="150" b="150" font="letterica16" align="c" vert_align="c">ui_mm_back</text>
+			<texture>ui_button_ordinary</texture>
+		</btn_back>
+	</cook>
+</w>

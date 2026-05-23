@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="ui_mcm_title_nomorefriendlyfire">
+		<text>Больше никакого урона, наносимого напарниками</text>
+	</string>
+	<string id="ui_mcm_menu_nomorefriendlyfire">
+		<text>Огонь по своим</text>
+	</string>
+	<string id="ui_mcm_nomorefriendlyfire_npcprotect">
+		<text>Защита НПС</text>
+	</string>
+	<string id="ui_mcm_nomorefriendlyfire_npcprotect_desc">
+		<text>Защищает напарников от урона, наносимого ГГ</text>
+	</string>
+	<string id="ui_mcm_nomorefriendlyfire_acprotect">
+		<text>Защита игрока</text>
+	</string>
+	<string id="ui_mcm_nomorefriendlyfire_acprotect_desc">
+		<text>Защищает ГГ от урона, наносимого напарниками</text>
+	</string>
+</string_table>

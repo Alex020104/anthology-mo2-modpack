@@ -1,0 +1,62 @@
+<string_table>
+    <string id="ui_mcm_dynamic_cover_title">
+        <text>Настройки динамического укрытия от выброса</text>
+    </string>
+     <string id="ui_mcm_menu_dynamic_cover">
+        <text>Динамическое укрытие</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_distance_factor">
+        <text>Фактор необходимости укрытия</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_distance_factor_desc">
+        <text>Более высокое значение усложняет поиск укрытия</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_north_cover_bonus">
+        <text>Бонус укрытия, обращённого на север</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_north_cover_bonus_desc">
+        <text>Бонус выше становится эффективнее во время выбросов</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_show_cover_bar">
+        <text>Показать индикатор укрытия</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_show_cover_bar_desc">
+        <text>Показывает полосу, указывающую, насколько вы укрыты во время выбросов\Скрыто во время нахождения в укрытии</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_cover_range">
+        <text>Диапазон динамического укрытия</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_cover_range_desc">
+        <text>Дальность, на которой мод проверяет наличие действительного укрытия вокруг вас</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_rays_per_update">
+        <text>Количество контрольных проверок укрытия за кадр</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_rays_per_update_desc">
+        <text>Уменьшите это значение, если у вас проблемы с FPS\nУвеличьте для более быстрой и последовательной проверки укрытий</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_debug_mode">
+        <text>Режим дебага</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_debug_mode_desc">
+        <text>Для тестирования! Это позволит проверять укрытия вне выбросов (включая бонус за укрытие на северной стороне); \n и создавать частицы в конечных точках контрольных проверок укрытий</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_protect_companions">
+        <text>Радиус, в пределах которого на напарников действует укрытие</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_protect_companions_desc">
+        <text>Во время нахождения в динамическом укрытии, напарники в пределах этого радиуса (метры) тоже будут считаться в укрытии\nУстановите значение 0, чтобы отключить</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_grace_period">
+        <text>Льготный период укрытия</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_grace_period_desc">
+        <text>Количество секунд, в течение которых вы находитесь под защитой после выхода из динамического укрытия</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_hud_show_delay">
+        <text>Задержка индикаторной полосы</text>
+    </string>
+    <string id="ui_mcm_dynamic_cover_hud_show_delay_desc">
+        <text>Задержка при отображении индикаторной полосы</text>
+    </string>	
+</string_table>

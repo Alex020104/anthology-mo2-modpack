@@ -1,0 +1,29 @@
+
+--[[
+Headlamp animation fix
+
+makes headlamp animation repsect item use animation setting.
+4/12/2020
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+Author: RavenAscendant
+--]]
+
+
+
+base_Hit_TorchToggle = actor_effects.Hit_TorchToggle
+local snd_headlamp = sound_object('interface\\inv_torch')
+function actor_effects.Hit_TorchToggle(nvg)
+	local animation_setting = axr_main.config:r_value("options","video/player/animations", 1)
+	if animation_setting then
+		base_Hit_TorchToggle(nvg)
+	elseif nvg then
+		actor_effects.ToggleActorNVG()
+	else
+		snd_headlamp:play(db.actor,0,sound_object.s2d)
+		item_device.toggle_torch()
+	end
+end
+
+
+	
+

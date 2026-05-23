@@ -1,0 +1,67 @@
+local buck_ammo = {
+	ammo_12x70_buck = true,
+	ammo_12x70_buck_bad = true,
+	ammo_12x70_buck_verybad = true,
+	ammo_12x70_buck_self = true,
+}
+
+local last_hits = {}
+
+local function falloff(distance)
+	if distance <= 18 then
+		return 1
+	elseif distance <= 20 then
+		return 1 - ((distance - 18) / 2) * 0.55
+	elseif distance <= 30 then
+		return 0.45 - ((distance - 20) / 10) * 0.27
+	end
+
+	return 0.12
+end
+
+function on_bullet_hit(section, obj, pos, dir, mtl, speed, wpn_id)
+	if (not buck_ammo[section]) or (not obj) or (not pos) then
+		return
+	end
+
+	local shooter = db.actor
+	if not shooter then
+		return
+	end
+
+	last_hits[obj:id()] = {
+		section = section,
+		weapon_id = wpn_id,
+		distance = shooter:position():distance_to(pos),
+		time = time_global(),
+	}
+end
+
+function CBeforeHitAfterCalcs(hit_obj, target, bone_id)
+	if (not hit_obj) or (not target) then
+		return
+	end
+
+	local data = last_hits[target:id()]
+	if not data then
+		return
+	end
+
+	if (time_global() - data.time) > 250 then
+		return
+	end
+
+	if data.weapon_id and hit_obj.weapon_id and data.weapon_id ~= hit_obj.weapon_id then
+		return
+	end
+
+	local scale = falloff(data.distance)
+	if scale < 1 then
+		hit_obj.power = hit_obj.power * scale
+		hit_obj.impulse = hit_obj.impulse * scale
+	end
+end
+
+function on_game_start()
+	RegisterScriptCallback("bullet_on_hit", on_bullet_hit)
+end

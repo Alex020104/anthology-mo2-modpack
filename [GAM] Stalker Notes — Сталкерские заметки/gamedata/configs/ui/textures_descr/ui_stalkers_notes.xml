@@ -1,0 +1,36 @@
+<!--=================================================================================================================-->
+<!--                                                                                                                 -->
+<!--    Original Author(s) : NLTP_ASHES                                                                              -->
+<!--    Edited : N/A                                                                                                 -->
+<!--    Date : 20/09/2022                                                                                            -->
+<!--    License : Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)          -->
+<!--                                                                                                                 -->
+<!--    Texture descriptions for UI images used for Stalkers Notes.                                                  -->
+<!--                                                                                                                 -->
+<!-- ================================================================================================================-->
+<w>
+    <file name="ui\guide\encyclopedia_notes">
+        <texture id="encyclopedia__notes_stalkers_notes_lynnh_1_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_lynnh_2_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_lynnh_3_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_lynnh_4_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_xavier_1_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_lykan8345_1_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_emimem_1_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_1_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_2_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_3_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_4_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_5_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_6_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_7_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_8_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_9_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_10_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_11_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_12_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_13_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_14_image" x="0" y="768" width="512" height="256"/>
+        <texture id="encyclopedia__notes_stalkers_notes_sergionoquemovida_15_image" x="0" y="768" width="512" height="256"/>
+    </file>
+</w>

@@ -1,0 +1,432 @@
+------------------------------------------------------------------------------
+---------------------------------- Arms -------------------------------------
+------------------------------------------------------------------------------
+local aim_anm = {"earthquake_1","earthquake_2"}
+local mcm_arms_penalty = zzz_player_injuries_mcm.get_config("arm_opt")
+local mcm_arms_min_hp = zzz_player_injuries_mcm.get_config("arm_pen_min_hp")
+local mcm_arms_cam_pwr = zzz_player_injuries_mcm.get_config("arm_anm_pwr")
+local get_bhs_state
+
+function shaking_hands()
+
+	if not mcm_arms_penalty then return end
+
+	local activeslot = db.actor:active_slot()
+	if not (activeslot == 2 or activeslot == 3 or activeslot == 1) then return end
+
+	local item_in_slot = db.actor:item_in_slot(activeslot)
+	if not (item_in_slot) then return end
+
+	local cam_power = 0
+
+	local weight = item_in_slot:weight()
+	local body_state = get_body_state()
+	local body_state_mult = (body_state == "crouch" and 0.75) or (body_state == "low_crouch" and 0.5) or 1
+
+	local health, timedhp, maxhp = get_bhs_state()
+	if not health then return end
+
+	local max_left_arm, max_right_arm = maxhp.rightarm, maxhp.leftarm
+	local left_arm, right_arm = health.rightarm + timedhp.rightarm, health.leftarm + timedhp.leftarm
+
+	local arms_ratio = (left_arm + right_arm) / (max_left_arm + max_right_arm)
+
+	if arms_ratio >= (mcm_arms_min_hp / 100) then
+		return
+	end
+
+	-- lower penalty if both arms almost equally damaged (except when both have low hp)
+	if (left_arm / right_arm) > 0.6 and (right_arm / left_arm) > 0.6 then
+		cam_power = 0.08 * weight / arms_ratio
+	else
+		cam_power = 0.12 * weight / arms_ratio
+	end
+
+	cam_power = cam_power * body_state_mult
+	cam_power = clamp(cam_power, 0, 3)
+	cam_power = cam_power * mcm_arms_cam_pwr
+
+	if item_in_slot:weapon_is_scope() then
+		cam_power = cam_power * 0.2
+	end
+
+	-- play anm
+	level.add_cam_effector("camera_effects\\" .. aim_anm[math.random(#aim_anm)] .. ".anm", 9921, true, "", 0, true, cam_power)
+end
+
+function actor_on_weapon_zoom_in()
+	shaking_hands()
+end
+
+function actor_on_weapon_zoom_out()
+	level.remove_cam_effector(9921)
+end
+
+
+------------------------------------------------------------------------------
+---------------------------------- Legs --------------------------------------
+------------------------------------------------------------------------------
+local rightleg_anm = {"med1","med4"}
+local leftleg_anm = {"med2","med3"}
+local bothlegs_anm = {"strong1","strong2","strong4"}
+
+local limp_flag
+
+local mcm_legs_penalty = zzz_player_injuries_mcm.get_config("leg_opt")
+local mcm_legs_min_hp = zzz_player_injuries_mcm.get_config("leg_pen_min_hp")
+local mcm_legs_anm_pwr = zzz_player_injuries_mcm.get_config("leg_anm_pwr")
+local mcm_legs_dmg_min_hp = zzz_player_injuries_mcm.get_config("leg_dmg_min_hp")
+local mcm_legs_new_voice = zzz_player_injuries_mcm.get_config("new_voice_sounds")
+
+local legs_speed_tmr = 0
+function get_bhs_state()
+	local mod = zzz_player_injuries
+	if not mod then
+		return nil
+	end
+
+	local health = mod.health
+	local timedhp = mod.timedhp
+	local maxhp = mod.maxhp
+	if not health or not timedhp or not maxhp then
+		return nil
+	end
+
+	return health, timedhp, maxhp
+end
+
+function limp_speed_slow()
+	if not mcm_legs_penalty then return end
+
+	local tg = time_global()
+	if legs_speed_tmr > tg then return end
+	legs_speed_tmr = tg + 2000
+
+	local health, timedhp, maxhp = get_bhs_state()
+	if not health then return end
+
+	local legs_summ = health.leftleg + timedhp.leftleg + health.rightleg + timedhp.rightleg
+	local max_legs_summ = maxhp.leftleg + maxhp.rightleg
+
+	local legs_ratio = legs_summ / max_legs_summ
+
+	if legs_ratio >= (mcm_legs_min_hp / 100) then
+		speed.remove_speed("bhs_speed_run")
+		return
+	end
+
+	local val = normalize(legs_summ, -1, max_legs_summ)
+	speed.add_speed("bhs_speed_run", val, false, true)
+end
+
+local legs_limp_tmr = 0
+function legs_limp_set()
+	if not mcm_legs_penalty then return end
+
+	local tg = time_global()
+	if legs_limp_tmr > tg then return end
+	legs_limp_tmr = tg + 2000
+
+	local health, timedhp, maxhp = get_bhs_state()
+	if not health then return end
+
+	local right_leg, left_leg = health.leftleg + timedhp.leftleg, health.rightleg + timedhp.rightleg		-- right is left
+	local legs_summ = right_leg + left_leg
+
+	local max_right_leg, max_left_leg = maxhp.leftleg, maxhp.rightleg
+	local max_legs_summ = max_right_leg + max_left_leg
+
+	local legs_ratio = legs_summ / max_legs_summ
+
+	if legs_ratio >= (mcm_legs_min_hp / 100) then
+		limp_flag = nil
+		return
+	end
+
+	if (right_leg == left_leg) and (legs_summ < max_legs_summ) then
+		limp_flag = "both"
+	elseif (left_leg < max_left_leg) and (left_leg < right_leg) then
+		limp_flag = "left"
+	elseif (right_leg < max_right_leg) and (right_leg < left_leg) then
+		limp_flag = "right"
+	end
+
+end
+
+local legs_anm_tmr = 0
+function legs_limp_animation()
+	if not mcm_legs_penalty then return end
+	if not limp_flag then return end
+
+	local tg = time_global()	-- sprint is tearing animations apart, the only way is to increase delay for it
+	if legs_anm_tmr > tg then return end
+	local add_time = IsMoveState("mcSprint") and 1000 or 500
+	legs_anm_tmr = tg + add_time
+
+	local health, timedhp, maxhp = get_bhs_state()
+	if not health then return end
+
+	local right_leg, left_leg = health.leftleg + timedhp.leftleg, health.rightleg + timedhp.rightleg
+	local max_right_leg, max_left_leg = maxhp.leftleg, maxhp.rightleg
+
+	if limp_flag == "right" then
+		local val = normalize(right_leg, max_right_leg, 0) * mcm_legs_anm_pwr * 3
+		level.add_cam_effector("camera_effects\\switch\\" .. rightleg_anm[math.random(#rightleg_anm)] .. ".anm", 99251, false, "", 0, false, val)
+	elseif limp_flag == "left" then
+		local val = normalize(left_leg, max_left_leg, 0) * mcm_legs_anm_pwr * 3
+		level.add_cam_effector("camera_effects\\switch\\" .. leftleg_anm[math.random(#leftleg_anm)] .. ".anm", 99261, false, "", 0, false, val)
+	elseif limp_flag == "both" then
+		local val = normalize( left_leg + right_leg, max_left_leg + max_right_leg, 0 ) * mcm_legs_anm_pwr * 3
+		level.add_cam_effector("camera_effects\\switch\\" .. bothlegs_anm[math.random(#bothlegs_anm)] .. ".anm", 99271, false, "", 0, false, val)
+	end
+
+end
+
+local legs_dmg_tmr = 0
+function legs_limp_damage()
+	if not mcm_legs_penalty then return end
+	if not IsMoveState("mcSprint") then return end
+
+	local tg = time_global()
+	if legs_dmg_tmr > tg then return end
+	legs_dmg_tmr = tg + 2500
+
+	local health, timedhp, maxhp = get_bhs_state()
+	if not health then return end
+
+	local right_leg, left_leg = health.leftleg + timedhp.leftleg, health.rightleg + timedhp.rightleg
+	local max_right_leg, max_left_leg = maxhp.leftleg, maxhp.rightleg
+
+	local right_leg_pwr = (right_leg / max_right_leg) < (mcm_legs_dmg_min_hp / 100) and 0.04 or 0
+	local left_leg_pwr = (left_leg / max_left_leg) < (mcm_legs_dmg_min_hp / 100) and 0.04 or 0
+
+	-- return if legs hp higher than mcm setting
+	local hit_pwr = (right_leg_pwr + left_leg_pwr) / 2
+	if hit_pwr <= 0 then return end
+
+	-- return if chance didn't proc
+	local legs_ratio = (right_leg + left_leg) / (max_right_leg + max_left_leg)
+	local chance = (1 - legs_ratio) * 0.5
+	if chance < math.random() then return end
+
+	local file
+	if mcm_legs_new_voice then
+		local helmet = db.actor:item_in_slot(12) or db.actor:get_current_outfit()
+		file = "bhs\\" .. (helmet and "m_" or "") .. "pain_" .. math.random(1, 13)
+	else
+		file = "actor\\pain_" .. math.random(1, 8)
+	end
+
+	file_to_say = sound_object(file)
+	file_to_say:play(db.actor, 0, sound_object.s2d)
+
+	level.add_pp_effector("blur_bhs.ppe", math.random(655808, 655820), false)
+
+	db.actor:set_health_ex(db.actor.health - hit_pwr)
+end
+
+function actor_on_footstep()
+	legs_limp_animation()
+	legs_limp_damage()
+end
+
+
+------------------------------------------------------------------------------
+--------------------------------- Torso --------------------------------------
+------------------------------------------------------------------------------
+local mcm_torso_penalty = zzz_player_injuries_mcm.get_config("torso_opt")
+
+local torso_tmr = 0
+function torso_penalty()
+	if not mcm_torso_penalty then return end
+
+	local tg = time_global()
+	if torso_tmr > tg then return end
+	torso_tmr = tg + 1000
+
+	local health, timedhp, maxhp = get_bhs_state()
+	if not health then return end
+
+	local torso = health.torso + timedhp.torso
+	local max_torso = maxhp.torso
+
+	local torso_ratio = torso / max_torso
+	local cap_health = normalize(torso_ratio, -2, 1)
+
+	if db.actor.health > cap_health then
+		db.actor.health = cap_health
+	end
+
+end
+
+
+------------------------------------------------------------------------------
+--------------------------------- Head --------------------------------------
+------------------------------------------------------------------------------
+-- zzz_player_injuries.hit_on_update   starts it
+local mcm_head_penalty = zzz_player_injuries_mcm.get_config("head_opt")
+local mcm_head_min_dmg = zzz_player_injuries_mcm.get_config("head_pen_min_hp")
+local mcm_head_anm_pwr = zzz_player_injuries_mcm.get_config("head_anm_pwr")
+head_tbl = {}
+
+function head_concussion_start(damage)
+	if not mcm_head_penalty then return end
+	if damage < mcm_head_min_dmg then return end
+
+	local _, _, maxhp = get_bhs_state()
+	if not maxhp then return end
+
+	-- new hit during stage 2, override
+	if head_tbl.stage and head_tbl.stage == 2 then
+		empty_table(head_tbl)
+	end
+
+	-- stage 1
+	if (not head_tbl.stage) then
+		head_tbl.stage = 1
+		head_tbl.damage = damage
+
+		local eff_pwr = (head_tbl.damage / maxhp.head) * mcm_head_anm_pwr
+		level.add_pp_effector("concussion_bhs.ppe", 99123, false)
+		level.set_pp_effector_factor(99123, (eff_pwr))
+
+		head_snd_off()
+
+		CreateTimeEvent("bhs_conc_e", "bhs_conc_a", 10, head_concussion_mid)
+	end
+
+end
+
+function head_concussion_mid()
+	-- set stage 2
+	head_tbl.stage = 2
+
+	head_snd_on()
+
+	local snd = sound_object("bhs\\tinnitusx")
+	snd:play_no_feedback(db.actor, sound_object.s2d, 0, VEC_ZERO, 1.0, 1.0)
+	snd.volume = 2
+
+	return true
+end
+
+local head_tmr = 0
+function head_concussion_update()
+	-- stage 2
+	if not (head_tbl.stage and head_tbl.stage == 2) then return end
+
+	local tg = time_global()
+	if head_tmr > tg then return end
+	head_tmr = tg + 15000
+
+	-- reduce passive damage over time (5 damage effect needs 2.5 mins)
+	head_tbl.damage = head_tbl.damage - 0.5
+
+	-- remove effect if "damage" drops below zero
+	if head_tbl.damage <= 0 then
+		empty_table(head_tbl)
+		exec_console_cmd("cam_inert 0")
+		return
+	end
+
+	-- remove effect if head was healed to full (timedhp on head does not count)
+	local health, _, maxhp = get_bhs_state()
+	if not health then return end
+
+	local head, max_head = health.head, maxhp.head
+	if head >= max_head then
+		empty_table(head_tbl)
+		exec_console_cmd("cam_inert 0")
+		return
+	end
+
+	-- play ppe and anm
+	local eff_pwr = (head_tbl.damage / maxhp.head) * mcm_head_anm_pwr
+	if eff_pwr > math.random() then
+		level.add_cam_effector("camera_effects\\wake_up.anm", 96872, false, "", 0, true, eff_pwr)
+	end
+
+	level.add_pp_effector("concussion_post_bhs.ppe", 99133, false)
+	level.set_pp_effector_factor(99133, eff_pwr)
+
+	-- cam_inert xd
+	exec_console_cmd("cam_inert " .. eff_pwr)
+
+end
+
+function head_snd_off()
+	_G.amb_vol = math.max(get_console_cmd(2, "snd_volume_eff"), _G.amb_vol or 0)
+	exec_console_cmd("snd_volume_eff 0.01")
+	head_tbl.vol = _G.amb_vol
+end
+
+function head_snd_on()
+	exec_console_cmd("snd_volume_eff ".. (head_tbl.vol or tostring(_G.amb_vol)))
+	_G.amb_vol = 0
+	head_tbl.vol = 0
+end
+
+function actor_on_first_update()
+	-- for reloading during stage 1
+	if head_tbl.stage and head_tbl.stage == 1 then
+		head_tbl.stage = 2
+		head_snd_on()
+	end
+	exec_console_cmd("cam_inert 0")
+end
+
+
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+function get_body_state()
+	if not IsMoveState("mcCrouch") then
+		return "stand"
+	end
+
+	return IsMoveState("mcAccel") and "low_crouch" or "crouch"
+end
+
+function actor_on_update()
+	limp_speed_slow()
+	legs_limp_set()
+	torso_penalty()
+	head_concussion_update()
+end
+
+function on_option_change()
+	mcm_arms_penalty = zzz_player_injuries_mcm.get_config("arm_opt")
+	mcm_arms_min_hp = zzz_player_injuries_mcm.get_config("arm_pen_min_hp")
+	mcm_arms_cam_pwr = zzz_player_injuries_mcm.get_config("arm_anm_pwr")
+
+	mcm_legs_penalty = zzz_player_injuries_mcm.get_config("leg_opt")
+	mcm_legs_min_hp = zzz_player_injuries_mcm.get_config("leg_pen_min_hp")
+	mcm_legs_anm_pwr = zzz_player_injuries_mcm.get_config("leg_anm_pwr")
+	mcm_legs_dmg_min_hp = zzz_player_injuries_mcm.get_config("leg_dmg_min_hp")
+	mcm_legs_new_voice = zzz_player_injuries_mcm.get_config("new_voice_sounds")
+
+	mcm_torso_penalty = zzz_player_injuries_mcm.get_config("torso_opt")
+
+	mcm_head_penalty = zzz_player_injuries_mcm.get_config("head_opt")
+	mcm_head_min_dmg = zzz_player_injuries_mcm.get_config("head_pen_min_hp")
+	mcm_head_anm_pwr = zzz_player_injuries_mcm.get_config("head_anm_pwr")
+end
+
+function save_state(m_data)
+	m_data.bhs_head_tbl = head_tbl
+end
+
+function load_state(m_data)
+	head_tbl = m_data.bhs_head_tbl or {}
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_weapon_zoom_in", actor_on_weapon_zoom_in)
+	RegisterScriptCallback("actor_on_weapon_zoom_out", actor_on_weapon_zoom_out)
+	RegisterScriptCallback("actor_on_footstep", actor_on_footstep)
+	RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+	RegisterScriptCallback("on_option_change", on_option_change)
+	RegisterScriptCallback("save_state", save_state)
+	RegisterScriptCallback("load_state", load_state)
+end

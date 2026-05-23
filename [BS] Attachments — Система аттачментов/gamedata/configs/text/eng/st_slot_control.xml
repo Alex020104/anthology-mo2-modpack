@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="slot_duplicate_item_1">
+		  <text>You are already wearing a ballistic insert.</text>
+  </string>
+  <string id="slot_duplicate_item_2">
+    <text>You are already wearing a camelbak.</text>
+  </string>
+  <string id="slot_duplicate_item_4">
+    <text>You are already wearing a back frame.</text>
+  </string>
+  <string id="slot_duplicate_item_8">
+    <text>You already have an Environmental Control Module attached.</text>
+  </string>
+  <string id="slot_duplicate_item_exo">
+    <text>You are wearing an exoskeleton, which cannot fit a backpack frame.</text>
+  </string>
+  <string id="st_camelbak_drink">
+    <text>You take a sip from your camelbak.</text>
+  </string>
+  <string id="st_camelbak_fill">
+    <text>Camelbak filled.</text>
+  </string>
+  <string id="st_camelbak_full">
+    <text>Camelbak already full.</text>
+  </string>
+  
+  <string id="st_camelbak_capacity">
+    <text>Capacity</text>
+  </string>
+  
+  <string id="st_camelbak_trydrink">
+    <text>drink</text>
+  </string>
+
+  <string id="st_surge_compat">
+    <text>compatible components:</text>
+  </string>
+  
+  <string id="st_autodoc_compat">
+    <text>compatible medicines:</text>
+  </string>
+
+  <string id="st_autodoc_capacity_hp">
+    <text>Health Stabilizer: </text>
+  </string>
+  <string id="st_autodoc_capacity_rads">
+    <text>Anti-Radiation Medicine: </text>
+  </string>
+  <string id="st_autodoc_capacity_dmgres">
+    <text>Morphine Reservoir: </text>
+  </string>
+  <string id="st_autodoc_full">
+    <text>Reservoir full.</text>
+  </string>
+  
+  <string id="st_autodoc_enable">
+    <text>enable </text>
+  </string>
+  <string id="st_autodoc_disable">
+    <text>disable </text>
+  </string>
+  <string id="st_autodoc_hp">
+    <text>automatic healing</text>
+  </string>
+  <string id="st_autodoc_rads">
+    <text>automatic antirads</text>
+  </string>
+  <string id="st_autodoc_dmgres">
+    <text>automatic morphine</text>
+  </string>
+
+  <string id="st_armor_penetrated">
+    <text>Bullet penetrated armor insert!</text>
+  </string>
+  <string id="st_armor_broken">
+    <text>Equipped ballistic insert has fully broken.</text>
+  </string>
+  <string id="st_armor_absorbed">
+    <text>Armor insert absorbed impact.</text>
+  </string>
+
+  <string id="st_no_frame_equipped">
+    <text>No backpack frame installed.</text>
+  </string>
+  <string id="st_equipped_frame">
+    <text>Installed backpack frame:</text>
+  </string>
+  <string id="st_remove_frame">
+    <text>remove installed frame</text>
+  </string>
+  <string id="st_install_frame">
+    <text>install into backpack</text>
+  </string>
+
+  
+  <string id="ui_mcm_slotControl_title">
+    <text>Outfit Attachments Overhaul</text>
+  </string>
+  <string id="ui_mcm_menu_slotControl">
+    <text>OAO</text>
+  </string>
+  <string id="ui_mcm_slotControl_ballisticMessage">
+    <text>Notify player of ballistic insert condition.</text>
+  </string>
+  <string id="ui_mcm_slotControl_ballisticRepair">
+    <text>Allow ballistic insert repair at technicians.</text>
+  </string>
+  <string id="ui_mcm_slotControl_debug">
+    <text>Debug Logs</text>
+  </string>
+  <string id="ui_mcm_slotControl_plate_chance">
+    <text>Chance to loot armor plates</text>
+  </string>
+  <string id="ui_mcm_slotControl_plate_up_chance">
+    <text>Chance to loot upgraded armor plates (multiplicative)</text>
+  </string>
+  <string id="ui_mcm_slotControl_hp">
+    <text>LSM Low Health Threshold</text>
+  </string>
+  <string id="ui_mcm_slotControl_hp_crit">
+    <text>LSM Critical Health Threshold</text>
+  </string>
+  <string id="ui_mcm_slotControl_rads">
+    <text>LSM Radiation Threshold</text>
+  </string>
+  
+	<string id="st_stim_none">
+		<text>Not a Stim</text>
+	</string>
+  
+	
+	<string id="st_dot">
+		<text>•</text>
+	</string>
+</string_table>

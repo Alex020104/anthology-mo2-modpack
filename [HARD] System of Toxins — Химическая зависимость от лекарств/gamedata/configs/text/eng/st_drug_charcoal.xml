@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="st_drug_charcoal">
+		<text>Activated charcoal</text>
+	</string>
+	<string id="st_drug_charcoal_descr">
+		<text>A small package of activated charcoal which can absorb all kinds of toxins, gases, salts and heavy metals. It is recommended to use after drinking alcohol or medications with severe side effects.\n \n 
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medication\n
+		%c[d_blue] • %c[ui_gray_2] has a very strong sobering effect\n
+		%c[d_green] • %c[ui_gray_2] intoxication -15%\n
+		%c[d_green] • %c[ui_gray_2] enhances detoxification by 25 times for 180 seconds\n
+		</text>
+	</string>
+</string_table>

@@ -1,0 +1,46 @@
+art_location = {
+    vector = vector():set(98.111198425293,0.64215183258057,-128.77984619141),
+    lvid = 271740,
+    gvid = 887
+}
+
+teleport_to_location = {
+    vector = vector():set(282.61447143555,-6.0337362289429,1.5123809576035),
+    lvid = 403082,
+    gvid = 720
+}
+
+
+
+karlik_spots = {{
+    section = 'm_karlik_e',
+    vector = vector():set(254.8469,-5.4098,-7.9738),
+    lvid = 391086,
+    gvid = 886
+},{
+    section = 'm_karlik_e',
+    vector = vector():set(241.5431,-3.7211,-14.2371),
+    lvid = 383166,
+    gvid = 721
+},{
+    section = 'm_karlik_e',
+    vector = vector():set(237.6697,-4.4828,-9.1867),
+    lvid = 381066,
+    gvid = 886
+}}
+
+hag_spot = {
+    section = "baba_yaga",
+    vector = vector():set(243.9876,-4.3877,1.2174),
+    lvid = 384376,
+    gvid = 886
+}
+
+art_sections = {
+    "af_elektron",
+    "af_black_angel",
+    "af_kogot", -- claw
+    "af_spaika", -- spike
+    "af_zhelch", -- scar
+    "af_signet",
+}

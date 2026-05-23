@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="st_wpn_9a91_sn_descr">
+	<text>
+		The compact 9A-91 automatic carbine was developed in 1992 at the Tula Instrument Design Bureau as a more technologically advanced competitor to the SR-3 “Vikhr”.
+		The 9A-91 operates using a gas-operated action with a rotating bolt featuring four locking lugs.
+		The hammer-fired trigger mechanism allows for both semi-automatic and fully automatic fire.
+		The safety-selector is located on the left side of the receiver above the trigger guard
+		(on later versions it was moved to the right side, as a mounting rail for optical sights was added on the left).
+		Early variants were equipped with a muzzle brake-compensator, which was later abandoned.
+		The stock folds upward and forward and, like most of the weapon, is made of steel,
+		with the exception of the polymer pistol grip and handguard.
+		In the folded configuration, the weapon is suitable for concealed carry.
+		For this purpose, the charging handle is also foldable.
+		Unlike the Kalashnikov rifle, the charging handle slot remains permanently open. \n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Optics: All red dot sights for Picatinny and dovetail mounts, ACOG, ELCAN SpecterDR \n
+		%c[d_purple] • %c[ui_gray_2] Suppressor for 9A-91 / VSK-94\n \n
+	</text>
+</string>
+
+<string id="st_wpn_ak9">
+	<text>AK-9</text>
+</string>
+
+<string id="st_wpn_ak9_descr">
+	<text>
+		The AK-9 is a compact assault rifle developed by IzhMash based on the AK-74M,
+		intended for special forces units of the Russian Armed Forces and Ministry of Internal Affairs.
+		During development, designers aimed to outperform existing competitors such as the AS Val and SR-3M.
+		The AK-9 is a shortened automatic weapon built on the standard AK-74M platform.
+		Its main differences are a shortened barrel and gas system, as well as a redesigned pistol grip
+		with significantly improved ergonomics.
+		The rifle uses subsonic 9?39 mm cartridges such as SP-5, SP-6, and PAB-9.
+		Unlike many other 9?39 mm weapons, the AK-9 does not suffer reliability issues when firing the more powerful and cheaper PAB-9 round.
+		A quick-detach suppressor can be mounted on the barrel. \n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Optics: All sights for Picatinny and dovetail mounts. \n
+		%c[d_purple] • %c[ui_gray_2] Suppressor: ATG\n
+	</text>
+</string>
+
+<string id="st_wpn_ak74u_snag">
+	<text>AKS-74U “Snag”</text>
+</string>
+
+<string id="st_wpn_ak74u_snag_sn_descr">
+	<text>
+		The AKS-74U was developed as a primary weapon for Spetsnaz, airborne troops,
+		and special units, as well as for armored vehicle crews requiring a compact yet powerful automatic weapon.
+		The AKS-74U is far more maneuverable in confined spaces and vehicles than the full-sized AKS-74.
+		However, its short barrel and significantly reduced muzzle velocity result in a limited effective firing range.
+		This particular rifle previously belonged to the stalker known as Snag. \n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Kobra EKP-8-18 reflex sight (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] Tactical foregrip (integrated)\n
+		%c[d_purple] • %c[ui_gray_2] PBS-4 suppressor (integrated)\n \n
+	</text>
+</string>
+
+<string id="st_wpn_asvk">
+	<text>ASVK</text>
+</string>
+
+<string id="st_wpn_asvk_descr">
+	<text>
+		The ASVK (Army Large-Caliber Sniper Rifle; GRAU index 6V7 with optical and night sights)
+		is a Russian large-caliber sniper rifle developed in 2004 by a design team at the Degtyaryov Plant in Kovrov,
+		based on the KSVK and SVN-98 sniper rifle platforms.
+		The ASVK is currently used exclusively by the Russian military.
+		Some of these rifles have made their way into the Zone alongside several PMC units,
+		suggesting possible ties between certain mercenary groups and the Russian government.
+		It is relatively rare in the Zone and is typically used by mercenaries and duty patrols
+		to eliminate dangerous mutants from a safe distance, as its powerful rounds are capable of killing almost any mutant. \n \n
+		%c[d_purple] • %c[ui_gray_2] Muzzle device: integrated original-design compensator.\n
+		%c[0,93,0,116] • %c[0,140,140,140] ATTACHMENTS: Optics: All sniper and night optics for Picatinny and dovetail mounts. \n \n
+	</text>
+</string>
+
+<string id="st_wpn_bizon_sn">
+	<text>PP-19 “Bizon” 2-01</text>
+</string>
+
+<string id="st_wpn_bizon_sn_descr">
+	<text>
+		PP-19 “Bizon” 2-01 (9?19 mm) variant with the option to upgrade to .357 caliber,
+		equipped with a laser aiming module. \n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Optics: All sights for Picatinny and dovetail mounts.\n
+		%c[d_purple] • %c[ui_gray_2] PBS-1 suppressor\n \n
+	</text>
+</string>
+
+<string id="st_wpn_famas3_sn_descr">
+	<text>
+		The FAMAS G2 rifle, developed in 1994, differs from its predecessor, the FAMAS F1,
+		primarily by its STANAG-compliant magazine well designed for M16 magazines,
+		as well as a modified barrel rifling twist.
+		It features the highest rate of fire among all rifles found in the Zone. \n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] NATO suppressor\n
+		%c[d_purple] • %c[ui_gray_2] Optics: All sights for Picatinny and dovetail mounts.\n \n
+	</text>
+</string>
+
+<string id="st_wpn_fn2000_sn_descr">
+	<text>
+		This futuristic-looking weapon is a mass-produced assault rifle manufactured by the Belgian company FN Herstal.
+		Despite its bulky appearance, it offers excellent ergonomics, ease of handling in all firing modes,
+		and high overall reliability. \n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Optics: Standard sight, all Picatinny-compatible optics.\n
+		%c[d_purple] • %c[ui_gray_2] NATO suppressor\n \n
+	</text>
+</string>
+
+<string id="st_wpn_fs2000_gl">
+	<text>FN FS2000 GL</text>
+</string>
+
+<string id="st_wpn_fs2000_gl_sn_descr">
+	<text>
+		This futuristic-looking weapon is a mass-produced assault rifle manufactured by FN Herstal.
+		Despite its bulky appearance, it offers excellent ergonomics, handling, and reliability.
+		The FS variant is equipped with the FN40GL underbarrel grenade launcher,
+		derived from the GL1 launcher used in SCAR weapon systems and also compatible with the FN F/FS2000.
+		It features a longer 443 mm barrel, which improves accuracy and increases muzzle energy. \n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Optics: All sights for Picatinny mounts.\n
+		%c[d_purple] • %c[ui_gray_2] NATO suppressor\n
+		%c[d_purple] • %c[ui_gray_2] FN40GL-S underbarrel grenade launcher (integrated)\n \n
+	</text>
+</string>
+
+<string id="st_wpn_fn2000_tact">
+	<text>FN F2000 “Tact”</text>
+</string>
+
+<string id="st_wpn_fn2000_tact_descr">
+	<text>
+		This futuristic-looking weapon is a mass-produced assault rifle manufactured by FN Herstal.
+		Despite its bulky appearance, it offers excellent ergonomics, handling, and reliability.
+		This particular model has been heavily modified by Zone technicians,
+		replacing the standard handguard with a tactical foregrip and adding a Picatinny rail mount for reflex sights.
+		The weapon was clearly optimized for close-quarters combat, as evidenced by its increased rate of fire. \n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Optics: Standard sight, all Picatinny-compatible optics.\n
+		%c[d_purple] • %c[ui_gray_2] NATO suppressor\n \n
+	</text>
+</string>
+
+<string id="st_wpn_groza_4">
+	<text>OTs-14-4A “Groza-4”</text>
+</string>
+
+<string id="st_wpn_groza_4_descr">
+	<text>
+		One of the variants of the OTs-14-4A weapon system.
+		In the “Groza-4A” configuration, the rate of fire, trajectory flatness,
+		and magazine capacity were improved through the use of the lighter 9?39 mm cartridge.
+		This variant was produced only in small experimental batches.
+		Some of these weapons made their way into the Zone but failed to gain widespread popularity
+		due to unremarkable performance compared to other weapons of the same caliber.
+		As a result, traders began replacing the standard 30-round magazine with a 60-round sector magazine
+		and equipping the weapon with a Zenit “KLESH-2PS + LAM” LED flashlight,
+		which slightly increased its popularity and demand. \n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] PO 4?34 optic, all Picatinny-compatible optics.\n
+		%c[d_purple] • %c[ui_gray_2] Suppressor: 9A-91 suppressor.\n
+		%c[d_purple] • %c[ui_gray_2] GP-25 underbarrel grenade launcher (integrated).\n
+		%c[ui_gray_2] Included equipment:\n
+		%c[d_purple] • %c[ui_gray_2] Picatinny/Weaver adapter rail,\n
+		%c[d_purple] • %c[ui_gray_2] “KLESH-2PS + LAM” LED flashlight.\n
+	</text>
+</string>
+
+	
+<string id="st_wpn_groza_nimble_60">
+	<text>OTs-14-1A “Groza-1”</text>
+</string>
+<string id="st_wpn_groza_nimble_60_descr">
+	<text>One of the variants of the OTs-14-1A. In the “Groza-1” version, the rate of fire, trajectory flatness, and magazine capacity were improved through the use of the lighter 7.62x39 mm cartridge. This type of rifle was produced only in small experimental batches. Some of these weapons made their way into the Zone, but never gained much popularity due to unremarkable performance compared to other rifles of this caliber. As a result, traders simply replaced the standard 30-round magazine with a 60-round box magazine and equipped it with a Zenit “Kleshch-2PS + Laser” tactical flashlight, slightly increasing its popularity and demand.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Optics: PO4x34 scope, all Picatinny-compatible optics.\n
+	%c[d_purple] • %c[ui_gray_2] Suppressor: ATG.\n
+	%c[d_purple] • %c[ui_gray_2] Underbarrel grenade launcher: GP-25 (integrated).\n
+	%c[ui_gray_2] Included: \n
+	%c[d_purple] • %c[ui_gray_2] Picatinny/Weaver adapter rail,\n
+	%c[d_purple] • %c[ui_gray_2] Zenit “Kleshch-2PS + Laser” tactical flashlight.\n</text>
+</string>
+
+<string id="st_wpn_groza_545">
+	<text>OTs-14-2A “Groza”</text>
+</string>
+<string id="st_wpn_groza_545_descr">
+	<text>OTs-14-2A is an experimental bullpup assault rifle variant of the Groza chambered in 5.45x39 mm. The project was never completed due to a preference for the more powerful 7.62x39 mm cartridge for this barrel length. In this case, the weapon represents a custom Zone-made conversion imitating the experimental variant through a careful barrel replacement, allowing it to fire the more common 5.45x39 mm cartridge. It has also been modified to use the more widespread PSO-1M optic.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Optics: All Picatinny and dovetail-mounted reflex sights.\n
+	%c[d_purple] • %c[ui_gray_2] Underbarrel grenade launcher: GP-25 (integrated).\n \n</text>
+</string>
+
+<string id="st_wpn_ksvk">
+	<text>KSVK 12.7</text>
+</string>
+<string id="st_wpn_ksvk_descr">
+	<text>KSVK is a Russian .50 caliber (12.7x108 mm) anti-materiel rifle developed at the Degtyarev Plant in the late 1990s. It was designed to engage vehicles, counter-snipers, and enemies in heavy armor or behind dense cover. The KSVK is a bullpup rifle with manual operation and a rotating bolt (or straight-pull bolt, depending on the variant). It is considered moderately accurate, comparable to the American Barrett M82. Its strengths lie in extreme power and long effective range, though it is very heavy and cumbersome. Currently, the KSVK is used exclusively by Russian military forces. Some rifles have found their way into the Zone with PMC units, suggesting possible ties between certain mercenary groups and the Russian government. The rifle is rare in the Zone and typically used by mercenaries and guard units to eliminate dangerous mutants from a safe distance, as its powerful rounds can kill almost any mutant.\n \n
+	%c[d_purple] • %c[ui_gray_2] Suppressor: Integrated original-design muzzle brake and flash hider.\n
+	%c[0,93,0,116] • %c[0,140,140,140] ATTACHMENTS: Optics: All sniper and night optics for Picatinny and dovetail mounts.\n \n</text>
+</string>
+
+<string id="st_wpn_lr300_sn_descr">
+	<text>The shortened LR-300ML assault rifle represents a new step in the development of the legendary AR-15 family. Most changes affected only the upper receiver assembly, including the barrel, gas system, and bolt carrier group, resulting in improved ergonomics and reliability while reducing overall weight. This rifle offers high accuracy, although its high sensitivity to contamination makes it poorly suited for harsh Zone conditions.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] NATO suppressor.\n
+	%c[d_purple] • %c[ui_gray_2] Optics: All Picatinny-mounted optics.\n
+	%c[d_purple] • %c[ui_gray_2] Underbarrel grenade launcher: M203 (after modification).\n \n</text>
+</string>
+
+
+	<string id="st_wpn_mk14_sn_descr">
+	<text>The United States Navy Mark 14 Enhanced Battle Rifle (Mk 14 EBR) is an American designated marksman rifle developed by U.S. Navy Special Operations forces based on the M14 rifle. It is used by several U.S. Navy special units, including the SEALs.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] NATO suppressor\n
+	%c[d_purple] • %c[ui_gray_2] Optics: All Picatinny-mounted optics.\n \n</text>
+</string>
+
+<string id="st_wpn_pp2000_sn_descr">
+	<text>The PP-2000 is a Russian 9 mm submachine gun developed by a design team at the Tula Instrument Design Bureau under the leadership of V. P. Gryazev and A. G. Shipunov. The PP-2000 is intended for law enforcement units operating in urban environments, as well as a personal defense weapon for certain categories of military personnel. Serial production for the Russian Ministry of Internal Affairs began in 2006. The weapon’s body is made of high-strength polymer. The barrel is chrome-lined and the weapon can be equipped with a suppressor, reflex sight, or optical sight. A universal mounting rail is installed on the receiver cover of production models.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Optics: All Picatinny reflex sights, ACOG, ELCAN SpecterDR, PN-23.\n
+	%c[d_purple] • %c[ui_gray_2] 9 mm suppressor\n \n</text>
+</string>
+
+<string id="st_wpn_evo_a">
+	<text>CZ Scorpion EVO 3 A1</text>
+</string>
+
+<string id="st_wpn_evo_descr">
+	<text>The Scorpion EVO 3 is a modern Czech submachine gun developed by ?esk? Zbrojovka in 2009. Its name references the older vz. 61 Skorpion (spelled with a “k”), though it is mechanically unrelated and belongs to a different class, being closer in design to weapons such as the MP5 or UMP. The Scorpion EVO is considered one of the best modern submachine guns. It is made from high-quality materials, very lightweight, compact, and comfortable to shoot, allowing long bursts with minimal recoil. Several countries have adopted the EVO for police, counter-terrorism, and special forces units, including the Czech Republic, Finland, Poland, Serbia, and Argentina. In the Zone, the EVO is mostly used by mercenaries and those who require a lightweight and compact weapon when carrying heavy loads or bulky primary weapons such as heavy sniper rifles, and need reliable close-range protection.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Optics: All Picatinny-mounted optics. \n
+	%c[d_purple] • %c[ui_gray_2] 9 mm suppressor \n \n</text>
+</string>
+
+<string id="st_wpn_scar20m">
+	<text>FN SCAR SSR Mk.20</text>
+</string>
+
+<string id="st_wpn_scar20m_descr">
+	<text>The FN SCAR-SSR (Sniper Support Rifle) is the sniper variant of the 7.62 mm FN SCAR-H Mk.17 Mod.0 assault rifle used by U.S. special forces.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Suppressor: AAC 7.62 SDN-6 \n
+	%c[d_purple] • %c[ui_gray_2] Optic: Schmidt & Bender (integrated)\n
+	%c[d_purple] • %c[ui_gray_2] Underbarrel grenade launcher: M203 \n \n</text>
+</string>
+
+<string id="st_wpn_sv98_sil_kzrzp_descr">
+	<text>The SV-98 is a Russian bolt-action sniper rifle developed between 1998 and 2000 by a design team led by Vladimir Stronskiy and serially produced by the Izhmash concern. The SV-98 is designed to engage appearing, moving, exposed, and concealed enemy personnel, both unprotected and equipped with personal body armor, at distances of up to 1000 meters. The rifle is in service with and used by Ministry of Internal Affairs units.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Optics: All sniper and night optics for Picatinny mounts.\n
+	%c[d_purple] • %c[ui_gray_2] KZRZP suppressor\n \n</text>
+</string>
+
+<string id="st_wpn_sv98_sil_descr">
+	<text>The SV-98 is a Russian bolt-action sniper rifle developed between 1998 and 2000 by a design team led by Vladimir Stronskiy and serially produced by the Izhmash concern. The SV-98 is designed to engage appearing, moving, exposed, and concealed enemy personnel, both unprotected and equipped with personal body armor, at distances of up to 1000 meters. The rifle is in service with and used by Ministry of Internal Affairs units.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Optics: All sniper and night optics for Picatinny mounts.\n
+	%c[d_purple] • %c[ui_gray_2] Suppressor: ROTOR-43\n \n</text>
+</string>
+
+<string id="st_wpn_svd_ghillie">
+	<text>SVD Ghillie</text>
+</string>
+
+<string id="st_wpn_svd_ghillie_descr">
+	<text>Originally intended for infantry marksmen within Soviet rifle squads, the SVD was not designed as a weapon for specialized sniper units. Relatively lightweight for a sniper rifle, well-balanced, and featuring semi-automatic fire, the SVD offers good but not exceptional accuracy. Its effective firing range reaches up to 800 meters. This variant is fitted with a ghillie camouflage covering, making user identification more difficult.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] PSO-3 optic (integrated)\n
+	%c[d_purple] • %c[ui_gray_2] KZRZP suppressor (integrated)\n \n</text>
+</string>
+
+
+	<string id="st_wpn_svdk">
+	<text>SVDK</text>
+</string>
+
+<string id="st_wpn_svdk_descr">
+	<text>The SVDK (GRAU Index 6V9) is a Russian large-caliber sniper rifle developed and adopted into service as part of the “Vzlomshchik” R&D program. It is based on the SVD platform and chambered for the powerful 9.3x64 mm 7N33 cartridge, a Russian military adaptation of the older 9.3x64 mm Brenneke hunting round. When fired from the SVDK, this round delivers muzzle energy of approximately 4,900 joules and is capable of penetrating up to 1 cm of armor with an 80% probability at a distance of 100 meters.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Optics: All Picatinny and dovetail-mounted optics\n
+	%c[d_purple] • %c[ui_gray_2] Suppressor: 9.3x64 KIBA\n \n</text>
+</string>
+
+<string id="st_wpn_svu_sn_descr">
+	<text>The TOchpribor OTs-03 SVU is a modernized version of the SVD sniper rifle, originally designed for the Soviet Airborne Forces but never mass-produced. In the early 1990s, the rifle was adopted by the Russian Ministry of Internal Affairs. Built in a compact bullpup configuration, the SVU is equipped with a powerful muzzle brake-compensator that reduces recoil and report.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] KZRZP suppressor\n
+	%c[d_purple] • %c[ui_gray_2] Optics: All Picatinny and dovetail-mounted optics\n \n</text>
+</string>
+
+<string id="st_wpn_svu_alt_sn">
+	<text>SVU-AS “PMC”</text>
+</string>
+
+<string id="st_wpn_svu_alt_sn_descr">
+	<text>A shortened sniper rifle with an increased rate of fire, representing the most compact variant of the SVU and SVD family. Its unique feature is a fully automatic firing mode, added at the request of the Russian Ministry of Internal Affairs. Although this weapon is not intended for close combat, automatic fire can be useful in emergency situations when a sniper is detected by the enemy. The reduced size comes at the cost of lower accuracy and muzzle velocity. To compensate for heavy recoil during automatic fire, the SVU-AS is equipped with an integrated suppressor-flash hider, which also functions as an effective muzzle brake.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] KZRZP suppressor\n
+	%c[d_purple] • %c[ui_gray_2] Optics: All Picatinny-mounted optics\n
+	%c[ui_gray_2] Included: \n
+	%c[d_purple] • %c[ui_gray_2] Universal bipod, \n
+	%c[d_purple] • %c[ui_gray_2] SAG MK1 chassis modified for SVU\n</text>
+</string>
+
+<string id="st_wpn_svu_nimble_sn">
+	<text>SVU “Sniper”</text>
+</string>
+
+<string id="st_wpn_svu_nimble_sn_descr">
+	<text>A unique custom-built variant of the SVU-AS “PMC”, rebuilt to a special order. The barrel was replaced with a full-length match-grade barrel featuring a 320 mm rifling twist. The trigger mechanism was completely reworked, with stamped trigger linkages replaced by tubular ones, significantly improving trigger feel, accuracy, and overall firing quality. These changes transformed the rifle into a truly precise, powerful sniper weapon. This particular rifle once belonged to Max, the legendary quartermaster of the Freedom faction.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Optics: All magnified Picatinny-mounted optics (excluding reflex sights). \n
+	%c[d_purple] • %c[ui_gray_2] Suppressor: Rotor 43 \n
+	%c[ui_gray_2] Included: \n
+	%c[d_purple] • %c[ui_gray_2] Universal bipod, \n
+	%c[d_purple] • %c[ui_gray_2] Adapter for Rotor 43 muzzle device, \n
+	%c[d_purple] • %c[ui_gray_2] NcStar universal angled rail allowing installation of a secondary 45-degree optic with an Aimpoint Micro T-1 reflex sight mounted, \n
+	%c[d_purple] • %c[ui_gray_2] SAG MK1 chassis modified for SVU\n</text>
+</string>
+
+<string id="st_wpn_tigr9">
+	<text>Tigr-9</text>
+</string>
+
+<string id="st_wpn_tigr9_descr">
+	<text>A modified Dragunov sniper rifle variant known as the SVD “Tigr”. Developed on the basis of the SVD and chambered for the powerful 9.3x64 mm 7N33 cartridge, the Russian military version of the older 9.3x64 mm Brenneke hunting round. It is very popular among hunters pursuing large game such as bears, moose, and wild boar. In the Zone, it is commonly encountered among artifact hunters and Clear Sky members.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Optics: All Picatinny and dovetail-mounted optics\n
+	%c[d_purple] • %c[ui_gray_2] Suppressor: 9.3x64 KIBA\n \n</text>
+</string>
+
+<string id="st_wpn_trg_sil_descr">
+	<text>A sniper rifle produced by the Finnish firearms manufacturer SAKO. The TRG-42 is not a modernization of an existing rifle, but a completely new design developed from scratch. Its consistently high accuracy and reliability have made it popular in shooting competitions and military operations requiring sniper support.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] FINDOT optic (integrated)\n
+	%c[d_purple] • %c[ui_gray_2] PBS M700 .338 LM suppressor (BaS)\n \n</text>
+</string>
+
+<string id="st_wpn_tiss">
+	<text>OTs-12 “Tiss”</text>
+</string>
+
+<string id="st_wpn_tiss_descr">
+	<text>The OTs-12 “Tiss” is a Russian assault rifle developed at the Tula Central Design Bureau of Sporting and Hunting Arms (TsKIB SOO) based on the AKS-74U. Its key difference is the use of special subsonic 9x39 mm cartridges (SP-5 and SP-6), which required changes to the barrel, muzzle device, bolt face dimensions, and magazine. The sights and muzzle brake-compensator were also modified. Production was planned at the Tula Arms Plant (TOZ), but never realized. The bullpup assault rifle “Groza”, developed a year later on the same basis, ultimately became far more popular.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Optics: All dovetail-mounted optics except PSO scopes with rubber eyecups and the 1P59 Giperon.\n
+	%c[d_purple] • %c[ui_gray_2] Suppressor: GZV-SR2\n </text>
+</string>
+
+<string id="st_wpn_tkpd">
+	<text>TKPD Assault</text>
+</string>
+
+<string id="st_wpn_tkpd_descr">
+	<text>The TKPD Assault carbine is a modified SVDK variant designed for assault operations and commissioned by the B.E.A.R. PMC, developed by SniperArms Dynamics. It is based on the SVD platform and chambered for the powerful 9.3x64 mm 7N33 cartridge, the Russian military adaptation of the Brenneke hunting round. A direct hit from a TKPD round almost guarantees the elimination of the target. It is used as a precise and powerful suppression weapon at medium ranges, with an effective firing distance of up to 800 meters.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Optics: All Picatinny and dovetail-mounted reflex sights\n
+	%c[d_purple] • %c[ui_gray_2] Suppressor: 9.3x64 KIBA\n </text>
+</string>
+
+<string id="st_wpn_tkpds">
+	<text>TKPD-S</text>
+</string>
+
+<string id="st_wpn_tkpds_descr">
+	<text>The TKPD-S carbine is a conversion variant of the TKPD, chambered in 7.62x54 mm 7N1. It is equipped with a modified trigger mechanism allowing automatic fire and uses extended 20-round magazines. The rifle features a reinforced match-grade barrel. Effective firing range is up to 800 meters.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Optics: All Picatinny and dovetail-mounted reflex sights\n
+	%c[d_purple] • %c[ui_gray_2] Hexagon suppressor\n </text>
+</string>
+
+<string id="st_wpn_val_sn_descr">
+	<text>The AS “Val” special assault rifle was developed on the basis of the VSS “Vintorez” suppressed sniper rifle. It was designed to equip special operations units of the Soviet Army and Ministry of Internal Affairs. Its primary role is the effective elimination of enemies equipped with modern personal armor without revealing the shooter’s position. Thanks to its integrated suppressor and the 9x39 mm cartridge with a heavy subsonic bullet, both firing sound and muzzle flash are reduced to a minimum.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Optics: All Picatinny and dovetail-mounted optics\n
+	%c[d_purple] • %c[ui_gray_2] VSS suppressor (integrated)\n \n</text>
+</string>
+
+
+<string id="AS_VAL_MOD3_CW">
+	<text>AS “Val?MOD3”</text>
+</string>
+
+<string id="AS_VAL_MOD3_CW_descr">
+	<text>The AS “Val” special assault rifle was developed on the basis of the VSS “Vintorez” suppressed sniper rifle. It was designed for arming special forces units of the Soviet Army and the Ministry of Internal Affairs. The primary purpose of the rifle is the effective elimination of enemies using modern personal protection equipment without revealing the shooter’s position. Thanks to the integrated suppressor and the 9x39 mm cartridge with a heavy subsonic bullet, both the gunshot sound and muzzle flash are reduced to a minimum.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Sights: All Picatinny and dovetail sights.\n
+	%c[d_purple] • %c[ui_gray_2] Val modernized suppressor (integrated)\n \n</text>
+</string>
+
+<string id="st_wpn_vihr_sn_descr">
+	<text>The SR?3 “Vikhr” is a compact Russian assault rifle developed in 1994 at TsNIITochMash in Klimovsk by designers A. D. Borisov and V. N. Levchenko. It was finalized for production by A. I. Tashlykov and entered serial production in 1996. It was created on the basis of the AS “Val” suppressed assault rifle and is unified with it in major components, which has a positive effect on production and operation. The SR?3’s design is generally similar to the AS “Val”: a gas?operated action and barrel locking via a bolt with six locking lugs. The SR?3M was developed later and features the ability to use a suppressor, metal 30?round magazines, mounting of optical and night sights, a left?folding skeletal stock (borrowed from the AS “Val”), an SVD?style safety selector, and a new handguard.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Sights: All Picatinny and dovetail sights.\n
+	%c[d_purple] • %c[ui_gray_2] SR?3M suppressor\n \n</text>
+</string>
+
+<string id="st_wpn_vihr_m2">
+	<text>SR?3MT “Vikhr”</text>
+</string>
+
+<string id="st_wpn_vihr_m2_sn_descr">
+	<text>The Duty modification of the SR?3MT “Vikhr” is equipped with a tactical handguard manufactured in a custom batch specifically for Duty, which positively affected ergonomics and expanded equipment options.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Sights: All Picatinny and dovetail sights.\n
+	%c[d_purple] • %c[ui_gray_2] SR?3M suppressor\n
+	%c[ui_gray_2] Included in the package:\n
+	%c[d_purple] • %c[ui_gray_2] “Zenitka” tactical handguard, \n
+	%c[d_purple] • %c[ui_gray_2] Zenit RK?1 tactical foregrip, \n
+	%c[d_purple] • %c[ui_gray_2] tactical flashlight with laser sight “Zenit 2PS + Klesh LAM”. \n</text>
+</string>
+
+<string id="st_wpn_vityaznew">
+	<text>PP?19 “Vityaz”</text>
+</string>
+
+<string id="st_wpn_vityaznew_descr">
+	<text>The PP?19?01 mod.10 is a Russian submachine gun developed in 2004 by Izhmash. Depending on the version, it is based on the AKS?74U (“Vityaz”) or the AK?105 (“Vityaz?SN”). It is a standard submachine gun used by personnel of the Russian Ministry of Internal Affairs, police, Rosgvardiya, the Federal Penitentiary Service, and other law enforcement agencies. It represents a further development of the PP?19 “Bizon”. One of the main differences from the base PP?19?01 is the use of the AK?105 as the foundation instead of the AKS?74U. This is primarily expressed in the replacement of the receiver and fire control group with those of the AK?100 series, installation of the standard handguard and gas tube cover from the AK?74M family, as well as replacing the AKS?74U flip rear sight with an open sector sight.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Sights: ACOG, Barska ES AC10632, EOTech, C?MORE\n
+	%c[d_purple] • %c[ui_gray_2] PBS?1 suppressor \n \n</text>
+</string>
+
+<string id="st_wpn_vityaz_sn">
+	<text>PP?19?01 mod.20 “Vityaz?SN”</text>
+</string>
+
+<string id="st_wpn_vityaz_sn_descr">
+	<text>The PP?19?01 mod.20 “Vityaz?SN” with a 30?round box magazine chambered in 9x19 mm was created in 2003 based on the design of the PP?19 “Bizon?2” submachine gun for the special purpose unit of the Internal Troops of the Russian Ministry of Internal Affairs “Vityaz”, commissioned by the Main Directorate of Scientific and Production Association “Special Equipment and Communications” of the MIA of Russia. It is mass?produced and supplied to various units of the Russian Ministry of Internal Affairs.\n One of the main differences of the “Vityaz?SN” from the base PP?19?01 is the use of the AK?105 as the foundation instead of the AKS?74U. This is primarily expressed in the replacement of the receiver and fire control group with those of the AK?100 series, installation of the standard handguard and gas tube cover from the AK?74M family, as well as replacing the AKS?74U flip rear sight with an open sector sight.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Sights: All Picatinny reflex sights, ACOG, ELCAN SpecterDR, PN?23\n
+	%c[d_purple] • %c[ui_gray_2] Suppressor: Hexagon sound moderator 5.45/7.62x39/9x19\n \n</text>
+</string>
+
+<string id="st_wpn_vsk94_sn_descr">
+	<text>The VSK?94 suppressed sniper rifle was developed at the Tula KBP (Instrument Design Bureau) on the basis of the compact 9A?91 assault rifle as a more affordable alternative to the VSS “Vintorez” special sniper rifle chambered in 9 mm.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Sights: All Picatinny and dovetail sights.\n
+	%c[d_purple] • %c[ui_gray_2] Suppressor for 9A?91/VSK?94 (integrated)\n \n</text>
+</string>
+
+
+	<string id="st_addon_scope_1p69_ghilli">
+	<text>Ghillie Set</text>
+</string>
+<string id="st_addon_scope_1p69_ghilli_descr">
+	<text>A Russian?made weapon camouflage kit designed for use with the 1P69 “Hyperon” scope, equipped with a honeycomb anti?glare attachment.</text>
+</string>
+
+<string id="st_addon_scope_hamr">
+	<text>Leupold Mark 4 HAMR</text>
+</string>
+<string id="st_addon_scope_hamr_descr">
+	<text>The Leupold Mark 4 HAMR 4x24mm CM?R2 with DeltaPoint matte 3.5 MOA dot is a fixed 4x24mm optical sight. Designed for accurate shooting and rapid target acquisition, it offers a range of features suited for military personnel, law enforcement, and tactical shooters. These include an illuminated CM?R2 ballistic reticle, fast?focus eyepiece, and the advanced Xtended Twilight Lens System technology. Additionally, the Leupold DeltaPoint reflex sight can be mounted on the HAMR, providing instant transition to close?range targeting. (DeltaPoint and HAMR set).</text>
+</string>
+
+<string id="st_addon_scope_mark4">
+	<text>Leupold Mark 4 CQ/T</text>
+</string>
+<string id="st_addon_scope_mark4_descr">
+	<text>The Leupold Mark 4 CQ/T 1–3x14mm is a simple, reliable, and compact reflex?optical sighting system, well suited for long?range hunting, law enforcement, and military use. The 2x and 3x magnification provides a clear and precise sight picture. The sight was developed in close cooperation with the military for mounting on AR?15 and M?16 combat rifles. Its low cost, durability, and water resistance have made it popular among hunters and law enforcement agencies.</text>
+</string>
+
+<string id="st_addon_wpn_fn2000scope">
+	<text>FN F2000 Scope</text>
+</string>
+<string id="st_addon_wpn_fn2000scope_descr">
+	<text>Standard FN F2000 scope with 1.6x magnification. Supplied as part of the FN F2000 assault rifle package.</text>
+</string>
+
+<string id="st_addon_scope_1p87">
+	<text>1P87 Valdai PK120 Sight</text>
+</string>
+<string id="st_addon_scope_1p87_descr">
+	<text>The 1P87 Valdai PK120 EKVD.201214 is a collimator sight designed to reduce target acquisition time and improve firing accuracy with small arms. It is part of the DPNK system developed under the “Ratnik” research and development program.</text>
+</string>
+
+<string id="st_addon_scope_v0rtex">
+	<text>Vortex AMG UH?1 Holographic Sight</text>
+</string>
+<string id="st_addon_scope_v0rtex_descr">
+	<text>The Vortex Razor AMG UH?1 holographic sight combines a rugged housing, high energy efficiency, and a clear reticle image.</text>
+</string>
+
+<string id="st_addon_scope_aimpmag">
+	<text>“Aimpoint Micro T?2 + Magnifier” Kit</text>
+</string>
+<string id="st_addon_scope_aimpmag_descr">
+	<text>A “red dot + magnifier” kit that includes a mounting rail, an Aimpoint Micro T?2 red dot sight, and an EOTech G33 STS magnifier.</text>
+</string>
+
+<string id="st_addon_scope_e0tmag">
+	<text>“EOTech + Magnifier” Kit</text>
+</string>
+<string id="st_addon_scope_e0tmag_descr">
+	<text>A “red dot + magnifier” kit that includes a mounting rail, an EOTech EXPS3?4 holographic sight, and an EOTech G33 STS magnifier.</text>
+</string>
+
+<string id="st_addon_scope_1p87mag">
+	<text>“1P87 Valdai + Magnifier” Kit</text>
+</string>
+<string id="st_addon_scope_1p87mag_descr">
+	<text>A “red dot + magnifier” kit that includes a mounting rail, a 1P87 Valdai collimator sight, and an EOTech G33 STS magnifier.</text>
+</string>
+
+<string id="st_addon_scope_vortexmag">
+	<text>“Vortex UH?1 + Magnifier” Kit</text>
+</string>
+<string id="st_addon_scope_vortexmag_descr">
+	<text>A “red dot + magnifier” kit that includes a mounting rail, a Vortex AMG UH?1 holographic sight, and an EOTech G33 STS magnifier.</text>
+</string>
+
+
+	<string id="st_addon_scope_compsmag">
+	<text>“Aimpoint CompM4s + Magnifier” Kit</text>
+</string>
+<string id="st_addon_scope_compsmag_descr">
+	<text>A “red dot + magnifier” kit that includes a mounting rail, an Aimpoint CompM4s red dot sight, and an EOTech G33 STS magnifier.</text>
+</string>
+
+<string id="st_addon_sil_kiba">
+	<text>KIBA 9.3x64mm Suppressor</text>
+</string>
+<string id="st_addon_sil_kiba_descr">
+	<text>The KIBA Arms suppressor is specifically designed for installation on 9.3x64mm caliber rifles and for effective suppression of the powerful cartridge.</text>
+</string>
+
+<string id="st_grenade_vog25h">
+	<text>VOG?25 “Khattabka”</text>
+</string>
+<string id="st_grenade_vog25h_short">
+	<text>VOG?25 “Khattabka”</text>
+</string>
+<string id="st_grenade_vog25h_descr">
+	<text>A popular name in Russia and Chechnya for an improvised hand grenade. It is typically made from VOG?25 rounds or their variants designed for the GP?25 and GP?30 Soviet?designed grenade launchers, fitted with standard grenade fuzes.</text>
+</string>
+
+<string id="st_grenade_vog17h">
+	<text>VOG?17 “Khattabka”</text>
+</string>
+<string id="st_grenade_vog17h_short">
+	<text>VOG?17 “Khattabka”</text>
+</string>
+<string id="st_grenade_vog17h_descr">
+	<text>A popular name in Russia and Chechnya for an improvised hand grenade. It is typically made from VOG?17 and VOG?17M rounds for the Soviet?designed AGS?17 automatic grenade launcher, fitted with standard grenade fuzes.</text>
+</string>
+
+
+<string id="st_fn_gl-1">
+	<text>FN GL?1 Grenade Launcher</text>
+</string>
+<string id="st_fn_gl-1_short">
+	<text>FN GL?1</text>
+</string>
+<string id="st_fn_gl-1_descr">
+	<text>\n \n%c[ui_gray_2]COMPATIBILITY:\n \n%c[d_cyan] • %c[ui_gray_2] FN 2000\n \n
+	%c[ui_gray_1] The GL?1 is a high?precision grenade launcher designed for mounting on the FN 2000 rifle. Developed by FN Herstal in 2001, this versatile attachment significantly increases firepower, providing a tactical advantage in intense combat situations. Ideal for scenarios requiring explosive impact.\n
+	%c[d_purple] • %c[ui_gray_2] Ammunition: %c[ui_gray_1]40 mm M203 grenades\n</text>
+</string>
+
+<string id="st_ar15_vss">
+	<text>AR?15 VSS</text>
+</string>
+<string id="st_ar15_vss_descr">
+	<text>A heavily modified AR?15 rifle converted into an analogue of the VSS “Vintorez”. The installed equipment allows the operator to remain concealed while firing, but the weapon comes at a high cost due to the use of non?standard components.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Sights: All Picatinny?mounted optics.\n
+	%c[d_purple] • %c[ui_gray_2] Suppressor: Integrated\n \n</text>
+</string>
+
+<string id="st_wpn_mcx_tac">
+	<text>SIG MCX “Tactical”</text>
+</string>
+
+<string id="st_wpn_mcx_tac_descr">
+	<text>The MCX line developed and manufactured by SIG Sauer is produced in both civilian semi?automatic and military automatic variants. It is equipped with a short?stroke gas piston system inherited from the earlier SIG MPX submachine gun.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[d_green] Sights: %c[0,250,250,0]All Weaver/Picatinny?mounted optics\n
+	%c[d_purple] • %c[d_green] Tactical grip: %c[d_blue]Zenit RK?5\n
+	%c[d_purple] • %c[d_green] Suppressor: %c[d_orange]KAC “PRS/QDC”\n \n</text>
+</string>
+
+<string id="st_wpn_ksh23">
+	<text>KSh?23 “Beast Slayer”</text>
+</string>
+
+<string id="st_wpn_ksh23_descr">
+	<text>A unique weapon of the Zone, built by Gunsmith Den from ASH?12 components and a KS?23 barrel, along with custom ammunition. The powerful ASH?12 receiver is capable of withstanding 23 mm shots, further limited to semi?automatic fire. The developed ASH?12 stock effectively absorbs recoil, compensating for the immense power of each shot. “Beast Slayer” fully lives up to its name, capable of eliminating Zone monsters such as Chimeras and Pseudogiants.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[d_green] Sights: %c[0,250,250,0]All Weaver/Picatinny?mounted optics\n
+	%c[d_purple] • %c[d_green] Tactical grip: %c[d_blue]Zenit RK?5\n
+	%c[d_purple] • %c[d_green] Suppressor: %c[d_orange]“Khryak” 23 mm\n \n</text>
+</string>
+
+<string id="st_wpn_m16a4">
+	<text>M16A4</text>
+</string>
+
+<string id="st_wpn_m16a4_descr">
+	<text>The M16A4 is a gas?operated 5.56?45 mm assault rifle and the latest modification of the legendary AR?15 family used by the U.S. Armed Forces. The fourth?generation M16A4 is essentially an M16A2 featuring a flat?top upper receiver with a MIL?STD?1913 rail and a handguard with the optional M5 Adapter Rail System for mounting accessories. The M16A4 is the primary rifle of the United States Marine Corps and is used by selected Army units. Although most U.S. special operations forces prefer its shorter sibling, the M4A1, or other 5.56 mm carbines, the M16A4 remains in service with units such as USMC F.A.S.T. and support elements like the Marine Special Operations Support Group (MSOSG) of MARSOC.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] NATO suppressor\n
+	%c[d_purple] • %c[ui_gray_2] Sights: ACOG, Colt 3x, PN?23, Mark 4 CQ/T\n
+	%c[d_purple] • %c[ui_gray_2] M203 underbarrel grenade launcher\n \n</text>
+</string>
+
+<string id="st_wpn_m16">
+	<text>M16</text>
+</string>
+<string id="st_wpn_m16_descr">
+	<text>The M16 (official designation: Rifle, Caliber 5.56 mm, M16) is an American automatic rifle chambered in 5.56?45 mm, developed from the AR?15 and adopted in the 1960s. In 1964, the M16 officially entered service, replacing the M14, and by 1966 it was issued to all U.S. units in Vietnam. Early versions proved to be extremely unreliable. However, by the early 1970s the M16 had matured into a fully capable combat weapon with a number of significant advantages (and, of course, some drawbacks). Compared to its main global rival, the Kalashnikov AKM, the M16 offered greater accuracy and tighter shot grouping in semi?automatic fire and was generally more comfortable to handle. On the other hand, it required more careful maintenance and higher?quality ammunition. In particularly harsh conditions such as dirt and dust, the AKM surpassed the M16 in reliability. The M16 and its variants remain in service with U.S. infantry to this day and are among the most widespread small arms in the world, with over 8 million units produced.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] NATO suppressor\n
+	%c[d_purple] • %c[ui_gray_2] Sights: ACOG, ACOG Trijicon, Colt, Mark 4 CQ/T\n
+	%c[d_purple] • %c[ui_gray_2] M203 underbarrel grenade launcher\n \n</text>
+</string>
+
+<string id="st_wpn_kedr">
+	<text>PP?91?01 “Kedr?B” Submachine Gun</text>
+</string>
+<string id="st_wpn_kedr_descr">
+	<text>The PP?91?01 “Kedr?B” is a submachine gun chambered in 9x18 mm PM and equipped with an integrated suppressor.\nThe PP?91, or “Kedr” (Design by Evgeny Dragunov), is a submachine gun developed in the early 1990s for the Soviet Ministry of Internal Affairs, based on the earlier PP?71 designed by E. F. Dragunov. The 120 mm barrel is rigidly fixed to the receiver, with the bore and chamber chrome?lined for increased service life and corrosion resistance. The PP?91 is designed to fire standard and special 9x18 mm PM cartridges. When fired from a supported position using the stock, accuracy allows four single shots to be grouped within a 50 mm circle at 25 meters. The hammer?type fire control mechanism allows both semi?automatic and fully automatic fire. The fire selector is combined with the safety and can be confidently operated even while wearing gloves. Cyclic rate ranges from 800 to 1000 rounds per minute. Effective accuracy is maintained up to 50 meters, with a maximum effective range of approximately 100 meters. Due to the relatively weak 9x18 mm cartridge, muzzle energy is limited to around 295 J.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] “Pion?M” laser designator\n \n</text>
+</string>
+
+<string id="st_wpn_eft_rsh12">
+	<text>RSh?12 Heavy Revolver (12.7x55 mm)</text>
+</string>
+<string id="st_wpn_eft_rsh12_descr">
+	<text>The RSh?12 is a rare large?caliber revolver developed for special units. It fires the powerful 12.7x55 mm cartridge, capable of penetrating heavy armor and dealing devastating damage at close range. The weapon features extreme recoil, low rate of fire, and significant weight, but compensates with tremendous stopping power. Well suited for mutant hunting and close?quarters combat.\n \n
+	%c[ui_gray_2]ATTACHMENTS: \n
+	%c[d_purple] • %c[ui_gray_2] Sights (rarely available): Micro T?1, DeltaPoint, or RMR — via an adapter rail mounted on the top of the frame (if implemented in the build)\n
+	%c[d_purple] • %c[ui_gray_2] PB?12.7 suppressor or custom “heavy suppressor”\n \n		
+	</text>
+</string>
+
+
+</string_table>

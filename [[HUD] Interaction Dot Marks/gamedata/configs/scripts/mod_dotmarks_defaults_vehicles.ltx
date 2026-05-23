@@ -1,0 +1,80 @@
+; Interaction Dot Markers (DotMarks)
+; DLTX changes for vehicle support
+; =================================================================================
+
+; allowed bones for the vehicle marker
+;0 = root
+;1 = back_axle
+;2 = back_left_wheel
+;3 = back_right_wheel
+;4 = back_door
+;5 = exhausts
+;6 = front_axle
+;7 = front_left_wheel
+;8 = front_right_wheel
+;9 = front_bamper
+;10 = left_light
+;11 = front_light
+;12 = right_light
+;13 = kabina
+;14 = left_door
+;15 = right_door
+;16 = seat_left
+;17 = seat_right
+;18 = stearing wheel
+
+![template_tables]
+swap_vehicle
+
+![setting_tables]
+vehicle_target_bones
+
+![default_settings]
+vehicle_enter_hint			= st_enter_vehicle
+; Normal vehicle interaction prompt
+vehicle_exit_hint			= st_exit_vehicle
+; Interaction text shown while in a vehicle
+vehicle_marker_bone 		= stearing_wheel
+; Default bone to use as marker anchor - don't look at me, I didn't name it
+hide_marker_in_vehicle 		= true
+; Hides vehicle marker and prompt while inside the vehicle, default value
+vehicle_only_driver_door 	= false
+; Marker will only be centered on the driver's door, and won't switch to the closest
+; Vanilla behavior (or closest to it) is false
+vehicle_bone_update_int 	= 152
+; Interval between checks for which bone is closest
+
+@[swap_vehicle]
+texture     = ui_catsy_marker_vehicle
+width       = 16
+height      = 16
+
+@[vehicle_target_bones]
+14  = left_door
+15  = right_door
+
+![tex]
+Vehicles = ui_catsy_marker_vehicle
+; Adds the vehicle marker to the list of item class textures shown in MCM
+
+![scan]
+; Adds "Vehicles" as a scannable category that can be toggled in MCM
+Vehicles = true
+
+![blacklisted_names]
+; These are not really vehicles, but they get detected as such with vehicle support
+; I'm not aware of any reason that these should be markable, let me know if there is
+bar_zastava_minigun
+bar_zastava2_minigun
+
+![setting_icons]
+enable_icon_vehicles = Vehicles
+; Adds "Vehicles" as a type of focus icon that can be customized in MCM
+
+![mcm_paths]
+; Without these lines, IDM won't load the MCM settings into the cfg table
+argb_icon_vehicles 		= dotmarks/dmarkicons/
+enable_icon_vehicles 	= dotmarks/dmarkicons/
+; These first two are generated automatically by dotmarks_mcm for each entry
+; in the setting_icons section
+hide_marker_in_vehicle 	= dotmarks/dmarkmods/

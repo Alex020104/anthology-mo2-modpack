@@ -1,0 +1,38 @@
+local defaults = {
+	["offensive"] = 1,
+	["defensive"] = 1, 
+	["endurance"] = 1,
+	["speech"] = 1,
+	["hud_enable"] = true,
+	["hud_x"] = 695,
+	["hud_y"] = 13,
+	["talents_dbg"] = false,
+}
+
+function get_config(key)
+	if ui_mcm then return ui_mcm.get("talents/"..key) else return defaults[key] end
+end
+
+function on_mcm_load()
+	op = { id= "talents",sh=true ,gr={
+			{ id= "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_talents_title",size= {512,50},spacing= 20 },
+
+			{ id= "title"				   ,type= "desc"	 ,text= "ui_mcm_talents_header_main" 			,align= "ñ"	,clr= {255,190,190,190}	},
+			{id = "offensive", type = "track", val = 2, min = 0.1, max = 5, step = 0.1, def = 1},
+			{id = "defensive", type = "track", val = 2, min = 0.1, max = 5, step = 0.1, def = 1},
+			{id = "endurance", type = "track", val = 2, min = 0.1, max = 5, step = 0.1, def = 1},
+			{id = "speech", type = "track", val = 2, min = 0.1, max = 5, step = 0.1, def = 1},
+			{id="divider", type="line" },
+
+			{ id= "title"				   ,type= "desc"	 ,text= "ui_mcm_talents_header_hud" 			,align= "ñ"	,clr= {255,190,190,190}	},
+			{id = "hud_enable", type = "check", val = 1, def = true},
+			{id = "hud_x", type = "input", val = 2, min=0, max=1024, def = 695},
+			{id = "hud_y", type = "input", val = 2, min=0, max=768, def = 13},
+
+			{id="divider", type="line" },
+			{id = "talents_dbg", type = "check", val = 1, def = false},
+		}
+	}
+
+	return op
+end

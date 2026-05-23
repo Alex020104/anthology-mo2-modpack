@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_xcvb_trade_title">
+		<text>Динамические скидки</text>
+	</string>
+	<string id="ui_mcm_menu_xcvb_trade">
+		<text>Динамические скидки</text>
+	</string>
+
+
+	<!-- Main -->
+	<string id="ui_mcm_xcvb_trade_min_event_time">
+		<text>Минимальная продолжительность события (дни)</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_trade_max_event_time">
+		<text>Максимальная продолжительность события (дни)</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_trade_min_event_disc">
+		<text>Минимальная скидка за событие (%)</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_trade_max_event_disc">
+		<text>Максимальная скидка за событие (%)</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_trade_max_disc_amount">
+		<text>Максимальное количество скидок на одно мероприятие</text>
+	</string>
+	<string id="ui_mcm_xcvb_trade_max_disc_amount_desc">
+		<text>Максимальное количество групп, которые могут получить динамическую скидку при срабатывании события.</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_trade_msg_threshold">
+		<text>Порог сообщения о событии (%)</text>
+	</string>
+	<string id="ui_mcm_xcvb_trade_msg_threshold_desc">
+		<text>Вы будете получать уведомления о новой скидке, только если она будет выше этого порога (или ниже отрицательного порога).</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_trade_dbgx">
+		<text>отладка (дебаг)</text>
+	</string>
+
+</string_table>

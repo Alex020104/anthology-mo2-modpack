@@ -1,0 +1,16 @@
+<string_table>
+			<string id="st_wpn_mp43">
+		<text>MP-43</text>
+	</string>
+	<string id="st_wpn_mp43_descr">
+		<text>The MP-43 shotgun is a classic double-barreled break-action shotgun renowned for its simplicity, reliability, and affordability. Produced by the Izhevsk Mechanical Plant in Russia, it is favored by hunters and sport shooters worldwide. The shotgun is available in various configurations, including side-by-side and over-and-under, catering to different preferences. Its robust construction and timeless design make it a popular choice for hunting small game, bird shooting, and sporting clays. The MP-43's reputation for durability and ease of maintenance has solidified its status as a trusted companion for outdoor enthusiasts. \n \n</text>
+	</string>
+	
+				<string id="wpn_mp43_long">
+		<text>MP-43 Long</text>
+	</string>
+	<string id="wpn_mp43_long_descr">
+		<text>The MP-43 shotgun is a classic double-barreled break-action shotgun renowned for its simplicity, reliability, and affordability. Produced by the Izhevsk Mechanical Plant in Russia, it is favored by hunters and sport shooters worldwide. The shotgun is available in various configurations, including side-by-side and over-and-under, catering to different preferences. Its robust construction and timeless design make it a popular choice for hunting small game, bird shooting, and sporting clays. The MP-43's reputation for durability and ease of maintenance has solidified its status as a trusted companion for outdoor enthusiasts. This version features a longer barrel, which increases range and decreases dispersion. \n \n</text>
+	</string>
+	
+</string_table>

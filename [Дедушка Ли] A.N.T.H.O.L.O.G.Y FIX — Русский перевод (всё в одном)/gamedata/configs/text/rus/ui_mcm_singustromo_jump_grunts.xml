@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+        <string id="ui_mcm_jumpgrunts_sfx">
+                <text>Прыжок с ворчанием SFX</text>
+        </string>
+        <!-- Slide text -->
+        <string id="ui_mcm_jumpgrunts_sfx_main_title">
+                <text>Прыжок с ворчанием SFX</text>
+        </string>
+        <!-- ID of subtable -->
+        <string id="ui_mcm_jumpgrunts_sfx_general">
+                <text>Общие сведения</text>
+        </string>
+
+        <string id="ui_mcm_jumpgrunts_sfx_general_volume">
+                <text>Громкость</text>
+        </string>
+
+        <!-- Gender selection list -->
+        <string id="ui_mcm_jumpgrunts_sfx_general_voice_type">
+                <text>Тип голоса</text>
+        </string>
+        <string id="ui_mcm_lst_jumpgrunts_sfx_voice_type_male">
+                <text>Мужской</text>
+        </string>
+        <string id="ui_mcm_lst_jumpgrunts_sfx_voice_type_female">
+                <text>Женский</text>
+        </string>
+        <string id="ui_mcm_lst_jumpgrunts_sfx_voice_type_female_alt">
+                <text>Женский (альтернативный вариант)</text>
+        </string>		
+        <string id="ui_mcm_jumpgrunts_sfx_general_delay">
+                <text>Задержка в миллисекундах</text>
+        </string>
+        <string id="ui_mcm_jumpgrunts_sfx_general_allow_respi_breath">
+                <text>Разрешите ворчание при включенных звуках дыхания в респираторе</text>
+        </string>
+        <string id="ui_mcm_jumpgrunts_sfx_general_allow_respi_breath_desc">
+                <text>Это отключено по умолчанию, но доступно в качестве опции для тех, кто хочет включить эту функцию.\n\nЗаметка: Это не синхронизирует оба звука!</text>
+        </string>
+        <string id="ui_mcm_jumpgrunts_sfx_general_allow_muffled_grunts">
+                <text>Использовать приглушенное ворчание, надевая респиратор</text>
+        </string>
+        <string id="ui_mcm_jumpgrunts_sfx_general_chance">
+                <text>Шанс для ворчуна</text>
+        </string>
+        <string id="ui_mcm_jumpgrunts_sfx_general_chance_desc">
+                <text>Это также влияет на звуки при приземлении.\n\nЕсли при прыжке ничего не воспроизводилось, то это также происходит при приземлении. (ниже определенного порога скорости для ударов)</text>
+        </string>
+
+        <string id="ui_mcm_jumpgrunts_sfx_general_chance_by_stamina">
+                <text>Выносливость определяет шанс</text>
+        </string>
+        <string id="ui_mcm_jumpgrunts_sfx_general_chance_by_stamina_desc">
+                <text>При расчете по-прежнему используется обычный шанс</text>
+        </string>
+</string_table>

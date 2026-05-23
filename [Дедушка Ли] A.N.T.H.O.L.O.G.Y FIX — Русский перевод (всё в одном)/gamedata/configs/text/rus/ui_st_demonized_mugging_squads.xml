@@ -1,0 +1,84 @@
+
+<!--
+    demonized Mugging Squads
+    Generated with AnomalyModCreator
+-->
+
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+	<string id="ui_mcm_demonized_mugging_squads_title">
+		<text>Грабеж (Отряды грабителей)</text>
+	</string>
+	<string id="ui_mcm_menu_demonized_mugging_squads">
+		<text>Грабеж</text>
+	</string>
+
+	<string id="ui_mcm_demonized_mugging_squads_delayBetweenSpawns">
+		<text>Задержка между спавнами</text>
+	</string>
+	<string id="ui_mcm_demonized_mugging_squads_spawnDistance">
+		<text>Минимальное расстояние до спавна</text>
+	</string>
+	<string id="ui_mcm_demonized_mugging_squads_safeSmartDistance">
+		<text>Расстояние до безопасной зоны</text>
+	</string>
+	<string id="ui_mcm_demonized_mugging_squads_allowSameSquads">
+		<text>Разрешить грабить отряды одной группировки</text>
+	</string>
+	<string id="ui_mcm_demonized_mugging_squads_allowFriendlySquads">
+		<text>Разрешить грабить отряды дружественных группировок</text>
+	</string>
+	<string id="ui_mcm_demonized_mugging_squads_factions">
+		<text>Разрешенные группировки</text>
+	</string>
+	<string id="ui_mcm_demonized_mugging_squads_maxActiveSquads">
+		<text>Максимальное количество активных отрядов</text>
+	</string>	
+	<string id="ui_mcm_demonized_mugging_squads_talkChance">
+		<text>Поговорить о шансе</text>
+	</string>
+	
+	<string id="ui_mcm_demonized_replace_placeholder_army">
+		<text>Военные</text>
+	</string>	
+	<string id="ui_mcm_demonized_replace_placeholder_bandit">
+		<text>Бандиты</text>
+	</string>
+	<string id="ui_mcm_demonized_replace_placeholder_csky">
+		<text>"Чистое небо"</text>
+	</string>
+	<string id="ui_mcm_demonized_replace_placeholder_dolg">
+		<text>"Долг"</text>
+	</string>
+	<string id="ui_mcm_demonized_replace_placeholder_ecolog">
+		<text>Учёные</text>
+	</string>
+		<string id="ui_mcm_demonized_replace_placeholder_freedom">
+		<text>"Свобода"</text>
+	</string>
+			<string id="ui_mcm_demonized_replace_placeholder_greh">
+		<text>"Грех"</text>
+	</string>
+	<string id="ui_mcm_demonized_replace_placeholder_isg">
+	<text>"ИИГ"</text>
+	</string>	
+	<string id="ui_mcm_demonized_replace_placeholder_killer">
+	<text>Наёмники</text>
+	</string>
+	<string id="ui_mcm_demonized_replace_placeholder_monolith">
+	<text>"Монолит"</text>
+	</string>
+	<string id="ui_mcm_demonized_replace_placeholder_renegade">
+	<text>"Ренегаты"</text>
+	</string>
+	<string id="ui_mcm_demonized_replace_placeholder_stalker">
+	<text>Одиночки</text>
+	</string>
+	
+</string_table>
+                        

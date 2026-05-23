@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+ <!-- 5.56 -->
+ 	<string id="st_mag_k98_7.92x33">
+		<text>Standard 7.92x33 Kar 98 Magazine</text>
+	</string>
+	<string id="st_mag_k98_7.92x33_descr">
+		<text>
+		Standard Kar 98 Magazine with a capacity of 7 rounds.
+		</text>
+	</string>		
+	<string id="st_mag_k98_7.62x51">
+		<text>Modified 7.62x51 Kar 98 Magazine</text>
+	</string>
+	<string id="st_mag_k98_7.62x51_descr">
+		<text>
+		Modified Kar 98 Magazine with a capacity of 7 rounds.
+		</text>
+	</string>
+	<string id="st_mag_k98_7.62x54">
+		<text>Modified 7.62x54 Kar 98 Magazine</text>
+	</string>	
+	<string id="st_mag_k98_7.62x54_descr">
+		<text>
+		Modified Kar 98 Magazine with a capacity of 7 rounds.
+		</text>
+	</string>		
+</string_table>

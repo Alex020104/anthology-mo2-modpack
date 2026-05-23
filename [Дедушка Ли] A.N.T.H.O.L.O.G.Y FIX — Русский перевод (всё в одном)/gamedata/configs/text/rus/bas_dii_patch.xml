@@ -1,0 +1,8 @@
+<string_table>
+	<string id ="ui_mcm_menu_dii_custom_layers_bas">
+		<text>Индикаторы BaS</text>
+	</string>
+	<string id ="ui_mcm_dii_bas_attachments_show">
+		<text>Переключение меток крепления</text>
+	</string>
+</string_table>

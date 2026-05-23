@@ -1,0 +1,1163 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<!-- ---------------------------------- -->
+	<!-- ----- SNIPER OFFENSIVE ---- -->
+	<!-- ---------------------------------- -->
+	<string id="sniper_rifles_descr">
+		<text>Sniper rifle: \n
+		• Damage +%s% \n
+		• Crit +%s%</text>
+	</string>
+	<string id="assault_rifles_novice_descr">
+		<text>Assault rifle: \n
+		• Damage +%s% \n
+		• Crit +%s%</text>
+	</string>
+	<string id="pistols_descr">
+		<text>Pistol: \n
+		• Damage +%s% \n
+		• Crit +%s%</text>
+	</string>
+
+	<string id="experienced_sniper_descr">
+		<text>While wearing Medium/Light armor \n \n
+		Sniper rifle: \n
+		• Crit +%s%</text>
+	</string>
+
+	<string id="steady_descr">
+		<text>If crouching in Medium/Light armor \n \n
+		Sniper rifle: \n
+		• Crit +%s%</text>
+	</string>
+	<string id="convenience_descr">
+		<text>While wearing Light armor \n \n
+		Sniper rifle: \n
+		• Crit +%s%</text>
+	</string>
+	<string id="gunslinger_descr">
+		<text>If pistol in one of the main weapon slots \n \n
+		Pistol: \n
+		• Damage +%s% \n
+		• Crit +%s% \n
+		• Reload +%s%</text>
+	</string>
+
+	<string id="sharpshooter_descr">
+		<text>For every 1 meter from the target \n \n
+		Sniper rifle: \n
+		• Crit +%s%</text>
+	</string>
+	<string id="ambush_descr">
+		<text>If not seen by target and wearing Light armor \n \n
+		Sniper rifle: \n
+		• Crit +%s%</text>
+	</string>
+	<string id="deep_wound_descr">
+		<text>Sniper rifle: \n
+		• Bleeding damage +%s%</text>
+	</string>
+
+	<string id="loner_descr">
+		<text>If alone \n \n
+		Sniper rifle / Assault rifle: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="soft_spot_descr">
+		<text>If behind target (90+ degrees from target's direction) \n \n
+		Sniper rifle: \n
+		• Crit +%s%</text>
+	</string>
+	<string id="nocturnal_descr">
+		<text>During night (6pm - 6am) \n \n
+		Sniper rifle / Pistol: \n
+		• Crit +%s%</text>
+	</string>
+
+	<string id="carnage_descr">
+		<text>Sniper rifle: \n
+		• Damage +%s% \n
+		• Critical damage +%s%</text>
+	</string>
+
+
+	<!-- ---------------------------------- -->
+	<!-- --- TROOPER OFFENSIVE --- -->
+	<!-- ---------------------------------- -->
+	<string id="assault_rifles_descr">
+		<text>Assault rifle: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="shotguns_novice_descr">
+		<text>Shotgun: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="submachine_guns_descr">
+		<text>SMG: \n
+		• Damage +%s%</text>
+	</string>
+
+	<string id="experienced_rifleman_descr">
+		<text>Assault rifle: \n
+		• Crit +%s%</text>
+	</string>
+	<string id="demolition_expert_descr">
+		<text>Explosives: \n
+		• Damage +%s% \n
+		• Weight -%s%</text>
+	</string>
+
+	<string id="duelist_descr">
+		<text>If target sees you \n \n
+		Assault rifle: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="focus_descr">
+		<text>For every 1% of stamina in Medium/Sci armor \n \n
+		Assault Rifle: \n
+		• Crit +%s%</text>
+	</string>
+
+	<string id="thrill_descr">
+		<text>Next hit after kill \n \n
+		Assault rifle: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="precision_descr">
+		<text>If not shooting for %s - next hit will have \n \n
+		Assault rifle: \n
+		• Damage +%s% \n
+		• Crit +%s%</text>
+	</string>
+	<string id="barrage_descr">
+		<text>For %s sec after hit \n \n
+		SMG: \n
+		• Damage +%s% \n
+		• Crit +%s%</text>
+	</string>
+
+	<string id="reckless_descr">
+		<text>For every 1% of your health missing \n \n
+		Assault rifle / Shotgun: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="veteran_rifleman_descr">
+		<text>Assault rifle / SMG: \n
+		• Crit +%s%</text>
+	</string>
+
+	<string id="collector_descr">
+		<text>Getting "Collector" stacks for every kill (max 1500 stacks). Each stack gives \n \n
+		Assault rifle: \n
+		• Damage +%s% \n \n
+		Stacks for kill: \n
+		• 1 = Tushkano / Flesh / Zombie / Dog \n
+		• 2 = Fracture / Boar / Cat / Pseudodog \n
+		• 2 = Novice / Trainee stalkers \n
+		• 3 = Lurker / Snork / Karlik \n
+		• 3 = Experienced / Professional stalkers \n
+		• 4 = Poltergeist / Burer / Bloodsucker / Psysucker \n
+		• 4 = Veteran / Expert stalkers \n
+		• 5 = Master / Legend stalkers \n
+		• 7 = Chimera / Controller \n
+		• 10 = Giant \n \n
+		Current stacks: %s</text>
+	</string>
+
+
+	<!-- ---------------------------------- -->
+	<!-- ----- JUGGER OFFENSIVE ---- -->
+	<!-- ---------------------------------- -->
+	<string id="shotguns_descr">
+		<text>Shotgun: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="machine_guns_descr">
+		<text>Machine gun: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="submachine_descr">
+		<text>SMG: \n
+		• Damage +%s%</text>
+	</string>
+
+	<string id="hunter_descr">
+		<text>Against mutants \n \n
+		Shotgun / Machine gun / SMG: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="bounty_hunter_descr">
+		<text>Against stalkers \n \n
+		Shotgun / Machine gun / SMG: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="mangle_descr">
+		<text>Melee weapons: \n
+		• Damage +%s% \n
+		• Crit +%s%</text>
+	</string>
+
+	<string id="heavy_guns_expert_descr">
+		<text>Shotgun / Machine gun: \n
+		• Damage +%s% \n
+		• Reload +%s%</text>
+	</string>
+
+	<string id="merciless_descr">
+		<text>If you have more health percentage than target \n \n
+		Shotgun / Machine gun: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="fury_descr">
+		<text>For %s sec after getting hit by stalker or mutant \n \n
+		All weapons: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="bloodthirst_descr">
+		<text>Melee: \n
+		• Critical damage +%s%</text>
+	</string>
+
+	<string id="execution_descr">
+		<text>If target has less than %s% health \n \n
+		Shotgun / Machine gun: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="frightening_descr">
+		<text>Targets in %sm radius from you receive \n \n
+		• Damage +%s% from all sources</text>
+	</string>
+	<string id="selective_descr">
+		<text>If only one weapon in the main weapon slots \n \n
+		Shotgun / Machine gun: \n
+		• Damage +%s%</text>
+	</string>
+
+	<string id="mastery_descr">
+		<text>Shotgun / Machine gun: \n
+		• Reload +%s% \n \n
+		Talent buffs: \n
+		• "Merciless" damage for talent's bonus +5% \n
+		• "Execution" target's health threshold increase to 55% \n
+		• "Fury" damage for talent's bonus +5% \n
+		• "Frightening" radius increase to 100 meters</text>
+	</string>
+
+
+	<!-- ---------------------------------- -->
+	<!-- ----- SNIPER DEFENSIVE ---- -->
+	<!-- ---------------------------------- -->
+	<string id="adaptive_descr">
+		<text>Medium / Light armor: \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s%</text>
+	</string>
+	<string id="mild_descr">
+		<text>Fall damage: \n
+		• -45% in Medium armor \n
+		• -70% in Light armor</text>
+	</string>
+	<string id="iron_stomach_descr">
+		<text>Medium / Light armor: \n
+		• Radiation +%s% \n \n
+		%s% less radiation from food</text>
+	</string>
+
+	<string id="plastic_pads_descr">
+		<text>Medium / Light armor: \n
+		• Rupture +%s% \n
+		• Strike +%s%</text>
+	</string>
+	<string id="aluminum_plates_descr">
+		<text>Medium / Light armor: \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+
+	<string id="nature_resistance_descr">
+		<text>Medium / Light armor: \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s% \n
+		• Radiation +%s% \n</text>
+	</string>
+	<string id="rad_resistant_descr">
+		<text>Medium / Light armor: \n
+		• Radiation +%s% \n \n
+		Medicine instantly removes extra 35% of its total radiation restore</text>
+	</string>
+
+	<string id="technician_descr">
+		<text>Medium / Light armor: \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s% \n
+		• Radiation +%s% \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n \n
+		All medium armors get random first upgrade on pick up (if no upgrades yet)</text>
+	</string>
+	<string id="inventor_descr">
+		<text>All bonuses from talents are doubled for Light armor</text>
+	</string>
+
+	<string id="expert_technician_descr">
+		<text>For every 1% of armor condition \n \n
+		Medium / Light armor: \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s% \n
+		• Radiation +%s%</text>
+	</string>
+	<string id="agile_descr">
+		<text>When moving \n \n
+		Light armor: \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s% \n
+		• Radiation +%s% \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n \n
+		"Reflexes" talent evasion +%s% (moving not required for this bonus)</text>
+	</string>
+
+	<string id="reflexes_descr">
+		<text>35% chance to evade non-passive damage in Medium / Light armor</text>
+	</string>
+
+
+	<!-- ---------------------------------- -->
+	<!-- --- TROOPER DEFENSIVE --- -->
+	<!-- ---------------------------------- -->
+	<string id="ceramic_plates_descr">
+		<text>Heavy / Medium / Sci armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n \n
+		Resists x2 for Med/Sci</text>
+	</string>
+	<string id="first_aid_descr">
+		<text>Medicine that restore health - restores instantly extra %s% of its total value</text>
+	</string>
+	<string id="isolated_descr">
+		<text>Heavy / Medium / Sci armor: \n
+		• Shock +%s% \n \n
+		Resists x2 for Med/Sci</text>
+	</string>
+
+	<string id="armorer_descr">
+		<text>Heavy / Medium / Sci armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n \n
+		Resists x2 for Med/Sci</text>
+	</string>
+	<string id="chem_resistant_descr">
+		<text>Heavy / Medium / Sci armor: \n
+		• Chem +%s% \n \n
+		Resists x2 for Med/Sci</text>
+	</string>
+
+	<string id="suppresion_fire_descr">
+		<text>For %s sec after every your hit \n \n
+		Heavy / Medium / Sci armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+	<string id="cautious_descr">
+		<text>Medium / Sci armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n \n
+		Bonuses are doubled for the next physical hit on you \n
+		(Cooldown %s)</text>
+	</string>
+	<string id="fireproof_descr">
+		<text>Heavy / Medium / Sci armor: \n
+		• Burn +%s% \n \n
+		Resists x2 for Med/Sci</text>
+	</string>
+
+	<string id="composure_descr">
+		<text>Mitigated damage by this bonus is doubled and hits stamina instead of health (bonuses are active only when stamina is more than 50%) \n \n
+		Heavy / Medium / Sci armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+	<string id="enduring_descr">
+		<text>Medium / Sci armor: \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s% \n \n
+		Leap from "Leap" talent consumes 50% less stamina</text>
+	</string>
+
+	<string id="adorned_descr">
+		<text>For each attachment or artefact on belt \n \n
+		Heavy / Medium / Sci armor: \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s% \n \n
+		(Max 10%)</text>
+	</string>
+	<string id="expert_armorer_descr">
+		<text>For every installed upgrade on armor \n \n
+		Heavy / Medium / Sci armor: \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s% \n \n
+		(Max 10%)</text>
+	</string>
+	<string id="last_stand_descr">
+		<text>When health is below 35% \n \n
+		Heavy / Medium / Sci armor: \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s% \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+
+	<string id="leap_descr">
+		<text>When running sideways press Sprint button to make a leap. Leap consumes 20% of stamina and gives damage reduction for %s sec \n \n
+		Heavy / Medium / Sci armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+
+
+	<!-- ---------------------------------- -->
+	<!-- ----- JUGGER DEFENSIVE ---- -->
+	<!-- ---------------------------------- -->
+	<string id="steel_plates_descr">
+		<text>Heavy / Medium armor: \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+	<string id="steel_pads_descr">
+		<text>Heavy / Medium armor: \n
+		• Rupture +%s% \n
+		• Strike +%s%</text>
+	</string>
+	<string id="regenerative_descr">
+		<text>Passive health regeneration +100%</text>
+	</string>
+
+	<string id="heavy_armor_expert_descr">
+		<text>Heavy / Medium armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n
+		• Psi +%s% \n
+		• Armor weight -%s%</text>
+	</string>
+
+	<string id="dismorale_descr">
+		<text>For %s sec after killing an enemy \n \n
+		Heavy / Medium armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+	<string id="sturdy_descr">
+		<text>For %s sec after getting hit \n \n
+		Heavy / Medium armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+	<string id="sanity_descr">
+		<text>Heavy / Medium armor: \n
+		• Psi +%s%</text>
+	</string>
+
+	<string id="anxiety_descr">
+		<text>Heavy / Medium armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n \n
+		Doubles "Dismorale" talent bonuses and increases its duration to 30 sec</text>
+	</string>
+	<string id="turmoil_descr">
+		<text>You and your allies receive \n \n
+		Heavy / Medium armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n \n
+		Against all enemies that are in %sm radius from you</text>
+	</string>
+
+	<string id="bulky_descr">
+		<text>Armor slows you down by 15% in exchange for \n \n
+		Heavy / Medium armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+	<string id="secure_descr">
+		<text>For every companion \n \n
+		Heavy / Medium armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n \n
+		(Max 15%)</text>
+	</string>
+	<string id="lucid_descr">
+		<text>For every 1% of psi health \n \n
+		Heavy / Medium armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+
+	<string id="robust_descr">
+		<text>On next physical attack \n \n
+		Heavy / Medium armor: \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n \n
+		(Cooldown %s)</text>
+	</string>
+
+
+	<!-- ---------------------------------- -->
+	<!-- --------- ENDURANCE -------- -->
+	<!-- ---------------------------------- -->
+	<string id="ease_descr">
+		<text>If no two-handed weapons in hands \n \n
+		• Speed +%s%</text>
+	</string>
+	<string id="refreshing_descr">
+		<text>Drinking water restores \n \n
+		• Stamina +%s%</text>
+	</string>
+	<string id="hiker_descr">
+		<text>Food \n \n
+		• Weight -%s%</text>
+	</string>
+
+	<string id="resting_descr">
+		<text>If not moving \n \n
+		• Stamina +%s%/sec</text>
+	</string>
+	<string id="prudent_descr">
+		<text>Medicine \n \n
+		• Weight -%s%</text>
+	</string>
+
+	<string id="swifty_descr">
+		<text>• Speed +%s%</text>
+	</string>
+	<string id="tireless_descr">
+		<text>• Stamina +%s%/sec</text>
+	</string>
+	<string id="hoarder_descr">
+		<text>• Weight +%s kg</text>
+	</string>
+
+	<string id="adrenaline_rush_descr">
+		<text>For %s sec after getting average hit \n \n
+		• Speed +%s% \n \n
+		(Cooldown %s)</text>
+	</string>
+	<string id="second_wind_descr">
+		<text>If stamina drops below 5% \n \n
+		• Stamina +%s% \n \n
+		(Cooldown %s)</text>
+	</string>
+	<string id="organizer_descr">
+		<text>All items that weigh 0.2+ kg (except weapons) \n \n
+		• Weight -0.1 kg</text>
+	</string>
+
+	<string id="insomnia_descr">
+		<text>During night (6pm - 6am) \n \n
+		• Speed +%s%</text>
+	</string>
+	<string id="courage_descr">
+		<text>For %s sec after your hit \n \n
+		• Stamina +%s%/sec</text>
+	</string>
+	<string id="belt_braces_descr">
+		<text>Attachments and artefacts on belt \n \n
+		• Weight -%s%</text>
+	</string>
+
+	<string id="athletic_descr">
+		<text>For every 1% of stamina \n \n
+		Light armor: \n
+		• Speed +%s%  (half for Medium / Sci)</text>
+	</string>
+	<string id="iron_spine_descr">
+		<text>For every 1% of health \n \n
+		Heavy armor: \n
+		• Weight +%s kg  (half for Medium / Sci)</text>
+	</string>
+
+
+	<!-- ---------------------------------- -->
+	<!-- ------------ SPEECH ----------- -->
+	<!-- ---------------------------------- -->
+	<string id="preparation_descr">
+		<text>Food and water \n
+		• Buy %s%</text>
+	</string>
+	<string id="confidence_descr">
+		<text>Companions \n
+		• Resists +%s%</text>
+	</string>
+	<string id="supplier_descr">
+		<text>Meat, mutant parts and mutant skins \n
+		• Sell +%s%</text>
+	</string>
+
+	<string id="observant_descr">
+		<text>Weapons and ammo \n
+		• Buy %s%</text>
+	</string>
+	<string id="smuggler_descr">
+		<text>Medicine, alcohol, artefacts \n
+		• Sell +%s%  (half for artefacts)</text>
+	</string>
+
+	<string id="gregarious_descr">
+		<text>• Buy %s%</text>
+	</string>
+	<string id="encouragement_descr">
+		<text>Companions \n
+		• Damage +%s%</text>
+	</string>
+	<string id="persuasion_descr">
+		<text>• Sell +%s%</text>
+	</string>
+
+	<string id="charismatic_descr">
+		<text>%s% to buy a tier 1 item for free</text>
+	</string>
+	<string id="shady_descr">
+		<text>All stalkers will gain %s roubles and \n \n
+		• Sell to stalkers +%s%</text>
+	</string>
+
+	<string id="artistic_descr">
+		<text>Playing guitar or harmonica near stalkers will add goodwill with their faction. \n
+		(Cooldown %s)</text>
+	</string>
+	<string id="rally_descr">
+		<text>Companions \n
+		• Crit +%s%</text>
+	</string>
+	<string id="cynical_descr">
+		<text>Once per day you will get a "lucky coin" (can have only one). When coin is on belt - next junk item you sell to novice or trainee stalker will have x20 of its cost. Coin will disappear and you will receive goodwill penalty with their faction.</text>
+	</string>
+
+	<string id="well_liked_descr">
+		<text>Discount based on goodwill with trader's faction, (goodwill/200) percents \n
+		(Max -8%)</text>
+	</string>
+	<string id="deceitful_descr">
+		<text>2% to sell an item for extra x2.5 of its cost</text>
+	</string>
+
+
+	<!-- -------------------------------------- -->
+	<!-- MONSTER HUNTER OFFENSIVE -->
+	<!-- -------------------------------------- -->
+	<string id="dog_hunter_descr">
+		<text>Against dog/pseudodog/psi-dog/cat \n
+		• Damage +%s%</text>
+	</string>
+	<string id="boar_hunter_descr">
+		<text>Against boar/flesh/lurker \n
+		• Damage +%s%</text>
+	</string>
+	<string id="zombie_hunter_descr">
+		<text>Against zombie/fracture/snork \n
+		• Damage +%s%</text>
+	</string>
+
+	<string id="trophies_descr">
+		<text>For each mutant type you kill for the first time - permanent increase against mutants \n
+		• Damage +%s% \n
+		(Current bonus: +%s%) \n \n
+		Mutants left: \n
+		%s</text>
+	</string>
+	<string id="deep_cut_descr">
+		<text>Melee weapons: \n
+		• Damage +%s% \n
+		• Crit +%s%</text>
+	</string>
+
+	<string id="beast_anatomy_descr">
+		<text>Against beasts \n
+		• Damage +%s% \n \n
+		Beasts: %s</text>
+	</string>
+	<string id="humanoid_anatomy_descr">
+		<text>Against humanoids \n
+		• Damage +%s% \n \n
+		Humanoids: %s</text>
+	</string>
+	<string id="expert_hunter_descr">
+		<text>Against bloodsucker/psysucker/burer/poltergeist \n
+		• Damage +%s%</text>
+	</string>
+
+	<string id="beast_rivalry_descr">
+		<text>Against beasts \n
+		• Crit +%s%</text>
+	</string>
+	<string id="humanoid_rivalry_descr">
+		<text>Against humanoids \n
+		• Crit +%s%</text>
+	</string>
+	<string id="master_hunter_descr">
+		<text>Against chimera/controller/giant \n
+		• Damage +%s%</text>
+	</string>
+
+	<string id="fierce_descr">
+		<text>For %s sec after hitting mutant \n
+		• Damage +%s% \n \n
+		Stacks up to 5 times</text>
+	</string>
+	<string id="ranger_descr">
+		<text>In medium armor \n
+		• Crit +%s%</text>
+	</string>
+
+	<string id="deadly_blow_descr">
+		<text>1% to instantly kill any mutant (5% for melee weapons)</text>
+	</string>
+
+
+	<!-- -------------------------------------- -->
+	<!-- MONSTER HUNTER DEFENSIVE -->
+	<!-- -------------------------------------- -->
+	<string id="shoulder_pads_descr">
+		<text>• Rupture +%s% \n
+		• Strike +%s% \n \n
+		Resists x2 for Medium armor</text>
+	</string>
+	<string id="careful_descr">
+		<text>• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s% \n \n
+		Resists x2 for Medium armor</text>
+	</string>
+
+	<string id="melee_defense_descr">
+		<text>When melee weapon is in hands \n
+		• Rupture +%s% \n
+		• Strike +%s% \n</text>
+	</string>
+	<string id="special_diet_descr">
+		<text>For %s sec after eating mutant food or mutant meat \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s% \n
+		• Psi +%s%</text>
+	</string>
+	<string id="clarity_descr">
+		<text>• Psi +%s% \n \n
+		Resists x2 for Medium armor</text>
+	</string>
+
+	<string id="tracker_descr">
+		<text>You start sensing bloodsucker's trail</text>
+	</string>
+	<string id="soft_armor_descr">
+		<text>• Rupture +%s% \n
+		• Strike +%s% \n \n
+		Resists x2 for Medium armor</text>
+	</string>
+	<string id="stable_mind_descr">
+		<text>35% chance to resist psi damage from controller attack and \n
+		• Psi +%s%</text>
+	</string>
+
+	<string id="beast_demeanor_descr">
+		<text>Against beasts \n
+		• Rupture +%s% \n
+		• Strike +%s%</text>
+	</string>
+	<string id="humanoid_demeanor_descr">
+		<text>Against humanoids \n
+		• Rupture +%s% \n
+		• Strike +%s%</text>
+	</string>
+
+	<string id="second_skin_descr">
+		<text>For every mutant hide on belt \n
+		• Rupture +%s% \n
+		• Strike +%s%</text>
+	</string>
+	<string id="custom_fit_descr">
+		<text>Medium armor: \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n
+		• Rupture +%s% \n
+		• Strike +%s% \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s% \n
+		• Psi +%s%</text>
+	</string>
+
+	<string id="kindred_descr">
+		<text>Every 2 days after you wake up - two strong pseudodogs spawn to protect you (spawned only if no previous pseudodogs are alive). They are immune to anomalies, ignore your allies and attack your foes (except other dogs). \n \n
+		While at least one of these pseudodogs is alive - all other dogs do not attack you and your companions.</text>
+	</string>
+
+
+	<!-- -------------------------------------- -->
+	<!-- ------- MERC OFFENSIVE -------- -->
+	<!-- -------------------------------------- -->
+	<string id="firearm_enthusiast_descr">
+		<text>All weapons: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="combat_engineer_descr">
+		<text>Explosives: \n
+		• Damage +%s% \n
+		• Grenades throw speed +%s%</text>
+	</string>
+	<string id="overdrive_descr">
+		<text>For %s sec after using stimpacks or cocaine \n \n
+		All weapons: \n
+		• Damage +%s% \n
+		• Crit +%s%</text>
+	</string>
+
+	<string id="head_hunter_descr">
+		<text>For every faction's member you kill for the first time \n \n
+		Against stalkers: \n
+		• Damage +%s% \n
+		(Current bonus: +%s%) \n \n
+		Factions left: \n
+		%s</text>
+	</string>
+	<string id="arrogance_descr">
+		<text>For every target's rank lower than yours \n \n
+		Against stalkers: \n
+		• Damage +%s% per rank</text>
+	</string>
+
+	<string id="aim_torso_descr">
+		<text>On torso \n \n
+		Against stalkers: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="aim_limbs_descr">
+		<text>On limbs and head \n \n
+		Against stalkers: \n
+		• Crit +%s%</text>
+	</string>
+
+	<string id="modified_bullets_descr">
+		<text>For %s sec after hitting stalker's torso he will lose %s% of his health per sec</text>
+	</string>
+	<string id="bullseye_descr">
+		<text>For %s sec after killing stalker with headshot \n \n
+		All weapons: \n
+		• Crit +%s%</text>
+	</string>
+	<string id="searcher_descr">
+		<text>Stalkers killed by you will have more money on them</text>
+	</string>
+
+	<string id="assault_rifles_expert_descr">
+		<text>Assault rifle: \n
+		• Damage +%s% \n
+		• Crit +%s% \n
+		• Reload +%s%</text>
+	</string>
+	<string id="light_guns_expert_descr">
+		<text>Pistol / SMG: \n
+		• Damage +%s% \n
+		• Crit +%s% \n
+		• Reload +%s%</text>
+	</string>
+	<string id="sniper_rifles_expert_descr">
+		<text>Sniper rifle: \n
+		• Damage +%s% \n
+		• Crit +%s%</text>
+	</string>
+
+	<string id="liquidator_descr">
+		<text>1% to instantly kill any stalker and \n \n
+		All weapons: \n
+		• Critical damage +%s%</text>
+	</string>
+
+
+	<!-- -------------------------------------- -->
+	<!-- ------- MERC DEFENSIVE -------- -->
+	<!-- -------------------------------------- -->
+	<string id="mercenary_vest_descr">
+		<text>Medium armor: \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+	<string id="insensitive_descr">
+		<text>Medium armor: \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s%</text>
+	</string>
+	<string id="chem_reliant_descr">
+		<text>For %s sec after using stimpacks or morphine \n \n
+		Medium armor: \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+
+	<string id="grenadier_descr">
+		<text>For %s sec after throwing grenade \n \n
+		Medium armor: \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+
+	<string id="confusion_descr">
+		<text>If wearing outfit of target's faction (or their ally) \n \n
+		Medium armor: \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+	<string id="addictive_descr">
+		<text>Addition to "Chem reliant" buff \n \n
+		Medium armor: \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s%</text>
+	</string>
+
+	<string id="direct_descr">
+		<text>Heavy armor receives %s% of all resist talent bonuses</text>
+	</string>
+	<string id="disguise_master_descr">
+		<text>Medium armor increases disguise effectiveness by %s%</text>
+	</string>
+
+	<string id="flurry_descr">
+		<text>For %s sec after shooting \n \n
+		Medium armor: \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+	<string id="loose_fit_descr">
+		<text>Medium armor: \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n
+		• Rupture +%s% \n
+		• Strike +%s%</text>
+	</string>
+
+	<string id="reposition_descr">
+		<text>After moving for 2 sec in combat - for the next %s sec you will get \n \n
+		Medium armor: \n
+		• Ballistic +%s% \n
+		• Explosive +%s%</text>
+	</string>
+
+
+	<!-- -------------------------------------- -->
+	<!-- ---- ASSASSIN OFFENSIVE ----- -->
+	<!-- -------------------------------------- -->
+	<string id="smg_novice_descr">
+		<text>SMG: \n
+		• Damage +%s% \n
+		• Crit +%s%</text>
+	</string>
+	<string id="handgun_novice_descr">
+		<text>Pistol: \n
+		• Damage +%s% \n
+		• Crit +%s%</text>
+	</string>
+	<string id="knifeman_descr">
+		<text>Melee: \n
+		• Damage +%s% \n
+		• Crit +%s% \n
+		• Attack speed +%s%</text>
+	</string>
+
+	<string id="spot_weakness_descr">
+		<text>If enemy in 20 meters radius and not in combat with you - gain 1 stack of "Spot weakness" every second (max 10 stacks). For every stack on the next attack \n \n
+		SMG / Pistol / Melee: \n
+		• Crit +%s% \n</text>
+	</string>
+
+	<string id="undercover_descr">
+		<text>If in outfit of target's faction (or their ally) \n \n
+		SMG / Pistol: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="tactical_descr">
+		<text>If weapon has silencer \n \n
+		SMG / Pistol: \n
+		• Crit +%s%</text>
+	</string>
+	<string id="backstab_descr">
+		<text>Hits from behind \n \n
+		Melee: \n
+		• Crit +%s% \n
+		• Critical damage +%s%</text>
+	</string>
+
+	<string id="saboteur_descr">
+		<text>SMG / Pistol: \n
+		• Damage +%s% \n \n
+		For every 1 meter from the target damage decreased by -0.1% (min 0% bonus)</text>
+	</string>
+	<string id="surprise_attack_descr">
+		<text>If target not in combat or danger state \n \n
+		SMG / Pistol: \n
+		• Crit +%s% \n
+		• Critical damage +%s%</text>
+	</string>
+	<string id="assassination_descr">
+		<text>Hits from behind if target not in combat or danger state \n \n
+		Melee: \n
+		• Critical damage +%s%</text>
+	</string>
+
+	<string id="vile_descr">
+		<text>Hits from behind \n \n
+		SMG: \n
+		• Damage +%s%</text>
+	</string>
+	<string id="pragmatic_descr">
+		<text>If pistol in main weapon slot and other main slot is empty \n \n
+		Pistol: \n
+		• Crit +%s% \n
+		• Critical damage +%s%</text>
+	</string>
+
+	<string id="assassin_observant_descr">
+		<text>"Spot weakness" talent instantly gets max amount of stacks</text>
+	</string>
+
+
+	<!-- -------------------------------------- -->
+	<!-- ---- ASSASSIN DEFENSIVE ----- -->
+	<!-- -------------------------------------- -->
+	<string id="ordinary_descr">
+		<text>When walking \n \n
+		All armors: \n
+		• Disguise +%s%</text>
+	</string>
+	<string id="acrobatic_descr">
+		<text>Jump height \n \n
+		Medium / Sci / Light armor: \n
+		• +30%</text>
+	</string>
+	<string id="quiet_descr">
+		<text>If no active items in hands \n \n
+		All armors: \n
+		• Stealth +%s%</text>
+	</string>
+
+	<string id="evanescent_descr">
+		<text>"Ordinary" bonus persists at any movement state and \n \n
+		All armors: \n
+		• Disguise +%s%</text>
+	</string>
+	<string id="lurking_descr">
+		<text>During night (6pm - 6am) \n \n
+		All armors: \n
+		• Disguise +%s% \n
+		• Stealth +%s%</text>
+	</string>
+	<string id="subtle_descr">
+		<text>"Quiet" bonus persists with any items in hands and \n \n
+		All armors: \n
+		• Stealth +%s%</text>
+	</string>
+
+	<string id="covert_descr">
+		<text>All disguise talent bonuses x1.5 for Medium/Sci armor and \n \n
+		Medium / Sci armor: \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n
+		• Rupture +%s% \n
+		• Strike +%s%
+		</text>
+	</string>
+	<string id="cunning_descr">
+		<text>All stealth talent bonuses x1.5 for Light armor and \n \n
+		Light armor: \n
+		• Evasion +%s% \n
+		• Fall damage -40%</text>
+	</string>
+
+	<string id="deception_descr">
+		<text>Against enemies in 50 meters radius \n \n
+		All armors: \n
+		• Disguise +%s%</text>
+	</string>
+	<string id="vague_descr">
+		<text>Bonus from rain (at max rain density) \n \n
+		All armors: \n
+		• Disguise +%s% \n
+		• Stealth +%s%</text>
+	</string>
+	<string id="sneaky_descr">
+		<text>All armors: \n
+		• Stealth +%s% \n \n
+		Bonus x2 when crouching</text>
+	</string>
+
+	<string id="incognito_descr">
+		<text>Medium / Sci armor: \n
+		• Disguise +%s% \n
+		• Ballistic +%s% \n
+		• Explosive +%s% \n
+		• Rupture +%s% \n
+		• Strike +%s%</text>
+	</string>
+	<string id="ghost_descr">
+		<text>Light armor: \n
+		• Stealth +%s% \n
+		• Evasion +%s% \n
+		• Burn +%s% \n
+		• Chem +%s% \n
+		• Shock +%s%</text>
+	</string>
+
+	<string id="elusive_descr">
+		<text>Medium / Sci / Light armor: \n
+		• Disguise +%s% \n
+		• Stealth +%s% \n
+		• Speed +15% in combat</text>
+	</string>
+
+</string_table>

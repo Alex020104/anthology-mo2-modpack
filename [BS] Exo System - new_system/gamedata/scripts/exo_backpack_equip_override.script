@@ -1,0 +1,28 @@
+local EXO_SYSTEM_SECTION = "exobackpack_exo_outfit"
+
+local function is_exo_system_outfit(obj)
+	return obj and obj:section() == EXO_SYSTEM_SECTION
+end
+
+local function enforce_backpack_lock()
+	if not (db and db.actor) then
+		return
+	end
+
+	local outfit = db.actor:item_in_slot(7)
+	if not is_exo_system_outfit(outfit) then
+		return
+	end
+
+	local backpack = db.actor:item_in_slot(13)
+	if backpack then
+		db.actor:move_to_ruck(backpack)
+	end
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update", enforce_backpack_lock)
+	RegisterScriptCallback("actor_item_to_slot", enforce_backpack_lock)
+	RegisterScriptCallback("actor_item_to_ruck", enforce_backpack_lock)
+	RegisterScriptCallback("actor_on_item_drop", enforce_backpack_lock)
+end

@@ -1,0 +1,633 @@
+<w>
+
+	<file name = "ui\xcvb_talents\talents_bg">
+		<!-- Main background -->
+		<texture id="talents_main_bg" x="0" y="0" width="558" height="373" />
+	</file>
+
+
+	<file name = "ui\xcvb_talents\misc">
+
+		<!-- Pick class window background -->
+		<texture id="pick_class_bg" x="0" y="172" width="324" height="234" />
+
+		<!-- Pick class stats background -->
+		<texture id="pick_stats_bg" x="344" y="0" width="375" height="558" />
+
+		<!-- Pick class button -->
+		<texture id="pick_class_btn_h" x="0" y="0" width="85" height="85" />	<!-- hovered -->
+		<texture id="pick_class_btn_t" x="85" y="0" width="85" height="85" />	<!-- pressed -->
+		<texture id="pick_class_btn_d" x="170" y="0" width="85" height="85" />	<!-- disabled -->
+		<texture id="pick_class_btn_e" x="255" y="0" width="85" height="85" />	<!-- normal -->
+
+		<!-- Talent button (745) -->
+		<texture id="pick_tal_btn_h" x="0" y="897" width="75" height="75" />	<!-- hovered -->
+		<texture id="pick_tal_btn_t" x="76" y="897" width="75" height="75" />	<!-- pressed -->
+		<texture id="pick_tal_btn_d" x="152" y="897" width="75" height="75" />	<!-- disabled -->
+		<texture id="pick_tal_btn_e" x="228" y="897" width="75" height="75" />	<!-- normal -->
+
+		<!-- Pick class stats -->
+		<texture id="stats_bar_1" x="0" y="86" width="43" height="16" />
+		<texture id="stats_bar_2" x="0" y="103" width="43" height="16" />
+		<texture id="stats_bar_3" x="0" y="120" width="43" height="16" />
+
+		<!-- Talent links -->
+		<texture id="talents_rect" x="44" y="95" width="75" height="75" />
+		<texture id="talents_rect_bw" x="120" y="95" width="75" height="75" />
+
+		<!-- Tooltip background -->
+		<texture id="tooltip_bg" x="721" y="540" width="208" height="135" />
+
+		<!-- Trees background -->
+		<texture id="bar_cont_frame" x="0" y="519" width="298" height="21" />
+
+		<!-- Bar frame -->
+		<texture id="trees_bg" x="0" y="559" width="686" height="185" />
+
+		<!-- Stats background -->
+		<texture id="trees_stats_bg" x="721" y="0" width="265" height="403" />
+
+	</file>
+
+	<file name = "ui\xcvb_talents\talent_icons">
+		<!-- sniper offensive -->
+		<texture id="talent_sniper_rifles" x="0" y="0" width="100" height="100" />
+		<texture id="talent_assault_rifles_novice" x="100" y="0" width="100" height="100" />
+		<texture id="talent_pistols" x="200" y="0" width="100" height="100" />
+		<texture id="talent_experienced_sniper" x="300" y="0" width="100" height="100" />
+		<texture id="talent_steady" x="400" y="0" width="100" height="100" />
+		<texture id="talent_convenience" x="500" y="0" width="100" height="100" />
+		<texture id="talent_gunslinger" x="600" y="0" width="100" height="100" />
+		<texture id="talent_sharpshooter" x="700" y="0" width="100" height="100" />
+		<texture id="talent_ambush" x="800" y="0" width="100" height="100" />
+		<texture id="talent_deep_wound" x="900" y="0" width="100" height="100" />
+		<texture id="talent_loner" x="1000" y="0" width="100" height="100" />
+		<texture id="talent_soft_spot" x="1100" y="0" width="100" height="100" />
+		<texture id="talent_nocturnal" x="1200" y="0" width="100" height="100" />
+		<texture id="talent_carnage" x="1300" y="0" width="100" height="100" />
+
+		<!-- trooper offensive -->
+		<texture id="talent_assault_rifles" x="0" y="100" width="100" height="100" />
+		<texture id="talent_shotguns_novice" x="100" y="100" width="100" height="100" />
+		<texture id="talent_submachine_guns" x="200" y="100" width="100" height="100" />
+		<texture id="talent_experienced_rifleman" x="300" y="100" width="100" height="100" />
+		<texture id="talent_demolition_expert" x="400" y="100" width="100" height="100" />
+		<texture id="talent_duelist" x="500" y="100" width="100" height="100" />
+		<texture id="talent_focus" x="600" y="100" width="100" height="100" />
+		<texture id="talent_thrill" x="700" y="100" width="100" height="100" />
+		<texture id="talent_precision" x="800" y="100" width="100" height="100" />
+		<texture id="talent_barrage" x="900" y="100" width="100" height="100" />
+		<texture id="talent_reckless" x="1000" y="100" width="100" height="100" />
+		<texture id="talent_veteran_rifleman" x="1100" y="100" width="100" height="100" />
+		<texture id="talent_collector" x="1200" y="100" width="100" height="100" />
+
+		<!-- jugger offensive -->
+		<texture id="talent_shotguns" x="0" y="200" width="100" height="100" />
+		<texture id="talent_machine_guns" x="100" y="200" width="100" height="100" />
+		<texture id="talent_submachine" x="200" y="200" width="100" height="100" />
+		<texture id="talent_hunter" x="300" y="200" width="100" height="100" />
+		<texture id="talent_bounty_hunter" x="400" y="200" width="100" height="100" />
+		<texture id="talent_mangle" x="500" y="200" width="100" height="100" />
+		<texture id="talent_heavy_guns_expert" x="600" y="200" width="100" height="100" />
+		<texture id="talent_merciless" x="700" y="200" width="100" height="100" />
+		<texture id="talent_fury" x="800" y="200" width="100" height="100" />
+		<texture id="talent_bloodthirst" x="900" y="200" width="100" height="100" />
+		<texture id="talent_execution" x="1000" y="200" width="100" height="100" />
+		<texture id="talent_frightening" x="1100" y="200" width="100" height="100" />
+		<texture id="talent_selective" x="1200" y="200" width="100" height="100" />
+		<texture id="talent_mastery" x="1300" y="200" width="100" height="100" />
+
+		<!-- sniper defensive -->
+		<texture id="talent_adaptive" x="0" y="300" width="100" height="100" />
+		<texture id="talent_mild" x="100" y="300" width="100" height="100" />
+		<texture id="talent_iron_stomach" x="200" y="300" width="100" height="100" />
+		<texture id="talent_plastic_pads" x="300" y="300" width="100" height="100" />
+		<texture id="talent_aluminum_plates" x="400" y="300" width="100" height="100" />
+		<texture id="talent_nature_resistance" x="500" y="300" width="100" height="100" />
+		<texture id="talent_rad_resistant" x="600" y="300" width="100" height="100" />
+		<texture id="talent_technician" x="700" y="300" width="100" height="100" />
+		<texture id="talent_inventor" x="800" y="300" width="100" height="100" />
+		<texture id="talent_expert_technician" x="900" y="300" width="100" height="100" />
+		<texture id="talent_agile" x="1000" y="300" width="100" height="100" />
+		<texture id="talent_reflexes" x="1100" y="300" width="100" height="100" />
+
+		<!-- trooper defensive -->
+		<texture id="talent_ceramic_plates" x="0" y="400" width="100" height="100" />
+		<texture id="talent_first_aid" x="100" y="400" width="100" height="100" />
+		<texture id="talent_isolated" x="200" y="400" width="100" height="100" />
+		<texture id="talent_armorer" x="300" y="400" width="100" height="100" />
+		<texture id="talent_chem_resistant" x="400" y="400" width="100" height="100" />
+		<texture id="talent_suppresion_fire" x="500" y="400" width="100" height="100" />
+		<texture id="talent_cautious" x="600" y="400" width="100" height="100" />
+		<texture id="talent_fireproof" x="700" y="400" width="100" height="100" />
+		<texture id="talent_composure" x="800" y="400" width="100" height="100" />
+		<texture id="talent_enduring" x="900" y="400" width="100" height="100" />
+		<texture id="talent_adorned" x="1000" y="400" width="100" height="100" />
+		<texture id="talent_expert_armorer" x="1100" y="400" width="100" height="100" />
+		<texture id="talent_last_stand" x="1200" y="400" width="100" height="100" />
+		<texture id="talent_leap" x="1300" y="400" width="100" height="100" />
+
+		<!-- jugger defensive -->
+		<texture id="talent_steel_plates" x="0" y="500" width="100" height="100" />
+		<texture id="talent_steel_pads" x="100" y="500" width="100" height="100" />
+		<texture id="talent_regenerative" x="200" y="500" width="100" height="100" />
+		<texture id="talent_heavy_armor_expert" x="300" y="500" width="100" height="100" />
+		<texture id="talent_dismorale" x="400" y="500" width="100" height="100" />
+		<texture id="talent_sturdy" x="500" y="500" width="100" height="100" />
+		<texture id="talent_sanity" x="600" y="500" width="100" height="100" />
+		<texture id="talent_anxiety" x="700" y="500" width="100" height="100" />
+		<texture id="talent_turmoil" x="800" y="500" width="100" height="100" />
+		<texture id="talent_bulky" x="900" y="500" width="100" height="100" />
+		<texture id="talent_secure" x="1000" y="500" width="100" height="100" />
+		<texture id="talent_lucid" x="1100" y="500" width="100" height="100" />
+		<texture id="talent_robust" x="1200" y="500" width="100" height="100" />
+		<texture id="talent_talent_mastery" x="1300" y="500" width="100" height="100" />
+
+		<!-- endurance -->
+		<texture id="talent_ease" x="0" y="600" width="100" height="100" />
+		<texture id="talent_refreshing" x="100" y="600" width="100" height="100" />
+		<texture id="talent_hiker" x="200" y="600" width="100" height="100" />
+		<texture id="talent_resting" x="300" y="600" width="100" height="100" />
+		<texture id="talent_prudent" x="400" y="600" width="100" height="100" />
+		<texture id="talent_swifty" x="500" y="600" width="100" height="100" />
+		<texture id="talent_tireless" x="600" y="600" width="100" height="100" />
+		<texture id="talent_hoarder" x="700" y="600" width="100" height="100" />
+		<texture id="talent_adrenaline_rush" x="800" y="600" width="100" height="100" />
+		<texture id="talent_second_wind" x="900" y="600" width="100" height="100" />
+		<texture id="talent_organizer" x="1000" y="600" width="100" height="100" />
+		<texture id="talent_insomnia" x="1100" y="600" width="100" height="100" />
+		<texture id="talent_courage" x="1200" y="600" width="100" height="100" />
+		<texture id="talent_belt_braces" x="1300" y="600" width="100" height="100" />
+		<texture id="talent_athletic" x="1400" y="600" width="100" height="100" />
+		<texture id="talent_iron_spine" x="1500" y="600" width="100" height="100" />
+
+		<!-- speech -->
+		<texture id="talent_preparation" x="0" y="700" width="100" height="100" />
+		<texture id="talent_confidence" x="100" y="700" width="100" height="100" />
+		<texture id="talent_supplier" x="200" y="700" width="100" height="100" />
+		<texture id="talent_observant" x="300" y="700" width="100" height="100" />
+		<texture id="talent_smuggler" x="400" y="700" width="100" height="100" />
+		<texture id="talent_gregarious" x="500" y="700" width="100" height="100" />
+		<texture id="talent_encouragement" x="600" y="700" width="100" height="100" />
+		<texture id="talent_persuasion" x="700" y="700" width="100" height="100" />
+		<texture id="talent_charismatic" x="800" y="700" width="100" height="100" />
+		<texture id="talent_shady" x="900" y="700" width="100" height="100" />
+		<texture id="talent_artistic" x="1000" y="700" width="100" height="100" />
+		<texture id="talent_rally" x="1100" y="700" width="100" height="100" />
+		<texture id="talent_cynical" x="1200" y="700" width="100" height="100" />
+		<texture id="talent_well_liked" x="1300" y="700" width="100" height="100" />
+		<texture id="talent_deceitful" x="1400" y="700" width="100" height="100" />
+
+		<!-- monster hunter offensive -->
+		<texture id="talent_dog_hunter" x="0" y="800" width="100" height="100" />
+		<texture id="talent_boar_hunter" x="100" y="800" width="100" height="100" />
+		<texture id="talent_zombie_hunter" x="200" y="800" width="100" height="100" />
+		<texture id="talent_trophies" x="300" y="800" width="100" height="100" />
+		<texture id="talent_deep_cut" x="400" y="800" width="100" height="100" />
+		<texture id="talent_beast_anatomy" x="500" y="800" width="100" height="100" />
+		<texture id="talent_humanoid_anatomy" x="600" y="800" width="100" height="100" />
+		<texture id="talent_expert_hunter" x="700" y="800" width="100" height="100" />
+		<texture id="talent_beast_rivalry" x="800" y="800" width="100" height="100" />
+		<texture id="talent_humanoid_rivalry" x="900" y="800" width="100" height="100" />
+		<texture id="talent_master_hunter" x="1000" y="800" width="100" height="100" />
+		<texture id="talent_fierce" x="1100" y="800" width="100" height="100" />
+		<texture id="talent_ranger" x="1200" y="800" width="100" height="100" />
+		<texture id="talent_deadly_blow" x="1300" y="800" width="100" height="100" />
+
+		<!-- monster hunter defensive -->
+		<texture id="talent_shoulder_pads" x="0" y="900" width="100" height="100" />
+		<texture id="talent_careful" x="100" y="900" width="100" height="100" />
+		<texture id="talent_melee_defense" x="200" y="900" width="100" height="100" />
+		<texture id="talent_special_diet" x="300" y="900" width="100" height="100" />
+		<texture id="talent_clarity" x="400" y="900" width="100" height="100" />
+		<texture id="talent_tracker" x="500" y="900" width="100" height="100" />
+		<texture id="talent_soft_armor" x="600" y="900" width="100" height="100" />
+		<texture id="talent_stable_mind" x="700" y="900" width="100" height="100" />
+		<texture id="talent_beast_demeanor" x="800" y="900" width="100" height="100" />
+		<texture id="talent_humanoid_demeanor" x="900" y="900" width="100" height="100" />
+		<texture id="talent_second_skin" x="1000" y="900" width="100" height="100" />
+		<texture id="talent_custom_fit" x="1100" y="900" width="100" height="100" />
+		<texture id="talent_kindred" x="1200" y="900" width="100" height="100" />
+
+		<!-- merc offensive -->
+		<texture id="talent_firearm_enthusiast" x="0" y="1000" width="100" height="100" />
+		<texture id="talent_combat_engineer" x="100" y="1000" width="100" height="100" />
+		<texture id="talent_overdrive" x="200" y="1000" width="100" height="100" />
+		<texture id="talent_head_hunter" x="300" y="1000" width="100" height="100" />
+		<texture id="talent_arrogance" x="400" y="1000" width="100" height="100" />
+		<texture id="talent_aim_torso" x="500" y="1000" width="100" height="100" />
+		<texture id="talent_aim_limbs" x="600" y="1000" width="100" height="100" />
+		<texture id="talent_modified_bullets" x="700" y="1000" width="100" height="100" />
+		<texture id="talent_bullseye" x="800" y="1000" width="100" height="100" />
+		<texture id="talent_searcher" x="900" y="1000" width="100" height="100" />
+		<texture id="talent_assault_rifles_expert" x="1000" y="1000" width="100" height="100" />
+		<texture id="talent_light_guns_expert" x="1100" y="1000" width="100" height="100" />
+		<texture id="talent_sniper_rifles_expert" x="1200" y="1000" width="100" height="100" />
+		<texture id="talent_liquidator" x="1300" y="1000" width="100" height="100" />
+
+		<!-- merc defensive -->
+		<texture id="talent_mercenary_vest" x="0" y="1100" width="100" height="100" />
+		<texture id="talent_insensitive" x="100" y="1100" width="100" height="100" />
+		<texture id="talent_chem_reliant" x="200" y="1100" width="100" height="100" />
+		<texture id="talent_grenadier" x="300" y="1100" width="100" height="100" />
+		<texture id="talent_confusion" x="400" y="1100" width="100" height="100" />
+		<texture id="talent_addictive" x="500" y="1100" width="100" height="100" />
+		<texture id="talent_direct" x="600" y="1100" width="100" height="100" />
+		<texture id="talent_disguise_master" x="700" y="1100" width="100" height="100" />
+		<texture id="talent_flurry" x="800" y="1100" width="100" height="100" />
+		<texture id="talent_loose_fit" x="900" y="1100" width="100" height="100" />
+		<texture id="talent_reposition" x="1000" y="1100" width="100" height="100" />
+
+		<!-- assassin offensive -->
+		<texture id="talent_smg_novice" x="0" y="1200" width="100" height="100" />
+		<texture id="talent_handgun_novice" x="100" y="1200" width="100" height="100" />
+		<texture id="talent_knifeman" x="200" y="1200" width="100" height="100" />
+		<texture id="talent_spot_weakness" x="300" y="1200" width="100" height="100" />
+		<texture id="talent_undercover" x="400" y="1200" width="100" height="100" />
+		<texture id="talent_tactical" x="500" y="1200" width="100" height="100" />
+		<texture id="talent_backstab" x="600" y="1200" width="100" height="100" />
+		<texture id="talent_saboteur" x="700" y="1200" width="100" height="100" />
+		<texture id="talent_surprise_attack" x="800" y="1200" width="100" height="100" />
+		<texture id="talent_assassination" x="900" y="1200" width="100" height="100" />
+		<texture id="talent_vile" x="1000" y="1200" width="100" height="100" />
+		<texture id="talent_pragmatic" x="1100" y="1200" width="100" height="100" />
+		<texture id="talent_assassin_observant" x="1200" y="1200" width="100" height="100" />
+
+		<!-- assassin defensive -->
+		<texture id="talent_ordinary" x="0" y="1300" width="100" height="100" />
+		<texture id="talent_acrobatic" x="100" y="1300" width="100" height="100" />
+		<texture id="talent_quiet" x="200" y="1300" width="100" height="100" />
+		<texture id="talent_evanescent" x="300" y="1300" width="100" height="100" />
+		<texture id="talent_lurking" x="400" y="1300" width="100" height="100" />
+		<texture id="talent_subtle" x="500" y="1300" width="100" height="100" />
+		<texture id="talent_covert" x="600" y="1300" width="100" height="100" />
+		<texture id="talent_cunning" x="700" y="1300" width="100" height="100" />
+		<texture id="talent_deception" x="800" y="1300" width="100" height="100" />
+		<texture id="talent_vague" x="900" y="1300" width="100" height="100" />
+		<texture id="talent_sneaky" x="1000" y="1300" width="100" height="100" />
+		<texture id="talent_incognito" x="1100" y="1300" width="100" height="100" />
+		<texture id="talent_ghost" x="1200" y="1300" width="100" height="100" />
+		<texture id="talent_elusive" x="1300" y="1300" width="100" height="100" />
+
+	</file>
+
+
+	<file name = "ui\xcvb_talents\talent_icons_bw">
+		<!-- sniper offensive -->
+		<texture id="talent_sniper_rifles_bw" x="0" y="0" width="100" height="100" />
+		<texture id="talent_assault_rifles_novice_bw" x="100" y="0" width="100" height="100" />
+		<texture id="talent_pistols_bw" x="200" y="0" width="100" height="100" />
+		<texture id="talent_experienced_sniper_bw" x="300" y="0" width="100" height="100" />
+		<texture id="talent_steady_bw" x="400" y="0" width="100" height="100" />
+		<texture id="talent_convenience_bw" x="500" y="0" width="100" height="100" />
+		<texture id="talent_gunslinger_bw" x="600" y="0" width="100" height="100" />
+		<texture id="talent_sharpshooter_bw" x="700" y="0" width="100" height="100" />
+		<texture id="talent_ambush_bw" x="800" y="0" width="100" height="100" />
+		<texture id="talent_deep_wound_bw" x="900" y="0" width="100" height="100" />
+		<texture id="talent_loner_bw" x="1000" y="0" width="100" height="100" />
+		<texture id="talent_soft_spot_bw" x="1100" y="0" width="100" height="100" />
+		<texture id="talent_nocturnal_bw" x="1200" y="0" width="100" height="100" />
+		<texture id="talent_carnage_bw" x="1300" y="0" width="100" height="100" />
+
+		<!-- trooper offensive -->
+		<texture id="talent_assault_rifles_bw" x="0" y="100" width="100" height="100" />
+		<texture id="talent_shotguns_novice_bw" x="100" y="100" width="100" height="100" />
+		<texture id="talent_submachine_guns_bw" x="200" y="100" width="100" height="100" />
+		<texture id="talent_experienced_rifleman_bw" x="300" y="100" width="100" height="100" />
+		<texture id="talent_demolition_expert_bw" x="400" y="100" width="100" height="100" />
+		<texture id="talent_duelist_bw" x="500" y="100" width="100" height="100" />
+		<texture id="talent_focus_bw" x="600" y="100" width="100" height="100" />
+		<texture id="talent_thrill_bw" x="700" y="100" width="100" height="100" />
+		<texture id="talent_precision_bw" x="800" y="100" width="100" height="100" />
+		<texture id="talent_barrage_bw" x="900" y="100" width="100" height="100" />
+		<texture id="talent_reckless_bw" x="1000" y="100" width="100" height="100" />
+		<texture id="talent_veteran_rifleman_bw" x="1100" y="100" width="100" height="100" />
+		<texture id="talent_collector_bw" x="1200" y="100" width="100" height="100" />
+
+		<!-- jugger offensive -->
+		<texture id="talent_shotguns_bw" x="0" y="200" width="100" height="100" />
+		<texture id="talent_machine_guns_bw" x="100" y="200" width="100" height="100" />
+		<texture id="talent_submachine_bw" x="200" y="200" width="100" height="100" />
+		<texture id="talent_hunter_bw" x="300" y="200" width="100" height="100" />
+		<texture id="talent_bounty_hunter_bw" x="400" y="200" width="100" height="100" />
+		<texture id="talent_mangle_bw" x="500" y="200" width="100" height="100" />
+		<texture id="talent_heavy_guns_expert_bw" x="600" y="200" width="100" height="100" />
+		<texture id="talent_merciless_bw" x="700" y="200" width="100" height="100" />
+		<texture id="talent_fury_bw" x="800" y="200" width="100" height="100" />
+		<texture id="talent_bloodthirst_bw" x="900" y="200" width="100" height="100" />
+		<texture id="talent_execution_bw" x="1000" y="200" width="100" height="100" />
+		<texture id="talent_frightening_bw" x="1100" y="200" width="100" height="100" />
+		<texture id="talent_selective_bw" x="1200" y="200" width="100" height="100" />
+		<texture id="talent_mastery_bw" x="1300" y="200" width="100" height="100" />
+
+		<!-- sniper defensive -->
+		<texture id="talent_adaptive_bw" x="0" y="300" width="100" height="100" />
+		<texture id="talent_mild_bw" x="100" y="300" width="100" height="100" />
+		<texture id="talent_iron_stomach_bw" x="200" y="300" width="100" height="100" />
+		<texture id="talent_plastic_pads_bw" x="300" y="300" width="100" height="100" />
+		<texture id="talent_aluminum_plates_bw" x="400" y="300" width="100" height="100" />
+		<texture id="talent_nature_resistance_bw" x="500" y="300" width="100" height="100" />
+		<texture id="talent_rad_resistant_bw" x="600" y="300" width="100" height="100" />
+		<texture id="talent_technician_bw" x="700" y="300" width="100" height="100" />
+		<texture id="talent_inventor_bw" x="800" y="300" width="100" height="100" />
+		<texture id="talent_expert_technician_bw" x="900" y="300" width="100" height="100" />
+		<texture id="talent_agile_bw" x="1000" y="300" width="100" height="100" />
+		<texture id="talent_reflexes_bw" x="1100" y="300" width="100" height="100" />
+
+		<!-- trooper defensive -->
+		<texture id="talent_ceramic_plates_bw" x="0" y="400" width="100" height="100" />
+		<texture id="talent_first_aid_bw" x="100" y="400" width="100" height="100" />
+		<texture id="talent_isolated_bw" x="200" y="400" width="100" height="100" />
+		<texture id="talent_armorer_bw" x="300" y="400" width="100" height="100" />
+		<texture id="talent_chem_resistant_bw" x="400" y="400" width="100" height="100" />
+		<texture id="talent_suppresion_fire_bw" x="500" y="400" width="100" height="100" />
+		<texture id="talent_cautious_bw" x="600" y="400" width="100" height="100" />
+		<texture id="talent_fireproof_bw" x="700" y="400" width="100" height="100" />
+		<texture id="talent_composure_bw" x="800" y="400" width="100" height="100" />
+		<texture id="talent_enduring_bw" x="900" y="400" width="100" height="100" />
+		<texture id="talent_adorned_bw" x="1000" y="400" width="100" height="100" />
+		<texture id="talent_expert_armorer_bw" x="1100" y="400" width="100" height="100" />
+		<texture id="talent_last_stand_bw" x="1200" y="400" width="100" height="100" />
+		<texture id="talent_leap_bw" x="1300" y="400" width="100" height="100" />
+
+		<!-- jugger defensive -->
+		<texture id="talent_steel_plates_bw" x="0" y="500" width="100" height="100" />
+		<texture id="talent_steel_pads_bw" x="100" y="500" width="100" height="100" />
+		<texture id="talent_regenerative_bw" x="200" y="500" width="100" height="100" />
+		<texture id="talent_heavy_armor_expert_bw" x="300" y="500" width="100" height="100" />
+		<texture id="talent_dismorale_bw" x="400" y="500" width="100" height="100" />
+		<texture id="talent_sturdy_bw" x="500" y="500" width="100" height="100" />
+		<texture id="talent_sanity_bw" x="600" y="500" width="100" height="100" />
+		<texture id="talent_anxiety_bw" x="700" y="500" width="100" height="100" />
+		<texture id="talent_turmoil_bw" x="800" y="500" width="100" height="100" />
+		<texture id="talent_bulky_bw" x="900" y="500" width="100" height="100" />
+		<texture id="talent_secure_bw" x="1000" y="500" width="100" height="100" />
+		<texture id="talent_lucid_bw" x="1100" y="500" width="100" height="100" />
+		<texture id="talent_robust_bw" x="1200" y="500" width="100" height="100" />
+		<texture id="talent_talent_mastery_bw" x="1300" y="500" width="100" height="100" />
+
+		<!-- endurance -->
+		<texture id="talent_ease_bw" x="0" y="600" width="100" height="100" />
+		<texture id="talent_refreshing_bw" x="100" y="600" width="100" height="100" />
+		<texture id="talent_hiker_bw" x="200" y="600" width="100" height="100" />
+		<texture id="talent_resting_bw" x="300" y="600" width="100" height="100" />
+		<texture id="talent_prudent_bw" x="400" y="600" width="100" height="100" />
+		<texture id="talent_swifty_bw" x="500" y="600" width="100" height="100" />
+		<texture id="talent_tireless_bw" x="600" y="600" width="100" height="100" />
+		<texture id="talent_hoarder_bw" x="700" y="600" width="100" height="100" />
+		<texture id="talent_adrenaline_rush_bw" x="800" y="600" width="100" height="100" />
+		<texture id="talent_second_wind_bw" x="900" y="600" width="100" height="100" />
+		<texture id="talent_organizer_bw" x="1000" y="600" width="100" height="100" />
+		<texture id="talent_insomnia_bw" x="1100" y="600" width="100" height="100" />
+		<texture id="talent_courage_bw" x="1200" y="600" width="100" height="100" />
+		<texture id="talent_belt_braces_bw" x="1300" y="600" width="100" height="100" />
+		<texture id="talent_athletic_bw" x="1400" y="600" width="100" height="100" />
+		<texture id="talent_iron_spine_bw" x="1500" y="600" width="100" height="100" />
+
+		<!-- speech -->
+		<texture id="talent_preparation_bw" x="0" y="700" width="100" height="100" />
+		<texture id="talent_confidence_bw" x="100" y="700" width="100" height="100" />
+		<texture id="talent_supplier_bw" x="200" y="700" width="100" height="100" />
+		<texture id="talent_observant_bw" x="300" y="700" width="100" height="100" />
+		<texture id="talent_smuggler_bw" x="400" y="700" width="100" height="100" />
+		<texture id="talent_gregarious_bw" x="500" y="700" width="100" height="100" />
+		<texture id="talent_encouragement_bw" x="600" y="700" width="100" height="100" />
+		<texture id="talent_persuasion_bw" x="700" y="700" width="100" height="100" />
+		<texture id="talent_charismatic_bw" x="800" y="700" width="100" height="100" />
+		<texture id="talent_shady_bw" x="900" y="700" width="100" height="100" />
+		<texture id="talent_artistic_bw" x="1000" y="700" width="100" height="100" />
+		<texture id="talent_rally_bw" x="1100" y="700" width="100" height="100" />
+		<texture id="talent_cynical_bw" x="1200" y="700" width="100" height="100" />
+		<texture id="talent_well_liked_bw" x="1300" y="700" width="100" height="100" />
+		<texture id="talent_deceitful_bw" x="1400" y="700" width="100" height="100" />
+
+		<!-- monster hunter offensive -->
+		<texture id="talent_dog_hunter_bw" x="0" y="800" width="100" height="100" />
+		<texture id="talent_boar_hunter_bw" x="100" y="800" width="100" height="100" />
+		<texture id="talent_zombie_hunter_bw" x="200" y="800" width="100" height="100" />
+		<texture id="talent_trophies_bw" x="300" y="800" width="100" height="100" />
+		<texture id="talent_deep_cut_bw" x="400" y="800" width="100" height="100" />
+		<texture id="talent_beast_anatomy_bw" x="500" y="800" width="100" height="100" />
+		<texture id="talent_humanoid_anatomy_bw" x="600" y="800" width="100" height="100" />
+		<texture id="talent_expert_hunter_bw" x="700" y="800" width="100" height="100" />
+		<texture id="talent_beast_rivalry_bw" x="800" y="800" width="100" height="100" />
+		<texture id="talent_humanoid_rivalry_bw" x="900" y="800" width="100" height="100" />
+		<texture id="talent_master_hunter_bw" x="1000" y="800" width="100" height="100" />
+		<texture id="talent_fierce_bw" x="1100" y="800" width="100" height="100" />
+		<texture id="talent_ranger_bw" x="1200" y="800" width="100" height="100" />
+		<texture id="talent_deadly_blow_bw" x="1300" y="800" width="100" height="100" />
+
+		<!-- monster hunter defensive -->
+		<texture id="talent_shoulder_pads_bw" x="0" y="900" width="100" height="100" />
+		<texture id="talent_careful_bw" x="100" y="900" width="100" height="100" />
+		<texture id="talent_melee_defense_bw" x="200" y="900" width="100" height="100" />
+		<texture id="talent_special_diet_bw" x="300" y="900" width="100" height="100" />
+		<texture id="talent_clarity_bw" x="400" y="900" width="100" height="100" />
+		<texture id="talent_tracker_bw" x="500" y="900" width="100" height="100" />
+		<texture id="talent_soft_armor_bw" x="600" y="900" width="100" height="100" />
+		<texture id="talent_stable_mind_bw" x="700" y="900" width="100" height="100" />
+		<texture id="talent_beast_demeanor_bw" x="800" y="900" width="100" height="100" />
+		<texture id="talent_humanoid_demeanor_bw" x="900" y="900" width="100" height="100" />
+		<texture id="talent_second_skin_bw" x="1000" y="900" width="100" height="100" />
+		<texture id="talent_custom_fit_bw" x="1100" y="900" width="100" height="100" />
+		<texture id="talent_kindred_bw" x="1200" y="900" width="100" height="100" />
+
+		<!-- merc offensive -->
+		<texture id="talent_firearm_enthusiast_bw" x="0" y="1000" width="100" height="100" />
+		<texture id="talent_combat_engineer_bw" x="100" y="1000" width="100" height="100" />
+		<texture id="talent_overdrive_bw" x="200" y="1000" width="100" height="100" />
+		<texture id="talent_head_hunter_bw" x="300" y="1000" width="100" height="100" />
+		<texture id="talent_arrogance_bw" x="400" y="1000" width="100" height="100" />
+		<texture id="talent_aim_torso_bw" x="500" y="1000" width="100" height="100" />
+		<texture id="talent_aim_limbs_bw" x="600" y="1000" width="100" height="100" />
+		<texture id="talent_modified_bullets_bw" x="700" y="1000" width="100" height="100" />
+		<texture id="talent_bullseye_bw" x="800" y="1000" width="100" height="100" />
+		<texture id="talent_searcher_bw" x="900" y="1000" width="100" height="100" />
+		<texture id="talent_assault_rifles_expert_bw" x="1000" y="1000" width="100" height="100" />
+		<texture id="talent_light_guns_expert_bw" x="1100" y="1000" width="100" height="100" />
+		<texture id="talent_sniper_rifles_expert_bw" x="1200" y="1000" width="100" height="100" />
+		<texture id="talent_liquidator_bw" x="1300" y="1000" width="100" height="100" />
+
+		<!-- merc defensive -->
+		<texture id="talent_mercenary_vest_bw" x="0" y="1100" width="100" height="100" />
+		<texture id="talent_insensitive_bw" x="100" y="1100" width="100" height="100" />
+		<texture id="talent_chem_reliant_bw" x="200" y="1100" width="100" height="100" />
+		<texture id="talent_grenadier_bw" x="300" y="1100" width="100" height="100" />
+		<texture id="talent_confusion_bw" x="400" y="1100" width="100" height="100" />
+		<texture id="talent_addictive_bw" x="500" y="1100" width="100" height="100" />
+		<texture id="talent_direct_bw" x="600" y="1100" width="100" height="100" />
+		<texture id="talent_disguise_master_bw" x="700" y="1100" width="100" height="100" />
+		<texture id="talent_flurry_bw" x="800" y="1100" width="100" height="100" />
+		<texture id="talent_loose_fit_bw" x="900" y="1100" width="100" height="100" />
+		<texture id="talent_reposition_bw" x="1000" y="1100" width="100" height="100" />
+
+		<!-- assassin offensive -->
+		<texture id="talent_smg_novice_bw" x="0" y="1200" width="100" height="100" />
+		<texture id="talent_handgun_novice_bw" x="100" y="1200" width="100" height="100" />
+		<texture id="talent_knifeman_bw" x="200" y="1200" width="100" height="100" />
+		<texture id="talent_spot_weakness_bw" x="300" y="1200" width="100" height="100" />
+		<texture id="talent_undercover_bw" x="400" y="1200" width="100" height="100" />
+		<texture id="talent_tactical_bw" x="500" y="1200" width="100" height="100" />
+		<texture id="talent_backstab_bw" x="600" y="1200" width="100" height="100" />
+		<texture id="talent_saboteur_bw" x="700" y="1200" width="100" height="100" />
+		<texture id="talent_surprise_attack_bw" x="800" y="1200" width="100" height="100" />
+		<texture id="talent_assassination_bw" x="900" y="1200" width="100" height="100" />
+		<texture id="talent_vile_bw" x="1000" y="1200" width="100" height="100" />
+		<texture id="talent_pragmatic_bw" x="1100" y="1200" width="100" height="100" />
+		<texture id="talent_assassin_observant_bw" x="1200" y="1200" width="100" height="100" />
+
+		<!-- assassin defensive -->
+		<texture id="talent_ordinary_bw" x="0" y="1300" width="100" height="100" />
+		<texture id="talent_acrobatic_bw" x="100" y="1300" width="100" height="100" />
+		<texture id="talent_quiet_bw" x="200" y="1300" width="100" height="100" />
+		<texture id="talent_evanescent_bw" x="300" y="1300" width="100" height="100" />
+		<texture id="talent_lurking_bw" x="400" y="1300" width="100" height="100" />
+		<texture id="talent_subtle_bw" x="500" y="1300" width="100" height="100" />
+		<texture id="talent_covert_bw" x="600" y="1300" width="100" height="100" />
+		<texture id="talent_cunning_bw" x="700" y="1300" width="100" height="100" />
+		<texture id="talent_deception_bw" x="800" y="1300" width="100" height="100" />
+		<texture id="talent_vague_bw" x="900" y="1300" width="100" height="100" />
+		<texture id="talent_sneaky_bw" x="1000" y="1300" width="100" height="100" />
+		<texture id="talent_incognito_bw" x="1100" y="1300" width="100" height="100" />
+		<texture id="talent_ghost_bw" x="1200" y="1300" width="100" height="100" />
+		<texture id="talent_elusive_bw" x="1300" y="1300" width="100" height="100" />
+
+	</file>
+
+
+	<!-- Sniper backgrounds -->
+	<file name = "ui\xcvb_talents\sniper_offensive">
+		<texture id="sniper_offensive222" x="0" y="0" width="768" height="967" />
+	</file>
+	<file name = "ui\xcvb_talents\sniper_offensive2">
+		<texture id="sniper_offensive22" x="0" y="0" width="817" height="984" />
+	</file>
+	<file name = "ui\xcvb_talents\sniper_offensive3">
+		<texture id="sniper_offensive" x="0" y="0" width="736" height="920" />
+	</file>
+
+	<file name = "ui\xcvb_talents\sniper_defensive">
+		<texture id="sniper_defensive" x="0" y="0" width="518" height="647" />
+	</file>
+
+
+	<!-- Trooper backgrounds -->
+	<file name = "ui\xcvb_talents\trooper_offensive">
+		<texture id="trooper_offensive" x="0" y="0" width="568" height="712" />
+	</file>
+
+	<file name = "ui\xcvb_talents\trooper_defensive2">
+		<texture id="trooper_defensive" x="0" y="0" width="426" height="532" />
+	</file>
+	<file name = "ui\xcvb_talents\trooper_defensive">
+		<texture id="trooper_defensive22" x="0" y="0" width="345" height="431" />
+	</file>
+
+
+	<!-- Jugger backgrounds -->
+	<file name = "ui\xcvb_talents\jugger_offensive">
+		<texture id="jugger_offensive222" x="0" y="0" width="713" height="890" />
+	</file>
+	<file name = "ui\xcvb_talents\jugger_offensive2">
+		<texture id="jugger_offensive22" x="0" y="0" width="802" height="1003" />
+	</file>
+	<file name = "ui\xcvb_talents\jugger_offensive3">
+		<texture id="jugger_offensive" x="0" y="0" width="640" height="800" />
+	</file>
+
+	<file name = "ui\xcvb_talents\jugger_defensive">
+		<texture id="jugger_defensive" x="0" y="0" width="770" height="962" />
+	</file>
+
+
+	<!-- Endurance backgrounds -->
+	<file name = "ui\xcvb_talents\bg_endurance">
+		<texture id="bg_endurance" x="0" y="0" width="764" height="955" />
+	</file>
+	<file name = "ui\xcvb_talents\bg_endurance2">
+		<texture id="bg_endurance2" x="0" y="0" width="819" height="1024" />
+	</file>
+
+
+	<!-- Speech backgrounds -->
+	<file name = "ui\xcvb_talents\bg_speech">
+		<texture id="bg_speech" x="0" y="0" width="671" height="841" />
+	</file>
+	<file name = "ui\xcvb_talents\bg_speech2">
+		<texture id="bg_speech2" x="0" y="0" width="700" height="876" />
+	</file>
+
+
+	<!-- Monster hunter backgrounds -->
+	<file name = "ui\xcvb_talents\monster_hunter_offensive">
+		<texture id="monster_hunter_offensive" x="0" y="0" width="367" height="459" />
+	</file>
+	<file name = "ui\xcvb_talents\monster_hunter_offensive2">
+		<texture id="monster_hunter_offensive2" x="0" y="0" width="804" height="1005" />
+	</file>
+	<file name = "ui\xcvb_talents\monster_hunter_defensive">
+		<texture id="monster_hunter_defensive" x="0" y="0" width="705" height="882" />
+	</file>
+	<file name = "ui\xcvb_talents\monster_hunter_defensive2">
+		<texture id="monster_hunter_defensive2" x="0" y="0" width="701" height="876" />
+	</file>
+
+
+	<!-- Merc backgrounds -->
+	<file name = "ui\xcvb_talents\merc_offensive">
+		<texture id="merc_offensive" x="0" y="0" width="648" height="800" />
+	</file>
+	<file name = "ui\xcvb_talents\merc_defensive">
+		<texture id="merc_defensive" x="0" y="0" width="640" height="800" />
+	</file>
+
+
+	<!-- Assassin backgrounds -->
+	<file name = "ui\xcvb_talents\assassin_offensive">
+		<texture id="assassin_offensive" x="0" y="0" width="912" height="1140" />
+	</file>
+	<file name = "ui\xcvb_talents\assassin_defensive">
+		<texture id="assassin_defensive" x="0" y="0" width="811" height="1013" />
+	</file>
+
+
+	<file name = "ui\xcvb_talents\tree_icons">
+		<texture id="sniper_pick_icon" x="0" y="412" width="100" height="100" />
+		<texture id="trooper_pick_icon" x="100" y="412" width="100" height="100" />
+		<texture id="jugger_pick_icon" x="200" y="412" width="100" height="100" />
+		<texture id="monster_hunter_pick_icon" x="300" y="412" width="100" height="100" />
+		<texture id="merc_pick_icon" x="400" y="412" width="100" height="100" />
+		<texture id="assassin_pick_icon" x="400" y="312" width="100" height="100" />
+
+		<texture id="sniper_offensive_tree" x="0" y="0" width="100" height="100" />
+		<texture id="sniper_defensive_tree" x="100" y="0" width="100" height="100" />
+		<texture id="sniper_endurance_tree" x="200" y="0" width="100" height="100" />
+		<texture id="sniper_speech_tree" x="300" y="0" width="100" height="100" />
+
+		<texture id="trooper_offensive_tree" x="0" y="100" width="100" height="100" />
+		<texture id="trooper_defensive_tree" x="100" y="100" width="100" height="100" />
+		<texture id="trooper_endurance_tree" x="200" y="0" width="100" height="100" />
+		<texture id="trooper_speech_tree" x="300" y="0" width="100" height="100" />
+
+		<texture id="jugger_offensive_tree" x="0" y="200" width="100" height="100" />
+		<texture id="jugger_defensive_tree" x="100" y="200" width="100" height="100" />
+		<texture id="jugger_endurance_tree" x="200" y="0" width="100" height="100" />
+		<texture id="jugger_speech_tree" x="300" y="0" width="100" height="100" />
+
+		<texture id="monster_hunter_offensive_tree" x="0" y="300" width="100" height="100" />
+		<texture id="monster_hunter_defensive_tree" x="100" y="300" width="100" height="100" />
+		<texture id="monster_hunter_endurance_tree" x="200" y="0" width="100" height="100" />
+		<texture id="monster_hunter_speech_tree" x="300" y="0" width="100" height="100" />
+
+		<texture id="merc_offensive_tree" x="200" y="200" width="100" height="100" />
+		<texture id="merc_defensive_tree" x="300" y="200" width="100" height="100" />
+		<texture id="merc_endurance_tree" x="200" y="0" width="100" height="100" />
+		<texture id="merc_speech_tree" x="300" y="0" width="100" height="100" />
+
+		<texture id="assassin_offensive_tree" x="200" y="300" width="100" height="100" />
+		<texture id="assassin_defensive_tree" x="300" y="300" width="100" height="100" />
+		<texture id="assassin_endurance_tree" x="200" y="0" width="100" height="100" />
+		<texture id="assassin_speech_tree" x="300" y="0" width="100" height="100" />
+	</file>
+
+</w> 

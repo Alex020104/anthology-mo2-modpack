@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="st_sp_achievement_faction_bandit_name">
+		<text>Друг «Бандитов»</text>
+	</string>
+	<string id="st_sp_achievement_faction_bandit_hint">
+		<text>Ваши отношения с «Бандитами» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_bandit_descr">
+		<text>Вы много раз помогли «Бандитам». Теперь торговцы этой группировки предложат вам больше и редких товаров.</text>
+	</string>
+	<string id="st_ach_helper_of_bandit">
+		<text>Получено достижение Друг «Бандитов».</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_dolg_name">
+		<text>Друг «Долга»</text>
+	</string>
+	<string id="st_sp_achievement_faction_dolg_hint">
+		<text>Ваши отношения с «Долгавцами» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_dolg_descr">
+		<text>Вы много раз помогли «Долговцам». Теперь торговцы этой группировки предложат вам больше и редких товаров. </text>
+	</string>
+	<string id="st_ach_helper_of_dolg">
+		<text>Получено достижение Друг «Долга».</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_ecolog_name">
+		<text>Друг «Ученых»</text>
+	</string>
+	<string id="st_sp_achievement_faction_ecolog_hint">
+		<text>Ваши отношения с «Учеными» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_ecolog_descr">
+		<text>Вы много раз помогли «Ученым». Теперь торговцы этой группировки предложат вам больше и редких товаров.</text>
+	</string>
+	<string id="st_ach_helper_of_ecolog">
+		<text>Получено достижение Друг «Ученых».</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_freedom_name">
+		<text>Друг «Свободы»</text>
+	</string>
+	<string id="st_sp_achievement_faction_freedom_hint">
+		<text>Ваши отношения со «Свободой» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_freedom_descr">
+		<text>Вы много раз помогли «Свободе». Теперь торговцы этой группировки предложат вам больше и редких товаров.</text>
+	</string>
+	<string id="st_ach_helper_of_freedom">
+		<text>Получено достижение Друг «Свободы».</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_killer_name">
+		<text>Друг «Наёмников»</text>
+	</string>
+	<string id="st_sp_achievement_faction_killer_hint">
+		<text>Ваши отношения с «Наёмниками» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_killer_descr">
+		<text>Вы много раз помогли «Наёмникам». Теперь торговцы этой группировки предложат вам больше и редких товаров. </text>
+	</string>
+	<string id="st_ach_helper_of_killer">
+		<text>Получено достижение Друг «Наёмников».</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_army_name">
+		<text>Друг «Военных»</text>
+	</string>
+	<string id="st_sp_achievement_faction_army_hint">
+		<text>Ваши отношения с «Военными» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_army_descr">
+		<text>Вы много раз помогли «Военным». Теперь торговцы этой группировки предложат вам больше и редких товаров.</text>
+	</string>
+	<string id="st_ach_helper_of_army">
+		<text>Получено достижение Друг «Военных».</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_monolith_name">
+		<text>Друг «Монолита»</text>
+	</string>
+	<string id="st_sp_achievement_faction_monolith_hint">
+		<text>Ваши отношения с «Монолитом» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_monolith_descr">
+		<text>Вы много раз помогли «Монолиту». Теперь торговцы этой группировки предложат вам больше и редких товаров.</text>
+	</string>
+	<string id="st_ach_helper_of_monolith">
+		<text>Получено достижение Друг «Монолита».</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_stalker_name">
+		<text>Друг «Сталкеров»</text>
+	</string>
+	<string id="st_sp_achievement_faction_stalker_hint">
+		<text>Ваши отношения со «Сталкерами» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_stalker_descr">
+		<text>Вы много раз помогли «Сталкерам». Теперь торговцы этой группировки предложат вам больше и редких товаров.</text>
+	</string>
+	<string id="st_ach_helper_of_stalker">
+		<text>Получено достижение Друг «Сталкеров».</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_csky_name">
+		<text>Друг «Чистого Неба»</text>
+	</string>
+	<string id="st_sp_achievement_faction_csky_hint">
+		<text>Ваши отношения с «Чистым Небом» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_csky_descr">
+		<text>Вы много раз помогли «Чистому Небу». Теперь торговцы этой группировки предложат вам больше и редких товаров. </text>
+	</string>
+	<string id="st_ach_helper_of_csky">
+		<text>Получено достижение Друг «Чистого Неба».</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_greh_name">
+		<text>Друг «Греха»</text>
+	</string>
+	<string id="st_sp_achievement_faction_greh_hint">
+		<text>Ваши отношения с «Грехом» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_greh_descr">
+		<text>Вы много раз помогли «Грешникам». Теперь торговцы этой группировки предложат вам больше и редких товаров. </text>
+	</string>
+	<string id="st_ach_helper_of_greh">
+		<text>Получено достижение Друг «Греха».</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_rasvet_name">
+		<text>Друг «Рассвета»</text>
+	</string>
+	<string id="st_sp_achievement_faction_rasvet_hint">
+		<text>Ваши отношения с «Рассвет» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_rasvet_descr">
+		<text>Вы много раз помогли «Рассвету». Теперь торговцы этой группировки предложат вам больше и редких товаров.</text>
+	</string>
+	<string id="st_ach_helper_of_rasvet">
+		<text>Получено достижение Друг «Рассвета».</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_isg_name">
+		<text>Друг «ИИГ»</text>
+	</string>
+	<string id="st_sp_achievement_faction_isg_hint">
+		<text>Ваши отношения с «ИИГ» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_isg_descr">
+		<text>Вы много раз помогли «ИИГ». Теперь торговцы этой группировки предложат вам больше и редких товаров.</text>
+	</string>
+	<string id="st_ach_helper_of_isg">
+		<text>Получено достижение Друг «ИИГ».</text>
+	</string>
+<!-- Anthology Achievements COP - WIP -->
+	<string id="st_sp_achievement_1_name">
+		<text>Первооткрыватель</text>
+	</string>
+	<string id="st_sp_achievement_1_hint">
+		<text>Совокупность новых данных позволила профессорам Герману и Озёрскому синтезировать в условиях Зоны экспериментальный анабиотик.</text>
+	</string>
+	<string id="st_sp_achievement_1_descr">
+		<text>Что бы новое не появилось в Зоне, Вы готовы исследовать это первым. Находя новые, еще не изучёные аномальные образования, Вы продвинули науку в понимании Зоны.</text>
+	</string>
+
+	<string id="st_sp_achievement_2_name">
+		<text>Охотник на мутантов</text>
+	</string>
+	<string id="st_sp_achievement_2_hint">
+		<text>Сталкеры стали лучше к Вам относится. Чтобы хоть как-то отблагодарить Вас, сталкеры время от времени оставляют патроны в Вашем личном ящике на станции «Янов».</text>
+	</string>
+	<string id="st_sp_achievement_2_descr">
+		<text>Вы не пытаетесь избегать опасных мутантов, вы ведете на них охоту, и преуспели в этом. Хорошие охотники - уважаемые люди среди сталкеров.</text>
+	</string>
+<!-- Anthology Achievements Freeplay -->
+	<string id="st_sp_achievement_faction_bandit_1_name">
+		<text>Начинающий Бандит</text>
+	</string>
+	<string id="st_sp_achievement_faction_bandit_1_hint">
+		<text>Бандиты вами довольны, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_bandit_1_descr">
+		<text>Вы начинайте нравится Бандитам, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_bandit_2_name">
+		<text>Опытный Бандит</text>
+	</string>
+	<string id="st_sp_achievement_faction_bandit_2_hint">
+		<text>Вы заслужили доверие у Бандитов, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_bandit_2_descr">
+		<text>Вы отлично продвигаетесь по карьере, так и до Пахана осталось недолго!</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_bandit_3_name">
+		<text>Легендарный Бандит</text>
+	</string>
+	<string id="st_sp_achievement_faction_bandit_3_hint">
+		<text>Пацаны вас уважают и бояться, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_bandit_3_descr">
+		<text>Все местные Бандиты вкурсе ваших подвигов, вы стали авторитетом среди Бандитов.</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_dolg_1_name">
+		<text>Начинающий Долговец</text>
+	</string>
+	<string id="st_sp_achievement_faction_dolg_1_hint">
+		<text>Долг вами доволен, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_dolg_1_descr">
+		<text>Вы начинайте нравится Долговцам, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_dolg_2_name">
+		<text>Опытный Долговец</text>
+	</string>
+	<string id="st_sp_achievement_faction_dolg_2_hint">
+		<text>Вы заслужили доверие у Долга, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_dolg_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, так и до Майора осталось недолго!</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_dolg_3_name">
+		<text>Легендарный Долговец</text>
+	</string>
+	<string id="st_sp_achievement_faction_dolg_3_hint">
+		<text>Долг вас уважает, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_dolg_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, вы стали лучшим бойцом среди Долговцев.</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_ecolog_1_name">
+		<text>Начинающий научный сотрудник</text>
+	</string>
+	<string id="st_sp_achievement_faction_ecolog_1_hint">
+		<text>Учёные вами довольны, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_ecolog_1_descr">
+		<text>Вы начинайте нравится Учёным, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_ecolog_2_name">
+		<text>Опытный научный сотрудник</text>
+	</string>
+	<string id="st_sp_achievement_faction_ecolog_2_hint">
+		<text>Вы заслужили доверие у Учёных, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_ecolog_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, так и до Лаборанта осталось недолго!</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_ecolog_3_name">
+		<text>Легендарный научный сотрудник</text>
+	</string>
+	<string id="st_sp_achievement_faction_ecolog_3_hint">
+		<text>Учёные вас уважают, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_ecolog_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, вы стали легендой среди Учёных.</text>
+	</string>	
+
+	<string id="st_sp_achievement_faction_freedom_1_name">
+		<text>Начинающий Свободовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_freedom_1_hint">
+		<text>Свобода вами довольна, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_freedom_1_descr">
+		<text>Вы начинайте нравится Свободовцам, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_freedom_2_name">
+		<text>Опытный Свободовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_freedom_2_hint">
+		<text>Вы заслужили доверие у Свободовцев, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_freedom_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, так и до Командира отряда осталось недолго!</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_freedom_3_name">
+		<text>Легендарный Свободовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_freedom_3_hint">
+		<text>Свобода вас уважает, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_freedom_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, вы стали легендой среди Свободовцев.</text>
+	</string>		
+
+	<string id="st_sp_achievement_faction_killer_1_name">
+		<text>Начинающий Убийца</text>
+	</string>
+	<string id="st_sp_achievement_faction_killer_1_hint">
+		<text>Наёмники вами довольны, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_killer_1_descr">
+		<text>Вы начинайте нравится Наёмникам, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_killer_2_name">
+		<text>Опытный Убийца</text>
+	</string>
+	<string id="st_sp_achievement_faction_killer_2_hint">
+		<text>Вы заслужили доверие у Наёмников, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_killer_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, так и до собственного отряда осталось недолго!</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_killer_3_name">
+		<text>Легендарный Убийца</text>
+	</string>
+	<string id="st_sp_achievement_faction_killer_3_hint">
+		<text>Наёмники вас уважают, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_killer_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, вы стали самым опасным среди Наёмников.</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_army_1_name">
+		<text>Начинающий Военный</text>
+	</string>
+	<string id="st_sp_achievement_faction_army_1_hint">
+		<text>Военные вами довольны, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_army_1_descr">
+		<text>Вы начинайте нравится Военным, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_army_2_name">
+		<text>Опытный Военный</text>
+	</string>
+	<string id="st_sp_achievement_faction_army_2_hint">
+		<text>Вы заслужили доверие у Военных, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_army_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, так и до Майора осталось недолго!</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_army_3_name">
+		<text>Легендарный Военный</text>
+	</string>
+	<string id="st_sp_achievement_faction_army_3_hint">
+		<text>Военные вас уважают, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_army_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, вы стали самым лучшим бойцом среди Военных.</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_monolith_1_name">
+		<text>Начинающий Монолитовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_monolith_1_hint">
+		<text>Священный Монолит вами доволен, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_monolith_1_descr">
+		<text>Вы начинайте нравится Монолитовцам, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_monolith_2_name">
+		<text>Опытный Монолитовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_monolith_2_hint">
+		<text>Вы заслужили доверие у Священного Монолита, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_monolith_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, священный Монолит доволен!</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_monolith_3_name">
+		<text>Легендарный Монолитовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_monolith_3_hint">
+		<text>Священный Монолит увидел в вас потенциал, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_monolith_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, вы стали самым лучшим бойцом Монолита.</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_stalker_1_name">
+		<text>Начинающий Сталкер</text>
+	</string>
+	<string id="st_sp_achievement_faction_stalker_1_hint">
+		<text>Сталкеры вами довольны, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_stalker_1_descr">
+		<text>Вы начинайте нравится Сталкерам, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_stalker_2_name">
+		<text>Опытный Сталкер</text>
+	</string>
+	<string id="st_sp_achievement_faction_stalker_2_hint">
+		<text>Вы заслужили доверие у Сталкеров, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_stalker_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, так и до Легенды Зоны осталось недолго!</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_stalker_3_name">
+		<text>Легенда Зоны</text>
+	</string>
+	<string id="st_sp_achievement_faction_stalker_3_hint">
+		<text>Сталкеры вас уважают, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_stalker_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, вы стали Легендой Зоны.</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_csky_1_name">
+		<text>Начинающий Чистонебовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_csky_1_hint">
+		<text>Чистое Небо вами довольно, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_csky_1_descr">
+		<text>Вы начинайте нравится Чистонебовцам, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_csky_2_name">
+		<text>Опытный Чистонебовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_csky_2_hint">
+		<text>Вы заслужили доверие у Чистого Неба, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_csky_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, скоро стану лучшим бойцом!</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_csky_3_name">
+		<text>Легендарный Чистонебовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_csky_3_hint">
+		<text>Чистое Небо вас уважает, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_csky_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, вы стали лучшим бойцом Чистого Неба.</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_greh_1_name">
+		<text>Начинающий Греховец</text>
+	</string>
+	<string id="st_sp_achievement_faction_greh_1_hint">
+		<text>Грех вами доволен, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_greh_1_descr">
+		<text>Вы начинайте нравится Греховцам, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_greh_2_name">
+		<text>Опытный Греховец</text>
+	</string>
+	<string id="st_sp_achievement_faction_greh_2_hint">
+		<text>Вы заслужили доверие у Греха, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_greh_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, вы оставляйте после себя много крови и расчленённых трупов!</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_greh_3_name">
+		<text>Легендарный Греховец</text>
+	</string>
+	<string id="st_sp_achievement_faction_greh_3_hint">
+		<text>Грех вас уважает, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_greh_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, вы стали самым жестоким маньяком зоны.</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_renegade_1_name">
+		<text>Начинающий Ренегат</text>
+	</string>
+	<string id="st_sp_achievement_faction_renegade_1_hint">
+		<text>Ренегаты вами довольны, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_renegade_1_descr">
+		<text>Вы начинайте нравится Ренегатовцам, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_renegade_2_name">
+		<text>Опытный Ренегат</text>
+	</string>
+	<string id="st_sp_achievement_faction_renegade_2_hint">
+		<text>Вы заслужили доверие у Ренегатовцев, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_renegade_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, может не зря я предал прошлую группировку?</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_renegade_3_name">
+		<text>Легендарный Ренегат</text>
+	</string>
+	<string id="st_sp_achievement_faction_renegade_3_hint">
+		<text>Ренегаты вас уважают, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_renegade_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, вы предали прошлую группировку, но сделали Ренегатов опасными.</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_rasvet_1_name">
+		<text>Начинающий Рассветовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_rasvet_1_hint">
+		<text>Рассвет вами доволен, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_rasvet_1_descr">
+		<text>Вы начинайте нравится Рассветовцам, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_rasvet_2_name">
+		<text>Опытный Рассветовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_rasvet_2_hint">
+		<text>Вы заслужили доверие у Рассвета, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_rasvet_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, может есть шанс на возвращение?</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_rasvet_3_name">
+		<text>Легендарный Рассветовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_rasvet_3_hint">
+		<text>Рассвет вас уважает, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_rasvet_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, вы смогли помочь лидерам группировки в её воскрешении.</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_isg_1_name">
+		<text>Начинающий ИИГовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_isg_1_hint">
+		<text>ИИГ вами доволен, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_isg_1_descr">
+		<text>Вы начинайте нравится ИИГовцам, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_isg_2_name">
+		<text>Опытный ИИГовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_isg_2_hint">
+		<text>Вы заслужили доверие у ИИГа, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_isg_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, свидетелей нет? Ну и ладно!</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_isg_3_name">
+		<text>Легендарный ИИГовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_isg_3_hint">
+		<text>ИИГ вас уважает, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_isg_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, вы не собирайтесь покидать зону, это только начало!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_spectrum_1_name">
+		<text>Начинающий Спектрумовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_spectrum_1_hint">
+		<text>Спектрум вами доволен, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_spectrum_1_descr">
+		<text>Вы начинайте нравится Спектруму, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_spectrum_2_name">
+		<text>Опытный Спектрумовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_spectrum_2_hint">
+		<text>Вы заслужили доверие у Спектрума, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_spectrum_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, вас никто не остановит!</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_spectrum_3_name">
+		<text>Легендарный Спектрумовец</text>
+	</string>
+	<string id="st_sp_achievement_faction_spectrum_3_hint">
+		<text>Спектрум вас уважает, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_spectrum_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, неизвестные лица вами довольны!.</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_spectrum_name">
+		<text>Друг «Спектрума»</text>
+	</string>
+	<string id="st_sp_achievement_faction_spectrum_hint">
+		<text>Ваши отношения с «Спектрумом» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_spectrum_descr">
+		<text>Вы много раз помогли «Спектруму». Теперь торговцы этой группировки предложат вам больше и редких товаров.</text>
+	</string>
+	<string id="st_ach_helper_of_spectrum">
+		<text>Получено достижение Друг «Спектрума».</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_lastday_1_name">
+		<text>Последний День</text>
+	</string>
+	<string id="st_sp_achievement_faction_lastday_1_hint">
+		<text>Последний День вами доволен, а награда ждёт своего героя!</text>
+	</string>
+	<string id="st_sp_achievement_faction_lastday_1_descr">
+		<text>Вы начинайте нравится Последнему Дню, скоро вас ждёт успех!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_lastday_2_name">
+		<text>Обуздавший Последний День</text>
+	</string>
+	<string id="st_sp_achievement_faction_lastday_2_hint">
+		<text>Вы заслужили доверие у Последнего Дня, не забудьте получить награду.</text>
+	</string>
+	<string id="st_sp_achievement_faction_lastday_2_descr">
+		<text>Вы отлично продвигайтесь по карьере, вы хуже чем Чёрный Сентябрь!</text>
+	</string>
+	
+	<string id="st_sp_achievement_faction_lastday_3_name">
+		<text>Создатель "Последнего Дня"</text>
+	</string>
+	<string id="st_sp_achievement_faction_lastday_3_hint">
+		<text>Последний День вас уважает, награда будет хорошей.</text>
+	</string>
+	<string id="st_sp_achievement_faction_lastday_3_descr">
+		<text>Местные группировки вкурсе ваших подвигов, ваши действия не остануться безнаказанными!</text>
+	</string>
+
+	<string id="st_sp_achievement_faction_lastday_name">
+		<text>Друг «Последнего Дня»</text>
+	</string>
+	<string id="st_sp_achievement_faction_lastday_hint">
+		<text>Ваши отношения с «Последним Днём» улучшились.</text>
+	</string>
+	<string id="st_sp_achievement_faction_lastday_descr">
+		<text>Вы много раз помогли «Последнему Дню». Теперь торговцы этой группировки предложат вам больше и редких товаров.</text>
+	</string>
+	<string id="st_ach_helper_of_lastday">
+		<text>Получено достижение Друг «Последнего Дня».</text>
+	</string>
+</string_table>

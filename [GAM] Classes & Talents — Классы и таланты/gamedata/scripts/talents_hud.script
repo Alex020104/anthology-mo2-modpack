@@ -1,0 +1,210 @@
+local hud_enable = talents_mcm.get_config("hud_enable")
+local hud_pos_x = talents_mcm.get_config("hud_x")
+local hud_pos_y = talents_mcm.get_config("hud_y")
+
+HUD = nil
+
+function activate_hud()
+	if HUD == nil and hud_enable then
+		HUD = talents_hud()
+		get_hud():AddDialogToRender(HUD)
+	end
+end
+
+function deactivate_hud()
+	if HUD ~= nil then
+		get_hud():RemoveDialogToRender(HUD)
+		HUD = nil
+	end
+end
+
+class "talents_hud" (CUIScriptWnd)
+function talents_hud:__init() super()
+	self:InitControls()
+end
+
+function talents_hud:InitControls()
+	self:SetWndRect(Frect():set(0,0,1024,768))
+	self:SetAutoDelete(true)
+
+	self.xml = CScriptXmlInit()
+	local xml = self.xml
+	xml:ParseFile("ui_xcvb_talents_hud_16.xml")
+
+
+	-- main container
+	self.main = xml:InitStatic("main", self)
+	local main_width = self.main:GetWidth()
+
+	self.conts = {}
+	self.active = {}
+
+	self.icon_width = 0
+	self.max_cols = 8
+
+	local gap_x = 10
+
+	for i = 1, self.max_cols do
+
+		-- buff container
+		self.conts[i] = {}
+		self.conts[i].cont = xml:InitStatic("main:icon_cont", self.main)
+		local cont_pos = self.conts[i].cont:GetWndPos()
+		local cont_width = self.conts[i].cont:GetWidth()
+		local new_cont_x = main_width - (cont_width * i) - (gap_x * i)
+		self.conts[i].cont:SetWndPos(vector2():set(new_cont_x, cont_pos.y))
+
+		-- store width and y
+		if self.icon_width == 0 then
+			self.icon_width = cont_width
+		end
+
+		-- icon
+		self.conts[i].icon = xml:InitStatic("main:icon_cont:icon", self.conts[i].cont)
+
+		-- stacks shadow
+		self.conts[i].stacks_shadow = xml:InitTextWnd("main:icon_cont:stacks_shadow", self.conts[i].cont)
+
+		-- stacks
+		self.conts[i].stacks = xml:InitTextWnd("main:icon_cont:stacks", self.conts[i].cont)
+
+		-- timer shadow
+		self.conts[i].tmr_shadow = xml:InitTextWnd("main:icon_cont:tmr_shadow", self.conts[i].cont)
+
+		-- timer
+		self.conts[i].tmr = xml:InitTextWnd("main:icon_cont:tmr", self.conts[i].cont)
+	end
+
+end
+
+
+local tmr = 0
+function talents_hud:Update()
+	local math_ceil = math.ceil
+	CUIScriptWnd.Update(self)
+
+	local tg = time_global()
+	if tmr > tg then return end
+	tmr = tg + 100
+
+
+	-- update hud pos
+	self.main:SetWndPos(vector2():set(hud_pos_x, hud_pos_y))
+
+
+	local dur_t  = talents_functions.durations_t
+	if not dur_t then return end
+
+	local talent_stacks_t = {
+		["fierce"] = talents_functions.fierce_stacks,
+		["spot_weakness"] = talents_functions.spot_weakness_stacks,
+	}
+
+	-- update containers
+	for talent_var, t in pairs(self.active) do
+		-- buff expired
+		if dur_t[talent_var] <= 0 then
+
+			-- hide expired container
+			self.conts[t.col].cont:Show(false)
+
+			-- move all other containers with higher t.col to right
+			for other_tal, other_t in pairs(self.active) do
+				if other_tal ~= talent_var and other_t.col > t.col then
+
+					-- hide other container
+					self.conts[other_t.col].cont:Show(false)
+
+					-- set new col
+					self.active[other_tal].col = self.active[other_tal].col - 1
+					local new_col = self.active[other_tal].col
+
+					-- and show it to the right
+					self.conts[new_col].icon:InitTexture(other_t.icon)
+
+					self.conts[new_col].stacks_shadow:SetText(other_t.stacks)
+					self.conts[new_col].stacks:SetText(other_t.stacks)
+
+					self.conts[new_col].tmr_shadow:SetText(math_ceil(other_t.tmr - 0.1))
+					self.conts[new_col].tmr:SetText(math_ceil(other_t.tmr - 0.1))
+
+					self.conts[new_col].cont:Show(true)
+				end
+			end
+
+			-- and remove from table
+			self.active[talent_var] = nil
+
+		end
+	end
+
+
+	-- remove all containers if table empty
+	if is_empty(self.active) then
+		for i = 1, self.max_cols do
+			self.conts[i].cont:Show(false)
+		end
+	end
+
+
+	-- add container or update timer
+	for talent_var, time in pairs(dur_t) do
+		if time > 0 then
+
+			local talent = talent_var:gsub("_var", "")
+			local col_size = size_table(self.active)
+
+			if not self.active[talent_var] then
+				local new_col = col_size + 1
+
+				self.active[talent_var] = {}
+				self.active[talent_var].col = new_col
+
+				-- find, store and set icon
+				local icon = "talent_" .. talent
+				self.active[talent_var].icon = icon
+				self.conts[new_col].icon:InitTexture(icon)
+			end
+
+			local cur_col = self.active[talent_var].col
+
+			-- update stacks
+			local stacks = talent_stacks_t[talent] and talent_stacks_t[talent] or ""
+			self.active[talent_var].stacks = stacks
+			self.conts[cur_col].stacks_shadow:SetText(stacks)
+			self.conts[cur_col].stacks:SetText(stacks)
+
+			-- update timer
+			self.active[talent_var].tmr = math_ceil(time)
+			self.conts[cur_col].tmr_shadow:SetText(math_ceil(time))
+			self.conts[cur_col].tmr:SetText(math_ceil(time))
+
+			-- show this container
+			self.conts[cur_col].cont:Show(true)
+
+		end
+	end
+
+end
+
+function talents_hud:__finalize()
+end
+
+function on_option_change()
+	hud_enable = talents_mcm.get_config("hud_enable")
+	hud_pos_x = talents_mcm.get_config("hud_x")
+	hud_pos_y = talents_mcm.get_config("hud_y")
+
+	if hud_enable then
+		activate_hud()
+	else
+		deactivate_hud()
+	end
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update", activate_hud)
+	RegisterScriptCallback("actor_on_net_destroy", deactivate_hud)
+	RegisterScriptCallback("actor_on_before_death", deactivate_hud)
+	RegisterScriptCallback("on_option_change", on_option_change)
+end

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<window>
+
+	<!-- Background -->
+	<bhs_alt x="15" y="489" width="125" height="120" stretch="1" >
+
+		<!-- Containers -->
+		<head_cont x="0" y="0" width="125" height="15" stretch="1">
+			<bar_bg  x="0" y="4" width="62.5" height="7" complex_mode="1" stretch="1">
+				<texture>ui_hud_bhs_bar_bg_alt</texture>
+			</bar_bg>
+			<bar_green x="0" y="0" width="62.5" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_bar_green_alt</texture>
+				</progress>
+			</bar_green>
+			<bar x="0" y="0" width="62.5" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_bar_alt</texture>
+				</progress>
+			</bar>
+			<head_text x="62.5" y="0" width="62.5" height="15" complex_mode="1" stretch="1">
+				<text complex_mode="1" align="c" vert_align="c" font="letterica16">st_bhs_head_hud</text>
+			</head_text>
+		</head_cont>
+
+		<torso_cont x="0" y="20" width="125" height="15" stretch="1">
+			<bar_bg  x="0" y="4" width="62.5" height="7" complex_mode="1" stretch="1">
+				<texture>ui_hud_bhs_bar_bg_alt</texture>
+			</bar_bg>
+			<bar_green x="0" y="0" width="62.5" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_bar_green_alt</texture>
+				</progress>
+			</bar_green>
+			<bar x="0" y="0" width="62.5" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_bar_alt</texture>
+				</progress>
+			</bar>
+			<torso_text x="62.5" y="0" width="62.5" height="15" complex_mode="1" stretch="1">
+				<text complex_mode="1" align="c" vert_align="c" font="letterica16">st_bhs_torso_hud</text>
+			</torso_text>
+		</torso_cont>
+
+		<leftarm_cont x="0" y="40" width="27.5" height="15" stretch="1">
+			<bar_bg  x="0" y="4" width="27.5" height="7" complex_mode="1" stretch="1">
+				<texture>ui_hud_bhs_bar_bg_half_alt</texture>
+			</bar_bg>
+			<bar_green x="0" y="0" width="27.5" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_bar_green_half_alt</texture>
+				</progress>
+			</bar_green>
+			<bar x="0" y="0" width="27.5" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_bar_half_alt</texture>
+				</progress>
+			</bar>
+		</leftarm_cont>
+
+		<rightarm_cont x="35" y="40" width="27.5" height="15" stretch="1">
+			<bar_bg  x="0" y="4" width="27.5" height="7" complex_mode="1" stretch="1">
+				<texture>ui_hud_bhs_bar_bg_half_alt</texture>
+			</bar_bg>
+			<bar_green x="0" y="0" width="27.5" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_bar_green_half_alt</texture>
+				</progress>
+			</bar_green>
+			<bar x="0" y="0" width="27.5" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_bar_half_alt</texture>
+				</progress>
+			</bar>
+		</rightarm_cont>
+
+		<text_arms x="62.5" y="40" width="62.5" height="15" complex_mode="1" stretch="1">
+			<text complex_mode="1" align="c" vert_align="c" font="letterica16">st_bhs_arms_hud</text>
+		</text_arms>
+
+		<leftleg_cont x="0" y="60" width="27.5" height="15" stretch="1">
+			<bar_bg  x="0" y="4" width="27.5" height="7" complex_mode="1" stretch="1">
+				<texture>ui_hud_bhs_bar_bg_half_alt</texture>
+			</bar_bg>
+			<bar_green x="0" y="0" width="27.5" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_bar_green_half_alt</texture>
+				</progress>
+			</bar_green>
+			<bar x="0" y="0" width="27.5" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_bar_half_alt</texture>
+				</progress>
+			</bar>
+		</leftleg_cont>
+
+		<rightleg_cont x="35" y="60" width="27.5" height="15" stretch="1">
+			<bar_bg  x="0" y="4" width="27.5" height="7" complex_mode="1" stretch="1">
+				<texture>ui_hud_bhs_bar_bg_half_alt</texture>
+			</bar_bg>
+			<bar_green x="0" y="0" width="27.5" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_bar_green_half_alt</texture>
+				</progress>
+			</bar_green>
+			<bar x="0" y="0" width="27.5" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_bar_half_alt</texture>
+				</progress>
+			</bar>
+		</rightleg_cont>
+
+		<text_legs x="62.5" y="60" width="62.5" height="15" complex_mode="1" stretch="1">
+			<text complex_mode="1" align="c" vert_align="c" font="letterica16">st_bhs_legs_hud</text>
+		</text_legs>
+
+
+		<main_cont x="0" y="90" width="106.2" height="30" stretch="1">
+			<psi_bar x="0" y="3" width="106.2" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_alt_psi</texture>
+				</progress>
+			</psi_bar>
+			<health_bar_bg  x="0" y="12" width="106.2" height="7" complex_mode="1" stretch="1">
+				<texture>ui_hud_bhs_alt_bg</texture>
+			</health_bar_bg>
+			<health_bar x="0" y="0" width="106.2" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_alt_health</texture>
+				</progress>
+			</health_bar>
+			<stamina_bar_bg  x="0" y="21" width="106.2" height="7" complex_mode="1" stretch="1">
+				<texture>ui_hud_bhs_alt_bg</texture>
+			</stamina_bar_bg>
+			<stamina_bar x="0" y="0" width="106.2" height="7" horz="1" min="0" max="1">
+				<progress stretch="1">
+					<texture>ui_hud_bhs_alt_stamina</texture>
+				</progress>
+			</stamina_bar>
+		</main_cont>
+
+	</bhs_alt>
+
+</window>

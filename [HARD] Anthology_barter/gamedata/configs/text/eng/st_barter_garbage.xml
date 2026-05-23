@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+    <string id="st_hunter_meat">
+        <text>Have you had mutant meat? I know it's not that great, but I've got some contacts on the outside who will pay a pretty penny for some salted, seasoned mutant jerky. The more exotic, the better, eh? So if you bring me meat, I'll be sure to keep you supplied with the means to keep bringing in meat, if you know what I mean.</text>
+    </string>
+    <string id="st_hunter_meat_done">
+        <text>Thanks, stalker. I've got enough of this type for now.</text>
+    </string>
+    
+    <string id="st_hunter_knife">
+        <text>Want to make a living hunting? First you need a good knife. I have an extra knife, it can be yours if you complete a simple task.</text>
+    </string>
+    <string id="st_hunter_knife_done">
+        <text>Not bad. Here you go.</text>
+    </string>
+
+    <string id="st_hunter_toz">
+        <text>Nice work with the Fleshes. Ready for another challenge? Try to take down a few Boars and bring me the proof</text>
+    </string>
+    <string id="st_hunter_done">
+        <text>Good work. Here you go.</text>
+    </string>
+    <string id="st_hunter_mp412">
+        <text>I can always use some good food to eat. I can't leave this place though, the hunters here rely on me for supplies. Are you a half decent cook? Bring me some decent food and I'll give you this hunting pistol.</text>
+    </string>
+    <string id="st_hunter_tozcer">
+        <text>I heard you're quite the hunter, stalker. I have a special request from a client to bring back some rare mutant trophies. The client is offering a customized hunting rifle as a reward.</text>
+    </string>
+    <string id="st_hunter_tozcer_done">
+        <text>Excellent work! Here you go, use her well.</text>
+    </string>
+    <string id="st_mutants_killed">
+        <text>killed mutants:</text>
+    </string>
+    
+    <string id="st_flea_upgrades">
+        <text>Got some junk you don't need? You came to the right place.</text>
+    </string>
+    
+    <string id="st_flea_ammo">
+        <text>Got any artifacts? I've got some stuff that'll make it worth your while...</text>
+    </string>
+    
+</string_table>

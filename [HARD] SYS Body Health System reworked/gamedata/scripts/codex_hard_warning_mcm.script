@@ -1,0 +1,54 @@
+local ROOT_ID = "codex_hard_warning"
+
+local defaults = {
+	enabled = true,
+}
+
+function on_mcm_load()
+	local op = {
+		id = ROOT_ID,
+		text = "ui_mcm_codex_hard_warning",
+		sh = true,
+		gr = {
+			{
+				id = "title",
+				type = "slide",
+				link = "ui_options_slider_player",
+				text = "ui_mcm_codex_hard_warning_title",
+				size = { 512, 50 },
+				spacing = 20,
+			},
+			{
+				id = "enabled",
+				type = "check",
+				val = 1,
+				def = true,
+			},
+			{
+				id = "note",
+				type = "desc",
+				text = "ui_mcm_codex_hard_warning_note",
+				clr = { 255, 180, 180, 160 },
+			},
+		},
+	}
+
+	return op
+end
+
+function get_config(key)
+	if ui_mcm then
+		local value = ui_mcm.get(ROOT_ID .. "/" .. key)
+		if value ~= nil then
+			return value
+		end
+	end
+	return defaults[key]
+end
+
+function set_config(key, value)
+	defaults[key] = value
+	if ui_mcm and ui_mcm.set then
+		ui_mcm.set(ROOT_ID .. "/" .. key, value)
+	end
+end

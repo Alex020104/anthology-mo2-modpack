@@ -1,0 +1,7 @@
+<w>
+    <btn_set_spawn x="72.84375" y="223" width="76.5" height="28" check_mode="0" stretch="1">
+        <window_name>button_spawn</window_name>
+        <text y="2" font="letterica18">set_spawn_button</text>
+        <texture>ui_button_ordinary</texture>
+    </btn_set_spawn>
+</w>

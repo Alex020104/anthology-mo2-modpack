@@ -1,0 +1,392 @@
+
+---------------------------------------------- Change these ----------------------------------------------
+
+local shooting_enabled = true		-- random weapon shooting
+local shoot_min_duration = 1		-- random weapon shooting minimum duration
+local shoot_max_duration = 2		-- random weapon shooting maximum duration
+local shootin_cooldown = 60		-- minimum cooldown between random weapon bursts
+
+local camera_shaking_enabled = false		-- camera shaking (drunk animation)
+
+local camera_twitching_enabled = true	-- camera twitching when zoomed in and focusing controller
+local camera_twitch_cooldown = 120			-- cooldown multiplier (2 means twice as long cooldown) for twitching effect when you aim at controller
+
+local static_effect_enabled = true			-- effect that draws random pictures and play sound
+local static_effect_cooldown = 60				-- cooldown (seconds) of picture+sound
+local static_effect_min_distance = 50		-- minimum distance at which picture/sound effects appear (will also have minimum chance at this distance)
+
+--[[
+	Chance of effects depends on distance to controller (chance grows from min possible distance to max);
+	"min_dist" is distance at which effects can start, "min_dist_chance" is a chance for effect at minimum possible distance (i.e. "min_dist");
+	"max_dist" is distance at which effects gets their maximum possible chance (i.e. "max_dist_chance")
+	chance of "1" is 100%
+
+	example on camera effect with default values (checks every second when effect isn't already playing):
+		if you are 125 meters away from controller you will have 1% chance to get camera shaking;
+		if you come to 60 meters you will have 17% chance to get the shaking;
+		10 meters is 30% and does not grow further.
+--]]
+local custom_effect_values = {
+
+	camera_shaking_chance = { min_dist = 100, min_dist_chance = 0.01, max_dist = 10, max_dist_chance = 0.3},
+
+	shooting_chance = { min_dist = 100, min_dist_chance = 0.01, max_dist = 5, max_dist_chance = 0.1},
+
+}
+
+------------------------------ Main ------------------------------
+local cont_t = {}
+local nearest_controller_id
+local nearest_dist_to_controller
+local zoomed = false
+local debugx = false
+
+--shooting
+local we_shootin = false
+local shootin_tmr = 0
+function wpn_shootin(obj)
+	if not shooting_enabled then return end
+	if not db.actor then return end
+
+	local shoot_chance_t = custom_effect_values.shooting_chance
+
+	if nearest_dist_to_controller > shoot_chance_t.min_dist then return end
+	if obj:see(db.actor) then return end
+
+	local wpn = db.actor:active_item()
+	if not (wpn and IsWeapon(wpn)) then return end
+	
+	local item_anim = wpn:get_state()
+	local tg = time_global()
+
+	local shoot_chance = customization_f(nearest_dist_to_controller, shoot_chance_t.min_dist, shoot_chance_t.min_dist_chance, shoot_chance_t.max_dist, shoot_chance_t.max_dist_chance)
+
+	if (tg > shootin_tmr) and (math.random() < shoot_chance) then
+		pr("# shootin proc")
+		we_shootin = true
+		shootin_tmr = tg + shootin_cooldown * 1000
+	end
+
+	if not we_shootin then return end
+	if item_anim == 7 then return end
+
+	local shootin_duration = shoot_min_duration <= shoot_max_duration and math.random(shoot_min_duration, shoot_max_duration) or shoot_min_duration
+	wpn:switch_state(5)
+
+	local function we_shootin_stop()
+		we_shootin = false
+		return true
+	end
+
+	CreateTimeEvent("psi_shooting_ev", "psi_shooting_ac", shootin_duration, we_shootin_stop)
+
+end
+
+--anim
+local psi_anm = {"drunk", "fatigue"}
+local psi_anm_tmr
+local psi_anm_delay = 21000
+local psi_anm_func_tmr
+function cont_psi_anm()
+	if not camera_shaking_enabled then return end
+
+	local tg = time_global()
+	if (psi_anm_func_tmr and tg < psi_anm_func_tmr) then return end
+	psi_anm_func_tmr = tg + 1000
+
+	local anm_chance_t = custom_effect_values.camera_shaking_chance
+	if nearest_dist_to_controller > anm_chance_t.min_dist then return end
+
+	local anm_chance = customization_f(nearest_dist_to_controller, anm_chance_t.min_dist, anm_chance_t.min_dist_chance, anm_chance_t.max_dist, anm_chance_t.max_dist_chance)
+
+	if math.random() > anm_chance then return end
+
+	if (psi_anm_tmr and tg < psi_anm_tmr) then return end
+	psi_anm_tmr = tg + psi_anm_delay
+
+	local anm_power = anm_chance * 10
+	anm_power = anm_power < 2 and anm_power or 2
+	local anm_name = psi_anm[math.random(#psi_anm)]
+
+	level.add_cam_effector("camera_effects\\" .. anm_name .. ".anm", 992512, false, "", 0, true, anm_power)
+	pr("# anm proc || nearest_dist: %s || anm_chance: %s || anm_power: %s || anm_name: %s", round_idp(nearest_dist_to_controller, 2), round_idp(anm_chance, 3), round_idp(anm_power, 2), anm_name)
+
+end
+
+-- twitch
+local twitch_anm = {"hit_front", "hit_back", "hit_left", "hit_right"}
+local twitch_tmr
+function camera_twitch()
+	if not camera_twitching_enabled then return end
+	if not zoomed then return end
+
+	local target = level.get_target_obj()
+	if not target then return end
+
+	local is_controller = target:clsid() == clsid.controller_s
+	if not is_controller then return end
+	if not (target.alive and target:alive()) then return end
+
+	local dist_to = get_cont_distance(target)
+	local twitch_anm_main_cd = 15 - (1500 / dist_to)
+	twitch_anm_main_cd = twitch_anm_main_cd > 2 and twitch_anm_main_cd or 2
+
+	local tg = time_global()
+	if (twitch_tmr and tg < twitch_tmr) then return end
+	twitch_tmr = tg + twitch_anm_main_cd * 100 * camera_twitch_cooldown
+
+	local anm_power = 150 / dist_to
+	anm_power = anm_power < 3 and anm_power or 3
+	level.add_cam_effector("camera_effects\\" .. twitch_anm[math.random(#twitch_anm)] .. ".anm", 992513, false, "", 0, false, anm_power)
+
+end
+
+-- static (picture) and sound
+local cont_hud_enabled = false
+local static_names_t = { "cont_monolith", "cont_apathy", "cont_blackhole", "cont_controller", "cont_eye", "cont_tanks", "cont_brainscorcher" }
+local static_effect = nil
+local opac = 0
+local opac_reverse = false
+local cust_stat_wind = "mp_tdm_buy"
+local statics_to_play = {}
+function cont_hud_update()
+	local hud = get_hud()
+	local cs = hud:GetCustomStatic(cust_stat_wind) 
+	if (cs == nil) then
+		hud:AddCustomStatic(cust_stat_wind, true)
+		local xml = CScriptXmlInit()
+		xml:ParseFile("ui_controller_effect.xml")
+		cs = hud:GetCustomStatic(cust_stat_wind)
+		local w = cs:wnd()
+
+		if is_empty(statics_to_play) then
+			statics_to_play = dup_table(static_names_t)
+		end
+
+		local cust_stat_num = math.random(1, #statics_to_play)
+		static_effect = xml:InitStatic(statics_to_play[cust_stat_num], w)
+		table.remove(statics_to_play, cust_stat_num)
+
+		local pos = w:GetWndPos()
+		if pos.x ~= 0 then
+			pos.x = 0
+			pos.y = 0
+			w:SetWndPos(pos)
+		end
+	end
+
+	static_effect:Show(true)
+	static_effect:SetTextureColor(GetARGB(opac, 255, 255, 255))
+
+end
+
+function cont_cs_remove()
+	opac_reverse = false
+	cont_hud_enabled = false
+	opac = 0
+	static_effect = nil
+	local hud = get_hud()
+	local cs = hud and hud:GetCustomStatic(cust_stat_wind) 
+	if (cs) then
+		hud:RemoveCustomStatic(cust_stat_wind)
+	end
+end
+
+local static_tmr
+function play_static_effect()
+	if not static_effect_enabled then return end
+
+	hud_enabler()
+
+	if not cont_hud_enabled then return end
+
+	if opac > 180 then
+		opac_reverse = true
+	end
+
+	opac = opac_reverse and opac - 2 or opac + 8
+
+	if opac <= 0 then
+		cont_cs_remove()
+		return
+	end
+
+	cont_hud_update()
+
+end
+
+function hud_enabler()
+	if cont_hud_enabled then return end
+
+	local tg  = time_global()
+	if (static_tmr and tg < static_tmr) then return end
+	static_tmr = tg + 1000 * static_effect_cooldown
+
+	local static_chance = normalize(nearest_dist_to_controller, static_effect_min_distance, 10)
+	if math.random() > static_chance then return end
+
+	static_sound()
+	cont_hud_enabled = true
+
+end
+
+function static_sound()
+	if not db.actor then return end
+
+	local snd_file = "controller_effects\\cont_snd_" .. math.random(1, 13)
+	local snd = sound_object(snd_file)
+
+	if not snd then return end
+
+	snd:play_no_feedback(db.actor, sound_object.s2d, 0, VEC_ZERO, 2.0, 1.0)	
+
+end
+
+-- player
+function controller_effects_x()
+	if not db.actor then
+		cont_cs_remove()
+		return
+	end
+
+	if not (nearest_controller_id and nearest_dist_to_controller) then
+		cont_cs_remove()
+		return
+	end
+
+	local controller = level.object_by_id(nearest_controller_id)
+	if not (controller and controller:alive()) then
+		cont_cs_remove()
+		return
+	end
+
+	pr("- try to play effects")
+	wpn_shootin(controller)
+	cont_psi_anm()
+	camera_twitch()
+	play_static_effect()
+
+end
+
+------------------------------ setters ------------------------------
+local dist_tmr
+function manage_distance_to_controllers()
+	if not db.actor then return end
+
+	local tg = time_global()
+	if (dist_tmr and tg < dist_tmr) then return end
+	dist_tmr = tg + 1000
+
+	-- update controller distance OR delete from table
+	for id, dist in pairs(cont_t) do
+		local npc = level.object_by_id(id)
+		if npc and npc:alive() then
+			local dist_to = get_cont_distance(npc)
+			pr("updating controller_id: %s || dist_to: %s", id, round_idp(dist_to, 1))
+			cont_t[id] = dist_to
+		else
+			pr("! controller_id: %s released by upd", id)
+			cont_t[id] = nil
+		end
+	end
+
+	-- update nearest values
+	if is_not_empty(cont_t) then
+		nearest_controller_id, nearest_dist_to_controller = get_min_v(cont_t)
+	else
+		nearest_controller_id, nearest_dist_to_controller = nil
+	end
+
+end
+
+function save_new_controllers_and_dist(npc)
+	if not db.actor then return end
+	if not npc then return end
+	if not npc:alive() then return end
+
+	local is_controller = npc:clsid() == clsid.controller_s
+	if not is_controller then return end
+	if cont_t[npc:id()] then return end
+
+	local dist_to = get_cont_distance(npc)
+	pr("saving controller_id: %s || dist_to: %s", npc:id(), round_idp(dist_to, 1))
+	cont_t[npc:id()] = dist_to
+
+end
+
+------------------------------ utils ------------------------------
+function get_cont_distance(npc)
+	if not (npc and db.actor) then return nil end
+
+	local npc_pos = npc:position()
+	local ac_pos = db.actor:position()
+	local dist_to = npc_pos:distance_to(ac_pos)
+
+	return dist_to > 1 and dist_to or 1
+end
+
+function get_min_v(t)
+	local min_k = next(t)
+	local min_v = t[min_k]
+	for k, v in pairs(t) do
+		if v < min_v then
+			min_k, min_v = k, v
+		end
+	end
+
+	return min_k, min_v
+end
+
+function customization_f(val, min_val, min_chance, max_val, max_chance)
+	if val > min_val then
+		return 0
+	end
+
+	if val < max_val then
+		return max_chance
+	end
+
+	local val_diff = min_val == max_val and min_val or min_val - max_val
+	chance = min_chance + ((min_val - val) * (max_chance - min_chance) / val_diff)
+	chance = chance > 0 and chance or 0
+
+	return chance
+end
+
+function server_entity_on_unregister(obj)
+	if obj and cont_t[obj.id] then
+		pr("! controller_id: %s released by entity cb", obj.id)
+		cont_t[obj.id] = nil
+	end
+
+end
+
+function actor_on_weapon_zoom_in(wpn)
+	zoomed = true
+end
+
+function actor_on_weapon_zoom_out(wpn)
+	zoomed = false
+ end
+
+function pr(...)
+	if not debugx then return end
+	printf(...)
+end
+
+---------------------------------------------------------------------------
+function actor_on_update()
+	if not db.actor then return end
+
+	manage_distance_to_controllers()
+	controller_effects_x()
+
+end
+
+function on_game_start()
+	RegisterScriptCallback("monster_on_update", save_new_controllers_and_dist)
+	RegisterScriptCallback("server_entity_on_unregister", server_entity_on_unregister)
+	RegisterScriptCallback("actor_on_weapon_zoom_in", actor_on_weapon_zoom_in)
+	RegisterScriptCallback("actor_on_weapon_zoom_out", actor_on_weapon_zoom_out)
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+end

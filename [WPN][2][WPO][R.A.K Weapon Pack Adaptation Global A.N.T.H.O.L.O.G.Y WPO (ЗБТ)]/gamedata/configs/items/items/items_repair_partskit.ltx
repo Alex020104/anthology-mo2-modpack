@@ -1,0 +1,76 @@
+[partskit_tool]:tch_repair
+visual					                           = dynamics\repair\ramrod_tool.ogf
+description				                           = st_partskit1_descr
+inv_name				                           = st_partskit1
+inv_name_short			                           = st_partskit1
+inv_grid_x                                         = 6
+inv_grid_y                                         = 53
+inv_grid_width                                     = 2
+inv_grid_height                                    = 1
+cost					                           = 28269
+inv_weight				                           = 3.0
+empty_weight						         	   = 0.1
+max_uses								     	   = 4
+attach_angle_offset		                           = -0.287979, 1.560923, 1.544060
+attach_position_offset		                       = 0.096910, -0.013594, 0.107925
+attach_bone_name		                           = bip01_r_hand
+auto_attach				                           = false
+
+repair_min_condition 	                           = 0.10		
+repair_max_condition 	                           = 0.99		
+repair_add_condition 	                           = 0.99		
+repair_part_bonus	 	                           = 0.99
+repair_use_parts	 	                           = true		
+repair_only				                           = barrel, gas_tube, bolt, bolt_carrier, trigger_components, spring
+repair_parts_sections				               = explo_jerrycan_fuel, kerosene, gun_oil_ru_d, solvent
+repair_parts_multi							       = 4
+repair_use_actor_effects                           = true 
+tier                                               = 3
+
+[welding_part_tool]:identity_immunities
+$spawn = "devices\repair_kit_10"
+$prefetch = 16
+class = II_ATTCH
+kind = i_tool
+cform = skeleton
+script_binding = bind_item.bind
+use_condition = true
+allow_repair = true
+
+use1_functor = item_repair.menu_tool
+use1_action_functor = item_repair.func_tool
+use1_allow_db = true
+
+visual = dynamics\equipments\blue_box.ogf
+description = st_partskit_descr
+inv_name = st_partskit
+inv_name_short = st_partskit
+icons_texture = ui\ui_icon_soip
+inv_grid_x = 0
+inv_grid_y = 0
+inv_grid_width = 2
+inv_grid_height = 3
+cost = 28269
+inv_weight = 15.0
+auto_attach = false
+
+repair_tool = true
+repair_min_condition = 0.10		
+repair_max_condition = 0.99		
+repair_add_condition = 0.30
+repair_use_parts = true
+repair_only = barrel, gas_tube, bolt, bolt_carrier, trigger_components, spring
+repair_parts_sections = prt_i_scrap
+repair_parts_multi = 4
+repair_use_actor_effects = true 
+tier = 3
+degradation_factor = 0.125
+
+![rasp_tool]
+repair_min_condition = 0.50
+
+![ramrod_tool]
+repair_min_condition = 0.50
+
+![leatherman_tool]
+repair_min_condition = 0.50

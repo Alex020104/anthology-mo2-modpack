@@ -1,0 +1,69 @@
+function on_game_start()
+    RegisterScriptCallback("on_specific_character_dialog_list", function(character_id, dialog_list)
+        if dialog_list:has("dm_encrypted_pda") then 
+			dialog_list:add("pdahack_unfail")
+		end
+    end)
+end
+
+function pdahacking_unfail_text_1()
+	return strformat(game.translate_string("st_pdahacking_unfail_text_1"), ui_mcm.get("pda_hacking/tech_unfail_cost"))
+end
+
+function pdahacking_unfail_text_2()
+	return strformat(game.translate_string("st_pdahacking_unfail_text_2"), get_total_unbrick_cost(), #get_bricked_pdas())
+end
+
+function get_bricked_pdas()
+	local encrypted_pdas = {}
+	
+	local function search(temp, obj)
+		if item_device.device_npc_pda[obj:section()] then
+			local info = se_load_var(obj:id(), obj:name(), "info")
+			if info and (info.attempted_hack == true) and (info.state == "encrypted") then
+				encrypted_pdas[#encrypted_pdas + 1] = obj:id()
+			end
+		end
+	end
+	db.actor:iterate_inventory(search, nil)
+
+	return encrypted_pdas
+end
+
+function have_bricked_pda(first_speaker, second_speaker)
+	local encrypted_pdas = get_bricked_pdas()
+	if (#encrypted_pdas > 0) then
+		return true
+	end
+	return false
+end
+
+function get_total_unbrick_cost()
+	local encrypted_pdas = get_bricked_pdas()
+	local num = #encrypted_pdas
+	return ui_mcm.get("pda_hacking/tech_unfail_cost") * num
+end
+
+function have_bricked_pda_money(first_speaker, second_speaker)
+	local encrypted_pdas = get_bricked_pdas()
+	local num = #encrypted_pdas
+	return mlr_utils.have_money(get_total_unbrick_cost())
+end
+
+function take_bricked_pda_money(first_speaker, second_speaker)
+	local encrypted_pdas = get_bricked_pdas()
+	local num = #encrypted_pdas
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, get_total_unbrick_cost()) 
+end
+
+function unlock_bricked_pda(first_speaker, second_speaker)
+	local encrypted_pdas = get_bricked_pdas()
+	for i=1,#encrypted_pdas do
+		local id = encrypted_pdas[i]
+		local info = se_load_var(id, nil, "info")
+		if info then
+			info.attempted_hack = nil
+			se_save_var( id, nil, "info", info )
+		end
+	end
+end

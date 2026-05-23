@@ -1,0 +1,446 @@
+--;------------------------------------------------------------------------------------------
+--;-- Aim Stamina Script v1.0a by Private Pirate
+--;------------------------------------------------------------------------------------------
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+	RegisterScriptCallback("on_option_change", on_option_change)
+	RegisterScriptCallback("load_state", load_state)
+	RegisterScriptCallback("save_state", save_state)
+	RegisterScriptCallback("actor_on_first_update", activate_hud)
+	RegisterScriptCallback("actor_on_net_destroy", deactivate_hud)
+	RegisterScriptCallback("actor_on_before_death", deactivate_hud)
+	RegisterScriptCallback("actor_on_weapon_zoom_in", actor_on_weapon_zoom_in)
+	RegisterScriptCallback("actor_on_weapon_zoom_out", actor_on_weapon_zoom_out)
+end
+
+
+
+--;-- HANDLING VARIABLES --------------------------------------------------------------------
+
+-- values from MCM settings script, necessary to apply values instantly at start of a new game (especially on first time use).
+-- apply default values if get_config from MCM script doesn't work (just in case).
+
+-- operational and hardcore mode variables
+AS_op_mode = aim_stamina_mcm.get_config("AS_op_mode") or 1
+AS_mode = aim_stamina_mcm.get_config("AS_mode") or 1
+
+-- aim stamina variables
+stamina_modifier = aim_stamina_mcm.get_config("aim_stamina") or 60
+drain_weight_influence = aim_stamina_mcm.get_config("drain_weight_influence") or 5
+recover_weight_influence = aim_stamina_mcm.get_config("recover_weight_influence") or 5
+rate_range = aim_stamina_mcm.get_config("rate_range") or 10
+
+-- weapon sway variables
+AS_wpn_sway_start = aim_stamina_mcm.get_config("AS_wpn_sway_start") or 20
+AS_wpn_sway_power = aim_stamina_mcm.get_config("AS_wpn_sway_power") or 1
+
+-- HUD variables
+show_AS_counter = aim_stamina_mcm.get_config("show_AS_counter") or true
+show_AS_bar = aim_stamina_mcm.get_config("show_AS_bar") or true
+AS_hud_x_pos = aim_stamina_mcm.get_config("AS_hud_x_pos") or 462
+AS_hud_y_pos = aim_stamina_mcm.get_config("AS_hud_y_pos") or 720
+AS_counter_x_pos = aim_stamina_mcm.get_config("AS_counter_x_pos") or 2
+AS_counter_y_pos = aim_stamina_mcm.get_config("AS_counter_y_pos") or 1
+AS_hud_hide_timer = aim_stamina_mcm.get_config("AS_hud_hide_timer") or 5
+
+-- debug variable
+AS_disable = aim_stamina_mcm.get_config("AS_disable") or false
+
+
+
+-- update values when changing settings
+function on_option_change()
+	AS_op_mode = aim_stamina_mcm.get_config("AS_op_mode")
+	AS_mode = aim_stamina_mcm.get_config("AS_mode")
+
+    stamina_modifier = aim_stamina_mcm.get_config("aim_stamina")
+	aim_stamina_round = stamina_modifier
+    drain_weight_influence = aim_stamina_mcm.get_config("drain_weight_influence")
+	recover_weight_influence = aim_stamina_mcm.get_config("recover_weight_influence")
+    rate_range = aim_stamina_mcm.get_config("rate_range")
+	
+	AS_wpn_sway_start = aim_stamina_mcm.get_config("AS_wpn_sway_start")
+	AS_wpn_sway_power = aim_stamina_mcm.get_config("AS_wpn_sway_power")
+	
+	show_AS_counter = aim_stamina_mcm.get_config("show_AS_counter")
+	show_AS_bar = aim_stamina_mcm.get_config("show_AS_bar")
+	AS_hud_x_pos = aim_stamina_mcm.get_config("AS_hud_x_pos")
+	AS_hud_y_pos = aim_stamina_mcm.get_config("AS_hud_y_pos")
+	AS_counter_x_pos = aim_stamina_mcm.get_config("AS_counter_x_pos")
+	AS_counter_y_pos = aim_stamina_mcm.get_config("AS_counter_y_pos")
+	AS_hud_hide_timer = aim_stamina_mcm.get_config("AS_hud_hide_timer")
+	
+	AS_disable = aim_stamina_mcm.get_config("AS_disable")
+end
+
+
+
+aim_stamina = stamina_modifier or 60 -- exact value
+aim_stamina_round = aim_stamina	-- exact value rounded to 1 digit after comma
+local tref = 0
+
+
+
+-- load variables. executing on_option_change() is neccesary when loading a save and using the addon for the first time and values have been changed beforehand.
+function load_state(m_data)
+	AS_op_mode = m_data.AS_op_mode
+	AS_mode = m_data.AS_mode
+	
+	aim_stamina = m_data.aim_stamina
+    stamina_modifier = m_data.stamina_modifier
+    drain_weight_influence = m_data.drain_weight_influence
+    recover_weight_influence = m_data.recover_weight_influence
+    rate_range = m_data.rate_range
+	
+	AS_wpn_sway_start = m_data.AS_wpn_sway_start
+	AS_wpn_sway_power = m_data.AS_wpn_sway_power
+	
+	show_AS_counter = m_data.show_AS_counter
+	show_AS_bar = m_data.show_AS_bar
+	AS_hud_x_pos = m_data.AS_hud_x_pos
+	AS_hud_y_pos = m_data.AS_hud_y_pos
+	AS_counter_x_pos = m_data.AS_counter_x_pos
+	AS_counter_y_pos = m_data.AS_counter_y_pos
+	AS_hud_hide_timer = m_data.AS_hud_hide_timer
+	
+	AS_disable = m_data.AS_disable
+	
+	on_option_change()
+end
+
+
+
+-- save variables
+function save_state(m_data)
+	m_data.AS_op_mode = AS_op_mode
+	m_data.AS_mode = AS_mode
+
+	m_data.aim_stamina = aim_stamina
+    m_data.stamina_modifier = stamina_modifier
+    m_data.drain_weight_influence = drain_weight_influence
+    m_data.recover_weight_influence = recover_weight_influence
+    m_data.rate_range = rate_range
+	
+	m_data.AS_wpn_sway_start = AS_wpn_sway_start
+	m_data.AS_wpn_sway_power = AS_wpn_sway_power
+	
+	m_data.show_AS_counter = show_AS_counter
+	m_data.show_AS_bar = show_AS_bar
+	m_data.AS_hud_x_pos = AS_hud_x_pos
+	m_data.AS_hud_y_pos = AS_hud_y_pos
+	m_data.AS_counter_x_pos = AS_counter_x_pos
+	m_data.AS_counter_y_pos = AS_counter_y_pos
+	m_data.AS_hud_hide_timer = AS_hud_hide_timer
+	
+	m_data.AS_disable = AS_disable
+end
+
+
+
+--;-- MAIN FUNCTION -------------------------------------------------------------------------
+
+function actor_on_update()
+	local tstart = time_global()
+	if tref > tstart then return end
+	tref = tstart + 100 -- in ms
+	
+
+
+	-- check if player is holding gun and its weight
+	local active_item = db.actor:active_item()
+	local wpn_weight = active_item and IsWeapon(active_item) and active_item:weight() or 0
+	
+	-- check if player is aiming weapon
+	local check_aim = axr_main.weapon_is_zoomed
+	
+	-- check if weapon is lowered
+	local check_wpn_state = game.actor_weapon_lowered()
+	
+	
+	
+	-- check if Aim Stamina is enabled, disabling is for debug mode e.g. when using weapon hud editor
+	if (not AS_disable) then
+		-- do nothing when gun is aim ready and not lowered (AS mode 2)
+		state_modifier = 1
+		if IsMoveState("mcCrouch") then
+			state_modifier = 0.2
+			if IsMoveState("mcAccel") then
+				state_modifier = 0.0000000001
+			end
+		end
+		if (AS_mode == 2 and not check_aim and not check_wpn_state) then
+			aim_stamina = aim_stamina
+		end
+		
+		
+		-- drain aim stamina when gun is aim ready and not lowered (AS mode 3)
+		if (AS_mode == 3 and active_item and not check_aim and not check_wpn_state and aim_stamina > 0) then
+			aim_stamina = aim_stamina - 0.05*state_modifier - 0.00065*drain_weight_influence*(1+wpn_weight)^(rate_range/10)
+		end
+		
+		-- drain aim stamina when aiming (all AS modes)
+		if (check_aim == true and aim_stamina > 0) then
+			aim_stamina = aim_stamina - 0.1*state_modifier - 0.00065*drain_weight_influence*(1+wpn_weight)^(rate_range/10)
+		end
+		
+		--[[
+		-- decide what to do when aim stamina is zero
+		if (check_aim == true and aim_stamina < 0.01) then
+			if (AS_op_mode == 1) then
+				if (get_console():get_bool("wpn_aim_toggle")) then	-- force stop aim (all AS modes)
+					if (AS_mode == 3) then
+						game.actor_lower_weapon(true)
+					else
+						level.press_action(bind_to_dik(key_bindings.kWPN_ZOOM))
+					end
+				else
+					if (AS_mode == 3) then
+						game.actor_lower_weapon(true)
+					else
+						level.release_action(bind_to_dik(key_bindings.kWPN_ZOOM))
+					end
+				end
+				check_aim = false
+			end
+			aim_stamina = 0
+		end
+		--]]
+		
+		-- decide what to do when aim stamina is zero
+		if (aim_stamina < 0.01) then
+			if (AS_op_mode == 1) then
+				if (AS_mode == 3) then
+					game.actor_lower_weapon(true)
+				else
+					if (check_aim) then
+						if (get_console():get_bool("wpn_aim_toggle")) then	-- force stop aim (all AS modes)
+							level.press_action(bind_to_dik(key_bindings.kWPN_ZOOM))
+						else
+							level.release_action(bind_to_dik(key_bindings.kWPN_ZOOM))
+						end
+					end
+					check_aim = false
+				end
+			end
+			aim_stamina = 0
+		end
+		
+		
+		-- recover aim stamina when not aiming and not lowered (AS mode 1)
+		if (AS_mode == 1 and not check_aim and not check_wpn_state and aim_stamina < stamina_modifier) then
+			aim_stamina = aim_stamina + 0.1 - 0.00065*recover_weight_influence*(1+wpn_weight)^(rate_range/10)
+		end
+		
+		
+		-- recover aim stamina when not aiming but gun is lowered (AS mode 1)
+		if (AS_mode == 1 and not check_aim and check_wpn_state and aim_stamina < stamina_modifier) then
+			aim_stamina = aim_stamina + 0.1 - 0.000325*recover_weight_influence*(1+wpn_weight)^(rate_range/10)
+		end
+		
+		
+		-- recover aim stamina when not aiming but gun is lowered (AS mode 2/3)
+		if ((AS_mode == 2 or AS_mode == 3) and not check_aim and (check_wpn_state or not active_item) and aim_stamina < stamina_modifier) then
+			aim_stamina = aim_stamina + 0.1 - 0.00065*recover_weight_influence*(1+wpn_weight)^(rate_range/10)
+		end
+		
+		
+		-- stop recovery when aim stamina reaches maximum
+		if (not check_aim and aim_stamina > (stamina_modifier - 0.01)) then
+			aim_stamina = stamina_modifier
+		end
+		
+		-- round aim stamina value to one digit after comma (for HUD display)
+		aim_stamina_round = tonumber(string.format("%.1f", aim_stamina))
+		
+		
+		-- activate function to play weapon sway animation
+		if (AS_op_mode == 1) then
+			if (AS_wpn_sway_start > 0) then
+				if (check_aim and AS_wpn_sway and aim_stamina_round <= AS_wpn_sway_start) then
+					AS_weapon_sway()
+					AS_wpn_sway = false
+				end
+			end
+		
+		else
+			if (check_aim and AS_wpn_sway and aim_stamina_round == 0) then
+				AS_weapon_sway()
+				AS_wpn_sway = false
+			end
+		end
+	end
+	-- news_manager.send_tip(db.actor, tostring(check_aim), nil, nil, 1000)
+end
+
+
+
+--;-- FUNCTIONS FOR ANIMATIONS --------------------------------------------------------------
+
+AS_wpn_sway = false
+
+function actor_on_weapon_zoom_in(active_item)
+	AS_wpn_sway = true
+end
+
+
+
+-- play weapon sway animation
+function AS_weapon_sway()
+	level.add_cam_effector("AS_weapon_sway\\AS_wpn_sway_10.anm", 81321, true, "", 0, true, AS_wpn_sway_power)
+end
+
+
+
+-- stop weapon sway animation
+function actor_on_weapon_zoom_out(active_item)
+	level.remove_cam_effector(81321)
+end
+
+
+
+--;-- FUNCTIONS FOR HUD DISPLAY -------------------------------------------------------------
+
+HUD = nil
+function activate_hud()
+	if HUD == nil then
+		HUD = aim_stamina_hud()
+		get_hud():AddDialogToRender(HUD)
+	end
+end
+
+
+
+function deactivate_hud()
+	if HUD ~= nil then
+		get_hud():RemoveDialogToRender(HUD)
+		HUD = nil
+	end
+end
+
+
+
+class "aim_stamina_hud" (CUIScriptWnd)
+function aim_stamina_hud:__init() super()
+	self:InitControls()
+end
+
+
+
+function aim_stamina_hud:InitControls()
+	self:SetWndRect(Frect():set(0,0,1024,768))
+	self:SetAutoDelete(true)
+
+	self.xml = CScriptXmlInit()
+	local xml = self.xml
+	xml:ParseFile("ui_aim_stamina_hud_16.xml")
+	
+	-- initiate window where aim stamina bar is shown. Hidden by default.
+	self.aim_stamina_hud_wnd = xml:InitStatic("aim_stamina_hud_wnd", self)
+	self.aim_stamina_bar_wnd = xml:InitStatic("aim_stamina_hud_wnd:aim_stamina_bar_bg", self.aim_stamina_hud_wnd)
+	self.aim_stamina_bar = xml:InitProgressBar("aim_stamina_hud_wnd:aim_stamina_bar_bg:aim_stamina_bar", self.aim_stamina_bar_wnd)
+
+	-- initiate aim stamina counter
+	self.aim_stamina_counter = xml:InitTextWnd("aim_stamina_hud_wnd:aim_stamina_text", self.aim_stamina_hud_wnd)
+	
+	self.aim_stamina_hud_wnd:Show(false)
+	self.aim_stamina_bar_wnd:Show(true)
+	self.aim_stamina_bar:Show(true)
+	self.aim_stamina_counter:Show(true)
+	
+	-- display aim stamina_modifier as "default"
+	self.aim_stamina_counter:SetText(stamina_modifier)
+end
+
+
+
+function aim_stamina_hud:Update()
+	CUIScriptWnd.Update(self)
+	
+	-- updating HUD position
+	self.aim_stamina_hud_wnd:SetWndPos(vector2():set(AS_hud_x_pos, AS_hud_y_pos))
+	
+	
+	-- update horizontal/vertical aim stamina counter position
+	local AS_counter_pos = self.aim_stamina_counter:GetWndPos()
+	
+	
+	-- horizontal
+	if (AS_counter_x_pos == 1) then			-- left
+		AS_counter_pos.x = -10
+		self.aim_stamina_counter:SetWndPos(vector2():set(AS_counter_pos))
+	
+	elseif (AS_counter_x_pos == 2) then		-- center
+		AS_counter_pos.x = 25
+		self.aim_stamina_counter:SetWndPos(vector2():set(AS_counter_pos))
+		
+	elseif (AS_counter_x_pos == 3) then		-- right
+		AS_counter_pos.x = 60
+		self.aim_stamina_counter:SetWndPos(vector2():set(AS_counter_pos))
+	end
+	
+	-- vertical
+	if (AS_counter_y_pos == 1) then			-- above aim stamina bar
+		AS_counter_pos.y = 0
+		self.aim_stamina_counter:SetWndPos(vector2():set(AS_counter_pos))
+	
+	elseif (AS_counter_y_pos == 2) then		-- below aim stamina bar
+		AS_counter_pos.y = 25
+		self.aim_stamina_counter:SetWndPos(vector2():set(AS_counter_pos))
+	end
+	
+	
+	-- value for aim stamina bar progression
+	local aim_stamina_bar_value = 100*aim_stamina_round/stamina_modifier
+	
+	-- assign values to HUD elements
+	self.aim_stamina_counter:SetText(aim_stamina_round)
+	self.aim_stamina_bar:SetProgressPos(aim_stamina_bar_value)
+	
+	-- show HUD if aim stamina is not max
+	if (not AS_disable) then
+		if (AS_hud_hide_timer == 0 or axr_main.weapon_is_zoomed) then
+			ResetTimeEvent("AS_hud_hide", "hide_hud", AS_hud_hide_timer)
+			if (show_AS_counter == true and show_AS_bar == true) then
+				self.aim_stamina_hud_wnd:Show(true)
+				self.aim_stamina_counter:Show(true)
+				self.aim_stamina_bar_wnd:Show(true)
+			
+			elseif (show_AS_counter == true and show_AS_bar == false) then
+				self.aim_stamina_hud_wnd:Show(true)
+				self.aim_stamina_counter:Show(true)
+				self.aim_stamina_bar_wnd:Show(false)
+				
+			elseif (show_AS_counter == false and show_AS_bar == true) then
+				self.aim_stamina_hud_wnd:Show(true)
+				self.aim_stamina_counter:Show(false)
+				self.aim_stamina_bar_wnd:Show(true)
+			else
+				self.aim_stamina_hud_wnd:Show(false)
+				self.aim_stamina_counter:Show(false)
+				self.aim_stamina_bar_wnd:Show(false)
+			end
+			
+		elseif (AS_hud_hide_timer > 0) then
+			CreateTimeEvent("AS_hud_hide", "hide_hud", AS_hud_hide_timer, AS_hud_hide_all)
+		end
+	else
+		self.aim_stamina_hud_wnd:Show(false)
+		self.aim_stamina_counter:Show(false)
+		self.aim_stamina_bar_wnd:Show(false)
+	end
+end
+
+function AS_hud_hide_all()
+	if (HUD) then
+		HUD.aim_stamina_hud_wnd:Show(false)
+		HUD.aim_stamina_counter:Show(false)
+		HUD.aim_stamina_bar_wnd:Show(false)
+		return true
+	end
+end
+
+
+
+function aim_stamina_hud:__finalize()
+end

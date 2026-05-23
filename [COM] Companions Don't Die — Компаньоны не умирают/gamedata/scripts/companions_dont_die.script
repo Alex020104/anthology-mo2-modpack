@@ -1,0 +1,114 @@
+local CRITICAL_HEALTH = 0.04
+
+local head_bones = {
+	[15] = true,
+	[16] = true,
+	[17] = true,
+	[18] = true,
+	[19] = true,
+}
+
+local wounded_states = {
+	"wounded",
+	"wounded_heavy",
+	"wounded_heavy_2",
+	"wounded_heavy_3",
+}
+
+local wounded_state_lookup = {
+	wounded = true,
+	prisoner = true,
+	wounded_heavy = true,
+	wounded_heavy_2 = true,
+	wounded_heavy_3 = true,
+}
+
+local function companions_are_immortal()
+	if companions_dont_die_get_config then
+		return companions_dont_die_get_config("immortal_companions") == true
+	end
+
+	return true
+end
+
+local function is_companion(npc)
+	return npc and npc:has_info("npcx_is_companion")
+end
+
+local function get_npc_state(npc)
+	if state_mgr and state_mgr.get_state then
+		return state_mgr.get_state(npc)
+	end
+
+	return nil
+end
+
+local function is_wounded_state(state_name)
+	return state_name and wounded_state_lookup[state_name] == true
+end
+
+local function choose_wounded_state()
+	return wounded_states[math.random(1, #wounded_states)]
+end
+
+local function force_companion_wounded(npc, preferred_state)
+	if not npc then
+		return
+	end
+
+	npc.health = CRITICAL_HEALTH
+	npc.bleeding = 0
+
+	if state_mgr and state_mgr.set_state then
+		state_mgr.set_state(npc, preferred_state or choose_wounded_state())
+	end
+end
+
+function on_game_start()
+	RegisterScriptCallback("npc_on_before_hit", CB_npc_on_before_hit)
+	RegisterScriptCallback("on_enemy_eval", CB_enemy_eval)
+end
+
+function CB_enemy_eval(obj, enemy, flags)
+	if not companions_are_immortal() or not is_companion(obj) then
+		return
+	end
+
+	local npc_state = get_npc_state(obj)
+	if obj:critically_wounded() or is_wounded_state(npc_state) or obj.health <= CRITICAL_HEALTH then
+		flags.override = true
+		flags.result = false
+	end
+end
+
+function CB_npc_on_before_hit(npc, shit, bone_id, flags)
+	if not companions_are_immortal() or not is_companion(npc) or not shit or not flags then
+		return
+	end
+
+	local npc_state = get_npc_state(npc)
+	local predicted_health = npc.health - (tonumber(shit.power) or 0)
+	local should_force_wound = false
+
+	npc.bleeding = 0
+
+	if npc:critically_wounded() or is_wounded_state(npc_state) or npc.health <= CRITICAL_HEALTH then
+		should_force_wound = true
+	elseif head_bones[bone_id] then
+		should_force_wound = true
+	elseif predicted_health <= CRITICAL_HEALTH then
+		should_force_wound = true
+	end
+
+	if not should_force_wound then
+		return
+	end
+
+	flags.ret_value = false
+
+	if npc_state == "prisoner" then
+		force_companion_wounded(npc, "prisoner")
+	else
+		force_companion_wounded(npc, is_wounded_state(npc_state) and npc_state or nil)
+	end
+end

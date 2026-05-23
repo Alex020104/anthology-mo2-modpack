@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+
+    <!-- Medicine -->
+	<string id="st_player_skills_hint_medicine">
+		<text>Дает короткий всплеск улучшения здоровья и восстановления радиации в зависимости от используемого медицинского предмета.\n \nУровни можно получить, используя лекарства и наркотики.\n \n</text>
+	</string>
+	<string id="st_skills_stats_restore_boost_positive">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Получен позитивный буст: %c[d_green]$stat%</text>
+    </string>
+    <string id="st_skills_stats_restore_boost_negative">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Получен негативный буст: %c[d_red]$stat%</text>
+    </string>
+
+	<!-- Insanity -->
+	<string id="st_player_skills_hint_insanity">
+		<text>Вы теряете рассудок... но получаете пси-регенерацию и сопротивление пси-повреждениям.\nБонус пси-регенерации удваивается при игре на инструменте.\n \nУровни получаются за получение пси-повреждения и игру на инструменте в бою.\n \n</text>
+	</string>
+    <string id="st_skills_stats_psy_regen_positive">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Регенерация психического здоровья увеличена на: %c[d_green]$stat%/sec</text>
+    </string>
+
+    <string id="st_skills_stats_psy_hit_resistance_positive">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Получаемый психологический урон уменьшен на: %c[d_green]$stat%</text>
+    </string>
+    <string id="st_skills_stats_psy_hit_resistance_negative">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Получаемый пси-урон увеличен на: %c[d_red]$stat%</text>
+    </string>
+	
+	<!-- Tinkering -->
+	<string id="st_player_skills_hint_tinkering">
+		<text>Дает шанс не потратить ремонтный комплект.\n \nУровни можно получить, ремонтируя снаряжение с помощью ремонтных комплектов.\n \n</text>
+	</string>
+	<string id="st_skills_stats_refund_chance_positive">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Шанс бесплатного использования ремонтного комплекта: %c[d_green]$stat%</text>
+    </string>
+	
+	<!-- Bartering -->
+	<string id="st_player_skills_hint_bartering">
+		<text>Предоставляет лучшие цены при торговле.\n \nУровни можно получить, продавая и покупая предметы.\n \n</text>
+	</string>
+	<string id="st_skills_stats_discount_positive">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Цены торговцев снижены на: %c[d_green]$stat%</text>
+    </string>
+    <string id="st_skills_stats_discount_negative">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Цены торговцев увеличились на: %c[d_red]$stat%</text>
+    </string>
+	<string id="st_skills_stats_sell_bonus_positive">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Стоимость продажи увеличилась на: %c[d_green]$stat%</text>
+    </string>
+    <string id="st_skills_stats_sell_bonus_negative">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Стоимость продажи уменьшилась на: %c[d_red]$stat%</text>
+    </string>
+    <string id="st_skills_stats_task_bonus_positive">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Денежное вознаграждение за задание увеличено на: %c[d_green]$stat%</text>
+    </string>
+    <string id="st_skills_stats_task_bonus_negative">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Денежное вознаграждение за задание уменьшено на: %c[d_red]$stat%</text>
+    </string>
+	
+	<!-- Magloading -->
+	<string id="st_player_skills_hint_magloading">
+		<text>Увеличивает скорость пополнения и опустошения магазинов.\n \nУровни получаются при пополнении и опустошении магазинов.\n(Максимальный уровень ограничен вашей Силой и Выносливостью)\n \n</text>
+	</string>
+	<string id="st_skills_stats_loadspeed_positive">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Скорость пополнения магазина увеличена на: %c[d_green]$stat%</text>
+    </string>
+    <string id="st_skills_stats_loadspeed_negative">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Скорость пополнения магазина уменьшена на: %c[d_red]$stat%</text>
+    </string>
+	
+	<!-- Lockpicking -->
+	<string id="st_player_skills_hint_lockpicking">
+		<text>Сложность взлома лутбоксов снижена.\n \nУровни можно получить, открывая лутбоксы.\n(Использование Скелетного ключа не дает опыта)\n \n</text>
+	</string>
+	<string id="st_skills_stats_lockpick_diff_reduc_positive">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Сложность лутбоксов снижена на: %c[d_green]$stat%</text>
+    </string>
+    <string id="st_skills_stats_lockpick_diff_reduc_negative">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Сложность лутбоксов увеличена на: %c[d_red]$stat%</text>
+    </string>
+	
+	<!-- Reloading -->
+	<string id="st_player_skills_hint_reloading">
+		<text>Обеспечивает более быструю перезарядку оружия и скорость выхватывания.\n \nУровни получаются при обычном использовании оружия.\n(Максимальный уровень ограничен вашей выносливостью и выживанием)\n \n</text>
+	</string>
+	<string id="st_skills_stats_reload_speed_positive">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Скорость перезарядки увеличена на: %c[d_green]$stat%</text>
+    </string>
+    <string id="st_skills_stats_reload_speed_negative">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Скорость перезарядки снижена на: %c[d_red]$stat%</text>
+    </string>
+	
+	<string id="st_skills_stats_equip_speed_positive">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Скорость выхватывания оружия увеличена на: %c[d_green]$stat%</text>
+    </string>
+    <string id="st_skills_stats_equip_speed_negative">
+        <text>\n%c[255,138,43,226]•%c[ui_6] Скорость выхватывания оружия снижена на: %c[d_red]$stat%</text>
+    </string>
+	
+</string_table>

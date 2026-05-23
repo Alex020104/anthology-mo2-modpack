@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="ui_inv_outfit_speed">
+		<text>Множит.скор.передв.</text>
+	</string>
+
+	<!-- MCM -->
+	
+	<string id="ui_mcm_menu_speed">
+		<text>Скорость передвижения</text>
+	</string>
+	<string id="ui_mcm_menu_speed_title">
+		<text>Экипировка/оружие влияют на скорость передвижения</text>
+	</string>
+	<string id="ui_mcm_speed_title">
+		<text>Экипировка/оружие влияют на скорость передвижения</text>
+	</string>
+	<string id="ui_mcm_speed_encumbrance">
+		<text>Нагрузка влияет на скорость</text>
+	</string>
+	<string id="ui_mcm_speed_encumbrance_desc">
+		<text>Особенности нагрузки дают бонусы при легкой нагрузке (менее 25% от общей нагрузки) и штрафы при тяжелой нагрузке (более 70%).\n \n Имейте в виду, что включение этой опции приведет к смехотворной скорости, если вы путешествуете налегке.</text>
+	</string>
+	<string id="ui_mcm_speed_weapon">
+		<text>Оружие влияет на скорость бега</text>
+	</string>
+	<string id="ui_mcm_speed_weapon_desc">
+		<text>Если включено, оружие применяет модификатор к скорости бега в зависимости от типа и веса.</text>
+	</string>
+	<string id="ui_mcm_speed_debug">
+		<text>(Разработчик) Дополнительное протоколирование консоли</text>
+	</string>
+	<string id="ui_mcm_speed_debug_desc">
+		<text>Выводит на консоль какую-то полезную информацию.</text>
+	</string>	
+</string_table>

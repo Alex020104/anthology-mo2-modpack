@@ -1,0 +1,8 @@
+<side_plugs stretch="1">
+	<left x="0" y="0" width="128" height="769" stretch="1">
+		<texture>ui\ui_actor_menu_side_plugs_21</texture>
+	</left>
+	<right x="896.375" y="0" width="128" height="769" stretch="1">
+		<texture>ui\ui_actor_menu_side_plugs_21</texture>
+	</right>
+</side_plugs>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<string_table>
+
+	<string id="st_esc_sidor_talk_sms">
+		<text>%c[255,0,255,0]Саван, зайди ко мне как будешь неподалёку — есть дело для тебя.</text>
+	</string>
+
+	<string id="st_esc_quest_fee_sms_1">
+		<text>%c[255,255,128,128]Как поживаешь, радиоактивное мясо? Тебе еще сутки на сбор денег, иначе сам знаешь, что будет.</text>
+	</string>
+
+	<string id="st_esc_quest_fee_sms_2">
+		<text>%c[255,255,128,128]И где обещанные деньги? Хорошо, даю тебе еще 12 часов, если не управишься, пеняй на себя!</text>
+	</string>
+
+	<string id="st_esc_quest_fee_sms_3">
+		<text>%c[255,255,128,128]Время для собора денег вышло. Твоего дружка мы на корм собакам пустили, и тебе еще не долго бегать осталось.</text>
+	</string>
+
+	<string id="st_esc_sms_wolf_quest_trimming">
+		<text>%c[255,0,255,0]Саван, привет, тебе деньги еще нужны? А то я тут для тебя работу нашел, подходящую, приходи, расскажу, что почем.</text>
+	</string>
+
+	<string id="st_esc_sms_wolf_quest_insurance">
+		<text>%c[255,0,255,0]Это снова я. Нужна твоя помощь, ты знаешь где меня найти.</text>
+	</string>
+
+	<string id="st_esc_sms_wolf_quest_talk_wolf_work">
+		<text>%c[255,0,255,0]Ты это, заходи, если что, работу для тебя всегда найду...</text>
+	</string>
+
+	<string id="st_esc_sms_logoped_predlog">
+		<text>%c[255,255,128,128]Оба-на!!! Смотрите, кто к нам колеса катит! Ты на территории моей бригады, бродяга. Подкатывай ко мне, перетрем. Может и дело для тебя найдется, во благо нашей братвы.</text>
+	</string>
+
+	<string id="st_esc_sidor_esc_quest_serious_business_sms">
+		<text>%c[255,0,255,0]Саван, есть серьёзная работа для тебя. Жду.</text>
+	</string>
+
+	<string id="st_esc_sidor_esc_quest_dangerous_business_sms">
+		<text>%c[255,0,255,0]Ну что, готов? Давай пулей ко мне, время не ждёт.</text>
+	</string>
+	
+	<string id="st_esc_nps_wood_goblin_quest_sms">
+		<text>%c[255,0,255,0]Саван, не отставай!</text>
+	</string>
+
+	<string id="st_esc_borland_quest_line_sms">
+		<text>%c[255,0,255,0]Саван, как свободен будешь найди меня, разговор есть.</text>
+	</string>
+
+	<string id="st_esc_sms_borland_posle_napadenia">
+		<text>%c[255,0,255,0]Ты куда пропал?! Давай мигом ко мне, я в Дервене новичков, жду тебя.</text>
+	</string>
+
+	<string id="st_esc_sms_borland_assistance_conditional">
+		<text>%c[255,0,255,0]Не парься, Саван, сейчас высвободим тебя.</text>
+	</string>
+
+	<string id="st_esc_sms_logoped_gopstop_fail">
+		<text>%c[255,255,128,128]Ну ты лошара с простым делом справиться не смог!</text>
+	</string>
+
+	<string id="st_esc_borland_underground_1_sms">
+		<text>%c[255,0,255,0]Не отставай, Саван!</text>
+	</string>
+
+	<string id="st_esc_borland_underground_2_sms">
+		<text>%c[255,0,255,0]Надо держаться вместе!</text>
+	</string>
+
+	<string id="st_esc_sidor_underground_sms">
+		<text>%c[255,0,255,0]Саван, отличная новость, я через свои связи узнал мастер код доступа в лабораторию, вот он: 7200</text>
+	</string>
+
+	<string id="st_esc_shaman_group_sms">
+		<text>%c[255,0,255,0]Привет, Саван, я готов принять тебя к нам.</text>
+	</string>
+
+	<string id="st_esc_nps_student_quest_sms">
+		<text>%c[255,0,255,0]Ты куда, подожди!</text>
+	</string>
+
+	<string id="st_esc_nps_student_quest_sms_2">
+		<text>%c[255,0,255,0]Мда! Хороший из тебя проводник оказался.</text>
+	</string>
+
+	<string id="st_esc_shaman_worke">
+		<text>%c[255,0,255,0]Привет, Саван, слышал ты подзаработать не против, подходи, поболтаем, может, найду для тебя подходящую работенку.</text>
+	</string>
+
+	<string id="st_esc_sms_wolf_quest_conductor">
+		<text>%c[255,0,255,0]Нужны деньги? Приходи, я нашел для тебя подходящую работу.</text>
+	</string>
+
+	<string id="st_esc_risovalshik_open_zakaz_sms">
+		<text>%c[255,0,255,0]Покупаю любое оружие в любом состоянии на запчасти. По хорошей цене!</text>
+	</string>
+
+	<string id="st_esc_borland_bar_surget_sms">
+		<text>%c[255,0,255,0]Саван! Надо держаться вместе!</text>
+	</string>
+
+	<string id="st_esc_borland_bar_surget_2_sms">
+		<text>%c[255,0,255,0]Саван! Быстрее! Иначе погибнем!</text>
+	</string>
+
+	<string id="st_bar_sidor_new_details_sms_1">
+		<text>%c[255,0,255,0]Саван, как вы? Живы? О вас ни слуху, ни духу, ни вестей, ни костей! Мне доложили, что вы уже в Баре. Если ты нашел что-то интересное... документы из лаборатории Х5, что я просил, неси Бармену. Насчет того самого артефакта его же и расспроси, у него есть полезная информация.</text>
+	</string>
+
+	<string id="st_bar_sidor_new_details_sms_2">
+		<text>%c[255,0,255,0]Саван, как вы? Живы? О вас ни слуху, ни духу, ни вестей, ни костей! Мне уже доложили с блокпоста на Свалке...</text>
+	</string>
+
+	<string id="st_bar_barmen_new_details_sms">
+		<text>%c[255,0,255,0]Саван, у меня к вам есть дельце, не забыл? Подходи, обсудим.</text>
+	</string>
+
+	<string id="st_bar_send_5_time">
+		<text>Прошло 5ч. 12м.</text>
+	</string>
+
+	<string id="st_bar_expectation_barmen_sms">
+		<text>%c[255,0,255,0]Саван, время вышло. Пора принимать решение. Если готов - подходи, потолкуем.</text>
+	</string>
+
+	<string id="st_bar_dangerous_duty_voronin_sms">
+		<text>%c[255,0,255,0]Саван, время пришло. Дуй к блокпосту, поговори с начальником караула, он тебя проинструктирует относительно дальнейших действий.</text>
+	</string>
+
+	<string id="st_bar_azot_work_sms">
+		<text>%c[255,0,255,0]Привет сталкер, хочешь подзаработать, прошу ко мне. Я на базе Долга.</text>
+	</string>
+
+	<string id="st_bar_barmen_work_arena">
+		<text>%c[255,0,255,0]Можешь сходить на Арену, только будь осторожнее.</text>
+	</string>
+
+	<string id="st_bar_end_barmen_sms">
+		<text>%c[255,0,255,0]Ты живой? Не передумал? Перед тем, как под землю лезть зайди ко мне. Есть кое-что для тебя в дорожку.</text>
+	</string>
+
+	<string id="st_city_sms_genarmy_1">
+		<text>%c[255,255,128,128]Внимание всем бойцам! Основные силы СПЕКТРУМа на главной площади. Атакуем их с фронта. Саван, прикрывай бойцов с фланга. Это приказ.</text>
+	</string>
+
+	<string id="st_city_sms_genarmy_1_1">
+		<text>%c[255,255,128,128]ПРЕДАТЕЛЬ!</text>
+	</string>
+
+	<string id="st_city_sms_genarmy_2">
+		<text>%c[255,255,128,128]Саван, подойди ближе к БТРу, ты слишком далеко. Детонатор не срабатывает.</text>
+	</string>
+
+	<string id="st_city_sms_genarmy_3">
+		<text>%c[255,255,128,128]Эти ублюдки завели вертушку. Саван, бегом на крышу! Не дай им уйти!</text>
+	</string>
+
+	<string id="st_city_sms_genarmy_3_1">
+		<text>%c[255,255,128,128]Ты упустил их!!!</text>
+	</string>
+
+	<string id="st_city_sms_genarmy_4">
+		<text>%c[255,255,128,128]Внимание! Только что засекли боевой вертолет. Приближается к площади. Саван, займись им. По эвакуационному отработают мои бойцы.</text>
+	</string>
+
+	<string id="st_city_sms_genarmy_5">
+		<text>%c[255,255,128,128]Все на штурм Дома Культуры. Там засели наемники и главари СПЕКТРУМа. Пленных не брать!</text>
+	</string>
+
+	<string id="st_city_sms_genarmy_5_1">
+		<text>%c[255,255,128,128]Саван, проверь второй этаж!</text>
+	</string>
+
+	<string id="st_city_sms_genarmy_5_2">
+		<text>%c[255,255,128,128]Саван, проверь подвал!</text>
+	</string>
+
+	<string id="st_city_sms_genarmy_6">
+		<text>%c[255,255,128,128]Саван, кейс у тебя? Неси его ко мне. Бегом!</text>
+	</string>
+
+	<string id="st_city_sms_genarmy_7">
+		<text>%c[255,255,128,128]Саван, ты что задумал, гадёныш? Тебе кабзда! Внимание всем – приказываю уничтожить предателя!</text>
+	</string>
+
+	<string id="st_bar_send_12_time">
+		<text>Прошло 12ч. 08м.</text>
+	</string>
+
+</string_table>

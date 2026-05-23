@@ -1,0 +1,21 @@
+--[[
+	=====================================================================
+	Addon      : Tosox Mini Mods Repo: Utjan's Item UI Improvements - Armor Info Enhanced
+	Link       : https://www.moddb.com/mods/stalker-anomaly/addons/tosox-mini-mods-repo/
+	Author     : Lizzardman, Tosox
+	Date       : 12.04.2024
+	Last Edit  : 12.04.2024
+	=====================================================================
+--]]
+
+dynamic_eq_icon_dyneq_armorfaction = dynamic_eq_icon.dyneq_armorfaction
+dynamic_eq_icon.dyneq_armorfaction = function(cell, obj, sec)
+    if obj.id then
+        local is_unpatched = se_load_var(obj:id(), obj:name(), "unpatched")
+        if is_unpatched then
+            return nil
+        end
+    end
+
+    return dynamic_eq_icon_dyneq_armorfaction(cell, obj, sec)
+end

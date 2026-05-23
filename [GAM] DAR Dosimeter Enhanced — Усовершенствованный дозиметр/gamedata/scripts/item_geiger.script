@@ -1,0 +1,150 @@
+local _device = "detector_geiger"
+local is_anm_playing = false
+local tg_acon = 0
+local tg_acon_step = 180
+
+local simple_mode = item_geiger_mcm.get_config("mode")
+
+
+function on_game_start()
+    RegisterScriptCallback("on_option_change", on_option_change)
+    RegisterScriptCallback("on_key_release", on_key_release)
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+end
+
+
+function on_option_change()
+    simple_mode = item_geiger_mcm.get_config("mode")
+    if simple_mode then
+        item_device.dosimeter_env_rads_mode = false
+    else
+        item_device.dosimeter_env_rads_mode = true
+    end
+
+end
+
+
+function actor_on_first_update()
+    if not simple_mode then
+        item_device.dosimeter_env_rads_mode = true --force dosimeter to show only environment rads
+    end
+end
+
+
+function actor_on_update()
+    local math_floor = math.floor
+    local math_random = math.random
+    -- local env_rads = math.floor(level.get_env_rads() * 2500)
+    local env_rads = arszi_radiation and math_floor(arszi_radiation.environmental_radiation * 2500) or math_floor(level.get_env_rads() * 2500)
+    local rads = math_floor(db.actor.radiation * 10000 * 0.387)
+
+    if env_rads > rads then
+        item_device.dosimeter_env_rads_mode = true
+    else
+        item_device.dosimeter_env_rads_mode = false
+    end
+
+    --try play sound
+    local actor = db.actor
+    local radiation = actor.radiation
+    local tg = time_global()
+    if tg > tg_acon then
+        tg_acon = tg + tg_acon_step
+
+        if (radiation > 0) then
+            if (math_random() < radiation) then
+                radiation = (radiation > 0.5) and (math_random() < radiation / 1.3) and "click3" or math_random(8)
+                local snd = sound_object("detectors\\geiger_" .. radiation)
+                snd:play(actor, 0, sound_object.s2d)
+            end
+        end
+    end
+end
+
+
+function on_key_release(key)
+    if key ~= DIK_keys["MOUSE_1"] then return end 
+    if is_anm_playing then return end
+    if not is_empty(_GUIs) then return end --if some ui opened and we click left mouse button - do nothing
+
+    local detector = db.actor:active_detector()
+    local wep = db.actor:active_item()
+
+    if detector and (detector:section() == _device) and (not wep) then
+        local state = detector:get_state()
+        if item_device.is_device_charged(detector) and state == 0 then
+            -- if simple mode just switch geiger modes, if not perform selfscan
+            if simple_mode then
+
+                is_anm_playing = true
+                game.only_allow_movekeys(true)
+
+                if item_device.dosimeter_env_rads_mode then
+                    local anm_length = game.get_motion_length("detector_geiger_hud", "anm_geiger_modeswitch", 1) / 1000
+                    detector:play_hud_motion("anm_geiger_modeswitch", true, 1, 1, 0) --anm name, use_anm_crossfade, state(during animation)?, speed, end(state after animation)?
+                    utils_obj.play_sound("new_detectors\\dosimeter\\dosimeter_modeswitch")
+                    Invoke("geiger_mode_switch_te0", 0.6, function()
+                        item_device.dosimeter_env_rads_mode = false
+				        actor_menu.set_msg(1, game.translate_string("st_dosimeter_mode")..": "..game.translate_string("st_actor_rads") , 3)
+                    end)
+                    Invoke("geiger_mode_switch_te1", anm_length + 0.1, function()
+                        game.only_allow_movekeys(false)
+                        is_anm_playing = false
+                    end)
+                else
+                    local anm_length = game.get_motion_length("detector_geiger_hud", "anm_geiger_modeswitch_b", 1) / 1000
+                    detector:play_hud_motion("anm_geiger_modeswitch_b", true, 1, 1, 0)
+                    utils_obj.play_sound("new_detectors\\dosimeter\\dosimeter_modeswitch_b")
+                    Invoke("geiger_mode_switch_te0", 0.6, function()
+                        item_device.dosimeter_env_rads_mode = true
+				        actor_menu.set_msg(1, game.translate_string("st_dosimeter_mode")..": "..game.translate_string("st_environment_rads") , 3)
+                    end)
+                    Invoke("geiger_mode_switch_te1", anm_length + 0.1, function()
+                        game.only_allow_movekeys(false)
+                        is_anm_playing = false
+                    end)
+                end
+
+
+            else
+
+                --stop self scan from playing till we finish current one
+                is_anm_playing = true
+                game.only_allow_movekeys(true)
+                
+                --perform self scan
+                local anm_length = game.get_motion_length("detector_geiger_hud", "anm_geiger_scan", 1) / 1000
+                
+                detector:play_hud_motion("anm_geiger_scan", true, 1, 1, 0)
+                utils_obj.play_sound("new_detectors\\dosimeter\\dosimeter_selfscan")
+
+                Invoke("geiger_self_scan_start_te", 0.8, function ()
+                    RegisterScriptCallback("actor_on_update", actor_on_update)
+                end)
+                
+                Invoke("geiger_self_scan_end_te", 3.8, function ()
+                    UnregisterScriptCallback("actor_on_update", actor_on_update)
+                    item_device.dosimeter_env_rads_mode = true
+                end)
+                
+                Invoke("geiger_self_scan_end_te1", anm_length + 0.25, function ()
+                    game.only_allow_movekeys(false)
+                    is_anm_playing = false
+                end)
+
+            end
+                
+        end
+    end
+end
+
+
+----------------------------------------
+-- utils cus i'm lazy to type one more string and "return true" at the end for some reason
+----------------------------------------
+function Invoke(name, time, action)
+    CreateTimeEvent("liz_geiger_overhaul", name, time, function()
+        action()
+        return true
+    end)
+end

@@ -1,0 +1,146 @@
+
+
+
+local cur_slot, hud_fov, det_active
+function play_cooker_anm(cooker)
+	printf("en play_ta_a")
+	-- prepare anm
+	hide_hud_inventory()
+
+	game.only_allow_movekeys(true)
+
+	hud_fov = ui_options.get("video/basic/hud_fov")
+	exec_console_cmd("hud_fov 0.55")
+
+	cur_slot = db.actor:active_slot()
+
+	det_active = db.actor:active_detector() or nil
+	if det_active then det_active:switch_state(2) end
+
+	db.actor:activate_slot(0)
+	level.disable_input()
+
+	local function check_n_play()
+		if db.actor:active_slot() == 0 and not db.actor:active_detector() then
+			play_cook_anm(cooker)
+			return true
+		end
+		return false
+	end
+
+	CreateTimeEvent("cooker_anm_e", "cooker_anm_a", 0, check_n_play)
+
+end
+
+function play_cook_anm(cooker)
+	local length = 0
+    printf("en play_cook_anm llega "..cooker)
+	printf("lo que trata de ejecutar ".."ck_" .. cooker .. "_hud")
+    if cooker ~= nil then
+        length = length + game.get_motion_length("ck_" .. cooker .. "_hud", "anm_cook_show", 1) / 1000
+		printf("creo length "..length)
+        local function delay_cook_anm()
+            game.play_hud_motion(2, "ck_" .. cooker .. "_hud", "anm_cook_show", false, 1)
+			printf("ejecuta hud motion")
+            level.add_cam_effector("itemuse_anm_effects\\" .. cooker .. "_cam.anm", 7400, false, "")
+			printf("ejecuta camara")
+            local cook_snd = sound_object("interface\\item_usage\\inv_cooking_stove")
+			printf("ejecuta sonido")
+            cook_snd:play_no_feedback(db.actor, sound_object.s2d, 0, VEC_ZERO, 1.0, 1.0)
+			printf("sonido2")
+            return true
+        end
+		print("empieza time event")
+		--delay_cook_anm()
+        CreateTimeEvent(cooker .. "_hud", "anm_cook_show", 0, delay_cook_anm)
+		printf("termina time event")
+    end
+
+	CreateTimeEvent("ck_restore_settings_e", "ck_restore_settings_a", length, restore)
+end
+
+function restore()
+	game.only_allow_movekeys(false)
+
+	exec_console_cmd("hud_fov " .. hud_fov)
+
+	db.actor:activate_slot(cur_slot or 0)
+
+	if det_active then det_active:switch_state(1) end
+
+	level.enable_input()
+	return true
+end
+
+local _size = 2
+
+function item_cooking.UICook:OnCook()
+	local meal = self:GetSelectedMeal()
+	if (not meal) then
+		return
+	end
+
+	-- Discharge cooking fuel if its not a campfire
+	if (not is_campfire) then
+		local sec_fuel = self:GetAvailFuel(meal.fuel_tier, true)
+		local id_fuel = sec_fuel and random_key_table(self.objs[sec_fuel])
+		if id_fuel then
+			local obj_fuel = level.object_by_id(id_fuel)
+			if obj_fuel then
+				utils_item.discharge(obj_fuel)
+			end
+		end
+	end
+	
+	-- Discharge Ingredients
+	for i=1,_size do
+		if meal[i] then
+			local sec = meal[i].sec
+			local amt = meal[i].amt
+			local stop
+			for id,uses in pairs(self.objs[sec]) do
+				if stop then
+					break
+				end
+				
+				if ((amt - uses) >= 0) then
+					local se_obj = alife_object(id)
+					if se_obj then
+						if ((amt - uses) == 0) then
+							stop = true
+						end
+						amt = amt - uses
+						alife_release(se_obj)
+					end
+				else
+					stop = true
+					local obj = level.object_by_id(id)
+					if obj then
+						obj:set_remaining_uses(uses - amt)
+					end
+				end
+			end
+		end
+	end
+	
+	-- Give cooked meal
+	alife_create_item(meal.sec, db.actor)
+	
+	-- Discharge cooking tool
+	if self.cooking_limited then
+		utils_item.discharge(self.obj)
+	end
+	
+	-- Effect
+	if (self.cooking_use_actor_effects and actor_effects) then
+	
+		if self.section == "fieldcooker" then
+			play_cooker_anm(self.section)
+		else
+			actor_effects.play_item_fx(self.section.."_dummy")
+		end
+	end
+	
+	-- Hide dialog
+	self:Close()
+end

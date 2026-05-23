@@ -1,0 +1,153 @@
+local ctime_to_t = utils_data.CTime_to_table
+local t_to_ctime = utils_data.CTime_from_table
+
+local reset_time
+local gui_shown = false
+current_period = 0
+cur_reward = 0
+team_bet = 0
+
+-- current index teams is emptied on fight end
+-- previous team indices lower than current index are emptied on gui refresh
+-- all team indices are empties on schedule reset here
+arena_main_t = {
+	[1] = { min= 9, max=11, team1={}, team2={}, pwrs={} },
+	[2] = { min= 11, max=13, team1={}, team2={}, pwrs={} },
+	[3] = { min= 13, max=15, team1={}, team2={}, pwrs={} },
+	[4] = { min= 15, max=17, team1={}, team2={}, pwrs={} },
+	[5] = { min= 17, max=19, team1={}, team2={}, pwrs={} },
+	[6] = { min= 19, max=21, team1={}, team2={}, pwrs={} },
+	[7] = { min= 21, max=23, team1={}, team2={}, pwrs={} },
+}
+
+function actor_on_first_update()
+	xcvb_arena_utils.handle_removed_teams()
+
+	if has_alife_info("arena_obj_spawned") then return end
+	xcvb_arena_utils.spawn_board()
+	xcvb_arena_utils.spawn_balcony()
+	give_info("arena_obj_spawned")
+end
+
+function generate_new_fights()
+	local math_random = math.random
+	-- reset table
+	for i, t in ipairs(arena_main_t) do
+		iempty_table(arena_main_t[i].team1)
+		iempty_table(arena_main_t[i].team2)
+		iempty_table(arena_main_t[i].pwrs)
+	end
+
+	-- try to fill team 1
+	local fight_chance = xcvb_arena_mcm.get_config("fight_chance")
+	local team1_stalker_chance = xcvb_arena_mcm.get_config("stalker_team1_chance")
+	local team2_stalker_chance = xcvb_arena_mcm.get_config("stalker_team2_chance")
+
+	local team1_mutant_type = {}
+
+	for i, t in ipairs(arena_main_t) do
+		if fight_chance >= math_random() then
+			-- try to spawn stalkers first, else mutants
+			if team1_stalker_chance >= math_random() then
+				local amount = math_random(2, 5)
+				arena_main_t[i].team1, arena_main_t[i].pwrs[1] = xcvb_arena_utils.get_stalker_team(amount)
+			else
+				local amount = math_random(2, 5)
+				arena_main_t[i].team1, arena_main_t[i].pwrs[1], team1_mutant_type[i] = xcvb_arena_utils.get_mutant_team(amount)
+			end
+		end
+	end
+
+	-- fill team 2
+	for i, t in ipairs(arena_main_t) do
+		if #t.team1 > 0 then
+			if team2_stalker_chance >= math_random() then
+				local amount = math_random(2, 5)
+				arena_main_t[i].team2, arena_main_t[i].pwrs[2] = xcvb_arena_utils.get_stalker_team(amount)
+			else
+				local amount = math_random(2, 5)
+				arena_main_t[i].team2, arena_main_t[i].pwrs[2], valid_var = xcvb_arena_utils.get_mutant_team(amount, team1_mutant_type[i])
+				-- if enemies are empty - clear teams for this index
+				if not valid_var then
+					printf("~ xcvb arena, No mutant enemies found for i: %s | typ: %s", i, team1_mutant_type[i])
+					iempty_table(arena_main_t[i].team1)
+					iempty_table(arena_main_t[i].team2)
+					iempty_table(arena_main_t[i].pwrs)
+				end
+			end
+		end
+	end
+
+end
+
+function update_period()
+	local new_period = xcvb_arena_utils.get_new_period()
+	if new_period and #arena_main_t[new_period].team1 > 0 then
+		current_period = new_period
+	else
+		current_period = 0
+	end
+end
+
+local tmr = 0
+function actor_on_update()
+	local tg = time_global()
+	if tmr > tg then return end
+	tmr = tg + 5000
+
+	-- do not reset/update when in gui
+	if gui_shown then return end
+
+	-- reset table
+	local cur_time = game.get_game_time()
+	if (not reset_time) or cur_time:diffSec(t_to_ctime(reset_time)) > 86400 then
+		local Y, M, D, h, m, s, ms = 0, 0, 0, 0, 0, 0, 0
+		Y, M, D, h, m, s, ms = cur_time:get(Y, M, D, h, m, s, ms)
+		cur_time:set(Y, M, D, 0, 1, 0, 0)
+		reset_time = ctime_to_t(cur_time)
+
+		generate_new_fights()
+
+	end
+
+	-- update period
+	update_period()
+
+end
+
+function GUI_on_show(gui)
+	if gui == "XArena" then
+		gui_shown = true
+	end
+end
+
+function GUI_on_hide(gui)
+	if gui == "XArena" then
+		gui_shown = false
+	end
+end
+
+function save_state(m_data)
+	m_data.xcvb_arena_main_t = arena_main_t
+	m_data.xcvb_arena_reset_time = reset_time
+	m_data.xcvb_arena_cur_period = current_period
+	m_data.xcvb_arena_cur_reward = cur_reward
+	m_data.xcvb_arena_team_bet = team_bet
+end
+
+function load_state(m_data)
+	arena_main_t = m_data.xcvb_arena_main_t or arena_main_t
+	reset_time = m_data.xcvb_arena_reset_time or reset_time
+	current_period = m_data.xcvb_arena_cur_period or current_period
+	cur_reward = m_data.xcvb_arena_cur_reward or cur_reward
+	team_bet = m_data.xcvb_arena_team_bet or team_bet
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+	RegisterScriptCallback("GUI_on_show", GUI_on_show)
+	RegisterScriptCallback("GUI_on_hide", GUI_on_hide)
+	RegisterScriptCallback("save_state", save_state)
+	RegisterScriptCallback("load_state", load_state)
+end

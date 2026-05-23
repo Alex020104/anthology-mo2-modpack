@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+
+<string_table>
+	<string id="passinc_salary_started">
+		<text>Has iniciado un nuevo contrato salarial.</text>
+	</string>
+
+	<string id="passinc_salary_stopped_basic">
+		<text>Contrato salarial finalizado, deber&#225;s esperar un d&#237;a para comenzar uno nuevo.</text>
+	</string>
+
+	<string id="passinc_salary_ready">
+		<text>Tu salario de %s est&#225; listo para ser recogido.</text>
+	</string>
+
+	<string id="passinc_salary_stopped_lazy">
+		<text>Te relajaste demasiado y tu empleador ya ha tenido suficiente, tu contrato ha sido revocado.</text>
+	</string>
+
+	<string id="passinc_lazy_warning_1">
+		<text>&#161;Oye! Acerca de tu rendimiento, hoy realmente no hiciste mucho. Si sigues as&#237;, no creas que recibir&#225;s tu pago.</text>
+	</string>
+
+	<string id="passinc_lazy_warning_2">
+		<text>Si quieres conservar tu salario, realmente necesitas hacer m&#225;s. Vamos.</text>
+	</string>
+
+	<string id="passinc_lazy_warning_3">
+		<text>Esta es tu &#250;ltima advertencia. Si sigues sin hacer nada, ma&#241;ana no tendr&#225;s tu pago.</text>
+	</string>
+
+	<string id="passinc_promotion">
+		<text>&#161;Has obtenido un ascenso! Consulta tu PDA para obtener m&#225;s detalles.</text>
+	</string>
+
+	<string id="passinc_gfcmod_salary_share">
+		<text>Compartiste el salario con tus compa&#241;eros. Tu reputaci&#243;n y confianza con ellos aumentaron.</text>
+	</string>
+
+	<string id="passinc_salary_share">
+		<text>Compartiste tu salario con tus compa&#241;eros. Tu reputaci&#243;n se increment&#243;.</text>
+	</string>
+
+	<string id="passinc_accumulate_complete_task">
+		<text>\nTareas completadas: %s</text>
+	</string>
+
+	<string id="passinc_accumulate_monster_killed">
+		<text>\nMutantes eliminados: %s</text>
+	</string>
+
+	<string id="passinc_accumulate_npc_killed">
+		<text>\nEnemigos de facci&#243;n eliminados: %s</text>
+	</string>
+
+	<string id="passinc_accumulate_money">
+		<text>\nDinero ganado en el d&#237;a: %s</text>
+	</string>
+
+
+</string_table>
+

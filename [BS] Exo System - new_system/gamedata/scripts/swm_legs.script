@@ -1,0 +1,23 @@
+-- Legacy SWM legs are replaced by engine-side legs on this build.
+-- Keep a tiny compatibility surface so older exo helpers do not error.
+
+swm_legs = swm_legs or {}
+se_legs = se_legs or { LegsTbl = {} }
+
+swm_legs.LEGS_SECTION = swm_legs.LEGS_SECTION or nil
+
+function swm_legs.reset_legs_model()
+    return true
+end
+
+function swm_legs.actor_item_to_slot(item)
+    return item ~= nil
+end
+
+function swm_legs.get_actor_body_flag()
+    return false
+end
+
+function on_game_start()
+    return true
+end

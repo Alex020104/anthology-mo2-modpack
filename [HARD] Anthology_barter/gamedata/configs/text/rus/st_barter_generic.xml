@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+    <string id="st_generic_done">
+        <text>Молодец, сталкер. Спасибо за помощь.</text>
+    </string>
+    
+    <string id="st_generic_thanks">
+        <text>Благодарю, сталкер.</text>
+    </string>
+    
+</string_table>

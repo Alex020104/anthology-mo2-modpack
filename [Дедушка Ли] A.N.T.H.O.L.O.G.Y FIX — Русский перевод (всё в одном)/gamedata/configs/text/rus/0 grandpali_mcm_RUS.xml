@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<!----------------  Ammo Maker  (нет перевода RUS в st_ammo_parts ------------------->
+
+    <string id="ui_mcm_menu_ammomaker">
+        <text>Производство боеприпасов</text>
+    </string>
+    <string id="ui_mcm_ammomaker_title">
+        <text>Производство боеприпасов</text>
+    </string>
+    <string id="ui_mcm_ammomaker_old_salvage">
+        <text>Шанс утилизации боеприпасов</text>
+    </string>
+    <string id="ui_mcm_ammomaker_old_salvage_desc">
+        <text>Множитель утилизации для стандартных боеприпасов. Этот множитель суммируется на шансы утилизации отдельных компонентов. Например, если у вас есть 50% шанс утилизировать гильзы, а этот ползунок установлен на 60%, ваш окончательный шанс будет (0,5 * 0,6) = 0,3, или 30% шанс на восстановление гильз.
+        </text>
+    </string>
+    <string id="ui_mcm_ammomaker_old_salvage">
+        <text>Множитель утилизации боеприпасов</text>
+    </string>
+    <string id="ui_mcm_ammomaker_old_salvage_desc">
+        <text>Множитель для стандартных боеприпасов. Этот множитель суммируется на шансы на восстановление отдельных компонентов. Например, если у вас есть 50% шанс на восстановление гильз, а этот ползунок установлен на 60%, ваш окончательный шанс будет (0,5 * 0,6) = 0,3, или 30% шанс на восстановление гильз.
+        </text>
+    </string>
+    <string id="ui_mcm_ammomaker_new_salvage">
+        <text>Множитель эффективности сбора боеприпасов</text>
+    </string>
+    <string id="ui_mcm_ammomaker_new_salvage_desc">
+        <text>Множитель шанса на спасение для необычных боеприпасов (при использовании Anomaly Ballistic Framework). Этот множитель добавляется к шансу на спасение отдельных компонентов. Например, если у вас есть 50% шанс на спасение гильз, а этот ползунок установлен на 60%, ваш окончательный шанс будет (0,5 * 0,6) = 0,3, или 30% шанс на спасение гильз.
+        </text>
+    </string>
+    <string id="ui_mcm_ammomaker_powder">
+        <text>Шанс на извлечение пороха/взрывчатки</text>
+    </string>
+    <string id="ui_mcm_ammomaker_powder_desc">
+        <text>Шанс извлечь порох/взрывчатку при разборке боеприпасов.
+        </text>
+    </string>
+    <string id="ui_mcm_ammomaker_casing">
+        <text>Шанс на извлечение гильзы</text>
+    </string>
+    <string id="ui_mcm_ammomaker_casing_desc">
+        <text>Возможность извлечения гильз при разборке боеприпасов.
+        </text>
+    </string>
+	
+    <string id="ui_mcm_ammomaker_bullet">
+        <text>Шанс на извлечение пули</text>
+    </string>
+    <string id="ui_mcm_ammomaker_bullet_desc">
+        <text>Возможность извлечения пуль при разборке боеприпасов.
+        </text>
+    </string>
+
+	<!----------------  ------------------->
+
+
+	
+	</string_table>
+
+
+
+
+
+
+
+
+
+

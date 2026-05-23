@@ -1,0 +1,31 @@
+function on_mcm_load()
+    op = { id= "passive_income",sh=true ,gr={
+            {id = "title",                          type= "slide", link= "ui_options_slider_player", text="ui_mcm_passinc_title", size= {512,50}, spacing= 20},
+
+            {id = "salary_mult",                    type = "track", val = 2, min=0,    max=5,     step=0.1,     def = 1},
+            {id = "max_money_mult",                    type = "track", val = 2, min=0.5,    max=10,     step=0.1,     def = 1},
+            {id = "progress_mult",                    type = "track", val = 2, min=0.1,    max=10,     step=0.1,     def = 1},
+            {id = "give_promo_prizes",                     type = "check", val = 1, def=true},
+            {id = "debug_mode",                     type = "check", val = 1, def=false},
+			{id = "paytime_start",                  type = "track", val = 2, min=0, max=24, step=1, def = 10, text="Pay Time Start"},
+			{id = "max_lazy_days",                  type = "track", val = 2, min=1, max=7, step=1, def = 3},
+
+		}
+    }
+    return op
+end 
+
+-- If you don't use MCM, change your defaults from here.
+local defaults = {
+    ["salary_mult"] = 1.0,
+    ["max_money_mult"] = 1.0,
+    ["progress_mult"] = 1.0,
+    ["give_promo_prizes"] = true,
+    ["debug_mode"] = false,
+	["paytime_start"] = 10,
+    ["max_lazy_days"] = 03,
+}
+
+function get_config(key)
+    if ui_mcm then return ui_mcm.get("passive_income/"..key) else return defaults[key] end
+end

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+  <string id="st_burnshit_burn">
+    <text>burn</text>
+  </string>
+
+  <string id="st_burnshit_burn_all">
+    <text>burn all</text>
+  </string>
+
+  <string id="ui_mcm_menu_burnshit">
+    <text>Burn Shit</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_useMenu">
+    <text>Burn Shit through the Context Menu</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_useMenu_desc">
+    <text>Show "burn" and "burn all" items in the inventory's context menu. You need to be near (within 3m of) a fire to do this.</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_useDragDrop">
+    <text>Burn Shit by Dragging and Dropping</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_useDragDrop_desc">
+    <text>Burn items you drag and drop from the inventory onto a campfire. You need to be next to (within 2m of) a fire to do this.</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_burnQuestItems">
+    <text>Allow Burning of Quest Items</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_burnQuestItems_desc">
+    <text>Allow burning of items flagged with "quest_item = true". If you enable this, just be careful not to burn something you might need for a quest.</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_burnUntradeables">
+    <text>Allow Burning of Untradeable Items</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_burnUntradeables_desc">
+    <text>Allow burning of items flagged with "can_trade = false". I threw this option in but don't really know if disabling it is useful.</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_burnAll">
+    <text>Show "Burn All" Button</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_burnAll_desc">
+    <text>Choose to show a "burn all" context menu item always, never, or only when right clicking multiple-item stacks.</text>
+  </string>
+
+  <string id="ui_mcm_lst_burnshit_never">
+    <text>Never</text>
+  </string>
+
+  <string id="ui_mcm_lst_burnshit_always">
+    <text>Always</text>
+  </string>
+
+  <string id="ui_mcm_lst_burnshit_multiple">
+    <text>Only for Multiple Items</text>
+  </string>
+</string_table>

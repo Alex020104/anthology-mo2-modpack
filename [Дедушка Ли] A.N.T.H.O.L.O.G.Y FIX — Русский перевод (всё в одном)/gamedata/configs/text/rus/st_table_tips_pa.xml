@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<string_table>
+
+	<string id="st_pb_nps_moskit_quest_sms">
+		<text>%c[54,199,169,96]Я потерял тебя из виду! Вернись ко мне!</text>
+	</string>
+
+	<string id="st_pb_nps_moskit_quest_sms_2">
+		<text>%c[54,199,169,96]Всё, я вижу тебя, продолжаем движение. Только, не уходи далеко!</text>
+	</string>
+
+	<string id="st_pb_moskit_talk_to_kill_zombied_pda">
+		<text>%c[54,199,169,96]Ну всё, справились вроде бы. Обыщи трупы, нам сейчас нужны любые припасы.</text>
+	</string>
+
+	<string id="st_pb_murad_found_stalkers">
+		<text>%c[255,220,20,60]SOS, SOS! Есть тут кто? Сталкеры, отзовитесь, нужна помощь! За мной погоня, все кто рядом, помогите... Высылаю данные о своем местонахождении.</text>
+	</string>
+
+	<string id="st_pb_nps_murad_quest_sms">
+		<text>%c[54,199,169,96]Здесь опасно, Зверь, нужно держатся вместе! Вернись ко мне!</text>
+	</string>
+
+	<string id="st_pb_nps_murad_quest_sms_2">
+		<text>%c[54,199,169,96]Продолжаем движение. Только не убегай далеко!</text>
+	</string>
+
+	<string id="st_pb_shurup_crash_habar_sms">
+		<text>%c[255,220,20,60]Зверь, я открыл контейнер-тайник Падальщика, в нем оказалось довольно много вещей, часть я могу отдать тебе. Подходи, я тебя жду.</text>
+	</string>
+
+	<string id="st_pb_rezak_send_mes_actor_1">
+		<text>%c[255,220,20,60]Наёмник, у меня патронов нет, огнем поддержать не смогу.</text>
+	</string>
+
+	<string id="st_pb_rezak_send_mes_actor_done">
+		<text>%c[255,220,20,60]Хорошая работа, наёмник. Возвращайтесь с Москитом на базу, меня не ждите.</text>
+	</string>
+
+	<string id="st_pb_rezak_send_mes_actor_false">
+		<text>%c[255,220,20,60]Черт, эти твари Москита пришили...</text>
+	</string>
+
+	<string id="st_pb_rezak_send_mes_lutiy">
+		<text>%c[255,220,20,60]Лютый, зомбированные уже на холме... Если их не остановить, то они скоро и к сараю дойдут.</text>
+	</string>
+
+	<string id="st_pb_markus_send_quest_sms">
+		<text>%c[255,220,20,60]Зверь, мне нужно с тобой поговорить, подойди ко мне.</text>
+	</string>
+
+	<string id="st_pb_markus_send_after_quest_sms">
+		<text>%c[255,220,20,60]Зверь, я вижу ты с ребятами и без меня справился, возвращайся на базу, заодно и я вернусь сейчас. Кувалда и Змей сами мясо к базе принесут.</text>
+	</string>
+
+	<string id="st_pb_markus_enemy_signal_quest_sms">
+		<text>%c[255,220,20,60]Зверь, я поймал какой-то сигнал возле сарая, ты недалеко от него, сходи туда и узнай, что там творится.</text>
+	</string>
+
+	<string id="st_pb_markus_send_sms_memmory">
+		<text>%c[255,220,20,60]Зверь, молодец! Твое наступление отвлекло Тесака и позволило взять ситуацию под наш контроль. Мы взяли нескольких наёмников в плен, но Тесаку и остальным удалось сбежать. В общем, беги к нам, Лютый хочет с тобой поговорить.</text>
+	</string>
+
+	<string id="st_pb_duty_tachenko_sends_sms_1">
+		<text>%c[255,220,20,60]Зверь, есть к тебе один разговор. Зайди ко мне!</text>
+	</string>
+
+	<string id="st_pb_duty_tachenko_sends_sms_2">
+		<text>%c[255,220,20,60]Зверь, в подземелье творится что-то странное. Зайди ко мне!</text>
+	</string>
+
+	<string id="st_pb_snake_clean_water_send_mes">
+		<text>%c[255,220,20,60]Зверь, заходи за флягой с водой. Я очистил воду.</text>
+	</string>
+
+	<string id="st_pb_dubolom_quest_sends_sms_1">
+		<text>%c[255,220,20,60]Зверь, нужна твоя помощь, подойди ко мне!</text>
+	</string>
+
+	<string id="st_pb_lesnik_quest_sends_sms_1">
+		<text>%c[255,220,20,60]Наёмник, ну где ты там ходишь? Надоело уже ждать тебя, иди ко мне.</text>
+	</string>
+
+	<string id="st_pb_razrab_sends_sms">
+		<text>%c[255,220,20,60]Поздравляю, вы только что прошли до конца часть сюжета. Продолжение следует, ждите нового апдейта.</text>
+	</string>
+
+	<string id="st_proffesional">
+		<text>PROFFESIONAL (Разработчик):</text>
+	</string>
+
+	<string id="st_pb_npc_lesnik_quest_out">
+		<text>%c[54,199,169,96]Здесь опасно, наёмник. Вернись ко мне!</text>
+	</string>
+
+	<string id="st_pb_npc_lesnik_quest_in">
+		<text>%c[54,199,169,96]Продолжаем движение, наёмник. Только не убегай далеко!</text>
+	</string>
+
+	<string id="st_esc_dubolom_quest_sends_sms_1">
+		<text>%c[54,199,169,96]Наёмник, ну где ты там? Давай догоняй, нам пси-собаку найти нужно.</text>
+	</string>
+
+	<string id="st_esc_dubolom_quest_sends_sms_2">
+		<text>%c[54,199,169,96]Наёмник, продолжаем движение. Только постарайся не отставать!</text>
+	</string>
+
+	<string id="st_esc_wolf_send_new_quest_sms">
+		<text>%c[255,220,20,60]Наёмники, я так понимаю, что вы пришли к Сидоровичу, но он не может вас принять сейчас. Подойдите ко мне, есть разговор с вашим главой.</text>
+	</string>
+
+	<string id="st_esc_trader_send_new_quest_sms_1">
+		<text>%c[255,220,20,60]О, маяк заработал! Жди, сейчас попробую найти сигнал КПК Клима, как только найду - сообщу тебе.</text>
+	</string>
+
+	<string id="st_esc_trader_send_new_quest_sms_2">
+		<text>%c[255,220,20,60]Наёмник, я засёк его, он недалеко от тебя, с ним еще один неизвестный сигнал. Сейчас передам координаты этого места.</text>
+	</string>
+
+	<string id="st_esc_send_tip_sidorovich_trade_enable">
+		<text>%c[255,220,20,60]Внимание, скидка на все товары пять процентов. Всех заинтересованных жду у себя в бункере.</text>
+	</string>
+
+	<string id="st_esc_send_tip_sidorovich_trade_generic">
+		<text>%c[255,220,20,60]Обновил ассортимент, заходите.</text>
+	</string>
+
+	<string id="st_esc_send_tip_sidorovich_buy_art">
+		<text>%c[255,220,20,60]Куплю артефакты по хорошей цене, жду у себя.</text>
+	</string>
+
+	<string id="st_esc_nps_zver_quest_sms">
+		<text>%c[54,199,169,96]Ворон, я отправляюсь проверить одно место по просьбе Волка, ты пока побудь в деревне, расспроси сталкеров о нашем деле.</text>
+	</string>
+
+	<string id="st_esc_nps_zver_quest_sms_1">
+		<text>%c[54,199,169,96]Ворон, оставайся пока в деревне, попробуй хоть что-то узнать о наших недавних гостях, твоя помощь в данный момент не требуется.</text>
+	</string>
+
+	<string id="st_esc_nps_zver_quest_sms_2">
+		<text>%c[54,199,169,96]Ворон, у военных для нас контракт на убийство, наша цель глава базы Нейтралов - Отец Валерьян. Немного позже приду, нужно будет обсудить детали контракта с тобой.</text>
+	</string>
+
+	<string id="st_esc_qrif_quest_sms">
+		<text>%c[255,220,20,60]Зверь, Шакал прислал наёмников для охраны бункера торговца. Что делать с ними, отправлять к торговцу?</text>
+	</string>
+
+	<string id="st_esc_nps_zver_quest_sms_3">
+		<text>%c[54,199,169,96]Наёмников можешь отправлять к Сидоровичу, заодно проверь, перевёл ли он оплату за них.</text>
+	</string>
+
+	<string id="st_esc_qrif_quest_sms_1">
+		<text>%c[255,220,20,60]Понял, сейчас же этим и займусь.</text>
+	</string>
+
+	<string id="st_esc_nps_zver_quest_sms_4">
+		<text>%c[54,199,169,96]Гриф, отправь Бизона на железнодорожный мост, пускай ведёт наблюдение за фермой, а именно, чтобы Валерьян не покинул базу без нашего ведома.</text>
+	</string>
+
+	<string id="st_esc_qrif_quest_bar_sms_1">
+		<text>%c[255,220,20,60]Зверь, наёмники, для охраны Бара, прибыли.</text>
+	</string>
+
+	<string id="st_esc_qrif_quest_bizon_sms_1">
+		<text>%c[255,220,20,60]Хорошо, сейчас оповещу Бизона.</text>
+	</string>
+
+	<string id="st_esc_zver_sends_sms_yaroshuk">
+		<text>%c[54,199,169,96]Лейтенант, это Зверь, контракт выполнен.</text>
+	</string>
+
+	<string id="st_esc_zver_sends_sms_raven">
+		<text>%c[54,199,169,96]Ворон, избавтесь от трупом и возвращайтесь на АТП, я к военным за наградой схожу.</text>
+	</string>
+
+	<string id="st_esc_yaroshuk_sends_sms_zver">
+		<text>%c[255,220,20,60]Отлично, утром жду тебя там-же.</text>
+	</string>
+
+	<string id="st_esc_razvedka_quest_sms_1">
+		<text>%c[255,220,20,60]Нейтралы на базе только-что растреляли какого-то сталкера, сразу же после этого, Отец Валерьян, вместе с группой из четырех человек, покинул базу и направился в сторону туннеля в Тёмную Долину.</text>
+	</string>
+
+	<string id="st_esc_raven_final_sends_sms">
+		<text>%c[255,220,20,60]Зверь, тут Мракобес на Кордон прибыл, он уже на АТП. Попросил позвать тебя, говорит, что у него есть к тебе личный разговор.</text>
+	</string>
+
+	<string id="st_esc_send_tip_sidorovich_from_act">
+		<text>%c[255,220,20,60]Наёмник, я слышал, ты разжился ценной информацией. Зайди, я хорошо заплачу.</text>
+	</string>
+
+	<string id="st_esc_send_tip_zohan_from_actors">
+		<text>%c[255,220,20,60]Зверь, тут разговор к тебе появился, загляни, как будет время.</text>
+	</string>
+
+	<string id="st_esc_send_tip_zohan_from_actors_bad">
+		<text>%c[255,220,20,60]Зверь, я готов оплатить долг, загляни, как будет время.</text>
+	</string>
+
+	<string id="st_esc_send_tip_zohan_quest">
+		<text>%c[255,220,20,60]Зверь, у меня к тебе разговор, загляни ко мне.</text>
+	</string>
+
+	<string id="st_esc_send_tip_sidorovich_quest">
+		<text>%c[255,220,20,60]Наёмник, зайди ко мне, есть поручение для тебя.</text>
+	</string>
+
+	<string id="st_esc_send_tip_sidorovich_quest_1">
+		<text>%c[255,220,20,60]Наёмник, ты куда пропал-то? Зайди ко мне, появилась работа для тебя.</text>
+	</string>
+
+	<string id="st_esc_send_tip_furgon_from_keys">
+		<text>%c[255,220,20,60]Зверь, у меня есть хорошие новости для тебя. Будет время, зайди ко мне.</text>
+	</string>
+
+	<string id="st_esc_send_tip_barman_from_bed">
+		<text>%c[255,220,20,60]Наёмник, суточная аренда кровати закончилась, ты можешь повторно арендовать её у меня.</text>
+	</string>
+
+	<string id="st_esc_group_in_vagon_enemy_send">
+		<text>%c[255,220,20,60]Ребята, тут кое-кому мамка не говорила, что красть - плохо. Поучить надо бы...</text>
+	</string>
+
+	<string id="st_esc_group_in_vagon_enemy_dead_1">
+		<text>%c[255,220,20,60]Мужики, приём!..</text>
+	</string>
+
+	<string id="st_esc_group_in_vagon_enemy_dead_2">
+		<text>%c[255,220,20,60]Там есть кто живой? Отвечайте!</text>
+	</string>
+
+	<string id="st_esc_way_to_base_closed">
+		<text>%c[255,220,20,60]Наёмник, держись подальше, это территория сталкеров.</text>
+	</string>
+
+	<string id="st_esc_way_to_base_closed_1">
+		<text>%c[255,220,20,60]Не подходи, откроем огонь.</text>
+	</string>
+
+	<string id="st_esc_way_to_base_open">
+		<text>%c[255,220,20,60]Проходи быстрее, торговец замолвил за тебя словечко.</text>
+	</string>
+
+	<string id="st_blck_val_shaman_quest_sms_1">
+		<text>%c[255,220,20,60]Эй, наёмник, вижу, тебя уже выпустили, зайди ко мне поговорить нужно. Срочно!</text>
+	</string>
+
+	<string id="st_blck_val_shaman_quest_sms_2">
+		<text>%c[255,220,20,60]Зверь, зайди ко мне как появится свободная минута, дело одно к тебе имеется.</text>
+	</string>
+
+	<string id="st_blck_val_gop_stop_bandit_sms_1">
+		<text>%c[255,220,20,60]Эй, мужик, ходи сюда, разговор есть. Только ствол спрячь!</text>
+	</string>
+
+	<string id="st_blck_val_gop_stop_bandit_sms_1_bandit">
+		<text>Бандит:</text>
+	</string>
+
+	<string id="st_blck_val_stalker_hutor_1_wait_counter_pda">
+		<text>%c[255,220,20,60]Смотрите в оба, они могут появиться в любую минуту.</text>
+	</string>
+
+	<string id="st_blck_val_stalker_hutor_1_wait_counter_pda_1">
+		<text>%c[255,220,20,60]Видим врага, готовимся к бою.</text>
+	</string>
+
+	<string id="st_blck_val_stalker_hutor_1_wait_counter_pda_2">
+		<text>%c[255,220,20,60]Нас засекли, теперь будут танцы.</text>
+	</string>
+
+	<string id="st_blck_val_stalker_hutor_1_wait_counter_pda_3">
+		<text>%c[255,220,20,60]Опа, фигня, нас видят!</text>
+	</string>
+
+	<string id="st_blck_val_stalker_hutor_1_wait_counter_pda_4">
+		<text>%c[255,220,20,60]Спасибо, наёмник, без тебя - нам бы крышка. Вознаграждение мы тебе на нашей базе приготовим.</text>
+	</string>
+
+	<string id="st_blck_val_stalker_hutor_2_wait_counter_pda">
+		<text>%c[255,220,20,60]Может и не будет никого, а только оружие проверьте на всякий пожарный.</text>
+	</string>
+
+	<string id="st_blck_val_stalker_hutor_2_wait_counter_pda_1">
+		<text>%c[255,220,20,60]У нас всё готово, ждем когда скомандуешь.</text>
+	</string>
+
+	<string id="st_blck_val_miklucha_quest_sms_1">
+		<text>%c[255,220,20,60]Приём, Зверь! Это Миклуха, командир отряда Свободы на Заставе. Загляни ко мне, есть дело на миллион долларов. Держи мои координаты!</text>
+	</string>
+
+	<string id="st_blck_val_freedom_zavod_sms_1">
+		<text>%c[255,220,20,60]Засада! Миклуха, это засада!</text>
+	</string>
+
+	<string id="st_blck_val_smiga_shcool_sms_1">
+		<text>%c[255,220,20,60]Эй, наёмник, твои стволы прибыли. Шмыга ждет тебя, смотри не приведи хвоста за собой.</text>
+	</string>
+
+	<string id="st_blck_val_stavrid_sends_sms_1">
+		<text>%c[255,220,20,60]Зверь, ты где ходишь? Зайди ко мне, у нас тут кое-что произошло.</text>
+	</string>
+
+	<string id="st_blck_val_stavrid_sends_sms_2">
+		<text>%c[255,220,20,60]Зверь, посылка с комбинезонами прибыла. Жду тебя у себя.</text>
+	</string>
+
+	<string id="st_blck_val_monolit_leader_sends">
+		<text>%c[255,220,20,60]Слуга Монолита, мы рады видеть тебя с нами! Подойди ко мне, хочу поговорить с тобой.</text>
+	</string>
+
+	<string id="st_end_game_stronglav_warning">
+		<text>%c[255,220,20,60]Тревога! Диггерская станция атакована... О, Боже, отвали от меня!..</text>
+	</string>
+
+	<string id="st_predmet_poluchen">
+		<text>Получен предмет:</text>
+	</string>
+
+	<string id="st_dop_deystviay">
+		<text>Новое дополнительное действие:</text>
+	</string>
+
+	<string id="st_dop_deystviay_no">
+		<text>Дополнительное действие не выполнено:</text>
+	</string>
+
+	<string id="st_dop_deystviay_yes">
+		<text>Дополнительное действие выполнено:</text>
+	</string>
+
+	<string id="st_pb_dop_action_soldier_quest">
+		<text>%c[default]Поговорить с военным</text>
+	</string>
+
+	<string id="st_pb_dop_action_snake_quest">
+		<text>%c[default]Поговорить со Змеем</text>
+	</string>
+
+	<string id="st_esc_dop_action_first_quest">
+		<text>%c[default]Поговорить с Грифом</text>
+	</string>
+
+	<string id="st_blck_val_stavrid_dop_action_quest">
+		<text>%c[default]Рассказать Ставриду о планах бандитов</text>
+	</string>
+
+	<string id="st_blck_val_vihr_dop_action_quest">
+		<text>%c[default]Расспросить сталкеров на хуторе о СР-3 Вихрь</text>
+	</string>
+
+</string_table>

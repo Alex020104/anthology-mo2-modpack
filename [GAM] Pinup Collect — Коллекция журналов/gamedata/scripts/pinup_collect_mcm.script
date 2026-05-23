@@ -1,0 +1,26 @@
+
+--[[
+Pinup Collect MCM options
+23APR2023
+
+this work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+Author: RavenAscendant
+--]]
+
+
+function on_mcm_load()
+   local options = {
+        id = "rax_pinup",
+        sh = true,
+        gr = {
+            {id = "rax_mmt", type = "slide", link = "ui_options_slider_player", text = "ui_mcm_menu_rax_pinup", size = {512, 50}, spacing = 20},
+			{ id= "desc_mcm"    	 	,type= "desc"     ,text= "ui_mcm_rax_pinup_level"			 ,clr= {255,175,0,0}, precondition = {function() return not level.present() end}	}, --warning message that will only show with pre 1.6.0 versions of mcm explaining why there seems to be no settings
+			{id = "uninstall", type= "button"   ,functor_ui= {function() item_pinup_collect.reset_all_magazines() end}, precondition = {function() return level.present() end}},
+			{id = "clear", type= "button"   ,functor_ui= {function() item_pinup_collect.clear_collection() end}, precondition = {function() return level.present() end}},
+			
+			
+        }
+    }
+    
+    return options
+end

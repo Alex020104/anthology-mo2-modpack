@@ -1,0 +1,45 @@
+<sorter x="8.25" y="732" width="179.25" height="28">
+	<btn_1 x="10.875" y="0" width="15.75" height="28" hint="ui_st_tab_all" stretch="1">
+		<texture>ui_inGame2_btn_sort_all</texture>
+	</btn_1>
+
+	<btn_2 x="26.625" y="0" width="15.75" height="28" hint="ui_st_tab_weapons" stretch="1">
+		<texture>ui_inGame2_btn_sort_weapon</texture>
+	</btn_2>
+
+	<btn_3 x="42.375" y="0" width="15.75" height="28" hint="ui_st_tab_armor" stretch="1">
+		<texture>ui_inGame2_btn_sort_outfit</texture>
+	</btn_3>
+
+	<btn_4 x="58.125" y="0" width="15.75" height="28" hint="ui_st_tab_ammo" stretch="1">
+		<texture>ui_inGame2_btn_sort_ammo</texture>
+	</btn_4>
+
+	<btn_5 x="73.875" y="0" width="15.75" height="28" hint="ui_st_tab_artefact" stretch="1">
+		<texture>ui_inGame2_btn_sort_arty</texture>
+	</btn_5>
+
+	<btn_6 x="89.625" y="0" width="15.75" height="28" hint="ui_st_tab_tools" stretch="1">
+		<texture>ui_inGame2_btn_sort_utility</texture>
+	</btn_6>
+
+	<btn_7 x="105.375" y="0" width="15.75" height="28" hint="ui_st_tab_food" stretch="1">
+		<texture>ui_inGame2_btn_sort_food</texture>
+	</btn_7>
+
+	<btn_8 x="121.125" y="0" width="15.75" height="28" hint="ui_st_tab_meds" stretch="1">
+		<texture>ui_inGame2_btn_sort_meds</texture>
+	</btn_8>
+
+	<btn_9 x="136.875" y="0" width="15.75" height="28" hint="ui_st_tab_upgrades" stretch="1">
+		<texture>ui_inGame2_btn_sort_upgrades</texture>
+	</btn_9>
+
+	<btn_10 x="152.625" y="0" width="15.75" height="28" hint="ui_st_tab_misc" stretch="1">
+		<texture>ui_inGame2_btn_sort_misc</texture>
+	</btn_10>
+
+	<num x="0" y="0" width="15.75" height="28" stretch="1">
+		<text complex_mode="1" r="255" g="255" b="255" a="128" align="r" vert_align="b" font="small"/>
+	</num>
+</sorter>

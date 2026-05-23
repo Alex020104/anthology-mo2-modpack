@@ -1,0 +1,4419 @@
+--[[
+	- actor_hits_npc: most damage talents executed here
+	- actor_before_hit: most defense talents executed here
+	- npc_hit: when npc hit npc and on npc death
+	- all_functions: most talent functions
+	- other_callbacks: other talents/functions/cooldowns/durations executed here on other callbacks
+--]]
+
+talents_dbg = talents_mcm.get_config("talents_dbg")
+
+local ctime_to_t = utils_data.CTime_to_table
+local t_to_ctime = utils_data.CTime_from_table
+local gt = game.translate_string
+
+picked_class = "null"
+
+
+cooldowns_t = {}
+durations_t = {}
+
+-- sniper vars
+local deep_wound_var = {}
+cooldowns_t.evasion_cd = 0
+
+-- trooper vars
+local thrill_var = false
+cooldowns_t.precision_var = 0
+local precision_allow_dmg = false
+durations_t.barrage_var = 0
+local collector_var = 0
+
+durations_t.suppresion_fire_var = 0
+cooldowns_t.cautious_var = 0
+durations_t.leap_var = 0
+
+-- jugger vars
+durations_t.fury_var = 0
+
+durations_t.dismorale_var = 0
+durations_t.sturdy_var = 0
+cooldowns_t.robust_cd = 0
+
+-- monster hunter vars
+local monster_hunter_trophies = {}
+durations_t.fierce_var = 0
+fierce_stacks = 0
+local deadly_blow_var = true		-- small 0.15 delay against shotguns and explosives
+
+durations_t.special_diet_var = 0
+local kindred_cd = nil
+local kindred_var = nil
+local kindred_prev_lvl = nil
+
+-- merc vars
+local merc_head_hunter_t = {}
+local modified_bullets_var = {}
+durations_t.overdrive_var = 0
+durations_t.bullseye_var = 0
+local liquidator_var = true 		-- small 0.15 delay against shotguns and explosives
+
+durations_t.chem_reliant_var = 0
+durations_t.grenadier_var = 0
+durations_t.flurry_var = 0
+durations_t.reposition_var = 0
+
+-- assassin vars
+durations_t.spot_weakness_var = 0
+spot_weakness_stacks = 0
+
+local acrobatic_var = false
+cooldowns_t.cunning_cd = 0
+
+-- endurance
+durations_t.adrenaline_rush_var = 0
+cooldowns_t.adrenaline_rush_var = 0
+
+durations_t.courage_var = 0
+local second_wind_cd = nil
+
+-- speech
+local artistic_cd = nil
+local cynical_cd = nil
+----------------
+
+-- machine guns table
+local machine_guns_t = {
+	-- vanilla
+	wpn_pkm = true, wpn_pkm_zulus = true, wpn_pkp = true, wpn_rpd = true,
+	wpn_m249 = true, wpn_rpk = true, wpn_rpk74 = true,
+	-- boomstick
+	wpn_pkm_siber = true, wpn_pkp_siber = true, wpn_pk_siber = true,
+	wpn_pkm_zenit_siber = true, wpn_pkp_tac_siber = true, wpn_pkm_zenit_shorty = true,
+}
+
+-- hit type conversion
+local hit_convert = {
+	[hit.burn] = "burn",
+	[hit.chemical_burn] = "chem",
+	[hit.shock] = "shock",
+	[hit.radiation] = "radi",
+	[hit.wound] = "rup",
+	[hit.strike] = "strike",
+	[hit.fire_wound] = "bal",
+	[hit.explosion] = "expl",
+	[hit.telepatic] = "psi",
+}
+
+local class_special_stats = {
+	["sniper"] = { speed = 10, weight = -10 },
+	["trooper"] = { speed = 0, weight = 0 },
+	["jugger"] = { speed = -10, weight = 10 },
+	["monster_hunter"] = { speed = 5, weight = -5 },
+	["merc"] = { speed = -5, weight = 5 },
+	["assassin"] = { speed = 10, weight = -10 },
+}
+
+local descr_sizes_t = {
+	[1] = 0.75, [2] = 1, [3] = 1.25, [4] = 1.5, [5] = 2,
+}
+
+talents_table = {
+
+	["offensive"] = {
+		["sniper"] = {
+			sniper_rifles = { level = 0, max = 3, req = {all = 0}, pos = { x = 0, y = 0 }, wpns = {"w_sniper"}, damage = {3, 6, 10}, crit = {2, 3, 5}, descr = {"damage", "crit"} },
+			assault_rifles_novice = { level = 0, max = 3, req = {all = 0}, pos = { x = 2, y = 0 }, wpns = {"w_rifle"}, damage = {3, 6, 10}, crit = {1, 2, 3}, descr = {"damage", "crit"} },
+			pistols = { level = 0, max = 3, req = {all = 0}, pos = { x = 4, y = 0 }, wpns = {"w_pistol"}, damage = {5, 10, 15}, crit = {3, 6, 10}, descr = {"damage", "crit"} },
+
+			experienced_sniper = { level = 0, max = 1, req = {all = 3}, pos = { x = 1, y = 1 }, wpns = {"w_sniper"}, crit = {10}, descr = {"crit"}, func = "talent_experienced_sniper" },
+
+			steady = { level = 0, max = 3, req = {all = 6, experienced_sniper = 1}, pos = { x = 0, y = 2 }, wpns = {"w_sniper"}, crit = {3, 6, 10}, descr = {"crit"}, func = "talent_steady", hinder = "convenience" },
+			convenience = { level = 0, max = 3, req = {all = 6, experienced_sniper = 1}, pos = { x = 2, y = 2 }, wpns = {"w_sniper"}, crit = {5, 10, 15}, descr = {"crit"}, func = "talent_convenience", hinder = "steady" },
+			gunslinger = { level = 0, max = 1, req = {all = 6, pistols = 3}, pos = { x = 4, y = 2 }, wpns = {"w_pistol"}, damage = {15}, crit = {15}, reload = {40}, descr = {"damage", "crit", "reload"}, descr_size = 2, func = "talent_gunslinger" },
+
+			sharpshooter = { level = 0, max = 1, req = {all = 9, steady = 3}, pos = { x = 0, y = 3 }, wpns = {"w_sniper"}, crit = {0.05}, descr = {"crit"}, func = "talent_sharpshooter" },
+			ambush = { level = 0, max = 1, req = {all = 9, convenience = 3}, pos = { x = 2, y = 3 }, wpns = {"w_sniper"}, crit = {20}, descr = {"crit"}, func = "talent_ambush" },
+			deep_wound = { level = 0, max = 2, req = {all = 9}, pos = { x = 4, y = 3 }, wpns = {"w_sniper"}, bleed = {15, 30}, descr = {"bleed"} },
+
+			loner = { level = 0, max = 3, req = {all = 12}, pos = { x = 0, y = 4 }, wpns = {"w_sniper", "w_rifle"}, damage = {3, 6, 10}, descr = {"damage"}, func = "talent_loner" },
+			soft_spot = { level = 0, max = 3, req = {all = 12}, pos = { x = 2, y = 4 }, wpns = {"w_sniper"}, crit = {3, 6, 10}, descr = {"crit"}, func = "talent_soft_spot" },
+			nocturnal = { level = 0, max = 3, req = {all = 12}, pos = { x = 4, y = 4 }, wpns = {"w_sniper", "w_pistol"}, crit = {5, 10, 15}, descr = {"crit"}, func = "talent_nocturnal" },
+
+			carnage = { level = 0, max = 1, req = {all = 15}, pos = { x = 2, y = 5 }, wpns = {"w_sniper"}, damage = {10}, crit_damage = {50}, descr = {"damage", "crit_damage"} },
+		},
+
+		["trooper"] = {
+			assault_rifles = { level = 0, max = 3, req = {all = 0}, pos = { x = 0, y = 0 }, wpns = {"w_rifle"}, damage = {3, 6, 10}, descr = {"damage"} },
+			shotguns_novice = { level = 0, max = 3, req = {all = 0}, pos = { x = 2, y = 0 }, wpns = {"w_shotgun"}, damage = {5, 10, 15}, descr = {"damage"} },
+			submachine_guns = { level = 0, max = 3, req = {all = 0}, pos = { x = 4, y = 0 }, wpns = {"w_smg"}, damage = {3, 6, 10}, descr = {"damage"} },
+
+			experienced_rifleman = { level = 0, max = 1, req = {all = 3}, pos = { x = 1, y = 1 }, wpns = {"w_rifle"}, crit = {2}, descr = {"crit"} },
+			demolition_expert = { level = 0, max = 2, req = {all = 3}, pos = { x = 3, y = 1 }, wpns = {"w_explosive", "w_base"}, damage = {10, 20}, weight = {25, 50}, descr = {"damage", "weight"} },
+
+			duelist = { level = 0, max = 3, req = {all = 6, experienced_rifleman = 1}, pos = { x = 0, y = 2 }, wpns = {"w_rifle"}, damage = {3, 6, 10}, descr = {"damage"}, func = "talent_duelist", hinder = "focus" },
+			focus = { level = 0, max = 3, req = {all = 6, experienced_rifleman = 1}, pos = { x = 2, y = 2 }, wpns = {"w_rifle"}, crit = {0.01, 0.02, 0.03}, descr = {"crit"}, func = "talent_focus", hinder = "duelist" },
+
+			thrill = { level = 0, max = 1, req = {all = 9, duelist = 3}, pos = { x = 0, y = 3 }, wpns = {"w_rifle"}, damage = {15}, descr = {"damage"}, func = "talent_thrill" },
+			precision = { level = 0, max = 1, req = {all = 9, focus = 3}, pos = { x = 2, y = 3 }, wpns = {"w_rifle"}, damage = {5}, crit = {5}, descr = {"cooldown", "damage", "crit"}, cooldown = 1.2, descr_size = 2, func = "talent_precision" },
+			barrage = { level = 0, max = 1, req = {all = 9, submachine_guns = 3}, pos = { x = 4, y = 3 }, wpns = {"w_smg"}, damage = {10}, crit = {3}, descr = {"duration", "damage", "crit"}, duration = 3, descr_size = 2, func = "talent_barrage" },
+
+			reckless = { level = 0, max = 3, req = {all = 12}, pos = { x = 1, y = 4 }, wpns = {"w_rifle", "w_shotgun"}, damage = {0.07, 0.14, 0.2}, descr = {"damage"}, func = "talent_reckless" },
+			veteran_rifleman = { level = 0, max = 3, req = {all = 12}, pos = { x = 3, y = 4 }, wpns = {"w_rifle", "w_smg"}, crit = {1, 2, 3}, descr = {"crit"} },
+
+			collector = { level = 0, max = 1, req = {all = 15}, pos = { x = 1, y = 5 }, wpns = {"w_rifle"}, damage = {0.01}, descr = {"damage"}, descr_size = 5, func = "talent_collector" },
+		},
+
+		["jugger"] = {
+			shotguns = { level = 0, max = 3, req = {all = 0}, pos = { x = 0, y = 0 }, wpns = {"w_shotgun"}, damage = {2, 3, 5}, descr = {"damage"} },
+			machine_guns = { level = 0, max = 3, req = {all = 0}, pos = { x = 2, y = 0 }, wpns = {"w_machine_gun"}, damage = {2, 3, 5}, descr = {"damage"} },
+			submachine = { level = 0, max = 2, req = {all = 0}, pos = { x = 4, y = 0 }, wpns = {"w_smg"}, damage = {5, 10}, descr = {"damage"} },
+
+			hunter = { level = 0, max = 3, req = {all = 3}, pos = { x = 0, y = 1 }, wpns = {"w_shotgun", "w_machine_gun", "w_smg"}, damage = {2, 3, 5}, descr = {"damage"}, func = "talent_hunter" },
+			bounty_hunter = { level = 0, max = 3, req = {all = 3}, pos = { x = 2, y = 1 }, wpns = {"w_shotgun", "w_machine_gun", "w_smg"}, damage = {2, 3, 5}, descr = {"damage"}, func = "talent_bounty_hunter" },
+			mangle = { level = 0, max = 2, req = {all = 3}, pos = { x = 4, y = 1 }, wpns = {"w_melee"}, damage = {15, 30}, crit = {15, 30}, descr = {"damage", "crit"} }, 
+
+			heavy_guns_expert = { level = 0, max = 3, req = {all = 6}, pos = { x = 1, y = 2 }, wpns = {"w_shotgun", "w_machine_gun"}, damage = {2, 3, 5}, reload = {7, 13, 20}, descr = {"damage", "reload"} },
+
+			merciless = { level = 0, max = 3, req = {all = 9, heavy_guns_expert = 3}, pos = { x = 0, y = 3 }, wpns = {"w_shotgun", "w_machine_gun"}, damage = {3, 6, 10}, descr = {"damage"}, func = "talent_merciless", hinder = "fury" },
+			fury = { level = 0, max = 3, req = {all = 9, heavy_guns_expert = 3}, pos = { x = 2, y = 3 }, wpns = {"all"}, damage = {2, 3, 5}, descr = {"duration", "damage"}, duration = 20, func = "talent_fury", hinder = "merciless" },
+			bloodthirst = { level = 0, max = 1, req = {all = 9, mangle = 2}, pos = { x = 4, y = 3 }, wpns = {"w_melee"}, crit_damage = {50}, descr = {"crit_damage"} },
+
+			execution = { level = 0, max = 1, req = {all = 12, merciless = 3}, pos = { x = 0, y = 4 }, wpns = {"w_shotgun", "w_machine_gun"}, damage = {10}, hp_thresh = 40, descr = {"hp_thresh", "damage"}, func = "talent_execution" },
+			frightening = { level = 0, max = 1, req = {all = 12, fury = 3}, pos = { x = 2, y = 4 }, wpns = {"all"}, damage = {5}, radius = 75, descr = {"radius", "damage"}, func = "talent_frightening" },
+			selective = { level = 0, max = 2, req = {all = 12}, pos = { x = 4, y = 4 }, wpns = {"w_shotgun", "w_machine_gun"}, damage = {2, 5}, descr = {"damage"}, func = "talent_selective" },
+
+			mastery = { level = 0, max = 1, req = {all = 15}, pos = { x = 1, y = 5 }, wpns = {"w_shotgun", "w_machine_gun"}, reload = {10}, descr = {"reload"}, descr_size = 3, merciless_bonus = 5, execution_bonus = 15, fury_bonus = 5, frightening_bonus = 25 },
+		},
+
+		["monster_hunter"] = {
+			dog_hunter = { level = 0, max = 2, req = {all = 0}, pos = { x = 0, y = 0 }, wpns = {"all"}, damage = {7, 15}, descr = {"damage"}, func = "talent_dog_hunter" },
+			boar_hunter = { level = 0, max = 3, req = {all = 0}, pos = { x = 2, y = 0 }, wpns = {"all"}, damage = {5, 10, 15}, descr = {"damage"}, func = "talent_boar_hunter" },
+			zombie_hunter = { level = 0, max = 3, req = {all = 0}, pos = { x = 4, y = 0 }, wpns = {"all"}, damage = {5, 10, 15}, descr = {"damage"}, func = "talent_zombie_hunter" },
+
+			trophies = { level = 0, max = 1, req = {all = 3}, pos = { x = 1, y = 1 }, wpns = {"all"}, damage = {0.5}, descr = {"damage"}, descr_size = 4, func = "talent_trophies" },
+			deep_cut = { level = 0, max = 2, req = {all = 3}, pos = { x = 4, y = 1 }, wpns = {"w_melee"}, damage = {10, 20}, crit = {25, 50}, descr = {"damage", "crit"} },
+
+			beast_anatomy = { level = 0, max = 3, req = {all = 6, trophies = 1}, pos = { x = 0, y = 2 }, wpns = {"all"}, damage = {3, 6, 10}, descr = {"damage"}, descr_size = 2, func = "talent_beast_anatomy", hinder = "humanoid_anatomy" },
+			humanoid_anatomy = { level = 0, max = 3, req = {all = 6, trophies = 1}, pos = { x = 2, y = 2 }, wpns = {"all"}, damage = {3, 6, 10}, descr = {"damage"}, descr_size = 2, func = "talent_humanoid_anatomy", hinder = "beast_anatomy" },
+			expert_hunter = { level = 0, max = 2, req = {all = 6}, pos = { x = 4, y = 2 }, wpns = {"all"}, damage = {5, 10}, descr = {"damage"}, func = "talent_expert_hunter" },
+
+			beast_rivalry = { level = 0, max = 1, req = {all = 9, beast_anatomy = 3}, pos = { x = 0, y = 3 }, wpns = {"all"}, crit = {5}, descr = {"damage", "crit"}, func = "talent_beast_rivalry" },
+			humanoid_rivalry = { level = 0, max = 1, req = {all = 9, humanoid_anatomy = 3}, pos = { x = 2, y = 3 }, wpns = {"all"}, crit = {5}, descr = {"damage", "crit"}, func = "talent_humanoid_rivalry" },
+			master_hunter = { level = 0, max = 2, req = {all = 9}, pos = { x = 4, y = 3 }, wpns = {"all"}, damage = {5, 10}, descr = {"damage"}, func = "talent_master_hunter" },
+
+			fierce = { level = 0, max = 3, req = {all = 12}, pos = { x = 1, y = 4 }, wpns = {"all"}, damage = {1, 2, 3}, duration = 30, descr = {"duration", "damage"}, func = "talent_fierce" },
+			ranger = { level = 0, max = 3, req = {all = 12}, pos = { x = 3, y = 4 }, wpns = {"all"}, crit = {3, 6, 10}, descr = {"damage", "crit"}, func = "talent_ranger" },
+
+			deadly_blow = { level = 0, max = 1, req = {all = 15}, pos = { x = 2, y = 5 }, wpns = {"w_sniper", "w_rifle", "w_pistol", "w_shotgun", "w_smg", "w_machine_gun", "w_melee"}, func = "talent_deadly_blow" },
+		},
+
+		["merc"] = {
+			firearm_enthusiast = { level = 0, max = 3, req = {all = 0}, pos = { x = 0, y = 0 }, wpns = {"all"}, damage = {2, 3, 5}, descr = {"damage"} },
+			combat_engineer = { level = 0, max = 3, req = {all = 0}, pos = { x = 2, y = 0 }, wpns = {"w_explosive"}, damage = {10, 20, 30}, percents = {10, 20, 30}, descr = {"damage", "percents"} },
+			overdrive = { level = 0, max = 2, req = {all = 0}, pos = { x = 4, y = 0 }, wpns = {"all"}, damage = {5, 10}, crit = {2, 4}, duration = 600, descr = {"duration", "damage", "crit"}, descr_size = 2, func = "talent_overdrive" },
+
+			head_hunter = { level = 0, max = 1, req = {all = 3}, pos = { x = 1, y = 1 }, wpns = {"all"}, damage = {1}, descr = {"damage"}, descr_size = 3, func = "talent_head_hunter" },
+			arrogance = { level = 0, max = 2, req = {all = 3}, pos = { x = 4, y = 1 }, wpns = {"all"}, damage = {1, 2}, descr = {"damage"}, func = "talent_arrogance" },
+
+			aim_torso = { level = 0, max = 3, req = {all = 6, head_hunter = 1}, pos = { x = 0, y = 2 }, wpns = {"all"}, damage = {3, 6, 10}, descr = {"damage"}, func = "talent_aim_torso", hinder = "aim_limbs" },
+			aim_limbs = { level = 0, max = 3, req = {all = 6, head_hunter = 1}, pos = { x = 2, y = 2 }, wpns = {"all"}, crit = {2, 4, 6}, descr = {"crit"}, func = "talent_aim_limbs", hinder = "aim_torso" },
+
+			modified_bullets = { level = 0, max = 1, req = {all = 9, aim_torso = 3}, pos = { x = 0, y = 3 }, wpns = {"all"}, bleed = {0.5}, duration = 10, descr = {"duration", "bleed"} },
+			bullseye = { level = 0, max = 1, req = {all = 9, aim_limbs = 3}, pos = { x = 2, y = 3 }, wpns = {"all"}, crit = {10}, duration = 15, descr = {"duration", "crit"}, func = "talent_bullseye" },
+			searcher = { level = 0, max = 1, req = {all = 9, arrogance = 2}, pos = { x = 4, y = 3 }, wpns = {"all"} },
+
+			assault_rifles_expert = { level = 0, max = 3, req = {all = 12}, pos = { x = 0, y = 4 }, wpns = {"w_rifle"}, damage = {3, 6, 10}, crit = {1, 2, 3}, reload = {5, 10, 15}, descr = {"damage", "crit", "reload"} },
+			light_guns_expert = { level = 0, max = 2, req = {all = 12}, pos = { x = 2, y = 4 }, wpns = {"w_pistol", "w_smg"}, damage = {5, 10}, crit = {2, 5}, reload = {10, 20}, descr = {"damage", "crit", "reload"} },
+			sniper_rifles_expert = { level = 0, max = 3, req = {all = 12}, pos = { x = 4, y = 4 }, wpns = {"w_sniper"}, damage = {2, 3, 5}, crit = {5, 10, 15}, descr = {"damage", "crit"} },
+
+			liquidator = { level = 0, max = 1, req = {all = 15}, pos = { x = 2, y = 5 }, wpns = {"all"}, crit_damage = {20}, descr = {"crit_damage"} },
+		},
+
+		["assassin"] = {
+			smg_novice = { level = 0, max = 2, req = {all = 0}, pos = { x = 0, y = 0 }, wpns = {"w_smg"}, damage = {5, 10}, crit = {3, 5}, descr = {"damage", "crit"} },
+			handgun_novice = { level = 0, max = 2, req = {all = 0}, pos = { x = 2, y = 0 }, wpns = {"w_pistol"}, damage = {4, 8}, crit = {5, 10}, descr = {"damage", "crit"} },
+			knifeman = { level = 0, max = 3, req = {all = 0}, pos = { x = 4, y = 0 }, wpns = {"w_melee"}, damage = {10, 20 , 30}, crit = {10, 20, 30}, attack_speed = {13, 26, 40}, descr = {"damage", "crit", "attack_speed"} },
+
+			spot_weakness = { level = 0, max = 1, req = {all = 3}, pos = { x = 1, y = 1 }, wpns = {"w_smg", "w_pistol", "w_melee"}, crit = {3}, duration = 3, descr = {"crit"}, descr_size = 3, func = "talent_spot_weakness" },
+
+			undercover = { level = 0, max = 3, req = {all = 6, spot_weakness = 1}, pos = { x = 0, y = 2 }, wpns = {"w_smg", "w_pistol"}, damage = {5, 10, 15}, descr = {"damage"}, func = "talent_undercover", hinder = "tactical" },
+			tactical = { level = 0, max = 3, req = {all = 6, spot_weakness = 1}, pos = { x = 2, y = 2 }, wpns = {"w_smg", "w_pistol"}, crit = {5, 10, 15}, descr = {"crit"}, func = "talent_tactical", hinder = "undercover" },
+			backstab = { level = 0, max = 1, req = {all = 6, knifeman = 3}, pos = { x = 4, y = 2 }, wpns = {"w_melee"}, crit = {40}, crit_damage = {50}, descr = {"crit", "crit_damage"}, func = "talent_backstab" },
+
+			saboteur = { level = 0, max = 1, req = {all = 9, undercover = 3}, pos = { x = 0, y = 3 }, wpns = {"w_smg", "w_pistol"}, damage = {15}, descr = {"damage"}, descr_size = 2, func = "talent_saboteur" },
+			surprise_attack = { level = 0, max = 1, req = {all = 9, tactical = 3}, pos = { x = 2, y = 3 }, wpns = {"w_smg", "w_pistol"}, crit = {25}, crit_damage = {100}, descr = {"crit", "crit_damage"}, descr_size = 2, func = "talent_surprise_attack" },
+			assassination = { level = 0, max = 1, req = {all = 9, backstab = 1}, pos = { x = 4, y = 3 }, wpns = {"w_melee"}, crit_damage = {200}, descr = {"crit_damage"}, func = "talent_assassination" },
+
+			vile = { level = 0, max = 3, req = {all = 12}, pos = { x = 1, y = 4 }, wpns = {"w_smg"}, damage = {7, 14, 20}, descr = {"damage"}, func = "talent_vile" },
+			pragmatic = { level = 0, max = 3, req = {all = 12}, pos = { x = 3, y = 4 }, wpns = {"w_pistol"}, crit = {7, 14, 20}, crit_damage = {17, 34, 50}, descr = {"crit", "crit_damage"}, descr_size = 2, func = "talent_pragmatic" },
+
+			assassin_observant = { level = 0, max = 1, req = {all = 15}, pos = { x = 2, y = 5 }, wpns = {"all"} },
+		},
+	},
+
+
+
+	["defensive"] = {
+		["sniper"] = {
+			adaptive = { level = 0, max = 2, req = {all = 0}, pos = { x = 0, y = 0 }, outfits = {"o_medium", "o_light"}, burn = {7, 15}, chem = {7, 15}, shock = {7, 15}, descr = {"burn", "chem", "shock"} },
+			mild = { level = 0, max = 1, req = {all = 0}, pos = { x = 2, y = 0 }, outfits = {"o_medium", "o_light"} },
+			iron_stomach = { level = 0, max = 2, req = {all = 0}, pos = { x = 4, y = 0 }, outfits = {"o_medium", "o_light"}, radi = {5, 10}, rad_food = {25, 50}, descr = {"radi", "rad_food"} },
+
+			plastic_pads = { level = 0, max = 3, req = {all = 3}, pos = { x = 0, y = 1 }, outfits = {"o_medium", "o_light"}, rup = {3, 6, 10}, strike = {3, 6, 10}, descr = {"rup", "strike"} },
+			aluminum_plates = { level = 0, max = 3, req = {all = 3}, pos = { x = 2, y = 1 }, outfits = {"o_medium", "o_light"}, bal = {3, 6, 10}, expl = {3, 6, 10}, descr = {"bal", "expl"} },
+
+			nature_resistance = { level = 0, max = 3, req = {all = 6}, pos = { x = 1, y = 2 }, outfits = {"o_medium", "o_light"}, burn = {7, 13, 20}, chem = {7, 13, 20}, shock = {7, 13, 20}, radi = {5, 10, 15}, descr = {"burn", "chem", "shock", "radi"} },
+			rad_resistant = { level = 0, max = 1, req = {all = 6, iron_stomach = 2}, pos = { x = 4, y = 2 }, outfits = {"o_medium", "o_light"}, radi = {10}, descr = {"radi"}, descr_size = 2 },
+
+			technician = { level = 0, max = 1, req = {all = 9, nature_resistance = 3}, pos = { x = 0, y = 3 }, outfits = {"o_medium", "o_light"}, burn = {10}, chem = {10}, shock = {10}, radi = {10}, rup = {10}, strike = {10}, bal = {10}, expl = {10}, descr = {"burn", "chem", "shock", "radi", "rup", "strike", "bal", "expl"}, descr_size = 3, hinder = "inventor" },
+			inventor = { level = 0, max = 1, req = {all = 9, nature_resistance = 3}, pos = { x = 2, y = 3 }, outfits = {"o_light"}, hinder = "technician" },
+
+			expert_technician = { level = 0, max = 3, req = {all = 12, technician = 1}, pos = { x = 0, y = 4 }, outfits = {"o_medium", "o_light"}, burn = {0.05, 0.1, 0.15}, chem = {0.05, 0.1, 0.15}, shock = {0.05, 0.1, 0.15}, radi = {0.05, 0.1, 0.15}, descr = {"burn", "chem", "shock", "radi"}, descr_size = 2, func = "talent_expert_technician" },
+			agile = { level = 0, max = 3, req = {all = 12, inventor = 1}, pos = { x = 2, y = 4 }, outfits = {"o_light"}, burn = {5, 10, 15}, chem = {5, 10, 15}, shock = {5, 10, 15}, radi = {5, 10, 15}, rup = {5, 10, 15}, strike = {5, 10, 15}, bal = {5, 10, 15}, expl = {5, 10, 15}, evade = {5, 10, 15}, descr = {"burn", "chem", "shock", "radi", "rup", "strike", "bal", "expl", "evade"}, descr_size = 4, func = "talent_agile" },
+
+			reflexes = { level = 0, max = 1, req = {all = 15}, pos = { x = 1, y = 5 }, outfits = {"o_medium", "o_light"}, cooldown = 5 },
+		},
+
+		["trooper"] = {
+			ceramic_plates = { level = 0, max = 2, req = {all = 0}, pos = { x = 0, y = 0 }, outfits = {"o_medium", "o_heavy", "o_sci"}, rup = {2, 5}, strike = {2, 5}, bal = {2, 5}, expl = {2, 5}, descr = {"rup", "strike", "bal", "expl"}, descr_size = 2, func = "talent_trooper_general_armor" },
+			first_aid = { level = 0, max = 2, req = {all = 0}, pos = { x = 2, y = 0 }, outfits = {"o_medium", "o_heavy", "o_sci"}, heal = {10, 20}, descr = {"heal"} },
+			isolated = { level = 0, max = 2, req = {all = 0}, pos = { x = 4, y = 0 }, outfits = {"o_medium", "o_heavy", "o_sci"}, shock = {5, 10}, descr = {"shock"}, func = "talent_trooper_general_armor" },
+
+			armorer = { level = 0, max = 2, req = {all = 3}, pos = { x = 1, y = 1 }, outfits = {"o_medium", "o_heavy", "o_sci"}, rup = {2, 5}, strike = {2, 5}, bal = {2, 5}, expl = {2, 5}, descr = {"rup", "strike", "bal", "expl"}, descr_size = 2, func = "talent_trooper_general_armor" },
+			chem_resistant = { level = 0, max = 2, req = {all = 3}, pos = { x = 4, y = 1 }, outfits = {"o_medium", "o_heavy", "o_sci"}, chem = {5, 10}, descr = {"chem"}, func = "talent_trooper_general_armor" },
+
+			suppresion_fire = { level = 0, max = 3, req = {all = 6, armorer = 2}, pos = { x = 0, y = 2 }, outfits = {"o_medium", "o_heavy", "o_sci"}, rup = {2, 4, 6}, strike = {2, 4, 6}, bal = {2, 4, 6}, expl = {2, 4, 6}, descr = {"duration", "rup", "strike", "bal", "expl"}, descr_size = 2, duration = 5, func = "talent_suppresion_fire", hinder = "cautious" },
+			cautious = { level = 0, max = 3, req = {all = 6, armorer = 2}, pos = { x = 2, y = 2 }, outfits = {"o_medium", "o_sci"}, rup = {3, 6, 10}, strike = {3, 6, 10}, bal = {3, 6, 10}, expl = {3, 6, 10}, descr = {"rup", "strike", "bal", "expl", "cooldown"}, descr_size = 3, cooldown = 20, func = "talent_cautious", hinder = "suppresion_fire" },
+			fireproof = { level = 0, max = 2, req = {all = 6}, pos = { x = 4, y = 2 }, outfits = {"o_medium", "o_heavy", "o_sci"}, burn = {5, 10}, descr = {"burn"}, func = "talent_trooper_general_armor" },
+
+			composure = { level = 0, max = 1, req = {all = 9, suppresion_fire = 3}, pos = { x = 0, y = 3 }, outfits = {"o_medium", "o_heavy", "o_sci"}, rup = {5}, strike = {5}, bal = {5}, expl = {5}, descr = {"rup", "strike", "bal", "expl"}, descr_size = 4, func = "talent_composure" },
+			enduring = { level = 0, max = 1, req = {all = 9, cautious = 3}, pos = { x = 2, y = 3 }, outfits = {"o_medium", "o_sci"}, burn = {10}, chem = {10}, shock = {10}, descr = {"burn", "chem", "shock"}, descr_size = 2 },
+
+			adorned = { level = 0, max = 3, req = {all = 12}, pos = { x = 0, y = 4 }, outfits = {"o_medium", "o_heavy", "o_sci"}, burn = {0.7, 1.3, 2}, chem = {0.7, 1.3, 2}, shock = {0.7, 1.3, 2}, descr = {"burn", "chem", "shock"}, descr_size = 3, func = "talent_adorned" },
+			expert_armorer = { level = 0, max = 3, req = {all = 12}, pos = { x = 2, y = 4 }, outfits = {"o_medium", "o_heavy", "o_sci"}, burn = {0.3, 0.6, 1}, chem = {0.3, 0.6, 1}, shock = {0.3, 0.6, 1}, descr = {"burn", "chem", "shock"}, descr_size = 3, func = "talent_expert_armorer" },
+			last_stand = { level = 0, max = 3, req = {all = 12}, pos = { x = 4, y = 4 }, outfits = {"o_medium", "o_heavy", "o_sci"}, burn = {7, 13, 20}, chem = {7, 13, 20}, shock = {7, 13, 20}, rup = {7, 13, 20}, strike = {7, 13, 20}, bal = {7, 13, 20}, expl = {7, 13, 20}, descr = {"burn", "chem", "shock", "rup", "strike", "bal", "expl"}, descr_size = 3, func = "talent_last_stand" },
+
+			leap = { level = 0, max = 1, req = {all = 15}, pos = { x = 1, y = 5 }, outfits = {"o_medium", "o_heavy", "o_sci"}, rup = {15}, strike = {15}, bal = {15}, expl = {15}, descr = {"duration", "rup", "strike", "bal", "expl"}, descr_size = 3, duration = 5, func = "talent_leap" },
+		},
+
+		["jugger"] = {
+			steel_plates = { level = 0, max = 2, req = {all = 0}, pos = { x = 0, y = 0 }, outfits = {"o_medium", "o_heavy"}, bal = {5, 10}, expl = {5, 10}, descr = {"bal", "expl"} },
+			steel_pads = { level = 0, max = 2, req = {all = 0}, pos = { x = 2, y = 0 }, outfits = {"o_medium", "o_heavy"}, rup = {5, 10}, strike = {5, 10}, descr = {"rup", "strike"} },
+			regenerative = { level = 0, max = 1, req = {all = 0}, pos = { x = 4, y = 0 }, outfits = {"o_medium", "o_heavy"} },
+
+			heavy_armor_expert = { level = 0, max = 3, req = {all = 3}, pos = { x = 1, y = 1 }, outfits = {"o_medium", "o_heavy"}, rup = {2, 3, 5}, strike = {2, 3, 5}, bal = {2, 3, 5}, expl = {2, 3, 5}, psi = {3, 6, 10}, weight = {10, 20, 30}, descr = {"rup", "strike", "bal", "expl", "psi", "weight"}, descr_size = 2 },
+
+			dismorale = { level = 0, max = 3, req = {all = 6, heavy_armor_expert = 3}, pos = { x = 0, y = 2 }, outfits = {"o_medium", "o_heavy"}, rup = {2, 4, 7}, strike = {2, 4, 7}, bal = {2, 4, 7}, expl = {2, 4, 7}, descr = {"duration", "rup", "strike", "bal", "expl"}, descr_size = 2, duration = 20, func = "talent_dismorale", hinder = "sturdy" },
+			sturdy = { level = 0, max = 3, req = {all = 6, heavy_armor_expert = 3}, pos = { x = 2, y = 2 }, outfits = {"o_medium", "o_heavy"}, rup = {2, 4, 6}, strike = {2, 4, 6}, bal = {2, 4, 6}, expl = {2, 4, 6}, descr = {"duration", "rup", "strike", "bal", "expl"}, descr_size = 2, duration = 20, func = "talent_sturdy", hinder = "dismorale" },
+			sanity = { level = 0, max = 2, req = {all = 6}, pos = { x = 4, y = 2 }, outfits = {"o_medium", "o_heavy"}, psi = {15, 30}, descr = {"psi"} },
+
+			anxiety = { level = 0, max = 1, req = {all = 9, dismorale = 3}, pos = { x = 0, y = 3 }, outfits = {"o_medium", "o_heavy"}, rup = {5}, strike = {5}, bal = {5}, expl = {5}, descr = {"rup", "strike", "bal", "expl"}, descr_size = 2 },
+			turmoil = { level = 0, max = 1, req = {all = 9, sturdy = 3}, pos = { x = 2, y = 3 }, outfits = {"o_medium", "o_heavy"}, rup = {10}, strike = {10}, bal = {10}, expl = {10}, descr = {"rup", "strike", "bal", "expl", "radius"}, descr_size = 3, radius = 60, func = "talent_turmoil" },
+
+			bulky = { level = 0, max = 3, req = {all = 12}, pos = { x = 0, y = 4 }, outfits = {"o_medium", "o_heavy"}, rup = {5, 10, 15}, strike = {5, 10, 15}, bal = {5, 10, 15}, expl = {5, 10, 15}, speed = {-15}, descr = {"rup", "strike", "bal", "expl"}, descr_size = 2 },
+			secure = { level = 0, max = 3, req = {all = 12}, pos = { x = 2, y = 4 }, outfits = {"o_medium", "o_heavy"}, rup = {1.7, 3.5, 5}, strike = {1.7, 3.5, 5}, bal = {1.7, 3.5, 5}, expl = {1.7, 3.5, 5}, descr = {"rup", "strike", "bal", "expl"}, descr_size = 2, func = "talent_secure" },
+			lucid = { level = 0, max = 3, req = {all = 12, sanity = 2}, pos = { x = 4, y = 4 }, outfits = {"o_medium", "o_heavy"}, rup = {0.03, 0.06, 0.1}, strike = {0.03, 0.06, 0.1}, bal = {0.03, 0.06, 0.1}, expl = {0.03, 0.06, 0.1}, descr = {"rup", "strike", "bal", "expl"}, descr_size = 2, func = "talent_lucid" },
+
+			robust = { level = 0, max = 1, req = {all = 15}, pos = { x = 1, y = 5 }, outfits = {"o_medium", "o_heavy"}, rup = {50}, strike = {50}, bal = {50}, expl = {50}, descr = {"rup", "strike", "bal", "expl", "cooldown"}, descr_size = 2, cooldown = 240, func = "talent_robust" },
+		},
+
+		["monster_hunter"] = {
+			shoulder_pads = { level = 0, max = 2, req = {all = 0}, pos = { x = 1, y = 0 }, outfits = {"all"}, rup = {2, 5}, strike = {2, 5}, descr = {"rup", "strike"}, func = "talent_monster_hunter_general_armor" },
+			careful = { level = 0, max = 2, req = {all = 0}, pos = { x = 3, y = 0 }, outfits = {"all"}, burn = {5, 10}, chem = {5, 10}, shock = {5, 10}, descr = {"burn", "chem", "shock"}, func = "talent_monster_hunter_general_armor" },
+
+			melee_defense = { level = 0, max = 2, req = {all = 3}, pos = { x = 0, y = 1 }, outfits = {"all"}, rup = {7, 15}, strike = {7, 15}, descr = {"rup", "strike"}, func = "talent_melee_defense" },
+			special_diet = { level = 0, max = 2, req = {all = 3}, pos = { x = 2, y = 1 }, outfits = {"all"}, burn = {5, 10}, chem = {5, 10}, shock = {5, 10}, psi = {5, 10}, duration = 900, descr = {"duration", "burn", "chem", "shock", "psi"}, descr_size = 2, func = "talent_special_diet" },
+			clarity = { level = 0, max = 2, req = {all = 3}, pos = { x = 4, y = 1 }, outfits = {"all"}, psi = {5, 10}, descr = {"psi"}, func = "talent_monster_hunter_general_armor" },
+
+			tracker = { level = 0, max = 1, req = {all = 6}, pos = { x = 0, y = 2 }, outfits = {"all"} },
+			soft_armor = { level = 0, max = 3, req = {all = 6}, pos = { x = 2, y = 2 }, outfits = {"all"}, rup = {3, 6, 10}, strike = {3, 6, 10}, descr = {"rup", "strike"}, func = "talent_monster_hunter_general_armor" },
+			stable_mind = { level = 0, max = 1, req = {all = 6, clarity = 2}, pos = { x = 4, y = 2 }, outfits = {"all"}, psi = {20}, descr = {"psi"} },
+
+			beast_demeanor = { level = 0, max = 1, req = {all = 9, soft_armor = 3}, pos = { x = 1, y = 3 }, outfits = {"all"}, rup = {10}, strike = {10}, descr = {"rup", "strike"}, func = "talent_beast_demeanor", hinder = "humanoid_demeanor" },
+			humanoid_demeanor = { level = 0, max = 1, req = {all = 9, soft_armor = 3}, pos = { x = 3, y = 3 }, outfits = {"all"}, rup = {10}, strike = {10}, descr = {"rup", "strike"}, func = "talent_humanoid_demeanor", hinder = "beast_demeanor" },
+
+			second_skin = { level = 0, max = 3, req = {all = 12}, pos = { x = 1, y = 4 }, outfits = {"all"}, rup = {0.7, 1.4, 2.0}, strike = {0.7, 1.4, 2.0}, descr = {"rup", "strike"}, func = "talent_second_skin" },
+			custom_fit = { level = 0, max = 3, req = {all = 12}, pos = { x = 3, y = 4 }, outfits = {"o_medium"}, bal = {5, 10, 15}, expl = {5, 10, 15}, rup = {5, 10, 15}, strike = {5, 10, 15}, burn = {5, 10, 15}, chem = {5, 10, 15}, shock = {5, 10, 15}, psi = {5, 10, 15}, descr = {"bal", "expl", "rup", "strike", "burn", "chem", "shock", "psi"}, descr_size = 3 },
+
+			kindred = { level = 0, max = 1, req = {all = 15}, pos = { x = 2, y = 5 }, outfits = {"all"}, descr_size = 4, cooldown = 28800 },
+		},
+
+		["merc"] = {
+			mercenary_vest = { level = 0, max = 3, req = {all = 0}, pos = { x = 0, y = 0 }, outfits = {"o_medium", "o_heavy"}, bal = {2, 4, 7}, expl = {2, 4, 7}, descr = {"bal", "expl"} },
+			insensitive = { level = 0, max = 2, req = {all = 0}, pos = { x = 2, y = 0 }, outfits = {"o_medium", "o_heavy"}, burn = {10, 20}, chem = {10, 20}, shock = {10, 20}, descr = {"burn", "chem", "shock"} },
+			chem_reliant = { level = 0, max = 3, req = {all = 0}, pos = { x = 4, y = 0 }, outfits = {"o_medium", "o_heavy"}, bal = {4, 8, 13}, expl = {4, 8, 13}, duration = 600, descr = {"duration", "bal", "expl"}, descr_size = 2, func = "talent_chem_reliant" },
+
+			grenadier = { level = 0, max = 2, req = {all = 3}, pos = { x = 1, y = 1 }, outfits = {"o_medium", "o_heavy"}, bal = {5, 10}, expl = {5, 10}, duration = 20, descr = {"duration", "bal", "expl"}, descr_size = 2, func = "talent_grenadier" },
+
+			confusion = { level = 0, max = 3, req = {all = 6}, pos = { x = 1, y = 2 }, outfits = {"o_medium", "o_heavy"}, bal = {3, 6, 10}, expl = {3, 6, 10}, descr = {"bal", "expl"}, descr_size = 2, func = "talent_confusion" },
+			addictive = { level = 0, max = 1, req = {all = 6, chem_reliant = 3}, pos = { x = 4, y = 2 }, outfits = {"o_medium", "o_heavy"}, burn = {20}, chem = {20}, shock = {20}, descr = {"burn", "chem", "shock"}, descr_size = 2, func = "talent_addictive" },
+
+			direct = { level = 0, max = 3, req = {all = 9, confusion = 3}, pos = { x = 0, y = 3 }, outfits = {"o_medium", "o_heavy"}, percents = {22, 44, 66}, descr = {"percents"}, hinder = "disguise_master" },
+			disguise_master = { level = 0, max = 3, req = {all = 9, confusion = 3}, pos = { x = 2, y = 3 }, outfits = {"o_medium"}, disguise = {17, 34, 50}, descr = {"disguise"}, hinder = "direct" },
+
+			flurry = { level = 0, max = 1, req = {all = 12, direct = 3}, pos = { x = 0, y = 4 }, outfits = {"o_medium", "o_heavy"}, bal = {10}, expl = {10}, duration = 2, descr = {"duration", "bal", "expl"}, func = "talent_flurry" },
+			loose_fit = { level = 0, max = 1, req = {all = 12, disguise_master = 3}, pos = { x = 2, y = 4 }, outfits = {"o_medium"}, bal = {10}, expl = {10}, rup = {20}, strike = {20}, descr = {"bal", "expl", "rup", "strike"} },
+
+			reposition = { level = 0, max = 1, req = {all = 15}, pos = { x = 1, y = 5 }, outfits = {"o_medium", "o_heavy"}, bal = {10}, expl = {10}, duration = 6, descr = {"duration", "bal", "expl"}, descr_size = 2, func = "talent_reposition" },
+		},
+
+		["assassin"] = {
+			ordinary = { level = 0, max = 3, req = {all = 0}, pos = { x = 0, y = 0 }, outfits = {"all"}, disguise = {2, 3, 5}, descr = {"disguise"}, func = "talent_ordinary" },
+			acrobatic = { level = 0, max = 1, req = {all = 0}, pos = { x = 2, y = 0 }, outfits = {"o_medium", "o_sci", "o_light"} },
+			quiet = { level = 0, max = 3, req = {all = 0}, pos = { x = 4, y = 0 }, outfits = {"all"}, stealth = {3, 6, 10}, descr = {"stealth"}, func = "talent_quiet" },
+
+			evanescent = { level = 0, max = 1, req = {all = 3, ordinary = 3}, pos = { x = 0, y = 1 }, outfits = {"all"}, disguise = {5}, descr = {"disguise"}, descr_size = 2 },
+			lurking = { level = 0, max = 3, req = {all = 3}, pos = { x = 2, y = 1 }, outfits = {"all"}, disguise = {3, 6, 10}, stealth = {3, 6, 10}, descr = {"disguise", "stealth"}, func = "talent_lurking" },
+			subtle = { level = 0, max = 1, req = {all = 3, quiet = 3}, pos = { x = 4, y = 1 }, outfits = {"all"}, stealth = {5}, descr = {"stealth"}, descr_size = 2 },
+
+			covert = { level = 0, max = 1, req = {all = 6, lurking = 3}, pos = { x = 1, y = 2 }, outfits = {"o_medium", "o_sci"}, bal = {20}, expl = {20}, rup = {20}, strike = {20}, descr = {"bal", "expl", "rup", "strike"}, descr_size = 3, hinder = "cunning" },
+			cunning = { level = 0, max = 1, req = {all = 6, lurking = 3}, pos = { x = 3, y = 2 }, outfits = {"o_light"}, evade = {25}, cooldown = 3, descr = {"evade"}, descr_size = 2, hinder = "covert" },
+
+			deception = { level = 0, max = 3, req = {all = 9}, pos = { x = 0, y = 3 }, outfits = {"all"}, disguise = {2, 3, 5}, descr = {"disguise"}, func = "talent_deception" },
+			vague = { level = 0, max = 3, req = {all = 9}, pos = { x = 2, y = 3 }, outfits = {"all"}, disguise = {2, 3, 5}, stealth = {2, 3, 5}, descr = {"disguise", "stealth"}, descr_size = 2, func = "talent_vague" },
+			sneaky = { level = 0, max = 3, req = {all = 9}, pos = { x = 4, y = 3 }, outfits = {"all"}, stealth = {2, 3, 5}, descr = {"stealth"}, func = "talent_sneaky" },
+
+			incognito = { level = 0, max = 3, req = {all = 12, covert = 1}, pos = { x = 1, y = 4 }, outfits = {"o_medium", "o_sci"}, bal = {7, 14, 20}, expl = {7, 14, 20}, rup = {7, 14, 20}, strike = {7, 14, 20}, disguise = {3, 6, 10}, descr = {"bal", "expl", "rup", "strike", "disguise"}, descr_size = 2 },
+			ghost = { level = 0, max = 3, req = {all = 12, cunning = 1}, pos = { x = 3, y = 4 }, outfits = {"o_light"}, stealth = {3, 6, 10}, evade = {8, 16, 25}, burn = {15, 30, 45}, chem = {15, 30, 45}, shock = {15, 30, 45}, descr = {"stealth", "evade", "burn", "chem", "shock"}, descr_size = 2 },
+
+			elusive = { level = 0, max = 1, req = {all = 15}, pos = { x = 2, y = 5 }, outfits = {"o_medium", "o_sci", "o_light"}, disguise = {10}, stealth = {10}, speed = {15}, descr = {"disguise", "stealth"} },
+		},
+	},
+
+
+
+	["endurance"] = {
+		["sniper"] = {
+			ease = { level = 0, max = 3, req = {all = 0}, pos = { x = 0, y = 0 }, speed = {2, 3, 5}, descr = {"speed"}, func = "talent_ease" },
+			refreshing = { level = 0, max = 2, req = {all = 0}, pos = { x = 2, y = 0 }, stamina = {12, 25}, descr = {"stamina"} },
+			hiker = { level = 0, max = 2, req = {all = 0}, pos = { x = 4, y = 0 }, weight = {20, 40}, descr = {"weight"} },
+
+			resting = { level = 0, max = 3, req = {all = 3}, pos = { x = 1, y = 1 }, stamina = {0.33, 0.66, 1}, descr = {"stamina"}, func = "talent_resting" },
+			prudent = { level = 0, max = 3, req = {all = 3}, pos = { x = 3, y = 1 }, weight = {10, 20, 30}, descr = {"weight"} },
+
+			swifty = { level = 0, max = 3, req = {all = 6}, pos = { x = 0, y = 2 }, speed = {2, 3, 5}, descr = {"speed"}, func = "talent_swifty" },
+			tireless = { level = 0, max = 3, req = {all = 6}, pos = { x = 2, y = 2 }, stamina = {0.33, 0.66, 1}, descr = {"stamina"}, func = "talent_tireless" },
+			hoarder = { level = 0, max = 3, req = {all = 6}, pos = { x = 4, y = 2 }, weight = {2, 4, 6}, descr = {"weight"}, func = "talent_hoarder" },
+
+			adrenaline_rush = { level = 0, max = 1, req = {all = 9, swifty = 3}, pos = { x = 0, y = 3 }, speed = {15}, cooldown = 300, duration = 5, descr = {"duration", "speed", "cooldown"}, descr_size = 2 },
+			second_wind = { level = 0, max = 1, req = {all = 9, tireless = 3}, pos = { x = 2, y = 3 }, stamina = {50}, cooldown = 2400, descr = {"stamina", "cooldown"}, descr_size = 2 },
+			organizer = { level = 0, max = 1, req = {all = 9, hoarder = 3}, pos = { x = 4, y = 3 } },
+
+			insomnia = { level = 0, max = 2, req = {all = 12}, pos = { x = 0, y = 4 }, speed = {2, 5}, descr = {"speed"}, func = "talent_insomnia" },
+			courage = { level = 0, max = 2, req = {all = 12}, pos = { x = 2, y = 4 }, stamina = {0.5, 1}, duration = 5, descr = {"duration", "stamina"}, func = "talent_courage" },
+			belt_braces = { level = 0, max = 2, req = {all = 12}, pos = { x = 4, y = 4 }, weight = {20, 40}, descr = {"weight"} },
+
+			athletic = { level = 0, max = 1, req = {all = 15}, pos = { x = 1, y = 5 }, speed = {0.1}, descr = {"speed"}, descr_size = 2, func = "talent_athletic" },
+			iron_spine = { level = 0, max = 1, req = {all = 15}, pos = { x = 3, y = 5 }, weight = {0.2}, descr = {"weight"}, descr_size = 2, func = "talent_iron_spine" },
+		},
+	},
+
+
+
+	["speech"] = {
+		["sniper"] = {
+			preparation = { level = 0, max = 2, req = {all = 0}, pos = { x = 0, y = 0 }, buy = {-2, -5}, descr = {"buy"} },
+			confidence = { level = 0, max = 3, req = {all = 0}, pos = { x = 2, y = 0 }, defense = {3, 6, 9}, descr = {"defense"} },
+			supplier = { level = 0, max = 2, req = {all = 0}, pos = { x = 4, y = 0 }, sell = {2, 5}, descr = {"sell"} },
+
+			observant = { level = 0, max = 3, req = {all = 3}, pos = { x = 0, y = 1 }, buy = {-2, -4, -6}, descr = {"buy"} },
+			smuggler = { level = 0, max = 3, req = {all = 3}, pos = { x = 4, y = 1 }, sell = {4, 8, 12}, descr = {"sell"} },
+
+			gregarious = { level = 0, max = 3, req = {all = 6}, pos = { x = 0, y = 2 }, buy = {-2, -3, -5}, descr = {"buy"} },
+			encouragement = { level = 0, max = 3, req = {all = 6}, pos = { x = 2, y = 2 }, damage = {2, 4, 6}, descr = {"damage"} },
+			persuasion = { level = 0, max = 3, req = {all = 6}, pos = { x = 4, y = 2 }, sell = {2, 3, 5}, descr = {"sell"} },
+
+			charismatic = { level = 0, max = 3, req = {all = 9}, pos = { x = 0, y = 3 }, free = {3, 6, 10}, descr = {"free"} },
+			shady = { level = 0, max = 3, req = {all = 9}, pos = { x = 4, y = 3 }, stalkers_money = {1000, 2000, 3000}, sell = {3, 6, 10}, descr = {"stalkers_money", "sell"} },
+
+			artistic = { level = 0, max = 1, req = {all = 12, charismatic = 3}, pos = { x = 0, y = 4 }, cooldown = 7200, descr = {"cooldown"} },
+			rally = { level = 0, max = 1, req = {all = 12, encouragement = 3}, pos = { x = 2, y = 4 }, crit = {3}, descr = {"crit"} },
+			cynical = { level = 0, max = 1, req = {all = 12, shady = 3}, pos = { x = 4, y = 4 }, cooldown = 14400, descr_size = 3 },
+
+			well_liked = { level = 0, max = 1, req = {all = 15, artistic = 1}, pos = { x = 0, y = 5 } },
+			deceitful = { level = 0, max = 1, req = {all = 15, cynical = 1}, pos = { x = 4, y = 5 } },
+		},
+	},
+
+}
+
+talents_table["endurance"]["trooper"] = talents_table["endurance"]["sniper"]
+talents_table["endurance"]["jugger"] = talents_table["endurance"]["sniper"]
+talents_table["endurance"]["monster_hunter"] = talents_table["endurance"]["sniper"]
+talents_table["endurance"]["merc"] = talents_table["endurance"]["sniper"]
+talents_table["endurance"]["assassin"] = talents_table["endurance"]["sniper"]
+
+talents_table["speech"]["trooper"] = talents_table["speech"]["sniper"]
+talents_table["speech"]["jugger"] = talents_table["speech"]["sniper"]
+talents_table["speech"]["monster_hunter"] = talents_table["speech"]["sniper"]
+talents_table["speech"]["merc"] = talents_table["speech"]["sniper"]
+talents_table["speech"]["assassin"] = talents_table["speech"]["sniper"]
+
+-- to change item weights
+local weight_talent_funcs = {
+	["demolition_expert"] = { func = "talent_weight_demolition_expert", on = {"ruck", "slot"}, off = {"drop"} },
+	["heavy_armor_expert"] = { func = "talent_weight_heavy_armor_expert", on = {"ruck", "slot"}, off = {"drop"} },
+	["hiker"] = { func = "talent_weight_hiker", on = {"ruck", "slot"}, off = {"drop"} },
+	["prudent"] = { func = "talent_weight_prudent", on = {"ruck", "slot"}, off = {"drop"} },
+	["organizer"] = { func = "talent_weight_organizer", on = {"ruck", "slot"}, off = {"drop"} },
+	["belt_braces"] = { func = "talent_weight_belt_braces", on = {"belt"}, off = {"ruck", "drop"} },
+}
+
+-- mutants table
+local mutants_t = {
+	["beast"] = {
+		tushkano = "encyclopedia_mutants_tushkano",
+		flesh = "encyclopedia_mutants_flesh",
+		dog = "encyclopedia_mutants_blind_dog",
+		boar = "encyclopedia_mutants_boar",
+		cat = "encyclopedia_mutants_cat",
+		pseudodog = "encyclopedia_mutants_pseudodog",
+		SM_LURKER = "encyclopedia_mutants_lurker",
+		chimera = "encyclopedia_mutants_chimera",
+		giant = "encyclopedia_mutants_pseudogiant",
+	},
+
+	["hum"] = {
+		zombie = "encyclopedia_mutants_zombie",
+		fracture = "encyclopedia_mutants_fracture",
+		snork = "encyclopedia_mutants_snork",
+		SM_POLTER_G = "encyclopedia_mutants_poltergeist",
+		SM_PYRO_G = "encyclopedia_mutants_pyrogeist",
+		SM_PSEUDO_G = "encyclopedia_mutants_pseudogeist",
+		SM_KARLIK = "encyclopedia_mutants_karlik",
+		burer = "encyclopedia_mutants_burer",
+		bloodsucker = "encyclopedia_mutants_bloodsucker",
+		SM_PSYSUCKER = "encyclopedia_mutants_psysucker",
+		controller = "encyclopedia_mutants_controller",
+	},
+}
+
+local stalker_comms_t = {
+	stalker = true, monolith = true, csky = true, army = true, bandit = true, killer = true,
+	ecolog = true, dolg = true, freedom = true, renegade = true, greh = true,
+}
+
+-- stalker torso bones table
+local stalker_bones_t = {
+	bip01_l_clavicle = true, bip01_r_clavicle = true, bip01_spine2 = true,
+	bip01_spine1 = true, bip01_spine = true, bip01_pelvis = true,
+}
+
+-- stalker head bones table
+local stalker_head_bones_t = {
+	bip01_neck = true, bip01_head = true, eyelid_1 = true,
+	eye_left = true, eye_right = true, jaw_1 = true,
+}
+
+
+-- actor_hits_npc
+function actor_hit_npc(npc, s_hit, bone_id, flags)
+	local draft = s_hit.draftsman
+	local draft_fits = draft and (IsStalker(draft) or IsMonster(draft))
+	if not (draft_fits and draft.alive and draft:alive() and draft:id() == 0) then return end
+	if not (npc:alive()) then return end
+
+--	local wpn = draft:active_item()
+	local wpn_id = s_hit.weapon_id
+	local wpn = wpn_id and level.object_by_id(wpn_id)
+	local kind = wpn and ini_sys:r_string_ex(wpn:section(), "kind")
+	if not kind then return end
+
+	-- machine guns
+	kind = is_mg_type(wpn:section()) and "w_machine_gun" or kind
+
+	-- sniper
+	if picked_class == "sniper" then
+		-- deep_wound
+		local deep_wound_t = talents_table["offensive"]["sniper"]["deep_wound"]
+		if deep_wound_t.level > 0 and kind == "w_sniper" then
+			deep_wound_var[npc:id()] = {}
+			deep_wound_var[npc:id()].time = 60000
+			deep_wound_var[npc:id()].value = deep_wound_t.bleed[deep_wound_t.level] / 100
+			pr("adding bleed val: %s || to id: %s", deep_wound_t.bleed[deep_wound_t.level] / 100, npc:id())
+		end
+	end
+
+	-- merc
+	if picked_class == "merc" then
+		-- modified_bullets
+		local modified_bullets_t = talents_table["offensive"]["merc"]["modified_bullets"]
+		if modified_bullets_t.level > 0 and IsStalker(npc) then
+			local bone_name = bone_id and npc:bone_name(bone_id)
+			if bone_name and stalker_bones_t[bone_name] then
+				modified_bullets_var[npc:id()] = {}
+				modified_bullets_var[npc:id()].time = modified_bullets_t.duration * 1000
+				modified_bullets_var[npc:id()].value = modified_bullets_t.bleed[modified_bullets_t.level] / 100
+				pr("merc, modified_bullets, add val: %s || to id: %s", modified_bullets_t.bleed[modified_bullets_t.level] / 100, npc:id())
+			end
+		end
+	end
+
+	-- trooper suppresion_fire
+	if picked_class == "trooper" and talents_table["defensive"]["trooper"]["suppresion_fire"].level > 0 then
+		durations_t.suppresion_fire_var = talents_table["defensive"]["trooper"]["suppresion_fire"].duration
+	end
+
+	-- endurance courage
+	if talents_table["endurance"]["sniper"]["courage"].level > 0 then
+		pr("courage, reset duration")
+		durations_t.courage_var = talents_table["endurance"]["sniper"]["courage"].duration
+	end
+
+	-- calc actor hit from talents
+	local pwr = 80
+	local crit = 0
+	local crit_dmg = 150
+	local class_t = talents_table["offensive"][picked_class]
+
+	if class_t then
+		for name, t in pairs(class_t) do
+			-- talent picked and (for all weapons or active weapon matches)
+			if t.level > 0 and (in_ar(t.wpns, "all") or in_ar(t.wpns, kind)) then
+				pr("----------- OFFENSIVE -----------")
+				pr("adding talent: %s || lvl: %s || wpn: %s", name, t.level, kind)
+
+				-- add damage
+				if t.damage then
+					local val = t.damage[t.level]
+					if this[t.func] then
+						val = this[t.func](npc, val, bone_id) or 0
+					end
+					pr("+damage: %s", val)
+					pwr = pwr + val
+				end
+
+				-- add crit
+				if t.crit then
+					local val = t.crit[t.level]
+					if this[t.func] then
+						val = this[t.func](npc, val, bone_id) or 0
+					end
+					pr("+crit: %s", val)
+					crit = crit + val
+				end
+
+				-- add crit damage
+				if t.crit_damage then
+					local val = t.crit_damage[t.level]
+					if this[t.func] then
+						val = this[t.func](npc, val) or 0
+					end
+					pr("+crit_damage: %s", val)
+					crit_dmg = crit_dmg + val
+				end
+
+				-- trooper barrage set cd
+				if name == "barrage" then
+					durations_t.barrage_var = talents_table["offensive"]["trooper"]["barrage"].duration
+				end
+
+				-- set thrill var
+				if name == "thrill" and thrill_var then
+					thrill_var = false
+				end
+
+				-- set fierce duration
+				if IsMonster(npc) and name == "fierce" then
+					durations_t.fierce_var = talents_table["offensive"]["monster_hunter"]["fierce"].duration
+					fierce_stacks = fierce_stacks + 1
+					if fierce_stacks > 5 then
+						fierce_stacks = 5
+					end
+				end
+
+				-- monster hunter deadly blow
+				if name == "deadly_blow" and deadly_blow_var then
+					deadly_blow_var = false
+					CreateTimeEvent("deadly_blow_delay_e", "deadly_blow_delay_a", 0.15, function()
+						deadly_blow_var = true
+						return true
+					end)
+
+					if talent_deadly_blow(npc, kind) then
+						pwr = pwr + 100000
+					end
+				end
+
+				-- merc bullseye duration
+				if name == "bullseye" then
+					local bone_name = bone_id and npc:bone_name(bone_id)
+					if bone_name and stalker_head_bones_t[bone_name] then
+						CreateTimeEvent("bullseye_check_e_" .. npc:id(), "bullseye_check_a_" .. npc:id(), 0.5, function(id)
+							local stalker = id and level.object_by_id(id)
+							if stalker and IsStalker(stalker) and (not stalker:alive()) then		-- stalker died from this headshot
+								durations_t.bullseye_var = talents_table["offensive"]["merc"]["bullseye"].duration
+							end
+							return true
+						end, npc:id())
+					end
+				end
+
+				-- merc liquidator
+				if name == "liquidator" and liquidator_var then
+					liquidator_var = false
+					CreateTimeEvent("liquidator_delay_e", "liquidator_delay_a", 0.15, function()
+						liquidator_var = true
+						return true
+					end)
+
+					if talent_liquidator(npc) then
+						pwr = pwr + 100000
+					end
+				end
+
+				-- assassin spot_weakness reset
+				if name == "spot_weakness" then
+					spot_weakness_stacks = 0
+					durations_t.spot_weakness_var = 0
+				end
+
+			end
+		end
+	end
+
+	-- new hit
+	local new_hit = s_hit.power * (pwr / 100)
+	pr("s_hit.power: %s || pwr: %s% || new_hit: %s", round_idp(s_hit.power, 4), pwr, round_idp(new_hit, 4))
+
+	-- crit
+	if crit > 0 and (math.random(1, 100) <= crit) then
+		new_hit = new_hit * (crit_dmg / 100)
+		pr("crit proced, new_hit: %s", round_idp(new_hit, 4))
+	end
+
+	-- set hit power
+	s_hit.power = new_hit
+	pr("~~~~~~~~~~~~~~~~~~~~~")
+
+end
+-------------------------------------
+
+-- actor_before_hit
+function actor_on_before_hit(s_hit, bone_id, flags)
+	if s_hit.power <= 0 then return end
+	if s_hit.type == hit.telepatic then return end		-- patched below
+
+	local pwr = 120
+	local class_t = talents_table["defensive"][picked_class]
+	local hit_type = s_hit.type
+	hit_type = hit_type == hit.light_burn and hit.burn or hit_type
+
+	-- sniper
+	local draft = s_hit.draftsman
+	if picked_class == "sniper" then
+		local outfit = db.actor:item_in_slot(7)
+		local kind = outfit and ini_sys:r_string_ex(outfit:section(), "kind")
+
+		-- mild (fall dmg)
+		if s_hit.type == hit.strike and kind and draft and draft:id() == 0 and talents_table["defensive"]["sniper"]["mild"].level > 0 then
+			local val = (kind == "o_medium" and 45) or (kind == "o_light" and 70) or 0
+			pr("mild val: %s", val)
+			pwr = pwr - val
+		end
+
+		-- reflexes (evasion)
+		if (cooldowns_t.evasion_cd <= 0) and s_hit.power > 0.05 and kind and (not draft or draft:id() ~= 0) and talents_table["defensive"]["sniper"]["reflexes"].level > 0 then
+			local agile_t = talents_table["defensive"]["sniper"]["agile"]
+			local agile_evasion = agile_t.level > 0 and agile_t.evade[agile_t.level] or 0
+			local evasion_chance = (kind == "o_medium" and 35) or (kind == "o_light" and 35 + agile_evasion) or 0
+			if evasion_chance > 0 and math.random(1, 100) <= evasion_chance then
+				play_evasion_anm()
+				cooldowns_t.evasion_cd = talents_table["defensive"]["sniper"]["reflexes"].cooldown
+				s_hit.power = 0
+				flags.ret_value = false
+				return
+			end
+		end
+
+	end
+
+	-- jugger
+	if picked_class == "jugger" then
+		-- fury
+		if draft and (IsStalker(draft) or IsMonster(draft)) and talents_table["offensive"]["jugger"]["fury"].level > 0 then
+			durations_t.fury_var = talents_table["offensive"]["jugger"]["fury"].duration
+		end
+	end
+
+	-- endurance adrenaline_rush
+	if s_hit.power > 0.2 and talents_table["endurance"]["sniper"]["adrenaline_rush"].level > 0 and cooldowns_t.adrenaline_rush_var <= 0 then
+		local adrenaline_rush_t = talents_table["endurance"]["sniper"]["adrenaline_rush"]
+		local val = adrenaline_rush_t.speed[adrenaline_rush_t.level]
+		pr("adrenaline_rush triggered")
+		cooldowns_t.adrenaline_rush_var = adrenaline_rush_t.cooldown
+		durations_t.adrenaline_rush_var = adrenaline_rush_t.duration
+		speed.add_speed("adrenaline_rush", 1 + val / 100, false, true)
+	end
+
+	-- assassin
+	if picked_class == "assassin" then
+		local outfit = db.actor:item_in_slot(7)
+		local kind = outfit and ini_sys:r_string_ex(outfit:section(), "kind")
+
+		-- cunning (fall dmg)
+		if s_hit.type == hit.strike and kind and draft and draft:id() == 0 and talents_table["defensive"]["assassin"]["cunning"].level > 0 and kind == "o_light" then
+			local val = 40
+			pr("cunning val: %s", val)
+			pwr = pwr - val
+		end
+
+		-- cunning and ghost (evasion)
+		if (cooldowns_t.cunning_cd <= 0) and s_hit.power > 0.05 and kind and (not draft or draft:id() ~= 0) and kind == "o_light" then
+			local cunning_t = talents_table["defensive"]["assassin"]["cunning"]
+			local ghost_t =  talents_table["defensive"]["assassin"]["ghost"]
+			local cunning_chance = cunning_t.level > 0 and cunning_t.evade[cunning_t.level] or 0
+			local ghost_chance = ghost_t.level > 0 and ghost_t.evade[ghost_t.level] or 0
+			local evade_chance = cunning_chance + ghost_chance
+			pr("assassin, evade chance: %s", evade_chance)
+			if math.random(1, 100) <= evade_chance then
+				pr("- assassin, evade proc")
+				play_evasion_anm()
+				cooldowns_t.cunning_cd = cunning_t.cooldown
+				s_hit.power = 0
+				flags.ret_value = false
+				return
+			end
+		end
+	end
+
+	-- calc actor resists from talents
+	if class_t then
+		for name, t in pairs(class_t) do
+			if t.level > 0 and (outfit_type(t.outfits) or in_ar(t.outfits, "all")) then
+				pr("----------- DEFENSIVE -----------")
+				pr("adding talent: %s || lvl: %s || type: %s", name, t.level, hit_convert[hit_type])
+
+				local t_type = hit_convert[hit_type]
+				if t[t_type] then
+					local val = t[t_type][t.level]
+					if this[t.func] then
+						val = this[t.func](val, draft) or 0
+					end
+					-- if has sniper inventor
+					if outfit_type({"o_light"}) and talents_table["defensive"]["sniper"]["inventor"].level > 0 then
+						val = val * 2
+					end
+
+					-- if has merc direct
+					if picked_class == "merc" and outfit_type({"o_heavy"}) then
+						local direct_t = talents_table["defensive"]["merc"]["direct"]
+						if direct_t.level > 0 then
+							local direct_val = direct_t.percents[direct_t.level] / 100
+							val = val * direct_val
+						else
+							val = 0
+						end
+					end
+
+					pr("+res: %s", val)
+					pwr = pwr - val
+				end
+
+				-- trooper composure
+				if name == "composure" and db.actor.power > 0.5 then
+					local stamina_hit = s_hit.power * 0.05 * 2
+					if db.actor.power > stamina_hit then
+						db.actor.power = db.actor.power - stamina_hit
+					end
+				end
+
+				-- jugger sturdy set duration
+				if name == "sturdy" then
+					durations_t.sturdy_var = t.duration
+				end
+
+			end
+		end
+	end
+
+
+	-- new hit
+	local new_hit = s_hit.power * (pwr / 100)
+	pr("s_hit.power: %s || pwr: %s% || new_hit: %s", round_idp(s_hit.power, 4), pwr, round_idp(new_hit, 4))
+
+	-- set hit power
+	s_hit.power = new_hit
+	pr("~~~~~~~~~~~~~~~~~~~~~")
+
+end
+
+-- patch arszy psi
+talents_base_arszi_psy_prot = arszi_psy.get_telepatic_protection_total
+function arszi_psy.get_telepatic_protection_total()
+	local jugger_defensive_t = talents_table["defensive"]["jugger"]
+	local monster_hunter_defensive_t = talents_table["defensive"]["monster_hunter"]
+
+	local psi_mult = 0.8
+	local val = 0
+
+	-- jugger heavy_armor_expert
+	local heavy_armor_expert_t = jugger_defensive_t["heavy_armor_expert"]
+	if heavy_armor_expert_t.level > 0 and outfit_type(heavy_armor_expert_t.outfits) then
+		val = val + (heavy_armor_expert_t.psi[heavy_armor_expert_t.level] / 100)
+		pr("psi, heavy_armor_expert: +%s%", val * 100)
+	end
+
+	-- jugger sanity
+	local sanity_t = jugger_defensive_t["sanity"]
+	if sanity_t.level > 0 and outfit_type(sanity_t.outfits) then
+		val = val + (sanity_t.psi[sanity_t.level] / 100)
+		pr("psi, sanity: +%s%", val * 100)
+	end
+
+	-- monster hunter clarity
+	local clarity_t = monster_hunter_defensive_t["clarity"]
+	if clarity_t.level > 0 then
+		local val_mult = outfit_type({"o_medium"}) and 2 or 1
+		val = val + val_mult * (clarity_t.psi[clarity_t.level] / 100)
+		pr("psi, clarity: +%s%", val * 100)
+	end
+
+	-- monster hunter stable_mind
+	local stable_mind_t = monster_hunter_defensive_t["stable_mind"]
+	if stable_mind_t.level > 0 then
+		val = val + (stable_mind_t.psi[stable_mind_t.level] / 100)
+		pr("psi, stable_mind: +%s%", val * 100)
+	end
+
+	return talents_base_arszi_psy_prot() * (psi_mult + val)
+end
+
+talents_base_arszi_psy_controller = arszi_psy.get_controller_tube_damage
+function arszi_psy.get_controller_tube_damage(pos, hit_pwr)
+	if talents_table["defensive"]["monster_hunter"]["stable_mind"].level > 0 and (math.random(1, 100) <= 35) then
+		pr("psi, stable_mind, controller hit mitigated")
+		return 0
+	end
+
+	return talents_base_arszi_psy_controller(pos, hit_pwr)
+end
+
+-- functions disguise
+function disguise_general_mult(npc)
+	local class_t = talents_table["defensive"][picked_class]
+	if not class_t then return end
+
+	local pwr = 100
+
+	for name, t in pairs(class_t) do
+		if t.level > 0 and (outfit_type(t.outfits) or in_ar(t.outfits, "all")) and t.disguise then
+			pr("----------- DISGUISE -----------")
+			pr("adding talent: %s || lvl: %s", name, t.level)
+
+			local val = t.disguise[t.level]
+			if this[t.func] then
+				val = this[t.func](val, npc) or 0
+			end
+
+			-- covert bonus
+			if class_t["covert"] and class_t["covert"].level > 0 and outfit_type({"o_medium", "o_sci"}) then
+				val = val * 1.5
+			end
+
+			pr("+disguise: %s", val)
+			pwr = pwr - val
+		end
+	end
+
+	if pwr < 10 then
+		pwr = 10
+	end
+	pr("~~~~~~~~~~~~~~~~~~~~~")
+
+	return pwr / 100
+end
+
+function gain_disguise_exp(npc)
+	if not (npc and npc:relation(db.actor) >= game_object.enemy and picked_class == "assassin" and talents_leveling and talents_mcm) then return end
+
+	local dist = db.actor:position():distance_to(npc:position())
+	local val = 0.5 * (0.98)^dist
+--	pr("~disguise adding exp, def: %s", val * talents_mcm.get_config("defensive"))
+	talents_leveling.add_exp("defensive", val * talents_mcm.get_config("defensive"))
+end
+
+base_disguise_calc = gameplay_disguise.calculate_npc_suspicion
+function gameplay_disguise.calculate_npc_suspicion(npc, id, t, awareness)
+	local new_val = disguise_general_mult(npc)
+	if not new_val then
+		return math.floor(clamp(base_disguise_calc(npc, id, t, awareness), 1, 100))
+	else
+		gain_disguise_exp(npc)		-- defensive exp
+		return math.floor(clamp(new_val * base_disguise_calc(npc, id, t, awareness), 1, 100))
+	end
+end
+-------------------------------------
+
+-- functions stealth
+function stealth_general_mult(who)
+	local class_t = talents_table["defensive"][picked_class]
+	if not (who and who:id() == 0 and class_t) then return end
+
+	local pwr = 100
+
+	for name, t in pairs(class_t) do
+		if t.level > 0 and (outfit_type(t.outfits) or in_ar(t.outfits, "all")) and t.stealth then
+			pr("----------- STEALTH -----------")
+			pr("adding talent: %s || lvl: %s", name, t.level)
+
+			local val = t.stealth[t.level]
+			if this[t.func] then
+				val = this[t.func](val) or 0
+			end
+
+			-- cunning bonus
+			if class_t["cunning"].level > 0 and outfit_type({"o_light"}) then
+				val = val * 1.5
+			end
+
+			pr("+stealth: %s", val)
+			pwr = pwr - val
+		end
+	end
+
+	if pwr < 10 then
+		pwr = 10
+	end
+	pr("~~~~~~~~~~~~~~~~~~~~~")
+
+	return pwr / 100
+end
+
+function gain_stealth_exp(npc, who)
+	if not (npc and npc:relation(db.actor) >= game_object.enemy and picked_class == "assassin" and talents_leveling and talents_mcm) then return end
+	if npc:see(db.actor) then return end
+
+	local dist = db.actor:position():distance_to(npc:position())
+	local val = 0.5 * (0.98)^dist
+--	pr("-stealth adding exp, def: %s", val * talents_mcm.get_config("defensive"))
+	talents_leveling.add_exp("defensive", val * talents_mcm.get_config("defensive"))
+end
+
+if stealth_mcm then		-- if has stealth addon
+	base_stealth_luminocity_mult = visual_memory_manager.get_luminocity_mult
+	function visual_memory_manager.get_luminocity_mult(npc, who, luminocity, object_distance, distance)
+		local new_val = stealth_general_mult(who)
+		if not new_val then
+			return base_stealth_luminocity_mult(npc, who, luminocity, object_distance, distance)
+		else
+			gain_stealth_exp(npc, who)		-- defensive exp
+			return new_val * base_stealth_luminocity_mult(npc, who, luminocity, object_distance, distance)
+		end
+	end
+else		-- vanilla
+	base_stealth_visible_value = visual_memory_manager.get_visible_value
+	function visual_memory_manager.get_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_factor,velocity,distance,object_distance,always_visible_distance)
+		local new_val = stealth_general_mult(who)
+		if not new_val then
+			return base_stealth_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_factor,velocity,distance,object_distance,always_visible_distance)
+		else
+			gain_stealth_exp(npc, who)		-- defensive exp
+			return new_val * base_stealth_visible_value(npc,who,time_delta,time_quant,luminocity,velocity_factor,velocity,distance,object_distance,always_visible_distance)
+		end
+	end
+end
+-------------------------------------
+
+-- npc_hit
+function npc_on_before_hit(npc, s_hit, bone_id, flags)		-- not very automatic xd
+	local draft = s_hit.draftsman
+	local draft_fits = draft and (IsStalker(draft) or IsMonster(draft))
+	if not (draft_fits and draft.alive and draft:alive() and draft:id() ~= 0) then return end
+	if not (npc:alive()) then return end
+
+	local pwr = 100
+	local crit = 0
+	local crit_dmg = 150
+
+	-- jugger
+	if picked_class == "jugger" then
+		-- frightening
+		local frightening_t = talents_table["offensive"]["jugger"]["frightening"]
+		if frightening_t.level > 0 then
+			local val = talent_frightening(npc, frightening_t.damage[frightening_t.level]) or 0
+			pr("NPC frightening, sec: %s || val: %s", npc:section(), val)
+			pwr = pwr + val
+		end
+
+		-- turmoil
+		local turmoil_t = talents_table["defensive"]["jugger"]["turmoil"]
+		local ac_comm = get_actor_true_community()
+		local npc_comm = IsStalker(npc) and npc.character_community and npc:character_community()
+		if turmoil_t.level > 0 and npc_comm then
+			local npc_friend = not game_relations.is_factions_enemies(ac_comm, npc_comm)
+			local draft_actor_dist = draft:position():distance_to(db.actor:position())
+			if npc_friend and draft_actor_dist and draft_actor_dist <= turmoil_t.radius then
+				local val = turmoil_t.bal[turmoil_t.level]
+				pr("NPC turmoil, friend sec: %s || enemy sec: %s || val: %s", npc:section(), draft:section(), val)
+				pwr = pwr - val
+			end
+		end
+	end
+
+	-- speech confidence
+	local confidence_t = talents_table["speech"]["sniper"]["confidence"]
+	if confidence_t.level > 0 and npc:has_info("npcx_is_companion") then
+		local val = confidence_t.defense[confidence_t.level]
+		pr("NPC speech confidence, companion (target) sec: %s || shooter sec: %s || val: %s", npc:section(), draft:section(), val)
+		pwr = pwr - val
+	end
+
+	-- speech encouragement
+	local encouragement_t = talents_table["speech"]["sniper"]["encouragement"]
+	if encouragement_t.level > 0 and draft:has_info("npcx_is_companion") then
+		local val = encouragement_t.damage[encouragement_t.level]
+		pr("NPC speech encouragement, companion sec: %s || target sec: %s || val: %s", draft:section(), npc:section(), val)
+		pwr = pwr + val
+	end
+
+	-- speech rally
+	local rally_t = talents_table["speech"]["sniper"]["rally"]
+	if rally_t.level > 0 and draft:has_info("npcx_is_companion") then
+		local val = rally_t.crit[rally_t.level]
+		pr("NPC speech rally, companion sec: %s || target sec: %s || val: %s", draft:section(), npc:section(), val)
+		crit = crit + val
+	end
+
+
+	-- new hit
+	local new_hit = s_hit.power * (pwr / 100)
+
+	-- crit
+	if crit > 0 and (math.random(1, 100) <= crit) then
+		new_hit = new_hit * (crit_dmg / 100)
+	end
+
+	-- set hit power
+	s_hit.power = new_hit
+
+end
+
+function npc_on_death_callback(npc, who)
+
+	-- trooper
+	if picked_class == "trooper" then
+		-- thrill
+		if who:id() == 0 and talents_table["offensive"]["trooper"]["thrill"].level > 0 then
+			thrill_var = true
+		end
+
+		-- collector
+		if who:id() == 0 and talents_table["offensive"]["trooper"]["collector"].level > 0 then
+			-- table with price
+			local val = get_collector_val(npc)
+			if val then
+				collector_var = collector_var + val
+				if collector_var > 1500 then
+					collector_var = 1500
+				end
+			end
+		end
+	end
+
+	-- jugger
+	if picked_class == "jugger" then
+		-- dismorale
+		if who:id() == 0 and talents_table["defensive"]["jugger"]["dismorale"].level > 0 then
+			durations_t.dismorale_var = talents_table["defensive"]["jugger"]["dismorale"].duration
+			if talents_table["defensive"]["jugger"]["anxiety"].level > 0 then
+				durations_t.dismorale_var = durations_t.dismorale_var + 10
+			end
+		end
+	end
+
+	-- monster hunter
+	if picked_class == "monster_hunter" then
+		-- trophies
+		local mut_type = check_mutant_type(npc)
+		if who:id() == 0 and mut_type and (not monster_hunter_trophies[mut_type]) and talents_table["offensive"]["monster_hunter"]["trophies"].level > 0 then
+			monster_hunter_trophies[mut_type] = true
+		end
+	end
+
+	-- merc
+	if picked_class == "merc" then
+		-- head hunter
+		if who:id() == 0 and IsStalker(npc) and talents_table["offensive"]["merc"]["head_hunter"].level > 0 then
+			local comm = npc.character_community and npc:character_community()
+			if comm and stalker_comms_t[comm] and (not merc_head_hunter_t[comm]) then
+				merc_head_hunter_t[comm] = true
+			end
+		end
+
+		-- searcher
+		if who:id() == 0 and IsStalker(npc) and talents_table["offensive"]["merc"]["searcher"].level > 0 then
+			local money_ar = { "money_50_100", "money_100_200", "money_200_300" }
+			for i = 1, 2 do
+				local money_sec = money_ar[math.random(1, #money_ar)]
+				if money_sec then
+					pr("searcher, spawning %s", money_sec)
+					alife_create_item(money_sec, npc)
+				end
+			end
+		end
+	end
+
+end
+
+-------------------------------------
+-- all_functions
+
+-- functions attack (sniper)
+function talent_experienced_sniper(npc, val)
+	if outfit_type({"o_medium", "o_light"}) then
+		return val
+	end
+end
+
+function talent_steady(npc, val)
+	if outfit_type({"o_medium", "o_light"}) and IsMoveState('mcCrouch') then
+		return val
+	end
+end
+
+function talent_convenience(npc, val)
+	if outfit_type({"o_light"}) then
+		return val
+	end
+end
+
+function talent_gunslinger(npc, val)
+	local pistol = db.actor:active_item()
+	local wpn1 = db.actor:item_in_slot(2)
+	local wpn2 = db.actor:item_in_slot(3)
+	if (wpn1 and pistol and pistol:id() == wpn1:id()) or (wpn2 and pistol and pistol:id() == wpn2:id()) then
+		return val
+	end
+end
+
+function talent_gunslinger_reload(obj)		-- reload
+	local gunslinger_t = talents_table["offensive"]["sniper"]["gunslinger"]
+	if gunslinger_t.level <= 0 then return end
+	if not (obj and IsPistol(obj)) then return end
+
+	local wpn1 = db.actor:item_in_slot(2)
+	local wpn2 = db.actor:item_in_slot(3)
+	if (wpn1 and obj:id() == wpn1:id()) or (wpn2 and obj:id() == wpn2:id()) then
+		local val = 1 + gunslinger_t.reload[gunslinger_t.level] / 100
+		return val
+	end
+end
+
+function talent_sharpshooter(npc, val)
+--	if outfit_type({"o_medium", "o_light"}) then
+		local dist_to = npc:position():distance_to(db.actor:position())
+		return val * math.ceil(dist_to)
+--	end
+end
+
+function talent_ambush(npc, val)
+	if outfit_type({"o_light"}) and (not npc:see(db.actor)) then
+		return val
+	end
+end
+
+function talent_loner(npc, val)
+	local companions = axr_companions.get_companion_count()
+	if companions < 1 then
+		return val
+	end
+end
+
+function talent_soft_spot(npc, val)
+	local npc_dir = vector():set(npc:direction())
+	npc_dir.y = 0
+	local dir_to_ac = vector():set(db.actor:position()):sub(npc:position())
+	dir_to_ac.y = 0
+	local dp = npc_dir:dotproduct(dir_to_ac)
+	if dp < 0 then
+	    return val
+	end
+end
+
+function talent_nocturnal(npc, val)
+	if level.get_time_hours() < 6 or level.get_time_hours() >= 18 then
+		return val
+	end
+end
+-------------------------------------
+
+-- functions attack (trooper)
+function talent_duelist(npc, val)
+	if npc and npc:see(db.actor) then
+		return val
+	end
+end
+
+function talent_focus(npc, val)
+	if outfit_type({"o_medium", "o_sci"}) then
+		return val * db.actor.power * 100
+	end
+end
+
+function talent_thrill(npc, val)
+	if thrill_var then
+		return val
+	end
+end
+
+function talent_precision(npc, val)
+	if precision_allow_dmg then
+		return val
+	end
+end
+
+function talent_barrage(npc, val)
+	if durations_t.barrage_var > 0 then
+		return val
+	end
+end
+
+function talent_reckless(npc, val)
+	local missing_hp = 1 - db.actor.health
+	return missing_hp * val * 100
+end
+
+function talent_collector(npc, val)
+	if collector_var > 0 then
+		return collector_var * val
+	end
+end
+-------------------------------------
+
+-- functions attack (jugger)
+function talent_hunter(npc, val)
+	if IsMonster(npc) then
+		return val
+	end
+end
+
+function talent_bounty_hunter(npc, val)
+	if IsStalker(npc) then
+		return val
+	end
+end
+
+function talent_merciless(npc, val)
+	local mastery_t = talents_table["offensive"]["jugger"]["mastery"]
+	local extra_val = mastery_t.level > 0 and mastery_t.merciless_bonus or 0
+	if npc.health < db.actor.health then
+		return val + extra_val
+	end
+end
+
+function talent_heavy_guns_expert_reload(obj) 		-- reload
+	local heavy_guns_expert_t = talents_table["offensive"]["jugger"]["heavy_guns_expert"]
+	if heavy_guns_expert_t.level <= 0 then return end
+
+	local kind = obj and ini_sys:r_string_ex(obj:section(), "kind")
+	local kind_fits = (kind and kind == "w_shotgun") or is_mg_type(obj:section())
+	if kind_fits then
+		local val = 1 + heavy_guns_expert_t.reload[heavy_guns_expert_t.level] / 100
+		return val
+	end
+end
+
+function talent_fury(npc, val)		-- var set in actor_on_before_hit
+	local mastery_t = talents_table["offensive"]["jugger"]["mastery"]
+	local extra_val = mastery_t.level > 0 and mastery_t.fury_bonus or 0
+	if durations_t.fury_var > 0 then
+		return val + extra_val
+	end
+end
+
+function talent_execution(npc, val)
+	local exec_t = talents_table["offensive"]["jugger"]["execution"]
+	local mastery_t = talents_table["offensive"]["jugger"]["mastery"]
+	local threshold = mastery_t.level > 0 and (mastery_t.execution_bonus + exec_t.hp_thresh) or exec_t.hp_thresh
+	if npc.health < (threshold / 100) then
+		return val
+	end
+end
+
+function talent_frightening(npc, val)
+	local ac_comm = get_actor_true_community()
+	local npc_comm = IsStalker(npc) and npc.character_community and npc:character_community()
+	local npc_enemy = npc_comm and game_relations.is_factions_enemies(ac_comm, npc_comm)
+
+	if IsMonster(npc) or npc_enemy then
+		local fright_t = talents_table["offensive"]["jugger"]["frightening"]
+		local mastery_t = talents_table["offensive"]["jugger"]["mastery"]
+		local radius = mastery_t.level > 0 and (mastery_t.frightening_bonus + fright_t.radius) or fright_t.radius
+		local dist_to = npc:position():distance_to(db.actor:position())
+		if dist_to and dist_to < radius then
+			return val
+		end
+	end
+end
+
+function talent_selective(npc, val)
+	local wpn1 = db.actor:item_in_slot(2)
+	local wpn2 = db.actor:item_in_slot(3)
+	if (wpn1 and not wpn2) or (wpn2 and not wpn1) then
+		return val
+	end
+end
+-------------------------------------
+
+-- functions attack (monster hunter)
+function talent_dog_hunter(npc, val)
+	local mut_type_t = { "dog", "pseudodog", "cat" }
+	local mut_type = check_mutant_type(npc)
+	if mut_type and in_ar(mut_type_t, mut_type) then
+		return val
+	end
+end
+
+function talent_boar_hunter(npc, val)
+	local mut_type_t = { "boar", "flesh", "SM_LURKER" }
+	local mut_type = check_mutant_type(npc)
+	if mut_type and in_ar(mut_type_t, mut_type) then
+		return val
+	end
+end
+
+function talent_zombie_hunter(npc, val)
+	local mut_type_t = { "zombie", "fracture", "snork" }
+	local mut_type = check_mutant_type(npc)
+	if mut_type and in_ar(mut_type_t, mut_type) then
+		return val
+	end
+end
+
+function talent_trophies(npc, val)
+	local trophies_mult = size_table(monster_hunter_trophies)
+	if trophies_mult > 0 then
+		return val * trophies_mult
+	end
+end
+
+function talent_beast_anatomy(npc, val)
+	local mut_type = check_mutant_type(npc, true)
+	if mut_type and mut_type == "beast" then
+		return val
+	end
+end
+
+function talent_humanoid_anatomy(npc, val)
+	local mut_type = check_mutant_type(npc, true)
+	if mut_type and mut_type == "hum" then
+		return val
+	end
+end
+
+function talent_expert_hunter(npc, val)
+	local mut_type_t = { "bloodsucker", "burer", "SM_PSYSUCKER", "SM_POLTER_G", "SM_PYRO_G", "SM_PSEUDO_G" }
+	local mut_type = check_mutant_type(npc)
+	if mut_type and in_ar(mut_type_t, mut_type) then
+		return val
+	end
+end
+
+function talent_beast_rivalry(npc, val)
+	local mut_type = check_mutant_type(npc, true)
+	if mut_type and mut_type == "beast" then
+		return val
+	end
+end
+
+function talent_humanoid_rivalry(npc, val)
+	local mut_type = check_mutant_type(npc, true)
+	if mut_type and mut_type == "hum" then
+		return val
+	end
+end
+
+function talent_master_hunter(npc, val)
+	local mut_type_t = { "chimera", "controller", "giant" }
+	local mut_type = check_mutant_type(npc)
+	if mut_type and in_ar(mut_type_t, mut_type) then
+		return val
+	end
+end
+
+function talent_fierce(npc, val)
+	if fierce_stacks > 0 then
+		return val * fierce_stacks
+	end
+end
+
+function talent_ranger(npc, val)
+	if outfit_type({"o_medium"}) then
+		return val
+	end
+end
+
+function talent_deadly_blow(npc, kind)
+	if not IsMonster(npc) then return end
+
+	local chance = kind == "w_melee" and 5 or 1
+	if math.random(1, 100) <= chance then
+		return true
+	end
+end
+-------------------------------------
+
+-- functions attack (merc)
+function talent_overdrive(npc, val)
+	if durations_t.overdrive_var > 0 then
+		return val
+	end
+end
+
+function talent_overdrive_on_use(sec)
+	local overdrive_t = talents_table["offensive"]["merc"]["overdrive"]
+	if overdrive_t.level <= 0 then return end
+
+	if string.find(sec, "stimpack") or (sec == "cocaine") then
+		durations_t.overdrive_var = overdrive_t.duration
+	end
+end
+
+function talent_head_hunter(npc, val)
+	local head_hunter_mult = size_table(merc_head_hunter_t)
+	if IsStalker(npc) and head_hunter_mult > 0 then
+		return val * head_hunter_mult
+	end
+end
+
+function talent_arrogance(npc, val)
+	local arrogance_rank_t = {
+		novice = 1, trainee = 2, experienced = 3, professional = 4,
+		veteran = 5, expert = 6, master = 7, legend = 8
+	}
+
+	local rank = ranks.get_obj_rank_name(npc)
+	local rank_num = rank and arrogance_rank_t[rank]
+	local ac_rank = ranks.get_obj_rank_name(db.actor)
+	local ac_rank_num = ac_rank and arrogance_rank_t[ac_rank]
+	if not (rank_num and ac_rank_num) then return end
+
+	local diff = ac_rank_num - rank_num
+	if diff > 0 then
+		return val * diff
+	end
+end
+
+function talent_aim_torso(npc, val, bone_id)
+	local bone_name = npc and bone_id and npc:bone_name(bone_id)
+	if bone_name and stalker_bones_t[bone_name] then
+		return val
+	end
+end
+
+function talent_aim_limbs(npc, val, bone_id)
+	local bone_name = npc and bone_id and npc:bone_name(bone_id)
+	if bone_name and (not stalker_bones_t[bone_name]) then
+		return val
+	end
+end
+
+function talent_bullseye(npc, val)
+	if durations_t.bullseye_var > 0 then
+		return val
+	end
+end
+
+function talent_assault_rifles_expert_reload(obj)
+	local assault_t = talents_table["offensive"]["merc"]["assault_rifles_expert"]
+	if assault_t.level <= 0 then return end
+
+	local kind = obj and ini_sys:r_string_ex(obj:section(), "kind")
+	if kind and kind == "w_rifle" then
+		local val = 1 + assault_t.reload[assault_t.level] / 100
+		return val
+	end
+end
+
+function talent_light_guns_expert_reload(obj)
+	local pistol_t = talents_table["offensive"]["merc"]["light_guns_expert"]
+	if pistol_t.level <= 0 then return end
+
+	local kind = obj and ini_sys:r_string_ex(obj:section(), "kind")
+	if kind and (kind == "w_pistol" or kind == "w_smg") then
+		local val = 1 + pistol_t.reload[pistol_t.level] / 100
+		return val
+	end
+end
+
+function talent_liquidator(npc)
+	if not (IsStalker(npc)) then return end
+
+	if math.random(1, 100) <= 1 then
+		return true
+	end
+end
+-------------------------------------
+
+-- functions attack (assassin)
+function talent_spot_weakness(npc, val)
+	if spot_weakness_stacks > 0 then
+		return val * spot_weakness_stacks
+	end
+end
+
+function talent_undercover(npc, val)
+	if not (IsStalker(npc)) then return end
+
+	local comm = npc.character_community and npc:character_community()
+	local outfit = db.actor:item_in_slot(7)
+	local outfit_comm = outfit and ini_sys:r_string_ex(outfit:section(), "community")
+	if not (comm and outfit_comm) then return end
+
+	if (comm == outfit_comm) or (not game_relations.is_factions_enemies(comm, outfit_comm)) then
+		return val
+	end
+end
+
+function talent_tactical(npc, val)
+	local wpn = db.actor:active_item()
+	if wpn and wpn:weapon_is_silencer() then
+		return val
+	end
+end
+
+function talent_backstab(npc, val)
+	local npc_dir = vector():set(npc:direction())
+	npc_dir.y = 0
+	local dir_to_ac = vector():set(db.actor:position()):sub(npc:position())
+	dir_to_ac.y = 0
+	local dp = npc_dir:dotproduct(dir_to_ac)
+	if dp < 0 then
+	    return val
+	end
+end
+
+function talent_saboteur(npc, val)
+	local dist_to = npc:position():distance_to(db.actor:position())
+	local new_val = val - math.ceil(dist_to) * 0.1
+	return new_val > 0 and new_val or 0
+end
+
+function talent_surprise_attack(npc, val)
+	local in_danger = (db.storage[npc:id()] and db.storage[npc:id()].danger_flag) or (npc:best_enemy() and true) or false
+	if not in_danger then
+		return val
+	end
+end
+
+function talent_assassination(npc, val)
+	local npc_dir = vector():set(npc:direction())
+	npc_dir.y = 0
+	local dir_to_ac = vector():set(db.actor:position()):sub(npc:position())
+	dir_to_ac.y = 0
+	local dp = npc_dir:dotproduct(dir_to_ac)
+	local in_danger = (db.storage[npc:id()] and db.storage[npc:id()].danger_flag) or (npc:best_enemy() and true) or false
+	if dp < 0 and (not in_danger) then
+	    return val
+	end
+end
+
+function talent_vile(npc, val)
+	local npc_dir = vector():set(npc:direction())
+	npc_dir.y = 0
+	local dir_to_ac = vector():set(db.actor:position()):sub(npc:position())
+	dir_to_ac.y = 0
+	local dp = npc_dir:dotproduct(dir_to_ac)
+	if dp < 0 then
+	    return val
+	end
+end
+
+function talent_pragmatic(npc, val)
+	local pistol = db.actor:active_item()
+	local wpn1 = db.actor:item_in_slot(2)
+	local wpn2 = db.actor:item_in_slot(3)
+
+	local check1 = wpn1 and pistol and pistol:id() == wpn1:id() and (not wpn2)
+	local check2 = wpn2 and pistol and pistol:id() == wpn2:id() and (not wpn1)
+	if check1 or check2 then
+		return val
+	end
+end
+-------------------------------------
+
+-- functions defense (sniper)
+function talent_iron_stomach(sec)
+	local iron_stomach_t = talents_table["defensive"]["sniper"]["iron_stomach"]
+	if iron_stomach_t.level <= 0 then return end
+
+	local rad_add = ini_sys:r_float_ex(sec, "eat_radiation")
+	if rad_add and rad_add > 0 then
+		local rad_reduction = rad_add * (iron_stomach_t.rad_food[iron_stomach_t.level] / 100)
+		pr("iron_stomach level: %s || cur_rad: %s || reduce rad by: %s", iron_stomach_t.level, db.actor.radiation, rad_reduction)
+		if db.actor.radiation <= rad_reduction then
+			db.actor.radiation = 0
+		else
+			db.actor.radiation = db.actor.radiation - rad_reduction
+		end
+		pr("iron_stomach new rad: %s", db.actor.radiation)
+	end
+end
+
+function talent_rad_resistant(sec)
+	local rad_resistant_t = talents_table["defensive"]["sniper"]["rad_resistant"]
+	if rad_resistant_t.level <= 0 then return end
+
+	local rad_restore = ini_sys:r_float_ex(sec, "boost_radiation_restore")
+	local boost_time = ini_sys:r_float_ex(sec, "boost_time")
+	if rad_restore and rad_restore > 0 and boost_time then
+		local rad_restore_tot = rad_restore * 6 * boost_time
+		local rad_to_remove = rad_restore_tot * 0.35
+		pr("rad_resistant cur_rad: %s || rad_to_remove: %s", db.actor.radiation, rad_to_remove)
+		if db.actor.radiation <= rad_to_remove then
+			db.actor.radiation = 0
+		else
+			db.actor.radiation = db.actor.radiation - rad_to_remove
+		end
+		pr("rad_resistant new rad: %s", db.actor.radiation)
+	end
+end
+
+function talent_technician(item)
+	local technician_t = talents_table["defensive"]["sniper"]["technician"]
+	if technician_t.level > 0 and IsOutfit(item) then
+		local kind = ini_sys:r_string_ex(item:section(), "kind")
+		local cur_upgrades = utils_item.get_upgrades_installed(item, nil, true)
+		if kind == "o_medium" and is_empty(cur_upgrades) then
+			install_random_upgrade(item)
+		end
+	end
+end
+
+function talent_expert_technician(val)
+	local outfit = db.actor:item_in_slot(7)
+	if outfit then
+		return outfit:condition() * 100 * val
+	end
+end
+
+function talent_agile(val)
+	if IsMoveState("mcAnyMove") then
+		return val
+	end
+end
+-------------------------------------
+
+-- functions defense (trooper)
+function talent_trooper_general_armor(val)
+	if outfit_type({"o_medium", "o_sci"}) then
+		return val * 2
+	end
+	return val
+end
+
+function talent_first_aid(sec)
+	local first_aid_t = talents_table["defensive"]["trooper"]["first_aid"]
+	if first_aid_t.level <= 0 then return end
+
+	local hp_restore = ini_sys:r_float_ex(sec, "boost_health_restore")
+	local boost_time = ini_sys:r_float_ex(sec, "boost_time")
+	if hp_restore and hp_restore > 0 and boost_time then
+		local hp_restore_tot = hp_restore * 6 * boost_time
+		local hp_to_add = hp_restore_tot * (first_aid_t.heal[first_aid_t.level] / 100)
+		pr("first_aid cur_hp: %s || hp_to_add: %s", db.actor.health, hp_to_add)
+		if db.actor.health + hp_to_add >= 1 then
+			db.actor.health = 1
+		else
+			db.actor.health = db.actor.health + hp_to_add
+		end
+		pr("first_aid new hp: %s", db.actor.health)
+	end
+end
+
+function talent_suppresion_fire(val)		-- var set in actor_hit_npc
+	if durations_t.suppresion_fire_var > 0 then
+		return val
+	end
+end
+
+function talent_cautious(val)
+	if cooldowns_t.cautious_var <= 0 then
+		cooldowns_t.cautious_var = talents_table["defensive"]["trooper"]["cautious"].cooldown
+		return val * 2
+	end
+	return val
+end
+
+function talent_composure(val)
+	if db.actor.power > 0.5 then
+		return val
+	end
+end
+
+function talent_adorned(val)
+	local belt_items = 0
+	db.actor:iterate_belt( function(owner, obj)
+		belt_items = belt_items + 1
+	end)
+	if belt_items > 0 then
+		return val * belt_items
+	end
+end
+
+function talent_expert_armorer(val)
+	local upgrades = 0
+	local outfit = db.actor:item_in_slot(7)
+	local cur_upgrades = outfit and utils_item.get_upgrades_installed(outfit, nil, true)
+	if cur_upgrades then
+		for name, _ in pairs(cur_upgrades) do
+			upgrades = upgrades + 1
+		end
+	end
+	if upgrades > 10 then
+		upgrades = 10
+	end
+	if upgrades > 0 then
+		return val * upgrades
+	end
+end
+
+function talent_last_stand(val)
+	if db.actor.health < 0.35 then
+		return val
+	end
+end
+
+function talent_leap(val)
+	if durations_t.leap_var > 0 then
+		return val
+	end
+end
+-------------------------------------
+
+-- functions defense (jugger)
+function talent_dismorale(val)
+	if durations_t.dismorale_var > 0 then
+		if talents_table["defensive"]["jugger"]["anxiety"].level > 0 then
+			return val * 2
+		end
+		return val
+	end
+end
+
+function talent_sturdy(val)
+	if durations_t.sturdy_var > 0 then
+		return val
+	end
+end
+
+function talent_turmoil(val, npc)
+	local turmoil_t = talents_table["defensive"]["jugger"]["turmoil"]
+	if npc and (IsStalker(npc) or IsMonster(npc)) and npc.alive and npc:alive() and db.actor:position():distance_to(npc:position()) <= turmoil_t.radius then
+		return val
+	end
+end
+
+function talent_secure(val)
+	local companions = axr_companions.get_companion_count()
+	if companions >= 1 then
+		local ret_val = val * companions
+		if ret_val > 15 then
+			ret_val = 15
+		end
+		return ret_val
+	end
+end
+
+function talent_lucid(val)
+	local psi_health = arszi_psy.get_psy_health()
+	if psi_health then
+		return psi_health * 100 * val
+	end
+end
+
+function talent_robust(val)
+	if cooldowns_t.robust_cd <= 0 then
+		cooldowns_t.robust_cd = talents_table["defensive"]["jugger"]["robust"].cooldown
+		return val
+	end
+end
+-------------------------------------
+
+-- functions defense (monster_hunter)
+function talent_monster_hunter_general_armor(val)
+	if outfit_type({"o_medium"}) then
+		return val * 2
+	end
+	return val
+end
+
+function talent_melee_defense(val)
+	local wpn = db.actor:active_item()
+	local kind = wpn and ini_sys:r_string_ex(wpn:section(), "kind")
+	if kind and kind == "w_melee" then
+		return val
+	end
+end
+
+function talent_special_diet(val)
+	if durations_t.special_diet_var > 0 then
+		return val
+	end
+end
+
+function talent_special_diet_on_use(sec)
+	local special_diet_t = talents_table["defensive"]["monster_hunter"]["special_diet"]
+	if special_diet_t.level <= 0 then return end
+
+	local kind = sec and ini_sys:r_string_ex(sec, "kind")
+	if kind and (kind == "i_mutant_cooked" or kind == "i_mutant_raw") then
+		durations_t.special_diet_var = special_diet_t.duration
+	end
+end
+
+function talent_beast_demeanor(val, npc)
+	local mut_type = npc and IsMonster(npc) and check_mutant_type(npc, true)
+	if mut_type and mut_type == "beast" then
+		return val
+	end
+end
+
+function talent_humanoid_demeanor(val, npc)
+	local mut_type = npc and IsMonster(npc) and check_mutant_type(npc, true)
+	if mut_type and mut_type == "hum" then
+		return val
+	end
+end
+
+function talent_second_skin(val)
+	local hides_on_belt = 0
+	db.actor:iterate_belt( function(owner, obj)
+		local kind = obj and ini_sys:r_string_ex(obj:section(), "kind")
+		if kind and kind == "i_mutant_belt" then
+			hides_on_belt = hides_on_belt + 1
+		end
+	end)
+	if hides_on_belt > 0 then
+		return val * hides_on_belt
+	end
+end
+-------------------------------------
+
+-- functions defense (merc)
+function talent_chem_reliant(val)
+	if durations_t.chem_reliant_var > 0 then
+		return val
+	end
+end
+
+function talent_chem_reliant_on_use(sec)
+	local chem_reliant_t = talents_table["defensive"]["merc"]["chem_reliant"]
+	if chem_reliant_t.level <= 0 then return end
+
+	if string.find(sec, "stimpack") or (sec == "morphine") then
+		durations_t.chem_reliant_var = chem_reliant_t.duration
+	end
+end
+
+function talent_addictive(val)
+	if durations_t.chem_reliant_var > 0 then
+		return val
+	end
+end
+
+function talent_grenadier(val)
+	if durations_t.grenadier_var > 0 then
+		return val
+	end
+end
+
+function talent_confusion(val, npc)
+	if not (IsStalker(npc)) then return end
+
+	local comm = npc.character_community and npc:character_community()
+	local outfit = db.actor:item_in_slot(7)
+	local outfit_comm = outfit and ini_sys:r_string_ex(outfit:section(), "community")
+	if not (comm and outfit_comm) then return end
+
+	if (comm == outfit_comm) or (not game_relations.is_factions_enemies(comm, outfit_comm)) then
+		return val
+	end
+end
+
+function talent_flurry(val)
+	if durations_t.flurry_var > 0 then
+		return val
+	end
+end
+
+function talent_reposition(val)
+	if durations_t.reposition_var > 0 then
+		return val
+	end
+end
+-------------------------------------
+
+-- functions defense (assassin)
+function talent_ordinary(val)
+	-- if has evanescent
+	local evanescent_t = talents_table["defensive"]["assassin"]["evanescent"]
+	if evanescent_t.level > 0 then
+		return val
+	end
+
+	local state = level.actor_moving_state()
+	if state >= 33 and state <= 42 then
+		return val
+	end
+end
+
+function talent_quiet(val)
+	-- if has subtle
+	local subtle_t = talents_table["defensive"]["assassin"]["subtle"]
+	if subtle_t.level > 0 then
+		return val
+	end
+
+	local active_item = db.actor:active_item()
+	if not active_item then
+		return val
+	end
+end
+
+function talent_lurking(val)
+	if level.get_time_hours() < 6 or level.get_time_hours() >= 18 then
+		return val
+	end
+end
+
+function talent_deception(val, npc)
+	local ac_pos = db.actor:position()
+	local npc_pos = npc:position()
+	if ac_pos and npc_pos and ac_pos:distance_to(npc_pos) <= 50 then
+		return val
+	end
+end
+
+function talent_vague(val)
+	local rain_density = weather.get_value_numric("rain_density")
+	return val * rain_density
+end
+
+function talent_sneaky(val)
+	local crouch_state = IsMoveState('mcCrouch')
+	return crouch_state and val * 2 or val
+end
+-------------------------------------
+
+-- functions endurance
+-- speed
+function talent_ease(val)
+	local wpn = db.actor:active_item()
+	if (not wpn) then
+		return val
+	end
+
+	local single = ini_sys:r_float_ex(wpn:section(), "single_handed")
+	if single and single == 1 then
+		return val
+	end
+end
+
+function talent_swifty(val)
+	return val
+end
+
+function talent_insomnia(val)
+	if level.get_time_hours() < 6 or level.get_time_hours() >= 18 then
+		return val
+	end
+end
+
+function talent_athletic(val)
+	if outfit_type({"o_medium", "o_sci"}) then
+		return val * db.actor.power * 100 / 2
+	elseif outfit_type({"o_light"}) then
+		return val * db.actor.power * 100
+	end
+end
+
+-- stamina
+function talent_refreshing(sec)
+	local refreshing_t = talents_table["endurance"]["sniper"]["refreshing"]
+	if refreshing_t.level <= 0 then return end
+
+	local kind = ini_sys:r_string_ex(sec, "kind")
+	local thirst = ini_sys:r_float_ex(sec, "eat_thirstiness")
+	if kind and kind == "i_drink" and thirst and thirst < 0 and db.actor.power < 1 then
+		db.actor.power = db.actor.power + (refreshing_t.stamina[refreshing_t.level] / 100)
+		if db.actor.power > 1 then
+			db.actor.power = 1
+		end
+	end
+end
+
+function talent_resting(val)
+	if not IsMoveState("mcAnyMove") then
+		return val
+	end
+end
+
+function talent_tireless(val)
+	return val
+end
+
+function talent_courage(val)
+	if durations_t.courage_var > 0 then
+		return val
+	end
+end
+
+-- weight
+function talent_weight_demolition_expert(item, tal_t, update_weight)
+	local weight = ini_sys:r_float_ex(item:section(), "inv_weight")
+	local explosive_cl_t = { ["S_OG7B"] = true, ["S_VOG25"] = true, ["S_M209"] = true }
+	local kind = ini_sys:r_string_ex(item:section(), "kind")
+	local kind_fits = kind and kind == "w_explosive"
+	local class = ini_sys:r_string_ex(item:section(), "class")
+	local class_fits = class and explosive_cl_t[class]
+
+	if weight and (kind_fits or class_fits) then
+		local val = weight * (tal_t.weight[tal_t.level] / 100)
+		return val
+	end
+end
+
+function talent_weight_heavy_armor_expert(item, tal_t, update_weight)
+	local weight = ini_sys:r_float_ex(item:section(), "inv_weight")
+	local kind = ini_sys:r_string_ex(item:section(), "kind")
+	local kind_fits = kind and (kind == "o_heavy" or kind == "o_medium")
+
+	if kind_fits and weight then
+		local val = weight * (tal_t.weight[tal_t.level] / 100)
+		return val
+	end
+end
+
+function talent_weight_hiker(item, tal_t, update_weight)
+	local weight = ini_sys:r_float_ex(item:section(), "inv_weight")
+	local kind = ini_sys:r_string_ex(item:section(), "kind")
+	local kind_fits = kind and (kind == "i_food" or kind == "i_mutant_raw" or kind == "i_mutant_cooked")
+
+	if kind_fits and weight then
+		local val = weight * (tal_t.weight[tal_t.level] / 100)
+		return val
+	end
+end
+
+function talent_weight_prudent(item, tal_t, update_weight)
+	local weight = ini_sys:r_float_ex(item:section(), "inv_weight")
+	local kind = ini_sys:r_string_ex(item:section(), "kind")
+	local kind_fits = kind and kind == "i_medical"
+
+	if kind_fits and weight then
+		local val = weight * (tal_t.weight[tal_t.level] / 100)
+		return val
+	end
+end
+
+function talent_weight_organizer(item, tal_t, update_weight)
+	if item:weight() >= 0.2 and (not IsWeapon(item)) then
+		return 0.1
+	end
+end
+
+function talent_weight_belt_braces(item, tal_t, update_weight)
+	if update_weight then
+		local item_on_belt = false
+		db.actor:iterate_belt( function(owner, obj)
+			if item:id() == obj:id() then
+				item_on_belt = true
+			end
+		end)
+
+		if not item_on_belt then
+			return
+		end
+	end
+
+	local weight = ini_sys:r_float_ex(item:section(), "inv_weight")
+	if weight then
+		local val = weight * (tal_t.weight[tal_t.level] / 100)
+		return val
+	end
+end
+
+function talent_hoarder(val)
+	return val
+end
+
+function talent_iron_spine(val)
+	if outfit_type({"o_medium", "o_sci"}) then
+		return val * db.actor.health * 100 / 2
+	elseif outfit_type({"o_heavy"}) then
+		return val * db.actor.health * 100
+	end
+end
+-------------------------------------
+
+-- functions speech
+
+-- buy (on_get_item_cost)
+function talent_preparation(item)
+	local preparation_t = talents_table["speech"]["sniper"]["preparation"]
+	if preparation_t.level <= 0 then return end
+
+	local kind = ini_sys:r_string_ex(item:section(), "kind")
+	if not kind then return end
+
+	local thirst = ini_sys:r_float_ex(item:section(), "eat_thirstiness")
+	local food = kind == "i_food"
+	local water = kind == "i_drink" and thirst and thirst < 0
+	if food or water then
+		local val = preparation_t.buy[preparation_t.level]
+		return val
+	end
+end
+
+function talent_observant(item)
+	local observant_t = talents_table["speech"]["sniper"]["observant"]
+	if observant_t.level <= 0 then return end
+
+	if IsWeapon(item) or IsAmmo(item) then
+		local val = observant_t.buy[observant_t.level]
+		return val
+	end
+end
+
+function talent_gregarious(item)
+	local gregarious_t = talents_table["speech"]["sniper"]["gregarious"]
+	if gregarious_t.level <= 0 then return end
+
+	local val = gregarious_t.buy[gregarious_t.level]
+	return val
+end
+
+function talent_well_liked(item, trader_id)
+	local well_liked_t = talents_table["speech"]["sniper"]["well_liked"]
+	if well_liked_t.level <= 0 then return end
+
+	local trader = trader_id and level.object_by_id(trader_id)
+	if not (trader and trader.alive and trader:alive()) then return end
+
+	local trader_comm
+	if trader.section and trader:section() and (trader:section() == "m_trader" or trader:section() == "m_lesnik") then
+		trader_comm = "stalker"
+	else
+		trader_comm = trader:character_community()
+	end
+	if not trader_comm then return end
+
+	local gw = relation_registry.community_goodwill(trader_comm, 0)
+	if gw then
+		local val = clamp(gw / 200, 0, 8)
+		return -val
+	end
+end
+
+-- sell (on_get_item_cost)
+function talent_supplier(item)
+	local supplier_t = talents_table["speech"]["sniper"]["supplier"]
+	if supplier_t.level <= 0 then return end
+
+	local kind = ini_sys:r_string_ex(item:section(), "kind")
+	if not kind then return end
+
+	if kind then
+		local mutant_food = kind == "i_mutant_raw" or kind == "i_mutant_cooked"
+		local mutant_part = kind == "i_mutant_part"
+		local mutant_skin = kind == "i_mutant_belt"
+		if mutant_food or mutant_part or mutant_skin then
+			local val = supplier_t.sell[supplier_t.level]
+			return val
+		end
+	end
+end
+
+function talent_smuggler(item)
+	local smuggler_t = talents_table["speech"]["sniper"]["smuggler"]
+	if smuggler_t.level <= 0 then return end
+
+	local kind = ini_sys:r_string_ex(item:section(), "kind")
+	if not kind then return end
+
+	local eat_alcohol = ini_sys:r_float_ex(item:section(), "eat_alcohol")
+	local medicine = kind == "i_medical"
+	local alcohol = kind == "i_drink" and eat_alcohol and eat_alcohol > 0
+	local artefact = kind == "i_arty" or kind == "i_arty_junk"
+	if medicine or alcohol or artefact then
+		local val = smuggler_t.sell[smuggler_t.level]
+		if artefact then
+			val = val / 2
+		end
+		return val
+	end
+end
+
+function talent_persuasion(item)
+	local persuasion_t = talents_table["speech"]["sniper"]["persuasion"]
+	if persuasion_t.level <= 0 then return end
+
+	local val = persuasion_t.sell[persuasion_t.level]
+	return val
+end
+
+function talent_shady(item, profile)
+	local shady_t = talents_table["speech"]["sniper"]["shady"]
+	if shady_t.level <= 0 then return end
+
+	local stalker_cfg = profile and profile.cfg and profile.cfg == "items\\trade\\trade_generic.ltx"
+	if stalker_cfg then
+		local val = shady_t.sell[shady_t.level]
+		return val
+	end
+end
+
+-- buy (on_item_buy)
+local charismatic_items_ar = {}
+function talent_charismatic(item, trader)
+	local charismatic_t = talents_table["speech"]["sniper"]["charismatic"]
+	if charismatic_t.level <= 0 then return end
+
+	local item_sec = item:section()
+	local cost = ini_sys:r_float_ex(item_sec, "cost")
+	local discount = trade_manager.get_sell_discount(trader:id())
+	local tier = ini_sys:r_float_ex(item_sec, "tier")
+	local item_name = ini_sys:r_string_ex(item_sec, "inv_name")
+	if not (cost and discount and tier and tier <= 1) then return end
+
+	local cost_to_return = math.ceil(cost * discount)
+	pr("charismatic, store sec: %s || cost_to_return: %s", item_sec, cost_to_return)
+	charismatic_items_ar[#charismatic_items_ar + 1] = {}
+	charismatic_items_ar[#charismatic_items_ar].cost = cost_to_return
+	charismatic_items_ar[#charismatic_items_ar].name = item_name or item_sec
+
+	-- use only last created time event
+	RemoveTimeEvent("delay_charismatic_e", "delay_charismatic_a")
+	CreateTimeEvent("delay_charismatic_e", "delay_charismatic_a", 0.25, function()
+		if #charismatic_items_ar <= 0 then
+			pr("charismatic, no tier 1 items bought, return")
+			return true
+		end
+
+		for idx, items_t in ipairs(charismatic_items_ar) do
+			local chance = charismatic_t.free[charismatic_t.level]
+			if math.random(1, 100) <= chance then
+				-- chance procs then give money back
+				pr("charismatic, proc, returning cost: %s for %s", items_t.cost, gt(items_t.name))
+				db.actor:give_money(items_t.cost)
+
+				-- send news
+				news_manager.send_tip(db.actor, string.format(gt("talents_charismatic_msg"), gt(items_t.name)), 0, nil, 7500)
+			end
+		end
+
+		iempty_table(charismatic_items_ar)
+
+		return true
+	end)
+
+end
+
+-- sell (on_item_sell)
+local cynical_item_id			-- remove on trade close
+function talent_cynical_set(item, profile, trader_id, new_cost, vanilla_cost)		-- on_get_item_cost
+	local cynical_t = talents_table["speech"]["sniper"]["cynical"]
+	if cynical_t.level <= 0 then return end
+
+	-- actor has coin
+	if not (actor_has_coin()) then return end
+
+	-- get trader comm
+	local trader = trader_id and level.object_by_id(trader_id)
+	if not (trader and trader.alive and trader:alive()) then return end
+
+	local trader_comm
+	if trader.section and trader:section() and (trader:section() == "m_trader" or trader:section() == "m_lesnik") then
+		trader_comm = "stalker"
+	else
+		trader_comm = trader:character_community()
+	end
+	if not trader_comm then return end
+
+	-- is stalker and rank fits
+	local obj_rank = ranks.get_obj_rank_name(trader)
+	local rank_fits = obj_rank and (obj_rank == "novice" or obj_rank == "trainee")
+	local stalker_cfg = profile and profile.cfg and profile.cfg == "items\\trade\\trade_generic.ltx"
+	if not (stalker_cfg and obj_rank) then return end
+
+	-- item is misc
+	local cost = new_cost or vanilla_cost
+	local kind = ini_sys:r_string_ex(item:section(), "kind")
+	if not (cost and kind and kind == "i_misc") then return end
+
+	-- item to sell isnt set (or same item)
+	if (not cynical_item_id) or (cynical_item_id == item:id()) then
+		pr("cynical set item_id: %s || sec: %s || to price: %s", item:id(), item:section(), cost * 20)
+		cynical_item_id = item:id()
+		return cost * 20
+	end
+
+end
+
+function talent_cynical_sell(item, comm)
+	-- if we sell this misc item
+	if cynical_item_id and item:id() == cynical_item_id and comm then
+		cynical_item_id = nil
+
+		-- release coin, set cd
+		local cur_time = game.get_game_time()
+		local coin_item = db.actor:object("cynical_coin")
+		if coin_item and coin_item:id() then
+			pr("cynical release coin, set cd")
+			alife_release_id(coin_item:id())
+			cynical_cd = ctime_to_t(cur_time)
+		end
+
+		-- goodwill hit
+		local goodwill_hit = math.random(35, 70)
+		pr("cynical, goodwill hit: %s", -goodwill_hit)
+		relation_registry.change_community_goodwill(comm, 0, -goodwill_hit)
+
+		-- send msg
+		news_manager.send_tip(db.actor, string.format(gt("talents_cynical_msg"), gt("st_faction_" .. comm)), 0, nil, 7500)
+	end
+
+end
+
+local deceitful_cost_ar = {}
+function talent_deceitful(item, trader)
+	local deceitful_t = talents_table["speech"]["sniper"]["deceitful"]
+	if deceitful_t.level <= 0 then return end
+
+	local item_sec = item:section()
+	local cost = ini_sys:r_float_ex(item_sec, "cost")
+	local discount = trade_manager.get_buy_discount(trader:id())
+	local item_name = ini_sys:r_string_ex(item_sec, "inv_name")
+	if not (cost and discount) then return end
+
+	local cost_to_return = math.ceil(cost * discount * 2.5)
+	pr("deceitful, store sec: %s || cost_to_return: %s", item_sec, cost_to_return)
+	deceitful_cost_ar[#deceitful_cost_ar + 1] = {}
+	deceitful_cost_ar[#deceitful_cost_ar].cost = cost_to_return
+	deceitful_cost_ar[#deceitful_cost_ar].name = item_name or item_sec
+
+	RemoveTimeEvent("delay_deceitful_e", "delay_deceitful_a")
+	CreateTimeEvent("delay_deceitful_e", "delay_deceitful_a", 0.25, function()
+		if #deceitful_cost_ar <= 0 then
+			pr("deceitful, no tier 1 items bought, return")
+			return true
+		end
+
+		for idx, items_t in ipairs(deceitful_cost_ar) do
+			local chance = 2
+			if math.random(1, 100) <= chance then
+				-- chance procs then give extra money
+				pr("deceitful, proc, give cost: %s for %s", items_t.cost, items_t.name)
+				db.actor:give_money(items_t.cost)
+
+				-- send msg
+				news_manager.send_tip(db.actor, string.format(gt("talents_deceitful_msg"), items_t.cost, gt(items_t.name)), 0, nil, 7500)
+			end
+		end
+
+		iempty_table(deceitful_cost_ar)
+
+		return true
+	end)
+
+end
+
+-- guitar patch
+base_guitar_func = itms_manager.use_guitar
+function itms_manager.use_guitar(obj)
+	talent_artistic(obj:section())
+	return base_guitar_func(obj)
+end
+
+base_harmonica_func = itms_manager.use_harmonica
+function itms_manager.use_harmonica(obj)
+	talent_artistic(obj:section())
+	return base_harmonica_func(obj)
+end
+
+function talent_artistic(sec)
+	local artistic_t = talents_table["speech"]["sniper"]["artistic"]
+	if artistic_t.level <= 0 then return end
+
+	if (not artistic_cd) and (sec == "guitar_a" or sec == "harmonica_a") then
+
+		-- find all stalker communities around
+		local gw_added = 0
+		local function itr(obj)
+			if obj:id() ~= 0 and gw_added < 2 and obj and IsStalker(obj) and obj.alive and obj:alive() then
+				local comm = obj.character_community and obj:character_community()
+				if comm then
+					local val = math.random(15, 35)
+					pr("artistic, add goodwill %s to comm %s", val, comm)
+					relation_registry.change_community_goodwill(comm, 0, val)
+					gw_added = gw_added + 1
+
+					-- add news
+					news_manager.send_tip(db.actor, string.format(gt("talents_artistic_msg"), gt("st_faction_" .. comm)), 0, nil, 7500)
+				end
+			end
+		end
+
+		level.iterate_nearest(db.actor:position(), 30, itr)
+
+		local cur_time = game.get_game_time()
+		artistic_cd = ctime_to_t(cur_time)
+	end
+
+end
+
+-------------------------------------
+-- other_callbacks
+
+-- duration manager
+local dur_tmr = 0
+local dur_upd = 0.25
+function duration_update()
+	local tg = time_global()
+	if dur_tmr > tg then return end
+	dur_tmr = tg + 1000 * dur_upd
+
+	for var_name, time in pairs(durations_t) do
+		if time > 0 then
+			durations_t[var_name] = durations_t[var_name] - dur_upd
+			if durations_t[var_name] <= 0 then
+				durations_t[var_name] = 0
+
+				-- adrenaline_rush (remove speed)
+				if var_name == "adrenaline_rush_var" then
+					speed.remove_speed("adrenaline_rush")
+				end
+
+				-- fierce remove
+				if var_name == "fierce_var" then
+					fierce_stacks = 0
+				end
+
+				-- spot_weakness remove
+				if var_name == "spot_weakness_var" then
+					spot_weakness_stacks = 0
+				end
+
+			end
+		end
+	end
+
+end
+
+-- cooldown manager
+local cd_tmr = 0
+local cd_upd = 0.25
+function cooldown_update()
+	local tg = time_global()
+	if cd_tmr > tg then return end
+	cd_tmr = tg + 1000 * cd_upd
+
+	for var_name, time in pairs(cooldowns_t) do
+		if time > 0 then
+			cooldowns_t[var_name] = cooldowns_t[var_name] - cd_upd
+			if cooldowns_t[var_name] <= 0 then
+				cooldowns_t[var_name] = 0
+			end
+		end
+	end
+
+	-- long cooldowns in game time
+	local cur_time = game.get_game_time()
+
+	-- kindred
+	if (not kindred_cd) or (cur_time:diffSec(t_to_ctime(kindred_cd)) > talents_table["defensive"]["monster_hunter"]["kindred"].cooldown * 6) then
+		-- start cd again
+		kindred_cd = ctime_to_t(cur_time)
+
+		-- allow spawn if dogs do not exist
+		local dogs_exist = get_story_se_object("kindred_dogs")
+		if not (dogs_exist) then
+			kindred_var = true
+		end
+	end
+
+	-- second_wind
+	if second_wind_cd and (cur_time:diffSec(t_to_ctime(second_wind_cd)) > talents_table["endurance"]["sniper"]["second_wind"].cooldown * 6) then
+		second_wind_cd = nil
+	end
+
+	-- artistic
+	if artistic_cd and (cur_time:diffSec(t_to_ctime(artistic_cd)) > talents_table["speech"]["sniper"]["artistic"].cooldown * 6) then
+		artistic_cd = nil
+	end
+
+	-- cynical
+	if cynical_cd and (cur_time:diffSec(t_to_ctime(cynical_cd)) > talents_table["speech"]["sniper"]["cynical"].cooldown * 6) then
+		cynical_cd = nil
+	end
+
+end
+
+-- item use
+function actor_on_item_use(item)
+	local sec = item:section()
+
+	-- iron_stomach
+	talent_iron_stomach(sec)
+
+	-- rad_resistant
+	talent_rad_resistant(sec)
+
+	-- trooper first aid
+	talent_first_aid(sec)
+
+	-- endurance refreshing
+	talent_refreshing(sec)
+
+	-- monster hunter special diet
+	talent_special_diet_on_use(sec)
+
+	-- merc overdrive
+	talent_overdrive_on_use(sec)
+
+	-- merc chem_reliant
+	talent_chem_reliant_on_use(sec)
+
+end
+
+-- item add upgrade
+function upgrades_to_ruck(item)
+
+	-- sniper technician
+	if picked_class == "sniper" then
+		talent_technician(item)
+	end
+
+end
+
+-- item weight reduction
+local item_weight_t = {}
+
+function weight_to_slot(item)
+	pr("-----------------")
+	pr("to slot sec: %s", item:section())
+	try_change_item_weight(item, "slot")
+end
+
+function weight_to_ruck(item)
+	pr("-----------------")
+	pr("to ruck sec: %s", item:section())
+	try_change_item_weight(item, "ruck")
+end
+
+function weight_to_belt(item)
+	pr("-----------------")
+	pr("to belt sec %s", item:section())
+	try_change_item_weight(item, "belt")
+end
+
+function weight_on_drop(item)
+	pr("-----------------")
+	pr("to drop sec: %s", item:section())
+	try_change_item_weight(item, "drop")
+end
+
+function weight_first_update()
+	recalc_all_items_weight()
+end
+
+function server_entity_on_unregister(se_obj)
+	if item_weight_t[se_obj.id] then
+		item_weight_t[se_obj.id] = nil
+	end
+end
+
+
+function try_change_item_weight(item, cb)		-- "cb" to put in callbacks
+	if picked_class == "null" then return end
+
+	for typ, t in pairs(talents_table) do
+		for talent, tal_t in pairs(t[picked_class]) do
+			if weight_talent_funcs[talent] and tal_t.level > 0 then
+
+				-- in "on" callbacks (add weight)
+				if cb and in_ar(weight_talent_funcs[talent].on, cb) then
+					local val = this[weight_talent_funcs[talent].func](item, tal_t)
+					if val then
+						pr("~    add weight || talent: %s || cb: %s || val: %s", talent, cb, -val)
+						add_item_weight(item, talent, -val)
+					end
+				end
+
+				-- in "off" callbacks (remove weight)
+				if cb and in_ar(weight_talent_funcs[talent].off, cb) then
+					pr("~    remove weight || talent: %s || cb: %s", talent, cb)
+					remove_item_weight(item, talent)
+				end
+
+
+				-- called without callbacks (first update/talent pickup) - add/update item weight
+				if not cb then
+					-- check conditions and add weight to item
+					local val = this[weight_talent_funcs[talent].func](item, tal_t, true)
+					if val then
+						pr("~    recalc weight || talent: %s || val: %s", talent, -val)
+						add_item_weight(item, talent, -val)
+					end
+				end
+
+
+			end
+		end
+	end
+
+	-- update actor total weight
+	trigger_weight_update()
+end
+
+function add_item_weight(item, talent, val)		-- add on callbacks
+
+	local id = item:id()
+
+	-- if item not in table - add
+	if not item_weight_t[id] then
+		item_weight_t[id] = {}
+	end
+
+	-- if talent in table then remove its weight from item to recalc
+	if item_weight_t[id][talent] then
+		pr("        add_item_weight remove weight, cur weight: %s || weight after remove: %s", item:weight(), item:weight() - item_weight_t[id][talent])
+		item:set_weight(item:weight() - item_weight_t[id][talent])
+		pr("        test1 item weight (after removal): %s", item:weight())
+	end
+
+	-- dont let weight go below 0.001
+	if item:weight() + val <= 0.001 then
+		val = item:weight()
+	end
+
+	-- set new
+	item_weight_t[id][talent] = val
+
+	-- add new
+	pr("        add_item_weight add weight, cur weight: %s || weight after add: %s", item:weight(), item:weight() + val)
+	item:set_weight(item:weight() + val)
+	pr("        test2 item weight (after adding): %s", item:weight())
+
+end
+
+function remove_item_weight(item, talent)		-- remove on callbacks
+	local id = item:id()
+	if not (item_weight_t[id]) then return end
+
+	-- remove talent weight from item
+	if item_weight_t[id][talent] then
+		pr("        remove_item_weight, cur weight: %s || weight after remove: %s", item:weight(), item:weight() - item_weight_t[id][talent])
+		item:set_weight(item:weight() - item_weight_t[id][talent])
+		item_weight_t[id][talent] = nil
+		pr("        test3 item weight (after removal): %s", item:weight())
+	end
+
+	-- remove item from table if no talents in it
+	if is_empty(item_weight_t[id]) then
+		item_weight_t[id] = nil
+	end
+
+end
+
+function recalc_all_items_weight()		-- for first update (or talent pick up)
+	local function itr(owner, item)
+		pr("-----------------------")
+		pr("recalc sec: %s", item:section())
+		try_change_item_weight(item)
+	end
+	db.actor:iterate_inventory(itr, db.actor)
+end
+
+function remove_all_items_weight()		-- for respec
+	pr("-- respec --")
+	for id, t in pairs(item_weight_t) do
+
+		-- if cant find item - remove from table
+		local item = level.object_by_id(id)
+		if not item then
+			item_weight_t[id] = nil
+		end
+
+		-- item still here
+		if item_weight_t[id] then
+			for talent, val in pairs(t) do
+				-- remove weight and delete from item table
+				item:set_weight(item:weight() - val)
+				item_weight_t[id][talent] = nil
+			end
+
+			-- remove item from table if it has no more talents
+			if is_empty(item_weight_t[id]) then
+				item_weight_t[id] = nil
+			end
+		end
+
+	end
+
+	trigger_weight_update()
+end
+
+function trigger_weight_update()
+	pr("~ update actor weight")
+
+	db.actor:update_weight()
+
+	if ui_inventory and ui_inventory.GUI then
+		pr("~ update UI actor weight")
+		ui_inventory.GUI:UpdateWeight()
+	end
+
+end
+
+
+local leap
+function on_key_leap(k)
+	if leap then return end
+	if picked_class ~= "trooper" then return end
+
+	local bind = dik_to_bind(k)
+	if bind ~= 7 then return end
+	if talents_table["defensive"]["trooper"]["leap"].level <= 0 then return end
+
+	-- check if enough stamina
+	local stamina_hit = 0.2
+	if talents_table["defensive"]["trooper"]["enduring"].level > 0 and outfit_type({"o_medium", "o_sci"}) then
+		stamina_hit = stamina_hit * 0.5
+	end
+
+	if db.actor.power <= stamina_hit then return end
+
+	-- choose direction
+	leap = (level.actor_moving_state() == 4 and "L") or (level.actor_moving_state() == 8 and "R")
+	if not leap then return end
+
+	-- reduce stamina
+	db.actor.power = db.actor.power - stamina_hit
+
+	-- set leap_var as timer
+	durations_t.leap_var = talents_table["defensive"]["trooper"]["leap"].duration
+
+	-- add speed and disable input
+	speed.add_speed("talent_leap_speed", 15, false, true)
+	game.only_allow_movekeys(true)
+
+	CreateTimeEvent("roll_stop_e", "roll_stop_a", 0.6, function()
+
+		-- remove speed and enable input
+		level.release_action(bind_to_dik(key_bindings["k" .. leap .. "_STRAFE"]))
+		speed.remove_speed("talent_leap_speed")
+		game.only_allow_movekeys(false)
+		leap = nil
+
+		return true
+	end)
+
+end
+
+function update_leap()
+	if not leap then return end
+	level.hold_action(bind_to_dik(key_bindings["k" .. leap .. "_STRAFE"]))
+end
+
+local regen_tmr = 0
+function jugger_regeneration_update()
+	local tg = time_global()
+	if regen_tmr > tg then return end
+	regen_tmr = tg + 1000
+
+	if picked_class ~= "jugger" then return end
+	if talents_table["defensive"]["jugger"]["regenerative"].level <= 0 then return end
+
+	local satiety = db.actor.satiety
+	local satiety_critical = ini_sys:r_float_ex("actor_condition", "satiety_critical")
+	local satiety_health_v = ini_sys:r_float_ex("actor_condition", "satiety_health_v")
+
+	local critical_something = satiety >= satiety_critical and 1 - satiety_critical or satiety_critical
+	local satiety_health_koef = (satiety - satiety_critical) / critical_something
+	local delta_health = satiety_health_v * satiety_health_koef * 6		-- engine per 1 real second
+
+	if delta_health > 0 then
+		db.actor:change_health(delta_health)
+		if db.actor.health > 1 then
+			db.actor:set_health_ex(1)
+		end
+	end
+
+end
+
+function actor_on_hud_animation_play(t, obj)
+	local string_find = string.find
+	-- sniper gunslinger
+	local gunslinger_val = talent_gunslinger_reload(obj)
+	if gunslinger_val and string_find(t.anm_name, "reload") then
+		t.anm_speed = t.anm_speed * gunslinger_val
+	end
+
+	-- jugger heavy_guns_expert
+	local heavy_guns_expert_val = talent_heavy_guns_expert_reload(obj)
+	if heavy_guns_expert_val and string_find(t.anm_name, "reload") then
+		t.anm_speed = t.anm_speed * heavy_guns_expert_val
+	end
+
+	-- merc combat_engineer
+	local combat_engineer_t = talents_table["offensive"]["merc"]["combat_engineer"]
+	if combat_engineer_t.level > 0 then
+		local kind = obj and ini_sys:r_string_ex(obj:section(), "kind")
+		if kind and kind == "w_explosive" and t.anm_name == "anm_throw_begin" then
+			local val = 1 + combat_engineer_t.percents[combat_engineer_t.level] / 100
+			t.anm_speed = t.anm_speed * val
+		end
+	end
+
+	-- merc assault_rifles_expert
+	local assault_rifles_expert_val = talent_assault_rifles_expert_reload(obj)
+	if assault_rifles_expert_val and string_find(t.anm_name, "reload") then
+		t.anm_speed = t.anm_speed * assault_rifles_expert_val
+	end
+
+	-- merc light_guns_expert
+	local light_guns_expert_val = talent_light_guns_expert_reload(obj)
+	if light_guns_expert_val and string_find(t.anm_name, "reload") then
+		t.anm_speed = t.anm_speed * light_guns_expert_val
+	end
+
+	-- merc grenadier
+	local grenadier_t = talents_table["defensive"]["merc"]["grenadier"]
+	if grenadier_t.level > 0 and t.anm_name == "anm_throw" then
+		local kind = obj and ini_sys:r_string_ex(obj:section(), "kind")
+		if kind and kind == "w_explosive" then
+			durations_t.grenadier_var = grenadier_t.duration
+		end
+	end
+
+	-- assassin knifeman
+	local knifeman_t = talents_table["offensive"]["assassin"]["knifeman"]
+	if knifeman_t.level > 0 then
+		local kind = obj and ini_sys:r_string_ex(obj:section(), "kind")
+		if kind and kind == "w_melee" and (t.anm_name == "anm_attack" or t.anm_name == "anm_attack2") then
+			local val = 1 + knifeman_t.attack_speed[knifeman_t.level] / 100
+			t.anm_speed = t.anm_speed * val
+		end
+	end
+
+end
+
+local deep_wound_tmr = 0
+local deep_wound_upd = 500
+function deep_wound_update()
+	if is_empty(deep_wound_var) then return end
+
+	local tg = time_global()
+	if deep_wound_tmr > tg then return end
+	deep_wound_tmr = tg + deep_wound_upd
+
+	for id, t in pairs(deep_wound_var) do
+		deep_wound_var[id].time = deep_wound_var[id].time - deep_wound_upd
+
+		local npc = level.object_by_id(id)
+		local npc_fits = npc and (IsStalker(npc) or IsMonster(npc)) and npc.alive and npc:alive()
+		local bleeding = npc_fits and npc.bleeding
+		if (not bleeding) or (bleeding <= 0) or (deep_wound_var[id].time <= 0) then
+			deep_wound_var[id] = nil
+		end
+
+		-- continue
+		if deep_wound_var[id] then
+			local condition_sec = ini_sys:r_string_ex(npc:section(), "condition_sect")
+			local bleed_v = condition_sec and ini_sys:r_string_ex(condition_sec, "bleeding_v")
+			local extra_dmg = bleed_v and (bleeding * bleed_v * 6 * 0.5 * deep_wound_var[id].value)
+			if extra_dmg then
+				npc:change_health(-extra_dmg)
+			end
+		end
+
+	end
+
+end
+
+local modified_bullets_tmr = 0
+local modified_bullets_upd = 1000
+function modified_bullets_update()
+	if is_empty(modified_bullets_var) then return end
+
+	local tg = time_global()
+	if modified_bullets_tmr > tg then return end
+	modified_bullets_tmr = tg + modified_bullets_upd
+
+	for id, t in pairs(modified_bullets_var) do
+		modified_bullets_var[id].time = modified_bullets_var[id].time - modified_bullets_upd
+
+		local npc = level.object_by_id(id)
+		local npc_fits = npc and IsStalker(npc) and npc.alive and npc:alive()
+		if (not npc_fits) or (modified_bullets_var[id].time <= 0) then
+			modified_bullets_var[id] = nil
+		end
+
+		-- continue
+		if modified_bullets_var[id] then
+			local dmg = t.value
+			pr("modified_bullets, change npc id: %s || health from: %s to %s", id, round_idp(npc.health, 4), round_idp(npc.health - dmg, 4))
+			npc:change_health(-dmg)
+		end
+	end
+
+end
+
+local reposition_tmr = 0
+local reposition_upd = 500
+local reposition_moving_for = 0
+function reposition_update()
+	local tg = time_global()
+	if reposition_tmr > tg then return end
+	reposition_tmr = tg + reposition_upd
+
+	-- return if not merc or has no talent
+	if not (picked_class == "merc" and talents_table["defensive"]["merc"]["reposition"].level > 0) then
+		return
+	end
+
+	-- reset if actor not in combat
+	if is_empty(xr_combat_ignore.fighting_with_actor_npcs) then
+		reposition_moving_for = 0
+		return
+	end
+
+	-- reset if actor not moving
+	if not IsMoveState("mcAnyMove") then
+		reposition_moving_for = 0
+		return
+	end
+
+	-- add moving time
+	reposition_moving_for = reposition_moving_for + reposition_upd
+	if reposition_moving_for >= 2000 then		-- reset and give reposition buff
+		reposition_moving_for = 0
+		durations_t.reposition_var = talents_table["defensive"]["merc"]["reposition"].duration
+	end
+end
+
+local spot_weakness_tmr = 0
+function spot_weakness_update()
+	local tg = time_global()
+	if spot_weakness_tmr > tg then return end
+	spot_weakness_tmr = tg + 1000
+
+	-- return if not assassin or has no talent
+	if not (picked_class == "assassin" and talents_table["offensive"]["assassin"]["spot_weakness"].level > 0) then
+		return
+	end
+
+	local stop_itr = false
+
+	-- check if enemy in 20 meters radius and enemy and not fighting actor
+	local function itr(obj)
+		if (not stop_itr) and (IsStalker(obj) or IsMonster(obj)) and obj:alive() and obj:id() ~= 0 then
+			local ac_comm = get_actor_true_community()
+			local npc_comm = IsStalker(obj) and obj.character_community and obj:character_community()
+			local fighting_actor = xr_combat_ignore.fighting_with_actor_npcs[obj:id()]
+			if (not fighting_actor) and (IsMonster(obj) or (npc_comm and game_relations.is_factions_enemies(ac_comm, npc_comm))) then
+				stop_itr = true
+
+				spot_weakness_stacks = spot_weakness_stacks + 1
+				durations_t.spot_weakness_var = talents_table["offensive"]["assassin"]["spot_weakness"].duration
+
+				-- if has "observant" talent
+				if talents_table["offensive"]["assassin"]["assassin_observant"].level > 0 then
+					spot_weakness_stacks = 10
+				end
+
+			end
+		end
+	end
+	level.iterate_nearest(db.actor:position(), 20, itr)
+
+	-- clamp stacks
+	if spot_weakness_stacks > 10 then
+		spot_weakness_stacks = 10
+	end
+
+end
+
+local acrobatic_tmr = 0
+function acrobatic_elusive_update()
+	local tg = time_global()
+	if acrobatic_tmr > tg then return end
+	acrobatic_tmr = tg + 2500
+
+	-- acrobatic
+	local acrobatic_t = talents_table["defensive"]["assassin"]["acrobatic"]
+
+	-- if talent picked but no bonus yet - add bonus
+	if (not acrobatic_var) and acrobatic_t.level > 0 and outfit_type(acrobatic_t.outfits) then
+		acrobatic_var = true
+		local cur_jump = db.actor:get_actor_jump_speed()
+		db.actor:set_actor_jump_speed(cur_jump * 1.3)
+
+	-- if talent not picked but has bonus - remove bonus
+	elseif acrobatic_var and (acrobatic_t.level <= 0 or (not outfit_type(acrobatic_t.outfits)) ) then
+		acrobatic_var = false
+		local cur_jump = db.actor:get_actor_jump_speed()
+		db.actor:set_actor_jump_speed(cur_jump / 1.3)
+	end
+
+
+	-- elusive
+	local elusive_t = talents_table["defensive"]["assassin"]["elusive"]
+
+	-- if talent picked and we in combat - add speed
+	local in_combat = not (is_empty(xr_combat_ignore.fighting_with_actor_npcs))
+	if in_combat and elusive_t.level > 0 then
+		local val = elusive_t.speed[elusive_t.level]
+		speed.add_speed("elusive", 1 + val / 100, false, true)
+
+	-- if talent not picked or we not in combat - remove speed
+	elseif (not in_combat) or elusive_t.level <= 0 then
+		speed.remove_speed("elusive")
+	end
+
+end
+
+
+function trooper_precision_on_fire(obj, wpn)
+	if not (obj:id() == 0 and picked_class == "trooper" and wpn) then return end
+
+	local precision_t = talents_table["offensive"]["trooper"]["precision"]
+	if precision_t.level > 0 then
+		local kind = ini_sys:r_string_ex(wpn:section(), "kind")
+		if kind and kind == "w_rifle" then
+
+			-- allow first bullet
+			if cooldowns_t.precision_var <= 0 then
+				precision_allow_dmg = true
+			-- dont allow if cd still on
+			else
+				precision_allow_dmg = false
+			end
+
+			-- set cd
+			cooldowns_t.precision_var = precision_t.cooldown
+
+		end
+	end
+
+end
+
+function merc_flurry_on_fire(obj, wpn)
+	if not (obj:id() == 0 and picked_class == "merc" and wpn) then return end
+
+	local flurry_t = talents_table["defensive"]["merc"]["flurry"]
+	if flurry_t.level > 0 then
+		durations_t.flurry_var = flurry_t.duration
+	end
+end
+
+function on_sleep_kindred(hours)
+	local kindred_t = talents_table["defensive"]["monster_hunter"]["kindred"]
+	if kindred_t.level > 0 and kindred_var then
+		kindred_var = false
+
+		-- spawn dogs
+		local id = smart_terrain.nearest_to_actor_smart.id
+		local smart = id and alife_object(id)
+		local squad = smart and SIMBOARD:create_squad(smart, "kindred_dogs")
+		pr("kindred, dogs spawned on smart: %s", smart and smart:name())
+	end
+end
+
+function on_enemy_eval_kindred_our_dogs(obj, enemy, flags)		-- for our dogs
+	local obj_id, en_id = obj:id(), enemy:id()
+	if obj_id == 0 then return end
+
+	local kindred_t = talents_table["defensive"]["monster_hunter"]["kindred"]
+	if kindred_t.level <= 0 then return end
+
+	local obj_sq = get_object_squad(obj)
+	local en_sq = en_id ~= 0 and get_object_squad(enemy)
+	local fights_actor = xr_combat_ignore.fighting_with_actor_npcs
+
+	-- if obj is dog (ignore actor and everyone except enemies around)
+	if obj_sq and obj_sq:section_name() == "kindred_dogs" and ( en_id == 0 or (not fights_actor[en_id]) ) then
+		flags.override = true
+		flags.result = false
+		return
+	end
+
+	-- if dog is enemy and obj not fighting actor (ignore dogs)
+	if en_sq and en_sq:section_name() == "kindred_dogs" and (not fights_actor[obj_id]) then
+		flags.override = true
+		flags.result = false
+	end
+end
+
+function on_enemy_eval_kindred_other_dogs(obj, enemy, flags)			-- for other dogs
+	local obj_id, en_id = obj:id(), enemy:id()
+	if obj_id == 0 then return end
+
+	local dogs_exist = get_story_se_object("kindred_dogs")
+	if not dogs_exist then return end
+
+	-- if (enemy actor or companion) and obj is dog
+	local en_is_ac_or_comp = en_id == 0 or enemy:has_info("npcx_is_companion")
+	local obj_kind = ini_sys:r_string_ex(obj:section(), "species")
+	local obj_is_dog = obj_kind and (obj_kind == "dog" or obj_kind == "pseudodog")
+	if en_is_ac_or_comp and obj_is_dog then
+		flags.override = true
+		flags.result = false
+		return
+	end
+
+	-- if enemy is dog and (obj companion)
+	local en_kind = ini_sys:r_string_ex(enemy:section(), "species")
+	local en_is_dog = en_kind and (en_kind == "dog" or en_kind == "pseudodog")
+	local obj_is_comp = obj:has_info("npcx_is_companion")
+	if en_is_dog and obj_is_comp then
+		flags.override = true
+		flags.result = false
+	end
+end
+
+local kindred_dogs_hit_t = { [hit.burn] = true, [hit.chemical_burn] = true, [hit.shock] = true }
+function monster_before_hit_kindred(obj, s_hit, bone_id, flags)
+	local obj_sq = get_object_squad(obj)
+	if not (obj_sq and obj_sq:section_name() == "kindred_dogs") then return end
+
+	local draft = s_hit.draftsman
+	if kindred_dogs_hit_t[s_hit.type] or (draft and IsAnomaly(draft)) then
+		flags.ret_value = false
+	end	
+end
+
+function first_update_kindred()
+	local level_name = level.name()
+	if not kindred_prev_lvl then
+		kindred_prev_lvl = level_name
+	end
+
+	if kindred_prev_lvl ~= level_name then
+		pr("kindred, level changed from %s to %s || tp dogs", kindred_prev_lvl, level_name)
+		kindred_prev_lvl = level_name
+
+		-- tp dogs if they exist
+		local dogs_squad = get_story_se_object("kindred_dogs")
+		if dogs_squad then
+			TeleportSquad(dogs_squad, db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id())
+		end
+	end
+
+end
+
+
+local tracker_particles_t = {}
+local tracker_particles_tmr = 0
+function monster_update_tracker(npc)
+	local is_bloodsucker = npc and npc:clsid() == clsid.bloodsucker_s
+	if not (is_bloodsucker and npc:alive()) then return end
+
+	local tracker_t = talents_table["defensive"]["monster_hunter"]["tracker"]
+	if tracker_t.level <= 0 then return end
+
+	local tg = time_global()
+	if tracker_particles_tmr > tg then return end
+	tracker_particles_tmr = tg + 250
+
+	-- draw particles
+	tracker_particles_t[tg] = particles_object("damage_fx\\smoke")
+	if tracker_particles_t[tg] then
+		tracker_particles_t[tg]:play_at_pos(npc:position())
+		CreateTimeEvent("remove_bloodsucker_particle_e_" .. tg, "remove_bloodsucker_particle_a_" .. tg, 0.5, function(key)
+			tracker_particles_t[key]:stop()
+			tracker_particles_t[key] = nil
+			return true
+		end, tg)
+	end
+
+end
+
+
+local endur_tmr = 0
+local endur_upd_rate = 0.5
+function endurance_stamina_upd()
+	local tg = time_global()
+	if endur_tmr > tg then return end
+	endur_tmr = tg + 1000 * endur_upd_rate
+
+	if db.actor.power >=1 then return end
+
+	if db.actor.power < 0.05 and talents_table["endurance"]["sniper"]["second_wind"].level > 0 then
+		local wind_t = talents_table["endurance"]["sniper"]["second_wind"]
+		local cur_time = game.get_game_time()
+		if (not second_wind_cd) then
+			db.actor.power = db.actor.power + wind_t.stamina[wind_t.level] / 100
+			second_wind_cd = ctime_to_t(cur_time)
+		end
+	end
+
+	local stamina_regen = 0
+	for name, t in pairs(talents_table["endurance"]["sniper"]) do
+		if t.stamina and this[t.func] and t.level > 0 then
+			local val = t.stamina[t.level]
+			val = this[t.func](val) or 0
+			stamina_regen = stamina_regen + val * endur_upd_rate
+		end
+	end
+
+	db.actor.power = db.actor.power + (stamina_regen / 100)
+
+	if db.actor.power >= 1 then
+		db.actor.power = 1
+	end
+
+end
+
+local speed_upd_tmr = 0
+function endurance_speed_upd()
+	local tg = time_global()
+	if speed_upd_tmr > tg then return end
+	speed_upd_tmr = tg + 1000
+
+	for name, t in pairs(talents_table["endurance"]["sniper"]) do
+		if t.speed and this[t.func] and t.level > 0 then
+			local val = t.speed[t.level]
+			val = this[t.func](val)
+			val = val and (val / 100) or 0
+			speed.add_speed(name, 1 + val, false, true)
+		end
+	end
+
+	if talents_table["defensive"]["jugger"]["bulky"].level > 0 then
+		local bulky_t = talents_table["defensive"]["jugger"]["bulky"]
+		local outfits = outfit_type(bulky_t.outfits)
+		local val = outfits and (bulky_t.speed[1] / 100) or 0
+		speed.add_speed("bulky", 1 + val, false, true)
+	end
+
+	if class_special_stats[picked_class] then
+		local val = class_special_stats[picked_class].speed / 100
+		speed.add_speed(picked_class .. "_special", 1 + val, false, true)
+	end
+
+end
+
+local weight_upd_tmr = 0
+function endurance_weight_upd()
+	local tg = time_global()
+	if weight_upd_tmr > tg then return end
+	weight_upd_tmr = tg + 1000
+
+	for name, t in pairs(talents_table["endurance"]["sniper"]) do
+		if t.weight and this[t.func] and t.level > 0 then
+			local val = t.weight[t.level]
+			val = this[t.func](val) or 0
+			weight.add_weight(name, val, true)
+		end
+	end
+
+	if class_special_stats[picked_class] then
+		local val = class_special_stats[picked_class].weight
+		weight.add_weight(picked_class .. "_special", val, false, true)
+	end
+
+	if ui_inventory and ui_inventory.GUI then
+		ui_inventory.GUI:UpdateWeight()
+	end
+
+end
+
+-- speech price change
+local cur_trader_id
+function on_get_item_cost(kind, item, profile, vanilla_cost, ret)
+
+	-- buy from npc
+	if profile.mode == 2 then
+
+		local add_buy = 0
+		pr("------------ buy sec: %s ------------", item:section())
+
+		-- preparation
+		local preparation_val = talent_preparation(item)
+		if preparation_val then
+			pr("preparation, sec: %s || val: %s", item:section(), preparation_val)
+			add_buy = add_buy + preparation_val
+		end
+
+		-- observant
+		local observant_val = talent_observant(item)
+		if observant_val then
+			pr("observant, sec: %s || val: %s", item:section(), observant_val)
+			add_buy = add_buy + observant_val
+		end
+
+		-- gregarious
+		local gregarious_val = talent_gregarious(item)
+		if gregarious_val then
+			pr("gregarious, sec: %s || val: %s", item:section(), gregarious_val)
+			add_buy = add_buy + gregarious_val
+		end
+
+		-- well_liked
+		local well_liked_val = talent_well_liked(item, cur_trader_id)
+		if well_liked_val then
+			pr("well_liked, sec: %s || val: %s", item:section(), well_liked_val)
+			add_buy = add_buy + well_liked_val
+		end
+
+		-- buy total
+		pr("BUY old cost: %s", ret.new_cost or vanilla_cost)
+		ret.new_cost = (ret.new_cost or vanilla_cost) * (1 + add_buy / 100)
+		pr("BUY new cost: %s", ret.new_cost)
+	end
+
+
+	-- sell to npc
+	if profile.mode == 1 then
+
+		local add_sell = 0
+		pr("------------ sell sec: %s ------------", item:section())
+
+		-- supplier
+		local supplier_val = talent_supplier(item)
+		if supplier_val then
+			pr("supplier, sec: %s || val: %s", item:section(), supplier_val)
+			add_sell = add_sell + supplier_val
+		end
+
+		-- smuggler
+		local smuggler_val = talent_smuggler(item)
+		if smuggler_val then
+			pr("smuggler, sec: %s || val: %s", item:section(), smuggler_val)
+			add_sell = add_sell + smuggler_val
+		end
+
+		-- persuasion
+		local persuasion_val = talent_persuasion(item)
+		if persuasion_val then
+			pr("persuasion, sec: %s || val: %s", item:section(), persuasion_val)
+			add_sell = add_sell + persuasion_val
+		end
+
+		-- shady
+		local shady_val = talent_shady(item, profile)
+		if shady_val then
+			pr("shady, sec: %s || val: %s", item:section(), shady_val)
+			add_sell = add_sell + shady_val
+		end
+
+		-- cynical
+		local cynical_val = talent_cynical_set(item, profile, cur_trader_id, ret.new_cost, vanilla_cost)
+		if cynical_val then
+			pr("cynical, sec: %s || val: %s", item:section(), cynical_val)
+			add_sell = add_sell + cynical_val
+		end
+
+		-- sell total
+		pr("SELL old cost: %s", ret.new_cost or vanilla_cost)
+		ret.new_cost = (ret.new_cost or vanilla_cost) * (1 + add_sell / 100)
+		pr("SELL new cost: %s", ret.new_cost)
+	end
+
+end
+
+function ActorMenu_on_before_init_mode(mode, flags, obj)
+	if mode == "trade" and obj and obj:id() then
+		local shady_t = talents_table["speech"]["sniper"]["shady"]
+		local cfg = trade_manager.get_trade_profile(obj:id(), "cfg_ltx")
+		if shady_t.level > 0 and cfg and cfg == "items\\trade\\trade_generic.ltx" then
+
+			local money_per_level = shady_t.stalkers_money[1]
+
+			-- shady (give/update npc money on trade init)
+			for i = 1, shady_t.level do
+				if (not obj:has_info("shady_" .. i)) then
+					obj:give_info_portion("shady_" .. i)
+					pr("shady level %s, give %s money for stalker", i, money_per_level)
+					obj:give_money(money_per_level)
+				end
+			end
+
+		end
+	end
+end
+
+function open_trade(mode)
+	if mode ~= 2 then return end
+
+	local npc = mob_trade.GetTalkingNpc()
+	local is_trader = npc and trade_manager.get_trade_profile(npc:id(), "cfg_ltx")
+	if not is_trader then return end
+
+	cur_trader_id = npc:id()
+end
+
+function close_trade(mode)
+	if cur_trader_id and mode ~= 2 then
+		cur_trader_id = nil
+	end
+end
+
+local cyn_tmr = 0
+function cynical_coin_update()
+	local tg = time_global()
+	if cyn_tmr > tg then return end
+	cyn_tmr = tg + 5000
+
+	if talents_table["speech"]["sniper"]["cynical"].level > 0 and (not cynical_cd) then
+		-- if no coin then spawn coin
+		local has_coin = db.actor:object("cynical_coin")
+		if not has_coin then
+			alife_create_item("cynical_coin", db.actor)
+		end
+	end
+
+end
+
+function actor_on_item_buy(item)
+	if not cur_trader_id then return end
+
+	local trader = cur_trader_id and level.object_by_id(cur_trader_id)
+	if not (trader and trader.alive and trader:alive()) then return end
+
+	-- charismatic
+	talent_charismatic(item, trader)
+
+end
+
+function actor_on_item_sell(item)
+	if not cur_trader_id then return end
+
+	local trader = cur_trader_id and level.object_by_id(cur_trader_id)
+	if not (trader and trader.alive and trader:alive()) then return end
+
+	local trader_comm
+	if trader.section and trader:section() and (trader:section() == "m_trader" or trader:section() == "m_lesnik") then
+		trader_comm = "stalker"
+	else
+		trader_comm = trader:character_community()
+	end
+
+	-- cynical
+	talent_cynical_sell(item, trader_comm)
+
+	-- deceitful
+	talent_deceitful(item, trader)
+
+end
+-------------------------------------
+
+-- misc
+function outfit_type(comp_t)
+	local outfit = db.actor:item_in_slot(7)
+	local kind = outfit and ini_sys:r_string_ex(outfit:section(), "kind")
+	if kind and in_ar(comp_t, kind) then
+		return true
+	end
+end
+
+function in_ar(a, v)
+	for i, val in ipairs(a) do
+		if val == v then return true end
+	end
+end
+
+function install_random_upgrade(item)
+	local upgr_t = utils_item.get_upgrades_tree(item:section(), true)
+	if (is_empty(upgr_t)) then return end
+
+	local to_install = {}
+	for row, t in pairs(upgr_t) do
+		if t[1] and t[1].section then
+			pr("store sec: %s", t[1].section)
+			to_install[#to_install + 1] = t[1].section
+		end
+	end
+
+	local picked_upgr = #to_install > 0 and to_install[math.random(1, #to_install)]
+	if picked_upgr then
+		pr("picked and installing upgrade: %s", picked_upgr)
+		inventory_upgrades.force_upgrade = true
+		item:install_upgrade(picked_upgr)
+		inventory_upgrades.force_upgrade = false
+	end
+
+end
+
+function play_evasion_anm()
+	local anms = { "hit_left", "hit_right" }
+	level.add_cam_effector("camera_effects\\" .. anms[math.random(1, #anms)] .. ".anm", 812415, false, "", 0, true, 2)
+end
+
+local collector_table = {
+	["mutant"] = {
+		tushkano = 1, flesh = 1, zombie = 1, dog = 1, fracture = 2, boar = 2, cat = 2, pseudodog = 2, SM_LURKER = 3, snork = 3, SM_KARLIK = 3, SM_POLTER_G = 4, SM_PYRO_G = 4, SM_PSEUDO_G = 4, burer = 4, bloodsucker = 4, SM_PSYSUCKER = 4, chimera = 7, 
+		controller = 7, giant = 10
+	},
+
+	["stalker"] = {
+		novice = 2, trainee = 2, experienced = 3, professional = 3,
+		veteran = 4, expert = 4, master = 5, legend = 5
+	},
+}
+
+function get_collector_val(npc)
+	if IsMonster(npc) then
+		local mutant_str = ini_sys:r_string_ex(npc:section(), "kind") or ini_sys:r_string_ex(npc:section(), "species") or nil
+		if mutant_str and collector_table["mutant"][mutant_str] then
+			return collector_table["mutant"][mutant_str]
+		end
+	elseif IsStalker(npc) then
+		local obj_rank_name = ranks.get_obj_rank_name(npc)
+		local rank_val = obj_rank_name and collector_table["stalker"][obj_rank_name]
+		if rank_val then
+			return collector_table["stalker"][obj_rank_name]
+		end
+	end
+
+end
+
+function actor_has_coin()
+	local has_coin = false
+	db.actor:iterate_belt( function(owner, item)
+		if item:section() == "cynical_coin" then
+			has_coin = true
+		end
+	end)
+
+	return has_coin
+end
+
+function check_mutant_type(npc, typ, str)
+	if not npc then return end
+
+	local mutant_type = ini_sys:r_string_ex(npc:section(), "kind") or ini_sys:r_string_ex(npc:section(), "species")
+	if not mutant_type then return end
+
+	if mutants_t["beast"][mutant_type] then
+		return typ and "beast" or mutant_type
+	elseif mutants_t["hum"][mutant_type] then
+		return typ and "hum" or mutant_type
+	end
+end
+
+function get_mutant_name(typ)
+	local ret_str = ""
+
+	-- return all of this typ as string
+	if typ and mutants_t[typ] then
+		for kind, name in pairs(mutants_t[typ]) do
+			local s = gt(name)
+			ret_str = ret_str .. " " .. s .. ","
+		end
+	end
+
+	-- make string out of mutants that werent killed yet
+	if typ == "trophies" then
+		for mut_typ, t in pairs(mutants_t) do
+			for kind, name in pairs(t) do
+				if not (monster_hunter_trophies[kind]) then
+					local s = gt(name)
+					ret_str = ret_str .. " " .. s .. ","
+				end
+			end
+		end
+	end
+
+	ret_str = string.sub(ret_str, 1, -2)		-- remove last comma
+
+	return ret_str
+end
+
+function get_left_communities()
+	local ret_str = ""
+
+	-- make string out of communities that werent killed yet
+	for comm, _ in pairs(stalker_comms_t) do
+		if not (merc_head_hunter_t[comm]) then
+			local s = gt("st_faction_" .. comm)
+			ret_str = ret_str .. " " .. s .. ","
+		end
+	end
+
+	ret_str = string.sub(ret_str, 1, -2)		-- remove last comma
+
+	return ret_str
+end
+
+function is_mg_type(sec)
+	if not sec then return end
+
+	for str, _ in pairs(machine_guns_t) do
+		if string.find(sec, str) then
+			return true
+		end
+	end
+end
+
+-- for stats, calculate cur and max stats (all "cur" are included in "max" too)
+local calc_stats_t = {
+	["offensive"] = {
+		["sniper"] = {
+			cur = { "sniper_rifles", "assault_rifles_novice", "pistols", "experienced_sniper", "steady", "convenience", "gunslinger", "loner", "nocturnal", "carnage" },
+			max = { "sharpshooter", "ambush", "soft_spot" },
+		},
+		["trooper"] = {
+			cur = { "assault_rifles", "shotguns_novice", "submachine_guns", "experienced_rifleman", "focus", "thrill", "precision", "barrage", "reckless", "collector" },
+			max = { "duelist" },
+		},
+		["jugger"] = {
+			cur = { "shotguns", "machine_guns", "submachine", "heavy_guns_expert", "fury", "selective" },
+			max = { "hunter", "bounty_hunter", "merciless", "execution", "frightening" },
+		},
+		["monster_hunter"] = {
+			cur = { "trophies", "fierce", "ranger" },
+			max = { "beast_anatomy", "humanoid_anatomy", "beast_rivalry", "humanoid_rivalry" },
+		},
+		["merc"] = {
+			cur = { "firearm_enthusiast", "overdrive", "head_hunter", "bullseye", "assault_rifles_expert", "light_guns_expert", "sniper_rifles_expert" },
+			max = { "arrogance", "aim_torso", "aim_limbs" },
+		},
+		["assassin"] = {
+			cur = { "smg_novice", "handgun_novice", "knifeman", "spot_weakness", "tactical", "pragmatic" },
+			max = { "undercover", "backstab", "saboteur", "surprise_attack", "vile" },
+		},
+	},
+
+	["defensive"] = {
+		["sniper"] = {
+			cur = { "adaptive", "iron_stomach", "plastic_pads", "aluminum_plates", "nature_resistance", "rad_resistant", "technician", "expert_technician", "agile" },
+			max = {  },
+		},
+		["trooper"] = {
+			cur = { "ceramic_plates", "isolated", "armorer", "chem_resistant", "suppresion_fire", "cautious", "fireproof", "composure", "enduring", "adorned", "expert_armorer", "last_stand", "leap" },
+			max = {  },
+		},
+		["jugger"] = {
+			cur = { "steel_plates", "steel_pads", "heavy_armor_expert", "dismorale", "sturdy", "sanity", "anxiety", "bulky", "secure", "lucid" },
+			max = { "turmoil" },
+		},
+		["monster_hunter"] = {
+			cur = { "shoulder_pads", "careful", "melee_defense", "special_diet", "clarity", "soft_armor", "stable_mind", "second_skin", "custom_fit" },
+			max = { "beast_demeanor", "humanoid_demeanor" },
+		},
+		["merc"] = {
+			cur = { "mercenary_vest", "insensitive", "chem_reliant", "grenadier", "addictive", "flurry", "loose_fit", "reposition" },
+			max = { "confusion", "disguise_master" },
+		},
+		["assassin"] = {
+			cur = { "ordinary", "quiet", "evanescent", "lurking", "subtle", "covert", "cunning", "vague", "sneaky", "incognito", "ghost", "elusive" },
+			max = { "deception" },
+		},
+	},
+
+	["endurance"] = {
+		["sniper"] = {
+			speed = { "ease", "swifty", "insomnia", "athletic" }, stamina = { "resting", "tireless", "courage" }, weight = { "hoarder", "iron_spine" },
+		},
+	}
+}
+calc_stats_t["endurance"]["trooper"] = calc_stats_t["endurance"]["sniper"]
+calc_stats_t["endurance"]["jugger"] = calc_stats_t["endurance"]["sniper"]
+calc_stats_t["endurance"]["monster_hunter"] = calc_stats_t["endurance"]["sniper"]
+calc_stats_t["endurance"]["merc"] = calc_stats_t["endurance"]["sniper"]
+calc_stats_t["endurance"]["assassin"] = calc_stats_t["endurance"]["sniper"]
+
+local max_mult_t = {
+	["sharpshooter"] = 150,
+	["focus"] = 100,
+	["reckless"] = 75,
+	["collector"] = 1500,
+	["expert_technician"] = 100,
+	["cautious"] = 2,
+	["adorned"] = 5,
+	["expert_armorer"] = 10,
+	["secure"] = 5,
+	["lucid"] = 100,
+	["athletic"] = 100,
+	["iron_spine"] = 100,
+	["trophies"] = 20,
+	["fierce"] = 5,
+	["second_skin"] = 5,
+	["head_hunter"] = 11,
+	["arrogance"] = 7,
+	["spot_weakness"] = 10,
+	["sneaky"] = 2,
+}
+
+local trooper_def_mults = {
+	"ceramic_plates", "isolated", "armorer", "chem_resistant", "fireproof"
+}
+
+local monster_hunter_def_mults = {
+	"shoulder_pads", "careful", "soft_armor", "clarity"
+}
+
+local stats_conv_t = {
+	["sniper_rifle"] = "w_sniper", ["assault_rifle"] = "w_rifle",
+	["radiation"] = "radi", ["ballistic"] = "bal", ["rupture"] = "rup", ["explosive"] = "expl",
+}
+
+function r_stat(v) return round_idp(v, 1) end
+
+-- offensive returns { [1] = base_dmg, [2] = max_dmg, [3] = base_crit, [4] = max_crit }
+-- defensive returns { [1] = cur_res, [2] = max_res }
+-- endurance returns { [1] = cur_val, [2] = max_val }
+function calculate_stats(typ, class_name, req_typ)
+	if not (typ and class_name) then return end
+
+	local stat_t = calc_stats_t[typ] and calc_stats_t[typ][class_name]
+	if not stat_t then return end
+
+	-- offensive
+	if typ == "offensive" and req_typ then
+		return calc_stats_offensive(typ, class_name, req_typ, stat_t)
+	end
+
+	-- defensive
+	if typ == "defensive" and req_typ then
+		return calc_stats_defensive(typ, class_name, req_typ, stat_t)
+	end
+
+	-- endurance
+	if typ == "endurance" and req_typ then
+		return calc_stats_endurance(typ, class_name, req_typ, stat_t)
+	end
+
+end
+
+function calc_stats_offensive(typ, class_name, req_typ, stat_t)
+	local wpn = stats_conv_t[req_typ] or "w_" .. req_typ
+
+	-- base/max dmg and crit
+	local cur_dmg = 80
+	local cur_crit = 0
+	local max_dmg = 80
+	local max_crit = 0
+	for talent, t in pairs(talents_table[typ][class_name]) do
+		-- if picked AND wpn fits
+		if t.level > 0 and (in_ar(t.wpns, wpn) or in_ar(t.wpns, "all")) then
+
+			-- mult for max
+			local mult = max_mult_t[talent] or 1
+
+			-- cur
+			if in_ar(stat_t.cur, talent) then
+				-- damage
+				if t.damage then
+					local val = t.damage[t.level]
+					if this[t.func] then
+						val = this[t.func](nil, val) or 0
+					end
+					cur_dmg = cur_dmg + val
+				end
+
+				-- crit
+				if t.crit then
+					local val = t.crit[t.level]
+					if this[t.func] then
+						val = this[t.func](nil, val) or 0
+					end
+					cur_crit = cur_crit + val
+				end
+			end
+
+
+			-- max
+			if in_ar(stat_t.max, talent) or in_ar(stat_t.cur, talent) then
+				-- damage
+				if t.damage then
+					local val = t.damage[t.level] * mult
+					max_dmg = max_dmg + val
+
+					-- jugger mastery
+					local mastery_t = talents_table[typ][class_name]["mastery"]
+					if mastery_t and mastery_t.level > 0 then
+						if talent == "merciless" then
+							max_dmg = max_dmg + mastery_t.merciless_bonus
+						elseif talent == "fury" then
+							max_dmg = max_dmg + mastery_t.fury_bonus
+						end
+					end
+
+				end
+
+				-- crit
+				if t.crit then
+					local val = t.crit[t.level] * mult
+					max_crit = max_crit + val
+				end
+			end
+
+		end
+	end
+
+	-- ret damage and crit
+	return { r_stat(cur_dmg), r_stat(max_dmg), r_stat(cur_crit), r_stat(max_crit) }
+end
+
+function calc_stats_defensive(typ, class_name, req_typ, stat_t)
+	local res = stats_conv_t[req_typ] or req_typ
+
+	-- base and max values
+	local cur_res = 0
+	local max_res = 0
+	for talent, t in pairs(talents_table[typ][class_name]) do
+		-- talent is picked AND has our stat AND outfit fits
+		if t.level > 0 and t[res] and (outfit_type(t.outfits) or in_ar(t.outfits, "all")) then
+
+			-- mult for max
+			local mult = max_mult_t[talent] or 1
+
+			-- trooper mult for max
+			local trooper_mult = 1
+			if in_ar(trooper_def_mults, talent) and outfit_type({"o_medium", "o_sci"}) then
+				trooper_mult = 2
+			end
+
+			-- monster hunter mult for max
+			local monster_hunter_mult = 1
+			if in_ar(monster_hunter_def_mults, talent) and outfit_type({"o_medium"}) then
+				monster_hunter_mult = 2
+			end
+
+			-- merc mult for cur and max
+			local merc_mult = 1
+			if class_name == "merc" and outfit_type({"o_heavy"}) then
+				local direct_t = talents_table[typ][class_name]["direct"]
+				if direct_t.level > 0 then
+					local direct_val = direct_t.percents[direct_t.level] / 100
+					merc_mult = merc_mult * direct_val
+				else
+					merc_mult = 0
+				end
+			end
+
+			-- inventor mult for both cur and max
+			local inventor_mult = 1
+			if talents_table[typ][class_name]["inventor"] and talents_table[typ][class_name]["inventor"].level > 0 and outfit_type({"o_light"}) then
+				inventor_mult = 2
+			end
+
+			-- covert mult for both cur and max
+			local covert_mult = 1
+			if res == "disguise" and class_name == "assassin" and outfit_type({"o_medium", "o_sci"}) then
+				local covert_t = talents_table[typ][class_name]["covert"]
+				if covert_t.level > 0 then
+					covert_mult = 1.5
+				end
+			end
+
+			-- cunning mult for both cur and max
+			local cunning_mult = 1
+			if res == "stealth" and class_name == "assassin" and outfit_type({"o_light"}) then
+				local cunning_t = talents_table[typ][class_name]["cunning"]
+				if cunning_t.level > 0 then
+					cunning_mult = 1.5
+				end
+			end
+
+			-- cur
+			if in_ar(stat_t.cur, talent) then
+				local val = t[res][t.level]
+				if this[t.func] then
+					val = this[t.func](val) or 0
+				end
+				cur_res = cur_res + val * inventor_mult * merc_mult * covert_mult * cunning_mult
+			end
+
+			-- max
+			if in_ar(stat_t.max, talent) or in_ar(stat_t.cur, talent) then
+				local val = t[res][t.level] * mult * trooper_mult * monster_hunter_mult * merc_mult * covert_mult * cunning_mult
+
+				-- anxiety bonus
+				local anxiety_t = talents_table[typ][class_name]["anxiety"]
+				if talent == "dismorale" and anxiety_t and anxiety_t.level > 0 then
+					val = val * 2
+				end
+
+				-- clamp secure
+				if talent == "secure" and val > 15 then
+					val = 15
+				end
+
+				max_res = max_res + val * inventor_mult
+			end
+
+		end
+	end
+
+	-- if not stealth / disguise / evade then return +80
+	if res ~= "stealth" and res ~= "disguise" and res ~= "evade" then
+		cur_res = cur_res + 80
+		max_res = max_res + 80
+	end
+
+	return { r_stat(cur_res), r_stat(max_res) }
+end
+
+function calc_stats_endurance(typ, class_name, req_typ, stat_t)
+	local cur_val = 0
+	local max_val = 0
+	for talent, t in pairs(talents_table[typ][class_name]) do
+
+		if t.level > 0 and stat_t[req_typ] and in_ar(stat_t[req_typ], talent) then
+
+			local mult = max_mult_t[talent] or 1
+
+			-- cur value
+			local val = t[req_typ][t.level]
+			cur_val = cur_val + (this[t.func](val) or 0)
+
+			-- max value
+			max_val = max_val + val * mult
+
+		end
+	end
+
+	-- stamina
+	if req_typ == "stamina" then
+		return { r_stat(cur_val), r_stat(max_val) }
+	end
+
+	-- weight
+	if req_typ == "weight" then
+		-- special
+		cur_val = cur_val + class_special_stats[class_name].weight
+		max_val = max_val + class_special_stats[class_name].weight
+
+		return { r_stat(cur_val), r_stat(max_val) }
+	end
+
+	-- speed
+	if req_typ == "speed" then
+
+		-- bulky
+		local bulky_t = talents_table["defensive"]["jugger"]["bulky"]
+		if bulky_t and bulky_t.level > 0 and outfit_type(bulky_t.outfits) then
+			cur_val = cur_val - 15
+			max_val = max_val - 15
+		end
+
+		-- elusive
+		local elusive_t = talents_table["defensive"]["assassin"]["elusive"]
+		if elusive_t and elusive_t.level > 0 and outfit_type({"o_medium", "o_sci", "o_light"}) then
+			local in_combat = not (is_empty(xr_combat_ignore.fighting_with_actor_npcs))
+			if in_combat then
+				cur_val = cur_val + elusive_t.speed[elusive_t.level]
+				max_val = max_val + elusive_t.speed[elusive_t.level]
+			end
+		end
+
+		-- special
+		cur_val = cur_val + class_special_stats[class_name].speed
+		max_val = max_val + class_special_stats[class_name].speed
+	end
+
+	cur_val = cur_val + 100
+	max_val = max_val + 100
+
+	-- ret val
+	return { r_stat(cur_val), r_stat(max_val) }
+end
+
+
+-- Tooltip requirements string
+function get_tooltip_req_str(typ, class_name, talent)
+	local tal_t = talents_table[typ][class_name][talent]
+
+	-- "all" points string
+	local all_str = gt("talents_tooltip_req") .. " " .. gt("talents_tooltip_req_all") .. " " .. tal_t.req.all
+
+	-- "all" met
+	local all_met = false
+	local spent_points = talents_leveling.talent_levels[typ].spent_points
+	if spent_points >= tal_t.req.all then
+		all_met = true
+	end
+
+	-- if only "all" in table
+	if size_table(tal_t.req) <= 1 then
+		return all_met and "" or all_str
+	end
+
+	-- check "other talent" requirement
+	local req_talent_met = false
+	local req_talent, req_level
+	for req_k, req_v in pairs(tal_t.req) do
+		if req_k ~= "all" then
+			req_talent = req_k
+			req_level = req_v
+		end
+	end
+
+	if talents_table[typ][class_name][req_talent].level >= req_level then
+		req_talent_met = true
+	end
+
+	-- if "other talent" requirement met
+	if req_talent_met then
+		return all_met and "" or all_str
+	end
+
+	-- "other talent" not met
+	-- "all" met
+	if all_met then
+		return gt("talents_tooltip_req") .. " " .. gt(req_talent .. "_name") .. " " .. req_level
+	end
+
+	-- "other talent" and "all" not met
+	return all_str .. ", " .. gt(req_talent .. "_name") .. " " .. req_level
+end
+
+
+-- Tooltip description
+local pos_str_ar = { "damage", "crit", "crit_damage", "reload", "bleed", "burn", "chem", "shock", "radi", "rup", "strike", "bal", "expl", "psi", "speed", "defense", "sell", "evade", "disguise", "stealth", "attack_speed" }
+local pos_str_exc_ar = { "refreshing", "hoarder", "second_wind" }
+local neg_str_ar = { "weight" }
+local none_str_ar = { "buy", "rad_food", "heal", "free", "stalkers_money", "hp_thresh", "radius", "percents" }
+local game_hours_cd = { "artistic", "second_wind", "deadly_blow" }
+
+function get_tooltip_descr_str(typ, class_name, talent)
+	local class_t = talents_table[typ][class_name]
+	local tal_t = talents_table[typ][class_name][talent]
+	local descr_ar = tal_t.descr
+
+	-- if descr field does not exist - return normal xml string
+	if not descr_ar then
+		return gt(talent .. "_descr")
+	end
+
+	-- collect variables
+	local vals_ar = {}
+	for idx, name in ipairs(descr_ar) do
+		if tal_t[name] then
+			-- get level + 1 or level if table and number if number
+			if type(tal_t[name]) == "number" then
+				if in_ar(game_hours_cd, talent) then		-- game hours
+					vals_ar[#vals_ar + 1] = tal_t[name] / 600 .. " " .. gt("talents_cd_game_hours")
+				elseif name == "cooldown" then		-- real seconds
+					vals_ar[#vals_ar + 1] = tal_t[name] .. " " .. gt("talents_cd_sec")
+				else		-- number
+					local val = tal_t[name]
+					if talent == "dismorale" and class_t["anxiety"].level > 0 then		-- dismorale duration
+						val = 30
+					elseif talent == "execution" and class_t["mastery"].level > 0 then		-- execution+mastery
+						val = val + class_t["mastery"].execution_bonus
+					elseif talent == "frightening" and class_t["mastery"].level > 0 then		-- frightening+mastery
+						val = val + class_t["mastery"].frightening_bonus
+					end
+					vals_ar[#vals_ar + 1] = val
+				end
+
+			elseif type(tal_t[name]) == "table" then
+
+				local cur_val = tal_t[name][tal_t.level] or tal_t[name][tal_t.level + 1]
+				local next_val = tal_t[name][tal_t.level + 1] or tal_t[name][tal_t.level]
+
+				-- dismorale double
+				if talent == "dismorale" and class_t["anxiety"].level > 0 then
+					cur_val = cur_val * 2
+					next_val = next_val * 2
+				end
+
+				-- mastery + merciless
+				if talent == "merciless" and class_t["mastery"].level > 0 then
+					cur_val = cur_val + class_t["mastery"].merciless_bonus
+					next_val = next_val + class_t["mastery"].merciless_bonus
+				end
+
+				-- mastery + fury
+				if talent == "fury" and class_t["mastery"].level > 0 then
+					cur_val = cur_val + class_t["mastery"].fury_bonus
+					next_val = next_val + class_t["mastery"].fury_bonus
+				end
+
+
+				-- have points
+				if talents_leveling.talent_levels[typ].points > 0 then
+
+					-- level = 0		(display "next")
+					if tal_t.level <= 0 then
+						vals_ar[#vals_ar + 1] = next_val
+
+					-- level > 0 AND level not max		(display "current -> next")
+					elseif tal_t.level ~= tal_t.max then
+
+						if in_ar(pos_str_ar, name) or in_ar(pos_str_exc_ar, talent) then		-- +%
+							vals_ar[#vals_ar + 1] = cur_val .. "%  ->  +" .. next_val
+						elseif in_ar(neg_str_ar, name) then		-- -%
+							vals_ar[#vals_ar + 1] = cur_val .. "%  ->  -" .. next_val
+						elseif name == "stamina" then		-- +%per sec
+							vals_ar[#vals_ar + 1] = cur_val .. "%/" .. gt("stat_stamina_per_sec") .. "  ->  +" .. next_val
+						elseif in_ar(none_str_ar, name) then		-- nothing%
+							vals_ar[#vals_ar + 1] = cur_val .. "%  ->  " .. next_val
+						end
+
+					-- level is max		(display "current")
+					else
+						vals_ar[#vals_ar + 1] = cur_val
+					end
+
+				-- have no points AND level = 0 		(display "next")
+				elseif tal_t.level <= 0 then
+					vals_ar[#vals_ar + 1] = next_val
+
+				-- have no points AND level > 0		(display "current")
+				else
+					vals_ar[#vals_ar + 1] = cur_val
+				end
+
+			end
+		end
+	end
+
+
+	-- add collector stacks
+	if talent == "collector" then
+		vals_ar[#vals_ar + 1] = collector_var
+	end
+
+	-- add beast descr
+	if talent == "beast_anatomy" then
+		vals_ar[#vals_ar + 1] = get_mutant_name("beast")
+	end
+
+	-- add humanoid descr
+	if talent == "humanoid_anatomy" then
+		vals_ar[#vals_ar + 1] = get_mutant_name("hum")
+	end
+
+	-- add trophies descr
+	if talent == "trophies" then
+		vals_ar[#vals_ar + 1] = size_table(monster_hunter_trophies) * (tal_t.damage[tal_t.level] or tal_t.damage[tal_t.level + 1])
+		vals_ar[#vals_ar + 1] = get_mutant_name("trophies") 
+	end
+
+	-- add head hunter descr
+	if talent == "head_hunter" then
+		vals_ar[#vals_ar + 1] = size_table(merc_head_hunter_t) * (tal_t.damage[tal_t.level] or tal_t.damage[tal_t.level + 1])
+		vals_ar[#vals_ar + 1] = get_left_communities()
+	end
+
+	-- make and return string
+	return strformat(gt(talent .. "_descr"), unpack(vals_ar))
+end
+
+function get_tooltip_height_mult(typ, class_name, talent)
+	local tal_t = talents_table[typ][class_name][talent]
+	return tal_t.descr_size and descr_sizes_t[tal_t.descr_size] or descr_sizes_t[1]
+end
+
+-- header for weapon/outfit types
+local kinds_to_display = {
+	"w_sniper", "w_rifle", "w_smg", "w_shotgun", "w_pistol", "w_machine_gun",
+	"o_light", "o_medium", "o_sci", "o_heavy",
+}
+
+BuildDescHeaderBase = ui_item.build_desc_header
+function ui_item.build_desc_header(obj, sec, str)
+	str = str or gc(ini_sys:r_string_ex(sec, "description"))
+	if (not str) then return "" end
+
+	local kind = ini_sys:r_string_ex(sec, "kind")
+	local purp_clr  = utils_xml.get_color("d_purple")
+	local grey_clr = utils_xml.get_color("ui_gray_1")
+
+	if not kind then
+		return BuildDescHeaderBase(obj, sec, str)
+	end
+
+	if IsWeapon(obj) or IsOutfit(obj) then
+		if is_mg_type(sec) then
+			kind = "w_machine_gun"
+		end
+		if in_ar(kinds_to_display, kind) then
+			return " " .. purp_clr .. gt("talents_header_krug") .. " " .. grey_clr .. gt("talents_header_" .. kind) .. "\\n \\n" .. BuildDescHeaderBase(obj, sec, str)
+		end
+	end
+
+	return BuildDescHeaderBase(obj, sec, str)
+end
+
+function pr(...)
+	if talents_dbg then
+		printf(...)
+	end
+end
+-------------------------------------
+
+function actor_on_update()
+	duration_update()
+	cooldown_update()
+	update_leap()
+	jugger_regeneration_update()
+	deep_wound_update()
+	modified_bullets_update()
+	reposition_update()
+	spot_weakness_update()
+	acrobatic_elusive_update()
+	endurance_stamina_upd()
+	endurance_speed_upd()
+	endurance_weight_upd()
+	cynical_coin_update()
+end
+
+function ActorMenu_on_trade_started()
+    RegisterScriptCallback("actor_on_item_take", actor_on_item_buy)
+    RegisterScriptCallback("actor_on_item_drop", actor_on_item_sell)
+end
+
+function ActorMenu_on_trade_closed()
+    UnregisterScriptCallback("actor_on_item_take", actor_on_item_buy)
+    UnregisterScriptCallback("actor_on_item_drop", actor_on_item_sell)
+
+	-- reset cynical id
+	if cynical_item_id then
+		cynical_item_id = nil
+	end
+end
+
+function save_state(m_data)
+	m_data.picked_class = picked_class
+
+	for typ, t in pairs(talents_table) do
+		for class_name, t2 in pairs(t) do
+			for talent, tal_t in pairs(t2) do
+				m_data.talents_t = m_data.talents_t or {}
+				m_data.talents_t[talent] = tal_t.level
+			end
+		end
+	end
+
+	m_data.collector_var = collector_var
+	m_data.monster_hunter_trophies = monster_hunter_trophies
+	m_data.special_diet_var = durations_t.special_diet_var
+	m_data.overdrive_var = durations_t.overdrive_var
+	m_data.chem_reliant_var = durations_t.chem_reliant_var
+	m_data.kindred_cd = kindred_cd
+	m_data.kindred_var = kindred_var
+	m_data.kindred_prev_lvl = kindred_prev_lvl
+	m_data.second_wind_cd = second_wind_cd
+	m_data.artistic_cd = artistic_cd
+	m_data.cynical_cd = cynical_cd
+	m_data.merc_head_hunter_t = merc_head_hunter_t
+end
+
+function load_state(m_data)
+	picked_class = m_data.picked_class or "null"
+
+	for typ, t in pairs(talents_table) do
+		for class_name, t2 in pairs(t) do
+			for talent, tal_t in pairs(t2) do
+				talents_table[typ][class_name][talent].level = m_data.talents_t and m_data.talents_t[talent] or 0
+			end
+		end
+	end
+
+	collector_var = m_data.collector_var or 0
+	monster_hunter_trophies = m_data.monster_hunter_trophies or {}
+	durations_t.special_diet_var = m_data.special_diet_var or 0
+	durations_t.overdrive_var = m_data.overdrive_var or 0
+	durations_t.chem_reliant_var = m_data.chem_reliant_var or 0
+	kindred_cd = m_data.kindred_cd or nil
+	kindred_var = m_data.kindred_var or nil
+	kindred_prev_lvl = m_data.kindred_prev_lvl or nil
+	second_wind_cd = m_data.second_wind_cd or nil
+	artistic_cd = m_data.artistic_cd or nil
+	cynical_cd = m_data.cynical_cd or nil
+	merc_head_hunter_t = m_data.merc_head_hunter_t or {}
+end
+
+function respec_talents()
+	local g_pairs = pairs
+	picked_class = "null"
+	collector_var = 0
+	empty_table(monster_hunter_trophies)
+	kindred_cd = nil
+	second_wind_cd = nil
+	artistic_cd = nil
+	cynical_cd = nil
+	empty_table(merc_head_hunter_t)
+
+	for k, v in g_pairs(cooldowns_t) do
+		cooldowns_t[k] = 0
+	end
+
+	for k, v in g_pairs(durations_t) do
+		durations_t[k] = 0
+	end
+
+	remove_all_items_weight()
+
+	for typ, t in g_pairs(talents_table) do
+		for class_name, t2 in g_pairs(t) do
+			for talent, talent_t in g_pairs(t2) do
+				speed.remove_speed(talent)
+				weight.remove_weight(talent)
+
+				if talent_t.level > 0 then
+					talents_table[typ][class_name][talent].level = 0
+				end
+			end
+		end
+	end
+
+	for class_name, t in g_pairs(class_special_stats) do
+		speed.remove_speed(class_name .. "_special")
+		weight.remove_weight(class_name .. "_special")
+	end
+
+	local coin = db.actor:object("cynical_coin")
+	if coin then
+		alife_release(coin)
+	end
+
+	local kindred_dogs_squad = get_story_se_object("kindred_dogs")
+	if kindred_dogs_squad then
+		alife_release(kindred_dogs_squad)
+	end
+
+end
+
+function on_option_change()
+	talents_dbg = talents_mcm.get_config("talents_dbg")
+end
+
+function on_game_start()
+	RegisterScriptCallback("save_state", save_state)
+	RegisterScriptCallback("load_state", load_state)
+	RegisterScriptCallback("npc_on_before_hit", actor_hit_npc)
+	RegisterScriptCallback("monster_on_before_hit", actor_hit_npc)
+	RegisterScriptCallback("npc_on_before_hit", npc_on_before_hit)
+	RegisterScriptCallback("monster_on_before_hit", npc_on_before_hit)
+	RegisterScriptCallback("actor_on_before_hit", actor_on_before_hit)
+	RegisterScriptCallback("npc_on_death_callback", npc_on_death_callback)
+	RegisterScriptCallback("monster_on_death_callback", npc_on_death_callback)
+	RegisterScriptCallback("actor_on_item_use", actor_on_item_use)
+	RegisterScriptCallback("actor_item_to_ruck", upgrades_to_ruck)
+	RegisterScriptCallback("actor_item_to_slot", weight_to_slot)
+	RegisterScriptCallback("actor_item_to_ruck", weight_to_ruck)
+	RegisterScriptCallback("actor_item_to_belt", weight_to_belt)
+	RegisterScriptCallback("actor_on_item_drop", weight_on_drop)
+	RegisterScriptCallback("actor_on_first_update", weight_first_update)
+	RegisterScriptCallback("server_entity_on_unregister", server_entity_on_unregister)
+	RegisterScriptCallback("on_key_press", on_key_leap)
+	RegisterScriptCallback("actor_on_hud_animation_play", actor_on_hud_animation_play)
+	RegisterScriptCallback("actor_on_weapon_fired", trooper_precision_on_fire)
+	RegisterScriptCallback("actor_on_weapon_fired", merc_flurry_on_fire)
+	RegisterScriptCallback("actor_on_sleep", on_sleep_kindred)
+	RegisterScriptCallback("on_enemy_eval", on_enemy_eval_kindred_our_dogs)
+	RegisterScriptCallback("on_enemy_eval", on_enemy_eval_kindred_other_dogs)
+	RegisterScriptCallback("monster_on_before_hit", monster_before_hit_kindred)
+	RegisterScriptCallback("actor_on_first_update", first_update_kindred)
+	RegisterScriptCallback("monster_on_update", monster_update_tracker)
+	RegisterScriptCallback("on_get_item_cost", on_get_item_cost)
+	RegisterScriptCallback("ActorMenu_on_before_init_mode", ActorMenu_on_before_init_mode)
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+	RegisterScriptCallback("ActorMenu_on_mode_changed", open_trade)
+	RegisterScriptCallback("ActorMenu_on_mode_changed", close_trade)
+	RegisterScriptCallback("ActorMenu_on_trade_started", ActorMenu_on_trade_started)
+	RegisterScriptCallback("ActorMenu_on_trade_closed", ActorMenu_on_trade_closed)
+	RegisterScriptCallback("on_option_change", on_option_change)
+end

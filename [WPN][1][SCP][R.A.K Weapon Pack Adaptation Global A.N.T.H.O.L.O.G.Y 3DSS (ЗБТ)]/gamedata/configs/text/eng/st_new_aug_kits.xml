@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!--
+	Weapons Attachments
+-->
+
+<string_table>
+
+	<string id="st_addon_scope_infiltrator_tactical_kit">
+		<text>AUG 9mm Infiltrator Tactical Kit</text>
+	</string>
+	<string id="st_addon_scope_infiltrator_tactical_kit_descr">
+		<text>\n \n%c[ui_gray_1]Infiltrator Tactical Kit for Steyr AUG in 9mm cal. The kit includes Long Heavy Barrel (508mm), Low-profile VLTOR receiver with Corvus Defensio tactical rail, Voodoo-s thermal sight with ACOG (TA47C Reticle) and MAWL-C1+ Laser sight. \n \n
+		%c[ui_gray_2]Features: \n
+		%c[d_green] • %c[ui_gray_2] Significantly increased accuracy.\n
+        %c[d_green] • %c[ui_gray_2] Significantly increased bullet flight speed and effective weapon range.\n		
+		%c[d_green] • %c[ui_gray_2] Increased weapon damage.\n \n</text>
+	</string>
+
+	<string id="st_addon_scope_spectre_tactical_kit">
+		<text>AUG 9mm Spectre Tactical Kit</text>
+	</string>
+	<string id="st_addon_scope_spectre_tactical_kit_descr">
+		<text>\n \n%c[ui_gray_1]Infiltrator Tactical Kit for Steyr AUG in 9mm cal. The kit includes extended barrel (417mm), Custom Spectre Tactical black stock, Etherium Holo sight with 3X Magnifier and MAWL-C1+ Laser sight. \n \n
+		%c[ui_gray_2]Features: \n
+		%c[d_green] • %c[ui_gray_2] Slightly increased accuracy.\n
+        %c[d_green] • %c[ui_gray_2] Slightly increased bullet flight speed and effective weapon range.\n		
+		%c[d_green] • %c[ui_gray_2] Slight increased weapon damage.\n \n</text>			
+	</string>		
+
+</string_table>

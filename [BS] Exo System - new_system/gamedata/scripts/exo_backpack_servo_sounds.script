@@ -1,0 +1,6 @@
+-- Legacy backpack servo hook is intentionally disabled.
+-- Real outfit servo sounds are handled by exo_servo_sounds.script.
+
+function on_game_start()
+    return true
+end

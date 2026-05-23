@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_body_health_system_title">
+		<text>Переработанный Dynahud BHS</text>
+	</string>
+	<string id="ui_mcm_menu_body_health_system">
+		<text>Переработанный Dynahud BHS</text>
+	</string>
+
+	<string id="ui_mcm_lst_dynahud">
+		<text>Dynahud</text>
+	</string>
+</string_table>

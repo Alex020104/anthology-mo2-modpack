@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<window>
+
+	<!-- Main Bar -->
+
+	<main_background x="-884" y="189" width="120" height="14" stretch="1" >
+			<texture></texture>
+	</main_background>
+
+	<main_bar x="884" y="189" width="120" height="14" min="0" max="1" horz="1" >
+		<progress>
+			<texture></texture>
+		</progress>
+	</main_bar>
+
+	<main_red_arrow x="887" y="206" width="13" height="11" stretch="1" >
+			<texture></texture>
+	</main_red_arrow>
+
+	<main_blue_arrow x="991" y="206" width="13" height="11" stretch="1" >
+			<texture></texture>
+	</main_blue_arrow>
+
+	<main_fever_background x="884" y="204" width="66" height="5" stretch="1" >
+			<texture></texture>
+	</main_fever_background>
+
+	<main_fever_bar x="884" y="204" width="66" height="5" min="0" max="100" horz="1" >
+		<progress>
+			<texture></texture>
+		</progress>
+	</main_fever_bar>
+
+	<!-- text -->
+    <main_text x="955" y="130" width="25" height="25" stretch="1">
+        <text x="0" y="0"  align="l" complex_mode="0" font="arial_14" r="255" g="255" b="255" a="255"></text>
+    </main_text>
+
+
+	<!-- Thermometer -->
+
+	<thermo_background x="980" y="50" width="26" height="128" stretch="1" >
+			<texture>ui_cold_system_thermo_background</texture>
+	</thermo_background>
+	
+	<!-- x = +1		y = +45 -->
+	<thermo_blue_bar x="981" y="95" width="23" height="81" min="0" max="5" mode="down" >
+		<progress>
+			<texture>ui_cold_system_thermo_blue_bar</texture>
+		</progress>
+	</thermo_blue_bar>
+
+	<!-- x = +1		y = +3 -->
+	<thermo_red_bar x="981" y="53" width="23" height="40" min="0" max="1" >
+		<progress>
+			<texture>ui_cold_system_thermo_red_bar</texture>
+		</progress>
+	</thermo_red_bar>
+
+	<!-- x = +1		y = +45 -->
+	<thermo_yellow_indicator x="981" y="95" width="23" height="4" stretch="1">
+			<texture>ui_cold_system_thermo_yellow_indicator</texture>
+	</thermo_yellow_indicator>
+
+	<!-- text -->
+    <thermo_text x="955" y="50" width="25" height="25" stretch="1">
+        <text x="0" y="0"  align="c" complex_mode="0" font="arial_14" r="255" g="255" b="255" a="255"></text>
+    </thermo_text>
+
+    <thermo_campfire_text x="955" y="66" width="25" height="25" stretch="1">
+        <text x="0" y="0"  align="c" complex_mode="0" font="arial_14" r="255" g="255" b="255" a="255"></text>
+    </thermo_campfire_text>
+
+	<col1 x="10" y="403" width="29" height="33" stretch="1">
+		<texture>ui\cold_sick\cold_sick_green.dds</texture>
+	</col1>
+	
+	<col2 x="10" y="403" width="29" height="33" stretch="1">
+		<texture>ui\cold_sick\cold_sick_yellow.dds</texture>
+	</col2>
+	
+	<col3 x="10" y="403" width="29" height="33" stretch="1">
+		<texture>ui\cold_sick\cold_sick_red.dds</texture>
+	</col3>
+
+	<freeze1 x="10" y="440" width="29" height="33" stretch="1">
+		<texture>ui\freeze_icons\freeze_green.dds</texture>
+	</freeze1>
+
+	<freeze2 x="10" y="440" width="29" height="33" stretch="1">
+		<texture>ui\freeze_icons\freeze_yellow.dds</texture>
+	</freeze2>
+
+	<freeze3 x="10" y="440" width="29" height="33" stretch="1">
+		<texture>ui\freeze_icons\freeze_red.dds</texture>
+	</freeze3>
+
+	
+
+</window>

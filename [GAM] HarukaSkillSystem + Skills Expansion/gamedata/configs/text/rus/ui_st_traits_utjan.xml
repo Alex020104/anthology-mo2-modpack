@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="st_traits_use_respec">
+		<text>Напиток</text>
+	</string>
+	<string id="st_itm_desc_trait_respec">
+		<text>"Ибогаин — препарат растительного происхождения, который обладает выраженным галлюциногенным и психостимулирующим действием.\n
+		Галлюциноген, который получают из растений, родом из Западной и Центральной Африки, таких как ибога (Tabernanthe iboga) и воаканга африканская (Voacanga africana). Исторически их использовали в религиозных ритуалах, а кое-где используют и до сих пор.
+		\n \n
+		%c[ui_gray_3]СВОЙСТВА:\n
+		%c[d_blue] • %c[ui_gray_2] напиток\n
+		%c[d_blue] • %c[ui_gray_2] импортировано\n
+		%c[d_blue] • %c[ui_gray_2] высокое качество\n
+		%c[d_red] • %c[ui_gray_2] может вызывать тошноту\n
+		\n \n
+		%c[ui_gray_3]Выпейте это, чтобы сбросить свои черты</text>
+	</string>
+	<string id="st_itm_name_trait_respec">
+		<text>Ибога</text>
+	</string>
+
+	<string id="st_btn_enable">
+		<text>Включить</text>
+	</string>
+	<string id="st_btn_disable">
+		<text>Выключить</text>
+	</string>
+	
+	<string id="st_btn_learn">
+		<text>Изучить</text>
+	</string>
+	<string id="st_btn_learn_learned">
+		<text>Изучено</text>
+	</string>
+	<string id="st_btn_learn_locked">
+		<text>Недоступно</text>
+	</string>
+	
+	<string id="st_requires_trait">
+		<text>Требуется Навыки</text>
+	</string>
+	
+	<string id="st_traits_reminder">
+		<text>У вас есть неизрасходованные очки навыков!</text>
+	</string>
+	
+	<string id="st_traits_title">
+		<text>Навыки характера</text>
+	</string>
+	
+	<string id="st_traits_total_level">
+		<text>Общий уровень навыков</text>
+	</string>
+	
+	<string id="st_traits_avail_txt">
+		<text>Очки навыков: </text>
+	</string>
+	
+	<string id="st_trait_name_strong_back">
+		<text>Любитель мусора</text>
+	</string>
+	<string id="st_trait_desc_strong_back">
+		<text>"Ваша спина определённо становится сильнее от таскания кучи мусора по зоне.."\n \nУвеличивает переносимый вес на 4 кг</text>
+	</string>
+	
+	<string id="st_trait_name_pack_mule">
+		<text>Мусорщик</text>
+	</string>
+	<string id="st_trait_desc_pack_mule">
+		<text>"Вы любите собирать весь мусор что видите бродя по зоне"\n \nУвеличивает переносимый вес на 8 кг\nСнижает скорость спринта на 4%</text>
+	</string>
+
+	<string id="st_trait_name_strider">
+		<text>Спринтер</text>
+	</string>
+	<string id="st_trait_desc_strider">
+		<text>"Быстрее - Не значит эффективнее"\n \nУвеличивает скорость ходьбы на 6%\nУменьшает переносимый вес на 1 кг</text>
+	</string>
+	
+	<string id="st_trait_name_sprinter">
+		<text>Ультрамарафонец</text>
+	</string>
+	<string id="st_trait_desc_sprinter">
+		<text>"Вы научились быстро убегать, но стали немного слабее"\n \nУвеличивает скорость бега на 8%\nУменьшает переносимый вес на 2 кг</text>
+	</string>
+	
+	<string id="st_trait_name_mutant_resist">
+		<text>Толстая кожа</text>
+	</string>
+	<string id="st_trait_desc_mutant_resist">
+		<text>"Вас постоянно кусают и таранят мутанты"\n \nВы получаете на 10% меньше урона от мутантских ударов</text>
+	</string>
+	
+	<string id="st_trait_name_melee_mutant">
+		<text>Слабое место</text>
+	</string>
+	<string id="st_trait_desc_melee_mutant">
+		<text>"Вам рассказали о слабых местах мутантов"\n \nВы наносите на 15% больше урона по мутантам в ближнем бою</text>
+	</string>
+	
+	<string id="st_trait_name_faction_cashback_self">
+		<text>Свой парень</text>
+	</string>
+	<string id="st_trait_desc_faction_cashback_self">
+		<text>"Торговцы вашей фракции всегда рады вам"\n \nВы получаете на 5% лучшие цены у торговцев вашей фракции.</text>
+	</string>
+	
+	<string id="st_trait_name_faction_cashback_other">
+		<text>Свой среди чужих</text>
+	</string>
+	<string id="st_trait_desc_faction_cashback_other">
+		<text>"Умеешь торговаться"\n \nВы получаете на 5% более выгодные цены у торговцев, не принадлежащих к вашей фракции</text>
+	</string>
+	
+	<string id="st_trait_name_psy_resist_controller">
+		<text>Крепкий разум</text>
+	</string>
+	<string id="st_trait_desc_psy_resist_controller">
+		<text>"Ваш разум крепчает с каждой пробытой минутой в зоне"\n \nВы получаете на 25 % меньше урона от пси-атак контролёров</text>
+	</string>
+	
+	<string id="st_trait_name_tinkering_armor">
+		<text>Мастер Бронник</text>
+	</string>
+	<string id="st_trait_desc_tinkering_armor">
+		<text>"После длительного прибывания в зоне вы научились эффективнее обслуживать своё снаряжение"\n \nШанс не потратить ремкомплект при ремонте брони и шлемов увеличивается на 15%</text>
+	</string>
+	
+	<string id="st_trait_name_tinkering_weapon">
+		<text>Мастер Оружейник</text>
+	</string>
+	<string id="st_trait_desc_tinkering_weapon">
+		<text>"После длительного прибывания в зоне вы научились эффективнее обслуживать своё оружие"\n \nШанс не потратить ремкомплект при починке оружия повышается на 15%</text>
+	</string>
+	
+	<string id="st_trait_name_medicine_boost">
+		<text>Медик</text>
+	</string>
+	<string id="st_trait_desc_medicine_boost">
+		<text>"Недавно вам подвернулся шанс изучить мед. книгу"\n \nПрименив медицинский предмет добавляется +10% от восстанавливаемых здоровья и вывода радиации</text>
+	</string>
+	
+	<string id="st_trait_name_mag_loading_bonus">
+		<text>Ловкие пальца</text>
+	</string>
+	<string id="st_trait_desc_mag_loading_bonus">
+		<text>"С каждой вылозкой в зоне ваши руки становятся ловче"\n \nЗагрузка пуль в магазин происходит на 25% быстрее</text>
+	</string>
+	
+	<string id="st_trait_name_mag_unloading_bonus">
+		<text>Сборщик пуль</text>
+	</string>
+	<string id="st_trait_desc_mag_unloading_bonus">
+		<text>"После долгого изучения магазинов вы поняли принцип их работы"\n \nОпустошение магазинов происходит на 30% быстрее</text>
+	</string>
+
+	<string id="st_trait_name_lockpicking_bonus">
+		<text>Взломщик</text>
+	</string>
+	<string id="st_trait_desc_lockpicking_bonus">
+		<text>"Вы изучили пару инструкций по взлому замков"\n \nСложность открытия лутбоксов снижена на 10%</text>
+	</string>
+	
+	<string id="st_trait_name_melee_defense">
+		<text>Подпольный боец</text>
+	</string>
+	<string id="st_trait_desc_melee_defense">
+		<text>"Вы умеете за себя постоять в ближнем бою"\n \nВы получаете на 20% меньше повреждений, пока держите в руках оружие ближнего боя</text>
+	</string>
+	
+	<string id="st_trait_name_lone_stalker">
+		<text>Одиночка</text>
+	</string>
+	<string id="st_trait_desc_lone_stalker">
+		<text>"Вы никому не доверяете в зоне"\n \nПри отсутствии компаньонов, ваш переносимый вес увеличивается на 5 кг и вы получаете на 10 % меньше урона.</text>
+	</string>
+	
+	<string id="st_trait_name_squad_leader">
+		<text>Лидер</text>
+	</string>
+	<string id="st_trait_desc_squad_leader">
+		<text>"Вы сумели завоевать доверие в это непростое время"\n \nВаши компаньоны наносят на 15% больше урона и получают на 25% меньше урона.</text>
+	</string>
+	
+	<string id="st_trait_name_small_guns_reload">
+		<text>Любитель пистолетов</text>
+	</string>
+	<string id="st_trait_desc_small_guns_reload">
+		<text>"Вы так сильно любите пистолеты что знаете о них буквально всё"\n \nПерезарядка пистолетов и ПП на 25% быстрее</text>
+	</string>
+	
+	<string id="st_trait_name_big_guns_reload">
+		<text>Гробовщик</text>
+	</string>
+	<string id="st_trait_desc_big_guns_reload">
+		<text>"Вы обожаете стрелять из дробовиков и снайперских винтовок"\n \nВы перезаряжаете винтовки, снайперские винтовки и дробовики на 15% быстрее</text>
+	</string>
+	
+	<string id="st_trait_name_sidearm_quickdraw">
+		<text>Мал да удал</text>
+	</string>
+	<string id="st_trait_desc_sidearm_quickdraw">
+		<text>"При нехватке патронов в основном оружие, вы принимаете решение достать пистолет"\n \nВы выхватываете пистолеты на +50% быстрее и на +25% быстрее убираете в кобуру другое оружие</text>
+	</string>
+	
+	<string id="st_trait_name_butcher">
+		<text>Шеф-повар</text>
+	</string>
+	<string id="st_trait_desc_butcher">
+		<text>"Умеете разделывать мутантов так, как будто это курица"\n \nУ вас есть 50% шанс получить дополнительную часть мутанта при свежевании</text>
+	</string>
+	
+	<string id="st_trait_name_tinkering_parts">
+		<text>Мастер на все руки</text>
+	</string>
+	<string id="st_trait_desc_tinkering_parts">
+		<text>"После длительного прибывания в зоне вы научились эффективнее обслуживать снаряжение и из запчасти"\n \nНа 25 % выше шанс не потратить ремкомплект при ремонте запчастей и экипировки.</text>
+	</string>
+	
+	<string id="st_trait_name_pain_rush">
+		<text>Боязнь боли</text>
+	</string>
+	<string id="st_trait_desc_pain_rush">
+		<text>"Вы так сильно не любите боль, что при малейшей царапине готовы удирать со всех ног"\n \nПри получении урона в течении 10 секунд вы можете бежать до +25% быстрее</text>
+	</string>
+	
+	<string id="st_trait_name_pain_train">
+		<text>Поезд боли</text>
+	</string>
+	<string id="st_trait_desc_pain_train">
+		<text>"Усиление перка «Боязнь боли»"\n \nДает до 5% регенерации выносливости в секунду.\nЭффект дочернего перка длится на 5 секунд дольше.</text>
+	</string>
+	
+	<string id="st_trait_name_predator">
+		<text>Кровопийца</text>
+	</string>
+	<string id="st_trait_desc_predator">
+		<text>"Вам так нравится убивать , что у вас кровь стынет в жилах"\n \nУбийство сталкеров и мутантов снижает кровотечение на 5% в течение 10 секунд</text>
+	</string>
+	
+	<string id="st_trait_name_bloodlust">
+		<text>Кровожадный</text>
+	</string>
+	<string id="st_trait_desc_bloodlust">
+		<text>"Вы любитете убивать быстро и безболезненно"\n \nПерк «Кровопийца» также улучшает обращение с оружием.\nДо +25% быстрее перезарядка и вытаскивание/укладка в кобуру</text>
+	</string>
+	
+	<string id="st_trait_name_thick_skull">
+		<text>Крепкий лоб</text>
+	</string>
+	<string id="st_trait_desc_thick_skull">
+		<text>"Вы иногда сходили с ума и бились головой об стену"\n \nВы получаете на 10 % меньше урона от попаданий в голову\nЦены у торговцев на 3% хуже</text>
+	</string>
+</string_table>

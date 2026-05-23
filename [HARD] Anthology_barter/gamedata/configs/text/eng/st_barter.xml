@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="st_ui_mm_barter">
+        <text>Barter</text>
+    </string>
+
+    <string id="st_barter_anyOf">
+        <text>Select one type of item to give.</text>
+    </string>
+    <string id="st_barter_allOf">
+        <text>You must have all items to complete this trade.</text>
+    </string>
+    <string id="st_barter_goodwill">
+        <text>req. goodwill: </text>
+    </string>
+    <string id="st_barter_limit">
+        <text>limit</text>
+    </string>
+    <string id="st_barter_info">
+        <text>requires previous barter</text>
+    </string>
+    <string id="st_barter_toolkit1">
+        <text>technician requires basic tools</text>
+    </string>
+    <string id="st_barter_toolkit2">
+        <text>technician requires advanced tools</text>
+    </string>
+    <string id="st_barter_toolkit3">
+        <text>technician requires expert tools</text>
+    </string>
+
+    <string id="st_barter_uses">
+        <text>uses: </text>
+    </string>
+    <string id="st_barter_ammo">
+        <text>rounds: </text>
+    </string>
+    <string id="st_barter_cond">
+        <text>condition: %</text>
+    </string>
+
+    <string id="st_barter_init">
+        <text>Want to trade for anything? %c[orange][Barter]</text>
+    </string>
+
+    <string id="st_barter_restock">
+        <text>(refreshed on restock)</text>
+    </string>
+    <string id="st_barter_fixed">
+        <text>(does not refresh)</text>
+    </string>
+	<string id="st_ui_itm_barter_base">
+		<text>Available Barters</text>
+	</string>
+	<string id="st_ui_itm_barter_support">
+		<text>Required Items</text>
+	</string>
+	<string id="st_ui_barter_rules">
+		<text>Ground rules for bartering:\n
+            • Condition items must be at %s%.\n
+            • Multi-use items must have all uses.\n
+            • Ammunition must have a full box.
+        </text>
+	</string>
+
+    
+    <string id="ui_mcm_menu_barter">
+        <text>Barter</text>
+    </string>
+    <string id="ui_mcm_barter_title">
+        <text>Anomaly NPC Bartering</text>
+    </string>
+    <string id="ui_mcm_barter_cond">
+        <text>Take Weapon Condition Minimum</text>
+    </string>
+    <string id="ui_mcm_barter_cond_desc">
+        <text>Minimum required condition for player-provided condition items (weapons, outfits) in a barter.
+        </text>
+    </string>
+    <string id="ui_mcm_barter_cond_part">
+        <text>Part Condition Minimum</text>
+    </string>
+    <string id="ui_mcm_barter_cond_part_desc">
+        <text>Minimum required condition for player-provided part items and parts in items (e.g. weapon, outfit parts) both standalone and as part of a larger item.
+        </text>
+    </string>
+    
+    <string id="ui_mcm_barter_debug">
+        <text>Debug Printing</text>
+    </string>
+
+    <string id="st_dot">
+        <text>•</text>
+    </string>
+</string_table>

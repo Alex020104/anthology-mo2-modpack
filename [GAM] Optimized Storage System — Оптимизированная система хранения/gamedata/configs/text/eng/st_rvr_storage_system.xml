@@ -1,0 +1,164 @@
+<string_table>
+    <!-- MCM section -->
+    <string id="ui_mcm_menu_rvr_storage_system">
+        <text>Rvr Storage System</text>
+    </string>
+    <string id="ui_mcm_mod_desc">
+        <text>DESCRIPTION TODO</text>
+    </string>
+
+    <string id="ui_mcm_main_options_title">
+        <text>Options</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_shift_mult_slider">
+        <text>LSHIFT put/withdraw multiplier</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_shift_mult_slider_desc">
+        <text>Multiplies an amount of items if SHIFT is pressed. Multiplicative with CTRL.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_show_pelts_condition_check">
+        <text>Show mutant pelts conditions</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_show_arts_condition_check">
+        <text>Show artifacts (containers included) conditions</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_ctrl_mult_slider">
+        <text>LCTRL put/withdraw multiplier</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_ctrl_mult_slider_desc">
+        <text>Multiplies an amount of items if CTRL is pressed. Multiplicative with SHIFT.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_global_storage_enabled_check">
+        <text>Enable global storage</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_global_storage_enabled_check_desc">
+        <text>Enables additional storage, accessible from anywhere. [SHIFT+I]</text>
+    </string>
+
+
+    <string id="ui_mcm_experimental_title">
+        <text>Experimental section</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_debug_mode_check">
+        <text>Enable debug mode</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_debug_mode_check_desc">
+        <text>Enables some debug/dev features and test storage interface on O key.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_weapon_storage_check">
+        <text>EXPERIMENTAL: enable weapon storage</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_weapon_storage_check_desc">
+        <text>Partially implemented feature. Upgrades will be removed if stored, mag will be loaded, what leads to ammo duplication exploit.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_armor_storage_check">
+        <text>EXPERIMENTAL: enable armor storage (upgrades will be removed if stored)</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_armor_storage_check_desc">
+        <text>Partially implemented feature. Upgrades will be removed if stored.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_kinds_separators">
+        <text>EXPERIMENTAL: enable additional separators with item kinds (no localization)</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_kinds_separators_desc">
+        <text>Missing localization</text>
+    </string>
+
+
+    <!-- Window titles -->
+    <string id="st_rvr_ss_actor_inventory_title">
+        <text>Backpack</text>
+    </string>
+    <string id="st_rvr_ss_storage_inventory_title">
+        <text>Storage</text>
+    </string>
+    <string id="st_rvr_ss_durability_column_title">
+        <text>Condition</text>
+    </string>
+    <string id="st_rvr_ss_amount_column_title">
+        <text>Amount</text>
+    </string>
+
+
+    <!-- Categories -->
+    <string id="st_c_all">
+        <text>All</text>
+    </string>
+    <string id="st_c_weapons">
+        <text>Weapons</text>
+    </string>
+    <string id="st_c_ammo">
+        <text>Ammunition</text>
+    </string>
+    <string id="st_c_armor">
+        <text>Armors and helmets</text>
+    </string>
+    <string id="st_c_equipment">
+        <text>Equipment</text>
+    </string>
+    <string id="st_c_tech">
+        <text>Technical</text>
+    </string>
+    <string id="st_c_trophies">
+        <text>Trophies</text>
+    </string>
+    <string id="st_c_consumables">
+        <text>Consumables</text>
+    </string>
+    <string id="st_c_misc">
+        <text>Miscellaneous</text>
+    </string>
+    <string id="st_c_unknown">
+        <text>Unknown</text>
+    </string>
+
+
+    <string id="st_rvr_ss_mb_set_stash_created">
+        <text>Advanced stash created</text>
+    </string>
+    <string id="st_rvr_ss_mb_set_stash_type_text">
+        <text>Do you want to create an advanced stash? If no, a default stash will be created.</text>
+    </string>
+
+    <string id="rvr_ss_storage_footer_cap">
+        <text>Hints and controls</text>
+    </string>
+    <string id="rvr_ss_storage_footer_hints">
+        <text>\n
+        * [SHIFT+dLMB], [CTRL+dLMB] and [CTRL+SHIFT+dLMB], where dLMB means double LMB click, are used to take/put more items. Check MCM for multipliers settings.\n
+        * [SHIFT+F] sets focus on the search textbox.\n
+        * [CTRL+SHIFT+F] sets focus on the search textbox and removes it's content.\n
+        * [Enter] or unfocus search textbox to filter all items, with a respect to the selected category.\n
+        * [ALT+dLMB] marks item as favorite. Repeat to remove marking.\n
+        * [SHIFT+ALT+dLMB] marks item as a trash. Repeat to remove marking.\n
+        </text>
+    </string>
+
+    <string id="rvr_ss_storage_footer_depositall_btn">
+        <text>Deposit All</text>
+    </string>
+    <string id="rvr_ss_storage_footer_keep_favorite">
+        <text>Keep favorite items</text>
+    </string>
+    <string id="rvr_ss_storage_footer_keep_regular">
+        <text>Keep regular items</text>
+    </string>
+    <string id="rvr_ss_storage_footer_keep_trash">
+        <text>Keep trash items</text>
+    </string>
+
+    <!-- <string id="st_c_consumables">
+        <text>-</text>
+    </string>
+    <string id="st_c_consumables">
+        <text>-</text>
+    </string> -->
+</string_table>

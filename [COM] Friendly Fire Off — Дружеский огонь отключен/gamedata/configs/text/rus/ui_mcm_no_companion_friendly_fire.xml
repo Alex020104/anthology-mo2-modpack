@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="ui_mcm_title_nomorefriendlyfire">
+		<text>Больше Никакого Дружественного Огня</text>
+	</string>
+	<string id="ui_mcm_menu_nomorefriendlyfire">
+		<text>Отключения огня по своим</text>
+	</string>
+	<string id="ui_mcm_nomorefriendlyfire_npcprotect">
+		<text>Защита НПС</text>
+	</string>
+	<string id="ui_mcm_nomorefriendlyfire_npcprotect_desc">
+		<text>Защита спутников от урона игрока</text>
+	</string>
+	<string id="ui_mcm_nomorefriendlyfire_acprotect">
+		<text>Защита игрока</text>
+	</string>
+	<string id="ui_mcm_nomorefriendlyfire_acprotect_desc">
+		<text>Защита игрока от урона спутников</text>
+	</string>
+</string_table>

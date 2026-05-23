@@ -1,0 +1,38 @@
+<string_table>
+	<string id="ui_mcm_ut_skill_system_exp_multiplier_medicine">
+        <text>First Aid EXP multiplier</text>
+    </string>
+    <string id="ui_mcm_ut_skill_system_exp_multiplier_insanity">
+        <text>Stress Resistance EXP multiplier</text>
+    </string>
+    <string id="ui_mcm_ut_skill_system_exp_multiplier_tinkering">
+        <text>Maintenance EXP multiplier</text>
+    </string>
+    <string id="ui_mcm_ut_skill_system_exp_multiplier_bartering">
+        <text>Charisma EXP multiplier</text>
+    </string>
+	<string id="ui_mcm_ut_skill_system_exp_multiplier_reloading">
+        <text>Weapon Handling EXP multiplier</text>
+    </string>
+	<string id="ui_mcm_ut_skill_system_exp_multiplier_magloading">
+        <text>Mag Drills EXP multiplier</text>
+    </string>
+    <string id="ui_mcm_ut_skill_system_exp_multiplier_lockpicking">
+        <text>Lockpicking EXP multiplier</text>
+    </string>
+	<string id="ui_mcm_ut_skill_system_traits_gain_mult">
+        <text>Trait point gain multiplier</text>
+    </string>
+    <string id="ui_mcm_ut_skill_system_title">
+        <text>Skills Expansion Configuration</text>
+    </string>
+     <string id="ui_mcm_menu_ut_skill_system">
+        <text>Skills Expansion</text>
+    </string>
+	<string id="ui_mcm_ut_skill_system_traits_keybind">
+        <text>Keybind for Traits UI</text>
+    </string>
+	<string id="ui_mcm_ut_skill_system_purge_ut_skills">
+        <text>Uninstall Skills Expansion</text>
+    </string>
+</string_table>

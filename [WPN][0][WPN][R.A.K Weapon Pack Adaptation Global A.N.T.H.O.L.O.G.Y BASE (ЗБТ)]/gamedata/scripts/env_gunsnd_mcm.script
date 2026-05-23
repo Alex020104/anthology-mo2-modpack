@@ -1,0 +1,443 @@
+local last_tick = 0
+
+----{pitch,yaw,lenght,lenght priority,indoor detection priority,player's yaw indepentdent} in degree, lenght priority == 0 mean no contribute to lenghts calculation
+local ray_dir_configs_npc = {
+	{0,		90,		30,		0.4,2.1,true},
+	{180,	60,		40,		0.2,0.3,true},
+	{40, 	30,		60,		0.7,1,true},
+	{-40, 	30,		60,		0.7,1,true},
+	{0, 	5,		60,		2,0.1,true},
+}
+
+local material_black_list = {
+	"water",
+	"bush",
+	"tree",
+}
+
+local points_table = {}
+local lenght_table = {}
+
+local cooldowns_table = {}
+
+local underground_levels = {"jupiter_underground", "l03u_agr_underground", "l08u_brainlab", "l13_generators", "labx8", "l12u_sarcofag", "l10u_bunker", "l04u_labx18"}
+---------------------MCM
+
+mcm_setup = {
+	enable = {true, "check",nil,nil,nil,order = 1},
+	volume = {3, "track",0,5,0.1,order = 2},
+	tick_interval = {400, "track",100,1000,10,order = 4},
+	npc_tick_interval = {1500, "track",200,2000,10,order = 5},
+
+	div_ray = {nil,"line", order = 8},
+	desc_ray = {nil,"desc", order = 9},
+
+	ray_bounce_count = {3, "track",2,5,1,order = 13},
+	npc_ray_bounce_count = {2, "track",1,5,1,order = 14},
+	ray_lenght_mult = {1, "track",0.25,3,0.05,order = 15},
+	ray_drop_off_lenght = {9, "track",5,20,0.5,order = 16},
+
+	div_threshold = {nil,"line", order = 48},
+	desc_threshold = {nil,"desc", order = 49},
+
+	new_threshold = {0.75,"track",0,1,0.05, order = 50},
+
+	div_tail = {nil,"line", order = 58},
+	desc_tail = {nil,"desc", order = 59},
+
+	tail_volume = {1 , "track", 0,3,0.05, order = 69},
+	tail_length = {9, "track", 6,18,0.5, order = 71},
+	bak_tail = {true, "check",nil,nil,nil,order = 72},
+	tail_enable_for_non = {false, "check",nil,nil,nil,order = 73},
+
+	div_dbug = {nil,"line", order = 88},
+	desc_dbug = {nil,"desc", order = 89},
+
+	dbug = {false, "check",nil,nil,nil,order = 99},
+	ray_dbug = {false, "check",nil,nil,nil,order = 100},
+	show_replaced_sound = {false, "check",nil,nil,nil,order = 101}
+}
+
+local mcm_settings = mcm_setup
+
+function get_mcm_val(i)
+	if i == "check" then
+		return 1
+	end
+	if i == "track" then
+		return 2
+	end
+	return
+end
+
+function on_mcm_load()
+	local sorted_order = {}
+	for i,v in pairs(mcm_settings) do
+		table.insert(sorted_order,v.order)
+	end
+	table.sort(sorted_order)
+	local set = {{id = "title", type = "slide", text = "ui_mcm_menu_indoor_framework", size = {512, 50}, spacing = 20},}
+	for i,v in pairs(mcm_settings) do
+		local option = {id = i,type = v[2], val = get_mcm_val(v[2]), min = v[3], max = v[4], step = v[5], def = v[1], text = "ui_mcm_indoor_framework_"..i, clr = {200, 200, 255, 255}}
+		set[table_find(sorted_order,v.order)+1] = option
+	end
+	return {id = "indoor_framework", sh=true, gr= set}
+end
+
+function on_option_change(mcm)
+	if not mcm then return end
+	for i,v in pairs(mcm_settings) do
+		if v[2]~="desc" and v[2]~="line"  then
+			mcm_settings[i][1] = ui_mcm.get("indoor_framework/"..i)
+		end
+	end
+end
+------------------------
+function print(a,...)
+	if mcm_settings.dbug[1] then
+		if type(a)=="table" then
+			printf("ze table\n%s", utils_data.print_table(a, false, true))
+		else
+			printf(tostring(a))
+		end
+	end
+end
+
+local sys_param_types = {
+    string = 0,
+    boolean = 1,
+    number = 2
+}
+
+function table_find(t,f)
+	for i,v in pairs(t) do
+		if v == f then
+			return i
+		end
+	end
+end
+
+function getAvg(tabl)
+	local s = 0
+	for i = 1,#tabl do
+		s = s+tabl[i]
+	end
+	return s/#tabl
+end
+
+function getSummation(n)
+	return n*(n+1)*0.5
+end
+
+function toRad(a)
+	return a* 0.017453292519943295769236907684886
+end
+
+function haveIndoorSound(parent)
+	local sec = get_wp_sec(parent)
+	if SYS_GetParam(sys_param_types.boolean, sec, "snd_shoot_indoor") == false then return true end
+	if SYS_GetParam(sys_param_types.boolean, sec, "snd_shoot_actor_indoor") == false then return true end
+	return false
+end
+
+function drop_off_equation(n)
+	return clamp(4/(4+(n-1)),0.1,1)
+end
+
+function clamp(x, min, max)
+  return x < min and min or (x > max and max or x)
+end
+
+function tail_volume_equation(n) -- Check Desmos again  :)
+	return ((n<1 and n^4) or math.max(7.5/(7.5-(n-1)),0.1))
+end
+
+function get_wp_sec(parent)
+	local wpn = db.actor:active_item()
+	if parent then
+		if not (IsStalker(parent) and parent:alive()) then return end
+		wpn = parent:active_item()
+	end
+	local sec
+	if wpn then
+		sec = wpn:section()
+	end
+	return sec
+end
+
+function getSndParamCount(sec,param)
+	local paramTabl = {}
+	local i = 1
+	while ini_sys:r_bool_ex(ini_sys:r_string_ex(sec, param), "snd_"..i.."_layer")==false do
+		paramTabl[i] = 0
+		while ini_sys:r_bool_ex(ini_sys:r_string_ex(sec, param), "snd_"..i.."_layer"..(paramTabl[i]+1))==false do
+			paramTabl[i] = paramTabl[i]+1
+		end
+		i = i+1
+	end
+	return paramTabl
+end
+
+function isBlackListedMaterial(m)
+	for i = 1,#material_black_list do
+		if string.find(m,material_black_list[i]) then
+			return true
+		end
+	end
+	return false
+end
+
+function getPos(parent)
+	local pos = db.actor:position()
+	if parent then
+		pos = parent:position()
+	end
+	if IsMoveState("mcCrouch") and IsMoveState("mcAccel") then -- Prone
+		pos.y = pos.y + 0.4
+	elseif IsMoveState("mcCrouch") then
+		pos.y = pos.y + 1.2
+	else
+		pos.y = pos.y + 1.6
+	end
+	return pos
+end
+
+
+-------- THEN ADD "_INDOOR" AT THE END. Example: "snd_reload_empty_actor_indoor"
+local indoor_snds_callback = {
+
+	sndShot = "snd_shoot",
+	sndShotActor = "snd_shoot_actor",
+	sndSilencerShot = "snd_silncer_shot",
+	sndSilencerShotActor = "snd_silncer_shot_actor",
+
+	sndShotActorFirst = "snd_shoot_actor_first",
+	sndSilencerShotActorFirst = "snd_silncer_shoot_actor_first",
+
+	sndShotMisfire = "snd_shot_misfire",
+	sndShotMisfireActor = "snd_shot_misfire_actor",
+	sndSilencerShotMisfire = "snd_silncer_shot_misfire",
+	sndSilencerShotMisfireActor = "snd_silncer_shot_misfire_actor",
+
+	sndShow = "snd_draw",
+	sndShowActor = "snd_draw_actor",
+	sndHide = "snd_holster",
+	sndHideActor = "snd_holster_actor",
+	sndClickMisfire = "snd_misfire", 
+	sndClickMisfireActor = "snd_misfire_actor", -- Jam fire sound?
+	sndEmptyClick = "snd_empty",
+	sndEmptyClickActor = "snd_empty_actor",
+	sndReload = "snd_reload",
+	sndReloadActor = "snd_reload_actor",
+	sndReloadEmpty = "snd_reload_empty",
+	sndReloadEmptyActor = "snd_reload_empty_actor",
+	sndReloadG = "snd_reload_grenade", -- under barrel GL
+	sndReloadMisfire = "snd_reload_misfire", -- unjamming?
+	sndReloadMisfireActor = "snd_reload_misfire_actor",
+	sndSwitch = "snd_switch", -- switch from UBGL to normal and vice versa
+	sndSwitchMode = "snd_switch_mode", -- switch fire-mode
+	--- Shotgun
+	sndReload1 = "snd_reload_1", -- reloading one round for DB shotguns
+	sndAddCartridge = "snd_add_cartridge", -- Shotgun
+	sndOpen = "snd_open_weapon", -- Shotgun
+	sndClose = "snd_close_weapon", -- Shotgun
+	sndCloseEmpty = "snd_close_weapon_empty", -- Shotgun
+	sndBore = "snd_bore", -- Shotgun
+	--- Explosive
+	sndExplode = "snd_explode",
+	--- PDA
+	sndButtonPress = "snd_btn_press", -- PDA
+	sndButtonRelease = "snd_btn_release", -- PDA
+	sndEmptyBattery = "snd_empty",  -- PDA
+	sndHideEmpty = "snd_holster_empty", -- PDA
+	------------
+	sndTurnOff = "snd_turn_off", -- for torch
+	sndTurnOn = "snd_turn_on",
+	sndZoomIn = "snd_zoomin", --binocular
+	sndZoomOut = "snd_zoomout",
+}
+
+function playSound(parent, sec, param, volume)
+	if not (sec and param and ini_sys:r_string_ex(sec, param)) then return end
+	if ini_sys:r_string_ex(ini_sys:r_string_ex(sec, param), "snd_1_layer") then
+		local paramCount = getSndParamCount(sec,param)
+		for i = 1,#paramCount do
+			local j = math.random(0,paramCount[i])
+			if j == 0 then j="" end
+			local file = ini_sys:r_string_ex(ini_sys:r_string_ex(sec, param), "snd_"..i.."_layer"..j)
+			local sound = xr_sound.get_safe_sound_object(file)
+			sound:play_no_feedback(parent, 0, 0, parent:position(), volume, 1)
+		end
+	elseif string.find(ini_sys:r_string_ex(sec, param),"\\") then
+		local sound = xr_sound.get_safe_sound_object(ini_sys:r_string_ex(sec, param))
+		sound:play_no_feedback(parent, 0, 0, parent:position(), volume, 1)
+	end
+end
+
+function playTail(parent,indoor_score,avg_lenght)
+    if not (parent and parent:alive()) then return end
+	local wpn = parent:active_item()
+	local sec = get_wp_sec(parent)
+	local volume_transistion = (indoor_score-mcm_settings.new_threshold[1])/(1-mcm_settings.new_threshold[1])
+	if indoor_score>mcm_settings.new_threshold[1] then
+		local param = "snd_tail_indoor"
+		if wpn and wpn:cast_Weapon():IsSilencerAttached() then param = "snd_silncer_tail_indoor" end
+		local volume = mcm_settings.volume[1]*volume_transistion*mcm_settings.tail_volume[1]*tail_volume_equation(avg_lenght/mcm_settings.tail_length[1])*3
+		if ini_sys:r_string_ex(sec,param) then
+			playSound(parent, sec, param, volume)
+		elseif mcm_settings.bak_tail[1] and not wpn:cast_Weapon():IsSilencerAttached() then
+			local sound = xr_sound.get_safe_sound_object("weapons\\indoor\\bak\\npc\\indoor_simulation_"..math.random(1,4))
+			sound:play_no_feedback(parent, 0, 0, parent:position(), volume, 1)
+		end
+	end
+end
+
+function fireRayForNPC(dir,lenght,parent)
+	local pos = getPos(parent)
+	local point = 0
+	local total_lenght = 0
+	local bounced = 0
+	local ray_count_count_for_npc = mcm_settings.npc_ray_bounce_count[1]
+	for bounce = 1,ray_count_count_for_npc do
+		local ray_args = {
+			ray_range = lenght*(1/bounce)*mcm_settings.ray_lenght_mult[1],
+			contact_range = lenght*(1/bounce)*mcm_settings.ray_lenght_mult[1]-0.01,
+			flags = (1 + 2),
+			ignore_object = parent,
+			visualize = mcm_settings.ray_dbug[1]
+		}
+		local ray = demonized_geometry_ray.geometry_ray(ray_args)
+		local result = ray:get(vector():set(pos), dir)
+
+		-- This loop checks if the contact surface is a bush, and re-casts the ray just inside it if it is -- By Ujtan
+		while result.in_contact and result.result.material_name do
+			local name = result.result.material_name
+			if not isBlackListedMaterial(name) then
+				break -- break out of the loop if contact is not a bush
+			end
+			ray_args.ray_range = ray_args.ray_range - result.distance
+			ray_args.contact_range = ray_args.contact_range - result.distance
+			ray = demonized_geometry_ray.geometry_ray(ray_args)
+			local new_pos = vector():set(result.position):add(vector():set(dir):mul(0.1))
+			result = ray:get(new_pos, dir)
+		end
+		if result.in_contact then
+			point = point+bounce
+			total_lenght = total_lenght+result.position:distance_to(pos)*(ray_count_count_for_npc - bounce + 1)
+			bounced = bounced + 1
+			local surface_normal = demonized_geometry_ray.get_surface_normal(pos,dir,nil,nil,result)
+			if surface_normal then
+				dir = vector():reflect(dir, surface_normal)
+			else
+				break
+			end
+			pos = result.position
+		else
+			break
+		end
+	end
+	return point/getSummation(ray_count_count_for_npc),(bounced <= 0 and lenght) or total_lenght/(getSummation(ray_count_count_for_npc)-getSummation(ray_count_count_for_npc-bounced))
+end
+
+function isIndoor(parent)
+	if cooldowns_table[parent:id()] and cooldowns_table[parent:id()][1] and cooldowns_table[parent:id()][2] then return cooldowns_table[parent:id()][1],cooldowns_table[parent:id()][2] end
+	local dir = parent:direction()
+	local horz = dir:getH() -- Range 0 2pi
+	local vert = dir:getP()
+	local ray_dir_table = {}
+	for i,v in pairs(ray_dir_configs_npc) do
+		local new_dir = vector():setHP(horz + toRad(v[1]), toRad(v[2]) + vert)
+		if v[6] then
+        	new_dir = vector():setHP(horz + toRad(v[1]), toRad(v[2]))
+		end
+        ray_dir_table[i] = {new_dir:normalize(), v[3]}
+	end
+	-- Do rays_per_tick raycasts per update while cycling through the ray directions table
+    for i = 1, #ray_dir_configs_npc do
+		lenght_table[i] = {0,ray_dir_configs_npc[i][4] or 1}
+		points_table[i] = {0,ray_dir_configs_npc[i][5] or 1}
+		points_table[i][1],lenght_table[i][1] = fireRayForNPC(ray_dir_table[i][1],ray_dir_table[i][2],parent)
+    end
+	local points = 0
+	local lenghts = 0
+	local pointsMultSum = 0
+	local lenghtsMultSum = 0
+	for i = 1,#points_table do
+		points = points+points_table[i][1]*points_table[i][2]
+		lenghts = lenghts+lenght_table[i][1]*lenght_table[i][2]*points_table[i][1]
+		pointsMultSum = pointsMultSum+points_table[i][2]
+		lenghtsMultSum = lenghtsMultSum+lenght_table[i][2]*points_table[i][1]
+	end
+	cooldowns_table[parent:id()] = {points/pointsMultSum,lenghts/lenghtsMultSum,mcm_settings.npc_tick_interval[1]}
+	return points/pointsMultSum,lenghts/lenghtsMultSum
+end
+
+function returnSoundSectionName(alias,section,parent)
+	if not parent or not section then return end
+	if indoor_snds_callback[alias] and SYS_GetParam(0, section, indoor_snds_callback[alias].."_indoor") then return indoor_snds_callback[alias].."_indoor" end
+	if alias == "sndSilencerShot" then
+		if SYS_GetParam(0, section, "snd_silncer_shoot_indoor") then return "snd_silncer_shoot_indoor" end
+	end
+	if parent:id() == AC_ID then
+		if string.find(alias,"Actor") then
+			local cus_alias = string.gsub(alias,"Actor","")
+			if indoor_snds_callback[cus_alias] and SYS_GetParam(0, section, indoor_snds_callback[cus_alias].."_indoor") then return indoor_snds_callback[cus_alias].."_indoor" end
+		else
+			local cus_alias = alias.."Actor"
+			if indoor_snds_callback[cus_alias] and SYS_GetParam(0, section, indoor_snds_callback[cus_alias].."_indoor") then return indoor_snds_callback[cus_alias].."_indoor" end
+		end
+	end
+end
+
+function on_before_play_hud_sound(alias, parent, result)
+	if not parent or not (IsStalker(parent) and parent:alive() and db.actor:position():distance_to(parent:position())<75) then return end
+	local section = get_wp_sec(parent)
+	local line = returnSoundSectionName(alias,section,parent)
+	if section and line then
+		local score
+		local lenghts
+		if parent:id() == AC_ID then
+			score = env_actorsnd.score
+			lenghts = env_actorsnd.avg_lenght
+		else
+			score,lenghts = isIndoor(parent)
+		end
+		if score>mcm_settings.new_threshold[1] then
+			result.volume_mult = score*((parent:id() == AC_ID and env_actorsnd.volume) or mcm_settings.volume[1])
+			result.section = section
+			result.line = line
+			if string.find(alias,"Shot") and not parent:id() == AC_ID then
+				playTail(parent,score,lenghts)
+			end
+		end
+		-- print(score*((parent:id() == AC_ID and env_actorsnd.volume) or mcm_settings.volume[1]))
+		-- print(line)
+	end
+	-- if result.volume_mult == 0 then result.volume_mult = -1 end
+end
+
+function actor_on_update()
+	if time_global()-last_tick<250 then return end
+	for i,v in pairs(cooldowns_table) do
+		if cooldowns_table[i] then
+			cooldowns_table[i][3] = cooldowns_table[i][3] - (time_global()-last_tick)
+			if cooldowns_table[i][3]<0 then
+				cooldowns_table[i] = nil
+			end
+		end
+	end
+	last_tick = time_global()
+end
+
+function actor_on_first_update(wpn,gun)
+	RegisterScriptCallback("on_before_play_hud_sound",on_before_play_hud_sound)
+	last_tick = time_global()
+	on_option_change(true)
+end
+
+function on_game_start()
+	RegisterScriptCallback("on_before_play_hud_sound",on_before_play_hud_sound)
+	RegisterScriptCallback("actor_on_update",actor_on_update)
+	RegisterScriptCallback("actor_on_first_update",actor_on_first_update)
+	on_option_change(true)
+end

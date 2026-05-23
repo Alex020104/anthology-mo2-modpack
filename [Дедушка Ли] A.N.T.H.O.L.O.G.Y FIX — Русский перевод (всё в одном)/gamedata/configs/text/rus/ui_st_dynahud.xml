@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+	<string id="ui_mcm_menu_dynahud">
+		<text>Динамический Интерфейс</text>
+	</string>
+
+	<!-- Общее -->
+
+	<string id="ui_mcm_dynahud_menu_general">
+		<text>Общие сведения</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_general_title">
+		<text>Динамический Интерфейс</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_general_help1">
+		<text>Добро пожаловать в мод Dynahud. С помощью этого мода вы сможете наслаждаться полностью динамическим интерфейсом, который будет реагировать на состояние здоровья и действия игрока. Это освободит вас от управления HUD и поможет достичь желаемого уровня погружения в игру</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_general_help2">
+		<text>Изучите каждое меню слева, чтобы настроить каждый соответствующий модуль Dynahud</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_general_help3">
+		<text>Некоторые модули требуют наличия оригинального мода HUD для Dynahud, чтобы можно было управлять им и настройками.</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_general_help4">
+		<text>Помните, что большинство опций имеют всплывающие подсказки, которые отображают дополнительную информацию</text>
+	</string>
+	
+	<string id="ui_mcm_dynahud_general_help5">
+		<text>Спасибо за использование Dynahud и еще раз наслаждайтесь игрой. Не забудьте оставить отзыв</text>
+	</string>	
+
+	<!-- Динамические Уведомления -->
+	<string id="ui_mcm_dynahud_general_notifications_title">
+		<text>Уведомления Dynahud</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_general_notifications_help">
+		<text>Dynahud будет уведомлять вас об определенных событиях, изменениях режима BHS и отключении некоторых его функций здесь. Рекомендуется сначала оставить их включенными, так как они помогут вам понять, как Dynahud управляет различными модулями HUD.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_general_notifications_enable">
+		<text>Включить Уведомления</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_general_notifications_enable_desc">
+		<text>Отключите уведомления, если не хотите получать уведомления от Dynahud. Не рекомендуется на первых порах.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_general_debuglogs_enable">
+		<text>Включить ведение журнала отладки</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_general_debuglogs_enable_desc">
+		<text>Оставьте его отключенным, если вам не нужно отлаживать компоненты Dynahud.</text>
+	</string>
+
+	<!-- Динамический Hud -->
+
+	<string id="ui_mcm_dynahud_menu_main_hud">
+		<text>Динамический главный HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_title">
+		<text>Динамический главный HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_help1">
+		<text>Когда Динамический главный HUD включен, части главного HUD (индикатор здоровья, индикатор психического состояния и индикатор силы) будут автоматически скрываться, если их значение превышает определенный порог.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_autohide">
+		<text>Включить Динамический главный HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_autohide_desc">
+		<text>Когда вы включаете динамический главный HUD, части главного HUD будут автоматически скрываться в соответствии с определенными условиями, установленными ниже.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_hide_health_threshold">
+		<text>Мин.значение здоровья (1 = 100%), при котором индикатор здоровья никогда не скрывается автоматически.</text>
+	</string>
+	
+	<string id="ui_mcm_dynahud_main_hud_hide_health_threshold_desc">
+		<text>Всякий раз, когда здоровье игрока изменяется (повреждение или исцеление), индикатор здоровья становится видимым, однако ниже этого порога он никогда не будет автоматически скрываться.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_hide_health_autohide_timeout">
+		<text>Время в секундах, по истечении которого индикатор здоровья автоматически скрывается</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_hide_health_autohide_timeout_desc">
+		<text>Если значение здоровья стабильно и не ниже минимального порога, оно автоматически скроется через столько-то секунд.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_hide_power_threshold">
+		<text>Мин.значение выносливости (1 - 100%), при котором шкала выносливости становится видимой</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_main_hud_hide_power_threshold_desc">
+		<text>Когда значение выносливости игрока опустится ниже этого порога, она станет видимой, в противном случае она останется скрытой.</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_main_hud_hide_psy_threshold">
+		<text>Мин.значение пси-здоровья (1 - 100%), при котором шкала пси-здоровья становится видимой</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_hide_psy_threshold_desc">
+		<text>Если уровень пси-здоровья игрока опускается ниже этого порога, шкала пси-здоровья станет видимой, в противном случае он остается скрытым. Держите это значение высоким (рекомендуется 0,9), так как показатель пси может значительно быстро снижаться.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_enable_radiation_bar">
+		<text>Включить индикатор радиации</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_enable_radiation_bar_desc">
+		<text>Отображает индикатор радиации при облучении. Работает только с индикатором радиации из официальных рескинов Dynahud.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_bg_autohide_timeout">
+		<text>Время в секундах, через которое фон Основного HUD автоматически скрывается</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_bg_autohide_timeout_desc">
+		<text>Если все показатели игрока (здоровье, радиация, выносливость, пси) скрыты, фон главного HUD исчезнет по истечении этого времени. Установите максимальное значение, чтобы отключить автоматическое скрытие.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_bg_preview_on_show">
+		<text>Включить предварительный просмотр жизненно важных показателей</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_bg_preview_on_show_desc">
+		<text>Когда отображается основной фон HUD, все жизненно важные показатели игрока также отображаются для предварительного просмотра (здоровье, выносливость, пси). По истечении времени предварительного просмотра (настраиваемого) жизненно важные показатели будут автоматически скрыты.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_bg_preview_time">
+		<text>Время в секундах для окончания предварительного просмотра</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_bg_preview_time_desc">
+		<text>По истечении времени предварительного просмотра (настраиваемого) жизненно важные показатели будут автоматически скрыты с использованием вышеуказанных пороговых значений и правил.</text>
+	</string>
+
+	<!-- Динамический HUD Иконок -->
+
+	<string id="ui_mcm_dynahud_menu_icons_hud">
+		<text>Динамические иконки состояния HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_title">
+		<text>Динамические иконки состояния HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_help1">
+		<text>Когда динамические иконки состояния HUD включены, иконки состояния будут автоматически скрываться через определенное время после скрытия основного HUD.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_help2">
+		<text>При использовании предмета, открытии инвентаря или отображении главного HUD снова появляется HUD иконок. Вы также можете включить таймер предварительного просмотра, который будет время от времени отображать HUD со иконками состояния.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_help3">
+		<text>Кроме того, иконки состояния HUD динамически перемещаются в соответствии с состоянием основного HUD. Если основной HUD скрыт, иконки состояния HUD занимают его место, если основной HUD виден, иконки состояния HUD перемещаются вправо от него. Однако рескин Dynahud не использует эту автоматическую функцию.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_autohide">
+		<text>Включить Динамические иконки состояния HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_autohide_desc">
+		<text>Когда Динамические иконки состояния HUD включены, иконки состояния будут скрываться через некоторое время после скрытия основного HUD.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_autohide_timeout">
+		<text>Время в секундах, через которое иконки состояния HUD автоматически скрываются</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_autohide_timeout_desc">
+		<text>После того, как основной HUD будет скрыт, по истечении этого времени иконки состояния HUD также будут автоматически скрыты.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_preview">
+		<text>Предварительный просмотр статуса HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_preview_desc">
+		<text>Когда предварительный просмотр включен, иконки состояния HUD будут отображаться через некоторое время, а затем снова скрываться по истечении времени предварительного просмотра (настраиваемого).</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_preview_timer">
+		<text>Время в секундах, в течение которого отображается окно предпросмотра состояния HUD.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_preview_timer_desc">
+		<text>После истечения этого времени скрытые иконки состояния будут автоматически отображены. Когда это произойдет, активируется предварительный просмотр, в котором на короткое время отображаются иконки состояния.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_preview_time">
+		<text>Время в секундах, в течение которого отображается окно предпросмотра состояния HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_preview_time_desc">
+		<text>По истечении этого времени иконки состояния HUD снова будут скрыты, что приведет к завершению предварительного просмотра иконок состояния.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_inventory_preview">
+		<text>Показать предварительный просмотр при закрытии инвентаря</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_inventory_preview_desc">
+		<text>При закрытии инвентаря отображается предварительный просмотр иконок состояния.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_enable_timers">
+		<text>Показать таймеры иконок</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_enable_timers_desc">
+		<text>Показывать таймеры на иконках состояния, если доступны оба мода [AltIcons] и [Hud Icons Time]</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_show_only_expiring">
+		<text>Показывать таймеры только на иконках с истекающим статусом</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_show_only_expiring_desc">
+		<text>Показывать таймеры на иконках состояния только в том случае, если таймер меньше этого количества секунд (установите значение 0, чтобы таймеры отображались всегда). Внимание: это значение также определяет статус истечения срока действия значка. Значки с истекающим сроком действия будут отображаться всегда.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_position">
+		<text>Регулировка положения иконок состояния</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_help4">
+		<text>Вы можете настроить положение иконок состояния, когда основной HUD скрыт и когда он видим. Вы также можете увеличить или уменьшить их размер при тех же условиях основного HUD.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_xy_multiply_by">
+		<text>XY Умножить на множитель</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_xy_multiply_by_desc">
+		<text>Умножает значения, установленные ниже. Используйте эти множители, если вы используете высокое разрешение, чтобы облегчить размещение значков.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_on_x">
+		<text>Позиция X основного HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_on_x_desc">
+		<text>Перемещает иконки состояния из этого положения по умолчанию. Отрицательное значение перемещает их влево, положительное — вправо. Это применяется только тогда, когда основной HUD виден.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_on_y">
+		<text>Позиция Y основного HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_on_y_desc">
+		<text>Перемещает иконки состояния из этого положения по умолчанию. Отрицательное значение перемещает их вверх, положительное — вниз. Это применяется только тогда, когда основной HUD виден.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_on_size_mul">
+		<text>Размер основного HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_on_size_mul_desc">
+		<text>Изменение размера иконок состояния. Отрицательные значения уменьшают его, положительные — увеличивают. Это применяется только в том случае, если главный HUD виден.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_on_spacing">
+		<text>Расстояние между иконками на главном HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_on_spacing_desc">
+		<text>Увеличить расстояние между иконками. Это применимо только в том случае, если главный HUD виден.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_off_x">
+		<text>Позиция X скрытого основного HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_off_x_desc">
+		<text>Перемещает иконки состояния из этого положения по умолчанию. Отрицательное значение перемещает их влево, положительное — вправо. Это применяется только в том случае, если основной HUD скрыт.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_off_y">
+		<text>Позиция Y скрытого основного HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_off_y_desc">
+		<text>Перемещает иконки состояния из этого положения по умолчанию. Отрицательное значение перемещает их вверх, положительное — вниз. Это применяется только в том случае, если основной HUD скрыт.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_off_size_mul">
+		<text>Размер основного HUD выключен</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_off_size_mul_desc">
+		<text>Изменение размера иконок состояния. Отрицательные значения уменьшают его, положительные — увеличивают. Это применяется только в том случае, если главный HUD скрыт.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_off_spacing">
+		<text>Расстояние между иконками на скрытом главном HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_icons_hud_main_hud_off_spacing_desc">
+		<text>Увеличить расстояние между иконками. Это применимо только в том случае, если главный HUD скрыт.</text>
+	</string>
+
+	<!-- Динамический HUD оружия -->
+
+	<string id="ui_mcm_dynahud_menu_weapon_hud">
+		<text>Динамический HUD оружия</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_weapon_hud_title">
+		<text>Динамический HUD оружия</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_weapon_hud_help">
+		<text>Когда включен Динамический HUD Оружия, счетчик боеприпасов и иконка патронов, если они видны, автоматически скрываются через определенное время. Вы можете настроить этот период времени.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_weapon_hud_help1">
+		<text>Каждый раз, когда вы стреляете, прицеливаетесь, перезаряжаетесь или проверяете количество патронов, на экране снова отображается HUD оружия</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_weapon_hud_autohide">
+		<text>Включить Динамический HUD оружия</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_weapon_hud_autohide_desc">
+		<text>Когда вы включаете Динамический HUD оружия, счетчик боеприпасов и значок боеприпасов автоматически скрываются после определенного времени и снова становятся видимыми после выполнения определенных действий</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_weapon_hud_autohide_timeout">
+		<text>Время в секундах, через которое HUD оружия автоматически скрывается</text>
+	</string>
+	
+	<string id="ui_mcm_dynahud_weapon_hud_autohide_timeout_desc">
+		<text>Время в секундах, по истечении которого счетчик боеприпасов и иконка боеприпасов снова скроются, если не производится стрельба. Стрельба сбрасывает этот тайм-аут.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_weapon_hud_aim_show">
+		<text>Показывать HUD оружия при прицеливании</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_weapon_hud_aim_show_quickhide">
+		<text>Быстро скрыть HUD оружия, как только перестаете целиться.</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_weapon_hud_aim_show_quickhide_desc">
+		<text>Когда вы перестаете целиться, HUD оружия быстро скрывается, а не ждет истечения времени автоскрытия.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_weapon_hud_reload_show">
+		<text>Показывать HUD оружия при перезарядке</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_weapon_hud_weaponcheck_show">
+		<text>Показывать HUD оружия при проверке количества патронов</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_weapon_hud_always_hide">
+		<text>Установите этот флажок, чтобы всегда скрывать индикатор патронов (текущий счетчик патронов, тип и иконку).</text>
+	</string>
+
+	<!-- Динамический сопровождающий экран -->
+
+	<string id="ui_mcm_dynahud_companion_hud">
+		<text>Динамический HUD напарника</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_title">
+		<text>Динамический HUD напарника</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_help1">
+		<text>Когда включен "Динамический HUD напарника", HUD напарника будет скрыт, если все ваши напарники находятся вне боя, и будет показан, если любой напарник находится в бою</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_help2">
+		<text>Однако, если кому-либо из ваших напарников назначена команда «Игнорировать бой», пользовательский интерфейс отображается независимо. Это сделано для того, чтобы предотвратить нападение на беспомощных напарников без вашего ведома.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_help3">
+		<text>Кроме того, если кто-то из ваших напарников слишком далеко позади (безопасное расстояние настраивается ниже), интерфейс отображается независимо от их боевого состояния. Это сделано для того, чтобы сообщить вам, если какой-то напарник может застрять или обездвижиться</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_help4">
+		<text>Имейте в виду, что при выполнении определенных задач, таких как миссия «Поиск и запрос», он добавит НПС в ваш отряд напарников, даже если он не виден в интерфейсе напарника, пока не попросит его. Это означает, что интерфейс напарника может стать видимым из-за этого далекого НПС.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_help5">
+		<text>В конечном итоге вы можете отключить проверку безопасного расстояния (см. ниже), чтобы HUD напарника всегда был виден при выполнении этих миссий, а также когда вы «паркуете» своих напарников на базе или где-то еще и решаете идти самостоятельно.</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_companion_hud_help6">
+		<text>Наконец, когда пользовательский интерфейс напарника скрыт, удерживая клавишу «Колесо напарника», на короткое время отобразится интерфейс напарника (время предварительного просмотра настраивается).</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_enable">
+		<text>Включить Динамический HUD напарника</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_enable_desc">
+		<text>Если вы отключите Динамический HUD напарника, панель снова будет всегда видна</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_check_distance">
+		<text>Проверьте расстояние напарника как опасное условие</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_check_distance_desc">
+		<text>Если включено, расстояние до напарника также используется для принятия решения о том, показывать или скрывать его HUD.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_safe_distance">
+		<text>Безопасное расстояние для напарника</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_safe_distance_desc">
+		<text>Если напарник находится за пределами безопасного расстояния (в метрах), отображается пользовательский интерфейс напарника</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_preview_time">
+		<text>Время в секундах, в течение которого будет длиться предварительный просмотр HUD напарника</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_companion_hud_preview_time_desc">
+		<text>По истечении этого времени HUD напарника снова будет скрыт, если в бою нет напарников, и предварительный просмотр Динамический HUD напарника будет завершен</text>
+	</string>
+
+	<!-- Динамический BHS Hud -->
+
+	<string id="ui_mcm_dynahud_menu_bhs_hud">
+		<text>Динамический BHS HUD</text>
+	</string>
+	<string id="ui_mcm_dynahud_bhs_hud_title">
+		<text>Динамический BHS HUD</text>
+	</string>
+	<string id="ui_mcm_dynahud_bhs_hud_help1">
+		<text>Когда включен Динамический BHS HUD, BHS HUD останется скрытым, пока все конечности полностью здоровы. Если одна из конечностей получит повреждения, BHS HUD отобразится на экране</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_help2">
+		<text>Когда все конечности снова полностью заживут (белый цвет полоски), BHS HUD автоматически скроется</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_help3">
+		<text>BHS HUD всегда будет отображаться при открытии инвентаря, независимо от состояния конечностей</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_help4">
+		<text>Удерживайте H, чтобы временно скрыть BHS HUD, когда у вас есть травма конечностей. BHS HUD снова появится через определенное время, чтобы напомнить вам о ваших травмах. Вы можете настроить это время или установить его на максимум и сделать отключение постоянным до следующей травмы</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_help5">
+		<text>Нажмите H, чтобы переключаться между режимами Динамического BHS. Когда Динамический BHS выключен, BHS HUD никогда не будет скрываться и останется видимым. Нажмите H снова, чтобы включить автоматическое скрытие BHS HUD. Это отличается от полного отключения динамического BHS с помощью настройки ниже</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_hotkey">
+		<text>Клавиша Динамического BHS HUD</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_bhs_hud_hotkey_desc">
+		<text>Горячая клавиша для управления Динамическим BHS HUD - нажмите, чтобы включить / выключить динамический режим, или удерживайте, чтобы скрыть травму</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_autohide">
+		<text>Включить Динамический BHS HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_autohide_desc">
+		<text>Если вы отключите Динамический BHS HUD, BHS HUD будет работать так, как задано в моде Body Health System. Нажатие H переключит все его устаревшие режимы</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_bhs_hud_update_hide_timeout">
+		<text>Время в секундах, через которое BHS HUD автоматически скроется после полного исцеления конечностей</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_update_hide_timeout_desc">
+		<text>После полного исцеления конечностей, BHS HUD автоматически скроется через указанное количество секунд</text>
+	</string>
+	
+	<string id="ui_mcm_dynahud_bhs_hud_dismiss_timeout">
+		<text>Время в минутах, через которое BHS HUD снова появится после его временного скрытия</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_dismiss_timeout_desc">
+		<text>Когда вы скрываете BHS HUD, BHS HUD станет видимым через указанное время, чтобы напомнить вам о наличии травмы, которую необходимо вылечить. Вы не можете скрыть BHS HUD при значении здоровья конечности ниже определенного уровня. Установите значение на MAX, чтобы временное скрытие было постоянным до получения следующей травмы</text>
+	</string>		
+
+	<string id="ui_mcm_dynahud_bhs_hud_dismiss_force">
+		<text>Принудительное скрытие при серьезных травмах</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_dismiss_force_desc">
+		<text>Включите, чтобы скрыть BHS HUD даже при наличии серьезных травм</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_help6">
+		<text>Установите мод Dynamic Hud с опцией патча BHS (независимую версию или GAMMA), а также мод Body Health System, установленный в Anomaly, чтобы настроить этот модуль</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_dismiss_on_mapload">
+		<text>Скрыть BHS HUD при загрузке карты или игры</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_dismiss_on_mapload_desc">
+		<text>BHS HUD будет автоматически скрыт при загрузке новой карты или игры</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_always_hide">
+		<text>Всегда скрывать BHS HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_always_hide_desc">
+		<text>BHS HUD будет всегда скрыт и появится только при открытии инвентаря</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_text_bhs_title">
+		<text>Текстовой и гибридный BHS HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_help_text_bhs_requirements">
+		<text>Текстовой и гибридный BHS HUD доступны только при установке любого из официальных обновлений интерфейса Dynahud и патча «Hybrid BHS For GAMMA Modpack». Опции в настоящее время отключены!!</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_help_text_bhs1">
+		<text>Текстовой BHS HUD заменяет обычный BHS HUD (текстура куклы с конечностями и полосками здоровья) динамическими цветными текстовыми индикаторами (ГОЛОВА, ТЕЛО, ЛЕВАЯ РУКА, ЛЕВАЯ НОГА, ПРАВАЯ РУКА, ПРАВАЯ НОГА). Цвет индикатора каждой конечности показывает уровень здоровья. Белый (полное здоровье конечности), Желтый, Оранжевый, Красный (критическое здоровье), Серый (сломанная конечность)
+		</text>
+	</string>
+	<string id="ui_mcm_dynahud_bhs_hud_help_text_bhs2">
+		<text>Если на конечность наложена заплатка (желтое лекарство HP), индикатор будет периодически мигать, предупреждая вас, что у конечности временное здоровье и требуется лечение (белое лекарство HP).</text>
+	</string>
+	<string id="ui_mcm_dynahud_bhs_hud_help_text_bhs3">
+		<text>По умолчанию цвет индикатора исправленной конечности будет соответствовать цвету реального и исправленного здоровья. Например, если заплатка доводит здоровье конечности до максимума, цвет будет белым.</text>
+	</string>		
+
+	<string id="ui_mcm_dynahud_bhs_hud_help_bhs_choice">
+		<text>Все варианты HUD ниже (по умолчанию, Текстовой BHS, Гибридный BHS, режим отладки BHS) ТРЕБУЮТ перезагрузки сохранения, чтобы изменить HUD.</text>
+	</string>	
+	<string id="ui_mcm_dynahud_bhs_hud_bhs_choice">
+		<text>Выберите BHS HUD</text>
+	</string>
+
+	<string id="ui_mcm_lst_dynahud_default_bhs">
+		<text>По-умолчанию</text>
+	</string>
+
+	<string id="ui_mcm_lst_dynahud_text_bhs">
+		<text>Текстовой BHS</text>
+	</string>
+
+	<string id="ui_mcm_lst_dynahud_hybrid_bhs">
+		<text>Гибридный BHS</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_bhs_hud_text_bhs">
+		<text>Текстовой BHS HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_text_bhs_desc">
+		<text>Замена обычного BHS HUD на Текстовой BHS.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_text_bhs_show_realhp_when_patched">
+		<text>Показать реальное здоровье в мигающих индикаторах</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_text_bhs_show_realhp_when_patched_desc">
+		<text>Когда мигает индикатор конечности (зафиксировано временное здоровье), показывается также реальное здоровье. Цвет будет меняться между реальным здоровьем и исправленным здоровьем.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_position_x">
+		<text>Положение X Текстового BHS HUD</text>
+	</string>
+	<string id="ui_mcm_dynahud_bhs_hud_position_y">
+		<text>Положение Y Текстового BHS HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_hybrid_bhs">
+		<text>Гибридный BHS</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_hybrid_bhs_desc">
+		<text>Гибридный BHS сочетает в себе текстовый интерфейс BHS (виден в HUD игрока) и обычный HUD BHS (виден при открытии меню инвентаря).</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_med_bhs">
+		<text>Медицинский BHS HUD</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_med_bhs_desc">
+		<text>Заменяет текстуру BHS HUD по умолчанию на текстуру Медицинский BHS (только в меню инвентаря).</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_debug_bhs_health">
+		<text>Режим отладки BHS</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_hud_debug_bhs_health_desc">
+		<text>Включить отладку повреждений конечностей BHS и отображать отладочный HUD в инвентаре. (ТРЕБУЕТ ПЕРЕЗАГРУЗКИ СОХРАНЕНИЯ). Это также принудительно переводит в гибридный BHS. 
+        С помощью клавиш цифровой клавиатуры от 1 до 6 вы можете нанести один пункт повреждения соответствующей конечности. Не забудьте отключить эту функцию после завершения отладки!</text>
+	</string>
+
+	<!-- Динамическая Миникарта -->
+
+	<string id="ui_mcm_dynahud_menu_minimap">
+		<text>Динамическая мини-карта</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_title">
+		<text>Динамическая мини-карта</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_help1">
+		<text>При включении модуля Динамической мини-карты, мини-карта автоматически скроется при взятии оружия в руки. После того как вы уберете оружие из рук, мини-карта снова отобразится</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_help2">
+		<text>Взятие в руки бинокля или одновременное использование детектора, ХИС (химического источника света) с пистолетом или другим одноручным оружием не скрывает мини-карту</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_help3">
+		<text>В режиме взятия оружия в руки мини-карта остается скрытой, даже если вы меняете оружие. Если вы используете мод "Переключение мини-карты", вы все равно можете временно включить мини-карту в режиме экипировки. Это может быть полезно в редких случаях, когда вам нужно одновременно использовать оружие и мини-карту.</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_minimap_help4">
+		<text>Вы также можете контролировать поведение мини-карты при опускании оружия или беге с ним.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_autohide">
+		<text>Включить Динамическую мини-карту</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_autohide_desc">
+		<text>Когда Динамическая мини-карта включена, клавиша переключения мини-карты работает как обычно. Когда Динамическая мини-карта отключена, скрыть мини-карту можно только клавишей переключения</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_minimap_help5">
+		<text>Вы можете дополнительно настроить динамическую мини-карту с помощью этих переключателей</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_hide">
+		<text>Скрывать мини-карту при взятии оружия в руки</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_hide_desc">
+		<text>Отключите, если не хотите автоматически скрывать мини-карту при взятии оружия в руки</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_show">
+		<text>Показывать мини-карту после убирания оружия из рук</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_show_desc">
+		<text>Отключите, если не хотите автоматически показывать мини-карту при убирании оружия из рук</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_autohide_timeout">
+		<text>Время в секундах, через которое мини-карта будет показана после убирания оружия из рук</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_autohide_timeout_desc">
+		<text>Время в секундах, через которое мини-карта будет показана после убирания из рук последнего оружия</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_hide_on_pda">
+		<text>Скрыть мини-карту при открытии КПК</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_hide_on_pda_desc">
+		<text>Включите эту функцию, если хотите скрывать мини-карту при открытии КПК.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_show_on_wpn_lowered">
+		<text>Показывать мини-карту при опускании оружия</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_show_on_wpn_lowered_desc">
+		<text>Включите эту функцию, если хотите, чтобы мини-карта автоматически отображалась при опускании оружия. Мини-карта будет скрыта, как только вы поднимете оружие. Вы можете настроить время, в течение которого будет отображаться мини-карта.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_show_on_actor_sprint">
+		<text>Показывать мини-карту при спринте</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_show_on_actor_sprint_desc">
+		<text>Включите эту функцию, если хотите, чтобы мини-карта автоматически отображалась при спринте с оружием в руках. Эта функция всегда скрывает мини-карту в конце спринта.</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_minimap_show_on_wpn_lowered_timeout">
+		<text>Время в секундах, через которое мини-карта отображается после начала спринта</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_show_on_wpn_lowered_timeout_desc">
+		<text>Как только вы начнете бежать, мини-карта будет отображаться только после истечения этого времени, затраченного на бег. Установите значение «ноль», чтобы мини-карта отображалась мгновенно.</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_hide_on_end_sprint_timeout">
+		<text>Время в секундах, по истечении которого мини-карта скрывается после окончания спринта</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_minimap_hide_on_end_sprint_timeout_desc">
+		<text>По окончании спринта мини-карта будет автоматически скрыта только по истечении этого времени. Установите значение «ноль», чтобы мини-карта скрылась мгновенно. ОПТИМАЛЬНО: настройте в соответствии с тайм-аутом начала спринта.</text>
+	</string>
+
+	<!-- Динамический Hud Магазинов -->
+
+	<string id="ui_mcm_dynahud_menu_mags">
+		<text>Динамический HUD Магазинов</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_mags_title">
+		<text>Динамический HUD Магазинов</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_mags_help">
+		<text>Управляйте HUD Магазинов, отображая информацию о магазинах только при необходимости и автоматически скрывая её, когда она не нужна</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_mags_enable">
+		<text>Включить Динамический HUD Магазинов</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_mags_enable_desc">
+		<text>Когда вы включаете Динамический HUD Магазинов, HUD магазинов будет выключен, пока вы не перезарядите или не проверите количество патронов</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_mags_show_reload">
+		<text>Показывать при перезарядке</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_mags_show_ammocheck">
+		<text>Показывать при проверке количества патронов</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_mags_autohide_timeout">
+		<text>Время в секундах, через которое HUD магазинов скроется после перезарядки или проверки патронов</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_mags_weapon_check">
+		<text>Включить Динамический HUD Проверки Оружия</text>
+	</string>
+	
+	<string id="ui_mcm_dynahud_mags_weapon_check_desc">
+		<text>Если установлен мод FiremodeCheck, то при выполнении проверки количества патронов также выполнится проверка режима стрельбы. Вы все равно должны использовать горячую клавишу для переключения между режимами стрельбы</text>
+	</string>
+		
+	<string id="ui_mcm_dynahud_mags_help1">
+		<text>Установите Dynamic HUD с опцией Magazines skin hud и модом Anomaly Magazines установленным в Anomaly, чтобы настроить этот модуль</text>
+	</string>
+
+	<!-- Строки Уведомлений -->
+
+	<string id="ui_mcm_dynahud_dynamic_main_hud_enabled">
+		<text>Динамический Основной HUD включен</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_dynamic_main_hud_disabled">
+		<text>Динамический Основной HUD отключен</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_on">
+		<text>Основной HUD включен</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_main_hud_off">
+		<text>Основной HUD отключен</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_dynamic_bhs_hud_on">
+		<text>Динамический BHS HUD включен</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_dynamic_bhs_hud_off">
+		<text>Динамический BHS HUD отключен</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_dynamic_bhs_hud_enabled">
+		<text>Динамический BHS HUD включен в настройках</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_dynamic_bhs_hud_disabled">
+		<text>Динамический BHS HUD отключен в настройках</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_dynamic_minimap_enabled">
+		<text>Динамическая мини-карта включена в настройках</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_dynamic_minimap_disabled">
+		<text>Динамическая мини-карта отключена в настройках</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_dynamic_minimap_global_visible">
+		<text>Глобальная настройка мини-карты установлена на: отображать</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_dynamic_minimap_global_hidden">
+		<text>Глобальная настройка мини-карты установлена на: скрыть</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_dynamic_minimap_global_auto">
+		<text>Глобальная настройка мини-карты установлена на: авто</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_dismissed">
+		<text>BHS HUD временно скрыт</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_bhs_dismiss_not_allowed">
+		<text>BHS HUD не может быть скрыт, вы серьезно ранены</text>
+	</string>	
+
+	<string id="ui_mcm_dynahud_dynamic_bhs_off_dismiss_not_allowed">
+		<text>Динамический BHS HUD отключен в настройках. Скрытие недоступно</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_dynamic_bhs_hud_on_noinjuries">
+		<text>Нет травм, BHS HUD останется скрытым до получения травмы</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_dynamic_bhs_hud_on_injuried">
+		<text>Вы получили травму! Удерживайте H, чтобы скрыть BHS HUD и игнорировать это предупреждение о травме на короткое время. Вылечитесь полностью, чтобы скрыть навсегда</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_dynamic_bhs_hud_off_help1">
+		<text>BHS HUD будет всегда видимым с этого момента. Нажмите H, чтобы снова включить динамический режим BHS HUD</text>
+	</string>
+
+	<!-- Холодная системная панель -->
+
+	<string id="ui_mcm_dynahud_menu_cold_system">
+		<text>Динамическая система холода</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_title">
+		<text>Динамическая система холода</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_help">
+		<text>Когда динамическая система холода включена, индикатор HUD холода будет оставаться скрытым до тех пор, пока значение холода не превысит порог безопасности</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_help1">
+		<text>Выше порога безопасности HUD холода будет отображаться в течение нескольких секунд и снова скрываться до тех пор, пока холод не пересечет следующее значение контрольной точки. Приращение значения холодной точки останова можно настроить ниже</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_help2">
+		<text>Когда ваш уровень холода снижается, HUD холода переключается в режим восстановления и отображается постоянно. Например, возле костра. Когда холод начинает усиливаться, HUD холода снова переходит в динамический режим</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_enable">
+		<text>Включить HUD "Динамической системы холода"</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_enable_desc">
+		<text>Когда вы активируете динамическую систему холода, HUD холода будет отображаться в соответствии с определенными условиями, установленными ниже</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_safe_threshold">
+		<text>Безопасный порог, после которого HUD "Динамической системы холода" становится активным</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_safe_threshold_desc">
+		<text>Когда холод превысит этот порог, система холода начнет уведомлять вас, периодически показывая HUD холода. Пока холод остается ниже этого значения, HUD холода остается скрытым. \n
+		\n 600 – это значение по умолчанию для безопасной системы, после которого может возникнуть лихорадка</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_critical_threshold">
+		<text>Критический порог, после которого HUD холода всегда включен</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_critical_threshold_desc">
+		<text>Когда холод пересекает этот порог, всегда отображается HUD холода, если только холод снова не упадет ниже критического порога \n
+		\n 1800 — это значение по умолчанию для критического порога, после которого происходит обморожение</text>.
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_breakpoint">
+	<text>Величина приращения холодной точки останова</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_breakpoint_desc">
+		<text>Когда холод выше безопасного порога, HUD холода будет периодически появляться, когда холод достигает этих приращений шага (например, если безопасный порог равен 600, а точка останова равна 200, индикатор холода будет отображаться при каждом из следующих значений холода: 800, 1000, 1200 и т. д.) </text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_show_recovery">
+		<text>Показывать панель управления HUD "Системы Холода" при восстановлении после холода</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_show_recovery_desc">
+		<text>Если включено, всякий раз, когда уровень холода снижается, HUD холода всегда остается включенным. Например, возле костра</text>
+	</string>
+
+	<string id="ui_mcm_dynahud_cold_system_help_not_installed">
+		<text>Вам необходимо установить мод Cold System, чтобы настроить HUD "Динамической системы холода".</text>
+	</string>
+
+</string_table> 

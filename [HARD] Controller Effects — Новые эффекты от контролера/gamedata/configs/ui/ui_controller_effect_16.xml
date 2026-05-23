@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<window>
+
+	<cont_monolith x="0" y="0" width="1024" height="768" stretch="1" >
+			<texture>ui\controller_effectx\cont_monolith_tex</texture>
+	</cont_monolith>
+
+	<cont_apathy x="0" y="0" width="1024" height="768" stretch="1" >
+			<texture>ui\controller_effectx\cont_apathy_tex</texture>
+	</cont_apathy>
+
+	<cont_blackhole x="0" y="0" width="1024" height="768" stretch="1" >
+			<texture>ui\controller_effectx\cont_blackhole_tex</texture>
+	</cont_blackhole>
+
+	<cont_controller x="0" y="0" width="1024" height="768" stretch="1" >
+			<texture>ui\controller_effectx\cont_controller_tex</texture>
+	</cont_controller>
+
+	<cont_eye x="0" y="0" width="1024" height="768" stretch="1" >
+			<texture>ui\controller_effectx\cont_eye_tex</texture>
+	</cont_eye>
+
+	<cont_tanks x="0" y="0" width="1024" height="768" stretch="1" >
+			<texture>ui\controller_effectx\cont_tanks_tex</texture>
+	</cont_tanks>
+
+	<cont_brainscorcher x="0" y="0" width="1024" height="768" stretch="1" >
+			<texture>ui\controller_effectx\cont_brainscorcher_tex</texture>
+	</cont_brainscorcher>
+
+</window>

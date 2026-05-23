@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="st_porn_pb">
+		<text>Журнал «PLAYBOY»</text>
+	</string>
+	<string id="st_porn_pb_descr">
+		<text> Эротический журнал для мужчин, издающийся с 1953 года Хью Хефнером и его коллегами, выросший в издательский дом Playboy Enterprises, деятельность которого простирается на многие области медиа-бизнеса для взрослых. Кроме журнала в США выпускаются журналы на различных языках во всём мире.\n \n
+		%c[ui_gray_3]ХАРАКТЕРИСТИКИ:\n
+		%c[d_blue] • %c[ui_gray_2] повсеместное применение\n
+		</text>
+	</string>
+	
+	<string id="st_porn_max">
+		<text>Журнал «MAXIM»</text>
+	</string>
+	<string id="st_porn_max_descr">
+		<text>Международный мужской (с элементами эротики) журнал,основан в Великобритании в 1995 году и сегодня издается в 42 странах мира. Журнал уверенно лидирует среди мужских журналов по объему аудитории. В каждом выпуске есть постер с фотографией модели в полуобнаженном виде.\n \n
+		%c[ui_gray_3]ХАРАКТЕРИСТИКИ:\n
+		%c[d_blue] • %c[ui_gray_2] повсеместное применение\n
+		</text>
+	</string>
+
+
+
+
+	<string id="pinup_formen1">
+		<text>Плакат №1</text>
+    	</string>
+	<string id="pinup_formen2">
+		<text>Плакат №2</text>
+	</string>
+	<string id="pinup_formen3">
+		<text>Плакат №3</text>
+	</string>
+	<string id="pinup_formen4">
+		<text>Плакат №4</text>
+	</string>
+	<string id="pinup_formen5">
+		<text>Плакат №5</text>
+	</string>
+	<string id="pinup_formen6">
+		<text>Плакат №6</text>
+	</string>
+	<string id="pinup_formen7">
+		<text>Плакат №7</text>
+	</string>
+	<string id="pinup_formen8">
+		<text>Плакат №8</text>
+	</string>
+	<string id="pinup_formen9">
+		<text>Плакат №9</text>
+	</string>
+	<string id="pinup_formen10">
+		<text>Плакат №10</text>
+	</string>
+	<string id="pinup_formen11">
+		<text>Плакат №11</text>
+	</string>
+	<string id="pinup_formen12">
+		<text>Плакат №12</text>
+	</string>
+	<string id="pinup_formen13">
+		<text>Плакат №13</text>
+	</string>
+	<string id="pinup_formen14">
+		<text>Плакат №14</text>
+	</string>
+	<string id="pinup_formen15">
+		<text>Плакат №15</text>
+	</string>
+	<string id="pinup_formen16">
+		<text>Плакат №16</text>
+	</string>
+	<string id="pinup_formen17">
+		<text>Плакат №17</text>
+	</string>
+	<string id="pinup_formen18">
+		<text>Плакат №18</text>
+	</string>
+	<string id="pinup_formen19">
+		<text>Плакат №19</text>
+	</string>
+	<string id="pinup_formen20">
+		<text>Плакат №20</text>
+	</string>
+	<string id="pinup_formen21">
+		<text>Плакат №21</text>
+	</string>
+	<string id="pinup_formen22">
+		<text>Плакат №22</text>
+	</string>
+	<string id="pinup_formen23">
+		<text>Плакат №23</text>
+	</string>
+	<string id="pinup_formen24">
+		<text>Плакат №24</text>
+	</string>
+	<string id="pinup_formen25">
+		<text>Плакат №25</text>
+	</string>
+	<string id="pinup_formen26">
+		<text>Плакат №26</text>
+	</string>
+	<string id="pinup_formen27">
+		<text>Плакат №27</text>
+	</string>
+	<string id="pinup_formen28">
+		<text>Плакат №28</text>
+	</string>
+	<string id="pinup_formen29">
+		<text>Плакат №29</text>
+	</string>
+	<string id="pinup_formen30">
+		<text>Плакат №30</text>
+	</string>
+	<string id="pinup_formen31">
+		<text>Плакат №31</text>
+	</string>
+	<string id="pinup_formen32">
+		<text>Плакат №32</text>
+	</string>
+	<string id="pinup_formen33">
+		<text>Плакат №33</text>
+	</string>
+	<string id="pinup_formen34">
+		<text>Плакат №34</text>
+	</string>
+	<string id="pinup_formen35">
+		<text>Плакат №35</text>
+	</string>
+	<string id="pinup_formen36">
+		<text>Плакат №36</text>
+	</string>
+	<string id="pinup_formen37">
+		<text>Плакат №37</text>
+	</string>
+	<string id="pinup_formen38">
+		<text>Плакат №38</text>
+	</string>
+	<string id="pinup_formen39">
+		<text>Плакат №39</text>
+	</string>
+	<string id="pinup_formen40">
+		<text>Плакат №40</text>
+	</string>
+	<string id="pinup_formen41">
+		<text>Плакат №41</text>
+	</string>
+	<string id="pinup_formen42">
+		<text>Плакат №42</text>
+	</string>
+	<string id="pinup_formen43">
+		<text>Плакат №43</text>
+	</string>
+	<string id="pinup_formen44">
+		<text>Плакат №44</text>
+	</string>
+	<string id="pinup_formen45">
+		<text>Плакат №45</text>
+	</string>
+	<string id="pinup_formen46">
+		<text>Плакат №46</text>
+	</string>
+	<string id="pinup_formen47">
+		<text>Плакат №47</text>
+	</string>
+	<string id="pinup_formen48">
+		<text>Плакат №48</text>
+	</string>
+	<string id="pinup_formen49">
+		<text>Плакат №49</text>
+	</string>
+	<string id="pinup_formen50">
+		<text>Плакат №50</text>
+	</string>
+	<string id="pinup_formen51">
+		<text>Плакат №51</text>
+	</string>
+	<string id="pinup_formen52">
+		<text>Плакат №52</text>
+	</string>
+	<string id="pinup_formen53">
+		<text>Плакат №53</text>
+	</string>
+
+	<string id="pinup_formen54">
+		<text>Плакат №54</text>
+	</string>
+
+	<string id="pinup_formen55">
+		<text>Плакат №55</text>
+	</string>
+
+	<string id="pinup_formen56">
+		<text>Плакат №56</text>
+	</string>
+
+	<string id="pinup_formen57">
+		<text>Плакат №57</text>
+	</string>
+
+	<string id="pinup_formen58">
+		<text>Плакат №58</text>
+	</string>
+
+	<string id="pinup_formen59">
+		<text>Плакат №59</text>
+	</string>
+
+	<string id="pinup_formen60">
+		<text>Плакат №60</text>
+	</string>
+
+	<string id="pinup_formen61">
+		<text>Плакат №61</text>
+	</string>
+
+	<string id="pinup_formen62">
+		<text>Плакат №62</text>
+	</string>
+
+	<string id="pinup_formen63">
+		<text>Плакат №63</text>
+	</string>
+
+	<string id="pinup_formen64">
+		<text>Плакат №64</text>
+	</string>
+
+	<string id="pinup_formen65">
+		<text>Плакат №65</text>
+	</string>
+
+	<string id="pinup_formen66">
+		<text>Плакат №66</text>
+	</string>
+
+	<string id="pinup_formen67">
+		<text>Плакат №67</text>
+	</string>
+
+	<string id="pinup_formen68">
+		<text>Плакат №68</text>
+	</string>
+
+	<string id="pinup_formen69">
+		<text>Плакат №69</text>
+	</string>
+
+	<string id="pinup_formen70">
+		<text>Плакат №70</text>
+	</string>
+
+	<string id="pinup_formen71">
+		<text>Плакат №71</text>
+	</string>
+
+	<string id="pinup_formen72">
+		<text>Плакат №72</text>
+	</string>
+
+	<string id="pinup_formen73">
+		<text>Плакат №73</text>
+	</string>
+
+	<string id="pinup_formen74">
+		<text>Плакат №74</text>
+	</string>
+
+	<string id="pinup_formen75">
+		<text>Плакат №75</text>
+	</string>
+
+	<string id="pinup_formen76">
+		<text>Плакат №76</text>
+	</string>
+
+	<string id="pinup_formen77">
+		<text>Плакат №77</text>
+	</string>
+
+	<string id="pinup_formen78">
+		<text>Плакат №78</text>
+	</string>
+
+	<string id="pinup_formen79">
+		<text>Плакат №79</text>
+	</string>
+
+	<string id="pinup_formen80">
+		<text>Плакат №80</text>
+	</string>
+
+	<string id="pinup_formen81">
+		<text>Плакат №81</text>
+	</string>
+
+	<string id="pinup_formen82">
+		<text>Плакат №82</text>
+	</string>
+
+	<string id="pinup_formen83">
+		<text>Плакат №83</text>
+	</string>
+
+	<string id="pinup_formen84">
+		<text>Плакат №84</text>
+	</string>
+
+	<string id="pinup_formen85">
+		<text>Плакат №85</text>
+	</string>
+
+	<string id="pinup_formen86">
+		<text>Плакат №86</text>
+	</string>
+
+	<string id="pinup_formen87">
+		<text>Плакат №87</text>
+	</string>
+
+	<string id="pinup_formen88">
+		<text>Плакат №88</text>
+	</string>
+
+	<string id="pinup_formen89">
+		<text>Плакат №89</text>
+	</string>
+
+	<string id="pinup_formen90">
+		<text>Плакат №90</text>
+	</string>
+
+	<string id="pinup_formen91">
+		<text>Плакат №91</text>
+	</string>
+
+	<string id="pinup_formen92">
+		<text>Плакат №92</text>
+	</string>
+
+	<string id="pinup_formen93">
+		<text>Плакат №93</text>
+	</string>
+
+	<string id="pinup_formen94">
+		<text>Плакат №94</text>
+	</string>
+
+	<string id="pinup_formen95">
+		<text>Плакат №95</text>
+	</string>
+
+	<string id="pinup_formen96">
+		<text>Плакат №96</text>
+	</string>
+
+	<string id="pinup_formen97">
+		<text>Плакат №97</text>
+	</string>
+
+	<string id="pinup_formen98">
+		<text>Плакат №98</text>
+	</string>
+
+	<string id="pinup_formen99">
+		<text>Плакат №99</text>
+	</string>
+
+	<string id="pinup_formen100">
+		<text>Плакат №100</text>
+	</string>
+	
+</string_table>

@@ -1,0 +1,329 @@
+local gt = game.translate_string
+
+function inc_count(field, set_val)
+	local ach_t = achievements_main.achievements_t
+	local max_cnt = ach_t[field].max_count
+
+	-- return if achievement completed
+	local stage = ach_t[field].stage
+	if stage > #max_cnt then return end
+
+	-- inc count if its not at max
+	if ach_t[field].count < max_cnt[#max_cnt] then
+		ach_t[field].count = set_val or ach_t[field].count + 1
+	end
+
+	-- clamp if more than max
+	if ach_t[field].count > max_cnt[#max_cnt] then
+		ach_t[field].count = max_cnt[#max_cnt]
+	end
+
+	local _reward_str_parts = {}
+
+	-- try to inc stage
+	for i = stage, #max_cnt do
+		if ach_t[field].count >= max_cnt[i] then
+			-- give points
+			printf("Name: %s || new stage: %s || give points: %s", field, stage+1, ach_t[field].reward[stage])
+			achievements_main.achievements_current_points = achievements_main.achievements_current_points + ach_t[field].reward[stage]
+			achievements_main.achievements_total_points = achievements_main.achievements_total_points + ach_t[field].reward[stage]
+
+			_reward_str_parts[#_reward_str_parts+1] = "+" .. ach_t[field].reward[stage] .. "\\n"
+
+			-- increase stage
+			stage = stage + 1
+		end
+	end
+	local reward_str = table.concat(_reward_str_parts)
+
+	-- update new stage and play HUD anim
+	if ach_t[field].stage < stage then
+		ach_t[field].stage = stage
+
+	--	local reward = "+" .. ach_t[field].reward[stage - 1]
+		local descr_max_cnt = max_cnt[stage] or max_cnt[#max_cnt]
+		local descr = gt("st_achieve_descr_" .. field) .. "\\n \\n" .. make_comma_string(ach_t[field].count) .. " / " .. make_comma_string(descr_max_cnt)
+		local icon = "achieve_icon_" .. field
+
+		if not achievements_hud.HUD then
+			achievements_hud.activate_hud()
+		end
+
+		achievements_hud.HUD:StartAchieveAnim(reward_str, descr, icon)
+	end
+end
+
+mutants_t = {
+	tushkano = "encyclopedia_mutants_tushkano",
+	flesh = "encyclopedia_mutants_flesh",
+	dog = "encyclopedia_mutants_blind_dog",
+	boar = "encyclopedia_mutants_boar",
+	cat = "encyclopedia_mutants_cat",
+	pseudodog = "encyclopedia_mutants_pseudodog",
+	SM_LURKER = "encyclopedia_mutants_lurker",
+	chimera = "encyclopedia_mutants_chimera",
+	giant = "encyclopedia_mutants_pseudogiant",
+	zombie = "encyclopedia_mutants_zombie",
+	fracture = "encyclopedia_mutants_fracture",
+	snork = "encyclopedia_mutants_snork",
+	SM_POLTER_G = "encyclopedia_mutants_poltergeist",
+	SM_PYRO_G = "encyclopedia_mutants_pyrogeist",
+	SM_PSEUDO_G = "encyclopedia_mutants_pseudogeist",
+	SM_KARLIK = "encyclopedia_mutants_karlik",
+	burer = "encyclopedia_mutants_burer",
+	bloodsucker = "encyclopedia_mutants_bloodsucker",
+	SM_PSYSUCKER = "encyclopedia_mutants_psysucker",
+	controller = "encyclopedia_mutants_controller",
+}
+
+function get_mutant_kind(obj_id)
+	local se_obj = alife_object(obj_id)
+	if not se_obj then return end
+	return ini_sys:r_string_ex(se_obj:section_name(), "kind") or ini_sys:r_string_ex(se_obj:section_name(), "species")
+end
+
+
+function get_tooltip_str(name, collection_t)
+	local _str_parts = {}
+
+	for k, v in pairs(collection_t) do
+
+		if v == 0 or v == true then
+			-- kill_all_mutant_kinds / get_hit_by_mutants
+			if name == "kill_all_mutant_kinds" or name == "get_hit_by_mutants" then
+				_str_parts[#_str_parts+1] = gt(mutants_t[k]) .. ", "
+
+			-- kill_all_stalker_factions / befriend_factions
+			elseif name == "kill_all_stalker_factions" or name == "befriend_factions" then
+				_str_parts[#_str_parts+1] = gt("st_faction_" .. k) .. ", "
+
+			-- everything else with sections
+			else
+				local inv_name = ini_sys:r_string_ex(k, "inv_name") or "None"
+				_str_parts[#_str_parts+1] = gt(inv_name) .. ", "
+
+			end
+		end
+
+	end
+	local str = table.concat(_str_parts)
+
+	if str == "" then		-- do not show tooltip
+		return
+	end
+
+	local title_str = gt("st_achieve_tooltip_" .. name) .. "\\n \\n"
+	str = title_str .. str
+
+	str = string.sub(str, 1, -3) 		-- remove last comma
+
+	return str
+end
+
+local ini_box = ini_file("items\\settings\\achievement_box_items.ltx")
+function get_tooltip_box_str(idx)
+	local sec = "achievement_box_" .. idx
+	local name_str = gt(ini_sys:r_string_ex(sec, "inv_name"))
+	local descr_str = gt(ini_sys:r_string_ex(sec, "description"))
+
+	local add_str = gt("st_achieve_box_descr") .. "\\n"
+	local tier = ini_sys:r_float_ex(sec, "tier")
+
+	local n = ini_box:line_count(tostring(tier))
+	for i = 0, n - 1 do
+		local _, typ, value = ini_box:r_line_ex(tostring(tier), i, "", "")
+		if typ ~= "total_cost" then
+			add_str = add_str .. "- " .. gt("st_achieve_box_type_" .. typ) .. "\\n"
+		end
+	end
+
+	return name_str .. "\\n \\n" .. descr_str .. "\\n \\n" .. add_str
+end
+
+AddScriptCallback("actor_on_item_trade")
+ui_inventory_exchange_base = ui_inventory.UIInventory.On_Item_Exchange
+function ui_inventory.UIInventory.On_Item_Exchange(self, npc_from, npc_to, obj)
+	ui_inventory_exchange_base(self, npc_from, npc_to, obj)
+
+	if self.mode ~= "trade" then return end
+	if not obj then return end
+
+	local cc, mode
+	if npc_from:id() == 0 then
+		cc, mode = self.CC["actor_trade"], "sell"
+	elseif npc_to:id() == 0 then
+		cc, mode = self.CC["npc_trade"], "buy"
+	end
+	if not (cc and cc.trade_profile) then return end
+
+	local cost = utils_item.get_item_cost(obj, cc.trade_profile)
+	if not cost then return end
+
+	local npc = (mode == "sell" and npc_to) or (mode == "buy" and npc_from)
+	SendScriptCallback("actor_on_item_trade", mode, obj, round(cost), npc)
+end
+
+achieve_rep_t = {}
+function store_rep_values()
+	local rel_ini = ini_file("creatures\\game_relations.ltx")
+	local rep_ar = parse_string(rel_ini:r_string_ex("game_relations", "reputation"))
+	achieve_rep_t["best_rep"] = tonumber(rep_ar[#rep_ar - 1])
+	achieve_rep_t["worst_rep"] = tonumber(rep_ar[2])
+end
+
+function parse_string(value)
+	local result = {}
+	for name in string.gmatch(value, "([%w_%-.\\]+)[%,%s]*") do
+		result[#result + 1] = name
+	end
+	return result
+end
+
+function get_total_achievements_str()
+	local ach_t = achievements_main.achievements_t
+
+	local cur_achieves = 0
+	local tot_achieves = 0
+	for name, t in pairs(ach_t) do
+		cur_achieves = cur_achieves + t.stage - 1
+		tot_achieves = tot_achieves + #t.max_count
+	end
+
+	return cur_achieves .. " / " .. tot_achieves
+end
+
+function make_comma_string(num)
+	local str = tostring(num)
+
+	-- return number if its float
+	if str:find("%D") then
+		return num
+	end
+
+	-- i dont know patterns yes
+	local ret_str = ""
+	local comma_n = 0
+
+	for i = #str, 1, -1 do
+		local c = str:sub(i, i)
+		if comma_n == 3 then
+			ret_str = "," .. ret_str
+			comma_n = 0
+		end
+		comma_n = comma_n + 1
+		ret_str = c .. ret_str
+	end
+
+	return ret_str
+end
+
+local head_bones = {
+	bip01_head = true, jaw_1 = true, eye_left = true,
+	eyelid_1 = true, eye_right = true, bip01_neck = true,
+}
+
+function bone_is_head(npc, bone_id)
+	if not (npc and npc.bone_name) then return end
+	if not (bone_id and type(bone_id) == "number") then return end
+
+	local bone_name = npc:bone_name(bone_id)
+	return bone_name and head_bones[bone_name]
+end
+
+function get_loadout_cost()
+	local tot_cost = 0
+	for i = 1, 13 do
+		local slot_item = db.actor:item_in_slot(i)
+		local cost = slot_item and ini_sys:r_float_ex(slot_item:section(), "cost") or 0
+		tot_cost = tot_cost + cost
+	end
+	db.actor:iterate_belt( function(owner, obj)
+		local cost = obj and ini_sys:r_float_ex(obj:section(), "cost") or 0
+		tot_cost = tot_cost + cost
+	end)
+
+	return round(tot_cost)
+end
+
+function get_total_upgrades(obj)
+	if not (IsWeapon(obj) or IsOutfit(obj)) then return end
+
+	local installed_tot = 0
+	local installed = utils_item.get_upgrades_installed(obj)
+	if installed then
+		for i = 1, #installed do
+			installed_tot = installed_tot + 1
+		end
+	end
+	return installed_tot
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update", store_rep_values)
+end
+
+--[[
+	========================================
+	====  Mutant strength for points calc xd  ====
+
+	tushkano = 1, flesh = 3, dog = 2, boar = 5, cat = 5, pseudodog = 6,
+	lurker = 7, zombie = 3, fracture = 5, karlik = 5, snork = 7, chimera = 14, burer = 10, 
+	bloodsucker = 12, psysucker = 12, giant = 20, controller = 15, poltergeist = 8,
+	pyrogeist = 12, black_poltergeist = 18,
+
+
+	===========================================================
+	====  Mutant rarity for count calc (mult by approx npc in squad)  ====
+	==== [1] is rarity, [2] multiplied by npcs
+	==== final calc: [2]*10
+
+	tushkano = { 18, 54 },  flesh = { 16, 32 },  dog = { 20, 60 },  boar = { 16, 32 },  cat = { 16, 32 },
+	pseudodog = { 14, 28 },  lurker = { 10, 20 },  zombie = { 15, 45 },  fracture = { 8, 16 },  karlik = { 2, 2 },
+	snork = { 12, 36 },  chimera = { 8, 8 },  burer = { 6, 12 },  bloodsucker = { 10, 10 },  psysucker = { 4, 4 },
+	giant = { 2, 2 },  controller = { 4, 4 },  poltergeist = { 6, 6 },  pyrogeist = { 3, 3 },  black_poltergeist = { 1, 1 },
+
+
+	== mult_t is strength
+	== all_t is main table
+
+for ach_name, t in pairs(all_t) do
+    local mult_name = string.gsub(ach_name, "kill_", "")
+    local mult = mult_t[mult_name]
+
+    local function calc(cnt)
+        -- 1.1850*1.2985^mult
+        local ret_v = 1.1850*1.3285^mult
+        return math.ceil(ret_v*cnt)
+    end
+    
+    local cnt1 = calc(t.max_count[1])
+    local cnt2 = calc(t.max_count[2])
+    local cnt3 = calc(t.max_count[3])
+
+    local ar_str = "{ " .. cnt1 .. ", " .. cnt2 .. ", " .. cnt3 .. " },"
+    local tot_str = string.format("name: %s \n   count = { %s, %s, %s },\n   reward = %s \n", mult_name, t.max_count[1], t.max_count[2], t.max_count[3], ar_str)
+    print(tot_str)
+end
+
+
+	========================================
+	====  Stalker strength for points calc  ====
+
+	stalker = 10, csky = 7, bandit = 5, dolg = 12, freedom = 12, ecolog = 7,
+	army = 9, killer = 16, renegade = 3, monolith = 20, greh = 16, zombied = 5,
+
+
+	===========================================================
+	====  Stalker rarity for count calc  ====
+	==== final calc: rarity*30
+
+	stalker = 20, csky = 14, bandit = 20, dolg = 16, freedom = 14, ecolog = 12,
+	army = 12, killer = 12, renegade = 10, monolith = 12, greh = 6, zombied = 20,
+
+
+	== mult_t is strength
+	== all_t is main table
+
+	same as for mutants but with
+	ret_v = 1.1850*1.1785^mult
+--]]

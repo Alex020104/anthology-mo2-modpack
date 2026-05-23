@@ -1,0 +1,1161 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<!-- ---------------------------------- -->
+	<!-- ----- SNIPER OFFENSIVE ---- -->
+	<!-- ---------------------------------- -->
+	<string id="sniper_rifles_descr">
+		<text>Снайперская винтовка: \n
+		• Урон +%s% \n
+		• Крит +%s%</text>
+	</string>
+	<string id="assault_rifles_novice_descr">
+		<text>Штурмовая винтовка: \n
+		• Урон +%s% \n
+		• Крит +%s%</text>
+	</string>
+	<string id="pistols_descr">
+		<text>Пистолет: \n
+		• Урон +%s% \n
+		• Крит +%s%</text>
+	</string>
+	<string id="experienced_sniper_descr">
+		<text>При ношении Средней/Легкой брони \n \n
+		Снайперская винтовка: \n
+		• Крит +%s%</text>
+	</string>
+
+	<string id="steady_descr">
+		<text>В приседе и Средней/Легкой броне \n \n
+		Снайперская винтовка: \n
+		• Крит +%s%</text>
+	</string>
+	<string id="convenience_descr">
+		<text>При ношении Легкой брони \n \n
+		Снайперская винтовка: \n
+		• Крит +%s%</text>
+	</string>
+	<string id="gunslinger_descr">
+		<text>Если пистолет в одном из основных слотов оружия \n \n
+		Пистолет: \n
+		• Урон +%s% \n
+		• Крит +%s% \n
+		• Перезарядка +%s%</text>
+	</string>
+
+	<string id="sharpshooter_descr">
+		<text>За каждый 1 метр от цели \n \n
+		Снайперская винтовка: \n
+		• Крит +%s%</text>
+	</string>
+	<string id="ambush_descr">
+		<text>Если цель вас не видит и вы в Легкой броне \n \n
+		Снайперская винтовка: \n
+		• Крит +%s%</text>
+	</string>
+	<string id="deep_wound_descr">
+		<text>Снайперская винтовка: \n
+		• Урон от кровотечения +%s%</text>
+	</string>
+
+	<string id="loner_descr">
+		<text>Если один \n \n
+		Снайперская винтовка / Штурмовая винтовка: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="soft_spot_descr">
+		<text>Если сзади цели (90+ градусов от направления цели) \n \n
+		Снайперская винтовка: \n
+		• Крит +%s%</text>
+	</string>
+	<string id="nocturnal_descr">
+		<text>В ночное время (с 18:00 до 06:00) \n \n
+		Снайперская винтовка / Пистолет: \n
+		• Крит +%s%</text>
+	</string>
+
+	<string id="carnage_descr">
+		<text>Снайперская винтовка: \n
+		• Урон +%s% \n
+		• Критический урон +%s%</text>
+	</string>
+
+
+	<!-- ---------------------------------- -->
+	<!-- --- TROOPER OFFENSIVE --- -->
+	<!-- ---------------------------------- -->
+	<string id="assault_rifles_descr">
+		<text>Штурмовая винтовка: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="shotguns_novice_descr">
+		<text>Дробовик: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="submachine_guns_descr">
+		<text>Пистолет-пулемет: \n
+		• Урон +%s%</text>
+	</string>
+
+	<string id="experienced_rifleman_descr">
+		<text>Штурмовая винтовка: \n
+		• Крит +%s%</text>
+	</string>
+	<string id="demolition_expert_descr">
+		<text>Взрывчатка: \n
+		• Урон +%s% \n
+		• Вес -%s%</text>
+	</string>
+
+	<string id="duelist_descr">
+		<text>Если цель видит вас \n \n
+		Штурмовая винтовка: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="focus_descr">
+		<text>За каждый 1% запаса выносливости в Средней/Научной броне \n \n
+		Штурмовая винтовка: \n
+		• Крит +%s%</text>
+	</string>
+
+	<string id="thrill_descr">
+		<text>Следующее попадание после убийства \n \n
+		Штурмовая винтовка: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="precision_descr">
+		<text>Если не стрелять в течение %s - следующее попадание будет иметь \n \n
+		Штурмовая винтовка: \n
+		• Урон +%s% \n
+		• Крит +%s%</text>
+	</string>
+	<string id="barrage_descr">
+		<text>В течение %s секунд после попадания \n \n
+		Пистолет-пулемет: \n
+		• Урон +%s% \n
+		• Крит +%s%</text>
+	</string>
+
+	<string id="reckless_descr">
+		<text>За каждый 1% отсутствующего здоровья \n \n
+		Штурмовая винтовка / Дробовик: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="veteran_rifleman_descr">
+		<text>Штурмовая винтовка / Пистолет-пулемет: \n
+		• Крит +%s%</text>
+	</string>
+
+	<string id="collector_descr">
+		<text>Получение очков "Коллекционера" за каждое убийство (максимум 1500 очков). Каждое очко дает \n \n
+		Штурмовая винтовка: \n
+		• Урон +%s% \n \n
+		Очки за убийство: \n
+		• 1 = Тушкан / Плоть / Зомби / Слепой пес \n
+		• 2 = Излом / Кабан / Кот / Псевдособака \n
+		• 2 = Новичок / Начинающий сталкер \n
+		• 3 = Кикимора / Снорк / Карлик \n
+		• 3 = Опытный / Профи сталкер \n
+		• 4 = Полтергейст / Бюрер / Кровосос / Пси-кровосос \n
+		• 4 = Ветеран / Эксперт сталкер \n
+		• 5 = Мастер / Легенда сталкер \n
+		• 7 = Химера / Контроллер \n
+		• 10 = Гигант \n \n
+		Текущие очки: %s</text>
+	</string>
+
+
+	<!-- ---------------------------------- -->
+	<!-- ----- JUGGER OFFENSIVE ---- -->
+	<!-- ---------------------------------- -->
+	<string id="shotguns_descr">
+		<text>Дробовик: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="machine_guns_descr">
+		<text>Пулемет: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="submachine_descr">
+		<text>Пистолет-пулемет: \n
+		• Урон +%s%</text>
+	</string>
+
+	<string id="hunter_descr">
+		<text>Против мутантов \n \n
+		Дробовик / Пулемет / Пистолет-пулемет: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="bounty_hunter_descr">
+		<text>Против сталкеров \n \n
+		Дробовик / Пулемет / Пистолет-пулемет: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="mangle_descr">
+		<text>Холодное оружие: \n
+		• Урон +%s% \n
+		• Крит +%s%</text>
+	</string>
+
+	<string id="heavy_guns_expert_descr">
+		<text>Дробовик / Пулемет: \n
+		• Урон +%s \n
+		• Перезарядка +%s%</text>
+	</string>
+
+	<string id="merciless_descr">
+		<text>Если у вас процент здоровья больше, чем у цели \n \n
+		Дробовик / Пулемет: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="fury_descr">
+		<text>На %s секунд после попадания сталкером или мутантом по вам \n \n
+		Все виды оружия: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="bloodthirst_descr">
+		<text>Ближний бой: \n
+		• Критический урон +%s%</text>
+	</string>
+
+	<string id="execution_descr">
+		<text>Если у цели меньше %s% здоровья \n \n
+		Дробовик / Пулемет: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="frightening_descr">
+		<text>Цели в радиусе %sм от вас получают \n \n
+		• Урон +%s% от всех источников</text>
+	</string>
+	<string id="selective_descr">
+		<text>Если только одно оружие в основных слотах оружия \n \n
+		Дробовик / Пулемет: \n
+		• Урон +%s%</text>
+	</string>
+
+	<string id="mastery_descr">
+		<text>Дробовик / Пулемет: \n
+		• Перезарядка +%s% \n \n
+		Баффы талантов: \n
+		• "Безжалостный" бонус таланта +5% к урону \n
+		• "Казнь" порог здоровья цели увеличивается до 55% \n
+		• "Ярость" бонус таланта +5% к урону \n
+		• "Ужасающий" радиус увеличивается до 100 метров</text>
+	</string>
+
+
+	<!-- ---------------------------------- -->
+	<!-- ----- SNIPER DEFENSIVE ---- -->
+	<!-- ---------------------------------- -->
+	<string id="adaptive_descr">
+		<text>Средняя / Легкая броня: \n
+		• Ожог +%s% \n
+		• Хим. ожог +%s% \n
+		• Электро +%s%</text>
+	</string>
+	<string id="mild_descr">
+		<text>Урон от падения: \n
+		• -45% в Средней броне \n
+		• -70% в Легкой броне</text>
+	</string>
+	<string id="iron_stomach_descr">
+		<text>Средняя / Легкая броня: \n
+		• Радиация +%s% \n \n
+		%s% меньше радиации от пищи</text>
+	</string>
+
+	<string id="plastic_pads_descr">
+		<text>Средняя / Легкая броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s%</text>
+	</string>
+	<string id="aluminum_plates_descr">
+		<text>Средняя / Легкая броня: \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+
+	<string id="nature_resistance_descr">
+		<text>Средняя / Легкая броня: \n
+		• Ожог +%s% \n
+		• Хим. ожог +%s% \n
+		• Электро +%s% \n
+		• Радиация +%s% \n</text>
+	</string>
+	<string id="rad_resistant_descr">
+		<text>Средняя / Легкая броня: \n
+		• Радиация +%s% \n \n
+		Медицина мгновенно удаляет дополнительные 35% от общего восстановления радиации предмета</text>
+	</string>
+
+	<string id="technician_descr">
+		<text>Средняя / Легкая броня: \n
+		• Ожог +%s% \n
+		• Хим. ожог +%s% \n
+		• Электро +%s% \n
+		• Радиация +%s% \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n \n
+		Все Средние костюмы получают случайное первое улучшение при поднятии (если на них еще нет улучшений)</text>
+	</string>
+	<string id="inventor_descr">
+		<text>Все бонусы от талантов удваиваются для Легкой брони</text>
+	</string>
+
+	<string id="expert_technician_descr">
+		<text>За каждый 1% состояния брони \n \n
+		Средняя / Легкая броня: \n
+		• Ожог +%s% \n
+		• Хим. ожог +%s% \n
+		• Электро +%s% \n
+		• Радиация +%s%</text>
+	</string>
+	<string id="agile_descr">
+		<text>При движении \n \n
+		Легкая броня: \n
+		• Ожог +%s% \n
+		• Хим. ожог +%s% \n
+		• Электро +%s% \n
+		• Радиация +%s% \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n \n
+		Талант "Рефлексы" уклонение +%s% (для получения этого бонуса движение не требуется)</text>
+	</string>
+
+	<string id="reflexes_descr">
+		<text>35% шанс уклониться от непассивного урона в Средней / Легкой броне</text>
+	</string>
+
+
+	<!-- ---------------------------------- -->
+	<!-- --- TROOPER DEFENSIVE --- -->
+	<!-- ---------------------------------- -->
+	<string id="ceramic_plates_descr">
+		<text>Тяжелая / Средняя / Научная броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s%  \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n \n
+		Защита х2 для Средней/Научной</text>
+	</string>
+	<string id="first_aid_descr">
+		<text>Медицина, восстанавливающая здоровье - мгновенно восстанавливает дополнительные %s% от общего значения</text>
+	</string>
+	<string id="isolated_descr">
+		<text>Тяжелая / Средняя / Научная броня: \n
+		• Электро +%s% \n \n
+		Защита х2 для Средней/Научной</text>
+	</string>
+
+	<string id="armorer_descr">
+		<text>Тяжелая / Средняя / Научная броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n \n
+		Защита х2 для Средней/Научной</text>
+	</string>
+	<string id="chem_resistant_descr">
+		<text>Тяжелая / Средняя / Научная броня: \n
+		• Хим.ожог +%s% \n \n
+		Защита х2 для Средней/Научной</text>
+	</string>
+
+	<string id="suppresion_fire_descr">
+		<text>На %s секунд после каждого вашего попадания \n \n
+		Тяжелая / Средняя / Научная броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+	<string id="cautious_descr">
+		<text>Средняя / Научная броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n \n
+		Бонусы удваиваются для следующего физического удара по вам \n
+		(Перезарядка %s)</text>
+	</string>
+	<string id="fireproof_descr">
+		<text>Тяжелая / Средняя / Научная броня: \n
+		• Ожог +%s% \n \n
+		Защита х2 для Средней/Научной</text>
+	</string>
+
+	<string id="composure_descr">
+		<text>Смягченный урон этим бонусом удваивается и наносит урон выносливости вместо здоровья (бонусы активны только при выносливости более 50%) \n \n
+		Тяжелая / Средняя / Научная броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+	<string id="enduring_descr">
+		<text>Средняя / Научная броня: \n
+		• Ожог +%s% \n
+		• Хим.ожог +%s% \n
+		• Электро +%s% \n \n
+		Рывок с таланта "Рывок" потребляет на 50% меньше выносливости</text>
+	</string>
+
+	<string id="adorned_descr">
+		<text>Для каждого прикрепленного предмета или артефакта на поясе \n \n
+		Тяжелая / Средняя / Научная броня: \n
+		• Ожог +%s% \n
+		• Хим.ожог +%s% \n
+		• Электро +%s% \n \n
+		(Максимум 10%)</text>
+	</string>
+	<string id="expert_armorer_descr">
+		<text>За каждое установленное улучшение на броне \n \n
+		Тяжелая / Средняя / Научная броня: \n
+		• Ожог +%s% \n
+		• Хим.ожог +%s% \n
+		• Электро +%s% \n \n
+		(Максимум 10%)</text>
+	</string>
+	<string id="last_stand_descr">
+		<text>Когда здоровье ниже 35% \n \n
+		Тяжелая / Средняя / Научная броня: \n
+		• Ожог +%s% \n
+		• Хим.ожог +%s% \n
+		• Электро +%s% \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+
+	<string id="leap_descr">
+		<text>При беге вбок нажмите кнопку спринта, чтобы сделать рывок. Рывок расходует 20% выносливости и дает снижение урона на %s секунд \n \n
+		Тяжелая / Средняя / Научная броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+
+
+	<!-- ---------------------------------- -->
+	<!-- ----- JUGGER DEFENSIVE ---- -->
+	<!-- ---------------------------------- -->
+	<string id="steel_plates_descr">
+		<text>Тяжелая / Средняя броня: \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+	<string id="steel_pads_descr">
+		<text>Тяжелая / Средняя броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s%</text>
+	</string>
+	<string id="regenerative_descr">
+		<text>Пассивное восстановление здоровья +100%</text>
+	</string>
+
+	<string id="heavy_armor_expert_descr">
+		<text>Тяжелая / Средняя броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n
+		• Пси +%s% \n
+		• Вес брони -%s%</text>
+	</string>
+
+	<string id="dismorale_descr">
+		<text>На %s сек после убийства врага \n \n
+		Тяжелая / Средняя броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+	<string id="sturdy_descr">
+		<text>На %s сек после получения удара \n \n
+		Тяжелая / Средняя броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+	<string id="sanity_descr">
+		<text>Тяжелая / Средняя броня: \n
+		• Пси +%s%</text>
+	</string>
+
+	<string id="anxiety_descr">
+		<text>Тяжелая / Средняя броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n \n
+		Удваивает бонусы таланта "Деморализация" и увеличивает его длительность до 30 сек</text>
+	</string>
+	<string id="turmoil_descr">
+		<text>Вы и ваши союзники получаете \n \n
+		Тяжелая / Средняя броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n \n
+		Против всех врагов, находящихся в радиусе %sм от вас</text>
+	</string>
+
+	<string id="bulky_descr">
+		<text>Броня замедляет вас на 15% в обмен на \n \n
+		Тяжелая / Средняя броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+	<string id="secure_descr">
+		<text>За каждого спутника \n \n
+		Тяжелая / Средняя броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n \n
+		(Максимум 15%)</text>
+	</string>
+	<string id="lucid_descr">
+		<text>За каждый 1% пси-здоровья \n \n
+		Тяжелая / Средняя броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+
+	<string id="robust_descr">
+		<text>При следующей физической атаке \n \n
+		Тяжелая / Средняя броня: \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n \n
+		(Перезарядка %s)</text>
+	</string>
+
+	<!-- ---------------------------------- -->
+	<!-- --------- ENDURANCE -------- -->
+	<!-- ---------------------------------- -->
+	<string id="ease_descr">
+		<text>Если в руках нет двуручного оружия \n \n
+		• Скорость +%s%</text>
+	</string>
+	<string id="refreshing_descr">
+		<text>Питьевая вода восстанавливает \n \n
+		• Выносливость +%s%</text>
+	</string>
+	<string id="hiker_descr">
+		<text>Еда \n \n
+		• Вес -%s%</text>
+	</string>
+
+	<string id="resting_descr">
+		<text>Если не двигаться \n \n
+		• Выносливость +%s%/сек</text>
+	</string>
+	<string id="prudent_descr">
+		<text>Медицина \n \n
+		• Вес -%s%</text>
+	</string>
+
+	<string id="swifty_descr">
+		<text>• Скорость +%s%</text>
+	</string>
+	<string id="tireless_descr">
+		<text>• Выносливость +%s%/сек</text>
+	</string>
+	<string id="hoarder_descr">
+		<text>• Вес +%s кг</text>
+	</string>
+
+	<string id="adrenaline_rush_descr">
+		<text>В течение %s секунд после среднего удара \n \n
+		• Скорость +%s% \n \n
+		(Восстановление %s)</text>
+	</string>
+	<string id="second_wind_descr">
+		<text>Если запас выносливости опускается ниже 5% \n \n
+		• Выносливость +%s% \n \n
+		(Восстановление %s)</text>
+	</string>
+	<string id="organizer_descr">
+		<text>Все предметы весом 0.2+ кг (кроме оружия) \n \n
+		• Вес -0.1 кг</text>
+	</string>
+
+	<string id="insomnia_descr">
+		<text>В ночное время (с 18:00 до 6:00) \n \n
+		• Скорость +%s%</text>
+	</string>
+	<string id="courage_descr">
+		<text>В течение %s секунд после вашего попадания \n \n
+		• Выносливость +%s%/сек</text>
+	</string>
+	<string id="belt_braces_descr">
+		<text>Предметы и артефакты на поясе \n \n
+		• Вес -%s%</text>
+	</string>
+
+	<string id="athletic_descr">
+		<text>За каждый 1% выносливости \n \n
+		Легкая броня: \n
+		• Скорость +%s%  (половина для Средней / Научной)</text>
+	</string>
+	<string id="iron_spine_descr">
+		<text>За каждый 1% здоровья \n \n
+		Тяжелая броня: \n
+		• Вес +%s кг  (половина для Средней / Научной)</text>
+	</string>
+
+
+	<!-- ---------------------------------- -->
+	<!-- ------------ SPEECH ----------- -->
+	<!-- ---------------------------------- -->
+	<string id="preparation_descr">
+		<text>Еда и вода \n
+		• Покупка %s%</text>
+	</string>
+	<string id="confidence_descr">
+		<text>Напарники \n
+		• Защита +%s%</text>
+	</string>
+	<string id="supplier_descr">
+		<text>Мясо, части мутантов и шкуры мутантов \n
+		• Продажа +%s%</text>
+	</string>
+
+	<string id="observant_descr">
+		<text>Оружие и боеприпасы \n
+		• Покупка %s%</text>
+	</string>
+	<string id="smuggler_descr">
+		<text>Медицина, алкоголь, артефакты \n
+		• Продажа +%s%  (половина для артефактов)</text>
+	</string>
+
+	<string id="gregarious_descr">
+		<text>• Покупка %s%</text>
+	</string>
+	<string id="encouragement_descr">
+		<text>Напарники \n
+		• Урон +%s%</text>
+	</string>
+	<string id="persuasion_descr">
+		<text>• Продажа +%s%</text>
+	</string>
+
+	<string id="charismatic_descr">
+		<text>%s% на бесплатную покупку предмета 1-го уровня</text>
+	</string>
+	<string id="shady_descr">
+		<text>Все сталкеры получают %s рублей и \n \n
+		• Продажа сталкерам +%s%</text>
+	</string>
+
+	<string id="artistic_descr">
+		<text>Игра на гитаре или губной гармошке рядом со сталкерами добавит отношение с их группировкой. \n
+		(Перезарядка %s)</text>
+	</string>
+	<string id="rally_descr">
+		<text>Напарники \n
+		• Крит +%s%</text>
+	</string>
+	<string id="cynical_descr">
+		<text>Раз в день вы получаете "счастливую монету" (можно иметь только одну). Когда монета находится на поясе - один из ваших хламовых предметов, который вы продадите новичку или начинающему сталкеру, будет стоить в 20 раз больше. Монета исчезнет, и вы получите штраф отношений с их группировкой.</text>
+	</string>
+
+	<string id="well_liked_descr">
+		<text>Скидка на основе отношений с группировкой торговца, (отношения/200) процентов \n
+		(Максимум -8%)</text>
+	</string>
+	<string id="deceitful_descr">
+		<text>2% шанс продать предмет за дополнительные x2.5 от его стоимости</text>
+	</string>
+
+
+	<!-- -------------------------------------- -->
+	<!-- MONSTER HUNTER OFFENSIVE -->
+	<!-- -------------------------------------- -->
+	<string id="dog_hunter_descr">
+		<text>Против слепых псов/псевдособак/пси-собак/котов \n
+		• Урон +%s%</text>
+	</string>
+	<string id="boar_hunter_descr">
+		<text>Против кабанов/плотей/кикимор \n
+		• Урон +%s%</text>
+	</string>
+	<string id="zombie_hunter_descr">
+		<text>Против зомби/изломов/снорков \n
+		• Урон +%s%</text>
+	</string>
+
+	<string id="trophies_descr">
+		<text>За каждый тип мутанта, которого вы убиваете в первый раз - постоянное увеличение против мутантов \n
+		• Урон +%s% \n
+		(Текущий бонус: +%s%) \n \n
+		Оставшиеся мутанты: \n
+		%s</text>
+	</string>
+	<string id="deep_cut_descr">
+		<text>Холодное оружие: \n
+		• Урон +%s% \n
+		• Крит +%s%</text>
+	</string>
+
+	<string id="beast_anatomy_descr">
+		<text>Против животных \n
+		• Урон +%s% \n \n
+		Животные: %s</text>
+	</string>
+	<string id="humanoid_anatomy_descr">
+		<text>Против гуманоидов \n
+		• Урон +%s% \n \n
+		Гуманоиды: %s</text>
+	</string>
+	<string id="expert_hunter_descr">
+		<text>Против кровососов/пси-кровососов/бюреров/полтергейстов \n
+		• Урон +%s%</text>
+	</string>
+
+	<string id="beast_rivalry_descr">
+		<text>Против животных \n
+		• Крит +%s%</text>
+	</string>
+	<string id="humanoid_rivalry_descr">
+		<text>Против гуманоидов \n
+		• Крит +%s%</text>
+	</string>
+	<string id="master_hunter_descr">
+		<text>Против химер/контроллеров/гигантов \n
+		• Урон +%s%</text>
+	</string>
+
+	<string id="fierce_descr">
+		<text>На %s секунды после попадания по мутанту \n
+		• Урон +%s% \n \n
+		Эффект суммируются до 5 раз</text>
+	</string>
+	<string id="ranger_descr">
+		<text>В средней броне \n
+		• Крит +%s%</text>
+	</string>
+
+	<string id="deadly_blow_descr">
+		<text>1% шанс мгновенно убить любого мутанта (5% для холодного оружия)</text>
+	</string>
+
+
+	<!-- -------------------------------------- -->
+	<!-- MONSTER HUNTER DEFENSIVE -->
+	<!-- -------------------------------------- -->
+	<string id="shoulder_pads_descr">
+		<text>• Разрыв +%s% \n
+		• Удар +%s% \n \n
+		Защита х2 для Средней брони</text>
+	</string>
+	<string id="careful_descr">
+		<text>• Ожог +%s% \n
+		• Хим.ожог +%s% \n
+		• Электро +%s% \n \n
+		Защита х2 для Средней брони</text>
+	</string>
+
+	<string id="melee_defense_descr">
+		<text>Если холодное оружие в руках \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n</text>
+	</string>
+	<string id="special_diet_descr">
+		<text>В течение %s секунд после употребления пищи из мутанта или мяса мутанта \n
+		• Ожог +%s% \n
+		• Хим.ожог +%s% \n
+		• Электро +%s% \n
+		• Пси +%s%</text>
+	</string>
+	<string id="clarity_descr">
+		<text>• Пси +%s% \n \n
+		Защита х2 для Средней брони</text>
+	</string>
+
+	<string id="tracker_descr">
+		<text>Вы начинаете чувствовать след кровососов</text>
+	</string>
+	<string id="soft_armor_descr">
+		<text>• Разрыв +%s% \n
+		• Удар +%s% \n \n
+		Защита х2 для Средней брони</text>
+	</string>
+	<string id="stable_mind_descr">
+		<text>35% шанс противостоять пси-урону от атаки контроллера и \n
+		• Пси +%s%</text>
+	</string>
+
+	<string id="beast_demeanor_descr">
+		<text>Против животных \n
+		• Разрыв +%s% \n
+		• Удар +%s%</text>
+	</string>
+	<string id="humanoid_demeanor_descr">
+		<text>Против гуманоидов \n
+		• Разрыв +%s% \n
+		• Удар +%s%</text>
+	</string>
+
+	<string id="second_skin_descr">
+		<text>За каждую шкуру мутанта на поясе \n
+		• Разрыв +%s% \n
+		• Удар +%s%</text>
+	</string>
+	<string id="custom_fit_descr">
+		<text>Средняя броня: \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n
+		• Разрыв +%s% \n
+		• Удар +%s% \n
+		• Ожог +%s% \n
+		• Хим.ожог +%s% \n
+		• Электро +%s% \n
+		• Пси +%s%</text>
+	</string>
+
+	<string id="kindred_descr">
+		<text>Каждые 2 дня после сна появляются две сильные псевдособаки, чтобы защищать вас (появляются только в том случае, если нет предыдущих псевдособак). Они невосприимчивы к аномалиям, игнорируют ваших союзников и нападают на ваших врагов (кроме других собак). \n \n
+		Пока жива хотя бы одна из этих псевдособак - все остальные собаки не нападают на вас и ваших спутников.</text>
+	</string>
+
+
+	<!-- -------------------------------------- -->
+	<!-- ------- MERC OFFENSIVE -------- -->
+	<!-- -------------------------------------- -->
+	<string id="firearm_enthusiast_descr">
+		<text>Все оружия: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="combat_engineer_descr">
+		<text>Взрывчатка: \n
+		• Урон +%s% \n
+		• Скорость броска гранаты +%s%</text>
+	</string>
+	<string id="overdrive_descr">
+		<text>В течение %s сек после употребления стимпаков или кокаина \n \n
+		Все оружия: \n
+		• Урон +%s% \n
+		• Крит +%s%</text>
+	</string>
+
+	<string id="head_hunter_descr">
+		<text>За каждого члена группировки, убитого в первый раз \n \n
+		Против сталкеров: \n
+		• Урон +%s% \n
+		(Текущий бонус: +%s%) \n \n
+		Оставшиеся группировки: \n
+		%s</text>
+	</string>
+	<string id="arrogance_descr">
+		<text>За каждый ранг цели ниже чем ваш \n \n
+		Против сталкеров: \n
+		• Урон +%s% за ранг</text>
+	</string>
+
+	<string id="aim_torso_descr">
+		<text>По туловищу \n \n
+		Против сталкеров: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="aim_limbs_descr">
+		<text>По конечностям и голове \n \n
+		Против сталкеров: \n
+		• Крит +%s%</text>
+	</string>
+
+	<string id="modified_bullets_descr">
+		<text>В течение %s сек после попадания в туловище сталкера он начнет терять %s% от своего здоровья в секунду</text>
+	</string>
+	<string id="bullseye_descr">
+		<text>В течение %s сек после убийства сталкера выстрелом в голову \n \n
+		Все оружия: \n
+		• Крит +%s%</text>
+	</string>
+	<string id="searcher_descr">
+		<text>Убитые вами сталкеры будут иметь больше денег</text>
+	</string>
+
+	<string id="assault_rifles_expert_descr">
+		<text>Штурмовая винтовка: \n
+		• Урон +%s% \n
+		• Крит +%s% \n
+		• Перезарядка +%s%</text>
+	</string>
+	<string id="light_guns_expert_descr">
+		<text>Пистолет / Пистолет-пулемет: \n
+		• Урон +%s% \n
+		• Крит +%s% \n
+		• Перезарядка +%s%</text>
+	</string>
+	<string id="sniper_rifles_expert_descr">
+		<text>Снайперская винтовка: \n
+		• Урон +%s% \n
+		• Крит +%s%</text>
+	</string>
+
+	<string id="liquidator_descr">
+		<text>1% для мгновенного убийства сталкера и \n \n
+		Все оружия: \n
+		• Критический урон +%s%</text>
+	</string>
+
+
+	<!-- -------------------------------------- -->
+	<!-- ------- MERC DEFENSIVE -------- -->
+	<!-- -------------------------------------- -->
+	<string id="mercenary_vest_descr">
+		<text>Средняя броня: \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+	<string id="insensitive_descr">
+		<text>Средняя броня: \n
+		• Ожог +%s% \n
+		• Хим.ожог +%s% \n
+		• Электро +%s%</text>
+	</string>
+	<string id="chem_reliant_descr">
+		<text>В течение %s сек после применения стимпаков или морфина \n \n
+		Средняя броня: \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+
+	<string id="grenadier_descr">
+		<text>В течение %s сек после броска гранаты \n \n
+		Средняя броня: \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+
+	<string id="confusion_descr">
+		<text>Если вы носите броню группировки цели (или их союзника) \n \n
+		Средняя броня: \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+	<string id="addictive_descr">
+		<text>"Зависимый от химии" дает дополнительно \n \n
+		Средняя броня: \n
+		• Ожог +%s% \n
+		• Хим.ожог +%s% \n
+		• Электро +%s%</text>
+	</string>
+
+	<string id="direct_descr">
+		<text>Тяжелая броня получает %s% от всех бонусов талантов защиты</text>
+	</string>
+	<string id="disguise_master_descr">
+		<text>Средняя броня увеличивает эффективность маскировки на %s%</text>
+	</string>
+
+	<string id="flurry_descr">
+		<text>В течение %s сек после выстрела \n \n
+		Средняя броня: \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+	<string id="loose_fit_descr">
+		<text>Средняя броня: \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n
+		• Разрыв +%s% \n
+		• Удар +%s%</text>
+	</string>
+
+	<string id="reposition_descr">
+		<text>После перемещения в течение 2 секунд в бою - на следующие %s секунд вы получите \n \n
+		Средняя броня: \n
+		• Баллистика +%s% \n
+		• Взрыв +%s%</text>
+	</string>
+
+
+	<!-- -------------------------------------- -->
+	<!-- ---- ASSASSIN OFFENSIVE ----- -->
+	<!-- -------------------------------------- -->
+	<string id="smg_novice_descr">
+		<text>Пистолет-пулемет: \n
+		• Урон +%s% \n
+		• Крит +%s%</text>
+	</string>
+	<string id="handgun_novice_descr">
+		<text>Пистолет: \n
+		• Урон +%s% \n
+		• Крит +%s%</text>
+	</string>
+	<string id="knifeman_descr">
+		<text>Холодное оружие: \n
+		• Урон +%s% \n
+		• Крит +%s% \n
+		• Скорость атаки +%s%</text>
+	</string>
+
+	<string id="spot_weakness_descr">
+		<text>Если враг находится в радиусе 20 метров и не в бою с вами - вы получаете 1 эффект "Определения слабости" каждую секунду (эффект суммируется до 10 раз). За каждый эффект при следующей атаке \n \n
+		Пистолет-пулемет / Пистолет / Холодное оружие: \n
+		• Крит +%s%</text>
+	</string>
+
+	<string id="undercover_descr">
+		<text>Если вы носите броню группировки цели (или их союзника) \n \n
+		Пистолет-пулемет / Пистолет: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="tactical_descr">
+		<text>Если оружие оснащено глушителем \n \n
+		Пистолет-пулемет / Пистолет: \n
+		• Крит +%s%</text>
+	</string>
+	<string id="backstab_descr">
+		<text>Атаки сзади \n \n
+		Холодное оружие: \n
+		• Крит +%s% \n
+		• Критический урон +%s%</text>
+	</string>
+
+	<string id="saboteur_descr">
+		<text>Пистолет-пулемет / Пистолет: \n
+		• Урон +%s% \n \n
+		За каждый 1 метр от цели урон уменьшается на -0.1% (минимальный бонус 0%)</text>
+	</string>
+	<string id="surprise_attack_descr">
+		<text>Если цель не находится в состоянии боя или опасности \n \n
+		Пистолет-пулемет / Пистолет: \n
+		• Крит +%s% \n
+		• Критический урон +%s%</text>
+	</string>
+	<string id="assassination_descr">
+		<text>Атаки сзади если цель не находится в состоянии боя или опасности \n \n
+		Холодное оружие: \n
+		• Критический урон +%s%</text>
+	</string>
+
+	<string id="vile_descr">
+		<text>Атаки сзади \n \n
+		Пистолет-пулемет: \n
+		• Урон +%s%</text>
+	</string>
+	<string id="pragmatic_descr">
+		<text>Если пистолет в основном оружейном слоте и другой основной слот пуст \n \n
+		Пистолет: \n
+		• Крит +%s% \n
+		• Критический урон +%s%</text>
+	</string>
+
+	<string id="assassin_observant_descr">
+		<text>Талант "Определение слабости" мгновенно получает максимальное количество эффектов</text>
+	</string>
+
+
+	<!-- -------------------------------------- -->
+	<!-- ---- ASSASSIN DEFENSIVE ----- -->
+	<!-- -------------------------------------- -->
+	<string id="ordinary_descr">
+		<text>При ходьбе \n \n
+		Вся броня: \n
+		• Маскировка +%s%</text>
+	</string>
+	<string id="acrobatic_descr">
+		<text>Высота прыжка \n \n
+		Средняя / Научная / Легкая броня: \n
+		• +30%</text>
+	</string>
+	<string id="quiet_descr">
+		<text>Если в руках нет активных предметов \n \n
+		Вся броня: \n
+		• Скрытность +%s%</text>
+	</string>
+
+	<string id="evanescent_descr">
+		<text>Бонус от таланта "Непримечательный" сохраняется при любом состоянии перемещения и \n \n
+		Вся броня: \n
+		• Маскировка +%s%</text>
+	</string>
+	<string id="lurking_descr">
+		<text>В ночное время (с 18:00 до 06:00) \n \n
+		Вся броня: \n
+		• Маскировка +%s% \n
+		• Скрытность +%s%</text>
+	</string>
+	<string id="subtle_descr">
+		<text>Бонус от таланта "Тихий" сохраняется при наличии любых предметов в руках и \n \n
+		Вся броня: \n
+		• Скрытность +%s%</text>
+	</string>
+
+	<string id="covert_descr">
+		<text>Все бонусы от талантов маскировки х1.5 в Средней / Научной броне и \n \n
+		Средняя / Научная броня: \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n
+		• Разрыв +%s% \n
+		• Удар +%s%
+		</text>
+	</string>
+	<string id="cunning_descr">
+		<text>Все бонусы от талантов скрытности х1.5 в Легкой броне и \n \n
+		Легкая броня: \n
+		• Уклонение +%s% \n
+		• Урон от падения -40%</text>
+	</string>
+
+	<string id="deception_descr">
+		<text>Против врагов в радиусе 50 метров \n \n
+		Вся броня: \n
+		• Маскировка +%s%</text>
+	</string>
+	<string id="vague_descr">
+		<text>Бонус от дождя (при максимальной плотности дождя) \n \n
+		Вся броня: \n
+		• Маскировка +%s% \n
+		• Скрытность +%s%</text>
+	</string>
+	<string id="sneaky_descr">
+		<text>Вся броня: \n
+		• Скрытность +%s% \n \n
+		Бонус х2 в приседе</text>
+	</string>
+
+	<string id="incognito_descr">
+		<text>Средняя / Научная броня: \n
+		• Маскировка +%s% \n
+		• Баллистика +%s% \n
+		• Взрыв +%s% \n
+		• Разрыв +%s% \n
+		• Удар +%s%</text>
+	</string>
+	<string id="ghost_descr">
+		<text>Легкая броня: \n
+		• Скрытность +%s% \n
+		• Уклонение +%s% \n
+		• Ожог +%s% \n
+		• Хим.ожог +%s% \n
+		• Электро +%s%</text>
+	</string>
+
+	<string id="elusive_descr">
+		<text>Средняя / Научная / Легкая броня: \n
+		• Маскировка +%s% \n
+		• Скрытность +%s% \n
+		• Скорость +15% в бою</text>
+	</string>
+
+</string_table>

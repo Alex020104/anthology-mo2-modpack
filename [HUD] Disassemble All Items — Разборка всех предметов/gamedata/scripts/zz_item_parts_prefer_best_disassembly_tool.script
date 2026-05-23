@@ -1,0 +1,158 @@
+-- Prefer disassemble with better tools first (i.e. Multitool)
+
+--override pairs function for item_parts table to use
+--defined in metatable pairs first if exist like in Lua 5.2
+local _p = pairs;
+item_parts.pairs = function(t, ...)
+    return ((getmetatable(t) and getmetatable(t).__pairs) and getmetatable(t).__pairs or _p)(t, ...)
+end
+
+--sort initial hash array by values and return keys
+--to form sorted one later
+local function getKeysSortedByValue(tbl, sortFunction)
+  local keys = {}
+  for key in pairs(tbl) do
+    keys[#keys+1] = key
+  end
+
+  table.sort(keys, function(a, b)
+    return sortFunction(tbl[a], tbl[b])
+  end)
+
+  return keys
+end
+
+--define orderedTable Table
+local function orderedTable( t )
+   local mt = {}
+   -- set methods
+   mt.__index = {
+      -- set key order table inside __index for faster lookup
+      _korder = {},
+      -- traversal of hidden values
+      hidden = function() return pairs( mt.__index ) end,
+      -- traversal of table ordered: returning index, key
+      ipairs = function( self ) return ipairs( self._korder ) end,
+      -- traversal of table
+      pairs = function( self ) return pairs( self ) end,
+      -- traversal of table ordered: returning key,value
+      opairs = function( self )
+      	 --printf('override pairs in metatable')
+         local i = 0
+         local function iter( self )
+            i = i + 1
+            local k = self._korder[i]
+            if k then
+               return k,self[k]
+            end
+         end
+         return iter,self
+      end,
+      -- to be able to delete entries we must write a delete function
+      del = function( self,key )
+         if self[key] then
+            self[key] = nil
+            for i,k in ipairs( self._korder ) do
+               if k == key then
+                  table.remove( self._korder, i )
+                  return
+               end
+            end
+         end
+      end,
+   }
+   -- set new index handling
+   mt.__newindex = function( self,k,v )
+      if k ~= "del" and v then
+         rawset( self,k,v )
+         self._korder[#self._korder+1] = k
+      end      
+   end
+   mt.__pairs = mt.__index.opairs
+   return setmetatable( t or {},mt )
+end
+
+--The function which decides what item to use for disassemble
+--is item_parts.get_suitable_dtool and it picks whatever item
+--actor has first in GetItemList table return
+--
+--So, this overrides GetItemList for item_parts to return ordered
+--table where an item with least degradation factor is guaranteed to
+--go first when we want to disassemble items 
+
+local condition_table = {}
+
+item_parts.GetItemList = function(str)
+   empty_table(condition_table)
+	local itemList = GetItemList(str)
+	if (str == "disassemble") then
+      printf("Prefer Best Disassembly Tool: Calling override GetItemList")
+
+      local round_idp = round_idp
+      local spairs = spairs
+      local table_insert = table.insert
+
+      local smartItemList = {}
+      local function get_disassemble_items(owner, item)
+         local sec = item:section()
+         local cond = item:condition()
+         local id = item:id()
+         if itemList[sec] then
+            if round_idp(cond, 2) > itemList[sec] then
+               smartItemList[sec] = itemList[sec]
+               if not condition_table[sec] then condition_table[sec] = {} end
+               condition_table[sec][id] = {
+                  cond = cond
+               }
+            end
+         end
+      end
+      db.actor:iterate_inventory(get_disassemble_items, db.actor)
+
+      -- Sort by worst to best items if their condition is enough to disassemble item without breaking
+      local newItemList = orderedTable()
+      for k, v in spairs(smartItemList, function(t, a, b) return a > b end) do
+         newItemList[k] = v
+      end
+
+      -- Get the rest of items
+      for k, v in spairs(itemList, function(t, a, b) return a < b end) do
+         if not newItemList[k] then newItemList[k] = v end
+      end
+		
+		return newItemList
+	end
+	return itemList
+end
+
+item_parts.get_suitable_dtool = function(obj)
+   if IsWeapon(obj) then
+      return db.actor:object("leatherman_tool")
+   else
+      local pairs = pairs
+      local round_idp = round_idp
+
+      local itms_disassemble = item_parts.GetItemList("disassemble")
+      for sec, v in pairs(itms_disassemble) do
+         if condition_table[sec] then
+            for id, t in pairs(condition_table[sec]) do
+               if round_idp(t.cond, 2) > v then
+                  -- printf("picked sec %s, cond %s", sec, t.cond)
+                  local obj_d = level.object_by_id(id)
+                  if obj_d then
+                     return obj_d
+                  end
+               end
+            end
+         end
+      end
+
+      -- Fallback to old if somethings fishy
+      for sec,v in pairs(itms_disassemble) do
+         local obj_d = db.actor:object(sec)
+         if obj_d then
+            return obj_d
+         end
+      end
+   end
+end

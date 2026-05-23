@@ -1,0 +1,39 @@
+; tukarev, jup_b6_scientist_tech
+
+; herman
+[herman_parts]
+trader          = jup_b6_scientist_nuclear_physicist
+type            = anyOf
+give            = antirad
+take            = mutant_part_boar_leg,mutant_part_psevdodog_tail
+repeat          = restock
+limit           = 4
+sort_rank       = 1
+desc            = st_herman_parts
+desc_done       = st_generic_done
+
+
+[nitro_parts]
+trader          = jup_b217_stalker_tech
+type            = anyOf
+give            = sewing_kit_b:2
+take            = prt_i_copper:4,prt_i_resistors:4,prt_i_transistors:3,prt_i_capacitors:3
+repeat          = restock
+limit           = 4
+sort_rank       = 1
+desc            = st_nitro_parts
+desc_done       = st_generic_done
+
+[nitro_parts2]:nitro_parts
+give            = sewing_kit_a:1
+
+[nitro_parts3]:nitro_parts
+give            = solvent
+
+[nitro_parts4]:nitro_parts
+give            = cleaning_kit_r5:2
+
+; hawaiian
+; cardan
+; ashot
+; 

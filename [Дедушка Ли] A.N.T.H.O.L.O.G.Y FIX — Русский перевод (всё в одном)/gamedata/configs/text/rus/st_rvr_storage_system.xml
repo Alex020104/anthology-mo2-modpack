@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+    <!-- MCM section -->
+    <string id="ui_mcm_menu_rvr_storage_system">
+        <text>Система хранения от RVR</text>
+    </string>
+    <string id="ui_mcm_menu_rvr_storage_system_title">
+        <text>Оптимизированная система хранения от RVR</text>
+    </string>	
+    <string id="ui_mcm_mod_desc">
+        <text>ОПИСАНИЕ ЗАДАЧИ</text>
+    </string>
+
+    <string id="ui_mcm_main_options_title">
+        <text>Настройки</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_shift_mult_slider">
+        <text>Множитель количества предметов через LSHIFT</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_shift_mult_slider_desc">
+        <text>Умножает количество переносимых предметов, если нажата клавиша LSHIFT. Умножается с множителем от LCTRL. Множитель по умолчанию LSHIFT равен x5, а LCTRL равен x10. Удержание обеих клавиш приведет к множителю х50.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_show_pelts_condition_check">
+        <text>Показать состояние шкур мутантов</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_show_arts_condition_check">
+        <text>Показать состояние артефактов, включая находящиеся в контейнерах</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_ctrl_mult_slider">
+        <text>Множитель количества предметов через LCTRL</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_ctrl_mult_slider_desc">
+        <text>Умножает количество переносимых предметов, если нажата клавиша LCTRL. Умножается с множителем от LSHIFT. Множитель по умолчанию LSHIFT равен x5, а LCTRL равен x10. Удержание обеих клавиш приведет к множителю х50.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_global_storage_enabled_check">
+        <text>Включить глобальное хранилище</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_global_storage_enabled_check_desc">
+        <text>Включает дополнительное хранилище, доступное откуда угодно. [SHIFT+I]</text>
+    </string>
+
+    <string id="ui_mcm_experimental_title">
+        <text>Настройки экспериментальных функций</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_debug_mode_check">
+        <text>Режим разработчика</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_debug_mode_check_desc">
+        <text>Включает дополнительную отладочную информацию и тестовое хранилище, вызываемое нажатием О.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_weapon_storage_check">
+        <text>В РАЗРАБОТКЕ: включить поддержку хранения оружия</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_weapon_storage_check_desc">
+        <text>Частичная реализация. При перемещении в хранилище исчезнут улучшения, навесное оборудование, магазин будет заполнен стандартными патронами. Потенциальный дюп патронов.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_armor_storage_check">
+        <text>В РАЗРАБОТКЕ: включить поддержку хранения брони</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_armor_storage_check_desc">
+        <text>Частичная реализация. При перемещении в хранилище исчезнут улучшения.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_kinds_separators">
+        <text>В РАЗРАБОТКЕ: включить дополнительные разделители по типу предметов</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_kinds_separators_desc">
+        <text>Отсутствует локализация.\n 
+		p.s. от Дедушки Ли: "А может и нет!"</text>
+    </string>
+
+    <!-- Window titles -->
+    <string id="st_rvr_ss_actor_inventory_title">
+        <text>Рюкзак</text>
+    </string>
+    <string id="st_rvr_ss_storage_inventory_title">
+        <text>Хранилище</text>
+    </string>
+    <string id="st_rvr_ss_durability_column_title">
+        <text>Состояние</text>
+    </string>
+    <string id="st_rvr_ss_amount_column_title">
+        <text>Кол-во</text>
+    </string>
+
+
+    <!-- Categories -->
+    <string id="st_c_all">
+        <text>Все</text>
+    </string>
+    <string id="st_c_weapons">
+        <text>Оружие</text>
+    </string>
+    <string id="st_c_ammo">
+        <text>Амуниция</text>
+    </string>
+    <string id="st_c_armor">
+        <text>Броня/шлемы</text>
+    </string>
+    <string id="st_c_equipment">
+        <text>Снаряжение</text>
+    </string>
+    <string id="st_c_tech">
+        <text>Техническое</text>
+    </string>
+    <string id="st_c_trophies">
+        <text>Трофеи</text>
+    </string>
+    <string id="st_c_consumables">
+        <text>Расходники</text>
+    </string>
+    <string id="st_c_misc">
+        <text>Разное</text>
+    </string>
+    <string id="st_c_unknown">
+        <text>Неопределено</text>
+    </string>
+
+
+    <string id="st_rvr_ss_mb_set_stash_created">
+        <text>Альтернативный тайник создан</text>
+    </string>
+    <string id="st_rvr_ss_mb_set_stash_type_text">
+        <text>Хотите создать альтернативный тип тайника? Если нет, то будет создан обычный.</text>
+    </string>
+
+    <string id="rvr_ss_storage_footer_cap">
+        <text>Подсказки и элементы управления</text>
+    </string>
+    <string id="rvr_ss_storage_footer_hints">
+        <text>[SHIFT+dLMB], [CTRL+dLMB], [CTRL+SHIFT+dLMB], где dLMB означает "2 раза ЛКМ", для взятия/перемещения большого кол-ва предметов. Настройки множителей в MCM. [SHIFT+F] устанавливает фокус на текстовом поле поиска. [CTRL+SHIFT+F] устанавливает фокус на текстовом поле поиска и удаляет его содержимое. [Enter] или снимите фокус с текстового поля поиска, чтобы отфильтровать все элементы в соответствии с выбранной категорией. [ALT+dLMB] отмечает элемент как "Избранное". Ещё раз - снять отметку. [SHIFT+ALT+dLMB] помечает элемент как мусор. Ещё раз - снять отметку.
+        </text>
+    </string>
+
+    <string id="rvr_ss_storage_footer_depositall_btn">
+        <text>Сложить все</text>
+    </string>
+    <string id="rvr_ss_storage_footer_keep_favorite">
+        <text>Кроме "Избранного"</text>
+    </string>
+    <string id="rvr_ss_storage_footer_keep_regular">
+        <text>Кроме обычных предметов</text>
+    </string>
+    <string id="rvr_ss_storage_footer_keep_trash">
+        <text>Кроме мусора</text>
+    </string>
+
+    <!-- Категории в инвентаре и тайнике -->
+	
+    <!-- Оружие -->	
+	
+    <string id="st_w_melee">
+        <text>Рукопашный бой</text>
+    </string>	
+    <string id="st_w_misc">
+        <text>Разное</text>
+    </string>	
+    <string id="st_w_rifle">
+        <text>Автоматы</text>
+    </string>
+    <string id="st_w_shotgun">
+        <text>Дробовики</text>
+    </string>
+    <string id="st_w_smg">
+        <text>Пистолеты-пулемёты</text>
+    </string>
+    <string id="st_w_pistol">
+        <text>Пистолеты</text>
+    </string>
+
+    <!-- Амуниция -->	
+
+    <string id="st_w_ammo">
+        <text>Боеприпасы</text>
+    </string>
+    <string id="st_w_explosive">
+        <text>Гранаты и т.п.</text>
+    </string>
+	
+	    <!-- Броня/шлемы -->	
+
+    <string id="st_o_heavy">
+        <text>Тяжёлая экипировка</text>
+    </string>
+	    <string id="st_o_helmet">
+        <text>Головные уборы</text>
+    </string>
+	    <string id="st_o_light">
+        <text>Лёгкая экипировка</text>
+    </string>
+	    <string id="st_o_medium">
+        <text>Средняя экипировка</text>
+    </string>	
+
+	    <!-- Снаряжение -->
+
+	    <string id="st_i_device">
+        <text>Устройства</text>
+    </string>	
+	
+	
+	    <!-- Техническое -->	
+		
+	    <string id="st_i_kit">
+        <text>Наборы, комплекты</text>
+    </string>	
+	    <string id="st_i_repair">
+        <text>Для ремонта</text>
+    </string>
+	    <string id="st_i_tool">
+        <text>Предметы</text>
+    </string>	
+	    <string id="st_i_upgrade">
+        <text>Апгрейды</text>
+    </string>	
+	
+	    <!-- Трофеи -->
+		
+	<string id="st_i_arty_cont">
+        <text>Контейнеры</text>
+    </string>
+	<string id="st_i_mutant_belt">
+        <text>Шкуры/мех мутантов</text>
+    </string>
+	<string id="st_i_mutant_part">
+        <text>Части мутантов</text>
+    </string>
+	<string id="st_i_mutant_raw">
+        <text>Мясо мутантов</text>
+    </string>	
+	
+	
+	    <!-- Расходники -->	
+		
+	<string id="st_i_drink">
+        <text>Напитки и т.п.</text>
+    </string>
+	<string id="st_i_food">
+        <text>Еда</text>
+    </string>
+	<string id="st_i_mutant_cooked">
+        <text>Еда из мутантов</text>
+    </string>	
+	<string id="st_i_medical">
+        <text>Лекарства</text>
+    </string>	
+	
+	    <!-- Разное -->		
+
+	<string id="st_i_letter">
+        <text>Документы</text>
+    </string>
+	<string id="st_i_misc">
+        <text>Разное</text>
+    </string>	
+	<string id="st_i_part">
+        <text>Детали, части</text>
+    </string>	
+	
+	    <!-- Неопределено -->		
+	
+	<string id="st_i_attach">
+        <text>Приспособления</text>
+    </string>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</string_table>

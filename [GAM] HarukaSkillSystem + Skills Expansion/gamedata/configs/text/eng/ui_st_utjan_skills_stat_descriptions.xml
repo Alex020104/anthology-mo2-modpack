@@ -1,0 +1,101 @@
+<string_table>
+
+
+    <!-- Medicine -->
+	<string id="st_player_skills_hint_medicine">
+		<text>%c[255,255,255,255]Performing first aid with medical items grants a short burst of improved health or radiation restoration based on the item.\n \nThe First Aid skill is improved by using medicine and drug items.\n \n</text>
+	</string>
+	<string id="st_skills_stats_restore_boost_positive">
+        <text>\n%c[d_cyan]•%c[255,255,255,255] Restoration Boost from Medical Items: %c[d_cyan]+$stat %</text>
+    </string>
+    <string id="st_skills_stats_restore_boost_negative">
+        <text>\n%c[255,255,86,86]•%c[255,255,255,255] Restoration Boost from Medical Items: %c[255,255,86,86]$stat %</text>
+    </string>
+
+	<!-- Insanity -->
+	<string id="st_player_skills_hint_insanity">
+		<text>%c[255,255,255,255]Stress resistance speeds up psy recovery and affects how much psy damage you take.\n \nThe Stress Resistance skill is improved by taking psy damage and by playing instruments in combat.\n \n%c[d_cyan]Psy Recovery Rate%c[255,255,255,255] bonus is doubled when playing an instrument.\n \n</text>
+	</string>
+    <string id="st_skills_stats_psy_regen_positive">
+        <text>\n%c[d_cyan]•%c[255,255,255,255] Psy Recovery Rate: %c[d_cyan]+$stat% %c[255,255,255,255]/sec</text>
+    </string>
+
+    <string id="st_skills_stats_psy_hit_resistance_positive">
+        <text>\n%c[d_cyan]•%c[255,255,255,255] Psy Damage Resistance: %c[d_cyan]+$stat %</text>
+    </string>
+    <string id="st_skills_stats_psy_hit_resistance_negative">
+        <text>\n%c[255,255,86,86]•%c[255,255,255,255] Psy Damage Resistance: %c[255,255,86,86]-$stat %</text>
+    </string>
+	
+	<!-- Tinkering -->
+	<string id="st_player_skills_hint_tinkering">
+		<text>%c[255,255,255,255]Proper maintenance is the key to extending the lifespan of your tools.\n \nThe Maintenance skill is improved by repairing gear with repair tools.\n \n</text>
+	</string>
+	<string id="st_skills_stats_refund_chance_positive">
+        <text>\n%c[d_cyan]•%c[255,255,255,255] Free Repair Tool Use Chance: %c[d_cyan]$stat %</text>
+    </string>
+	
+	<!-- Bartering -->
+	<string id="st_player_skills_hint_bartering">
+		<text>%c[255,255,255,255]Mastering the art of charisma allows you to receive discounts from traders and greater money rewards from tasks.\n \nThe Charisma skill is improved by trading items and by completing tasks.\n \n</text>
+	</string>
+	<string id="st_skills_stats_discount_positive">
+        <text>\n%c[d_orange]•%c[255,255,255,255] Trader Prizes: %c[d_cyan]-$stat %</text>
+    </string>
+    <string id="st_skills_stats_discount_negative">
+        <text>\n%c[255,255,86,86]•%c[255,255,255,255] Trader Prizes: %c[255,255,86,86]+$stat %</text>
+    </string>
+	<string id="st_skills_stats_sell_bonus_positive">
+        <text>\n%c[d_orange]•%c[255,255,255,255] Selling Value of Items: %c[d_cyan]+$stat %</text>
+    </string>
+    <string id="st_skills_stats_sell_bonus_negative">
+        <text>\n%c[255,255,86,86]•%c[255,255,255,255] Selling Value of Items: %c[255,255,86,86]-$stat %</text>
+    </string>
+    <string id="st_skills_stats_task_bonus_positive">
+        <text>\n%c[d_orange]•%c[255,255,255,255] Money from Task Rewards: %c[d_cyan]+$stat %</text>
+    </string>
+    <string id="st_skills_stats_task_bonus_negative">
+        <text>\n%c[255,255,86,86]•%c[255,255,255,255] Money from Task Rewards: %c[255,255,86,86]$stat %</text>
+    </string>
+	
+	<!-- Magloading -->
+	<string id="st_player_skills_hint_magloading">
+		<text>%c[255,255,255,255]Skill aimed at magazine handling - affects loading and unloading of ammo.\n \nThe Mag Drills skill is improved by loading and unloading magazines.\n \n%c[d_cyan]Maximum skill level%c[255,255,255,255] is limited by Strength and Endurance.\n \n</text>
+	</string>
+	<string id="st_skills_stats_loadspeed_positive">
+        <text>\n%c[d_cyan]•%c[255,255,255,255] Ammo Loading Speed: %c[d_cyan]+$stat %</text>
+    </string>
+    <string id="st_skills_stats_loadspeed_negative">
+        <text>\n%c[255,255,86,86]•%c[255,255,255,255] Ammo Loading Speed: %c[255,255,86,86]-$stat %</text>
+    </string>
+	
+	<!-- Lockpicking -->
+	<string id="st_player_skills_hint_lockpicking">
+		<text>%c[255,255,255,255]Allows you to pick locks commonly found on lootboxes.\n \nThe Lockpicking skill is improved by opening locks on lootboxes.\n \nUsing a %c[d_cyan]Skeleton Key%c[255,255,255,255] to open locks gives no experience.\n \n</text>
+	</string>
+	<string id="st_skills_stats_lockpick_diff_reduc_positive">
+        <text>\n%c[d_cyan]•%c[255,255,255,255] Lock Difficulty: %c[d_cyan]$stat %</text>
+    </string>
+    <string id="st_skills_stats_lockpick_diff_reduc_negative">
+        <text>\n%c[255,255,86,86]•%c[255,255,255,255] Lock Difficulty: %c[255,255,86,86]$stat %</text>
+    </string>
+	
+	<!-- Reloading -->
+	<string id="st_player_skills_hint_reloading">
+		<text>%c[255,255,255,255]Weapon handling affects reload time and raise/holster speed of guns.\n \nThe Weapon Handling skill is improved by using guns.\n \n%c[d_cyan]Maximum skill level%c[255,255,255,255] is limited by Endurance and Survival.\n \n</text>
+	</string>
+	<string id="st_skills_stats_reload_speed_positive">
+        <text>\n%c[d_cyan]•%c[255,255,255,255] Reload Speed: %c[d_cyan]$stat %</text>
+    </string>
+    <string id="st_skills_stats_reload_speed_negative">
+        <text>\n%c[255,255,86,86]•%c[255,255,255,255] Reload Speed: %c[255,255,86,86]$stat %</text>
+    </string>
+	
+	<string id="st_skills_stats_equip_speed_positive">
+        <text>\n%c[d_cyan]•%c[255,255,255,255] Raise/Holster Speed: %c[d_cyan]$stat %</text>
+    </string>
+    <string id="st_skills_stats_equip_speed_negative">
+        <text>\n%c[255,255,86,86]•%c[255,255,255,255] Raise/Holster Speed: %c[255,255,86,86]$stat %</text>
+    </string>
+	
+</string_table>

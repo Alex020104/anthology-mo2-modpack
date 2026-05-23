@@ -1,0 +1,6 @@
+-- Compatibility hotfix for Activated Carbon + Body Health System SYS.
+-- Some BHS variants keep healhelp local, so this patch must not assume it is exported.
+
+if zzz_player_injuries and zzz_player_injuries.healhelp then
+	zzz_player_injuries.healhelp.drug_charcoal = { torso = 1, rightleg = 1, leftleg = 1 }
+end

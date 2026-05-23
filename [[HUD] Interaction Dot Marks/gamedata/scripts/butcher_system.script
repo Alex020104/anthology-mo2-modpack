@@ -1,0 +1,345 @@
+--[[
+    ============================================================================
+    Butcher System - Automatic knife equip + butchering
+    Версия для Anomaly Anthology (исправленная)
+    ============================================================================
+]]--
+
+BUTCHER_VERSION = "2.2"
+
+-- Настройки
+local cfg = {
+    search_radius = 5.0,           -- Радиус поиска трупа
+    butcher_time = 3.0,            -- Время разделки в секундах
+    knife_slot = 8,                -- Слот для ножа
+    knife_sections = {             -- Возможные названия ножей в игре
+        "knife",
+        "hunting_knife",
+        "combat_knife",
+        "tactical_knife",
+        "bayonet",
+        "machete"
+    },
+    show_messages = true,
+    block_movement = true
+}
+
+-- Вспомогательная функция для сообщений
+local function msg(text, color)
+    if not cfg.show_messages then return end
+    color = color or "$G"
+    local console = get_console()
+    if console then
+        console:execute(string.format('ui_system_message_toggle "%s%s$def"', color, text))
+    end
+end
+
+-- Проверка, экипирован ли нож
+local function is_knife_equipped()
+    if not db.actor then return false end
+    return db.actor:item_in_slot(cfg.knife_slot) ~= nil
+end
+
+-- Поиск ножа в инвентаре
+local function find_knife_in_inventory()
+    if not db.actor then return nil, nil end
+    
+    for _, knife_sec in ipairs(cfg.knife_sections) do
+        local knife = db.actor:object(knife_sec)
+        if knife then
+            return knife, knife_sec
+        end
+    end
+    return nil, nil
+end
+
+-- Достать и экипировать нож
+local function equip_knife()
+    if not db.actor then return false end
+    
+    if is_knife_equipped() then
+        return true
+    end
+    
+    local knife, knife_sec = find_knife_in_inventory()
+    if not knife then
+        msg("У вас нет ножа для разделки!", "$R")
+        return false
+    end
+    
+    db.actor:activate_slot(cfg.knife_slot)
+    msg("Достаём нож...", "$Y")
+    
+    return true
+end
+
+-- Определение типа мутанта
+local function get_mutant_type(corpse)
+    if not corpse then return nil end
+    
+    local section = corpse:section()
+    if not section then return nil end
+    section = string.lower(section)
+    
+    local butcherable = {
+        ["flesh"] = "flesh",
+        ["boar"] = "boar", 
+        ["pseudodog"] = "pseudodog",
+        ["tushkano"] = "tushkano",
+        ["bloodsucker"] = "bloodsucker",
+        ["pseudogiant"] = "pseudogiant",
+        ["chimera"] = "chimera",
+        ["burer"] = "burer",
+        ["controller"] = "controller",
+        ["cat"] = "cat",
+        ["dog"] = "pseudodog",
+        ["izlom"] = "izlom"
+    }
+    
+    for pattern, type in pairs(butcherable) do
+        if string.find(section, pattern) then
+            return type
+        end
+    end
+    
+    return nil
+end
+
+-- Поиск ближайшего трупа
+local function find_nearest_corpse()
+    if not db.actor then return nil, 999 end
+    
+    local actor_pos = db.actor:position()
+    local nearest = nil
+    local nearest_dist = cfg.search_radius
+    
+    local objects = level.objects_by_id()
+    if not objects then return nil, 999 end
+    
+    for id, obj in pairs(objects) do
+        if obj and not obj:alive() then
+            local clsid = obj:clsid()
+            if clsid == 200 or clsid == 201 then
+                local name = string.lower(obj:name() or "")
+                if not string.find(name, "stalker") and 
+                   not string.find(name, "soldier") and
+                   not string.find(name, "bandit") and
+                   not string.find(name, "zombie") then
+                    
+                    local dist = actor_pos:distance_to(obj:position())
+                    if dist < nearest_dist then
+                        nearest_dist = dist
+                        nearest = obj
+                    end
+                end
+            end
+        end
+    end
+    
+    return nearest, nearest_dist
+end
+
+-- Генерация лута
+local function spawn_loot(corpse, mutant_type)
+    if not corpse then return end
+    
+    local pos = corpse:position()
+    local lvid = corpse:level_vertex_id()
+    local gvid = corpse:game_vertex_id()
+    
+    local loot_table = {
+        flesh = {"mutant_meat", "mutant_skin_flesh"},
+        boar = {"mutant_meat_boar", "mutant_skin_boar"},
+        pseudodog = {"mutant_meat_dog", "mutant_skin_dog"},
+        tushkano = {"mutant_meat_tushkano", "mutant_skin_tushkano"},
+        bloodsucker = {"mutant_meat_bloodsucker", "mutant_skin_bloodsucker"},
+        pseudogiant = {"mutant_meat_giant", "mutant_skin_giant"},
+        chimera = {"mutant_meat_chimera", "mutant_skin_chimera"},
+        burer = {"mutant_meat_burer", "mutant_skin_burer"},
+        controller = {"mutant_meat_controller", "mutant_skin_controller"},
+        cat = {"mutant_meat_cat", "mutant_skin_cat"},
+        izlom = {"mutant_meat_izlom", "mutant_skin_izlom"}
+    }
+    
+    local loot = loot_table[mutant_type]
+    if not loot then return end
+    
+    if loot[1] then
+        alife_create(loot[1], pos, lvid, gvid)
+        msg(string.format("Вы получили: %s", loot[1]), "$G")
+    end
+    
+    if loot[2] and math.random() < 0.6 then
+        alife_create(loot[2], pos, lvid, gvid)
+        msg(string.format("Вы получили: %s", loot[2]), "$G")
+    end
+end
+
+-- Переменные для отслеживания разделки
+local is_butchering = false
+local butcher_timer = nil
+
+-- Основная функция разделки
+local function do_butcher(corpse, mutant_type)
+    if is_butchering then
+        msg("Вы уже разделываете тушу!", "$R")
+        return false
+    end
+    
+    if not corpse then return false end
+    
+    is_butchering = true
+    
+    if cfg.block_movement and level.disable_movement then
+        level.disable_movement(true)
+    end
+    
+    msg("Начинаем разделку... Не двигайтесь!", "$Y")
+    
+    local start_time = time_global()
+    local duration = cfg.butcher_time * 1000
+    local corpse_id = corpse:id()
+    
+    -- Прогресс
+    local last_progress = 0
+    local progress_timer = CreateTimeEvent("butcher_progress_" .. corpse_id, 0, 500,
+        function()
+            if not is_butchering then return true end
+            
+            local elapsed = time_global() - start_time
+            local progress = elapsed / duration
+            
+            if progress >= 1 then
+                return true
+            end
+            
+            local progress_step = math.floor(progress * 4)
+            if progress_step > last_progress then
+                last_progress = progress_step
+                msg(string.format("Разделка... %d%%", math.floor(progress * 100)), "$C")
+            end
+            
+            return false
+        end
+    )
+    
+    -- Таймер завершения
+    butcher_timer = CreateTimeEvent("butcher_" .. corpse_id, start_time + duration, 0,
+        function()
+            if cfg.block_movement and level.disable_movement then
+                level.disable_movement(false)
+            end
+            
+            spawn_loot(corpse, mutant_type)
+            alife_release(corpse)
+            
+            msg("Разделка завершена!", "$G")
+            
+            is_butchering = false
+            butcher_timer = nil
+            
+            return true
+        end
+    )
+    
+    return true
+end
+
+-- ============================================================================
+-- ПРОВЕРКА НАЖАТИЯ КЛАВИШИ F - УПРОЩЁННАЯ ВЕРСИЯ
+-- ============================================================================
+
+-- Используем глобальный хук на использование предметов/взаимодействие
+-- Это самый надёжный способ в Anomaly Anthology
+
+local function on_use_key()
+    -- Если уже разделываем - игнорируем
+    if is_butchering then
+        return
+    end
+    
+    -- Ищем ближайший труп
+    local corpse = find_nearest_corpse()
+    
+    if not corpse then
+        return -- нет трупа - ничего не делаем
+    end
+    
+    -- Проверяем, можно ли разделать
+    local mutant_type = get_mutant_type(corpse)
+    if not mutant_type then
+        return -- нельзя разделать
+    end
+    
+    -- Достаём нож
+    if not equip_knife() then
+        return
+    end
+    
+    -- Начинаем разделку
+    do_butcher(corpse, mutant_type)
+end
+
+-- ============================================================================
+-- РЕГИСТРАЦИЯ ХУКА
+-- ============================================================================
+
+-- Перехватываем использование предметов/взаимодействие
+-- Это срабатывает при нажатии F на любом объекте
+local original_use_func = nil
+
+-- Сохраняем оригинальную функцию, если она существует
+if actor_binder and actor_binder.use then
+    original_use_func = actor_binder.use
+end
+
+-- Создаём свою функцию-обработчик
+local function use_handler(obj)
+    -- Проверяем, не пытаемся ли мы использовать труп
+    if obj and not obj:alive() then
+        local clsid = obj:clsid()
+        if clsid == 200 or clsid == 201 then
+            -- Это труп - пробуем разделать
+            local mutant_type = get_mutant_type(obj)
+            if mutant_type then
+                -- Достаём нож и разделываем
+                if equip_knife() then
+                    do_butcher(obj, mutant_type)
+                    return true -- Отменяем стандартное использование
+                end
+            end
+        end
+    end
+    
+    -- Если не труп или не получилось разделать - вызываем стандартную обработку
+    if original_use_func then
+        return original_use_func(obj)
+    end
+    return false
+end
+
+-- Применяем хук
+if actor_binder then
+    actor_binder.use = use_handler
+    msg("Система разделки загружена! Нажмите F возле трупа мутанта.", "$G")
+else
+    -- Если actor_binder не найден, используем альтернативный метод
+    RegisterScriptCallback("actor_on_update", 
+        function()
+            -- Проверяем нажатие F через уровень
+            if level.get_key_press and level.get_key_press(key_bindings.kUSE) then
+                on_use_key()
+            end
+        end
+    )
+    msg("Система разделки загружена (альтернативный режим)!", "$G")
+end
+
+printf("[Butcher System] Version %s loaded", BUTCHER_VERSION)
+
+-- Экспорт
+butcher_system = {
+    version = BUTCHER_VERSION,
+    is_butchering = function() return is_butchering end,
+    config = cfg
+}

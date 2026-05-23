@@ -1,0 +1,67 @@
+--============ BIG THANKS TO xcvb AND Catspaw for this whole part ===========--
+
+
+function on_task_completed(task_id, tsk)
+    
+    local se_giver = tsk.task_giver_id and alife_object(tsk.task_giver_id)
+    local se_giver_comm = se_giver and se_giver.community and se_giver:community()
+    local se_giver_story_id = get_object_story_id(tsk.task_giver_id)
+    if not se_giver_comm then return end
+
+    passive_income.passinc_on_task_completed(se_giver_story_id, se_giver_comm)
+    --printdbg("passive income task completed callback")
+end
+
+-- WTF tasks integration
+function on_igi_task_completed(CACHE)
+    local se_giver = CACHE.task_giver_id and alife_object(CACHE.task_giver_id)
+    local se_giver_comm = se_giver and se_giver.community and se_giver:community()
+    local se_giver_story_id = get_object_story_id(CACHE.task_giver_id)
+    if not se_giver_comm then return end
+
+    passive_income.passinc_on_task_completed(se_giver_story_id, se_giver_comm)
+    --printdbg("WTF task completed callback")
+end
+
+local set_task_completed = task_manager.CRandomTask.set_task_completed
+--local set_task_failed = task_manager.CRandomTask.set_task_failed
+--local set_task_cancelled = task_manager.CRandomTask.set_task_cancelled
+
+if AddScriptCallback then
+    AddScriptCallback("on_task_completed")
+    AddScriptCallback("on_task_failed")
+    AddScriptCallback("on_task_cancelled")
+
+    function task_manager.CRandomTask.set_task_completed(self, task_id)
+        if (self.task_info[task_id]) then 
+            set_task_completed(self, task_id)
+            SendScriptCallback("on_task_completed", task_id, self.task_info[task_id])
+        end
+    end
+
+    --[[
+    function task_manager.CRandomTask.set_task_failed(self, task_id)
+        if (self.task_info[task_id]) then 
+            set_task_failed(self, task_id)
+            SendScriptCallback("on_task_failed", task_id, self.task_info[task_id])
+        end
+    end
+
+    function task_manager.CRandomTask.set_task_cancelled(self, task_id)
+        if (self.task_info[task_id]) then
+            set_task_cancelled(self, task_id)
+            SendScriptCallback("on_task_cancelled", task_id, self.task_info[task_id])
+        end
+    end
+    ]]--
+end
+
+
+function on_game_start()
+    RegisterScriptCallback("on_task_completed", on_task_completed)
+    
+    if igi_callbacks then
+        local add_callback = igi_callbacks.add_callback
+        add_callback("on_complete", on_igi_task_completed)
+    end
+end

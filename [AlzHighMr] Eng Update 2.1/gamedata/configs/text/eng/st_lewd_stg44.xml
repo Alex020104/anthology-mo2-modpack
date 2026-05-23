@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+
+
+<string_table>
+	<string id="st_wpn_lewd_stg44">
+		<text>Sturmgewehr 44 (StG 44)</text>
+	</string>
+	
+	<string id="st_wpn_lewd_stg44_descr">
+		<text>The StG 44 (abbreviation of Sturmgewehr 44, "assault rifle 44") is a German assault rifle developed during World War II by Hugo Schmeisser. It is also known by its early designations as the MP 43 and MP 44 (Maschinenpistole 43 and 44). The StG 44 was an improvement of an earlier design, the Maschinenkarabiner 42(H). \n \n
+		The StG 44 was the first successful assault rifle, with features including an intermediate cartridge (7.92?33mm Kurz), controllable automatic fire, a more compact design than a battle rifle with a higher rate of fire, and being designed primarily for hitting targets within a few hundred metres. Other rifles at the time were designed to hit targets of over a thousand meters, but this was found to be in excess of the range in which most enemy engagements actually took place.\n \n
+		The StG 44 fulfilled its role effectively, particularly on the Eastern Front, offering a greatly increased volume of fire compared to standard infantry rifles. The StG largely influenced the Soviet AK-47, introduced two years after the war concluded. The StG's influence can still be seen in modern assault rifles, which, after World War II, became the global standard for infantry rifles.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Sight: Hensdolt & Soehne x4 (ZF39)\n
+		%c[d_purple] • %c[ui_gray_2] Silencer: L26 Silencer</text>
+	</string>
+	
+	<string id="st_addon_scope_lewd_zf39">
+		<text>Hensoldt & Soehne x4 (ZF39)</text>
+	</string>
+	
+	<string id="st_addon_scope_lewd_zf39_descr">
+		<text>In 1939 the Oberkommando of the Wehrmacht (Armed Forces High Command) initiated a directive to start a sniper program. The Zf.39 Turret mount was the result of it. It was mainly used on the Kar98 but the general concept of putting magnifying scopes on rifles was established and so saw also some limited use on other rifles such as the STG44.\n
+Hensoldt & Soehne made the 4x magnification optic on this specific model, other glass manufactures were Zeiss, Kahles, Ajack and Schneider. The reticle is a standard german Post with a single pointed large centroal post and a pair of horizontal stadia lines.</text>
+	</string>
+	
+	<string id="st_addon_lewd_l26">
+		<text>L26 Silencer</text>
+	</string>
+	
+	<string id="st_addon_lewd_l26_descr">
+		<text>Patented in Germany as System Schaetzle, the L26 was a departure from the copies of the Russian wipe-based silencer designs. The L26 used a set of six identical cone-shaped metal baffles inside a simple tube. It attached to a rifle by clamping around the front sight, just like the rifle grenade launcher developed for the K98k. \n\n
+The basic design was used for several different models; basically everything in the Wehrmacht arsenal that was 8mm in diameter (although not the antitank rifle...). It was also made for the MG42, and about 200 of them were actually fielded with MG42's.</text>
+	</string>
+
+</string_table>

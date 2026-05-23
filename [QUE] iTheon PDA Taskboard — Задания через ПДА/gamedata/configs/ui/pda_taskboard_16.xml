@@ -1,0 +1,77 @@
+<w>
+	<main_wnd x="0" y="0" width="1024" height="768"/>
+
+    <frame_main x="28" y="94" width="764" height="614">
+        <texture>ui_inGame2_pda_buttons_background</texture>
+    </frame_main>
+
+    <frame_category_list x="0" y="54" width="256" height="560">
+        <texture>ui_inGame2_pda_buttons_background</texture>
+    </frame_category_list>
+
+    <frame_button_refresh x="0" y="0" width="256" height="54">
+        <texture>ui_inGame2_pda_buttons_background</texture>
+    </frame_button_refresh>
+
+    <!-- REFRESH TASK BUTTON  -->
+    <btn_refresh x="42" y="6" width="172" height="42" stretch="1">
+		<texture>ui_inGame2_pda_taskboard_custom_refresh</texture>
+    </btn_refresh>
+
+	<category_list x="0" y="54" width="256" height="560" item_height="76" can_select="1" always_show_scroll="0">
+    </category_list>
+    
+    <task_list x="256" y="0" width="508" height="614" item_height="200" can_select="1" always_show_scroll="0">
+    </task_list>
+
+    <!-- CATEGORY CARD -->
+    <category_card x="0" y="0" width="256" height="76">
+    </category_card>
+    
+    <category_card_bg x="4" y="4" width="248" height="68" stretch="1">
+        <texture>ui_inGame2_pda_buttons_background</texture>
+    </category_card_bg>
+    
+    <category_card_icon x="8" y="8" width="60" height="60" stretch="1">
+        <texture>ui\ui_noise</texture>
+    </category_card_icon>
+    
+    <category_card_name x="72" y="8" width="176" height="60">
+        <text align="c" vert_align="c" font="letterica18" r="255" g="255" b="255">category_card_name</text>
+	</category_card_name>
+    
+    <!-- TASK CARD -->
+    <task_card x="0" y="0" width="508" height="200" >
+    </task_card>
+
+    <task_card_bg x="6" y="6" width="496" height="188" stretch="1">
+        <texture>ui_inGame2_pda_taskboard_custom_background</texture>
+    </task_card_bg>
+    <task_card_bg_blocked x="6" y="6" width="496" height="188" stretch="1">
+        <texture>ui_inGame2_pda_taskboard_custom_background_blocked</texture>
+    </task_card_bg_blocked>
+
+    <task_card_npc_icon x="24" y="12" width="60" height="60" stretch="1">
+		<texture>ui\ui_noise</texture>
+    </task_card_npc_icon>
+    <task_card_npc_info x="12" y="75" width="84" height="113" complex_mode="1">
+        <text align="c" vert_align="t" font="letterica16" r="150" g="150" b="150">npc name placeholder</text>
+    </task_card_npc_info>
+
+    <task_card_icon x="99" y="12" width="83" height="60" stretch="1">
+		<texture>ui\ui_noise</texture>
+    </task_card_icon>
+    <task_details x="185" y="12" width="311" height="60" complex_mode="1">
+        <text align="l" vert_align="t" font="letterica16" r="150" g="150" b="150" >details placeholder</text>
+    </task_details>
+
+    <task_description_scrollbar x="99" y="75" width="397" height="113" right_ident="0" left_ident="0" top_indent="0" bottom_indent="0" vert_interval="0" always_show_scroll="0" scroll_profile="hidden"/>
+    <task_description x="99" y="75" width="397" height="113" complex_mode="1">
+        <text align="l" vert_align="t" font="letterica16" r="150" g="150" b="150">task description placeholder</text>
+    </task_description>
+    <!-- <task_description x="12" y="75" width="484" height="113" complex_mode="1">
+        <text align="l" vert_align="t" font="letterica16" r="150" g="150" b="150">task description placeholder</text>
+    </task_description> -->
+
+
+</w>

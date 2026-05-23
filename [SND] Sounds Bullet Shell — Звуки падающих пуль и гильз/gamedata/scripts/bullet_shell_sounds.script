@@ -1,0 +1,310 @@
+local SHELL_TYPE_PISTOL = "pistol"
+local SHELL_TYPE_RIFLE = "rifle"
+local SHELL_TYPE_SHOTGUN = "shotgun"
+
+local SHELL_SOUND_TYPE_GENERIC = "generic"
+local SHELL_SOUND_TYPE_LEAVES = "leaves"
+local SHELL_SOUND_TYPE_WATER = "water"
+local SHELL_SOUND_TYPE_METAL = "metal"
+local SHELL_SOUND_TYPE_WOOD = "wood"
+
+local SHELL_TYPE = {
+  ["ammo_9x21"] = SHELL_TYPE_PISTOL,
+  ["ammo_9x18"] = SHELL_TYPE_PISTOL,
+  ["ammo_9x19"] = SHELL_TYPE_PISTOL,
+  ["ammo_7.62x25"] = SHELL_TYPE_PISTOL,
+  ["ammo_11.43x23"] = SHELL_TYPE_PISTOL,
+  ["ammo_5.7x28"] = SHELL_TYPE_RIFLE,
+  ["ammo_5.45x39"] = SHELL_TYPE_RIFLE,
+  ["ammo_5.56x45"] = SHELL_TYPE_RIFLE,
+  ["ammo_9x39"] = SHELL_TYPE_RIFLE,
+  ["ammo_7.62x39"] = SHELL_TYPE_RIFLE,
+  ["ammo_7.92x33"] = SHELL_TYPE_RIFLE,
+  ["ammo_7.62x51"] = SHELL_TYPE_RIFLE,
+  ["ammo_pkm_100"] = SHELL_TYPE_RIFLE,
+  ["ammo_7.62x54"] = SHELL_TYPE_RIFLE,
+  ["ammo_12.7x55"] = SHELL_TYPE_RIFLE,
+  ["ammo_magnum_300"] = SHELL_TYPE_RIFLE,
+  ["ammo_357"] = SHELL_TYPE_RIFLE,
+  ["ammo_50"] = SHELL_TYPE_RIFLE,
+  ["ammo_338"] = SHELL_TYPE_RIFLE,
+  ["ammo_23x75"] = SHELL_TYPE_SHOTGUN,
+  ["ammo_20x70"] = SHELL_TYPE_SHOTGUN,
+  ["ammo_23"] = SHELL_TYPE_SHOTGUN,
+  ["ammo_12x70"] = SHELL_TYPE_SHOTGUN,
+  ["ammo_12x76"] = SHELL_TYPE_SHOTGUN
+}
+
+local SHELL_SOUND_TYPE = {
+  ["water"] = SHELL_SOUND_TYPE_WATER,
+  ["bush"] = SHELL_SOUND_TYPE_LEAVES,
+  ["grass"] = SHELL_SOUND_TYPE_GENERIC,
+  ["metal"] = SHELL_SOUND_TYPE_METAL,
+  ["metal_plate"] = SHELL_SOUND_TYPE_METAL,
+  ["metal_pipe"] = SHELL_SOUND_TYPE_METAL,
+  ["setka_rabica"] = SHELL_SOUND_TYPE_METAL,
+  ["tin"] = SHELL_SOUND_TYPE_METAL,
+  ["wood"] = SHELL_SOUND_TYPE_WOOD,
+  ["wooden_board"] = SHELL_SOUND_TYPE_WOOD,
+  ["asphalt"] = SHELL_SOUND_TYPE_GENERIC,
+  ["shifer"] = SHELL_SOUND_TYPE_GENERIC,
+  ["tile"] = SHELL_SOUND_TYPE_GENERIC,
+  ["flooring_tile"] = SHELL_SOUND_TYPE_GENERIC,
+  ["concrete"] = SHELL_SOUND_TYPE_GENERIC,
+  ["earth"] = SHELL_SOUND_TYPE_GENERIC,
+  ["dirt"] = SHELL_SOUND_TYPE_GENERIC,
+  ["gravel"] = SHELL_SOUND_TYPE_GENERIC,
+  ["sand"] = SHELL_SOUND_TYPE_GENERIC,
+  ["fake"] = SHELL_SOUND_TYPE_GENERIC,
+  ["fake_ladders"] = SHELL_SOUND_TYPE_GENERIC,
+  ["actor"] = SHELL_SOUND_TYPE_GENERIC
+}
+
+local SHELL_SOUND_TIME = {
+  ["mp412"] = 1400,
+  ["mp133"] = 800,
+  ["ks23"] = 800,
+  ["ks23_kaban"] = 800,
+  ["ks23_kaban_kab_up"] = 800,
+  ["ks23_23_up"] = 800,
+  ["ithacam37"] = 800,
+  ["ithacam37_trench"] = 800,
+  ["ithacam37_mag"] = 800,
+  ["ithacam37_sawnoff"] = 800,
+  ["ithacam37_stakeout"] = 800,
+  ["wincheaster1300"] = 800,
+  ["toz106"] = 1400,
+  ["toz106_m1"] = 1400,
+  ["mossberg590"] = 800,
+  ["remington870"] = 800,
+  ["dvl10"] = 1400,
+  ["dvl10_m1"] = 1400,
+  ["k98"] = 1400,
+  ["k98_mod"] = 1400,
+  ["k98_mod_silen98"] = 1400,
+  ["l96a1"] = 1400,
+  ["l96a1m"] = 1400,
+  ["remington700"] = 1400,
+  ["remington700_archangel"] = 1400,
+  ["remington700_lapua700"] = 1400,
+  ["remington700_magpul_pro"] = 1400,
+  ["remington700_mod_x_gen3"] = 1400,
+  ["sv98"] = 1400,
+  ["sv98_custom"] = 1400,
+  ["vssk"] = 1400,
+  ["mosin"] = 1400
+}
+
+local SHELL_SOUND_GAP_TIME = {
+  ["toz34"] = 600,
+  ["toz34_bull"] = 600,
+  ["toz34_custom"] = 600,
+  ["toz34_decor"] = 600,
+  ["toz34_mark4"] = 600,
+  ["toz34_obrez"] = 500,
+  ["toz34_obrez_custom"] = 500,
+  ["toz34_obrez_decor"] = 500,
+  ["bm16"] = 200,
+  ["bm16_alt"] = 200,
+  ["bm16_full"] = 200,
+  ["bm16_full_alt"] = 200
+}
+
+local WEAPON_REVOLVER = {
+  ["mp412"] = true
+}
+
+local WEAPON_DOUBLE_BARREL = {
+  ["toz34"] = true,
+  ["toz34_bull"] = true,
+  ["toz34_custom"] = true,
+  ["toz34_decor"] = true,
+  ["toz34_mark4"] = true,
+  ["toz34_obrez"] = true,
+  ["toz34_obrez_custom"] = true,
+  ["toz34_obrez_decor"] = true,
+  ["bm16"] = true,
+  ["bm16_alt"] = true,
+  ["bm16_full"] = true,
+  ["bm16_full_alt"] = true
+}
+
+local WEAPON_BLACKLIST = {
+  ["gauss"] = true,
+  ["gauss_quest"] = true,
+  ["m79"] = true,
+  ["rg-6"] = true,
+  ["rpg7"] = true
+}
+
+local WEAPON_SECTION_POSTFIXES = {
+  "_1p29",
+  "_ac10632",
+  "_ac11090",
+  "_acog",
+  "_eot",
+  "_kobra",
+  "_ps01",
+  "_pso1m21",
+  "_g43",
+  "_galil",
+  "_po4x34",
+  "_pu",
+  "_23",
+  "_zf4",
+  "_silencer",
+  "_scope",
+  "_scope_pso1m21",
+  "_scope_g43",
+  "_scope_galil",
+  "_scope_po4x34",
+  "_scope_pu",
+  "_scope_zf4",
+  "_addon_scope_pso1m21",
+  "_addon_scope_g43",
+  "_addon_scope_galil",
+  "_addon_scope_po4x34",
+  "_addon_scope_pu",
+  "_addon_scope_zf4",
+  "_addon_silencer"
+}
+
+local AMMO_SECTION_POSTFIXES = {
+  "_ap",
+  "_bmg",
+  "_bull",
+  "_buck",
+  "_buck_self",
+  "_barrikada",
+  "_dart",
+  "_ep",
+  "_eco",
+  "_fmj",
+  "_federal",
+  "_p",
+  "_ps",
+  "_pbp",
+  "_pab9",
+  "_pmm",
+  "_sp10",
+  "_ss190",
+  "_ss195",
+  "_shrapnel",
+  "_7h1",
+  "_7h14",
+  "_hydro",
+  "_hp_mag",
+  "_zhekan",
+  "_zhekan_heli",
+  "_verybad",
+  "_bad"
+}
+
+local shell_sound_list = {}
+local current_material_name = "actor"
+
+local volume = 0.8
+local is_enabled = true
+local is_panned = false
+
+local function gsub_table(source, table)
+  for i = 1, #table do
+    local start_index, end_index = string.find(source, table[i])
+    if start_index ~= nil then
+      return string.sub(source, 1, start_index - 1)
+    end
+  end
+  return source
+end
+
+local function actor_on_footstep(material, power, hud_view, flags)
+  -- Store material name without path prefix "materials/", it`s 10 charaters in string begin
+  current_material_name = string.sub(material, 11)
+end
+
+local function get_sound_name(ammo_name)
+  local sound_type = SHELL_SOUND_TYPE[current_material_name] or SHELL_SOUND_TYPE_GENERIC
+
+  if sound_type == SHELL_SOUND_TYPE_WATER or sound_type == SHELL_SOUND_TYPE_LEAVES then
+    return "bullet_shells\\generic_" .. sound_type .. "_" .. math.random(1, 8)
+  else
+    return "bullet_shells\\" .. (SHELL_TYPE[ammo_name] or SHELL_TYPE_RIFLE) .. "_" .. sound_type .. "_" .. math.random(1, 8)
+  end
+end
+
+local function get_sound_time(weapon_name, index)
+  local sound_gap_time = SHELL_SOUND_GAP_TIME[weapon_name] or 100
+  local sound_time = (SHELL_SOUND_TIME[weapon_name] or 1000) - sound_gap_time
+
+  if sound_time < 0 then
+    sound_time = 0
+  end
+
+  return time_global() + sound_time + (sound_gap_time * index) + math.random(0, 100)
+end
+
+local function get_weapon_info(weapon)
+  -- Getting pure weapon and ammo names without extra postfixes or prefixes and ammo count in magazine
+  local weapon_section = weapon:section()
+  local ammo_list = utils_item.get_ammo(weapon_section, weapon:id())
+  return gsub_table(string.sub(weapon_section, 5), WEAPON_SECTION_POSTFIXES), gsub_table(ammo_list[weapon:get_ammo_type() + 1] or "ammo_9x39", AMMO_SECTION_POSTFIXES), weapon:get_ammo_in_magazine()
+end
+
+local function create_shell_sound(is_reload)
+  if not is_enabled then return end
+
+  local weapon_name, ammo_name, ammo_in_magazine = get_weapon_info(db.actor:active_item())
+
+  if WEAPON_BLACKLIST[weapon_name] or (is_reload and not (WEAPON_DOUBLE_BARREL[weapon_name] or WEAPON_REVOLVER[weapon_name])) or (not is_reload and (WEAPON_DOUBLE_BARREL[weapon_name] or WEAPON_REVOLVER[weapon_name])) then return end
+
+  local count = 1
+  if WEAPON_REVOLVER[weapon_name] then
+    count = 6
+  elseif WEAPON_DOUBLE_BARREL[weapon_name] then
+    count = 2 - ammo_in_magazine
+  end
+
+  for i = 1, count do
+    shell_sound_list[#shell_sound_list + 1] = {
+      object = nil, 
+      name = get_sound_name(ammo_name), 
+      time = get_sound_time(weapon_name, i)
+    }
+  end
+end
+
+local function actor_on_update()
+  for i = 1, #shell_sound_list do
+    local shell_sound = shell_sound_list[i]
+    if shell_sound and time_global() > shell_sound.time then
+      if not shell_sound.object then
+        shell_sound.object = sound_object(shell_sound.name)
+        shell_sound.object:play(db.actor, 0, sound_object.s2d)
+        shell_sound.object.volume = volume
+      end
+      -- Release object only after sound will played to protect sound object from garbage collection
+      if not shell_sound.object:playing() then
+        shell_sound_list[i] = nil
+      end
+    end
+  end
+end
+
+local function load_mcm_options()
+  if ui_mcm then
+    is_enabled = ui_mcm.get("bullet_shell_sounds/enabled")		
+    volume = ui_mcm.get("bullet_shell_sounds/volume")		
+	end
+end
+
+local function actor_on_weapon_fired(obj, weapon, ammo_elapsed, grenade_elapsed, ammo_type, grenade_type) create_shell_sound(false) end
+local function actor_on_weapon_reload(actor, weapon, ammo_total) create_shell_sound(true) end
+
+function on_game_start()
+  RegisterScriptCallback("actor_on_footstep", actor_on_footstep)
+  RegisterScriptCallback("actor_on_update", actor_on_update)
+  RegisterScriptCallback("actor_on_weapon_fired", actor_on_weapon_fired)
+  RegisterScriptCallback("actor_on_weapon_reload", actor_on_weapon_reload)
+  RegisterScriptCallback("on_option_change", load_mcm_options)
+  load_mcm_options()
+end

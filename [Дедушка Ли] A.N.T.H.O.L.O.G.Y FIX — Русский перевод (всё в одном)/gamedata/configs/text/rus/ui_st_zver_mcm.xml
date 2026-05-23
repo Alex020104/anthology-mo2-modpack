@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	zver strings
+-->
+
+<string_table>
+	<string id="ui_mcm_menu_zver">
+		<text>Zver HUD Компакт</text>
+	</string>
+	<string id="ui_mm_video_hud_zverslide">
+		<text>Компактная версия Zver HUD - Настройки</text>
+	</string>
+
+
+
+	<string id="ui_mcm_zver_armorbar">
+		<text>Шкала состояния брони</text>
+	</string>
+	<string id="ui_mcm_zver_armorbar_desc">
+		<text>Показывает шкалу состояния брони</text>
+	</string>
+	<string id="ui_mcm_zver_armortext">
+		<text>Состояние брони в процентах в виде текста</text>
+	</string>
+	<string id="ui_mcm_zver_armortext_desc">
+		<text>Показывает состояние брони в процентах в виде текста. \n%c[ui_gray_2]Не имеет эффекта, если панель отключена.</text>
+	</string>
+	<string id="ui_mcm_zver_weaponshow">
+		<text>Шкала состояния оружия</text>
+	</string>
+	<string id="ui_mcm_zver_weaponshow_desc">
+		<text>Отображает шкалу состояния оружия</text>
+	</string>
+	<string id="ui_mcm_zver_weapontext">
+		<text>Состояние оружия в процентах в виде текста</text>
+	</string>
+	<string id="ui_mcm_zver_weapontext_desc">
+		<text>Показывает состояние оружия в процентах в виде текста. \n%c[ui_gray_2]Не имеет эффекта, если панель отключена.</text>
+	</string>
+	<string id="ui_mcm_zver_weaponbarhide">
+		<text>Скрыть HUD оружия при убирании оружия</text>
+	</string>
+	<string id="ui_mcm_zver_weaponbarhide_desc">
+		<text>Скрывает HUD и панель состояния оружия, когда Вы убираете оружие. \n%c[ui_gray_2]Не имеет эффекта, если панель отключена.</text>
+	</string>
+	<string id="ui_mcm_zver_ammoshow">
+		<text>Счетчики общего количества патронов</text>
+	</string>
+	<string id="ui_mcm_zver_ammoshow_desc">
+		<text>Показывает общее количество патронов, имеющихся в инвентаре, для каждого из 3 типов.</text>
+	</string>
+	<string id="ui_mcm_zver_oldammoshow">
+		<text>Старые патроны</text>
+	</string>
+	<string id="ui_mcm_zver_oldammoshow_desc">
+		<text>Заставляет старые боеприпасы появляться там, где это уместно (например, при отсутствии их "хороших" аналогов).</text>
+	</string>
+	<string id="ui_mcm_zver_radhealthshow">
+		<text>Шкала радиационного облучения</text>
+	</string>
+	<string id="ui_mcm_zver_radhealthshow_desc">
+		<text>Показывает количество радиации, которое вы имеете, в виде шкалы.</text>
+	</string>
+	<string id="ui_mcm_zver_bleedingbarshow">
+		<text>Шкала кровотечения</text>
+	</string>
+	<string id="ui_mcm_zver_bleedingbarshow_desc">
+		<text>Показывает количество теряемой крови в виде шкалы</text>
+	</string>
+	<string id="ui_mcm_zver_healingbar">
+		<text>Шкала состояния здоровья</text>
+	</string>
+	<string id="ui_mcm_zver_healingbar_desc">
+		<text>Показывает количество восстанавливаемого вами здоровья в виде показателя здоровья размером 1 на 10.</text>
+	</string>
+	
+</string_table>

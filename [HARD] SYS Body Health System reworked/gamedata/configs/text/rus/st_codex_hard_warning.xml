@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="st_codex_hard_warning_stamp">
+        <text>ПРОТОКОЛ ВЫЖИВАНИЯ / РЕЖИМ HARD</text>
+    </string>
+    <string id="st_codex_hard_warning_title">
+        <text>ВНИМАНИЕ!</text>
+    </string>
+    <string id="st_codex_hard_warning_subtitle">
+        <text>Вы выбрали HARD-режим.</text>
+    </string>
+    <string id="st_codex_hard_warning_body">
+        <text>Уважаемый игрок, сейчас активен один из самых сложных режимов выживания. Вас ждут жёсткая экономика, опасные противники, дефицит ресурсов и заметно более требовательная игра, где ошибки быстро становятся дорогими.</text>
+    </string>
+    <string id="st_codex_hard_warning_protocol">
+        <text>Режим рекомендуется опытным игрокам и ветеранам Зоны Отчуждения, хорошо знакомым с механиками игры.</text>
+    </string>
+    <string id="st_codex_hard_warning_signature">
+        <text>Подготовьтесь заранее. Зона не будет делать скидок.</text>
+    </string>
+    <string id="st_codex_hard_warning_accept">
+        <text>ПОНЯЛ, ВХОЖУ В ЗОНУ</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning">
+        <text>Codex Hard Warning</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning_title">
+        <text>Стартовое предупреждение HARD</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning_enabled">
+        <text>Показать предупреждение при следующей загрузке</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning_enabled_desc">
+        <text>Если включено, при следующем входе в игру появится записка-предупреждение. После показа галочка автоматически выключится.</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning_note">
+        <text>Галочка работает как одноразовый взвод: включил, загрузился, увидел окно, и настройка сама снялась.</text>
+    </string>
+</string_table>

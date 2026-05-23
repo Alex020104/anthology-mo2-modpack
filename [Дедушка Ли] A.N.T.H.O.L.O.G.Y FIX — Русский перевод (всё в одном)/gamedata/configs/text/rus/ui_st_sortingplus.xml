@@ -1,0 +1,177 @@
+<!-- 
+	Anomaly Modconfiguration Menu strings
+	
+-->
+
+<string_table>
+	<string id="st_rax_fav">
+		<text>Отметить как "Избранное"</text>
+	</string>
+	<string id="st_rax_unfav">
+		<text>Снять отметку с "Избранного"</text>
+	</string>
+	<string id="st_rax_junk">
+		<text>Отметить как "мусор"</text>
+	</string>
+	<string id="st_rax_unjunk">
+		<text>Снять отметку с "мусора"</text>
+	</string>
+
+
+	<string id="ui_mcm_title_SortingPlus">
+		<text>Сортировка Плюс</text>
+	</string>
+
+	<string id="ui_mcm_menu_SortingPlus">
+		<text>Сортировка Плюс</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_playerinv">
+		<text>Инвентарь игрока</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_playerinv_desc">
+		<text>Правая сторона на всех экранах, кроме торговли</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_playertrade">
+		<text>Сортировка инвентаря игрока для торговли</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_playertrade_desc">
+		<text>Правая сторона инвентаря при торговле</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_npcinv">
+		<text>Сортировка инвентаря НПС</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_npcinv_desc">
+		<text>Левая сторона инвентаря на всех экранах, кроме торгового</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_npctrade">
+		<text>Сортировка инвентаря НПС при торговле</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_npctrade_desc">
+		<text>Левая сторона инвентаря при торговле</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_useltx">
+		<text>Использовать "sortingplus.ltx"</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_useltx_desc">
+		<text>Игнорирует настройки ниже в пользу настроек в файле "sortingplus.ltx", который предлагает более детальный контроль</text>
+	</string>
+	
+	<string id="ui_mcm_SortingPlus_iconjunk_desc">
+		<text>Отметить элементы, помеченные как "мусор", с помощью иконки</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_iconjunk">
+		<text>Отметить как "мусор"</text>
+	</string>
+	
+	<string id="ui_mcm_SortingPlus_hilitejunk">
+		<text>Выделить "мусор"</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_hilitejunk_desc">
+		<text>Выделите элементы, помеченные как "мусор"</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_sortjunk">
+		<text>Используйте категорию "мусор"</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_sortjunk_desc">
+		<text>Сортирует "мусор" в свою собственную категорию, по умолчанию последнюю</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_selljunk">
+		<text>Автопродажа "мусора"</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_selljunk_desc">
+		<text>"Мусор", который купит торговец, будет помещен в панель продажи. Вы должны нажать кнопку продажи, чтобы завершить сделку</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_iconfavs">
+		<text>Отметить как "Избранное"</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_iconfavs_desc">
+		<text>Пометьте элементы, отмеченные как "Избранное" иконкой</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_hilitefavs">
+		<text>Выделить "Избранное"</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_hilitefavs_desc">
+		<text>Выделите элементы, помеченные как "Избранное"</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_sortfavs">
+		<text>Использовать категорию "Избранное"</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_sortfavs_desc">
+		<text>Сортирует избранные элементы в их собственную категорию, по умолчанию первую.</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_putallfavs">
+		<text>Заблокировать "Переместить все" для "Избранное"</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_putallfavs_desc">
+		<text>"Избранное" не будет перемещено из вашего инвентаря при переносе всего</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_resort">
+		<text>Пересортировать при маркировке</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_resort_desc">
+		<text>Инвентаризация активируется немедленно при пометке "Избранное"/"Мусор". В противном случае ожидает следующего открытия инвентаризации. Полезно, если подсветка отключена</text>
+	</string>
+	
+	<string id="ui_mcm_SortingPlus_001loadout">
+		<text>Снаряжение ARM</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_002mags">
+		<text>Магазины ARM</text>
+	</string>	
+	
+	<string id="ui_mcm_SortingPlus_000favorites">
+		<text>Избранное</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_999junk">
+		<text>Мусор</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_010weapons">
+		<text>Оружие</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_020outfits">
+		<text>Экипировка</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_030artifacts">
+		<text>Артефакты</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_040devices">
+		<text>Устройства</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_050tools">
+		<text>Инструменты</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_060medical">
+		<text>Медицина</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_070foods">
+		<text>Еда</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_080mutantfoods">
+		<text>Еда из мутантов</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_090quest">
+		<text>Квестовые предметы</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_100notes">
+		<text>Заметки</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_110ammo">
+		<text>Боеприпасы</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_120mutantparts">
+		<text>Части мутантов</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_130misc">
+		<text>Разное</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_140upgrades">
+		<text>Обновления</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_150parts">
+		<text>Детали</text>
+	</string>
+	<string id="ui_mcm_SortingPlus_usefunctors">
+		<text>"Избранное"/"Мусор" в меню элементов, вызываемое правой кнопкой мыши</text>
+	</string>
+	
+</string_table>

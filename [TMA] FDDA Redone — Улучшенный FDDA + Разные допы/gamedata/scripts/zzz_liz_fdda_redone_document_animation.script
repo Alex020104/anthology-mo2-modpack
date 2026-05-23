@@ -1,0 +1,111 @@
+local mcm_enable_animation = true
+local is_gui_visible = false
+
+--- ------------------------------------------
+--- init
+--- ------------------------------------------
+
+function on_game_start()
+    RegisterScriptCallback("on_game_load", initialize)
+    RegisterScriptCallback("on_option_change", initialize)
+end
+
+function initialize()
+    mcm_enable_animation = liz_fdda_redone_mcm.get_config("consumables/recepie_anim_enable")
+end
+
+--- ------------------------------------------
+--- monkey patches
+--- ------------------------------------------
+
+local OrigianlIRFR = item_recipe.func_recipe
+item_recipe.func_recipe = function (obj)
+    if not mcm_enable_animation then
+        OrigianlIRFR(obj)
+        return
+    end
+    --is recipe
+    local sec = obj:section()
+    if not IsItem("recipe", sec) then
+        return
+    end
+    --hide inventory
+    local hud = get_hud()
+    if hud then
+        hide_hud_inventory()
+    end
+    --read document, play animation
+    lam2.add_action(ta_animation_show())
+    lam2.add_action(ta_animation_idle(obj:id()))
+    lam2.add_action(ta_animation_hide())
+end
+
+--- ------------------------------------------
+--- callbacks
+--- ------------------------------------------
+
+function gui_on_show(name)
+    if name == "UIRecipe" then
+        is_gui_visible = true
+    end
+end
+
+function gui_on_hide(name)
+    if name == "UIRecipe" then
+        is_gui_visible = false
+    end
+end
+
+--- ------------------------------------------
+--- action templates
+--- ------------------------------------------
+
+function ta_animation_show()
+    local a = lam2.get_template_action_play_animation()
+    a.sec = "liz_document_animation_hud"
+    a.anm = "anm_show"
+    a.cam = "cam_show"
+    a.snd = "snd_show"
+    a.on_execute = function (self, time)
+        --flicker fix
+        if time > self.duration - 0.01 then
+            return lam2.states.success
+        end
+    end
+    return a
+end
+
+function ta_animation_idle(obj_id)
+    local a = lam2.get_template_action_play_animation()
+    a.sec = "liz_document_animation_hud"
+    a.anm = "anm_idle"
+    a.obj_id = obj_id
+    a.on_enter = function (self)
+        RegisterScriptCallback("GUI_on_show", gui_on_show)
+        RegisterScriptCallback("GUI_on_hide", gui_on_hide)
+        local obj = level.object_by_id(self.obj_id)
+        if obj then
+            OrigianlIRFR(obj)
+        end
+    end
+    a.on_execute = function (self, time)
+        if not is_gui_visible then
+            return lam2.states.success
+        end
+        return lam2.states.running
+    end
+    a.on_exit = function (self)
+        UnregisterScriptCallback("GUI_on_show", gui_on_show)
+        UnregisterScriptCallback("GUI_on_hide", gui_on_hide)
+    end
+    return a
+end
+
+function ta_animation_hide()
+    local a = lam2.get_template_action_play_animation()
+    a.sec = "liz_document_animation_hud"
+    a.anm = "anm_hide"
+    a.cam = "cam_hide"
+    a.snd = "snd_hide"
+    return a
+end

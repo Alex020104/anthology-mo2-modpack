@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	
+	<string id="ui_mcm_trader_destockifier_title">
+		<text>Настройки запасов у продавца</text>
+	</string>
+	<string id="ui_mcm_menu_trader_destockifier">
+		<text>Лимит товаров</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_enable">
+		<text>Включить</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_debug_mode">
+		<text>Режим отладки</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_debug_mode_desc">
+		<text>Включает спам сообщений в консоли</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_items_help">
+		<text>
+			Ниже вы можете определить максимальное количество предметов, которое может быть у каждого торговца после пополнения запасов.\n
+			Если установить ползунок на 0, то предметы в группе будут полностью удалены.\n
+			Если установить ползунок на -1, то мод не удалит ни один предмет из этой группы.\n
+		</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_guns">
+		<text>Максимальное количество винтовок на складе</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_handguns">
+		<text>Максимальное количество пистолетов на складе</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_knives">
+		<text>Максимальное количество холодного оружия на складе</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_outfits">
+		<text>Максимальное количество экипировки на складе</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_helmets">
+		<text>Максимальное количество шлемов на складе</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_weapon_attachments">
+		<text>Максимальное количество навесного оборудования для оружия</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_backpacks">
+		<text>Максимальное количество рюкзаков на складе</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_explosives">
+		<text>Максимальное количество взрывчатки (гранаты, подствольники, выстрелы к РПГ) на складе</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_ammo_percent">
+		<text>Максимальный процент патронов от первоначального запаса для продажи</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_ammo_percent_desc">
+		<text>Установка на -10 не коснется патронов</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_sell_only_guns_ammo">
+		<text>Продавайте патроны только для оружия, имеющегося в наличии</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_food">
+		<text>Максимальное количество еды, напитков, сигарет на складе</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_food_desc">
+		<text>Торговцы, не являющиеся барменами, будут иметь на 50% меньше установленной суммы</text>
+	</string>
+		<string id="ui_mcm_trader_destockifier_max_heal">
+		<text>Максимальное количество медицины на складе</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_heal_desc">
+		<text>Немедицинские торговцы будут иметь на 50% меньше установленной суммы</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_repair">
+		<text>Максимальное количество ремкомплектов на складе</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_repair_desc">
+		<text>Трейдеры, не являющиеся механиками, будут иметь на 50% меньше установленной суммы</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_randomize">
+		<text>Рандомизировать</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_randomize_desc">
+		<text>Количество товаров будет колебаться от определенного количества в MCM.</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_randomize_deviation">
+		<text>Случайное отклонение (%)</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_randomize_deviation_desc">
+		<text>
+			100% - предметы колеблются от 0 до 2x суммы\n
+			50% - предметы колеблются между 0,5x и 1,5x суммы</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_compatibility_help">
+		<text>
+			Ниже вы можете определить количество предметов, используемых некоторыми модами\n
+		</text>
+	</string>
+	<string id="ui_mcm_trader_destockifier_max_mags">
+		<text>Максимальное количество магазинов на складе (Mags Redux)</text>
+	</string>
+	
+</string_table>

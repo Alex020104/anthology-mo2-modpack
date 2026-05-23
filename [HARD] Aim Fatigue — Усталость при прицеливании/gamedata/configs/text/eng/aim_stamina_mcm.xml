@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- Aim Stamina MCM xml v1.0a -->
+
+<string_table>
+	<string id="ui_mcm_menu_aim_stamina">
+		<text>Aim Stamina</text>
+	</string>
+	
+	<!-- categories -->
+	<string id="ui_mcm_aim_stamina_title">
+		<text>Private's Aim Stamina</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_ASweaponsway">
+		<text>Weapon Sway Settings</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AShudtitle">
+		<text>HUD Settings</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_ASdebugtitle">
+		<text>Debug Mode</text>
+	</string>
+	
+	<!-- operational mode -->
+	<string id="ui_mcm_aim_stamina_AS_op_mode">
+		<text>OPERATIONAL MODE</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_op_mode_desc">
+		<text>Choose between 2 different operational modes.\nMode 1 introduces weapon sway below a certain aim stamina threshold and stops aiming when aim stamina reaches zero. \nMode 2 allows you to keep aiming when aim stamina reaches zero but weapon sway is introduced.</text>
+	</string>
+	<string id="ui_mcm_lst_stop_aim">
+		<text>1</text>
+	</string>
+	<string id="ui_mcm_lst_keep_aim">
+		<text>2</text>
+	</string>
+	
+	<!-- hardcore mode -->
+	<string id="ui_mcm_aim_stamina_AS_mode">
+		<text>Hardcore Mode</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_mode_desc">
+		<text>Choose between 2 different hardcore modes.\n"Off" is normal mode. Aim stamina is drained when aiming and recovered when not aiming.\nIn "Light" mode aim stamina is drained when aiming and recovered when the gun is lowered. The value doesn't change when the gun is aim ready.\nIn "Heavy" mode aim stamina is slowly drained when the gun is aim ready and drained normally when aiming. Only lowering the gun recovers aim stamina.</text>
+	</string>
+	<string id="ui_mcm_lst_off">
+		<text>Off</text>
+	</string>
+	<string id="ui_mcm_lst_light">
+		<text>Light</text>
+	</string>
+	<string id="ui_mcm_lst_heavy">
+		<text>Heavy</text>
+	</string>
+		
+	<!-- aim stamina -->
+	<string id="ui_mcm_aim_stamina_aim_stamina">
+		<text>max aim stamina</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_aim_stamina_desc">
+		<text>Maximum amount of stamina "units". With drain/recover weight influence = 0 one stamina unit corresponds to one second of aim/recovery time.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_drain_weight_influence">
+		<text>stamina drain weight influence</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_drain_weight_influence_desc">
+		<text>Weight influence of the gun you're holding while aiming. The heavier the gun the faster you drain aim stamina. Higher values increase influence, zero ignores gun weight completely.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_recover_weight_influence">
+		<text>stamina recovery weight influence</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_recover_weight_influence_desc">
+		<text>Weight influence of the gun you're holding when not aiming. The heavier the gun the slower you recover aim stamina. Higher values increase influence, zero ignores gun weight completely.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_rate_range">
+		<text>rate range</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_rate_range_desc">
+		<text>Aiming a heavy gun e.g. Gauss Rifle drains aim stamina much faster than aiming a light gun e.g. Glock 19. (The exact opposite is true for aim stamina recovery.) Rate range changes the difference between fast and slow stamina drain/recovery. Lower values decrease the difference. Applies for stamina drain/recovery only if drain/recovery weight influence > 0.</text>
+	</string>
+	
+	<!-- weapon sway -->
+	<string id="ui_mcm_aim_stamina_AS_wpn_sway_start">
+		<text>weapon sway start</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_wpn_sway_start_desc">
+		<text>Set the aim stamina threshold below which the weapon sway begins. If the value is set to zero weapon sway is disabled.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_wpn_sway_power">
+		<text>weapon sway intensity</text>
+	</string>
+	
+	<!-- HUD -->
+	<string id="ui_mcm_aim_stamina_show_AS_counter">
+		<text>show aim stamina counter</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_show_AS_counter_desc">
+		<text>Displays the aim stamina value as a number.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_show_AS_bar">
+		<text>show aim stamina bar</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_show_AS_bar_desc">
+		<text>Displays the aim stamina value as an energy bar.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_hide_timer">
+		<text>hide HUD after X seconds</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_hide_timer_desc">
+		<text>When not aiming the HUD disappears after a certain amount of time. When the value is set to zero the HUD is visible all the time.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_x_pos">
+		<text>HUD x position</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_x_pos_desc">
+		<text>Horizontal HUD position. Increasing the value shifts the HUD to the right.\nmin = 0, max = 1024, default = 462.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_y_pos">
+		<text>HUD y position</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_y_pos_desc">
+		<text>Vertical HUD position. Increasing the value shifts the HUD downwards.\nmin = 0, max = 768, default = 720.</text>
+	</string>
+	
+	<string id="ui_mcm_aim_stamina_AS_counter_x_pos">
+		<text>horizontal counter position</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_counter_x_pos_desc">
+		<text>Displays the counter left, central or right relative to the energy bar.</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_left">
+		<text>Left</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_center">
+		<text>Center</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_right">
+		<text>Right</text>
+	</string>
+	
+	<string id="ui_mcm_aim_stamina_AS_counter_y_pos">
+		<text>vertical counter position</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_counter_y_pos_desc">
+		<text>Displays the counter above or below the energy bar.</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_above">
+		<text>Above</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_below">
+		<text>Below</text>
+	</string>
+
+	<!-- for debug mode -->
+	<string id="ui_mcm_aim_stamina_AS_disable">
+		<text>Disable Aim Stamina</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_disable_desc">
+		<text>Interrupts stamina drain/recovery and hides the HUD. Useful in debug mode e.g. when using the weapon hud editor.</text>
+	</string>
+</string_table>

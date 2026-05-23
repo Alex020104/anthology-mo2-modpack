@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="pda_btn_extra_achievements">
+		<text>Достиж.</text>
+	</string>
+	<string id="pda_btn_ranking_short">
+		<text>Стат.</text>
+	</string>
+	<string id="pda_btn_relations_short">
+		<text>Отн.</text>
+	</string>
+	<string id="pda_btn_contacts_short">
+		<text>Фракц.</text>
+	</string>
+	<string id="pda_btn_encyclopedia_short">
+		<text>Справ.</text>
+	</string>
+	<string id="pda_btn_logs_short">
+		<text>Сообщ.</text>
+	</string>
+	<string id="pda_btn_talents_short">
+		<text>Тал.</text>
+	</string>
+</string_table>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+    <string id="st_anombp_desc">
+		<text>Странный рюкзак, излучающий энергию, похожую на аномальное поле. Его ткань была изменена артефактами, что сделало его сверхъестественно тяжелым.\nУченый сказал вам, что использование таких рюкзаков в качестве тайников позволяет вам видеть внутри одни и те же предметы, где бы вы ни находились.\n \n
+		%c[ui_gray_1]СВОЙСТВА:\n
+		%c[d_blue] • %c[ui_gray_2] загадочный предмет\n
+		%c[d_blue] • %c[ui_gray_2] хранилище предметов\n
+		%c[0,100,255,150] • %c[ui_gray_2] можно использовать как тайник\n
+			</text>
+	</string>
+    <string id="st_anombp_name">
+        <text>Аномальный рюкзак</text>
+    </string>
+	<string id="st_anombp_stash">
+        <text>Аномальный тайник</text>
+    </string>
+	<string id="st_anombp_pickup">
+        <text>Поднять</text>
+    </string>
+	<string id="st_anombp_cantsprint">
+        <text>Вы не можете бежать с аномальным рюкзаком.</text>
+    </string>
+	<string id="ui_st_anom_pickup_hit">
+		<text>Поднять тайник</text>
+	</string>
+	<string id="ui_st_anom_pickup_warning">
+		<text>Это последний аномальный тайник. Заберите его содержимое, прежде чем сможете его забрать!</text>
+	</string>
+	<string id="st_fetch_count_in_anom_stash">
+        <text>%sУ вас есть %sx%s %sin в вашем аномальном тайнике</text>
+    </string>
+</string_table>

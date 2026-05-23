@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	
+	<string id="st_enhanced_gui_version">
+			<text>S.T.A.L.K.E.R. Anomaly A.N.T.H.O.L.O.G.Y</text>
+	</string>
+	
+	<string id="st_anomaly_credits">
+		<text>Anomaly</text>
+	</string>
+	
+	<string id="st_anthology">
+			<text>- Anomaly A.N.T.H.O.L.O.G.Y -</text>
+	</string>
+
+	<string id="st_developers">
+			<text>- Разработчики -</text>
+	</string>
+	<string id="st_lead_developer">
+		<text>Основатель проекта и ведущий разработчик</text>
+	</string>
+	<string id="st_anthology_command">
+		<text>ВСЕ, КТО ПОМОГАЛ ПРОЕКТУ!</text>
+	</string>
+	
+	<string id="st_project_lead">
+		<text>Creator A.N.T.H.O.L.O.G.Y</text>
+	</string>
+	<string id="st_max">
+		<text>Максим Ратниченко</text>
+	</string>
+	<string id="st_modpack">
+		<text>Creator A.N.T.H.O.L.O.G.Y ModPack</text>
+	</string>
+	<string id="st_hyper">
+		<text>Сергей Колузаев</text>
+	</string>
+
+	<string id="st_anthology_max">
+		<text>Максим Ратниченко</text>
+	</string>
+
+	<string id="st_mod_contributors">
+			<text>- Внёсшие вклад -</text>
+	</string>
+
+	<string id="st_anthology_past">
+		<text>PastKNIGHT</text>
+	</string>
+	<string id="st_anthology_eloquent">
+		<text>Eloquent</text>
+	</string>
+	<string id="st_anthology_melinite">
+		<text>Melinite</text>
+	</string>
+	<string id="st_anthology_alcatraz">
+		<text>Alcatraz396</text>
+	</string>	
+		<string id="st_anthology_grandpali">
+		<text>дедушка Ли</text>
+	</string>
+	
+	<string id="st_anthology_testers">
+			<text>- Тестеры A.N.T.H.O.L.O.G.Y -</text>
+	</string>
+
+		<string id="st_anthology_stalkersky">
+		<text>STALKERsky</text>
+	</string>
+		<string id="st_anthology_vitold73">
+		<text>Vitold73/Виталий</text>
+	</string>
+	
+	<!----------------------------------------------------------------->
+	<string id="st_ambient_music">
+		<text>Ambient Music</text>
+	</string>
+	<string id="st_anthology_past">
+		<text>PastKNIGHT</text>
+	</string>
+
+	<string id="st_custom">
+		<text>Графика и погода CUSTOM</text>
+	</string>	
+	<string id="st_custom_skilldex">
+		<text>Skilldex</text>
+	</string>	
+
+	<string id="st_egui_inc">
+		<text>Enhanced Graphical User Interface (EGUI)</text>
+	</string>	
+	<string id="st_inc">
+		<text>INC</text>
+	</string>
+
+	<string id="st_special_thanks">
+		<text>Отдельная благодарность</text>
+	</string>
+	
+	<string id="st_discord_creator_and_manager">
+		<text>Поддержка сервера A.N.T.H.O.L.O.G.Y в Discord</text>
+	</string>
+
+	<string id="st_credits_end">
+		<text>И как всегда: удачной охоты, сталкер!</text>
+	</string>
+</string_table>

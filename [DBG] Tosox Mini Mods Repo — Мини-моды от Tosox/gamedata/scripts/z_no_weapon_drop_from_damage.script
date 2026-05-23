@@ -1,0 +1,38 @@
+--[[
+	=====================================================================
+	Addon      : Tosox Mini Mods Repo: No Weapon Drop from Damage
+	Link       : https://www.moddb.com/mods/stalker-anomaly/addons/tosox-mini-mods-repo/
+	Author     : Singustromo, Tosox
+	Credits    : Great_Day
+	Date       : 31.01.2024
+	Last Edit  : 31.01.2024
+	=====================================================================
+--]]
+
+-- Disable item drop from NPC punches
+xrs_facer.enable_drop_item = false
+
+-- Disable neutral NPCs punching you
+orig_xr_meet_meet_manager_update = xr_meet.Cmeet_manager.update
+xr_meet.Cmeet_manager.update = function(self)
+    local abuse = xr_logic.pick_section_from_condlist(db.actor, self.npc, self.a.abuse)
+    if self.abuse_mode ~= abuse then
+        xr_abuse.disable_abuse(self.npc)
+        self.abuse_mode = abuse
+    end
+
+    orig_xr_meet_meet_manager_update(self)
+end
+
+-- Disable weapon drop on heavy hits
+orig_actor_effects_update_impact = actor_effects.Update_Impact
+actor_effects.Update_Impact = function(actor)
+    local active_item = actor:active_item()
+    local item_section = active_item and active_item:section()
+
+    if (active_item) and (not actor_effects.opt.health.no_drop_wnp[item_section]) then
+        actor_effects.opt.health.no_drop_wnp[item_section] = true
+    end
+
+    orig_actor_effects_update_impact(actor)
+end

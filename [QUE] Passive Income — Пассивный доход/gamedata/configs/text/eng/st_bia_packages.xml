@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="st_bia_package1">
+        <text>Basic package.</text>
+    </string>
+	    <string id="st_bia_package1_descr">
+        <text>Basic package. Barely has anything to survive a day in the zone. \n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Low level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] It doesn't have ammo\n
+		</text>
+    </string>
+		<string id="st_bia_package2">
+        <text>Basic package (WP ammo).</text>
+    </string>
+	    <string id="st_bia_package2_descr">
+        <text>Basic package. Barely has anything to survive a day in the zone, but at least it has some ammo. \n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Low level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] basic amount of ammo\n
+		</text>
+    </string>
+	<string id="st_bia_package3">
+        <text>Basic Package (NATO ammo).</text>
+    </string>
+	    <string id="st_bia_package3_descr">
+        <text>Basic package. Barely has anything to survive a day in the zone, but at least it has some ammo and better cigarretes. \n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Low level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] Basic amount of ammo\n
+		</text>
+    </string>
+	<string id="st_bia_package4">
+        <text>Daily survival pack.</text>
+    </string>
+	    <string id="st_bia_package4_descr">
+        <text>Daily survival pack given to all members. Has the basic amount to supplies to survive a relaxed day on the zone \n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Low level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] It doesn't have ammo\n
+		</text>
+    </string>
+	
+	<string id="st_bia_package5">
+        <text>Daily survival pack (WP ammo)</text>
+    </string>
+	    <string id="st_bia_package5_descr">
+        <text>Daily survival pack given to all members. Has the basic amount to supplies to survive a relaxed day on the zone and to hunt a few fleshes if hunger attacks.\n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Low level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] Basic amount of ammo\n
+		</text>
+    </string>
+		<string id="st_bia_package6">
+        <text>Daily survival pack (NATO ammo)</text>
+    </string>
+	    <string id="st_bia_package6_descr">
+        <text>Daily survival pack given to all members. Has the basic amount to supplies to survive a relaxed day on the zone and to hunt a few fleshes if hunger attacks. it still has better cigarretes. \n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Low level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] Basic amount of ammo\n
+		</text>
+    </string>
+		<string id="st_bia_package7">
+        <text>Field operation package</text>
+    </string>
+	    <string id="st_bia_package7_descr">
+        <text>A field operation package. Has enough supplies to survive a small skirmish or to be a day away from base.\n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Medium level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] It doesn't have ammo\n
+		</text>
+    </string>
+		<string id="st_bia_package8">
+        <text>Field operation package (WP Ammo)</text>
+    </string>
+	    <string id="st_bia_package8_descr">
+        <text>A field operation package. Has enough supplies to survive a small skirmish or to be a day away from base. Has ammo of better quality\n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Medium level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] Better amount of ammo\n
+		</text>
+    </string>
+		<string id="st_bia_package9">
+        <text>Field operation package (NATO Ammo)</text>
+    </string>
+	    <string id="st_bia_package9_descr">
+        <text>A field operation package. Has enough supplies to survive a small skirmish or to be a day away from base. Has ammo of better quality.\n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Medium level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] Better amount of ammo\n
+		</text>
+    </string>
+		<string id="st_bia_package10">
+        <text>Zone survival pack for deep operations.</text>
+    </string>
+	    <string id="st_bia_package10_descr">
+        <text>A survival pack that has enough supplies to survive a deep operation in the zone. Only given to those who have proven themselves.\n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Medium level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] It doesn't have ammo\n
+		</text>
+    </string>
+		<string id="st_bia_package11">
+        <text>Zone survival pack for deep operations (WP Ammo)</text>
+    </string>
+	    <string id="st_bia_package11_descr">
+         <text>A survival pack that has enough supplies to survive a deep operation in the zone. Only given to those who have proven themselves. Has top quality ammo. \n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Medium level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] Better amount of ammo\n
+		</text>
+    </string>
+		<string id="st_bia_package12">
+        <text>Zone survival pack for deep operations (NATO Ammo)</text>
+    </string>
+	    <string id="st_bia_package12_descr">
+         <text>A survival pack that has enough supplies to survive a deep operation in the zone. Only given to those who have proven themselves. Has top quality ammo, including a few rounds of Lapua magnum.\n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Medium level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] Better amount of ammo\n
+		</text>
+    </string>
+		<string id="st_bia_package13">
+        <text>VIP stalker survival pack</text>
+    </string>
+	    <string id="st_bia_package13_descr">
+        <text>A big package given to those top stalkers who have proven loyalty to the faction. These packages are the first to be packaged thus having top quality supplies.\n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Top level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] It doesn't have ammo\n
+		</text>
+    </string>
+		<string id="st_bia_package14">
+        <text>VIP stalker survival pack (WP Ammo)</text>
+    </string>
+	    <string id="st_bia_package14_descr">
+        <text>A big package given to those top stalkers who have proven loyalty to the faction. These packages are the first to be packaged thus having top quality supplies and ammo.\n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Top level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] Great amount of ammo\n
+		</text>
+    </string>
+		<string id="st_bia_package15">
+        <text>VIP stalker survival pack (NATO ammo)</text>
+    </string>
+	    <string id="st_bia_package15_descr">
+        <text>A big package given to those top stalkers who have proven loyalty to the faction. These packages are the first to be packaged thus having top quality supplies and ammo, even having more .338 lapua rounds.\n \n
+		%c[ui_gray_2]PACKAGE:\n
+		%c[d_cyan] • %c[ui_gray_2] Top level supply item\n
+		%c[d_cyan] • %c[ui_gray_2] Great amount of ammo\n
+		</text>
+    </string>
+</string_table>

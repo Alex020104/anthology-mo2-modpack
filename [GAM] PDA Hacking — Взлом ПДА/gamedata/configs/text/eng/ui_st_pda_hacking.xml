@@ -1,0 +1,337 @@
+
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="ui_st_pdahacking_preprompt">
+		<text>[pda_main ~/]> </text>
+	</string>
+	<string id="ui_st_pdahacking_preprompt_us">
+		<text>[pda_main ~/]> _</text>
+	</string>
+	<string id="ui_st_pdahacking_run">
+		<text>Run $name.exe...</text>
+	</string>
+	<string id="ui_st_pdahacking_running">
+		<text>Running $name.exe ($effect)</text>
+	</string>
+	<string id="ui_st_pdahacking_load">
+		<text>Load file $script.script</text>
+	</string>
+	<string id="ui_st_pdahacking_loaded">
+		<text>Loaded file $script.script</text>
+	</string>
+	<string id="ui_st_pdahacking_welcome">
+		<text>Welcome
+		Select a script to load</text>
+	</string>
+
+	<string id="ui_st_pdahacking_nuke">
+		<text>Nuke</text>
+	</string>
+	<string id="ui_st_pdahacking_cmdup">
+		<text>CommandUp</text>
+	</string>
+	<string id="ui_st_pdahacking_decrypt">
+		<text>Decrypt</text>
+	</string>
+	<string id="ui_st_pdahacking_rescan">
+		<text>Re-Scan</text>
+	</string>
+	<string id="ui_st_pdahacking_bruteforce">
+		<text>BruteForce</text>
+	</string>
+	<string id="ui_st_pdahacking_bruteforce_success">
+		<text>SUCCESS!!!</text>
+	</string>
+	<string id="ui_st_pdahacking_bruteforce_fail">
+		<text>FAILED</text>
+	</string>
+	<string id="ui_st_pdahacking_skey">
+		<text>SkeletonKey</text>
+	</string>
+	<string id="ui_st_pdahacking_extract">
+		<text>Extract</text>
+	</string>
+	<string id="ui_st_pdahacking_extract_header">
+		<text>Currency Extracted</text>
+	</string>
+	<string id="ui_st_pdahacking_extract_msg">
+		<text>%c[ui_2]You extracted %c[yellow]+$income roubles %c[ui_2]from a hidden crypto currency wallet</text>
+	</string>
+
+	<string id="ui_st_pdahacking_cmd_remain">
+		<text>Commands left</text>
+	</string>
+	<string id="ui_st_pdahacking_title_hacks">
+		<text>Hacks</text>
+	</string>
+	<string id="ui_st_pdahacking_title_scripts">
+		<text>Scripts</text>
+	</string>
+	<string id="ui_st_pdahacking_title_encry_str">
+		<text>Encryption strength:</text>
+	</string>
+	<string id="ui_st_pdahacking_title_data_decry">
+		<text>Decryption
+		completed:</text>
+	</string>
+	<string id="ui_st_pdahacking_total_power">
+		<text>Total Power = $power</text>
+	</string>
+	<string id="ui_st_pdahacking_power">
+		<text>Power:</text>
+	</string>
+	<string id="ui_st_pdahacking_selectedscript">
+		<text>Selected script</text>
+	</string>
+	<string id="ui_st_pdahacking_loadscript">
+		<text>Script cost:</text>
+	</string>
+	<string id="ui_st_pdahacking_loadcmd">
+		<text>Hack cost:</text>
+	</string>
+	<string id="ui_st_pdahacking_cmdcost">
+		<text>Script/hack cost:</text>
+	</string>
+
+	<string id="ui_st_pdahacking_start">
+		<text>Start Hack</text>
+	</string>
+	<string id="ui_st_pdahacking_failed">
+		<text>Hack Failed</text>
+	</string>
+
+	<string id="ui_st_pdahacking_ruble">
+		<text>ru</text>
+	</string>
+
+	<string id="ui_st_pdahacking_unlocked">
+		<text>PDA Unlocked</text>
+	</string>
+	<string id="ui_st_pdahacking_outof_cmd">
+		<text>Out of Commands</text>
+	</string>
+	<string id="ui_st_pdahacking_outof_scripts">
+		<text>Out of Scripts</text>
+	</string>
+
+	<string id="ui_st_pdahacking_skey_0">
+		<text>Behind You</text>
+	</string>
+	<string id="ui_st_pdahacking_skey_1">
+		<text>It Sees You</text>
+	</string>
+	<string id="ui_st_pdahacking_skey_2">
+		<text>You Wont Escape</text>
+	</string>
+	<string id="ui_st_pdahacking_skey_3">
+		<text>There Is No End</text>
+	</string>
+	<string id="ui_st_pdahacking_skey_4">
+		<text>Still Breathing?</text>
+	</string>
+	<string id="ui_st_pdahacking_skey_5">
+		<text>Do You Smell The Ashes?</text>
+	</string>
+	<string id="ui_st_pdahacking_skey_6">
+		<text>Your World Will be Consumed</text>
+	</string>
+
+	<string id="st_pdahacking_usb1">
+		<text>Basic Hacking Software</text>
+	</string>
+	<string id="st_pdahacking_usb1_descr">
+		<text>Whatever the original purpose of this USB device, it has been visibly modified for illicit purposes by someone who knew what they were doing. 
+		The custom firmware contains a database of sophisticated scripts and exploits bundled into a suite of user-friendly utilities, 
+		allowing someone with minimal technical knowledge to crack different kinds of PDA encryption.\n \nIt is important to note that this software should only be used for ethical purposes and not for any illegal activities.\n \n%c[255, 123, 217, 76]Adds a guide to your PDA, in the features category, that explains how the hacking works.\n \n
+
+		%c[ui_gray_3]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] technological item\n
+		%c[255, 63, 192, 255] • %c[ui_gray_2] command points: %c[255, 63, 192, 255]20\n
+		%c[255, 54, 217, 136] • %c[ui_gray_2] initial scripts: %c[255, 54, 217, 136]5\n</text>
+	</string>
+	<string id="st_pdahacking_usb2">
+		<text>Advanced Hacking Software</text>
+	</string>
+	<string id="st_pdahacking_usb2_descr">
+		<text>Whatever the original purpose of this USB device, it has been visibly modified for illicit purposes by someone who knew what they were doing. 
+		The custom firmware contains a database of sophisticated scripts and exploits bundled into a suite of user-friendly utilities, 
+		allowing someone with minimal technical knowledge to crack different kinds of PDA encryption.\n \nIt is important to note that this software should only be used for ethical purposes and not for any illegal activities.\n \n%c[255, 123, 217, 76]Adds a guide to your PDA, in the features category, that explains how the hacking works.\n \n
+
+		%c[ui_gray_3]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] technological item\n
+		%c[255, 63, 192, 255] • %c[ui_gray_2] command points: %c[255, 63, 192, 255]24\n
+		%c[255, 54, 217, 136] • %c[ui_gray_2] initial scripts: %c[255, 54, 217, 136]6\n
+		%c[255, 255, 184, 28] • %c[ui_gray_2] max currency extracts: %c[255, 255, 184, 28]1\n</text>
+	</string>
+	<string id="st_pdahacking_usb3">
+		<text>Expert Hacking Software</text>
+	</string>
+	<string id="st_pdahacking_usb3_descr">
+		<text>Whatever the original purpose of this USB device, it has been visibly modified for illicit purposes by someone who knew what they were doing. 
+		The custom firmware contains a database of sophisticated scripts and exploits bundled into a suite of user-friendly utilities, 
+		allowing someone with minimal technical knowledge to crack different kinds of PDA encryption.\n \nIt is important to note that this software should only be used for ethical purposes and not for any illegal activities.\n \n%c[255, 123, 217, 76]Adds a guide to your PDA, in the features category, that explains how the hacking works.\n \n
+
+		%c[ui_gray_3]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] technological item\n
+		%c[255, 63, 192, 255] • %c[ui_gray_2] command points: %c[255, 63, 192, 255]28\n
+		%c[255, 54, 217, 136] • %c[ui_gray_2] initial scripts: %c[255, 54, 217, 136]7\n
+		%c[255, 255, 184, 28] • %c[ui_gray_2] max currency extracts: %c[255, 255, 184, 28]2\n</text>
+	</string>
+
+	<string id="st_pdahacking_rarity_itm_pda_common">
+		<text>Common</text>
+	</string>
+	<string id="st_pdahacking_rarity_itm_pda_uncommon">
+		<text>Uncommon</text>
+	</string>
+	<string id="st_pdahacking_rarity_itm_pda_rare">
+		<text>Rare</text>
+	</string>
+
+	<!--	compatibility for Better Encryption Overhaul		-->
+	<string id="st_pdahacking_rarity_itm_pda_encrypted_common">
+		<text>Common</text>
+	</string>
+	<string id="st_pdahacking_rarity_itm_pda_encrypted_uncommon">
+		<text>Uncommon</text>
+	</string>
+	<string id="st_pdahacking_rarity_itm_pda_encrypted_rare">
+		<text>Rare</text>
+	</string>
+
+	<!--	Unlock Cost addon		-->
+	<string id="st_pdahacking_unlock_cost">
+		<text>If you're willing to show some cash, sure. %s RU for every PDA I can unlock.</text>
+	</string>
+
+	<!--	Unfail dialog addon		-->
+	<string id="st_pdahacking_unfail_text_0">
+		<text>I failed hacking a PDA. Can you reset the encryption?</text>
+	</string>
+	<string id="st_pdahacking_unfail_text_1">
+		<text>Skill issue. But if you're willing to show some cash, sure. %s RU for every failed PDA.</text>
+	</string>
+	<string id="st_pdahacking_unfail_text_2">
+		<text>Fine, here's %s RU to reset %s of my PDAs.</text>
+	</string>
+	<string id="st_pdahacking_unfail_text_3">
+		<text>Nevermind...</text>
+	</string>
+	<string id="st_pdahacking_unfail_text_4">
+		<text>Here, you can try hacking these again now. Have fun.</text>
+	</string>
+	<string id="st_pdahacking_unfail_text_5">
+		<text>Alright then.</text>
+	</string>
+	<!-- 
+		MCM
+	-->
+	<string id="ui_mcm_pda_hacking_title">
+		<text>PDA Hacking</text>
+	</string>
+	<string id="ui_mcm_menu_pda_hacking">
+		<text>PDA Hacking</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_locked_chance_mult">
+		<text>Locked PDA Chance Multiplier</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_stash_chance_mult">
+		<text>Stash in PDA Chance Multiplier</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_script_power_min">
+		<text>Minimum Script Power</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_script_power_max">
+		<text>Maximum Script Power</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_hack_device_drop_mult">
+		<text>Hack Software Drop Chance Multiplier</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_extract_reward_mult">
+		<text>Extract Hack Reward Multiplier</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_soundfx_volume">
+		<text>Sound FX Volume</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_enable_tech_unlock_cost">
+		<text>Enable PDA Unlock Cost Override</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_tech_unlock_cost">
+		<text>Technician PDA Unlock Cost</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_tech_unfail_cost">
+		<text>Technician PDA Unfail Cost</text>
+	</string>
+
+	<string id="encyclopedia_features_pdahacking">
+		<text>PDA Hacking</text>
+	</string>
+	<string id="encyclopedia_features_pdahacking_text">
+		<text>
+			%c[pda_green]PDA Hacking mod by Utjan%c[ui_gray_1]\n \n
+			This mod allows you to hack locked PDA's found on dead stalkers by playing a minigame on the PDA.\n
+			To hack a PDA first you need to get your hands on a USB key with Hacking Software. 
+			Keep the USB key item in your inventory and when you use a locked PDA a button will appear that lets you start the hacking minigame.\n \n
+			
+			%c[pda_green]I. Information%c[ui_gray_1]\n
+			\n• Encryption Completed
+			\n     To win the minigame and unlock the PDA you need to reach 100% Encryption Completed. You can see your current amount in the lower right of the screen.
+			\n• Encryption Strength
+			\n     This reduces the effectiveness of your decryption hacks which makes the minigame harder.
+			The strength depends on the faction of the stalker who dropped the PDA and the PDA's rarity. You can see the current value in the lower left of the screen.
+			\n• Faction and Rarity
+			\n     The faction of the stalker the PDA belonged to and the rarity of the PDA is shown next to the Encryption Strength
+			\n• Command Points
+			\n     You start the hacking minigame with an amount of Command Points. These are used to run scripts and hacks. 
+			If you run out of them you fail the minigame. The blue number in the top left corner of the screen shows how many you have.
+			\n• Scripts List
+			\n     On the left side of the screen is a list of scripts. The green number by each script is their Power value. Selecting a script costs 1 Command Point and shows a list of hacks.\n
+			Scripts have names based on real files in your Anomaly install. The name is used as a seed generate it's power and hacks. A script's Power increases the effectiveness of it's hacks.
+			Meaning the same script run on different locked pdas will have the same power and hacks.\n
+			The scripts you start with are random for each session of the minigame.\n
+			If you run out of scripts you fail the minigame.
+			\n• Hacks List
+			\n     At the center of the screen is a list of hacks. It will only show when you have selected a script. Running a hack costs 1 Command Point.
+			Hacks are used to progress the minigame. The effectiveness of hacks is determined by the power of the selected script.\n \n
+
+			%c[pda_green]II. Hacks%c[ui_gray_1]\n
+			\n%c[255, 123, 217, 76]• Decrypt%c[ui_gray_1]
+			\n     This is the most important hack as running it will increase your Encryption Completed. It's effectiveness is lowered by Encryption Strength.
+			\n%c[255, 255, 255, 255]• Nuke%c[ui_gray_1]
+			\n     Reduces Encryption Strength. Is more effective the higher the current Encryption Strength.
+			\n%c[255, 63, 192, 255]• CommandUp%c[ui_gray_1]
+			\n     Increases your Command Points. Doesn't cost a point to run. If this hack is available while you're at 0 points the minigame will not fail.
+			\n%c[255, 54, 217, 136]• Re-Scan%c[ui_gray_1]
+			\n     Generates additional scripts. 
+			\n%c[255, 255, 255, 63]• BruteForce%c[ui_gray_1]
+			\n     Has a chance to instantly get 100% Encryption Completed.
+			\n%c[255, 255, 184, 28]• Extract%c[ui_gray_1]
+			\n     Running this hack grants you some roubles. The amount is based on the power of the selected script and the difficulty of the PDA. 
+			This hack is only available when you have Advanced or Expert hacking software.
+			\n \n
+
+			%c[pda_green]III. Hacking Software%c[ui_gray_1]\n
+			\n• This comes in the form of items with a USB key icon. There are three tiers of this item, each giving you a better start to the minigame.\n
+			The Hacking Software items can be bought from mechanics, with higher tiers available after turning in Advanced and Expert toolkits.\n
+			Hacking Software items can also be found on dead stalkers. Higher rank stalkers have a higher chance to drop higher tiers of the software.\n
+			Remember to keep the item in your inventory to enable the minigame when opening a locked PDA.\n
+			Advanced or Expert tier software is required for the Extract hack to appear.\n \n
+
+			%c[pda_green]IV. Minigame Flow%c[ui_gray_1]\n
+			\n1. Click a script to select it and show it's list of hacks. Preferably a script with high power.
+			\n2. Look at the hacks. If you don't want to use one of those available you can select a different script for a new list of hacks.
+			\n3. Click a hack to execute it. This will clear the list of hacks and remove the selected script.
+			\n4. Repeat step 1 to 3 until you reach 100% Encryption Completed which wins the minigame and unlocks the PDA.\n \n
+
+			%c[pda_green]V. Notes%c[ui_gray_1]\n
+			\n• If you unequip the PDA during the minigame it automatically fails.
+			\n• If you fail the minigame you are unable to run the minigame again on that specific PDA.
+
+			%c[pda_green]VI. Technicians%c[ui_gray_1]\n
+			\nBy default this mod raises the cost of unlocking PDAs at technicians. Failing a hack on a PDA does not prevent you from unlocking it at a technician.
+			\nHowever it also adds a dialogue option letting you pay to reset PDAs you failed to hack, so you can try hacking them again. The cost of this is lower than paying to unlock the PDA.
+		</text>
+	</string>
+</string_table>
+                        

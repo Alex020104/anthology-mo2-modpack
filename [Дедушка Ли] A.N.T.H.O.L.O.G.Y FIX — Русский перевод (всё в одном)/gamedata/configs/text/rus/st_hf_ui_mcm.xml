@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>	
+    <string id="ui_mcm_menu_aol_hf">
+        <text>Мебель для укрытия</text>
+    </string>
+
+	<!-- Controls -->
+	<string id="ui_mcm_menu_controls">
+		<text>Управление</text>
+	</string>
+	<string id="ui_mcm_menu_controls_title">
+		<text>Hideout Furniture - Мебель для укрытия</text>
+	</string>	
+
+	<string id="ui_mcm_aol_hf_controls_bind_collision">
+		<text>Переключить проверку коллизий</text>
+	</string>
+	<string id="ui_mcm_aol_hf_controls_bind_collision_desc">
+		<text>Что такое коллизия?
+		Коллизия (Collision) - переводится как столкновение. Это очень широкий термин, в движках и визуализации он обозначает взаимодействие между объектами, а если точнее, то их столкновение (еще можно встретить понятие пересечение) и его результат.
+
+		Существует такой процесс как определение столкновений (Collisions detection). Этот процесс - результат математических расчетов, его задача - определить общее число объектов в кадре, отсеять пересекающиеся и определить столкновения между ними, чтобы просчитать дальнейшее взаимодействие.		
+		
+		Любой человек более-менее увлеченный играми не раз слышал или даже сам применял фразу “провалился в текстуры”. На деле вы проходите сквозь Asset, так как на нём либо отсутствует коллизия, либо она является неточной. Либо в процессе отрисовки кадра процессор не справился с запросами и не успел правильно отработать расчет, в результате чего определил столкновение с опозданием, или отработал некорректно, но это уже дебри и мы не станем углубляться в них.		
+		</text>
+	</string>
+	
+	<string id="ui_mcm_aol_hf_controls_bind_alignment">
+		<text>Переключение между режимами выравнивания: игрок и поверхность</text>
+	</string>
+
+	<string id="ui_mcm_aol_hf_controls_bind_place_mode">
+		<text>Переключение между режимами размещения: Обычный, Расширенный и Предварительный просмотр</text>
+	</string>
+
+	<!-- Gameplay -->
+	<string id="ui_mcm_menu_gameplay">
+		<text>Геймплей</text>
+	</string>
+	<string id="ui_mcm_menu_gameplay_title">
+		<text>Hideout Furniture - Мебель для укрытия</text>
+	</string>
+	
+	<string id="ui_mcm_aol_hf_gameplay_uniform_trade_profiles">
+		<text>Используйте унифицированные торговые профили</text>
+	</string>
+
+	<string id="ui_mcm_aol_hf_gameplay_use_ingame_time">
+		<text>Светильники показывают игровое время</text>
+	</string>
+
+	<!-- World Objects -->
+	<string id="ui_mcm_menu_world_obj">
+		<text>Объекты мира игры</text>
+	</string>
+	<string id="ui_mcm_menu_world_obj_title">
+		<text>Hideout Furniture - Мебель для укрытия</text>
+	</string>
+	
+	<string id="ui_mcm_aol_hf_world_obj_flag_record_on_place">
+		<text>Включить запись объектов при размещении</text>
+	</string>
+
+	<string id="ui_mcm_aol_hf_world_obj_flag_record_on_keypress">
+		<text>Разрешение записи объектов по нажатию клавиш</text>
+	</string>
+
+	<string id="ui_mcm_aol_hf_world_obj_bind_record">
+		<text>Объект записи</text>
+	</string>
+
+	<!-- Debug -->
+	<string id="ui_mcm_menu_debug">
+		<text>Отладка</text>
+	</string>
+	<string id="ui_mcm_menu_debug_title">
+		<text>Hideout Furniture - Мебель для укрытия</text>
+	</string>
+	
+	<string id="ui_mcm_aol_hf_debug_bind_creative_mode">
+		<text>Творческий режим</text>
+	</string>
+
+	<string id="ui_mcm_aol_hf_debug_location_offset">
+		<text>Смещение местоположения</text>
+	</string>
+
+	<string id="ui_mcm_aol_hf_update_mcm">
+		<text>Обновите MCM для установки привязки клавиш. По умолчанию используются клавиши со стрелками для вращения и 'F' для размещения.</text>
+	</string>
+</string_table>

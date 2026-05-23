@@ -1,0 +1,55 @@
+if ui_popup_messages then
+    local gc = game.translate_string
+
+    function on_game_start()
+        --RegisterScriptCallback("actor_on_item_before_pickup", actor_on_item_before_pickup)
+        RegisterScriptCallback("actor_on_item_take", actor_on_item_take)
+    end
+
+    local exclude_sec = {
+        items_anm_dummy = true,
+        bolt = true,
+		inv_update_item_xd = true,
+        bolt_bullet = true
+    }
+
+    -- Display taken items, group by section
+    -- Display "and x more" items if more items than allowed popups are picked
+    local last_taken_items = {}
+    function actor_on_item_take(item)
+        if ui_popup_messages.GUI then
+            local item_sec = item:section()
+            if exclude_sec[item_sec] then return end
+            
+            last_taken_items[item_sec] = (last_taken_items[item_sec] or 0) + 1
+            CreateTimeEvent("popup_messages", "actor_on_item_take", 0, function()
+                local function printItems(sec)
+                    if last_taken_items[sec] then
+                        if last_taken_items[sec] > 1 then
+                            ui_popup_messages.GUI:AddMessage(("[%sx] %s"):format(last_taken_items[sec], ui_item.get_sec_name(sec)), sec)
+                        else
+                            ui_popup_messages.GUI:AddMessage(ui_item.get_sec_name(sec), sec)
+                        end
+                    end
+                end
+
+                if size_table(last_taken_items) <= ui_popup_messages.GUI.options.window_amount then
+                    for k, v in pairs(last_taken_items) do
+                        printItems(k)
+                    end
+                else
+                    local i = 1
+                    for k, v in pairs(last_taken_items) do
+                        if i > ui_popup_messages.GUI.options.window_amount - 1 then break end
+                        printItems(k)
+                        i = i + 1
+                    end
+                    ui_popup_messages.GUI:AddMessage((gc("st_aps_and_more")):format(size_table(last_taken_items) - i + 1), "ui_inGame2_Predmet_poluchen")
+                end
+                
+                empty_table(last_taken_items)
+                return true
+            end)
+        end
+    end
+end

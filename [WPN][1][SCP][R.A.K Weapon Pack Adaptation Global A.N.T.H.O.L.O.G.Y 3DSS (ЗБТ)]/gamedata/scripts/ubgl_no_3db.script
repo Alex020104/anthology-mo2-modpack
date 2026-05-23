@@ -1,0 +1,37 @@
+local cvars_3db = {
+    g_firepos = 0,
+    g_firepos_zoom = 0,
+    g_aimpos = 0,
+    g_aimpos_zoom = 0,
+}
+
+local saved_settings = {}
+
+function get_current_settings()
+    for cmd, typ in pairs(cvars_3db) do
+        saved_settings[cmd] = get_console_cmd(typ, cmd)
+    end
+	print_r(saved_settings)
+end
+
+function set_saved_settings()
+    for cmd, val in pairs(saved_settings) do
+        exec_console_cmd(cmd..' '..val)
+    end
+    empty_table(saved_settings)
+end
+
+function temp_disable_3db_on_gl(obj, previous, current)
+    if current == 2 then
+        get_current_settings()
+        for cmd in pairs(cvars_3db) do
+            exec_console_cmd(cmd..' off')
+        end
+    else
+        set_saved_settings()
+    end
+end
+
+function on_game_start()
+    RegisterScriptCallback('actor_on_weapon_zoom_type_changed', temp_disable_3db_on_gl)
+end

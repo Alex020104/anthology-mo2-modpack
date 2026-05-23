@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<string_table>
+    <string id="st_codex_hard_warning_stamp">
+        <text>SURVIVAL PROTOCOL / HARD MODE</text>
+    </string>
+    <string id="st_codex_hard_warning_title">
+        <text>ATTENTION!</text>
+    </string>
+    <string id="st_codex_hard_warning_subtitle">
+        <text>You have selected HARD mode.</text>
+    </string>
+    <string id="st_codex_hard_warning_body">
+        <text>Dear player, one of the toughest survival modes is now active. Expect a harsh economy, dangerous opponents, scarce resources, and a far more demanding game where mistakes become expensive quickly.</text>
+    </string>
+    <string id="st_codex_hard_warning_protocol">
+        <text>This mode is recommended for experienced players and veterans of the Zone who already know the game's mechanics well.</text>
+    </string>
+    <string id="st_codex_hard_warning_signature">
+        <text>Prepare before you move. The Zone will not make allowances.</text>
+    </string>
+    <string id="st_codex_hard_warning_accept">
+        <text>UNDERSTOOD, ENTER THE ZONE</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning">
+        <text>Codex Hard Warning</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning_title">
+        <text>HARD Start Warning</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning_enabled">
+        <text>Show warning on next load</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning_enabled_desc">
+        <text>When enabled, the field-note warning appears on the next in-game load. After it is shown, this checkbox turns itself off.</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning_note">
+        <text>This checkbox is a one-shot trigger: enable it, load into the game, see the warning, and it disables itself.</text>
+    </string>
+</string_table>

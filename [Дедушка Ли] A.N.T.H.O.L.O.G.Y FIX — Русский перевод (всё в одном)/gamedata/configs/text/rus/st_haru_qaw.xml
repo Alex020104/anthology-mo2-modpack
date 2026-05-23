@@ -1,0 +1,75 @@
+<string_table>
+    <string id="ui_mcm_menu_haru_quick_action_wheel_mcm">
+        <text>QAW Колесо быстрого действия</text>
+    </string>
+
+    <string id="ui_haru_add_item_to_qaw">
+        <text>Добавить в колесо QAW</text>
+    </string>
+    <string id="ui_haru_qaw_override">
+        <text>Переопределить</text>
+    </string>
+	
+    <string id="ui_mcm_qaw_controls">
+        <text>Управление QAW</text>
+    </string>
+     <string id="ui_mcm_haru_quick_action_wheel_mcm_controls_hold">
+        <text>Удержание</text>
+    </string>
+    <string id="ui_mcm_haru_quick_action_wheel_mcm_controls_hold_desc">
+        <text>Удерживайте клавишу, чтобы "колесо быстрого действия" оставалось открытым</text>
+    </string>	
+    <string id="ui_mcm_haru_quick_action_wheel_mcm_controls_keybind">
+        <text>Клавиша "колеса быстрого действия" QAW</text>
+    </string>
+    <string id="ui_mcm_haru_quick_action_wheel_mcm_controls_override_ammo_wheel">
+        <text>Переопределение клавиши колеса боеприпасов с помощью QAW \n(Заменить типовое "колесо патронов" на QAW)</text>
+    </string>
+	
+    <string id="ui_mcm_qaw_tabs">
+        <text>Настройки вкладок QAW</text>
+    </string>
+    <string id="ui_mcm_qaw_devices">
+        <text>Динамическая вкладка устройств</text>
+    </string>
+    <string id="ui_mcm_qaw_grenades">
+        <text>Динамическая вкладка гранат</text>
+    </string>
+    <string id="ui_mcm_qaw_attachments">
+        <text>Динамическая вкладка обвесов</text>
+    </string>
+    <string id="ui_mcm_qaw_food">
+        <text>Динамическая вкладка еды</text>
+    </string>
+    <string id="ui_mcm_qaw_meds">
+        <text>Динамическая вкладка медицины</text>
+    </string>
+    <string id="ui_mcm_qaw_ammo">
+        <text>Динамическая вкладка патронов (магазинов)</text>
+    </string>
+    <string id="ui_mcm_qaw_slots">
+        <text>Динамическая вкладка активных слотов</text>
+    </string>	
+    <string id="ui_mcm_qaw_enabled">
+        <text>Включено</text>
+    </string>
+    <string id="ui_mcm_qaw_tab">
+        <text>Вкладка</text>
+    </string>
+    <string id="ui_mcm_haru_quick_action_wheel_mcm_tabs_tab_count">
+        <text>Количество вкладок</text>
+    </string>
+
+     <string id="ui_mcm_qaw_misc">
+        <text>Прочие настройки QAW</text>
+    </string>
+    <string id="ui_mcm_haru_quick_action_wheel_mcm_misc_slowmo">
+        <text>Замедление времени при открытии</text>
+    </string>
+    <string id="ui_mcm_haru_quick_action_wheel_mcm_misc_slowmo_factor">
+        <text>Фактор замедления времени</text>
+    </string>
+	     <string id="ui_mcm_haru_quick_action_wheel_mcm_misc_old_mags_compat">
+        <text>Совместимость со старой версией Mags Redux</text>
+    </string>
+</string_table>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="st_haruka_roast_unlit_campfire">
+		<text>Нельзя использовать незажженный костер</text>
+	</string>
+	<string id="st_roast_all">
+		<text>поджарить всё</text>
+	</string>
+
+	<string id="st_boil_all">
+		<text>вскипятить всё</text>
+	</string>
+
+	<string id="st_boil">
+		<text>вскипятить</text>
+	</string>
+
+	<string id="st_roast">
+		<text>поджарить</text>
+	</string>
+
+</string_table>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="st_bia_package1">
+        <text>Paquete basico.</text>
+    </string>
+	    <string id="st_bia_package1_descr">
+        <text>Un paquete basico que aporta lo minimo para sobrevivir un dia en La Zona. \n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros basicos\n
+		%c[d_cyan] • %c[ui_gray_2] No tiene municion\n
+		</text>
+    </string>
+		<string id="st_bia_package2">
+        <text>Paquete basico (Municion del Pacto de Varsovia).</text>
+    </string>
+	    <string id="st_bia_package2_descr">
+        <text>Un Paquete basico que aporta lo minimo para sobrevivir un dia en La Zona, al menos este tiene algunas balas... \n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros basicos\n
+		%c[d_cyan] • %c[ui_gray_2] Cantidades basicas de municion\n
+		</text>
+    </string>
+	<string id="st_bia_package3">
+        <text>Paquete basico (Municion de la OTAN).</text>
+    </string>
+	    <string id="st_bia_package3_descr">
+        <text>Un Paquete basico que aporta lo minimo para sobrevivir un dia en La Zona, al menos este tiene algunas balas y mejores cigarrillos... \n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros basicos\n
+		%c[d_cyan] • %c[ui_gray_2] Cantidades basicas de municion\n
+		</text>
+    </string>
+	<string id="st_bia_package4">
+        <text>Paquete de supervivencia diaria.</text>
+    </string>
+	    <string id="st_bia_package4_descr">
+        <text>Paquete que contiene lo justo para sobrevivir un dia relajado en La Zona. Paquetes como estos se distribuyen a todos los miembros de la faccion. \n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros basicos\n
+		%c[d_cyan] • %c[ui_gray_2] No tiene municion\n
+		</text>
+    </string>
+	
+	<string id="st_bia_package5">
+        <text>Paquete de supervivencia diaria (Municion del Pacto de Varsovia)</text>
+    </string>
+	    <string id="st_bia_package5_descr">
+        <text>Paquete que contiene lo justo para sobrevivir un dia relajado en La Zona y con suficiente municion para cazar algo en caso de necesitar un poco mas de comida. Paquetes como estos se distribuyen a todos los miembros de la faccion.\n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros basicos\n
+		%c[d_cyan] • %c[ui_gray_2] Cantidades basicas de municion\n
+		</text>
+    </string>
+		<string id="st_bia_package6">
+        <text>Paquete de supervivencia diaria (Municion de la OTAN)</text>
+    </string>
+	    <string id="st_bia_package6_descr">
+        <text>Paquete que contiene lo justo para sobrevivir un dia relajado en La Zona y con suficiente municion para cazar algo en caso de necesitar un poco mas de comida. Paquetes como estos se distribuyen a todos los miembros de la faccion. Como siempre trae cigarrillos de calidad. \n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros basicos\n
+		%c[d_cyan] • %c[ui_gray_2] Cantidades basicas de municion\n
+		</text>
+    </string>
+		<string id="st_bia_package7">
+        <text>Paquete para operaciones de campo. </text>
+    </string>
+	    <string id="st_bia_package7_descr">
+        <text>Un paquete armado especialmente para apoyar operaciones de campo. Suministros suficientes para una pequena escaramuza o para estar un dias lejos de la base. \n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros de nivel medio\n
+		%c[d_cyan] • %c[ui_gray_2] No tiene municion\n
+		</text>
+    </string>
+		<string id="st_bia_package8">
+        <text>Paquete para operaciones de campo. (Municion del Pacto de Varsovia) </text>
+    </string>
+	    <string id="st_bia_package8_descr">
+        <text>Un paquete armado especialmente para apoyar operaciones de campo. Suministros suficientes para una pequena escaramuza o para estar un dias lejos de la base. Viene con municion de mejor calidad \n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros de nivel medio\n
+		%c[d_cyan] • %c[ui_gray_2] Cantidad mas abundante de municion\n
+		</text>
+    </string>
+		<string id="st_bia_package9">
+        <text>Paquete para operaciones de campo. (Municion de la OTAN) </text>
+    </string>
+	    <string id="st_bia_package9_descr">
+        <text>Un paquete armado especialmente para apoyar operaciones de campo. Suministros suficientes para una pequena escaramuza o para estar un dias lejos de la base. Viene con municion de mejor calidad.\n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros de nivel medio\n
+		%c[d_cyan] • %c[ui_gray_2] Cantidad mas abundante de municion\n
+		</text>
+    </string>
+		<string id="st_bia_package10">
+        <text>Paquete de supervivencia para La Zona Profunda.</text>
+    </string>
+	    <string id="st_bia_package10_descr">
+        <text>Paquete con los suministros necesarios para sobrevivir una escaramuza en las parte mas profundas de la zona. solo repartido a quienes han probado ser de utilidad. \n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros de nivel medio\n
+		%c[d_cyan] • %c[ui_gray_2] No tiene municion\n
+		</text>
+    </string>
+		<string id="st_bia_package11">
+        <text>Paquete de supervivencia para La Zona Profunda (Municion del Pacto de Varsovia) </text>
+    </string>
+	    <string id="st_bia_package11_descr">
+         <text>Paquete con los suministros necesarios para sobrevivir una escaramuza en las parte mas profundas de la zona. solo repartido a quienes han probado ser de utilidad. Su municion es de de la mejor calidad. \n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros de nivel medio\n
+		%c[d_cyan] • %c[ui_gray_2] Cantidad mas abundante de municion\n
+		</text>
+    </string>
+		<string id="st_bia_package12">
+        <text>Paquete de supervivencia para La Zona Profunda (Municion de la OTAN) </text>
+    </string>
+	    <string id="st_bia_package12_descr">
+         <text>Paquete con los suministros necesarios para sobrevivir una escaramuza en las parte mas profundas de la zona. solo repartido a quienes han probado ser de utilidad. Su municion es de de la mejor calidad, incluyendo municion del Lapua Magnum.\n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros de nivel medio\n
+		%c[d_cyan] • %c[ui_gray_2] Cantidad mas abundante de municion\n
+		</text>
+    </string>
+		<string id="st_bia_package13">
+        <text>Paquete prioritario para Stalkers VIP</text>
+    </string>
+	    <string id="st_bia_package13_descr">
+        <text>Un paquete repartido entre aquellos stalker que han probado tener una lealtad inquebrantable con la faccion. Al ser estos paquetes los primeros en armarse, poseen los suministros de mejor calidad. \n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros de nivel prioritario\n
+		%c[d_cyan] • %c[ui_gray_2] No tiene municion\n
+		</text>
+    </string>
+		<string id="st_bia_package14">
+        <text>Paquete prioritario para Stalkers VIP (Municion del Pacto de Varsovia) </text>
+    </string>
+	    <string id="st_bia_package14_descr">
+        <text>Un paquete repartido entre aquellos stalker que han probado tener una lealtad inquebrantable con la faccion. Al ser estos paquetes los primeros en armarse, poseen los suministros y la municion de mejor calidad. \n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros de nivel prioritario\n
+		%c[d_cyan] • %c[ui_gray_2] Cuantiosas cantidades de municion\n
+		</text>
+    </string>
+		<string id="st_bia_package15">
+        <text>Paquete prioritario para Stalkers VIP (Municion de la OTAN) </text>
+    </string>
+	    <string id="st_bia_package15_descr">
+        <text>Un paquete repartido entre aquellos stalker que han probado tener una lealtad inquebrantable con la faccion. Al ser estos paquetes los primeros en armarse, poseen los suministros y la municion de mejor calidad, trayendo incluso mas balas del Lapua magnum.\n \n
+		%c[ui_gray_2]PAQUETE:\n
+		%c[d_cyan] • %c[ui_gray_2] Suministros de nivel prioritario\n
+		%c[d_cyan] • %c[ui_gray_2] Cuantiosas cantidades de municion\n
+		</text>
+    </string>
+</string_table>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="ui_mcm_menu_ultimate_autosave_conf">
+		<text>Автосохранения</text>
+	</string>
+	<string id="ui_mcm_menu_ultimate_autosave">
+		<text>Ultimate AutoSave</text>
+	</string>
+	<string id="ui_mcm_uas_title">
+		<text>Ultimate AutoSave v2.0 \n(переодические автосохранения)</text>
+	</string>
+	<string id="ui_mcm_uas_desc">
+		<text>Этот мод позволяет настроить автоматические периодические сохранения в игре. Вы можете определить временной интервал между сохранениями (например, каждые 10 минут). \nКаждое сохранение сохраняется в отдельном файле, что предотвращает случайную перезапись. \nКроме того, вы можете указать максимальное количество сохраняемых файлов резервных копий. \n%c[d_blue]Эта функция особенно полезна для предотвращения потери прогресса \nиз-за таких ошибок, как %c[d_red]«BusyHands».</text>
+	</string>
+	<string id="ui_mcm_uas_extra_desc">
+		<text>Включив эти параметры, вы сможете выполнять резервное копирование при определенных условиях, создавая отдельные файлы для каждого действия.</text>
+	</string>
+	<string id="ui_mcm_ultimate_autosave_conf_max_slot_save">
+		<text>Максимальное количество автосейвов: </text>
+	</string>
+	<string id="ui_mcm_ultimate_autosave_conf_save_timer">
+		<text>Сохранение делается каждые .. минут: </text>
+	</string>
+
+	<string id="ui_mcm_ultimate_autosave_conf_show_message_save_on_chat">
+		<text>Отображение уведомления в чате</text>
+	</string>
+	<string id="ui_mcm_ultimate_autosave_conf_on_leave_dialog_save">
+		<text>При выходе из разговора: </text>
+	</string>
+	<string id="ui_mcm_ultimate_autosave_conf_on_npc_death_save">
+		<text>После смерти НПС: </text>
+	</string>
+	<string id="ui_mcm_ultimate_autosave_conf_on_monster_death_save">
+		<text>После смерти монстра: </text>
+	</string>
+
+	<string id="ui_mcm_ultimate_autosave_conf_on_campfire_save">
+		<text>У костра: </text>
+	</string>
+	<string id="ui_mcm_ultimate_autosave_conf_on_campfire_save_timer">
+		<text>После … секунд ожидания: </text>
+	</string>
+	<string id="ui_mcm_ultimate_autosave_conf_on_campfire_save_timer_after_save">
+		<text>Резервное копирование каждые … минут, если я останусь рядом с костром: </text>
+	</string>
+	
+	<string id="saveslot">
+		<text>Сохранение сделано в слот </text>
+	</string>
+	<string id="saveslot_camp">
+		<text>Сохранение у костра сделано в слот </text>
+	</string>
+	<string id="saveslot_exit">
+		<text>Сохранение при выходе сделано в слот </text>
+	</string>
+	<string id="saveslot_kill">
+		<text>Сохранение после смерти НПС сделано в слот </text>
+	</string>
+	
+	
+	<string id="saveslot_enter_safe_zone">
+		<text>Войдите в безопасную зону, где было сделано сохранение.</text>
+	</string>
+
+	<string id="saveslot_leave_safe_zone">
+		<text>Выполнен выход из зоны сохранения.</text>
+	</string>
+
+	<string id="ui_mcm_ultimate_autosave_conf_on_enter_safe_zone">
+		<text>При входе в безопасную зону:</text>
+	</string>
+
+	<string id="ui_mcm_ultimate_autosave_conf_on_enter_safe_zone_timer">
+		<text>После ... секунд:</text>
+	</string>
+	
+
+	<string id="ui_mcm_ultimate_autosave_conf_on_leave_safe_zone">
+		<text>Безопасная зона на выходе: </text>
+	</string>
+	<string id="ui_mcm_ultimate_autosave_conf_on_leave_safe_zone_timer">
+		<text>После ... секунд:</text>
+	</string>
+
+
+	<string id="ui_mcm_uas_special_thx">
+		<text>Огромное спасибо всем этим людям за их помощь, их вклад и их сценарные функции.  @Stalker_Boss , @Ishmaeel (Yet Another Campfire Saving) , @JRangel (ilrathCXV) (Campfire Limb Healing).</text>
+	</string>
+	
+	<string id="saveslot_exit_trade">
+		<text>Последнее торговое сохранение было сделано.</text>
+	</string>
+	<string id="ui_mcm_ultimate_autosave_conf_on_trade_close_save">
+		<text>После торговли: </text>
+	</string>
+	<string id="ui_mcm_ultimate_autosave_conf_enable_recursive_save">
+		<text>Включите рекурсивное сохранение</text>
+	</string>
+
+</string_table>

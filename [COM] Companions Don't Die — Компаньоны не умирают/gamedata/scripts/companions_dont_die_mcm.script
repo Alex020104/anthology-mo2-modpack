@@ -1,0 +1,79 @@
+local OPTION_ROOT = "companions_dont_die"
+
+local defaults = {
+    immortal_companions = true,
+}
+
+local config = {
+    immortal_companions = defaults.immortal_companions,
+}
+
+local function option_path(key)
+    return OPTION_ROOT .. "/" .. key
+end
+
+local function to_bool(value, fallback)
+    if value == nil then
+        return fallback
+    end
+
+    if value == true or value == 1 or value == "1" or value == "true" then
+        return true
+    end
+
+    return false
+end
+
+local function refresh_config()
+    local value = nil
+
+    if ui_mcm then
+        value = ui_mcm.get(option_path("immortal_companions"))
+    end
+
+    config.immortal_companions = to_bool(value, defaults.immortal_companions)
+end
+
+function companions_dont_die_get_config(key)
+    if config[key] ~= nil then
+        return config[key]
+    end
+
+    return defaults[key]
+end
+
+function on_option_change(from_mcm)
+    refresh_config()
+end
+
+function on_game_start()
+    refresh_config()
+    RegisterScriptCallback("on_option_change", on_option_change)
+end
+
+function on_mcm_load()
+    local options = {
+        id = OPTION_ROOT,
+        sh = true,
+        gr = {
+            {
+                id = "header",
+                type = "slide",
+                link = "AMCM_Banner.dds",
+                text = "ui_mcm_companions_dont_die_header",
+                size = {512, 50},
+                spacing = 20,
+            },
+            {
+                id = "immortal_companions",
+                type = "check",
+                val = 1,
+                def = defaults.immortal_companions,
+                text = "ui_mcm_companions_dont_die_toggle",
+                tooltip = "ui_mcm_companions_dont_die_toggle_desc",
+            },
+        },
+    }
+
+    return options
+end

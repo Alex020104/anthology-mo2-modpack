@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- Aim Stamina MCM xml v1.0a -->
+
+<string_table>
+	<string id="ui_mcm_menu_aim_stamina">
+		<text>Выносливость при прицеливании</text>
+	</string>
+	
+	<!-- categories -->
+	<string id="ui_mcm_aim_stamina_title">
+		<text>Выносливость при прицеливании от Private-а</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_ASweaponsway">
+		<text>Настройки покачивания оружия</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AShudtitle">
+		<text>Настройки интерфейса</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_ASdebugtitle">
+		<text>Режим отладки</text>
+	</string>
+	
+	<!-- operational mode -->
+	<string id="ui_mcm_aim_stamina_AS_op_mode">
+		<text>Режимы работы</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_op_mode_desc">
+		<text>Выбор между 2-я различными режимами работы.\nВ режиме 1 оружие начинает раскачиваться при падении выносливости ниже определенного порога и оружие выходит из режима прицеливания, когда значение выносливости достигнет нуля. \nВ режиме 2 вы все еще можете целиться, когда значение выносливости достигнет 0, но при этом оружие будет раскачивать.</text>
+	</string>
+	<string id="ui_mcm_lst_stop_aim">
+		<text>1</text>
+	</string>
+	<string id="ui_mcm_lst_keep_aim">
+		<text>2</text>
+	</string>
+	
+	<!-- hardcore mode -->
+	<string id="ui_mcm_aim_stamina_AS_mode">
+		<text>Хардкорный режим</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_mode_desc">
+		<text>Выбор между 2-мя различными хардкорными режимами.\n"Выкл." - обычный режим. Прицельная выносливость расходуется когда вы целитесь и восстанавливается вне режима прицеливания.\nВ режиме "Легкий" выносливость расходуется при прицеливании и восстанавливается когда оружие опущено. Выносливость не меняется когда оружие на изготовке.\nВ режиме "Тяжёлый" выносливость медленно расходуется, когда оружие на изготовке и расходуется с нормальной скоростью во время прицеливания. Выносливость восстанавливается только когда оружие опущено.</text>
+	</string>
+	<string id="ui_mcm_lst_off">
+		<text>Выкл.</text>
+	</string>
+	<string id="ui_mcm_lst_light">
+		<text>Легкий</text>
+	</string>
+	<string id="ui_mcm_lst_heavy">
+		<text>Тяжёлый</text>
+	</string>
+	
+	<!-- aim stamina -->
+	<string id="ui_mcm_aim_stamina_aim_stamina">
+		<text>Максимальное количество выносливости</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_aim_stamina_desc">
+		<text>Максимальное количество "единиц" выносливости. При значении параметра расхода выносливости в зависимости от веса оружия равному 0, одна "единица" выносливости соответствует одной секунде выносливости при прицеливании/восстановлении</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_drain_weight_influence">
+		<text>Влияние веса оружия на расход выносливости</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_drain_weight_influence_desc">
+		<text>Сила влияния веса оружия, которое вы держите в руках пока целитесь, на выносливость. Чем больше вес оружия, тем быстрее расходуется ваша выносливость. Большие значения усиливают эффект. Значение равное 0 выключает данную функцию и полностью игнорирует вес оружия.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_recover_weight_influence">
+		<text>Влияние веса оружия на скорость восстановления выносливости</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_recover_weight_influence_desc">
+		<text>Сила с которой вес оружия влияет на скорость восстановления выносливости пока вы не целитесь. Чем тяжелее оружия, тем больше времени уходит на восстановление выносливости. Большие значения усиливают эффект. Значение равное 0 выключает данную функцию и полностью игнорирует вес оружия.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_rate_range">
+		<text>Диапазон скорости</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_rate_range_desc">
+		<text>Прицеливание из тяжелого оружия, например Винтовки Гаусса, тратит выносливость гораздо быстрее, чем легкий пистолет, такой как Glock 19 например (Для восстановления выносливости верно обратное). Диапазон скорости восстановления меняет разницу между быстрым и медленным расходом/восстановлением выносливости. Более низкие значения уменьшают разницу. Данный параметр применяется только в том случае, если влияние веса оружия на расход/восстановления выносливости не равен 0.</text>
+	</string>
+
+	<!-- weapon sway -->
+	<string id="ui_mcm_aim_stamina_AS_wpn_sway_start">
+		<text>Начало раскачивания оружия</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_wpn_sway_start_desc">
+		<text>Устанавливает порог прицельной выносливости, при значении ниже которого начинается покачивание оружия. Если указано значение 0, то функция покачивания оружия выключена.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_wpn_sway_power">
+		<text>Интенсивность раскачивания оружия</text>
+	</string>
+	
+	<!-- HUD -->
+	<string id="ui_mcm_aim_stamina_show_AS_counter">
+		<text>Показать счетчик выносливости</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_show_AS_counter_desc">
+		<text>Отображает выносливость при прицеливании в виде числа на экране.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_show_AS_bar">
+		<text>Показать шкалу выносливости</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_show_AS_bar_desc">
+		<text>Отображает значение выносливости при прицеливании в виде шкалы на экране</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_hide_timer">
+		<text>Скрывать интерфейс через X секунд</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_hide_timer_desc">
+		<text>Когда вы не целитесь, интерфейс будет скрыть через указанное количество времени. При значении равном 0, интерфейс будет всегда отображатся на экране.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_x_pos">
+		<text>Положение интерфейса по оси X</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_x_pos_desc">
+		<text>Горизонтальная позиция интерфейса. Большие значения сдвигают интерфейс правее.\nминимум = 0, максимум = 1024, по умолчанию = 462</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_y_pos">
+		<text>Положение интерфейса по оси Y</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_y_pos_desc">
+		<text>Вертикальная позиция интерфейса. Большие значения сдвигают интерфейс ниже.\nминимум = 0, максимум = 768, по умолчанию = 720</text>
+	</string>
+	
+	<string id="ui_mcm_aim_stamina_AS_counter_x_pos">
+		<text>Положение счетчика по горизонтали</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_counter_x_pos_desc">
+		<text>Отображает счетчик выносливости левее, по центру или правее относительно шкалы выносливости.</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_left">
+		<text>Слева</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_center">
+		<text>По центру</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_right">
+		<text>Справа</text>
+	</string>
+	
+	<string id="ui_mcm_aim_stamina_AS_counter_y_pos">
+		<text>Вертикальное положение счетчика выносливости</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_counter_y_pos_desc">
+		<text>Отображает счетчик выносливости выше или ниже относительно шкалы выносливости.</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_above">
+		<text>Выше</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_below">
+		<text>Ниже</text>
+	</string>
+	
+		<!-- for debug mode -->
+	<string id="ui_mcm_aim_stamina_AS_disable">
+		<text>Выключить прицельную выносливость</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_disable_desc">
+		<text>Прерывает процесс расходывания/восстановления выносливости и скрывает интерфейс шкалы выносливости. Полезно в режиме отладки, например во время использования редактора положения оружия на экране.</text>
+	</string>
+</string_table>

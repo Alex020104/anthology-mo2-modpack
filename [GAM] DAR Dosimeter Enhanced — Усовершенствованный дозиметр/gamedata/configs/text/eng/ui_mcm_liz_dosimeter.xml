@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+    <string id="ui_mcm_menu_liz_dosimeter">
+        <text>DAR Dosimeter Enhanced</text>
+    </string>
+
+    <string id="ui_mcm_liz_dosimeter_mode">
+        <text>Simple mode</text>
+    </string>
+
+    <string id="ui_mcm_liz_dosimeter_mode_desc">
+        <text>Dosimeter in Anomaly can work in two modes:\n1) Body radiation - shows how much radiation you have.\n) Environmnet radiation - show radiation level around player.\nIf simple mode activated pressing left mouse button while holding dosimeter in hands will toggle between those two modes.\n If Simple mode disabled dosimeter will show only environment radiation at all time and pressing left mouse button while holding dosimeter in hands will perform self scan procedure that will display how much radiation you've recieved</text>
+    </string>
+
+</string_table>

@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!--
+	Consumable Items (Alcohol + Food + Smoke)
+-->
+
+<string_table>
+
+<!--< ALCOHOL >-->
+	<string id="st_vodka">
+		<text>Vodka "Nemiroff"</text>
+	</string>
+	<string id="st_vodka_descr">
+		<text>Nemiroff is a Ukrainian alcoholic beverage manufacturer specializing mainly in the supply of vodka. It was founded in the city of Nemirov, Vinnytsia region. One of the best vodkas in the world and in the Zone, but you should not abuse it. Unscrupulous stalkers often slip others a stick, diluting alcohol with water and pouring the whole thing into an empty bottle of everyone's favorite vodka.\n \n
+		%c[ui_gray_3]NOTE: \n
+		%c[ui_gray_1]Everyone knows that this brand of alcohol is preferred by one of the researchers at the MBU on Yantar, who also works as a cook. Rumor has it that he's even willing to barter for army gear in exchange for a couple bottles of vodka. However, these are just rumors.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 5%\n
+		%c[ui_gray_3]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] drink\n
+		%c[d_blue] • %c[ui_gray_2] can be used together with fabric to make a bandage\n
+		%c[d_red] • %c[ui_gray_2] strong alcohol\n
+		%c[d_red] • %c[ui_gray_2] intoxication +10%\n
+		%c[d_purple] • %c[ui_gray_2] dulls mild pain\n
+		</text>
+	</string>
+	
+	<string id="st_vodka2">
+		<text>Putinka vodka</text>
+	</string>
+	<string id="st_vodka2_descr">
+		<text>Following the strange tradition of naming vodka brands in Russia by the name of the supreme leader, Putinka went into production for the first time after Vladimir Putin was elected president. It is made in Russia from the best grain and crystal clear water from Siberian springs. The triple degree of purification, smooth texture, unique taste and many other characteristics make this product a reputation. Drink in moderation.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 5%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] drink\n
+		%c[d_blue] • %c[ui_gray_2] can be used together with fabric to make a bandage\n
+		%c[d_red] • %c[ui_gray_2] strong alcohol\n
+		%c[d_red] • %c[ui_gray_2] intoxication +10%\n
+		%c[d_purple] • %c[ui_gray_2] dulls mild pain\n
+		</text>
+	</string>
+	
+	<string id="st_vodka_quality">
+		<text>Stolichnaya Vodka</text>
+	</string>
+	<string id="st_vodka_quality_descr">
+		<text>A drink adored by Russians, and by many other people all over the world. This is Russian vodka of quite high quality. It is stored in military flasks or in glass bottles, but in the latter it can be easily damaged and broken.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 5%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] drink\n
+		%c[d_blue] • %c[ui_gray_2] can be used together with fabric to make a bandage\n
+		%c[d_red] • %c[ui_gray_2] strong alcohol\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_red] • %c[ui_gray_2] intoxication +7%\n
+		%c[d_purple] • %c[ui_gray_2] dulls mild pain\n
+		</text>
+	</string>
+	
+		<string id="st_beer">
+		<text>Ukrainian beer (500 ml.)</text>
+	</string>
+	<string id="st_beer_descr">
+		<text>Ukrainian beer. The second most popular drink in the Zone, after vodka. Rumor has it that this beer is so natural that with its help, if there are ingredients, you can create a stronger drink.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 2%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] drink\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_red] • %c[ui_gray_2] low alcohol\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_red] • %c[ui_gray_2] intoxication +5%\n
+		%c[d_purple] • %c[ui_gray_2] dulls very little pain\n
+		</text>
+	</string>
+	
+	<string id="st_bottle_metal">
+		<text>Flask of moonshine</text>
+	</string>
+	<string id="st_bottle_metal_descr">
+		<text>A metal flask containing moonshine, obtained directly in the Zone from unknown sources. Judging by the stench, it's a very strong drink. Most stalkers prefer to dilute it with water.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 5%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] drink\n
+		%c[d_blue] • %c[ui_gray_2] can be used together with fabric to make a bandage\n
+		%c[d_blue] • %c[ui_gray_2] can be diluted with mineral water to make vodka\n
+		%c[d_red] • %c[ui_gray_2] low-quality spirits\n
+		%c[d_red] • %c[ui_gray_2] intoxication +13%\n
+		%c[d_purple] • %c[ui_gray_2] dulls mild pain\n
+		</text>
+	</string>
+	
+<!-------------------------------------------------------------< FOOD >------------------------------------------------------------->
+	<string id="st_energy_drink">
+		<text>Strong energy drink (250 ml.)</text>
+	</string>
+	<string id="st_energy_drink_descr">
+		<text>Stalkers often stock up on them before going on long routes. It has an invigorating effect and is very useful for fatigue. The drink also sobers the head a little after a hangover, and also causes the release of adrenaline into the blood. To avoid overdose, it is recommended not to abuse.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] drink\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] stimulator\n
+		%c[d_blue] • %c[ui_gray_2] strong sobering effect\n
+		</text>
+	</string>
+	
+	<string id="st_flask">
+		<text>Purified water</text>
+	</string>
+	<string id="st_flask_descr">
+		<text>Military flasks are designed for drinking water in small sips. The supply of clean water from the mainland is an expensive pleasure. Therefore, drinking water is mainly extracted and purified right in the Zone. The presence of disinfectants, containers, fire, knowledge and a little experience will allow any stalker to get clean water for himself. Thanks to wells, open water sources and frequent rains, water can be found almost everywhere in the Zone. Despite the relatively easy cleaning method, this is mainly done by bartenders, as they always have everything they need, including free time. And due to the large containers, they can purify quite a large amount of water at one time.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] drink\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		%c[d_green] • %c[ui_gray_2] intoxication -5%\n
+		%c[d_green] • %c[ui_gray_2] enhances detoxification 5 times for 120 seconds\n
+		</text>
+	</string>
+		
+	<string id="st_kolbasa">
+		<text>Packaging of old meat</text>
+	</string>
+	<string id="st_kolbasa_descr">
+		<text>A mixture of old bread and slightly spoiled, smelly meat of unknown origin, wrapped in brown paper. The appearance and smell suggest that everything inside is already covered with mold.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_red] • %c[ui_gray_2] makes you feel worse by 2%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_red] • %c[ui_gray_2] junk food\n
+		%c[d_red] • %c[ui_gray_2] intoxication +25%\n
+		</text>
+	</string>
+	
+	<string id="st_tea">
+		<text>Beard Tea</text>
+	</string>
+	<string id="st_tea_descr">
+		<text>Popular among stalkers is hot tea according to Beard's recipe, infused with edible dried mushrooms in boiled water with added sugar. Stalkers who can afford to buy this drink often take it with them on long walks around the Zone. It's a pretty good and relatively healthy way to stay on your feet when you're tired or waiting out cold, dark nights. This tea also helps to cope with the symptoms of radiation exposure, which makes it even more useful during long trips. Unfortunately, or fortunately, Beard himself does not reveal the secret of why his tea removes radiation.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] 1 dose outputs ~90 mSv\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] drink\n
+		%c[d_blue] • %c[ui_gray_2] strong sobering effect\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		%c[d_green] • %c[ui_gray_2] intoxication -12%\n
+		%c[d_green] • %c[ui_gray_2] enhances detoxification by 20 times for 120 seconds\n
+		</text>
+	</string>
+	
+	<string id="st_tomato">
+		<text>Canned tomatoes</text>
+	</string>
+	<string id="st_tomato_descr">
+		<text>Canned, diced tomatoes imported into the territory of the Zone on a regular basis. Judging by the expiration date on the bottom of the jar, it's still fresh.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		</text>
+	</string>
+	
+	<string id="st_sausage">
+		<text>Smoked sausage</text>
+	</string>
+	<string id="st_sausage_descr">
+		<text>Sausage made from beef and pork. Smoked and vacuum packed, it can be stored for a long time. This sausage stick is imported from Russia. These are usually in demand among the Russian mafia for their exceptional flavor and taste.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		</text>
+	</string>
+	
+	<string id="st_corn">
+		<text>Canned corn</text>
+	</string>
+	<string id="st_corn_descr">
+		<text>Canned corn imported from outside the Cordon. You can eat it right out of the jar, but many stalkers add it to their soup brews as an ingredient.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		</text>
+	</string>
+	
+	<string id="st_beans">
+		<text>Stewed beans</text>
+	</string>
+	<string id="st_beans_descr">
+		<text>Canned stewed beans imported from the West. Beans stewed in tomato sauce will help bring back pleasant memories for many stalkers.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		</text>
+	</string>
+	
+	<string id="st_chili">
+		<text>Chili beans</text>
+	</string>
+	<string id="st_chili_descr">
+		<text>Canned Chili beans imported from the West. They are very popular as additional ingredients in many dishes prepared on the territory of the Zone.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		</text>
+	</string>
+	
+	<string id="st_conserva">
+		<text>Canned fish</text>
+	</string>
+	<string id="st_conserva_descr">
+		<text>A real delicacy for an ordinary stalker. The jar is still fresh, judging by the date, so you don't have to worry about poisoning.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		</text>
+	</string>
+	
+	<string id="st_tushonka">
+		<text>Beef stew</text>
+	</string>
+	<string id="st_tushonka_descr">
+		<text>Stew is a common name for canned stewed meat produced in the Soviet Union and other Warsaw Pact countries. The irony is that the idea of such a product came to Russia during World War II in the form of aid from the United States. Since then, various types of stew have become the main means of long-term storage of meat, which is used by both the civilian population and the ranks of the army. It is worth noting that despite the long shelf life, the stew has a high nutritional value (due to its high fat content) and a relatively good taste. The Chernobyl Exclusion Zone has seen many varieties of stew. Since the spring of 2013, the chopped meat of the Abakan brand has remained the undisputed leader among other canned goods.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		</text>
+	</string>
+	
+	<string id="st_salmon">
+		<text>Smoked salmon</text>
+	</string>
+	<string id="st_salmon_descr">
+		<text>Ukrainian smoked salmon. It is unclear whether anyone brought a whole smoked salmon fish to the Zone and how much money they earned for it, but individual untouched pieces pass from one stalker to another, because they can earn a good amount of money. A very valuable ingredient.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		</text>
+	</string>
+	
+	<string id="st_raisins">
+		<text>Raisin</text>
+	</string>
+	<string id="st_raisins_descr">
+		<text>Packing of raisins. A very satisfying source of nutrition in a hurry, helps to make up for the lack of sugar in the blood.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		</text>
+	</string>
+	
+	<string id="st_chocolate">
+		<text>Russian chocolate</text>
+	</string>
+	<string id="st_chocolate_descr">
+		<text>Chocolate from Russia. It is rarely found in the Zone, so it is highly appreciated, although it does not taste like anything special. It brings back memories from childhood, which sometimes help to numb the pain that has firmly settled and strengthened in the harsh conditions of the unforgiving Zone.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_blue] • %c[ui_gray_2] high value\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		</text>
+	</string>
+	
+    <string id="st_chocolate_p">
+		<text>Russian chocolate (half)</text>
+	</string>
+    <string id="st_chocolate_p_descr">
+		<text>Chocolate from Russia. Someone has already eaten the whole half. It is rarely found in the Zone, so it is highly appreciated, although it does not taste like anything special. It brings back memories from childhood, which sometimes help to numb the pain that has firmly settled and strengthened in the harsh conditions of the unforgiving Zone. This package has already been opened, and half of the tile has been eaten.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_blue] • %c[ui_gray_2] high value\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		%c[d_blue] • %c[ui_gray_2] can be used together with the mixed nuts to make a protein bar\n
+		</text>
+	</string>
+	
+	<string id="st_mint">
+		<text>Mint candies "Altoids"</text>
+	</string>
+	<string id="st_mint_descr">
+		<text>Very minty chewable candies imported from the West. They are very refreshing and help to ward off drowsiness for some time. They chew 10 pieces at once just because they can't fit more into their mouths.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		</text>
+	</string>
+	
+	<string id="st_nuts">
+		<text>Mixed nuts</text>
+	</string>
+	<string id="st_nuts_descr">
+		<text>Assorted peanuts, hazelnuts, cashews and almonds. A very good and popular nut mix. The nutritional value is quite high. Imported from South Africa.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		%c[d_blue] • %c[ui_gray_2] can be used together with half a chocolate bar to make a protein bar\n
+		</text>
+	</string>
+	
+	<string id="st_mineral_water">
+		<text>Mineral water</text>
+	</string>
+	<string id="st_mineral_water_descr">
+		<text>Mineralized water from Ukrainian mineral springs. Hydrocarbon with the addition of calcium.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] drink\n
+		%c[d_blue] • %c[ui_gray_2] you can dilute moonshine to make vodka\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_blue] • %c[ui_gray_2] weak sobering effect\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		%c[d_green] • %c[ui_gray_2] intoxication -10%\n
+		%c[d_green] • %c[ui_gray_2] enhances detoxification 15 times for 120 seconds\n
+		</text>
+	</string>
+	
+	<string id="st_mre">
+		<text>MRE</text>
+	</string>
+	<string id="st_mre_descr">
+		<text>The Meal, Ready-to-Eat (commonly known as the MRE) is a self-contained, individual field ration in lightweight packaging, developed by the United States military for its service members for use in combat or other field conditions where organised food facilities are not available. One MRE can be used as one meal. The packaging of an MRE is designed to withstand rough conditions and exposure to the elements. Contains one course along with a variety of other food and drink items. While it can be eaten cold, it usually tastes much better when heated up with the included flameless ration heater (FRH, a water-activated exothermic reaction device that emits heat).\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] military ration\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		%c[d_blue] • %c[ui_gray_2] 3 servings in one package. 1398 kCal in total\n
+		</text>
+	</string>
+	
+	<string id="st_ration_ru">
+		<text>Russian IRP-B combat ration</text>
+	</string>
+	<string id="st_ration_ru_descr">
+		<text>Breakfast, dinner and supper all in one package. Includes various food items whose function is to provide the body with all minerals and microelements essential for your health as well as cooking equipment (small metal frame, fuel tablets, matches, striker) and other items (e.g. napkins) facilitating use in field conditions. Comes with a polymeric box that protects the ingredients from hazardous environmental conditions. The polymeric box has 3 sections, each respectively for breakfast, dinner and supper.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] military ration\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		%c[d_blue] • %c[ui_gray_2] 7 servings in one package. 3661 calories in total\n
+		</text>
+	</string>
+	
+	<string id="st_ration_ukr">
+		<text>Ukrainian combat ration</text>
+	</string>
+	<string id="st_ration_ukr_descr">
+		<text>This Ukrainian combat ration is based on a previous Russian version, and comprises commercially available cans and dried food items packed together in a sectioned box (resembling a takeout tray) made of very thin green plastic. Contains all that is necessary to provide a healthy adult with all calories and minerals needed during a single day.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] military ration\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		%c[d_blue] • %c[ui_gray_2] 6 servings in one package. 3186 kCal in total\n
+		</text>
+	</string>
+	
+	<string id="st_bread">
+		<text>Fresh bread</text>
+	</string>
+	<string id="st_bread_descr">
+		<text>Fresh bread baked by Nimble's wife, who lives outside the Zone. This was Shustro's first case before his business expanded. Currently, he supplies the bartender with this bread, rather than selling it himself, as it used to be.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		</text>
+	</string>
+	
+	<string id="st_breadold">
+		<text>Old bread</text>
+	</string>
+	<string id="st_breadold_descr">
+		<text>A long-dried piece of bread, partially covered with mold. You can eat, but it's difficult.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_red] • %c[ui_gray_2] makes you feel worse by 1%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_red] • %c[ui_gray_2] junk food\n
+		%c[d_red] • %c[ui_gray_2] intoxication +15%\n
+		</text>
+	</string>
+	
+	<string id="st_protein">
+		<text>Chocolate protein bar</text>
+	</string>
+	<string id="st_protein_descr">
+		<text>This chocolate bar with protein will provide the body with the necessary proteins and fast carbohydrates that will give strength, energy and tone. It is useful in long raids when there is no time to eat normally. However, such chocolate bars are very rare in the Zone.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] food\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		</text>
+	</string>
+	
+	<string id="st_water_drink">
+		<text>Sparkling water</text>
+	</string>
+	<string id="st_water_drink_descr">
+		<text>Sparkling water to quench the stalker's thirst. It will cheer you up a little and give you strength when you are very tired.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] drink\n
+		%c[d_blue] • %c[ui_gray_2] you can dilute moonshine to make vodka\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] weak sobering effect\n
+		%c[d_blue] • %c[ui_gray_2] healthy eating\n
+		%c[d_green] • %c[ui_gray_2] intoxication -7%\n
+		%c[d_green] • %c[ui_gray_2] enhances detoxification 10 times for 120 seconds\n
+		</text>
+	</string>
+	
+	<string id="st_drink_crow">
+		<text>"The Beak"</text>
+	</string>
+	<string id="st_drink_crow_descr">
+		<text>"The Beak" is a powerful mixture of Zone-produced vodka and pulverised beak of a black crow. But not every beak is suitable as an ingredient, but only the beak of males who have been in the Zone for more than 15 years, as their beak is more susceptible to mutation. Rumor has it that such beaks are highly enriched in protein, which, along with vodka, removes radiation from the body. Some people say that drinking this mixture gives you a feeling of wings growing for a few seconds. The taste, however, could not be worse.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 5%\n
+		%c[d_blue] • %c[ui_gray_2] 1 dose outputs ~210 mSv\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] drink\n
+		%c[d_red] • %c[ui_gray_2] strong alcohol\n
+		%c[d_red] • %c[ui_gray_2] intoxication +8%\n
+		%c[d_purple] • %c[ui_gray_2] dulls mild pain\n
+		</text>
+	</string>
+	
+<!-------------------------------------------------------------< SMOKE >------------------------------------------------------------->
+	<string id="st_cuban_cigar">
+		<text>Cuban cigars</text>
+	</string>
+	<string id="st_cuban_cigar_descr">
+		<text>A very valuable Cuban cigar can bring you happiness for a short time, especially if you admire a nice sunset. Many stalkers have noticed that smoking tobacco is good at keeping mosquitoes away. Cuban cigars are considered the best in the world. A very rare product.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 1%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] stimulator\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_blue] • %c[ui_gray_2] high value\n
+		%c[d_blue] • %c[ui_gray_2] strong sobering effect\n
+		%c[d_red] • %c[ui_gray_2] intoxication +5%\n
+		</text>
+	</string>
+	
+	<string id="st_cigarettes_lucky">
+		<text>"Lucky Strike" cigarettes</text>
+	</string>
+	<string id="st_cigarettes_lucky_descr">
+		<text>Cigarettes brought from somewhere in the West. Some stalkers, in the circle of their groups, exchange them for bullets.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 1%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] stimulator\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_blue] • %c[ui_gray_2] weak sobering effect\n
+		%c[d_red] • %c[ui_gray_2] intoxication +3%\n
+		</text>
+	</string>
+	
+	<string id="st_cigarettes_russian">
+		<text>Peter the Great cigarettes</text>
+	</string>
+	<string id="st_cigarettes_russian_descr">
+		<text>The cheapest pack of cigarettes found on the territory of the Zone. Some cheap Russian company.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 1%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] stimulator\n
+		%c[d_red] • %c[ui_gray_2] low quality\n
+		%c[d_blue] • %c[ui_gray_2] weak sobering effect\n
+		%c[d_red] • %c[ui_gray_2] intoxication +3%\n
+		</text>
+	</string>
+	
+	<string id="st_cigar1">
+		<text>Soviet cigarettes</text>
+	</string>
+	<string id="st_cigar1_descr">
+		<text>A budget pack of very low-quality hard cigarettes. The authentic flavor of the USSR has been carefully preserved.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 1%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] stimulator\n
+		%c[d_blue] • %c[ui_gray_2] weak sobering effect\n
+		%c[d_red] • %c[ui_gray_2] intoxication +3%\n
+		</text>
+	</string>
+	
+	<string id="st_cigar2">
+		<text>Soviet cigarettes</text>
+	</string>
+	<string id="st_cigar2_descr">
+		<text>A budget pack of very low-quality hard cigarettes. The authentic flavor of the USSR has been carefully preserved.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 1%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] stimulator\n
+		%c[d_blue] • %c[ui_gray_2] weak sobering effect\n
+		%c[d_red] • %c[ui_gray_2] intoxication +3%\n
+		</text>
+	</string>
+	
+	<string id="st_cigar3">
+		<text>Soviet cigarettes</text>
+	</string>
+	<string id="st_cigar3_descr">
+		<text>A budget pack of very low-quality hard cigarettes. The authentic flavor of the USSR has been carefully preserved.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 1%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] stimulator\n
+		%c[d_blue] • %c[ui_gray_2] weak sobering effect\n
+		%c[d_red] • %c[ui_gray_2] intoxication +3%\n
+		</text>
+	</string>
+	
+	<string id="st_hand_rolling_tobacco">
+		<text>Hand-rolling tobacco</text>
+	</string>
+	<string id="st_hand_rolling_tobacco_descr">
+		<text>Expensive tobacco, wrapped in packaging and imported from the West. Without any additional harmful additives, so you can enjoy the original taste of the tobacco leaf itself.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 1%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] stimulator\n
+		%c[d_red] • %c[ui_gray_2] slow usage (roll-up)\n
+		%c[d_blue] • %c[ui_gray_2] strong sobering effect\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_red] • %c[ui_gray_2] intoxication +3%\n
+		</text>
+	</string>
+	
+	<string id="st_cigarettes">
+		<text>Marlboro cigarettes</text>
+	</string>
+	<string id="st_cigarettes_descr">
+		<text>Cigarettes imported from the West. They are rare in the Zone, so they are very valuable.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 1%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] stimulator\n
+		%c[d_blue] • %c[ui_gray_2] weak sobering effect\n
+		%c[d_red] • %c[ui_gray_2] intoxication +3%\n
+		</text>
+	</string>
+	
+	<string id="st_tobacco">
+		<text>Russian tobacco</text>
+	</string>
+	<string id="st_tobacco_descr">
+		<text>Cigarettes are quite expensive and rare in the Zone, so the availability of tobacco raw materials allows you to make your own cigarettes at a lower price. The sealed tin packaging ensures that the tobacco stays fresh for several days or weeks, depending on the storage conditions.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] stimulator\n
+		%c[d_blue] • %c[ui_gray_2] you can make cigarettes with paper\n
+		%c[d_red] • %c[ui_gray_2] need to roll cigarettes to smoke\n
+		</text>
+	</string>
+	
+	<!-- unused -->
+	<!--
+	<string id="st_vodka_1_radiated">
+		<text>Putinka vodka (irradiated)</text>
+	</string>
+	<string id="st_beer_large_1_radiated">
+		<text>Zhigulevskoye beer (irradiated)</text>
+	</string>
+	<string id="st_beer_large_2_radiated">
+		<text>Ochakovo beer (irradiated)</text>
+	</string>
+	<string id="st_beer_1_radiated">
+		<text>Baltika №3 beer (irradiated)</text>
+	</string>
+	<string id="st_beer_2_radiated">
+		<text>Slavutich Premium beer (irradiated)</text>
+	</string>
+	<string id="st_beer_can_1_radiated">
+		<text>Pripyat beer (irradiated)</text>
+	</string>
+	<string id="st_beer_can_2_radiated">
+		<text>Heineken beer (irradiated)</text>
+	</string>
+	<string id="st_water_large_1_radiated">
+		<text>Naroch mineral water (irradiated)</text>
+	</string>
+	<string id="st_water_large_2_radiated">
+		<text>Leninad mineral water (irradiated)</text>
+	</string>
+	<string id="st_water_can_1_radiated">
+		<text>Purified water (irradiated)</text>
+	</string>
+	<string id="st_water_can_2_radiated">
+		<text>Mineral water (irradiated)</text>
+	</string>
+	<string id="st_cocacola_radiated">
+		<text>Coca-Cola (irradiated)</text>
+	</string>
+	<string id="st_redbull_radiated">
+		<text>Redbull energy drink</text>
+	</string>
+	<string id="st_guru_radiated">
+		<text>GURU energy drink (irradiated)</text>
+	</string>
+	<string id="st_marlboro_radiated">
+		<text>Marlboro cigarettes (irradiated)</text>
+	</string>
+	<string id="st_lucky_radiated">
+		<text>Lucky Strike cigarettes (irradiated)</text>
+	</string>
+	<string id="st_cuban_radiated">
+		<text>Cuban cigars (irradiated)</text>
+	</string>
+	<string id="st_cigarettes_1_radiated">
+		<text>Cuban cigars (irradiated)</text>
+	</string>
+	<string id="st_wild_drink_radiated">
+		<text>Zone-produced liquor (irradiated)</text>
+	</string>
+	<string id="st_kolbasa_smoked_radiated">
+		<text>Smoked sausage (irradiated)</text>
+	</string>
+	<string id="st_beanz_radiated">
+		<text>Baked beans (irradiated)</text>
+	</string>
+	<string id="st_tomatoes_radiated">
+		<text>Tomatoes (irradiated)</text>
+	</string>
+	<string id="st_chocolatebar_radiated">
+		<text>Chocolate protein bar (irradiated)</text>
+	</string>
+	<string id="st_snickers_radiated">
+		<text>Snickers (irradiated)</text>
+	</string>
+	<string id="st_mars_radiated">
+		<text>Mars (irradiated)</text>
+	</string>
+	<string id="st_nuts_2_radiated">
+		<text>Trail mix (irradiated)</text>
+	</string>
+	<string id="st_beef_radiated">
+		<text>Tushenka (irradiated)</text>
+	</string>
+	<string id="st_bullheads_radiated">
+		<text>Pasta and meatballs (irradiated)</text>
+	</string>
+	<string id="st_sardina_radiated">
+		<text>"Pirate" Sardines (irradiated)</text>
+	</string>
+	<string id="st_olivki_radiated">
+		<text>Olives (irradiated)</text>
+	</string>
+	<string id="st_cheese_radiated">
+		<text>"Yantar" processed cheese (irradiated)</text>
+	</string>
+	<string id="st_galet_radiated">
+		<text>Biscuits (irradiated)</text>
+	</string>
+	<string id="st_shokolad_radiated">
+		<text>"Aljinushka" chocolate (irradiated)</text>
+	</string>
+	<string id="st_batonchik_radiated">
+		<text>Chocolate bar (irradiated)</text>
+	</string>
+	<string id="st_jerky_radiated">
+		<text>Beef jerky (irradiated)</text>
+	</string>
+	<string id="st_chips_radiated">
+		<text>Potato chips (irradiated)</text>
+	</string>
+	<string id="st_hash_radiated">
+		<text>Biscuits and hash (irradiated)</text>
+	</string>
+	<string id="st_cpcb_radiated">
+		<text>Salted crackers (irradiated)</text>
+	</string>
+	<string id="st_juice_radiated">
+		<text>Orange juice (irradiated)</text>
+	</string>
+	<string id="st_mre_1_3_radiated">
+		<text>Army MRE (irradiated)</text>
+	</string>
+	<string id="st_mre_1_2_radiated">
+		<text>Army MRE (irradiated)</text>
+	</string>
+	<string id="st_mre_1_1_radiated">
+		<text>Army MRE (irradiated)</text>
+	</string>
+	<string id="st_bandage_israeli_radiated">
+		<text>Bandage (irradiated)</text>
+	</string>
+	<string id="st_amphetamines_4_radiated">
+		<text>Amphetamine (irradiated)</text>
+	</string>
+	<string id="st_amphetamines_3_radiated">
+		<text>Amphetamine (irradiated)</text>
+	</string>
+	<string id="st_amphetamines_2_radiated">
+		<text>Amphetamine (irradiated)</text>
+	</string>
+	<string id="st_amphetamines_1_radiated">
+		<text>Amphetamine (irradiated)</text>
+	</string>
+	<string id="st_diazepam_radiated">
+		<text>Diazepam (irradiated)</text>
+	</string>
+	<string id="st_psy_complex_radiated">
+		<text>Psychodelin (irradiated)</text>
+	</string>
+	<string id="st_bio_bandage_radiated">
+		<text>Special bandage (irradiated)</text>
+	</string>
+	<string id="st_drug_engine_radiated">
+		<text>Anti-hallucinogen (irradiated)</text>
+	</string>
+	<string id="st_drug_cat_eye_radiated">
+		<text>Cat's eye (irradiated)</text>
+	</string>
+	<string id="st_medo_radiated">
+		<text>Moonshine (irradiated)</text>
+	</string>
+	<string id="st_mbk_radiated">
+		<text>Caffeine pills (irradiated)</text>
+	</string>
+	<string id="st_medkit_elite_radiated">
+		<text>Elite medkit (irradiated)</text>
+	</string>
+	<string id="st_bag_medkit_1_radiated">
+		<text>Basic medkit (irradiated)</text>
+	</string>
+	<string id="st_bag_medkit_2_radiated">
+		<text>Army medkit (irradiated)</text>
+	</string>
+	<string id="st_bag_medkit_3_radiated">
+		<text>Scientific medkit (irradiated)</text>
+	</string>
+	<string id="st_bag_medkit_4_radiated">
+		<text>Special medkit (irradiated)</text>
+	</string>
+	-->
+</string_table>
+
+<!-- Translation made with Stalker Translation XML TOOL -->
+<!-- https://www.moddb.com/mods/stalker-anomaly/addons/stalker-translation-xml-tool-v12-executable-version -->

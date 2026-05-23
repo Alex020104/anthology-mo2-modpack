@@ -1,0 +1,1815 @@
+passinc_pack_upgrade_table = {
+    ["bia_novicepackage"] = "bia_experiencedpackage",
+    ["bia_experiencedpackage"] = "bia_seasonedpackage",
+    ["bia_seasonedpackage"] = "bia_veteranpackage",
+    ["bia_veteranpackage"] = "bia_masterpackage",
+}
+
+passinc_salary_bonus_pack_table = {
+    [1] = {"bia_novicepackage"},
+    [2] = {"bia_novicepackage", "bia_novicepackage", "bia_experiencedpackage"},
+    [3] = {"bia_novicepackage", "bia_experiencedpackage", "bia_experiencedpackage"},
+    [4] = {"bia_experiencedpackage", "bia_experiencedpackage", "bia_seasonedpackage"},
+    [5] = {"bia_experiencedpackage", "bia_seasonedpackage", "bia_seasonedpackage"},
+    [6] = {"bia_seasonedpackage", "bia_seasonedpackage", "bia_veteranpackage"},
+    [7] = {"bia_veteranpackage", "bia_veteranpackage", "bia_masterpackage"},
+    [8] = {"bia_masterpackage", "bia_masterpackage", "bia_veteranpackage"},
+}
+
+-- CONSTANTS
+local show_time = 5000
+local max_employment_stage = 8
+local poverty_line = 50000
+local gt = game.translate_string
+local bonus_salary_increment = 1.1
+local max_progress_combo = 2
+local progress_combo_increment = 0.1
+
+-- SETTINGS
+local debug_mode = false
+local salary_mult = 1
+local progress_mult = 1
+local give_promotion_prizes = true
+local max_lazy_days = 3
+local paytime_start = 10
+local max_money_mult = 1
+
+-- VARIABLES
+local n = 1
+local passinc_cache_tbl = {}
+local passinc_system_tbl = {}
+
+-- TABLES
+
+
+passinc_all_story_npc_table = { -- NOT USED
+	["esc_2_12_stalker_trader"]                       = true,
+    ["agr_smart_terrain_1_6_near_2_military_colonel_kovalski"] = true,
+    ["bar_dolg_leader"] = true,
+    ["bar_dolg_general_petrenko_stalker"] = true,    
+    ["zat_b7_bandit_boss_sultan"] = true,
+    ["cit_killers_merc_trader_stalker"] = true,
+    ["jup_a6_freedom_leader"] = true,
+    ["ds_domik_isg_leader"] = true,
+    ["mar_smart_terrain_base_stalker_leader_marsh"] = true,
+    ["mil_smart_terrain_7_7_freedom_leader_stalker"] = true,
+    ["merc_pri_grifon_mlr"] = true,
+    ["yan_stalker_sakharov"] = true,
+}
+
+passinc_lore_story_npc_table = {
+    -- Military
+	["agr_smart_terrain_1_6_near_2_military_colonel_kovalski"] = true,
+    -- Duty
+	["bar_dolg_leader"] = true,
+	["bar_dolg_general_petrenko_stalker"] = true,    
+    -- Mercs
+	["cit_killers_merc_trader_stalker"] = true,
+	["merc_pri_grifon_mlr"] = true,
+    -- Freedom
+	["jup_a6_freedom_leader"] = true,
+	["mil_smart_terrain_7_7_freedom_leader_stalker"] = true,
+    -- UNISG
+	["jup_depo_isg_leader"] = true,
+    -- Ecologists    
+	["yan_stalker_sakharov"] = true,
+	["jup_b6_scientist_nuclear_physicist"] = true,
+    -- SIN
+	["red_greh_trader"] = true,
+	--MONOLITH
+	["lider_monolith_haron"] = true,
+}
+
+passinc_unorg_story_npc_table = {
+    -- Sidorovich
+    ["esc_m_trader"] = true,
+    ["esc_2_12_stalker_trader"] = true,
+    -- Sultan
+    ["zat_b7_bandit_boss_sultan"] = true,
+    -- Butcher
+    ["hunter_gar_trader"] = true,
+    -- Librarian
+    ["mar_base_stalker_barmen"] = true,
+    
+}
+
+
+-- SYSTEMS
+
+function save_state(m_data)
+    m_data.passinc_cache_tbl = passinc_cache_tbl
+    m_data.passinc_system_tbl = passinc_system_tbl
+end
+
+function load_state(m_data)
+    passinc_cache_tbl = m_data.passinc_cache_tbl or {}
+    passinc_system_tbl = m_data.passinc_system_tbl or {}
+end
+
+function on_option_change()
+    load_passinc_settings()
+end
+
+function on_game_load()
+    load_passinc_settings()
+end
+
+function load_passinc_settings()
+    debug_mode = passive_income_mcm.get_config("debug_mode")
+    give_promotion_prizes = passive_income_mcm.get_config("give_promo_prizes")
+    salary_mult = passive_income_mcm.get_config("salary_mult")
+    max_money_mult = passive_income_mcm.get_config("max_money_mult")
+    progress_mult = passive_income_mcm.get_config("progress_mult")
+    max_lazy_days = passive_income_mcm.get_config("max_lazy_days")
+    paytime_start = passive_income_mcm.get_config("paytime_start")
+end
+
+
+function on_game_start()
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+    RegisterScriptCallback("on_game_load", on_game_load)
+    RegisterScriptCallback("on_option_change", on_option_change)
+    RegisterScriptCallback("save_state",save_state)
+	RegisterScriptCallback("load_state",load_state)
+    RegisterScriptCallback("squad_on_npc_death", squad_on_npc_death)
+    RegisterScriptCallback("actor_on_item_take", actor_on_item_take)
+    RegisterScriptCallback("on_specific_character_dialog_list", add_my_dialog)
+
+    add_console_command('passinc_promotion', passinc_debug_promotion)
+    add_console_command('passinc_check_prizes', passinc_print_promo_prizes)
+    add_console_command('passinc_info', passinc_print_info)
+end
+
+--========= CALLBACKS ==========
+
+function add_my_dialog(character_id, dialog_list)
+    if passinc_lore_story_npc_table[character_id] then
+        local res1 = dialog_list:add("passive_income_start")
+        local res2 = dialog_list:add("passive_income_stop")
+        local res3 = dialog_list:add("passive_income_get_salary")
+        local res4 = dialog_list:add("passive_income_transfer_contract")
+    end
+    if passinc_unorg_story_npc_table[character_id] then
+        local res1 = dialog_list:add("passive_income_unorg_start")
+        local res2 = dialog_list:add("passive_income_unorg_stop")
+        local res3 = dialog_list:add("passive_income_unorg_get_salary")
+    end
+end
+
+function actor_on_first_update()
+	local g_type = type
+
+    if passinc_cache_tbl.employer_id or passinc_cache_tbl.request_timeout or passinc_cache_tbl.employer_community then
+        passinc_cache_tbl = {}
+    end
+
+    if passinc_cache_tbl then
+        
+        for k, v in pairs(passinc_cache_tbl) do
+            local monsters_killed = passinc_cache_tbl[k].monsters_killed
+            local npcs_killed = passinc_cache_tbl[k].npcs_killed
+            local arti_found = passinc_cache_tbl[k].arti_found
+            -- fix for players that are updating to the new version that stores the value of monsters, npcs and artifact found
+            if g_type(monsters_killed) == "number" then passinc_cache_tbl[k].monsters_killed = {} end
+            if g_type(npcs_killed) == "number" then passinc_cache_tbl[k].npcs_killed = {} end
+            if g_type(arti_found) == "number" then passinc_cache_tbl[k].arti_found = {} end
+
+            -- fix for the new progression and promotion system for whos updating from older version
+            if passinc_cache_tbl[k].days_until_promotion and (not passinc_cache_tbl[k].progress) then
+                passinc_cache_tbl[k].progress = passinc_get_current_progress_interval(k, passinc_cache_tbl[k].employment_stage - 1) or 0
+                passinc_cache_tbl[k].progress_combo = 1
+            end
+            if (not passinc_cache_tbl[k].progress_combo) then
+                passinc_cache_tbl[k].progress_combo = 1
+            end
+        end
+    end
+end
+
+
+function actor_on_update()
+    
+    n = n + 1    
+    if n ~= 1000 then --update frequency
+        return
+    end
+    n = 1
+
+    local remove_contract_id_tbl
+
+    if passinc_cache_tbl then
+        for k,v in pairs(passinc_cache_tbl) do
+
+            -- at the end of the month resets the payday
+            if (not passinc_is_paytime(k)) then
+                local cur_day = level.get_time_days()
+                local payday = passinc_cache_tbl[k].next_payday or 0
+                if (payday - cur_day) >= 2 then
+                    passinc_cache_tbl[k].next_payday = cur_day    
+                end
+            end
+            
+            -- request to ask for contract timeout reset
+            if passinc_is_paytime(k) and passinc_cache_tbl[k].request_timeout then
+                passinc_cache_tbl[k].request_timeout = false
+            end
+
+            if (not passinc_is_paytime(k)) and passinc_cache_tbl[k].is_accumulated and passinc_cache_tbl[k].is_employed then
+                passinc_cache_tbl[k].is_accumulated = false
+            end
+
+            if not passinc_cache_tbl[k].is_daily_completed then
+                passinc_cache_tbl[k].is_daily_completed = not passinc_check_faction_lazy_day(k)
+            end
+
+            if passinc_is_paytime(k) and passinc_cache_tbl[k].is_employed then
+                
+                if not passinc_cache_tbl[k].is_accumulated then
+                    if (not passinc_cache_tbl[k].is_unorg) then
+                        passinc_accumulate_salary(k)
+                        passinc_cache_tbl[k].is_accumulated = true
+                        passinc_cache_tbl[k].is_daily_completed = false
+                    else
+                        passinc_unorg_accumulate_salary(k)
+                        passinc_cache_tbl[k].is_accumulated = true
+                        passinc_cache_tbl[k].is_daily_completed = false
+                    end
+                end
+                
+                passinc_cache_tbl[k].next_payday = (level.get_time_days() or 0) + 1
+                --printdbg("added next payday")
+                
+                local employer_comm = passinc_cache_tbl[k].employer_community
+                local emp_stage = passinc_cache_tbl[k].employment_stage
+                local monsters_killed = passinc_cache_tbl[k].monsters_killed or {}
+                local npcs_killed = passinc_cache_tbl[k].npcs_killed or {}
+                local arti_found = passinc_cache_tbl[k].arti_found or {}
+                local completed_tasks = passinc_cache_tbl[k].completed_tasks or 0
+                
+                if passinc_check_faction_lazy_day(k) then
+                    passinc_cache_tbl[k].lazy_days = (passinc_cache_tbl[k].lazy_days or 0) + 1
+                    passinc_cache_tbl[k].progress_combo = 1 --reset progress combo
+                    --printdbg("lazy days increased")
+                else
+                    passinc_cache_tbl[k].lazy_days = 0
+                    --printdbg("lazy days reset")
+
+                    local bonus_package = false
+                    local progress_combo = passinc_cache_tbl[k].progress_combo or 1
+                    local salary_table = passive_income_tables.passinc_get_org_faction_table(employer_comm)
+                    local monsters_for_bonus = (salary_table and salary_table["monsters_for_bonus"] and salary_table["monsters_for_bonus"][emp_stage]) or 0
+                    local npcs_for_bonus = (salary_table and salary_table["npcs_for_bonus"] and salary_table["npcs_for_bonus"][emp_stage]) or 0
+                    local arti_for_bonus = (salary_table and salary_table["arti_for_bonus"] and salary_table["arti_for_bonus"][emp_stage]) or 0
+                    local tasks_for_bonus = 0
+                    
+                    if passinc_cache_tbl[k].is_unorg then
+                        local unorg_table = passive_income_tables.passinc_get_unorg_character_table(k)
+                        tasks_for_bonus = (unorg_table and unorg_table["tasks_for_bonus"] and unorg_table["tasks_for_bonus"][emp_stage]) or 0
+                    else
+                        tasks_for_bonus = (salary_table and salary_table["tasks_for_bonus"] and salary_table["tasks_for_bonus"][emp_stage]) or 0
+                    end
+
+                    if (passinc_calculate_monster_salary(nil, employer_comm) > 0) and (#monsters_killed >= monsters_for_bonus) then progress_combo = progress_combo + progress_combo_increment; bonus_package = true end
+                    if (passinc_calculate_npc_killed_salary(nil, employer_comm) > 0) and (#npcs_killed >= npcs_for_bonus) then progress_combo = progress_combo + progress_combo_increment; bonus_package = true end
+                    if (passinc_calculate_arti_found_salary(nil, employer_comm) > 0) and (#arti_found >= arti_for_bonus) then progress_combo = progress_combo + progress_combo_increment; bonus_package = true end
+                    if passinc_cache_tbl[k].is_unorg then
+                        if (completed_tasks >= tasks_for_bonus) then progress_combo = progress_combo + progress_combo_increment end
+                    else
+                        if (passinc_calculate_tasks_completed_salary(nil, employer_comm) > 0) and (completed_tasks >= tasks_for_bonus) then progress_combo = progress_combo + progress_combo_increment; bonus_package = true end
+                    end
+                    
+                    if progress_combo > max_progress_combo then progress_combo = max_progress_combo end
+                    passinc_cache_tbl[k].progress_combo = progress_combo
+                    
+                    if bonus_package then
+                        passinc_cache_tbl[k].bonus_package = true
+                    end
+
+                    local target_progress = passinc_get_current_progress_interval(k)
+                    if target_progress and passinc_cache_tbl[k].progress >= target_progress then
+                        passinc_give_promotion(k)
+                    end
+                    
+                end
+                
+                if passinc_cache_tbl[k].lazy_days and (passinc_cache_tbl[k].lazy_days > 0 and passinc_cache_tbl[k].lazy_days <= max_lazy_days) then
+                    passinc_lazy_day_warning(k)
+                end
+        
+                if passinc_cache_tbl[k].lazy_days and passinc_cache_tbl[k].lazy_days > max_lazy_days then
+                    passinc_give_demotion(k)
+                end
+        
+                passinc_cache_tbl[k].monsters_killed = {}
+                passinc_cache_tbl[k].npcs_killed = {}
+                passinc_cache_tbl[k].arti_found = {}
+                passinc_cache_tbl[k].completed_tasks = 0
+
+            end
+
+            if (not passinc_cache_tbl[k].is_employed) and (passinc_cache_tbl[k].accumulated_salary and passinc_cache_tbl[k].accumulated_salary <= 0) and (passinc_cache_tbl[k].accumulated_packs and #passinc_cache_tbl[k].accumulated_packs <= 0) then
+                remove_contract_id_tbl = k
+            end
+
+            local arti_ids_found = passinc_cache_tbl[k].arti_ids_found or 0
+            if #arti_ids_found >= 100 then
+                passinc_cache_tbl[k].arti_ids_found = {}
+            end
+            
+        end
+    end
+
+    if remove_contract_id_tbl and remove_contract_id_tbl ~= "" then
+        passinc_cache_tbl[remove_contract_id_tbl] = nil
+    end
+
+    if debug_mode then
+        if passinc_cache_tbl then
+            for k,v in pairs(passinc_cache_tbl) do
+                local msg_str = k .. " is employed: "
+                local msg_dbg = passinc_cache_tbl[k].is_employed and "true" or "false"
+                printdbg(msg_str .. msg_dbg)
+
+            end
+        end
+    end
+
+end
+
+function squad_on_npc_death(squad, se_obj, killer) 
+    -- thanks xcvb for this callback, this basically checks when someone dies (either your companions, enemy npc or monster)
+    if (not passinc_cache_tbl) then return end
+
+    if (not killer) or se_obj.id == killer.id then return end
+
+    local obj = level.object_by_id(se_obj.id)
+    local squad = se_obj and get_object_squad(se_obj)
+    local killer_obj = level.object_by_id(killer.id)
+    
+    if not killer_obj then return end
+
+    local killer_fits = killer_obj:id() == 0 or killer_obj:has_info("npcx_is_companion")
+    if not killer_fits then return end
+    
+    -- IF ENEMY MUTANT KILLED
+    if (IsMonster(se_obj)) then 
+        for k,v in pairs(passinc_cache_tbl) do
+            local monster_rank = se_obj.character_rank and se_obj:character_rank() or se_obj.rank and se_obj:rank()
+            if monster_rank == 0 then monster_rank = 4 end
+            local monsters_killed = passinc_cache_tbl[k].monsters_killed
+            
+            monsters_killed[#monsters_killed+1] = monster_rank
+            passinc_cache_tbl[k].monsters_killed = monsters_killed
+
+        end
+   
+    -- IF ENEMY NPC KILLED
+    elseif obj and not obj:has_info("npcx_is_companion") and (IsStalker(se_obj)) then
+        local npc_community = obj:character_community()
+        if not npc_community then return end
+        for k,v in pairs(passinc_cache_tbl) do
+            if game_relations.is_factions_enemies(passinc_cache_tbl[k].employer_community, npc_community) then    
+                
+                local npc_rank_name = ranks.get_se_obj_rank_name(se_obj) or "novice"
+                local npcs_killed = passinc_cache_tbl[k].npcs_killed
+                
+                npcs_killed[#npcs_killed+1] = npc_rank_name
+                passinc_cache_tbl[k].npcs_killed = npcs_killed
+            end   
+        end   
+    end
+end
+
+function actor_on_item_take(item)
+	if not (item and IsArtefact(item)) then return end
+    if IsArtefact(item) then
+        for k,v in pairs(passinc_cache_tbl) do
+            
+            local already_found = false
+            local arti_ids_found = passinc_cache_tbl[k].arti_ids_found or {}
+            for i = 1, #arti_ids_found do
+                if arti_ids_found[i] == item:id() then
+                    already_found = true
+                    break
+                end
+            end
+            
+            if not already_found then
+                local arti_found = passinc_cache_tbl[k].arti_found or {}
+                arti_found[#arti_found+1] = item:cost()
+                arti_ids_found[#arti_ids_found+1] = item:id()
+                passinc_cache_tbl[k].arti_ids_found = arti_ids_found
+                passinc_cache_tbl[k].arti_found = arti_found
+                --printdbg("artifact id added to list: " .. item:id())
+            end
+        end
+    end
+end
+
+function passinc_on_task_completed(task_giver_story_id, task_giver_community)
+    if not passinc_cache_tbl then return end
+    if not task_giver_community then return end
+    
+    local community = task_giver_community
+    if community == "trader" then community = "stalker" end
+    
+    for k,v in pairs(passinc_cache_tbl) do       
+        if (not passinc_cache_tbl[k].is_employed) then return end
+        
+        local employer_id = k 
+        
+        if (not passinc_cache_tbl[k].is_unorg) and community == passinc_cache_tbl[k].employer_community then
+            local completed_tasks = passinc_cache_tbl[k].completed_tasks or 0
+            passinc_cache_tbl[k].completed_tasks = completed_tasks + 1
+        elseif passinc_cache_tbl[k].is_unorg and task_giver_story_id == employer_id then
+            local completed_tasks = passinc_cache_tbl[k].completed_tasks or 0
+            passinc_cache_tbl[k].completed_tasks = completed_tasks + 1
+        end    
+    end    
+end
+
+--=================================================================
+
+--======== PASSIVE INCOME FUNCTIONS ===============
+
+function passinc_start_employment(first_speaker, second_speaker) -- called to start the employment under the talking story npc
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    if (not npc) then 
+        --printdbg("npc is nil")
+        return
+    end
+   
+    local npc_id = npc:id() or nil
+    local se_obj = npc_id and alife_object(npc_id)
+    local story_id = get_object_story_id(npc_id)
+    
+    local community = npc:character_community()
+    if community == "trader" then community = "stalker" end
+
+    if not story_id then
+        if community == "isg" then -- UNISG fix?
+            story_id = "ds_domik_isg_leader"
+        else
+            --printdbg("story_id is nil")
+            return
+        end
+    end
+
+    passinc_cache_tbl[story_id] = {
+        is_employed = true,
+        is_unorg = false,
+        employer_id = npc_id,
+        employer_name = se_obj:character_name() or "employer",
+        employer_community = community,
+        is_accumulated = true,
+        request_timeout = false,
+    }
+    
+    passinc_reset_passinc_cache_tbl(story_id)
+    --printdbg("passinc story id: " .. story_id)
+    local task_id = "passinc_task_" .. story_id
+    news_manager.send_tip(db.actor, gt("passinc_salary_started"), nil, nil, show_time)
+	task_manager.get_task_manager( ):give_task(task_id, npc_id)
+end
+
+function passinc_transfer_contract(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    if (not npc) then 
+        --printdbg("npc is nil")
+        return
+    end
+
+    local npc_id = npc:id() or nil
+    local se_obj = npc_id and alife_object(npc_id)
+    local story_id = get_object_story_id(npc_id)
+   
+    if not story_id then return end
+
+    local community = npc:character_community()
+
+    local old_employer_id
+
+    for k, v in pairs(passinc_cache_tbl) do
+        local other_comm
+        other_comm = v.employer_community
+        if other_comm == community and v.is_employed then
+            old_employer_id = k
+            break
+        end
+    end
+
+    if not old_employer_id then return end
+
+    passinc_cache_tbl[story_id] = passinc_copy_table(passinc_cache_tbl[old_employer_id])
+    passinc_cache_tbl[story_id].employer_name = se_obj:character_name() or "employer"
+    passinc_cache_tbl[story_id].employer_id = npc_id
+    passinc_cache_tbl[story_id].employer_community = community
+    passinc_cache_tbl[story_id].is_employed = true
+
+    local task_id = "passinc_task_" .. story_id
+    news_manager.send_tip(db.actor, gt("passinc_transfer_contract_message"), nil, nil, show_time)
+	task_manager.get_task_manager( ):give_task(task_id, npc_id)
+
+    passinc_stop_employment_special(old_employer_id,"transfer")
+
+end
+
+function passinc_copy_table(orig)
+    local orig_type = type(orig)
+    local copy
+    if orig_type == 'table' then
+        copy = {}
+        for k, v in pairs(orig) do
+            copy[passinc_copy_table(k)] = passinc_copy_table(v)
+        end
+    else
+        copy = orig
+    end
+    return copy
+end
+
+function passinc_unorg_start_employment(first_speaker, second_speaker) -- called to start the employment under the talking story npc
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    
+    if (not npc) then return end
+   
+    local npc_id = npc:id() or nil
+    local se_obj = npc_id and alife_object(npc_id)
+    local story_id = get_object_story_id(npc_id)
+    
+    if not story_id then return end
+
+    local community = npc:character_community()
+    if community == "trader" then community = "stalker" end
+
+    passinc_cache_tbl[story_id] = {
+        is_employed = true,
+        is_unorg = true,
+        employer_id = npc_id,
+        employer_name = se_obj:character_name() or "employer",
+        employer_community = community,
+        is_accumulated = true,
+        request_timeout = false,
+    }
+    
+    passinc_reset_passinc_cache_tbl(story_id)
+    local task_id = "passinc_task_" .. story_id
+    news_manager.send_tip(db.actor, gt("passinc_salary_started"), nil, nil, show_time)
+	task_manager.get_task_manager( ):give_task(task_id, npc_id)
+end
+
+function passinc_stop_employment(contract_id)
+    local reason = "basic"
+    if passinc_cache_tbl[contract_id] then
+        passinc_cache_tbl[contract_id].is_employed = false
+        passinc_cache_tbl[contract_id].request_timeout = true
+        news_manager.send_tip(db.actor, gt("passinc_salary_stopped_" .. tostring(reason)), nil, nil, show_time)
+    end
+end
+
+function passinc_stop_employment_special(contract_id,stop_reason)
+    local reason = stop_reason or "basic"
+    if reason and passinc_cache_tbl[contract_id] then
+        passinc_cache_tbl[contract_id].is_employed = false
+        passinc_cache_tbl[contract_id].request_timeout = true
+        if reason ~= "transfer" then
+            news_manager.send_tip(db.actor, gt("passinc_salary_stopped_" .. tostring(reason)), nil, nil, show_time)
+        end
+    end
+end
+
+function passinc_erase_contract(contract_id)
+    passinc_cache_tbl[contract_id] = nil
+    news_manager.send_tip(db.actor, gt("passinc_salary_stopped_death"), nil, nil, show_time)
+end
+
+function passinc_reset_passinc_cache_tbl(contract_id) -- Assuming passinc_cache_tbl is already defined
+    if not passinc_cache_tbl[contract_id] then 
+        --printdbg("Contract not found in passinc_cache_tbl")
+        return 
+    end
+    passinc_cache_tbl[contract_id].npcs_killed = {}
+    passinc_cache_tbl[contract_id].monsters_killed = {}
+    passinc_cache_tbl[contract_id].arti_found = {}
+    passinc_cache_tbl[contract_id].completed_tasks = 0
+    passinc_cache_tbl[contract_id].lazy_days = 0
+    passinc_cache_tbl[contract_id].employment_stage = 1
+    passinc_cache_tbl[contract_id].accumulated_salary = 0
+    passinc_cache_tbl[contract_id].next_payday = level.get_time_days() + 1
+    passinc_cache_tbl[contract_id].is_paid = false
+    passinc_cache_tbl[contract_id].bonus_package = false
+    passinc_cache_tbl[contract_id].accumulated_packs = {}
+    passinc_cache_tbl[contract_id].promotion_prizes = {}
+    passinc_cache_tbl[contract_id].arti_ids_found = {}
+    passinc_cache_tbl[contract_id].progress = 0
+    passinc_cache_tbl[contract_id].progress_combo = 1
+end
+
+function passinc_is_paytime(contract_id)    -- check if it is time to accumulate money (true once every day)
+    if not passinc_cache_tbl[contract_id] then return false end
+    
+    local cur_day = level.get_time_days()
+	local cur_hour = level.get_time_hours() + level.get_time_minutes() / 60
+    local payday = passinc_cache_tbl[contract_id].next_payday or 0
+    --printdbg("Day: " .. cur_day .. " Hour: " .. cur_hour)
+    --printdbg("Payday: " .. payday .. " Pay Hour: " .. paytime_start)
+	if (cur_hour >= paytime_start) and (cur_day >= payday) then
+        --printdbg("IT'S PAYTIME!")
+        return true
+    else
+        --printdbg("IT'S NOT PAYTIME!")
+        return false
+    end
+end
+
+function passinc_check_faction_lazy_day(contract_id)
+    if not passinc_cache_tbl[contract_id] then return false end
+    local is_lazy_day = true
+    local emp_stage = passinc_cache_tbl[contract_id].employment_stage or 1
+    if not passinc_cache_tbl[contract_id].is_unorg then
+        local community = passinc_cache_tbl[contract_id].employer_community
+        if not community then return false end
+        local salary_table = passive_income_tables.passinc_get_org_faction_table(community)
+        local tasks_to_complete = (salary_table["tasks_to_complete"] and salary_table["tasks_to_complete"][emp_stage]) or 0
+        local npcs_to_kill = (salary_table["npcs_to_kill"] and salary_table["npcs_to_kill"][emp_stage]) or 0
+        local monsters_to_kill = (salary_table["monsters_to_kill"] and salary_table["monsters_to_kill"][emp_stage]) or 0
+        local arti_to_find = (salary_table["arti_to_find"] and salary_table["arti_to_find"][emp_stage]) or 0
+        if passinc_calculate_monster_salary(nil, community) > 0 and (passinc_cache_tbl[contract_id].monsters_killed and #passinc_cache_tbl[contract_id].monsters_killed >= monsters_to_kill) then
+            is_lazy_day = false
+        elseif passinc_calculate_npc_killed_salary(nil, community) > 0 and (passinc_cache_tbl[contract_id].npcs_killed and #passinc_cache_tbl[contract_id].npcs_killed >= npcs_to_kill) then 
+            is_lazy_day = false
+        elseif passinc_calculate_tasks_completed_salary(nil, community) > 0 and (passinc_cache_tbl[contract_id].completed_tasks and passinc_cache_tbl[contract_id].completed_tasks >= tasks_to_complete) then 
+            is_lazy_day = false
+        elseif passinc_calculate_arti_found_salary(nil, community) > 0 and (passinc_cache_tbl[contract_id].arti_found and #passinc_cache_tbl[contract_id].arti_found >= arti_to_find) then 
+            is_lazy_day = false
+        end
+    else
+        local unorg_table = passive_income_tables.passinc_get_unorg_character_table(contract_id)
+        local unorg_tasks_to_complete = unorg_table["tasks_to_complete"][emp_stage] or 1
+        if (passinc_cache_tbl[contract_id].completed_tasks and passinc_cache_tbl[contract_id].completed_tasks > unorg_tasks_to_complete) then
+            is_lazy_day = false
+        end
+    end
+    return is_lazy_day
+end
+
+function passinc_lazy_day_warning(contract_id) -- sends a warning if the player didn't complete tasks for the day
+    local msg = gt("passinc_lazy_warning_" .. passinc_cache_tbl[contract_id].lazy_days)
+    news_manager.send_tip(db.actor, msg, nil, nil, show_time)
+end
+
+function passinc_give_promotion(contract_id) -- increase the employment stage so the player earns more
+    if not passinc_cache_tbl[contract_id] then return end
+    local employment_stage = (passinc_cache_tbl[contract_id].employment_stage or 1)
+    local max_employment_stage
+    local comm = passinc_cache_tbl[contract_id].employer_community or "ecolog"
+    if passinc_cache_tbl[contract_id].is_unorg then
+        local unorg_table = passive_income_tables.passinc_get_unorg_character_table(contract_id)
+        max_employment_stage = unorg_table["stages_count"]
+    else
+        local salary_table = passive_income_tables.passinc_get_org_faction_table(comm)
+        max_employment_stage = salary_table["stages_count"]
+    end
+    employment_stage = employment_stage + 1
+    if employment_stage > max_employment_stage then employment_stage = max_employment_stage return end
+    passinc_cache_tbl[contract_id].employment_stage = employment_stage
+    passinc_store_promotion_prize(contract_id)
+    news_manager.send_tip(db.actor, gt("passinc_promotion"), nil, nil, show_time)
+end
+
+function passinc_give_demotion(contract_id)
+    if not passinc_cache_tbl[contract_id] then return end
+    local employment_stage = passinc_cache_tbl[contract_id].employment_stage or 1
+    local comm = passinc_cache_tbl[contract_id].employer_community or "ecolog"
+
+    employment_stage = employment_stage - 1
+    
+    if employment_stage < 1 then
+        passinc_stop_employment_special(contract_id,"lazy")
+        return
+    else
+        passinc_cache_tbl[contract_id].employment_stage = employment_stage
+        local new_progress = 0
+        if passinc_cache_tbl[contract_id].is_unorg then
+            local unorg_table = passive_income_tables.passinc_get_unorg_character_table(contract_id)
+            new_progress = unorg_table["promo_intervals"][employment_stage - 1] or 0
+        else
+            local org_table = passive_income_tables.passinc_get_org_faction_table(comm)
+            new_progress = org_table["promo_intervals"][employment_stage - 1] or 0
+        end
+
+        passinc_cache_tbl[contract_id].progress = new_progress
+
+        news_manager.send_tip(db.actor, gt("passinc_demotion"), nil, nil, show_time)
+    end
+end
+
+
+function passinc_store_promotion_prize(contract_id)
+    if not passinc_cache_tbl[contract_id] then return end
+    local employment_stage = (passinc_cache_tbl[contract_id].employment_stage or 1)
+    local comm = passinc_cache_tbl[contract_id].employer_community or "ecolog"
+    local current_prizes = passinc_cache_tbl[contract_id].promotion_prizes or {}
+    local prize_stage = employment_stage - 1
+    if prize_stage <= 0 then prize_stage = 1 end
+    local salary_table = {}
+    if not passinc_cache_tbl[contract_id].is_unorg then
+        salary_table = passive_income_tables.passinc_get_org_faction_table(comm)
+    else
+        salary_table = passive_income_tables.passinc_get_unorg_character_table(contract_id)
+    end
+    current_prizes[#current_prizes+1] = salary_table["promo_prizes"][prize_stage]
+    passinc_cache_tbl[contract_id].promotion_prizes = current_prizes
+end
+
+function passinc_give_promotion_prizes(contract_id)
+    local prizes = passinc_cache_tbl[contract_id].promotion_prizes
+    if give_promotion_prizes then
+        for i = 1, #prizes do
+            local item = prizes[i]
+            alife_create_item(item, alife():object(0))
+            news_manager.relocate_item(db.actor,"in",item,1)
+        end
+    end
+    passinc_cache_tbl[contract_id].promotion_prizes = {} 
+end
+
+function passinc_calculate_base_salary(contract_id, community) -- calculates the base salary based on the employer community and the employment stage
+
+    local multi = game_difficulties.get_eco_factor("rewards") or 1
+    local employer_community = community or (passinc_cache_tbl[contract_id] and passinc_cache_tbl[contract_id].employer_community) or nil
+    if not employer_community then return end
+    local salary_table = passive_income_tables.passinc_get_org_faction_table(employer_community)
+    local cur_emp_stage = (passinc_cache_tbl[contract_id] and passinc_cache_tbl[contract_id].employment_stage) or 1
+    local base_salary = (salary_table and salary_table["base_salary"] and salary_table["base_salary"][cur_emp_stage]) or 0
+    --local base_salary_increment = salary_table[2]
+    --local cur_emp_stage = 1 
+    return math.ceil(base_salary * multi * salary_mult)
+
+end
+
+function passinc_calculate_monster_salary(contract_id, community) -- calculates the money received for a single mutant killed.
+    
+    local multi = game_difficulties.get_eco_factor("rewards") or 1
+    local employer_community = community or (passinc_cache_tbl[contract_id] and passinc_cache_tbl[contract_id].employer_community)
+    if not employer_community then return end
+    local salary_table = passive_income_tables.passinc_get_org_faction_table(employer_community)
+    local cur_emp_stage = (passinc_cache_tbl[contract_id] and passinc_cache_tbl[contract_id].employment_stage) or 1
+    local money_per_monster = (salary_table and salary_table["money_per_monster"] and salary_table["money_per_monster"][cur_emp_stage]) or 0
+
+    return math.ceil(money_per_monster * multi * salary_mult)
+
+end
+
+function passinc_calculate_npc_killed_salary(contract_id, community) -- calculates the money received for a single npc enemy killed.
+    
+    local multi = game_difficulties.get_eco_factor("rewards") or 1
+    local employer_community = community or (passinc_cache_tbl[contract_id] and passinc_cache_tbl[contract_id].employer_community)
+    if not employer_community then return end
+    local salary_table = passive_income_tables.passinc_get_org_faction_table(employer_community)
+    local cur_emp_stage = (passinc_cache_tbl[contract_id] and passinc_cache_tbl[contract_id].employment_stage) or 1
+    local money_per_npc = (salary_table and salary_table["money_per_npc"] and salary_table["money_per_npc"][cur_emp_stage]) or 0
+
+    return math.ceil(money_per_npc * multi * salary_mult)
+
+end
+
+function passinc_calculate_arti_found_salary(contract_id, community) -- calculates the money received for every artifact found.
+
+    local multi = game_difficulties.get_eco_factor("rewards") or 1
+    local employer_community = community or (passinc_cache_tbl[contract_id] and passinc_cache_tbl[contract_id].employer_community)
+    if not employer_community then return end
+    local salary_table = passive_income_tables.passinc_get_org_faction_table(employer_community)
+    local cur_emp_stage = (passinc_cache_tbl[contract_id] and passinc_cache_tbl[contract_id].employment_stage) or 1
+    local money_per_arti = (salary_table and salary_table["money_per_arti"] and salary_table["money_per_arti"][cur_emp_stage]) or 0
+
+    return math.ceil(money_per_arti * multi * salary_mult)
+
+end
+
+function passinc_calculate_tasks_completed_salary(contract_id, community) -- calculates the money received for a single task completed.
+
+    local multi = game_difficulties.get_eco_factor("rewards") or 1
+    local employer_community = community or (passinc_cache_tbl[contract_id] and passinc_cache_tbl[contract_id].employer_community)
+    if not employer_community then return end
+    local salary_table = passive_income_tables.passinc_get_org_faction_table(employer_community)
+    local cur_emp_stage = (passinc_cache_tbl[contract_id] and passinc_cache_tbl[contract_id].employment_stage) or 1
+    local money_per_task = (salary_table and salary_table["money_per_task"] and salary_table["money_per_task"][cur_emp_stage]) or 0
+
+    return math.ceil(money_per_task * multi * salary_mult)
+
+end
+
+function passinc_get_random_bonus_package(contract_id)
+    local math_random = math.random
+    local stage = passinc_cache_tbl[contract_id].employment_stage or 1
+    local comm = passinc_cache_tbl[contract_id].employer_community or "ecolog"
+    local pack_table = passinc_salary_bonus_pack_table[stage] or {}
+    if not pack_table then return "" end
+    local random_pack = pack_table[math_random(#pack_table)]
+    if comm == "ecolog" and (math_random() < 0.2) then
+        random_pack = random_pack .. "ammowp"
+    elseif comm == "freedom" and (math_random() < 0.3) then
+        random_pack = random_pack .. "ammonato" 
+    elseif comm == "isg" and (math_random() < 0.3) then
+        random_pack = random_pack .. "ammonato" 
+    elseif comm == "killer" and (math_random() < 0.5) then
+        random_pack = random_pack .. "ammonato" 
+    elseif comm == "dolg" and (math_random() < 0.25) then
+        random_pack = random_pack .. "ammowp"    
+    elseif comm == "army" and (math_random() < 0.5) then
+        random_pack = random_pack .. "ammowp"
+    elseif comm == "monolith" and (math_random() < 0.5) then
+        random_pack = random_pack .. "ammowp"
+    elseif comm == "greh" and (math_random() < 0.5) then
+        random_pack = random_pack .. "ammowp"
+    end    
+    return random_pack
+end
+
+function passinc_pay_share_salary(first_speaker, second_speaker) -- pays the salary to the player
+    
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_id = npc and npc:id()
+    local story_id = get_object_story_id(npc_id)
+
+	local full_salary = passinc_cache_tbl[story_id].accumulated_salary or 0
+    local divided_salary
+    local companions_tbl = axr_companions.list_actor_squad_by_id()
+    local squad_size = axr_companions.get_companion_count() + 1
+    passinc_cache_tbl[story_id].accumulated_salary = 0
+    
+    if squad_size > 1 then
+        divided_salary = math.ceil(full_salary / squad_size)
+        if companions_tbl and #companions_tbl > 0 then
+            for k,v in pairs(companions_tbl) do
+                local obj = level.object_by_id(v)
+                obj:give_money(divided_salary)
+            end
+        end
+        dialogs.relocate_money(db.actor, divided_salary or 500, "in")
+        local shared_total_salary = full_salary - divided_salary
+        local reputation = math.floor(shared_total_salary / 100)
+        game_statistics.increment_reputation(reputation)
+        if gfcmod then
+            local friendship = math.floor(shared_total_salary / 300)
+            gfcmod.add_friendship(friendship, "no_msg", {})
+            local gfcmod_share_msg = gt("passinc_gfcmod_salary_share")
+            news_manager.send_tip(db.actor, gfcmod_share_msg, nil, nil, show_time)
+        else
+            local share_msg = gt("passinc_salary_share")
+            news_manager.send_tip(db.actor, share_msg, nil, nil, show_time)
+        end
+    else
+        dialogs.relocate_money(db.actor, full_salary or 500, "in")
+    end
+    
+    if passinc_cache_tbl[story_id].bonus_package then
+        local bonus_package = passinc_get_random_bonus_package(story_id)
+        alife_create_item(bonus_package, alife():object(0))
+        news_manager.relocate_item(db.actor,"in",bonus_package,1)
+        passinc_cache_tbl[story_id].bonus_package = false
+    end
+
+    if passinc_cache_tbl[story_id].promotion_prizes then
+        passinc_give_promotion_prizes(story_id)
+    end
+
+
+end
+
+function passinc_pay_not_share_salary(first_speaker, second_speaker) -- pays the salary to the player
+
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_id = npc and npc:id()
+    local story_id = get_object_story_id(npc_id)
+
+    if not passinc_cache_tbl[story_id].accumulated_salary then return end
+	local full_salary = passinc_cache_tbl[story_id].accumulated_salary or 0
+    passinc_cache_tbl[story_id].accumulated_salary = 0
+    dialogs.relocate_money(db.actor, full_salary or 500, "in")
+    if passinc_cache_tbl[story_id].bonus_package then
+        local bonus_package = passinc_get_random_bonus_package(story_id)
+        alife_create_item(bonus_package, alife():object(0))
+        news_manager.relocate_item(db.actor,"in",bonus_package,1)
+        passinc_cache_tbl[story_id].bonus_package = false
+    end
+
+    if passinc_cache_tbl[story_id].promotion_prizes then
+        passinc_give_promotion_prizes(story_id)
+    end
+end
+
+function passinc_unorg_pay_packs_salary(first_speaker, second_speaker) -- pays the salary to the player
+
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_id = npc and npc:id()
+    local story_id = get_object_story_id(npc_id)
+
+    if not passinc_cache_tbl[story_id].accumulated_packs then return end
+	local packs = passinc_cache_tbl[story_id].accumulated_packs
+    for i = 1, #packs do
+        local package = packs[i]
+        alife_create_item(package, alife():object(0))
+        news_manager.relocate_item(db.actor,"in",package,1)
+    end
+    passinc_cache_tbl[story_id].accumulated_packs = {}
+
+    if passinc_cache_tbl[story_id].promotion_prizes then
+        passinc_give_promotion_prizes(story_id)
+    end
+end
+
+
+function passinc_accumulate_salary(contract_id) -- accumulates the salary each day waiting for the player to go withdraw it
+	local diff_multi = game_difficulties.get_eco_factor("rewards") or 1
+    local comm = passinc_cache_tbl[contract_id].employer_community
+    local stage = passinc_cache_tbl[contract_id].employment_stage
+    local salary_table = passive_income_tables.passinc_get_org_faction_table(comm)
+    
+    local base_money = passinc_calculate_base_salary(contract_id)
+    local completed_tasks = passinc_cache_tbl[contract_id].completed_tasks or 0
+    local monster_bonus_money = passinc_calculate_monsters_killed_money(contract_id)
+    local npc_bonus_money = passinc_calculate_npcs_killed_money(contract_id)
+    local arti_bonus_money = passinc_calculate_arti_found_money(contract_id)
+    local task_bonus_money = passinc_calculate_tasks_completed_salary(contract_id) * completed_tasks
+    local max_money = salary_table["max_money"][stage] * max_money_mult * diff_multi
+	local money = base_money + task_bonus_money + monster_bonus_money + npc_bonus_money + arti_bonus_money
+
+    if money > max_money then money = max_money end -- limit the amount of money one can receive each day
+
+    passinc_cache_tbl[contract_id].accumulated_salary = (passinc_cache_tbl[contract_id].accumulated_salary or 0) + money
+    passinc_cache_tbl[contract_id].is_paid = false
+
+    local progress = (task_bonus_money / salary_mult) + (monster_bonus_money / salary_mult) + (npc_bonus_money / salary_mult) + (arti_bonus_money / salary_mult)
+    passinc_accumulate_progress(contract_id,progress)
+
+    local msg_start = strformat(gt("passinc_salary_ready"), passinc_cache_tbl[contract_id].employer_name)
+    local msg_task = ""
+    local msg_monster = ""
+    local msg_npc = ""
+    local msg_arti = ""
+    local msg_money = strformat(gt("passinc_accumulate_money"), money)
+    if (passinc_calculate_tasks_completed_salary(contract_id) > 0) then
+        msg_task = strformat(gt("passinc_accumulate_complete_task"), passinc_cache_tbl[contract_id].completed_tasks or 0)
+    end
+    if (passinc_calculate_monster_salary(contract_id) > 0) then
+        msg_monster = strformat(gt("passinc_accumulate_monster_killed"), #passinc_cache_tbl[contract_id].monsters_killed or 0)
+    end
+    if (passinc_calculate_npc_killed_salary(contract_id) > 0) then
+        msg_npc = strformat(gt("passinc_accumulate_npc_killed"), #passinc_cache_tbl[contract_id].npcs_killed or 0)
+    end
+    if (passinc_calculate_arti_found_salary(contract_id) > 0) then
+        msg_arti = strformat(gt("passinc_accumulate_arti_found"), #passinc_cache_tbl[contract_id].arti_found or 0)
+    end
+
+    local msg = msg_start .. msg_task .. msg_monster .. msg_npc .. msg_arti .. msg_money
+    news_manager.send_tip(db.actor, msg, nil, nil, show_time * 2)
+end
+
+function passinc_unorg_accumulate_salary(contract_id) -- accumulates the salary each day waiting for the player to go withdraw it
+    if (not passinc_cache_tbl[contract_id]) then return end
+    local completed_tasks = passinc_cache_tbl[contract_id].completed_tasks or 0
+    local current_stage = passinc_cache_tbl[contract_id].employment_stage or 1
+    local unorg_table = passive_income_tables.passinc_get_unorg_character_table(contract_id)
+    local target_tasks = (unorg_table and unorg_table["tasks_for_bonus"] and unorg_table["tasks_for_bonus"][current_stage]) or 2
+    local packs_count = math.floor(completed_tasks / target_tasks) + 1
+    local salary_packs_table = passinc_cache_tbl[contract_id].accumulated_packs or {}
+    for i = 1, packs_count, 1 do
+        local pack_to_add = passinc_generate_salary_pack(contract_id, passinc_cache_tbl[contract_id].employment_stage, i)
+        salary_packs_table[#salary_packs_table+1] = pack_to_add
+    end
+    passinc_cache_tbl[contract_id].accumulated_packs = salary_packs_table
+    passinc_cache_tbl[contract_id].is_paid = false
+
+    local progress = 0
+    for i = 1, #salary_packs_table do
+        progress = progress + passinc_pack_to_progress(salary_packs_table[i])
+    end
+    passinc_accumulate_progress(contract_id,progress)
+
+    local msg_start = strformat(gt("passinc_salary_ready"), passinc_cache_tbl[contract_id].employer_name)
+    local msg_task = ""
+    local msg = msg_start .. msg_task
+    news_manager.send_tip(db.actor, msg, nil, nil, show_time * 2)
+end
+
+
+function passinc_generate_salary_pack(employer_id, stage, cnt)
+    local unorg_table = passive_income_tables.passinc_get_unorg_character_table(employer_id)
+    local base_pack = (unorg_table and unorg_table["base_packs"] and unorg_table["base_packs"][stage]) or "bia_novicepackage"
+    local upgraded_pack = passinc_pack_upgrade_table[base_pack] or "bia_experiencedpackage"
+    local upgrade_chance = unorg_table["upgrade_chance"][stage] + (unorg_table["upgrade_chance_increment"][stage] * cnt) or 0.1
+    local generated_pack = base_pack
+    --printdbg("passinc gift generated with upgrade chance: " .. upgrade_chance)
+    if math.random() <= upgrade_chance then
+        generated_pack = upgraded_pack
+    end
+    if math.random() <= 0.1 then
+        generated_pack = generated_pack .. "ammowp"
+    end
+    return generated_pack
+end
+
+function passinc_calculate_monsters_killed_money(contract_id)
+    if not passinc_cache_tbl[contract_id].monsters_killed then return 0 end
+
+    local monsters_killed = passinc_cache_tbl[contract_id].monsters_killed 
+    local total_money = 0
+    local base_money = passinc_calculate_monster_salary(contract_id)
+    
+    for i = 1, #monsters_killed do 
+        local money_rank_mult = passinc_monster_rank_to_mult(monsters_killed[i]) or 1
+        local money_to_add = math.ceil(base_money * money_rank_mult)
+        total_money = total_money + money_to_add
+    end
+    
+    return total_money
+        
+end
+
+function passinc_calculate_npcs_killed_money(contract_id)
+    if not passinc_cache_tbl[contract_id].npcs_killed then return 0 end
+
+    local npcs_killed = passinc_cache_tbl[contract_id].npcs_killed 
+    local total_money = 0
+    local base_money = passinc_calculate_npc_killed_salary(contract_id)
+    
+    for i = 1, #npcs_killed do 
+        local money_rank_mult = passinc_get_npc_rank_multiplier(npcs_killed[i]) or 0
+        local money_to_add = math.ceil(base_money * money_rank_mult)
+        total_money = total_money + money_to_add
+    end
+    
+    return total_money
+        
+end
+
+function passinc_calculate_arti_found_money(contract_id)
+    if not passinc_cache_tbl[contract_id].arti_found then return 0 end
+
+    local arti_found = passinc_cache_tbl[contract_id].arti_found 
+    local total_money = 0
+    local base_money = passinc_calculate_arti_found_salary(contract_id)
+    
+    for i = 1, #arti_found do 
+        local money_rank_mult = passinc_arti_cost_to_mult(arti_found[i]) or 10000
+        local money_to_add = math.ceil(base_money * money_rank_mult)
+        total_money = total_money + money_to_add
+    end
+    
+    return total_money
+        
+end
+
+function passinc_get_npc_rank_multiplier(rank)
+
+    local salary_multiplier
+
+    if rank == "novice" then
+        salary_multiplier = 1
+   
+    elseif rank == "trainee" then
+        salary_multiplier = 1.1
+    
+    elseif rank == "experienced" then
+        salary_multiplier = 1.2
+   
+    elseif rank == "professional" then
+        salary_multiplier = 1.3
+    
+    elseif rank == "veteran" then
+        salary_multiplier = 1.5
+   
+    elseif rank == "expert" then
+        salary_multiplier = 1.7
+    
+    elseif rank == "master" then
+        salary_multiplier = 1.9
+    
+    elseif rank == "legend" then
+        salary_multiplier = 2
+
+    else
+        salary_multiplier = 1
+    end      
+    
+    return salary_multiplier
+    
+end
+
+function passinc_monster_rank_to_mult(x)
+    local a, b = 1, 20
+    local c, d = 1, 2
+    return c + ((x - a) / (b - a)) * (d - c)
+end
+
+function passinc_arti_cost_to_mult(x)
+    local a, b = 10000, 50000
+    local c, d = 1, 2
+    return c + ((x - a) / (b - a)) * (d - c)
+end
+
+function passinc_accumulate_progress(contract_id,progress_to_add)
+
+    local progress_combo = passinc_cache_tbl[contract_id].progress_combo or 1
+    local progress = progress_to_add * progress_mult * progress_combo
+
+    passinc_cache_tbl[contract_id].progress = (passinc_cache_tbl[contract_id].progress or 0) + progress
+
+    --printdbg("Contract progress: " .. passinc_cache_tbl[contract_id].progress)
+    --printdbg("Contract progress combo mult: " .. passinc_cache_tbl[contract_id].progress_combo)
+    --printdbg("Next promo progress: " .. passinc_get_current_progress_interval(contract_id))
+
+end
+
+function passinc_get_current_progress_interval(contract_id, custom_stage)
+
+    if not passinc_cache_tbl[contract_id] then return end
+    local comm = passinc_cache_tbl[contract_id].employer_community or "stalker"
+    local stage = custom_stage or passinc_cache_tbl[contract_id].employment_stage or 1
+    local target_progress = 0
+    if not passinc_cache_tbl[contract_id].is_unorg then
+        local salary_table = passive_income_tables.passinc_get_org_faction_table(comm)
+        target_progress = salary_table["promo_intervals"][stage]
+    else
+        local unorg_table = passive_income_tables.passinc_get_unorg_character_table(contract_id)
+        target_progress = unorg_table and unorg_table["promo_intervals"] and unorg_table["promo_intervals"][stage]
+    end
+
+    return target_progress
+
+end
+
+function passinc_pack_to_progress(pack_name)
+    local progress = 0
+    if not pack_name then return 0 end
+    if pack_name == "bia_novicepackage" or pack_name == "bia_novicepackageammowp" or pack_name == "bia_novicepackageammonato" then
+        progress = 500
+    end
+    if pack_name == "bia_experiencedpackage" or pack_name == "bia_experiencedpackageammowp" or pack_name == "bia_experiencedpackageammonato" then
+        progress = 1000
+    end
+    if pack_name == "bia_seasonedpackage" or pack_name == "bia_seasonedpackageammowp" or pack_name == "bia_seasonedpackageammonato" then
+        progress = 2000
+    end
+    if pack_name == "bia_masterpackage" or pack_name == "bia_masterpackageammowp" or pack_name == "bia_masterpackageammonato" then
+        progress = 4000
+    end
+    if pack_name == "bia_veteranpackage" or pack_name == "bia_veteranpackageammowp" or pack_name == "bia_veteranpackageammonato" then
+        progress = 8000
+    end
+
+    return progress
+
+end
+
+--======== DIALOGS PRECONDITIONS ========
+
+function passinc_is_employed(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_id = npc and npc:id()
+    local story_id = get_object_story_id(npc_id)
+    
+    if (not passinc_cache_tbl[story_id]) then
+        return false
+    end
+
+    if (not passinc_cache_tbl[story_id].is_employed) then
+        return false
+    else
+        return true
+    end
+end
+
+function passinc_is_unemployed(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_id = npc and npc:id()
+    local story_id = get_object_story_id(npc_id)
+
+    if (not passinc_cache_tbl[story_id]) then
+        return true
+    end
+
+    if (not passinc_cache_tbl[story_id].is_employed) then
+        return true
+    else
+        return false
+    end
+end
+
+function passinc_is_same_faction_employed(first_speaker, second_speaker)
+
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    --if not npc then return false end
+
+    local npc_id = npc and npc:id()
+    local story_id = get_object_story_id(npc_id)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+
+    if not passinc_cache_tbl then return false end
+
+    for k, v in pairs(passinc_cache_tbl) do
+        local other_comm
+        other_comm = v.employer_community
+        if other_comm == npc_community and v.is_employed then
+            return true
+        end
+    end
+
+    return false
+
+end
+
+function passinc_is_not_same_faction_employed(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    --if not npc then return false end
+
+    local npc_id = npc and npc:id()
+    local story_id = get_object_story_id(npc_id)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+
+    if not passinc_cache_tbl then return false end
+
+    local is_employed = false
+
+    for k, v in pairs(passinc_cache_tbl) do
+        local other_comm
+        other_comm = v.employer_community
+        if other_comm == npc_community and v.is_employed then
+            is_employed = true
+        end
+    end
+
+    return not is_employed
+end
+
+function passinc_is_not_enemies(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_id = npc and npc:id()
+    --local story_id = get_object_story_id(npc_id)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local actor_community = get_actor_true_community()
+    
+    if game_relations.is_factions_enemies(npc_community, actor_community) then
+        return false
+    else
+        return true
+    end
+end
+
+
+
+function passinc_is_not_paid(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_id = npc and npc:id()
+    local story_id = get_object_story_id(npc_id)
+
+    return (not passinc_cache_tbl[story_id].is_paid)
+end
+
+function passinc_has_accumulated_salary(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_id = npc and npc:id()
+    local story_id = get_object_story_id(npc_id)
+    if not passinc_cache_tbl[story_id] then return false end
+    if not passinc_cache_tbl[story_id].accumulated_salary then
+        return false
+    end
+    if passinc_cache_tbl[story_id].accumulated_salary and passinc_cache_tbl[story_id].accumulated_salary > 0 then
+        return true
+    end
+    return false
+end
+
+function passinc_unorg_has_accumulated_salary(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_id = npc and npc:id()
+    local story_id = get_object_story_id(npc_id)
+    if not passinc_cache_tbl[story_id] then return false end
+    if not passinc_cache_tbl[story_id].accumulated_packs then
+        return false
+    end
+    local packs = passinc_cache_tbl[story_id].accumulated_packs
+    if packs and #packs > 0 then
+        return true
+    end
+    return false
+end
+
+function passinc_is_not_request_timeout(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_id = npc and npc:id()
+    local story_id = get_object_story_id(npc_id)
+    
+    if (not passinc_cache_tbl[story_id]) then
+        return true
+    end
+
+    if (passinc_cache_tbl[story_id]) and (passinc_cache_tbl[story_id].request_timeout) then
+        return false
+    else
+        return true
+    end
+    return (not passinc_cache_tbl[story_id].request_timeout) or false
+end
+
+function passinc_is_same_faction(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local actor_community = get_actor_true_community()
+    if (not actor_community) or (not npc_community) then
+        return false
+    end 
+    if actor_community == npc_community then
+        return true
+    end
+    return false
+end
+
+function passinc_is_employer(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_id = npc and npc:id()
+    local story_id = get_object_story_id(npc_id)
+
+    if passinc_cache_tbl[story_id] and passinc_cache_tbl[story_id].is_employed then
+        return true
+    else
+        return false
+    end
+end
+
+function passinc_is_not_employer(first_speaker, second_speaker)
+    return (not passinc_is_employer(first_speaker, second_speaker))
+end
+
+
+function passinc_actor_is_poor()
+    if not db.actor then return end
+    local actor_money = db.actor:money()
+    if not actor_money then return end
+    if actor_money <= poverty_line then
+        return true
+    else
+        return false
+    end
+end
+
+function passinc_is_employer_valid(contract_id)
+	local id = passinc_cache_tbl[contract_id].employer_id
+	local se_obj = id and alife_object(id)
+	if not (se_obj) then
+		return false
+	end
+
+	if not (IsStalker(nil,se_obj:clsid()) and se_obj:alive()) then
+		return false
+	end
+
+	return true
+end
+
+
+--======== DIALOGS ==========
+
+function passinc_has_companions()
+    local compaions_number = axr_companions.get_companion_count()
+    if compaions_number > 0 then return true
+    else return false end
+end
+
+function passinc_has_not_companions()
+    local compaions_number = axr_companions.get_companion_count()
+    if compaions_number <= 0 then return true
+    else return false end
+end
+
+
+function passinc_dialog_stop_employment(first_speaker, second_speaker)
+    local reason = "basic"
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_id = npc and npc:id()
+    local contract_id = get_object_story_id(npc_id)
+    passinc_stop_employment(contract_id)
+end
+
+-- FACTIONS DIALOGS SCRIPT TEXT
+
+function passinc_salary_preview(first_speaker, second_speaker)
+    local g_tostring = tostring
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+
+    if not npc_community then return "What?" end
+
+	local base_money = passinc_calculate_base_salary(nil, npc_community)
+    local monster_bonus_money = passinc_calculate_monster_salary(nil, npc_community)
+    local npc_bonus_money = passinc_calculate_npc_killed_salary(nil, npc_community)
+    local arti_bonus_money = passinc_calculate_arti_found_salary(nil, npc_community)
+    local task_bonus_money = passinc_calculate_tasks_completed_salary(nil, npc_community)
+    local msg
+    if npc_community == "ecolog" then
+        msg = strformat(gt("passinc_salary_preview" .. "_" .. npc_community) or "", g_tostring(base_money), g_tostring(task_bonus_money), g_tostring(arti_bonus_money))
+    elseif npc_community == "army" then
+        msg = strformat(gt("passinc_salary_preview" .. "_" .. npc_community) or "", g_tostring(base_money), g_tostring(task_bonus_money), g_tostring(npc_bonus_money))
+    elseif npc_community == "dolg" then
+        msg = strformat(gt("passinc_salary_preview" .. "_" .. npc_community) or "", g_tostring(base_money), g_tostring(task_bonus_money), g_tostring(monster_bonus_money), g_tostring(npc_bonus_money))
+    elseif npc_community == "killer" then
+        msg = strformat(gt("passinc_salary_preview" .. "_" .. npc_community) or "", g_tostring(base_money), g_tostring(task_bonus_money))
+    elseif npc_community == "freedom" then
+        msg = strformat(gt("passinc_salary_preview" .. "_" .. npc_community) or "", g_tostring(base_money), g_tostring(task_bonus_money), g_tostring(npc_bonus_money))
+    elseif npc_community == "isg" then
+        msg = strformat(gt("passinc_salary_preview" .. "_" .. npc_community) or "", g_tostring(base_money), g_tostring(task_bonus_money), g_tostring(npc_bonus_money), g_tostring(monster_bonus_money))
+    elseif npc_community == "monolith" then
+        msg = strformat(gt("passinc_salary_preview" .. "_" .. npc_community) or "", g_tostring(base_money), g_tostring(task_bonus_money), g_tostring(npc_bonus_money), g_tostring(monster_bonus_money))
+    elseif npc_community == "greh" then
+        msg = strformat(gt("passinc_salary_preview" .. "_" .. npc_community) or "", g_tostring(base_money), g_tostring(task_bonus_money), g_tostring(npc_bonus_money), g_tostring(monster_bonus_money))
+    end
+    return msg
+end
+
+function passinc_unorg_salary_preview(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    if (not npc) then return end
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local npc_id = npc:id() or nil
+    local se_obj = npc_id and alife_object(npc_id)
+    local story_id = get_object_story_id(npc_id)
+
+    if not npc_community then return "What?" end
+    local tasks_for_bonus
+    local unorg_table = passive_income_tables.passinc_get_unorg_character_table(story_id)
+    if unorg_table then
+        tasks_for_bonus = (unorg_table and unorg_table["tasks_for_bonus"] and unorg_table["tasks_for_bonus"][1])
+    end
+    
+
+    local msg = strformat(gt("passinc_salary_preview" .. "_" .. npc_community), tasks_for_bonus)
+    return msg
+end
+
+function passinc_pay_salary_preview(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local npc_id = npc:id() or nil
+    local se_obj = npc_id and alife_object(npc_id)
+    local story_id = get_object_story_id(npc_id)
+    local salary = passinc_cache_tbl[story_id].accumulated_salary or 0
+    local msg = gt("passinc_show_salary" .. "_" .. npc_community) .. " " .. salary
+    if passinc_cache_tbl[story_id].bonus_package then
+        msg = strformat(gt("passinc_show_salary_bonus" .. "_" .. npc_community), salary)
+    end
+    return msg
+end
+
+function passinc_unorg_pay_salary_preview(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local npc_id = npc:id() or nil
+    local se_obj = npc_id and alife_object(npc_id)
+    local story_id = get_object_story_id(npc_id)
+    local packs = passinc_cache_tbl[story_id].accumulated_packs
+    local msg = strformat(gt("passinc_show_salary" .. "_" .. npc_community), #packs)
+    return msg
+end
+
+
+function passinc_ask_for_employment()
+
+    local npc_community = get_actor_true_community()
+    if (not npc_community) then return "" end
+    local dialog_text = gt("passinc_ask_for_employment" .. "_" .. npc_community)
+    return dialog_text
+end
+
+function passinc_unorg_ask_for_employment()
+
+    local npc_community = get_actor_true_community()
+
+    local dialog_text = gt("passinc_ask_for_employment" .. "_" .. npc_community)
+    return dialog_text
+end
+
+function passinc_employment_back(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local dialog_text = gt("passinc_employment_back" .. "_" .. npc_community)
+    return dialog_text
+end
+
+function passinc_employment_confirm(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local dialog_text = gt("passinc_employment_confirm" .. "_" .. npc_community)
+    return dialog_text
+end
+
+function passinc_ask_for_stop_employment()
+    local npc_community = get_actor_true_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local dialog_text = gt("passinc_ask_for_stop_employment" .. "_" .. npc_community)
+    return dialog_text
+end
+
+function passinc_stop_employment_available(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local dialog_text = gt("passinc_stop_employment_available" .. "_" .. npc_community)
+    return dialog_text
+end
+
+function passinc_stop_employment_confirm(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local dialog_text = gt("passinc_stop_employment_confirm" .. "_" .. npc_community)
+    return dialog_text
+end
+
+function passinc_stop_employment_end(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local dialog_text = gt("passinc_stop_employment_end" .. "_" .. npc_community)
+    return dialog_text
+end
+
+function passinc_ask_for_salary()
+    local npc_community = get_actor_true_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local dialog_text = gt("passinc_ask_for_salary" .. "_" .. npc_community)
+    return dialog_text
+end
+
+function passinc_get_salary(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local dialog_text = gt("passinc_get_salary" .. "_" .. npc_community)
+    return dialog_text
+end
+
+function passinc_not_share_salary(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local dialog_text = gt("passinc_not_share_salary" .. "_" .. npc_community)
+    return dialog_text
+end
+
+function passinc_share_salary(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local dialog_text = gt("passinc_share_salary" .. "_" .. npc_community)
+    return dialog_text
+end
+
+function passinc_ask_for_transfer()
+
+    local npc_community = get_actor_true_community()
+    if (not npc_community) then return "" end
+    local dialog_text = gt("passinc_ask_for_transfer_default")
+    return dialog_text
+end
+
+function passinc_ask_transfer_confirm(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local dialog_text = gt("passinc_ask_transfer_confirm_default")
+    return dialog_text
+end
+
+function passinc_transfer_confirm(first_speaker, second_speaker)
+    local npc = dialogs.who_is_npc(first_speaker, second_speaker)
+    local npc_community = npc:character_community()
+    if npc_community == "trader" then npc_community = "stalker" end
+    local dialog_text = gt("passinc_transfer_confirm_default")
+    return dialog_text
+end
+
+--=====================================
+
+--====== EMPLOYMENT TASK=======
+
+function xr_conditions.passinc_is_employed(actor, npc, p)
+    local story_id = tostring(p[1])
+    if not story_id then return false end
+    if not passinc_cache_tbl[story_id] then return false end
+    if passinc_cache_tbl[story_id] and passinc_cache_tbl[story_id].is_employed then
+        return true
+    end
+    return false
+end
+
+function xr_conditions.passinc_is_same_faction(actor, npc, p)
+    local story_id = tostring(p[1])
+    if not story_id then return false end
+    if not passinc_cache_tbl[story_id] then return false end
+    local actor_community = get_actor_true_community()
+    local employer_community = passinc_cache_tbl[story_id].employer_community
+    if actor_community == employer_community then
+        return true
+    end
+    return false
+end
+
+function xr_conditions.passinc_is_faction_enemies(actor, npc, p)
+    local story_id = tostring(p[1])
+    if story_id and passinc_cache_tbl[story_id] then
+        local actor_community = get_actor_true_community()
+        local employer_community = passinc_cache_tbl[story_id].employer_community
+        if game_relations.is_factions_enemies(employer_community, actor_community) then
+            return true
+        else
+            return false
+        end
+    end
+end
+
+function xr_effects.passinc_stop_employment_task(actor, npc, p)
+    local story_id = tostring(p[1])
+    if passinc_cache_tbl[story_id] then
+        passinc_stop_employment(story_id)
+        --printdbg("employment stopped from task manager")
+    end
+end
+
+-- DESCRIPTION FUNCTORS
+function task_functor.passinc_task_descr_f(task_id,field,p,tsk)
+    
+    local msg = ""
+    local giver_id
+    local se_obj
+    local se_giver_story_id
+    if (tsk and tsk.task_giver_id) then
+        giver_id = tsk.task_giver_id
+        se_obj = id and alife_object(giver_id)
+        se_giver_story_id = get_object_story_id(giver_id)
+    end
+    
+    if not se_giver_story_id then
+        return msg
+    end
+
+    local employer_comm = passinc_cache_tbl[se_giver_story_id].employer_community or nil
+    local employer_name = passinc_cache_tbl[se_giver_story_id].employer_name or nil
+    local current_stage = passinc_cache_tbl[se_giver_story_id].employment_stage or 1
+    local current_progress = passinc_cache_tbl[se_giver_story_id].progress or 0
+    local target_progress
+    local previous_progress
+
+    if not passinc_cache_tbl[se_giver_story_id].is_unorg then
+        local org_salary_tbl = passive_income_tables.passinc_get_org_faction_table(employer_comm)
+        target_progress = org_salary_tbl["promo_intervals"][current_stage]
+        previous_progress = org_salary_tbl["promo_intervals"][current_stage - 1] or 0
+    else
+        local unorg_salary_tbl = passive_income_tables.passinc_get_unorg_character_table(se_giver_story_id)
+        target_progress = unorg_salary_tbl["promo_intervals"][current_stage]
+        previous_progress = unorg_salary_tbl["promo_intervals"][current_stage - 1] or 0
+    end
+
+    if (not employer_comm) or (not employer_name) or (not target_progress) then return "" end
+
+    local progress_percent = math.floor(((current_progress - previous_progress) / (target_progress - previous_progress)) * 100)
+
+    local msg_divider = strformat(gt("passinc_descr_divider"))    
+
+    local msg_completed
+    if passinc_cache_tbl[se_giver_story_id].is_daily_completed then
+        msg_completed = strformat(gt("passinc_descr_completed"))
+    else
+        msg_completed = strformat(gt("passinc_descr_not_completed"))
+    end
+
+    if (not passinc_cache_tbl[se_giver_story_id].is_unorg) then
+	    local msg_comm = strformat(gt("passinc_employer_name"), employer_name)
+        local msg_middle = gt("passinc_descr_middle")
+        local msg_base = strformat(gt("passinc_descr_base"), passinc_calculate_base_salary(se_giver_story_id, employer_comm))
+        local msg_task = ""
+        local msg_monster = ""
+        local msg_arti = ""
+        local msg_npc = ""
+        local msg_stage = gt("passinc_descr_employment_stage") .. " " .. (passinc_cache_tbl[se_giver_story_id].employment_stage) .. "/" .. (max_employment_stage)
+        local msg_progress = strformat(gt("passinc_descr_progress"), progress_percent)
+        if (passinc_calculate_tasks_completed_salary(se_giver_story_id) > 0) then
+            msg_task = strformat(gt("passinc_descr_complete_task"), passinc_calculate_tasks_completed_salary(se_giver_story_id, employer_comm))
+        end
+        if (passinc_calculate_monster_salary(se_giver_story_id) > 0) then
+            msg_monster = strformat(gt("passinc_descr_monster_killed"), passinc_calculate_monster_salary(se_giver_story_id, employer_comm))
+        end
+        if (passinc_calculate_npc_killed_salary(se_giver_story_id) > 0) then
+            msg_npc = strformat(gt("passinc_descr_npc_killed"), passinc_calculate_npc_killed_salary(se_giver_story_id, employer_comm))
+        end
+        if (passinc_calculate_arti_found_salary(se_giver_story_id) > 0) then
+            msg_arti = strformat(gt("passinc_descr_arti_found"), passinc_calculate_arti_found_salary(se_giver_story_id, employer_comm))
+        end    
+        msg = msg_comm .. msg_stage .. msg_progress .. msg_divider .. msg_middle .. msg_base .. msg_task .. msg_monster .. msg_npc .. msg_arti .. msg_divider .. msg_completed
+    else
+        local unorg_table = passive_income_tables.passinc_get_unorg_character_table(se_giver_story_id)
+        local bonus_interval = (unorg_table and unorg_table["tasks_for_bonus"] and unorg_table["tasks_for_bonus"][current_stage])
+        local msg_name = strformat(gt("passinc_employer_name"), employer_name)
+        local msg_stage = gt("passinc_unorg_descr_employment_stage") .. " " .. (passinc_cache_tbl[se_giver_story_id].employment_stage) .. "/" .. (unorg_table["stages_count"])
+        local msg_progress = strformat(gt("passinc_descr_progress"), progress_percent)
+        local msg_descr = strformat(gt("passinc_unorg_descr_middle"), employer_name)
+        local msg_bonus = strformat(gt("passinc_unorg_descr_bonus"), bonus_interval)
+        local msg_task = strformat(gt("passinc_unorg_complete_task"), (passinc_cache_tbl[se_giver_story_id].completed_tasks or 0), (employer_name))
+        msg = msg_name .. msg_stage .. msg_progress .. msg_divider .. msg_descr .. msg_bonus .. msg_task .. msg_divider .. msg_completed
+    end
+    return msg
+
+end
+
+function task_functor.passinc_task_title_f(task_id,field,p,tsk)
+    
+    local msg = gt("passinc_task_title_fallback")
+    local giver_id
+    local se_obj
+    local se_giver_story_id
+    if (tsk and tsk.task_giver_id) then
+        giver_id = tsk.task_giver_id
+        se_obj = id and alife_object(giver_id)
+        se_giver_story_id = get_object_story_id(giver_id)
+    end
+    
+    if not se_giver_story_id then
+        return msg
+    end
+
+    local employer_comm = passinc_cache_tbl[se_giver_story_id].employer_community or nil
+    local employer_name = passinc_cache_tbl[se_giver_story_id].employer_name or nil
+
+    if (not employer_comm) or (not employer_name) then return msg end
+
+    local employer_comm_st = gt("passinc_employer_community_" .. employer_comm)
+
+    if (not passinc_cache_tbl[se_giver_story_id].is_unorg) then
+	    msg = strformat(gt("passinc_task_title_functor"), employer_comm_st)
+    else
+        msg = strformat(gt("passinc_task_title_functor"), employer_name)
+    end
+    return msg
+
+end
+--=================================
+
+-- DEBUGGING
+
+function passinc_debug_promotion()
+    if not passinc_cache_tbl then return end
+    for k, v in pairs(passinc_cache_tbl) do
+        passinc_cache_tbl[k].days_until_promotion = 1
+        printdbg("Contract id: " .. k .. "- days until promotion: " .. passinc_cache_tbl[k].days_until_promotion)
+    end
+end
+
+function passinc_print_promo_prizes()
+    if not passinc_cache_tbl then return end
+    for k, v in pairs(passinc_cache_tbl) do
+        local promo_prizes = passinc_cache_tbl[k].promotion_prizes
+        for i = 1, #promo_prizes do
+            printdbg("Contract id: " .. k .. "- promotion prize: " .. promo_prizes[i])
+        end
+        
+    end
+end
+
+function passinc_print_info()
+    if not passinc_cache_tbl then return end
+    for k, v in pairs(passinc_cache_tbl) do
+        local contract_id = k
+        local emp_stage = passinc_cache_tbl[k].employment_stage
+        local progress = passinc_cache_tbl[k].progress
+        local lazy_days = passinc_cache_tbl[k].lazy_days
+        local pay_day = passinc_cache_tbl[k].next_payday
+        local next_promo = 0
+        if passinc_cache_tbl[k].is_unorg then
+            local unorg_table = passive_income_tables.passinc_get_unorg_character_table(k)
+            next_promo = unorg_table["promo_intervals"][emp_stage]
+        else
+            local comm = passinc_cache_tbl[k].employer_community
+            local org_table = passive_income_tables.passinc_get_org_faction_table(comm)
+            next_promo = org_table["promo_intervals"][emp_stage]
+        end
+
+        printdbg("contract_id: " .. contract_id)
+        printdbg("current stage: " .. emp_stage)
+        printdbg("current progress: " .. progress)
+        printdbg("Next promotion: " .. next_promo)
+        printdbg("Next payday: " .. pay_day)
+        printdbg("Lazy days: " .. lazy_days)
+    end
+end

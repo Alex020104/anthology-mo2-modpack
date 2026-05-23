@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+
+<string_table>
+
+    <string id="passinc_salary_started">
+        <text>Вы заключили новый контракт.</text>
+    </string>
+
+    <string id="passinc_salary_stopped_basic">
+        <text>Контракт расторгнут, вам придется подождать один день, чтобы заключить новый.</text>
+    </string>
+
+    <string id="passinc_salary_ready">
+        <text>Ваша зарплата доступна для получения у %s.</text>
+    </string>
+
+    <string id="passinc_salary_stopped_lazy">
+        <text>Вы слишком много отлынивали от работы, и вашему работодателю это надоело, контракт был расторгнут</text>
+    </string>
+
+    <string id="passinc_lazy_warning_1">
+        <text>Эй! По поводу твоей работы, ты сегодня не очень много сделал, если ты будешь продолжать в том же духе, то зарплаты не будет.</text>
+    </string>
+
+    <string id="passinc_lazy_warning_2">
+        <text>Послушай, если ты хочешь получить свою зарплату, тебе действительно нужно больше работать. Ну же.</text>
+    </string>
+
+    <string id="passinc_lazy_warning_3">
+        <text>Это твое последнее предупреждение. Если ты будешь продолжать бездельничать, то завтра останешься без зарплаты.</text>
+    </string>
+
+    <string id="passinc_promotion">
+        <text>Ты получил повышение! Проверь свой КПК, чтобы узнать подробности.</text>
+    </string>
+
+    <string id="passinc_gfcmod_salary_share">
+        <text>Вы поделились зарплатой со своими товарищами. Репутация и дружба возросли.</text>
+    </string>
+
+    <string id="passinc_salary_share">
+        <text>Вы поделились зарплатой со своими товарищами. Репутация возросла.</text>
+    </string>
+
+    <string id="passinc_accumulate_complete_task">
+        <text>\nЗаданий выполнено: %s</text>
+    </string>
+
+    <string id="passinc_accumulate_monster_killed">
+        <text>\nМутантов убито: %s</text>
+    </string>
+
+    <string id="passinc_accumulate_npc_killed">
+        <text>\nВрагов группировки убито: %s</text>
+    </string>
+
+    <string id="passinc_accumulate_money">
+        <text>\nДеньги, заработанные за день: %s</text>
+    </string>
+
+</string_table>

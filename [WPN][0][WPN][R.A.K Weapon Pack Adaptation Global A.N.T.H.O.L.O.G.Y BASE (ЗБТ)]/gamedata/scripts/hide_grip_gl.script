@@ -1,0 +1,31 @@
+--[[
+Hide Hand grip
+Swaps visibility of hand grip and GL bones based on GL status.
+04SEP2023
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+Author: RavenAscendant
+--]]
+
+--add to weapon section in ltx: script_binding  = hide_grip_gl.bind
+
+function bind(obj)
+    obj:bind_object(fn_binder(obj))
+end
+
+
+
+
+class "fn_binder" (object_binder)
+function fn_binder:__init(obj) super(obj)
+end
+
+function fn_binder:update(delta)
+    object_binder.update(self, delta)
+    local gl_state = self.object:weapon_is_grenadelauncher()
+    if gl_state ~= self.gl_state then
+        self.gl_state = gl_state
+--      printf("RAX GL status is: %s", gl_state)
+        self.object:set_bone_visible("grip_group", not_gl_state, true, false) --hud
+        self.object:set_bone_visible("grip_group", not_gl_state, true, false) --world
+    end
+end

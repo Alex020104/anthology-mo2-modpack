@@ -1,0 +1,1105 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+
+<string id="esc_get_tools_1_2_name">
+		<text>Инструменты: принести инструменты Стёпке</text>
+	</string>
+	<string id="esc_get_tools_1_2_text">
+		<text>Стёпка просил найти два набора инструментов: один для точной, другой для грубой работы. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	<string id="esc_get_tools_1_3_name">
+		<text>Инструменты: принести инструменты Стёпке</text>
+	</string>
+	<string id="esc_get_tools_1_3_text">
+		<text>Стёпка просил найти два набора инструментов: один для грубой работы, другой для калибровки. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	<string id="esc_get_tools_1_name">
+		<text>Инструменты: принести инструменты Стёпке</text>
+	</string>
+	<string id="esc_get_tools_1_text">
+		<text>Стёпка просил найти набор инструментов для грубой работы. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	<string id="esc_get_tools_2_3_name">
+		<text>Инструменты: принести инструменты Стёпке</text>
+	</string>
+	<string id="esc_get_tools_2_3_text">
+		<text>Стёпка просил найти два набора инструментов: один для тонкой работы, другой для калибровки. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	<string id="esc_get_tools_2_name">
+		<text>Инструменты: принести инструменты Стёпке</text>
+	</string>
+	<string id="esc_get_tools_2_text">
+		<text>Стёпка просил найти набор инструментов для точной работы. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	<string id="esc_get_tools_3_name">
+		<text>Инструменты: принести инструменты Стёпке</text>
+	</string>
+	<string id="esc_get_tools_3_text">
+		<text>Стёпка просил найти набор инструментов для калибровки. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	<string id="esc_mechanic_toolkit_search_name">
+		<text>Инструменты: принести инструменты Стёпке</text>
+	</string>
+	<string id="esc_mechanic_toolkit_search_text">
+		<text>Стёпка просил найти три набора инструментов: для грубой работы, для точной работы плюс набор для калибровки. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	
+	
+	<string id="esc_2get_tools_1_2_name">
+		<text>Инструменты: принести инструменты Баркасу</text>
+	</string>
+	<string id="esc_get_tools_1_2_text">
+		<text>Стёпка просил найти два набора инструментов: один для точной, другой для грубой работы. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	<string id="esc_2get_tools_1_3_name">
+		<text>Инструменты: принести инструменты Баркасу</text>
+	</string>
+	<string id="esc_2get_tools_1_3_text">
+		<text>Стёпка просил найти два набора инструментов: один для грубой работы, другой для калибровки. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	<string id="esc_2get_tools_1_name">
+		<text>Инструменты: принести инструменты Баркасу</text>
+	</string>
+	<string id="esc_2get_tools_1_text">
+		<text>Стёпка просил найти набор инструментов для грубой работы. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	<string id="esc_2get_tools_2_3_name">
+		<text>Инструменты: принести инструменты Баркасу</text>
+	</string>
+	<string id="esc_2get_tools_2_3_text">
+		<text>Стёпка просил найти два набора инструментов: один для тонкой работы, другой для калибровки. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	<string id="esc_get_tools_2_name">
+		<text>Инструменты: принести инструменты Баркасу</text>
+	</string>
+	<string id="esc_2get_tools_2_text">
+		<text>Стёпка просил найти набор инструментов для точной работы. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	<string id="esc_2get_tools_3_name">
+		<text>Инструменты: принести инструменты Баркасу</text>
+	</string>
+	<string id="esc_2get_tools_3_text">
+		<text>Стёпка просил найти набор инструментов для калибровки. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	<string id="esc_2mechanic_toolkit_search_name">
+		<text>Инструменты: принести инструменты Баркасу</text>
+	</string>
+	<string id="esc_2mechanic_toolkit_search_text">
+		<text>Стёпка просил найти три набора инструментов: для грубой работы, для точной работы плюс набор для калибровки. Мастер не только заплатит за инструмент, но и сможет обеспечить более серьёзную модернизацию оружия или бронежилета.</text>
+	</string>
+	
+	<string id="esc_risovalshik_items_get_order_name">
+		<text>Особый заказ: забрать товар</text>
+	</string>
+	<string id="esc_risovalshik_items_get_order_text">
+		<text>Заказ доставлен, необходимо забрать его у Шустрого.</text>
+	</string>
+	<string id="esc_risovalshik_items_wait_order_name">
+		<text>Особый заказ: ожидать доставки</text>
+	</string>
+	<string id="esc_risovalshik_items_wait_order_text">
+		<text>Заказ сделан. Нужно подождать, пока Рисовальщик достанет товар.</text>
+	</string>
+	
+	
+<!-- Квест:  Вступление в сталкеры -->	
+<string id="esc_entry_into_stalkers_name">
+<text>Вступление в сталкеры: Поговорить с Шаманом</text>
+</string>
+<string id="esc_entry_into_stalkers_text">
+<text>Поговорить с ШАманом насчёт вступления в клан "Вольные сталкеры".</text>
+</string>
+	
+	
+<!-- Квест: Проход в Зону -->
+<string id="esc_the_entrance_to_the_zone_part_1_name">
+<text>Проход в Зону: Поговорить с Борландом</text>
+</string>
+<string id="esc_the_entrance_to_the_zone_part_1_text">
+<text>Повторить с напарником план проникновения в Зону через блокпост.</text>
+</string>
+<string id="esc_the_entrance_to_the_zone_part_2_name">
+<text>Проход в Зону: Предъявить документы</text>
+</string>
+<string id="esc_the_entrance_to_the_zone_part_2_text">
+<text>Показать поддельные документы проверяющим на КПП.</text>
+</string>
+<string id="esc_the_entrance_to_the_zone_part_3_name">
+<text>Проход в Зону: Проникнуть в Зону</text>
+</string>
+<string id="esc_the_entrance_to_the_zone_part_3_text">
+<text>Пойти через блокпост в Зону</text>
+</string>
+
+
+<!-- Квест: Плата -->
+<string id="esc_quest_fee_part_1_name">
+<text>Плата: Собрать деньги</text>
+</string>
+<string id="esc_quest_fee_part_1_text">
+<text>Подполковник Колязин дал сроку всего два дня. За это время нужно заработать 30000 рублей.</text>
+</string>
+<string id="esc_quest_fee_part_2_name">
+<text>Плата: заплатить за свободу</text>
+</string>
+<string id="esc_quest_fee_part_2_text">
+<text>Деньги собраны. Теперь их нужно отдать Колязину и вывести Борланда с блокпоста</text>
+</string>
+<string id="esc_quest_fee_part_3a_name">
+<text>Плата: поручения Колязина</text>
+</string>
+<string id="esc_quest_fee_part_3a_text">
+<text>Для освобождения Борланда нужно выполнить пару поручений Колязина</text>
+</string>
+<string id="esc_quest_fee_part_3_name">
+<text>Плата: поговорить с Борландом</text>
+</string>
+<string id="esc_quest_fee_part_3_text">
+<text>Рассказать радостную весть Борланду что он свободен.</text>
+</string>
+<string id="esc_quest_fee_part_4_name">
+<text>Плата: покинуть блокпост</text>
+</string>
+<string id="esc_quest_fee_part_4_text">
+<text>Плата за свободу выплачена в полном объеме, теперь можно спокойно покинуть злосчастный блокпост.</text>
+</string>
+
+
+<!-- Квест: Забрать свой хабар-->
+<string id="esc_quest_free_habar_name">
+<text>Забрать свой хабар.</text>
+</string>
+<string id="esc_quest_free_habar_text">
+<text>Забрать свой хабар из сейфа на выходе из блокпоста.</text>
+</string>
+
+
+<!-- Квест: Безопасное место -->
+<string id="eac_reach_base_name">
+<text>Безопасное место: добраться до «Деревни новичков»</text>
+</string>
+<string id="eac_reach_base_text">
+<text>В Зоне относительно безопасно только в крупных лагерях. Имеет смысл добраться до ближайшего из них - «Деревни новичков».</text>
+</string>
+
+
+<!-- Квест: Первые копейки -->
+
+<string id="esc_the_first_penny_part_1_name">
+<text>Первые копейки: Поговорить с Волком</text>
+</string>
+<string id="esc_the_first_penny_part_1_text">
+<text>Пёс - опытный сталкер из Деревни новичков. Он может помочь заработать.</text>
+</string>
+<string id="esc_the_first_penny_part_2_name">
+<text>Первые копейки: Пройти за железнодорожную насыпь</text>
+</string>
+<string id="esc_the_first_penny_part_2_text">
+<text>Найти способ перебраться на ту сторону насыпи</text>
+</string>
+<string id="esc_the_first_penny_part_3_name">
+<text>Первые копейки: Найти пропавшего сталкера или его вещи</text>
+</string>
+<string id="esc_the_first_penny_part_3_text">
+<text>Сталкер-новичок, которого попросил найти Пёс, последний раз выходил на связь недалеко от "электрички".</text>
+</string>
+<string id="esc_the_first_penny_part_4_name">
+<text>Первые копейки: Доложить о находке Волку</text>
+</string>
+<string id="esc_the_first_penny_part_4_text">
+<text>Отдать Волку найденные вещи либо оставить их себе.</text>
+</string>
+
+
+<!-- Квест: Работа для Новичка -->
+<string id="esc_quest_work_for_beginner_part_1_name">
+<text>Работа для Новичка: Поговорить с Скиданом</text>
+</string>
+<string id="esc_quest_work_for_beginner_part_1_text">
+<text>Поговорить с местным троговцем Скиданом, возможно он сможет дать подходящую работу.</text>
+</string>
+<string id="esc_quest_work_for_beginner_part_2_name">
+<text>Работа для новичка: Найти артефакт</text>
+</string>
+<string id="esc_quest_work_for_beginner_part_2_text">
+<text>Скидан предлагает пройти проверку на профпригодность и раздобыть артефакт «Кристалл» или «Огненный шар» или «Глаз». Это довольно рисковое дело, так что можно отказаться.</text>
+</string>
+<string id="esc_quest_work_for_beginner_part_3_name">
+<text>Работа для новичка: Принести артефакт.</text>
+</string>
+<string id="esc_quest_work_for_beginner_part_3_text">
+<text>Отдать найденный артефакт Скидану и получить награду.</text>
+</string>
+
+
+<!-- Квест: Поговорить с Волком -->
+<string id="esc_quest_talk_wolf_name">
+<text>Поговорить с Волком</text>
+</string>
+<string id="esc_quest_talk_wolf_text">
+<text>Пёс попросил подойти узнать у него насчёт какого то дела.</text>
+</string>
+
+
+<!-- Квест: Зачистка-->
+<string id="eac_quest_trimming_part_1_name">
+<text>Зачистка: Найти группу зачистки</text>
+</string>
+<string id="eac_quest_trimming_part_1_text">
+<text>Несколько сталкеров решили обезопасить окрестности. Надо помочь им.</text>
+</string>
+<string id="eac_quest_trimming_part_2_name">
+<text>Зачистка: Зачистить местность</text>
+</string>
+<string id="eac_quest_trimming_part_2_text">
+<text>В округе развелось множество кабанов и собак. Нужно уменьшить их количество.</text>
+</string>
+<string id="eac_quest_trimming_part_3_name">
+<text>Зачистка: Доложить о выполнении</text>
+</string>
+<string id="eac_quest_trimming_part_3_text">
+<text>Получить награду у Пса.</text>
+</string>
+
+
+<!-- Квест: Страховка -->
+<string id="esc_quest_insurance_part_1_name">
+<text>Страховка: поговорить с Волком</text>
+</string>
+<string id="esc_quest_insurance_part_1_text">
+<text>Узнать что за помощь требуется Волку.</text>
+</string>
+<string id="esc_quest_insurance_part_2_name">
+<text>Страховка: Добраться до аномалии</text>
+</string>
+<string id="esc_quest_insurance_part_2_text">
+<text>Вместе с Волком дойти до ближайшего аномального поля.</text>
+</string>
+<string id="esc_quest_insurance_part_3_name">
+<text>Страховка: Подстраховать Пса</text>
+</string>
+<string id="esc_quest_insurance_part_3_text">
+<text>Прикрывать Пса от мутантов, пока он исследует аномалию.</text>
+</string>
+<string id="esc_quest_insurance_part_4_name">
+<text>Страховка: Найти артефакт в аномалии</text>
+</string>
+<string id="esc_quest_insurance_part_4_text">
+<text>Используя детектор и болты найти в аномальном поле артефакт.</text>
+</string>
+<string id="esc_quest_insurance_part_5_name">
+<text>Страховка: Показать Волку находку</text>
+</string>
+<string id="esc_quest_insurance_part_5_text">
+<text>Показать Волку найденный в аномалии артефакт "Медуза"</text>
+</string>
+<string id="esc_quest_insurance_part_6_name">
+<text>Страховка: Вернуться в лагерь</text>
+</string>
+<string id="esc_quest_insurance_part_6_text">
+<text>Вместе с Волком проследовать в лагерь новичков.</text>
+</string>
+
+
+
+<!-- Квест: Поговорить с Волком (насчёт работы) -->
+<string id="esc_quest_talk_wolf_work_name">
+<text>Поговорить с Волком насчёт работы</text>
+</string>
+<string id="esc_quest_talk_wolf_work_text">
+<text>Пёс обещал подогнать работу.</text>
+</string>
+
+
+<!-- Квест: Охота -->
+<string id="esc_quest_hunting_part_1_name">
+<text>Охота: Найти охотника</text>
+</string>
+<string id="esc_quest_hunting_part_1_text">
+<text>На востоке от АТП ждёт охотник по кличке Леший.</text>
+</string>
+<string id="esc_quest_hunting_part_2_name">
+<text>Охота: Убить матёрого кабана.</text>
+</string>
+<string id="esc_quest_hunting_part_2_text">
+<text>Вместе с Лешим нужно выследить и убить матёрого кабана.</text>
+</string>
+
+
+<string id="esc_quest_hunting_part_5_name">
+<text>Охота: Спасти Лешего</text>
+</string>
+<string id="esc_quest_hunting_part_5_text">
+<text>Лешего ранил кабан, нужно поделиться с ним аптечкой.</text>
+</string>
+
+
+
+<string id="esc_quest_hunting_part_3_name">
+<text>Охота: Сопроводить раненого до АТП</text>
+</string>
+<string id="esc_quest_hunting_part_3_text">
+<text>Леший ранен и не может сам нести оружие. Необходимо довести его до ближайшего медика.</text>
+</string>
+<string id="esc_quest_hunting_part_4_name">
+<text>Охота: Поговорить с лидером вольных сталкеров</text>
+</string>
+<string id="esc_quest_hunting_part_4_text">
+<text>Рассказать Шаману о случившемся.</text>
+</string>
+
+<!-- Квест:  Работа -->
+<string id="esc_quest_shaman_worke_name">
+<text>Поговорить с Шаманом насчёт работы</text>
+</string>
+<string id="esc_quest_shaman_worke_text">
+<text>Шаман предлагает подзаработать, обсудить детали.</text>
+</string>
+
+<!-- Квест: Слежка -->
+<string id="esc_quest_shadowing_part_1_name">
+<text>Слежка: Проследить за Сойером</text>
+</string>
+<string id="esc_quest_shadowing_part_1_text">
+<text>Незаметно следовать за Сойером,  выяснить, куда он спрятал украденный хабар из схрона клана.</text>
+</string>
+<string id="esc_quest_shadowing_part_2_name">
+<text>Слежка: Застать врасплох Сойера</text>
+</string>
+<string id="esc_quest_shadowing_part_2_text">
+<text>Раскрыть Сойера, поговорить с ним насчёт обкраденного схрона.</text>
+</string>
+<string id="esc_quest_shadowing_part_3_name">
+<text>Слежка: Поговорить с Шаманом</text>
+</string>
+<string id="esc_quest_shadowing_part_3_text">
+<text>Обмануть Шамана, дать левые координаты схрона Сойера.</text>
+</string>
+
+
+<!-- Квест: Борьба за территорию -->
+<string id="esc_quest_fighting_for_territory_part_1_name">
+<text>Борьба за территорию: поговорить с Кусто</text>
+</string>
+<string id="esc_quest_fighting_for_territory_part_1_text">
+<text>Поговорить с торговцем Кусто, насчёт работы.</text>
+</string>
+<string id="esc_quest_fighting_for_territory_part_2_name">
+<text>Борьба за территорию: Уничтожить бандитов</text>
+</string>
+<string id="esc_quest_fighting_for_territory_part_2_text">
+<text>Уничтожить бандитов, расположившихся недалеко от АТП. Это поможет прекратить грабёж сталкеров, которые возвращаются с хабаром на базу.</text>
+</string>
+<string id="esc_quest_fighting_for_territory_part_3_name">
+<text>Борьба за территорию: Получить награду</text>
+</string>
+<string id="esc_quest_fighting_for_territory_part_3_text">
+<text>Забрать награду за уничтоженных бандитов у торговца.</text>
+</string>
+
+
+<!-- Квест: Плевое дело -->
+<string id="esc_quest_trifling_matter_part_1_name">
+<text>Плёвое дело: Поговорить с Скиданом</text>
+</string>
+<string id="esc_quest_trifling_matter_part_1_text">
+<text>Местный торговец хочет о чём то попросить. Лучше не отказываться.</text>
+</string>
+<string id="esc_quest_trifling_matter_part_2_name">
+<text>Плёвое дело: Отнести посылку на АТП</text>
+</string>
+<string id="esc_quest_trifling_matter_part_2_text">
+<text>Задание проще некуда - нужно доставить посылку сталкеру на АТП.</text>
+</string>
+<string id="esc_quest_trifling_matter_part_3_name">
+<text>Плёвое дело: Решить судьбу посылки</text>
+</string>
+<string id="esc_quest_trifling_matter_part_3_text">
+<text>Поделить содержимое посылки или доставить её по адресу.</text>
+</string>
+<string id="esc_quest_trifling_matter_part_4_name">
+<text>Плёвое дело: Доложить Скидану</text>
+</string>
+<string id="esc_quest_trifling_matter_part_4_text">
+<text>Получить у Скидана плату за работу.</text>
+</string>
+<string id="esc_quest_trifling_matter_part_5_name">
+<text>Плёвое дело: Придумать отмазку</text>
+</string>
+<string id="esc_quest_trifling_matter_part_5_text">
+<text>Рассказать Скидану про вымышленных гопников, которые похитили посылку.</text>
+</string>
+
+
+<!-- Квест: Серьезное дело -->
+<string id="esc_quest_serious_business_part_1_name">
+<text>Серьезное дело: Поговорить с Скиданом</text>
+</string>
+<string id="esc_quest_serious_business_part_1_text">
+<text>Скидан хочет предложить серьезную работу, обсудить с ним детали.</text>
+</string>
+<string id="esc_quest_serious_business_part_2_name">
+<text>Серьезное дело: Расспросить сталкеров о должнике</text>
+</string>
+<string id="esc_quest_serious_business_part_2_text">
+<text>Узнать где последний раз видели пропавшего сталкера-должника.</text>
+</string>
+<string id="esc_quest_serious_business_part_3_name">
+<text>Серьезное дело: Осмотреть возможные убежища должника</text>
+</string>
+<string id="esc_quest_serious_business_part_3_text">
+<text>Сталкер-должник возможно укрывается на элеваторе, в доме напротив фермы.</text>
+</string>
+<string id="esc_quest_serious_business_part_4_name">
+<text>Серьезное дело: Обыскать труп</text>
+</string>
+<string id="esc_quest_serious_business_part_4_text">
+<text>Обыскать труп бандита</text>
+</string>
+<string id="esc_quest_serious_business_part_5_name">
+<text>Серьезное дело: осмотреть последнее убежище на КПП</text>
+</string>
+<string id="esc_quest_serious_business_part_5_text">
+<text>В сообщении на ПДА убитого бандита, сказано что Шмыга и его компания ушла на КПП в сторону свалки.</text>
+</string>
+<string id="esc_quest_serious_business_part_6_name">
+<text>Серьезное дело: Бежать или сражаться</text>
+</string>
+<string id="esc_quest_serious_business_part_6_text">
+<text>Расправиться с подельниками должника или вернуться к Скидану.</text>
+</string>
+
+
+<!-- Квест: Серьезное дело -->
+<string id="esc_quest_dangerous_business_part_1_name">
+<text>Серьезное дело: Поговорить с Скиданом</text>
+</string>
+<string id="esc_quest_dangerous_business_part_1_text">
+<text>Поговорить с Скиданом насчёт дела.</text>
+</string>
+<string id="esc_quest_dangerous_business_part_2_name">
+<text>Серьезное дело: Встретиться с наёмниками</text>
+</string>
+<string id="esc_quest_dangerous_business_part_2_text">
+<text>Необходимо принести наёмникам предоплату.</text>
+</string>
+<string id="esc_quest_dangerous_business_part_3_name">
+<text>Серьезное дело: Убить Шмыгу</text>
+</string>
+<string id="esc_quest_dangerous_business_part_3_text">
+<text>Убить Шмыгу и взять у него ключи от сейфа где спрятан кейс с деньгами.</text>
+</string>
+<string id="esc_quest_dangerous_business_part_4_name">
+<text>Серьезное дело: Забрать кейс с деньгами</text>
+</string>
+<string id="esc_quest_dangerous_business_part_4_text">
+<text>Открыть сейф и забарть от туда кейс с деньгами.</text>
+</string>
+<string id="esc_quest_dangerous_business_part_5_name">
+<text>Серьезное дело: Получить награду</text>
+</string>
+<string id="esc_quest_dangerous_business_part_5_text">
+<text>Вернуться к Скидану отдать кейс и получить награду.</text>
+</string>
+<string id="esc_quest_dangerous_business_part_6_name">
+<text>Серьезное дело: Найти способ вернуть кейс</text>
+</string>
+<string id="esc_quest_dangerous_business_part_6_text">
+<text>Теперь Шмыга на базе Бандитов и просто так отобрать хабар врятли получиться</text>
+</string>
+
+
+<!-- Квест: Гоп-стоп -->
+
+<string id="esc_quest_gopstop_part_1_name">
+<text>Гоп-стоп: Пообщаться с Логопедом</text>
+</string>
+<string id="esc_quest_gopstop_part_1_text">
+<text>Лидер бандитов Логопед хочет предложить работу,  проигнорировать его предложение или обсудить с ним детали.</text>
+</string>
+<string id="esc_quest_gopstop_part_2_name">
+<text>Гоп-стоп: Ограбить сталкера</text>
+</string>
+<string id="esc_quest_gopstop_part_2_text">
+<text>Устроить засаду на сталкера, возвращающегося с ходки.</text>
+</string>
+<string id="esc_quest_gopstop_part_3_name">
+<text>Гоп-стоп: Убить или отпустить сталкера</text>
+</string>
+<string id="esc_quest_gopstop_part_3_text">
+<text>Надо решить как поступить со сталкером.</text>
+</string>
+<string id="esc_quest_gopstop_part_4_name">
+<text>Гоп-стоп: Доложить Логопеду</text>
+</string>
+<string id="esc_quest_gopstop_part_4_text">
+<text>Получить от пахана награду.</text>
+</string>
+
+<!-- Квест: Механник для бандитов -->
+<string id="esc_quest_mechanic_search_part_1_name">
+<text>Механник для бандитов: Найти механника</text>
+</string>
+<string id="esc_quest_mechanic_search_part_1_text">
+<text>Логопед просит найти механника для его бригады</text>
+</string>
+<string id="esc_quest_mechanic_search_part_2_name">
+<text>Механник для бандитов: Поговорить с Логопедом</text>
+</string>
+<string id="esc_quest_mechanic_search_part_2_text">
+<text>Поговорить с Логопедом о поиске механника</text>
+</string>
+<string id="esc_quest_mechanic_search_part_3_name">
+<text>Механник для бандитов: Поговорить с Логопедом</text>
+</string>
+<string id="esc_quest_mechanic_search_part_3_text">
+<text>Доложить Логопеду о выполнении задания</text>
+</string>
+
+<!-- Квест: Преступный бизнес -->
+<string id="esc_quest_criminal_business_part_1_name">
+<text>Преступный бизнес: Поговорить с Логопедом</text>
+</string>
+<string id="esc_quest_criminal_business_part_1_text">
+<text>Судя по всему Логопед затевает разборку с кем-то из своих</text>
+</string>
+<string id="esc_quest_criminal_business_part_2_name">
+<text>Преступный бизнес: Поговорить со Шмыгой</text>
+</string>
+<string id="esc_quest_criminal_business_part_2_text">
+<text>"Убедить" Шмыгу в необходимости платить в общак</text>
+</string>
+<string id="esc_quest_criminal_business_part_2a_name">
+<text>Преступный бизнес: Наказать Шмыгу</text>
+</string>
+<string id="esc_quest_criminal_business_part_2a_text">
+<text>"Подрезать" противника</text>
+</string>
+<string id="esc_quest_criminal_business_part_3_name">
+<text>Преступный бизнес: Вернуть свои вещи</text>
+</string>
+<string id="esc_quest_criminal_business_part_3_text">
+<text>Забрать из сейфа свои вещи</text>
+</string>
+<string id="esc_quest_criminal_business_part_4_name">
+<text>Преступный бизнес: Поговорить с Логопедом</text>
+</string>
+<string id="esc_quest_criminal_business_part_4_text">
+<text>Рассаказать о ситуации Логопеду</text>
+</string>
+
+
+<!-- Квест:  Поговорить с Волком (насчёт работы Проводником) -->
+<string id="esc_quest_wolf_work_conductor_name">
+<text>Поговорить с Волком насчёт работы</text>
+</string>
+<string id="esc_quest_wolf_work_conductor_text">
+<text>Пёс предлагает подзаработать, обсудить детали.</text>
+</string>
+
+<!-- Квест: Првоводник -->
+<string id="esc_quest_conductor_part_1_name">
+<text>Првоводник: поговорить со Студентом</text>
+</string>
+<string id="esc_quest_conductor_part_1_text">
+<text>Поговорить со Студентом насчёт похода на АТП.</text>
+</string>
+<string id="esc_quest_conductor_part_2_name">
+<text>Првоводник: провести Студента на АТП</text>
+</string>
+<string id="esc_quest_conductor_part_2_text">
+<text>Нужно проводить Студента до базы сталкеров на АТП.</text>
+</string>
+<string id="esc_quest_conductor_part_3_name">
+<text>Првоводник: поговорить со Студентом</text>
+</string>
+<string id="esc_quest_conductor_part_3_text">
+<text>Поговорить со Студентом.</text>
+</string>
+<string id="esc_quest_conductor_part_4_name">
+<text>Првоводник: Вернуться к Волку за наградой</text>
+</string>
+<string id="esc_quest_conductor_part_4_text">
+<text>Забрать у Пса оставшуюся часть оплаты за Студента.</text>
+</string>
+
+
+<!-- Квест: Ночная охота -->
+<string id="esc_quest_night_hunting_part_1_name">
+<text>Ночная охота: Дождаться ночи</text>
+</string>
+<string id="esc_quest_night_hunting_part_1_text">
+<text>Нужно дождаться ночи и выследить мутанта, который терроризирует лагерь сталкеров.</text>
+</string>
+<string id="esc_quest_night_hunting_part_2_name">
+<text>Ночная охота: Убить мутанта</text>
+</string>
+<string id="esc_quest_night_hunting_part_2_text">
+<text>Убить псевдопса который тераризирует лагерь сталкеров.</text>
+</string>
+<string id="esc_quest_night_hunting_part_3_name">
+<text>Ночная охота: Получить награду</text>
+</string>
+<string id="esc_quest_night_hunting_part_3_text">
+<text>Получить награду у Патогеныча за уничтожение опасного мутанта.</text>
+</string>
+
+<!-- Квест: Поговорить с Борландом -->
+<string id="esc_quest_line_meet_borland_name">
+<text>Поговорить с Борландом</text>
+</string>
+<string id="esc_quest_line_meet_borland_text">
+<text>Поговорить с Борландом.</text>
+</string>
+
+<!-- Квест: Поговорить с Патогенычем -->
+<string id="esc_quest_line_meet_patogen_name">
+<text>Поговорить с Патогенычем</text>
+</string>
+<string id="esc_quest_line_meet_patogen_text">
+<text>Бармен бара "АТП" предлагает хорошо оплачиваемую работу.</text>
+</string>
+
+
+<!-- Квест: Пропавший связной -->
+<string id="esc_quest_line_missing_connected_part_1_name">
+<text>Пропавший связной: Пересечь ж/д насыпь</text>
+</string>
+<string id="esc_quest_line_missing_connected_part_1_text">
+<text>Связной пропал где-то за железно дорожной насыпью, около базы бандитов.</text>
+</string>
+<string id="esc_quest_line_missing_connected_part_2_name">
+<text>Пропавший связной: Проследить за бандитом</text>
+</string>
+<string id="esc_quest_line_missing_connected_part_2_text">
+<text>Следовать за бандитом Шпалой, постараться его не спугнуть.</text>
+</string>
+<string id="esc_quest_line_missing_connected_part_3_name">
+<text>Пропавший связной: Обыскать бандита</text>
+</string>
+<string id="esc_quest_line_missing_connected_part_3_text">
+<text>Обыскать труп бандита Шпалы.</text>
+</string>
+<string id="esc_quest_line_missing_connected_part_4_name">
+<text>Пропавший связной: Сорвать планы бандитов</text>
+</string>
+<string id="esc_quest_line_missing_connected_part_4_text">
+<text>Бандиты решили прикончить пленного свободовца, пресеч беспредел.</text>
+</string>
+<string id="esc_quest_line_missing_connected_part_5_name">
+<text>Пропавший связной: Рассказать Патогенычу о случившемся</text>
+</string>
+<string id="esc_quest_line_missing_connected_part_5_text">
+<text>Связной мертв, рассказать Патогенычу, что к этому причастны бандиты, рассказать о пленном свободовце.</text>
+</string>
+
+
+<!-- Квест: Спасение свободовца -->
+<string id="esc_quest_line_salvation_freedom_name">
+<text>Спасение свободовца: Спасти свободовца</text>
+</string>
+<string id="esc_quest_line_salvation_freedom_text">
+<text>Бандиты около развалин держат в плену свободовца, вызволить его из плена.</text>
+</string>
+<string id="esc_quest_line_salvation_freedom_name_2">
+<text>Спасение свободовца: Рассказать Патогенычу о случившемся</text>
+</string>
+<string id="esc_quest_line_salvation_freedom_text_2">
+<text>Рассказать про самоубийство свободовца.</text>
+</string>
+
+
+<!-- Квест: Тайна свободовца -->
+<string id="esc_quest_line_secret_freedom_part_1_name">
+<text>Тайна свободовца: Обыскать труп</text>
+</string>
+<string id="esc_quest_line_secret_freedom_part_1_text">
+<text>Обыскать труп самоубийцы свободовца.</text>
+</string>
+<string id="esc_quest_line_secret_freedom_part_2_name">
+<text>Тайна свободовца: Разблокировать КПК</text>
+</string>
+<string id="esc_quest_line_secret_freedom_part_2_text">
+<text>Сходить к механику Стёпке, возможно, он сможет разблокировать КПК.</text>
+</string>
+<string id="esc_quest_line_secret_freedom_part_3_name">
+<text>Тайна свободовца: Подождать когда разблокируют КПК</text>
+</string>
+<string id="esc_quest_line_secret_freedom_part_3_text">
+<text>Стёпке потребовалось время, что бы разблокировать КПК. Пока он разблокирует, помочь Шаману с одним делом.</text>
+</string>
+<string id="esc_quest_line_secret_freedom_part_4_name">
+<text>Тайна свободовца: Забрать КПК</text>
+</string>
+<string id="esc_quest_line_secret_freedom_part_4_text">
+<text>Прошло уже достаточно времени, Стёпка давно разблокировать КПК.</text>
+</string>
+<string id="esc_quest_line_secret_freedom_part_5_name">
+<text>Тайна свободовца: Узнать куда пропал Стёпка</text>
+</string>
+<string id="esc_quest_line_secret_freedom_part_5_text">
+<text>Стёпка куда-то пропал, узнать у Патогеныча куда он мог уйти.</text>
+</string>
+<string id="esc_quest_line_secret_freedom_part_6_name">
+<text>Тайна свободовца: Добраться до элеватора</text>
+</string>
+<string id="esc_quest_line_secret_freedom_part_6_text">
+<text>Патогеныч рассказал, что слышал от ходоков, что видели, как Стёпка направлялся в сторону элеватора.</text>
+</string>
+<string id="esc_quest_line_secret_freedom_part_7_name">
+<text>Тайна свободовца: Обыскать труп</text>
+</string>
+<string id="esc_quest_line_secret_freedom_part_7_text">
+<text>Стёпка мертв. Обыскать его труп.</text>
+</string>
+
+
+<!-- Квест: Странное дело-->
+<string id="esc_quest_line_help_nebo_part_1_name">
+<text>Странное дело: Поговорить с Шаманом</text>
+</string>
+<string id="esc_quest_line_help_nebo_part_1_text">
+<text>Узнать что за помощь требуется Шаману.</text>
+</string>
+<string id="esc_quest_line_help_nebo_part_2_name">
+<text>Странное дело: Поговорить с Скиданом</text>
+</string>
+<string id="esc_quest_line_help_nebo_part_2_text">
+<text>Шаман попросил сходить к Скидану кое за чем.</text>
+</string>
+<string id="esc_quest_line_help_nebo_part_3_name">
+<text>Странное дело: Вернуться к Шаману</text>
+</string>
+<string id="esc_quest_line_help_nebo_part_3_text">
+<text>Отнести неизвестную аппаратуру Шаману.</text>
+</string>
+
+
+<!-- Квест: Поговорить с Борландом в Деревне новичков -->
+<string id="esc_quest_line_important_meet_borland_name">
+<text>Поговорить с Борландом</text>
+</string>
+<string id="esc_quest_line_important_meet_borland_text">
+<text>Рассказать Борланду о своих приключениях: про таинственного монолитовца в форме свободы и про загадочный артефакт.</text>
+</string>
+
+
+<!-- Квест:  В гостях у бандитов-->
+<string id="esc_quest_line_away_from_the_bandits_part_1_name">
+<text>В гостях у бандитов: Поговорить с Логопедом</text>
+</string>
+<string id="esc_quest_line_away_from_the_bandits_part_1_text">
+<text>Узнать у лидера бандитов про свободовца-монолитовца.</text>
+</string>
+<string id="esc_quest_line_away_from_the_bandits_part_2_name">
+<text>В гостях у бандитов: Вернуться к Борланду</text>
+</string>
+<string id="esc_quest_line_away_from_the_bandits_part_2_text">
+<text>Бандиты отказали в помощи, вернуться не с чем к Борланду</text>
+</string>
+<string id="esc_quest_line_away_from_the_bandits_part_3_name">
+<text>В гостях у бандитов: Ждать помощи</text>
+</string>
+<string id="esc_quest_line_away_from_the_bandits_part_3_text">
+<text>Ждать помощи от Борланда.</text>
+</string>
+<string id="esc_quest_line_away_from_the_bandits_part_4_name">
+<text>В гостях у бандитов: Поговорить с Борландом</text>
+</string>
+<string id="esc_quest_line_away_from_the_bandits_part_4_text">
+<text>Поговорить с Борландом.</text>
+</string>
+
+
+<!-- Квест:  Подземелье-->
+<string id="esc_quest_line_dungeon_part_1_name">
+<text>Подземелье: Найти Часовщика</text>
+</string>
+<string id="esc_quest_line_dungeon_part_1_text">
+<text>Сталкер Часовщик живет на окраине деревни новичков, разузнать у него про подземелья.</text>
+</string>
+<string id="esc_quest_line_dungeon_part_2_name">
+<text>Подземелье: Поговорить с Волком</text>
+</string>
+<string id="esc_quest_line_dungeon_part_2_text">
+<text>Часовщика дома не оказалось, возможно, Пёс знает, где его найти.</text>
+</string>
+<string id="esc_quest_line_dungeon_part_3_name">
+<text>Подземелье: Встретится с Часовщиком</text>
+</string>
+<string id="esc_quest_line_dungeon_part_3_text">
+<text>Пёс рассказал, что Часовщик в данный момент возвращается с Болот, нужно его встреть и расспросить про подземелья.</text>
+</string>
+<string id="esc_quest_line_dungeon_part_4_name">
+<text>Подземелье: Помочь Часовщику</text>
+</string>
+<string id="esc_quest_line_dungeon_part_4_text">
+<text>Помочь Часовщику разобраться с мутантами.</text>
+</string>
+<string id="esc_quest_line_dungeon_part_5_name">
+<text>Подземелье: Поговорить с Часовщиком</text>
+</string>
+<string id="esc_quest_line_dungeon_part_5_text">
+<text>Расспросить Часовщика про подземелье.</text>
+</string>
+<string id="esc_quest_line_dungeon_part_6_name">
+<text>Подземелье: Поговорить с Борландом.</text>
+</string>
+<string id="esc_quest_line_dungeon_part_6_text">
+<text>Рассказать Борланду про подземелье.</text>
+</string>
+<string id="esc_quest_line_dungeon_part_7_name">
+<text>Подземелье: Спуститься в подземелье</text>
+</string>
+<string id="esc_quest_line_dungeon_part_7_text">
+<text>Вместе с Борландом спуститься в подземелье.</text>
+</string>
+
+
+<!-- Квест:  Исследование подземелья-->
+<string id="esc_quest_line_research_underground_part_1_name">
+<text>Исследование подземелья: Следовать за Борландом</text>
+</string>
+<string id="esc_quest_line_research_underground_part_1_text">
+<text>Следовать за Борландом.</text>
+</string>
+<string id="esc_quest_line_research_underground_part_2_name">
+<text>Исследование подземелья: Поговорить с Скиданом</text>
+</string>
+<string id="esc_quest_line_research_underground_part_2_text">
+<text>Вот так встреча, узнать у Скидана про подземелья.</text>
+</string>
+<string id="esc_quest_line_research_underground_part_3_name">
+<text>Исследование подземелья: Поговорить с Борландом</text>
+</string>
+<string id="esc_quest_line_research_underground_part_3_text">
+<text>Обсудить предложение Скидана.</text>
+</string>
+<string id="esc_quest_line_research_underground_part_4_name">
+<text>Исследование подземелья: Выбраться из подземелья</text>
+</string>
+<string id="esc_quest_line_research_underground_part_4_text">
+<text>Выбраться из подземелья через трубу.</text>
+</string>
+<string id="esc_quest_line_research_underground_part_5_name">
+<text>Исследование подземелья: Поговорить с Часовщиком</text>
+</string>
+<string id="esc_quest_line_research_underground_part_5_text">
+<text>Узнать у Часовщика про лабораторию, взять код доступа.</text>
+</string>
+<string id="esc_quest_line_research_underground_part_6_name">
+<text>Исследование подземелья: Поговорить с Скиданом</text>
+</string>
+<string id="esc_quest_line_research_underground_part_6_text">
+<text>Согласиться на условия Скидана и спросить у него код доступа в лабораторию.</text>
+</string>
+<string id="esc_quest_line_research_underground_part_7_name">
+<text>Исследование подземелья: Поговорить с Борландом</text>
+</string>
+<string id="esc_quest_line_research_underground_part_7_text">
+<text>Поговорить с Борландом насчёт спуска в лабораторию.</text>
+</string>
+<string id="esc_quest_line_research_underground_part_8_name">
+<text>Исследование подземелья: Следовать за Боралндом</text>
+</string>
+<string id="esc_quest_line_research_underground_part_8_text">
+<text>Следовать за Борландом в лабораторию.</text>
+</string>
+<string id="esc_quest_line_research_underground_part_9_name">
+<text>Исследование подземелья: Спуститься в лабораторию</text>
+</string>
+<string id="esc_quest_line_research_underground_part_9_text">
+<text>Открыть дверь в лабораторию, код доступа: 7200.</text>
+</string>
+<string id="esc_quest_line_research_underground_part_10_name">
+<text>Исследование подземелья: Спуститься в лабораторию</text>
+</string>
+<string id="esc_quest_line_research_underground_part_10_text">
+<text>Спуститься в лабораторию.</text>
+</string>
+
+<!-- Квест:  Теперь ты в армии 1-->
+<string id="esc_quest_army_contract_1_part_1_name">
+<text>Теперь ты в армии: Логово химеры</text>
+</string>
+<string id="esc_quest_army_contract_1_part_1_text">
+<text>Пробраться в логово химеры</text>
+</string>
+<string id="esc_quest_army_contract_1_part_2_name">
+<text>Теперь ты в армии: Убить химеру или..</text>
+</string>
+<string id="esc_quest_army_contract_1_part_2_text">
+<text>Убить химеру или..</text>
+</string>
+<string id="esc_quest_army_contract_1_part_3_name">
+<text>Теперь ты в армии: Взять ПДА</text>
+</string>
+<string id="esc_quest_army_contract_1_part_3_text">
+<text>Взять ПДА прапорщика с ценной для военных информацией</text>
+</string>
+<string id="esc_quest_army_contract_1_part_4_name">
+<text>Теперь ты в армии: Доложить Колязину</text>
+</string>
+<string id="esc_quest_army_contract_1_part_4_text">
+<text>Вернуть ПДА</text>
+</string>
+
+
+<!-- Квест:  Теперь ты в армии 2-->
+<string id="esc_quest_army_contract_2_part_1_name">
+<text>Теперь ты в армии: Найти Дезертира</text>
+</string>
+<string id="esc_quest_army_contract_2_part_1_text">
+<text>Найти Дезертира. Поспрашивать народ на Кордоне.</text>
+</string>
+<string id="esc_quest_army_contract_2_part_2_name">
+<text>Теперь ты в армии: Доложить Колязину</text>
+</string>
+<string id="esc_quest_army_contract_2_part_2_text">
+<text>Рассказать правду или сообщить о смерти Дезертира</text>
+</string>
+
+	<!-- esc_mechanic_furgon -->
+	<string id="esc_mechanic_furgon_task_1_name">
+		<text>Найти для Стёпке %s</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_1_text">
+		<text>Нужно принести инструменты Стёпке, чтобы он смог проводить модернизацию снаряжения.</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_1_about">
+		<text>Знаешь, браток, а я ведь на самом деле неплохой техник. И оружие и броню чинить умею, даже апгрейды какие-никакие делаю! Вернее, делал бы, если бы инструменты были нормальные. Да только где их здесь возьмешь? Может, поможешь раздобыть какой-нибудь простенький набор, а?</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_1_fetch_about">
+		<text>Мне нужен набор инструментов для грубой работы. В нём должны быть инструменты и масла для работы с оружием. Если сможешь его достать, я буду благодарен, даже заплачу тебе!.. Наверное.</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_1_fetch_finish">
+		<text>Отлично, чувак! Ох, прости, мне нечем заплатить. Но я могу дать тебе хорошую скидку!</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_2_name">
+		<text>Найти для Стёпке %s</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_2_text">
+		<text>Необходимо принести Стёпке инструменты для тонкой работы. Ему нужен более полный набор, чтобы проводить более сложную модернизацию снаряжения.</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_2_about">
+		<text>Эй, чувак, если ты согласишься достать мне более полный набор, получишь ещё большую скидку. Поможешь, приятель?</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_2_fetch_about">
+		<text>Мне нужны инструменты для тонкой работы. Там должно быть всё, что мне нужно. Ты будешь мне как брат, если достанешь его!</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_2_fetch_finish">
+		<text>Ух ты блин, спасибо, братан! Теперь-то я точно разбогатею. Чёрт возьми, я таки стану успешным!.. Если, конечно, и этот шанс не упущу. Но пока не могу предложить тебе ничего лучше, чем скидка. Извини, приятель.</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_3_name">
+		<text>Найти для Стёпке %s</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_3_text">
+		<text>Необходимо принести Стёпке %s. Ему нужен уникальный набор, чтобы проводить ещё более сложную модернизацию снаряжения.</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_3_about">
+		<text>Эй, парень, если найдёшь что-то стоящее - с меня скидка!</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_3_fetch_about">
+		<text>Мне нужны инструменты для калибровки. В них должно быть всё, что мне нужно. Ты будешь мне как брат, если достанешь их!</text>
+	</string>
+	<string id="esc_mechanic_furgon_task_3_fetch_finish">
+		<text>Ни ху...! Блин, спасибо, братан! Теперь-то я точно разбогатею. Чёрт возьми, я таки стану успешным!.. Если, конечно, ещё и этот шанс не упущу. Но пока не могу предложить тебе ничего лучше, чем скидка. Извини, дружище.</text>
+	</string>
+
+
+	<string id="esc_mechanic_furgon_pa_task_1_name">
+		<text>Найти для Вильнову %s</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_1_text">
+		<text>Нужно принести инструменты Вильнову, чтобы он смог проводить модернизацию снаряжения.</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_1_about">
+		<text>Знаешь, друг, я ведь на самом деле неплохой специалист в своём деле. Я умею ремонтировать оружие и броню, даже могу их улучшать, если бы у меня были подходящие инструменты. Но где их здесь взять? Может быть, ты сможешь помочь мне найти хотя бы базовый набор инструментов?</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_1_fetch_about">
+		<text>Мне нужен набор инструментов для грубых работ. В нём должны быть инструменты и масла для ухода за оружием. Если сможешь достать такой набор, буду очень признателен. Возможно, даже заплачу...</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_1_fetch_finish">
+		<text>Ты отлично справился, приятель! Вот твоя награда.</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_2_name">
+		<text>Найти для Вильнову %s</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_2_text">
+		<text>Необходимо принести Вильнову инструменты для тонкой работы. Ему нужен более полный набор, чтобы проводить более сложную модернизацию снаряжения.</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_2_about">
+		<text>Эй, друг, если ты сможешь достать мне более полный комплект, ты мне очень поможешь?</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_2_fetch_about">
+		<text>Мне нужны инструменты для тонкой работы. Там должно быть всё, что мне нужно. Ты будешь мне как брат, если достанешь его!</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_2_fetch_finish">
+		<text>Вот это да! Спасибо, дружище! Теперь я точно стану богатым. Если, конечно, не упущу и этот шанс.</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_3_name">
+		<text>Найти для Вильнову %s</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_3_text">
+		<text>Необходимо принести Вильнову %s. Ему нужен набор для калибровки, чтобы проводить ещё более сложную модернизацию снаряжения.</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_3_about">
+		<text>Ну если сможешь помочь добить набор инструментов,я буду крайне признателен.</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_3_fetch_about">
+		<text>Мне нужны инструменты для калибровки. В них должно быть всё, что мне нужно. Ты будешь мне как брат, если достанешь их!</text>
+	</string>
+	<string id="esc_mechanic_furgon_pa_task_3_fetch_finish">
+		<text>Вот это круто! Вау, чувак! Теперь я точно справлюсь с любой фигнёй, которую мне принесут.</text>
+	</string>
+
+
+
+	<!-- esc_mechanic_barkas -->
+	<string id="esc_mechanic_barkas_task_1_name">
+		<text>Найти для Баркаса %s</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_1_text">
+		<text>Нужно принести инструменты Баркасу, чтобы он смог проводить модернизацию снаряжения.</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_1_about">
+		<text>Знаешь, браток, а я ведь на самом деле неплохой техник. И оружие и броню чинить умею, даже апгрейды какие-никакие делаю! Вернее, делал бы, если бы инструменты были нормальные. Да только где их здесь возьмешь? Может, поможешь раздобыть какой-нибудь простенький набор, а?</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_1_fetch_about">
+		<text>Мне нужен набор инструментов для грубой работы. В нём должны быть инструменты и масла для работы с оружием. Если сможешь его достать, я буду благодарен, даже заплачу тебе!.. Наверное.</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_1_fetch_finish">
+		<text>Отлично, чувак! Ох, прости, мне нечем заплатить. Но я могу дать тебе хорошую скидку!</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_2_name">
+		<text>Найти для Баркаса %s</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_2_text">
+		<text>Необходимо принести Баркасу инструменты для тонкой работы. Ему нужен более полный набор, чтобы проводить более сложную модернизацию снаряжения.</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_2_about">
+		<text>Эй, чувак, если ты согласишься достать мне более полный набор, получишь ещё большую скидку. Поможешь, приятель?</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_2_fetch_about">
+		<text>Мне нужны инструменты для тонкой работы. Там должно быть всё, что мне нужно. Ты будешь мне как брат, если достанешь его!</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_2_fetch_finish">
+		<text>Ух ты блин, спасибо, братан! Теперь-то я точно разбогатею. Чёрт возьми, я таки стану успешным!.. Если, конечно, и этот шанс не упущу. Но пока не могу предложить тебе ничего лучше, чем скидка. Извини, приятель.</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_3_name">
+		<text>Найти для Баркаса %s</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_3_text">
+		<text>Необходимо принести Баркасу %s. Ему нужен уникальный набор, чтобы проводить ещё более сложную модернизацию снаряжения.</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_3_about">
+		<text>Эй, парень, если найдёшь что-то стоящее - с меня скидка!</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_3_fetch_about">
+		<text>Мне нужны инструменты для калибровки. В них должно быть всё, что мне нужно. Ты будешь мне как брат, если достанешь их!</text>
+	</string>
+	<string id="esc_mechanic_barkas_task_3_fetch_finish">
+		<text>Ни ху...! Блин, спасибо, братан! Теперь-то я точно разбогатею. Чёрт возьми, я таки стану успешным!.. Если, конечно, ещё и этот шанс не упущу. Но пока не могу предложить тебе ничего лучше, чем скидка. Извини, дружище.</text>
+	</string>
+
+</string_table>

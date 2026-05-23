@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+
+<string_table>
+
+    <string id="passinc_salary_started">
+        <text>You started a new salary contract.</text>
+    </string>
+
+    <string id="passinc_salary_stopped_basic">
+        <text>Salary contract stopped, you'll need to wait a day to start a new one.</text>
+    </string>
+
+    <string id="passinc_salary_ready">
+        <text>Your paycheck from %s is now available for pickup.</text>
+    </string>
+
+    <string id="passinc_salary_stopped_lazy">
+        <text>You slacked off too much and your employer has had enough, your salary has been terminated.</text>
+    </string>
+
+    <string id="passinc_salary_stopped_death">
+        <text>Your employer tragically died. You contract has been cancelled.</text>
+    </string>
+
+    <string id="passinc_lazy_warning_1">
+        <text>Hey! About your performance, you didn't really get much done today, if you keep this up your salary will be terminated.</text>
+    </string>
+
+    <string id="passinc_lazy_warning_2">
+        <text>If you want to keep your salary you really need to get more done. Come on.</text>
+    </string>
+
+    <string id="passinc_lazy_warning_3">
+        <text>This is your last warning. Keep doing nothing and tomorrow you'll have no salary.</text>
+    </string>
+
+    <string id="passinc_promotion">
+        <text>You received a promotion! Check your PDA for more details.</text>
+    </string>
+    
+    <string id="passinc_demotion">
+        <text>You got demoted for not meeting the contract requirements. Check your PDA for more details.</text>
+    </string>
+    
+    <string id="passinc_gfcmod_salary_share">
+        <text>You've shared the salary with your companions. Reputation and squad unity increased.</text>
+    </string>
+
+    <string id="passinc_salary_share">
+        <text>You've shared the salary with your companions. Reputation increased.</text>
+    </string>
+
+    <string id="passinc_accumulate_complete_task">
+        <text>\nTasks completed: %s</text>
+    </string>
+
+    <string id="passinc_accumulate_monster_killed">
+        <text>\nMutants killed: %s</text>
+    </string>
+
+    <string id="passinc_accumulate_npc_killed">
+        <text>\nFaction enemies killed: %s</text>
+    </string>
+
+    <string id="passinc_accumulate_arti_found">
+        <text>\nArtifacts found: %s</text>
+    </string>
+
+    <string id="passinc_accumulate_money">
+        <text>\nMoney earned for the day: %s</text>
+    </string>
+
+    <string id="passinc_transfer_contract_message">
+        <text>Contract transfered to new employer</text>
+    </string>
+
+</string_table>

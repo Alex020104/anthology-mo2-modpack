@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<!--
+	Backpacks
+-->
+
+<string_table>
+	
+	<string id="st_exobackpack_name">
+		<text>Экзоскелет Raytheon XOS 3</text>
+	</string>
+	<string id="st_exobackpack_descr">
+		<text>Полу военный образец Экзоскелета без тяжёлой брони. Отсутствие тяжёлой брони позволяет оператору Эксзоскелета быстрее передвигаться. Используется сталкерами для перетаскивонье тяжёлых грузов.\n \n
+		%c[ui_gray_3]ХАРАКТЕРИСТИКИ:\n
+		%c[d_blue] • %c[ui_gray_2] повсеместное применение\n
+		%c[d_blue] • %c[ui_gray_2] используется для хранения предметов\n
+		%c[0,100,255,150] • %c[ui_gray_2] может быть использован как тайник\n
+		</text>
+	</string>
+
+	<string id="st_exobackpack2_name">
+		<text>Экзоскелет Raytheon XOSM</text>
+	</string>
+	<string id="st_exobackpack2_descr">
+		<text>Модернизированная версия Экзоскелета Raytheon XOS 3. Увеличенный вес констуркции Эксзоскелета, но переносимый вес тоже был увеличен. Используется Военными США и Различными ЧВК\n \n
+		%c[ui_gray_3]ХАРАКТЕРИСТИКИ:\n
+		%c[d_blue] • %c[ui_gray_2] повсеместное применение\n
+		%c[d_blue] • %c[ui_gray_2] используется для хранения предметов\n
+		%c[0,100,255,150] • %c[ui_gray_2] может быть использован как тайник\n
+		</text>
+	</string>	
+	
+</string_table>

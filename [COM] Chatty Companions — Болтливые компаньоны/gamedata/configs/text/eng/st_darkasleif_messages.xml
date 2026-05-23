@@ -1,0 +1,1861 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+  
+  <!--multiple responses-->
+	<string id="st_darkasleif_multiple1">
+		<text>Watch out, he's not alone!</text>
+	</string>
+	<string id="st_darkasleif_multiple2">
+		<text>Wait! There’s more!</text>
+	</string>
+	<string id="st_darkasleif_multiple3">
+		<text>Damn! They've got backup!</text>
+	</string>
+	<string id="st_darkasleif_multiple4">
+		<text>No! More are coming! Watch your flank!</text>
+	</string>
+	<string id="st_darkasleif_multiple5">
+		<text>Looks like we might be outnumbered!</text>
+	</string>
+	<string id="st_darkasleif_multiple6">
+		<text>Find cover! They're everywhere!</text>
+	</string>
+	<string id="st_darkasleif_multiple7">
+		<text>They're trying to surrounded us!</text>
+	</string>
+	<string id="st_darkasleif_multiple8">
+		<text>It's an ambush!</text>
+	</string>
+	<string id="st_darkasleif_multiple9">
+		<text>His friends are trying to pin us down!</text>
+	</string>
+	<string id="st_darkasleif_multiple10">
+		<text>There are more? Don't let your guard down!</text>
+	</string>
+  
+	<!--short responces-->
+	<string id="st_darkasleif_short_army1">
+		<text>It looks like a military stalker has found us!</text>
+	</string>
+	<string id="st_darkasleif_short_army2">
+		<text>There's a soldier nearby! He may have spotted us while on patrol.</text>
+	</string>
+	<string id="st_darkasleif_short_army3">
+		<text>It's the Military! Shoot to kill! They rarely bother arresting stalkers like they’re supposed to.</text>
+	</string>
+	<string id="st_darkasleif_short_army4">
+		<text>A military hound has spotted us - likely scouting the area for his squad.</text>
+	</string>
+	<string id="st_darkasleif_short_army5">
+		<text>Spetsnaz!? One of Kuznetsov’s enforcers, no doubt.</text>
+	</string>
+	<string id="st_darkasleif_short_army6">
+		<text>I think it's a soldier doing reconnaissance.</text>
+	</string>
+	<string id="st_darkasleif_short_bandit1">
+		<text>It's just a bandit.</text>
+	</string>
+	<string id="st_darkasleif_short_bandit2">
+		<text>I think it's a bandit. Some punk looking for an easy score if I had to guess.</text>
+	</string>
+	<string id="st_darkasleif_short_bandit3">
+		<text>Is that a bandit? Those assholes killed my friend. I’m coming for you!</text>
+	</string>
+	<string id="st_darkasleif_short_bandit4">
+		<text>Looks like one of Sultan’s spineless bastards.</text>
+	</string>
+	<string id="st_darkasleif_short_bandit5">
+		<text>It's... heh. No worries. It's just some thieving rat from Dark Valley.</text>
+	</string>
+	<string id="st_darkasleif_short_csky1">
+		<text>It's Clear Sky.</text>
+	</string>
+	<string id="st_darkasleif_short_csky2">
+		<text>I think it's a Clear Sky member. Did the Renegades chase them out?</text>
+	</string>
+	<string id="st_darkasleif_short_csky3">
+		<text>If I had to guess, it’s a goose from the swamps. Are they lost?</text>
+	</string>
+	<string id="st_darkasleif_short_csky4">
+		<text>Is that Clear Sky? They’ve been quiet for some time now.</text>
+	</string>
+	<string id="st_darkasleif_short_csky5">
+		<text>I see of those Clear Sky members. Think they grew tired of the swamps?</text>
+	</string>
+	<string id="st_darkasleif_short_dolg1">
+		<text>It's Duty.</text>
+	</string>
+	<string id="st_darkasleif_short_dolg2">
+		<text>Appears to be a member of Duty. Assholes...</text>
+	</string>
+	<string id="st_darkasleif_short_dolg3">
+		<text>I think it's a Dutyer. Who made them policemen of the Zone anyways?</text>
+	</string>
+	<string id="st_darkasleif_short_dolg4">
+		<text>We've been spotted by a Duty drone from Rostok. One setback after another shows they aren’t invincible.</text>
+	</string>
+	<string id="st_darkasleif_short_dolg5">
+		<text>We're fighting one of those fascist brick walls. Where the hell do they get all that gear?</text>
+	</string>
+	<string id="st_darkasleif_short_ecolog1">
+		<text>It's an Ecologist.</text>
+	</string>
+	<string id="st_darkasleif_short_ecolog2">
+		<text>Look, one of those pencil pushers!</text>
+	</string>
+	<string id="st_darkasleif_short_ecolog3">
+		<text>We've stumbled into a field researcher from Yantar.</text>
+	</string>
+	<string id="st_darkasleif_short_ecolog4">
+		<text>Hah! It’s one of Sakharov’s assistants! I wonder what he’s found for us?</text>
+	</string>
+	<string id="st_darkasleif_short_ecolog5">
+		<text>Ecologist spotted! Be careful, some might be cowards but they’re all more clever than you might think.</text>
+	</string>
+	<string id="st_darkasleif_short_freedom1">
+		<text>Freedom ahead!</text>
+	</string>
+	<string id="st_darkasleif_short_freedom2">
+		<text>It's a Freedomer. Hopefully he’s too high to shoot straight.</text>
+	</string>
+	<string id="st_darkasleif_short_freedom3">
+		<text>One of those Barrier pot heads, just ahead.</text>
+	</string>
+	<string id="st_darkasleif_short_freedom4">
+		<text>I found an anarchist from the warehouses. What do they want with us?</text>
+	</string>
+	<string id="st_darkasleif_short_freedom5">
+		<text>Freedom. You think they'll have anything good left once we take care of them?</text>
+	</string>
+	<string id="st_darkasleif_short_greh1">
+		<text>It's a Sin cultist!</text>
+	</string>
+	<string id="st_darkasleif_short_greh2">
+		<text>It's Monolith’s best friend - Sin.</text>
+	</string>
+	<string id="st_darkasleif_short_greh3">
+		<text>A ... wait. The stories, they’re true? Sin... they're real?</text>
+	</string>
+	<string id="st_darkasleif_short_greh4">
+		<text>W-who is that? I ... think ... think we should run. Run! I’ve a terrible feeling about this!</text>
+	</string>
+	<string id="st_darkasleif_short_greh5">
+		<text>Shit! Sin! Hold nothing back! Fight! Fight for your life my friend!</text>
+	</string>
+	<string id="st_darkasleif_short_isg1">
+		<text>ISG?</text>
+	</string>
+	<string id="st_darkasleif_short_isg2">
+		<text>Umm ... What’s U.N.I.S.G.?</text>
+	</string>
+	<string id="st_darkasleif_short_isg3">
+		<text>It's an UNISG operative!</text>
+	</string>
+	<string id="st_darkasleif_short_isg4">
+		<text>I think it's... hmm. I’ve never seen a patch like that before.</text>
+	</string>
+	<string id="st_darkasleif_short_isg5">
+		<text>I can't tell, an unknown. I can’t identify them! Screw it. I’m shooting first and asking questions later!</text>
+	</string>
+	<string id="st_darkasleif_short_killer1">
+		<text>It's a Mercenary!</text>
+	</string>
+	<string id="st_darkasleif_short_killer2">
+		<text>I think it's one of Dushman's contract killers.</text>
+	</string>
+	<string id="st_darkasleif_short_killer3">
+		<text>There! The stalker in blue! Dead City's vultures for hire.</text>
+	</string>
+	<string id="st_darkasleif_short_killer4">
+		<text>A Mercenary's found us! He should’ve cashed out when he had the chance.</text>
+	</string>
+	<string id="st_darkasleif_short_killer5">
+		<text>Is that a PMC? Do you have a contract on your head, brother? I don’t think I do.</text>
+	</string>
+	<string id="st_darkasleif_short_monolith1">
+		<text>It's Monolith.</text>
+	</string>
+	<string id="st_darkasleif_short_monolith2">
+		<text>Look out! CNPP guardian! Are we near the Red Forest!? Radar!? Pripyat!?</text>
+	</string>
+	<string id="st_darkasleif_short_monolith3">
+		<text>Watch that Wish Granter lunatic!</text>
+	</string>
+	<string id="st_darkasleif_short_monolith4">
+		<text>Shit! ... It’s Monolith!</text>
+	</string>
+	<string id="st_darkasleif_short_monolith5">
+		<text>Be ready! It's one of those fanatics. Remember, they don’t take prisoners!</text>
+	</string>
+	<string id="st_darkasleif_short_renegade1">
+		<text>A Renegade's found us!</text>
+	</string>
+	<string id="st_darkasleif_short_renegade2">
+		<text>I see them! A jackal from the swamps. Not even the Bandits wanted them.</text>
+	</string>
+	<string id="st_darkasleif_short_renegade3">
+		<text>It's the scum of the Zone. Spare no bullets on the fiend!</text>
+	</string>
+	<string id="st_darkasleif_short_renegade4">
+		<text>I think it's one of those psychos. Their cruelty knows no bounds.</text>
+	</string>
+	<string id="st_darkasleif_short_renegade5">
+		<text>Renegade! I admit, I am thankful that even Sultan’s thugs have limits.</text>
+	</string>
+	<string id="st_darkasleif_short_stalker1">
+		<text>Free Stalker, over there!</text>
+	</string>
+	<string id="st_darkasleif_short_stalker2">
+		<text>I'm guessing an adventurer? A hunter? Maybe a journalist? You can never tell with Loners.</text>
+	</string>
+	<string id="st_darkasleif_short_stalker3">
+		<text>It's a Loner. Going for a lovely stroll in the Zone, are we?</text>
+	</string>
+	<string id="st_darkasleif_short_stalker4">
+		<text>Look, it's just some tourist. They should’ve left when they had the chance!</text>
+	</string>
+	<string id="st_darkasleif_short_stalker5">
+		<text>Free Stalker. That fat snake Sidorovich probably sent him to die fishing artefacts out of anomalies.</text>
+	</string>
+	<string id="st_darkasleif_short_zombied1">
+		<text>It's a zombie.</text>
+	</string>
+	<string id="st_darkasleif_short_zombied2">
+		<text>A zombie. Please, kill him quick. I can't bear listening to them...</text>
+	</string>
+	<string id="st_darkasleif_short_zombied3">
+		<text>Look at this poor wretch. Better to put them out of their misery.</text>
+	</string>
+	<string id="st_darkasleif_short_zombied4">
+		<text>What a shambling mess. We should finally lay them to rest.</text>
+	</string>
+	<string id="st_darkasleif_short_zombied5">
+		<text>Is that a stalker? No ... his mind is long gone. Please, forgive me for this. Nobody deserves such a terrible fate...</text>
+	</string>
+
+    <string id="st_darkasleif_short_bloodsucker1">
+        <text>I think it’s a bloodsucker! Hurry! Is there a pond nearby? You can tell where a bloodsucker is if you watch the water!</text>
+    </string>
+    <string id="st_darkasleif_short_bloodsucker2">
+        <text>I think... I think there may be a bloodsucker coming for us.</text>
+    </string>
+    <string id="st_darkasleif_short_bloodsucker3">
+        <text>It vanished... but I know it’s here!</text>
+    </string>
+    <string id="st_darkasleif_short_bloodsucker4">
+        <text>Bloodsucker! Shh! Quiet! Listen for it...</text>
+    </string>
+    <string id="st_darkasleif_short_bloodsucker5">
+        <text>Wait... where did it go? I swear I saw it just now!</text>
+    </string>
+    <string id="st_darkasleif_short_boar1">
+        <text>A boar! Kill it quickly!</text>
+    </string>
+    <string id="st_darkasleif_short_boar2">
+        <text>I see a boar in the distance! I hope there aren’t more. If so, you better have brought plenty of bullets...</text>
+    </string>
+    <string id="st_darkasleif_short_boar3">
+        <text>It’s coming! A boar is charging right for us!</text>
+    </string>
+    <string id="st_darkasleif_short_boar4">
+        <text>The boar has spotted us! If you can’t outrun it, spring out of the way at the last moment!</text>
+    </string>
+    <string id="st_darkasleif_short_boar5">
+        <text>Don’t stop shooting that boar until you’re sure it’s dead. They are stubborn bastards!</text>
+    </string>
+    <string id="st_darkasleif_short_burer1">
+        <text>Wait... is that a mutant? It’s wearing a coat... No! It’s a burer!</text>
+    </string>
+    <string id="st_darkasleif_short_burer2">
+        <text>That’s a burer!? I’ve only ever heard of them!</text>
+    </string>
+    <string id="st_darkasleif_short_burer3">
+        <text>A burer!? It’s hideous.</text>
+    </string>
+    <string id="st_darkasleif_short_burer4">
+        <text>We have to flank that burer!</text>
+    </string>
+    <string id="st_darkasleif_short_burer5">
+        <text>It’s a burer! Careful! It’s not like any other mutant!</text>
+    </string>
+    <string id="st_darkasleif_short_cat1">
+        <text>Gah! I hate these goddamn things!</text>
+    </string>
+    <string id="st_darkasleif_short_cat2">
+        <text>Damn, cats! Kill them! Quickly!</text>
+    </string>
+    <string id="st_darkasleif_short_cat3">
+        <text>Cats! They’ve found us! They’re coming right for us!</text>
+    </string>
+    <string id="st_darkasleif_short_cat4">
+        <text>Aghh! There so fast! Stalker, kill them or they’ll be the death of us!</text>
+    </string>
+    <string id="st_darkasleif_short_cat5">
+        <text>Cats! They’re faster, more dangerous than any dog you’ve met! Brace yourself!</text>
+    </string>
+    <string id="st_darkasleif_short_controller1">
+        <text>Huh? What? Did you ... I ... Aghhh! My ... head. Get out of my head!</text>
+    </string>
+    <string id="st_darkasleif_short_controller2">
+        <text>Leave me ... alone! No! NO! I won’t ... I won’t let you!</text>
+    </string>
+    <string id="st_darkasleif_short_controller3">
+        <text>Shit Controller! CONTROLLER! Find cover! Find cover, NOW!</text>
+    </string>
+    <string id="st_darkasleif_short_controller4">
+        <text>Kill it! Quickly! Fucking kill it now!</text>
+    </string>
+    <string id="st_darkasleif_short_controller5">
+        <text>Whatever you do, don’t kill yourself! Put your weapon away if you have to! Just keep it at a distance!</text>
+    </string>
+	<string id="st_darkasleif_short_chimera1">
+        <text>It’s... it’s... no... AHH! AHHH!</text>
+    </string>
+    <string id="st_darkasleif_short_chimera2">
+        <text>Oh, no...</text>
+    </string>
+    <string id="st_darkasleif_short_chimera3">
+        <text>Run! RUN!</text>
+    </string>
+    <string id="st_darkasleif_short_chimera4">
+        <text>CHIMERA!</text>
+    </string>
+    <string id="st_darkasleif_short_chimera5">
+        <text>No. No. No! No! NO!! NO!!</text>
+    </string>
+    <string id="st_darkasleif_short_dog1">
+        <text>Stupid mutts. They’re everywhere in the damn Zone!</text>
+    </string>
+    <string id="st_darkasleif_short_dog2">
+        <text>I see a dog over there. Kill it before it flees!</text>
+    </string>
+    <string id="st_darkasleif_short_dog3">
+        <text>Dogs! If we thin the pack fast enough, the last few will scatter in fear!</text>
+    </string>
+    <string id="st_darkasleif_short_dog4">
+        <text>Get ready! Where there’s a dog, there’s always more nearby.</text>
+    </string>
+    <string id="st_darkasleif_short_dog5">
+        <text>Hounds! Too many stalkers have fallen prey to these mongrels!</text>
+    </string>
+    <string id="st_darkasleif_short_pseudodog1">
+        <text>Pseudodogs! They’re worse than the other mutts you’ve put down!</text>
+    </string>
+    <string id="st_darkasleif_short_pseudodog2">
+        <text>A pseudodog! Careful, the bastards will latch on and tear you to shreds!</text>
+    </string>
+    <string id="st_darkasleif_short_pseudodog3">
+        <text>It’s coming right for us! It’s... it’s a pseudodog!</text>
+    </string>
+    <string id="st_darkasleif_short_pseudodog4">
+        <text>These are more brazen and vicious than most wild dogs. Pseudodogs fight until the bitter end!</text>
+    </string>
+    <string id="st_darkasleif_short_pseudodog5">
+        <text>That pseudodog is sprinting straight for us!</text>
+    </string>
+    <string id="st_darkasleif_short_psy_dog1">
+        <text>There’s so many! Nnghh! My head... is that a... psydog?</text>
+    </string>
+	<string id="st_darkasleif_short_psy_dog2">
+        <text>What... nnghh! What is this pain in my head? Can't... can't focus!</text>
+    </string>
+	<string id="st_darkasleif_short_psy_dog3">
+        <text>They’re swarming us! They’re everywhere! Stay away from me!</text>
+    </string>
+	<string id="st_darkasleif_short_psy_dog4">
+        <text>I... I can’t tell which of the bitches are real! Get them off of me!</text>
+    </string>
+	<string id="st_darkasleif_short_psy_dog5">
+        <text>Shit, a psydog! Be careful! I heard it overwhelms its prey with mind-tricks!</text>
+    </string>
+    <string id="st_darkasleif_short_flesh1">
+        <text>Don’t be fooled. They can be dangerous, but flesh usually pose little threat without numbers.</text>
+    </string>
+    <string id="st_darkasleif_short_flesh2">
+        <text>Ah, and here I was thinking about food! Ha ha! Are you hungry, stalker?</text>
+    </string>
+    <string id="st_darkasleif_short_flesh3">
+        <text>Hmm? Oh. You know, of all the mutants in the Zone, flesh aren’t so bad. They taste great in a stew with some vegetables.</text>
+    </string>
+    <string id="st_darkasleif_short_flesh4">
+        <text>Looks like a flesh has seen us. Is it charging us? Or is it fleeing?</text>
+    </string>
+    <string id="st_darkasleif_short_flesh5">
+        <text>A flesh! Over there!</text>
+    </string>
+    <string id="st_darkasleif_short_fracture1">
+        <text>Look! It’s too agile to be a zombie!</text>
+    </string>
+    <string id="st_darkasleif_short_fracture2">
+        <text>Is that a fracture?</text>
+    </string>
+    <string id="st_darkasleif_short_fracture3">
+        <text>I’m not sure we are fast enough to escape it. Can we lure it into an anomaly nearby?</text>
+    </string>
+    <string id="st_darkasleif_short_fracture4">
+        <text>Fracture! How do they move so quickly!?</text>
+    </string>
+    <string id="st_darkasleif_short_fracture5">
+        <text>Kill that fracture before it reaches us! They’re more dangerous than you think!</text>
+    </string>
+    <string id="st_darkasleif_short_gigant1">
+        <text>Look out! A pseudogiant! I hope you brought good weapons!</text>
+    </string>
+    <string id="st_darkasleif_short_gigant2">
+        <text>Dear God ... it’s massive!</text>
+    </string>
+    <string id="st_darkasleif_short_gigant3">
+        <text>Pseudogiants are infamous for their strength! They toss vehicles about and crush their enemies as if they were toys!</text>
+    </string>
+    <string id="st_darkasleif_short_gigant4">
+        <text>There is no shame in running, stalker! Pseudogiants have made short work of even Duty’s finest!</text>
+    </string>
+    <string id="st_darkasleif_short_gigant5">
+        <text>Listen, I think we should avoid this one! It’ll be a difficult fight without proper weapons.</text>
+    </string>
+    <string id="st_darkasleif_short_karlik1">
+        <text>Is... there a karlik nearby?</text>
+    </string>
+	<string id="st_darkasleif_short_karlik2">
+		<text>What the...? It looks like a child, or is it a midget?</text>
+	</string>
+	<string id="st_darkasleif_short_karlik3">
+		<text>Aghh! My head! It's too small to be a psysucker!</text>
+	</string>
+	<string id="st_darkasleif_short_karlik4">
+		<text>It's a rare one! A karlik!</text>
+	</string>
+	<string id="st_darkasleif_short_karlik5">
+		<text>What the hell is that? A gnome?</text>
+	</string>
+	<string id="st_darkasleif_short_lurker1">
+        <text>Lurker! I’d recognize that cry anywhere.</text>
+    </string>
+    <string id="st_darkasleif_short_lurker2">
+        <text>Watch that lurker! They can leap great distances.</text>
+    </string>
+    <string id="st_darkasleif_short_lurker3">
+        <text>Hmph, lurker. Looking for a meal, no doubt. Let’s put this beast down, quickly!</text>
+    </string>
+    <string id="st_darkasleif_short_lurker4">
+        <text>Looks like a lurker! Ready your weapon!</text>
+    </string>
+    <string id="st_darkasleif_short_lurker5">
+        <text>Not as bad as a Chimera, or so I’ve heard, but lurkers are still dangerous.</text>
+    </string>
+	<string id="st_darkasleif_short_poltergeist1">
+        <text>Are you seeing what I’m seeing? Is ... that a ghost?</text>
+    </string>
+	<string id="st_darkasleif_short_poltergeist2">
+        <text>It’s a poltergeist! Watch your surroundings!</text>
+    </string>
+	<string id="st_darkasleif_short_poltergeist3">
+		<text>Agh! Shit! It’s pelting me with rocks! Poltergeist!</text>
+    </string>
+	<string id="st_darkasleif_short_poltergeist4">
+        <text>It’s mostly harmless unless it finds something to toss our way.</text>
+    </string>
+	<string id="st_darkasleif_short_poltergeist5">
+        <text>Poltergeists are rare, but they’re more dangerous when inside buildings.</text>
+    </string>
+    <string id="st_darkasleif_short_psysucker1">
+        <text>The only thing worse than a bloodsucker!</text>
+    </string>
+    <string id="st_darkasleif_short_psysucker2">
+        <text>Get ready! That psysucker is coming! We have to keep moving!</text>
+    </string>
+    <string id="st_darkasleif_short_psysucker3">
+        <text>Psysucker! Is there water nearby? The splashing will give away its position!</text>
+    </string>
+    <string id="st_darkasleif_short_psysucker4">
+        <text>What... what are those!? Ahh! No! Stay... stay away! Don’t let them touch me!</text>
+    </string>
+    <string id="st_darkasleif_short_psysucker5">
+        <text>Don’t let it get into your head! Focus on what’s real!</text>
+    </string>
+	<string id="st_darkasleif_short_pyrogeist1">
+        <text>Keep eyes on it! Pyrogeist!</text>
+    </string>
+	<string id="st_darkasleif_short_pyrogeist2">
+        <text>Pyrogeist! Stay quick on your toes and watch for the fire!</text>
+    </string>
+	<string id="st_darkasleif_short_pyrogeist3">
+        <text>Ugh, I’m sweating in my suit from all this heat. We need to kill it, quickly!</text>
+    </string>
+	<string id="st_darkasleif_short_pyrogeist4">
+        <text>That’s ... that’s not a burner anomaly! Shoot it!</text>
+    </string>
+	<string id="st_darkasleif_short_pyrogeist5">
+        <text>Keep moving! Watch for the gouts of flame!</text>
+	</string>
+    <string id="st_darkasleif_short_snork1">
+        <text>There! Crawling on all fours. A snork!</text>
+    </string>
+    <string id="st_darkasleif_short_snork2">
+        <text>Watch yourself, stalker. Snorks are rabid things. They’ll lunge at you from afar and try to tackle you to the ground.</text>
+    </string>
+    <string id="st_darkasleif_short_snork3">
+        <text>What... whatever made them like this? Were these stalkers?</text>
+    </string>
+    <string id="st_darkasleif_short_snork4">
+        <text>Snorks. The Zone is a cruel place...</text>
+    </string>
+    <string id="st_darkasleif_short_snork5">
+        <text>They’re no better than any of the other beasts that roam the Zone.</text>
+    </string>
+    <string id="st_darkasleif_short_tushkano1">
+        <text>Tushakano. Tiny little bastards!</text>
+    </string>
+    <string id="st_darkasleif_short_tushkano2">
+        <text>Careful! Tushkano. I once saw a rookie killed by a swarm. I don’t ... I don’t want to talk about it ...</text>
+    </string>
+    <string id="st_darkasleif_short_tushkano3">
+        <text>Gah! Tushkano are so damn difficult to shoot.</text>
+    </string>
+    <string id="st_darkasleif_short_tushkano4">
+        <text>Hold still you little shit! I’m going to stomp this ankle-biter into the mud.</text>
+    </string>
+    <string id="st_darkasleif_short_tushkano5">
+        <text>It’s small! It’s a Tushkano. They scamper about, clawing your shins to ribbons so you can’t escape.</text>
+    </string>
+    <string id="st_darkasleif_short_zombi1">
+        <text>Zombies. Such a terrible fate...</text>
+    </string>
+    <string id="st_darkasleif_short_zombi2">
+        <text>Don’t bother wasting your bullets if you’ve an axe handy. Zombies aren’t worth it.</text>
+    </string>
+    <string id="st_darkasleif_short_zombi3">
+        <text>A zombie. Well, there are worse things to fight in the Zone.</text>
+    </string>
+    <string id="st_darkasleif_short_zombi4">
+        <text>Let’s hurry this up and put them down for good.</text>
+    </string>
+    <string id="st_darkasleif_short_zombi5">
+        <text>I wonder who they were before they became zombies?</text>
+    </string>
+    <string id="st_darkasleif_short_mutant1">
+        <text>If you're reading this, something went wrong in the code. Please contact Darkasleif#8648 on Discord to get it fixed. Please include the log, what enemies you saw, and where it happened.</text>
+    </string>
+
+	<!-- Anomaly Table 1 -->
+	<string id="st_darkasleif_actor_on_feeling_anomaly_electric1">
+        <text>That's an electric anomaly.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_electric2">
+        <text>Watch out for that zapper.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_electric3">
+        <text>Eyes open, don't get fried by that electric anomaly.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_electric4">
+        <text>Heads up. That's an electrical anomaly.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_electric5">
+        <text>Don't step into that electric anomaly.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_chemical1">
+        <text>That's a melter.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_chemical2">
+        <text>Chemical anomaly, eyes up.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_chemical3">
+        <text>Chemicals, don't get melted.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_chemical4">
+        <text>That's chemicals.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_chemical5">
+        <text>Chems. They burn like hell.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_thermal1">
+        <text>Watch your step, that's a hot one.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_thermal2">
+        <text>Don't get burnt to a crisp, that's thermal.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_thermal3">
+        <text>Watch out for those embers, that's a thermal.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_thermal4">
+        <text>You see that burner?</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_thermal5">
+        <text>Don't get cooked by that thermal.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_gravitational1">
+        <text>Don't get sucked into that gravitational anomaly.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_gravitational2">
+        <text>Don't be a puddle, watch your step around that gravi.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_gravitational3">
+        <text>Be careful, that's a grav.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_gravitational4">
+        <text>Gravitational anomaly, watch your step.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_gravitational5">
+        <text>Grav, keep your distance.</text>
+	</string>
+
+	<!-- Anomaly Table 2 -->
+	<string id="st_darkasleif_actor_on_feeling_anomaly_weak1">
+        <text>It's a small one.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_weak2">
+        <text>Not that large.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_weak3">
+        <text>Pretty weak.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_weak4">
+        <text>It's mild.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_weak5">
+        <text>Heh, it's kind of cute.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_normal1">
+        <text>Could be bigger. Don't get cocky.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_normal2">
+        <text>Looks run-of-the-mill.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_normal3">
+        <text>Might have some artefacts.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_normal4">
+        <text>Just because it's average doesn't mean it's inert.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_normal5">
+        <text>Seen bigger.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_strong1">
+        <text>Looks pretty bad.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_strong2">
+        <text>It's a big one.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_strong3">
+        <text>Personally? Wouldn't get any closer.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_strong4">
+        <text>Too big to artefact hunt.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_strong5">
+        <text>Looks pretty dangerous.</text>
+    </string>
+
+	<!-- Near Death Table -->
+	<string id="st_darkasleif_near_death1">
+        <text>Blood, so much ... blood ... Ughh ...</text>
+    </string>
+	<string id="st_darkasleif_near_death2">
+        <text>No! Not yet. Not ... not like this! I ... I made a promise. A promise ...</text>
+    </string>
+	<string id="st_darkasleif_near_death3">
+        <text>She was right. I shouldn’t have ... come here ...</text>
+    </string>
+	<string id="st_darkasleif_near_death4">
+        <text>He was right. I shouldn’t have ... come here ...</text>
+    </string>
+	<string id="st_darkasleif_near_death5">
+        <text>Nnnghh! I can’t ... I can’t die like this! I’m not finished yet!</text>
+    </string>
+	<string id="st_darkasleif_near_death6">
+        <text>Damn! I’ve got ... I’ve got to hold on! Just a bit longer!</text>
+    </string>
+	<string id="st_darkasleif_near_death7">
+        <text>Stalker! Help me! I don’t ... I don’t think I’m going to make it!</text>
+    </string>
+	<string id="st_darkasleif_near_death8">
+        <text>I’m falling apart over here! I’m ... I’m going to die! I’m going to die ...</text>
+    </string>
+	<string id="st_darkasleif_near_death9">
+        <text>I just ... I just need ... a moment. Need ... need to patch myself ... together ...</text>
+    </string>
+	<string id="st_darkasleif_near_death10">
+        <text>Don’t you leave me to die!</text>
+    </string>
+	<string id="st_darkasleif_near_death11">
+        <text>I need to hang in there ... c’mon! Just have to ... push through this!</text>
+    </string>
+	<string id="st_darkasleif_near_death12">
+        <text>Brother! Help me ...</text>
+    </string>
+	<string id="st_darkasleif_near_death13">
+        <text>So, this ... this is it? The Zone’s taking me ... at last.</text>
+    </string>
+	<string id="st_darkasleif_near_death14">
+        <text>If I fall, avenge me stalker!</text>
+    </string>
+	<string id="st_darkasleif_near_death15">
+        <text>No! If I’m going to die, I’m taking them with me!</text>
+    </string>
+	<string id="st_darkasleif_near_death16">
+        <text>I don’t ... I don’t want to die.</text>
+    </string>
+	<string id="st_darkasleif_near_death17">
+        <text>You can’t kill me! Not yet! Not now!</text>
+    </string>
+	<string id="st_darkasleif_near_death18">
+        <text>Nngahh! I have ... I have so much ... more to do!</text>
+    </string>
+	<string id="st_darkasleif_near_death19">
+        <text>Stalker, run! Save yourself!</text>
+    </string>
+	<string id="st_darkasleif_near_death20">
+        <text>I’m ... I’m not going to make it, stalker ...</text>
+    </string>
+	<string id="st_darkasleif_near_death21">
+        <text>If this is how ... it’s going to be, then end it!</text>
+    </string>
+	<string id="st_darkasleif_near_death22">
+        <text>Fighting until ... the bitter end!</text>
+    </string>
+	<string id="st_darkasleif_near_death23">
+        <text>Tell them ... I didn’t die ... a coward ...</text>
+    </string>
+	<string id="st_darkasleif_near_death24">
+        <text>Holding my ground until the last. No matter what!</text>
+    </string>
+	<string id="st_darkasleif_near_death25">
+        <text>I’ve lived through worse in the Zone! I’ve lived ... through worse ...</text>
+    </string>
+	<string id="st_darkasleif_near_death26">
+        <text>Flee! I’ll hold them off!</text>
+    </string>
+	<string id="st_darkasleif_near_death27">
+        <text>Why do I feel ... so cold?</text>
+    </string>
+	<string id="st_darkasleif_near_death28">
+        <text>As long as I have blood to spill, I’ll keep ... fighting!</text>
+    </string>
+	<string id="st_darkasleif_near_death29">
+        <text>Is ... is it finally over?</text>
+    </string>
+	<string id="st_darkasleif_near_death30">
+        <text>Stalker! I need ... I need help!</text>
+    </string>
+
+	<!-- Emission Table -->
+	<string id="st_darkasleif_on_before_surge1">
+        <text>The birds seem restless. Are there buildings nearby?</text>
+    </string>
+	<string id="st_darkasleif_on_before_surge2">
+        <text>Stalker, look. There, the sky in the distance. Does that storm look normal to you?</text>
+    </string>
+	<string id="st_darkasleif_on_before_surge3">
+        <text>Did you feel that? Small tremors in the ground? I don’t see a pseudogiant nearby...</text>
+    </string>
+	<string id="st_darkasleif_on_before_surge4">
+        <text>I have a bad feeling about this. Where are all the mutants?</text>
+    </string>
+	<string id="st_darkasleif_on_before_surge5">
+        <text>Hey, the clouds are starting to quickly stir!</text>
+    </string>
+	<string id="st_darkasleif_on_before_surge6">
+        <text>Do you hear that?</text>
+    </string>
+	<string id="st_darkasleif_on_before_surge7">
+        <text>The CNPP is in that direction, right? In the distance?</text>
+    </string>
+	<string id="st_darkasleif_on_before_surge8">
+        <text>I’m feeling lightheaded ...</text>
+    </string>
+	<string id="st_darkasleif_on_before_surge9">
+        <text>Am I crazy? There is no breeze in the air.</text>
+    </string>
+	<string id="st_darkasleif_on_before_surge10">
+        <text>Shh! Shh! Do you hear that?</text>
+    </string>
+
+	<!-- Psi-Storm Table -->
+	<string id="st_darkasleif_on_before_psi_storm1">
+        <text>Stalker, look at this. The hairs on my arms suddenly stood upright ...</text>
+    </string>
+	<string id="st_darkasleif_on_before_psi_storm2">
+        <text>Is your PDA acting strange too? I just bought new batteries a day or so ago.</text>
+    </string>
+	<string id="st_darkasleif_on_before_psi_storm3">
+        <text>Do... do you hear that faint siren?</text>
+    </string>
+	<string id="st_darkasleif_on_before_psi_storm4">
+        <text>We should probably hurry. That doesn’t look like a normal storm on the horizon.</text>
+    </string>
+	<string id="st_darkasleif_on_before_psi_storm5">
+        <text>One of my buddies just messaged me. They said a psi-storm is forming over their location!</text>
+    </string>
+	<string id="st_darkasleif_on_before_psi_storm6">
+        <text>There were stalkers talking about a psi-storm earlier, but I can’t remember when. Do you?</text>
+    </string>
+	<string id="st_darkasleif_on_before_psi_storm7">
+        <text>I think my compass is broken. Look, it’s spinning faster and faster!</text>
+    </string>
+	<string id="st_darkasleif_on_before_psi_storm8">
+        <text>Did you just hear those Pulse anomalies? They’re happening back to back, in the distance.</text>
+    </string>
+	<string id="st_darkasleif_on_before_psi_storm9">
+        <text>That’s strange. The screen on my artefact detector is really bright. There can’t even be that many anomalies around us...</text>
+    </string>
+	<string id="st_darkasleif_on_before_psi_storm10">
+        <text>Huh? My RF receiver turned on by itself. I don’t know how, I took the batteries out for my headlamp.</text>
+    </string>
+
+	<!-- Death Table -->
+	<string id="st_darkasleif_npc_on_death_callback1">
+        <text>[Your companion’s last moments are spent choking on their own blood, clawing at the ground. Desperately, they try to cling to life before their body grows still. They have been lost to the Zone.]</text>
+    </string>
+	<string id="st_darkasleif_npc_on_death_callback2">
+        <text>[As life begins to fade from your companion’s eyes, they reach out to you for comfort in their final moments. Though they have accepted their fate, they do not wish to die alone, here, in the Zone.]</text>
+    </string>
+	<string id="st_darkasleif_npc_on_death_callback3">
+        <text>[Try as you may, there is little you can do for your companion’s wounds. Tears begin to stream down their cheeks, body gradually slumping while contemplating the meaning of it all. Such is the fate of many, in the Zone.]</text>
+    </string>
+	<string id="st_darkasleif_npc_on_death_callback4">
+        <text>[Despite your companion’s assurance that they can continue, it is clear that they are in shock from injuries sustained. They grow weary from the loss of blood, eyelids becoming heavy. An ally is forever lost as their eyes close one last time. It is a better end than most within the Zone]</text>
+    </string>
+	<string id="st_darkasleif_npc_on_death_callback5">
+        <text>[Your companions’ eyes grow wide with shock as the realization dawns on them – death approaches. However, they embrace it, welcoming the opportunity to escape from this hell. There is a certain peace in knowing that you no longer have to struggle to survive, in the Zone.]</text>
+    </string>
+	<string id="st_darkasleif_npc_on_death_callback6">
+        <text>[With an outstretched hand, your companion musters the last of their will to hand you something. A letter to a loved one? An item of personal significance? Perhaps the location of a hidden stash? Regardless, they succumb to their injuries before you can question it. Broken promises and failed duties alike are plenty, within the Zone.]</text>
+    </string>
+	<string id="st_darkasleif_npc_on_death_callback7">
+        <text>[You approach your companion with hesitation, knowing full well that their state is grievous. They manage a bloodied chuckle, assuring that there are no regrets in the time spent travelling at your side with a smile. Together, you briefly reminisce. Together, you have endured and witnessed much. But, now, it is their time to depart. Friend or foe, it matters not to the Zone.]</text>
+    </string>
+	<string id="st_darkasleif_npc_on_death_callback8">
+        <text>[Before you realize it, your companion has fallen in the struggle. Be it from bullets from a weapon or the fangs of a mutant, their warm and lifeless corpse is reminder off how fickle life truly is for all, in the Zone.]</text>
+    </string>
+	<string id="st_darkasleif_npc_on_death_callback9">
+        <text>I’m ... sorry ... I’m sorry ... I’m ... so ... sorry ...</text>
+    </string>
+	<string id="st_darkasleif_npc_on_death_callback10">
+        <text>I want to go home ... I want ... to go home ... I want ... to ... go ...</text>
+    </string>
+	
+	<!-- Level Transition Table -->
+	<!-- agroprom -->
+	<string id="st_darkasleif_level_transition_agroprom1">
+        <text>There’s an old research institute here. It’s heavily occupied by the military. With a Hind flying overhead, only an idiot with a death wish would think to raid the place in broad daylight.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom2">
+        <text>Rumors say that the swamp to the northwest is where Bandits set ambushes for those coming in and out of Yantar. I wasn’t surprised to hear that Sakharov had Mercenaries watch the place a few weeks ago. They started shooting anybody that wasn’t an Ecologist or traveling with one.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom3">
+        <text>The military and their damn helicopters always put me on edge. How can they tell who’s who from all the way up there?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom4">
+        <text>I was scrolling through my PDA and I noticed a lot of stalkers have reported dozens of anomalies in the area. Did you bring your detector? We might find something while we’re here.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom5">
+        <text>Some stalkers have said that the legendary Strelok once infiltrated the nearby institute, that there is actually a giant laboratory underground and he fought his way through it! I wonder what he found down there?</text>
+    </string>
+
+	<!-- agroprom_underground -->
+	<string id="st_darkasleif_level_transition_agroprom_underground1">
+        <text>Sssh. Did you hear that? I don't think we're alone down here.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom_underground2">
+        <text>I've heard that bandits like to creep around down here. We should be ready for surprises.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom_underground3">
+        <text>What do you even need to do in these tunnels? I feel claustrophobic already.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom_underground4">
+        <text>Some of the older stalkers tell stories about this place. If you believe them, Strelok has a hideout down here somewhere.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom_underground5">
+        <text>I came down here once before. Left the moment the boxes started to float too. I'm no coward, but there's no need to put yourself in danger is there?</text>
+    </string>
+
+	<!-- army_warehouses -->
+	<string id="st_darkasleif_level_transition_army_warehouses1">
+        <text>Careful. I hear that between Duty, Freedom, Mercenaries, and Monolith, this place can be a warzone at times.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_army_warehouses2">
+        <text>Stalkers talk about this place like it’s the doorstep to hell. When you realize the Barrier is the only thing separating this place from the Red Forest, you start to understand why.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_army_warehouses3">
+        <text>Damn Geiger counter! Seems like the further north we go, the harsher the radiation gets. You think people just keel over the moment they lay eyes on the CNPP?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_army_warehouses4">
+        <text>Brother, I hope we never have to cross through here at night. If being a faction battleground wasn’t bad enough, I don’t want to see what mutants skulk around here in the dark.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_army_warehouses5">
+        <text>Some buddies of mine always said that Freedom rarely stayed sober because of something beyond the Barrier. Do you think it’s true?</text>
+    </string>
+
+	<!-- chernobyl_npp_north -->
+	<string id="st_darkasleif_level_transition_chernobyl_npp_north1">
+        <text>How can there be so much open sky and things still feel oppressive.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_north2">
+        <text>It's ... so quiet. I want to shout just to hear something.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_north3">
+        <text>Look at all those empty rooms. Think the cultists sleep in there?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_north4">
+        <text>Nothing here except mutants and zombies.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_north5">
+        <text>This is practically the heart of the zone. Except for maybe the generators I guess.</text>
+    </string>
+
+	<!-- chernobyl_npp_south -->
+	<string id="st_darkasleif_level_transition_chernobyl_npp_south1">
+        <text>Okay, we're at the edge of the world here, so time to act like it. We didn't come this far to die like tourists.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_south2">
+        <text>I knew a few guys who wanted to make an expedition to this part of the CNPP, before the Brain Scorcher went back online. They never returned. We don't want to end up like them.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_south3">
+        <text>Nowhere to go but north, Stalker. Just remember, if we slip up here, we're dead. No funny business, no time to waste, and no shortage of Monolith that want to kill us.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_south4">
+        <text>You don't have cold feet, yeah? Good. Listen, we got this. All the shit we've been through has added up to this moment. Come on, get moving.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_south5">
+        <text>This is the view we see from everywhere in the Zone? Shit, not bad, not bad at all, man. Still, keep your hands on your gun, this place is dangerous.</text>
+    </string>
+
+	<!-- cordon -->
+	<string id="st_darkasleif_level_transition_cordon1">
+        <text>Ah, Cordon. We have to start from somewhere, right? Now that I think about it, how did you even make it into the Zone anyways?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_cordon2">
+        <text>Hey, I think we should avoid the bridge. Don’t give me that look. I don’t have the greatest streak with the military to be honest.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_cordon3">
+        <text>If I had to judge from the PDA chat logs, the car park sees its fair share of skirmishes. Bandits and Loners are constantly fighting one another to lay claim to it. I bet it gives the soldiers watching from the bridge a good laugh.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_cordon4">
+        <text>Rumor says the Cordon is in Sidorovich’s palm. It’s the only reason why the Military hasn’t blown up the rookie village with their helicopters. Do you really think that one man can be powerful enough to keep the government at bay?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_cordon5">
+        <text>If you ignore the mutants and the occasional skirmish with Bandits, the Cordon is actually nice.</text>
+    </string>
+
+	<!-- dark_valley -->
+	<string id="st_darkasleif_level_transition_dark_valley1">
+        <text>There it is, that infamous factory. I think it may have been used to build and repair vehicles - before the Soviet Union fell. Now it’s nothing more than a den for murderers, thieves, and liars.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dark_valley2">
+        <text>You know, many stalkers speak about the old laboratory hidden here. They say there are others throughout the Zone. If people really took such great measures to hide them, I think it says much about what they were used for. Maybe it’s best they were left forgotten?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dark_valley3">
+        <text>Bandits call this home. I wasn’t surprised to learn they have a hard time keeping a leader around for very long. Though, some believe that’s going to change with Sultan running things.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dark_valley4">
+        <text>Really? Here? Some rookies fortunately don’t last long enough to die in Dark Valley. I hope you came prepared, my friend. This area is dangerous ...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dark_valley5">
+        <text>Finding shelter from an Emission in Dark Valley can be tricky. It might be a good idea to learn which places are safe for us. I’d prefer not having to shoot my way into a building with the storm at our backs.</text>
+    </string>
+
+	<!-- darkscape -->
+	<string id="st_darkasleif_level_transition_darkscape1">
+        <text>Stalker, are you sure we need to travel through here? I remember others saying that there are few places to protect if an Emission were to hit ...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_darkscape2">
+        <text>Hey, have you heard that people have sometimes been vanishing here? No body, no PDA, nothing. It’s strange. I’m not superstitious, but some really believe that this place haunted.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_darkscape3">
+        <text>Many avoid travelling through this place if they can. Darkscape is vast, stretching on for miles. I don’t think we should continue unless you’re sure we have enough supplies to last us the whole trip.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_darkscape4">
+        <text>The good thing is that very few stalkers bother travelling through this area, it’s huge. The bad? More mutants are likely to roam the land. Not enough people travel this place to keep them in check. Keep your weapon ready, and your eyes sharp.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_darkscape5">
+        <text>I think we should try and make it through the valley before nightfall. Maybe try checking some of the cars? If we’re lucky, one of them might have enough fuel to make short work of the journey.</text>
+    </string>
+
+	<!-- dead_city -->
+	<string id="st_darkasleif_level_transition_dead_city1">
+        <text>Be careful here my friend. The Dead City is anything but.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dead_city2">
+        <text>The Mercenaries have a base here, but between the mutants and the anomalies, that might be the least of our concerns.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dead_city3">
+        <text>I heard they call this place Dead City because of all the zombies. If I see anything looking at me from a window, I'm shooting.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dead_city4">
+        <text>Are we here to try the lotto? Aslan gave me a pistol once. Saved my life with that thing. I'll have to tell you the story sometime.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dead_city5">
+        <text>We should finish our business here and leave as soon as possible. What if the mercenaries decide to claim our patches?</text>
+    </string>
+
+	<!-- deserted_hospital -->
+	<string id="st_darkasleif_level_transition_deserted_hospital1">
+        <text>Ever wanted to glow after drinking water? My geiger counter is going crazy everytime I look at those puddles.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_deserted_hospital2">
+        <text>Exploring an abandoned hospital in a mutant filled zone. There are at least three horror movies about this.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_deserted_hospital3">
+        <text>Oh, you know, just some Monolith, lethal radiation, horrible mutants, dangerous anomalies, and generally everything in the Zone that has the potential to kill us! Wonderful. Why are we here, again?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_deserted_hospital4">
+        <text>This is where the firefighters in the Chernobyl disaster went to get treatment. Their sacrifices haunt this place, Stalker, as does the radiation on their clothing. Do not touch the water unless you want to end up like they did.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_deserted_hospital5">
+        <text>I can't ever imagine this place being used as anything but a Monolith stronghold today, much less a hospital. Needless to say, I don't think we should stick around here for long.</text>
+    </string>
+
+	<!-- garbage -->
+	<string id="st_darkasleif_level_transition_garbage1">
+        <text>If you’re hurting for gear, you could always try the flea market near the Rostok checkpoint – to the north. Keep in mind that a lot of different stalkers pass through. One too many shootouts have broken out between Bandits, Loners, Duty, and even the occasional Military squad.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_garbage2">
+        <text>I hope you brought your Geiger counter. Years ago, the government buried tons of radioactive junk here - back when the power plant first went up in flames. If that wasn’t bad enough, others think it’s partly to blame for the mutants that roam the area.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_garbage3">
+        <text>We should be careful if we near the train hangar. It’s supposedly a safe haven for stalkers, but that often depends on who is camping there. I’m sure Butcher has witnessed his share of gunfights when an Emission hits.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_garbage4">
+        <text>Just between you and me, I paid for this tip. If there’s a blowout to happen we can find shelter in the basement of the flea market. It’s also a safe spot to rest the night if you don’t want to spend the evening roaming about.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_garbage5">
+        <text>To the north you’ll find Rostok – Duty’s stronghold. Agroprom is to the west, the Military’s base of operations in the Zone. Heading east you’ll find Dark valley where the Bandit’s somehow scrape together a living in that miserable corner of the Zone.</text>
+    </string>
+
+	<!-- generators -->
+	<string id="st_darkasleif_level_transition_generators1">
+        <text>Do you think any stalkers have ever made it here before? I mean ones that aren't part of Monolith.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_generators2">
+        <text>If you told me I'd be coming here, I might have decided to stay in the south. Even the wind feels hostile.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_generators3">
+        <text>What are those ... orbs of electricity? Some kind of machine? To what end.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_generators4">
+        <text>Strelok came here, didn't he? What kind of a person comes to the heart of the zone and leaves unchanged.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_generators5">
+        <text>We'll be legends for sure if we make it out of here. Everyone talks about reaching the center of the zone, but how many people actually do it.</text>
+    </string>
+
+	<!-- great_swamp -->
+	<string id="st_darkasleif_level_transition_great_swamp1">
+        <text>We’d best be careful if we’re to travel through here. It’ll be difficult to spot mutants hiding in the reeds and bushes.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_great_swamp2">
+        <text>Legend says that Clear Sky was founded in the far fringes of the swamp. How they managed to survive in this armpit of the Zone between the mutants and the anomalies is beyond me.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_great_swamp3">
+        <text>Not the worst place in the Zone, but it’s close. With the Renegades having such a heinous reputation, there are few other places more fitting for the damned fiends. There is comfort in knowing the swamps will sort many of them out sooner or later.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_great_swamp4">
+        <text>This place ... it scares me. I’ve heard stories of bloodsuckers ambushing stalkers, quickly bursting from the water to strike and dragging their victims underwater. There was this one where some foolish tourists thought to camp overnight in the open. Their bodies were found days later in their torn sleeping bags, half-eaten by boars with very little blood to be found, caught by surprise in their sleep ...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_great_swamp5">_
+        <text>This land is a vast and dangerous maze. But there are landmarks to help us navigate the area. There are a few watchtowers, the old church, the pumping station, the fishing hamlet, and the burnt farm. You can easily tell where the machine yard is if you watch the Military’s helicopter sweeping the area from above.</text>
+    </string>
+
+	<!-- jupiter -->
+	<string id="st_darkasleif_level_transition_jupiter1">
+        <text>I don't think I've ever felt so exposed in the zone before. Look at all this open space.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter2">
+        <text>Don't let how peaceful this area looks deceive you. Bloodsuckers in the north. Zombies in the west. An abandoned minefield. At least the Train station is relatively secure.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter3">
+        <text>Let's stay far away from the AA Complex. I don't think I've ever seen so many zombies in one place before.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter4">
+        <text>The Scientist bunker here is a good place to hunker down in an emission. Good views of the area around it as well if they let you climb to the top.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter5">
+        <text>The trader in the station is loud, but at least they're friendly. If we're looking for a safe place to rest, there's not much better in the north.</text>
+    </string>
+
+	<!-- jupiter_underground -->
+	<string id="st_darkasleif_level_transition_jupiter_underground1">
+        <text>Remind me why we're down here again? You know there are guides that avoid this place.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter_underground2">
+        <text>Do you have spare batteries? I think mine are almost dead.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter_underground3">
+        <text>Dark, full of gas, and crawling with mutants. Just in case you thought the zone wasn't dangerous enough on the surface.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter_underground4">
+        <text>They say Strelok used this path to get to the center of the zone. Think he left any stashes behind?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter_underground5">
+        <text>My geiger counter is acting weird. First it's clicking non-stop and then it goes silent. I'd keep that mask on if I were you.</text>
+    </string>
+
+	<!-- lab_x-16 -->
+	<string id="st_darkasleif_level_transition_lab_x-161">
+        <text>Every expedition team the Ecologists sent to X16 never returned alive, but we're no ordinary expedition team, eh?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-162">
+        <text>Remember, Stalker, underground areas like this are irresistible to snorks, and I'd imagine whatever horrible thing that's creating this psy-field hasn't left them alone, either. Do not let your guard down.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-163">
+        <text>Take some psy-block. We have no idea what's in this place, and if that psy field outside is any indication, this place isn't going to be nice on our senses.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-164">
+        <text>God, I got a splitting headache! The hell is this place? Crazy eggheads. I'm gonna try my best to watch your back, but I got the creeps here.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-165">
+        <text>Moaning. Guess that's what happened to those expedition teams. They're probably not alone, either, you got something to kill mutants with?</text>
+    </string>
+
+	<!-- lab_x-18 -->
+	<string id="st_darkasleif_level_transition_lab_x-181">
+        <text>Ugh, that smell. It's like a death truck, but worse.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-182">
+        <text>I'm telling you, that box just moved by itself.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-183">
+        <text>So many dead bodies. What happened here?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-184">
+        <text>I think I can hear anomalies further in. Be careful and keep your eyes open.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-185">
+        <text>If we make it out of here alive, no one will believe us.</text>
+    </string>
+
+	<!-- lab_x-19 -->
+	<string id="st_darkasleif_level_transition_lab_x-191">
+        <text>Okay! Fun's over, get your ass moving and turn that damn thing off before our brains get fried like eggs!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-192">
+        <text>I'll watch your back, you get this fucking thing disabled before the Monolith reinforce this place!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-193">
+        <text>Agh! Fuck, my ears! Go, go for fuck's sake! Turn this goddamn thing off before we end up like those fanatics do!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-194">
+        <text>Stalker, I hope you didn't cheap out on Sakharov's technological crap, because we don't have time to wait around here! Get going!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-195">
+        <text>Move, move! We don't have time, Monolith are coming to reinforce and this psy-field is gonna turn our brains to paste!</text>
+    </string>
+
+	<!-- lab_x-8 -->
+	<string id="st_darkasleif_level_transition_lab_x-81">
+        <text>How did you even find this place?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-82">
+        <text>A secret lab under a service center? I suppose I've seen stranger.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-83">
+        <text>What the hell is this place?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-84">
+        <text>Keep track of where you came from. These labs are always a maze.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-85">
+        <text>What kind of research needs this level of secrecy?</text>
+    </string>
+
+	<!-- limansk -->
+	<string id="st_darkasleif_level_transition_limansk1">
+        <text>It is said that while many try to brave the journey through Limansk, Monolith lies waiting in ambush with traps...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_limansk2">
+        <text> Empty, filled only with ghosts and death...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_limansk3">
+        <text>Limansk... it doesn’t appear on any official maps. The Soviet Union had a habit of building secret cities and towns far removed from the world. This may be one such place. But, if so, what purpose did it serve?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_limansk4">
+        <text>Word has been circulating of a path not affected by the Brain Scorcher, that many have fought and died trying to secure such a path for themselves. Could this be it?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_limansk5">
+        <text>I swear, the farther north we travel the more I can feel something picking away at my thoughts. Am I being paranoid? Maybe the stories are getting to me after all.</text>
+    </string>
+
+	<!-- meadow -->
+	<string id="st_darkasleif_level_transition_meadow1">
+        <text>This place, it’s ... beautiful.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_meadow2">
+        <text>I never thought I would ever find a place this peaceful in the Zone. It... reminds me a little of home. What was your home like, stalker? Before you came here?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_meadow3">
+        <text>They call this place the Meadow. I wonder why nobody has claimed this little village or the depot for themselves?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_meadow4">
+        <text>One of the few places where we could probably rest or sleep without much worry.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_meadow5">
+        <text>If I had to live the rest of my days in the Zone it would probably be here, in this little village.</text>
+    </string>
+
+	<!-- monolith_control_center -->
+	<string id="st_darkasleif_level_transition_monolith_control_center1">
+        <text>We fight through a bunch of tunnels and find a creepy altar. What the hell is this?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_monolith_control_center2">
+        <text>At least the voices are quieter here.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_monolith_control_center3">
+        <text>What are these controls for, the Zone?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_monolith_control_center4">
+        <text>I can still hear movement, be ready for a fight.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_monolith_control_center5">
+        <text>Think the engineers who built this place thought this would happen?</text>
+    </string>
+
+	<!-- monolith_war_lab -->
+	<string id="st_darkasleif_level_transition_war_lab1">
+        <text>There's damage, but this place looks new still.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_war_lab2">
+        <text>I've got the strangest feeling. It's like we're being watched.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_war_lab3">
+        <text>All these doors are locked. What treasures could be hidden here?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_war_lab4">
+        <text>Careful, don't touch anything, what if you set off an alarm?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_war_lab5">
+        <text>It's safe from the storms outside, but why does this place exist at all?</text>
+    </string>
+
+	<!-- pripyat_outskirts -->
+	<string id="st_darkasleif_level_transition_pripyat_outskirts1">
+        <text>It's one thing to hear about it... Entirely different thing to witness it yourself. So many buildings, abandoned. God rest their souls.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat_outskirts2">
+        <text>Not much to find in the Outskirts except mercenaries and Monolith. Still, it's safer than being in Pripyat.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat_outskirts3">
+        <text>Before the Zone was formed, stalkers would trespass here to loot old buildings of the belongings left by past residents. Imagine aiming that small nowadays.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat_outskirts4">
+        <text>It's strange how many stalkers know so little about the history of the Zone before it became anomalous. Pripyat was built by the USSR to house the workers at the CNNP. Supposedly it was quite prosperous as a city. What a waste.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat_outskirts5">
+        <text>If you were here a week after the Chernobyl disaster and had no radiation protection... Christ. You know what the liquidators did, right? Dug up the radioactive soil and buried it with uncontaminated dirt. There's still lethal patches of radiation here, courtesy of the Zone; but if it wasn't for them, this entire place would be more uninhabitable than it already is.</text>
+    </string>
+
+	<!-- pripyat -->
+	<string id="st_darkasleif_level_transition_pripyat1">
+        <text>Fifty thousand people used to live here. At least they managed to evacuate before the Zone decided to get all weird.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat2">
+        <text>So many windows, who knows what could be looking at us from the darkness.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat3">
+        <text>The city is infinitely quieter than it ever used to be. Now, the only sounds that break the silence are gunshots and mutant calls.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat4">
+        <text>Do we really need to be here? Rumors say the monolith base is here somewhere.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat5">
+        <text>Was that? No, nevermind, I think I'm seeing things. Keep your eyes open though, looks like a nasty place to be caught off guard.</text>
+    </string>
+
+	<!-- radar -->
+	<string id="st_darkasleif_level_transition_radar1">
+        <text>If I am being honest, I never thought I would have traveled this deep into the Zone when I first arrived.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_radar2">
+        <text>Are you prepared to die here? Monolith scouts lie waiting, picking stalkers off. Then there’s the mutants. They’re notoriously horrid here.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_radar3">
+        <text>I’m not feeling well... I think there’s a leak in my mask. The PDA logs spoke of spiking radiation levels in this area.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_radar4">
+        <text>Why does the skies seem more foreboding as we go north?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_radar5">
+        <text>A great test for many stalkers. Years ago, Duty and Freedom fought one another here trying to reach Pripyat.</text>
+    </string>
+
+	<!-- red_forest -->
+	<string id="st_darkasleif_level_transition_red_forest1">
+        <text>Many seasoned stalkers believe that this forest is cursed, avoiding it by any means if they can.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_red_forest2">
+        <text>Have you heard the stories about this place? Even the most hardened stalkers of the Zone fear it.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_red_forest3">
+        <text>My friend, we should tread very carefully. It is well known that the many who have dared to travel the Red Forest never return. One can only imagine what happened to them...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_red_forest4">
+        <text>Did you notice it as well? Even with a mask the air is heavy with the taste of metal, of rust.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_red_forest5">
+        <text>Something... is off. This place feels like it is from some sort of dream.</text>
+    </string>
+
+	<!-- rostok -->
+	<string id="st_darkasleif_level_transition_rostok1">
+        <text>So long as you’re on good terms with Duty and the Loners, they say Rostok is a nice place to kick up your feet and unwind.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_rostok2">
+        <text>Like them or not, I think many understand Duty’s cause. Somehow, someway, the Zone will take more and more from you until you’ve nothing left but pain and hatred. Still, Duty would have an easier time if they weren’t pricks about everything.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_rostok3">
+        <text>Many stalkers who’ve yet to build a reputation in the Zone complain about Duty’s thorough checkpoint inspections. The rookies probably don’t know that questionable figures have snuck serious explosives through the checkpoints in the past. It was a mess ...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_rostok4">
+        <text>No matter how many Duty kills, those damn dogs keep showing up to harass stalkers. It must hurt Bartender’s business when a wild pack drags some trader or tourist into a ditch and tears them apart.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_rostok5">
+        <text>Ah, at last! After what we’ve been through, I could use a drink. Let’s visit Bartender and celebrate! What do you say?</text>
+    </string>
+
+	<!-- sarcophagus -->
+	<string id="st_darkasleif_level_transition_sarcophagus1">
+        <text>Our grandfathers built this place, and now it's the biggest Monolith stronghold in the Zone... Whatever, come on and let's get this done.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_sarcophagus2">
+        <text>Holy shit, and I thought the X labs were creepy and cramped, the hell is this place?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_sarcophagus3">
+        <text>This place was originally meant to contain Chernobyl's radioactive wrath, now it contains the wrath of the Monolith. I shouldn't have to say this, but keep your gun ready, we got no idea how many will be here.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_sarcophagus4">
+        <text>That voice? You hear it too? Shit, man. Just keep moving, we got a job to do.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_sarcophagus5">
+        <text>The Sarcophagus is mainly comprised of tunnels and small rooms, if I was to guess. Do not get complacent, death lurks everywhere.</text>
+    </string>
+
+	<!-- truck_cemetery -->
+	<string id="st_darkasleif_level_transition_truck_cemetery1">
+        <text>The military sometimes patrol here. Maybe some of these old vehicles still work?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_truck_cemetery2">
+        <text>I hope you have eyes in the back of your head. The mutants know how to sneak up on you using the wrecks.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_truck_cemetery3">
+        <text>There's one good thing about this place. Plenty of cover from the storms.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_truck_cemetery4">
+        <text>A friend of mine used to hide out in one of the towers here. Claimed that it was safer than being on the ground because nothing could sneak up on him.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_truck_cemetery5">
+        <text>If we have to pass through here, can we at least stick to the edges? Stalkers have made some camps in the west and south before, they should be relatively safe.</text>
+    </string>
+
+	<!-- wild_territory -->
+	<string id="st_darkasleif_level_transition_wild_territory1">
+        <text>Between Freedom, Mercenaries, Bandits, and mutants; they’ve kept Duty from pushing out and claim more of the manufacturing plant.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_wild_territory2">
+        <text>I overheard some stalkers talking about a downed helicopter here. If we find it, can we take a moment to look at it? I’ve never seen a Hind up close. Maybe I might be able to climb inside?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_wild_territory3">
+        <text>A veteran once said that Wild Territory gives most new stalkers a taste of what the Zone is like further north, but it probably differs from one stalker to the next.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_wild_territory4">
+        <text>I was browsing the PDA logs and it seems that Mercenaries insistent they have a presence here. Why? What could they possibly want with Wild Territory?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_wild_territory5">
+        <text>It’s common knowledge the underpasses here are filled with anomaly clusters. Unless you’re wanting artifacts, I think we should avoid digging around. Many stalkers have died trying to navigate through them.</text>
+    </string>
+
+	<!-- yantar -->
+	<string id="st_darkasleif_level_transition_yantar1">
+        <text>We're not going near the plant are we? I don't think I have enough psy-blockers.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_yantar2">
+        <text>The walls around the bunker are thick enough to make even a paranoid stalker feel safe. Maybe it's time for a rest.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_yantar3">
+        <text>I've heard there's a lab inside the plant somewhere, I wonder what secrets it holds.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_yantar4">
+        <text>I've heard a rumor that the mercenaries know a path to Dead City somewhere in the north of this place.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_yantar5">
+        <text>If it wasn't for all the gas, that little lake would be a good place to relax.</text>
+    </string>
+
+	<!-- zaton -->
+	<string id="st_darkasleif_level_transition_zaton1">
+        <text>I don't think we really appreciate how lucky we are that the ships aren't radioactive. </text>
+    </string>
+	<string id="st_darkasleif_level_transition_zaton2">
+        <text>The Ranger Station is a frequent site of shady deals and firefights. I suppose the safety of its walls draws all sorts.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_zaton3">
+        <text>Radioactive water, mad hermits, mutants and anomalies. What's not to love about Sunny Zaton.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_zaton4">
+        <text>The Mercenaries are often found in that pumping station in the south. I wonder if there's something special about it, or if they just like the way it smells.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_zaton5">
+        <text>A Military helicopter crashed here a while ago. I wonder if its been picked clean yet or not.</text>
+    </string>
+
+	<!-- Reload (5) -->
+	<string id="st_darkasleif_reload1">
+        <text>I'll cover you!</text>
+	</string>
+	<string id="st_darkasleif_reload2">
+        <text>Reload, I got you!</text>
+	</string>
+	<string id="st_darkasleif_reload3">
+        <text>Reload faster damn it!</text>
+	</string>
+	<string id="st_darkasleif_reload4">
+        <text>Reload, quick!</text>
+	</string>
+	<string id="st_darkasleif_reload5">
+        <text>Covering you!</text>
+	</string>
+	
+	<!-- Jam (5) -->
+	<string id="st_darkasleif_jammed1">
+        <text>Keep your gun clean damn it!</text>
+	</string>
+	<string id="st_darkasleif_jammed2">
+        <text>Fuck! Covering you!</text>
+	</string>
+	<string id="st_darkasleif_jammed3">
+        <text>Fix your fucking gun!</text>
+	</string>
+	<string id="st_darkasleif_jammed4">
+        <text>Damn it! How hard is gun maintenance?!</text>
+	</string>
+	<string id="st_darkasleif_jammed5">
+        <text>You are never hearing the end of this!</text>
+	</string>
+
+	<!-- Companions when another companion dies (5) -->
+	<string id="st_darkasleif_companion_death1">
+        <text>We lost one!</text>
+	</string>
+	<string id="st_darkasleif_companion_death2">
+        <text>We're getting our asses kicked!</text>
+	</string>
+	<string id="st_darkasleif_companion_death3">
+        <text>Damn! Should we retreat or fight this one out!?</text>
+	</string>
+	<string id="st_darkasleif_companion_death4">
+        <text>Shit!</text>
+	</string>
+	<string id="st_darkasleif_companion_death5">
+        <text>This might be a lost cause!</text>
+	</string>
+
+	<!-- Comments when the player dies (10) -->
+	<string id="st_darkasleif_companion_player_death1">
+        <text>No! Stalker!</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death2">
+        <text>He’s ... he’s gone! He flatlined ...</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death3">
+        <text>Godammit!</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death4">
+        <text>I’m getting out of here!</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death5">
+        <text>I couldn’t save you. I’m sorry ...</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death6">
+        <text>No! Not like this! You can’t die on me!</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death7">
+        <text>I will avenge you. Rest easy, stalker.</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death8">
+        <text>Why? Why did this have to happen to me?</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death9">
+        <text>I’ll drink to your memory. I’m sorry.</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death10">
+        <text>You were a good stalker, real good. Maybe even the best.</text> <!-- Reference to Soldier from TF2, RIP Rick May -->
+	</string>
+	
+	<!--A Sore Loser-->
+	<string id="st_darkasleif_campfire_1_1">
+        <text>I can’t believe it! That thieving, lying bastard managed to pull the wool over my eyes and now I’ve no roubles or artifacts!</text>
+	</string>
+	<string id="st_darkasleif_campfire_1_2">
+        <text>You were gambling. What did you expect? Hmm? To win big? You’re lucky he left you with a weapon with how you were playing. Face it, you suck at cards. What’s done is done.</text>
+	</string>
+	<string id="st_darkasleif_campfire_1_3">
+        <text>Hmph! He was cheating, I’m sure of it. We will see if he’s still smiling tonight, when he wins my knife in his throat.</text>
+	</string>
+	<string id="st_darkasleif_campfire_1_4">
+        <text>You’ll soon have no luck left to find if others hear you! Shut up already! Idiot. There’s always another artifact.</text>
+	</string>
+
+	<!--A New Anomaly-->
+	<string id="st_darkasleif_campfire_2_1">
+        <text>Come on, tell us already. What was the strangest anomaly you’ve seen in the Zone? I heard you’ve been here for some time, right? You must have a story to tell.</text>
+	</string>
+	<string id="st_darkasleif_campfire_2_2">
+        <text>Fine! Fine. I’ll tell you if you leave me to my drink, pest. *sigh* Once, I was following this team of Ecologists thinking I could earn some money. They found this strange patch of ... large floating flowers.</text>
+	</string>
+	<string id="st_darkasleif_campfire_2_3">
+        <text>Flowers? The strangest thing you’ve seen is flowers? Pfft.</text>
+	</string>
+	<string id="st_darkasleif_campfire_2_4">
+        <text>Shut it! Nothing is ever as it seems here. They had an eerie glow about them, roots gnarling through the air. One of the sorry souls tripped into the flowers and then the others fled in fear. It all happened so fast. After they were gone, I took a closer look. The suits the eggheads wear? They are almost airtight. All that remained of the scientist sloshed around in a yellow suit, like… a soup. Not a single bone to be felt when I prod at it with a branch.</text>
+	</string>
+	<string id="st_darkasleif_campfire_2_5">
+        <text>...</text>
+	</string>
+
+	<!--Stalkers Fighting 01-->
+	<string id="st_darkasleif_campfire_3_1">
+        <text>We should have buried them. It feels wrong having left them there like we did. It was ... the least we could have done.</text>
+	</string>
+	<string id="st_darkasleif_campfire_3_2">
+        <text>And what? Waste our last moments of precious daylight digging? We would’ve been ambushed by mutants or stalkers soon after night fell. There was little time for us to waste.</text>
+	</string>
+	<string id="st_darkasleif_campfire_3_3">
+        <text>You don’t know that! Vulture! You were quick to take their things and run when you had the chance.</text>
+	</string>
+	<string id="st_darkasleif_campfire_3_4">
+        <text>Don’t raise your tone with me, bastard! I am not going die grieving over stalkers who get lazy or careless. This is the Zone - it doesn’t care about these things. You’d best accept that.</text>
+	</string>
+	
+	<!--Death Trucks-->
+	<string id="st_darkasleif_campfire_4_1">
+        <text>I’m telling you, I’m not crazy. I watched with my own eyes as a bolt of lightning struck it during the storm. It came to life! I could only watch in disbelief, rain pouring while the truck vanished into the woods.</text>
+	</string>
+	<string id="st_darkasleif_campfire_4_2">
+        <text>Death trucks. They travel throughout the Zone, filled with the corpses of fallen stalkers and driven by ghosts. Nobody knows why they roam so.</text>
+	</string>
+	<string id="st_darkasleif_campfire_4_3">
+        <text>Legends claim that they are driven by death itself, ferrying the souls of the wicked and greedy into the gates of hell itself.</text>
+	</string>
+	<string id="st_darkasleif_campfire_4_4">
+        <text>Hah! Bullshit! I heard some drunkard spewing wild stories that the trucks will take you to the Wish Granter if you give them enough artifacts. No stalker has the balls to go chasing after one.</text>
+	</string>
+	<string id="st_darkasleif_campfire_4_5">
+        <text>Didn’t one of Sidorovich’s men find the Marked One near an overturned death truck?</text>
+	</string>
+
+	<!--An Unpaid Debt-->
+    <string id="st_darkasleif_campfire_5_1">
+        <text>Listen, most people come here to get rich. If they want a yacht on the seaside, this is the way to it. But I didn’t come here to get rich. I’m here to a pay a debt.</text>
+    </string>
+    <string id="st_darkasleif_campfire_5_2">
+        <text>Don’t give me that shit! What kind of debt requires delving into the Zone? You could have paid it off in the city and spent the rest of your days living. I think you chose to be here, just like everyone else.</text>
+    </string>
+    <string id="st_darkasleif_campfire_5_3">
+        <text>This was different. I fell in with some bad people, did some dark deeds. But I fucked up a job — a big one — and they weren’t going to let me off the hook. So ... they took her. My Olena. They told me the only way I would get her back is here, in the Zone, after I’ve made them rich.</text>
+    </string>
+    <string id="st_darkasleif_campfire_5_4">
+        <text>I ... I am sorry. Whatever you did before is none of my business. But I know that no one should have their love stolen from them. You’ve been a good friend to me. After all of this is over, I can meet you, and together we can kill these pricks.</text>
+    </string>
+
+	<!--Story 6-->
+    <string id="st_darkasleif_campfire_6_1">
+        <text>You guys ever get doubts?</text>
+    </string>
+    <string id="st_darkasleif_campfire_6_2">
+        <text>The hell you mean?</text>
+    </string>
+    <string id="st_darkasleif_campfire_6_3">
+        <text>I mean, like, why are our stupid asses in the Zone anyway? You ever think about it sometimes? I don't know, sometimes my PDA pings and it's like more shit after another. Some guy kills himself, another guy gets cancer, some other guy's dog dies or something, Jesus. This place is taking a toll on us.</text>
+    </string>
+    <string id="st_darkasleif_campfire_6_4">
+        <text>Well, I'm here for the Zone, same as you and everyone we find. I know the risks. Suck it up.</text>
+    </string>
+    <string id="st_darkasleif_campfire_6_5">
+        <text>Tch, alright.</text>
+    </string>
+
+	<!--Story 7-->
+    <string id="st_darkasleif_campfire_7_1">
+        <text>Greetings, stalker. Don't mind us, just relaxing by the fire.</text>
+    </string>
+    <string id="st_darkasleif_campfire_7_2">
+        <text>Not talkative, are you?</text>
+    </string>
+    <string id="st_darkasleif_campfire_7_3">
+        <text>Would you be? Come on, take a look at him, guy's seen some shit.</text>
+    </string>
+    <string id="st_darkasleif_campfire_7_4">
+        <text>Yeah ... Yeah, you got a point. Come relax with us, man, enjoy a drink or two for the fallen.</text>
+    </string>
+    <string id="st_darkasleif_campfire_7_5">
+        <text>Amen, brother.</text>
+    </string>
+
+	<!--Story 8-->
+    <string id="st_darkasleif_campfire_8_1">
+        <text>Alright, alright, settle down, rookies. You want a damn story? I'll give you one.</text>
+    </string>
+    <string id="st_darkasleif_campfire_8_2">
+        <text>One day, I was doing my shit, you know? Odd job for some stalker, wanted me to get a package from his dead buddy's body. I didn't ask questions, why would I? Get it and get out, I'd done it before.</text>
+    </string>
+    <string id="st_darkasleif_campfire_8_3">
+        <text>This time felt a bit off, though. Moment I stepped foot in the Garbage, I got this tight feeling in my chest. You know that feeling, the one you get before a blowout? That, but worse, and more sudden. I didn't think much of it, why would I? I've had that exact feeling before.</text>
+    </string>
+    <string id="st_darkasleif_campfire_8_4">
+        <text>I got to where he said his body was, a clearing in the grass. He had a Sunrise suit on, he was surrounded by dogs and chewed to pieces. I tried looting him, and I don't remember what happened, but I blacked out and woke up in Cordon covered in mud, piss, and blood, my backpack looted, my helmet broken and my PDA missing.</text>
+    </string>
+    <string id="st_darkasleif_campfire_8_5">
+        <text>According to my friends, I was just gone for a week. No trace, no blip on the PDA, erased from existence for 7 days until I woke up. God only knows what happened in that time, because I don't.</text>
+    </string>
+    <string id="st_darkasleif_campfire_8_6">
+        <text>This sounds like bullshit, man.</text>
+    </string>
+    <string id="st_darkasleif_campfire_8_7">
+        <text>It's the Zone, you've heard weirder.</text>
+    </string>
+
+	<!--Story 9-->
+    <string id="st_darkasleif_campfire_9_1">
+        <text>What's the weirdest job you got from a trader?</text>
+    </string>
+    <string id="st_darkasleif_campfire_9_2">
+        <text>Shit, Sakharov. That guy always has some crazy jobs. He bugged some mutant and asked me to kill it. Apparently he didn't want to tell me that that mutant was a Pseudogiant. To this day I got no clue how he even managed to get that tracker into it. You?</text>
+    </string>
+    <string id="st_darkasleif_campfire_9_3">
+        <text>Shit, do you one better. Ever get paid to kill someone's doppelganger? There was this stalker who came to Butcher in a damn panic talking about how there was some guy who looked, talked, and acted just like him following him through half the damn Zone!</text>
+    </string>
+    <string id="st_darkasleif_campfire_9_4">
+        <text>Why didn't he just shoot him?</text>
+    </string>
+    <string id="st_darkasleif_campfire_9_5">
+        <text>No clue, maybe it didn't feel right shooting himself in the face. Either way, Butcher told me to do it. Killed him, took off the guy's mask, lo and behold, his face was identical to that poor guy that went to Butcher. PDA had the same name registered to it as well. Zone's fucking weird, man.</text>
+    </string>
+    <string id="st_darkasleif_campfire_9_6">
+        <text>Shit, sounds like it.</text>
+    </string>
+
+	<!--Story 10-->
+    <string id="st_darkasleif_campfire_10_1">
+        <text>You know, this whole damn place has an underbelly of western trade.</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_2">
+        <text>No shit, that's where our artefacts go.</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_3">
+        <text>Yeah, but not in that way. Me and some boys were out in Cordon doing some stuff for a trader, you know how it is. Suddenly, the Ukrainian army starts shooting at us. We aren't even close to the damn blockade and they started firing the moment we were in sight. We took cover, some hotshot with his rusty Mosin nailed a few jarheads, and next thing you know we're on to looting this military blockade before anyone realizes what happened.</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_4">
+        <text>What'd you find?</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_5">
+        <text>You won't believe it, man. Packs and packs of western cigarettes, snacks, MREs, coffee, alcohol, magazines, books, tents, ammo, supplies. You name it, they had it. Entire crates full of this shit, all with English labels.</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_6">
+        <text>Shit, what'd you do with it?</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_7">
+        <text>Took the best shit, burned the rest.</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_8">
+        <text>Burned? Why?</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_9">
+        <text>There'd be nothing for the reinforcements to salvage after if we burned it. Worked pretty well, supposedly some military guys surrendered in Rookie Village about a week later because they had no supplies left and were desperate. Heard they got shot by the loners there.</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_10">
+        <text>You got any of that stuff left?</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_11">
+        <text>Ha! You got any of your roubles left?</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_12">
+        <text>Fuck you, man.</text>
+    </string>
+
+	<!--Headshots-->
+	<string id="st_darkasleif_headshot1">
+        <text>BOOM! Headshot!</text>
+	</string>
+	<string id="st_darkasleif_headshot2">
+        <text>Fuck yeah! Headshot!</text>
+	</string>
+	<string id="st_darkasleif_headshot3">
+        <text>Headshot! How is that guy still standing?</text>
+	</string>
+	<string id="st_darkasleif_headshot4">
+        <text>Headshot!</text>
+	</string>
+	<string id="st_darkasleif_headshot5">
+        <text>Love that plink sound when you get a headshot!</text>
+	</string>
+
+	<!--Area Clear-->
+	<string id="st_darkasleif_clear1">
+        <text>Whew. Looks like we made it through.</text>
+	</string>
+	<string id="st_darkasleif_clear2">
+        <text>Remind me to buy more ammo next time we see a trader.</text>
+	</string>
+	<string id="st_darkasleif_clear3">
+        <text>That was close.</text>
+	</string>
+	<string id="st_darkasleif_clear4">
+        <text>Things were looking rough for a second there.</text>
+	</string>
+	<string id="st_darkasleif_clear5">
+        <text>Clear! Keep your eyes open though, that might change at any time.</text>
+	</string>
+
+	<!--Random-->
+	<string id="st_darkasleif_random1">
+        <text>This place has a weird beauty about it, doesn't it?</text>
+	</string>
+	<string id="st_darkasleif_random2">
+        <text>Stay sharp. You got my back, I got yours.</text>
+	</string>
+	<string id="st_darkasleif_random3">
+        <text>My dogs are barking.</text>
+	</string>
+	<string id="st_darkasleif_random4">
+        <text>Skin a crow, find a joint.</text>
+	</string>
+	<string id="st_darkasleif_random5">
+        <text>My legs ache, shit.</text>
+	</string>
+	<string id="st_darkasleif_random6">
+        <text>Just two stalkers in the Zone, minding their own business.</text>
+	</string>
+	<string id="st_darkasleif_random7">
+        <text>Ears open. If a mutant is coming, I'll shout.</text>
+	</string>
+	<string id="st_darkasleif_random8">
+        <text>Why is your gun cooler than mine? No fair.</text>
+	</string>
+	<string id="st_darkasleif_random9">
+        <text>You smell that? Shit, is that you?</text>
+	</string>
+	<string id="st_darkasleif_random10">
+        <text>Good friends are hard to come by, stalker. Glad I'm one of the lucky ones.</text>
+	</string>
+	<string id="st_darkasleif_random11">
+        <text>Hey, hey, that's mud! Wait, this is all mud. Dammit.</text>
+	</string>
+	<string id="st_darkasleif_random12">
+        <text>You got any family? ... Alright, touchy subject.</text>
+	</string>
+	<string id="st_darkasleif_random13">
+        <text>Hey, if I die, don't let my shit go to waste, yeah?</text>
+	</string>
+	<string id="st_darkasleif_random14">
+        <text>Only thing worse than a mutant is a mutant at night.</text>
+	</string>
+	<string id="st_darkasleif_random15">
+        <text>Wonder why you never see any kids here? What? Just an observation.</text>
+	</string>
+	<string id="st_darkasleif_random16">
+        <text>Fucking cold, man.</text>
+	</string>
+	<string id="st_darkasleif_random17">
+        <text>There's Ukraine, and then there's the Zone, man. Normal rules don't apply here.</text>
+	</string>
+	<string id="st_darkasleif_random18">
+        <text>You see anyone you think is hostile, shoot first and ask questions later.</text>
+	</string>
+	<string id="st_darkasleif_random19">
+        <text>Junk, junk, more junk, grass... Wow, this place is barren.</text>
+	</string>
+	<string id="st_darkasleif_random20">
+        <text>I need a smoke.</text>
+	</string>
+	<string id="st_darkasleif_random21">
+        <text>The Zone is alive, always be on your toes.</text>
+	</string>
+	<string id="st_darkasleif_random22">
+        <text>Please, God, don't step in front of my line of fire, okay?</text>
+	</string>
+	<string id="st_darkasleif_random23">
+        <text>Mutants scare me, man. If I can't shoot straight at them, that's why.</text>
+	</string>
+	<string id="st_darkasleif_random24">
+        <text>Ah, the radioactive air, how lovely.</text>
+	</string>
+	<string id="st_darkasleif_random25">
+        <text>Whatever you do, don't touch the water.</text>
+	</string>
+
+	<!--Friendly/Neutral Base-->
+	<string id="st_darkasleif_safe_area1">
+        <text>We're back!</text>
+	</string>
+	<string id="st_darkasleif_safe_area2">
+        <text>Thank God, I'm so damn hungry.</text>
+	</string>
+	<string id="st_darkasleif_safe_area3">
+        <text>Man, finally, I could use a fucking nap.</text>
+	</string>
+	<string id="st_darkasleif_safe_area4">
+        <text>Good place for a smoke break, stalker?</text>
+	</string>
+	<string id="st_darkasleif_safe_area5">
+        <text>Sell your stuff, man.</text>
+	</string>
+	<string id="st_darkasleif_safe_area6">
+        <text>Let's take a break here. Talk to some guys.</text>
+	</string>
+	<string id="st_darkasleif_safe_area7">
+        <text>Another outing survived!</text>
+	</string>
+	<string id="st_darkasleif_safe_area8">
+        <text>Thank Christ, I needed to change my socks.</text>
+	</string>
+	<string id="st_darkasleif_safe_area9">
+        <text>If only this place had a shower ...</text>
+	</string>
+	<string id="st_darkasleif_safe_area10">
+        <text>Mmm, can smell the campfire from here.</text>
+	</string>
+	<string id="st_darkasleif_safe_area11">
+        <text>Let's go and socialize a bit, eh?</text>
+	</string>
+	<string id="st_darkasleif_safe_area12">
+        <text>I've never been so happy to see guys with guns.</text>
+	</string>
+	<string id="st_darkasleif_safe_area13">
+        <text>We made it, man, we made it!</text>
+	</string>
+	<string id="st_darkasleif_safe_area14">
+        <text>Up high! Well, don't leave me hanging!</text>
+	</string>
+	<string id="st_darkasleif_safe_area15">
+        <text>Get some more supplies. Meds, food, ammo, whatever. Stash the stuff you don't need.</text>
+	</string>
+	<string id="st_darkasleif_safe_area16">
+        <text>See if anyone here is posting jobs.</text>
+	</string>
+	<string id="st_darkasleif_safe_area17">
+        <text>Holster your weapon now, man, making people nervous.</text>
+	</string>
+	<string id="st_darkasleif_safe_area18">
+        <text>Someone up there likes us, eh?</text>
+	</string>
+	<string id="st_darkasleif_safe_area19">
+        <text>Man, am I happy to be back.</text>
+	</string>
+	<string id="st_darkasleif_safe_area20">
+        <text>Can't you drink that air like booze?</text>
+	</string>
+	<string id="st_darkasleif_safe_area21">
+        <text>Fucking ... rock in my boot — Hey! Finally!</text>
+	</string>
+	<string id="st_darkasleif_safe_area22">
+        <text>Home sweet home, eh, stalker?</text>
+	</string>
+	<string id="st_darkasleif_safe_area23">
+        <text>Hey, careful, don't start trouble.</text>
+	</string>
+	<string id="st_darkasleif_safe_area24">
+        <text>Time for some rest and relaxation!</text>
+	</string>
+	<string id="st_darkasleif_safe_area25">
+        <text>Good a place to rest as any.</text>
+	</string>
+</string_table>

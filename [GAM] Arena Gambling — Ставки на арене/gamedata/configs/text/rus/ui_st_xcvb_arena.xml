@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="st_arena_use">
+		<text>Открыть ($$ACTION_USE$$)</text>
+	</string>
+
+	<string id="st_arena_team1">
+		<text>Команда 1</text>
+	</string>
+
+	<string id="st_arena_team2">
+		<text>Команда 2</text>
+	</string>
+
+	<string id="st_arena_bet">
+		<text>Ставка</text>
+	</string>
+
+	<string id="st_arena_gain">
+		<text>Выигрыш</text>
+	</string>
+
+	<string id="st_arena_start">
+		<text>На арену</text>
+	</string>
+
+	<string id="st_arena_kicked_out">
+		<text>Вас выгнали за нападение на участников и ваша ставка потеряна.</text>
+	</string>
+
+	<string id="st_arena_team_1_won">
+		<text>Команда 1 выиграла!</text>
+	</string>
+
+	<string id="st_arena_team_2_won">
+		<text>Команда 2 выиграла!</text>
+	</string>
+
+	<string id="st_arena_your_reward">
+		<text>Вы выиграли %s руб.</text>
+	</string>
+
+
+	<!-- MCM -->
+	<string id="ui_mcm_xcvb_arena_title">
+		<text>Арена DLC</text>
+	</string>
+	<string id="ui_mcm_menu_xcvb_arena">
+		<text>Арена DLC</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_arena_fight_chance">
+		<text>Шанс боя (на каждый времен. промежуток)</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_arena_stalker_team1_chance">
+		<text>Команда 1 сталкеры шанс</text>
+	</string>
+	<string id="ui_mcm_xcvb_arena_stalker_team1_chance_desc">
+		<text>Шанс на появление сталкеров в команде 1. Если бросок провалиться - появятся мутанты.</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_arena_stalker_team2_chance">
+		<text>Команда 2 сталкеры шанс</text>
+	</string>
+	<string id="ui_mcm_xcvb_arena_stalker_team2_chance_desc">
+		<text>Шанс на появление сталкеров в команде 2. Если бросок провалиться - появятся мутанты.</text>
+	</string>
+
+</string_table>

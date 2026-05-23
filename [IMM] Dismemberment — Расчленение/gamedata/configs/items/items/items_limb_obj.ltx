@@ -1,0 +1,60 @@
+[limb_obj_base]
+GroupControlSection	=	spawn_group
+$spawn					=	"physics\object"
+$prefetch				=	8
+class						=	O_PHYS_S
+remove_time				=	30
+script_binding			=	bind_physic_object.init
+
+; chunks
+[limb_obj_1]:limb_obj_base	;medium chunk
+visual = limbsmodels\meat01.ogf
+
+[limb_obj_2]:limb_obj_base	;smallest chunk
+visual = limbsmodels\meat02.ogf
+
+[limb_obj_3]:limb_obj_base	;limblike medium chunk
+visual = limbsmodels\meat03.ogf
+
+[limb_obj_4]:limb_obj_base	;limblike small chunk
+visual = limbsmodels\meat04.ogf
+
+[limb_obj_5]:limb_obj_base	;limblike big chunk
+visual = limbsmodels\meat05.ogf
+
+
+;limb parts
+[limb_obj_6]:limb_obj_base	;short lower leg
+visual = limbsmodels\lowerleg_new.ogf
+
+[limb_obj_7]:limb_obj_base	;long lower leg
+visual = limbsmodels\lowerleg1_new.ogf
+
+[limb_obj_8]:limb_obj_base	;short lower arm
+visual = limbsmodels\upperarm_new.ogf
+
+[limb_obj_9]:limb_obj_base	;long arm
+visual = limbsmodels\upperarm1_new.ogf
+
+[limb_obj_10]:limb_obj_base	;long upper leg
+visual = limbsmodels\upperleg_new.ogf
+
+
+; limbs
+[limb_obj_11]:limb_obj_base	;foot
+visual = limbsmodels\foot.ogf
+
+[limb_obj_12]:limb_obj_base	;hand
+visual = limbsmodels\hand.ogf
+
+[limb_obj_13]:limb_obj_base	;head
+visual = limbsmodels\head.ogf
+
+[limb_obj_14]:limb_obj_base	;lower leg
+visual = limbsmodels\lowerleg.ogf
+
+[limb_obj_15]:limb_obj_base	;upper arm
+visual = limbsmodels\upperarm.ogf
+
+[limb_obj_16]:limb_obj_base	;upper leg
+visual = limbsmodels\upperleg.ogf

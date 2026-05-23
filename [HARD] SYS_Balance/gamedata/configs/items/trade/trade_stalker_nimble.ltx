@@ -1,0 +1,33 @@
+#include "presets\trade_discounts.ltx"
+#include "presets\trade_presets.ltx"
+
+[trader]
+buy_condition = trade_generic_buy 
+sell_condition = trade_generic_sell
+buy_supplies = supplies_1
+buy_item_condition_factor = 0.50
+buy_item_exponent = 2.25
+sell_item_exponent = 0.75
+
+discounts = discount_trasher
+
+[trade_generic_buy]:none
+
+[trade_generic_sell]:none
+
+cs_light_outfit					= 1,1
+cs_medium_outfit				= 1,1
+cs_heavy_outfit					= 1,1
+cs_light_novice_outfit			= 1,1
+novice_outfit_tourist			= 1,1
+
+
+[supplies_1]:common_stock
+
+cs_light_outfit					= 1,1
+cs_medium_outfit				= 1,1
+cs_heavy_outfit					= 1,1
+cs_light_novice_outfit			= 1,1
+novice_outfit_tourist			= 1,1
+ghillie_outfit					= 1,1
+;ammo_12x76_bull  				= 2,1

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- Translated with DeepL -->
+<string_table>
+    <string id="ui_mcm_menu_proportional_medic_healing_price">
+        <text>Пропорциональная Цена Исцеления Медиков</text>
+    </string>
+	<string id="ui_mcm_proportional_medic_healing_price_injury_heal_price_multiplier">
+        <text>Мультипликатор цены исцеления от травмы</text>
+    </string>
+	<string id="ui_mcm_proportional_medic_healing_price_radiation_heal_price_multiplier">
+        <text>Мультипликатор цены на лечение радиации</text>
+    </string>
+	<string id="ui_mcm_menu_proportional_medic_healing_price_bhs">
+        <text>Поддержка Система Здоровья Организма</text>
+    </string>
+	<string id="ui_mcm_proportional_medic_healing_price_bhs_heal_head_price_multiplier">
+        <text>Мультипликатор цены лечения головы</text>
+    </string>
+	<string id="ui_mcm_proportional_medic_healing_price_bhs_heal_torso_price_multiplier">
+        <text>Множитель стоимости лечения торса</text>
+    </string>
+	<string id="ui_mcm_proportional_medic_healing_price_bhs_heal_arm_price_multiplier">
+        <text>Мультипликатор цены лечения рукa</text>
+    </string>
+	<string id="ui_mcm_proportional_medic_healing_price_bhs_heal_leg_price_multiplier">
+        <text>Мультипликатор цен на лечение ног</text>
+    </string>
+	<string id="ui_mcm_proportional_medic_healing_price_timedhp_bhs_heal_price_reduction_multiplier">
+        <text>Снижение стоимости лечения за временные очки здоровья</text>
+    </string>
+	<string id="ui_mcm_proportional_medic_healing_price_timedhp_bhs_heal_price_reduction_multiplier_desc">
+        <text>Если часть тела имеет временные очки здоровья, то они будут считаться как постоянные, умноженные на это число. Таким образом, больше множитель - дешевле цена исцеления.</text>
+    </string>
+	
+	<string id="st_pmhp_heal_actor_injured">
+        <text>Исцели мои раны. %c[d_orange][$injured_price руб]</text>
+    </string>
+	<string id="st_pmhp_heal_actor_irradiated">
+        <text>Уберите из меня радиацию. %c[d_orange][$irradiated_price руб]</text>
+    </string>
+	<string id="st_pmhp_heal_actor_injured_irradiated">
+        <text>К черту, я должен быть в идеальном состоянии. %c[d_orange][$injured_irradiated_price руб]</text>
+    </string>
+	<string id="st_pmhp_heal_actor_decline">
+        <text>Знаете что, док? Исправь себя!</text>
+    </string>
+	
+	<string id="st_pmhp_no_money_actor_1">
+        <text>У меня не хватает денег...</text>
+    </string>
+	<string id="st_pmhp_no_money_actor_2">
+        <text>Проблема в том, что у меня нет денег.</text>
+    </string>
+	<string id="st_pmhp_no_money_actor_3">
+        <text>А что, если у меня нет денег?</text>
+    </string>
+	<string id="st_pmhp_no_money_actor_4">
+        <text>У меня не хватает денег. Могу я расплатиться с вами позже?</text>
+    </string>
+	<string id="st_pmhp_no_money_actor_5">
+        <text>Мы можем что-нибудь придумать, раз у меня нет денег?</text>
+    </string>
+	
+	<string id="st_pmhp_no_money_npc_1">
+        <text>Похоже, тогда вы будете у меня в долгу. Я могу вылечить вас сейчас бесплатно, но вам придется заплатить мне первоначальную цену плюс 50%, если вы захотите воспользоваться моими услугами снова. Это составляет $debt_price руб. Договорились?</text>
+    </string>
+	<string id="st_pmhp_no_money_npc_2">
+        <text>Я могу вылечить вас сейчас бесплатно, но вам придется заплатить мне первоначальную цену плюс половину от нее, если вы захотите воспользоваться моими услугами снова. Это составляет $debt_price руб. Договорились?</text>
+    </string>
+	<string id="st_pmhp_no_money_npc_3">
+        <text>Я могу исцелить вас прямо сейчас, но я буду ожидать, что вы принесете мне $debt_price руб при следующей нашей встрече. Пока вы не вернете мне долг, вы не сможете пользоваться моими услугами. Примите это или оставьте.</text>
+    </string>
+	<string id="st_pmhp_no_money_npc_4">
+        <text>Если вас устраивает быть в долгу, я могу вылечить вас прямо сейчас, а позже вы сможете заплатить мне $debt_price руб. До тех пор, даже если ты будешь истекать кровью у меня на глазах, мне будет наплевать на твои проблемы. Как вам такой вариант?</text>
+    </string>
+	<string id="st_pmhp_no_money_npc_5">
+        <text>Хорошо, долг - это вариант. $debt_price руб в следующий раз, когда мы увидимся. В противном случае, не ждите, что мне будет наплевать на все ваши проблемы. Тебя это устраивает?</text>
+    </string>
+	
+	<string id="st_pmhp_no_money_actor_response_accept_1">
+        <text>Сделка.</text>
+    </string>
+	<string id="st_pmhp_no_money_actor_response_accept_2">
+        <text>Хорошо, продолжайте.</text>
+    </string>
+	<string id="st_pmhp_no_money_actor_response_accept_3">
+        <text>Неважно, просто приведи меня в порядок, чувак.</text>
+    </string>
+	<string id="st_pmhp_no_money_actor_response_accept_4">
+        <text>Ну и хрен с ним, я не против.</text>
+    </string>
+	<string id="st_pmhp_no_money_actor_response_accept_5">
+        <text>Хорошо. Я заплачу тебе когда-нибудь, обещаю.</text>
+    </string>
+	
+	<string id="st_pmhp_no_money_actor_response_decline_1">
+        <text>Нет.</text>
+    </string>
+	<string id="st_pmhp_no_money_actor_response_decline_2">
+        <text>Да, не будет.</text>
+    </string>
+	<string id="st_pmhp_no_money_actor_response_decline_3">
+        <text>Нет, к черту.</text>
+    </string>
+	<string id="st_pmhp_no_money_actor_response_decline_4">
+        <text>Исправься, док!</text>
+    </string>
+	<string id="st_pmhp_no_money_actor_response_decline_5">
+        <text>Иди в жопу!</text>
+    </string>
+	
+	<string id="st_pmhp_npc_debt_decline_response_1">
+        <text>Ладно, это твой выбор.</text>
+    </string>
+	<string id="st_pmhp_npc_debt_decline_response_2">
+        <text>Ваш выбор.</text>
+    </string>
+	<string id="st_pmhp_npc_debt_decline_response_3">
+        <text>Это твой выбор, только не возвращайся в слезах, хорошо?</text>
+    </string>
+	<string id="st_pmhp_npc_debt_decline_response_4">
+        <text>Как пожелаете.</text>
+    </string>
+	<string id="st_pmhp_npc_debt_decline_response_5">
+        <text>Я просто пытаюсь помочь.</text>
+    </string>
+	
+	<string id="st_pmhp_debt_reminder_1">
+        <text>Да, и мне нужно, чтобы вы сначала выплатили свой долг. Если вы не помните, это $debt_price руб.</text>
+    </string>
+	<string id="st_pmhp_debt_reminder_2">
+        <text>Конечно, у тебя есть $debt_price руб, которую ты мне должен?</text>
+    </string>
+	<string id="st_pmhp_debt_reminder_3">
+        <text>Сначала мне нужна сумма $debt_price руб, которую вы мне должны.</text>
+    </string>
+	<string id="st_pmhp_debt_reminder_4">
+        <text>Сначала оплатите свой долг в размере $debt_price руб.</text>
+    </string>
+	<string id="st_pmhp_debt_reminder_5">
+        <text>У меня нет амнезии, я помню, что у вас есть долг в размере $debt_price руб. Теперь вы тоже помните. Платите.</text>
+    </string>
+	
+	<string id="st_pmhp_debt_pay_response_accept_1">
+        <text>Отлично, держи.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_response_accept_2">
+        <text>Я не забыл, вот, держи.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_response_accept_3">
+        <text>Ах, да, чуть не забыл. Вот оно.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_response_accept_4">
+        <text>Меня это устраивает. Вот, пожалуйста.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_response_accept_5">
+        <text>Я знаю, вот.</text>
+    </string>
+	
+	<string id="st_pmhp_debt_pay_response_decline_1">
+        <text>Пока не могу заплатить...</text>
+    </string>
+	<string id="st_pmhp_debt_pay_response_decline_2">
+        <text>Возможно, в следующий раз.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_response_decline_3">
+        <text>Извините, но я пока не готов платить.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_response_decline_4">
+        <text>Черт, у меня нет денег...</text>
+    </string>
+	<string id="st_pmhp_debt_pay_response_decline_5">
+        <text>Черт, я забыл, у меня его до сих пор нет.</text>
+    </string>
+	
+	<string id="st_pmhp_debt_pay_accept_npc_response_1">
+        <text>Спасибо.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_accept_npc_response_2">
+        <text>Хорошо, ваш долг погашен.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_accept_npc_response_3">
+        <text>Хорошо, вам что-нибудь нужно?</text>
+    </string>
+	<string id="st_pmhp_debt_pay_accept_npc_response_4">
+        <text>Мило, человек, который держит свое слово.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_accept_npc_response_5">
+        <text>Считайте, что ваш долг погашен.</text>
+    </string>
+	
+	<string id="st_pmhp_debt_pay_decline_npc_response_1">
+        <text>Тогда мы закончили.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_decline_npc_response_2">
+        <text>Тогда не беспокой меня.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_decline_npc_response_3">
+        <text>Тогда уходи.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_decline_npc_response_4">
+        <text>Я не буду тебе ничем помогать, пока ты не вернешь мне деньги, ясно?</text>
+    </string>
+	<string id="st_pmhp_debt_pay_decline_npc_response_5">
+        <text>Поговорим, когда ты вернешь мне деньги.</text>
+    </string>
+	
+	<string id="st_pmhp_debt_pay_dialog_start_1">
+        <text>Я готов отдать свой долг.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_dialog_start_2">
+        <text>Я здесь, чтобы отдать свой долг.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_dialog_start_3">
+        <text>Могу ли я оплатить свой долг?</text>
+    </string>
+	<string id="st_pmhp_debt_pay_dialog_start_4">
+        <text>Я пришел за деньгами, которые должен вам.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_dialog_start_5">
+        <text>Я здесь, чтобы списать свой долг перед вами.</text>
+    </string>
+	
+	<string id="st_pmhp_debt_pay_dialog_npc_1">
+        <text>Итак, напоминаю, что это $debt_price руб.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_dialog_npc_2">
+        <text>На всякий случай, если вы забыли, это $debt_price руб.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_dialog_npc_3">
+        <text>Хорошо, это $debt_price руб.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_dialog_npc_4">
+        <text>Верно, вы должны мне $debt_price руб.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_dialog_npc_5">
+        <text>Приятно слышать, это $debt_price руб.</text>
+    </string>
+	
+	<string id="st_pmhp_debt_pay_actor_accept_1">
+        <text>Вот деньги, которые я тебе должен. %c[d_orange][$debt_price руб]</text>
+    </string>
+	<string id="st_pmhp_debt_pay_actor_accept_2">
+        <text>Вот он. %c[d_orange][$debt_price руб]</text>
+    </string>
+	<string id="st_pmhp_debt_pay_actor_accept_3">
+        <text>Вот деньги. %c[d_orange][$debt_price руб]</text>
+    </string>
+	<string id="st_pmhp_debt_pay_actor_accept_4">
+        <text>Да, бери. %c[d_orange][$debt_price руб]</text>
+    </string>
+	<string id="st_pmhp_debt_pay_actor_accept_5">
+        <text>Правильно, вот оно. %c[d_orange][$debt_price руб]</text>
+    </string>
+	
+	<string id="st_pmhp_debt_pay_actor_decline_1">
+        <text>Бля, вообще-то, у меня до сих пор нет денег...</text>
+    </string>
+	<string id="st_pmhp_debt_pay_actor_decline_2">
+        <text>Неважно, у меня его все равно нет...</text>
+    </string>
+	<string id="st_pmhp_debt_pay_actor_decline_3">
+        <text>Я пока не готов платить вам.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_actor_decline_4">
+        <text>У меня все еще нет денег.</text>
+    </string>
+	<string id="st_pmhp_debt_pay_actor_decline_5">
+        <text>Черт, вообще-то, у меня все еще нет денег. Может, в следующий раз...</text>
+    </string>
+	
+	<string id="st_pmhp_injury_none">
+        <text>У вас нет никаких травм.</text>
+    </string>
+	<string id="st_pmhp_injury_light">
+        <text>Хм, кажется, у вас есть небольшие царапины то тут, то там. Ничего серьезного.</text>
+    </string>
+	<string id="st_pmhp_injury_medium">
+        <text>Обычные травмы, ничего такого, что могло бы помешать вам.</text>
+    </string>
+	<string id="st_pmhp_injury_heavy">
+        <text>Черт, ты видел всякое дерьмо.</text>
+    </string>
+	<string id="st_pmhp_injury_critical">
+        <text>Господи, куда, блядь, ты ткнулся носом? Ты едва стоишь на ногах. Чудо, что мутант сейчас не грызет твой труп.</text>
+    </string>
+	
+	<string id="st_pmhp_injury_price_1">
+        <text>Я могу починить вас за $injured_price руб.</text>
+    </string>
+	<string id="st_pmhp_injury_price_2">
+        <text>Это будет стоить вам $injured_price руб.</text>
+    </string>
+	<string id="st_pmhp_injury_price_3">
+        <text>Это составит $injured_price руб.</text>
+    </string>
+	<string id="st_pmhp_injury_price_4">
+        <text>$injured_price руб.</text>
+    </string>
+	<string id="st_pmhp_injury_price_5">
+        <text>Это будет $injured_price руб.</text>
+    </string>
+	
+	<string id="st_pmhp_radiation_none">
+        <text>В тебе нет радиации.</text>
+    </string>
+	<string id="st_pmhp_radiation_light">
+        <text>Просто немного радиации в тебе.</text>
+    </string>
+	<string id="st_pmhp_radiation_medium">
+        <text>Немного радиации.</text>
+    </string>
+	<string id="st_pmhp_radiation_heavy">
+        <text>В вас довольно много радиации.</text>
+    </string>
+	<string id="st_pmhp_radiation_critical">
+        <text>Мужик, какого хрена, ты спал на вершине электростанции? Ты полон радиации от ушей до пальцев ног.</text>
+    </string>
+	
+	<string id="st_pmhp_radiation_price_1">
+        <text>Я могу починить вас за $irradiated_price руб.</text>
+    </string>
+	<string id="st_pmhp_radiation_price_2">
+        <text>Это будет стоить вам $irradiated_price руб.</text>
+    </string>
+	<string id="st_pmhp_radiation_price_3">
+        <text>Это будет $irradiated_price руб.</text>
+    </string>
+	<string id="st_pmhp_radiation_price_4">
+        <text>$irradiated_price руб.</text>
+    </string>
+	<string id="st_pmhp_radiation_price_5">
+        <text>Это будет $irradiated_price руб.</text>
+    </string>
+	
+</string_table>

@@ -1,0 +1,26 @@
+local function patched_target_squad_name(actor, obj, p)
+	if p[1] == nil then
+		abort("Wrong parameters")
+	end
+
+	if not obj then
+		return false
+	end
+
+	if IsStalker(obj) or IsMonster(obj) then
+		local squad = obj.group_id and obj.group_id ~= 65535 and alife_object(obj.group_id)
+		if not squad then
+			return false
+		end
+
+		if string.find(squad:section_name(), p[1]) ~= nil then
+			return true
+		end
+	end
+
+	return obj:section_name() == p[1]
+end
+
+function on_game_start()
+	target_squad_name = patched_target_squad_name
+end

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<string_table>
+    
+<string id="ui_mcm_outfitdrop_helmet_light_chance">
+	<text>Šance na lehkou helmu</text>
+</string>
+<string id="ui_mcm_outfitdrop_helmet_light_chance_desc">
+	<text>Procentuální šance získat kukly a látkové masky z mrtvých stalkerů.</text>
+</string>
+<string id="ui_mcm_outfitdrop_helmet_chance">
+	<text>Šance na helmu</text>
+</string>
+<string id="ui_mcm_outfitdrop_helmet_chance_desc">
+	<text>Procentuální šance získat plynové masky a bojové helmy z mrtvých stalkerů.</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_light_chance">
+	<text>Šance na lehký oblek</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_light_chance_desc">
+	<text>Procentuální šance získat lehký oblek z mrtvých stalkerů.</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_medium_chance">
+	<text>Šance na střední oblek</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_medium_chance_desc">
+	<text>Procentuální šance získat střední obleky z mrtvých stalkerů.</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_heavy_chance">
+	<text>Šance na těžký oblek</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_heavy_chance_desc">
+	<text>Procentuální šance získat těžké obleky z mrtvých stalkerů.</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_exo_chance">
+	<text>Šance na exoskelet</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_exo_chance_desc">
+	<text>Procentuální šance najít exoskelety u mrtvých stalkerů.</text>
+</string>
+<string id="ui_mcm_outfitdrop_parts_chance">
+	<text>Šance na části</text>
+</string>
+<string id="ui_mcm_outfitdrop_parts_chance_desc">
+	<text>Procentuální šance najít části, pokud obleky nevypadnou.</text>
+</string>
+<string id="ui_mcm_outfitdrop_debug">
+	<text>Debug logy</text>
+</string>
+<string id="ui_mcm_outfitdrop_parts_debug_desc">
+	<text>To už přece víš, co děláš.</text>
+</string>
+<string id="ui_mcm_menu_outfitdrop">
+	<text>Drop obleků</text>
+</string>
+
+</string_table>

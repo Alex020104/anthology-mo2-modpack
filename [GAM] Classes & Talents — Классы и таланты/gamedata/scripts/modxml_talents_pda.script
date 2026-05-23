@@ -1,0 +1,36 @@
+local section_id = "eptTalents"
+local text_id = "pda_btn_talents"
+
+local function has_any(t)
+	return t and #t > 0
+end
+
+local function patch_pda_tab(xml_obj)
+	local tabs = xml_obj:query("tab")
+	if not has_any(tabs) then return end
+	if has_any(xml_obj:query("tab button[id=eptTalents]")) then return end
+
+	local tab = tabs[1]
+	local new_button = string.format([[
+<button x="0" y="0" width="89" height="27" id="%s" frame_mode="0">
+	<text align="c" vert_align="c" x="0" y="0" width="89" height="27" font="letterica16">%s</text>
+	<texture>ui_inGame2_pda_button</texture>
+	<text_color>
+		<t r="255" g="255" b="255"/>
+		<d r="255" g="255" b="255"/>
+		<e r="200" g="200" b="200"/>
+		<h r="170" g="170" b="170"/>
+	</text_color>
+</button>
+]], section_id, text_id)
+
+	xml_obj:insertFromXMLString(new_button, tab, #tab.kids)
+end
+
+function on_xml_read()
+	RegisterScriptCallback("on_xml_read", function(xml_file_name, xml_obj)
+		if xml_file_name == [[ui\pda_16.xml]] or xml_file_name == [[ui\pda.xml]] or xml_file_name == [[pda_16.xml]] or xml_file_name == [[pda.xml]] then
+			patch_pda_tab(xml_obj)
+		end
+	end)
+end

@@ -1,0 +1,208 @@
+-- xcvb's attempt to make a fatigue system xd
+
+local fatigue_campfire_regen_mcm = fatigue_mcm.get_config("campfire_regen")
+local fatigue_campfire_regen_mult = 0.00005			-- 0.1% per minute
+
+local increase_mcm = fatigue_mcm.get_config("increase_mult")
+local increase_mult = 0.00001
+
+local walk_mcm = fatigue_mcm.get_config("walk_mult")
+local walk_mult = 1			-- 1 means 1000 footsteps = -1%
+
+local run_mcm = fatigue_mcm.get_config("run_mult")
+local run_mult = 6			-- 6 means 166 footsteps = -1%
+
+local sprint_mcm = fatigue_mcm.get_config("sprint_mult")
+local sprint_mult = 30		-- 30 means 33 footsteps = -1%
+
+local jump_mcm = fatigue_mcm.get_config("jump_mult")
+local jump_mult = 500		-- 500 means 2 jumps = -1%
+
+local sleep_regen_mcm = fatigue_mcm.get_config("sleep_regen_per_hour")		-- % per hour
+
+local max_fatigue_mcm = fatigue_mcm.get_config("max_fatigue")			-- fatigue can't go above this value (75% default)
+
+local fatigue_debug = fatigue_mcm.get_config("debug_mode")
+
+
+local fatigue_boosters = {}
+fatigue_var = 0
+
+
+function actor_on_footstep()
+	local inc_total_mult = increase_mcm * increase_mult * get_weight_diff()
+	fatigue_var = fatigue_var + inc_total_mult * get_move_state_mult()
+	clamp_fatigue()
+end
+
+function actor_on_jump()
+	local inc_total_mult = increase_mcm * increase_mult * get_weight_diff()
+	fatigue_var = fatigue_var + inc_total_mult * jump_mcm * jump_mult
+	clamp_fatigue()
+end
+
+
+-- Sleep Replenish
+function actor_on_sleep(hours)
+	fatigue_var = fatigue_var - sleep_regen_mcm * 0.01 * hours
+	clamp_fatigue()
+end
+
+-- Campfire Replenish (arti)
+function campfire_fatigue()
+	if get_nearby_lit_campfire(5) then
+		fatigue_var = fatigue_var - fatigue_campfire_regen_mcm * fatigue_campfire_regen_mult
+		clamp_fatigue()
+	end
+end
+
+-- Consumables Replenish
+function actor_on_item_use(obj)
+	local boost = obj and get_fatigue_boost(obj) or 0
+	if boost then
+		fatigue_var = fatigue_var - boost * 0.01
+		clamp_fatigue()
+	end
+	pr("Booster changed fatigue for: %s", (boost))
+end
+
+
+----------------------------------------------------------------------------------------
+-------------------------------------- Updates ----------------------------------------
+function fatigue_speed()
+	local run_k = -0.3 * fatigue_var + 1.35		-- bonuses till 13% fatigue,		 40% fatigue = -30% speed
+	speed.add_speed("fatigue_speed_run", run_k, false, true)
+end
+
+local tmr = 0
+function actor_on_update()
+	local tg = time_global()
+	if tmr > tg then return end
+	tmr = tg + 500
+
+	campfire_fatigue()
+	fatigue_speed()
+
+	fatigue_display_dbg()
+end
+
+----------------------------------------------------------------------------------------
+---------------------------------------- Utils ------------------------------------------
+function get_weight_diff()		-- Slots / weight
+	local weight_diff_factor
+	local actor = db.actor
+	local tot_weight = actor:get_total_weight()
+	local max_weight = actor:get_actor_max_walk_weight()
+
+	local outfit = actor:item_in_slot(7)
+	local backpack = actor:item_in_slot(13)
+	max_weight = max_weight + (outfit and outfit:get_additional_max_weight() or 0)
+	max_weight = max_weight + (backpack and backpack:get_additional_max_weight() or 0)
+
+	actor:iterate_belt( function(owner, obj)
+		local c_arty = obj:cast_Artefact()
+		max_weight = max_weight + (c_arty and c_arty:AdditionalInventoryWeight() or 0)
+	end)
+
+	weight_diff_factor = (1 - (max_weight - tot_weight) / max_weight) * 2
+	weight_diff_factor = clamp(weight_diff_factor, 0.4, 3)
+
+	return weight_diff_factor
+end
+
+function get_move_state_mult()			-- Move states
+	local move_state = level.actor_moving_state()
+	local walk = IsMoveState('mcAccel')
+	local sprint = IsMoveState('mcSprint')
+
+	if (sprint) then
+		return sprint_mcm * sprint_mult
+	end
+
+	if (move_state <= 26) and (move_state >= 1) then
+		return run_mcm * run_mult
+	end
+
+	if (walk) then
+		return walk_mcm * walk_mult
+	end
+
+	return 0
+end
+
+function get_nearby_lit_campfire(dist)
+	local pos = db.actor:position()
+	for id,binder in pairs(bind_campfire.campfires_all) do
+		if binder and binder.campfire and binder.campfire:is_on() and pos:distance_to(binder.object:position()) <= dist then
+			return true
+		end
+	end
+end
+
+function get_fatigue_boost(obj)
+	local ini_fatigue_boosters = ini_file("items\\settings\\fatigue_boosters.ltx")
+	local n = 0
+	n = ini_fatigue_boosters:line_count("fatigue_boost")
+
+	for i=0,n-1 do
+		result, id, value	= ini_fatigue_boosters:r_line_ex("fatigue_boost",i,"","")
+		fatigue_boosters[id] = value
+	end
+
+    if obj then
+        return fatigue_boosters[obj:section()] and tonumber(fatigue_boosters[obj:section()]) or 0
+    end
+
+    return 0
+end
+
+function fatigue_display_dbg()
+	if not fatigue_debug then return end
+	local ms = db.actor:get_movement_speed()
+	local move_speed = (ms.x^2) + (ms.y^2) + (ms.z^2)
+	local rounded_move_speed = round_idp(move_speed, 4)
+	news_manager.send_tip(db.actor, rounded_move_speed, 0, nil, 1500)
+	arszi_psy.show_message(string.format("Fatigue: %s", fatigue_var))
+end
+
+function clamp_fatigue()
+	fatigue_var = clamp(fatigue_var, 0, max_fatigue_mcm * 0.01)
+end
+
+function pr(...)
+	if not fatigue_debug then return end
+	printf(...)
+end
+
+----------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
+function save_state(m_data)
+	m_data.xcvb_fatigue_var = fatigue_var
+end
+
+function load_state(m_data)
+	fatigue_var = m_data.xcvb_fatigue_var or 0
+end
+
+function on_option_change()
+	fatigue_campfire_regen_mcm = fatigue_mcm.get_config("campfire_regen")
+	increase_mcm = fatigue_mcm.get_config("increase_mult")
+	walk_mcm = fatigue_mcm.get_config("walk_mult")
+	run_mcm = fatigue_mcm.get_config("run_mult")
+	sprint_mcm = fatigue_mcm.get_config("sprint_mult")
+	jump_mcm = fatigue_mcm.get_config("jump_mult")
+	sleep_regen_mcm = fatigue_mcm.get_config("sleep_regen_per_hour")
+	max_fatigue_mcm = fatigue_mcm.get_config("max_fatigue")
+	fatigue_debug = fatigue_mcm.get_config("debug_mode")
+end
+
+function on_game_start()
+	RegisterScriptCallback("save_state", save_state)
+	RegisterScriptCallback("load_state", load_state)
+	RegisterScriptCallback("actor_on_footstep", actor_on_footstep)
+	RegisterScriptCallback("actor_on_jump", actor_on_jump)
+	RegisterScriptCallback("actor_on_sleep", actor_on_sleep)
+	RegisterScriptCallback("actor_on_item_use", actor_on_item_use)
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+	RegisterScriptCallback("on_option_change", on_option_change)
+end

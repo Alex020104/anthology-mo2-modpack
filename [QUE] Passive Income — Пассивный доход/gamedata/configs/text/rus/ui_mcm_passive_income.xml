@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+    <string id="ui_mcm_menu_passive_income">
+		<text>Пассивный доход в Зоне</text>
+	</string>
+	<string id="ui_mcm_passinc_title">
+		<text>Настройки пассивного дохода в Зоне</text>
+	</string>
+	<string id="ui_mcm_passive_income_salary_mult">
+		<text>Множитель зарплаты</text>
+	</string>
+	<string id="ui_mcm_passive_income_salary_mult_desc">
+		<text>Используйте этот ползунок для изменения множителя зарплаты, чтобы сбалансировать все под свои предпочтения.</text>
+	</string>
+	<string id="ui_mcm_passive_income_debug_mode">
+		<text>Дебаг</text>
+	</string>
+
+</string_table>

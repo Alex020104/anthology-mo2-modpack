@@ -1,0 +1,121 @@
+-------------------------------------------------------
+-- WORLD ITEM SANITIZER (FINAL APPROACH)
+-------------------------------------------------------
+
+local LOG_PATH = "appdata\\logs\\world_item_sanitizer.log"
+local log = io.open(LOG_PATH, "w")
+
+local function logf(fmt, ...)
+    local s = string.format(fmt, ...)
+    printf("[SANITIZER] %s", s)
+    if log then
+        log:write(s .. "\n")
+        log:flush()
+    end
+end
+
+-------------------------------------------------------
+-- BLACKLIST
+-------------------------------------------------------
+
+local PREFIX = {
+    "wpn_",
+    "ammo_",
+    "itm_basickit",
+    "itm_advancedkit",
+    "itm_expertkit",
+    "medkit",
+    "helm",
+	"conserva",
+    "tushonka",
+	"bread",
+    "chili",
+	"kolbasa",
+    "corn",
+	"beans",
+    "tomato",
+	"vodka"
+}
+
+local SUFFIX = {
+    "_outfit"
+}
+
+local function is_blacklisted(section)
+    for _,p in ipairs(PREFIX) do
+        if string.find(section, p, 1, true) then
+            return true
+        end
+    end
+    for _,s in ipairs(SUFFIX) do
+        if string.sub(section, -#s) == s then
+            return true
+        end
+    end
+    return false
+end
+
+-------------------------------------------------------
+-- STATE
+-------------------------------------------------------
+
+local scans_done = 0
+local MAX_SCANS = 15   -- ~30 секунд
+
+-------------------------------------------------------
+-- SCAN
+-------------------------------------------------------
+
+local function scan_world()
+    scans_done = scans_done + 1
+    local sim = alife()
+    local removed = 0
+    local checked = 0
+
+    for id = 1, 65535 do
+        local se = sim:object(id)
+        if se and se.parent_id == 65535 then
+            checked = checked + 1
+            local sec = se:section_name()
+            if sec and is_blacklisted(sec) then
+                logf("REMOVE id=%d section=%s", id, sec)
+                alife_release(se)
+                removed = removed + 1
+            end
+        end
+    end
+
+    logf(
+        "SCAN %d/%d checked=%d removed=%d",
+        scans_done,
+        MAX_SCANS,
+        checked,
+        removed
+    )
+
+    return scans_done < MAX_SCANS
+end
+
+-------------------------------------------------------
+-- GAME LOAD
+-------------------------------------------------------
+
+local function on_game_load()
+    logf("on_game_load")
+
+    CreateTimeEvent(
+        0,
+        "world_sanitizer",
+        2.0,
+        scan_world
+    )
+end
+
+-------------------------------------------------------
+-- GAME START
+-------------------------------------------------------
+
+function on_game_start()
+    logf("=== WORLD SANITIZER START ===")
+    RegisterScriptCallback("on_game_load", on_game_load)
+end

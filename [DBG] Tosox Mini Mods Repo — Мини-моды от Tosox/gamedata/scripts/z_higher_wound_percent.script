@@ -1,0 +1,47 @@
+--[[
+	=====================================================================
+	Addon      : Tosox Mini Mods Repo: Higher Wound Percent
+	Link       : https://www.moddb.com/mods/stalker-anomaly/addons/tosox-mini-mods-repo/
+	Author     : Tosox
+	Credits    : Vintar0
+	Date       : 31.01.2024
+	Last Edit  : 31.01.2024
+	=====================================================================
+--]]
+
+orig_xr_wounded_init_wounded = xr_wounded.init_wounded
+xr_wounded.init_wounded = function(npc, ini, section, st, scheme)
+    orig_xr_wounded_init_wounded(npc, ini, section, st, scheme)
+
+    if (tostring(section) == st.wounded_section) and (tostring(section) ~= "nil") then
+		return
+	end
+
+    local def = {}
+    local npc_community = character_community(npc)
+    if (npc_community ~= "monolith") and (npc_community ~= "zombied") then
+        local state = xr_wounded.wounded_by_state[math.mod(npc:id(), 3)]
+		def.hp_state = "30|" .. state .. "@help_heavy"
+		def.hp_state_see = "30|" .. state .. "@help_heavy"
+		def.psy_state = "30|{=best_pistol}psy_armed,psy_pain@wounded_psy|20|{=best_pistol}psy_shoot,psy_pain@{=best_pistol}wounded_psy_shoot,wounded_psy"
+		def.hp_victim = "30|nil"
+		def.hp_cover = "30|false"
+		def.hp_fight = "30|false"
+    end
+
+    if tostring(section) == "nil" then
+		st.hp_state		= utils_data.parse_data(npc, def.hp_state)
+		st.hp_state_see	= utils_data.parse_data(npc, def.hp_state_see)
+		st.psy_state	= utils_data.parse_data(npc, def.psy_state)
+		st.hp_victim	= utils_data.parse_data(npc, def.hp_victim)
+		st.hp_cover		= utils_data.parse_data(npc, def.hp_cover)
+		st.hp_fight		= utils_data.parse_data(npc, def.hp_fight)
+	else
+		st.hp_state		= utils_data.parse_data(npc, ini:r_string_ex(section,"hp_state") or def.hp_state)
+		st.hp_state_see	= utils_data.parse_data(npc, ini:r_string_ex(section,"hp_state_see") or def.hp_state_see)
+		st.psy_state	= utils_data.parse_data(npc, ini:r_string_ex(section,"psy_state") or def.psy_state)
+		st.hp_victim	= utils_data.parse_data(npc, ini:r_string_ex(section,"hp_victim") or def.hp_victim)
+		st.hp_cover		= utils_data.parse_data(npc, ini:r_string_ex(section,"hp_cover") or def.hp_cover)
+		st.hp_fight		= utils_data.parse_data(npc, ini:r_string_ex(section,"hp_fight") or def.hp_fight)
+	end
+end

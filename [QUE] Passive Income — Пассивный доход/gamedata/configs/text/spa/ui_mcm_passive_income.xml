@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+
+
+<string_table>
+	<string id="ui_mcm_menu_passive_income">
+		<text>Ingresos Pasivos de la Zona</text>
+	</string>
+	<string id="ui_mcm_passinc_title">
+		<text>Configuraci&#243;n de Ingresos Pasivos de la Zona</text>
+	</string>
+	<string id="ui_mcm_passive_income_salary_mult">
+		<text>Multiplicador salarial</text>
+	</string>
+	<string id="ui_mcm_passive_income_salary_mult_desc">
+		<text>Utiliza este control deslizante para cambiar el multiplicador del salario. &#218;salo para ajustar el equilibrio seg&#250;n tus preferencias.</text>
+	</string>
+	<string id="ui_mcm_passive_income_debug_mode">
+		<text>Modo de Depuraci&#243;n</text>
+	</string>
+</string_table>

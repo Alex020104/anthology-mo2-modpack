@@ -1,0 +1,311 @@
+-- Load the defaults
+local function load_defaults()
+	local t = {}
+	local op = disassemble_all_items_mcm.op
+	for i, v in ipairs(op.gr) do
+		if v.def ~= nil then
+			t[v.id] = v.def
+		end
+	end
+	return t
+end
+local settings = load_defaults()
+
+local function load_settings()
+	settings = load_defaults()
+	if ui_mcm then
+		for k, v in pairs(settings) do
+			settings[k] = ui_mcm.get("disassemble_all_items/" .. k)
+		end
+	end
+end
+
+local add_functor = custom_functor_autoinject.add_functor
+local remove_functor = custom_functor_autoinject.remove_functor
+
+-- use6_functor         		= item_parts.menu_disassembly
+-- use6_action_functor  		= item_parts.func_disassembly
+-- use6_modes         			= inventory, loot
+-- use6_containers  			= actor_bag, actor_equ, actor_belt, npc_bag
+
+local d_flag      = false
+local d_key       = "DIK_LMENU" -- Saftey key hold (Left Alt)
+
+local function on_key_press(key)
+	if (key == DIK_keys[d_key]) then
+		d_flag = true
+	end
+end
+
+local function on_key_release(key)
+	if (key == DIK_keys[d_key]) then
+		d_flag = false
+	end
+end
+
+function func_disassembly(obj, obj_d)
+	local get_suitable_dtool = item_parts.get_suitable_dtool
+	local is_suitable_dtool = item_parts.is_suitable_dtool
+
+	-- Warning message on missing suitable disassembly tool
+	obj_d = obj_d or get_suitable_dtool(obj)
+	if (not is_suitable_dtool(obj, obj_d)) then
+		if IsWeapon(obj) then
+			actor_menu.set_item_news('fail', 'weapon', "st_dis_text_3", " ")
+		else
+			news_manager.send_tip(db.actor, game.translate_string("st_news_dis_items"), nil, "swiss_knife", 6000)
+		end
+		return
+	end
+	
+	-- Functionality
+	if IsWeapon(obj) then
+		item_parts.disassembly_weapon(obj, obj_d)
+	elseif IsOutfit(obj) or IsHeadgear(obj) then
+		item_parts.disassembly_outfit(obj, obj_d)
+	else
+		item_parts.disassembly_item(obj, obj_d)
+	end
+end
+
+local remover_func = {
+	check = function(obj, bag, mode)
+		local modes = {
+			["inventory"] = true,
+			["loot"] = true,
+		}
+		local bags = {
+			["actor_bag"] = true,
+			["npc_bag"] = true,
+		}
+		local check = item_parts.menu_disassembly
+
+		local check_exclusions = true
+		if 	settings.ammo_maker_compatibility and ammo_maker and IsAmmo(obj) then -- Disable for ammo if Arti's Ammo Maker is installed
+			check_exclusions = false
+		end 
+
+		return check(obj) and check_exclusions and modes[mode] and bags[bag]
+	end,
+	str = function(obj, bag, mode)
+		return "st_dai_disassemble_all"
+	end,
+	func = function(obj, bag, mode)
+		local get_suitable_dtool = item_parts.get_suitable_dtool
+		local is_suitable_dtool = item_parts.is_suitable_dtool
+
+		local obj_d = get_suitable_dtool(obj)
+		if (not is_suitable_dtool(obj, obj_d)) then
+			if IsWeapon(obj) then
+				actor_menu.set_item_news('fail', 'weapon', "st_dis_text_3", " ")
+			else
+				news_manager.send_tip(db.actor, game.translate_string("st_news_dis_items"), nil, "swiss_knife", 6000)
+			end
+			return
+		end
+
+		-- Warning message on safe keybind
+		local chk = ui_options.get("control/general/disassembly_warning")
+		if chk and (not d_flag) then
+			actor_menu.set_item_news("success", "detail", "st_awr_ctrl")
+			return
+		end
+
+		local actor = obj:parent()
+		local sec = obj:section()
+		local item_table = {}
+		local func_disassembly = func_disassembly
+
+		local function iterate(npc, item)
+			local current_sec = item:section()
+			if not (current_sec == sec) then return end
+
+			local id = item:id()
+			item_table[id] = {
+				item = item,
+				sec = current_sec,
+				id = id
+			}
+		end
+
+		if IsStalker(actor) then
+			actor:iterate_ruck(iterate, actor)
+		elseif IsInvbox(actor) then
+			actor:iterate_inventory_box(iterate, actor)
+		else
+			printf("item parent is undefined %s, %s", actor:name(), actor:section())
+			return
+		end
+
+		local i = 0
+		local i_inc = 0.05
+		for k, v in pairs(item_table) do
+			local t = i
+			CreateTimeEvent("dai_disassemble_all" .. k, "dai_disassemble_all" .. k, t, function()
+				--printf("dissasembling item %s, id %s, time %s", v.sec, k, t)
+				func_disassembly(v.item)
+				return true
+			end)
+			i = i + i_inc
+		end
+	end
+}
+add_functor("dai_disassemble_all", remover_func.check, remover_func.str, nil, remover_func.func, true)
+
+-- Patch for Sorting Plus to disassemble all junk
+if zzz_rax_sortingplus_mcm then
+	junk_items = {}
+	
+	function patch_rax_sortingplus()
+		junk_menu_action = zzz_rax_sortingplus_mcm.junk_menu_action
+		zzz_rax_sortingplus_mcm.junk_menu_action = function(obj)
+			junk_menu_action(obj)
+
+			sec = obj:section()
+		    junk_items[sec] = not junk_items[sec]
+		end
+		fav_menu_action = zzz_rax_sortingplus_mcm.fav_menu_action
+		zzz_rax_sortingplus_mcm.fav_menu_action = function(obj)
+			fav_menu_action(obj)
+
+		    sec = obj:section()
+		    junk_items[sec] = nil
+		end
+	end
+
+	local junk_disassembler = {
+		check = function(obj, bag, mode)
+			return remover_func.check(obj, bag, mode) and junk_items[obj:section()]
+		end,
+		str = function(obj, bag, mode)
+			return "st_dai_disassemble_all_junk"
+		end,
+		func = function(obj, bag, mode)
+			-- Warning message on safe keybind
+			local chk = ui_options.get("control/general/disassembly_warning")
+			if chk and (not d_flag) then
+				actor_menu.set_item_news("success", "detail", "st_awr_ctrl")
+				return
+			end
+
+			local actor = obj:parent()
+			local item_table = {}
+			local func_disassembly = item_parts.func_disassembly
+
+			local function iterate(npc, item)
+				local current_sec = item:section()
+				if junk_items[current_sec] and remover_func.check(item, bag, mode) then
+					local id = item:id()
+					item_table[id] = {
+						item = item,
+						sec = current_sec,
+						id = id
+					}
+				end
+			end
+
+			if IsStalker(actor) then
+				actor:iterate_ruck(iterate, actor)
+			elseif IsInvbox(actor) then
+				actor:iterate_inventory_box(iterate, actor)
+			else
+				printf("item parent is undefined %s, %s", actor:name(), actor:section())
+				return
+			end
+
+			local i = 0
+			local i_inc = 0.05
+			for k, v in pairs(item_table) do
+				local t = i
+				CreateTimeEvent("dai_disassemble_all" .. k, "dai_disassemble_all" .. k, t, function()
+					--printf("dissasembling item %s, id %s, time %s", v.sec, k, t)
+					local get_suitable_dtool = item_parts.get_suitable_dtool
+					local is_suitable_dtool = item_parts.is_suitable_dtool
+
+					local obj_d = get_suitable_dtool(v.item)
+					if (not is_suitable_dtool(v.item, obj_d)) then
+						if IsWeapon(v.item) then
+							actor_menu.set_item_news('fail', 'weapon', "st_dis_text_3", " ")
+						else
+							news_manager.send_tip(db.actor, game.translate_string("st_news_dis_items"), nil, "swiss_knife", 6000)
+						end
+						return true
+					end
+
+					-- Functionality
+					local obj = v.item
+					if IsWeapon(obj) then
+						item_parts.disassembly_weapon(obj, obj_d)
+					elseif IsOutfit(obj) or IsHeadgear(obj) then
+						item_parts.disassembly_outfit(obj, obj_d)
+					else
+						item_parts.disassembly_item(obj, obj_d)
+					end
+					return true
+				end)
+				i = i + i_inc
+			end
+		end
+	}
+	add_functor("dai_disassemble_all_junk", junk_disassembler.check, junk_disassembler.str, nil, junk_disassembler.func, true)
+end
+
+-- Chance to get patch upon cutting it from outfit
+local possible_factions = {
+	["army"] = true,
+	["bandit"] = true,
+	["csky"] = true,
+	["dolg"] = true,
+	["ecolog"] = true,
+	["freedom"] = true,
+	["killer"] = true,
+	["monolith"] = true,
+	["stalker"] = true,
+	["renegade"] = true,
+	["greh"] = true,
+	["isg"] = true,
+}
+
+patch_action = gameplay_disguise.menu_patch_action
+gameplay_disguise.menu_patch_action = function(obj)
+	local section = obj:section()
+	local comm = ini_sys:r_string_ex(section,"community")
+	if comm and (comm ~= "") and possible_factions[comm] then
+		local id = obj:id()
+		local state = se_load_var(id, obj:name(), "unpatched")
+		if state == nil and math.random(100) <= 50 then
+			local patch_sec = gameplay_disguise.get_patch(comm,true)
+			local str_patch = ui_item.get_sec_name(patch_sec)
+			alife_create_item(patch_sec, db.actor)
+			news_manager.send_tip(db.actor, str_patch .. " x1", nil, "swiss_knife", 6000)
+		end
+	end
+	patch_action(obj)
+end
+
+function load_state(mdata)
+	if zzz_rax_sortingplus_mcm then
+		printf("Disassemble All Items: Sorting Plus mod found")
+		if mdata.rax_junk_itms then
+			printf("Disassemble All Items: saved items found")
+			junk_items = mdata.rax_junk_itms
+		else
+			printf("Disassemble All Items: saved items not found, patching")
+			patch_rax_sortingplus()
+		end
+	end
+end
+
+local function on_option_change()
+	load_settings()
+end
+
+function on_game_start()
+	RegisterScriptCallback("load_state", load_state)
+	RegisterScriptCallback("on_key_press", on_key_press)
+	RegisterScriptCallback("on_key_release",on_key_release)
+
+	RegisterScriptCallback("actor_on_first_update", on_option_change)
+	RegisterScriptCallback("on_game_load", load_settings)
+	RegisterScriptCallback("on_option_change", on_option_change)
+end

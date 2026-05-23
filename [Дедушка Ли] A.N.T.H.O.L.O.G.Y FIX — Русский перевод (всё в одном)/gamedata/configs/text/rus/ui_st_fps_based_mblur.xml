@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="ui_mcm_menu_fps_based_mblur">
+		<text>Размытие движения</text>
+	</string>
+
+	<string id="ui_mcm_fps_based_mblur_title">
+		<text>Размытие движения на основе FPS</text>
+	</string>
+
+	<string id="ui_mcm_fps_based_mblur_ENABLED">
+		<text>Включён</text>
+	</string>
+
+	<string id="ui_mcm_fps_based_mblur_BASE_MBLUR">
+		<text>Количество размытия в движении</text>
+	</string>
+
+	<string id="ui_mcm_fps_based_mblur_BASE_MBLUR_desc">
+		<text>
+			Настраивать размытие в движении в настройках не имеет смысла, так как мод динамически изменяет r2_mblur, так что регулируй его здесь.\nВнимание! Даже если мод выключен опцией, стоит продолжать настраивать здесь, потому что r2_mblur умножается на 10 в шейдере (0.1 -> 1).
+		</text>
+	</string>
+
+	<string id="ui_mcm_fps_based_mblur_BASE_FPS">
+		<text>Базовый FPS</text>
+	</string>
+
+	<string id="ui_mcm_fps_based_mblur_BASE_FPS_desc">
+		<text>
+			Мин 0      Макс 1000  По умолчанию 50\nПо сути это второй слайдер влияющий на количество размытия в движении
+		</text>
+	</string>
+
+	<string id="ui_mcm_fps_based_mblur_DEBUG">
+		<text>Режим отладки</text>
+	</string>
+
+	<string id="ui_mcm_fps_based_mblur_DEBUG_desc">
+		<text>Включает вывод информации для отладки в логи, из-за чего они становятся очень большими, а также может понизится производительность. В общем не трогай эту опцию если не надо.</text>
+	</string>
+</string_table>

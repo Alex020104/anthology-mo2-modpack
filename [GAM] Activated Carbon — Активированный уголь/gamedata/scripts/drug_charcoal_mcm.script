@@ -1,0 +1,35 @@
+--[[
+    =====================================================================
+    Addon        : [DLTX] Activated Charcoal
+    Link:        : https://www.moddb.com/mods/stalker-anomaly/addons/dltx-activated-charcoal/
+    Author       : TosoxDev
+    Credits      : Igigog, Arti
+    Last Edit    : 09.06.2023
+    =====================================================================
+--]]
+
+local defaults = {
+    ["loot_coefficient"] = 1.0,
+    ["trader_restock_amount"] = 3.0,
+    ["safe_uninstall"] = false
+}
+
+function get_config(key)
+    if ui_mcm then return ui_mcm.get("drug_charcoal/" .. key) else return defaults[key] end
+end
+
+function set_config(key, value)
+    if ui_mcm then ui_mcm.set("drug_charcoal/" .. key, value) end
+end
+
+function on_mcm_load()
+    return {
+        id = "drug_charcoal", sh = true, gr = {
+            { id = "title", type = "slide", link = "ui_options_slider_mask", text = "ui_mcm_drug_charcoal_title", size = { 512, 50 }, spacing = 20 },
+            { id = "loot_coefficient", type = "track", val = 2, min = 0.0, max = 3.0, step = 0.1, def = 1.0 },
+            { id = "trader_restock_amount", type = "track", val = 2, min = 0.0, max = 6.0, step = 1.0, def = 3.0 },
+            { id = "cfg_separator", type = "line" },
+            { id = "safe_uninstall", type = "check", val = 1, def = false }
+        }
+    }
+end

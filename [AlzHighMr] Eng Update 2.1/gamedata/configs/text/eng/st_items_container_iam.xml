@@ -1,0 +1,2803 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!--
+	Artefacts Containers (IAM)
+-->
+
+<string_table>
+	<string id="st_af_itcher_af_iam_name">
+		<text>IAM w/ Itcher</text>
+	</string>  
+	<string id="st_af_itcher_af_iam_descr">
+		<text>
+		A formation of thermal nature. The Itcher consists of two separated layers. The surface is a hard, dense metamorphic rock with deep scars covering the entire body. Completely inactive and doesn't hold any noticeable properties. On the other hand, the soft, yellow glowing core is from unknown organic nature. It actively consumes excessive heat and remains cool at all times.
+		\nHowever, it is not recommended to approach chemical and acid anomalies when in possession of the artefact as it will increase the adverse effects of acids and toxins in user's bloodstream.
+		\n \nRadiation output is low on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string> 
+
+	<string id="st_af_pin_af_iam_name">
+		<text>IAM w/ Pin</text>
+	</string>  
+	<string id="st_af_pin_af_iam_descr">
+		<text>
+		A small artefact formed by thermal anomalies in the Zone under extreme temperatures. The look of this artefact suggests that it was an organ of a vascular plant. Further studies showed that other organic tissues are fused deep inside.
+		\nThe stem doesn't hold any useful properties. On the contrary, the small pins reduce temperature of user's body and cool all objects in their vicinity.
+		\nThis artefact offers a slight psy-protection as it will resonate under the influence of psy-waves. On the other hand, it is not recommended to approach chemical and acid anomalies when in possession of the artefact as it will increase the adverse effects of acids and toxins in user's bloodstream.
+		\n \nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>  
+	
+	<string id="st_af_cristall_af_iam_name">
+		<text>IAM w/ Crystal</text>
+	</string>
+	<string id="st_af_cristall_af_iam_descr">
+		<text>
+		This artefact is formed in anomalous zones with intense thermal activity. Actively consumes excessive heat and remains cool at all times.
+		\nIt will also protect the user against electrical currents. On the other hand, exposure to such environments makes the artefact increase the conductivity due to unknown as of now mechanism. For this reason, one is forced to weigh pros and cons of Crystal when in the vicinity of areas of high conductivity.
+		\nThis artefact is also highly sought for by jewellers outside the Zone as its inner core is not radioactive and considered to be of exceptional beauty if polished and refined. Only the first 1 cm of its outer layer emits radiation.
+		\nIt is, however, highly advised to proceed with caution when planning to bring the artefact to the market as prolonged exposure to even minimal amounts of radioactive materials can result in death of the user. Covered with very hard layer. Relatively heavy due to high density.
+		\n \nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_fireball_af_iam_name">
+		<text>IAM w/ Fireball</text>
+	</string>
+	<string id="st_af_fireball_af_iam_descr">
+		<text>
+		It is a spherical artefact made of red-coloured crystal, created in the Burner anomaly.
+		\nIt has an unique property: it has a constant temperature of 75 degrees Fahrenheit/24 degrees Celsius, regardless of its surroundings. This allows it to absorb heat from its vicinity and to create a little pocket around the user which prevents the flames from damaging the body.
+		\nA dangerous effect of this artefact is the fact that it will increase electrical conductivity, so the probability of electrocution while wearing this artefact is much higher, especially during storms and in the vicinity of electrical anomalies.It is quite heavy due to high density of crystal-like material.
+		\n \nRadiation output is high on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_blood_af_iam_name">
+		<text>IAM w/ Stone Blood</text>
+	</string>
+	<string id="st_af_blood_af_iam_descr">
+		<text>
+		A reddish formation of compressed fossilised plants, soil and animal debris. Can partially neutralise chemical poisons by absorbing them and reducing overall toxicity level in user's bloodstream. Quite widespread and not very effective as it makes chemical burns fester. It will catch fire when exposed to open flame or even spontaneously combust. 
+		\nAnother positive effect possessed by this artefact is that it accelerates clotting if worn close to the body. Although it is not recommended to keep this artefact in your possession for longer periods of time as blood clots can be hazardous to your health.
+		\n \nRadiation output is low on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_mincer_meat_af_iam_name">
+		<text>IAM w/ Meat Chunk</text>
+	</string>
+	<string id="st_af_mincer_meat_af_iam_descr">
+		<text>
+		This artefact has soft, porous, skin-like texture and is said to be able to compress. It resembles and acts like a sponge in this regard, but reveals its special characteristics only when exposed to certain external conditions.
+		\nFirstly, to carry the sponge metaphor further, the pores on its surface are known to absorb small amounts of toxicity from environment.
+		\nSecondly, the artefact slightly amplifies the damaging effects of psy-fields to living organisms by absorbing psy energy and emitting it at a small rate.
+		\nThirdly, Meat Chunk is also known to be a conductor of electricity much like the skin of a living creature.
+		\n \nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_bracelet_af_iam_name">
+		<text>IAM w/ Bracelet</text>
+	</string>  
+	<string id="st_af_bracelet_af_iam_descr">
+		<text>
+		Bracelet is formed from common species of bryophytes plants under high exposure to radioactive and chemical anomalies, which explains its organic nature.
+		\nIt provides substantial protection against all types of acids by gradually increasing their pH to the level of water (pH of 7).
+		\nWhen worn, the artefact is also known to slightly counter the harmful effects of psy-anomalies or psy-waves of some mutants.
+		\n \nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>  
+	
+	<string id="st_af_baloon_af_iam_name">
+		<text>IAM w/ Bubble</text>
+	</string>
+	<string id="st_af_baloon_af_iam_descr">
+		<text>
+		A compound of several hollow organic formations, this artefact emits a gaseous substance that can neutralise chemical or toxic particles inside the body without harming it. Thus providing a a great level of toxic and chemical protection.
+		\nIt also has a constant temperature regardless of its surroundings. This allows it to absorb heat from its vicinity and to create a little pocket around the user which prevents the flames from damaging the body. 
+		\nApart from that Bubble, however, possesses numerous negative properties. For example, it greatly amplifies the effects of psy-waves as well as fields produced by mutants and anomalies. This disadvantage is not to be taken lightly: some stalkers have reported that psy influence was so potent when in possession of a Bubble that they felt their heads cracking from the inside and the only thing they could do was scream in pain and run as far as they could. 
+		\n \nRadiation output is high on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_electra_sparkler_af_iam_name">
+		<text>IAM w/ Sparkler</text>
+	</string>
+	<string id="st_af_electra_sparkler_af_iam_descr">
+		<text>
+		This artefact has the appearance of translucent spider webs. Just as proteinaceous spider silk, it is sticky and has properties of glue.
+		\nIt can be found most commonly in or near electro anomalies and it seems to have absorbed their certain characteristics: it is able to smooth fluctuations in electric field density and acts as a weak resistor, protecting the wearer from electricity and reducing its damaging effects.
+		\nOn the other hand, it should be noted that the presence of this artefact increases the corrosiveness of acids, leading to accelerated deterioration of equipment and higher damage to tissues of any living organism.
+		\n \nRadiation output is low on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_sponge_af_iam_name">
+		<text>IAM w/ Sponge</text>
+	</string>  
+	<string id="st_af_sponge_af_iam_descr">
+		<text>
+		Sponge has always been under debate among the Ecologists. Some suggest that this artefact is driven from basic form of organisms, while others believe its an advanced life form with self-awareness inherited from living creatures.
+		\nDespite the theories surrounding the artefact, all can agree on one thing: it moves. The sponge sometimes tries to "grab" an object it touches. Putting it in a container might be a hard task, as if it wants to escape.
+		\nThis artefact acts as a powerful resistor and will absorb even lethal doses of electricity. On the other hand, it will catch fire when exposed to open flame or even spontaneously combust.
+		\n \nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string> 
+	
+	<string id="st_af_ring_af_iam_name">
+		<text>IAM w/ Ring</text>
+	</string>  
+	<string id="st_af_ring_af_iam_descr">
+		<text>
+		A very small artefact of electric nature. Difficult to spot. Consists of two ring-shaped materials of organic nature, hence the given name.
+		When the Ring spins, it never stops spinning, defying the first law of thermodynamics. Scientists suggest that this artefact inherits gravitational properties from Vortex anomalies.
+		\nThe outer ring has a high-conductivity. It absorbs electrical current from relative sources then ground it in the inner ring. Despite the basic function, the mechanism behind the disappearance of electrical power inside the second ring is still unknown.
+		\nOn the other side, the Ring is flammable. Prolonged exposure may enhance its flammability and cause it to ignite.
+		\n \nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string> 
+	
+	<string id="st_af_electra_flash_af_iam_name">
+		<text>IAM w/ Flash</text>
+	</string>
+	<string id="st_af_electra_flash_af_iam_descr">
+		<text>
+		This artefact is very similar in appearance to Moonlight and resembles a plasma globe or a plasma lamp.
+		\nBeing a powerful resistor, it is well known for its ability to shield its user from lethal doses of electricity.
+		\nWhen worn, it is known to slightly counter harmful effects of psy-anomalies or psy-waves of certain mutants. Flash acts as a powerful resistor and will absorb even lethal doses of electricity.
+		\nHowever, it also hinders healing process, thus caution is advised especially when wounded or bleeding. This artefact is also extremely light and very portable.
+		\n \nRadiation output is high on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_cristall_flower_af_iam_name">
+		<text>IAM w/ Stone Flower</text>
+	</string>
+	<string id="st_af_cristall_flower_af_iam_descr">
+		<text>
+		This artefact resembles melted cheese interspersed with sapphire-like stones. Only yellow outer shell of the artefact appears to give off radiation and by careful processing it is possible to extract the non-radioactive blue parts for jewellery and other industrial purposes. This is due to the fact that if cleaned properly and polished, sapphire comparison becomes much more explicit: the stones are as hard and durable as this beautiful gem. This quality of theirs and their appearance make them perfect gemstones and jewellers all over the world strive to have them in stock. 
+		\nThe usefulness of the artefact, however, is not limited to its industrial applications. There is scientific evidence suggesting that sapphire-like stones effectively protect from psy-waves, whereas the outer shell slightly increases resistance to toxicity.
+		\nHowever, it can cause objects in its vicinity to heat up and in extreme cases to ignite along with the artefact. For this reason, it is safe to conclude that it absorbs heat and is able to convey it to other objects.
+		\nDue to its density the weight of artefact has increased beyond normal standards, and thus it is one of the heaviest anomalous creations in the Zone.
+		\n \nRadiation output is low on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_lobster_eyes_af_iam_name">
+		<text>IAM w/ Lobster Eyes</text>
+	</string>  
+	<string id="st_af_lobster_eyes_af_iam_descr">
+		<text>
+		As the name suggests, this artefact has the shape of two eggs fused together. The outer surface is very thick, the high density of its formation might be the reason behind its deep colour.
+		\nThis artefact offers slightly more psy-protection than its cousin, Stone Flower. It resonates under the influence of psy-waves to some degree and absorbs the dangerous effect.
+		\nAnother positive property is the ability to consume excessive heat while remaining cool at all times.
+		\nDue to its density of the surface, the Lobster Eyes is quite heavy.
+		\n \nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string> 
+	
+	<string id="st_af_electra_moonlight_af_iam_name">
+		<text>IAM w/ Moonlight</text>
+	</string>
+	<string id="st_af_electra_moonlight_af_iam_descr">
+		<text>
+		This unique electrostatic artefact can resonate under the influence of psy-waves. Stalkers have learned to fine-tune the artefact so that it resonates in opposite phase to the main source of emissions, thus significantly neutralizing their effects. This orb of considerable beauty also increases electrical protection by reducing conductivity in the body when exposed to high levels of electricity.
+		\nIt should be noted that Moonlight will catch fire when exposed to open flame or even spontaneously combust. 
+		\n \nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_black_spray_af_iam_name">
+		<text>IAM w/ Black Spray</text>
+	</string>  
+	<string id="st_af_black_spray_af_iam_descr">
+		<text>
+		Being a rare artefact, little is known about its properties and origins. 
+		\nBlack Spray shares a similar shape to other sapphire-like artefacts. However, the organic nature of the stem (which shares similar properties to Pin artefacts) suggests that its formed from vascular plants under exposure to dangerous psy-fields and electromagnetic waves.
+		\nAnother unique property is the ability to delay the transmission of light that enters it. The said mysterious mechanism is applied to psy-waves surrounding the artefact as well. For this particular reason, Black Spray significantly neutralises psy interferences in a large radius.
+		\nThese beneficial properties, however, come at a price. This artefact is extremely dangerous when exposed in toxic environments as it amplifies their effect and increases their potency. When exploring toxic areas, it is hence highly recommended to keep the artefact in your backpack.
+		\nDue to the beautiful blue aura it emits, it is highly sought after by jewellers all over the world.
+		\n \nRadiation output is high on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>  
+	
+	<string id="st_af_medusa_af_iam_name">
+		<text>IAM w/ Jellyfish</text>
+	</string>
+	<string id="st_af_medusa_af_iam_descr">
+		<text>
+		Very common in the Zone. This gravitational artefact is able to slightly shield the body and objects from physical impacts.
+		\nIt will slightly protect its user against extreme heat produced respectively by fire anomalies.
+		\nThis artefact is quite heavy as the gravitational field seems to increase mass. Another downside to this artefact is that it will increase the negative effects of psy-waves and is a potent conductor.
+		\n \nRadiation output is low on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_vyvert_af_iam_name">
+		<text>IAM w/ Wrenched</text>
+	</string>
+	<string id="st_af_vyvert_af_iam_descr">
+		<text>
+		This bizarrely-shaped artefact appears in places with increased gravitational activity.
+		\nAlthough it appears almost organic, it is actually more similar to coral. Due to its gravitational nature, It provides protection against physical impacts as it greatly reduces the friction caused by fast objects.
+		\nActing as a kind of sponge that absorbs chemical and toxic elements as well, this artefact provides protection from external toxic agents as well as from chemical particles that have already made their way into the body.
+		\nWrenced can generate a locally directed gravity field which increases its mass. For this reason, this artefact is heavy.
+		\n \nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_empty_af_iam_name">
+		<text>IAM w/ Empty</text>
+	</string>  
+	<string id="st_af_empty_af_iam_descr">
+		<text>
+		Two disks of organic formation (commonly lipids, cellulose and lignin) with nothing but empty space in between. This is due to a unique gravitation field formed in the centre that stabilise the distance between the disks.
+		\nAny attempt to press the disks together, or pull them apart will fail due to rapid positive/negative changes in the gravitational field. As if the artefact reacts to any physical power that breaks its balance.
+		\nBecause of this mechanism, moving with an Empty is a hard task. As the gravitational field increases the density of surrounding air and slows the body down.
+		\nThe real usefulness of this effect comes to the ability to reduce friction, thus obtaining great protection against physical impacts.
+		\n \nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string> 
+ 	
+	<string id="st_af_full_empty_af_iam_name">
+		<text>IAM w/ Full Empty</text>
+	</string>  
+	<string id="st_af_full_empty_af_iam_descr">
+		<text>
+		Similar to Empty, this artefact consist of two disks of organic formation connected by a unique gravitational field in between. However, the said field in Full Empty is extraordinary: all atoms entering the centre, regardless of their nature, become interactive under the unknown effects of the field. Thus releasing photons (light emitting).
+		\nScientists usually refer to it as the "galaxy effect", which gives the artefact an exceptional orbit of light.
+		\nThe density increment of surrounding air caused by moving is higher comparing to Empty. Because of this, the artefact will greatly hinder its holder's movement.
+		\nBeing superior artefact to Empty, the protection against physical impacts is remarkable. Some claims that Full Empty is capable of stopping 9mm bullets fired at point blank.
+		\n \nRadiation output is high on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string> 
+	
+	<string id="st_af_night_star_af_iam_name">
+		<text>IAM w/ Nightstar</text>
+	</string>
+	<string id="st_af_night_star_af_iam_descr">
+		<text>
+		This glowing artefact can generate a local directed low-gravity field. Widely used by stalkers along with Gravi, a similar artefact, to increase maximum load.
+		\nDue to its beautiful inner core it is highly sought after by jewellers all over the world, however it is best to proceed with caution as unskilled treatment can cause the artefact to explode with power sufficient to level a small building. It is thus highly advised to perform the polishing by means of specialised machinery, which minimises the probability of explosion. Moreover, only the outer core of the artefact emits radiation.
+		\nNightstar will also absorb toxic and chemical agents from the environment, which makes it a valuable artefact for artefact hunters, although the amount of toxicity absorbed is negligible. It is, however, relatively cheap and even stalkers with pretty tight budgets can afford it if opportunity to buy it arises. 
+		\nThat being said, Nightstar emits odour of burning flesh when in the closest proximity of heat source. Prolonged exposure may enhance its flammability and cause it to ignite.
+		\n \nRadiation output is low on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_gravi_af_iam_name">
+		<text>IAM w/ Gravi</text>
+	</string>
+	<string id="st_af_gravi_af_iam_descr">
+		<text>
+		Gravi is formed from metallic substances exposed to prolonged gravitation. This makes it capable of sustaining an powerful anti-gravitational field, which causes it to have various properties, among others reducing weight of all objects in its close proximity. For a long time, the artefact was a mystery, and it was scientist Sakharov at Yantar who first discovered that Gravi creates a minute singularity field of anti-gravitational nature, the phenomenon which occurs in intervals of 30 minutes.
+		\nA dangerous effect of this artefact is the fact that it will increase electrical conductivity, so the probability of electrocution while wearing this artefact is much higher, especially during storms and in the vicinity of electrical anomalies.
+		\nAnother downside is that it will increase the negative effects of psy-waves and is a potent conductor.
+		\n \nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_gold_fish_af_iam_name">
+		<text>IAM w/ Goldfish</text>
+	</string>
+	<string id="st_af_gold_fish_af_iam_descr">
+		<text>
+		Direct successor to and a superior version of Gravi artefact. As was the case with Gravi, it was scientist Sakharov at Yantar who discovered its unique properties after a massive blowout/emission hit the Zone.
+		\nThanks to meticulous research that followed, it was established that this new artefact is produced when three Gravi artefacts interact and get sucked into one another's singularity fields. This phenomenon is extremely rare, due to which the artefact is highly valued.
+		\nIt is rumoured within Ukrainian Spetsnaz circles that in the Zone there are agents from the Ministry of Defence of the Russian Federation whose sole objective is acquiring and transporting Goldfish to specialised laboratories located outside of the Zone.
+		\nThe artefact creates a constant anti-gravitational singularity field which affects only its closest vicinity. However, some stalkers have been known to disappear for no apparent reason leaving only a Goldfish behind.
+		\nBig downside, however, comes along with this powerful anti-gravitational field: the velocity of moving objects inside its radius will rapidly increase, causing dangerous impacts on surrounding objects, including the holder.
+		\n \nRadiation output is highest on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_dummy_glassbeads_af_iam_name">
+		<text>IAM w/ Mama's Beads</text>
+	</string>
+	<string id="st_af_dummy_glassbeads_af_iam_descr">
+		<text>
+		Shaped like a DNA helix, Mama's Beads are created in the Burner anomaly. One of their most characteristic features is that they constantly pulsate, generating emissions beneficial to the human body. These emissions increase the metabolism of any living creature, accelerating coagulation and healing of wounds.The mechanism behind the effects of this artefact is still unknown.
+		\nMama's Beads also possess potent protective qualities: they are able to shield the body and objects from extreme heat.
+		\nOn the other hand, it should be noted that the presence of this artefact increases electrical conductivity, so the probability of electrocution while wearing this artefact is much higher, especially during storms and in the vicinity of electrical anomalies.
+		\nThe weight is also quite high for such a small artefact, which leads to a conclusion that is of high density.
+		\n \nRadiation output is low on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_eye_af_iam_name">
+		<text>IAM w/ Eye</text>
+	</string>
+	<string id="st_af_eye_af_iam_descr">
+		<text>
+		This artefact, which resembles the human eye, considerably increases metabolism of the body, helping wounds heal quicker. Experienced stalkers say that Eye also brings luck. Irrespective of the validity of that statement, its positive effects are indeed quite potent. 
+		\nThis artefact soothes the pain and is extremely useful when treating wounds.
+		\nWhen worn, it is known to slightly counter harmful effects of psy-anomalies or psy-waves of certain mutants.
+		\nThese beneficial qualities, however, come at a price. This artefact is extremely dangerous when exposed to chemical anomalies as it amplifies their toxicity and increases their potency. It is hence highly recommended to keep the artefact in your backpack, never on the body, when exploring toxic areas unless you have a death wish.
+		\nThe artefact is also known colloquially as "copper eye" as it conducts electricity and amplifies its dangerous effects in the same way as copper does. 
+		\n \nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_fire_af_iam_name">
+		<text>IAM w/ Flame</text>
+	</string>
+	<string id="st_af_fire_af_iam_descr">
+		<text>
+		This artefact forms in areas of high thermal activity. Produces powerful infrared emissions which intensify metabolic processes, healing wounds before its bearer's very eyes.
+		\nIts healing capabilities are even stronger than in case of the Eye as stalkers in possession of this artefact are said to have survived being wounded by chimeras. Thanks to that, it has earned the reputation of a miraculous artefact.
+		\nMany stalkers owe it their lives, and most veteran mutant hunters carry it in case they run into danger. However, it shares not only positive but also negative properties of its cousin: entering a psy-field with this artefact on the belt is suicide. It will absorb psy energy and emitting it at a considerable rate.
+		\nAlso, it is highly advised to proceed with caution when planning to bring the artefact to the market as prolonged exposure to even minimal amounts of radioactive materials can result in death of the user.
+		\nIt can also be used as a reusable medkit of sorts since it heals wounds very quickly.
+		\n \nRadiation output is high on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_dummy_battery_af_iam_name">
+		<text>IAM w/ Battery</text>
+	</string>
+	<string id="st_af_dummy_battery_af_iam_descr">
+		<text>
+		\nThe artefact is quite popular in the Zone and is valued by its residents and visitors alike for its energizing properties, although it has an adverse effect on the body when used for prolonged periods of time.
+		\nOne should take note, however, that this artefact hinders blood clotting and increases bleeding rate of open wounds. On the other hand, being a powerful resistor, it is well known for its ability to shield its user from lethal doses of electricity.
+		\nBeing an artefact of electric nature, it is well known for its ability to shield its user from lethal doses of electricity. On the contrary, it should be noted that Battery absorbs heat and is able to convey it to other objects.
+		\nThis artefact is also extremely light and very portable. 
+		\n \nRadiation output is low on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_dummy_dummy_af_iam_name">
+		<text>IAM w/ Shell</text>
+	</string>
+	<string id="st_af_dummy_dummy_af_iam_descr">
+		<text>
+		Shell is composed of two disk of bluish colour connected by semitransparent material of unknown nature.
+		\nThis strange artefact was considered devoid of any useful properties by many scientists for a long time. Only recently has it been discovered that it is indeed quite beneficial.
+		\nWhen the artefact comes into contact with the body, it will make one feel rejuvenated and thus it increases stamina recovery. This effect has in case of some stalkers induced hyperactivity. One downside of this artefact, however, is that it reduces the number of platelets in blood, thus increasing bleeding rate.
+		\nIt provides a considerable level of psy protection and absorbs electromagnetic interference, acting as a grounding material.
+		\nIt will catch fire when exposed to open flame or even spontaneously combust. Caution must be taken when approaching heat sources with this artefact.
+		\nShell is extremely light and very portable.
+		\n \nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_ice_af_iam_name">
+		<text>IAM w/ Snowflake</text>
+	</string>
+	<string id="st_af_ice_af_iam_descr">
+		<text>
+		Also colloquially known as "Radioactive Snowflake". At first glance, this artefact resembles a white Kolobok.
+		\nThanks to its unique properties, the artefact can significantly increase the bearer's muscle tone, thus greatly improving stamina recovery. Due to its high radioactivity, stalkers in possession of it are sometimes jokingly referred to as "Radioactive Snowflakes".
+		\nWhen faced with the decision whether to carry it on the belt during a mission, you have to carefully weigh its pros and cons: does it pay to have greater endurance and high protection against electricity at the cost of being constantly exposed to its deadly radiation? Even if you are determined to take it with you, it should be noted that it is not to be used on long excursions to the Zone.
+		\nSnowflake, however, holds a big downside: it interacts with surrounding energy sources by absorbing and amplifying their effects. For this reason, approaching heat sources, toxic areas and psy-fields while holding this artefact is a suicide.
+		\nIt is as light as a snowflake and very easy to carry around.
+		\n \nRadiation output is high on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_soul_af_iam_name">
+		<text>IAM w/ Soul</text>
+	</string>
+	<string id="st_af_soul_af_iam_descr">
+		<text>
+		Soul is a unique organic artefact with properties just as unique: it secretes slimy goo that dramatically increases recovery rate of wounds. Thanks to its reasonable price and attractive appearance, this artefact is a valuable collector's item.
+		\nApplying its gooey substance to wounds will soothes the pain and speeds up healing process. 
+		\It also reduces the effects of psy-waves and their damage to one's brain. But it should be known that Soul drains power from its user. The artefact does not have high density and thus is not very heavy.
+		\n \nRadiation output is low on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_fuzz_kolobok_af_iam_name">
+		<text>IAM w/ Kolobok</text>
+	</string>
+	<string id="st_af_fuzz_kolobok_af_iam_descr">
+		<text>
+		A relatively rare artefact forming in chemical areas, Kolobok is highly valued for its ability to heal most kinds of wounds and stop bleeding in a matter of minutes.
+		\nFor unknown reasons, scientists are spreading rumours among stalkers that the artefact modifies bearer's genetic code, which is unproven and should be regarded as conscious attempt at monopolizing the supply of the artefact by the scientific community. This does not, however, mean that it is completely harmless.
+		\nOne drawback of this artefact is the fact that it will interact to radioactive particles, so it is best to avoid radiation fields when in possession of the artefact, especially since its negative effects are not balanced with positive ones. It will also reduce energy recovery, which is the result of its sharp needle-like appendages. The needles cause small and quickly healing wounds which bring constant pain and itch, thus reducing stamina.
+		\nThis artefact also weakens protection against heat and acids due to its high flammability. 
+		\nLightweight and not too much of a burden to carry around.
+		\nRadiation output is average on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_glass_af_iam_name">
+		<text>IAM w/ Firefly</text>
+	</string>
+	<string id="st_af_glass_af_iam_descr">
+		<text>
+		Firefly interacts with fields unknown to science, considerably speeding up regeneration of tissue and organs in living beings, as well as normalizing metabolic processes.
+		\nThis artefact can literally get a badly wounded stalker back on his feet in a matter of minutes. On the other hand, Firefly can spontaneously combust when exposed to potent radioactive sources.
+		\nA big downside to this artefact is that it weakens the body and reduce the number of platelets in blood during heal process, thus increasing bleeding rate.
+		\nIt seems to drain stamina and decrease stamina recovery greatly as well. Some of those who used Firefly for its healing purposes have reported that they couldn't walk for hours afterwards.
+		\nUnfortunately, Firefly is extremely rare.
+		\nRadiation output is high on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_compass_af_iam_name">
+		<text>IAM w/ Compass</text>
+	</string>
+	<string id="st_af_compass_af_iam_descr">
+		<text>
+		A very rare artefact. It's been several years since one was found.
+		\nIt can locate gaps in anomaly fields. It is believed that it can help one traverse the most complex anomaly fields completely unharmed. However, very few know how to handle it properly.
+		\nThe Compass showed few unique properties under last experiments. It can interact to moving objects, causing some to completely disappear. Or perhaps teleport?
+		\nIt also weakens the body by draining stamina and increasing bleeding rate constantly. But the biggest draw however, is the dangerous radiation output this artefact emits comparing to the artefact radiation scale.
+		\nHolding this artefact near the body will cause death in matter of few minutes.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_oasis_heart_af_iam_name">
+		<text>IAM w/ Heart of the Oasis</text>
+	</string>
+	<string id="st_af_oasis_heart_af_iam_descr">
+		<text>
+		This artefact was found at the centre of the legendary Oasis. It appears that the Heart is a crystallised plant, which has acquired the healing properties of the Oasis.
+		\nNot only it dramatically increases recovery rate of wounds and healing process, but also provides the body with strong source of energy. It is a true miracle.
+		\nThat being said, the Oasis is very sensitive to outer sources of energy and surrounding environment. For this reason, interacting with anomaly fields will bring death to the holder.
+		\n \nRadiation output is highest on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_death_lamp_af_iam_name">
+		<text>IAM w/ Death Lamp</text>
+	</string>  
+	<string id="st_af_death_lamp_af_iam_descr">
+		<text>
+		"Big, red and cursed."
+		\nThis is how the locals prefer to describe the Death Lamp, while some refer to it as the "Seed of Satan". Many traders believe the rumours surrounding the artefact, thus refusing to buy it.
+		Little is known about its origins, and nothing of value has been discovered so far.
+		\nDeath Lamp was first discovered few years ago by a group of three experienced stalkers. Shortly after delivering the artefact to the Ecologists in Yantar, two of them found dead with a horrific expression on their faces. Nothing is known about the fate of the third stalker.
+		\nFollowing the accident, members of the science team who studied the artefact had reported having nightmare disorder in the days to follow.
+		\nApart from the mysterious effects, the artefact drains vitality and willpower from the user, often on such a scale that it induces dizziness and in extreme cases causes the user to faint. 
+		\n \nRadiation output is highest on the artefact radiation scale.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string> 
+	
+	<string id="st_af_misery_bread_af_iam_name">
+		<text>IAM w/ anomalous bread</text>
+	</string>
+	<string id="st_af_misery_bread_af_iam_descr">
+		<text>
+		Anomalous bread in a Lead-Lined Container. As dark as the soul of the person that left it.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_oasis_heart2_af_iam_name">
+		<text>IAM w/ Heart of Giant</text>
+	</string>
+	<string id="st_af_oasis_heart2_af_iam_descr">
+		<text>
+		Apparently, it is a crystallized plant, has beneficial effect on the body as a whole. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+     	
+	<string id="st_af_best_compass_af_iam_name">
+		<text>IAM w/ Best Compass</text>  
+	</string>
+	<string id="st_af_best_compass_af_iam_descr">
+		<text>
+		This Сompass found even less often than the ordinary one. There are no negative effects on the body.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_water_flower2_af_iam_name">
+		<text>IAM w/ Fabulous Flower</text>
+	</string>
+	<string id="st_af_water_flower2_af_iam_descr">
+		<text>
+		Very rare artefact of plant origin. It is valued by stalkers for the help in removing radiation and healing wounds. It also slightly protects against psi fields and absorbs excessive heat. Has no negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_quest_b14_twisted2_af_iam_name">
+		<text>IAM w/ White Snake</text>
+	</string>
+	<string id="st_af_quest_b14_twisted2_af_iam_descr">
+		<text>
+		Very rare artefact of fiery kind. Somewhat resembles a snake, hence got its name. Helps with healing wounds. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_jup_b1_half_artifact2_af_iam_name">
+		<text>IAM w/ Spiral</text>
+	</string>
+	<string id="st_jup_b1_half_artifact2_af_iam_descr">
+		<text>
+		Rare artefact. Protects from psi fields and slightly from electricity. It also has a field that lightens objects around it a little. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_medusa_green_af_iam_name">
+		<text>IAM w/ Emerald Jellyfish</text>
+	</string>
+	<string id="st_af_medusa_green_af_iam_descr">
+		<text>
+		It resembles the ordinary Jellyfish, but is green. Absolutely not radioactive, emits weak light. It is believed that it appears as a result of the combination of two anomalies. Gradually heals body of the owner and removes radiation, but increases effects that toxins and psi fields have on the organism.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_cristall_flower2_af_iam_name">
+		<text>IAM w/ Fossil Flower</text>
+	</string>
+	<string id="st_af_cristall_flower2_af_iam_descr">
+		<text>
+		The artefact is basically a stone which has characteristics close to granites. It comes into being inside gravitational fields of huge intensity. Lowers weight of carried things and slightly protects against the effects of psi fields. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_night_star2_af_iam_name">
+		<text>IAM w/ True Night Star</text>
+	</string>
+	<string id="st_af_night_star2_af_iam_descr">
+		<text>
+		Organic artefact with unique properties. Increases carrying capacity in uknown way, and with it you can forget what food is. Has no negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_vyvert_green_af_iam_name">
+		<text>IAM w/Emerald Subwrenched</text>
+	</string>
+	<string id="st_af_vyvert_green_af_iam_descr">
+		<text>
+		It looks like the ordinary Subwrenched, but is green. Absolutely not radioactive, emits weak light. Gradually heals body of the owner and removes radiation quite well. Has no negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_vyvert2_af_iam_name">
+		<text>IAM w/ Subwrenched</text>
+	</string>
+	<string id="st_af_vyvert2_af_iam_descr">
+		<text>
+		The average prevalence artefact, which lightens carried weight and protects against psi fields. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_gravi2_af_iam_name">
+		<text>IAM w/ Gravitator</text>
+	</string>
+	<string id="st_af_gravi2_af_iam_descr">
+		<text>
+		Average priced artefact. It well enough removes radiation and slightly lightens a backpack. Has no negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_gold_fish2_af_iam_name">
+		<text>IAM w/ Fish</text>
+	</string>
+	<string id="st_af_gold_fish2_af_iam_descr">
+		<text>
+		Very rare artefact, which allows to take a lot of additional useful in raids equipment, but with such an artefact it is better not to get into anomalies.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_drops_af_iam_name">
+		<text>IAM w/ Droplets</text>
+	</string>
+	<string id="st_af_drops_af_iam_descr">
+		<text>
+		Formed in the Burner anomaly, at high temperatures. From the exterior, it looks like a tear-like shade compound with a glossy surface, covered in cracks.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_cristall2_af_iam_name">
+		<text>IAM w/ Fire Crystal</text>
+	</string>
+	<string id="st_af_cristall2_af_iam_descr">
+		<text>
+		The artefact spawns in anomalous zones under high temperatures conditions. Slowly removes radiation from the body. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_fireball2_af_iam_name">
+		<text>IAM w/ Magmatic Orb</text>
+	</string>
+	<string id="st_af_fireball2_af_iam_descr">
+		<text>
+		Despite the name, which fully reflects the nature of this artefact, the orb can be easily kept in hand without fear of getting burned. Makes blood stop a little faster and possible to sit closer to the fire. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_dummy_glassbeads2_af_iam_name">
+		<text>IAM w/ Beads</text>
+	</string>
+	<string id="st_af_dummy_glassbeads2_af_iam_descr">
+		<text>
+		Much in this artefact remains a mystery. However, it was well established that radiation, arising with the pulsation of Beads thickenings, stops blood. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_blood_green_af_iam_name">
+		<text>IAM w/ Emerald Stone Blood</text>
+	</string>
+	<string id="st_af_blood_green_af_iam_descr">
+		<text>
+		It looks like the ordinary Stone Blood, but is green. Absolutely not radioactive, emits weak light. Gradually heals body of the owner. Has no other properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_blood2_af_iam_name">
+		<text>IAM w/ Brick Blood</text>
+	</string>
+	<string id="st_af_blood2_af_iam_descr">
+		<text>
+		It is a rather ugly reddish formation of compressed and fancy curved polymerized plants residue, soil and bones. Slightly increases carry weight. Has no negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_mincer_meat2_af_iam_name">
+		<text>IAM w/ Lump of Bread</text>
+	</string>
+	<string id="st_af_mincer_meat2_af_iam_descr">
+		<text>
+		This artefact is good for long-term raids. Will less often want to eat or take a rest, but it is better not to come across controller. A little radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_soul2_af_iam_name">
+		<text>IAM w/ Heart of Chimera</text>
+	</string>
+	<string id="st_af_soul2_af_iam_descr">
+		<text>
+		Organic artefact with unique properties. Increases carrying capacity in uknown way, and with it you can forget what food is. Has no negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_fuzz_kolobok2_af_iam_name">
+		<text>IAM w/ Puffer</text>
+	</string>
+	<string id="st_af_fuzz_kolobok2_af_iam_descr">
+		<text>
+		When holding this mystery of the Zone in hands, can feel how body becomes lighter. Allows to carry much more goods, but the price for it is bleeding from punctures.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_electra_sparkler2_af_iam_name">
+		<text>IAM w/ Bengal Light</text>
+	</string>
+	<string id="st_af_electra_sparkler2_af_iam_descr">
+		<text>
+		Common representative of the family of electrostatic artefacts. Slowly removes radiation. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_electra_flash2_af_iam_name">
+		<text>IAM w/ Splash</text>
+	</string>
+	<string id="st_af_electra_flash2_af_iam_descr">
+		<text>
+		This artefact of electrostatic nature demonstrates the ability to remove radiation from the body, also slightly improves muscle tone. Has no negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_electra_moonlight2_af_iam_name">
+		<text>IAM w/ Electronova</text>
+	</string>
+	<string id="st_af_electra_moonlight2_af_iam_descr">
+		<text>
+		A representative of the family of electrostatic artefacts, got its name for its brightness. Has the ability to perfectly smooth out electric field voltage drops. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_dummy_dummy2_af_iam_name">
+		<text>IAM w/ Blank</text>
+	</string>
+	<string id="st_af_dummy_dummy2_af_iam_descr">
+		<text>
+		Previously considered trash deprived of any beneficial properties. However, some time ago it turned out that when in constant contact with the human body, this artefact slightly enhances muscle tone.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_water_flower_af_iam_name">
+		<text>IAM w/ Water Flower</text>
+	</string>
+	<string id="st_af_water_flower_af_iam_descr">
+		<text>
+		Extraordinary artefact. Probably no one knows its origin. Heal wounds, restores strength and slightly removes radiation, but hunger comes a little faster with it.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_water_flower1_af_iam_name">
+		<text>IAM w/ Strange Flower</text>
+	</string>
+	<string id="st_af_water_flower1_af_iam_descr">
+		<text>
+		This artefact is strangely similar to Water Flower artefact. Among positive properties, should be noted bleeding stoppage, reduced backpack weight and slow radiation removal, but negatively affects digestion.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_ameba_slime_af_iam_name">
+		<text>IAM w/ Slime</text>
+	</string>
+	<string id="st_af_ameba_slime_af_iam_descr">
+		<text>
+		It is certain that this artefact is created by the anomaly called 'Fruit punch'. When carried on the belt the wounds bleed less, although the body of its owner becomes more vulnerable to various burns.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_ameba_slug_af_iam_name">
+		<text>IAM w/ Slug</text>
+	</string>
+	<string id="st_af_ameba_slug_af_iam_descr">
+		<text>
+		Formed by the 'Fruit punch' anomaly. The negative qualities of this artefact are compensated by the fact that it heightens the coagulation quality of blood. It's not often that one runs into such an artefact, and they pay well for it too.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_ameba_mica_af_iam_name">
+		<text>IAM w/ Mica</text>
+	</string>
+	<string id="st_af_ameba_mica_af_iam_descr">
+		<text>
+		Anomaly 'Fruit punch' is able to create such an artefact at the rarest, most extreme collection of physical conditions. The result is a semi-transparent, hard object. A rare and expensive artefact.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_dummy_spring_red_af_iam_name">
+		<text>IAM w/ Ruby Spring</text>
+	</string>
+	<string id="st_af_dummy_spring_red_af_iam_descr">
+		<text>
+		It resembles ordinary Spring, but is red. Radioactive. Heals wounds and moderately protects against high temperatures.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_dummy_spring_af_iam_name">
+		<text>IAM w/ Spring</text>
+	</string>
+	<string id="st_af_dummy_spring_af_iam_descr">
+		<text>
+		According to the opinion of some researchers-theorists, this artefact is a hybrid between Batteries and Shell.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_dummy_battery_red_af_iam_name">
+		<text>IAM w/ Ruby Battery</text>
+	</string>
+	<string id="st_af_dummy_battery_red_af_iam_descr">
+		<text>
+		It resembles ordinary Battery, but is red. Not radioactive. Heals scratches and removes radiation quite well.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_dummy_pellicle_red_af_iam_name">
+		<text>IAM w/ Ruby Pellicle</text>
+	</string>
+	<string id="st_af_dummy_pellicle_red_af_iam_descr">
+		<text>
+		It resembles the ordinary Pellicle, but is red. Radioactive, emits light. Provides protection against thermal effects.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_dummy_pellicle_af_iam_name">
+		<text>IAM w/ Pellicle</text>
+	</string>
+	<string id="st_af_dummy_pellicle_af_iam_descr">
+		<text>
+		This artefact is so rare that many researchers can't even imagine that such a substance can exist in a natural setting. Emits acidic chemical components.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_rusty_thorn_af_iam_name">
+		<text>IAM w/ Thorn</text>
+	</string>
+	<string id="st_af_rusty_thorn_af_iam_descr">
+		<text>
+		The result of the interaction between the anomaly Burnt Fuzz and the body of a careless stalker. The Thorn artefact pokes the body of its owner, no matter what. But it also helps clean the body of radionuclide. Quite widespread and cheap.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_rusty_kristall_af_iam_name">
+		<text>IAM w/ Crystal Thorn</text>
+	</string>
+	<string id="st_af_rusty_kristall_af_iam_descr">
+		<text>
+		Crystallizes in the anomaly Burnt Fuzz. Naturally takes out the radiation from the organism. That is, through the ears along with some amount of blood. Blood loss is possible also through over openings. Widespread and quite effective, which is the cause for the stable price in the artefact market.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_rusty_sea_urchin_af_iam_name">
+		<text>IAM w/ Urchin</text>
+	</string>
+	<string id="st_af_rusty_sea_urchin_af_iam_descr">
+		<text>
+		The anomaly Burnt Fuzz very rarely gives rise to this artefact. Raise the blood pressure and so, the body gets rid of a large amount of red blood cells. But along with them the stored radiation leaves the body as well. In his fundamental work titled 'Ionization and polarization of the components of rare artefacts', Sakharov noted that the content of this formation has a critical stability, and it's not realistic to create such an artefact in lab conditions in the next ten years.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_life_heart_af_iam_name">
+		<text>IAM w/ Live Heart</text>
+	</string>
+	<string id="st_af_life_heart_af_iam_descr">
+		<text>
+		Rare artefact, that looks like a real heart. First stalker who found it, almost missed it, taking it for the remains of a less successful fellow. Pretty quickly restores health and strength, but attracts electricity. A little radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_caterpillar_af_iam_name">
+		<text>IAM w/ Plasmic Caterpillar</text>
+	</string>
+	<string id="st_af_caterpillar_af_iam_descr">
+		<text>
+		Rare artefact that looks like a caterpillar. It was first found in Wild Territory away from any anomalies, so initially it was mistaken for a new creature in the Zone, but later it started to be found in anomalies. Allows to carry more in a backpack, restores strength and slightly removes radiation, but gradually saps health of the owner. Also with this artefact it is better not to approach sources of high temperature.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_part_monolit_af_iam_name">
+		<text>IAM w/ Shard of Monolith</text>
+	</string>
+	<string id="st_af_part_monolit_af_iam_descr">
+		<text>
+		Extremely rare artefact resembling a pulsating heart. It has a positive effect on the whole body, but a large minus is the strongest amplification of psi waves affecting the owner. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_electro_crystal_thorn_af_iam_name">
+		<text>IAM w/ Electric Microbe</text>
+	</string>
+	<string id="st_af_electro_crystal_thorn_af_iam_descr">
+		<text>
+		Rather common artefact of electrical nature. Helps the organism to quicker restore energy. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_arhara_globus_af_iam_name">
+		<text>IAM w/ Baby Rattle</text>
+	</string>
+	<string id="st_af_arhara_globus_af_iam_descr">
+		<text>
+		Reminds a baby rattle with spines, from where went the name of it... Helps the body to faster restore strength, gives protection against chemical and electrical anomalies. A little radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_armor_1_af_iam_name">
+		<text>IAM w/ Hide</text>
+	</string>
+	<string id="st_af_armor_1_af_iam_descr">
+		<text>
+		Artefact makes it possible to carry a little more things in a backpack. Has no other properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_armor_2_af_iam_name">
+		<text>IAM w/ Scale</text>
+	</string>
+	<string id="st_af_armor_2_af_iam_descr">
+		<text>
+		Scale in general has beneficial effect on the body. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_armor_3_af_iam_name">
+		<text>IAM w/ Armor</text>
+	</string>
+	<string id="st_af_armor_3_af_iam_descr">
+		<text>
+		Armor reduces bleeding of those who wear it. Has no other properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_armor_4_af_iam_name">
+		<text>IAM w/ Controller's Scalp</text>
+	</string>
+	<string id="st_af_armor_4_af_iam_descr">
+		<text>
+		This artefact moderately protects against all anomalistic hazards of the Chernobyl Exclusion Zone, but is best against psi waves, which is why it was called so. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_babka_1_af_iam_name">
+		<text>IAM w/ Grandmother's Beads</text>
+	</string>
+	<string id="st_af_babka_1_af_iam_descr">
+		<text>
+		Like the Mother's Beads, it stops bleeding, but for a lower radiation dose.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_babka_2_af_iam_name">
+		<text>IAM w/ Great-grandmother's Beads</text>
+	</string>
+	<string id="st_af_babka_2_af_iam_descr">
+		<text>
+		This artifact heals wounds even better, compared to Grandmother's Beads, but the radiation dose increased twice.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_babka_3_af_iam_name">
+		<text>IAM w/ Burer's Great-grandmother's Beads</text>
+	</string>
+	<string id="st_af_babka_3_af_iam_descr">
+		<text>
+		Its temporal field is very strong and has a large radius. Raises irradiation.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_dik_1_af_iam_name">
+		<text>IAM w/ Porcupine</text>
+	</string>
+	<string id="st_af_dik_1_af_iam_descr">
+		<text>
+		Anomalous formation from a family of barbed artefacts. Like the Battery, enhances restoration of the body forces pretty well, but with a lesser radiation dose.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_dik_2_af_iam_name">
+		<text>IAM w/ Electric Porcupine</text>
+	</string>
+	<string id="st_af_dik_2_af_iam_descr">
+		<text>
+		Anomalous formation from a family of barbed artefacts. Just like Snowflake, significantly increases restoration of the body forces, but with a lesser radiation dose.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_dik_3_af_iam_name">
+		<text>IAM w/ Snotty Porcupine</text>
+	</string>
+	<string id="st_af_dik_3_af_iam_descr">
+		<text>
+		Anomalous formation from a family of barbed artefacts. Makes it possible to carry a little more rounds, restores health and strength. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_dik_4_af_iam_name">
+		<text>IAM w/ Stone Porcupine</text>
+	</string>
+	<string id="st_af_dik_4_af_iam_descr">
+		<text>
+		Anomalous formation from a family of barbed artefacts. Restores health and forces, heals wounds. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_kol_4_af_iam_name">
+		<text>IAM w/ Giant's Younger Brother</text>
+	</string>
+	<string id="st_af_kol_4_af_iam_descr">
+		<text>
+		This artefact got its name due to the fact that it grants a great strength to a person, however, because of high tension the skin starts to rip and bleeding begins. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_pudd_1_af_iam_name">
+		<text>IAM w/ Fiery Shell</text>
+	</string>
+	<string id="st_af_pudd_1_af_iam_descr">
+		<text>
+		Anomalous formation from a family of double-disc artefacts. Allows to carry a little more weight in a backpack, gradually restores energy and heals scratches. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_pudd_2_af_iam_name">
+		<text>IAM w/ Bright Shell</text>
+	</string>
+	<string id="st_af_pudd_2_af_iam_descr">
+		<text>
+		Anomalous formation from a family of double-disc artefacts. Allows to carry a little more weight in a backpack, gradually heals the body. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_pudd_3_af_iam_name">
+		<text>IAM w/ Moon Shell</text>
+	</string>
+	<string id="st_af_pudd_3_af_iam_descr">
+		<text>
+		Anomalous formation from a family of double-disc artefacts. Restores health, heals wounds and scratches. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_pudd_4_af_iam_name">
+		<text>IAM w/ Pudding</text>
+	</string>
+	<string id="st_af_pudd_4_af_iam_descr">
+		<text>
+		Anomalous formation from a family of double-disc artefacts. When equipped, significantly strengthens muscles of the back, which makes it possible to carry more weight in the backpack. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>	
+		
+	<string id="st_af_simbion_af_iam_name">
+		<text>IAM w/ Symbion</text>
+	</string>
+	<string id="st_af_simbion_af_iam_descr">
+		<text>
+		There are rumors that in order to get this artefact, you need to throw certain artefacts into a chemical anomaly. But this is refuted by stalkers who find it just like that in anomalies. Pretty beautiful, helps carry more weight in a backpack and restores health, but increases total energy consumption. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_spirit_1_af_iam_name">
+		<text>IAM w/ Soul Drop</text>
+	</string>
+	<string id="st_af_spirit_1_af_iam_descr">
+		<text>
+		One of the most valuable artefacts in the Zone. Removes radiation from the body of the owner in a matter of minutes and provides the biggest protection against psi waves. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_spirit_2_af_iam_name">
+		<text>IAM w/ Fiery Soul</text>
+	</string>
+	<string id="st_af_spirit_2_af_iam_descr">
+		<text>
+		One of the most valuable artefacts in the Zone. Quickly heals wounds of the owner and provides the biggest protection against thermal effects. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_spirit_3_af_iam_name">
+		<text>IAM w/ Crystal Soul</text>
+	</string>
+	<string id="st_af_spirit_3_af_iam_descr">
+		<text>
+		One of the most valuable artefacts in the Zone. Quickly restores forces of the owner and provides the biggest protection against electrical impacts. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_spirit_4_af_iam_name">
+		<text>IAM w/ Crystal Soul of Bengal</text>
+	</string>
+	<string id="st_af_spirit_4_af_iam_descr">
+		<text>
+		One of the most valuable artefacts in the Zone. Quickly restores health of the owner and provides the biggest protection against chemicals. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_raibloko_af_iam_name">
+		<text>IAM w/ Paradise Apple</text>
+	</string>
+	<string id="st_af_raibloko_af_iam_descr">
+		<text>
+		Iridescent apple sized sphere, which slowly rotates half a meter above the ground. It produces subtle, on the verge of audibility squeak. Increases sensitivity to thermal effects, but in return restores health, strength and heals wounds. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_poipruz_af_iam_name">
+		<text>IAM w/ Singing Spring</text>
+	</string>
+	<string id="st_af_poipruz_af_iam_descr">
+		<text>
+		Pretty rare and expensive artefact. Great radiation remover. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_seaej_af_iam_name">
+		<text>IAM w/ Explosive Urchin</text>
+	</string>
+	<string id="st_af_seaej_af_iam_descr">
+		<text>
+		Appearance really resembles hedgehog. Covered with many dull needles. Restores forces, health and heals wounds. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_mayatnik_af_iam_name">
+		<text>IAM w/ Pendulum</text>
+	</string>
+	<string id="st_af_mayatnik_af_iam_descr">
+		<text>
+		Rather rare. Can be found only in northern regions of the Zone. Good effect on the body as a whole. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_lifekam_af_iam_name">
+		<text>IAM w/ Life Stone</text>
+	</string>
+	<string id="st_af_lifekam_af_iam_descr">
+		<text>
+		A jelly-like translucent sphere covered with a wet pellicle, warm, almost hot to touch. Increases carry weight, slightly restores strength and vitalizes the blood. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_vedsleza_af_iam_name">
+		<text>IAM w/ Witch's Tear</text>
+	</string>
+	<string id="st_af_vedsleza_af_iam_descr">
+		<text>
+		Pretty much common artefact in the center of Zone. Has an oblongated shape of a gingery drop with green hue. Increases resistance to electricity and restores health. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_oblivion_af_iam_name">
+		<text>IAM w/ Oblivion Lost</text>
+	</string>
+	<string id="st_af_oblivion_af_iam_descr">
+		<text>
+		Small, fist sized, bluish white sphere. As if made of ice with small dark blue splashes. Has beneficial effect on the body as a whole. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_sverlo_af_iam_name">
+		<text>IAM w/ Drill</text>
+	</string>
+	<string id="st_af_sverlo_af_iam_descr">
+		<text>
+		The artefact received name for an intricately elongated cylindrical form that casts a silvery color. It has a positive effect on the whole organism. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_oreh_af_iam_name">
+		<text>IAM w/ Nut</text>
+	</string>
+	<string id="st_af_oreh_af_iam_descr">
+		<text>
+		Another rarest of Zone's artefacts. It is a dark brown color walnut sized ball, which is why it actually got its name. Gives vigor and saturation effect to its owner. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_chertyaico_af_iam_name">
+		<text>IAM w/ Devil's Egg</text>
+	</string>
+	<string id="st_af_chertyaico_af_iam_descr">
+		<text>
+		Dimensions and shape remotely resemble a chicken egg, has a deep black color and glitters under the light. If split, a very strong impulse of unknown nature emerges. Increases electrical protection and carried weight. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_oko_af_iam_name">
+		<text>IAM w/ Eye</text>
+	</string>
+	<string id="st_af_oko_af_iam_descr">
+		<text>
+		It is a translucent faded orb, blue-green on the edges, size of a fist. Center has a thick matte coloring. Restores health and protects against toxins. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_skripka_af_iam_name">
+		<text>IAM w/ Violin</text>
+	</string>
+	<string id="st_af_skripka_af_iam_descr">
+		<text>
+		Round shimmering formation with zero gravity. Violin has an exclusively aesthetic value - the artefact floats in half a meter over any surface and brightly overflows with all rainbow colors. In addition, catched by the slightest breeze, emites melodious ringing in different tones, thereby hypnotizing the owner. Also adds weight to contents of backpack, but in return gives an inflow of strength and accelerated wounds healing. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_amk_yoyo_af_iam_name">
+		<text>IAM w/ Twins</text>
+	</string>
+	<string id="st_amk_yoyo_af_iam_descr">
+		<text>
+		Appearance resembles two mushroom heads that look absolutely the same, maybe therefore it was called so. Artefact will increase your thermal protection, and allows to carry a little more goods. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_amk_ice_s_af_iam_name">
+		<text>IAM w/ Ice Cream</text>
+	</string>
+	<string id="st_amk_ice_s_af_iam_descr">
+		<text>
+		Artefact generated by the Gravi anomaly, appearance somewhat resembles ice cream. Increases carry weight and protects against chemical anomalies. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_amk_snezhok_af_iam_name">
+		<text>IAM w/ Snowball</text>
+	</string>
+	<string id="st_amk_snezhok_af_iam_descr">
+		<text>
+		Small artefact, radioactive, slightly increases carried weight and protects against psi fields.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_wish_af_iam_name">
+		<text>IAM w/ Dream</text>
+	</string>
+	<string id="st_af_wish_af_iam_descr">
+		<text>
+		Artefact got its name from the first stalker who found it, Sanya Philosopher. Despite the name, there is nothing unusual about it. Slightly increases carried weight, heals the owner and treats scratches. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_cristal_drops_af_iam_name">
+		<text>IAM w/ Sky Tears</text>
+	</string>
+	<string id="st_af_cristal_drops_af_iam_descr">
+		<text>
+		Solid, transparent artefact with a luminous substance inside. Moderately protects against electrical effects and restores energy. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_zelonka_af_iam_name">
+		<text>IAM w/ Brilliant Green</text>
+	</string>
+	<string id="st_af_zelonka_af_iam_descr">
+		<text>
+		Like the medicine of the same name, it is valued and widely used. Restores health quite well and increases protection against chemical anomalies. Despite radioactivity, many stalkers use this artefact.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_kashtan_af_iam_name">
+		<text>IAM w/ Chestnut</text>
+	</string>
+	<string id="st_af_kashtan_af_iam_descr">
+		<text>
+		Artefact looks like a cracked overgrown chestnut with sharp spikes. A pretty good artefact that helps in every aspect, but only just a little. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_cristall_flower3_af_iam_name">
+		<text>IAM w/ Phantom</text>
+	</string>
+	<string id="st_af_cristall_flower3_af_iam_descr">
+		<text>
+		Pinky, translucent grainy palm sized ingot. Increases carry weight, restores health and heals wounds. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_vyvert3_af_iam_name">
+		<text>IAM w/ Velvet</text>
+	</string>
+	<string id="st_af_vyvert3_af_iam_descr">
+		<text>
+		Fancy purple rounded shape crystal. Upon contact with the artefact, a person's well-being generally improves. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_raibloko3_af_iam_name">
+		<text>IAM w/ Plush</text>
+	</string>
+	<string id="st_af_raibloko3_af_iam_descr">
+		<text>
+		It looks like a Fountain artefact, but has other properties. Slightly restores strength and health. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_cristall3_af_iam_name">
+		<text>IAM w/ Pluck-stone</text>
+	</string>
+	<string id="st_af_cristall3_af_iam_descr">
+		<text>
+		Anomalous formation consisting of green arcs. Moderately protects against electrical effects and heals wounds. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_fireball3_af_iam_name">
+		<text>IAM w/ Plumelet</text>
+	</string>
+	<string id="st_af_fireball3_af_iam_descr">
+		<text>
+		Thin golden formation of small size, practically weightless. Very valuable artefact, which brings a lot of power to the owner. Stalkers are joking that it is phoenix appeared in the Zone, who drops his feathers. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_dummy_glassbeads3_af_iam_name">
+		<text>IAM w/ Crisps</text>
+	</string>
+	<string id="st_af_dummy_glassbeads3_af_iam_descr">
+		<text>
+		Well established that radiation from artefact's pulsation causes blood coagulation in open wounds. Also the artefact moderately protects against thermal effects. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_eye3_af_iam_name">
+		<text>IAM w/ Donor</text>
+	</string>
+	<string id="st_af_eye3_af_iam_descr">
+		<text>
+		A small grayish brown formation similar to a piece of dried meat. Has a hematopoietic effect. Heals the wounds and accelerates blood production. Also moderately protects against chemicals. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_fire3_af_iam_name">
+		<text>IAM w/ Illusion</text>
+	</string>
+	<string id="st_af_fire3_af_iam_descr">
+		<text>
+		A large rainbow substance of irregular shape with numerous tentacles and frequent weak multicolored lights flickering. Valuable artefact, quickly heals wounds.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_mayatnik3_af_iam_name">
+		<text>IAM w/ Mint Carassius</text>
+	</string>
+	<string id="st_af_mayatnik3_af_iam_descr">
+		<text>
+		Rather rare. Can be found only in the northern regions of the Zone. If have it - can almost forget what food is. No negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_lifekam3_af_iam_name">
+		<text>IAM w/ Fallen Angel</text>
+	</string>
+	<string id="st_af_lifekam3_af_iam_descr">
+		<text>
+		Artefact, appearance and origin of which resemble another one - Black Angel. Slightly protects against psi exposures and heals wounds. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_blood3_af_iam_name">
+		<text>IAM w/ Bracelet</text>
+	</string>
+	<string id="st_af_blood3_af_iam_descr">
+		<text>
+		Micaceous formation in the form of an uneven circle. Color varies from white to light blue, there are also blue, green and grayish specimens that can be found. By weight and by feel, the bracelet resembles a metal, but it actually consists of the thinnest scales of an unknown material. It is valued exclusively for rare beauty. Although it is believed that they have a health-beneficial effects. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_fuzz_kolobok3_af_iam_name">
+		<text>IAM w/ Green Exclay</text>
+	</string>
+	<string id="st_af_fuzz_kolobok3_af_iam_descr">
+		<text>
+		Green brittle lumps, covered by dark crust when come in contact with air. Moderately protects against psi fields, slightly increases carry weight and gradually restores health of the owner. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_baloon3_af_iam_name">
+		<text>IAM w/ Icy Heart</text>
+	</string>
+	<string id="st_af_baloon3_af_iam_descr">
+		<text>
+		A piece of tightly compressed snowflakes and the smallest parts of the victims of anomaly, shape resembling a heart. It has a positive effect on the body as a whole. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_glass3_af_iam_name">
+		<text>IAM w/ Meringue</text>
+	</string>
+	<string id="st_af_glass3_af_iam_descr">
+		<text>
+		Artefact, form and physical properties of which resemble meringue. Slightly increases carry weight, restores strength and heals cuts. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_vedsleza3_af_iam_name">
+		<text>IAM w/ Ring</text>
+	</string>
+	<string id="st_af_vedsleza3_af_iam_descr">
+		<text>
+		Anomalous formation, somewhat resembling a dirty golden ring. When wearing it heals the owner a bit. A little radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_gubka3_af_iam_name">
+		<text>IAM w/ Sponge</text>
+	</string>
+	<string id="st_af_gubka3_af_iam_descr">
+		<text>
+		Rather common emerald viscous substance generated by the Jelly anomaly. When wearing this artefact, wounds are slightly healed. A little radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_electra_sparkler3_af_iam_name">
+		<text>IAM w/ Shard of Sky</text>
+	</string>
+	<string id="st_af_electra_sparkler3_af_iam_descr">
+		<text>
+		Hooplike, sea wave color crystalline substance. Valuable artefact that is good at restoring organism's strength and removing radiation. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_electra_flash3_af_iam_name">
+		<text>IAM w/ Blue Carbuncle </text>
+	</string>
+	<string id="st_af_electra_flash3_af_iam_descr">
+		<text>
+		Purple stone size and shape of which resembling mushroom. Moderately protects against thermal effects, slightly restores energy reserves. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_dummy_battery3_af_iam_name">
+		<text>IAM w/ Necklace</text>
+	</string>
+	<string id="st_af_dummy_battery3_af_iam_descr">
+		<text>
+		White, with blue overflowings ring made of light glassy material. Being put on a thin horizontal rod and slightly spun, it continues to move until stopped by the utmost force. The first one "Eternal Engine" found in the Zone. Moderately protects against chemicals, slightly restores energy reserves. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_dummy_dummy3_af_iam_name">
+		<text>IAM w/ Electric Spider</text>
+	</string>
+	<string id="st_af_dummy_dummy3_af_iam_descr">
+		<text>
+		The artefact resembles a blue spider, hence why it got its name. Quickly removes accumulated radiation and because of this it is greatly valued by all on the territory of the Chernobyl Exclusion Zone. Has no negative properties.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_ice3_af_iam_name">
+		<text>IAM w/ Serpentine</text>
+	</string>
+	<string id="st_af_ice3_af_iam_descr">
+		<text>
+		It is a milky white color spiral-like substance. Moderately protects against psi exposure and restores energy.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_oblivion3_af_iam_name">
+		<text>IAM w/ Octopus</text>
+	</string>
+	<string id="st_af_oblivion3_af_iam_descr">
+		<text>
+		Artefact looks like an octopus with tentacles on the sides. Provides little carry weight increase, restores strength and heals cuts. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+		
+	<string id="st_af_indeikam3_af_iam_name">
+		<text>IAM w/ Indian Stone</text>
+	</string>
+	<string id="st_af_indeikam3_af_iam_descr">
+		<text>
+		Light gray stone, round shape, size of a goose egg. Darker color, as if painted, intricate wavy lines are drawn and points placed on it. Slightly increases maximum carried weight and heals the organism. Radioactive.\n \n
+		%c[ui_gray_2]PROPERTIES:\n
+		%c[d_cyan] • %c[ui_gray_2] technological item\n
+		%c[d_cyan] • %c[ui_gray_2] valuable\n
+		%c[ui_white] • %c[ui_gray_2] artefact storage device\n
+		%c[ui_white] • %c[ui_gray_2] maximum capacity:%c[ui_gray_1] 1\n
+		%c[ui_white] • %c[ui_gray_2] permissible radiation level:%c[ui_gray_1] 7 mSv\n
+		%c[ui_white] • %c[ui_gray_2] state:%c[ui_gray_1] full\n
+		</text>
+	</string>
+	
+	<string id="st_af_prujina_af_iam_name">
+		<text>IAM with "Spring"</text>
+	</string>
+	<string id="st_af_prujina_af_iam_descr">
+		<text>%c[255,128,255,128,128] Rare, unique artifact, increases resistance to thermal structure anomalies, promotes wound healing, radioactive, full properties not yet studied. Born in thermal anomalies.</text>
+	</string>
+
+	<string id="st_af_itching1_af_iam_name">
+		<text>IAM with "Crystal Itch"</text>
+	</string>
+	<string id="st_af_itching1_af_iam_descr">
+		<text>%c[255,128,255,128]Increases body tone, but is radioactive.</text>
+	</string>
+
+	<string id="st_af_slizen_af_iam_name">
+		<text>IAM with "Slizen."</text>
+	</string>
+	<string id="st_af_slizen_af_iam_descr">
+		<text>%c[255,128,255,255,128] Rare, unique and very valuable artifact, increases resistance to chemical anomalies, and removes radioactive isotopes from the body. It is born in chemical structure anomalies.</text>
+	</string>
+
+
+	<string id="st_af_crystal_ice_af_iam_descr">
+		<text>%c[255,128,255,255,128]Externally, the artifact resembles a "Kolobok"; it is widely believed to be a Kolobok crossed with a flash. Capable of dramatically increasing the wearer's muscle tone. Radioactive.</text>
+	</string>
+	<string id="st_af_crystal_ice_af_af_iam_name">
+		<text>IAM with "Crystal Flash"</text>
+	</string>
+
+
+	<string id="st_af_crystal_blood_af_iam_descr">
+		<text>%c[255,128,255,128]It is a reddish formation of compacted and fossilized plant, soil, and animal remains. Has the ability to partially neutralize chemicals harmful to humans. Radioactive.</text>
+	</string>
+	<string id="st_af_crystal_blood_af_iam_name">
+		<text>IAM with "Crystal Blood Stone"</text>
+	</string>
+
+
+	<string id="st_af_crystal_glassbeads_af_iam_descr">
+		<text>%c[255,128,255,255,128]Much about this artifact remains a mystery. However, it has been reliably established that the radiation generated by the pulsation of the Crystal Beads' thickenings causes blood in open wounds to clot very quickly. Radioactive.</text>
+	</string>
+	<string id="st_af_crystal_glassbeads_af_iam_name">
+		<text>IAM with "Crystal Beads"</text>
+	</string>
+
+	<string id="st_af_crystal_vyvert_af_iam_descr">
+		<text>%c[255,128,255,255,128]A bizarrely shaped artifact that occurs in areas of increased gravitational activity. It is a kind of sponge that absorbs radioactive elements. It successfully protects its bearer from both induced radiation and radioactive particles that have already entered the body.</text>
+	</string>
+	<string id="st_af_crystal_vyvert_af_iam_name">
+		<text>IAM with "Crystal Vyvert"</text>
+	</string>
+
+	<string id="st_af_crystal_gravi_af_iam_descr">
+		<text>%c[255,128,255,255,128]Artifact is formed by prolonged gravitational effects on metal-containing substances. Capable of maintaining a small anti-gravity field around itself. Many stalkers use it to significantly reduce the weight of their backpack. Radioactive.</text>
+	</string>
+	<string id="st_af_crystal_gravi_af_iam_name">
+		<text>IAM with "Crystal Gravi"</text>
+	</string>
+
+	<string id="st_af_ledenec_af_iam_descr">
+		<text>%c[255,128,255,128,255,128]The artifact is a stone closely resembling granite. Occurs within gravitational fields of immense intensity. It can fully or partially protect the owner's mind from psi effects. Radioactive.</text>
+	</string>
+	<string id="st_af_ledenec_af_iam_name">
+		<text>IAM with "Lollipop"</text>
+	</string>
+	<string id="st_af_dark_soul_af_iam_name">
+		<text>IAM with "Dark Soul"</text>
+	</string>
+
+	<string id="st_af_atom_af_af_iam_descr">
+		<text>%c[255,128,255,128]Increases immunity to fire. Radioactive.</text>
+	</string>
+	<string id="st_af_busic_af_af_iam_name">
+		<text>IAM with "Daughter's Beads"</text>
+	</string>
+	<string id="st_af_magnito_af_iam_descr">
+		<text>%c[255,128,255,128]Found in thermal structure anomalies. It has been noted to increase immunity to fire and accelerate wound healing. Radioactive.</text>
+	</string>
+	<string id="st_af_magnito_af_iam_name">
+		<text>IAM with "Magneto"</text>
+	</string>
+	<string id="st_af_mahovik_af_iam_descr">
+		<text>%c[255,128,255,128] Most often formed in gravity anomalies. Noted to make it easier to carry weight. Radioactive.</text>
+	</string>
+	<string id="st_af_mahovik_af_iam_name">
+		<text>IAM with "Flywheel"</text>
+	</string>
+	<string id="st_af_propeller_af_iam_descr">
+		<text>%c[255,128,255,128]A new artefact. Its properties have not been fully studied yet, it is in demand among Stalkers for its ability to significantly increase the weight carried. Radioactive.</text>
+	</string>
+	<string id="st_af_propeller_af_iam_name">
+		<text>IAM with "Propeller"</text>
+	</string>
+	<string id="st_af_volchok_af_iam_descr">
+		<text>%c[255,128,255,128]Artifact of gravitational structure, quite rare, when worn on a belt increases the weight carried. Radioactive.</text>
+	</string>
+	<string id="st_af_volchok_af_iam_name">
+		<text>IAM with "Volchok"</text>
+	</string>
+	<string id="st_af_diablo_af_iam_descr">
+		<text>%c[255,128,255,128]A new artefact. Shaped like a black colored heart, for which it is named. Increases the body's resistance to psi. Radioactive.</text>
+	</string>
+	<string id="st_af_diablo_af_iam_name">
+		<text>IAM with "Devil's Heart"</text>
+	</string>
+	<string id="st_af_glas_diablo_af_iam_descr">
+		<text>%c[255,128,255,128]A rare artefact. Properties have not been studied. Radioactive.</text>
+	</string>
+	<string id="st_af_glas_diablo_af_iam_name">
+		<text>IAM with Devil's Eye</text>
+	</string>
+	<string id="st_af_crystal_generator_af_iam_descr">
+		<text>%c[255,128,255,255,128]An artifact of electrical structure. Creates a field around itself that can dissipate electricity. Radioactive.</text>
+	</string>
+	<string id="st_af_crystal_generator_af_iam_name">
+		<text>IAM with "Generator"</text>
+	</string>
+	<string id="st_af_angel_af_af_iam_descr">
+		<text>%c[255,128,255,128]The formation is a lump of matter that resembles the shape of a krulla. It helps to increase the body's tone. Radioactive.</text>
+	</string>
+	<string id="st_af_angel_af_af_iam_name">
+		<text>IAM with "Angel"</text>
+	</string>
+	<string id="st_af_microb_af_af_iam_descr">
+		<text>%c[255,128,255,255,128]A fairly rare artifact. Its properties are not fully understood, but it has been noted that it promotes wound healing and partially removes radiation.</text>
+	</string>
+	<string id="st_af_microb_af_iam_name">
+		<text>IAM with "Microb"</text>
+	</string>
+	<string id="st_af_karusel_af_iam_descr">
+		<text>%c[255,128,255,128]All properties are unstudied. It is known to accelerate wound healing, and protects against the effects of toxins on the body. Radioactive.</text>
+	</string>
+	<string id="st_af_karusel_af_iam_name">
+		<text>IAM with "Carousel"</text>
+	</string>
+	<string id="st_af_padshi_angel_af_iam_descr">
+		<text>%c[255,128,255,255,128]A fairly rare artifact, accelerates wound healing. Radioactive.</text>
+	</string>
+	<string id="st_af_padshi_angel_af_iam_name">
+		<text>IAM with "Mollusk"</text>
+	</string>
+	<string id="st_af_clear_sky_af_iam_name">
+		<text>IAM with "Clear Skies"</text>
+	</string>
+	<string id="st_af_clear_sky_af_af_iam_descr">
+		<text>%c[255,128,255,255,128]Possibly exists in a single copy, second name Heart of the Monolith. Gives immunity to almost all negative effects of the zone.</text>
+	</string>
+		<string id="st_af_joker_af_iam_name">
+		<text>IAM with "Joker"</text>
+	</string>
+	<string id="st_af_joker_af_iam_descr">
+		<text>%c[255,128,255,255,128]A very rare artifact. It was supposed that it was bred by scientists in some of the laboratories by crossing several artifacts. But the rumors have never been confirmed.</text>
+	</string>
+	<string id="st_af_plasma_af_af_iam_name">
+		<text>IAM with "Plasma"</text>
+	</string>
+	<string id="st_af_plasma_af_af_iam_descr">
+		<text>%c[255,128,255,255,128]A very rare artifact. Increases overall tone, and cleanses the body of radiation...</text>
+	</string>
+	<string id="st_af_necklace_af_iam_name">
+		<text>IAM with "Daughter's Necklace"</text>
+	</string>
+	<string id="st_af_necklace_af_iam_descr">
+		<text>%c[255,128,255,255,128]Possibly exists in a single copy. Rumored to have been bred by scientists in some laboratory by crossing artifacts "Clear Sky" and "Plasma".</text>
+	</string>
+
+	<string id="st_af_sponge_af_af_iam_name">
+		<text>IAM with "Sponge"</text>
+	</string>
+	<string id="st_af_sponge_af_af_iam_descr">
+		<text>%c[255,128,255,128]A rare artefact. Properties are poorly understood. It has been observed to partially remove radionuclides from the body.</text>
+	</string>
+	<string id="st_af_itching_low_af_iam_name">
+		<text>IAM with "Crystal Wash"</text>
+	</string>
+	<string id="st_af_itching_low_af_iam_descr">
+		<text>%c[255,128,255,128]A rare artefact. Properties are virtually unstudied. Radioactive</text>
+	</string>
+	<string id="st_af_midi_af_af_iam_name">
+		<text>IAM with "Snail"</text>
+	</string>
+	<string id="st_af_midi_af_af_iam_descr">
+		<text>%c[255,128,255,128]A rare artefact. Increases immunity to fire, and detoxifies the body. Radioactive.</text>
+	</string>
+	<string id="st_af_klaksa_af_iam_name">
+		<text>IAM with "Klaksa"</text>
+	</string>
+	<string id="st_af_klaksa_af_iam_descr">
+		<text>%c[255,128,255,255,128]Born only in the Klaksa anomaly, for which it got its name. Properties are not studied. Radioactive.</text>
+	</string>
+	<string id="st_af_sea_urchin_af_iam_name">
+		<text>IAM with sea urchin</text>
+	</string>
+	<string id="st_af_sea_urchin_af_iam_descr">
+		<text>%c[255,128,255,128]A rare artefact. Restores strength and gives significant immunity to psi effects, but is radioactive.</text>
+	</string>
+	<string id="st_af_crystal_oko_af_iam_name">
+		<text>IAM with "All-Seeing Eye"</text>
+	</string>
+	<string id="st_af_crystal_oko_af_iam_descr">
+		<text>%c[255,128,255,255,128]This very rare artifact looks like an eye, for which it is named. When injured, it speeds up metabolic processes, which promotes rapid healing of wounds. Radioactive.</text>
+	</string>
+	<string id="st_af_brain_af_iam_name">
+		<text>IAM with "Brain"</text>
+	</string>
+	<string id="st_af_brain_af_af_iam_descr">
+		<text>%c[255,128,255,128]This very rare artifact looks like an exact copy of the brain, for which it was named. In case of injuries, it speeds up metabolic processes, which helps wounds to heal faster. It also weakens the effects of radiation.</text>
+	</string>
+	<string id="st_af_absorbent_af_iam_name">
+		<text>IAM with "Absorbent"</text>
+	</string>
+	<string id="st_af_absorbent_af_iam_descr">
+		<text>%c[255,128,255,128]A rare artefact. Properties are unstudied. Can form in absolutely any anomaly. Radioactive. </text>
+	</string>
+	<string id="st_af_pendulum_af_iam_name">
+		<text>IAM with "Pendulum"</text>
+	</string>
+	<string id="st_af_pendulum_af_iam_descr">
+		<text>%c[255,128,255,128]A rare artefact. Full properties have not been studied. Formed in gravitational anomalies. Known to help resist psi effects. </text>
+	</string>
+	<string id="st_af_swivel_af_iam_name">
+		<text>IAM with "Swivel"</text>
+	</string>
+	<string id="st_af_swivel_af_iam_descr">
+		<text>%c[255,128,255,128]A rare artefact. Properties not studied. Formed in elemental anomalies. Radioactive. </text>
+	</string>
+		<string id="st_af_morf_af_iam_name">
+		<text>IAM with "Morph"</text>
+	</string>
+	<string id="st_af_morf_af_af_iam_descr">
+		<text>%c[255,128,255,255,128] Unstudied, radioactive formation, born in chemical structure anomalies. </text>
+	</string>
+	<string id="st_af_pero_af_iam_name">
+		<text>IAM with "Crystal Feather"</text>
+	</string>
+	<string id="st_af_pero_af_iam_descr">
+		<text>%c[255,128,255,255,128] A very rare artifact, so many vagabonds categorize its existence as a baize. Has slight radiation, but increases resistance to chemical structure anomalies. In addition, if placed in a backpack, it significantly lightens the weight of the contents, almost twice as much. </text>
+	</string>
+	<string id="st_af_vereteno_af_iam_name">
+		<text>IAM with "Vereteno_af_iam_iam"</text>
+	</string>
+	<string id="st_af_vereteno_af_iam_descr">
+		<text>%c[255,128,255,255,128] A rare, unique artifact. Has slight radiation, increases resistance to chemical structure anomalies. Full properties have not yet been studied, but it is said that the artifact promotes wound healing. </text>
+	</string>
+	<string id="st_af_bumerang_af_iam_name">
+		<text>IAM with "Boomerang"</text>
+	</string>
+	<string id="st_af_bumerang_af_iam_descr">
+		<text>%c[255,128,255,255,128] A rare, unique artifact. Has a small radioactive emission, increases resistance to thermal and electrical anomalies. Born in anomalous zones combining electra and fry. </text>
+	</string>
+	<string id="st_af_pulsar_af_iam_name">
+		<text>IAM with "Pulsar"</text>
+	</string>
+	<string id="st_af_pulsar_af_iam_descr">
+		<text>%c[255,128,255,255,128] Rare, unique artifact, properties poorly understood. Most often born in chemical anomalies, rumored to be in demand in the greater earth for its ability to jam radio signals.</text>
+	</string>
+	<string id="st_af_deformer_af_iam_name">
+		<text>IAM with "Deformer"</text>
+	</string>
+	<string id="st_af_deformer_af_iam_descr">
+		<text>%c[255,128,255,255,128] A unique artifact. Was found in a single specimen on the rifts of Zaton. To this day, scientists have not come to a definite conclusion that the artifact is primary, the artifact is formed on the site of a fault in the Earth's crust, or the artifact itself generates these faults. Increases resistance to all types of anomalies. Radioactive. </text>
+	</string>
+	<string id="st_af-ameba-mica_iam_name">
+		<text>IAM with "Mercury Ball"</text>
+	</string>
+	<string id="st_af-ameba-slime_iam_name">
+		<text>IAM with "Radioactive Bolt"</text>
+	</string>
+	<string id="st_af-ameba-slug_iam_name">
+		<text>IAM with "Radioactive Debris"</text>
+	</string>
+	<string id="st_af-blood_iam_name">
+		<text>IAM with "Toad's Eye"</text>
+	</string>
+	<string id="st_af-cristall-flower_iam_name">
+		<text>IAM with "Glass Bagel"</text>
+	</string>
+	<string id="st_af-dummy-glassbeads_iam_name">
+		<text>IAM with "Dead Head"</text>
+	</string>
+	<string id="st_af-dummy-spring_iam_name">
+		<text>IAM with "Sponge"</text>
+	</string>
+	<string id="st_af-electra-flash_iam_name">
+		<text>IAM with "Stinging absorbent cotton"</text>
+	</string>
+	<string id="st_af-electra-moonlight_iam_name">
+		<text>IAM with "Electric Ball"</text>
+	</string>
+	<string id="st_af-electra-sparkler_iam_name">
+		<text>IAM with "Mercury"</text>
+	</string>
+	<string id="st_af-fireball_iam_name">
+		<text>IAM with "Transparent Ball"</text>
+	</string>
+	<string id="st_af-medusa_iam_name">
+		<text>IAM with "Bagel"</text>
+	</string>
+	<string id="st_af-mincer-meat_iam_name">
+		<text>IAM with "Rusty Hair"</text>
+	</string>
+	<string id="st_af-night-star_iam_name">
+		<text>IAM with "Magnet"</text>
+	</string>
+	<string id="st_af-vyvert_iam_name">
+		<text>IAM with "Gravi Fragment"</text>
+	</string>
+	<string id="st_af-ameba-mica_iam_descr">
+		<text>Consists of liquid metal of anomalous origin. It is formed after an Ejection, lasts for a short time, then vaporizes.</text>
+	</string>
+	<string id="st_af-ameba-slime_iam_descr">
+		<text>Cheap artifacts in the form of metal scraps and construction debris. Has no useful properties. Only of interest to researchers for radiation measurements.</text>
+	</string>
+	<string id="st_af-ameba-slug_iam_descr">
+		<text>Cheap artifacts in the form of metal scraps and construction debris. Has no useful properties. Only of interest to researchers for radiation measurements.</text>
+	</string>
+	<string id="st_af-blood_iam_descr">
+		<text>Unique Artifact. The result of the interaction between the Crystal Barb and the Meatgrinder. Rarely appears in clusters of anomalies.</text>
+	</string>
+	<string id="st_af-cristall_iam_descr">
+		<text>Appears in clusters of anomalies. Protects against unconsciousness, restores strength, shields against psi effects.</text>
+	</string>
+	<string id="st_af-cristall-flower_iam_descr">
+		<text>Born in the anomaly "Trumplin". Such an artifact can be found in few areas of the Zone. Inclusions of metallic compounds give a beautiful play of light. Looking at this artifact in the light of a fire at night is wonderfully soothing.</text>
+	</string>
+	<string id="st_af-drops_iam_descr">
+		<text>Formed by the Roast anomaly at high temperatures. Appears as a blackened drop-shaped formation with a glossy surface, covered with cracks.</text>
+	</string>
+	<string id="st_af-dummy-battery_iam_descr">
+		<text>Superartefact of an electromagnetic nature. A directional field of disintegration. The origin of this item is shrouded in a veil of scientific mystery. It is clear that it includes dielectric elements, but under what physical conditions it is formed - science is unknown. Allows you to carry an additional 4 kg.</text>
+	</string>
+	<string id="st_af-dummy-dummy_iam_descr">
+		<text>Wearing this artifact denaturalizes proteins more slowly. In other words, the flesh is more resistant to high temperatures and burns less. In itself, it is an expensive and rare item.</text>
+	</string>
+	<string id="st_af-dummy-glassbeads_iam_descr">
+		<text>Superartefact of the second level. Appears in clusters of anomalies. Anomalous energy level: very high. Cost: very high. Prevalence: very low.</text>
+	</string>
+	<string id="st_af-dummy-pellicle_iam_descr">
+		<text>This artifact is so rare that many researchers have no idea that such a substance could even exist in the wild. It rejects caustic chemical components.</text>
+	</string>
+	<string id="st_af-dummy-spring_iam_descr">
+		<text>Superartefact with unstable gravity. A throwable object is "shot" into a living body after hitting the floor or an obstacle. Once hit, it is "shot" into the next living body until it falls or hits a non-living object. The artifact can then be picked up.</text>
+	</string>
+	<string id="st_af-electra-flash_iam_descr">
+		<text>Big flying fluff, leaves severe burns when it hits the body. It accumulates in lowlands, pits, and hollows. Rises into the air in wind or explosions. It comes out of a buildup of "Stinging Fluff".</text>
+	</string>
+	<string id="st_af-electra-moonlight_iam_descr">
+		<text>A congenital case of Electra anomaly activity. Apparently, such a wonderful rounded shape can be obtained by subjecting the anomaly to thermal effects. An expensive artifact.</text>
+	</string>
+	<string id="st_af-electra-sparkler_iam_descr">
+		<text>Located near Electra-type anomalies. A fairly common and inexpensive artifact. Nevertheless, it is valued among the researchers of the Zone for its properties.</text>
+	</string>
+	<string id="st_af-fireball_iam_descr">
+		<text>Artifact of thermal origin. A transparent shimmering sphere.</text>
+	</string>
+	<string id="st_af-fuzz-kolobok_iam_descr">
+		<text>When you hold this enigma of the Zone in your hands, you can feel the skin becoming rough and less sensitive. It is still easy to pierce with a bullet, but it is much harder to cut it.</text>
+	</string>
+	<string id="st_af-gold-fish_iam_descr">
+		<text>Generated by the "Funnel" anomaly. An elemental artifact with a directed magnetic and gravitational anomaly. Allows you to carry an additional 12 kg.</text>
+	</string>
+	<string id="st_af-gravi_iam_descr">
+		<text>Elemental artifact with a directional magnetic and gravitational anomaly. Has a variant with more pronounced anomalous properties - "Strong Gravity Artifact". Allows carrying an additional 8 kg.</text>
+	</string>
+	<string id="st_af-medusa_iam_descr">
+		<text>Elemental artifact of gravitational nature. Has the shape of a torus, which explains its name. At least two varieties of this artifact are known, the ordinary and the "Glass Bagel".</text>
+	</string>
+	<string id="st_af-mincer-meat_iam_descr">
+		<text>Elemental artifact of organic nature. A bundle of stiff lichen fibers of a dirty rusty color. It has no useful properties.</text>
+	</string>
+	<string id="st_af-night-star_iam_descr">
+		<text>A variety of metal junk, which has been lying in gravitational anomalies for a long time, has acquired the ability to create a directed magnetic field of high intensity. This specimen is a fragment of a gear shaft.</text>
+	</string>
+	<string id="st_af-rusty-kristall_iam_descr">
+		<text>Crystallizes in the Stinging Fluff anomaly. Draws radiation out of the body naturally. That is, through the ears along with a certain amount of blood. Possible blood loss through other orifices as well. Occurs infrequently and is quite effective, which has earned it a stable price on the artifact market.</text>
+	</string>
+	<string id="st_af-rusty-sea-urchin_iam_descr">
+		<text>The Stinging Fluff anomaly very rarely spawns such an artifact. Increases blood pressure, body gets rid of large amounts of red blood cells. Temporarily shields against psi effects.</text>
+	</string>
+	<string id="st_af-rusty-thorn_iam_descr">
+		<text>The result of the interaction between the Stinging Fluff anomaly and the body of an inattentive stalker. The spiky artifact prickles the wearer's body no matter how it is attached. But it also helps cleanse the body of radionuclides. Quite common and cheap.</text>
+	</string>
+	<string id="st_af-soul_iam_descr">
+		<text>It is very rare to find near Carousel anomalies. Only a few people manage to find such an artifact, and few people have even seen it. It has a nice shape and an equally nice price.</text>
+	</string>
+	<string id="st_af-vyvert_iam_descr">
+		<text>Located near anomalies of the "Funnel" type. When in contact with the body, it spreads directed radiation that increases stamina. This artifact is not difficult to find, so the money for it give a little. It allows you to carry an additional 4 kg.</text>
+	</string>
+</string_table>

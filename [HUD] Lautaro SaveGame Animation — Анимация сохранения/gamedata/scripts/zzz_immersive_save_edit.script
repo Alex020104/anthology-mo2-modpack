@@ -1,0 +1,61 @@
+--	IMMERSIVE SAVING FOR ANOMALY 1.5.1
+--	By: hardy
+--	Thanks: collision02 for original immersive campfire saving code and coding advice
+-- v2 - Renamed from IMMERSIVE CAMPFIRE QUICKSAVING to IMMERSIVE SAVING, as it now affects all saves in all modes (except for autosave)
+-- - Fixed saving for all possible save modes, including agony and timer modes.
+
+local pendingsave = false
+local savestring = ""
+local campfire_radius = 10
+
+local function check_no_nearby_campfire()
+	local nearby = bind_campfire.get_nearby_campfire(campfire_radius,true)
+	return not (type(nearby)~="boolean" and nearby:is_on())
+end
+
+local function immersive_anim_end()
+	RemoveTimeEvent("immersive_anim_end","immersive_anim_end")
+	--level_input.action_quick_save()
+	--printdbg("Now executing: "..savestring)
+	exec_console_cmd(savestring)
+	pendingsave = false
+	savestring = ""
+end
+
+local function immersive_anim_start()
+
+	xr_effects.play_snd(db.actor, nil, { [1] = "interface\\inv_save" })
+
+	
+	CreateTimeEvent("immersive_anim_end","immersive_anim_end",6,immersive_anim_end)
+end
+
+local function presave(savestr)
+	--printdbg("RET: "..flags.ret)
+	--if pendingsave or not alife_storage_manager.get_state().enable_campfire_mode then return end
+	if pendingsave then return end
+	--if not bind_campfire.check_no_nearby_campfire() then
+	pendingsave = true
+	savestring = savestr
+	immersive_anim_start()
+	--end
+end
+
+local function on_console_execute(name,...)
+	if (name or "") ~= "save" then return end
+	local args = {...}
+	local _argstr_parts = {}
+	for k,v in pairs(args or {}) do
+		_argstr_parts[#_argstr_parts+1] = " "..v
+	end
+	local argstr = table.concat(_argstr_parts)
+	if string.find(argstr,"autosave") or string.find(argstr,"sleep") then return end
+	xr_effects.play_snd(db.actor, nil, { [1] = "interface\\inv_save" })
+	--presave(name..argstr)
+end
+
+function on_game_start()
+	--RegisterScriptCallback("on_before_save_input", on_before_save_input)
+	RegisterScriptCallback("on_console_execute", on_console_execute)
+	--bind_campfire.check_no_nearby_campfire = check_no_nearby_campfire
+end

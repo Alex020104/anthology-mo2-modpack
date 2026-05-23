@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+<string_table>
+
+	<string id="st_esc_sidor_talk_sms">
+    <text>%c[255,0,255,0]Shroud, drop by when you're nearby — I’ve got something for you.</text>
+</string>
+
+<string id="st_esc_quest_fee_sms_1">
+    <text>%c[255,255,128,128]How’s it going, radioactive meat? You’ve got one more day to get the money, otherwise you know what happens.</text>
+</string>
+
+<string id="st_esc_quest_fee_sms_2">
+    <text>%c[255,255,128,128]And where’s the money you promised? Fine, you get another 12 hours. Fail this and it’s on your head!</text>
+</string>
+
+<string id="st_esc_quest_fee_sms_3">
+    <text>%c[255,255,128,128]Time’s up. Your buddy has already been fed to the dogs, and you won’t be running for much longer either.</text>
+</string>
+
+<string id="st_esc_sms_wolf_quest_trimming">
+    <text>%c[255,0,255,0]Hey Shroud, still need money? I found a job that suits you. Come over, I’ll explain everything.</text>
+</string>
+
+<string id="st_esc_sms_wolf_quest_insurance">
+    <text>%c[255,0,255,0]It’s me again. I need your help, you know where to find me.</text>
+</string>
+
+<string id="st_esc_sms_wolf_quest_talk_wolf_work">
+    <text>%c[255,0,255,0]Stop by anytime, I’ll always find some work for you…</text>
+</string>
+
+<string id="st_esc_sms_logoped_predlog">
+    <text>%c[255,255,128,128]Well, well! Look who’s rolling into our turf! You’re on my crew’s territory, drifter. Get over here, we’ll talk. Maybe we’ll find some work for you—for the good of our boys.</text>
+</string>
+
+<string id="st_esc_sidor_esc_quest_serious_business_sms">
+    <text>%c[255,0,255,0]Shroud, I have serious work for you. Waiting.</text>
+</string>
+
+<string id="st_esc_sidor_esc_quest_dangerous_business_sms">
+    <text>%c[255,0,255,0]So, ready? Get over here fast, time is running.</text>
+</string>
+
+<string id="st_esc_nps_wood_goblin_quest_sms">
+    <text>%c[255,0,255,0]Shroud, don’t fall behind!</text>
+</string>
+
+<string id="st_esc_borland_quest_line_sms">
+    <text>%c[255,0,255,0]Shroud, when you’re free, find me. We need to talk.</text>
+</string>
+
+<string id="st_esc_sms_borland_posle_napadenia">
+    <text>%c[255,0,255,0]Where did you disappear to?! Get to me right now, I’m in Rookie Village, waiting.</text>
+</string>
+
+<string id="st_esc_sms_borland_assistance_conditional">
+    <text>%c[255,0,255,0]Don’t worry, Shroud, we’ll get you out.</text>
+</string>
+
+<string id="st_esc_sms_logoped_gopstop_fail">
+    <text>%c[255,255,128,128]You idiot, couldn’t handle such a simple job!</text>
+</string>
+
+<string id="st_esc_borland_underground_1_sms">
+    <text>%c[255,0,255,0]Don’t fall behind, Shroud!</text>
+</string>
+
+<string id="st_esc_borland_underground_2_sms">
+    <text>%c[255,0,255,0]We need to stick together!</text>
+</string>
+
+<string id="st_esc_sidor_underground_sms">
+    <text>%c[255,0,255,0]Shroud, great news. Through my connections I got the master access code to the lab. Here it is: 7200</text>
+</string>
+
+<string id="st_esc_shaman_group_sms">
+    <text>%c[255,0,255,0]Hello, Shroud. I’m ready to accept you into our group.</text>
+</string>
+
+<string id="st_esc_nps_student_quest_sms">
+    <text>%c[255,0,255,0]Where are you going? Wait!</text>
+</string>
+
+<string id="st_esc_nps_student_quest_sms_2">
+    <text>%c[255,0,255,0]Hah! Some guide you turned out to be.</text>
+</string>
+
+<string id="st_esc_shaman_worke">
+    <text>%c[255,0,255,0]Hey Shroud, heard you’re not against earning some cash. Come over, we’ll talk — maybe I’ll find a fitting job for you.</text>
+</string>
+
+<string id="st_esc_sms_wolf_quest_conductor">
+    <text>%c[255,0,255,0]Need money? Come over, I’ve found a suitable job for you.</text>
+</string>
+
+<string id="st_esc_risovalshik_open_zakaz_sms">
+    <text>%c[255,0,255,0]Buying any weapons in any condition for spare parts. Paying well!</text>
+</string>
+
+<string id="st_esc_borland_bar_surget_sms">
+    <text>%c[255,0,255,0]Shroud! We need to stick together!</text>
+</string>
+
+<string id="st_esc_borland_bar_surget_2_sms">
+    <text>%c[255,0,255,0]Shroud! Faster! Otherwise we’re dead!</text>
+</string>
+
+<string id="st_bar_sidor_new_details_sms_1">
+    <text>%c[255,0,255,0]Shroud, how are you? Still alive? Not a word from you — no news, no trace! I’ve been informed that you’re already in the Bar. If you found something interesting… the documents from Lab X5 I asked for, bring them to the Barman. And ask him about that artifact — he has useful information.</text>
+</string>
+
+<string id="st_bar_sidor_new_details_sms_2">
+    <text>%c[255,0,255,0]Shroud, how are you? Alive? Not a word from you — no news, no trace! I’ve already been informed from the checkpoint in the Garbage…</text>
+</string>
+
+<string id="st_bar_barmen_new_details_sms">
+    <text>%c[255,0,255,0]Shroud, I’ve got a job for you, remember? Come over, we’ll talk.</text>
+</string>
+
+<string id="st_bar_send_5_time">
+    <text>5h 12m passed.</text>
+</string>
+
+<string id="st_bar_expectation_barmen_sms">
+    <text>%c[255,0,255,0]Shroud, time’s up. It’s time to decide. If you’re ready — come over, we’ll talk.</text>
+</string>
+
+<string id="st_bar_dangerous_duty_voronin_sms">
+    <text>%c[255,0,255,0]Shroud, the time has come. Head to the checkpoint and talk to the guard commander — he’ll brief you on what to do next.</text>
+</string>
+
+<string id="st_bar_azot_work_sms">
+    <text>%c[255,0,255,0]Hey stalker, want to earn some money? Come to me. I’m at the Duty base.</text>
+</string>
+
+<string id="st_bar_barmen_work_arena">
+    <text>%c[255,0,255,0]You can go to the Arena, but be careful.</text>
+</string>
+
+<string id="st_bar_end_barmen_sms">
+    <text>%c[255,0,255,0]You alive? Changed your mind? Before you go underground, stop by. I’ve got something for the road.</text>
+</string>
+
+<string id="st_city_sms_genarmy_1">
+    <text>%c[255,255,128,128]Attention all fighters! The main SPEKTRUM forces are on the central square. We attack from the front. Shroud, cover the flank. That’s an order.</text>
+</string>
+
+<string id="st_city_sms_genarmy_1_1">
+    <text>%c[255,255,128,128]TRAITOR!</text>
+</string>
+
+<string id="st_city_sms_genarmy_2">
+    <text>%c[255,255,128,128]Shroud, get closer to the APC, you’re too far. The detonator won’t work.</text>
+</string>
+
+<string id="st_city_sms_genarmy_3">
+    <text>%c[255,255,128,128]Those bastards started up a helicopter. Shroud, run to the roof! Don’t let them escape!</text>
+</string>
+
+<string id="st_city_sms_genarmy_3_1">
+    <text>%c[255,255,128,128]You let them get away!!!</text>
+</string>
+
+<string id="st_city_sms_genarmy_4">
+    <text>%c[255,255,128,128]Attention! A combat helicopter has been spotted approaching the square. Shroud, take it down. My men will handle the evac route.</text>
+</string>
+
+<string id="st_city_sms_genarmy_5">
+    <text>%c[255,255,128,128]Everyone, storm the House of Culture! Mercenaries and SPEKTRUM leaders are holed up there. No prisoners!</text>
+</string>
+
+<string id="st_city_sms_genarmy_5_1">
+    <text>%c[255,255,128,128]Shroud, check the second floor!</text>
+</string>
+
+<string id="st_city_sms_genarmy_5_2">
+    <text>%c[255,255,128,128]Shroud, check the basement!</text>
+</string>
+
+<string id="st_city_sms_genarmy_6">
+    <text>%c[255,255,128,128]Shroud, do you have the case? Bring it to me. Move!</text>
+</string>
+
+<string id="st_city_sms_genarmy_7">
+    <text>%c[255,255,128,128]Shroud, what the hell are you doing, you bastard? You’re dead! Attention all units — destroy the traitor!</text>
+</string>
+
+<string id="st_bar_send_12_time">
+    <text>12h 08m passed.</text>
+</string>
+
+
+</string_table>

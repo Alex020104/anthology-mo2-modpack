@@ -1,0 +1,15 @@
+<w>
+
+		<addict_hud1 x="310" y="400" width="29" height="33" stretch="1">
+			<texture>ui\chemaddict\him_kolba_green.dds</texture>
+		</addict_hud1>
+		
+		<addict_hud2 x="310" y="400" width="29" height="33" stretch="1">
+			<texture>ui\chemaddict\him_kolba_yolo.dds</texture>
+		</addict_hud2>
+		
+		<addict_hud3 x="310" y="400" width="29" height="33" stretch="1">
+			<texture>ui\chemaddict\him_kolba_red.dds</texture>
+		</addict_hud3>
+
+</w>

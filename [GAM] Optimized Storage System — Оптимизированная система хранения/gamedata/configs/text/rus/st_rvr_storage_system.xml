@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+    <!-- MCM section -->
+    <string id="ui_mcm_menu_rvr_storage_system">
+        <text>Rvr Storage System</text>
+    </string>
+    <string id="ui_mcm_mod_desc">
+        <text>DESCRIPTION TODO</text>
+    </string>
+
+    <string id="ui_mcm_main_options_title">
+        <text>Настройки</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_shift_mult_slider">
+        <text>Множитель количества предметов через LSHIFT</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_shift_mult_slider_desc">
+        <text>Умножает количество переносимых предметов, если нажата клавиша SHIFT. Умножается с множителем от CTRL.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_show_pelts_condition_check">
+        <text>Отображать состояние шкур мутантов</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_show_arts_condition_check">
+        <text>Отображать состояние артефактов, включая находящиеся в контейнерах</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_ctrl_mult_slider">
+        <text>Множитель количества предметов через LCTRL</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_ctrl_mult_slider_desc">
+        <text>Умножает количество переносимых предметов, если нажата клавиша CTRL. Умножается с множителем от SHIFT.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_global_storage_enabled_check">
+        <text>Включить глобальное хранилище</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_global_storage_enabled_check_desc">
+        <text>Включает дополнительное хранилище, доступное откуда угодно. [SHIFT+I]</text>
+    </string>
+
+    <string id="ui_mcm_experimental_title">
+        <text>Настройки экспериментальных функций</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_debug_mode_check">
+        <text>Режим разработчика</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_debug_mode_check_desc">
+        <text>Включает дополнительную отладочную информацию и тестовое хранилище, вызываемое нажатием О.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_weapon_storage_check">
+        <text>В РАЗРАБОТКЕ: включить поддержку хранения оружия</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_weapon_storage_check_desc">
+        <text>Частичная реализация. При перемещении в хранилище исчезнут улучшения, навесное оборудование, магазин будет заполнен стандартными патронами. Потенциальный дюп патронов.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_armor_storage_check">
+        <text>В РАЗРАБОТКЕ: включить поддержку хранения брони</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_armor_storage_check_desc">
+        <text>Частичная реализация. При перемещении в хранилище исчезнут улучшения.</text>
+    </string>
+
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_kinds_separators">
+        <text>В РАЗРАБОТКЕ: включить дополнительные разделители по типу предметов</text>
+    </string>
+    <string id="ui_mcm_rvr_storage_system_experimental_enable_kinds_separators_desc">
+        <text>Отсутствует локализация.</text>
+    </string>
+
+    <!-- Window titles -->
+    <string id="st_rvr_ss_actor_inventory_title">
+        <text>Рюкзак</text>
+    </string>
+    <string id="st_rvr_ss_storage_inventory_title">
+        <text>Хранилище</text>
+    </string>
+    <string id="st_rvr_ss_durability_column_title">
+        <text>Состояние</text>
+    </string>
+    <string id="st_rvr_ss_amount_column_title">
+        <text>Кол-во</text>
+    </string>
+
+
+    <!-- Categories -->
+    <string id="st_c_all">
+        <text>Все</text>
+    </string>
+    <string id="st_c_weapons">
+        <text>Оружие</text>
+    </string>
+    <string id="st_c_ammo">
+        <text>Амуниция</text>
+    </string>
+    <string id="st_c_armor">
+        <text>Броня и шлемы</text>
+    </string>
+    <string id="st_c_equipment">
+        <text>Снаряжение</text>
+    </string>
+    <string id="st_c_tech">
+        <text>Техническое</text>
+    </string>
+    <string id="st_c_trophies">
+        <text>Трофеи</text>
+    </string>
+    <string id="st_c_consumables">
+        <text>Расходуемое</text>
+    </string>
+    <string id="st_c_misc">
+        <text>Прочее</text>
+    </string>
+    <string id="st_c_unknown">
+        <text>Неизвестно</text>
+    </string>
+
+
+    <string id="st_rvr_ss_mb_set_stash_created">
+        <text>Альтернативный тайник создан</text>
+    </string>
+    <string id="st_rvr_ss_mb_set_stash_type_text">
+        <text>Хотите создать альтернативный тип тайника? Если нет, то будет создан обычный.</text>
+    </string>
+
+    <string id="rvr_ss_storage_footer_cap">
+        <text>Подсказки и элементы управления</text>
+    </string>
+    <string id="rvr_ss_storage_footer_hints">
+        <text>\n
+        * [SHIFT+dLMB], [CTRL+dLMB] and [CTRL+SHIFT+dLMB], dLMB означает двойной щелчок ЛКМ, используются для взятия/помещения большего количества предметов. Проверьте настройки множителей в MCM.\n
+        * [SHIFT+F] устанавливает фокус на текстовом поле поиска.\n
+        * [CTRL+SHIFT+F] устанавливает фокус на текстовом поле поиска и удаляет его содержимое.\n
+        * [Enter] или снимите фокус с текстового поля поиска, чтобы отфильтровать все элементы в соответствии с выбранной категорией.\n
+        * [ALT+dLMB] отмечает элемент как избранный. Повторите, чтобы снять отметку.\n
+        * [SHIFT+ALT+dLMB] помечает элемент как мусор. Повторите, чтобы снять пометку.\n
+        </text>
+    </string>
+
+    <string id="rvr_ss_storage_footer_depositall_btn">
+        <text>Сложить все</text>
+    </string>
+    <string id="rvr_ss_storage_footer_keep_favorite">
+        <text>Оставить избранное</text>
+    </string>
+    <string id="rvr_ss_storage_footer_keep_regular">
+        <text>Оставить обычные предметы</text>
+    </string>
+    <string id="rvr_ss_storage_footer_keep_trash">
+        <text>Оставить мусор</text>
+    </string>
+</string_table>

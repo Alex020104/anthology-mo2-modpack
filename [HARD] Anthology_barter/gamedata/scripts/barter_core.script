@@ -1,0 +1,721 @@
+-- cache all existing barters, source of truth
+barters                     = {}
+-- list of all barters associated with trader (array index)
+trader_to_barter            = {}
+-- track existing data when it comes to barters that have been partially completed n such, need to be reloaded, etc
+barter_mdata                = {
+    fixed = {}, -- limited
+    restock = {}, -- resets on restock
+    give_items = {} -- locks the current give item if there is a pool
+}
+
+ini_barters                 = ini_file("barter\\importer.ltx")
+ini_parts                   = itms_manager.ini_parts
+gc                          = game.translate_string
+get_config                  = barter_mcm.get_config
+
+assert(AddScriptCallback, "Anomaly 1.5.2 is required")
+AddScriptCallback("barter_ui_on_before_dialog")
+AddScriptCallback("barter_ui_on_barter_ask")
+AddScriptCallback("barter_ui_on_barter_answer")
+
+local dbg_log
+function print_dbg(msg, ...)
+
+-- printf("barter | %s | " .. msg, time_global(), ...)
+    if get_config("debug") then
+        dbg_log = dbg_log or mcm_log and mcm_log.new("DBG")
+        if dbg_log then --dbg_log then
+            dbg_log.enabled = true
+            dbg_log:log( msg , ...)
+        else
+            printf( "barter: | %s |  "..msg ,time_global(), ...)
+        end
+    end
+    return nil
+end
+
+function get_desc(name)
+    if ini_barters:r_string_ex(name, "repeat") and ini_barters:r_string_ex(name, "desc_done") and not check_limit(name) then
+        return ini_barters:r_string_ex(name, "desc_done") or "st_generic_done"
+
+    else
+        return ini_barters:r_string_ex(name, "desc") or "st_ui_barter_rules"
+
+    end
+end
+
+function npc_has_barter(npc)
+    local name = ""
+    if type(npc) == "string" then
+        -- two cases for sid and forester
+        if npc == "esc_2_12_stalker_trader" then name = "m_trader" 
+        elseif npc == "red_forester_tech" then name = "m_lesnik" 
+        else
+            name = npc
+        end
+    else
+        name = npc and npc:section() or ""
+    end
+    return trader_to_barter[name] and not is_empty(trader_to_barter[name])
+end
+
+-- yoink
+function eval_func(f, ...)
+    fc = str_explode(f, "%.")
+    file, func = unpack(fc)
+    if file and func and _G[file] and _G[file][func] then
+        return _G[file][func](...)
+    else
+        print_dbg("Could not find function %s", f)
+    end
+end
+
+local default_cond_funcs = {
+    ["precondition"] = "barter_core.pre_std",
+    ["postcondition"] = "barter_core.post_std",
+    ["showcondition"] = "barter_core.check_pass",
+}
+
+-- barter name, "precondition"/*showocondition/"postcondition"
+function eval_barter(name, condition)
+    conds = ini_barters:r_string_ex(name, condition)
+    if not conds then conds = default_cond_funcs[condition] or "barter_core.check_pass" end
+    conds = str_explode(conds, ",")
+    -- short circuit L->R evaluation
+    local result = true
+    for k,v in pairs(conds) do
+        res = eval_func(v, name)
+        if res then
+            result = result and res
+        else
+            print_dbg("%s condition false", v)
+            result = false 
+        end
+    end
+    return result
+end
+
+local repeat_ranks = {
+    ["inf"] = 3,
+    ["restock"] = 2,
+    ["fixed"] = 1
+}
+
+-- sorts barters
+function sort_func(a, b)
+    
+    -- goodwill or hard rank
+    local a_rep = ini_barters:r_float_ex(a.name, "sort_rank") or ini_barters:r_float_ex(a.name, "goodwill") or 0
+    local b_rep = ini_barters:r_float_ex(b.name, "sort_rank") or ini_barters:r_float_ex(b.name, "goodwill") or 0
+    if a_rep ~= b_rep then return a_rep < b_rep end
+    -- repeat type
+    local a_type = ini_barters:r_string_ex(a.name, "repeat") or "inf"
+    local b_type = ini_barters:r_string_ex(b.name, "repeat") or "inf"
+    if a_type ~= b_type then
+        return repeat_ranks[a_type] > repeat_ranks[b_type]
+    end
+    -- repeat limit
+    local a_limit = ini_barters:r_float_ex(a.name, "limit") or 0
+    local b_limit = ini_barters:r_float_ex(b.name, "limit") or 0
+    if a_limit ~= b_limit then return a_limit > b_limit end
+    -- cost
+    return (SYS_GetParam(2, a.give.sec, "cost") * a.give.amt) > (SYS_GetParam(2, b.give.sec, "cost") * b.give.amt)
+
+end
+
+-- get barter list with data on each barter
+function get_barter_list(npc, random)
+    printf("Checking barters for %s", npc:section())
+    if not npc_has_barter(npc) then return {} end
+    local name = npc:section()
+    print_dbg("Fetching list for %s", npc:character_name())
+    local barter_list = {}
+    for k,v in pairs(trader_to_barter[name]) do
+        print_dbg("Loading data for trade %s", v)
+        local data = barter_get_data(v)
+        if data and eval_barter(v, "showcondition") then table.insert(barter_list, data) end
+    end
+
+    table.sort(barter_list, sort_func)
+
+    return barter_list
+end
+
+-- for a given barter, return data on barter eligibility and what items are taken
+function barter_get_data(name)
+    -- eval precond
+    local allowed = eval_barter(name, "precondition")
+    -- eval items
+    local data = {}
+    copy_table(data, barters[name])
+    data.give = get_give_item(name)
+    data.name = name
+    -- sort rank is important as newlines will be inserted in differences between sort rank
+    data.sort_rank = ini_barters:r_float_ex(name, "sort_rank") or ini_barters:r_float_ex(name, "goodwill") or 0
+    data.amt = data.limit and get_barter_amt(name) or nil
+    local take_items = {}
+    for k,v in pairs(data.take) do
+        take_items[k] = {
+            sec = k,
+            ids = {},
+            amt = 0,
+            limit = v
+        }
+        if k == "money" then
+            take_items[k].amt = db.actor:money()
+        end
+        if IsItem("ammo", k) then
+            take_items[k].limit = take_items[k].limit * SYS_GetParam(2, k, "box_size")
+        end
+    end
+    db.actor:iterate_inventory(function(actor, item)
+        local sec = item:section()
+        local take_amt = data.take[sec]
+        if not take_amt or take_amt == 0 then return end
+        -- item specific stuff
+
+        if IsItem("ammo", sec) and item:ammo_get_count() < item:ammo_box_size() then
+            -- validate full box
+            return
+        end
+
+        if item.condition then
+            local cond_adj = math.ceil(item:condition()*100)
+            if SYS_GetParam(1, item:section(), "cond_part") and cond_adj <= barter_mcm.get_config("cond_part") then return 
+            elseif cond_adj <= barter_mcm.get_config("cond") then
+            -- validate max condition
+            return end
+        end
+
+        local has_parts = ini_parts:r_string_ex("con_parts_list",sec)
+        if has_parts then
+            local parts = item_parts.get_parts_con(item, nil, true)
+            local part_cond = barter_mcm.get_config("cond_part")
+            for k,v in pairs(parts) do
+                if string.find(v, "prt_") and v <= part_cond then return end
+            end
+        end
+        
+        -- process multiuse items
+        
+        local item_data = take_items[sec]
+        if item_data.limit > item_data.amt then
+            table.insert(item_data.ids, item:id())
+        end
+        if IsItem("ammo", sec) then
+            item_data.amt = item_data.amt + IsItem("ammo", sec)
+        elseif IsItem("multiuse", sec) then
+            item_data.amt = item_data.amt + item:get_remaining_uses()
+        else
+            item_data.amt = item_data.amt + 1
+        end
+
+    end)
+    if data.type == "anyOf" then
+        local at_least_one = false
+        for k,v in pairs(take_items) do
+            print_dbg("Actor has %s of %s of item %s for barter",v.amt, v.limit, k)
+            if v.amt >= v.limit then
+                at_least_one = true
+            end
+        end
+        allowed = allowed and at_least_one
+    else
+        for k,v in pairs(take_items) do
+            print_dbg("Actor has %s of %s of item %s for barter",v.amt, v.limit, k)
+            if v.limit > v.amt then
+                allowed = false
+            end
+        end
+    end
+    print_dbg("Barter allowance for %s is %s", name, allowed)
+    data.allowed = allowed
+    local take_items_indx = {}
+    for k,v in pairs(take_items) do
+        table.insert(take_items_indx, v)
+    end
+    data.take_items = take_items_indx
+
+    return data
+end
+
+local clr_g  = utils_xml.get_color("d_green")
+local clr_r  = utils_xml.get_color("d_red")
+local clr_1  = utils_xml.get_color("ui_gray_2")
+local clr_2  = utils_xml.get_color("ui_gray_1")
+function build_string(name)
+    local str = ""
+    local funcs = ini_barters:r_string_ex(name, "precond_text") or "barter_core.str_std"
+    funcs = str_explode(funcs, ",")
+    table.sort(funcs)
+    for k,v in pairs(funcs) do
+        val = eval_func(v, name)
+        if val then
+            if type(val) ~= "table" then val = {val} end
+            for k,v in pairs(val) do
+                str = str .. " " .. gc("st_dot") .. " " .. v .. " \\n"
+            end
+        end
+    end
+    return str
+end
+
+function safe_insert(tbl, itm) 
+    if itm then table.insert(tbl, itm) end
+end
+
+function str_any(name)
+    if barters[name].type == "anyOf" then
+        return gc("st_barter_anyOf")
+    end
+end
+
+function str_limit(name)
+    local rep = ini_barters:r_string_ex(name, "repeat")
+    if rep then
+        local b_done = barter_mdata[rep][name] or 0
+        local b_limit = ini_barters:r_float_ex(name, "limit") or 0
+        local clr = b_done < b_limit and clr_g or clr_r
+        return gc("st_barter_limit") .. clr ..  " " ..b_done .. "/" .. b_limit .. clr_2 .. " " .. gc("st_barter_"..rep)
+    end
+
+end
+
+function str_goodwill(name)
+    local faction = ini_barters:r_string_ex(name, "faction")
+    local rep = ini_barters:r_float_ex(name, "goodwill") or 0
+    if faction and rep > 0 then
+        local actor_goodwill = relation_registry.community_goodwill(faction, AC_ID) or 0
+        local clr = actor_goodwill < rep and clr_r or clr_g
+        return gc(faction) .. " " .. gc("st_barter_goodwill") .. " " .. clr ..  actor_goodwill .. "/" .. rep .. clr_2
+    end
+end
+
+function str_mutant(name)
+    local count = ini_barters:r_float_ex(name, "kill_cnt")
+    if count then
+        local current = game_statistics.get_statistic_count("killed_monsters") or 0
+        local clr = current < count and clr_r or clr_g
+        return gc("st_mutants_killed") .. " " .. clr ..  current .. "/" .. count .. clr_2
+    end
+end
+
+function str_std(name)
+    local str = {}
+    
+    if ini_barters:r_string_ex(name, "repeat") then
+        safe_insert(str, str_limit(name))
+    end
+    if ini_barters:r_string_ex(name, "faction") then
+        safe_insert(str, str_goodwill(name))
+    end
+    
+    if ini_barters:r_string_ex(name, "has_info") then
+        safe_insert(str, gc("st_barter_info"))
+    end
+
+    if barters[name].type == "anyOf" then
+        safe_insert(str, gc("st_barter_anyOf"))
+    else
+        safe_insert(str, gc("st_barter_allOf"))
+    end
+
+    return str
+end
+
+local function str_toolkit(lv)
+    return gc("st_barter_toolkit"..lv)
+end
+
+function str_toolkit1(name)
+    return str_toolkit(1)
+end
+function str_toolkit2(name)
+    return str_toolkit(2)
+end
+function str_toolkit3(name)
+    return str_toolkit(3)
+end
+
+local function remove(item)
+    if item.sec == "money" then
+        db.actor:give_money(-1 * item.limit)
+    else
+        local limit = item.limit
+        print_dbg("Taking %s of item %s", item.limit, item.sec)
+        for i=1,#item.ids do
+            if IsItem("multiuse", item.sec) then
+                local obj = level.object_by_id(item.ids[i])
+                local to_discharge = clamp(limit, 0, obj:get_remaining_uses())
+                limit = limit - to_discharge
+                utils_item.discharge(obj, to_discharge)
+            else
+                alife_release_id(item.ids[i])
+            end
+        end
+    end
+end
+
+-- assume that the player has filled their end of the bargain and wants to execute on the bargain
+function do_barter(name, give, items, ind)
+    print_dbg("Performing barter %s, index %s", name, ind)
+    if ind and barters[name].type == "anyOf" then
+        remove(items[ind])
+    else
+        for k,v in pairs(items) do
+            remove(v)
+        end
+    end
+    if IsItem("multiuse", give.sec) then
+        local max_uses = SYS_GetParam(2, give.sec, "max_uses")
+        local count = give.amt or max_uses
+        while count > 0 do
+            local uses = clamp(count, 0, max_uses)
+            alife_create_item(give.sec, db.actor, {["uses"] = uses})
+            count = clamp(count - max_uses, 0, count)
+        end
+    else
+        local amt = give.amt or 1
+        for i=1,amt do
+            local meta = {}
+            if give.type then
+                meta[give.type] = give.meta
+            end
+            alife_create_item(give.sec, db.actor, meta)
+        end
+    end
+    eval_barter(name, "postcondition")
+end
+
+function get_barter_amt(name)
+    local rep = ini_barters:r_string_ex(name, "repeat")
+    if not rep then return end
+    print_dbg("Barter refresh type is %s", rep)
+    local barter_sub = rep == "fixed" and barter_mdata.fixed or barter_mdata.restock
+    if not barter_sub[name] then barter_sub[name] = 0 end
+    return barter_sub[name]
+end
+
+function get_give_str(give)
+    str = ui_item.get_sec_name(give.sec)
+    if give.type then
+        str = str .. ", " ..  gc("st_barter_"..give.type) ..give.meta .. " "
+        -- pluralize later
+    end
+    if give.amt > 1 then
+        str = str .. " (x" .. give.amt .. ")"
+    end
+    return str
+end
+
+-- barter condition functions
+-- return true if barter is allowed (before even checking items to take)
+
+-- check against rep level
+function check_goodwill(name)
+    -- return true
+    local faction = ini_barters:r_string_ex(name, "faction")
+    if not faction then return true end
+    faction = str_explode(faction, ",")
+    local rep = ini_barters:r_float_ex(name, "goodwill") or 0
+    for i,fac in pairs(faction) do
+        if relation_registry.community_goodwill(fac, AC_ID) < rep then return false end
+    end
+    return true
+end
+
+-- function check_supply_lv(name)
+--     local trade_lv = ini_barters:r_string_ex(name, "supply_lvl")
+--     if not trade_lv then return true end
+--     local npc = mob_trade.GetTalkingNpc()
+--     local lv = trader_autoinject.supply_level(npc, true)
+--     return lv >= trade_lv
+-- end
+
+-- check against limit with variable refresh rate
+function check_limit(name)
+    if not barter_mdata.fixed then barter_mdata.fixed = {} end
+    if not barter_mdata.restock then barter_mdata.restock = {} end
+    local barter_amt = get_barter_amt(name)
+    if not barter_amt then return end
+
+    local limit = barters[name].limit--ini_barters:r_float_ex(name, "limit")
+    return barter_amt < limit
+end
+
+function check_info(name)
+    local info = ini_barters:r_string_ex(name, "has_info")
+    if info then info = str_explode(info, ",") 
+    else return true end
+    for i,v in pairs(info) do
+        if not db.actor:has_info(v) then return false end
+    end
+    return true
+end
+
+-- check all basic preconds
+function pre_std(name)
+    if ini_barters:r_string_ex(name, "repeat") and not check_limit(name) then return false end
+    if ini_barters:r_string_ex(name, "faction") and not check_goodwill(name) then return false end
+    if ini_barters:r_string_ex(name, "has_info") and not check_info(name) then return false end
+    return true
+end
+
+function kill_mutant(name)
+    local count = ini_barters:r_float_ex(name, "kill_cnt")
+    if count then
+        local current = game_statistics.get_statistic_count("killed_monsters") or 0
+        return current >= count
+    end
+end
+
+local function check_toolkit(lv)
+    local npc = mob_trade.GetTalkingNpc()
+    return has_alife_info(npc:section() .. "_upgrade_tier_" .. tostring(lv))
+end
+
+function check_toolkit1(name)
+    return check_toolkit(1)
+end
+function check_toolkit2(name)
+    return check_toolkit(2)
+end
+function check_toolkit3(name)
+    return check_toolkit(3)
+end
+-- allow
+function check_pass(name)
+    return true
+end
+
+-- postconds
+function increment_limit(name)
+    local rep = ini_barters:r_string_ex(name, "repeat")
+    if not rep then return end
+    
+    if not barter_mdata.fixed then barter_mdata.fixed = {} end
+    if not barter_mdata.restock then barter_mdata.restock = {} end
+
+    local limit = ini_barters:r_float_ex(name, "limit") or 0
+    local barter_sub = rep == "fixed" and barter_mdata.fixed or barter_mdata.restock
+    if not barter_sub[name] then barter_sub[name] = 1
+    else
+        barter_sub[name] = clamp(barter_sub[name] + 1, 0, limit)
+    end
+end
+
+function give_info(name)
+    local info = ini_barters:r_string_ex(name, "give_info")
+    if not info then return end
+    db.actor:give_info_portion(info)
+end
+
+function post_std(name)
+    if ini_barters:r_string_ex(name, "repeat") then increment_limit(name) end
+    if ini_barters:r_string_ex(name, "give_info") then give_info(name) end
+end
+
+function trader_on_restock(npc)
+    local sec = npc:section()
+    if not trader_to_barter[sec] then return end
+    
+    if not barter_mdata.fixed then barter_mdata.fixed = {} end
+    if not barter_mdata.restock then barter_mdata.restock = {} end
+    if not barter_mdata.give_items then barter_mdata.give_items = {} end
+    
+    for k,v in pairs(trader_to_barter[sec]) do
+        if barter_mdata.restock[v] then
+            -- also rotate items
+            barter_mdata.restock[v] = 0
+        end
+        barter_mdata.give_items[v] = false
+    end
+end
+
+local function parse_barterstring(str)
+    local temp = str_explode(str, ",")
+    local t = {}
+    for k,v in pairs(temp) do
+        local group = str_explode(v, ":")
+        local item = group[1]
+        local uses = group[2]
+        if not uses or uses == "full" then
+            if IsItem("multiuse", item) then uses = IsItem("multiuse", item) 
+            else uses = 1 end
+        end
+        t[item] = tonumber(uses)
+    end
+    return t
+end
+
+function check_addon(addon)
+    if not addon then return true end
+    if addon:sub(1, 1) == "!" then
+        return not _G[addon:sub(2)]
+    else
+        return _G[addon]
+    end
+end
+
+function get_give_item(name)
+    local to_give = ini_barters:r_string_ex(name, "give")
+    to_give = str_explode(to_give, ",")
+    local give
+    if #to_give > 1 then
+        -- search up cached if exists, select and cache if not
+        if not barter_mdata.give_items then barter_mdata.give_items = {} end
+        if not barter_mdata.give_items[name] then barter_mdata.give_items[name] = to_give[math.random(#to_give)] end
+        give = barter_mdata.give_items[name] 
+    else
+        give = to_give[1]
+    end
+    give = str_explode(give, ":")
+    give_t = {
+        sec = give[1]
+    }
+    if IsItem("multiuse", give_t.sec) then
+        give_t.amt = tonumber(give[2]) or SYS_GetParam(2, give_t.sec, "max_uses")
+    else
+        give_t.amt = tonumber(give[2]) or 1
+    end
+    local meta = ini_barters:r_float_ex(name, "give_meta")
+    if meta then
+        give_t.meta = meta
+        if IsItem("ammo", give_t.sec) and give_t.meta <= SYS_GetParam(2, give_t.sec, "box_size") then
+            give_t.type = "ammo"
+        elseif (IsItem("outfit", give_t.sec) or IsItem("helmet", give_t.sec) or (string.find(give_t.sec, "wpn_") and not IsItem("fake_ammo_wpn", give_t.sec))) and give_t.meta <= 100 then
+            give_t.type = "cond"
+        end
+    end
+    return give_t
+end
+
+-- cycle through all barters and load only valid ones in
+local function validate_barters()
+    ini_barters:section_for_each(function(name)
+        print_dbg("Parsing barter %s", name)
+        local npc = ini_barters:r_string_ex(name, "trader")
+        local give = ini_barters:r_string_ex(name, "give")
+        local addon = ini_barters:r_string_ex(name, "addon")
+        if not check_addon(addon) then 
+            print_dbg("Barter %s failed check for addon %s", name, addon)
+            return
+         end
+        if not give then 
+            print_dbg("Barter %s has no give item", name)
+            return 
+        end
+        give = str_explode(give, ",")
+        -- validate each item
+        for k,v in pairs(give) do
+            g = str_explode(v, ":")
+            if not g[1] or (g[1] ~= "money" and not ini_sys:section_exist(g[1])) then 
+                print_dbg("Barter %s attempted to add nonexistant give item %s", name, g[1])
+                return false
+            end
+        end
+        
+        local take = ini_barters:r_string_ex(name, "take")
+        if not take then 
+            print_dbg("Barter %s has no take items", name)
+            return 
+        end
+        take = parse_barterstring(take)
+        for k,v in pairs(take) do
+            if (k ~= "money" and not ini_sys:section_exist(k)) then
+                print_dbg("Barter %s attempted to add nonexistant take item %s", name, k)
+                return
+            end
+        end
+        local data = {
+            -- give = give_t,
+            take = take,
+        }
+        local restricted = ini_barters:r_string_ex(name, "restricted")
+        if restricted then
+            restricted = str_explode(restricted, ",")
+            data.restricted = t2k_table(restricted)
+        end
+
+        data.type = ini_barters:r_string_ex(name, "type") or "allOf"
+        data.limit = ini_barters:r_float_ex(name, "limit")
+
+        if not trader_to_barter[npc] then trader_to_barter[npc] = {} end
+        table.insert(trader_to_barter[npc], name)
+        barters[name] = data
+    end)
+end
+
+function save_state(mdata)
+	mdata.barter_mdata = barter_mdata
+end
+
+function load_state(mdata)
+	barter_mdata = mdata.barter_mdata or {}
+end
+
+-- ---------------------------------------------------------------------------------------------------------------------
+-- Dialog functions
+-- ---------------------------------------------------------------------------------------------------------------------
+
+--- Function used to add the barter dialog to NPCs.
+--- @param character_id string
+--- @param dialog_list userdata
+--- @return nil
+function on_specific_character_dialog_list(character_id, dialog_list)
+    if npc_has_barter(character_id) then
+        dialog_list:add("dm_init_barter", 2)
+    end
+end
+
+--- Function used to check if the NPC should show the barter dialog to the player.
+--- @param actor game_object
+--- @param npc game_object
+--- @param dialog_id number
+--- @return boolean
+function cond_barter_dialog(actor, npc, dialog_id)
+    local flags = { result = true }
+    SendScriptCallback("barter_ui_on_before_dialog", npc, flags)
+    return flags.result
+end
+
+--- Function used to get the text to display in the dialog when the player asks to be guided.
+--- The call to get_speaker(true) is a hack because the engine does not properly sends the arguments to this
+--- function when script_text is used on the first <phrase> node of a dialog.
+--- The nil check on top of that is yet another hack since this function is sometimes called AFTER exiting a dialog.
+--- @param actor game_object
+--- @param npc game_object
+--- @return string
+function st_barter_ask(actor, npc)
+    npc = get_speaker()
+    local flags = { result = "st_barter_init" }
+    if npc then
+        SendScriptCallback("barter_ui_on_barter_ask", npc, flags)
+    end
+    return flags.result
+end
+
+--- Function used to get the answer of the NPC when the player asks to barter.
+--- @param npc game_object
+--- @param actor game_object
+--- @return string
+function st_barter_answer(npc, actor)
+    local flags = { result = dialogs.st_trader_dialog_reply(npc, actor) }
+    SendScriptCallback("barter_ui_on_barter_answer", npc, flags)
+    return flags.result
+end
+
+-- ---------------------------------------------------------------------------------------------------------------------
+-- Callbacks registration
+-- ---------------------------------------------------------------------------------------------------------------------
+
+--- Function used to register callbacks.
+--- @return nil
+function on_game_start()
+    RegisterScriptCallback("save_state", save_state)
+    RegisterScriptCallback("load_state", load_state)
+    RegisterScriptCallback("trader_on_restock", trader_on_restock)
+    RegisterScriptCallback("on_specific_character_dialog_list", on_specific_character_dialog_list)
+    validate_barters()
+end

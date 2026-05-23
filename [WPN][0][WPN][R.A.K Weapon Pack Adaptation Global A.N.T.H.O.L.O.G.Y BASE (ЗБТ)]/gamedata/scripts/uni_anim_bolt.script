@@ -1,0 +1,46 @@
+local common = animation_common
+-- local log = imgui_liz_log and imgui_liz_log.Log or printf
+local bind = bind_to_dik(key_bindings.kWPN_ZOOM)
+local b_holding_rmb = false
+local valid_sections = {
+    bolt = true,
+    bolt_bullet = true,
+}
+
+
+common.add_flag("BOLT_SECONDARY")
+local function anm_bolt(anm_table, item)
+    local section = item:section()
+    if valid_sections[section] then
+        if anm_table.anm_name == "anm_throw_begin" and b_holding_rmb then
+            common.set_flag("BOLT_SECONDARY")
+            common.mutate_anim(anm_table, "_secondary", section)
+        elseif anm_table.anm_name == "anm_throw_idle" and common.get_flag("BOLT_SECONDARY") then
+            common.mutate_anim(anm_table, "_secondary", section)
+        elseif anm_table.anm_name == "anm_throw" and common.get_flag("BOLT_SECONDARY") then
+            common.remove_flag("BOLT_SECONDARY")
+            common.mutate_anim(anm_table, "_secondary", section)
+        end
+    end
+end
+common.add_anim_mutator(anm_bolt, 3)
+
+
+local function on_before_key_press(dik, keybind, dis, flags)
+    if dik == bind then
+        b_holding_rmb = true
+    end
+end
+
+
+local function on_key_release(key)
+    if key == bind then
+        b_holding_rmb = false
+    end
+end
+
+
+function on_game_start()
+    RegisterScriptCallback("on_before_key_press", on_before_key_press)
+    RegisterScriptCallback("on_key_release", on_key_release)
+end

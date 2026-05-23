@@ -1,0 +1,523 @@
+local last_click = nil
+local send_tip = news_manager.send_tip
+local gc = game.translate_string
+local is_exo = item_exo_device.is_exo
+local is_exoback = item_exo_device.is_exobackpack
+local get_data = item_exo_device.get_data
+local set_data = item_exo_device.set_data
+local init_data = item_exo_device.init_data
+local print_dbg = item_exo_device.print_dbg
+local effect = particles_object("artefact\\effects\\af_electra_show_flash_00")
+
+local st = {}
+local ini_powers = ini_file("items\\settings\\exo_power_cfg.ltx")
+
+-- assemble the sound object tables ahead of time
+function build_sound_tables()
+    ini_powers:section_for_each(function(section)
+        printf("Building sound table for %s", section)
+        st[section] = {}
+        st[section][1] = sound_object(ini_powers:r_string_ex(section, "snd_windup"))
+        st[section][2] = sound_object(ini_powers:r_string_ex(section, "snd_duration"))
+        st[section][3] = sound_object(ini_powers:r_string_ex(section, "snd_cooldown"))
+    end)
+end
+
+local function on_key_press(key)
+
+    local inventory = GetActorMenu()
+	if (inventory and inventory:IsShown()) then
+		return
+	end
+    
+    local bind = dik_to_bind(key)
+
+    if bind == 7 then
+        -- print_dbg("Pressed sprint")
+        local tg = time_global()
+
+        if not last_click then
+            last_click = tg
+        else
+            if tg < last_click + 400 then
+                activate_powers()
+            end
+
+            last_click = nil
+        end
+    end
+end
+
+
+-- ==== ПЕРЕМЕННЫЕ ====
+local power_active = false
+local armored = false
+-- ==== ОБРАБОТЧИК УРОНА ОТ ПАДЕНИЯ ====
+function actor_on_before_hit(s_hit, bone_id, flags)
+    -- Если активна способность "super_jump" и это физический урон (падение)
+    if power_active == "super_jump" and s_hit.type == 7 then
+        s_hit.power = 0 -- обнуляем силу урона
+        return false
+    end
+	if armored then
+		s_hit.power = 0
+		return false
+	end
+
+    return true -- разрешаем обычный урон
+end
+
+-- ==== Переменные ====
+local jump_original_speed = nil
+
+-- ==== Активация способности ====
+function activate_super_jump()
+    -- Проверка наличия актёра
+    if not db or not db.actor then
+        return
+    end
+    -- Подсказка игроку
+    send_tip(db.actor, gc("st_act_superjump"), nil, "swiss_knife", 6000)
+
+    -- Проверка доступности функций
+    if not db.actor.get_actor_jump_speed or not db.actor.set_actor_jump_speed then
+
+        return
+    end
+
+    -- Получаем оригинальную силу прыжка
+    if not jump_original_speed then
+        jump_original_speed = db.actor:get_actor_jump_speed()
+
+    end
+
+    -- Увеличиваем прыжок
+    local new_speed = jump_original_speed * 2.0
+    db.actor:set_actor_jump_speed(new_speed)
+
+    -- Визуальный эффект (с защитой)
+    if level and level.add_pp_effector then
+        level.add_pp_effector("electra.ppe", 6969, true)
+    end
+end
+
+-- ==== Деактивация способности ====
+function deactivate_super_jump()
+    -- Проверяем, можно ли восстановить прыжок
+    if db and db.actor and db.actor.set_actor_jump_speed and jump_original_speed then
+        db.actor:set_actor_jump_speed(jump_original_speed)
+    end
+
+    -- Убираем визуальный эффект (если есть)
+    if level and level.remove_pp_effector then
+        level.remove_pp_effector(6969)
+    end
+end
+
+
+function activate_speed()
+    speed.add_speed("gotta_go_Fast", 1.5, false)
+    send_tip(db.actor, gc("st_act_sprint"), nil, "swiss_knife", 6000)
+    level.add_pp_effector("electra.ppe", 6969, true)
+    -- electra ppe
+end
+
+function deactivate_speed()
+    speed.remove_speed("gotta_go_Fast")
+    level.remove_pp_effector(6969)
+end
+
+
+
+function activate_tank()
+    send_tip(db.actor, gc("st_act_tank"), nil, "swiss_knife", 6000)
+    speed.add_speed("gotta_go_Fast", 0.8, false)
+    level.add_pp_effector("blur.ppe", 6969, true)
+    armored = true
+end
+
+function deactivate_tank()
+    speed.remove_speed("gotta_go_Fast")
+    level.remove_pp_effector(6969)
+    armored = false
+end
+
+-- Haruwu
+local radius = 10
+
+local blast_particles = {particles_object("amik\\anomaly\\electra\\electra2_sparks"), particles_object("amik\\anomaly\\electra\\electra_dust_distort")}
+
+local blast_sounds = {sound_object("device\\bridge\\motor_start"), sound_object("anomaly\\electra_blast"), sound_object("device\\bridge\\motor_stop")}
+
+function activate_blast()
+    -- blast_sounds[1]:play(db.actor, 0, sound_object.s2d)
+    -- CreateTimeEvent("execute_blast_haruka", "execute_blast_haruka", blast_sounds[1]:length() / 1000, blast)
+    blast()
+end
+
+function blast()
+    local pos = db.actor:position()
+    local h = hit()
+    local exoback = db.actor:item_in_slot(7)
+    if not (exoback and is_exoback(exoback)) then
+        return true
+    end
+    local id = exoback:id()
+    local data = get_data(id)
+	
+    if not data then
+        data = init_data(id)
+    end
+	
+    h.type = hit.shock
+    h.draftsman = db.actor
+    h.power = 1.5
+    h:bone("bip01_spine")
+    level.add_pp_effector("blink.ppe", 6969, false)
+    level.set_pp_effector_factor(6969, 0.1)
+    blast_sounds[2]:play(db.actor, 0, sound_object.s2d)
+    blast_particles[1]:play_at_pos(pos)
+    blast_particles[2]:play_at_pos(pos)
+
+    level.iterate_nearest(pos, radius, function(obj)
+        if data.power < 30 then return true end
+
+        if obj and obj:alive() and obj:id() ~= AC_ID then
+            obj:hit(h)
+            effect:play_at_pos(obj:position())
+            data.power = data.power - 2 -- remove 2 charge for each hit
+        end
+    end)
+    -- CreateTimeEvent("play_end_sfx_haruka", "play_end_sfx_haruka", blast_sounds[2]:length() / 2000, function()
+    --     blast_sounds[3]:play(db.actor, 0, sound_object.s2d)
+    --     return true
+    -- end)
+    set_data(id, data)
+    return true
+end
+
+function deactivate_blast()
+    return
+end
+
+function exec(str)
+    -- ui_inventory lololol
+    if str then
+		str = str_explode(str,"%.") -- dot needs escape character!
+		if str[1] and str[2] and _G[ str[1] ] and _G[ str[1] ][ str[2] ] then
+			_G[ str[1] ][ str[2] ](obj)
+		else
+			print_dbg("Could not exec function %s", str)
+		end
+	end
+end
+
+local current_outfit
+local start_time
+local DURATION = 8000
+local COOLDOWN = 20
+local on_cooldown = false
+local active_power
+
+function activate_powers()
+    if on_cooldown or power_active ~= false then
+        -- cooling down
+        send_tip(db.actor, gc("st_err_cooldown"), nil, "swiss_knife", 6000)
+
+        return
+    end
+
+    local exosuit = db.actor:item_in_slot(7)
+    if exosuit and is_exoback(exosuit) then
+        local id = exosuit:id()
+        local sec = exosuit:section()
+		
+        local data = get_data(id)
+
+        if not data then
+            data = init_data(id)
+        end
+
+        print_dbg("equipped power: %s", data.supply and data.supply.ability or "none")
+        if not data.supply then return end
+
+        if not data.supply.ability or not ini_powers:section_exist(data.supply.ability) then
+            send_tip(db.actor, gc("st_err_none"), nil, "swiss_knife", 6000)
+
+            return
+        end
+
+        local drain = ini_powers:r_float_ex(data.supply.ability, "power_cost") or 20
+
+        if data.power < drain + 10 then
+            -- insufficient power
+            send_tip(db.actor, gc("st_err_power"), nil, "swiss_knife", 6000)
+
+            return
+        end
+
+        data.power = clamp(data.power - drain, 0, 400)
+        set_data(id, data)
+        power_active = data.supply.ability
+        sounds = st[power_active]
+        start_time = time_global()
+        print_dbg("saved tg %s", start_time)
+        current_outfit = id
+        local duration = (ini_powers:r_float_ex(data.supply.ability, "power_duration") * 1000) or DURATION 
+        local cooldown = ini_powers:r_float_ex(data.supply.ability, "power_cooldown") or COOLDOWN
+        local delay =  sounds[1]:length() / 1000
+        sounds[1]:play(db.actor, 0, sound_object.s2d)
+        -- if power_active ~= "recharge" then
+        -- end
+        CreateTimeEvent("exo_powers", "activate_powers", delay, maintain_power, duration, cooldown)
+    end
+end
+
+-- continually run and watch for outfit changes
+function maintain_power(duration, cooldown)
+	local outfit = db.actor:item_in_slot(7)
+    local id = (outfit and is_exoback(outfit)) and outfit:id() or 0
+    -- there should be a better way to do this i think
+    if not st[power_active][2]:playing() then
+        print_dbg("start activate power")
+        exec(ini_powers:r_string_ex(power_active, "power_start"))
+        st[power_active][2]:play(db.actor, 0, sound_object.s2d)
+    end
+    if id ~= current_outfit then
+        print_dbg("bruh you switched")
+        deactivate_powers(cooldown)
+        return true
+    end
+
+    if time_global() > start_time + duration then
+        print_dbg("time's up")
+        deactivate_powers(cooldown)
+
+        return true
+    end
+
+    return false
+end
+
+function deactivate_powers(cooldown)
+    exec(ini_powers:r_string_ex(power_active, "power_end"))
+    if st[power_active][2]:playing() then 
+        st[power_active][2]:stop()
+    end
+    st[power_active][3]:play(db.actor, 0, sound_object.s2d)
+    power_active = false
+    on_cooldown = true
+    CreateTimeEvent("exo_powers", "deactivate_power", cooldown, reset_cooldown)
+end
+
+function reset_cooldown()
+    on_cooldown = false
+    send_tip(db.actor, gc("st_ok_cooldown"), nil, "swiss_knife", 6000)
+
+    return true
+end
+
+
+
+local function ram()
+    if IsMoveState("mcSprint") and power_active == "sprint" then
+        local obj = level.get_target_obj()
+        local dist = level.get_target_dist()
+        if not obj or not (IsStalker(obj) or IsMonster(obj)) or dist > 2.1 then return end
+        local actor = db.actor
+        local suit = db.actor:item_in_slot(7)
+        local is_rhino = suit and string.find(suit:section(), "nosorog") or false
+        local h = hit()
+        h.type = hit.strike
+        h.draftsman = actor
+        h.power = is_rhino and 1 or 0.6
+        h:bone("bip01_spine")
+        level.add_cam_effector("camera_effects\\hit_front.anm", 5923, false, "")
+        level.add_pp_effector("bloody.ppe", 9230, false)
+        level.set_pp_effector_factor(9230, 0.2)
+        obj:hit(h)
+        print_dbg("BONK")
+    end
+end
+
+function actor_on_footstep(material, power, hud_view, flags)
+    if not power_active then return end
+    ram()
+    effect:play_at_pos(db.actor:position())
+end
+
+function on_game_start()
+    RegisterScriptCallback("actor_on_footstep", actor_on_footstep)
+    RegisterScriptCallback("actor_on_before_hit", actor_on_before_hit)
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+    build_sound_tables()
+end
+
+-- === Переменные ===
+local invisible = false
+local cloak_texture = "nanosuit\\cloak_pattern"
+local cloak_shader = "models\\xanomaly"
+
+local saved_shaders_world = {}
+local saved_legsshaders_world = {}
+local saved_shaders_hud = {}
+local saved_already = false
+local cloak_sounds = {
+    activate = sound_object("nanosuit\\modes\\cloak\\mode_cloak_on"),
+    deactivate = sound_object("nanosuit\\modes\\cloak\\mode_cloak_off"),
+    loop = sound_object("nanosuit\\modes\\cloak\\mode_cloak_loop"),
+    shoot = sound_object("nanosuit\\modes\\cloak\\mode_cloak_shoot")
+}
+local saved_weapon_hud_shaders = {}
+local cloaked_weapon = nil
+local cloaked_weapon_id = nil
+
+local function reset_weapon_cloak()
+    if cloaked_weapon then
+        for idx, save in pairs(saved_weapon_hud_shaders or {}) do
+            cloaked_weapon:set_shader(idx, save.shader, save.texture, true)
+        end
+    end
+
+    saved_weapon_hud_shaders = {}
+    cloaked_weapon = nil
+    cloaked_weapon_id = nil
+end
+
+local function update_weapon_cloak()
+    if not db.actor then
+        return
+    end
+
+    local active = db.actor:active_item()
+    if not (active and IsWeapon(active)) then
+        reset_weapon_cloak()
+        return
+    end
+
+    if cloaked_weapon_id == active:id() then
+        return
+    end
+
+    reset_weapon_cloak()
+    cloaked_weapon = active
+    cloaked_weapon_id = active:id()
+    saved_weapon_hud_shaders = active:get_shaders(true) or {}
+
+    for idx, _ in pairs(saved_weapon_hud_shaders or {}) do
+        active:set_shader(idx, cloak_shader, cloak_texture, true)
+    end
+end
+
+-- === Активация невидимости ===
+function activate_invisibility()
+    if not db.actor then return end
+	printf("activate_invis")
+    -- Сохраняем оригинальные шейдеры
+	if not saved_already then
+		saved_shaders_hud = db.actor:get_shaders(true) -- HUD
+		saved_shaders_world = db.actor:get_shaders() -- World
+		if se_legs then
+			local legs_id = se_legs.LegsTbl[level.name()]
+			local legs_obj = legs_id and level.object_by_id(legs_id)
+			if legs_obj then
+				saved_legsshaders_world = legs_obj:get_shaders()
+			end
+		end
+	end
+    -- Устанавливаем эффект невидимости
+    for idx, _ in pairs(saved_shaders_hud or {}) do
+        db.actor:set_shader(idx, cloak_shader, cloak_texture, true)
+    end
+
+    for idx, _ in pairs(saved_shaders_world or {}) do
+        db.actor:set_shader(idx, cloak_shader, cloak_texture)
+    end
+	if se_legs then
+        local legs_id = se_legs.LegsTbl[level.name()]
+        local legs_obj = legs_id and level.object_by_id(legs_id)
+        if legs_obj then
+            for idx, _ in pairs(saved_legsshaders_world or {}) do
+				legs_obj:set_shader(idx, cloak_shader, cloak_texture)
+			end
+        end
+    end
+    update_weapon_cloak()
+	saved_already = true
+    -- Звуки
+    --cloak_sounds.activate:play_at_pos(db.actor, VEC_ZERO, 0, sound_object.s2d)
+    --cloak_sounds.loop:play_at_pos(db.actor, VEC_ZERO, 0, sound_object.s2d + sound_object.looped)
+
+    -- Подписываемся на события
+    RegisterScriptCallback("actor_on_weapon_fired", on_actor_shot)
+
+    invisible = true
+end
+
+-- === Деактивация невидимости ===
+function deactivate_invisibility()
+    if not db.actor or not invisible then return end
+	start_time = 0
+    -- Восстанавливаем шейдеры
+    for idx, save in pairs(saved_shaders_hud) do
+        db.actor:set_shader(idx, save.shader, save.texture, true)
+    end
+
+    for idx, save in ipairs(saved_shaders_world) do
+        db.actor:set_shader(idx, save.shader, save.texture)
+    end
+	
+	if se_legs then
+        local legs_id = se_legs.LegsTbl[level.name()]
+        local legs_obj = legs_id and level.object_by_id(legs_id)
+        if legs_obj then
+            for idx, save in pairs(saved_legsshaders_world) do
+				legs_obj:set_shader(idx, save.shader, save.texture)
+			end
+        end
+    end
+
+    reset_weapon_cloak()
+    saved_shaders_hud = {}
+    saved_shaders_world = {}
+	saved_legsshaders_world = {}
+	saved_already = false
+    -- Очищаем обработчики событий
+    UnregisterScriptCallback("actor_on_weapon_fired", on_actor_shot)
+
+    -- Звуки
+    --cloak_sounds.deactivate:play_at_pos(db.actor, VEC_ZERO, 0, sound_object.s2d)
+    --cloak_sounds.loop:stop()
+
+    invisible = false
+end
+
+-- === Обработка выстрела — выход из невидимости ===
+function on_actor_shot()
+    if invisible then
+        printf("Cloak mode deactivated by shooting")
+		start_time = 0
+        --deactivate_invisibility()
+    end
+end
+
+function actor_on_update()
+    if invisible then
+        update_weapon_cloak()
+    end
+end
+
+-- === Изменение NPC-видимости (опционально) ===
+local original_visibility_func = visual_memory_manager.get_visible_value
+
+visual_memory_manager.get_visible_value = function(npc, who, time_delta, time_quant, luminosity, velocity_factor, velocity, distance, object_distance, always_visible_distance)
+    if invisible and who:id() == AC_ID then
+        if object_distance > 10 then
+            return 0 -- не видят
+        else
+            return 0.2 -- минимальная видимость
+        end
+    end
+
+    return original_visibility_func(npc, who, time_delta, time_quant, luminosity, velocity_factor, velocity, distance, object_distance, always_visible_distance)
+end 

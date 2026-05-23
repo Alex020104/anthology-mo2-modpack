@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+    <string id="ui_mcm_rebound_encounters_title">
+        <text>RE:Bound Encounters: динамический спаунер для RE:Spawn Mutants</text>
+    </string>
+
+    <string id="ui_mcm_menu_rebound_encounters">
+        <text>RE: Связанные встречи</text>
+    </string>
+
+    <string id="ui_mcm_rebound_encounters_spawn_time_delay_min">
+        <text>Минимальное время между спаунами (в игровых часах)</text>
+    </string>
+
+    <string id="ui_mcm_rebound_encounters_spawn_time_delay_max">
+        <text>Максимальное время между спаунами (в игровых часах)</text>
+    </string>
+
+    <string id="ui_mcm_rebound_encounters_safe_radius">
+        <text>Безопасный радиус игрока</text>
+    </string>
+
+    <string id="ui_mcm_rebound_encounters_day_start">
+        <text>День. Время начала</text>
+    </string>
+
+    <string id="ui_mcm_rebound_encounters_day_end">
+        <text>День. Время окончания</text>
+    </string>
+
+    <string id="ui_mcm_rebound_encounters_boss_spawn_probability">
+        <text>Шанс на успешное появление босса-мутанта</text>
+    </string>
+
+    <string id="ui_mcm_rebound_encounters_predator_spawn_probability">
+        <text>Шанс того, что отпрыск будет агрессивным</text>
+    </string>
+
+    <string id="ui_mcm_rebound_encounters_wipe_mutants_on_level_change">
+        <text>Уничтожьте всех мутантов перед переходом на другой уровень</text>
+    </string>
+
+    <string id="ui_mcm_rebound_encounters_enable_ignore_smart_population">
+        <text>Игнорируйте ограничение популяции при спавне (больше спавнов)</text>
+    </string>
+
+    <string id="ui_mcm_rebound_encounters_enable_all_maps_spawning">
+        <text>Отсутствие ограничений по конкретным районам для отобранных слабых мутантов</text>
+    </string>
+
+    <string id="ui_mcm_rebound_encounters_enable_boss_is_night_only">
+        <text>Боссы-мутанты спаунятся только ночью</text>
+    </string>
+
+    <string id="ui_mcm_rebound_encounters_enable_spawn_reserve">
+        <text>Обеспечьте постоянное резервирование слотов для умников (меньшее количество спавнов)</text>
+    </string>
+    
+    <string id="ui_mcm_rebound_encounters_enable_debug">
+        <text>Включить отладку</text>
+    </string>
+
+    <string id="ui_mcm_rebound_encounters_delete_mutants_instructions">
+        <text>При включенной функции Debug нажатие клавиши «P» на клавиатуре во время игры удалит всех мутантов RE:Spawn. Используйте это, если вы планируете удалить некоторых мутантов из игры. Сохранение после удаления спавнов.</text>
+    </string>
+    <string id="ui_mcm_rebound_encounters_something">
+        <text>Место держателя</text>
+    </string>    
+</string_table>

@@ -1,0 +1,38 @@
+<sorter x="11" y="732" width="239" height="28">
+	<btn_1 x="22.125" y="0" width="21" height="28" hint="ui_st_tab_all" stretch="1">
+		<texture>ui_inGame2_btn_sort_all</texture>
+	</btn_1>
+	
+	<btn_2 x="46.875" y="0" width="21" height="28" hint="ui_st_tab_weapons" stretch="1">
+		<texture>ui_inGame2_btn_sort_weapon</texture>
+	</btn_2>
+	
+	<btn_3 x="71.625" y="0" width="21" height="28" hint="ui_st_tab_armor" stretch="1">
+		<texture>ui_inGame2_btn_sort_outfit</texture>
+	</btn_3>
+	
+	<btn_4 x="96.375" y="0" width="21" height="28" hint="ui_st_tab_ammo" stretch="1">
+		<texture>ui_inGame2_btn_sort_ammo</texture>
+	</btn_4>
+	
+	<btn_5 x="121.125" y="0" width="21" height="28" hint="ui_st_tab_artefact" stretch="1">
+		<texture>ui_inGame2_btn_sort_arty</texture>
+	</btn_5>
+	
+	<btn_6 x="145.875" y="0" width="21" height="28" hint="ui_st_tab_tools" stretch="1">
+		<texture>ui_inGame2_btn_sort_utility</texture>
+	</btn_6>
+	
+	<btn_7 x="170.625" y="0" width="21" height="28" hint="ui_st_tab_consumables" stretch="1">
+		<texture>ui_inGame2_btn_sort_food</texture>
+	</btn_7>
+	
+	<btn_8 x="195.375" y="0" width="21" height="28" hint="ui_st_tab_misc" stretch="1">
+		<texture>ui_inGame2_btn_sort_misc</texture>
+	</btn_8>
+	
+	<!-- text container for all button numbers -->
+	<num x="0" y="0" width="21" height="28" stretch="1">
+		<text complex_mode="1" r="255" g="255" b="255" a="128" align="r" vert_align="b" font="small"/>
+	</num>
+</sorter>

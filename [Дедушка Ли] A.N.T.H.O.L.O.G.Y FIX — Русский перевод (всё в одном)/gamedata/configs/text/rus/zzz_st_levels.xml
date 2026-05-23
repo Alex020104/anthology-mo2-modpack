@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<string_table>
+
+	<string id="l03_agroprom">
+	<text>Агропром</text>
+</string>
+<string id="l03u_agr_underground">
+	<text>Подземелья Агропрома</text>
+</string>
+<string id="l07_military">
+	<text>Армейские Склады</text>
+</string>
+<string id="l12_stancia_2">
+	<text>Север Чернобыльской АЭС</text>
+</string>
+<string id="l12_stancia">
+	<text>Чернобыльская АЭС</text>
+</string>
+<string id="l01_escape">
+	<text>Кордон</text>
+</string>
+<string id="k01_darkscape">
+	<text>Тёмная Лощина</text>
+</string>
+<string id="l04_darkvalley">
+	<text>Темная Долина</text>
+</string>
+<string id="l09_deadcity">
+	<text>Мертвый Город</text>
+</string>
+<string id="l11_hospital">
+	<text>Заброшенный Госпиталь</text>
+</string>
+<string id="fake_start">
+	<text>Фальстарт</text>
+</string>
+<string id="l02_garbage">
+	<text>Свалка</text>
+</string>
+<string id="l13_generators">
+	<text>Генераторы</text>
+</string>
+<string id="k00_marsh">
+	<text>Болота</text>
+</string>
+<string id="jupiter">
+	<text>Юпитер</text>
+</string>
+<string id="jupiter_underground">
+	<text>Подземный переход Припять-1</text>
+</string>
+<string id="l08u_brainlab">
+	<text>Лаборатория X-16</text>
+</string>
+<string id="l04u_labx18">
+	<text>Лаборатория X-18</text>
+</string>
+<string id="l10u_bunker">
+	<text>Лаборатория X-19</text>
+</string>
+<string id="labx8">
+	<text>Лаборатория X-8</text>
+</string>
+<string id="l10_limansk">
+	<text>Лиманск</text>
+</string>
+<string id="l12u_control_monolith">
+	<text>Центр управления Монолитом</text>
+</string>
+<string id="l13u_warlab">
+	<text>Военная лаборатория</text>
+</string>
+<string id="pripyat">
+	<text>Окраины Припяти</text>
+</string>
+<string id="l11_pripyat">
+	<text>Центр Припяти</text>
+</string>
+<string id="l10_radar">
+	<text>Радар</text>
+</string>
+<string id="l10_red_forest">
+	<text>Рыжий Лес</text>
+</string>
+<string id="l05_bar">
+	<text>Росток</text>
+</string>
+<string id="l12u_sarcofag">
+	<text>Саркофаг</text>
+</string>
+<string id="k02_trucks_cemetery">
+	<text>Кладбище Техники</text>
+</string>
+<string id="l06_rostok">
+	<text>Дикая Территория</text>
+</string>
+<string id="l08_yantar">
+	<text>Янтарь</text>
+</string>
+<string id="zaton">
+	<text>Затон</text>
+</string>
+<string id="y04_pole">
+	<text>Поляна</text>
+</string>
+<string id="sad">
+	<text>Долина Шорохов</text>
+</string>
+<string id="kurchatov_37">
+	<text>Курчатов-37</text>
+</string>
+<string id="black_valley">
+	<text>Застава</text>
+</string>
+<string id="predbannik">
+	<text>Предбанник</text>
+</string>
+<string id="aver">
+	<text>Неизведанные земли</text>
+</string>
+<string id="puzir">
+	<text>Забытый лес</text>
+</string>
+<string id="la06_science_station">
+	<text>Научная станция</text>
+</string>
+<string id="la22_forest">
+	<text>Проклятый лес</text>
+</string>
+<string id="la09_swamp">
+	<text>Восточные болота</text>
+</string>
+<string id="kasiani">
+	<text>Касьяны</text>
+</string>
+<string id="la19_country">
+	<text>Аномальные поля</text>
+</string>
+<string id="la02_garbage">
+	<text>Центральная Свалка</text>
+</string>
+<string id="la04_darkdolina">
+	<text>Тихие холмы</text>
+</string>
+<string id="la14_rostok_factory">
+	<text>Металлургический завод</text>
+</string>
+<string id="vokzal">
+	<text>Железнодорожная станция</text>
+</string>
+<string id="topi">
+	<text>Топи</text>
+</string>
+<string id="la17_outskirts">
+	<text>Окраина (Чернобыль-1)</text>
+</string>
+<string id="labx5">
+	<text>Лаборатория X-5</text>
+</string>
+<string id="labx14">
+	<text>Лаборатория X-14</text>
+</string>
+<string id="promzona">
+	<text>Промышленная зона</text>
+</string>
+<string id="deadlake">
+	<text>Мертвое озеро</text>
+</string>
+<string id="y05_anomles">
+	<text>Аномальный лес</text>
+</string>
+<string id="labx27">
+	<text>Лаборатория X-27</text>
+</string>
+<string id="labx7">
+	<text>Лаборатория X-7</text>
+</string>
+<string id="poselok_ug">
+	<text>Южный город</text>
+</string>
+<string id="way_in_zone">
+	<text>Бывший НИИ</text>
+</string>
+<string id="prostranstvenniy_puzir">
+	<text>Пространственный пузырь</text>
+</string>
+<string id="digger_stash">
+	<text>Нора</text>
+</string>
+<string id="station_digger">
+	<text>Станция Копачи</text>
+</string>
+<string id="la23_oldroad">
+	<text>Старая дорога</text>
+</string>
+<string id="okrest">
+	<text>Окраины Мертвого города</text>
+</string>
+<string id="az_radar">
+	<text>Окрестности “Купола”</text>
+</string>
+<string id="grimwood">
+	<text>Гримвуд</text>
+</string>
+<string id="collaider">
+	<text>Коллайдер</text>
+</string>
+<string id="l15u_pripyat_und">
+	<text>Комплекс "Метро-15"</text>
+</string>
+<string id="lab_audron">
+	<text>Лаборатория сектора-11</text>
+</string>
+<string id="bar_stalker">
+	<text>Подземный бар сталкеров</text>
+</string>
+<string id="labx2">
+	<text>Лаборатория X-2</text>
+</string>
+<string id="labx3">
+	<text>Лаборатория X-3</text>
+</string>
+<string id="labx6">
+	<text>Лаборатория X-6</text>
+</string>
+<string id="secret_forest">
+	<text>Окраина села "Залесье"</text>
+</string>
+<string id="kanion">
+	<text>Каньон</text>
+</string>
+<string id="okrest_und_bar">
+	<text>Бар "У Счастливчика"</text>
+</string>
+<string id="okrest_und_bunker">
+	<text>Подземная лаборатория</text>
+</string>
+<string id="okrest_und_fallstation">
+	<text>Испытательный комплекс</text>
+</string>
+<string id="okrest_und_lab_24">
+	<text>Затопленное подземелье</text>
+</string>
+<string id="okrest_und_mtrs">
+	<text>Санаторная станция</text>
+</string>
+<string id="office">
+	<text>Главное административное здание - исследовательский сектор</text>
+</string>
+<string id="niichaz">
+	<text>НИИ</text>
+</string>
+<string id="church">
+	<text>Дикая Территория</text>
+</string>
+<string id="collector22">
+	<text>Катакомбы</text>
+</string>
+<string id="labx11">
+	<text>Лаборатория X-11</text>
+</string>
+
+
+
+
+<!----------------------------------------------->
+<!------------ Location Transitions ------------->
+<!------------------------------------------------>
+<string id="mar_space_restrictor_to_agroprom_descr">
+	<text>На Агропром</text>
+</string>
+<string id="space_restrictor_to_agr_ug_desc">
+	<text>В Подземелья Агропрома</text>
+</string>
+<string id="space_restrictor_to_military_desc">
+	<text>На Армейские Склады</text>
+</string>
+<string id="gen_space_restrictor_to_aes2_descr">
+	<text>На Чернобыльскую АЭС</text>
+</string>
+<string id="ds_space_restrictor_to_escape_descr">
+	<text>На Кордон</text>
+</string>
+<string id="esc_space_restrictor_to_darkscape_descr">
+	<text>В Темную Лощину</text>
+</string>
+<string id="ds_space_restrictor_to_darkvalley_desc">
+	<text>В Темную Долину</text>
+</string>
+<string id="space_restrictor_to_deadcity_desc">
+	<text>В Мертвый Город</text>
+</string>
+<string id="space_restrictor_to_hospital">
+	<text>В заброшенный Госпиталь</text>
+</string>
+<string id="esc_space_restrictor_to_garbage_descr">
+	<text>На Свалку</text>
+</string>
+<string id="aes2_space_restrictor_to_gen_descr">
+	<text>К Генераторам</text>
+</string>
+<string id="mar_teleport_from_base_to_north_descr">
+	<text>На Болота</text>
+</string>
+<string id="space_restrictor_to_jupiter_desc">
+	<text>На Юпитер</text>
+</string>
+<string id="space_restrictor_to_jupiter_ug_desc">
+	<text>В подземный переход "Припять-1"</text>
+</string>
+<string id="space_restrictor_to_labx16_desc">
+	<text>В лабораторию X-16</text>
+</string>
+<string id="space_restrictor_to_labx18_desc">
+	<text>В Лабораторию X-18</text>
+</string>
+<string id="space_restrictor_to_labx10_desc">
+	<text>В Лабораторию X-19</text>
+</string>
+<string id="space_restrictor_to_labx8_desc">
+	<text>В Лабораторию X-8</text>
+</string>
+<string id="space_restrictor_to_limansk_desc">
+	<text>В Лиманск</text>
+</string>
+<string id="space_restrictor_to_secret_lab_desc">
+	<text>В Центр управления Монолита</text>
+</string>
+<string id="space_restrictor_to_warlab_desc">
+	<text>В Варлаб</text>
+</string>
+<string id="space_restrictor_to_cop_pripyat_desc">
+	<text>На окраины Припяти</text>
+</string>
+<string id="space_restrictor_to_pripyat_desc">
+	<text>В центр Припяти</text>
+</string>
+<string id="space_restrictor_to_radar_desc">
+	<text>На Радар</text>
+</string>
+<string id="mil_space_restrictor_to_red_1_descr">
+	<text>В Рыжий лес</text>
+</string>
+<string id="space_restrictor_to_bar_desc">
+	<text>На Росток</text>
+</string>
+<string id="space_restrictor_to_sarcophagus_desc">
+	<text>К Саркофагу</text>
+</string>
+<string id="space_restrictor_to_tc_desc">
+	<text>На Кладбище Техники</text>
+</string>
+<string id="space_restrictor_to_rostok_desc">
+	<text>На Дикую Территорию</text>
+</string>
+<string id="space_restrictor_to_yantar_desc">
+	<text>На Янтарь</text>
+</string>
+<string id="space_restrictor_to_zaton_desc">
+	<text>На Затон</text>
+</string>
+<string id="pol_space_restrictor_to_esc_1_descr">
+	<text>На Кордон</text>
+</string>
+<string id="pol_space_restrictor_to_val_1_descr">
+	<text>В Темную Долину</text>
+</string>
+<string id="esc_space_restrictor_to_pol_1_descr">
+	<text>На Поляну</text>
+</string>
+<string id="val_space_restrictor_to_pole_1_descr">
+	<text>На Поляну</text>
+</string>
+
+
+<string id="space_restrictor_to_sad_desc">
+	<text>В Долину Шорохов</text>
+</string>
+<string id="space_restrictor_to_cit_desc">
+	<text>В Курчатов-37</text>
+</string>
+<string id="space_restrictor_to_fgt_desc">
+	<text>На Заставу</text>
+</string>
+<string id="space_restrictor_to_pre_desc">
+	<text>В Предбанник</text>
+</string>
+<string id="space_restrictor_to_ave_desc">
+	<text>На Неизведанные Земли</text>
+</string>
+<string id="space_restrictor_to_puz_desc">
+	<text>В Забытый Лес</text>
+</string>
+<string id="space_restrictor_to_sci_desc">
+	<text>На Научную Станцию</text>
+</string>
+<string id="space_restrictor_to_for_desc">
+	<text>В Проклятый Лес</text>
+</string>
+<string id="space_restrictor_to_swa_desc">
+	<text>К Восточным болотам</text>
+</string>
+<string id="space_restrictor_to_kas_desc">
+	<text>В Касьяны</text>
+</string>
+<string id="space_restrictor_to_cou_desc">
+	<text>В Аномальные поля</text>
+</string>
+<string id="space_restrictor_to_g_c_desc">
+	<text>На Центральную Свалку</text>
+</string>
+<string id="space_restrictor_to_los_desc">
+	<text>В Тихие холмы</text>
+</string>
+<string id="space_restrictor_to_r_f_desc">
+	<text>На Металлургический завод</text>
+</string>
+<string id="space_restrictor_to_vok_desc">
+	<text>На Железнодорожный вокзал</text>
+</string>
+<string id="space_restrictor_to_topi_desc">
+	<text>В Топи</text>
+</string>
+<string id="space_restrictor_to_out_desc">
+	<text>В Чернобыль-1</text>
+</string>
+<string id="space_restrictor_to_x5_desc">
+	<text>В Лабораторию X-5</text>
+</string>
+<string id="space_restrictor_to_x14_desc">
+	<text>В Лабораторию X-14</text>
+</string>
+<string id="space_restrictor_to_pro_desc">
+	<text>В Промышленную зону</text>
+</string>
+<string id="space_restrictor_to_dl_desc">
+	<text>К Мертвому озеру</text>
+</string>
+<string id="space_restrictor_to_ano_desc">
+	<text>В Аномальный лес</text>
+</string>
+<string id="space_restrictor_to_x27_desc">
+	<text>В Лабораторию X-27</text>
+</string>
+<string id="space_restrictor_to_x7_desc">
+	<text>В Лабораторию X-7</text>
+</string>
+<string id="space_restrictor_to_pu_desc">
+	<text>В посёлок "Южный"</text>
+</string>
+<string id="space_restrictor_to_wiz_desc">
+	<text>В окрестности бывшего НИИ</text>
+</string>
+<string id="space_restrictor_to_p_p_desc">
+	<text>На Испытательный полигон</text>
+</string>
+<string id="space_restrictor_to_la_old_desc">
+	<text>На Старую дорогу</text>
+</string>
+<string id="space_restrictor_to_ldc_desc">
+	<text>В Мертвый город</text>
+</string>
+<string id="space_restrictor_to_okr_desc">
+	<text>На окраину Мертвого города</text>
+</string>
+<string id="space_restrictor_to_a_r_desc">
+	<text>В окрестности "Купола"</text>
+</string>
+<string id="space_restrictor_to_gri_desc">
+	<text>В Гримвуд</text>
+</string>
+<string id="st_space_restrictor_to_collider_descr">
+	<text>К Коллайдеру</text>
+</string>
+<string id="space_restrictor_to_x15_desc">
+	<text>В комплекс "Метро-15"</text>
+</string>
+<string id="space_restrictor_to_l_a_desc">
+	<text>В Лабораторию "Сектор-11"</text>
+</string>
+<string id="space_restrictor_to_bs_desc">
+	<text>В подземелье "Бара сталкеров"</text>
+</string>
+<string id="space_restrictor_to_x2_desc">
+	<text>В Лабораторию X-2</text>
+</string>
+<string id="space_restrictor_to_x3_desc">
+	<text>В Лабораторию X-3</text>
+</string>
+<string id="space_restrictor_to_x6_desc">
+	<text>В лабораторию X-6</text>
+</string>
+<string id="space_restrictor_to_labx11_desc">
+	<text>В Лабораторию X-11</text>
+</string>
+<string id="space_restrictor_to_kanion_desc">
+	<text>В Каньон</text>
+</string>
+<string id="space_restrictor_to_scf_desc">
+	<text>На окраину села Залесье</text>
+</string>
+
+	
+</string_table>
+
+<!-- Translation made with Stalker Translation XML TOOL -->
+<!-- https://www.moddb.com/mods/stalker-anomaly/addons/stalker-translation-xml-tool-v12-executable-version -->

@@ -1,0 +1,14 @@
+<w>
+
+	<file name = "ui\xcvb_arena_bg">
+		<!-- Main background -->
+		<texture id="xcvb_arena_gui_bg" x="0" y="0" width="1093" height="688" />
+
+		<!-- Row frame -->
+		<texture id="xcvb_arena_gui_row_frame" x="0" y="690" width="906" height="70" />
+
+		<!-- vert line -->
+		<texture id="xcvb_arena_gui_row_vert_line" x="0" y="690" width="1" height="70" />
+	</file>
+
+</w> 

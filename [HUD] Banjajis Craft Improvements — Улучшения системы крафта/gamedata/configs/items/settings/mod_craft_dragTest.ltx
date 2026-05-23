@@ -1,0 +1,52 @@
+; File for testing whether drag-drop crafting can be changed with DLTX. If it works then you can drag Mil-spec textiles onto Nemiroff vodka and get a bandage (order matters).
+; A change in the file requires game load to take effect. This means you don't have to exit the application.
+; The filename has to have DLTX format. See the instructions below.
+
+
+
+
+; Original but outdated DLTX: https://www.moddb.com/mods/stalker-anomaly/addons/dltx-differential-ltx-loading
+; Moddb modded exes (DLTX continuation): https://www.moddb.com/mods/stalker-anomaly/addons/152-dltxshader-scopessss-combined-modified-binaries-link-in-description
+; Github modded exes (DLTX continuation): https://github.com/themrdemonized/STALKER-Anomaly-modded-exes/tree/main
+; DLTXify tool: https://www.moddb.com/mods/stalker-anomaly/addons/dltxify-by-right-click-for-modders-tool
+
+; Инструкция DLTX (оригинал):
+; Для того чтобы внести дифференциальное изменение в записи LTX, необходимо выполнить следующие шаги:
+; 1. Выясните, в каком корневом LTX-файле загружена переменная, которую вы пытаетесь изменить. Вы можете либо искать файлы вручную и проследить цепочку #includes, либо использовать для этого LTXDiff.
+; LTXDiff findroot [Base Folder] [Mod Folder] [Relative Path to File]
+; 2. Найдя корневой файл, создайте новый в той же директории с именем «mod_[имя корневого файла]_[имя по вашему выбору].ltx».
+; 3. Сделайте запись для раздела и переменной, которые вы хотите изменить. Секция, которую вы хотите переопределить, должна иметь префикс «!», например, ![medkit]. Вам не нужно снова указывать родителей секций (например, do ![medkit], NOT ![medkit]:booster_multi), так как они уже есть в базовом определении. Теперь просто перечислите переменные, которые вы хотите изменить, как обычно.
+; Вы можете добавить родителей, объявив их как обычно, или удалить их, добавив к ним префикс «!», например, «![vodka2]:!vodka, medkit» заставляет vodka2 вести себя как medkit, а не как его первоначальный родитель.
+; Если вы хотите удалить переменную, просто добавьте строку «!имя_переменной». Вы также можете удалять секции, добавляя к ним префикс «!!!», однако они будут удалены только в том случае, если все принадлежащие им переменные тоже будут удалены, иначе флаг не будет действовать.
+; Вы можете переопределять только те секции, у которых уже есть базовое определение. Загрузка переопределения без базовой секции или загрузка нескольких базовых секций приведет к сбоям. К одной и той же секции можно применить несколько переопределений. Если несколько модов переопределяют одно и то же значение, в конфликте за эту переменную победит тот, который загрузится последним. Я не проверял, что на самом деле влияет на порядок загрузки, но могу предположить, что он основан на алфавитном порядке имен файлов.
+; Новые инструкции DLTX (модифицированные экзы): 
+; DLTX получил возможность создавать секцию, если она не существует, и заменять секцию, если она существует, с тем же символом @. Ниже приведен пример для секции newsection, которая не была определена. Сначала она создается с одним параметром override = false, затем переопределяется с override = true
+
+;@[newsection]
+;override = false
+;@[newsection]
+;override = true
+
+; DLTX received possibility to add items to parameter's list if the parameter has structure like
+
+;name = item1, item2, item3
+;>name = item4, item5 will add item4 and item5 to list, the result would be name = item1, item2, item3, item4, item5
+;<name = item3 will remove item3 from the list, the result would be name = item1, item2
+
+
+
+
+
+
+;;--==========================< Item combinations >=============================
+;[[
+; you can combine 2 items you define here into one
+; Example: vodka (item from) + cloth sheet (item to) = bandage (result)
+; 		vodka:prt_o_fabrics_4 = bandage
+; If you want to combine those 2 without caring about drag-drop order, add another line with opposite set
+;	    prt_o_fabrics_4:vodka = bandage
+;]]
+
+![item_combination]
+vodka:prt_o_fabrics_4 = bandage
+prt_o_fabrics_4:vodka = bandage

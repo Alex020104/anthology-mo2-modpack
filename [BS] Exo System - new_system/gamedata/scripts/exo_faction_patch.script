@@ -1,0 +1,531 @@
+local SUIT_SECTION = "exobackpack_exo_outfit"
+
+local original_menu_patch
+local original_menu_patch_action
+local original_get_outfit_comm
+local original_try_to_disguise
+local hooks_installed
+local exo_menu_patch
+local exo_menu_patch_action
+local ensure_disguise_hooks
+local patch_animation_in_use = {}
+
+local function is_special_suit(obj)
+    return obj and obj:section() == SUIT_SECTION
+end
+
+local function is_actor_owned(obj)
+    local parent = obj and obj:parent()
+    return parent and parent:id() == AC_ID
+end
+
+local function is_equipped_special_suit(obj)
+    if not (db and db.actor and obj) then
+        return false
+    end
+
+    local equipped = db.actor:item_in_slot(7)
+    return equipped and equipped:id() == obj:id()
+end
+
+local function get_target_suit(obj)
+    if db and db.actor then
+        local equipped = db.actor:item_in_slot(7)
+        if is_special_suit(equipped) then
+            return equipped
+        end
+    end
+
+    if is_special_suit(obj) then
+        return obj
+    end
+
+    return nil
+end
+
+local function get_patch_section_from_comm(comm)
+    if not comm or comm == "" then
+        return nil
+    end
+
+    local section = comm .. "_patch"
+    if ini_sys:section_exist(section) then
+        return section
+    end
+
+    return nil
+end
+
+local function get_comm_from_patch_section(section)
+    if type(section) ~= "string" or string.sub(section, -6) ~= "_patch" then
+        return nil
+    end
+
+    local comm = string.gsub(section, "_patch$", "")
+    if get_patch_section_from_comm(comm) == section then
+        return comm
+    end
+
+    return nil
+end
+
+local function is_patch_item(obj)
+    return obj and get_comm_from_patch_section(obj:section()) ~= nil
+end
+
+local function get_default_comm()
+    if gameplay_disguise and gameplay_disguise.get_default_comm then
+        return gameplay_disguise.get_default_comm()
+    end
+
+    if db and db.actor then
+        local comm = character_community(db.actor):sub(7)
+        if type(comm) == "string" and comm ~= "" then
+            return comm
+        end
+    end
+
+    return "stalker"
+end
+
+local function set_actor_comm(comm)
+    if not (db and db.actor and type(comm) == "string" and comm ~= "") then
+        return
+    end
+
+    if gameplay_disguise and gameplay_disguise.set_comm then
+        gameplay_disguise.set_comm(comm)
+    else
+        db.actor:set_character_community("actor_" .. comm, 0, 0)
+    end
+end
+
+local function can_use_fdda_patch_animation()
+    return lam2
+        and lam2.get_template_action_play_animation
+        and lam2.add_action
+        and liz_fdda_redone_mcm
+        and liz_fdda_redone_mcm.get_config
+end
+
+local function get_fdda_patch_mcm_value(path, fallback)
+    if not (liz_fdda_redone_mcm and liz_fdda_redone_mcm.get_config) then
+        return fallback
+    end
+
+    local value = liz_fdda_redone_mcm.get_config(path)
+    if value == nil then
+        return fallback
+    end
+
+    return value
+end
+
+local function get_saved_patch_comm(obj)
+    obj = get_target_suit(obj)
+    if not obj then
+        return nil
+    end
+
+    local saved = se_load_var(obj:id(), obj:name(), "exo_patch_comm")
+    if type(saved) == "string" and saved ~= "" then
+        if get_patch_section_from_comm(saved) then
+            return saved
+        end
+
+        -- Heal stale/bad save state so the attach option can reappear.
+        se_save_var(obj:id(), obj:name(), "exo_patch_comm", nil)
+        se_save_var(obj:id(), obj:name(), "unpatched", true)
+        return nil
+    end
+
+    return nil
+end
+
+local function clear_saved_patch_comm(obj)
+    obj = get_target_suit(obj)
+    if not obj then
+        return
+    end
+
+    se_save_var(obj:id(), obj:name(), "exo_patch_comm", nil)
+end
+
+local function set_saved_patch_comm(obj, comm)
+    obj = get_target_suit(obj)
+    if not obj then
+        return
+    end
+
+    if type(comm) ~= "string" or comm == "" then
+        clear_saved_patch_comm(obj)
+        return
+    end
+
+    if not get_patch_section_from_comm(comm) then
+        return
+    end
+
+    se_save_var(obj:id(), obj:name(), "exo_patch_comm", comm)
+end
+
+local function get_patch_display_name(section)
+    return section and ui_item.get_sec_name(section) or ""
+end
+
+local function force_disguise_refresh(obj)
+    local suit = get_target_suit(obj)
+    if not is_equipped_special_suit(suit) then
+        return
+    end
+
+    local target_comm = get_saved_patch_comm(suit)
+    if gameplay_disguise and gameplay_disguise.try_to_disguise then
+        if target_comm then
+            gameplay_disguise.try_to_disguise(target_comm, false, false)
+        else
+            gameplay_disguise.try_to_disguise(get_default_comm(), false, true)
+        end
+    else
+        set_actor_comm(target_comm or get_default_comm())
+    end
+end
+
+local function play_patch_animation(suit, section_name, apply_time_normalized, callback)
+    if not can_use_fdda_patch_animation() then
+        return false
+    end
+
+    local suit_id = suit and suit:id()
+    if not suit_id or patch_animation_in_use[suit_id] then
+        return false
+    end
+
+    patch_animation_in_use[suit_id] = true
+
+    local action = lam2.get_template_action_play_animation()
+    action.item = suit
+    action.sec = section_name
+    action.only_allow_movekeys = get_fdda_patch_mcm_value("outfit_anm/allow_movement", true)
+    action.disable_input = not action.only_allow_movekeys
+    action.can_skip = true
+    action.patch_action_done = false
+    action.apply_time = apply_time_normalized or 0.5
+    action.on_execute = function(self, time)
+        if (not self.patch_action_done) and time > self.duration * self.apply_time then
+            self.patch_action_done = true
+            patch_animation_in_use[self.item:id()] = nil
+            if callback then
+                callback(self.item)
+            end
+        end
+    end
+    action.on_skip = function(self)
+        if not self.patch_action_done then
+            patch_animation_in_use[self.item:id()] = nil
+        end
+    end
+
+    local inv_gui = ui_inventory and ui_inventory.GUI
+    if inv_gui and inv_gui.IsShown and inv_gui:IsShown() and inv_gui.mode == "loot" and hide_hud_inventory then
+        hide_hud_inventory()
+    end
+
+    lam2.add_action(action)
+    return true
+end
+
+local function do_apply_patch_to_suit(suit, patch_obj, suppress_fx)
+    suit = is_special_suit(suit) and suit or get_target_suit(suit)
+    if not (suit and patch_obj and is_actor_owned(suit) and is_actor_owned(patch_obj)) then
+        return false
+    end
+
+    if get_saved_patch_comm(suit) then
+        return false
+    end
+
+    local patch_sec = patch_obj:section()
+    local comm = get_comm_from_patch_section(patch_sec)
+    if not comm then
+        return false
+    end
+
+    alife_release(patch_obj)
+    set_saved_patch_comm(suit, comm)
+    se_save_var(suit:id(), suit:name(), "unpatched", nil)
+    if not suppress_fx then
+        actor_effects.play_item_fx("disguise_tear_patch")
+    end
+
+    if is_equipped_special_suit(suit) then
+        set_actor_comm(comm)
+        force_disguise_refresh(suit)
+    end
+
+    return true
+end
+
+local function do_remove_patch_from_suit(suit, suppress_fx)
+    local comm = get_saved_patch_comm(suit)
+    local section = get_patch_section_from_comm(comm)
+    if not section then
+        return false
+    end
+
+    clear_saved_patch_comm(suit)
+    se_save_var(suit:id(), suit:name(), "unpatched", true)
+    if not suppress_fx then
+        actor_effects.play_item_fx("disguise_tear_patch")
+    end
+
+    if ini_sys:section_exist(section) then
+        alife_create_item(section, db.actor)
+    end
+
+    if is_equipped_special_suit(suit) then
+        set_actor_comm(get_default_comm())
+        force_disguise_refresh(suit)
+    end
+
+    return true
+end
+
+local function apply_patch_to_suit(suit, patch_obj)
+    suit = is_special_suit(suit) and suit or get_target_suit(suit)
+    if not (suit and patch_obj and is_actor_owned(suit) and is_actor_owned(patch_obj)) then
+        return false
+    end
+
+    if get_saved_patch_comm(suit) then
+        return false
+    end
+
+    local patch_sec = patch_obj:section()
+    local comm = get_comm_from_patch_section(patch_sec)
+    if not comm then
+        return false
+    end
+
+    local is_equipped = is_equipped_special_suit(suit)
+    local use_fdda = get_fdda_patch_mcm_value(
+        is_equipped and "outfit_anm/enable_patches" or "outfit_anm/enable_patches_inventory",
+        false
+    )
+    local anim_sec = (is_equipped and "outfit_animation_patch_apply_" or "outfit_animation_patch_apply_inventory_") .. comm .. "_hud"
+
+    if use_fdda and play_patch_animation(suit, anim_sec, 0.8, function(item)
+        do_apply_patch_to_suit(item, patch_obj, true)
+    end) then
+        return true
+    end
+
+    return do_apply_patch_to_suit(suit, patch_obj, false)
+end
+
+local function on_item_drag_dropped(obj_1, obj_2, slot_from, slot_to)
+    ensure_disguise_hooks()
+
+    if not (obj_1 and obj_2) then
+        return
+    end
+
+    if not (slot_from == EDDListType.iActorBag and (slot_to == EDDListType.iActorBag or slot_to == EDDListType.iActorSlot)) then
+        return
+    end
+
+    if not (is_patch_item(obj_1) and is_special_suit(obj_2)) then
+        return
+    end
+
+    apply_patch_to_suit(obj_2, obj_1)
+end
+
+ensure_disguise_hooks = function()
+    if hooks_installed then
+        return true
+    end
+
+    if not gameplay_disguise then
+        return false
+    end
+
+    if gameplay_disguise.get_outfit_comm and not original_get_outfit_comm then
+        original_get_outfit_comm = gameplay_disguise.get_outfit_comm
+        gameplay_disguise.get_outfit_comm = function(section)
+            if section == SUIT_SECTION and db and db.actor then
+                local outfit = db.actor:item_in_slot(7)
+                if is_special_suit(outfit) then
+                    local comm = get_saved_patch_comm(outfit)
+                    if comm then
+                        return comm
+                    end
+                end
+            end
+
+            return original_get_outfit_comm(section)
+        end
+    end
+
+    if gameplay_disguise.menu_patch and not original_menu_patch then
+        original_menu_patch = gameplay_disguise.menu_patch
+        gameplay_disguise.menu_patch = exo_menu_patch
+    end
+
+    if gameplay_disguise.menu_patch_action and not original_menu_patch_action then
+        original_menu_patch_action = gameplay_disguise.menu_patch_action
+        gameplay_disguise.menu_patch_action = exo_menu_patch_action
+    end
+
+    if gameplay_disguise.try_to_disguise and not original_try_to_disguise then
+        original_try_to_disguise = gameplay_disguise.try_to_disguise
+        gameplay_disguise.try_to_disguise = function(new_comm, naked, no_patch)
+            local outfit = db and db.actor and db.actor:item_in_slot(7)
+            if not is_special_suit(outfit) then
+                return original_try_to_disguise(new_comm, naked, no_patch)
+            end
+
+            local target_comm = get_default_comm()
+            if not no_patch and not naked and new_comm and new_comm ~= "" then
+                target_comm = new_comm
+            end
+
+            set_actor_comm(target_comm)
+        end
+    end
+
+    hooks_installed = true
+    return true
+end
+
+function menu_select_patch(obj)
+    return false
+end
+
+function action_select_patch(obj)
+    return
+end
+
+function menu_remove_patch(obj)
+    ensure_disguise_hooks()
+
+    local suit = get_target_suit(obj)
+    if not (suit and is_actor_owned(suit)) then
+        return false
+    end
+
+    local comm = get_saved_patch_comm(suit)
+    local section = get_patch_section_from_comm(comm)
+    if not section then
+        return false
+    end
+
+    local text = game.translate_string("st_item_tear_patch")
+    return strformat(text, get_patch_display_name(section))
+end
+
+function action_remove_patch(obj)
+    ensure_disguise_hooks()
+
+    local suit = get_target_suit(obj)
+    if not (suit and is_actor_owned(suit)) then
+        return
+    end
+
+    local comm = get_saved_patch_comm(suit)
+    local section = get_patch_section_from_comm(comm)
+    if not section then
+        return
+    end
+
+    local is_equipped = is_equipped_special_suit(suit)
+    local use_fdda = get_fdda_patch_mcm_value(
+        is_equipped and "outfit_anm/enable_patches" or "outfit_anm/enable_patches_inventory",
+        false
+    )
+    local anim_sec = (is_equipped and "outfit_animation_patch_remove_" or "outfit_animation_patch_remove_inventory_") .. comm .. "_hud"
+
+    if use_fdda and play_patch_animation(suit, anim_sec, 0.1, function(item)
+        do_remove_patch_from_suit(item, true)
+    end) then
+        return
+    end
+
+    do_remove_patch_from_suit(suit, false)
+end
+
+function menu_apply_patch(obj)
+    return false
+end
+
+function action_apply_patch(obj)
+    return
+end
+
+exo_menu_patch = function(obj)
+    if menu_remove_patch(obj) then
+        return menu_remove_patch(obj)
+    end
+
+    ensure_disguise_hooks()
+
+    if not (is_special_suit(obj) and is_actor_owned(obj)) then
+        if original_menu_patch then
+            return original_menu_patch(obj)
+        end
+        return false
+    end
+
+    local comm = get_saved_patch_comm(obj)
+    local section = get_patch_section_from_comm(comm)
+    if not section then
+        return false
+    end
+
+    local text = game.translate_string("st_item_tear_patch")
+    return strformat(text, get_patch_display_name(section))
+end
+
+exo_menu_patch_action = function(obj)
+    if menu_remove_patch(obj) then
+        return action_remove_patch(obj)
+    end
+
+    ensure_disguise_hooks()
+
+    if not (is_special_suit(obj) and is_actor_owned(obj)) then
+        if original_menu_patch_action then
+            return original_menu_patch_action(obj)
+        end
+        return
+    end
+
+    local comm = get_saved_patch_comm(obj)
+    local section = get_patch_section_from_comm(comm)
+    if not section then
+        return
+    end
+
+    set_saved_patch_comm(obj, nil)
+    se_save_var(obj:id(), obj:name(), "unpatched", true)
+    actor_effects.play_item_fx("disguise_tear_patch")
+    if ini_sys:section_exist(section) then
+        alife_create_item(section, db.actor)
+    end
+
+    force_disguise_refresh(obj)
+end
+
+function on_game_start()
+    ensure_disguise_hooks()
+    RegisterScriptCallback("ActorMenu_on_item_drag_drop", on_item_drag_dropped)
+end
+
+function actor_on_first_update()
+    ensure_disguise_hooks()
+
+    local outfit = db and db.actor and db.actor:item_in_slot(7)
+    if is_special_suit(outfit) then
+        force_disguise_refresh(outfit)
+    end
+end

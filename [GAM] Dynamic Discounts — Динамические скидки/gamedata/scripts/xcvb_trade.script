@@ -1,0 +1,540 @@
+local cur_npc
+local met_traders = {}
+local items_list = {}
+
+local min_event_duration = xcvb_trade_mcm.get_config("min_event_time")
+local max_event_duration = xcvb_trade_mcm.get_config("max_event_time")
+
+local min_event_discount = xcvb_trade_mcm.get_config("min_event_disc")
+local max_event_discount = xcvb_trade_mcm.get_config("max_event_disc")
+
+local max_discounts_amount = xcvb_trade_mcm.get_config("max_disc_amount")
+local message_threshold = xcvb_trade_mcm.get_config("msg_threshold")
+
+local gt = game.translate_string
+local ctime_to_t = utils_data.CTime_to_table
+local t_to_ctime = utils_data.CTime_from_table
+local debugx = xcvb_trade_mcm.get_config("dbgx")
+
+--[[
+	item types:
+		mutant_parts (common, uncommon, rare):							mut_1, mut_2, mut_3
+		meat (common, rare):					meat_1, meat_2
+		hides (common, rare):					hide_1, hide_2
+		artefacts (junk, t2 common, t3 uncommon, t4+ rare):			arts_1, arts_2, arts_3, arts_4
+		weapons (+ammo):		xt_weapons
+		armors (+helmets):		xt_armors
+		repair/details:				xt_repair
+		supplies/food/drinks:		xt_supplies
+		medicine:						xt_med
+--]]
+
+-- npc with section in table will use their own values
+-- if npc section isnt in table - they will use shared group from "xcvb_trader_groups.ltx" (trader, mechanic etc) if they are found in it
+
+-- sell = sell to npc,	buy = buy from npc,		discount values in %
+-- value here is base discount for these items, value of 0 means no base discount but still possible to get an event discount
+
+-- mut_1, mut_2, mut_3, 		meat_1, meat_2,		hide_1, hide_2,		arts_1, arts_2, arts_3, arts_4,		xt_weapons, xt_armors, xt_repair, xt_supplies, xt_med
+local traders_t = {
+------- unspecified traders/mechs/medics/barmans -------
+	["trader"] = {
+		sell = { mut_1 = 15, mut_2 = 15, hide_1 = 15, arts_1 = 15, arts_2 = 15 },
+		buy = { xt_supplies = -15, xt_weapons = 0, xt_armors = 0 },
+	},
+
+	["mechanic"] = {
+		sell = {  },
+		buy = { xt_repair = -15 },
+	},
+
+	["medic"] = {
+		sell = {  },
+		buy = { xt_med = -15 },
+	},
+
+	["barman"] = {
+		sell = { meat_1 = 30 },
+		buy = { xt_supplies = -25 },
+	},
+
+------- specified traders -------
+	-- Sidorovich cordon
+	["m_trader"] = {
+		sell = { mut_1 = 15, mut_2 = 15, hide_1 = 15, arts_1 = 15, arts_2 = 15 },
+		buy = { xt_supplies = -15, xt_weapons = 0, xt_armors = 0 },
+	},
+
+	-- Loris cordon
+	["esc_main_base_trader_mlr"] = {
+		sell = { mut_1 = 15, mut_2 = 15, hide_1 = 15, arts_1 = 15, arts_2 = 15 },
+		buy = { xt_supplies = -15, xt_weapons = 0, xt_armors = 0 },
+	},
+
+	-- Butcher garbage
+	["hunter_gar_trader"] = {
+		sell = { mut_1 = 30, mut_2 = 30, meat_1 = 30, hide_1 = 30 },
+		buy = { xt_supplies = -25, xt_weapons = 0, xt_armors = 0 },
+	},
+
+	-- Spore swamp
+	["mar_base_owl_stalker_trader"] = {
+		sell = { mut_1 = 15, mut_2 = 15, hide_1 = 20, arts_1 = 0, arts_2 = 20, arts_3 = 20 },
+		buy = { xt_supplies = -15, xt_weapons = 0, xt_armors = 0 },
+	},
+
+	-- Barman bar
+	["bar_visitors_barman_stalker_trader"] = {
+		sell = { mut_1 = 15, mut_2 = 15, meat_1 = 15, hide_1 = 15, arts_1 = 15, arts_2 = 15 },
+		buy = { xt_supplies = -15, xt_weapons = 0, xt_armors = 0 },
+	},
+
+	-- Sakharov yantar
+	["yan_stalker_sakharov"] = {
+		sell = { mut_3 = 30, hide_2 = 30, arts_3 = 30, arts_4 = 30 },
+		buy = { xt_med = -25, xt_armors = 0 },
+	},
+
+}
+
+---------------- cost change ----------------
+function on_get_item_cost(kind, obj, profile, vanilla_cost, ret)
+	if not (cur_npc and met_traders[cur_npc] and met_traders[cur_npc].base and met_traders[cur_npc].event) then return end
+	if not (met_traders[cur_npc].base.sell and met_traders[cur_npc].event.sell) then return end
+	if not (met_traders[cur_npc].base.buy and met_traders[cur_npc].event.buy) then return end
+
+	-- find item group
+	local item_group
+	for group, t in pairs(items_list) do
+		if item_group then break end
+		for i = 1, #t do
+			if obj:section() == t[i] then
+				item_group = group
+				break
+			end
+		end
+	end
+	if not item_group then return end
+
+	-- sell to npc
+	local base_sell = met_traders[cur_npc].base.sell[item_group]
+	local event_sell = met_traders[cur_npc].event.sell[item_group] or 0
+	if profile.mode == 1 and base_sell then
+		local discount = (base_sell + event_sell) / 100
+		ret.new_cost = vanilla_cost * (1 + discount)
+		pr("sell %s, vanilla cost: %s || new_cost: %s", obj:section(), vanilla_cost, ret.new_cost)
+	end
+
+	-- buy from npc
+	local base_buy = met_traders[cur_npc].base.buy[item_group]
+	local event_buy = met_traders[cur_npc].event.buy[item_group] or 0
+	if profile.mode == 2 and base_buy then
+		local discount = (base_buy + event_buy) / 100
+		ret.new_cost = vanilla_cost * (1 + discount)
+		pr("buy %s, vanilla cost: %s || new_cost: %s", obj:section(), vanilla_cost, ret.new_cost)
+	end
+
+end
+
+---------------- open/close trade and manage traders ----------------
+function open_trade(mode)
+	if mode ~= 2 then return end
+
+	local npc = mob_trade.GetTalkingNpc()
+	local is_trader = npc and trade_manager.get_trade_profile(npc:id(), "cfg_ltx")
+	if not is_trader then return end		-- if not trader
+
+	local sec = npc:section()
+	if not get_trader_discount_table(sec) then printf("xcvb discounts trader sec: [%s] not found", sec) return end			-- if npc section not found in discount table
+
+	-- add faction check if not enemy
+	local npc_comm = alife_object(npc:id()) and get_real_community(alife_object(npc:id()), "stalker")
+	if (not npc_comm) or (game_relations.is_factions_enemies(get_actor_true_community(), npc_comm)) then return end
+
+	-- if meet trader for first time
+	local cur_time = game.get_game_time()
+	if not met_traders[npc:id()] then
+		met_traders[npc:id()] = {}
+		met_traders[npc:id()].event = { sell = {}, buy = {} }
+		met_traders[npc:id()].event_start_time = ctime_to_t(cur_time)
+		met_traders[npc:id()].event_duration = 86400		-- set first event to appear after 1 day
+
+		local se_npc = alife_object(npc:id())
+		if se_npc then
+			met_traders[npc:id()].trader_name = se_npc:character_name()
+			met_traders[npc:id()].trader_icon = se_npc:character_icon()
+		end
+	end
+
+	-- update base table in case it was changed
+	met_traders[npc:id()].base = get_trader_discount_table(sec)
+
+	-- set local var
+	cur_npc = npc:id()
+	-- load all item sections that match group from traders_t (buy and sell) into new table IF its gonna lag too much
+
+	-- start HUD
+	CreateTimeEvent("delay_trade_hud_e", "delay_trade_hud_a", 0.2, function()
+		if not cur_npc then	-- if was closed before this function
+			return true
+		end
+
+		activate_hud()
+		return true
+	end)
+
+end
+
+function close_trade(mode)
+	if cur_npc and mode ~= 2 then
+		cur_npc = nil
+		deactivate_hud()
+	end
+
+end
+
+local tmr = 0
+function actor_on_update()
+	local tg = time_global()
+	if tg < tmr then return end
+	tmr = tg + 30000
+
+	-- do only when trading isnt opened
+	if cur_npc then return end
+
+	local cur_time = game.get_game_time()
+
+	for npc_id, t1 in pairs(met_traders) do
+		-- if its time to get new event
+		if cur_time:diffSec(t_to_ctime(t1.event_start_time)) > t1.event_duration then
+
+			-- reset current event
+			met_traders[npc_id].event = { sell = {}, buy = {} }
+
+			-- pick a few random keys (item groups) from "base" and set their new "event" values (thanks Longreed)
+			local change_count = max_discounts_amount
+			for i = 1, change_count do
+				local key = random_key_table(t1.base)
+				if key and (not is_empty(t1.base[key])) then
+					local val = random_key_table(t1.base[key])
+					met_traders[npc_id].event[key][val] = math.random(min_event_discount, max_event_discount)
+				end
+			end
+
+			-- set new event time and duration
+			met_traders[npc_id].event_start_time = ctime_to_t(cur_time)
+			local days_duration = math.random(min_event_duration, max_event_duration)
+			met_traders[npc_id].event_duration = 86400 * days_duration
+
+			-- compare vals from same "base" + "event" keys with message threshold and send message
+			local str = get_message_str(t1)
+			local trader_name = t1.trader_name
+			local trader_icon = t1.trader_icon
+			if str ~= "" then
+				local w_clr = utils_xml.get_color("pda_white")
+				local p_clr = utils_xml.get_color("d_purple")
+				local msg = p_clr .. gt("xcvb_trade_trade") .. " " .. w_clr .. gt("xcvb_trade_hi") .. " " .. str .. " " .. w_clr .. gt("xcvb_trade_stay") .. " " .. days_duration .. " " .. gt("xcvb_trade_day" .. (days_duration > 1 and "s" or ""))
+				dynamic_news_helper.send_tip(msg, trader_name, nil, 10, trader_icon, "danger", "npc")
+			end
+
+		end
+	end
+
+end
+
+---------------- item footer ----------------
+BuildFooter = ui_item.build_desc_footer
+function ui_item.build_desc_footer(obj, sec, str)
+	str = str or gt(ini_sys:r_string_ex(sec, "description"))
+	if (not str) then return "" end
+
+	local item_group
+	for group, t in pairs(items_list) do
+		if item_group then break end
+		for i = 1, #t do
+			if sec == t[i] then
+				item_group = group
+				break
+			end
+		end
+	end
+
+	local p_clr = utils_xml.get_color("d_purple")
+	local w_clr = utils_xml.get_color("pda_white")
+	local def_clr = utils_xml.get_color("ui_gray_1")
+	if item_group then
+		local group_str = p_clr .. "  " .. gt("xcvb_trade_buy_krug") .. " " .. def_clr .. gt("xcvb_trade_group") .. " " .. w_clr .. gt("xcvb_trade_" .. item_group) .. "\\n \\n" .. def_clr
+		return BuildFooter(obj, sec, str) .. group_str
+	end
+
+	return BuildFooter(obj, sec, str)
+end
+
+---------------- utils ----------------
+function get_trader_discount_table(npc_sec)
+	if not npc_sec then return end
+
+	if traders_t[npc_sec] then
+		return traders_t[npc_sec]
+	end
+
+	local ret_t
+	local ltx = ini_file("plugins\\xcvb_trader_groups.ltx")
+	ltx:section_for_each(function(sec)
+		local n = ltx:line_count(sec)
+		for i = 0, n - 1 do
+			result, id, value	= ltx:r_line_ex(sec, i, "", "")
+			if npc_sec == id and traders_t[sec] then
+				ret_t = traders_t[sec]
+				break
+			end
+		end
+	end)
+
+	return ret_t
+end
+
+local furniture = {
+    ["esc_m_trader"] = true,
+    ["red_m_lesnik"] = true
+}
+
+local blacklisted_comms = {
+    ["trader"] = true,
+    ["monster"] = true
+}
+
+function get_real_community(se_obj, default)
+
+	if se_obj.name and se_obj:name() and furniture[se_obj:name()] then
+		return default
+	end
+	local community = se_obj.community and se_obj:community()
+	if (not community) then return default end
+	if not blacklisted_comms[community] then
+		return community
+	end
+	local squad_community = get_object_squad(se_obj) and get_object_squad(se_obj):get_squad_community()
+	if not blacklisted_comms[squad_community] then
+		return squad_community
+	else
+		return default
+	end
+end
+
+function categorize_items()
+	local categories = {
+		["Items (Drink)"] = "xt_supplies",
+		["Items (Tool)"] = "xt_supplies",
+		["Items (Medical)"] = "xt_med",
+		["Items (Repair)"] = "xt_repair",
+		["Items (Parts)"] = "xt_repair",
+
+		["Weapons (Ammo)"] = "xt_weapons",
+		["Weapons (Melee)"] = "xt_weapons",
+		["Weapons (Pistol)"] = "xt_weapons",
+		["Weapons (Shotgun)"] = "xt_weapons",
+		["Weapons (SMG)"] = "xt_weapons",
+		["Weapons (Rifle)"] = "xt_weapons",
+		["Weapons (Sniper)"] = "xt_weapons",
+
+		["Helmets"] = "xt_armors",
+		["Outfits (Light)"] = "xt_armors",
+		["Outfits (Medium)"] = "xt_armors",
+		["Outfits (Heavy)"] = "xt_armors",
+	}
+
+	-- save vanilla sections
+	for dbg_name, name in pairs(categories) do
+		local dbg_ar = ui_debug_main.get_spawn_table(dbg_name)
+		if dbg_ar and #dbg_ar > 0 then
+			items_list[name] = items_list[name] or {}
+			for j = 1, #dbg_ar do		-- debug array with items
+				items_list[name][#items_list[name] + 1] = dbg_ar[j]
+			end
+		end
+	end
+
+	-- save additional sections
+	local ltx = ini_file("plugins\\xcvb_item_groups.ltx")
+	ltx:section_for_each(function(sec)
+
+		items_list[sec] = items_list[sec] or {}
+		local n = ltx:line_count(sec)
+		for i = 0, n - 1 do
+			result, id, value	= ltx:r_line_ex(sec, i, "", "")
+			-- if ini_sys:section_exist(id) then
+			items_list[sec][#items_list[sec] + 1] = id
+		end
+
+	end)
+
+	-- test
+	--[[
+	for name, ar in pairs(items_list) do
+		pr("-----CATEGORY: %s", name)
+		for i = 1, #ar do pr(ar[i]) end
+	end
+	--]]
+
+end
+
+function get_message_str(t1)
+	local str = ""
+	for mode, mode_t in pairs(t1.event) do		-- mode = sell/buy
+		for event_k, event_v in pairs(mode_t) do		-- event_k = item group, event_v = value
+			if t1.base[mode] and t1.base[mode][event_k] then
+
+				local g_clr = utils_xml.get_color("d_green")
+				local r_clr = utils_xml.get_color("d_red")
+				local w_clr = utils_xml.get_color("pda_white")
+				local sum = event_v + t1.base[mode][event_k]
+
+				local sign = sum > 0 and "+" or ""
+				local sell_clr = (sum >= message_threshold and g_clr) or (sum <= -message_threshold and r_clr)
+				local buy_clr = (sum >= message_threshold and r_clr) or (sum <= -message_threshold and g_clr)
+				local mode_clr = (mode == "sell" and sell_clr) or (mode == "buy" and buy_clr)
+
+				if mode_clr then
+					str = str .. w_clr .. gt("xcvb_trade_" .. mode .. "_msg") .. " " .. gt("xcvb_trade_" .. event_k) .. " " .. mode_clr .. sign .. sum .. "%" .. w_clr .. "; "
+				end
+
+			end
+		end
+	end
+
+	return str
+end
+
+function sort_alphabetically(t)
+	local a = {}
+	for n in pairs(t) do a[#a+1] = n end
+	table.sort(a)
+	return a
+end
+
+function pr(...)
+	if not debugx then return end
+	printf(...)
+end
+
+---------------- HUD ----------------
+HUD = nil
+
+function activate_hud()
+	if HUD == nil then
+		HUD = xcvb_trade_tooltip()
+		get_hud():AddDialogToRender(HUD)
+	end
+	HUD:Update(true)
+
+end
+
+function deactivate_hud()
+	if HUD ~= nil then
+		get_hud():RemoveDialogToRender(HUD)
+		HUD = nil
+	end
+
+end
+
+class "xcvb_trade_tooltip" (CUIScriptWnd)
+function xcvb_trade_tooltip:__init() super()
+	self:InitControls()
+end
+
+function xcvb_trade_tooltip:InitControls()
+	self:SetWndRect(Frect():set(0,0,1024,768))
+	self:SetAutoDelete(true)
+
+	self.xml = CScriptXmlInit()
+	local xml = self.xml
+	xml:ParseFile("ui_xcvb_trade.xml")
+
+	-- build elements
+	self.hover = xml:InitStatic("hover_discount", self)
+	self.buy_bg = xml:InitStatic("buy_bg", self)
+	self.buy_header = xml:InitStatic("buy_bg:buy_header", self.buy_bg)
+	self.sell_bg = xml:InitStatic("sell_bg", self)
+	self.sell_header = xml:InitStatic("sell_bg:sell_header", self.sell_bg)
+	self.buy_bg:Show(false)
+	self.sell_bg:Show(false)
+
+	-- fill with text from npc id table
+	local function get_str(mode)
+		local str = ""
+		local t = cur_npc and met_traders[cur_npc] and met_traders[cur_npc].base and met_traders[cur_npc].base[mode]
+		if not (t) then
+			return str
+		end
+
+		local sorted_ar = sort_alphabetically(t)
+
+		for _, base_k in ipairs(sorted_ar) do
+			local base_v = t[base_k]
+			local event_v = met_traders[cur_npc].event and met_traders[cur_npc].event[mode] and met_traders[cur_npc].event[mode][base_k]
+			local g_clr = utils_xml.get_color("d_green")
+			local r_clr = utils_xml.get_color("d_red")
+			local w_clr = utils_xml.get_color("pda_white")
+			local clr_pick
+			local function sign_pick(val) return val > 0 and "+" or "" end
+			local sum = base_v + (event_v or 0)
+			if mode == "sell" then
+				clr_pick = (sum > 0 and g_clr) or (sum < 0 and r_clr) or w_clr
+			else
+				clr_pick = (sum < 0 and g_clr) or (sum > 0 and r_clr) or w_clr
+			end
+			str = str .. clr_pick .. gt("xcvb_trade_" .. base_k) .. "      " .. sign_pick(base_v) .. base_v .. "%  " .. (event_v and ("(" .. sign_pick(event_v) .. event_v .. "%)") or "") .. " \\n"
+		end
+
+		return str
+	end
+
+	self.sell_bg:TextControl():SetText(get_str("sell"))
+	self.buy_bg:TextControl():SetText(get_str("buy"))
+
+end
+
+function xcvb_trade_tooltip:Update()
+	CUIScriptWnd.Update(self)
+
+	local pos = GetCursorPosition()
+	local e_p, e_w, e_h = self.hover:GetWndPos(), self.hover:GetWidth(), self.hover:GetHeight()
+	local pos_true = pos.x > e_p.x and pos.y > e_p.y and pos.x < (e_p.x + e_w) and pos.y < (e_p.y + e_h)
+	self.sell_bg:Show(pos_true)
+	self.buy_bg:Show(pos_true)
+
+end
+
+function xcvb_trade_tooltip:__finalize()
+end
+
+--------------------------------------
+function on_option_change()
+	min_event_duration = xcvb_trade_mcm.get_config("min_event_time")
+	max_event_duration = xcvb_trade_mcm.get_config("max_event_time")
+	min_event_discount = xcvb_trade_mcm.get_config("min_event_disc")
+	max_event_discount = xcvb_trade_mcm.get_config("max_event_disc")
+	max_discounts_amount = xcvb_trade_mcm.get_config("max_disc_amount")
+	message_threshold = xcvb_trade_mcm.get_config("msg_threshold")
+	debugx = xcvb_trade_mcm.get_config("dbgx")
+end
+
+function save_state(m_data)
+	m_data.met_traders = met_traders
+end
+
+function load_state(m_data)
+	met_traders = m_data.met_traders or {}
+end
+
+function on_game_start()
+	RegisterScriptCallback("on_get_item_cost", on_get_item_cost)
+	RegisterScriptCallback("ActorMenu_on_mode_changed", open_trade)
+	RegisterScriptCallback("ActorMenu_on_mode_changed", close_trade)
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+	RegisterScriptCallback("actor_on_first_update", categorize_items)
+	RegisterScriptCallback("on_option_change", on_option_change)
+	RegisterScriptCallback("save_state", save_state)
+	RegisterScriptCallback("load_state", load_state)
+end

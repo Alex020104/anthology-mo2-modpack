@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<string_table>
+    <string id="ui_mcm_companions_dont_die_header">
+        <text>Companions Don't Die</text>
+    </string>
+    <string id="ui_mcm_companions_dont_die_toggle">
+        <text>Immortal companions</text>
+    </string>
+    <string id="ui_mcm_companions_dont_die_toggle_desc">
+        <text>If enabled, companions do not die and fall into a wounded state. If disabled, companions become mortal again.</text>
+    </string>
+</string_table>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+    <string id="st_solid_supplies">
+        <text>With all the fighting that goes down by the Barrier and the shape of the recon teams that come back, we need good medical supplies. Band-aids won't cut it - we need tourniquets, trauma kits and hemostatics. All we have here is fucking cold medicine and antirad! Can we rely on you?</text>
+    </string>
+    <string id="st_solid_supplies_done">
+        <text>Your help is appreciated, man. We gotta keep our boys alive.</text>
+    </string>
+
+    <string id="st_skinflint_lottery">
+        <text>We got a real problem with Monolith, as you know. Keeping them away takes a toll on us all. Stack them up on my behalf and I'll reward you with choice goodies.</text>
+    </string>
+    <string id="st_skinflint_lottery_done">
+        <text>Good work. Keep em coming.</text>
+    </string>
+    
+    <string id="st_screw_ied">
+        <text>Keeping the Barrier entrance mined helps us keep the Monolith at bay, and also helps us deal with some of the nastier creatures that lurk here. I'll take any explosives off your hands and give you something to fix your suit.</text>
+    </string>
+    <string id="st_screw_ied_done">
+        <text>Those rock worshippers won't know what hit em.</text>
+    </string>
+
+    <string id="st_screw_radio">
+        <text>We need spare radios to both maintain contact with our Barrier garrison as well as for jury-rigged remote explosives. If you have spare radios I'll trade you for them.</text>
+    </string>
+
+    <string id="st_screw_paint">
+        <text>Nice gun, bro. I got nothing better to do, so I can tweak it if I get something to smoke while I work.</text>
+    </string>
+    <string id="st_screw_paint_done">
+        <text>Pleasure doing business.</text>
+    </string>
+
+    <string id="st_screw_mask">
+        <text>Hey, I can combine these two pieces of equipment for you. Need to make a few changes to the helmet to accommodate the mask, but it's not a big deal.</text>
+    </string>
+    <string id="st_screw_mask_done">
+        <text>Pleasure doing business.</text>
+    </string>
+
+</string_table>

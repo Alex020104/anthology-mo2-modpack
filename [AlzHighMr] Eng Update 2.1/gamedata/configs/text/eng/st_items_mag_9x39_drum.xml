@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+ <!-- 9x39 -->
+	
+<string id="st_mag_val_9x39_drum">
+    <text>9x39 drum magazine for 50 rounds</text>
+</string>
+
+<string id="st_mag_val_9x39_drum_descr">
+    <text>
+        A 50-round drum magazine for 9x39 rifles.
+    </text>
+</string>
+
+	
+</string_table>

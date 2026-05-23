@@ -1,0 +1,30 @@
+<string_table>
+    <string id="ui_mcm_menu_haru_suit_notifications_mcm">
+        <text>H.A.R. System </text>
+    </string>
+    
+    <string id="ui_mcm_haru_suit_notifications_mcm_volume">
+        <text>Volume</text>
+    </string>
+    <string id="ui_mcm_haru_suit_notifications_mcm_delay">
+        <text>Delay between notifications</text>
+    </string>
+    <string id="ui_mcm_haru_suit_notifications_mcm_nomusic">
+        <text>Disable Music</text>
+    </string>
+    <string id="ui_mcm_haru_suit_notifications_mcm_eco_only">
+        <text>Apply to eco suits only</text>
+    </string>
+    <string id="ui_mcm_haru_suit_notifications_mcm_language">
+        <text>Language</text>
+    </string>
+    <string id="ui_mcm_lst_haru_suit_notifications_mcm_eng">
+        <text>eng</text>
+    </string>
+    <string id="ui_mcm_lst_haru_suit_notifications_mcm_rus">
+        <text>rus</text>
+    </string>
+    <string id="ui_mcm_lst_haru_suit_notifications_mcm_ua">
+        <text>ua</text>
+    </string>
+</string_table>

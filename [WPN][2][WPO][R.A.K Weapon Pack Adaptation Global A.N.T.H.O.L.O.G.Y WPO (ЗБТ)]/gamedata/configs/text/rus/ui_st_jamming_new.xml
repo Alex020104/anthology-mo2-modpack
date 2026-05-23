@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<!-- Jammin -->
+	<string id="kb_unjam">
+		<text>Убрать Клин</text>
+	</string>
+	<string id="ui_st_misfire">
+		<text>Оружие дало осечку!</text>
+	</string>
+	<string id="ui_st_jam">
+		<text>Оружие заклинило!</text>
+	</string>
+	<string id="ui_st_superjam">
+		<text>Оружие сильно заклинило!</text>
+	</string>
+	<string id="ui_st_nothing">
+		<text>В руках нет стрелкового оружия.</text>
+	</string>
+	<string id="ui_st_unjam">
+		<text>Заклинивание оружия устранено.</text>
+	</string>
+	<string id="ui_st_functional">
+		<text>Оружие готово к стрельбе</text>
+	</string>
+	<string id="ui_st_oldjam">
+		<text>Из-за плохого состояния оружие заклинило. Перезаряди его.</text>
+	</string>
+	<string id="ui_st_unjam_fail">
+		<text>Оружие сильно заклинило - сначала разряди магазин, а затем передёрни затвор.</text>
+	</string>
+	<string id="ui_st_parts_damage">
+		<text>Внутри оружия что-то сломалось.</text>
+	</string>
+	<string id="st_news_parts_alreadygood">
+		<text>Эта деталь не требует замены.</text>
+	</string>
+	<string id="ui_st_heat1">
+		<text>, но теплое.</text>
+	</string>
+	<string id="ui_st_heat2">
+		<text>, но горячее!</text>
+	</string>
+	<string id="ui_st_heat3">
+		<text>, но очень горячее!</text>
+	</string>
+	
+	<string id="st_unjam">
+		<text>Убрать Клин</text>
+	</string>
+	<!-- Messages -->
+	<string id="st_news_parts_success">
+		<text>%c[d_green]Деталь успешно заменена.</text>
+	</string>
+	<string id="st_news_helmet_success">
+		<text>%c[d_green]Шлем успешно заменен.</text>
+	</string>
+	<string id="st_news_parts_fail">
+		<text>%c[d_red]На оружии установлена деталь лучшего качества.</text>
+	</string>
+	<string id="st_news_parts_incompatible">
+		<text>%c[d_red]Эта деталь не совместима с данным оружием.</text>
+	</string>
+	<string id="st_news_parts_barrel">
+		<text>%c[d_red]Ствол нельзя сменить в полевых условиях.</text>
+	</string>
+	<string id="st_news_parts_rusty">
+		<text>%c[d_red]Невозможно разобрать это оружие в полевых условиях, так как оно слишком ржавое.</text>
+	</string>
+	<string id="st_news_dis_items">
+		<text>%c[d_red]Для разборки требуется подходящий инструмент.</text>
+	</string>
+	<string id="st_news_fieldstrip">
+		<text>Удаленные детали:</text>
+	</string>
+	<string id="st_news_headstrip">
+		<text>Снят шлем:</text>
+	</string>
+	<string id="st_news_cleaned">
+		<text>Очищенные детали:</text>
+	</string>
+
+	<!-- MCM -->
+	<string id="ui_mcm_menu_soip">
+		<text>Weapon Parts Overhaul</text>
+	</string>
+	<string id="ui_mcm_soip_title">
+		<text>Настройка аддона Weapon Parts Overhaul</text>
+	</string>
+	<string id="ui_mcm_soip_profanity">
+		<text>Ненормативная лексика при клине</text>
+	</string>
+	<string id="ui_mcm_soip_profanity_desc">
+		<text>Включает ругательства главного героя при заклинивании оружия.</text>
+	</string>
+	<string id="ui_mcm_soip_profanity_timeout">
+		<text>Выключает кулдаун на ненормативную лексику</text>
+	</string>
+	<string id="ui_mcm_soip_profanity_timeout_desc">
+		<text>Добавляет небольшой кулдаун на ругательства если включено. Используйте если не любите веселье.</text>
+	</string>
+	<string id="ui_mcm_soip_profanity_language">
+		<text>"Мат" выбор языка</text>
+	</string>
+	<string id="ui_mcm_soip_jamchance">
+		<text>Коэффициент шанса клина</text>
+	</string>
+	<string id="ui_mcm_soip_jamchance_desc">
+		<text>Коэффициент шанса клина</text>
+	</string>
+	<string id="ui_mcm_soip_superjam">
+		<text>Включить "супер-клин"</text>
+	</string>
+	<string id="ui_mcm_soip_superjam_desc">
+		<text>Включает (или отключает) так называемый "супер-клин". При "супер-клине" нужно полностью разрядить оружие.</text>
+	</string>
+	<string id="ui_mcm_soip_simplejam">
+		<text>Выброс магазина при супер-клине</text>
+	</string>
+	<string id="ui_mcm_soip_simplejam_desc">
+		<text>Если включено, при нажатии перезарядки (по стандарту R) с сильно заклинившем оружием, магазин будет извлечен. Больше не придется возиться с инвентарем.</text>
+	</string>
+	<string id="ui_mcm_soip_threshold">
+		<text>Порог состояния повреждения детали</text>
+	</string>
+	<string id="ui_mcm_soip_threshold_desc">
+		<text>Состояние оружия при котором есть шанс повредить детали. Чем меньше, тем оружие должно быть больше повреждено чтобы детали начали повреждаться.</text>
+	</string>
+	<string id="ui_mcm_soip_verbosity">
+		<text>Подробная информация в сообщении о клине</text>
+	</string>
+	<string id="ui_mcm_soip_verbosity_desc">
+		<text>Три варианта сообщений о состоянии оружия:\nНет сообщений: уведомления появляются по факту, иначе сбивают с толку.\nНормальный вариант (рекомендуется): будет предупреждать о заклинивании и разрядке оружия.\nПолный вариант : получаете предупреждения о всех нюансах состояния вашего оружия - когда заклинивает, о повреждении компонентов, потребуется чистка и разбор ствола.</text>
+	</string>
+	<string id="ui_mcm_soip_fun">
+		<text>Уровень веселья</text>
+	</string>
+	<string id="ui_mcm_soip_title">
+		<text>Weapon Parts Overhaul</text>
+	</string>
+	<string id="ui_mcm_lst_eng">
+		<text>Английский</text>
+	</string>
+	<string id="ui_mcm_lst_rus">
+		<text>Русский</text>
+	</string>
+	<string id="ui_mcm_lst_verbosity_none">
+		<text>Выключен</text>
+	</string>
+	<string id="ui_mcm_lst_verbosity_normal">
+		<text>Обычный</text>
+	</string>
+	<string id="ui_mcm_lst_verbosity_full">
+		<text>Полный</text>
+	</string>
+	<string id="ui_mcm_lst_no">
+		<text>Долг</text>
+	</string>
+	<string id="ui_mcm_lst_yes">
+		<text>Одиночки</text>
+	</string>
+	<string id="ui_mcm_lst_ofc">
+		<text>Свобода</text>
+	</string>
+	<string id="ui_mcm_soip_debug">
+		<text>Журнал отладки</text>
+	</string>
+	<string id="ui_mcm_soip_debug_desc">
+		<text>Журнал отладки отображает дополнительную информацию в консоли.</text>
+	</string>
+	<string id="ui_mcm_soip_babymode">
+		<text>Режим для детей (без клина) </text>
+	</string>
+	<string id="ui_mcm_soip_babymode_desc">
+		<text>Отключает функционал заедания оружия. Если тебе это нужно... Зачем ты вообще тогда установил этот аддон?</text>
+	</string>
+	<string id="ui_mcm_soip_newdrops">
+		<text>Включает альтернативные значения состояния выпадаемых частей</text>
+	</string>
+	<string id="ui_mcm_soip_newdrops_desc">
+		<text>Для определения значения состояния частей оружия используется новая формула. На шанс частей в хорошем состоянии влияет состояние оружия и скрытый вес. Усложняет игровой процесс. Отключите что бы использовать старый метод.</text>
+	</string>
+	<string id="ui_mcm_soip_newdropschance">
+		<text>Шанс извлечь части в хорошем состоянии по альтернативной формуле</text>
+	</string>
+	
+	<string id="st_field_strip">
+		<text>снять запчасти</text>
+	</string>
+	<string id="st_field_strip_fail">
+		<text>Из оружия больше нечего извлечь</text>
+	</string>
+	<string id="st_head_strip">
+		<text>снять шлем</text>
+	</string>
+	<string id="ui_st_missing">
+		<text>В оружии отсутствуют запчасти.</text>
+	</string>
+	<string id="ui_st_no_welding_fuel">
+		<text>В сварочном балоне не осталось топлива</text>
+	</string>
+  <string id="st_refill">
+		<text>Заправить сварочный балон</text>
+	</string>
+  <string id="ui_st_refill_one">
+		<text>Заправить один литр</text>
+	</string>
+  <string id="ui_st_refill_full">
+		<text>Заправить полностью</text>
+	</string>
+  <string id="ui_st_no_welding_kit">
+		<text>Ниодин сварочный комплект не нуждается в заправке</text>
+	</string>
+	
+	<string id="st_partskit">
+		<text>Портативный сварочный набор</text>
+	</string>
+	<string id="st_partskit_descr">
+		<text>Сварочный набор инструментов включая дополнтельные инструменты для починки оружейных деталей. Только самые разрушенные куски металлолома не могут быть восстановлены этим комплектом. Однако, этот комплект можно использовать на верстаке для более серьезных повреждений.\n\n
+		%c[ui_gray_3]ХАРАКТЕРИСТИКИ:\n
+		%c[d_blue] • %c[ui_gray_2] не расходуется, можно заправить газом\n
+		%c[d_blue] • %c[ui_gray_2] технологическое приспособление\n
+		%c[d_blue] • %c[ui_gray_2] ремкомплект\n
+		%c[d_blue] • %c[ui_gray_2] высокое качество\n
+		%c[d_orange] • %c[ui_gray_2] используется для ремонта оружейных деталей\n</text>
+	</string>
+<!-- Info -->
+
+	<string id="st_dot">
+		<text>•</text>
+	</string>
+	<string id="st_damage_missing">
+		<text>отсутствует</text>
+	</string>
+	<string id="st_damage_0">
+		<text>сломан</text>
+	</string>
+	<string id="st_damage_1">
+		<text>поврежден</text>
+	</string>
+	<string id="st_damage_2">
+		<text>изношен</text>
+	</string>
+	<string id="st_damage_3">
+		<text>загрязнен</text>
+	</string>
+	<string id="st_soip_replace_parts">
+		<text>обслуживание</text>
+	</string>
+	
+	<string id="st_soip_replace">
+		<text>заменить</text>
+	</string>
+	<string id="st_soip_clean">
+		<text>очистить</text>
+	</string>
+	<string id="st_soip_remove">
+		<text>удалить</text>
+	</string>
+	<string id="st_name_trigger">
+		<text>ударно-спусковой механизм</text>
+	</string>
+	<string id="st_name_spring">
+		<text>возвратный механизм</text>
+	</string>
+	<string id="st_name_barrel">
+		<text>ствол</text>
+	</string>
+	<string id="st_name_bolt_carrier">
+		<text>продольно-скользящий затвор</text>
+	</string>
+	<string id="st_name_bolt">
+		<text>ударник</text>
+	</string>
+	<string id="st_name_gas_tube">
+		<text>газ-блок</text>
+	</string>
+	<string id="st_name_extractor">
+		<text>экстрактор</text>
+	</string>
+	<string id="st_name_ejector">
+		<text>эжектор</text>
+	</string>
+	<string id="st_name_pump">
+		<text>помповый механизм</text>
+	</string>
+	<string id="st_name_hammers">
+		<text>молоток</text>
+	</string>
+	<string id="st_name_chock">
+		<text>подпор</text>
+	</string>
+	<string id="st_name_all">
+		<text>все</text>
+	</string>
+	<string id="st_name_issues">
+		<text>ПРОБЛЕМЫ:</text>
+	</string>
+</string_table>

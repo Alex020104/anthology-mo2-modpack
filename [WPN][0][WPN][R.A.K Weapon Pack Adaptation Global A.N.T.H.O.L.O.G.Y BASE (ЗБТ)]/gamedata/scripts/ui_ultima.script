@@ -1,0 +1,213 @@
+--[[
+	UI script for EFPWP MP-155 "Ultima"
+
+	Author: HarukaSai
+	Created: 12-09-2022
+]]
+
+get_surge_manager = surge_manager.get_surge_manager
+
+GUI = nil
+
+function get_instance()
+	if (not GUI) then
+		GUI = UIUltima()
+	end
+	
+	return GUI
+end
+
+function c2t(ct)
+	if not ct then return nil end
+	local Y, M, D, h, m, s, ms = 0, 0, 0, 0, 0, 0, 0
+	Y, M, D, h, m, s, ms = ct:get(Y, M, D, h, m, s, ms)
+	return { Y=Y, M=M, D=D, h=h, m=m, s=s, ms=ms }
+end
+
+class "UIUltima" (CUIScriptWnd)
+
+function UIUltima:__init() super()
+	self:Show					(true)
+	self:Enable					(true)
+
+	local xml					= CScriptXmlInit()
+	self.xml = xml
+
+	xml:ParseFile				("ui_ultima.xml")
+	xml:InitWindow				("display", 0, self)
+
+	self.background             = xml:InitStatic("display:background", self)
+
+	self.digits 				= {}
+	for i = 1, 2 do
+        self.digits[i] 			= xml:InitStatic("display:digit_" .. i, self)
+    end
+
+	self.jam					= xml:InitStatic("display:jam", self)
+
+	self.line					= xml:InitStatic("display:line", self)
+	self.icons					= xml:InitStatic("display:icons", self)
+
+	self.clock					= {}
+	self.clock.h 				= {}
+	self.clock.m 				= {}
+	self.clock_colon			= xml:InitStatic("display:colon", self)
+
+	for i = 1, 2 do
+		self.clock.h[i]			= xml:InitStatic("display:clock_h_" .. i, self)
+		self.clock.m[i]			= xml:InitStatic("display:clock_m_" .. i, self)
+	end
+
+	self.battery_charge 		= xml:InitStatic("display:battery_charge", self) -- progress bar is not coded properly, so we use static instead
+end
+
+function UIUltima:__finalize() 
+	GUI = nil
+end
+
+function UIUltima:Update()
+	CUIScriptWnd.Update(self)
+	
+	local wpn = db.actor:active_item()
+
+	if (not wpn) or (not IsWeapon(wpn)) then 
+        return 
+    end
+
+	self.line:Show(false)
+	self.icons:Show(false)
+	self.jam:Show(false)
+	self.battery_charge:Show(false)
+	self.background:Show(false)
+
+	self:ShowDigits(false)
+	self:ShowClock(false)
+
+	if efp_utils_mcm.scope_overlay_active then
+		return
+	end
+
+	if self:ProcessGlitch() then
+		return
+	end
+
+	self.background:Show(true)
+
+	self.background:InitTextureEx("ui_inGame2_white_rect", "hud\\p3d")
+
+	self:UpdateTopPanel()
+
+	if self:ProcessJam(wpn) then
+		return
+	end
+
+	self:UpdateDigits(wpn)
+end
+
+function UIUltima:UpdateTopPanel()
+	self:UpdateClock()
+	self:UpdateBattery()
+	self.line:Show(true)
+	self.icons:Show(true)
+end
+
+function UIUltima:UpdateDigits(wpn)
+	self:ShowDigits(true)
+
+	local ammo_count = clamp(wpn:get_ammo_in_magazine() or 0, 0, 99)
+    ammo_count = string.format("%02d", tostring(ammo_count))
+
+    local i = 1
+    ammo_count:gsub(".", function(c)
+        self.digits[i]:InitTextureEx(string.format("ultima_%s_big", c), "hud\\p3d")
+        i = i + 1
+    end)
+end
+
+function UIUltima:ShowDigits(vis)
+	for i = 1, 2 do
+		self.digits[i]:Show(vis)
+	end
+end
+
+function UIUltima:UpdateClock()
+	self:ShowClock(true)
+
+	local game_time = c2t(game.get_game_time())
+	local time = { 
+		h = string.format("%02d", tostring(game_time.h)),
+		m = string.format("%02d", tostring(game_time.m))
+	}
+
+	for k, v in pairs(time) do
+		local i = 1
+		v:gsub(".", function(c)
+			self.clock[k][i]:InitTextureEx("ultima_" .. c, "hud\\p3d")
+			i = i + 1
+		end)
+	end
+end
+
+function UIUltima:ShowClock(vis)
+	for i = 1, 2 do
+		self.clock.h[i]:Show(vis)
+		self.clock.m[i]:Show(vis)
+	end
+
+	self.clock_colon:Show(vis)
+end
+
+local max_width = 0.0018
+local height	= 0.0008
+-- progress bars are autistic and don't work with sizes below 1, so we can do this as workaround
+function UIUltima:UpdateBattery()
+	self.battery_charge:Show(true)
+
+	local device = db.actor:item_in_slot(10)
+	if (not device) then
+		self.battery_charge:Show(false)
+		return
+	end
+
+	local cond = device:condition()
+	
+	self.battery_charge:SetWndSize(vector2():set(max_width * cond, height))
+end
+
+function UIUltima:ProcessGlitch()
+	if GetEvent("surge", "state") then
+		local surge_time = GetEvent("surge", "time") or 0
+		self:ApplyGlitch(surge_time > (get_surge_manager().first_wave_sound_sec or 168))
+
+		return true
+	elseif GetEvent("psi_storm", "state") then
+		self:ApplyGlitch(GetEvent("psi_storm", "vortex"))
+
+		return true
+	end
+end
+
+function UIUltima:ApplyGlitch(flag)
+	if flag then
+		return
+	end
+
+	self.background:Show(true)
+	self.background:InitTextureEx("ui_ultima_glitch", "hud\\p3d")
+end
+
+function UIUltima:ProcessJam(wpn)
+	if is_jammed(wpn) then
+		self:ShowDigits(false)
+		self.jam:Show(true)
+		return true
+	end
+end
+
+function is_jammed(wpn)
+	if arti_jamming and arti_jamming.get_jammed then
+		return arti_jamming.get_jammed(wpn:id())
+	end
+
+	return wpn:cast_Weapon():IsMisfire()
+end

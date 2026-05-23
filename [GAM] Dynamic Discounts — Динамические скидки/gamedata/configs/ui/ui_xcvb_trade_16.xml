@@ -1,0 +1,31 @@
+<w>
+
+	<!-- Hover -->
+	<hover_discount x="190" y="83" width="50" height="25" check_mode="0">
+		<text x="0" y="0" complex_mode="1" align="l" font="graffiti22">xcvb_trade_discount</text>
+		<texture r="190" g="0" b="0" a="0">none.dds</texture>
+	</hover_discount>
+
+	<buy_bg x="210" y="25" width="300" height="400" stretch="1">
+		<text x="0" y="0" complex_mode="1" align="c" vert_align="c" font="letterica18"></text>
+		<texture r="10" g="10" b="10" a="230">none.dds</texture>
+
+		<buy_header x="0" y="25" width="300" height="25" stretch="1">
+			<text x="0" y="0" complex_mode="1" align="c" font="graffiti22">xcvb_trade_buy_from</text>
+			<texture r="50" g="50" b="50" a="190">none.dds</texture>
+		</buy_header>
+
+	</buy_bg>
+
+	<sell_bg x="515" y="25" width="300" height="400" stretch="1">
+		<text x="0" y="0" complex_mode="1" align="c" vert_align="c" font="letterica18"></text>
+		<texture r="10" g="10" b="10" a="230">none.dds</texture>
+
+		<sell_header x="0" y="25" width="300" height="25" stretch="1">
+			<text x="0" y="0" complex_mode="1" align="c" font="graffiti22">xcvb_trade_sell_to</text>
+			<texture r="50" g="50" b="50" a="190">none.dds</texture>
+		</sell_header>
+
+	</sell_bg>
+
+</w>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="ui_mcm_menu_tooltip_control">
+		<text>Всплывающие подсказки</text>
+	</string>
+
+	<string id="ui_mcm_tooltip_control_title">
+		<text>Контролируйте появления всплывающих подсказок (тултипов) с информацией о предметах.</text>
+	</string>
+	<string id="ui_mcm_tooltip_control_title_desc">
+		<text>Скройте их, если они мешают работе с инвентарём (например, перекрывая подсветку связаных предметов) или сделайте их скрытыми по умолчанию.</text>
+	</string>
+
+	<string id="ui_mcm_tooltip_control_enabled">
+		<text>Включите альтернативное поведение отображения всплывающих подсказок.</text>
+	</string>
+
+	<string id="ui_mcm_tooltip_control_modes_desc">
+		<text>Выберите режим: \n1. Показывать по умолчанию, скрывать при нажатии клавиши.
+			\n2. Не показывать всплывающие подсказки при наведении курсора на элемент, показывать при явном нажатии на элемент или нажатии клавиши при наведении курсора.</text>
+	</string>
+	<string id="ui_mcm_tooltip_control_tcontrol_mode">
+		<text>Режим отображения всплывающих подсказок:</text>
+	</string>		
+	<string id="ui_mcm_lst_ttc_key_to_disable">
+		<text>1. Показывать по умолчанию, скрывать при необходимости.</text>
+	</string>
+	<string id="ui_mcm_lst_ttc_key_or_click_to_enable">
+		<text>2. Скрывать по умолчанию, показывать при необходимости.</text>
+	</string>
+	<string id="ui_mcm_tooltip_control_hold_key">
+		<text>Запуск всплывающей подсказки</text>
+	</string>
+	<string id="ui_mcm_tooltip_control_hold_key_desc">
+		<text>Удерживайте эту клавишу, чтобы принудительно скрыть (или показать) всплывающие подсказки.</text>
+	</string>
+
+	<string id="ui_mcm_tooltip_control_no_clicks">
+		<text>Игнорировать нажатия в режиме-2</text>
+	</string>
+	<string id="ui_mcm_tooltip_control_no_clicks_desc">
+		<text>Показывать только при нажатой клавише.</text>
+	</string>
+	
+	<string id="ui_mcm_tooltip_control_tt_details">
+		<text>Включено в подробностях пользовательского интерфейса</text>
+	</string>
+	<string id="ui_mcm_tooltip_control_tt_details_desc">
+		<text>Если отключено - окно пользовательского интерфейса с подробностями будет работать без каких-либо изменений.</text>
+	</string>	
+
+	<string id="ui_mcm_tooltip_control_toggle_desc">
+		<text>Переключение режима поведения всплывающей подсказки по нажатию клавиши (вместо ее удержания).
+			После закрытия пользовательского интерфейса режим всплывающих подсказок возвращается к стандартному.</text>
+	</string>
+	<string id="ui_mcm_tooltip_control_toggle_mode">
+		<text>Переключение режимов по нажатию клавиши</text>
+	</string>
+	<string id="ui_mcm_tooltip_control_trigger_key">
+		<text>Переключение режима всплывающих подсказок</text>
+	</string>
+	
+
+	
+	<string id="ui_mcm_tooltip_control_enabled_delay">
+		<text>Включить изменение задержки всплывающей подсказки.</text>
+	</string>
+	<string id="ui_mcm_tooltip_control_tooltip_delay">
+		<text>Задержка показа всплывающей подсказки (милисекунды).</text>
+	</string>
+	<string id="ui_mcm_tooltip_control_tooltip_click_delay">
+		<text>Задержка при удержании или нажатии для перехода в режим показа</text>
+	</string>
+	<string id="ui_mcm_tooltip_control_tooltip_click_delay_desc">
+		<text>Разумно установить меньшее значение задержки для режима показа по клику (второй режим).</text>
+	</string>		
+	
+	<string id="ui_mcm_tooltip_control_tooltip_gui_show_delay">
+		<text>При открытии инвентаря задержка всплывающих подсказок на:</text>
+	</string>
+	<string id="ui_mcm_tooltip_control_tooltip_gui_show_delay_desc">
+		<text>дополнительная одноразовая задержка, если вы устали видеть всплывающую подсказку рюкзака.</text>
+	</string>
+
+	<string id="ui_mcm_tooltip_control_fix_stuck_tt">
+		<text>Исправление "застрявших всплывающих подсказок" в пользовательском интерфейсе верстака (не только).</text>
+	</string>
+	<string id="ui_mcm_tooltip_control_fix_stuck_tt_desc">
+		<text>Включить перед загрузкой игры.</text>
+	</string>
+
+
+	
+</string_table>

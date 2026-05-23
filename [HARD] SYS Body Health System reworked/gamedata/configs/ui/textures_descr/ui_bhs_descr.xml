@@ -1,0 +1,45 @@
+<w>
+ 
+	<file name="ui\ui_body_health_system3">		<!-- old 19 53 156 172 -->
+		<texture id="ui_hud_bhs_bg"		x="0" y="12" width="175" height="217" />
+
+		<texture id="ui_hud_bhs_health_bg"		x="426" y="132" width="48" height="124" />
+		<texture id="ui_hud_bhs_health"		x="426" y="0" width="48" height="124" />
+
+		<texture id="ui_hud_bhs_bar_bg"		x="0" y="265" width="38" height="5" />
+		<texture id="ui_hud_bhs_bar"		x="0" y="229" width="38" height="5" />
+		<texture id="ui_hud_bhs_bar_green"		x="38" y="229" width="38" height="5" />
+
+		<texture id="ui_hud_bhs_stamina_bg"		x="0" y="250" width="134" height="14" />
+		<texture id="ui_hud_bhs_stamina"		x="0" y="235" width="134" height="14" />
+	</file>
+
+	<!-- eft -->
+	<file name="ui\ui_body_health_system_eft">
+		<texture id="ui_hud_bhs_bg_eft"		x="0" y="12" width="175" height="217" />
+
+		<texture id="ui_hud_bhs_health_bg_eft"		x="426" y="132" width="48" height="124" />
+		<texture id="ui_hud_bhs_health_eft"		x="426" y="0" width="48" height="124" />
+
+		<texture id="ui_hud_bhs_bar_bg_eft"		x="0" y="265" width="38" height="5" />
+		<texture id="ui_hud_bhs_bar_eft"		x="0" y="229" width="38" height="5" />
+		<texture id="ui_hud_bhs_bar_green_eft"		x="38" y="229" width="38" height="5" />
+
+		<texture id="ui_hud_bhs_stamina_bg_eft"		x="0" y="250" width="134" height="14" />
+		<texture id="ui_hud_bhs_stamina_eft"		x="0" y="235" width="134" height="14" />
+	</file>
+
+	<file name="ui\ui_body_health_system_hard">
+		<!-- body health system HARD -->
+		<texture id="ui_hud_bhs_bg_hard"		x="0" y="0" width="804" height="704" />
+		<texture id="ui_hud_bhs_health_hard"		x="810" y="0" width="210" height="510" />
+		<texture id="ui_hud_bhs_bar_hard"		x="0" y="710" width="150" height="25" />
+		<texture id="ui_hud_bhs_bar_green_hard"		x="150" y="710" width="150" height="25" />
+		<texture id="ui_hud_bhs_stamina_hard"		x="0" y="750" width="530" height="25" />
+		<texture id="ui_hud_bhs_health_bg_hard"		x="810" y="510" width="210" height="510" />
+		<texture id="ui_hud_bhs_bar_bg_hard"		x="0" y="848" width="152" height="20" />
+		<texture id="ui_hud_bhs_stamina_bg_hard"		x="0" y="788" width="536" height="56" />
+		<texture id="ui_hud_bhs_psi_2"				x="0" y="710" width="150" height="25" />
+		
+	</file>
+</w>

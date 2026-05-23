@@ -1,0 +1,166 @@
+local UI_CLASS = "UICodexHardWarning"
+local UI_PATH = "codex_hard_warning"
+local XML_FILE = "ui_codex_hard_warning.xml"
+local SHOW_EVENT = "codex_hard_warning"
+local SHOW_ACTION = "show_on_load"
+local SHOW_DELAY = 1.2
+local SAVE_KEY = "codex_hard_warning"
+
+local gui = nil
+local shown_for_load = false
+local warning_seen = false
+
+local function is_warning_enabled()
+	if codex_hard_warning_mcm and codex_hard_warning_mcm.get_config then
+		return codex_hard_warning_mcm.get_config("enabled") == true
+	end
+	return true
+end
+
+local function tr(id)
+	return game.translate_string(id)
+end
+
+local function play_ui_sound(sound)
+	if utils_obj and utils_obj.play_sound then
+		utils_obj.play_sound(sound)
+	end
+end
+
+local function show_warning()
+	if (not db) or (not db.actor) then
+		return false
+	end
+
+	if not is_warning_enabled() then
+		return true
+	end
+
+	if (not gui) then
+		gui = UICodexHardWarning()
+	end
+
+	if gui and (not gui:IsShown()) then
+		gui:RefreshText()
+		gui:ShowDialog(true)
+		Register_UI(UI_CLASS, UI_PATH, gui)
+		play_ui_sound("interface\\inv_open")
+		warning_seen = true
+	end
+
+	return true
+end
+
+local function actor_on_first_update()
+	if shown_for_load or warning_seen or (not is_warning_enabled()) then
+		return
+	end
+
+	shown_for_load = true
+	RemoveTimeEvent(SHOW_EVENT, SHOW_ACTION)
+	CreateTimeEvent(SHOW_EVENT, SHOW_ACTION, SHOW_DELAY, show_warning)
+end
+
+local function save_state(m_data)
+	m_data[SAVE_KEY] = {
+		warning_seen = warning_seen == true
+	}
+end
+
+local function load_state(m_data)
+	local data = m_data and m_data[SAVE_KEY]
+	warning_seen = data and data.warning_seen == true or false
+end
+
+local function on_game_load()
+	shown_for_load = false
+	RemoveTimeEvent(SHOW_EVENT, SHOW_ACTION)
+end
+
+function on_game_start()
+	RegisterScriptCallback("on_game_load", on_game_load)
+	RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+	RegisterScriptCallback("save_state", save_state)
+	RegisterScriptCallback("load_state", load_state)
+end
+
+class "UICodexHardWarning" (CUIScriptWnd)
+
+function UICodexHardWarning:__init() super()
+	self:InitControls()
+	self:InitCallbacks()
+end
+
+function UICodexHardWarning:__finalize()
+end
+
+function UICodexHardWarning:InitControls()
+	self:SetWndRect(Frect():set(0, 0, 1024, 768))
+	self:SetAutoDelete(true)
+
+	self.xml = CScriptXmlInit()
+	local xml = self.xml
+	xml:ParseFile(XML_FILE)
+
+	self.dialog = xml:InitStatic("hard_warning", self)
+	self.dialog:SetStretchTexture(true)
+
+	self.divider_top = xml:InitStatic("hard_warning:divider_top", self.dialog)
+	self.divider_top:SetStretchTexture(true)
+
+	self.stamp = xml:InitTextWnd("hard_warning:stamp", self.dialog)
+	self.title = xml:InitTextWnd("hard_warning:title", self.dialog)
+	self.subtitle = xml:InitTextWnd("hard_warning:subtitle", self.dialog)
+	self.body = xml:InitTextWnd("hard_warning:body", self.dialog)
+	self.protocol = xml:InitTextWnd("hard_warning:protocol", self.dialog)
+	self.signature = xml:InitTextWnd("hard_warning:signature", self.dialog)
+
+	self.btn_accept = xml:Init3tButton("hard_warning:btn_accept", self.dialog)
+	self:Register(self.btn_accept, "btn_accept")
+
+	self:RefreshText()
+end
+
+function UICodexHardWarning:InitCallbacks()
+	self:AddCallback("btn_accept", ui_events.BUTTON_CLICKED, self.Close, self)
+end
+
+function UICodexHardWarning:RefreshText()
+	if self.stamp then
+		self.stamp:SetText(tr("st_codex_hard_warning_stamp"))
+	end
+	if self.title then
+		self.title:SetText(tr("st_codex_hard_warning_title"))
+	end
+	if self.subtitle then
+		self.subtitle:SetText(tr("st_codex_hard_warning_subtitle"))
+	end
+	if self.body then
+		self.body:SetText(tr("st_codex_hard_warning_body"))
+	end
+	if self.protocol then
+		self.protocol:SetText(tr("st_codex_hard_warning_protocol"))
+	end
+	if self.signature then
+		self.signature:SetText(tr("st_codex_hard_warning_signature"))
+	end
+	if self.btn_accept then
+		self.btn_accept:TextControl():SetText(tr("st_codex_hard_warning_accept"))
+	end
+end
+
+function UICodexHardWarning:Close()
+	play_ui_sound("interface\\inv_close")
+	self:HideDialog()
+	Unregister_UI(UI_CLASS)
+end
+
+function UICodexHardWarning:OnKeyboard(dik, keyboard_action)
+	local res = CUIScriptWnd.OnKeyboard(self, dik, keyboard_action)
+	if (res == false) and (keyboard_action == ui_events.WINDOW_KEY_PRESSED) then
+		if (dik == DIK_keys.DIK_ESCAPE) or (dik == DIK_keys.DIK_RETURN) or (dik == DIK_keys.DIK_SPACE) then
+			self:Close()
+		end
+	end
+	return res
+end

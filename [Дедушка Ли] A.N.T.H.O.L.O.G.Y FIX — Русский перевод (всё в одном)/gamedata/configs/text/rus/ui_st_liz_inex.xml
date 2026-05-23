@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+    <string id="ui_mcm_menu_liz_inex">
+        <text>Расширенная инерция</text>
+    </string>
+
+    <string id="ui_mcm_menu_lean">
+        <text>Наклоны</text>
+    </string>
+    
+    <string id="ui_mcm_menu_jumpland">
+        <text>Прыжок и приземление</text>
+    </string>
+    <string id="ui_mcm_menu_crouch_jitter">
+        <text>Приседание, раскачивание</text>
+    </string>
+    <string id="ui_mcm_menu_noise">
+        <text>Шум</text>
+    </string>
+    <string id="ui_mcm_menu_breathing">
+        <text>Дыхание</text>
+    </string>
+    <string id="ui_mcm_menu_look_up">
+        <text>Взгляд вверх</text>
+    </string>
+    <string id="ui_mcm_menu_other">
+        <text>Другое</text>
+    </string>
+
+
+    <string id="ui_mcm_title_liz_inex_lean">
+        <text>Анимации наклона</text>
+    </string>
+    
+    <string id="ui_mcm_title_liz_inex_jumpland">
+        <text>Анимации прыжка и приземления</text>
+    </string>
+    
+    <string id="ui_mcm_title_liz_inex_crouch_jitter">
+        <text>Раскачивание оружия во время приседания</text>
+    </string>
+    
+    <string id="ui_mcm_title_liz_inex_noise">
+        <text>Случайные шумы при покачивании</text>
+    </string>
+    
+    <string id="ui_mcm_title_liz_inex_breathing">
+        <text>Анимация дыхания</text>
+    </string>
+    
+    <string id="ui_mcm_title_liz_inex_look_up">
+        <text>Смена положения оружия при взгляде вверх</text>
+    </string>
+    <string id="ui_mcm_title_liz_inex_other">
+        <text>Другие параметры</text>
+    </string>
+
+
+    <string id="ui_mcm_liz_inex_lean_l_power">
+        <text>Интенсивность наклона влево</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_lean_r_power">
+        <text>Интенсивность наклона вправо</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_lean_crouch_power">
+        <text>Интенсивность приседания</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_jumpland_jump_speed">
+        <text>Скорость прыжка</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_jumpland_jump_speed_desc">
+        <text>Скорость анимации прыжков.\nЧем больше значение, тем быстрее анимация.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_jumpland_jump_power">
+        <text>Амплитуда прыжка</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_jumpland_jump_power_desc">
+        <text>Определяет, насколько сильно будет выражена анимация прыжка.\nЧем больше значение, тем выше амплитуда анимации.\nЗначение 0 отключает анимацию прыжка.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_jumpland_land_speed">
+        <text>Скорость приземления</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_jumpland_land_speed_desc">
+        <text>Скорость анимации приземления после падения.\nЧем больше значение, тем быстрее анимация.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_jumpland_land_power">
+        <text>Амплитуда приземления</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_jumpland_land_power_desc">
+        <text>Определяет, насколько выраженной будет анимация приземления.\nЧем больше значение, тем выше амплитуда анимации.\nЗначение 0 отключает анимацию приземления.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_crouch_jitter_blocket_by_aim">
+        <text>Отключить покачивание оружия при приседании во время прицеливания</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_crouch_jitter_blocket_by_aim_desc">
+        <text>Во время приседания оружие будет слегка раскачиваться, что может мешать прицеливанию.\nЭта опция позволяет не воспроизводить анимацию покачивания оружия при приседании во время прицеливания.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_crouch_jitter_speed">
+        <text>Скорость покачивания оружия при приседании</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_crouch_jitter_speed_desc">
+        <text>Определяет, насколько быстро будет покачивание оружия при приседании.\nЧем больше значение, тем быстрее анимация.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_crouch_jitter_power">
+        <text>Амплитуда покачивания оружия при приседании</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_crouch_jitter_power_desc">
+        <text>Определяет, насколько выраженной будет анимация покачивания оружия при приседании.\nЧем больше значение, тем выше амплитуда анимации.\nЗначение 0 отключает анимацию покачивания оружия при приседании.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_noise_only_for_weapon">
+        <text>Воспроизведение случайной анимации раскачивания только для оружия</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_noise_only_for_weapon_desc">
+        <text>Анимация случайного раскачивания рук может раздражать при использовании КПК.\nЭта опция позволяет воспроизводить эту анимацию только для оружия, чтобы не мешать при использовании КПК или других устройств.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_noise_speed">
+        <text>Случайная скорость раскачивания</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_noise_speed_desc">
+        <text>Человек не может стоять абсолютно неподвижно, и эта анимация добавляет легкое покачивание рук персонажа.\nЭтот параметр определяет скорость анимации покачивания.\nЧем выше значение, тем быстрее анимация.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_noise_power">
+        <text>Случайная амплитуда раскачивания</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_noise_power_desc">
+        <text>Человек не может стоять абсолютно неподвижно, и эта анимация добавляет легкое покачивание рук персонажа.\nЭтот параметр определяет, насколько сильно будет выражена анимация покачивания.\nЧем выше значение, тем больше амплитуда анимации.\nЗначение 0 отключает анимацию приземления.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_breathing_only_for_weapon">
+        <text>Воспроизведение анимации дыхания только для оружия</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_breathing_only_for_weapon_desc">
+        <text>Анимация раскачивания рук при дыхании может раздражать при использовании КПК.\nЭта опция позволяет воспроизводить эту анимацию только для оружия, чтобы не мешать при использовании КПК или других устройств.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_breathing_speed_min">
+        <text>Частота дыхания в состоянии покоя</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_breathing_speed_min_desc">
+        <text>Скорость анимации дыхания в спокойном состоянии.\nЧем выше значение, тем быстрее анимация.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_breathing_speed_max">
+        <text>Скорость дыхания при низкой выносливости</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_breathing_speed_max_desc">
+        <text>Скорость анимации дыхания в спокойном состоянии.\nЧем выше значение, тем быстрее анимация.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_breathing_power_min">
+        <text>Амплитуда дыхания в покое</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_breathing_power_min_desc">
+        <text>Определяет насколько сильно будет выраженна анимация дыхания в спокойном состоянии.\nЧем больше значение, тем выше амплитуда анимации.\nЗначение равное 0 выключает анимацию дыхания когда у персонажа полная выносливость.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_breathing_power_max">
+        <text>Амплитуда дыхания при низкой выносливости</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_breathing_power_max_desc">
+        <text>Определяет, насколько выраженной будет анимация дыхания при низкой выносливости.\nЧем больше значение, тем выше амплитуда анимации.\nЗначение 0 отключает анимацию дыхания при низкой выносливости персонажа.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_look_up_enabled">
+        <text>Опустить оружие вниз, когда смотрите вверх</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_look_up_trigger_at">
+        <text>Угол для запуска анимации при взгляде вверх</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_look_up_trigger_at_desc">
+        <text>Этот параметр определяет, как высоко нужно поднять голову, чтобы модель оружия начала двигаться вниз.\nЧем выше значение, тем выше нужно смотреть вверх, чтобы начать анимацию.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_look_up_power">
+        <text>Посмотреть интенсивность анимации</text>
+    </string>
+
+   <string id="ui_mcm_liz_inex_other_device_lean_enable">
+        <text>Детекторы перемещаются вместе с оружием при наклоне</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_other_hit_anm_enable">
+        <text>Реакция на анимацию повреждений</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_other_crawl_anm_enable">
+        <text>Включить анимацию ползания</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_other_crawl_can_shoot">
+        <text>Можно стрелять ползком</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_other_crawl_can_shoot_desc">
+        <text>Потому что некоторые виды оружия имеют анимацию помпового действия при стрельбе (например, некоторые дробовики или снайперские винтовки). Стрельба из такого оружия во время ползания может выглядеть некорректно. \nЕсть несколько вариантов решения этой проблемы: \n- все оружие может стрелять во время ползания.\n- только некоторые помповые дробовики и снайперские винтовки не могут стрелять во время ползания. \n- все оружие не может стрелять, когда персонаж ползет.</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_crawl_shoot_handle_type_all">
+        <text>Все оружие может стрелять</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_crawl_shoot_handle_type_some">
+        <text>Некоторые виды оружия могут стрелять</text>
+    </string>
+
+    <string id="ui_mcm_liz_inex_crawl_shoot_handle_type_none">
+        <text>Ни одно оружие не может стрелять</text>
+    </string>
+
+</string_table>

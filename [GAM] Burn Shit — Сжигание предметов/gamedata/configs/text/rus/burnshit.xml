@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+  <string id="st_burnshit_burn">
+    <text>Сжечь</text>
+  </string>
+
+  <string id="st_burnshit_burn_all">
+    <text>Сжечь все</text>
+  </string>
+
+  <string id="ui_mcm_menu_burnshit">
+    <text>Сжечь дерьмо</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_useMenu">
+    <text>Сжигать дерьмо через контекстное меню</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_useMenu_desc">
+    <text>Показать пункты «сжечь» и «сжечь все» в контекстном меню инвентаря. Для этого нужно находиться рядом с костром (в радиусе 3 м).</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_useDragDrop">
+    <text>Сжигать дерьмо перетаскиванием и выбрасыванием</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_useDragDrop_desc">
+    <text>Сжигайте предметы, которые вы перетаскиваете из инвентаря на костер. Для этого вам нужно находиться рядом с костром (в радиусе 2 м).</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_burnQuestItems">
+    <text>Разрешить сжигать квестовые предметы</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_burnQuestItems_desc">
+    <text>Разрешить сжигать предметы, отмеченные «quest_item = true». Если вы включите эту функцию, будьте осторожны, чтобы не сжечь то, что может понадобиться для выполнения квеста.</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_burnUntradeables">
+    <text>Разрешить сжигание непригодных для торговли предметов</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_burnUntradeables_desc">
+    <text>Разрешить сжигание предметов, помеченных «can_trade = false». Я добавил эту опцию, но не знаю, полезно ли ее отключение.</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_burnAll">
+    <text>Показывать «Сжечь все»</text>
+  </string>
+
+  <string id="ui_mcm_burnshit_burnAll_desc">
+    <text>Показывать пункт контекстного меню «сжечь все» всегда, никогда или только при щелчке правой кнопкой мыши на стаках из нескольких предметов.</text>
+  </string>
+
+  <string id="ui_mcm_lst_burnshit_never">
+    <text>Никогда</text>
+  </string>
+
+  <string id="ui_mcm_lst_burnshit_always">
+    <text>Всегда</text>
+  </string>
+
+  <string id="ui_mcm_lst_burnshit_multiple">
+    <text>Только для нескольких предметов</text>
+  </string>
+</string_table>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="st_ui_sel_ges_btn">
+		<text>Выбрать</text>
+	</string>
+	<string id="choose">
+		<text>рассматривать</text>
+	</string>
+	<string id="ward">
+		<text>сложить руки за спину</text>
+	</string>
+	<string id="salut_free">
+		<text>отдать честь</text>
+	</string>
+	<string id="sit">
+		<text>присесть</text>
+	</string>
+	<string id="sit_knee">
+		<text>присесть на колено</text>
+	</string>
+	<string id="sit_ass">
+		<text>присесть на зад</text>
+	</string>
+	<string id="sit_ass_guitar">
+		<text>играть на гитаре</text>
+	</string>
+	<string id="animpoint_sit_normal_guitar">
+		<text>играть на гитаре (сидя на чём-то)</text>
+	</string>
+	<string id="sit_ass_eat_bread">
+		<text>есть хлеб</text>
+	</string>
+	<string id="sit_ass_drink_vodka">
+		<text>пить водку</text>
+	</string>
+	<string id="animpoint_sit_high">
+		<text>сидеть высоко</text>
+	</string>
+	<string id="animpoint_sit_normal">
+		<text>сидеть на средней высоте</text>
+	</string>
+	<string id="animpoint_sit_low">
+		<text>сидеть низко</text>
+	</string>
+	<string id="wounded">
+		<text>преклонить колени</text>
+	</string>
+	<string id="otzhiman">
+		<text>отжимания</text>
+	</string>
+	<string id="smeh">
+		<text>смех</text>
+	</string>
+	<string id="use_pda">
+		<text>читать КПК</text>
+	</string>
+	<string id="smoking_sit">
+		<text>курить сидя</text>
+	</string>
+	<string id="smoking_stand">
+		<text>курить стоя</text>
+	</string>
+	<string id="complain">
+		<text>сетовать</text>
+	</string>
+	<string id="ui_mcm_menu_gestures">
+		<text>Жесты</text>
+	</string>
+	<string id="ui_mcm_gestures_title">
+		<text>Жесты</text>
+	</string>	
+	<string id="ui_mcm_gestures_keybind_select">
+		<text>Привязка клавиши выбора жеста</text>
+	</string>
+	<string id="ui_mcm_gestures_keybind_quit">
+		<text>Привязка клавиш для выхода из режима жестов</text>
+	</string>
+	<string id="ui_mcm_gestures_first_person_mode">
+		<text>Жест от первого лица</text>
+	</string>
+	<string id="ui_mcm_gestures_legacy_fp">
+		<text>Старый жест от первого лица</text>
+	</string>
+	<string id="ui_mcm_gestures_gesture_fov">
+		<text>Жесты от первого лица FOV</text>
+	</string>
+</string_table>

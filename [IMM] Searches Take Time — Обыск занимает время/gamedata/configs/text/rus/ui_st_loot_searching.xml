@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_loot_searching_title">
+		<text>Loot Searching</text>
+	</string>
+	<string id="ui_mcm_menu_loot_searching">
+		<text>Loot Searching</text>
+	</string>
+
+			<!-- TIME -->
+	<string id="ui_mcm_loot_searching_header_time">
+		<text>Время \n 
+				random(время_мин, время_макс) - вес - (icon_x * icon_y)</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_time_min">
+		<text>Время Мин</text>
+	</string>
+	<string id="ui_mcm_loot_searching_time_min_desc">
+		<text>По умолчанию: 5</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_time_max">
+		<text>Время Макс</text>
+	</string>
+	<string id="ui_mcm_loot_searching_time_max_desc">
+		<text>По умолчанию: 15</text>
+	</string>
+
+			<!-- HUD -->
+	<string id="ui_mcm_loot_searching_header_hud">
+		<text>Индикатор Обыска</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_hud_enable">
+		<text>Включить Индикатор</text>
+	</string>
+	<string id="ui_mcm_loot_searching_hud_enable_desc">
+		<text>Показывает что тело все еще обыскивается.</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_hud_icon">
+		<text>Тип индикатора (требуется перезагрузка)</text>
+	</string>
+	<string id="ui_mcm_loot_searching_hud_icon_desc">
+		<text>Longreed сильно помог с аддоном, так что в благодарность оставляю текстуру, которую он прислал изначально, как опциональную.</text>
+	</string>
+
+			<!-- SOUND -->
+	<string id="ui_mcm_loot_searching_header_sound">
+		<text>Звук</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_sound_enable">
+		<text>Звук Предметов</text>
+	</string>
+	<string id="ui_mcm_loot_searching_sound_enable_desc">
+		<text>Звук появляющихся предметов.</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_sound_enable_vol">
+		<text>Громкость Звука Предметов</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_sound_bg_enable">
+		<text>Фоновый Звук</text>
+	</string>
+	<string id="ui_mcm_loot_searching_sound_bg_enable_desc">
+		<text>Фоновый звук во время обыска тела.</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_sound_bg_enable_vol">
+		<text>Громкость Фонового Звука</text>
+	</string>
+
+			<!-- DEBUG -->
+	<string id="ui_mcm_loot_searching_header_debug">
+		<text>Дебаг</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_debugx">
+		<text>Дебаг</text>
+	</string>
+	<string id="ui_mcm_loot_searching_debugx_desc">
+		<text>Показывает полезную информацию в консоль.</text>
+	</string>
+
+
+
+			<!-- non-mcm -->
+	<string id="st_xcvb_looting">
+		<text>Обыск</text>
+	</string>
+
+</string_table>

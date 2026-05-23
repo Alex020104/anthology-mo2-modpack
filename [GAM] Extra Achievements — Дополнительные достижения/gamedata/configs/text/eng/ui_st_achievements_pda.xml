@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="pda_btn_extra_achievements">
+		<text>Achiev.</text>
+	</string>
+	<string id="pda_btn_ranking_short">
+		<text>Stat.</text>
+	</string>
+	<string id="pda_btn_relations_short">
+		<text>Rel.</text>
+	</string>
+	<string id="pda_btn_contacts_short">
+		<text>Fact.</text>
+	</string>
+	<string id="pda_btn_encyclopedia_short">
+		<text>Guide</text>
+	</string>
+	<string id="pda_btn_logs_short">
+		<text>Logs</text>
+	</string>
+	<string id="pda_btn_talents_short">
+		<text>Tal.</text>
+	</string>
+</string_table>

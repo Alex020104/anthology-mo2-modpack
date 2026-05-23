@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+    <string id="ui_mcm_menu_passive_income">
+		<text>Zone Passive Income</text>
+	</string>
+	<string id="ui_mcm_passinc_title">
+		<text>Zone Passive Income Settings</text>
+	</string>
+
+	<string id="ui_mcm_passive_income_salary_mult">
+		<text>Salary multiplier</text>
+	</string>
+	<string id="ui_mcm_passive_income_salary_mult_desc">
+		<text>Use this slider to change the multiplier of the salary, use it to tweak the balancing to your likings.</text>
+	</string>
+
+	<string id="ui_mcm_passive_income_max_money_mult">
+		<text>Maximum daily money multiplier</text>
+	</string>
+	<string id="ui_mcm_passive_income_max_money_mult_desc">
+		<text>Use this slider to change the multiplier of how much money you can get each day from your salary.</text>
+	</string>
+
+	<string id="ui_mcm_passive_income_progress_mult">
+		<text>Contract progress multiplier</text>
+	</string>
+	<string id="ui_mcm_passive_income_progress_mult_desc">
+		<text>Use this slider to control how fast you progress through you contract, reciving promotions faster and with less effort.</text>
+	</string>
+
+	<string id="ui_mcm_passive_income_give_promo_prizes">
+		<text>Promotion prizes</text>
+	</string>
+	<string id="ui_mcm_passive_income_give_promo_prizes_desc">
+		<text>Receive a bonus item (like weapons, outfits and devices) upon getting a promotion. Each faction has its list of items, which get increasingly better the higher the promotion reached.</text>
+	</string>
+
+	<string id="ui_mcm_passive_income_debug_mode">
+		<text>Debug mode</text>
+	</string>
+	
+	<string id="ui_mcm_passive_income_paytime_start">
+		<text>Pay Time</text>
+	</string>
+	<string id="ui_mcm_passive_income_paytime_start_desc">
+		<text>Set time of day you want to be paid (24h Format) [Default: 10]</text>
+	</string>
+	
+	<string id="ui_mcm_passive_income_max_lazy_days">
+		<text>Sick Leave</text>
+	</string>
+	<string id="ui_mcm_passive_income_max_lazy_days_desc">
+		<text>Amount of Sick Leave available [ui_mcm_Passive_income_max_lazy_days] [Default: 3]</text>
+	</string>
+
+</string_table>

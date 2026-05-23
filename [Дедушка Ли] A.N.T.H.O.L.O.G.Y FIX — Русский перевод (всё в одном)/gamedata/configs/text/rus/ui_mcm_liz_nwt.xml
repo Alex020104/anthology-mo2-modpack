@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+    <string id="ui_mcm_menu_liz_npc_wound_tweak">
+        <text>Нанесение ран НПС</text>
+    </string>
+
+
+    <string id="ui_mcm_liz_npc_wound_tweak_autoheal">
+        <text>Автолечение НПС</text>
+    </string>
+
+    <string id="ui_mcm_liz_npc_wound_tweak_autoheal_desc">
+        <text>Теоретически, эта опция позволяет НПС использовать аптечку, когда они находятся в раненом состоянии. \nОтключение этой функции должно предотвратить ситуации, когда раненый НПС внезапно встает и вступает в бой. \nВ оригинальной Anomaly эта функция включена по умолчанию.</text>
+    </string>
+
+
+    <string id="ui_mcm_liz_npc_wound_tweak_enable_weapon_drop">
+        <text>Включить потерю оружия при ранении</text>
+    </string>
+
+    <string id="ui_mcm_liz_npc_wound_tweak_enable_weapon_drop_desc">
+        <text>При попадании в ладонь правой руки, противник выронит оружие.</text>
+    </string>
+
+
+    <string id="ui_mcm_liz_npc_wound_tweak_enable_bleeding">
+        <text>Включить кровотечение</text>
+    </string>
+
+    <string id="ui_mcm_liz_npc_wound_tweak_enable_bleeding_desc">
+        <text>По умолчанию в Аномалии у раненого сталкера может быть разная степень кровотечения, что может привести к ситуации, когда раненый враг умирает почти сразу после перехода в раненое состояние. Эта опция позволяет отключить эту ванильную возможность.</text>
+    </string>
+
+</string_table>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="ui_mcm_rax_pinup_uninstall">
+        <text>Safe Uninstall</text>
+	</string>
+
+	<string id="ui_mcm_rax_pinup_uninstall_desc">
+        <text>Makes the save safe to uninstall content packs for this addon.</text>
+	</string>
+	<string id="ui_mcm_rax_pinup_clear">
+        <text>Clear collection</text>
+	</string>
+
+	<string id="ui_mcm_rax_pinup_clear_desc">
+        <text>Clears the record of what pinups you have collected. </text>
+	</string>
+
+	<string id="ui_mcm_menu_rax_pinup">
+        <text>Pinup Collect</text>
+	</string>
+	<string id="ui_mcm_rax_pinup_level">
+        <text>Options only display when a save is loaded.</text>
+	</string>
+	<string id="st_pinup_view">
+        <text>View All Pinups</text>
+	</string>
+	<string id="st_pinup_revert">
+        <text>Revert to repair item</text>
+	</string>
+
+	<string id="st_pinup_view_from">
+        <text>View Pinups from:</text>
+	</string>
+
+	
+	<string id="st_pinup_artist">
+		<text>Artist</text>
+	</string>
+	<string id="st_pinup_description">
+		<text>Description</text>
+	</string>
+	<string id="pinup_def_beach">
+		<text>Beach</text>
+	</string>
+	<string id="pinup_def_butterfly">
+		<text>Butterfly</text>
+	</string>
+	<string id="pinup_def_siren">
+		<text>Siren</text>
+	</string>
+	<string id="pinup_def_plane">
+		<text>Plane</text>
+	</string>
+	<string id="pinup_def_smile">
+		<text>Smile</text>
+	</string>
+	<string id="pinup_def_marilyn">
+		<text>Marilyn</text>
+	</string>
+	<string id="pinup_def_cover1">
+		<text>Unique</text>
+	</string>
+	<string id="pinup_def_cover2">
+		<text>Snap</text>
+	</string>
+	<string id="pinup_def_cover3">
+		<text>Snap</text>
+	</string>
+	<string id="pinup_def_red">
+		<text>Red</text>
+	</string>
+	<string id="pinup_def_swa">
+		<text>Glory</text>
+	</string>
+	<string id="pinup_def_command">
+		<text>At your command</text>
+	</string>
+	<string id="pinup_def_moran1">
+		<text>Gift</text>
+	</string>
+	<string id="pinup_def_moran2">
+		<text>Farm Girl</text>
+	</string>
+
+	
+</string_table>

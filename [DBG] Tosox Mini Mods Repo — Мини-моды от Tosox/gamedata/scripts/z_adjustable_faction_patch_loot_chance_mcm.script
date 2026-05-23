@@ -1,0 +1,64 @@
+--[[
+	=====================================================================
+	Addon      : Tosox Mini Mods Repo: Adjustable Faction Patch Loot Chance
+	Link       : https://www.moddb.com/mods/stalker-anomaly/addons/tosox-mini-mods-repo/
+	Author     : Tosox
+	Date       : 27.02.2024
+	Last Edit  : 27.02.2024
+	=====================================================================
+--]]
+
+orig_death_manager_spawn_cosmetics = death_manager.spawn_cosmetics
+death_manager.spawn_cosmetics = function(npc, npc_id, npc_comm, npc_rank, visual, rand_condition)
+	local ret_value = orig_death_manager_spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, rand_condition)
+
+	-- Original function always spawns a patch, so just delete it with a given chance again
+	if (ini_sys:section_exist(npc_comm .. "_patch")) and (math.random() < 1 - get_mcm_config("patch_chance")) then
+		CreateTimeEvent("adjustable_faction_patch_loot_chance", "delete_patch_corpse", 0, function(npc_id_arg, patch_section)
+			local corpse = get_object_by_id(npc_id_arg)
+			if not corpse or xr_conditions.is_alive(db.actor, corpse) then
+				return false
+			end
+
+			local patch = corpse:object(patch_section)
+			if not patch then
+				return false
+			end
+
+			alife_release(patch)
+			return true
+		end, npc_id, npc_comm .. "_patch")
+	end
+
+	return ret_value
+end
+
+--===========================================================================
+--
+-- MCM
+--
+--===========================================================================
+
+local cc = table.concat
+
+local MCM_ROOT_ID = "tmmr"
+local MCM_MODULE_ID = "ajustable_patch_chance"
+
+defaults = {
+	["patch_chance"] = 1.0
+}
+
+function get_mcm_config(key)
+	local path = cc({ MCM_ROOT_ID, MCM_MODULE_ID, key }, "/")
+	if ui_mcm then return ui_mcm.get(path) else return defaults[key] end
+end
+
+function on_mcm_load()
+	return {
+		id = MCM_MODULE_ID, sh = true, gr = {
+			{ id = "title", type = "slide", link = "ui_options_slider_night", text = cc({ "ui_mcm", MCM_ROOT_ID, MCM_MODULE_ID, "title" }, "_"), size = { 512, 50 }, spacing = 20 },
+			{ id = "patch_chance", type = "track", val = 2, min = 0.0, max = 1.0, step = 0.01, def = defaults["patch_chance"] }
+		}
+	}, MCM_ROOT_ID
+end
+

@@ -1,0 +1,40 @@
+if ui_popup_messages and haru_skills and haru_skills.increase_skill then
+    local gc = game.translate_string
+
+    function on_game_start()
+        RegisterScriptCallback("on_option_change", on_option_change)
+        on_option_change()
+    end
+
+    function on_option_change()
+
+    end
+
+    local xp_gained = {}
+    local min_xp = 25
+
+    local exclude_skills = {
+        endurance = true,
+        strength = true
+    }
+
+    base_increase = haru_skills.increase_skill
+    function haru_skills.increase_skill(skill, amount)
+        base_increase(skill, amount)
+
+        if exclude_skills[skill] then return end
+
+        local stats = haru_skills.skills_levels[skill]
+        if stats.current_level >= stats.max_level then return end
+
+        local key = "exp_multiplier_" .. skill
+        xp_gained[skill] = (xp_gained[skill] or 0) + (amount * haru_skills.options[key])
+
+        if xp_gained[skill] > min_xp then
+            if ui_popup_messages.GUI then
+                ui_popup_messages.GUI:AddMessage("+" .. round_idp(xp_gained[skill], 1) .. " " .. gc("st_xp_notif_for") .. " " .. gc("st_player_skills_" .. skill), "ui_skills_icon_aps_"..skill)
+            end
+            xp_gained[skill] = 0
+        end
+    end
+end

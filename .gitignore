@@ -1,0 +1,37 @@
+# Track only MO2 mod scripts/configs.
+*
+!*/
+!*/gamedata/
+!*/gamedata/configs/**
+!*/gamedata/scripts/**
+!README.md
+!.gitignore
+!.gitattributes
+
+# Never track MO2/runtime/generated or large assets.
+*.mohidden
+meta.ini
+*.db*
+*.xdb*
+*.7z
+*.zip
+*.rar
+*.exe
+*.dll
+*.pdb
+*.log
+*.tmp
+*.dds
+*.tga
+*.png
+*.jpg
+*.jpeg
+*.ogf
+*.omf
+*.object
+*.thm
+*.ogg
+*.wav
+*.mp3
+*.avi
+*.mp4

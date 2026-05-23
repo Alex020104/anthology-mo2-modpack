@@ -1,0 +1,333 @@
+local gt = game.translate_string
+
+GUI = nil
+local PDA_GUI = nil
+
+class "XAchievements" (CUIScriptWnd)
+
+function XAchievements:__init(is_pda_tab) super()
+	self.is_pda_tab = is_pda_tab == true
+	self:InitControls()
+	self:InitCallBacks()
+end
+
+function XAchievements:InitControls()
+	self:SetWndRect(Frect():set(0, 0, 1024, 768))
+	if not self.is_pda_tab then
+		self:SetAutoDelete(true)
+		self:AllowMovement(true)
+	end
+
+	self.xml = CScriptXmlInit()
+	self.xml:ParseFile("ui_xcvb_achievements.xml")
+	local xml = self.xml
+
+	self.main_bg = xml:InitStatic("main_bg", self)
+	self.bg = xml:InitStatic("bg", self.main_bg)
+
+	-- points
+	self.cur_points_header = xml:InitStatic("cur_points_header", self.bg)
+	self.cur_points = xml:InitStatic("cur_points", self.bg)
+
+	self.tot_points_header = xml:InitStatic("tot_points_header", self.bg)
+	self.tot_points = xml:InitStatic("tot_points", self.bg)
+
+	self.tot_achievements_header = xml:InitStatic("tot_achievements_header", self.bg)
+	self.tot_achievements = xml:InitStatic("tot_achievements", self.bg)
+
+	-- buy btn
+	self.buy_btn = xml:Init3tButton("buy_btn", self.bg)
+	self:Register(self.buy_btn, "buy_btn")
+
+	-- buy menu
+	self.buy_menu = xml:InitStatic("buy_menu", self.main_bg)
+	self.box_conts = {}
+	for i = 1, #achievements_main.achievement_boxes_cost do
+		local cost = achievements_main.achievement_boxes_cost[i]
+		self.box_conts[i] = {}
+		self.box_conts[i].cont = xml:InitStatic("buy_menu:box_cont_" .. i, self.buy_menu)
+		self.box_conts[i].icon = xml:InitStatic("buy_menu:box_cont_" .. i .. ":box_icon", self.box_conts[i].cont)
+		self.box_conts[i].cost = xml:InitStatic("buy_menu:box_cont_" .. i .. ":box_cost", self.box_conts[i].cont)
+		self.box_conts[i].cost:TextControl():SetText(cost)
+		self.box_conts[i].btn = xml:Init3tButton("buy_menu:box_cont_" .. i .. ":box_btn", self.box_conts[i].cont)
+		self:Register(self.box_conts[i].btn, "box_btn_" .. i)
+	end
+	self.box_tooltip = xml:InitStatic("buy_menu:box_tooltip", self.buy_menu)
+
+	-- close btn
+	self.close_btn = xml:Init3tButton("close_btn", self.bg)
+	self:Register(self.close_btn, "close_btn")
+	if self.is_pda_tab then
+		self.close_btn:Show(false)
+	end
+
+	-- scroll
+	self.scrollbar = xml:InitScrollView("scrollbar", self.bg)
+
+	-- scroll cont
+	self.scroll_cont = xml:InitStatic("scroll_cont", self.scrollbar)
+	self.scroll_cont:SetAutoDelete(false)
+
+	-- achievement conts (gaps 20 25)
+	self.achieve_conts = {}
+	local ach_t_size = size_table(achievements_main.achievements_t)
+	local cols = 3
+	local rows = math.ceil(ach_t_size / cols)
+
+	local cur_idx = 0
+
+	for row = 1, rows do
+		for col = 1, cols do
+
+			cur_idx = cur_idx + 1
+			if cur_idx <= ach_t_size then
+
+				self.achieve_conts[cur_idx] = {}
+				self.achieve_conts[cur_idx].cont = xml:InitStatic("achievement_cont", self.scroll_cont)
+
+				local width = self.achieve_conts[cur_idx].cont:GetWidth()
+				local height = self.achieve_conts[cur_idx].cont:GetHeight()
+
+				local new_x = (width + 20) * (col - 1)
+				local new_y = (height + 25) * (row - 1)
+				self.achieve_conts[cur_idx].cont:SetWndPos(vector2():set(new_x, new_y))
+			end
+		end
+	end
+
+	-- resize scroll cont
+	local cont_width = self.scroll_cont:GetWidth()
+	local cont_height = self.achieve_conts[1].cont:GetHeight()
+	self.scroll_cont:SetWndSize(vector2():set(cont_width, rows * (cont_height + 25) ))
+
+	-- add container to scroll
+	self.scrollbar:Clear()
+	self.scrollbar:AddWindow(self.scroll_cont, true)
+	self.scroll_cont:SetAutoDelete(false)
+
+	-- tooltip
+	self.tooltip = xml:InitStatic("achievement_tooltip", self.bg)
+	self.tooltip:Show(false)
+
+end
+
+function XAchievements:InitCallBacks()
+	-- buy btn
+	self:AddCallback("buy_btn", ui_events.BUTTON_CLICKED, self.ShowBuyMenu, self)
+
+	-- box btn
+	for i = 1, #achievements_main.achievement_boxes_cost do
+		XAchievements["OnClickBuyBox_".. i] = function(self)
+			self:OnClickBuyBox(i)
+		end
+		self:AddCallback("box_btn_" .. i, ui_events.BUTTON_CLICKED, self["OnClickBuyBox_" .. i], self)
+	end
+
+	-- close btn
+	self:AddCallback("close_btn", ui_events.BUTTON_CLICKED, self.Close, self)
+end
+
+function XAchievements:Refresh()
+	local xml = self.xml
+
+	-- set cursor pos to the top
+	if not self.is_pda_tab then
+		SetCursorPosition(vector2():set(830, 400))
+	end
+
+	-- points
+	local to_comma_str = achievements_utils.make_comma_string
+	self.cur_points:TextControl():SetText(to_comma_str(achievements_main.achievements_current_points))
+	self.tot_points:TextControl():SetText(to_comma_str(achievements_main.achievements_total_points))
+	self.tot_achievements:TextControl():SetText(achievements_utils.get_total_achievements_str())
+
+	-- buy menu
+	self.buy_menu:Show(false)
+
+	-- achievements
+	local ach_t = achievements_main.achievements_t
+	for name, t in pairs(ach_t) do
+
+		-- icon
+		if not self.achieve_conts[t.index].icon then
+			self.achieve_conts[t.index].icon = xml:InitStatic("achievement_cont:icon", self.achieve_conts[t.index].cont)
+		end
+		self.achieve_conts[t.index].icon:InitTexture("achieve_icon_" .. name)
+
+		-- frame
+		if not self.achieve_conts[t.index].frame then
+			self.achieve_conts[t.index].frame = xml:InitStatic("achievement_cont:frame", self.achieve_conts[t.index].cont)
+		end
+
+		-- description
+		if not self.achieve_conts[t.index].descr then
+			self.achieve_conts[t.index].descr = xml:InitStatic("achievement_cont:descr", self.achieve_conts[t.index].cont)
+		end
+		self.achieve_conts[t.index].descr:TextControl():SetText(gt("st_achieve_descr_" .. name))
+
+		-- reward
+		if not self.achieve_conts[t.index].reward then
+			self.achieve_conts[t.index].reward = xml:InitStatic("achievement_cont:reward", self.achieve_conts[t.index].cont)
+		end
+		local reward_str = ""
+		if t.stage <= #t.max_count then
+			reward_str = string.format(gt("st_achieve_misc_reward"), t.reward[t.stage] or "Null")
+		end
+		self.achieve_conts[t.index].reward:TextControl():SetText(reward_str)
+
+		-- count
+		if not self.achieve_conts[t.index].count then
+			self.achieve_conts[t.index].count = xml:InitStatic("achievement_cont:count", self.achieve_conts[t.index].cont)
+		end
+		local cur_max_count = t.stage <= #t.max_count and t.max_count[t.stage] or t.max_count[#t.max_count]
+		self.achieve_conts[t.index].count:TextControl():SetText(to_comma_str(t.count) .. " / " .. to_comma_str(cur_max_count))
+
+		-- bar bg
+		if not self.achieve_conts[t.index].bar_bg then
+			self.achieve_conts[t.index].bar_bg = xml:InitStatic("achievement_cont:bar_bg", self.achieve_conts[t.index].cont)
+		end
+
+		-- bar
+		if not self.achieve_conts[t.index].bar then
+			self.achieve_conts[t.index].bar = xml:InitProgressBar("achievement_cont:bar", self.achieve_conts[t.index].cont)
+		end
+		local progress = cur_max_count > 0 and (t.count / cur_max_count) or 0
+		if progress < 0 then progress = 0 end
+		if progress > 1 then progress = 1 end
+		-- Keep tiny non-zero progress visible on the dark PDA background.
+		if t.count > 0 and progress < 0.025 then
+			progress = 0.025
+		end
+		self.achieve_conts[t.index].bar:SetProgressPos(progress)
+
+	end
+
+end
+
+function XAchievements:ShowBuyMenu()
+	local show_cond = not self.buy_menu:IsShown()
+	self.buy_menu:Show(show_cond)
+end
+
+function XAchievements:OnClickBuyBox(i)
+	-- remove points
+	achievements_main.achievements_current_points = achievements_main.achievements_current_points - achievements_main.achievement_boxes_cost[i]
+
+	-- add bought box
+	alife_create_item("achievement_box_" .. i, db.actor)
+
+	-- refresh gui points
+	local to_comma_str = achievements_utils.make_comma_string
+	self.cur_points:TextControl():SetText(to_comma_str(achievements_main.achievements_current_points))
+	self.tot_points:TextControl():SetText(to_comma_str(achievements_main.achievements_total_points))
+
+	-- refresh buy menu
+	self:RefreshBuyMenu()
+end
+
+function XAchievements:RefreshBuyMenu()
+	for i = 1, #achievements_main.achievement_boxes_cost do
+		local enable_cond = achievements_main.achievements_current_points >= achievements_main.achievement_boxes_cost[i]
+		self.box_conts[i].btn:Enable(enable_cond)
+	end
+end
+
+function XAchievements:Update()
+	CUIScriptWnd.Update(self)
+
+	-- achievement tooltip
+	if self.tooltip:IsShown() then
+		self.tooltip:Show(false)
+	end
+
+	local ach_t = achievements_main.achievements_t
+	for name, t in pairs(ach_t) do
+		-- try to show tooltip only if achievement has collection list
+		if (t.collection or t.found) and self.achieve_conts[t.index].cont:IsCursorOverWindow() then
+
+			-- if everything collected - dont show tooltip
+			local tooltip_str = achievements_utils.get_tooltip_str(name, t.collection or t.found)
+			if tooltip_str then
+
+				self.tooltip:Show(true)
+
+				local cursor_pos = GetCursorPosition()
+				local tooltip_w = self.tooltip:GetWidth()
+				local tooltip_h = self.tooltip:GetHeight()
+				local bg_pos = self.bg:GetWndPos()
+				self.tooltip:SetWndPos(vector2():set(cursor_pos.x - tooltip_w - bg_pos.x, cursor_pos.y - tooltip_h / 2 - bg_pos.y))
+
+				self.tooltip:TextControl():SetText(tooltip_str)
+
+				break
+			end
+		end
+	end
+
+	-- box tooltip
+	if self.box_tooltip:IsShown() then
+		self.box_tooltip:Show(false)
+	end
+
+	for i = 1, #self.box_conts do
+		if self.box_conts[i].icon:IsCursorOverWindow() then
+			self.box_tooltip:Show(true)
+
+			local box_tooltip_str = achievements_utils.get_tooltip_box_str(i)
+			if box_tooltip_str then
+				local cursor_pos = GetCursorPosition()
+				local tooltip_w = self.box_tooltip:GetWidth()
+				local tooltip_h = self.box_tooltip:GetHeight()
+				local menu_pos = self.buy_menu:GetWndPos()
+
+				self.box_tooltip:SetWndPos(vector2():set(cursor_pos.x + menu_pos.x, cursor_pos.y - tooltip_h / 2 - menu_pos.y))
+				self.box_tooltip:TextControl():SetText(box_tooltip_str)
+				break
+			end
+		end
+	end
+
+end
+
+function XAchievements:OnKeyboard(key, keyboard_action)
+	local res = CUIScriptWnd.OnKeyboard(self, key, keyboard_action)
+	if self.is_pda_tab then
+		return res
+	end
+	if (res == false) then
+		if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+			local bind = dik_to_bind(key)
+			if key == DIK_keys.DIK_ESCAPE then
+				self:Close()
+			end
+		end
+	end
+	return res
+end
+
+function XAchievements:Close()
+	if self.is_pda_tab then
+		self:Show(false)
+		return
+	end
+	if self:IsShown() then
+		self:HideDialog()
+		self:Show(false)
+		Unregister_UI("XAchievements")
+	end
+end
+
+function XAchievements:__finalize()
+end
+
+function get_pda_ui()
+	if not PDA_GUI then
+		PDA_GUI = XAchievements(true)
+	end
+	if PDA_GUI then
+		PDA_GUI:Refresh()
+		PDA_GUI:RefreshBuyMenu()
+	end
+	return PDA_GUI
+end
+

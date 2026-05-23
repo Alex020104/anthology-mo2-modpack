@@ -1,0 +1,55 @@
+![flask]
+max_uses                                 		   = 10
+inv_weight					                       = 2.0
+empty_weight                                       = 0.1
+
+icons_texture                                      = ui\ui_canteens
+inv_grid_width                                     = 1
+inv_grid_height                                    = 1
+inv_grid_x                                         = 0
+inv_grid_y                                         = 0
+
+use1_functor                                       =
+use1_action_functor                                =
+boost_time					                       = 15 ;31
+boost_radiation_restore		                       = 0.00014 ;0.00007
+eat_alcohol					                       = -0.15
+eat_satiety 				                       = 0.005
+eat_sleepiness				                       = -0.01
+eat_thirstiness				                       = -1.15
+
+[purification_tablet]:booster_multi
+$spawn 						                       = "food and drugs\antirad"
+visual						                       = dynamics\equipments\medical\item_akvatab.ogf
+kind			                               = i_medical
+description					                       = st_akvatab2_descr
+cost						                       = 600
+inv_name					                       = st_akvatab2
+inv_name_short				                       = st_akvatab2
+use_condition                            		   = true
+script_binding                                     = bind_item.bind
+max_uses                                 		   = 6
+empty_weight					                   = 0.001
+inv_weight					                       = 0.007
+
+icons_texture									   = ui\ui_canteens
+inv_grid_width				                       = 1
+inv_grid_height				                       = 1
+inv_grid_x					                       = 4
+inv_grid_y					                       = 0
+
+upgr_icon_path								 	   = ui\actor_items\ui_actor_items_2
+upgr_icon_x								 	 	   = 150
+upgr_icon_y								 	 	   = 700
+upgr_icon_width						 	 	 	   = 100
+upgr_icon_height						 	 	   = 100
+remove_after_use                                   = false
+;boost_time					                       = 10
+;boost_radiation_restore		                       = 0.000056
+;eat_alcohol					                       = -0.21
+;eat_satiety 				                       = 0.202
+;eat_sleepiness				                       = -0.062
+;eat_thirstiness				                       = 0.2
+;use_sound					                       = interface\inv_eat_pills
+snd_on_take										   = pills
+tier = 4

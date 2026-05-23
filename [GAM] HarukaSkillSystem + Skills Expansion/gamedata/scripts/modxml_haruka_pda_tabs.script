@@ -1,0 +1,60 @@
+local pda_xml_names = {
+	[[ui\pda_16.xml]],
+	[[ui\pda.xml]],
+	[[pda_16.xml]],
+	[[pda.xml]]
+}
+
+local wanted_tabs = {
+	{ ["id"] = "eptHarukaSkills", ["text"] = "pda_btn_haruka_skills" },
+	{ ["id"] = "eptUtjanTraits", ["text"] = "pda_btn_utjan_traits" }
+}
+
+local function has_any(list)
+	return list and #list > 0
+end
+
+local function is_pda_xml(xml_file_name)
+	for _, name in ipairs(pda_xml_names) do
+		if xml_file_name == name then
+			return true
+		end
+	end
+	return false
+end
+
+local function has_button(xml_obj, id)
+	return has_any(xml_obj:query("tab button[id=" .. id .. "]"))
+end
+
+local function patch_pda_tabs(xml_obj)
+	local tabs = xml_obj:query("tab")
+	if not has_any(tabs) then return end
+
+	local tab = tabs[1]
+	for _, data in ipairs(wanted_tabs) do
+		if not has_button(xml_obj, data["id"]) then
+			local new_button = string.format([[
+<button x="0" y="0" width="89" height="27" id="%s" frame_mode="0">
+	<text align="c" vert_align="c" x="0" y="0" width="89" height="27" font="letterica16">%s</text>
+	<texture>ui_inGame2_pda_button</texture>
+	<text_color>
+		<t r="255" g="255" b="255"/>
+		<d r="255" g="255" b="255"/>
+		<e r="200" g="200" b="200"/>
+		<h r="170" g="170" b="170"/>
+	</text_color>
+</button>
+]], data["id"], data["text"])
+			xml_obj:insertFromXMLString(new_button, tab, #tab.kids)
+		end
+	end
+end
+
+function on_xml_read()
+	RegisterScriptCallback("on_xml_read", function(xml_file_name, xml_obj)
+		if is_pda_xml(xml_file_name) then
+			patch_pda_tabs(xml_obj)
+		end
+	end)
+end

@@ -1,0 +1,45 @@
+<w>
+    <file name="ui\anthology_ui\encyclopedia_anthology">
+        <texture id="encyclopedia__anthology_mod_image" x="0" y="0" width="510" height="250" />
+        <texture id="encyclopedia_anthology_story_call_of_pripyat_image" x="510" y="750" width="510" height="250" />
+        <texture id="encyclopedia_anthology_story_forgotten_squad_image" x="510" y="250" width="510" height="250" />
+        <texture id="encyclopedia_anthology_story_in_a_web_of_lies_image" x="0" y="500" width="510" height="250" />
+        <texture id="encyclopedia_anthology_story_path_in_the_dark_image" x="510" y="500" width="510" height="250" />
+        <texture id="encyclopedia_anthology_story_spatial_anomaly_image" x="0" y="250" width="510" height="250" />
+        <texture id="encyclopedia_anthology_story_valley_of_rustles_image" x="0" y="750" width="510" height="250" />
+        <texture id="encyclopedia_anthology_breeder_image" x="510" y="0" width="510" height="250" />
+    </file>
+
+    <file name="ui\anthology_ui\encyclopedia_anthology_story_atribut_image">
+        <texture id="encyclopedia_anthology_story_atribut_image" x="0" y="0" width="507" height="253" />
+    </file>
+
+
+   <file name="ui\fatal_error\encyclopedia_guide_fatal_error_image">
+    <texture id="encyclopedia_guide_fatal_error_image" x="0" y="0" width="512" height="256" />
+</file>
+
+
+
+    <file name="ui\ui_console">
+        <texture id="encyclopedia__anthology_donate_image" x="0" y="0" width="0" height="0" />
+        <texture id="encyclopedia__ant_guide_main_image" x="0" y="0" width="0" height="0" />
+        <texture id="encyclopedia_anthology_translate_image" x="0" y="0" width="0" height="0" />
+        <texture id="encyclopedia_ant_guide_faq_image" x="0" y="0" width="0" height="0" />
+        <texture id="encyclopedia_ant_guide_important_image" x="0" y="0" width="0" height="0" />
+        <texture id="encyclopedia_ant_guide_cold_system_image" x="0" y="0" width="0" height="0" />
+        <texture id="encyclopedia_ant_guide_toxic_air_image" x="0" y="0" width="0" height="0" />
+        <texture id="encyclopedia_ant_guide_troubleshooting_image" x="0" y="0" width="0" height="0" />
+        <texture id="encyclopedia_ant_guide_mod_credits_image" x="0" y="0" width="0" height="0" />
+        <texture id="encyclopedia_ant_guide_lootboxes_image" x="0" y="0" width="0" height="0" />
+        <texture id="encyclopedia_ant_guide_placeable_campfires_image" x="0" y="0" width="0" height="0" />
+    </file>
+
+    <file name="ui\guide\encyclopedia_article_mags_image">
+        <texture id="encyclopedia_article_mags_image" x="0" y="35" width="700" height="271" />
+    </file>
+
+    <file name="ui\guide\encyclopedia_article_wpo_image">
+        <texture id="encyclopedia_article_wpo_image" x="0" y="0" width="510" height="250" />
+    </file>
+</w>

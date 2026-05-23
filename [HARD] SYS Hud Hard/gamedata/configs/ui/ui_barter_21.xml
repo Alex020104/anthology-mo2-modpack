@@ -1,0 +1,96 @@
+<w>
+	<barter x="296" y="64" width="432" height="640" stretch="1">
+		<background x="0" y="0" width="432" height="640" stretch="1">
+			<texture>ui_inGame2_item_1_background</texture>
+		</background>
+		
+		<cap_tab x="20.25" y="8" width="391.5" height="28">
+			<text complex_mode="1" r="200" g="200" b="200" align="r" vert_align="c" font="letterica18"/>
+		</cap_tab>
+		
+		<!-- Item 1 -->
+		<cap_barter_2 x="228.375" y="50" width="175.5" height="22">
+			<text r="200" g="200" b="200" font="letterica18" align="c" vert_align="c">st_ui_itm_barter_support</text>
+		</cap_barter_2>
+		
+		<cont_inv_2 x="230.625" y="77" width="173.8125" height="222" stretch="1"/>
+		<back_inv_2 x="228.375" y="72" width="175.5" height="232" stretch="1">
+			<texture>ui_inGame2_item_1_inv</texture>
+		</back_inv_2>
+		
+		<scroll_desc_2 x="253.125" y="336" width="130.5" height="112" right_ident="0" left_ident="0" top_indent="0" bottom_indent="0" vert_interval="0" always_show_scroll="0"/>
+		
+		<box_item_2 x="253.125" y="336" width="126" height="112" stretch="1">
+			<text complex_mode="1" r="150" g="150" b="150" align="l" vert_align="c" font="letterica16"/>
+		</box_item_2>
+		<back_item_2 x="249.1875" y="332" width="133.875" height="120" stretch="1">
+			<texture>ui_inGame2_item_1_box</texture>
+		</back_item_2>
+		
+		<text_item_2 x="228.375" y="458" width="175.5" height="46">
+			<text complex_mode="1" r="150" g="150" b="150" align="c" vert_align="t" font="letterica16"/>
+		</text_item_2>
+		
+		<con_item_2 x="253.6875" y="424" width="124.875" height="28">
+			<text complex_mode="1" r="150" g="150" b="150" align="l" vert_align="c" font="letterica16"/>
+		</con_item_2>
+		
+		<!-- Item 2 -->
+		<cap_barter_1 x="28.125" y="50" width="175.5" height="22">
+			<text r="200" g="200" b="200" font="letterica18" align="c" vert_align="c">st_ui_itm_barter_base</text>
+		</cap_barter_1>
+		
+		<cont_inv_1 x="30.375" y="77" width="173.8125" height="222" stretch="1"/>
+		<back_inv_1 x="28.125" y="72" width="175.5" height="232" stretch="1">
+			<texture>ui_inGame2_item_1_inv</texture>
+		</back_inv_1>
+		
+		<scroll_desc_1 x="52.875" y="336" width="130.5" height="112" right_ident="0" left_ident="0" top_indent="0" bottom_indent="0" vert_interval="0" always_show_scroll="0"/>
+		
+		<box_item_1 x="52.875" y="336" width="126" height="112" stretch="1">
+			<text complex_mode="1" r="150" g="150" b="150" align="l" vert_align="c" font="letterica16"/>
+		</box_item_1>
+		<back_item_1 x="48.9375" y="332" width="133.875" height="120" stretch="1">
+			<texture>ui_inGame2_item_1_box</texture>
+		</back_item_1>
+		
+		<text_item_1 x="28.125" y="458" width="175.5" height="46">
+			<text complex_mode="1" r="150" g="150" b="150" align="c" vert_align="t" font="letterica16"/>
+		</text_item_1>
+		
+		<con_item_1 x="53.4375" y="424" width="124.875" height="28">
+			<text complex_mode="1" r="150" g="150" b="150" align="r" vert_align="c" font="letterica16"/>
+		</con_item_1>
+		
+		
+		<!-- Rest -->
+		<con_item_base x="187.3125" y="424" width="57.375" height="28">
+			<text complex_mode="1" r="150" g="150" b="150" align="c" vert_align="c" font="letterica16"/>
+		</con_item_base>
+		<con_item_1_new x="253.6875" y="424" width="124.875" height="28">
+			<text complex_mode="1" r="150" g="150" b="150" align="r" vert_align="c" font="letterica16"/>
+		</con_item_1_new>
+		<pic_item_main x="271.6875" y="516" width="88.875" height="112" stretch="1"/>
+		
+		<btn_barter x="64.6875" y="540" width="102.375" height="28">
+			<text y="2" r="150" g="150" b="150" font="letterica16" align="c" vert_align="c">st_ui_mm_barter</text>
+			<texture>ui_button_ordinary</texture>
+		</btn_barter>
+		<btn_back x="64.6875" y="576" width="102.375" height="28">
+			<text y="2" r="150" g="150" b="150" font="letterica16" align="c" vert_align="c">ui_mm_back</text>
+			<texture>ui_button_ordinary</texture>
+		</btn_back>
+	</barter>
+	
+	<barter_button x="4.5" y="732" width="138.75" height="28" stretch="1">
+		<window_name>barter_button</window_name>
+		<!-- <texture>ui_inGame2_big_inventory_button</texture> -->
+		<text y="2" align="c" font="graffiti22">st_ui_mm_barter</text>
+		<text_color>
+			<e color ="ui_6"/>
+			<t color ="ui_white"/>
+			<d color ="ui_5"/>
+			<h color ="ui_white"/>
+		</text_color>
+	</barter_button>
+</w>

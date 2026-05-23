@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="ui_mcm_talents_title">
+		<text>Классы и таланты</text>
+	</string>
+	<string id="ui_mcm_menu_talents">
+		<text>Классы и таланты</text>
+	</string>
+
+	<string id="ui_mcm_talents_talents_key">
+		<text>Клавиша окна талантов</text>
+	</string>
+
+	<!-- exp -->
+	<string id="ui_mcm_talents_header_main">
+		<text>Множители получения опыта</text>
+	</string>
+
+	<string id="ui_mcm_talents_offensive">
+		<text>Атака</text>
+	</string>
+	<string id="ui_mcm_talents_defensive">
+		<text>Защита</text>
+	</string>
+	<string id="ui_mcm_talents_endurance">
+		<text>Выносливость</text>
+	</string>
+	<string id="ui_mcm_talents_speech">
+		<text>Красноречие</text>
+	</string>
+
+
+	<!-- hud -->
+	<string id="ui_mcm_talents_header_hud">
+		<text>HUD</text>
+	</string>
+
+	<string id="ui_mcm_talents_hud_enable">
+		<text>Включить HUD</text>
+	</string>
+	<string id="ui_mcm_talents_hud_x">
+		<text>Позиция X</text>
+	</string>
+	<string id="ui_mcm_talents_hud_y">
+		<text>Позиция Y</text>
+	</string>
+
+
+	<!-- dbg -->
+	<string id="ui_mcm_talents_talents_dbg">
+		<text>дебаг</text>
+	</string>
+
+</string_table>

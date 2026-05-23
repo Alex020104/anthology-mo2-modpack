@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_body_health_system_title">
+		<text>Body Health System</text>
+	</string>
+	<string id="ui_mcm_menu_body_health_system">
+		<text>Body Health System</text>
+	</string>
+
+
+	<!-- HUD -->
+	<string id="ui_mcm_body_health_system_header_hud">
+		<text>HUD</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_hud_type">
+		<text>HUD type</text>
+	</string>
+	<string id="ui_mcm_lst_bhs_default">
+		<text>Default</text>
+	</string>
+	<string id="ui_mcm_lst_bhs_eft">
+		<text>EFT</text>
+	</string>
+	<string id="ui_mcm_lst_bhs_text">
+		<text>Text</text>
+	</string>
+	<string id="ui_mcm_lst_bhs_hard">
+		<text>Hard</text>
+	</string>
+	<string id="ui_mcm_lst_bhs_hard">
+		<text>Hard</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_alt_mode_health">
+		<text>(Text HUD only) Enable Health/Stamina/Psi</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_position_x">
+		<text>HUD Position X</text>
+	</string>
+	<string id="ui_mcm_body_health_system_position_y">
+		<text>HUD Position Y</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_vanilla_bars">
+		<text>Enable vanilla bars (need reloading)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_vanilla_bars_desc">
+		<text>For compatibility with other UI addons that use vanilla health/stamina/psi bars.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_custom_colors">
+		<text>Custom HUD colors</text>
+	</string>
+	<string id="ui_mcm_body_health_system_custom_colors_desc">
+		<text>Non-text HUDs only.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_clr_main_r">
+		<text>Main R</text>
+	</string>
+	<string id="ui_mcm_body_health_system_clr_main_g">
+		<text>Main G</text>
+	</string>
+	<string id="ui_mcm_body_health_system_clr_main_b">
+		<text>Main B</text>
+	</string>
+	<string id="ui_mcm_body_health_system_clr_timed_r">
+		<text>Timed health R</text>
+	</string>
+	<string id="ui_mcm_body_health_system_clr_timed_g">
+		<text>Timed health G</text>
+	</string>
+	<string id="ui_mcm_body_health_system_clr_timed_b">
+		<text>Timed health B</text>
+	</string>
+
+
+	<!-- General -->
+	<string id="ui_mcm_body_health_system_header_general">
+		<text>General</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_regen">
+		<text>Limb regeneration (game minutes)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_regen_desc">
+		<text>After this game minutes the random limb will heal 1 hp (can stack if more time passed). Any game time changes and sleep are included. "0" disables autoregen.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_damage_scale">
+		<text>Limb damage mult</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_enable_display">
+		<text>(Items) Enable BHS description</text>
+	</string>
+	<string id="ui_mcm_body_health_system_enable_display_desc">
+		<text>Disable it if any other addons use their own description for BHS.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_numeric_at">
+		<text>(Items) Display numeric value at</text>
+	</string>
+	<string id="ui_mcm_body_health_system_numeric_at_desc">
+		<text>Limb healing in item description will be displayed as number when it exceed this value.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_numeric_always">
+		<text>(Items) Display numeric always</text>
+	</string>
+
+
+	<!-- Arms -->
+	<string id="ui_mcm_body_health_system_header_arms">
+		<text>Arms</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_arm_opt">
+		<text>Arms penalty</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_arm_pen_min_hp">
+		<text>Minimum Arms HP (in %) for penalties</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_pen_min_hp_desc">
+		<text>Summary Arms HP percents must be below this value to play effects. Default slider value of 100 means that effects will play if both arms have summary 99% or less HP.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_arm_anm_pwr">
+		<text>Effects Power</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_anm_pwr_desc">
+		<text>Multiplier for arms penalty effect power. Default: 1.0.</text>
+	</string>
+
+
+	<!-- Legs -->
+	<string id="ui_mcm_body_health_system_header_legs">
+		<text>Legs</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_leg_opt">
+		<text>Legs penalty</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_leg_pen_min_hp">
+		<text>Minimum Legs HP (in %) for penalties</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_pen_min_hp_desc">
+		<text>Summary Legs HP percents must be below this value to play effects (speed and limping). Default slider value of 100 means that effects will play if both legs have summary 99% or less HP.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_leg_anm_pwr">
+		<text>Camera Effects Power</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_anm_pwr_desc">
+		<text>Multiplier of legs penalty for camera effect. Default: 1.0.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_leg_dmg_min_hp">
+		<text>Sprint damage min HP (in %)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_dmg_min_hp_desc">
+		<text>Any leg HP percents must be below this value to damage during sprint. Default value 60 means that there is a chance to get damaged if at least one leg is below 60% HP.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_new_voice_sounds">
+		<text>New voice for penalties</text>
+	</string>
+	<string id="ui_mcm_body_health_system_new_voice_sounds_desc">
+		<text>Enabling this activates new voice during sprint with damaged legs. Disabling returns voice from original mod.</text>
+	</string>
+
+
+	<!-- Torso -->
+	<string id="ui_mcm_body_health_system_header_torso">
+		<text>Torso</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_torso_opt">
+		<text>Torso penalty</text>
+	</string>
+	<string id="ui_mcm_body_health_system_torso_opt_desc">
+		<text>General HP cap based on health of torso.</text>
+	</string>
+
+
+	<!-- Head -->
+	<string id="ui_mcm_body_health_system_header_head">
+		<text>Head</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_head_opt">
+		<text>Head penalty</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_pen_min_hp">
+		<text>Minimum Head Damage for penalties</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_head_pen_min_hp_desc">
+		<text>Damage needed to play effects. For example, default slider value of 2 means that each headshot damage must be for 2 or more HP.</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_anm_pwr">
+		<text>Effects Power</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_anm_pwr_desc">
+		<text>Multiplier for head penalty effect power. Default: 0.5.</text>
+	</string>
+
+
+	<string id="ui_bhs_label_cold"><text>Cold:</text></string>
+	<string id="ui_bhs_label_sickness"><text>Sick:</text></string>
+	<string id="ui_bhs_label_advice"><text>Advice:</text></string>
+	<string id="ui_bhs_cold_normal"><text>Normal</text></string>
+	<string id="ui_bhs_cold_cool"><text>Cool</text></string>
+	<string id="ui_bhs_cold_cold"><text>Cold</text></string>
+	<string id="ui_bhs_cold_very_cold"><text>Very cold</text></string>
+	<string id="ui_bhs_cold_freezing"><text>Freezing</text></string>
+	<string id="ui_bhs_sickness_none"><text>None</text></string>
+	<string id="ui_bhs_sickness_low"><text>Low</text></string>
+	<string id="ui_bhs_sickness_high"><text>High</text></string>
+	<string id="ui_bhs_sickness_severe"><text>Severe</text></string>
+	<string id="ui_bhs_sickness_critical"><text>Critical</text></string>
+	<string id="ui_bhs_advice_stable"><text>Temperature stable</text></string>
+	<string id="ui_bhs_advice_keep_warm"><text>Keep warm</text></string>
+	<string id="ui_bhs_advice_warmer_clothes"><text>Need warmer clothes</text></string>
+	<string id="ui_bhs_advice_heat_source"><text>Find heat source</text></string>
+	<string id="ui_bhs_advice_warm_now"><text>Warm up immediately</text></string>
+	<string id="ui_bhs_advice_warm_and_meds"><text>Warm up and medicate</text></string>
+	<string id="ui_bhs_advice_treatment"><text>Need treatment</text></string>
+	<string id="ui_bhs_advice_urgent_treatment"><text>Need immediate treatment</text></string>
+	<string id="ui_bhs_limb_head_damaged"><text>Head fatally damaged!</text></string>
+	<string id="ui_bhs_limb_torso_damaged"><text>Torso fatally damaged!</text></string>
+	<string id="ui_bhs_limb_leftarm_damaged"><text>Left arm damaged!</text></string>
+	<string id="ui_bhs_limb_rightarm_damaged"><text>Right arm damaged!</text></string>
+	<string id="ui_bhs_limb_leftleg_damaged"><text>Left leg damaged!</text></string>
+	<string id="ui_bhs_limb_rightleg_damaged"><text>Right leg damaged!</text></string>
+	<string id="ui_bhs_limb_unknown_damaged"><text>Body part damaged!</text></string>
+</string_table>

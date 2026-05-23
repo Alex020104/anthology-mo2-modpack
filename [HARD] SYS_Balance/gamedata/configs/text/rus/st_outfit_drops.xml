@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    
+<string id="ui_mcm_outfitdrop_helmet_light_chance">
+	<text>Шанс выпадения лёгкого шлема</text>
+</string>
+<string id="ui_mcm_outfitdrop_helmet_light_chance_desc">
+	<text>Процентный шанс получить балаклавы и тканевые маски с мёртвых сталкеров.</text>
+</string>
+<string id="ui_mcm_outfitdrop_helmet_chance">
+	<text>Шанс выпадения шлема</text>
+</string>
+<string id="ui_mcm_outfitdrop_helmet_chance_desc">
+	<text>Процентный шанс получить противогазы и боевые шлемы с мёртвых сталкеров.</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_light_chance">
+	<text>Шанс выпадения лёгкого костюма</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_light_chance_desc">
+	<text>Процентный шанс получить лёгкий костюм с мёртвых сталкеров.</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_medium_chance">
+	<text>Шанс выпадения среднего костюма</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_medium_chance_desc">
+	<text>Процентный шанс получить средние костюмы с мёртвых сталкеров.</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_heavy_chance">
+	<text>Шанс выпадения тяжёлого костюма</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_heavy_chance_desc">
+	<text>Процентный шанс получить тяжёлые костюмы с мёртвых сталкеров.</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_exo_chance">
+	<text>Шанс выпадения экзоскелета</text>
+</string>
+<string id="ui_mcm_outfitdrop_outfit_exo_chance_desc">
+	<text>Процентный шанс найти экзоскелеты у мёртвых сталкеров.</text>
+</string>
+<string id="ui_mcm_outfitdrop_parts_chance">
+	<text>Шанс выпадения частей</text>
+</string>
+<string id="ui_mcm_outfitdrop_parts_chance_desc">
+	<text>Процентный шанс найти части, когда костюмы не выпадают.</text>
+</string>
+<string id="ui_mcm_outfitdrop_debug">
+	<text>Отладочный вывод</text>
+</string>
+<string id="ui_mcm_outfitdrop_parts_debug_desc">
+	<text>Ты уже знаешь, что это делает.</text>
+</string>
+<string id="ui_mcm_menu_outfitdrop">
+	<text>Выпадение костюмов</text>
+</string>
+
+</string_table>

@@ -1,0 +1,2982 @@
+--[[
+ ==========================================================================
+ Created by Tronex
+ Original concept by MLR
+ Last edit: 2018/6/7
+ ==========================================================================
+ Locations short names
+ You can simply open a route by using those short names instead of spot codes, example: open_route("mil","cit")
+ ======================
+aes1 -- CNPP South (ShoC)
+aes2 -- CNPP North (CS)
+agr -- Agroprom
+bar -- Rostok
+cit -- Dead City
+dsc -- Darkscape
+esc -- Cordon
+gar -- Garbage
+gen -- Generators
+jup -- Jupiter
+kat -- Deserted Hospital
+lim -- Limansk
+mar -- Great Swamps
+mil -- Army Warehouses
+out -- Outskirts
+pol -- Meadow
+pri -- Pripyat
+rad -- Radar
+red -- Red Forest
+ros -- Wild Territory
+trc -- Truck Cemetery
+val -- Dark Valley
+yan -- Yantar
+zat -- Zaton
+
+x8 	-- Lab X-8
+x16 -- Lab X-16
+x18 -- Lab X-18
+x19 -- Lab X-19
+mar_h -- Clea Sky's hidden path
+agr_u -- Agroprom Underground
+sar -- Sarcophagus
+s_lab -- Monolith Control Center
+w_lab -- Monolith War Lab
+
+sad -- sad
+city -- kurchatov_37
+fgt -- black_valley
+pre -- predbannik
+ave -- aver
+puz -- puzir
+sci -- la06_science_station
+fot -- la22_forest
+swa -- la09_swamp
+kas -- kasiani
+cou -- la19_country
+g_c -- la02_garbage
+los -- la04_darkdolina
+r_f -- la14_rostok_factory
+vok -- vokzal
+topi -- topi
+outla -- la17_outskirts
+x5 -- x5
+x14 -- x14
+pro -- promzona
+dl -- deadlake
+ano -- y05_anomles
+x27 -- labx27
+pu -- poselok_ug
+wiz -- way_in_zone
+la_old -- la23_oldroad
+okrest -- okrest
+gri -- grimwood
+a_r -- az_radar
+bs -- bar_stalker
+x15 -- l15u_pripyat_und
+l_a -- lab_audron
+col -- collaider
+x2 -- labx2
+x3 -- labx3
+x6 -- labx6
+scf -- secret_forest
+kan -- kanion
+x11 -- labx11
+--]]
+
+
+local sr_teleport_ini = ini_file("sr_teleport_sections.ltx")
+
+------------------------------------------------------------
+-- Control
+------------------------------------------------------------
+maps = {
+	"aes1",
+	"agr",
+	"bar",
+	"ros",	
+	"cit",
+	"dsc",
+	"esc",
+	"gar",
+	"gen",
+	"jup",
+	"kat",
+	"lim",
+	"mar",
+	"mil",
+	"out",
+	"pol",
+	"pri",
+	"rad",
+	"red",
+	"trc",
+	"val",
+	"yan",
+	"zat",
+	"x8",
+	"x16",
+	"x18",
+	"x19",
+	"jup_u",
+	"mar_h",
+	"agr_u",
+	"sar",
+	"s_lab",
+	"w_lab",
+
+	"sad",
+	"city",
+	"fgt",
+	"pre",
+	"ave",
+	"puz",
+	"sci",
+	"fot",
+	"swa",
+	"kas",
+	"cou",
+	"g_c",
+	"los",
+	"r_f",
+	"vok",
+	"topi",
+	"outla",
+	"x5",
+	"x14",
+	"pro",
+	"dl",
+	"ano",
+	"x27",
+	"pu",
+	"wiz",
+	"la_old",
+	"okrest",
+	"gri",
+	"a_r",
+	"lab",
+	"bs",
+	"x15",
+	"l_a",
+	"col",
+	"x2",
+	"x3",
+	"x6",
+	"scf",	
+	"kan",
+	"x11"
+}
+
+local map_to_sec = {
+	["aes1"] = "l12_stancia",
+	["agr"] = "l03_agroprom",
+	["bar"] = "l05_bar",
+	["ros"] = "l06_rostok",
+	["cit"] = "l09_deadcity",
+	["dsc"] = "k01_darkscape",
+	["esc"] = "l01_escape",
+	["gar"] = "l02_garbage",
+	["gen"] = "l13_generators",
+	["jup"] = "jupiter",
+	["kat"] = "l11_hospital",
+	["lim"] = "l10_limansk",
+	["mar"] = "k00_marsh",
+	["mil"] = "l07_military",
+	["out"] = "pripyat",
+	["pol"] = "y04_pole",
+	["pri"] = "l11_pripyat",
+	["rad"] = "l10_radar",
+	["red"] = "l10_red_forest",
+	["trc"] = "k02_trucks_cemetery",
+	["val"] = "l04_darkvalley",
+	["yan"] = "l08_yantar",
+	["zat"] = "zaton",
+	["x8"] = "labx8",
+	["x16"] = "l08u_brainlab",
+	["x18"] = "l04u_labx18",
+	["x19"] = "l10u_bunker",
+	["jup_u"] = "jupiter_underground",
+	["agr_u"] = "l03u_agr_underground",
+	["sar"] = "l12u_sarcofag",
+	["s_lab"] = "l12u_control_monolith",
+	["w_lab" ] = "l13u_warlab",
+
+	["sad"] = "sad",
+	["city"] = "kurchatov_37",
+	["fgt"] = "black_valley",
+	["pre"] = "predbannik",
+	["ave"] = "aver",
+	["puz"] = "puzir",
+	["sci"] = "la06_science_station",
+	["fot"] = "la22_forest",
+	["swa"] = "la09_swamp",
+	["kas"] = "kasiani",
+	["cou"] = "la19_country",
+	["g_c"] = "la02_garbage",
+	["los"] = "la04_darkdolina",
+	["r_f"] = "la14_rostok_factory",
+	["vok"] = "vokzal",
+	["topi"] = "topi",
+	["outla"] = "la17_outskirts",
+	["x5"] = "labx5",
+	["x14"] = "labx14",
+	["pro"] = "promzona",
+	["dl"] = "deadlake",
+	["ano"] = "y05_anomles",
+	["x27"] = "labx27",
+	["pu"] = "poselok_ug",
+	["wiz"] = "way_in_zone",
+	["la_old"] = "la23_oldroad",
+	["okrest"] = "okrest",
+	["gri"] = "grimwood",
+	["a_r"] = "az_radar",
+	["bs"] = "bar_stalker",
+	["x15"] = "l15u_pripyat_und",
+	["l_a"] = "lab_audron",
+	["col"] = "collaider",
+	["x2"] = "labx2",
+	["x3"] = "labx3",
+	["x6"] = "labx6",
+	["scf"] = "secret_forest",	
+	["kan"] = "kanion",
+	["x11"] = "labx11",
+}
+
+local sec_to_map = {
+	["l12_stancia"] = "aes1",
+	["l03_agroprom"] = "agr",
+	["l05_bar"] = "bar",
+	["l06_rostok"] = "ros",
+	["l09_deadcity"] = "cit",
+	["k01_darkscape"] = "dsc",
+	["l01_escape"] = "esc",
+	["l02_garbage"] = "gar",
+	["l13_generators"] = "gen",
+	["jupiter"] = "jup",
+	["l11_hospital"] = "kat",
+	["l10_limansk"] = "lim",
+	["k00_marsh"] = "mar",
+	["l07_military"] = "mil",
+	["pripyat"] = "out",
+	["y04_pole"] = "pol",
+	["l11_pripyat"] = "pri",
+	["l10_radar"] = "rad",
+	["l10_red_forest"] = "red",
+	["k02_trucks_cemetery"] = "trc",
+	["l04_darkvalley"] = "val",
+	["l08_yantar"] = "yan",
+	["zaton"] = "zat",
+	["labx8"] = "x8",
+	["l08u_brainlab"] = "x16",
+	["l04u_labx18"] = "x18",
+	["l10u_bunker"] = "x19",
+	["jupiter_underground"] = "jup_u",
+	["l03u_agr_underground"] = "agr_u",
+	["l12u_sarcofag"] = "sar",
+	["l12u_control_monolith"] = "s_lab",
+	["l13u_warlab"] = "w_lab",
+
+	["sad"] = "sad",
+	["kurchatov_37"] = "city",
+	["black_valley"] = "fgt",
+	["predbannik"] = "pre",
+	["aver"] = "ave",
+	["puzir"] = "puz",
+	["la06_science_station"] = "sci",
+	["la22_forest"] = "fot",
+	["la09_swamp"] = "swa",
+	["kasiani"] = "kas",
+	["la19_country"] = "cou",
+	["la02_garbage"] = "g_c",
+	["la04_darkdolina"] = "los",
+	["la14_rostok_factory"] = "r_f",
+	["vokzal"] = "vok",
+	["topi"] = "topi",
+	["la17_outskirts"] = "outla",
+	["labx5"] = "x5",
+	["labx14"] = "x14",
+	["promzona"] = "pro",
+	["deadlake"] = "dl",
+	["y05_anomles"] = "ano",
+	["labx27"] = "x27",
+	["poselok_ug"] = "pu",
+	["way_in_zone"] = "wiz",
+	["la23_oldroad"] = "la_old",
+	["okrest"] = "okrest",
+	["grimwood"] = "gri",
+	["az_radar"] = "a_r",
+	["bar_stalker"] = "bs",
+	["l15u_pripyat_und"] = "x15",
+	["lab_audron"] = "l_a",
+	["collaider"] = "col",
+	["labx2"] = "x2",
+	["labx3"] = "x3",
+	["labx6"] = "x6",
+	["secret_forest"] = "scf",	
+	["kanion"] = "kan",	
+	["labx11"] = "x11",
+}
+	
+local routes_start = {
+	general = {
+		{"esc","pol"},
+		{"esc","pre"},		
+	},
+	general_2 = {
+		-- esc > mar + gar + pol > val + bar + agr > trc + mil + ros > yan 
+		{"esc","mar"},
+		{"esc","gar"},
+		{"esc","dsc"},
+	    {"val","pol"},
+		{"val","gar"},
+		{"val","dsc"},
+		{"gar","agr"},
+		{"yan","ros"},
+		{"puz","gar"},
+		{"ave","gar"},
+		{"esc","x5"},
+		{"bar","mil"},
+		{"bar","gar"},
+		{"bar","ave"},
+		{"bar","ros"},
+		{"bar","x14"},
+
+
+	},	
+	monolith = {
+		-- aes1 + aes2 > gen + pri + sar + kat > rad + lim + out > mil > bar > ros > yan
+		{"bar","mil"},
+		{"yan","ros"},
+		{"mil","rad"},
+		{"pri","rad"},
+		{"kat","lim"},
+		{"red","lim"},
+		{"pri","out"},
+		{"pri","aes1"},
+		{"pri","ano"},
+		{"aes1","sar"},
+		{"aes1","ano"},
+		{"aes1","gen"},
+	},
+	killer = { 
+		-- cit > lim + mil > bar > ros + gar > yan + esc + val + agr > mar + dsc 
+		{"esc","mar"},
+		{"esc","gar"},
+		{"esc","dsc"},
+		{"val","dsc"},
+		{"gar","agr"},
+		{"gar","bar"},
+		{"val","gar"},
+		{"bar","mil"},
+		{"yan","ros"},
+		{"cit","okrest"},
+		{"cit","ros"},
+		{"cit","mil"},
+		{"cit","red"},
+		{"lim","okrest"},
+	},
+	csky = {
+		-- mar > mar_h + esc > gar + dsc > val + bar + agr > mil ros > yan
+		{"mar","mar_h"},
+		{"esc","mar"},
+		{"esc","gar"},
+		{"esc","dsc"},
+		{"val","dsc"},
+		{"gar","agr"},
+		{"gar","bar"},
+		{"val","gar"},
+		{"bar","mil"},
+		{"mar","r_f"},
+		{"trc","r_f"},
+		{"trc","yan"},
+	},
+	renegade = {
+		-- mar > mar_h + esc > gar + dsc > val + bar + agr > mil ros > yan
+		{"mar","mar_h"},
+		{"esc","mar"},
+		{"esc","gar"},
+		{"esc","dsc"},
+		{"val","dsc"},
+		{"gar","agr"},
+		{"gar","bar"},
+		{"val","gar"},
+		{"bar","mil"},
+		{"mar","r_f"},
+		{"trc","r_f"},
+		{"trc","yan"},
+	},
+	greh = {
+		-- aes1 + aes2 > gen + pri + sar + kat > rad + lim + out > mil > bar > ros > yan
+		{"red","ano"},
+		{"mil","rad"},
+		{"pri","rad"},
+		{"kat","lim"},
+		{"red","lim"},
+		{"pri","out"},
+		{"pri","aes1"},
+		{"aes1","sar"},
+		{"aes1","gen"},
+		{"jup","jup_u"},
+		{"fot","los"},
+		{"fot","sci"},
+		{"fot","city"},
+		{"fgt","sci"},
+		{"g_c","val"},
+		{"g_c","los"},
+		{"g_c","cou"},
+		{"g_c","sci"},
+	},
+	isg = { 
+		{"r_f","mar"},
+		{"r_f","trc"},
+		{"r_f","topi"},
+	},
+	spectrum = { 
+		{"city","fot"},
+		{"city","jup"},
+		{"city","swa"},
+		{"sci","g_c"},
+		{"sci","los"},
+		{"sci","fot"},
+		{"sci","jup"},
+		{"sci","fgt"},	
+	}
+}
+
+routes = {
+	["aes1"] = { 
+		["sar"] = {"aes_space_restrictor_to_sarcofag"}, 
+		["pri"] = {"aes_space_restrictor_to_pripyat"}, 
+		["zat"] = {"aes_space_restrictor_to_zaton"}, 
+		["gen"] = {"aes2_space_restrictor_to_gen"}, 
+		["s_lab"] = {"aes2_space_restrictor_to_secret_lab"},
+		["ano"] = {"aes_space_restrictor_to_ano"},
+		["la_old"] = {"aes2_space_restrictor_to_secret_la_old"},		
+		["kat"] = {"aes2_space_restrictor_to_hospital"} 		
+	},
+	["agr"] = { 
+		["mar"] = {"agr_space_restrictor_to_marsh_1"}, 
+		["yan"] = {"agr_space_restrictor_to_yantar_1"},
+		["gri"] = {"agr_space_restrictor_to_gri_1"}, 	
+		["gar"] = {"agr_space_restrictor_to_garbage_1","agr_space_restrictor_to_garbage_2"}, 
+		["agr_u"] = {"agr_space_restrictor_to_agr_ug_1","agr_space_restrictor_to_agr_ug_2","agr_space_restrictor_to_agr_ug_3","agr_space_restrictor_to_agr_ug_4","agr_space_restrictor_to_agr_ug_5","agr_space_restrictor_to_agr_ug_6"} 
+	},
+	["bar"] = { 
+		["gar"] = {"bar_space_restrictor_to_garbage_01"}, 
+		["mil"] = {"bar_space_restrictor_to_military_01"}, 
+		["ave"] = {"bar_space_restrictor_to_aver_1"},
+		["ros"] = {"bar_space_restrictor_to_rostok_01"},		
+		["x14"] = {"bar_space_restrictor_to_x14_1"}
+	},
+	["ros"] = { 
+		["gar"] = {"ros_space_restrictor_to_garbage_1"}, 
+		["yan"] = {"ros_space_restrictor_to_yantar_1"}, 
+		["bar"] = {"ros_space_restrictor_to_bar_1"},
+		["vok"] = {"ros_space_restrictor_to_l2_9_1"},
+		["cit"] = {"ros_space_restrictor_to_ldc_1"}		
+	},
+	["cit"] = { 
+		["okrest"] = {"ldc_space_restrictor_to_okr_1"}, 
+		["mil"] = {"ldc_space_restrictor_to_military_1"}, 
+		["red"] = {"ldc_space_restrictor_to_red_forest_1"},
+		["ros"] = {"ldc_space_restrictor_to_ros_1"}
+	},
+	["dsc"] = { 
+		["val"] = {"ds_space_restrictor_to_darkvalley"}, 
+		["outla"] = {"ds_space_restrictor_to_out_1"},		
+		["esc"] = {"ds_space_restrictor_to_escape"} 
+	},
+	["esc"] = { 
+		["pol"] = {"esc_space_restrictor_to_pole_1"}, 
+		["mar"] = {"esc_space_restrictor_to_marsh_1","esc_space_restrictor_to_marsh_2"}, 
+		["gar"] = {"esc_space_restrictor_to_garbage_1","esc_space_restrictor_to_garbage_2"}, 
+		["dsc"] = {"esc_space_restrictor_to_darkscape_1"},
+		["pre"] = {"esc_space_restrictor_to_pre"},
+		["x5"] = {"esc_space_restrictor_to_x5_1"}				
+	},
+	["gar"] = { 
+		["esc"] = {"gar_space_restrictor_to_escape_1","gar_space_restrictor_to_escape_2"}, 
+		["val"] = {"gar_space_restrictor_to_darkvalley_1","gar_space_restrictor_to_darkvalley_2"}, 
+		["agr"] = {"gar_space_restrictor_to_agroprom_1","gar_space_restrictor_to_agroprom_2"}, 
+		["bar"] = {"gar_space_restrictor_to_bar_1"},
+		["puz"] = {"gar_space_restrictor_to_puzir_1"},
+		["ave"] = {"gar_space_restrictor_to_aver_1"},
+		["ros"] = {"gar_space_restrictor_to_rostok_1"},
+		["x27"] = {"gar_space_restrictor_to_x27_1"}	
+	},
+	["gen"] = { 
+		["aes1"] = {"gen_space_restrictor_to_aes2"}, 
+		["w_lab"] = {"gen_space_restrictor_to_warlab"} 
+	},
+	["jup"] = { 
+		["sci"] = {"jupiter_space_restrictor_to_sci_1","jupiter_space_restrictor_to_sci_2"}, 
+		["zat"] = {"jup_space_restrictor_to_zaton"}, 
+		["jup_u"] = {"jupiter_space_restrictor_to_jupiter_ug"},
+		["city"] = {"jupiter_space_restrictor_to_city_1"}		
+	},
+	["jup_u"] = { 
+		["jup"] = {"jupiter_ug_space_restrictor_to_jupiter"} 
+	},
+	["kat"] = { 
+		["lim"] = {"katacomb_space_restrictor_to_limansk"}, 
+		["aes1"] = {"katacomb_space_restrictor_to_aes_1"},		
+		["ano"] = {"katacomb_space_restrictor_to_ano_1"} 
+	},
+	["lim"] = { 
+		["kat"] = {"lim_space_restrictor_to_hospital"}, 
+		["okrest"] = {"lim_space_restrictor_to_okr"}, 
+		["red"] = {"lim_space_restrictor_to_red_forest"},
+		["vok"] = {"lim_space_restrictor_to_l2_9_1"},
+		["a_r"] = {"lim_space_restrictor_to_a_r_1"}
+	},
+	["mar"] = { 
+		["agr"] = {"mar_space_restrictor_to_agroprom_1"}, 
+		["esc"] = {"mar_space_restrictor_to_escape_1","mar_space_restrictor_to_escape_2"}, 
+		["mar_h"] = {"mar_teleport_from_base_to_west"},
+		["r_f"] = {"mar_space_restrictor_to_r_f_1"}		
+	},
+	["mil"] = { 
+		["cit"] = {"military_space_restrictor_to_ldc_1"}, 
+		["red"] = {"mil_space_restrictor_to_red_1"}, 
+		["bar"] = {"mil_space_restrictor_to_bar_1"}, 
+		["rad"] = {"mil_space_restrictor_to_radar_1"}, 
+		["fgt"] = {"mil_space_restrictor_to_fgt_1"} 
+	},
+	["out"] = { 
+		["pri"] = {"cop_pripyat_space_restrictor_to_soc_pripyat"}, 
+		["jup_u"] = {"pri_space_restrictor_to_jup_ug"}, 
+		["x8"] = {"pri_space_restrictor_to_labx8"} 
+	},
+	["pol"] = { 
+		["esc"] = {"pol_space_restrictor_to_escape_1"}, 
+		["val"] = {"pol_space_restrictor_to_val_1"},
+		["puz"] = {"pol_space_restrictor_to_puzir_1"},		
+	},
+	["pri"] = { 
+		["out"] = {"pri_space_restrictor_to_cop_pripyat"}, 
+		["ano"] = {"pri_space_restrictor_to_ano"}, 
+		["rad"] = {"pri_space_restrictor_to_radar"}, 
+		["aes1"] = {"pri_space_restrictor_to_stancia"} 
+	},
+	["rad"] = { 
+		["pri"] = {"rad_space_restrictor_to_pripyat_01"}, 
+		["mil"] = {"rad_space_restrictor_to_military_01"}, 
+		["x19"] = {"rad_space_restrictor_to_bunker"},
+		["x11"] = {"rad_space_restrictor_to_labx11"}		
+	},
+	["red"] = { 
+		["mil"] = {"red_space_restrictor_to_military_1"}, 
+		["ano"] = {"red_space_restricor_to_ano"}, 
+		["lim"] = {"red_space_restrictor_to_limansk"}, 
+		["cit"] = {"red_space_restrictor_to_ldc_1"} 
+	},
+	["trc"] = { 
+		["topi"] = {"tc_space_restrictor_to_topi_1"}, 
+		["r_f"] = {"tc_space_restrictor_to_r_f_1", "tc_space_restrictor_to_r_f_2"},
+		["scf"] = {"tc_space_restrictor_to_scf_1", "tc_space_restrictor_to_scf_2", "tc_space_restrictor_to_scf_3"}	
+	},
+	["val"] = { 
+		["pol"] = {"val_space_restrictor_to_pole_1"}, 
+		["fgt"] = {"val_space_restrictor_to_fgt"} , 
+		["dsc"] = {"val_space_restrictor_to_darkscape"} , 
+		["gar"] = {"val_space_restrictor_to_garbage_1", "val_space_restrictor_to_garbage_2"},
+		["x18"] = {"val_space_restrictor_to_labx18"},
+		["puz"] = {"val_space_restrictor_to_puzir_1"},
+		["ave"] = {"val_space_restrictor_to_aver_1"},
+		["g_c"] = {"val_space_restrictor_to_g_c_1"}		
+	},
+	["yan"] = { 
+		["ros"] = {"yan_space_restrictor_to_rostok_1"}, 
+		["agr"] = {"yan_space_restrictor_to_agroprom_1"}, 
+		["okrest"] = {"yan_space_restrictor_to_okr_1"}, 
+		["x16"] = {"yan_space_restrictor_to_x16"},
+		["gri"] = {"yantar_space_restrictor_to_gri_1"}		
+	},
+	["zat"] = { 
+		["aes1"] = {"zaton_space_restrictor_to_stancia_1"}, 
+		["jup"] = {"zaton_space_restrictor_to_jupiter"},
+		["la_old"] = {"zaton_space_restrictor_to_la_old_1"},		
+		["swa"] = {"zaton_space_restrictor_to_swa_1"}		
+	},
+	["sad"] = { 
+		["kas"] = {"sad_space_restrictor_to_kas_1"},	
+	},
+	["city"] = { 
+		["fot"] = {"city_space_restrictor_to_for_1"}, 
+		["jup"] = {"city_space_restrictor_to_jupiter_1"},
+		["swa"] = {"city_space_restrictor_to_swa_1"},
+	},
+	["fgt"] = { 
+		["ave"] = {"fgt_space_restrictor_to_aver_1"}, 
+		["mil"] = {"fgt_space_restrictor_to_mil_1"},
+		["val"] = {"fgt_space_restrictor_to_val_1"},
+		["sci"] = {"fgt_space_restrictor_to_sci_1"}		
+	},
+	["pre"] = { 
+		["esc"] = {"pre_space_restrictor_to_esc"}, 
+		["outla"] = {"pre_space_restrictor_to_out_1", "pre_space_restrictor_to_out_2"},
+	},
+	["ave"] = { 
+		["gar"] = {"aver_space_restrictor_to_garbage_1"}, 
+		["val"] = {"aver_space_restrictor_to_darkvalley_1"},
+		["bar"] = {"aver_space_restrictor_to_bar_1"},
+		["fgt"] = {"aver_space_restrictor_to_fgt_1"}		
+	},
+	["puz"] = { 
+		["gar"] = {"puzir_space_restrictor_to_garbage_1"}, 
+		["val"] = {"puzir_space_restrictor_to_darkvalley_1"},
+		["pol"] = {"puzir_space_restrictor_to_pol_1"}
+	},
+	["sci"] = { 
+		["g_c"] = {"sci_space_restrictor_to_g_c_1"}, 
+		["los"] = {"sci_space_restrictor_to_los_1"},
+		["fot"] = {"sci_space_restrictor_to_for_1"},
+		["jup"] = {"sci_space_restrictor_to_jupiter_1", "sci_space_restrictor_to_jupiter_2"},
+		["fgt"] = {"sci_space_restrictor_to_fgt_1"}		
+	},
+	["fot"] = { 
+		["los"] = {"for_space_restrictor_to_los_1"}, 
+		["sci"] = {"for_space_restrictor_to_sci_1"},
+		["city"] = {"for_space_restrictor_to_city_1"}
+	},
+	["swa"] = { 
+		["zat"] = {"swa_space_restrictor_to_zaton_1"}, 
+		["kas"] = {"swa_space_restrictor_to_kas_1"},
+		["pro"] = {"swa_space_restrictor_to_pro_1"},
+		["city"] = {"swa_space_restrictor_to_city_1"}		
+	},
+	["kas"] = { 
+		["swa"] = {"kas_space_restrictor_to_swa_1"}, 
+		["sad"] = {"kas_space_restrictor_to_sad_1"},
+		["pro"] = {"kas_space_restrictor_to_pro_1"}
+	},
+	["cou"] = { 
+		["los"] = {"cou_space_restrictor_to_los_1"}, 
+		["g_c"] = {"cou_space_restrictor_to_g_c_1"},
+		["pu"] = {"cou_space_restrictor_to_pu_1"}		
+	},
+	["g_c"] = { 
+		["val"] = {"g_c_space_restrictor_to_val_1"}, 
+		["los"] = {"g_c_space_restrictor_to_los_1", "g_c_space_restrictor_to_los_2", "g_c_space_restrictor_to_los_3"},
+		["cou"] = {"g_c_space_restrictor_to_cou_1"},
+		["sci"] = {"g_c_space_restrictor_to_sci_1"}		
+	},
+	["los"] = { 
+		["g_c"] = {"los_space_restrictor_to_g_c_1", "los_space_restrictor_to_g_c_2", "los_space_restrictor_to_g_c_3"}, 
+		["cou"] = {"los_space_restrictor_to_cou_1"},
+		["sci"] = {"los_space_restrictor_to_sci_1"},
+		["fot"] = {"los_space_restrictor_to_for_1"},
+		["pu"] = {"los_space_restrictor_to_pu_1"},
+		["x6"] = {"los_space_restrictor_to_x6_1"}		
+	},		
+	["r_f"] = { 
+		["mar"] = {"r_f_space_restrictor_to_mar_1"}, 
+		["trc"] = {"r_f_space_restrictor_to_tc_1"},
+		["topi"] = {"r_f_space_restrictor_to_topi_1"},
+		["x3"] = {"r_f_space_restrictor_to_x3_1"}		
+	},
+	["vok"] = { 
+		["ros"] = {"l2_9_space_restrictor_to_rostok_1"},
+		["lim"] = {"l2_9_space_restrictor_to_limansk_1"},
+		["okrest"] = {"l2_9_space_restrictor_to_okr_1"},
+		["gri"] = {"l2_9_space_restrictor_to_gri_1"},
+		["kan"] = {"l2_9_space_restrictor_to_kanion_1"}		
+	},
+	["topi"] = { 
+		["r_f"] = {"topi_space_restrictor_to_r_f_1"}, 
+		["trc"] = {"topi_space_restrictor_to_tc_1"}
+	},
+	["outla"] = { 
+		["pre"] = {"out_space_restrictor_to_pre_1", "out_space_restrictor_to_pre_2"}, 
+		["dsc"] = {"out_space_restrictor_to_ds_1"},
+		["x2"] = {"out_space_restrictor_to_x2_1"}
+	},		
+	["pro"] = { 
+		["dl"] = {"pro_space_restrictor_to_dl_1"}, 
+		["kas"] = {"pro_space_restrictor_to_kas_1"},
+		["col"] = {"prom_space_restrictor_to_collider"},
+		["swa"] = {"pro_space_restrictor_to_swa_1"}
+	},
+	["ano"] = { 
+		["kat"] = {"ano_space_restrictor_to_hospital_1"}, 
+		["aes1"] = {"ano_space_restrictor_to_aes_1"},
+		["pri"] = {"ano_space_restrictor_to_soc_pripyat_1"},
+		["red"] = {"ano_space_restrictor_to_red_forest_1"}
+	},
+	["dl"] = { 
+		["pro"] = {"dl_space_restrictor_to_pro_1"}, 
+		["wiz"] = {"dl_space_restrictor_to_wiz_1"}
+	},
+	["pu"] = { 
+		["cou"] = {"pu_space_restrictor_to_cou_1"},	
+		["wiz"] = {"pu_space_restrictor_to_wiz_1", "pu_space_restrictor_to_wiz_2"},
+		["los"] = {"pu_space_restrictor_to_los_1"}		
+	},
+	["scf"] = { 
+		["trc"] = {"scf_space_restrictor_to_tc_1"},
+		["gri"] = {"scf_space_restrictor_to_gri_1"},
+		["a_r"] = {"scf_space_restrictor_to_a_r_1"}
+	},
+	["wiz"] = { 
+		["pu"] = {"wiz_space_restrictor_to_pu_1", "wiz_space_restrictor_to_pu_2"},
+		["dl"] = {"wiz_space_restrictor_to_dl_1"}
+	},
+	["la_old"] = { 
+		["aes1"] = {"la_old_space_restrictor_to_aes2_1"},	
+		["zat"] = {"la_old_space_restrictor_to_zaton_1"}
+	},
+	["okrest"] = { 
+		["lim"] = {"okr_space_restrictor_to_limansk"},	
+		["yan"] = {"okr_space_restrictor_to_yantar"},
+		["cit"] = {"okr_space_restrictor_to_ldc_1"},
+		["vok"] = {"okr_space_restrictor_to_l2_9_1"},
+		["gri"] = {"okr_space_restrictor_to_gri_1"}
+	},
+	["gri"] = { 
+		["scf"] = {"gri_space_restrictor_to_scf_1"},	
+		["yan"] = {"gri_space_restrictor_to_yan_1"},
+		["okrest"] = {"gri_space_restrictor_to_okr_1"},
+		["vok"] = {"gri_space_restrictor_to_l2_9_1"},		
+		["agr"] = {"gri_space_restrictor_to_agr_1"}		
+	},
+	["a_r"] = {
+		["bs"] = {"a_r_space_restrictor_to_bs_1"},
+		["x15"] = {"a_r_space_restrictor_to_x15_1"},
+		["lim"] = {"a_r_space_restrictor_to_limansk_1"},
+		["scf"] = {"a_r_space_restrictor_to_scf_1"}
+	},
+	["bs"] = { 
+		["a_r"] = {"bs_space_restrictor_to_a_r_1"}
+	},
+	["x15"] = { 
+		["a_r"] = {"x15_space_restrictor_to_a_r_1"}
+	},
+	["l_a"] = { 
+		["a_r"] = {"l_a_space_restrictor_to_a_r_1", "l_a_space_restrictor_to_a_r_2"}
+	},
+	["col"] = { 
+		["pro"] = {"collider_space_restrictor_to_prom"}
+	},
+	["kan"] = { 
+		["vok"] = {"kanion_space_restrictor_to_vok_1"}
+	},
+}
+
+local money_ini = ini_file("plugins\\mlr.ltx")
+local money_1 = money_ini:line_exist("money_1") and money_ini:r_float_ex("money_1") or 8000
+local money_2 = money_ini:line_exist("money_2") and money_ini:r_float_ex("money_2") or 10000
+local money_3 = money_ini:line_exist("money_3") and money_ini:r_float_ex("money_3") or 12000
+local money_4 = money_ini:line_exist("money_4") and money_ini:r_float_ex("money_4") or 40000
+
+
+
+------------------------------------------------------------
+-- Preconditions
+------------------------------------------------------------
+function have_money(money)
+	return mlr_utils.have_money(money)
+end
+function check_all_routes (first_speaker, second_speaker)
+	local a = is_route_left()
+	return a or false
+end
+
+-- Кордон
+function check_route_and_money_esc_mar (first_speaker, second_speaker)
+	return is_map_discovered("esc","mar") and (not is_route_discovered("esc","mar")) and have_money(money_1)
+end
+function check_route_and_money_esc_dsc (first_speaker, second_speaker)
+	return is_map_discovered("esc","dsc") and (not is_route_discovered("esc","dsc")) and have_money(money_1)
+end
+function check_route_and_money_esc_pol (first_speaker, second_speaker)
+	return is_map_discovered("esc","pol") and (not is_route_discovered("esc","pol")) and have_money(money_1)
+end
+function check_route_and_money_esc_gar (first_speaker, second_speaker)
+	return is_map_discovered("esc","gar") and (not is_route_discovered("esc","gar")) and have_money(money_1)
+end
+function check_route_and_money_esc_pre (first_speaker, second_speaker)
+	return is_map_discovered("esc","pre") and (not is_route_discovered("esc","pre")) and have_money(money_1)
+end
+function check_route_and_money_esc_x5 (first_speaker, second_speaker)
+	return is_map_discovered("esc","x5") and (not is_route_discovered("esc","x5")) and have_money(money_3)
+end
+
+-- Свалка
+function check_route_and_money_gar_val (first_speaker, second_speaker)
+	return is_map_discovered("gar","val") and (not is_route_discovered("gar","val")) and have_money(money_1)
+end
+function check_route_and_money_gar_agr (first_speaker, second_speaker)
+	return is_map_discovered("gar","agr") and (not is_route_discovered("gar","agr")) and have_money(money_1)
+end
+function check_route_and_money_gar_bar (first_speaker, second_speaker)
+	return is_map_discovered("gar","bar") and (not is_route_discovered("gar","bar")) and have_money(money_1)
+end
+function check_route_and_money_gar_puz (first_speaker, second_speaker)
+	return is_map_discovered("gar","puz") and (not is_route_discovered("gar","puz")) and have_money(money_1)
+end
+function check_route_and_money_gar_ave (first_speaker, second_speaker)
+	return is_map_discovered("gar","ave") and (not is_route_discovered("gar","ave")) and have_money(money_1)
+end
+function check_route_and_money_gar_x27 (first_speaker, second_speaker)
+	return is_map_discovered("gar","x27") and (not is_route_discovered("gar","x27")) and have_money(money_3)
+end
+
+-- Тёмная лощина
+function check_route_and_money_dsc_val (first_speaker, second_speaker)
+	return is_map_discovered("dsc","val") and (not is_route_discovered("dsc","val")) and have_money(money_1)
+end
+function check_route_and_money_dsc_outla (first_speaker, second_speaker)
+	return is_map_discovered("dsc","outla") and (not is_route_discovered("dsc","outla")) and have_money(money_1)
+end
+
+-- Болота
+function check_route_and_money_mar_mar_h (first_speaker, second_speaker)
+	return is_map_discovered("mar","mar_h") and (not is_route_discovered("mar","mar_h")) and have_money(money_1)
+end
+function check_route_and_money_mar_agr (first_speaker, second_speaker)
+	return is_map_discovered("mar","agr") and (not is_route_discovered("mar","agr")) and have_money(money_1)
+end
+function check_route_and_money_mar_r_f (first_speaker, second_speaker)
+	return is_map_discovered("mar","r_f") and (not is_route_discovered("mar","r_f")) and have_money(money_1)
+end
+
+-- Предбанник
+function check_route_and_money_pre_outla (first_speaker, second_speaker)
+	return is_map_discovered("pre","outla") and (not is_route_discovered("pre","outla")) and have_money(money_1)
+end
+
+-- Бар росток
+function check_route_and_money_bar_mil (first_speaker, second_speaker)
+	return is_map_discovered("bar","mil") and (not is_route_discovered("bar","mil")) and have_money(money_1)
+end
+function check_route_and_money_bar_ave (first_speaker, second_speaker)
+	return is_map_discovered("bar","ave") and (not is_route_discovered("bar","ave")) and have_money(money_2)
+end
+function check_route_and_money_bar_ros (first_speaker, second_speaker)
+	return is_map_discovered("bar","ros") and (not is_route_discovered("bar","ros")) and have_money(money_1)
+end
+function check_route_and_money_bar_x14 (first_speaker, second_speaker)
+	return is_map_discovered("bar","x14") and (not is_route_discovered("bar","x14")) and have_money(money_3)
+end
+function check_route_and_money_ros_yan (first_speaker, second_speaker)
+	return is_map_discovered("ros","yan") and (not is_route_discovered("ros","yan")) and have_money(money_1)
+end
+function check_route_and_money_ros_vok (first_speaker, second_speaker)
+	return is_map_discovered("ros","vok") and (not is_route_discovered("ros","vok")) and have_money(money_2)
+end
+function check_route_and_money_ros_cit (first_speaker, second_speaker)
+	return is_map_discovered("ros","cit") and (not is_route_discovered("ros","cit")) and have_money(money_1)
+end
+function check_route_and_money_ros_gar (first_speaker, second_speaker)
+	return is_map_discovered("ros","gar") and (not is_route_discovered("ros","gar")) and have_money(money_1)
+end
+
+-- Забытый лес
+function check_route_and_money_puz_val (first_speaker, second_speaker)
+	return is_map_discovered("puz","val") and (not is_route_discovered("puz","val")) and have_money(money_1)
+end
+function check_route_and_money_puz_pol (first_speaker, second_speaker)
+	return is_map_discovered("puz","pol") and (not is_route_discovered("puz","pol")) and have_money(money_1)
+end
+
+-- Металл. завод
+function check_route_and_money_r_f_trc (first_speaker, second_speaker)
+	return is_map_discovered("r_f","trc") and (not is_route_discovered("r_f","trc")) and have_money(money_1)
+end
+function check_route_and_money_r_f_topi (first_speaker, second_speaker)
+	return is_map_discovered("r_f","topi") and (not is_route_discovered("r_f","topi")) and have_money(money_1)
+end
+function check_route_and_money_r_f_x3 (first_speaker, second_speaker)
+	return is_map_discovered("r_f","x3") and (not is_route_discovered("r_f","x3")) and have_money(money_3)
+end
+
+-- Топи
+function check_route_and_money_topi_trc (first_speaker, second_speaker)
+	return is_map_discovered("topi","trc") and (not is_route_discovered("topi","trc")) and have_money(money_1)
+end
+
+-- Кладбище техники
+function check_route_and_money_trc_scf (first_speaker, second_speaker)
+	return is_map_discovered("trc","scf") and (not is_route_discovered("trc","scf")) and have_money(money_1)
+end
+
+-- Агропром
+function check_route_and_money_agr_yan (first_speaker, second_speaker)
+	return is_map_discovered("agr","yan") and (not is_route_discovered("agr","yan")) and have_money(money_1)
+end
+function check_route_and_money_agr_gri (first_speaker, second_speaker)
+	return is_map_discovered("agr","gri") and (not is_route_discovered("agr","gri")) and have_money(money_2)
+end
+function check_route_and_money_agr_agr_u (first_speaker, second_speaker)
+	return is_map_discovered("agr","agr_u") and (not is_route_discovered("agr","agr_u")) and have_money(money_1)
+end
+
+-- Янтарь
+function check_route_and_money_yan_okrest (first_speaker, second_speaker)
+	return is_map_discovered("yan","okrest") and (not is_route_discovered("yan","okrest")) and have_money(money_1)
+end
+function check_route_and_money_yan_gri (first_speaker, second_speaker)
+	return is_map_discovered("yan","gri") and (not is_route_discovered("yan","gri")) and have_money(money_2)
+end
+function check_route_and_money_yan_x16 (first_speaker, second_speaker)
+	return is_map_discovered("yan","x16") and (not is_route_discovered("yan","x16")) and have_money(money_2)
+end
+
+-- Тёмная долина
+function check_route_and_money_val_pol (first_speaker, second_speaker)
+	return is_map_discovered("val","pol") and (not is_route_discovered("val","pol")) and have_money(money_1)
+end
+function check_route_and_money_val_fgt (first_speaker, second_speaker)
+	return is_map_discovered("val","fgt") and (not is_route_discovered("val","fgt")) and have_money(money_1)
+end
+function check_route_and_money_val_ave (first_speaker, second_speaker)
+	return is_map_discovered("val","ave") and (not is_route_discovered("val","ave")) and have_money(money_1)
+end
+function check_route_and_money_val_g_c (first_speaker, second_speaker)
+	return is_map_discovered("val","g_c") and (not is_route_discovered("val","g_c")) and have_money(money_4)
+end
+function check_route_and_money_val_x18 (first_speaker, second_speaker)
+	return is_map_discovered("val","x18") and (not is_route_discovered("val","x18")) and have_money(money_2)
+end
+
+-- Армейские склады
+function check_route_and_money_mil_cit (first_speaker, second_speaker)
+	return is_map_discovered("mil","cit") and (not is_route_discovered("mil","cit")) and have_money(money_2)
+end
+function check_route_and_money_mil_red (first_speaker, second_speaker)
+	return is_map_discovered("mil","red") and (not is_route_discovered("mil","red")) and have_money(money_2)
+end
+function check_route_and_money_mil_rad (first_speaker, second_speaker)
+	return is_map_discovered("mil","rad") and (not is_route_discovered("mil","rad")) and have_money(money_1)
+end
+function check_route_and_money_mil_fgt (first_speaker, second_speaker)
+	return is_map_discovered("mil","fgt") and (not is_route_discovered("mil","fgt")) and have_money(money_1)
+end
+
+-- Рыжий лес
+function check_route_and_money_red_ano (first_speaker, second_speaker)
+	return is_map_discovered("red","ano") and (not is_route_discovered("red","ano")) and have_money(money_1)
+end
+function check_route_and_money_red_lim (first_speaker, second_speaker)
+	return is_map_discovered("red","lim") and (not is_route_discovered("red","lim")) and have_money(money_1)
+end
+function check_route_and_money_red_cit (first_speaker, second_speaker)
+	return is_map_discovered("red","cit") and (not is_route_discovered("red","cit")) and have_money(money_1)
+end
+
+-- Лиманск
+function check_route_and_money_lim_kat (first_speaker, second_speaker)
+	return is_map_discovered("lim","kat") and (not is_route_discovered("lim","kat")) and have_money(money_1)
+end
+function check_route_and_money_lim_okrest (first_speaker, second_speaker)
+	return is_map_discovered("lim","okrest") and (not is_route_discovered("lim","okrest")) and have_money(money_2)
+end
+function check_route_and_money_lim_vok (first_speaker, second_speaker)
+	return is_map_discovered("lim","vok") and (not is_route_discovered("lim","vok")) and have_money(money_1)
+end
+
+-- Радар
+function check_route_and_money_rad_pri (first_speaker, second_speaker)
+	return is_map_discovered("rad","pri") and (not is_route_discovered("rad","pri")) and have_money(money_1)
+end
+function check_route_and_money_rad_x19 (first_speaker, second_speaker)
+	return is_map_discovered("rad","x19") and (not is_route_discovered("rad","x19")) and have_money(money_2)
+end
+function check_route_and_money_rad_x11 (first_speaker, second_speaker)
+	return is_map_discovered("rad","x11") and (not is_route_discovered("rad","x11")) and have_money(money_2)
+end
+
+-- Мёртвый город
+function check_route_and_money_cit_okrest (first_speaker, second_speaker)
+	return is_map_discovered("cit","okrest") and (not is_route_discovered("cit","okrest")) and have_money(money_1)
+end
+
+-- Окрестности
+function check_route_and_money_okrest_vok (first_speaker, second_speaker)
+	return is_map_discovered("okrest","vok") and (not is_route_discovered("okrest","vok")) and have_money(money_1)
+end
+function check_route_and_money_okrest_gri (first_speaker, second_speaker)
+	return is_map_discovered("okrest","gri") and (not is_route_discovered("okrest","gri")) and have_money(money_1)
+end
+
+-- Гримвуд
+function check_route_and_money_gri_scf (first_speaker, second_speaker)
+	return is_map_discovered("gri","scf") and (not is_route_discovered("gri","scf")) and have_money(money_1)
+end
+function check_route_and_money_gri_vok (first_speaker, second_speaker)
+	return is_map_discovered("gri","vok") and (not is_route_discovered("gri","vok")) and have_money(money_1)
+end
+-- Центр Припять
+function check_route_and_money_pri_out (first_speaker, second_speaker)
+	return is_map_discovered("pri","out") and (not is_route_discovered("pri","out")) and have_money(money_1)
+end
+function check_route_and_money_pri_ano (first_speaker, second_speaker)
+	return is_map_discovered("pri","ano") and (not is_route_discovered("pri","ano")) and have_money(money_1)
+end
+function check_route_and_money_pri_aes1 (first_speaker, second_speaker)
+	return is_map_discovered("pri","aes1") and (not is_route_discovered("pri","aes1")) and have_money(money_1)
+end
+
+-- Восток Припяти
+function check_route_and_money_out_jup_u (first_speaker, second_speaker)
+	return is_map_discovered("out","jup_u") and (not is_route_discovered("out","jup_u")) and have_money(money_1)
+end
+function check_route_and_money_out_x8 (first_speaker, second_speaker)
+	return is_map_discovered("out","x8") and (not is_route_discovered("out","x8")) and have_money(money_2)
+end
+
+-- Брошеные земли
+function check_route_and_money_scf_a_r (first_speaker, second_speaker)
+	return is_map_discovered("scf","a_r") and (not is_route_discovered("scf","a_r")) and have_money(money_1)
+end
+
+-- Окрестности купола
+function check_route_and_money_a_r_lim (first_speaker, second_speaker)
+	return is_map_discovered("a_r","lim") and (not is_route_discovered("a_r","lim")) and have_money(money_4)
+end
+function check_route_and_money_a_r_bs (first_speaker, second_speaker)
+	return is_map_discovered("a_r","bs") and (not is_route_discovered("a_r","bs")) and have_money(money_2)
+end
+function check_route_and_money_a_r_x15 (first_speaker, second_speaker)
+	return is_map_discovered("a_r","x15") and (not is_route_discovered("a_r","x15")) and have_money(money_3)
+end
+
+-- l_a Окрестности купола
+function check_route_and_money_l_a_a_r (first_speaker, second_speaker)
+	return is_map_discovered("l_a","a_r") and (not is_route_discovered("l_a","a_r")) and have_money(money_1)
+end
+
+-- bs Окрестности купола
+function check_route_and_money_bs_a_r (first_speaker, second_speaker)
+	return is_map_discovered("bs","a_r") and (not is_route_discovered("bs","a_r")) and have_money(money_1)
+end
+
+-- x15 Окрестности купола
+function check_route_and_money_x15_a_r (first_speaker, second_speaker)
+	return is_map_discovered("x15","a_r") and (not is_route_discovered("x15","a_r")) and have_money(money_1)
+end
+
+-- Госпиталь
+function check_route_and_money_kat_aes1 (first_speaker, second_speaker)
+	return is_map_discovered("kat","aes1") and (not is_route_discovered("kat","aes1")) and have_money(money_1)
+end
+function check_route_and_money_kat_ano (first_speaker, second_speaker)
+	return is_map_discovered("kat","ano") and (not is_route_discovered("kat","ano")) and have_money(money_1)
+end
+
+-- Застава
+function check_route_and_money_fgt_ave (first_speaker, second_speaker)
+	return is_map_discovered("fgt","ave") and (not is_route_discovered("fgt","ave")) and have_money(money_1)
+end
+function check_route_and_money_fgt_sci (first_speaker, second_speaker)
+	return is_map_discovered("fgt","sci") and (not is_route_discovered("fgt","sci")) and have_money(money_1)
+end
+
+-- ЧАЭС
+function check_route_and_money_aes1_sar (first_speaker, second_speaker)
+	return is_map_discovered("aes1","sar") and (not is_route_discovered("aes1","sar")) and have_money(money_3)
+end
+function check_route_and_money_aes1_zat (first_speaker, second_speaker)
+	return is_map_discovered("aes1","zat") and (not is_route_discovered("aes1","zat")) and have_money(money_1)
+end
+function check_route_and_money_aes1_gen (first_speaker, second_speaker)
+	return is_map_discovered("aes1","gen") and (not is_route_discovered("aes1","gen")) and have_money(money_1)
+end
+function check_route_and_money_aes1_s_lab (first_speaker, second_speaker)
+	return is_map_discovered("aes1","s_lab") and (not is_route_discovered("aes1","s_lab")) and have_money(money_3)
+end
+function check_route_and_money_aes1_ano (first_speaker, second_speaker)
+	return is_map_discovered("aes1","ano") and (not is_route_discovered("aes1","ano")) and have_money(money_1)
+end
+function check_route_and_money_aes1_la_old (first_speaker, second_speaker)
+	return is_map_discovered("aes1","la_old") and (not is_route_discovered("aes1","la_old")) and have_money(money_2)
+end
+
+-- Генераторы
+function check_route_and_money_gen_w_lab (first_speaker, second_speaker)
+	return is_map_discovered("gen","w_lab") and (not is_route_discovered("gen","w_lab")) and have_money(money_2)
+end
+
+-- Юпитер
+function check_route_and_money_jup_sci (first_speaker, second_speaker)
+	return is_map_discovered("jup","sci") and (not is_route_discovered("jup","sci")) and have_money(money_1)
+end
+function check_route_and_money_jup_zat (first_speaker, second_speaker)
+	return is_map_discovered("jup","zat") and (not is_route_discovered("jup","zat")) and have_money(money_1)
+end
+function check_route_and_money_jup_jup_u (first_speaker, second_speaker)
+	return is_map_discovered("jup","jup_u") and (not is_route_discovered("jup","jup_u")) and have_money(money_1)
+end
+function check_route_and_money_jup_city (first_speaker, second_speaker)
+	return is_map_discovered("jup","city") and (not is_route_discovered("jup","city")) and have_money(money_1)
+end
+
+-- Центр свалка
+function check_route_and_money_g_c_los (first_speaker, second_speaker)
+	return is_map_discovered("g_c","los") and (not is_route_discovered("g_c","los")) and have_money(money_1)
+end
+function check_route_and_money_g_c_cou (first_speaker, second_speaker)
+	return is_map_discovered("g_c","cou") and (not is_route_discovered("g_c","cou")) and have_money(money_1)
+end
+function check_route_and_money_g_c_sci (first_speaker, second_speaker)
+	return is_map_discovered("g_c","sci") and (not is_route_discovered("g_c","sci")) and have_money(money_1)
+end
+
+-- Научная станция
+function check_route_and_money_sci_los (first_speaker, second_speaker)
+	return is_map_discovered("sci","los") and (not is_route_discovered("sci","los")) and have_money(money_1)
+end
+function check_route_and_money_sci_fot (first_speaker, second_speaker)
+	return is_map_discovered("sci","fot") and (not is_route_discovered("sci","fot")) and have_money(money_1)
+end
+
+-- Тихие холмы
+function check_route_and_money_los_cou (first_speaker, second_speaker)
+	return is_map_discovered("los","cou") and (not is_route_discovered("los","cou")) and have_money(money_1)
+end
+function check_route_and_money_los_fot (first_speaker, second_speaker)
+	return is_map_discovered("los","fot") and (not is_route_discovered("los","fot")) and have_money(money_1)
+end
+function check_route_and_money_los_pu (first_speaker, second_speaker)
+	return is_map_discovered("los","pu") and (not is_route_discovered("los","pu")) and have_money(money_1)
+end
+function check_route_and_money_los_x6 (first_speaker, second_speaker)
+	return is_map_discovered("los","x6") and (not is_route_discovered("los","x6")) and have_money(money_3)
+end
+
+-- Курчатов
+function check_route_and_money_city_swa (first_speaker, second_speaker)
+	return is_map_discovered("city","swa") and (not is_route_discovered("city","swa")) and have_money(money_1)
+end
+function check_route_and_money_city_fot (first_speaker, second_speaker)
+	return is_map_discovered("city","fot") and (not is_route_discovered("city","fot")) and have_money(money_1)
+end
+
+-- Затон
+function check_route_and_money_zat_swa (first_speaker, second_speaker)
+	return is_map_discovered("zat","swa") and (not is_route_discovered("zat","swa")) and have_money(money_1)
+end
+function check_route_and_money_zat_la_old (first_speaker, second_speaker)
+	return is_map_discovered("zat","la_old") and (not is_route_discovered("zat","la_old")) and have_money(money_1)
+end
+
+-- Посёлок Южный
+function check_route_and_money_pu_cou (first_speaker, second_speaker)
+	return is_map_discovered("pu","cou") and (not is_route_discovered("pu","cou")) and have_money(money_1)
+end
+function check_route_and_money_pu_wiz (first_speaker, second_speaker)
+	return is_map_discovered("pu","wiz") and (not is_route_discovered("pu","wiz")) and have_money(money_1)
+end
+
+-- Чернобыль-1
+function check_route_and_money_outla_x2 (first_speaker, second_speaker)
+	return is_map_discovered("outla","x2") and (not is_route_discovered("outla","x2")) and have_money(money_3)
+end
+
+-- Окрестности бывшего НИИ
+function check_route_and_money_wiz_dl (first_speaker, second_speaker)
+	return is_map_discovered("wiz","dl") and (not is_route_discovered("wiz","dl")) and have_money(money_1)
+end
+
+-- Мёртвое озеро
+function check_route_and_money_dl_pro (first_speaker, second_speaker)
+	return is_map_discovered("dl", "pro") and (not is_route_discovered("dl", "pro")) and have_money(money_1)
+end
+
+-- Промзона
+function check_route_and_money_pro_kas (first_speaker, second_speaker)
+	return is_map_discovered("pro","kas") and (not is_route_discovered("pro","kas")) and have_money(money_1)
+end
+function check_route_and_money_pro_col (first_speaker, second_speaker)
+	return is_map_discovered("pro","col") and (not is_route_discovered("pro","col")) and have_money(money_3)
+end
+function check_route_and_money_pro_swa (first_speaker, second_speaker)
+	return is_map_discovered("pro","swa") and (not is_route_discovered("pro","swa")) and have_money(money_2)
+end
+
+-- Восточные топи
+function check_route_and_money_swa_kas (first_speaker, second_speaker)
+	return is_map_discovered("swa", "kas") and (not is_route_discovered("swa", "kas")) and have_money(money_1)
+end
+
+-- Касьяны
+function check_route_and_money_kas_sad (first_speaker, second_speaker)
+	return is_map_discovered("kas", "sad") and (not is_route_discovered("kas", "sad")) and have_money(money_1)
+end
+
+
+
+------------------------------------------------------------
+-- Actions
+------------------------------------------------------------
+function take_money(first_speaker, second_speaker, money)
+	dialogs.relocate_money_from_actor(first_speaker, second_speaker, money)
+end
+
+-- Кордон
+function open_route_and_money_esc_mar (first_speaker, second_speaker)
+	open_route("esc","mar")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_esc_dsc (first_speaker, second_speaker)
+	open_route("esc","dsc")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_esc_pol (first_speaker, second_speaker)
+	open_route("esc","pol")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_esc_gar (first_speaker, second_speaker)
+	open_route("esc","gar")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_esc_pre (first_speaker, second_speaker)
+	open_route("esc","pre")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_esc_x5 (first_speaker, second_speaker)
+	open_route("esc","x5")
+	take_money(first_speaker, second_speaker, money_3)
+end
+
+-- Свалка
+function open_route_and_money_gar_val (first_speaker, second_speaker)
+	open_route("gar","val")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_gar_agr (first_speaker, second_speaker)
+	open_route("gar","agr")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_gar_bar (first_speaker, second_speaker)
+	open_route("gar","bar")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_gar_puz (first_speaker, second_speaker)
+	open_route("gar","puz")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_gar_ave (first_speaker, second_speaker)
+	open_route("gar","ave")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_gar_x27 (first_speaker, second_speaker)
+	open_route("gar","x27")
+	take_money(first_speaker, second_speaker, money_3)
+end
+
+-- Тёмная лощина
+function open_route_and_money_dsc_val (first_speaker, second_speaker)
+	open_route("dsc","val")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_dsc_outla (first_speaker, second_speaker)
+	open_route("dsc","outla")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Болота
+function open_route_and_money_mar_mar_h (first_speaker, second_speaker)
+	open_route("mar","mar_h")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_mar_agr (first_speaker, second_speaker)
+	open_route("mar","agr")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_mar_r_f (first_speaker, second_speaker)
+	open_route("mar","r_f")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Предбанник
+function open_route_and_money_pre_outla (first_speaker, second_speaker)
+	open_route("pre","outla")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Бар росток
+function open_route_and_money_bar_mil (first_speaker, second_speaker)
+	open_route("bar","mil")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_bar_ave (first_speaker, second_speaker)
+	open_route("bar","ave")
+	take_money(first_speaker, second_speaker, money_2)
+end
+function open_route_and_money_bar_x14 (first_speaker, second_speaker)
+	open_route("bar","x14")
+	take_money(first_speaker, second_speaker, money_3)
+end
+function open_route_and_money_bar_ros (first_speaker, second_speaker)
+	open_route("bar","ros")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_ros_yan (first_speaker, second_speaker)
+	open_route("ros","yan")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_ros_vok (first_speaker, second_speaker)
+	open_route("ros","vok")
+	take_money(first_speaker, second_speaker, money_2)
+end
+function open_route_and_money_ros_cit (first_speaker, second_speaker)
+	open_route("ros","cit")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_ros_gar (first_speaker, second_speaker)
+	open_route("ros","gar")
+	take_money(first_speaker, second_speaker, money_2)
+end
+
+-- Забытый лес
+function open_route_and_money_puz_val (first_speaker, second_speaker)
+	open_route("puz","val")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_puz_pol (first_speaker, second_speaker)
+	open_route("puz","pol")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Металл. завод
+function open_route_and_money_r_f_trc (first_speaker, second_speaker)
+	open_route("r_f","trc")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_r_f_topi (first_speaker, second_speaker)
+	open_route("r_f","topi")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_r_f_x3 (first_speaker, second_speaker)
+	open_route("r_f","x3")
+	take_money(first_speaker, second_speaker, money_3)
+end
+
+-- Топи
+function open_route_and_money_topi_trc (first_speaker, second_speaker)
+	open_route("topi","trc")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Кладбище техники
+function open_route_and_money_trc_scf (first_speaker, second_speaker)
+	open_route("trc","scf")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Агропром
+function open_route_and_money_agr_yan (first_speaker, second_speaker)
+	open_route("agr","yan")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_agr_gri (first_speaker, second_speaker)
+	open_route("agr","gri")
+	take_money(first_speaker, second_speaker, money_2)
+end
+function open_route_and_money_agr_agr_u (first_speaker, second_speaker)
+	open_route("agr","agr_u")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Янтарь
+function open_route_and_money_yan_okrest (first_speaker, second_speaker)
+	open_route("yan","okrest")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_yan_gri (first_speaker, second_speaker)
+	open_route("yan","gri")
+	take_money(first_speaker, second_speaker, money_2)
+end
+function open_route_and_money_yan_x16 (first_speaker, second_speaker)
+	open_route("yan","x16")
+	take_money(first_speaker, second_speaker, money_2)
+end
+
+-- Тёмная долина
+function open_route_and_money_val_pol (first_speaker, second_speaker)
+	open_route("val","pol")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_val_fgt (first_speaker, second_speaker)
+	open_route("val","fgt")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_val_ave (first_speaker, second_speaker)
+	open_route("val","ave")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_val_g_c (first_speaker, second_speaker)
+	open_route("val","g_c")
+	take_money(first_speaker, second_speaker, money_4)
+end
+function open_route_and_money_val_x18 (first_speaker, second_speaker)
+	open_route("val","x18")
+	take_money(first_speaker, second_speaker, money_2)
+end
+
+-- Армейские склады
+function open_route_and_money_mil_cit (first_speaker, second_speaker)
+	open_route("mil","cit")
+	take_money(first_speaker, second_speaker, money_2)
+end
+function open_route_and_money_mil_red (first_speaker, second_speaker)
+	open_route("mil","red")
+	take_money(first_speaker, second_speaker, money_2)
+end
+function open_route_and_money_mil_rad (first_speaker, second_speaker)
+	open_route("mil","rad")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_mil_fgt (first_speaker, second_speaker)
+	open_route("mil","fgt")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Рыжий лес
+function open_route_and_money_red_ano (first_speaker, second_speaker)
+	open_route("red","ano")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_red_lim (first_speaker, second_speaker)
+	open_route("red","lim")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_red_cit (first_speaker, second_speaker)
+	open_route("red","cit")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Лиманск
+function open_route_and_money_lim_kat (first_speaker, second_speaker)
+	open_route("lim","kat")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_lim_okrest (first_speaker, second_speaker)
+	open_route("lim","okrest")
+	take_money(first_speaker, second_speaker, money_2)
+end
+function open_route_and_money_lim_vok (first_speaker, second_speaker)
+	open_route("lim","vok")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Радар
+function open_route_and_money_rad_pri (first_speaker, second_speaker)
+	open_route("rad","pri")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_rad_x19 (first_speaker, second_speaker)
+	open_route("rad","x19")
+	take_money(first_speaker, second_speaker, money_2)
+end
+function open_route_and_money_rad_x11 (first_speaker, second_speaker)
+	open_route("rad","x11")
+	take_money(first_speaker, second_speaker, money_2)
+end
+
+-- Мёртвый город
+function open_route_and_money_cit_okrest (first_speaker, second_speaker)
+	open_route("cit","okrest")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Окрестности
+function open_route_and_money_okrest_vok (first_speaker, second_speaker)
+	open_route("okrest","vok")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_okrest_gri (first_speaker, second_speaker)
+	open_route("okrest","gri")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Гримвуд
+function open_route_and_money_gri_scf (first_speaker, second_speaker)
+	open_route("gri","scf")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_gri_vok (first_speaker, second_speaker)
+	open_route("gri","vok")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Центр Припять
+function open_route_and_money_pri_out (first_speaker, second_speaker)
+	open_route("pri","out")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_pri_ano (first_speaker, second_speaker)
+	open_route("pri","ano")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_pri_aes1 (first_speaker, second_speaker)
+	open_route("pri","aes1")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Восток Припяти
+function open_route_and_money_out_jup_u (first_speaker, second_speaker)
+	open_route("out","jup_u")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_out_x8 (first_speaker, second_speaker)
+	open_route("out","x8")
+	take_money(first_speaker, second_speaker, money_2)
+end
+
+-- Брошеные земли
+function open_route_and_money_scf_a_r (first_speaker, second_speaker)
+	open_route("scf","a_r")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Окрестности купола
+function open_route_and_money_a_r_lim (first_speaker, second_speaker)
+	open_route("a_r","lim")
+	take_money(first_speaker, second_speaker, money_4)
+end
+function open_route_and_money_a_r_bs (first_speaker, second_speaker)
+	open_route("a_r","bs")
+	take_money(first_speaker, second_speaker, money_2)
+end
+function open_route_and_money_a_r_x15 (first_speaker, second_speaker)
+	open_route("a_r","x15")
+	take_money(first_speaker, second_speaker, money_3)
+end
+
+-- l_a Окрестности купола
+function open_route_and_money_l_a_a_r (first_speaker, second_speaker)
+	open_route("l_a","a_r")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- bs Окрестности купола
+function open_route_and_money_bs_a_r (first_speaker, second_speaker)
+	open_route("bs","a_r")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- x15 Окрестности купола
+function open_route_and_money_x15_a_r (first_speaker, second_speaker)
+	open_route("x15","a_r")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Госпиталь
+function open_route_and_money_kat_aes1 (first_speaker, second_speaker)
+	open_route("kat","aes1")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_kat_ano (first_speaker, second_speaker)
+	open_route("kat","ano")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Застава
+function open_route_and_money_fgt_ave (first_speaker, second_speaker)
+	open_route("fgt","ave")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_fgt_sci (first_speaker, second_speaker)
+	open_route("fgt","sci")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- ЧАЭС
+function open_route_and_money_aes1_sar (first_speaker, second_speaker)
+	open_route("aes1","sar")
+	take_money(first_speaker, second_speaker, money_3)
+end
+function open_route_and_money_aes1_zat (first_speaker, second_speaker)
+	open_route("aes1","zat")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_aes1_gen (first_speaker, second_speaker)
+	open_route("aes1","gen")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_aes1_s_lab (first_speaker, second_speaker)
+	open_route("aes1","s_lab")
+	take_money(first_speaker, second_speaker, money_3)
+end
+function open_route_and_money_aes1_ano (first_speaker, second_speaker)
+	open_route("aes1","ano")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_aes1_la_old (first_speaker, second_speaker)
+	open_route("aes1","la_old")
+	take_money(first_speaker, second_speaker, money_2)
+end
+
+-- Генераторы
+function open_route_and_money_gen_w_lab (first_speaker, second_speaker)
+	open_route("gen","w_lab")
+	take_money(first_speaker, second_speaker, money_2)
+end
+
+-- Юпитер
+function open_route_and_money_jup_sci (first_speaker, second_speaker)
+	open_route("jup","sci")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_jup_zat (first_speaker, second_speaker)
+	open_route("jup","zat")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_jup_jup_u (first_speaker, second_speaker)
+	open_route("jup","jup_u")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_jup_city (first_speaker, second_speaker)
+	open_route("jup","city")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Центр свалка
+function open_route_and_money_g_c_los (first_speaker, second_speaker)
+	open_route("g_c","los")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_g_c_cou (first_speaker, second_speaker)
+	open_route("g_c","cou")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_g_c_sci (first_speaker, second_speaker)
+	open_route("g_c","sci")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Научная станция
+function open_route_and_money_sci_los (first_speaker, second_speaker)
+	open_route("sci","los")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_sci_fot (first_speaker, second_speaker)
+	open_route("sci","fot")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Тихие холмы
+function open_route_and_money_los_cou (first_speaker, second_speaker)
+	open_route("los","cou")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_los_fot (first_speaker, second_speaker)
+	open_route("los","fot")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_los_pu (first_speaker, second_speaker)
+	open_route("los","pu")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_los_x6 (first_speaker, second_speaker)
+	open_route("los","x6")
+	take_money(first_speaker, second_speaker, money_3)
+end
+
+-- Курчатов
+function open_route_and_money_city_swa (first_speaker, second_speaker)
+	open_route("city","swa")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_city_fot (first_speaker, second_speaker)
+	open_route("city","fot")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Затон
+function open_route_and_money_zat_swa (first_speaker, second_speaker)
+	open_route("zat","swa")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_zat_la_old (first_speaker, second_speaker)
+	open_route("zat","la_old")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Посёлок Южный
+function open_route_and_money_pu_wiz (first_speaker, second_speaker)
+	open_route("pu","wiz")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_pu_cou (first_speaker, second_speaker)
+	open_route("pu","cou")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Чернобыль-1
+function open_route_and_money_outla_x2 (first_speaker, second_speaker)
+	open_route("outla","x2")
+	take_money(first_speaker, second_speaker, money_3)
+end
+
+-- Окрестности бывшего НИИ
+function open_route_and_money_wiz_dl (first_speaker, second_speaker)
+	open_route("wiz","dl")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Мёртвое озеро
+function open_route_and_money_dl_pro (first_speaker, second_speaker)
+	open_route("dl","pro")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Промзона
+function open_route_and_money_pro_kas (first_speaker, second_speaker)
+	open_route("pro","kas")
+	take_money(first_speaker, second_speaker, money_1)
+end
+function open_route_and_money_pro_col (first_speaker, second_speaker)
+	open_route("pro","col")
+	take_money(first_speaker, second_speaker, money_3)
+end
+function open_route_and_money_pro_swa (first_speaker, second_speaker)
+	open_route("pro","swa")
+	take_money(first_speaker, second_speaker, money_2)
+end
+
+-- Восточные топи
+function open_route_and_money_swa_kas (first_speaker, second_speaker)
+	open_route("swa","kas")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+-- Касьяны
+function open_route_and_money_kas_sad (first_speaker, second_speaker)
+	open_route("kas","sad")
+	take_money(first_speaker, second_speaker, money_1)
+end
+
+
+
+------------------------------------------------------------
+-- Dialog
+------------------------------------------------------------
+
+-- Кордон
+function st_buy_route_esc_mar (first_speaker, second_speaker)
+	local map_1 = "esc"
+	local map_2 = "mar"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_esc_dsc (first_speaker, second_speaker)
+	local map_1 = "esc"
+	local map_2 = "dsc"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_esc_pol (first_speaker, second_speaker)
+	local map_1 = "esc"
+	local map_2 = "pol"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_esc_gar (first_speaker, second_speaker)
+	local map_1 = "esc"
+	local map_2 = "gar"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_esc_pre (first_speaker, second_speaker)
+	local map_1 = "esc"
+	local map_2 = "pre"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_esc_x5 (first_speaker, second_speaker)
+	local map_1 = "esc"
+	local map_2 = "x5"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Свалка
+function st_buy_route_gar_val (first_speaker, second_speaker)
+	local map_1 = "gar"
+	local map_2 = "val"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_gar_agr (first_speaker, second_speaker)
+	local map_1 = "gar"
+	local map_2 = "agr"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_gar_bar (first_speaker, second_speaker)
+	local map_1 = "gar"
+	local map_2 = "bar"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_gar_puz (first_speaker, second_speaker)
+	local map_1 = "gar"
+	local map_2 = "puz"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_gar_ave (first_speaker, second_speaker)
+	local map_1 = "gar"
+	local map_2 = "ave"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_gar_x27 (first_speaker, second_speaker)
+	local map_1 = "gar"
+	local map_2 = "x27"
+	local money = money_3
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Тёмная лощина
+function st_buy_route_dsc_val (first_speaker, second_speaker)
+	local map_1 = "dsc"
+	local map_2 = "val"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_dsc_outla (first_speaker, second_speaker)
+	local map_1 = "dsc"
+	local map_2 = "outla"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Болота
+function st_buy_route_mar_mar_h (first_speaker, second_speaker)
+	local map_1 = "mar"
+	local map_2 = "mar_h"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_mar_agr (first_speaker, second_speaker)
+	local map_1 = "mar"
+	local map_2 = "agr"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_mar_r_f (first_speaker, second_speaker)
+	local map_1 = "mar"
+	local map_2 = "r_f"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Предбанник
+function st_buy_route_pre_outla (first_speaker, second_speaker)
+	local map_1 = "pre"
+	local map_2 = "outla"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Бар росток
+function st_buy_route_bar_mil (first_speaker, second_speaker)
+	local map_1 = "bar"
+	local map_2 = "mil"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_bar_ave (first_speaker, second_speaker)
+	local map_1 = "bar"
+	local map_2 = "ave"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_ros_yan (first_speaker, second_speaker)
+	local map_1 = "ros"
+	local map_2 = "yan"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_ros_vok (first_speaker, second_speaker)
+	local map_1 = "ros"
+	local map_2 = "vok"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_ros_cit (first_speaker, second_speaker)
+	local map_1 = "ros"
+	local map_2 = "cit"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_ros_gar (first_speaker, second_speaker)
+	local map_1 = "ros"
+	local map_2 = "gar"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_bar_x14 (first_speaker, second_speaker)
+	local map_1 = "bar"
+	local map_2 = "x14"
+	local money = money_3
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_bar_ros (first_speaker, second_speaker)
+	local map_1 = "bar"
+	local map_2 = "ros"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Забытый лес
+function st_buy_route_puz_val (first_speaker, second_speaker)
+	local map_1 = "puz"
+	local map_2 = "val"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_puz_pol (first_speaker, second_speaker)
+	local map_1 = "puz"
+	local map_2 = "pol"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Металл. завод
+function st_buy_route_r_f_trc (first_speaker, second_speaker)
+	local map_1 = "r_f"
+	local map_2 = "trc"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_r_f_topi (first_speaker, second_speaker)
+	local map_1 = "r_f"
+	local map_2 = "topi"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_r_f_x3 (first_speaker, second_speaker)
+	local map_1 = "r_f"
+	local map_2 = "x3"
+	local money = money_3
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Топи
+function st_buy_route_topi_trc (first_speaker, second_speaker)
+	local map_1 = "topi"
+	local map_2 = "trc"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Кладбище техники
+function st_buy_route_trc_scf (first_speaker, second_speaker)
+	local map_1 = "trc"
+	local map_2 = "scf"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Агропром
+function st_buy_route_agr_yan (first_speaker, second_speaker)
+	local map_1 = "agr"
+	local map_2 = "yan"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_agr_gri (first_speaker, second_speaker)
+	local map_1 = "agr"
+	local map_2 = "gri"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_agr_agr_u (first_speaker, second_speaker)
+	local map_1 = "agr"
+	local map_2 = "agr_u"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Янтарь
+function st_buy_route_yan_okrest (first_speaker, second_speaker)
+	local map_1 = "yan"
+	local map_2 = "okrest"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_yan_gri (first_speaker, second_speaker)
+	local map_1 = "yan"
+	local map_2 = "gri"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_yan_x16 (first_speaker, second_speaker)
+	local map_1 = "yan"
+	local map_2 = "x16"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Тёмная долина
+function st_buy_route_val_pol (first_speaker, second_speaker)
+	local map_1 = "val"
+	local map_2 = "pol"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_val_fgt (first_speaker, second_speaker)
+	local map_1 = "val"
+	local map_2 = "fgt"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_val_ave (first_speaker, second_speaker)
+	local map_1 = "val"
+	local map_2 = "ave"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_val_g_c (first_speaker, second_speaker)
+	local map_1 = "val"
+	local map_2 = "g_c"
+	local money = money_4
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_val_x18 (first_speaker, second_speaker)
+	local map_1 = "val"
+	local map_2 = "x18"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Армейские склады
+function st_buy_route_mil_cit (first_speaker, second_speaker)
+	local map_1 = "mil"
+	local map_2 = "cit"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_mil_red (first_speaker, second_speaker)
+	local map_1 = "mil"
+	local map_2 = "red"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_mil_rad (first_speaker, second_speaker)
+	local map_1 = "mil"
+	local map_2 = "rad"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_mil_fgt (first_speaker, second_speaker)
+	local map_1 = "mil"
+	local map_2 = "fgt"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Армейские склады
+function st_buy_route_red_ano (first_speaker, second_speaker)
+	local map_1 = "red"
+	local map_2 = "ano"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_red_lim (first_speaker, second_speaker)
+	local map_1 = "red"
+	local map_2 = "lim"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_red_cit (first_speaker, second_speaker)
+	local map_1 = "red"
+	local map_2 = "cit"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Лиманск
+function st_buy_route_lim_kat (first_speaker, second_speaker)
+	local map_1 = "lim"
+	local map_2 = "kat"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_lim_okrest (first_speaker, second_speaker)
+	local map_1 = "lim"
+	local map_2 = "okrest"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_lim_vok (first_speaker, second_speaker)
+	local map_1 = "lim"
+	local map_2 = "vok"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Радар
+function st_buy_route_rad_pri (first_speaker, second_speaker)
+	local map_1 = "rad"
+	local map_2 = "pri"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_rad_x19 (first_speaker, second_speaker)
+	local map_1 = "rad"
+	local map_2 = "x19"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_rad_x11 (first_speaker, second_speaker)
+	local map_1 = "rad"
+	local map_2 = "x11"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Мёртвый город
+function st_buy_route_cit_okrest (first_speaker, second_speaker)
+	local map_1 = "cit"
+	local map_2 = "okrest"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Окрестности
+function st_buy_route_okrest_vok (first_speaker, second_speaker)
+	local map_1 = "okrest"
+	local map_2 = "vok"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_okrest_gri (first_speaker, second_speaker)
+	local map_1 = "okrest"
+	local map_2 = "gri"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Гримвуд
+function st_buy_route_gri_scf (first_speaker, second_speaker)
+	local map_1 = "gri"
+	local map_2 = "scf"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_gri_vok (first_speaker, second_speaker)
+	local map_1 = "gri"
+	local map_2 = "vok"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Центр Припять
+function st_buy_route_pri_out (first_speaker, second_speaker)
+	local map_1 = "pri"
+	local map_2 = "out"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_pri_ano (first_speaker, second_speaker)
+	local map_1 = "pri"
+	local map_2 = "ano"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_pri_aes1 (first_speaker, second_speaker)
+	local map_1 = "pri"
+	local map_2 = "aes1"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Восток Припяти
+function st_buy_route_out_jup_u (first_speaker, second_speaker)
+	local map_1 = "out"
+	local map_2 = "jup_u"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_out_x8 (first_speaker, second_speaker)
+	local map_1 = "out"
+	local map_2 = "x8"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Брошеные земли
+function st_buy_route_scf_a_r (first_speaker, second_speaker)
+	local map_1 = "scf"
+	local map_2 = "a_r"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Окрестности купола
+function st_buy_route_a_r_lim (first_speaker, second_speaker)
+	local map_1 = "a_r"
+	local map_2 = "lim"
+	local money = money_4
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_a_r_bs (first_speaker, second_speaker)
+	local map_1 = "a_r"
+	local map_2 = "bs"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_a_r_x15 (first_speaker, second_speaker)
+	local map_1 = "a_r"
+	local map_2 = "x15"
+	local money = money_3
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- l_a Окрестности купола
+function st_buy_route_l_a_a_r (first_speaker, second_speaker)
+	local map_1 = "l_a"
+	local map_2 = "a_r"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- bs Окрестности купола
+function st_buy_route_bs_a_r (first_speaker, second_speaker)
+	local map_1 = "bs"
+	local map_2 = "a_r"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- x15 Окрестности купола
+function st_buy_route_x15_a_r (first_speaker, second_speaker)
+	local map_1 = "x15"
+	local map_2 = "a_r"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Госпиталь
+function st_buy_route_kat_aes1 (first_speaker, second_speaker)
+	local map_1 = "kat"
+	local map_2 = "aes1"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_kat_ano (first_speaker, second_speaker)
+	local map_1 = "kat"
+	local map_2 = "ano"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Застава
+function st_buy_route_fgt_ave (first_speaker, second_speaker)
+	local map_1 = "fgt"
+	local map_2 = "ave"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_fgt_sci (first_speaker, second_speaker)
+	local map_1 = "fgt"
+	local map_2 = "sci"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- ЧАЭС
+function st_buy_route_aes1_sar (first_speaker, second_speaker)
+	local map_1 = "aes1"
+	local map_2 = "sar"
+	local money = money_3
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_aes1_zat (first_speaker, second_speaker)
+	local map_1 = "aes1"
+	local map_2 = "zat"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_aes1_gen (first_speaker, second_speaker)
+	local map_1 = "aes1"
+	local map_2 = "gen"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_aes1_s_lab (first_speaker, second_speaker)
+	local map_1 = "aes1"
+	local map_2 = "s_lab"
+	local money = money_3
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_aes1_ano (first_speaker, second_speaker)
+	local map_1 = "aes1"
+	local map_2 = "ano"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_aes1_la_old (first_speaker, second_speaker)
+	local map_1 = "aes1"
+	local map_2 = "la_old"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Генераторы
+function st_buy_route_gen_w_lab (first_speaker, second_speaker)
+	local map_1 = "gen"
+	local map_2 = "w_lab"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Юпитер
+function st_buy_route_jup_sci (first_speaker, second_speaker)
+	local map_1 = "jup"
+	local map_2 = "sci"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_jup_zat (first_speaker, second_speaker)
+	local map_1 = "jup"
+	local map_2 = "zat"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_jup_jup_u (first_speaker, second_speaker)
+	local map_1 = "jup"
+	local map_2 = "jup_u"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_jup_city (first_speaker, second_speaker)
+	local map_1 = "jup"
+	local map_2 = "city"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Центр свалка
+function st_buy_route_g_c_los (first_speaker, second_speaker)
+	local map_1 = "g_c"
+	local map_2 = "los"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_g_c_cou (first_speaker, second_speaker)
+	local map_1 = "g_c"
+	local map_2 = "cou"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_g_c_sci (first_speaker, second_speaker)
+	local map_1 = "g_c"
+	local map_2 = "sci"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Научная станция
+function st_buy_route_sci_los (first_speaker, second_speaker)
+	local map_1 = "sci"
+	local map_2 = "los"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_sci_fot (first_speaker, second_speaker)
+	local map_1 = "sci"
+	local map_2 = "fot"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Тихие холмы
+function st_buy_route_los_cou (first_speaker, second_speaker)
+	local map_1 = "los"
+	local map_2 = "cou"
+	local money = money_3
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_los_fot (first_speaker, second_speaker)
+	local map_1 = "los"
+	local map_2 = "fot"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_los_pu (first_speaker, second_speaker)
+	local map_1 = "los"
+	local map_2 = "pu"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_los_x6 (first_speaker, second_speaker)
+	local map_1 = "los"
+	local map_2 = "x6"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Курчатов
+function st_buy_route_city_swa (first_speaker, second_speaker)
+	local map_1 = "city"
+	local map_2 = "swa"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_city_fot (first_speaker, second_speaker)
+	local map_1 = "city"
+	local map_2 = "fot"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Затон
+function st_buy_route_zat_swa (first_speaker, second_speaker)
+	local map_1 = "zat"
+	local map_2 = "swa"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_zat_la_old (first_speaker, second_speaker)
+	local map_1 = "zat"
+	local map_2 = "la_old"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Посёлок Южный
+function st_buy_route_pu_cou (first_speaker, second_speaker)
+	local map_1 = "pu"
+	local map_2 = "cou"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_pu_wiz (first_speaker, second_speaker)
+	local map_1 = "pu"
+	local map_2 = "wiz"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Чернобыль-1
+function st_buy_route_outla_x2 (first_speaker, second_speaker)
+	local map_1 = "outla"
+	local map_2 = "x2"
+	local money = money_3
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Окрестности бывшего НИИ
+function st_buy_route_wiz_dl (first_speaker, second_speaker)
+	local map_1 = "wiz"
+	local map_2 = "dl"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Мёртвое озеро
+function st_buy_route_dl_pro (first_speaker, second_speaker)
+	local map_1 = "dl"
+	local map_2 = "pro"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Промзона
+function st_buy_route_pro_kas (first_speaker, second_speaker)
+	local map_1 = "pro"
+	local map_2 = "kas"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_pro_col (first_speaker, second_speaker)
+	local map_1 = "pro"
+	local map_2 = "col"
+	local money = money_3
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+function st_buy_route_pro_swa (first_speaker, second_speaker)
+	local map_1 = "pro"
+	local map_2 = "swa"
+	local money = money_2
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Восточные топи
+function st_buy_route_swa_kas (first_speaker, second_speaker)
+	local map_1 = "swa"
+	local map_2 = "kas"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+-- Касьяны
+function st_buy_route_kas_sad (first_speaker, second_speaker)
+	local map_1 = "kas"
+	local map_2 = "sad"
+	local money = money_1
+	return strformat(game.translate_string("st_buy_route_dialog"),game.translate_string("st_route_" .. map_1),game.translate_string("st_route_" .. map_2),money)
+end
+
+
+--[[
+--=====================================< Dialog Function >=====================================|
+function add_dialog(p_id,id,phrase_id,cond,act)
+	if not ( saved_dialog ) then
+		return
+	end
+
+	local phrase = saved_dialog:AddPhrase(phrase_id,tostring(id),tostring(p_id),-10000)
+	if not ( phrase ) then
+		return
+	end
+
+	--printf("phrase_id = %s",phrase_id)
+
+	local phrase_script = phrase:GetPhraseScript()
+	if ( cond ) then
+		if ( type(cond) == "table" ) then
+			for key, value in pairs(cond) do
+				if (utils_data.findfunction(value,_G)) then
+					phrase_script:AddPrecondition(value)
+					--table.insert(cond_list,value)
+				else
+					printf("dialog_manager:Error: No such function exists '%s'",value)
+				end
+			end
+		else
+			if (utils_data.findfunction(cond,_G)) then
+				phrase_script:AddPrecondition(cond)
+				--table.insert(cond_list,value)
+			else
+				printf("dialog_manager:Error: No such function exists '%s'",cond)
+			end
+		end
+	end
+
+	if ( act ) then
+		if ( type(act) == "table" ) then
+			for key, value in pairs(act) do
+				if (utils_data.findfunction(value,_G)) then
+					phrase_script:AddAction(value)
+				else
+					printf("dialog_manager:Error: No such function exists '%s'",value)
+				end
+			end
+		else
+			if (utils_data.findfunction(act,_G)) then
+				phrase_script:AddAction(act)
+			else
+				printf("dialog_manager:Error: No such function exists '%s'",act)
+			end
+		end
+	end
+	return phrase_script
+end
+
+function add_script_dialog(p_id,id,phrase_id,cond,act)
+	local d = add_dialog(p_id,id,phrase_id,cond,act)
+	if (d) then
+		d:SetScriptText(phrase_id)
+	end
+end
+
+--------------------
+local saved_dialog
+function buy_route (dialog)
+	saved_dialog = dialog
+
+	-- loop is necessary to allow skipping of unwanted tasks
+	local base_id = 0
+	local a = get_connected_maps(true)
+	
+	-- ASK FOR AVAILABLE TASKS
+	add_dialog("",base_id,"st_buy_route_0","txr_routes.is_route_left") -- ACTOR
+		add_dialog(base_id,base_id+1,"st_buy_route_1") -- NPC
+		local new_id = base_id+1
+		for i=1,#a do
+			add_script_dialog(new_id , new_id+i ,"st_buy_route_"..a[i][1].."_"..a[i][2] , "check_route_and_money_"..a[i][1].."_"..a[i][2] , "open_route_and_take_money_"..a[i][1].."_"..a[i][2]) -- ACTOR
+		end
+			add_dialog(new_id,new_id+(#a)+1,"st_buy_route_2") -- ACTOR
+end
+--]]
+
+
+------------------------------------------------------------
+-- Utility
+------------------------------------------------------------
+function is_map_connected (map_1,map_2)
+	if (routes[map_1] and routes[map_1][map_2]) or (routes[map_2] and routes[map_2][map_1]) then
+		return true
+	end
+	return false
+end
+
+function is_map_discovered (map_1,map_2)
+	if mlr_utils.load_var("routes_"..map_1) or mlr_utils.load_var("routes_"..map_2) then
+		--printf(">>> Tronex: is_map_discovered (True): " .. map_1 .. " , " .. map_2)
+		return true
+	end
+	--printf(">>> Tronex: is_map_discovered (False): " .. map_1 .. " , " .. map_2)
+	
+	local curr_map = get_map(level.name())
+	if curr_map and (curr_map ~= "") and ((curr_map == map_1) or (curr_map == map_2)) then
+		return true
+	end
+	
+	return false
+end
+
+function is_route_discovered (map_1,map_2)
+	local a = get_route(map_1, map_2)
+	if (not a) then return end
+	for i=1,#a do
+		if mlr_utils.load_var("routes_"..a[i]) then
+			--printf(">>> Tronex: is_route_discovered (True): " .. map_1 .. " , " .. map_2)
+			return true
+		end
+	end
+	--printf(">>> Tronex: is_route_discovered (False): " .. map_1 .. " , " .. map_2)
+	return false
+end
+
+function is_route_left()
+	if (alife_storage_manager.get_state().opened_routes == true) then
+		return false
+	end
+	
+	local a = list_map(false,true,true)
+	for i=1,#a do
+		local b = get_route(a[i][1],a[i][2])
+		for j=1,#b do
+			if (not mlr_utils.load_var("routes_"..b[j])) then
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function open_route(map_1,map_2, no_msg)
+	local msg
+	local a = get_route(map_1, map_2)
+	if (not a) then return end
+	for i=1,#a do
+		if (check_spot(get_route_info(a[i])) == false) then
+			local id, spot, hint = get_route_info(a[i])
+			hint = hint and game.translate_string(hint)
+			printf("DEBUG txr_routes: Attempting to add spot for route point: %s. ID: %s, Spot: %s", tostring(a[i]), tostring(id), tostring(spot))
+
+			-- Проверяем, валидны ли параметры перед вызовом
+			if id and id ~= 0 and spot and spot ~= "" then
+				level.map_add_object_spot_ser(id, spot ,hint)
+			else
+				printf("!ERROR txr_routes: Invalid parameters for map spot. Route point: %s, ID: %s, Spot: %s", tostring(a[i]), tostring(id), tostring(spot))
+			end
+
+			mlr_utils.save_var("routes_".. a[i], true)
+			register_map(map_1,map_2)
+			msg = true
+		end
+	end
+	
+	if msg and (no_msg ~= true) then
+		msg_route (map_1, map_2)
+		return
+	end
+end
+
+function get_route (map_1,map_2)
+	local a,b = {},{}
+	if routes[map_1] and routes[map_1][map_2] then
+		a[#a+1] = routes[map_1][map_2]
+	end
+	if routes[map_2] and routes[map_2][map_1] then
+		a[#a+1] = routes[map_2][map_1]
+	end
+	if (#a == 0) then return end
+	for i=1,#a do
+		for j=1,#a[i] do
+			b[#b+1] = a[i][j]
+		end
+	end
+	return b
+end
+
+--txr_routes.reload_route_hints()
+
+function reload_route_hints()
+	for k1,v1 in pairs(routes) do
+		for k2,v2 in pairs(v1) do
+			for i=1, #v2 do
+				local id, spot, hint = get_route_info(v2[i])
+				if (level.map_has_object_spot(id, spot)) then
+					hint = hint and game.translate_string(hint)
+					level.map_change_spot_hint(id, spot ,hint)
+				end
+			end
+		end
+	end
+end
+
+function scan_route (sr_name)  -- called by (ui_sr_teleport.script), return true if the route is unlocked by default
+	for k1,v1 in pairs(routes_start[mlr_utils.load_var("routes_faction")] or routes_start["general"]) do
+		local a = get_route(v1[1],v1[2])
+		if (not a) then return end
+		for i=1,#a do
+			if (a[i] == sr_name) then
+				mlr_utils.save_var("routes_"..sr_name,true)
+				register_map(v1[1],v1[2])
+				return true
+			end
+		end
+	end
+	return false
+end
+
+function list_map (discovered, connected, couple)
+	local g_pairs = pairs
+	if connected then
+		local a = {}
+		for k1,v1 in g_pairs(routes) do
+			a[k1] = {}
+			for k2,v2 in g_pairs(v1) do
+				a[k1][#a[k1] + 1] = k2
+			end
+		end
+		if (not couple) then  -- if we want connected maps (return indexed table, key = map, value = table of connected maps to it)
+			return a
+		end
+		
+		-- if we want connected maps as couple tables (return clean table of 2-sized tables of connected maps)
+		local b = {} 
+		for k1,v1 in g_pairs(a) do
+			for i=1,#v1 do
+				b[#b+1] = {k1,v1[i]}
+			end
+		end
+		
+		-- gather all duplicated indexes to delete
+		local delet,c = {},{}
+		for i=1,#b do
+			for j=1,#b do
+				if (b[i][1] == b[j][2]) and (b[i][2] == b[j][1]) and (not delet[tostring(i)]) and (not delet[tostring(j)]) then
+					delet[tostring(i)] = j
+				end
+			end
+		end
+		
+		-- create a clean table without duplicated indexes
+		local can_read = true
+		for i=1,#b do
+			for k1,v1 in g_pairs(delet) do
+				if (v1 == i) then
+					can_read = false
+				end
+			end
+			if can_read then
+				c[#c+1] = b[i]
+			end
+			can_read = true
+		end
+		
+		return c
+	end
+	
+	-- if we want discovered/undiscovered maps only (return simple table of required maps)
+	local a = {}
+	for k1,v1 in g_pairs(routes) do
+		if discovered and mlr_utils.load_var("routes_"..k1) and check_key(a,k1) then
+			a[#a+1] = k1
+		elseif (not discovered) and (not mlr_utils.load_var("routes_"..k1)) and check_no_value(a,k1) then
+			a[#a+1] = k1
+		end
+		for k2,v2 in g_pairs(v1) do
+			if discovered and mlr_utils.load_var("routes_"..k2) and check_key(a,k2) then
+				a[#a+1] = k2
+			elseif (not discovered) and (not mlr_utils.load_var("routes_"..k2)) and check_key(a,k2) then
+				a[#a+1] = k2
+			end
+		end
+	end
+	return a
+end
+
+function get_section(map)
+	return map and map_to_sec[map] or ""
+end
+
+function get_map(sec)
+	return sec and sec_to_map[sec] or ""
+end
+
+local c_scanned = {}
+local c_to_scan = {}
+local shortest_dist
+function c_search(lv1_target, n)
+	local g_pairs = pairs
+	-- Clear the search from scanned maps
+	for lvl,_ in g_pairs(c_scanned) do
+		c_to_scan[lvl] = nil
+	end
+	if is_empty(c_to_scan) then
+		return
+	end
+	
+	-- Search current maps
+	local found = false
+	local tbl = {}
+	for lvl,_ in g_pairs(c_to_scan) do
+		if (not c_scanned[lvl]) then
+			c_scanned[lvl] = true
+			if routes[lvl] then
+				if routes[lvl][lv1_target] then
+					printdbg("- c_scan | target level found at: %s - scan radius: %s", lvl, n)
+					found = true
+					break
+				else
+					for lvl2,_ in g_pairs(routes[lvl]) do
+						if (not c_scanned[lvl2]) then
+							tbl[lvl2] = true
+						end
+					end
+				end
+			end
+		end
+	end
+	
+	-- Scan result
+	if (not shortest_dist) then
+		if found then
+			shortest_dist = n
+		else
+			for k,_ in g_pairs(tbl) do
+				c_to_scan[k] = true
+				printdbg("- c_scan | levels to scan: %s - scan radius: %s", k, n)
+			end
+			c_search(lv1_target, n + 1)
+		end
+	end
+end
+function get_shortest_path_num(map_1, map_2)
+	local lv1_1 = map_1 and sec_to_map[map_1]
+	local lv1_2 = map_2 and sec_to_map[map_2]
+	
+	if not (lv1_1 and lv1_2) then
+		printe("! get_shortest_path_num | no level defined!")
+		return 0
+	end
+	
+	if (lv1_1 == lv1_2) then
+		return 1
+	end
+
+	empty_table(c_scanned)
+	empty_table(c_to_scan)
+	shortest_dist = false
+	
+	c_to_scan[lv1_1] = true
+	c_search(lv1_2, 1)
+	
+	return shortest_dist or 1
+end
+
+------------------------------------
+
+function check_spot (id,spot) -- check if spot on map exist
+	if (spot and level.map_has_object_spot(id,spot) ~= 0) then
+		return true
+	end
+	return false
+end
+
+function get_route_info (sr_name)
+	local id = get_story_object_id(sr_name)
+	local spot = sr_teleport_ini:line_exist(sr_name,"spot") and sr_teleport_ini:r_string_ex(sr_name,"spot") -- icon
+	local hint = sr_teleport_ini:line_exist(sr_name,"hint") and sr_teleport_ini:r_string_ex(sr_name,"hint")
+	return id, spot, hint
+end
+
+local msg_snd_delay = 0
+function msg_route (map_1,map_2) -- send news about discovering location
+	local map_1_str = game.translate_string("st_route_" .. map_1)
+	local map_2_str = game.translate_string("st_route_" .. map_2)
+	local sender = game.translate_string("st_route_open_title")
+	local msg = strformat(game.translate_string("st_route_open_msg"), map_1_str, map_2_str)
+	db.actor:give_game_news(sender, msg, "ui_iconsTotal_locations", 0, 5000, 0)
+	if (time_global() > msg_snd_delay + 500) then
+		msg_snd_delay = time_global()
+		local snd = sound_object([[device\pda\route_opened]])
+		snd.volume = 1
+		snd:play(db.actor, 0, sound_object.s2d)
+	end
+end
+
+function msg_route_general()
+	local sender = game.translate_string("st_route_open_title")
+	local msg = game.translate_string("st_msg_unlocked_routes")
+	db.actor:give_game_news(sender, msg, "ui_iconsTotal_locations", 0, 5000, 0)
+	local snd = sound_object([[device\pda\route_opened]])
+	snd.volume = 1
+	snd:play(db.actor, 0, sound_object.s2d)
+end
+
+function register_map (...)
+	local p = {...}
+	for i=1,#p do
+		if (not mlr_utils.load_var("routes_"..p[i])) then
+			mlr_utils.save_var("routes_"..p[i],true)
+			--printf(">>> Tronex: register_map: " .. p[i])
+		end
+	end
+end
+
+function check_no_value (tbl,value) -- return true if the value doesn't exist in the table
+	for i=1, #tbl do
+		if (tbl[i] == value) then
+			return false
+		end
+	end
+	return true
+end
+
+
+------------------------------------------------------------
+-- Debug
+------------------------------------------------------------
+local function on_game_load()
+	
+	reload_route_hints()
+	
+	if DEV_DEBUG then
+		-- Debug Commands
+		local CMD = debug_cmd_list.command_get_list()
+
+		function CMD.unlock_all_routes(_,__,x)
+			if (not is_route_left()) then
+				x:SendOutput('!All routes are already unlocked')
+				return
+			end
+			
+			for i=1,#maps do
+				for j=1,#maps do
+					open_route(maps[i],maps[j], true)
+				end
+			end
+			x:SendOutput('-Unlocked all routes')
+		end
+
+		-- Debug Launcher executions
+		ui_debug_launcher.inject("action", { name = "Unlock all routes" , cmd = "unlock_all_routes" , hide_ui = 2 } )
+	end
+end
+
+function on_localization_change()
+	reload_route_hints()
+end
+
+function on_screen_resolution_changed()
+	reload_route_hints()
+end
+
+function on_game_start()
+	RegisterScriptCallback("on_game_load",on_game_load)
+	RegisterScriptCallback("on_localization_change",on_localization_change)
+	RegisterScriptCallback("on_screen_resolution_changed",on_screen_resolution_changed)
+end

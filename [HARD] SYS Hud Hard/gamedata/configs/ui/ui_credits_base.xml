@@ -1,0 +1,203 @@
+
+<!-- ENHANCED GUI © 2007 INCBOX INC TEAM -->
+
+	<item>
+		<length_sec>1.5</length_sec>
+		<pause_state>on</pause_state>
+		<function_on_stop>xr_effects.before_credits</function_on_stop>
+		<guard_key/>
+		<cursor_pos x="1024" y="768"/>
+		<pda_section/>
+		<grab_input>1</grab_input>
+		<main_wnd/>
+	</item>
+	<item>
+		<length_sec>150</length_sec>
+		<pause_state>on</pause_state>
+		<guard_key/>
+		<sound>Music\credits</sound>
+		<cursor_pos x="1024" y="768"/>
+		<pda_section/>
+		<grab_input>1</grab_input>
+		<main_wnd> 
+			
+<!--				
+				<auto_static start_time="1" length_sec="1" x="77" y="-107" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti32" color="ui_6">st_anomaly_credits</text>
+				</auto_static>
+				
+				<auto_static start_time="1" length_sec="150" x="585" y="-107" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti32" color="ui_6">st_anomaly_mods_credits</text>
+				</auto_static>
+ -->				
+				<!-- MODDING COMMUNITY -->
+				
+				<auto_static start_time="1" length_sec="90" x="585" y="100" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti32" color="ui_white">st_anthology</text>
+				</auto_static>
+				<auto_static start_time="2" length_sec="85" x="585" y="150" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_command</text>
+				</auto_static>
+
+				<!-- Разработчики -->
+				
+				<auto_static start_time="3" length_sec="83" x="77" y="100" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti32" color="ui_white">st_developers</text>
+				</auto_static>
+
+				<auto_static start_time="5" length_sec="79" x="77" y="150" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="letterica18" color="ui_6">st_lead_developer</text>
+				</auto_static>
+				<auto_static start_time="6" length_sec="78" x="77" y="175" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_max</text>
+				</auto_static>
+				
+				<auto_static start_time="8" length_sec="76" x="77" y="215" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="letterica18" color="ui_6">st_project_lead</text>
+				</auto_static>
+				<auto_static start_time="9" length_sec="75" x="77" y="235" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_max</text>
+				</auto_static>
+				
+				<auto_static start_time="10" length_sec="74" x="77" y="265" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="letterica18" color="ui_6">st_modpack</text>
+				</auto_static>
+				<auto_static start_time="11" length_sec="73" x="77" y="285" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_hyper</text>
+				</auto_static>			
+				
+				<!-- Помощь в разработке -->
+				
+				<auto_static start_time="13" length_sec="19" x="585" y="200" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="letterica18" color="ui_6">st_mod_contributors</text>
+				</auto_static>
+				<auto_static start_time="15" length_sec="8" x="585" y="235" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_help_past</text>
+				</auto_static>
+				<auto_static start_time="15" length_sec="8" x="585" y="255" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_eloquent</text>
+				</auto_static>
+				<auto_static start_time="15" length_sec="8" x="585" y="275" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_melinite</text>
+				</auto_static>	
+				<auto_static start_time="15" length_sec="8" x="585" y="295" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_alcatraz</text>
+				</auto_static>
+				<auto_static start_time="15" length_sec="8" x="585" y="315" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_help_vitold73</text>
+				</auto_static>
+				<auto_static start_time="15" length_sec="8" x="585" y="335" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_grandpali</text>
+				</auto_static>
+				<auto_static start_time="24" length_sec="8" x="585" y="235" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_retard</text>
+				</auto_static>			
+				<auto_static start_time="24" length_sec="8" x="585" y="255" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_nepryahin</text>
+				</auto_static>					
+				<auto_static start_time="24" length_sec="8" x="585" y="275" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_loskutov</text>
+				</auto_static>				
+				<auto_static start_time="24" length_sec="8" x="585" y="295" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_sheva</text>
+				</auto_static>				
+				<auto_static start_time="24" length_sec="8" x="585" y="315" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_henta</text>
+				</auto_static>				
+				<auto_static start_time="24" length_sec="8" x="585" y="335" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_explorerbee</text>
+				</auto_static>	
+				<auto_static start_time="24" length_sec="8" x="585" y="355" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_werasik</text>
+				</auto_static>	
+				<auto_static start_time="24" length_sec="8" x="585" y="375" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_ui_inc</text>
+				</auto_static>
+				
+				
+				<!-- Отдельная благодарность -->
+				
+				<auto_static start_time="33" length_sec="20" x="585" y="200" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_special_thanks</text>
+				</auto_static>
+
+				<auto_static start_time="36" length_sec="4"  x="585" y="235" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="letterica18" color="ui_6">st_egui_inc</text>
+				</auto_static>
+				<auto_static start_time="36" length_sec="4" x="585" y="255" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_inc</text>
+				</auto_static>
+
+				<auto_static start_time="37" length_sec="3"  x="585" y="285" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="letterica18" color="ui_6">st_custom</text>
+				</auto_static>
+				<auto_static start_time="37" length_sec="3" x="585" y="305" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_custom_skilldex</text>
+				</auto_static>		
+
+				<auto_static start_time="43" length_sec="10"  x="585" y="235" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="letterica18" color="ui_6">st_compass</text>
+				</auto_static>
+				<auto_static start_time="44" length_sec="9" x="585" y="265" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="letterica18" color="ui_white">st_idea</text>
+				</auto_static>				
+				<auto_static start_time="44" length_sec="9" x="585" y="285" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_hyper</text>
+				</auto_static>	
+				<auto_static start_time="46" length_sec="7" x="585" y="325" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="letterica18" color="ui_white">st_idea_implementer</text>
+				</auto_static>				
+				<auto_static start_time="46" length_sec="7" x="585" y="345" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_melinite</text>
+				</auto_static>	
+				<auto_static start_time="48" length_sec="5" x="585" y="375" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="letterica18" color="ui_white">st_idea_refinement</text>
+				</auto_static>				
+				<auto_static start_time="48" length_sec="5" x="585" y="395" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_explorerbee</text>
+				</auto_static>	
+				<auto_static start_time="50" length_sec="3" x="585" y="425" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="letterica18" color="ui_white">st_idea_help</text>
+				</auto_static>				
+				<auto_static start_time="50" length_sec="3" x="585" y="445" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_xcvb</text>
+				</auto_static>
+				<auto_static start_time="50" length_sec="3" x="585" y="465" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_raven</text>
+				</auto_static>				
+				<auto_static start_time="50" length_sec="3" x="585" y="485" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_voboxleb</text>
+				</auto_static>
+				
+				<!-- Тестеры -->
+				
+				<auto_static start_time="55" length_sec="6" x="585" y="200" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="letterica18" color="ui_6">st_anthology_testers</text>
+				</auto_static>
+				<auto_static start_time="56" length_sec="5" x="585" y="235" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_stalkersky</text>
+				</auto_static>				
+				<auto_static start_time="56" length_sec="5" x="585" y="255" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_vitold73</text>
+				</auto_static>	
+				
+				<!-- Ambient Music -->
+				
+				<auto_static start_time="63" length_sec="6" x="585" y="200" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+				<text align="c" font="letterica18" color="ui_6">st_ambient_music</text>
+				</auto_static>
+				<auto_static start_time="64" length_sec="5" x="585" y="225" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_past</text>
+				</auto_static>
+
+				<!-- Поддержка сервера в Discord -->
+				
+				<auto_static start_time="65" length_sec="4"  x="585" y="255" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="letterica18" color="ui_6">st_discord_creator_and_manager</text>
+				</auto_static>
+				<auto_static start_time="66" length_sec="3" x="585" y="275" width="500" height="40" light_anim="credits_head" la_cyclic="0" la_texture="0" la_alpha="1">
+					<text align="c" font="graffiti22" color="ui_white">st_anthology_past</text>
+				</auto_static>	
+
+		</main_wnd>
+	</item>

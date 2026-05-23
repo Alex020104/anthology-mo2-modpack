@@ -1,0 +1,505 @@
+
+function get_config(key)
+	if ui_mcm then return ui_mcm.get("new_game_export/"..key) else return defaults[key] end
+end
+
+function on_mcm_load()
+	op = { id = "new_game_export", sh=true , gr={
+			{ id= "title", type= "slide", link= "ui_options_slider_player", text="ui_mcm_new_game_export_title", size= {512,50},spacing= 20 },
+			{ id= "title"				   ,type= "desc"	 ,text= "ui_mcm_new_game_export_header" 			,align= "l"	,clr= {255,60,190,190}	},
+			{ id = "export", type = "button", functor_ui = {export_all}  , precondition = {level_present} },
+			{id="divider", type="line" },
+			{id = "allow_import", type = "check", val = 1, def = false},
+			{ id = "import_key", type = "key_bind", val = 2, def = DIK_keys.DIK_K },
+			{id="divider", type="line" },
+			{id = "days_to_add", type = "input", val = 2, min = 0, max = 999, step = 1, def = 0},
+			{id="divider", type="line" },
+			{ id= "title"				   ,type= "desc"	 ,text= "ui_mcm_new_game_export_header_2" 			,align= "l"	,clr= {255,60,190,190}	},
+			{id = "gear", type = "check", val = 1, def = true},
+			{id = "money", type = "check", val = 1, def = true},
+			{id = "companions", type = "check", val = 1, def = true},
+			{id = "stats", type = "check", val = 1, def = true},
+			{id = "rank", type = "check", val = 1, def = true},
+			{id = "reputation", type = "check", val = 1, def = true},
+			{id = "actor_goodwill", type = "check", val = 1, def = true},
+			{id = "factions_goodwill", type = "check", val = 1, def = true},
+			{id = "info_portions", type = "check", val = 1, def = true},
+			{id = "routes", type = "check", val = 1, def = true},
+			{id = "smart", type = "check", val = 1, def = false},
+		}
+	}
+	return op
+end
+
+local st_sec_prefix = "new_game_import_storage_"
+local st_sections = {		-- must match functions and mcm option names
+	["gear"] = true,
+	["money"] = true,
+	["companions"] = true,
+	["stats"] = true,
+	["rank"] = true,
+	["reputation"] = true,
+	["actor_goodwill"] = true,
+	["factions_goodwill"] = true,
+	["info_portions"] = true,
+	["routes"] = true,
+	["smart"] = true,
+}
+
+local comm_t = {
+	["monolith"] = true, ["greh"] = true, ["ecolog"] = true, ["isg"] = true, ["army"] = true, ["csky"] = true,
+	["dolg"] = true, ["stalker"] = true, ["freedom"] = true, ["killer"] = true, ["bandit"] = true, ["renegade"] = true,
+}
+
+
+--------------------- EXPORT / IMPORT ---------------------
+function export_all()
+
+	-- empty all currently stored sections
+	for sec, _ in pairs(st_sections) do
+		local sections_t = axr_main.config:collect_section(st_sec_prefix .. sec)
+		if sections_t then
+			for key, _ in pairs(sections_t) do
+				rmv_line(st_sec_prefix .. sec, key)
+			end
+		end
+	end
+
+	-- export
+	for sec, _ in pairs(st_sections) do
+		if this["export_" .. sec] and new_game_export_mcm.get_config(sec) then
+			this["export_" .. sec](st_sec_prefix .. sec)
+		end
+	end
+
+	-- save configs
+	axr_main.config:save()
+
+end
+
+function import_all(k)
+
+	if k ~= new_game_export_mcm.get_config("import_key") then
+		return
+	end
+
+	-- check if import allowed
+	if not (new_game_export_mcm.get_config("allow_import")) then
+		return
+	end
+
+	-- import
+	for sec, _ in pairs(st_sections) do
+		if axr_main.config:section_exist(st_sec_prefix .. sec) then
+			local sections_t = axr_main.config:collect_section(st_sec_prefix .. sec)
+			if this["import_" .. sec] and sections_t and size_table(sections_t) > 0 then
+				this["import_" .. sec](st_sec_prefix .. sec, sections_t)
+			end
+		end
+	end
+
+	-- save configs
+	axr_main.config:save()
+
+	-- save game
+	CreateTimeEvent("ng_delay_save_e", "ng_delay_save_a", 1, function()
+		exec_console_cmd("save " .. (user_name() or "") .. " - New Game+ Import")
+		return true
+	end)
+
+end
+
+--------------------- Equipment ---------------------
+function export_gear(sec)
+	local itm_idx = 0
+	local function itr(owner, item)
+		local itm_sec = item:section()
+		if is_item_viable(itm_sec, item) then
+			itm_idx = itm_idx + 1
+
+			-- [1] item_sec
+			local itms = {}
+			itms[#itms + 1] = itm_sec
+
+			-- [2] and rest are upgrades
+			item:iterate_installed_upgrades( function(upgr_sec)
+				itms[#itms + 1] = upgr_sec
+			end)
+
+			axr_main.config:w_value(sec, "ng_inv_" .. itm_idx, table.concat(itms, ","))		-- read 0
+		end
+	end
+	db.actor:iterate_inventory(itr, db.actor)
+end
+
+function import_gear(sec, t)
+	local function itr(owner, item)
+		local itm_sec = item:section()
+		if is_item_viable(itm_sec, item) then
+			alife_release(item)
+		end
+	end
+	db.actor:iterate_inventory(itr, db.actor)
+
+	for k, v in pairs(t) do
+		local item_str = axr_main.config:r_value(sec, k, 0, 0)
+		local item_t = item_str and str_explode(item_str, ",")
+
+		-- spawn item
+		local se_obj = alife_create_item(item_t[1], db.actor)
+
+		-- check and install upgrades
+		if se_obj and #item_t > 1 then
+			CreateTimeEvent("ng_delay_upgrades_e_" .. se_obj.id, "ng_delay_upgrades_a_" .. se_obj.id, 0.5, function(id, upgr_t)
+				local obj = level.object_by_id(id)
+				if obj then
+					inventory_upgrades.force_upgrade = true
+					for i = 2, #upgr_t do
+						obj:install_upgrade(upgr_t[i])
+					end
+					inventory_upgrades.force_upgrade = false
+				end
+				return true
+			end, se_obj.id, item_t)
+		end
+
+		rmv_line(sec, k)
+	end
+end
+
+--------------------- Money ---------------------
+function export_money(sec)
+	axr_main.config:w_value(sec, "ng_money", db.actor:money())		-- read 2
+end
+
+function import_money(sec, t)
+	-- remove current money
+	local cur_money = db.actor:money()
+	db.actor:give_money(-cur_money+50)
+
+	-- give new money
+	local actor_money = axr_main.config:r_value(sec, "ng_money", 2, 0)
+	db.actor:give_money(actor_money)
+	rmv_line(sec, "ng_money")
+end
+
+--------------------- Companions ---------------------
+function export_companions(sec)
+	local comp_idx = 0
+	local comp_t = dup_table(axr_companions.list_actor_squad_by_id())
+	for i = 1, #comp_t do
+		local se_obj = alife_object(comp_t[i])
+		local obj = level.object_by_id(comp_t[i])
+		if se_obj and obj then
+			local wpn = obj:active_item()
+			local visual = obj:get_visual_name()
+			local name = obj:character_name()
+			local comm = obj:character_community()
+			local money = obj:money()
+			if (wpn and IsWeapon(wpn)) and visual and name and money then
+				comp_idx = comp_idx + 1
+
+				local name_t = {}
+				for i = 1, #name do
+					local c = name:sub(i, i)
+					name_t[#name_t + 1] = string.byte(c)
+				end
+				axr_main.config:w_value(sec, "ng_comp_name_" .. comp_idx, table.concat(name_t, ","))		-- read 0
+
+				axr_main.config:w_value(sec, "ng_comp_wpn_" .. comp_idx, wpn:section())		-- read 0
+				axr_main.config:w_value(sec, "ng_comp_visual_" .. comp_idx, visual)		-- read 0
+				axr_main.config:w_value(sec, "ng_comp_comm_" .. comp_idx, comm)		-- read 0
+				axr_main.config:w_value(sec, "ng_comp_money_" .. comp_idx, money)		-- read 2
+				axr_main.config:w_value(sec, "ng_comp_amount", comp_idx)		-- read 2
+			end
+		end
+	end
+end
+
+function import_companions(sec, t)
+	local comp_size = axr_main.config:r_value(sec, "ng_comp_amount", 2, 0)
+	for i = 1, comp_size do
+		local wpn = axr_main.config:r_value(sec, "ng_comp_wpn_" .. i, 0, 0)
+		local visual = axr_main.config:r_value(sec, "ng_comp_visual_" .. i, 0, 0)
+
+		local name_str = axr_main.config:r_value(sec, "ng_comp_name_" .. i, 0, 0)
+		local name = name_str and str_explode(name_str, ",") and to_s(str_explode(name_str, ","))
+
+		local comm = axr_main.config:r_value(sec, "ng_comp_comm_" .. i, 0, 0)
+		local money = axr_main.config:r_value(sec, "ng_comp_money_" .. i, 2, 0)
+		create_companion_squad(wpn, visual, name, comm, money)
+		rmv_line(sec, "ng_comp_wpn_" .. i)
+		rmv_line(sec, "ng_comp_visual_" .. i)
+		rmv_line(sec, "ng_comp_name_" .. i)
+		rmv_line(sec, "ng_comp_comm_" .. i)
+		rmv_line(sec, "ng_comp_money_" .. i)
+	end
+	rmv_line(sec, "ng_comp_amount")
+end
+
+--------------------- Game stats ---------------------
+function export_stats(sec)
+	local stat_idx = 0
+	local game_stat_t = dup_table(game_statistics.actor_statistics)
+	for stat_name, t in pairs(game_stat_t) do
+		if t.count then
+			stat_idx = stat_idx + 1
+			axr_main.config:w_value(sec, "ng_stat_" .. stat_idx, stat_name .. "," .. t.count)		-- read 2
+		end
+	end
+end
+
+function import_stats(sec, t)
+	for k, v in pairs(t) do
+		local stat_str = axr_main.config:r_value(sec, k, 0, 0)
+		local p = stat_str and str_explode(stat_str, ",")
+		local stat_name, stat_val = p[1], p[2]
+		if game_statistics.actor_statistics[stat_name] then
+			game_statistics.actor_statistics[stat_name].count = tonumber(stat_val)
+		end
+		rmv_line(sec, k)
+	end
+end
+
+--------------------- Rank ---------------------
+function export_rank(sec)
+	local rank = db.actor:character_rank()
+	if rank then
+		axr_main.config:w_value(sec, "ng_rank", rank)		-- read 2
+	end
+end
+
+function import_rank(sec, t)
+	local add_rank = axr_main.config:r_value(sec, "ng_rank", 2, 0)
+	db.actor:set_character_rank(add_rank)
+	rmv_line(sec, "ng_rank")
+end
+
+--------------------- Reputation ---------------------
+function export_reputation(sec)
+	local cur_reputation = db.actor:character_reputation()
+	if cur_reputation then
+		axr_main.config:w_value(sec, "ng_reputation", cur_reputation)		-- read 2
+	end
+end
+
+function import_reputation(sec, t)
+	local add_rep = axr_main.config:r_value(sec, "ng_reputation", 2, 0)
+	db.actor:change_character_reputation(add_rep)
+	rmv_line(sec, "ng_reputation")
+end
+
+--------------------- Actor goodwill ---------------------
+function export_actor_goodwill(sec)
+	for comm, _ in pairs(comm_t) do
+		local gw = relation_registry.community_goodwill(comm, 0)
+		if gw then
+			axr_main.config:w_value(sec, "ng_goodwill_" .. comm .. "_0", gw)		-- read 2
+		end
+	end
+end
+
+function import_actor_goodwill(sec, t)
+	for comm, _ in pairs(comm_t) do
+		if axr_main.config:line_exist(sec, "ng_goodwill_" .. comm .. "_0") then
+			local gw = axr_main.config:r_value(sec, "ng_goodwill_" .. comm .. "_0", 2, 0)
+			relation_registry.set_community_goodwill(comm, 0, gw)
+			rmv_line(sec, "ng_goodwill_" .. comm .. "_0")
+		end
+	end
+end
+
+--------------------- Factions goodwill ---------------------
+function export_factions_goodwill(sec)
+	for comm, _ in pairs(comm_t) do
+		for comm2, _ in pairs(comm_t) do
+			local gw = relation_registry.community_relation(comm, comm2)
+			if gw then
+				axr_main.config:w_value(sec, "ng_goodwill_" .. comm .. "_" .. comm2, gw)		-- read 2
+			end
+		end
+	end
+end
+
+function import_factions_goodwill(sec, t)
+	for comm, _ in pairs(comm_t) do
+		for comm2, _ in pairs(comm_t) do
+			if axr_main.config:line_exist(sec, "ng_goodwill_" .. comm .. "_" .. comm2) then
+				local gw = axr_main.config:r_value(sec, "ng_goodwill_" .. comm .. "_" .. comm2, 2, 0)
+				game_relations.save_relation(comm, comm2, gw)
+				rmv_line(sec, "ng_goodwill_" .. comm .. "_" .. comm2)
+			end
+		end
+	end
+end
+
+--------------------- Info portions ---------------------
+function export_info_portions(sec)
+	local info_idx = 0
+	alife():iterate_info(0, function(id, info)
+		if string.find(info, "_spot") or string.find(info, "upgrade_tier") then
+			info_idx = info_idx + 1
+			axr_main.config:w_value(sec, "ng_info_portion_" .. info_idx, info)		-- read 0
+		end
+	end)
+end
+
+function import_info_portions(sec, t)
+	for k, v in pairs(t) do
+		local info_str = axr_main.config:r_value(sec, k, 0, 0)
+		give_info(info_str)
+		rmv_line(sec, k)
+	end
+	pda.fill_primary_objects()
+end
+
+--------------------- Routes ---------------------
+function export_routes(sec)
+	local routes_idx = 0
+	for i = 1, #txr_routes.maps do
+		for j = 1, #txr_routes.maps do
+			if txr_routes.is_route_discovered(txr_routes.maps[i], txr_routes.maps[j]) then
+				routes_idx = routes_idx + 1
+				axr_main.config:w_value(sec, "ng_route_" .. routes_idx, txr_routes.maps[i] .. "," .. txr_routes.maps[j])		-- read 0
+			end
+		end
+	end
+end
+
+function import_routes(sec, t)
+	for k, v in pairs(t) do
+		local maps_str = axr_main.config:r_value(sec, k, 0, 0)
+		local maps_ar = maps_str and str_explode(maps_str, ",")
+		if maps_ar and maps_ar[1] and maps_ar[2] and (not txr_routes.is_route_discovered(maps_ar[1], maps_ar[2])) then
+			txr_routes.open_route(maps_ar[1], maps_ar[2], true)
+			rmv_line(sec, k)
+		end
+	end
+end
+
+--------------------- Smart terrain ---------------------
+function export_smart(sec)
+	local near_id = smart_terrain.nearest_to_actor_smart.id
+	local smart = near_id and alife_object(near_id)
+	for sm_name, sm in pairs(SIMBOARD.smarts_by_names) do
+		if smart.id == sm.id then
+			axr_main.config:w_value(sec, "ng_smart_tp", sm_name)		-- read 0
+		end
+	end
+end
+
+function import_smart(sec, t)
+	news_manager.send_tip(db.actor, game.translate_string("ng_export_teleport"), 0, nil, 15000)
+	local smart_name = axr_main.config:r_value(sec, "ng_smart_tp", 0, 0)
+	CreateTimeEvent("ng_tp_delay_e", "ng_tp_delay_a", 30, function(sm_name)
+		local smart = sm_name and SIMBOARD.smarts_by_names[sm_name]
+		local smart_lid = smart and game_graph():vertex(smart.m_game_vertex_id):level_id()
+		local smart_lname = smart_lid and alife():level_name(smart_lid)
+		if smart_lname then
+			if smart_lname == level.name() then
+				db.actor:set_actor_position(smart.position)
+			else
+				ChangeLevel(smart.position, smart.m_level_vertex_id, smart.m_game_vertex_id, VEC_ZERO)
+			end
+		end
+		return true
+	end, smart_name)
+	rmv_line(sec, "ng_smart_tp")
+end
+
+
+------------ MISC ------------
+function level_present()
+	return level.present()
+end
+
+function rmv_line(sec, k)
+	axr_main.config:remove_line(sec, k)
+end
+
+function is_item_viable(itm_sec, item)
+	local string_find = string.find
+	local is_backpack = ini_sys:r_string_ex(itm_sec, "kind") and ini_sys:r_string_ex(itm_sec, "kind") == "i_backpack"
+	local is_art_in_cont = string_find(itm_sec, "_lead_box") or string_find(itm_sec, "_af_aam") or string_find(itm_sec, "_af_iam") or string_find(itm_sec, "_af_aac")
+	local is_helmet = IsHeadgear(item)
+	local bp_art_helm_cantrade = is_backpack or is_art_in_cont or is_helmet or ini_sys:r_bool_ex(itm_sec,"can_trade")
+
+	if bp_art_helm_cantrade and (not ini_sys:r_bool_ex(itm_sec,"quest_item")) and (not IsItem("anim", itm_sec)) and (not IsBolt(item)) and (item:section() ~= "cash") then
+		return true
+	end
+end
+
+function create_companion_squad(wpn, visual, name, comm, money)
+	local pos = db.actor:position()
+	local lvid = db.actor:level_vertex_id()
+	local gvid = db.actor:game_vertex_id()
+
+	if comm == "dolg" then comm = "duty" end
+	local sec = comm .. "_sim_squad_novice"
+
+	-- create squad
+	local se_obj
+	local squad = alife_create(sec, pos, lvid, gvid)
+	if squad then
+		squad:create_npc(nil, pos, lvid, gvid)
+
+		-- leave just commander
+		for m in squad:squad_members() do
+			if m.id ~= squad:commander_id() then
+				alife_release_id(m.id)
+			else
+				se_obj = alife_object(m.id)
+			end
+		end
+	end
+
+	-- setup logic and stuff
+	if se_obj then
+		SIMBOARD:setup_squad_and_group(se_obj)
+
+		-- delay for object to become online
+		CreateTimeEvent("ng_delay_comp_e_" .. se_obj.id, "ng_delay_comp_a_" .. se_obj.id, 1, function(obj_id)
+			local npc = level.object_by_id(obj_id)
+			if npc then
+				npc:set_relation(game_object.friend, db.actor)
+				dialogs_axr_companion.become_actor_companion(db.actor, npc)
+
+				-- set our wpn, visual, name, money
+				alife_create_item(wpn, npc)
+				npc:set_visual_name(visual)
+				alife_object(npc:id()):set_character_name(name)
+				npc:give_money(money)
+
+			end
+			return true
+		end, se_obj.id)
+
+	end
+
+end
+
+function to_s(t)
+	local s1 = ""
+	for i = 1, #t do s1 = s1 .. string.char(tonumber(t[i])) end
+	return s1
+end
+
+function pda.get_time_elapsed()
+	local string_format = string.format
+	local s_time = level.get_start_time()
+	local seconds = tonumber(game.get_game_time():diffSec(s_time))
+
+	if (seconds < 60) then 
+		return string_format("%d %s",seconds,game.translate_string("ui_st_secs"))
+	elseif (seconds < 3600) then 
+		return string_format("%d %s",seconds/60,game.translate_string("ui_st_mins"))
+	elseif (seconds < 86400) then 
+		return string_format("%d %s",seconds/60/60,game.translate_string("ui_st_hours"))
+	end
+
+	return string_format("%d %s", (seconds/60/60/24) + new_game_export_mcm.get_config("days_to_add"),game.translate_string("ui_st_days"))
+end 
+
+function on_game_start()
+	RegisterScriptCallback("on_key_press", import_all)
+end

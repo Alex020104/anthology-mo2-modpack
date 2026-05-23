@@ -1,0 +1,54 @@
+local kind_colors = {
+w_sniper            = GetARGB(10,240,240,240), 
+w_rifle             = GetARGB(10,240,240,240),
+w_smg               = GetARGB(10,240,240,240), 
+w_shotgun           = GetARGB(10,240,240,240),
+w_pistol            = GetARGB(10,240,240,240),
+w_melee             = GetARGB(10,240,240,240),
+w_misc              = GetARGB(20,240,240,240),
+w_base              = GetARGB(10,240,240,240),
+w_explosive         = GetARGB(10,240,240,240),
+o_heavy             = GetARGB(10,255,218,170),
+o_sci               = GetARGB(10,255,218,170),
+o_medium            = GetARGB(10,255,218,170),
+o_light             = GetARGB(10,255,218,170),
+o_helmet            = GetARGB(10,255,218,170),
+i_backpack          = GetARGB(10,255,218,170),
+i_device            = GetARGB(20,161,192,223),
+i_tool              = GetARGB(20,161,192,223),
+i_repair            = GetARGB(20,161,192,223),
+i_kit               = GetARGB(20,161,192,223),
+i_upgrade           = GetARGB(20,161,192,223),
+i_medical           = GetARGB(20,255,0,0),
+i_food              = GetARGB(20,255,145,0),
+i_mutant_cooked     = GetARGB(20,255,145,0),
+i_drink             = GetARGB(20,0,197,255),
+i_mutant_raw        = GetARGB(20,162,0,255),
+i_letter            = GetARGB(20,174,255,0),
+i_quest             = GetARGB(20,174,255,0),
+w_ammo              = GetARGB(20,255,232,0),
+i_mutant_belt       = GetARGB(20,236,0,255),
+i_mutant_part       = GetARGB(20,162,0,255),
+i_attach            = GetARGB(20,236,0,255),
+i_misc              = GetARGB(20,255,255,255),
+i_part              = GetARGB(20,255,255,255),
+}
+
+
+local bags = {
+    actor_bag = true,
+    actor_trade_bag = true,
+    npc_bag = true,
+    npc_trade_bag = true
+}
+
+local function get_color_by_kind(cell)
+    if bags[cell.container.ID] and cell.section then
+        local kind = SYS_GetParam(0, cell.section, "kind", "na")
+        return kind_colors[kind]
+    end
+end
+
+function on_game_start()
+	rax_persistent_highlight.register("item_type_color", get_color_by_kind)
+end

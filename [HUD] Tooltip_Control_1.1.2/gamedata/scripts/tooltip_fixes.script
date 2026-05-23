@@ -1,0 +1,64 @@
+--[[
+	Dirty fixes for 'stuck tooltips' in (not only) workshop UI. File is standalone and optional.
+	06/12/2022
+	This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
+	Author: Flueno
+--]]
+
+
+function on_game_start()
+	local apply_fix =  true
+	if ui_mcm and ui_mcm.get("tooltip_control/fix_stuck_tt") ~= nil then
+		apply_fix =  ui_mcm.get("tooltip_control/fix_stuck_tt")
+	end
+
+	if apply_fix then	
+		patch_safely(ui_workshop, 		"UIWorkshopCraft", 		"Close")
+		patch_safely(ui_workshop, 		"UIWorkshopUpgrade", 	"Close")
+		patch_safely(ui_workshop, 		"UIWorkshopRepair", 	"Close")
+		patch_safely(item_cooking, 		"UICook", 				"Close")
+		patch_safely(item_repair, 		"UIRepair", 			"OnCancel")
+		patch_safely(grok_artefacts_melter, "UIRepair", 		"OnCancel")
+	end
+
+end
+
+function patchOnUiClose(UI_close_delegatee)
+	local event_id = "patch_" .. math.random(9999)
+	return function(self)
+		--- Lets just move the cursor away to get rid of problematic :IsCursorOverWindow() checks
+		moveCursor(400, -400)
+		CreateTimeEvent("UIClose_patch_fix", event_id, 0.005, function()
+			UI_close_delegatee(self)
+			return true
+		end)
+	end
+end
+
+function patch_safely(ref, ui_name, mthd_name)
+	if ref and ref[ui_name] and ref[ui_name][mthd_name] then
+		ref[ui_name][mthd_name] = patchOnUiClose(ref[ui_name][mthd_name])
+	else
+		printf("Failed to patch stuck tooltips at %s %s", ui_name, mthd_name)
+	end
+end
+
+function moveCursor(dx, dy)
+	local pos = GetCursorPosition()
+	pos.x = pos.x + dx
+	pos.y = pos.y + dy
+	SetCursorPosition(pos)
+end
+
+
+
+--local workshop_craft_close_delegatee = ui_workshop.UIWorkshopCraft.Close
+--ui_workshop.UIWorkshopCraft.Close = function(self)
+--	-- Reset component selection
+--	self.selected_index = nil
+--	self.last_type = nil
+--	-- additionally
+--	self.owner.item_info:Reset()
+--	self.owner.item_info:Show(false)
+--	workshop_craft_close_delegatee(self)
+--end

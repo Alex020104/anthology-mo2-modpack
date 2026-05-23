@@ -1,0 +1,186 @@
+-- external functions
+set_in_use = zzzz_liz_fdda_redone_ui_inventory.Set_Item_in_Use
+is_in_use = zzzz_liz_fdda_redone_ui_inventory.Is_Item_in_Use
+
+-- variables
+local banned_af = {
+	["af_monolith"] = true,
+}
+
+local container_queries = {
+	["(lead.-_box)"] = {
+		container = "lead_box",
+		suffix = "_lead_box",
+	},
+	["(af.-_iam)"] = {
+		container = "af_iam",
+		suffix = "_af_iam",
+	},
+	["(af.-_aac)"] = {
+		container = "af_aac",
+		suffix = "_af_aac",
+	},
+	["(af.-_aam)"] = {
+		container = "af_aam",
+		suffix = "_af_aam",
+	},
+}
+
+local vanilla_animations_blacklist = {
+	container_tool_lead_box_dummy = true,
+	container_tool_af_iam_dummy = true,
+	container_tool_af_aac_dummy = true,
+	container_tool_af_aam_dummy = true,
+	lead_box_dummy = true,
+	af_iam_dummy = true,
+	af_aac_dummy = true,
+	af_aam_dummy = true,
+}
+
+--- ----------------------------------------------------------
+--- monkey patches
+--- ----------------------------------------------------------
+
+--prevent default animation from playing
+local basePIF = actor_effects.play_item_fx
+actor_effects.play_item_fx = function (item)
+	-- if item == "container_tool_lead_box_dummy" or item == "lead_box_dummy" then return end
+	if vanilla_animations_blacklist[item] then
+		return
+	end
+	basePIF(item)
+end
+
+--play remove artifact animation when use container
+local baseUAC = itms_manager.use_arty_container
+itms_manager.use_arty_container = function (obj)
+	local obj_id = obj:id()
+	if is_in_use(obj_id) then
+		return
+	end
+	local section = obj:section()
+	for query, values in pairs(container_queries) do
+		if string.find(section, query, 3) then
+			local break_arty = section:gsub(values.suffix, "")
+			local action = get_template_action_af_box_remove(break_arty, obj_id)
+			lam2.add_action(action)
+			set_in_use(obj_id, true)
+			break
+		end
+	end
+end
+
+--play place arty in box animation when drag and drop artifact on the container
+local base_dropdrop_ArtyContainer = itms_manager.dropdrop_ArtyContainer
+itms_manager.dropdrop_ArtyContainer = function (obj_1, obj_2, sec_1, sec_2)
+	-- can't place this artifact in container
+	if not ini_sys:section_exist(sec_1 .. "_" .. sec_2) then
+		return
+	end
+
+	if banned_af[sec_1] then
+		base_dropdrop_ArtyContainer(obj_1, obj_2, sec_1, sec_2)
+		return
+	end
+
+	local id_arty = obj_1:id()
+	local id_box = obj_2:id()
+
+	if is_in_use(id_arty) or is_in_use(id_box) then
+		return
+	end
+
+	lam2.add_action(get_template_action_af_box_add(id_arty, id_box, sec_1, sec_2))
+	set_in_use(id_arty, true)
+	set_in_use(id_box, true)
+end
+
+--- ----------------------------------------------------------
+--- main
+--- ----------------------------------------------------------
+
+function get_section(section)
+	local default_section = "tch_lead_box_af_compass_hud"
+	local new_section = "tch_lead_box_" .. section .. "_hud"
+	if ini_sys:section_exist(new_section) then
+		default_section = new_section
+	end
+	return default_section
+end
+
+--- ----------------------------------------------------------
+--- action templates
+--- ----------------------------------------------------------
+
+function get_template_action_af_box_add(id_arty, id_box, section_arty, section_box)
+	local a = lam2.get_template_action_play_animation()
+	a.sec = get_section(section_arty)
+	a.anm = "anm_add"
+	a.cam = "cam_add"
+	a.can_skip = true
+	a.id_arty = id_arty
+	a.id_box = id_box
+	a.section_arty = section_arty
+	a.section_box = section_box
+	a.flag_is_init = false
+	a.flag_arty_put_in_box = false
+	a.on_execute = function (self, time)
+		-- check if objects are still exist
+		if not self.flag_is_init then
+			self.flag_is_init = true
+			local obj_arty = level.object_by_id(self.id_arty)
+			local obj_box = level.object_by_id(self.id_box)
+			if not obj_arty or not obj_box then
+				lam2.stop_current_action()
+			end
+		end
+		-- put arty in the container
+		if not self.flag_arty_put_in_box and time > self.duration * .5 then
+			self.flag_arty_put_in_box = true
+			self.can_skip = false
+			set_in_use(self.id_arty, false)
+			set_in_use(self.id_box, false)
+			local obj_arty = level.object_by_id(self.id_arty)
+			local obj_box = level.object_by_id(self.id_box)
+			if not obj_arty or not obj_box then
+				return lam2.states.fail
+			end
+			base_dropdrop_ArtyContainer(obj_arty, obj_box, self.section_arty, self.section_box)
+		end
+	end
+	a.on_skip = function (self)
+		if not self.flag_arty_put_in_box then
+			set_in_use(self.id_arty, false)
+			set_in_use(self.id_box, false)
+		end
+	end
+	return a
+end
+
+
+function get_template_action_af_box_remove(section, id)
+	local a = lam2.get_template_action_play_animation()
+	a.sec = get_section(section)
+	a.anm = "anm_remove"
+	a.cam = "cam_remove"
+	a.can_skip = true
+	a.item_id = id
+	a.flag_artifact_removed = false
+	a.on_execute = function (self, time)
+		if not self.flag_artifact_removed and time > self.duration * .75 then
+			self.flag_artifact_removed = true
+			self.can_skip = false
+			set_in_use(self.item_id, false)
+			local item_obj = level.object_by_id(self.item_id)
+			if item_obj then
+				baseUAC(item_obj)
+			end
+		end
+	end
+	a.on_skip = function (self)
+		if not self.flag_artifact_removed then
+			set_in_use(self.item_id, false)
+		end
+	end
+	return a
+end

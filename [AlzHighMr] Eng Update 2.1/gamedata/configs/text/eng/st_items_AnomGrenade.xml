@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!--
+	Weapons
+-->
+
+<string_table>
+	
+	<string id="st_grenade_electro">
+		<text>Grenade RGD-Electro</text>
+	</string>
+	<string id="st_grenade_electro_descr">
+		<text>A Soviet offensive hand grenade, but with large modifications instead of the usual shrapnel, fragments of electric-type artifacts, which makes this thing a real threat to the inhabitants of the Zone. It is designed for large concentrations of mutants that move quickly, such as: snorks, cats, dogs, wild boars. According to rumors, such a grenade (if you try hard) can shoot down a helicopter. It has a large radius of destruction. Before throwing such a grenade, you need to find shelter!\n \n
+		%c[d_purple] • %c[ui_gray_2] explosive power: %c[ui_gray_1]high\n
+		%c[d_purple] • %c[ui_gray_2] explosion radius: %c[ui_gray_1]5,2 m\n
+		%c[d_purple] • %c[ui_gray_2] the radius of damage by shrapnel: %c[ui_gray_1]50 m\n
+		%c[d_purple] • %c[ui_gray_2] number of fragments: %c[ui_gray_1]240 (fragments of the artifact)\n
+		%c[d_purple] • %c[ui_gray_2] explosion delay: %c[ui_gray_1]~3 seconds</text>
+	</string>	
+	
+	<string id="st_grenade_jarka">
+		<text>Grenade RGD-Incinerator</text>
+	</string>
+	<string id="st_grenade_jarka_descr">
+		<text>A Soviet offensive hand grenade, but with large modifications, instead of the usual shrapnel, there are fragments of firearms, which makes this thing a real threat to all residents of the Zone. It is mainly intended for mutants who do not move very fast, such as: zombies, controllers, poltergeists, burers. Its range is less than average. Before throwing such a grenade, you need to find shelter!\n
+		%c[d_purple] • %c[ui_gray_2] explosive power: %c[ui_gray_1]small\n
+		%c[d_purple] • %c[ui_gray_2] explosion radius: %c[ui_gray_1]3,2 m\n
+		%c[d_purple] • %c[ui_gray_2] the radius of damage by shrapnel: %c[ui_gray_1]25 m\n
+		%c[d_purple] • %c[ui_gray_2] number of fragments: %c[ui_gray_1]240 (fragments of the artifact)\n
+		%c[d_purple] • %c[ui_gray_2] explosion delay: %c[ui_gray_1]~2 seconds</text>
+	</string>	
+	
+	<string id="st_grenade_web">
+		<text>Grenade RGD-Web</text>
+	</string>
+	<string id="st_grenade_web_descr">
+		<text>A Soviet offensive hand grenade, but with large modifications instead of the usual shrapnel, fragments of chemical artifacts, which makes this thing a real threat to all residents of the Zone. It is mainly intended for people who are very well equipped. Causes severe burns and has a radius less than average. Before throwing such a grenade, you need to find shelter!\n
+		%c[d_purple] • %c[ui_gray_2] explosive power: %c[ui_gray_1]high\n
+		%c[d_purple] • %c[ui_gray_2] explosion radius: %c[ui_gray_1]6,2 m\n
+		%c[d_purple] • %c[ui_gray_2] the radius of damage by shrapnel: %c[ui_gray_1]70 m\n
+		%c[d_purple] • %c[ui_gray_2] number of fragments: %c[ui_gray_1]400 (fragments of the artifact)\n
+		%c[d_purple] • %c[ui_gray_2] explosion delay: %c[ui_gray_1]~2,5 seconds</text>
+	</string>	
+	
+	<string id="st_grenade_voronka">
+		<text>Grenade RGD-Mincer</text>
+	</string>
+	<string id="st_grenade_voronka_descr">
+		<text>A Soviet offensive hand grenade, but with large modifications instead of the usual shrapnel, fragments of gravity-type artifacts, which makes this thing a real threat to all residents of the Zone. It is intended for the strongest inhabitants of the Zone such as: pseudo-giants, bibliotekar, chimeras. It has an average radius of damage. Before throwing such a grenade, you need to find shelter!\n
+		%c[d_purple] • %c[ui_gray_2] explosive power: %c[ui_gray_1]средняя\n
+		%c[d_purple] • %c[ui_gray_2] explosion radius: %c[ui_gray_1]4 m\n
+		%c[d_purple] • %c[ui_gray_2] the radius of damage by shrapnel: %c[ui_gray_1]30 m\n
+		%c[d_purple] • %c[ui_gray_2] number of fragments: %c[ui_gray_1]165 (fragments of the artifact)\n
+		%c[d_purple] • %c[ui_gray_2] explosion delay: %c[ui_gray_1]~3 seconds</text>
+	</string>	
+
+
+</string_table>

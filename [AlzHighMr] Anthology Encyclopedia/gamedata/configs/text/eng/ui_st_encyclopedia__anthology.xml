@@ -1,0 +1,806 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	
+
+
+<string id="encyclopedia___anthology_developers">
+	<text>Anthology Devs</text>
+</string>
+
+<string id="encyclopedia__anthology">
+	<text>Anthology Storylines</text>
+</string>
+
+<string id="encyclopedia__anthology_guides">
+    <text>Anthology Guide</text>
+</string>
+
+
+<!--
+=================================================
+================================================= 
+    CREDITS SECTION
+=================================================
+=================================================
+-->
+
+
+<string id="encyclopedia__anthology_mod">
+    <text>Anthology credits</text>
+</string>
+
+<string id="encyclopedia__anthology_mod_text">
+    <text>
+%c[pda_green]CORE TEAM%c[ui_gray_1]\n
+\n%c[pda_white]Developer%c[ui_gray_1] — Maks Ratniy Ratnichenko\n
+%c[pda_white]Addon Compilation%c[ui_gray_1] — Serega Hyper\n
+%c[pda_white]Weaponsmith%c[ui_gray_1] — Denis Denis9x39\n
+%c[pda_white]Administrator%c[ui_gray_1] — Dedushka Li\n
+\n
+%c[pda_green]DEVELOPMENT ASSISTANCE%c[ui_gray_1]\n
+• Map, logs, scripting — Melinite\n
+• SDK support — Andrey Nepryakhin\n
+• SDK support — Alexey Loskutov\n
+• SDK support — Stalker SHEVA\n
+• SDK support — Kryiron Ai\n
+• Development help — Alcatraz396\n
+• Development help — PastKNIGHT\n
+• Development help — Jr.Anthologist / Sanya\n
+• Development help — Jlyn4ik (Trovo / Twitch) — Danila\n
+\n
+%c[pda_green]COMMUNITY LINKS%c[ui_gray_1]\n
+• Discord — https://discord.gg/xMkuD74cwt\n
+• VK — https://vk.com/club219667646\n
+• ModDB — https://www.moddb.com/mods/anthology\n
+    </text>
+</string>
+
+
+<!--DONATE / SUPPORT-->
+<string id="encyclopedia__anthology_donate">
+    <text>Support the Project</text>
+</string>
+
+<string id="encyclopedia__anthology_donate_text">
+    <text>
+%c[pda_green]Support the A.N.T.H.O.L.O.G.Y Project%c[pda_white]\n
+\n
+Dear stalkers,\n
+We appreciate your interest in the A.N.T.H.O.L.O.G.Y project based on S.T.A.L.K.E.R. Anomaly.\n
+\n
+You can support development by donating any amount using the details below.\n
+\n
+%c[pda_green]REWARD%c[pda_white]\n
+Supporters receive the %c[pda_green]Project Support%c[pda_white] role and access to:\n
+- test builds\n
+- exclusive development materials\n
+- early project updates\n
+\n
+%c[pda_green]HOW TO RECEIVE ACCESS%c[pda_white]\n
+1. Send a donation to any listed account\n
+2. Send proof of transaction in Discord\n
+3. Receive your role and access\n
+\n
+%c[pda_green]DEVELOPMENT TEAM%c[pda_white]\n
+%c[pda_green]Maks Ratniy%c[pda_white] — Lead Developer\n
+Gazprom: 4249 1703 9251 4208\n
+Sberbank: 2202 2014 1353 5184\n
+Boosty: https://boosty.to/maks_ratniy\n
+\n
+%c[pda_green]SYS · Sergei%c[pda_white] — Technical Support\n
+Yandex Bank: 2204 3107 7303 6655\n
+\n
+%c[pda_green]Denis9x39%c[pda_white] — Weapon Designer\n
+Sberbank: 2202 2083 5589 9908\n
+\n
+%c[pda_green]dedeushka Li%c[pda_white] — Discord & Translation Support\n
+Kaspi KZ: 4400 4303 8621 3281\n
+\n
+%c[pda_green]NOTE%c[pda_white]\n
+This is not a sale. Donations are voluntary and only serve as community support.\n
+Access to closed testing is granted as appreciation for contribution.\n
+\n
+%c[pda_green]THANK YOU FOR STAYING WITH US, STALKER%c[pda_white]\n
+    </text>
+</string>
+
+
+<!--TRANSLATE CREDITS-->
+<string id="encyclopedia_anthology_translate">
+    <text>English translation</text>
+</string>
+
+<string id="encyclopedia_anthology_translate_text">
+    <text>
+%c[pda_green]Translation credits%c[ui_gray_1]\n
+\n
+• %c[pda_white]Shadow of Chernobyl%c[ui_gray_1] — GSC Game World\n
+• %c[pda_white]Call of Pripyat%c[ui_gray_1] — GSC Game World\n
+• %c[pda_white]Path in the Mist%c[ui_gray_1] — PsyWarVeteran\n
+• %c[pda_white]Spatial Anomaly%c[ui_gray_1] — Member\n
+• %c[pda_white]Valley of Whispers%c[ui_gray_1] — TheRealFloki\n
+\n
+%c[pda_green]Special thanks%c[ui_gray_1]\n
+• Yuri Vernadsky — subtitles for Attribute intro and additional support\n
+• All contributors reporting missing texts and improving accuracy\n
+\n
+%c[pda_green]NOTE%c[ui_gray_1]\n
+Also thanks to all testers, translators, and the S.T.A.L.K.E.R. modding community for keeping the Zone alive.\n
+\n
+%c[pda_green]Anthology English translation by %c[pda_white]AlzHighMr%c[ui_gray_1]\n
+    </text>
+</string>
+
+
+
+<!--
+=================================================
+================================================= 
+     STORYLINES SECTION
+=================================================
+=================================================
+-->
+
+<!-- 
+     ATTRIBUTE
+-->
+<string id="encyclopedia_anthology_story_atribut">
+	<text>Atributte</text>
+</string>
+
+<string id="encyclopedia_anthology_story_atribut_text">
+	<text>
+		%c[pda_white]Main Character%c[ui_gray_1] - Voland
+
+		\n%c[pda_green]Information%c[ui_gray_1]
+		\nThe “Atributte” modification is a story expansion for the game S.T.A.L.K.E.R., set during the shutdown of the Brain Scorcher. The player takes on the role of a soldier nicknamed Voland, who, upon awakening from anabiosis, reunites with his old friend Sheriff. Together, they embark on a rescue mission into the Zone to find Voland’s brother Vitaliy, who has fallen into the hands of a new cult. The story of the modification is connected with events from the original game “Dreamcatcher.”
+
+		\n%c[pda_green]Characteristics%c[ui_gray_1]
+		\n• Faction: Militant Stalker
+		\n• Freeplay Mode: No
+		\n• Can continue playing Anomaly after the main story?: No
+		\n• Developers: VIVIENT Team
+	</text>
+</string>
+
+
+<!-- 
+     SPATIAL ANOMALY
+-->
+<string id="encyclopedia_anthology_story_spatial_anomaly">
+    <text>Spatial Anomaly</text>
+</string>
+<string id="encyclopedia_anthology_story_spatial_anomaly_text">
+    <text>
+        %c[pda_white]Main character%c[ui_gray_1] - Beast.\n
+        \n%c[pda_green]Information%c[ui_gray_1]\n
+        \nUpdate 4.1 is the final update for the "Spatial Anomaly" modification. The patch not only brings a number of fixes, but also introduces many new features, as well as new quests. This version of the modification takes into account all player feedback and suggestions, making the mod even better. The story tells us about the well-known mercenary "Beast" and his attempts to survive inside a mystical place called the "Spatial Anomaly," where completely different laws reign. Everything is now scarce: ammo, medicine, drinkable water, food, and even bolts. Yet nothing will stop the mercenary who seeks a way to escape this deadly trap.\n
+        \n%c[pda_green]Characteristics%c[ui_gray_1]\n
+        \n• Faction: Mercenaries
+        \n• Freeplay mode: yes
+        \n• Living Legend continuation: yes
+        \n• Mod developers: PROFFESIONAL and others
+    </text>
+</string>
+
+
+<!-- 
+     CALL OF PRIPYAT
+-->
+<string id="encyclopedia_anthology_story_call_of_pripyat">
+    <text>Call of Pripyat</text>
+</string>
+<string id="encyclopedia_anthology_story_call_of_pripyat_text">
+    <text>
+        %c[pda_white]Main character%c[ui_gray_1] - Degtyarev.\n
+        \n%c[pda_green]Information%c[ui_gray_1]\n
+        \nA military expedition to the center of the Zone vanishes under mysterious circumstances. The task of finding out what happened to the crews and uncovering the causes falls to Major Degtyarev, an SBU operative. You will answer the Call of Pripyat in the third chapter of the cult S.T.A.L.K.E.R. series.\n
+        \n%c[pda_green]Characteristics%c[ui_gray_1]\n
+        \n• Faction: Loners
+        \n• Freeplay mode: yes
+        \n• Living Legend continuation: no
+        \n• Developers: GSC Game World
+    </text>
+</string>
+
+
+<!-- 
+     PATH IN THE DARK
+-->
+<string id="encyclopedia_anthology_story_path_in_the_dark">
+    <text>Path in the Dark</text>
+</string>
+<string id="encyclopedia_anthology_story_path_in_the_dark_text">
+    <text>
+        %c[pda_white]Main character%c[ui_gray_1] - Shroud.\n
+        \n%c[pda_green]Information%c[ui_gray_1]\n
+        \nThe Zone hides many secrets — both its own and those brought from outside. Adventurers calling themselves stalkers try to uncover these mysteries. Some succeed, but most disappear in the Zone forever.\n
+        \n%c[pda_green]Characteristics%c[ui_gray_1]\n
+        \n• Faction: Loners
+        \n• Freeplay mode: yes
+        \n• Living Legend continuation: yes
+        \n• Mod developers: Spectrum Project
+    </text>
+</string>
+
+
+<!-- 
+     DEATH DEFYING 2 : IN A WEB OF LIES
+-->
+<string id="encyclopedia_anthology_story_in_a_web_of_lies">
+    <text>Death Defying 2 : In a Web of Lies</text>
+</string>
+<string id="encyclopedia_anthology_story_in_a_web_of_lies_text">
+    <text>
+        %c[pda_white]Main character%c[ui_gray_1] - Varg.\n
+        \n%c[pda_green]Information%c[ui_gray_1]\n
+        \nThe protagonist of the storyline is a free stalker named Varg. For a long time, he was part of Orest’s stalker squad, making a living by hunting rare and valuable artifacts around Agroyantar. But by fate’s will, ending up in the Swamps, Varg takes on a contract from the Clear Sky faction to search for a group of scientists who mysteriously disappeared in the western parts of the Chernobyl Exclusion Zone. In addition, he was tasked with finding traces of a Clear Sky search party that had followed the scientists in hot pursuit.\n
+        \n%c[pda_green]Characteristics%c[ui_gray_1]\n
+        \n• Faction: Loners
+        \n• Freeplay mode: no
+        \n• Living Legend continuation: no
+        \n• Mod developers: Geonezis, Goroff, makdm, gridgt, Falcon
+    </text>
+</string>
+
+
+<!-- 
+     VALLEY OF WHISPERS
+-->
+<string id="encyclopedia_anthology_story_valley_of_rustles">
+    <text>Valley of Whispers</text>
+</string>
+<string id="encyclopedia_anthology_story_valley_of_rustles_text">
+    <text>
+        %c[pda_white]Main character%c[ui_gray_1] - Max.\n
+        \n%c[pda_green]Information%c[ui_gray_1]\n
+        \nA new storyline, not connected with the plot of the original game. The story follows a simple stalker named Max, who decided to earn some money before leaving the Zone. All events of the mod take place in a brand-new location. There will be plenty of space to explore, things to search for, enemies to fight, and questions to ponder.\n
+        \n%c[pda_green]Characteristics%c[ui_gray_1]\n
+        \n• Faction: Loners
+        \n• Freeplay mode: yes
+        \n• Living Legend continuation: yes
+        \n• Mod developers: Den-Stash
+    </text>
+</string>
+
+
+<!-- 
+     FORGOTTEN SQUAD
+-->
+<string id="encyclopedia_anthology_story_forgotten_squad">
+    <text>Forgotten Squad</text>
+</string>
+<string id="encyclopedia_anthology_story_forgotten_squad_text">
+    <text>
+        %c[pda_white]Main character%c[ui_gray_1] - Snake.\n
+        \n%c[pda_green]Information%c[ui_gray_1]\n
+        \nIn this story, you will play as an experienced hunter nicknamed "Snake." Our hero must track down his comrade nicknamed "Bison" and his group, who have gone missing. Following their trail, the protagonist arrives in the vicinity of the former Scientific Research Institute and begins his search. The main storyline takes about 4 hours to complete, with additional time needed for side quests and exploration.\n
+        \n%c[pda_green]Characteristics%c[ui_gray_1]\n
+        \n• Faction: Loners
+        \n• Freeplay mode: yes
+        \n• Living Legend continuation: yes
+        \n• Mod developers: Another Team
+    </text>
+</string>
+
+
+<!-- 
+     SHADOW OF CHERNOBYL
+-->
+<string id="encyclopedia_anthology_story_shadow_of_chernobyl">
+    <text>Shadow of Chernobyl</text>
+</string>
+<string id="encyclopedia_anthology_story_shadow_of_chernobyl_text">
+    <text>
+        %c[pda_white]Main character%c[ui_gray_1] - Marked One.\n
+        \n%c[pda_green]Information%c[ui_gray_1]\n
+        \nThe events take place in the Chernobyl Exclusion Zone, which has turned from a place where destinies were broken into a threat to all mankind. The Zone reveals its secrets reluctantly, grudgingly, and only a rare hero can reach its very heart and discover what danger awaits there. A danger compared to which marauders, hostile factions, all monsters, and anomalies of the Zone will seem like mere preparation for an encounter with something far more fatal and terrifying.\n
+        \n%c[pda_green]Characteristics%c[ui_gray_1]\n
+        \n• Faction: Loners
+        \n• Freeplay mode: no
+        \n• Living Legend continuation: no
+        \n• Developers: GSC Game World
+    </text>
+</string>
+
+
+<!--
+=================================================
+================================================= 
+     GUIDE SECTION
+=================================================
+=================================================
+-->
+
+
+
+<!--FATAL ERROR-->
+<string id="encyclopedia_guide_fatal_error">
+    <text>Fatal Error (by Ncenka)</text>
+</string>
+
+<string id="encyclopedia_guide_fatal_error_text">
+    <text>
+%c[pda_green]Fatal Error v1.7.9 (by Ncenka)%c[ui_gray_1]\n
+\n
+This addon is a comprehensive gameplay overhaul for S.T.A.L.K.E.R. Anomaly, expanding PDA and electronic device management, realism, and survival mechanics.\n
+\n%c[pda_green]Key Features:%c[ui_gray_1]\n
+\n%c[pda_green]Expanded PDA Tiers & Rework:%c[pda_white]\n
+- New PDA models (Generations I-VI), including GETAC PS535E, MilDEF DB6M, Advantech P37B, MT-55 Kulon.\n
+- Each PDA has distinct properties: battery type, durability, supported features (Taskboard, Interactive, Autocomplete, PAW), map visibility, and resistance to Zone hazards.\n
+\n%c[pda_green]Device Degradation & Failure:\n 
+\n%c[pda_white]- PDAs, headlamps, and detectors can break or get damaged from:\n
+  • Emissions and Psy-Storms;\n
+  • Radiation exposure (cumulative);\n
+  • Electrical anomalies;\n
+  • Physical damage (e.g., hits to the head).\n
+- Broken devices are unusable until repaired; damaged PDA screens display visible cracks.\n
+\n%c[pda_green]Battery Power System:%c[pda_white]\n
+- Implements realistic batteries (AAA, AA, C, D, F, UPD, Car Battery) with different capacities.\n
+- Devices require specific battery types; UPD allows charging and power transfer.\n
+\n%c[pda_green]BIOS Configuration Menu:%c[pda_white]\n
+- In-game BIOS access for PDAs.\n
+- Modify system settings: beep alerts, overclocking, UI themes.\n
+\n%c[pda_green]Fatal Errors & System Failures:%c[pda_white]\n
+- PDAs may experience BSOD, temporary shutdowns, or forced reboots in emissions or hostile areas.\n
+- Reboot takes configurable time (default 30-60 seconds).\n
+- Technicians can decrypt PDAs, repair devices, fix BSOD, and replace screens.\n
+\n%c[pda_green]MCM Configuration:%c[pda_white]\n
+- Adjust failure chances for PDA tiers and devices.\n
+- Tweak timers for reboots, shutdowns, radiation checks.\n
+- Customize beep alert radius and assign reboot key.\n
+\n%c[pda_green]Compatibility & Integration:%c[pda_white]\n
+- Compatible with popular modpacks like G.A.M.M.A.\n
+- Patches included for Devices of Anomaly Redone, Powered Exoskeletons, Beef's NVGs Improved.\n
+- Respects other mods PDA functionality.\n
+\n%c[pda_green]Quality of Life & Immersion:%c[pda_white]\n
+- Beep alerts for nearby stalkers (configurable).\n
+- Overclocking boosts PDA performance but increases power consumption and failure risk.\n
+- Unlock different visual PDA themes.\n
+\n%c[pda_green]Summary:%c[pda_white]\n
+Fatal Error transforms electronic devices into dynamic, fragile tools that require maintenance, power, and careful management. It adds depth, challenge, and role-playing elements to the S.T.A.L.K.E.R. experience, making every emission, anomaly encounter, and firefight a potential threat to your equipment.\n
+\n%c[pda_green]Credits:%c[ui_gray_1]\n
+• Concept and scripting — %c[pda_white]Ncenka%c[ui_gray_1]\n
+• 3D PDA models and UI design — %c[pda_white]DAR213%c[ui_gray_1]\n
+\n%c[pda_white]More info:%c[ui_gray_1] https://www.moddb.com/mods/stalker-anomaly/addons/fatal-error-by-ncenka
+    </text>
+</string>
+
+
+
+<!--INTRODUCTION (MAIN)-->
+<string id="encyclopedia__ant_guide_main">
+    <text>Introduction</text>
+</string>
+
+<string id="encyclopedia__ant_guide_main_text">
+    <text>
+%c[pda_green]Stalker! Welcome to the Anthology Guide - your companion to exploring every corner of this vast project.%c[pda_white]\n
+\n
+Here you will find useful tips, helpful hints, and answers to questions you might encounter along the way.\n
+\n
+%c[pda_green]Please note:%c[pda_white] Some guides and instructions may differ depending on whether you are playing the %c[pda_green]Vanilla Anthology%c[pda_white] or the %c[pda_green]Modpack version%c[pda_white].\n
+\n
+%c[pda_green]This world is rich and detailed. Taking a moment to read through this guide carefully will help you avoid pitfalls and enjoy your journey to the fullest.%c[pda_white]\n
+\n
+Use this guide as a reference while exploring, and remember: knowledge is your best weapon in the Zone!\n
+\n
+%c[pda_green]Main Advantages of the Anomaly Anthology:%c[pda_white]\n
+- The implementation of both the 2006 Stalker Shadow of Chernobyl storyline and the 2009 Stalker Call of Pripyat storyline.\n
+- Seven other custom stories from the community: Spatial Anomaly, Path in the Mist, Valley of Whispers, Forgotten Squad, Death Defied - In the Web of Lies, and the original Anomaly 1.5.3 storyline.\n
+- All stories can be played to completion with all modernized enhancements that the Anthology brings.\n
+- Choice of preferred plot is made in the main menu before starting the game.\n
+- Includes a number of redesigned quests and game locations.\n
+- The Anthology features a around of %c[pda_green]76 locations%c[pda_white].\n
+\n
+%c[pda_green]Note:%c[pda_white] Like the modpack itself, this encyclopedia is in beta. Please report any errors or unclear information.\n
+- For the English version, contact %c[pda_green]AlzHighMr%c[pda_white].\n
+- For the Russian version, contact %c[pda_green]дедушка Ли%c[pda_white].
+    </text>
+</string>
+
+
+
+
+
+
+
+<!--IMPORTANT-->
+<string id="encyclopedia_ant_guide_important">
+    <text>Important Informations</text>
+</string>
+
+<string id="encyclopedia_ant_guide_important_text">
+    <text>
+%c[pda_green]Important information%c[pda_white]\n
+\n
+To avoid issues during gameplay, please read the following carefully.\n
+\n
+%c[pda_green]Storyline rules%c[pda_white]\n
+• Always create saves from the main menu during story missions.\n
+• Save before starting missions or talking to NPCs.\n
+• If an NPC becomes stuck after loading a quicksave, their logic may break and require quest restart.\n
+• If problems occur, replaying the mission may be necessary.\n
+\n
+%c[pda_green]Long play sessions%c[pda_white]\n
+Before extended gameplay sessions:\n
+- Create a full save in the main menu\n
+- Exit the game\n
+- Delete the %c[pda_white]shaders_cache%c[pda_white] folder\n
+- Load the save again\n
+\n
+%c[pda_green]Game Object ID limit%c[pda_white]\n
+The X-Ray engine has a limit of 65,535 Game Object IDs.\n
+Exceeding this limit may cause crashes, especially in extended modded setups.\n
+\n
+%c[pda_green]Cleanup hotkeys%c[pda_white]\n
+• %c[pda_white]F8%c[pda_white] — shows current Game Object ID usage\n
+• %c[pda_white]F10%c[pda_white] — removes physical world objects (props, barrels, crates)\n
+• %c[pda_white]F11%c[pda_white] — removes loose ammo objects (not inventory items)\n
+• %c[pda_white]Shift + F11%c[pda_white] — removes squads exceeding population limits\n
+    </text>
+</string>
+
+
+<!--FAQ-->
+<string id="encyclopedia_ant_guide_faq">
+    <text>FAQ</text>
+</string>
+
+<string id="encyclopedia_ant_guide_faq_text">
+    <text>
+%c[pda_green]Frequently asked questions%c[ui_gray_1]\n
+\n
+• %c[pda_white]Q: My weapon is jammed. How do I fix or rebind the key?%c[ui_gray_1]\n
+\n%c[pda_green]A:%c[ui_gray_1] By default, double-tap %c[pda_white]F%c[ui_gray_1]. Rebind via %c[pda_white]ESC - MCM - WPO (Weapon Parts Overhaul)%c[ui_gray_1].\n
+\n
+• %c[pda_white]Q: Routes to other areas are blocked.%c[ui_gray_1]\n
+\n%c[pda_green]A:%c[ui_gray_1] Enable %c[pda_white]Accessible Zone%c[ui_gray_1] on new game, or unlock routes via trader maps and PDA documents.\n
+    </text>
+</string>
+
+<!--Transmutation-->
+
+<string id="encyclopedia_anthology_breeder">
+	<text>Artefact Transmutators</text>
+</string>
+
+<string id="encyclopedia_anthology_breeder_text">
+    <text>
+%c[pda_green]Transmutator registry%c[ui_gray_1]\n
+\n
+%c[pda_yellow]Type I anomalies%c[ui_gray_1]\n
+\n• Professor Plyusnin — Clear Sky base\n
+• Doctor Makovetsky — Zaton (Skadovsk)\n
+• Professor Panin — Cordon (Vehicle Depot)\n
+• Assistant Anokhin — Yantar (Scientists bunker)\n
+\n
+%c[pda_yellow]Type II anomalies%c[ui_gray_1]\n
+\n• Doctor Brunko — Jupiter (Yanov station)\n
+• “Gloomy” — Army Warehouses (Freedom base)\n
+• Associate Professor Loskutov — Rostok\n
+• Professor Zelenkov — Research Institute outskirts\n
+\n
+%c[pda_yellow]Type III anomalies%c[ui_gray_1]\n
+\n• Professor Bozhevsky — Jupiter (Scientists bunker)\n
+\n
+%c[pda_yellow]Universal operators (Types I-IV)%c[ui_gray_1]\n
+\n• Doctor Kravchenko — Scientific station (Scientists bunker)\n
+• Professor Skorik — Anomalous Forest (Scientists bunker)\n
+• Associate Professor Bezgodko — Outskirts (Scientists camp)\n
+• Associate Professor Shkrekov — Anomalous Fields (Scientists camp)\n
+    </text>
+</string>
+
+
+
+<string id="encyclopedia_ant_guide_toxic_air">
+    <text>Toxic Air</text>
+</string>    
+<string id="encyclopedia_ant_guide_toxic_air_text">
+    <text>
+%c[pda_green]Toxic Air 0.73 - Surviving in Contaminated Air + Drunk's Enhanced Toxic Air Enhanced%c[pda_white]\n
+\nThis mod introduces dangerous contaminated air into the Zone, affecting only underground areas. A gas mask and oxygen tanks are required to survive. Follow these guidelines carefully:\n
+\n%c[pda_green]Using Gas Masks and Filters:%c[pda_white]\n
+- Always wear a gas mask and attach a filter before entering contaminated underground areas.\n
+- Filters have limited durability; replace them regularly.\n
+- Oxygen tanks provide additional breathing time in heavily contaminated zones.\n
+- Note: Gas masks and respirators no longer protect against radiation without a filter or oxygen tank.\n
+\n%c[pda_green]Underground Contaminated Areas:%c[pda_white]\n
+\n%c[ui_gray_1]• Agricultural Underground Laboratory - %c[pda_green]Light%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Laboratory X18 - %c[pda_green]Light%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Laboratory X16 - %c[pda_green]Light%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Jupiter Underground Facility - %c[pda_green]Light%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Bunker 10 - %c[pda_yellow]Medium%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Laboratory X8 - %c[pda_green]Light%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Monolith Control Laboratory - %c[pda_yellow]Medium%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Sarcophagus Laboratory - %c[pda_red]Heavy%c[ui_gray_1]\n
+\n%c[ui_gray_1]• War Laboratory - %c[pda_yellow]Medium%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Laboratory X5 - %c[pda_green]Light%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Laboratory X14 - %c[pda_green]Light%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Laboratory X27 - %c[pda_yellow]Medium%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Laboratory X7 - %c[pda_green]Light%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Pripyat Underground Facility - %c[pda_yellow]Medium%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Audron Laboratory - %c[pda_green]Light%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Collider Laboratory - %c[pda_red]Heavy%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Laboratory X2 - %c[pda_green]Light%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Laboratory X3 - %c[pda_green]Light%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Laboratory X6 - %c[pda_yellow]Medium%c[ui_gray_1]\n
+\n%c[ui_gray_1]• Laboratory X11 - %c[pda_red]Heavy%c[ui_gray_1]\n
+\n%c[pda_green]New Filters and Oxygen Tanks:%c[pda_white]\n
+- GP-5, M10, CBRN-70: Rebalanced for better protection in contaminated sectors.\n
+- R18 NBC: High-tier Mercenary filter, rare and not craftable.\n
+- DP-1: Low-tier Renegade filter, lootable or purchasable from Renegade trader.\n
+- MOF-6: Mid-tier Bandit filter, purchasable or lootable from Bandits.\n
+- MS-4: Low-tier Polish Civil Defense filter, available from Mercenary traders.\n
+- Refurbished M.58: Rare low-tier Ecologist filter, disappears after trade level 1.\n
+- NBC-77 SOF: Rare UNISG filter, in starting loadout or loot only for UNISG.\n
+- M10 'Protector' Variant: Duty exclusive, heavier but more protective.\n
+- FG-130 Soviet Oxygen Canister: Provides minor chemical protection, slot-specific.\n
+- Makeshift filter: Temporary protection, craftable or lootable.\n
+\n%c[pda_green]MCM Configuration:%c[pda_white]\n
+- Open the MCM menu (Toxic Air) to adjust filter durability, oxygen tank efficiency, and toggle watch alarms for low or empty filters.\n
+\n%c[pda_green]Survival Tips:%c[pda_white]\n
+- Always carry spare filters and oxygen tanks.\n
+- Plan your routes to minimize time in contaminated areas.\n
+- In emergencies, alcohol can temporarily reduce pollution effects.\n
+\n%c[pda_green]Credits:%c[pda_white]\n
+- Toxic Air by %c[pda_green]xcvb%c[pda_white]\n
+- Drunk's Enhanced Toxic Air by %c[pda_green]Drunk's%c[pda_white]\n
+\nFor more information, visit the official mod pages:\n
+\n- [Toxic Air 0.73](https://www.moddb.com/mods/stalker-anomaly/addons/toxic-air-01)\n
+\n- [Drunk's Enhanced Toxic Air 1.5.2](https://www.moddb.com/mods/stalker-anomaly/addons/drunks-enhanced-toxic-air-152)\n
+    </text>
+</string>
+
+
+
+
+
+<!--Magazines redux - Original text from st_items_maganizes.xml-->
+<string id="encyclopedia_article_mags">
+    <text>Anomaly magazines</text>
+</string>
+
+<string id="encyclopedia_article_mags_text">
+    <text>
+%c[pda_green]Mags Redux guide%c[ui_gray_1]\n
+\n
+This guide explains the core mechanics of the Mags Redux system.\n
+If you used the older Anomaly Magazines (Wuut), most behavior will feel familiar.\n
+\n
+%c[pda_green]WEAPON LOADING%c[ui_gray_1]\n
+• Weapons that use magazines in reality require magazines in-game\n
+• Other weapons (shotguns, revolvers, some bolt actions) behave as vanilla\n
+• Ammo must be manually loaded into magazines (drag ammo onto magazine)\n
+• Loading is sequential per round; click to cancel anytime\n
+\n
+%c[pda_green]LOADOUT SYSTEM%c[ui_gray_1]\n
+• Right-click magazine - “Add to loadout”\n
+• Loadout magazines are automatically used when reloading compatible weapons\n
+• System prioritizes:\n
+  - highest capacity magazine\n
+  - matching ammo type\n
+• Magazines can be manually inserted or ejected via weapon context menu\n
+• Ammo wheel allows quick magazine switching (sorted by top round)\n
+\n
+%c[pda_green]ACQUISITION%c[ui_gray_1]\n
+• Traders who sell weapons also stock magazines\n
+• NPCs carry magazines with limited ammo\n
+• High-ranking NPCs may drop improved magazines with:\n
+  - faster reload speed\n
+  - higher capacity\n
+  - or both\n
+\n
+%c[pda_green]MCM SETTINGS%c[ui_gray_1]\n
+• Loot quality — affects magazine drops and condition\n
+• Load/unload speed — modifies reloading time\n
+• Fast loading — instant mag handling in stash only\n
+• One in the chamber — preserves chambered round during swaps\n
+    </text>
+</string>
+
+
+<!--Weapon Parts overhaul - Original text from ui_st_jamming.xml-->
+	<string id="encyclopedia_article_wpo">
+		<text>Weapon Maintenance</text>
+	</string>
+<string id="encyclopedia_article_wpo_text">
+    <text>
+%c[pda_green]Weapon Parts Overhaul — quick FAQ%c[ui_gray_1]\n
+\n
+1. %c[pda_white]Why does my gun jam at 100%?%c[ui_gray_1]\n
+A: Parts are damaged despite overall condition. Check individual components.\n
+\n
+2. %c[pda_white]How do I unjam?%c[ui_gray_1]\n
+A: Double-tap USE or right-click weapon in inventory and select unjam.\n
+\n
+3. %c[pda_white]Why does condition drop when I replace parts?%c[ui_gray_1]\n
+A: Weapon requires relubrication above 60% condition. Use a Leatherman to reduce loss or a workbench to eliminate it.\n
+\n
+4. %c[pda_white]Can technicians repair parts?%c[ui_gray_1]\n
+A: Yes. In Anthology, technicians can repair individual parts via the weapon repair menu.\n
+\n
+%c[pda_green]SYSTEM OVERVIEW%c[ui_gray_1]\n
+Weapon Parts Overhaul changes weapon maintenance and degradation systems.\n
+\n
+%c[pda_green]PARTS & MAINTENANCE%c[ui_gray_1]\n
+• Overall weapon condition is easier to restore (reduced repair cost)\n
+• Parts require individual maintenance\n
+• Hovering shows part condition and status\n
+\n
+Status levels:\n
+%c[d_red]• Missing%c[ui_gray_1]\n
+%c[d_orange]• Damaged (cannot be cleaned)%c[ui_gray_1]\n
+%c[pda_yellow]• Dirty (cleanable)%c[ui_gray_1]\n
+%c[d_green]• Functional%c[ui_gray_1]\n
+\n
+• Parts can be removed via field stripping (except barrel and trigger)\n
+• Parts can be swapped via drag & drop (above 60% condition causes wear unless lubricated)\n
+• Workbench allows free replacement with correct kits (including barrel/trigger swaps)\n
+\n
+%c[pda_green]JAMS & DAMAGE%c[ui_gray_1]\n
+• Damage states: broken, damaged, worn, dirty, functional\n
+• Worse condition increases malfunction chance\n
+• Malfunctions: misfire, jam, severe jam\n
+\n
+Clearance rules:\n
+• Misfire / jam - unjam action\n
+• Severe jam - magazine must be ejected first\n
+\n
+• Barrels do not affect jam chance but reduce damage output when dirty/damaged\n
+• Firing below 85% condition may damage parts\n
+• Rain accelerates degradation\n
+\n
+%c[pda_green]ECONOMY & REPAIR%c[ui_gray_1]\n
+• Cleaning kits restore dirty parts (+10% condition)\n
+• Repair kits restore parts (+25% part / +10% weapon condition)\n
+• Technicians sell parts at high markup\n
+• Tools (files, ramrods, multitools) repair parts above 60%\n
+• Advanced kits repair parts above 10%\n
+    </text>
+</string>
+
+
+<string id="encyclopedia_ant_guide_cold_system">
+		<text>Cold System</text>
+	</string>
+<string id="encyclopedia_ant_guide_cold_system_text">
+    <text>
+%c[pda_green]Cold System 0.72 - Survival Guide%c[pda_white]\n
+This mod adds a realistic cold system that affects your health, stamina, and overall performance. Follow these tips to survive harsh conditions:\n
+\n%c[pda_green]Managing Cold:%c[pda_white]\n
+- Cold increases with wind, rain, and nighttime. Wear proper clothing to reduce exposure.\n
+- Keep moving to generate body heat.\n
+- Use fires, sunlight, and heat-emitting artifacts whenever possible.\n
+- Sleeping with a blanket in your inventory reduces cold more effectively (+50% effectiveness).\n
+\n%c[pda_green]Food and Drink:%c[pda_white]\n
+- Cooked food stays warm for approximately 6 in-game hours. Check the tooltip for temperature.\n
+- Alcohol temporarily reduces the effects of cold, but use it carefully.\n
+\n%c[pda_green]Fever System (v0.5+):%c[pda_white]\n
+- High cold exposure may cause fever, reducing health, regeneration, and movement speed.\n
+- Fever treatment: sleep, antibiotics, or specific medications based on their effectiveness.\n
+\n%c[pda_green]Settings:%c[pda_white]\n
+- Open the MCM menu (Cold System) to configure all cold system parameters.\n
+\n%c[pda_green]Tips:%c[pda_white]\n
+- Monitor your body temperature and food temperature regularly.\n
+- Plan your routes and avoid prolonged exposure to harsh weather.\n
+- Combine clothing, movement, and heat sources to stay warm efficiently.\n
+\nFor detailed instructions and updates, visit the official mod page: [Cold System 0.72](https://www.moddb.com/mods/stalker-anomaly/addons/cold-system-01)\n
+    </text>
+</string>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+NOT USED ANYMORE
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--TROUBLESHOOTING PLACEHOLDER-->
+<string id="encyclopedia_ant_guide_troubleshooting">
+    <text>Troubleshooting</text>
+</string>
+
+<string id="encyclopedia_ant_guide_troubleshooting_text">
+    <text>
+%c[pda_green]Troubleshooting%c[pda_white]\n
+This section will be updated once the most frequently reported issues after version 2.1 have been collected.\n
+It will include solutions, tips, and guidance to help you resolve common problems in Anthology.\n
+    </text>
+</string>
+
+<!--Mod Authors-->
+<string id="encyclopedia_ant_guide_mod_credits">
+    <text>Addons Credits</text>
+</string>
+
+<string id="encyclopedia_ant_guide_mod_credits_text">
+    <text>
+%c[pda_green]Addons Credits%c[pda_white]\n
+This section will be finalized after the beta release of Anthology.\n
+    </text>
+</string>
+
+
+
+<!--Added 12.11.2025-->
+<string id="encyclopedia_ant_guide_lootboxes">
+    <text>Anomaly Lootboxes</text>
+</string>    
+<string id="encyclopedia_ant_guide_lootboxes_text">
+    <text>
+%c[pda_green]Anomaly Lootboxes 2.1 - Randomized Rewards + Gameplay Enhancements%c[pda_white]\n
+\nThis mod introduces lootboxes throughout the Zone, adding randomized rewards to stashes and dead stalkers. Players must use lockpicks to open them, with difficulty based on the number of lockpicks required.\n
+\n%c[pda_green]Using Lootboxes:%c[pda_white]\n
+- Lootboxes appear in stashes, underground areas, and on dead stalkers.\n
+- Drag lockpicks onto the box to unlock it; difficulty depends on box type.\n
+- Technicians can open boxes for a cost, bypassing manual lockpicking.\n
+- Boxes now have weight based on contents; item condition affects selection.\n
+\n%c[pda_green]Types of Lootboxes:%c[pda_white]\n
+- Toolbox\n
+- Munitions Case\n
+- Food Storage Box\n
+- Scavenger's Junkbox\n
+- Medical Storage Case\n
+- Field Equipment Case\n
+- Competition Rifle Case\n
+- Additional random boxes appear in underground areas\n
+\n%c[pda_green]Lootbox Mechanics:%c[pda_white]\n
+- Lockpick sets are no longer required; individual lockpicks can be used immediately.\n
+- Randomized loot now spreads more dynamically across the Zone.\n
+- Money drops from lootboxes in usable stacks.\n
+- PDA spawns are based on box location rather than opening location.\n
+- Supports integration with other mods; custom items can appear in lootboxes.\n
+\n%c[pda_green]Gameplay Tips:%c[pda_white]\n
+- Always carry extra lockpicks.\n
+- Prioritize boxes in high-risk areas for better rewards.\n
+- Check underground levels for unique boxes.\n
+- Combine this system with faction missions to maximize rewards.\n
+\n%c[pda_green]Credits:%c[pda_white]\n
+- Anomaly Lootboxes by %c[pda_green]ahuyn%c[pda_white]\n
+- ModDB page: Anomaly Lootboxes https://www.moddb.com/mods/stalker-anomaly/addons/anomaly-lootboxes\n
+    </text>
+</string>
+
+<string id="encyclopedia_ant_guide_placeable_campfires">
+    <text>Campfires Placeable</text>
+</string>
+<string id="encyclopedia_ant_guide_placeable_campfires_text">
+    <text>
+%c[pda_green]Campfires Placeable 0.22 - Create Your Own Campfires in the Zone%c[pda_white]\n
+\nThis addon allows you to deploy a fully functional campfire almost anywhere in the Zone. Buy or gather firewood, place a fire, use it to save, cook food, or rest and survive.\n
+\n%c[pda_green]How it works:%c[pda_white]\n- Acquire Firewood item from traders.\n- Use firewood from your inventory to place a campfire on a suitable surface.\n- Make sure the placement surface is flat; adjust the radius in MCM if placement fails.\n- Once placed, the campfire works like a standard fire: save the game, cook food, rest.\n
+\n%c[pda_green]Additional Features:%c[pda_white]\n- Chopping wood: if you have an axe, right-click to gather wood. Degrades axe and adds hunger/thirst/fatigue penalties.\n- Designed to be compatible with most mods.\n
+\n%c[pda_green]Gameplay Tips:%c[pda_white]\n- Place campfires on safe flat surfaces.\n- Use them as mobile safe-zones to avoid fixed save points.\n- Carry extra firewood or an axe for longer expeditions.\n- Combine with cooking or survival mods for strategic placement.\n
+\n%c[pda_green]Credits:%c[pda_white]\n- Campfires Placeable by %c[pda_green]bvcx%c[pda_white]\n- ModDB page: https://www.moddb.com/mods/stalker-anomaly/addons/campfires-placeable-01\n
+    </text>
+</string>
+
+
+</string_table>

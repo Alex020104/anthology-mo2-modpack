@@ -1,0 +1,45 @@
+<string_table>
+	<string id="ui_mcm_menu_falls">
+		<text>Падения</text>
+	</string>
+
+	<string id="ui_mcm_falls_immobilize">
+		<text>Обездвиживание при падении</text>
+	</string>
+
+	<string id="ui_mcm_falls_weapon_drop_chance">
+		<text>Шанс выпадения оружия</text>
+	</string>
+
+	<string id="ui_mcm_falls_device_damage_chance">
+		<text>Шанс повреждения головного устройства</text>
+	</string>
+	<string id="ui_mcm_falls_device_damage_type">
+		<text>Вид повреждения головного устройства</text>
+	</string>
+	<string id="ui_mcm_lst_destroy">
+		<text>Удаление из инвентаря</text>
+	</string>
+	<string id="ui_mcm_lst_discharge">
+		<text>Полная разрядка</text>
+	</string>
+
+	<string id="ui_mcm_falls_hold_option">
+		<text>Я удерживаю клавишу</text>
+	</string>
+	<string id="ui_mcm_falls_hold_option_desc">
+		<text>Если одна из этих клавиш стоит у вас в режиме удержания, укажите это для корректной работы мода</text>
+	</string>
+	<string id="ui_mcm_lst_no">
+		<text>Нет</text>
+	</string>
+	<string id="ui_mcm_lst_crouch">
+		<text>Приседания</text>
+	</string>
+	<string id="ui_mcm_lst_walk">
+		<text>Ходьбы</text>
+	</string>
+	<string id="ui_mcm_lst_both">
+		<text>Обе</text>
+	</string>
+</string_table>

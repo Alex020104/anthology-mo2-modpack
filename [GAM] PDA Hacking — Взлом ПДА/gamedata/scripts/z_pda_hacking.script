@@ -1,0 +1,1001 @@
+xml = nil
+script_table = {}
+local gc = game.translate_string
+local parse_keys = utils_data.parse_string_keys
+
+local debug = false
+local function pr(...)
+	if debug then
+		printf(...)
+	end
+end
+
+faction_encyption = {
+	["army"] = 30 ,
+	["bandit"] = 0 ,
+	["csky"] = 20 ,
+	["dolg"] = 40 ,
+	["ecolog"] = 30 ,
+	["freedom"] = 20 ,
+	["killer"] = 40 ,
+	["stalker"] = 10 ,
+	["monolith"] = 50 ,
+	-- factions below this are commented out in vanilla
+	["renegade"] = 10 ,
+	["greh"] = 30 ,
+	["isg"] = 50,
+	["spectrum"] = 50,
+	["milstalk"] = 50,
+	["atribute"] = 50,
+}
+
+colors_str = {
+	["decrypt"] = "%c[255, 123, 217, 76]",
+	["cmdup"] = "%c[255, 63, 192, 255]",
+	["rescan"] = "%c[255, 54, 217, 136]",
+	["nuke"] = "%c[255, 255, 255, 255]",
+	["bruteforce"] = "%c[255, 255, 255, 63]",
+	["skey"] = "%c[255, 0, 0, 0]",
+	["extract"] = "%c[255, 255, 184, 28]",
+	["terminal"] = "%c[255, 150, 150, 150]",
+	["failed"] = "%c[255, 238, 28, 36]",
+}
+
+colors_argb = {
+	["decrypt"] = GetARGB(255, 123, 217, 76),
+	["cmdup"] = GetARGB(255, 63, 192, 255),
+	["rescan"] = GetARGB(255, 54, 217, 136),
+	["nuke"] = GetARGB(255, 255, 255, 255),
+	["bruteforce"] = GetARGB(255, 255, 255, 63),
+	["skey"] = GetARGB(255, 0, 0, 0),
+	["extract"] = GetARGB(255, 255, 184, 28),
+	["failed"] = GetARGB(255, 238, 28, 36),
+}
+
+pda_rarity_encryption_mult = {
+	["itm_pda_common"] = 1 , ["itm_pda_uncommon"] = 1.5, ["itm_pda_rare"] = 2,
+	["itm_pda_encrypted_common"] = 1 , ["itm_pda_encrypted_uncommon"] = 1.5, ["itm_pda_encrypted_rare"] = 2, -- Compatibility with "Better Encryption Overhaul"
+}
+
+base_init = ui_pda_npc_tab.pda_npc_tab.InitControls
+function ui_pda_npc_tab.pda_npc_tab:InitControls()
+	base_init(self)
+	xml = CScriptXmlInit()
+	xml:ParseFile("ui_pda_hacking.xml")
+end
+
+base_reset = ui_pda_npc_tab.pda_npc_tab.Reset
+function ui_pda_npc_tab.pda_npc_tab:Reset(info)
+	self.form_text:Show(false)
+
+	base_reset(self, info)
+
+	if self.pda_info then
+        if self.form_hack then
+            self.form_hack:Show(false)
+        end
+        if self.hack_button then
+            self.hack_button:Show(false)
+        end
+        if self.dark_overlay then
+            self.dark_overlay:Show(false)
+        end
+        
+        RemoveTimeEvent("pdahack", "setfail")
+        RemoveTimeEvent("pdahack", "set_decrypt_bar")
+        RemoveTimeEvent("pdahack", "unlockpda")
+        
+        if self.snd_skey and self.snd_skey:playing() then
+            self.snd_skey:stop()
+        end
+    end
+	if not info then return end
+	local pda_sec = db.actor:active_item() and db.actor:active_item():section()
+	if not pda_sec then return end
+
+	if not (self.state == "encrypted") then return end
+
+	self.pda_info = info
+
+	if self.pda_info.attempted_hack then
+		self.form_text:SetText(gc("ui_st_npc_pda_access_denied") .. "\\n\\n" .. gc("ui_st_pdahacking_failed"))
+		return
+	end
+	self.form_text:SetText(gc("ui_st_npc_pda_access_denied"))
+
+	local best_hack_device = { ["section"] = nil, ["commands"] = 0, ["scripts"] = 0, ["extracts"] = 0}
+	db.actor:iterate_inventory(function(npc, item)
+		local sec = item:section()
+		local cmd_points = SYS_GetParam(2, sec, "command_points", 0)
+		if cmd_points > best_hack_device.commands then
+			best_hack_device.section = sec
+			best_hack_device.commands = cmd_points
+			best_hack_device.scripts = SYS_GetParam(2, sec, "initial_scripts", 0)
+			best_hack_device.extracts = SYS_GetParam(2, sec, "currency_extracts", 0)
+		end
+	end)
+	if best_hack_device.commands == 0 then return end
+
+	self.snd_unlock = xr_sound.get_safe_sound_object( "pda_hacking\\unlocked" )
+	self.snd_failed = xr_sound.get_safe_sound_object( "pda_hacking\\failed" )
+	self.snd_skey = xr_sound.get_safe_sound_object( "pda_hacking\\normal_hacking_sound" )
+
+	self.hack_button = self.hack_button or xml:Init3tButton("form:hack_button", self)
+	self:Register(self.hack_button, "hack_button")
+	self:AddCallback("hack_button", ui_events.BUTTON_CLICKED, self.Start_Hack, self)
+	self.hack_button:Show(true)
+
+	self.cmds_remaining = best_hack_device.commands --20 + (faction_encyption[info.contact.comm] / 5)
+--	local encryption = faction_encyption[self.pda_info.contact.comm]
+	local encryption = faction_encyption[self.pda_info.contact.comm] or 10
+	local rarity_mult = pda_rarity_encryption_mult[pda_sec] or 1
+	self.encryption_strength_base = clamp(round_idp(encryption * rarity_mult, 1), 0, 100)
+	self.encryption_strength = self.encryption_strength_base
+	self.encryption_strength_visual = self.encryption_strength_base
+	self.data_decrypted = 0
+	self.data_decrypted_target = 0
+	self.scripts_to_add = 0
+	self.extracts_remaining = best_hack_device.extracts - (self.pda_info.extracts_used or 0)
+	self.skey_unlock = false
+
+	self.form_hack = self.form_hack or xml:InitStatic("form", self)
+	self.form_hack.border = self.form_hack.border or xml:InitFrame("form:border", self.form_hack)
+
+	self.cmd_wnd = self.cmd_wnd or xml:InitStatic("form:cmd_wnd", self.form_hack)
+	self.cmd_wnd.title = self.cmd_wnd.title or xml:InitTextWnd("form:cmd_wnd:title", self.cmd_wnd)
+	self.cmd_wnd.title:SetFont(get_font("large"))
+	self.cmd_wnd.icon = self.cmd_wnd.icon or xml:InitStatic("form:cmd_wnd:icon", self.cmd_wnd)
+	self.cmd_wnd.number = self.cmd_wnd.number or xml:InitTextWnd("form:cmd_wnd:number", self.cmd_wnd)
+	self.cmd_wnd.number:SetText(self.cmds_remaining)
+	self.cmd_wnd.number:SetFont(get_font("huge"))
+
+	self.cmd_wnd.cost_line = self.cmd_wnd.cost_line or xml:InitStatic("form:cmd_wnd:cost_line", self.cmd_wnd)
+	self.cmd_wnd.cost_line.cost_text = self.cmd_wnd.cost_line.cost_text or xml:InitStatic("form:cmd_wnd:cost_line:cost_text", self.cmd_wnd.cost_line)
+	self.cmd_wnd.cost_line.icon = self.cmd_wnd.cost_line.icon or xml:InitStatic("form:cmd_wnd:cost_line:icon", self.cmd_wnd.cost_line)
+	self.cmd_wnd.cost_line.cost = self.cmd_wnd.cost_line.cost or xml:InitStatic("form:cmd_wnd:cost_line:cost", self.cmd_wnd.cost_line)
+	self.cmd_wnd.cost_line.cost_text:TextControl():SetFont(get_font("large"))
+	self.cmd_wnd.cost_line.cost:TextControl():SetFont(get_font("large"))
+
+	self.script_wnd = self.script_wnd or xml:InitStatic("form:script_wnd", self.form_hack)
+	self.script_wnd.title = self.script_wnd.title or xml:InitStatic("form:script_wnd:title", self.script_wnd)
+	self.script_wnd.title:TextControl():SetFont(get_font("large"))
+	self.script_wnd.scriptname = self.script_wnd.scriptname or xml:InitTextWnd("form:script_wnd:scriptname", self.script_wnd)
+	self.script_wnd.scriptname:SetFont(get_font("large"))
+	self.script_wnd.powertxt = self.script_wnd.powertxt or xml:InitStatic("form:script_wnd:powertxt", self.script_wnd)
+	self.script_wnd.powertxt:TextControl():SetFont(get_font("large"))
+	self.script_wnd.powernumber = self.script_wnd.powernumber or xml:InitStatic("form:script_wnd:powernumber", self.script_wnd)
+	self.script_wnd.powernumber:TextControl():SetFont(get_font("large"))
+	self.script_wnd:Show(false)
+
+	self.script_list_wnd = self.script_list_wnd or xml:InitStatic("form:script_list_wnd", self.form_hack)
+	self.script_list_wnd.title = self.script_list_wnd.title or xml:InitStatic("form:script_list_wnd:title", self.script_list_wnd)
+	self.script_list_wnd.title:TextControl():SetFont(get_font("large"))
+	self.hack_script_list = self.hack_script_list or xml:InitListBox("form:script_list_wnd:list", self.script_list_wnd)
+	self:Register(self.hack_script_list, "hack_script_list")
+	self:AddCallback("hack_script_list",ui_events.LIST_ITEM_CLICKED,self.OnSelectScript,self)
+	self.hack_script_list:RemoveAll()
+
+	self.cmd_list_wnd = self.cmd_list_wnd or xml:InitStatic("form:cmd_list_wnd", self.form_hack)
+	self.cmd_list_wnd.title = self.cmd_list_wnd.title or xml:InitStatic("form:cmd_list_wnd:title", self.cmd_list_wnd)
+	self.cmd_list_wnd.title:TextControl():SetFont(get_font("large"))
+	self.command_list = self.command_list or xml:InitListBox("form:cmd_list_wnd:list", self.cmd_list_wnd)
+	self:Register(self.command_list, "command_list")
+	self:AddCallback("command_list",ui_events.LIST_ITEM_CLICKED,self.OnSelectCommand,self)
+	self.command_list:RemoveAll()
+	self.cmd_list_wnd:Show(false)
+
+	self.terminal_form = self.terminal_form or xml:InitStatic("form:terminal_wnd", self.form_hack)
+	self.terminal = self.terminal or xml:InitStatic("form:terminal_wnd:terminal", self.terminal_form)
+	self.terminal.prompt_wnd = self.terminal.prompt_wnd or xml:InitTextWnd("form:terminal_wnd:terminal:prompt_wnd", self.terminal)
+	self.terminal.prompt_wnd:SetFont(get_font("medium"))
+	self.terminal.prompt_wnd:SetEllipsis(true)
+
+	self.terminal.text_wnd = self.terminal.text_wnd or xml:InitTextWnd("form:terminal_wnd:terminal:text_wnd", nil)
+	self.terminal.text_wnd:SetFont(get_font("medium"))
+	self.terminal.text_wnd:SetText(gc("ui_st_pdahacking_welcome"))
+	if not self.terminal_scroll then
+		self.terminal_scroll = xml:InitScrollView("form:terminal_wnd:terminal:terminal_scroll", self.terminal)
+		self.terminal_scroll:AddWindow(self.terminal.text_wnd, true)
+		self.terminal.text_wnd:SetAutoDelete(false)
+	end
+
+	self.decrypt_wnd = self.decrypt_wnd or xml:InitStatic("form:decrypt_wnd", self.form_hack)
+	self.decrypt_wnd.bg = self.decrypt_wnd.bg or xml:InitStatic("form:decrypt_wnd:prog_back", self.decrypt_wnd)
+	self.decrypt_wnd.bar = self.decrypt_wnd.bar or xml:InitProgressBar("form:decrypt_wnd:decrypt_bar", self.decrypt_wnd)
+	self.decrypt_wnd.bar:SetProgressPos( 0 )
+
+	self.decrypt_wnd.title = self.decrypt_wnd.title or xml:InitStatic("form:decrypt_wnd:title", self.decrypt_wnd)
+	self.decrypt_wnd.title:TextControl():SetFont(get_font("large"))
+	self.decrypt_wnd.encr_str = self.decrypt_wnd.encr_str or xml:InitStatic("form:decrypt_wnd:encr_str", self.decrypt_wnd)
+	self.decrypt_wnd.encr_str.icon = self.decrypt_wnd.encr_str.icon or xml:InitStatic("form:decrypt_wnd:encr_str:icon", self.decrypt_wnd.encr_str)
+	self.decrypt_wnd.encr_str.pct = self.decrypt_wnd.encr_str.pct or xml:InitTextWnd("form:decrypt_wnd:encr_str:str_pct", self.decrypt_wnd.encr_str)
+	self.decrypt_wnd.encr_str.pct:SetText( self.encryption_strength .. "%")
+	self.decrypt_wnd.encr_str.pct:SetFont(get_font("large"))
+
+	self.decrypt_wnd.rarity_title = self.decrypt_wnd.rarity_title or xml:InitStatic("form:decrypt_wnd:rarity_title", self.decrypt_wnd)
+	self.decrypt_wnd.rarity_title:TextControl():SetFont(get_font("large"))
+	self.decrypt_wnd.rarity_title:TextControl():SetText( gc("actor_" .. self.pda_info.contact.comm) .. ", " .. gc("st_pdahacking_rarity_" .. pda_sec) .. " " .. gc("st_pda_name"))
+
+	self.decrypt_wnd.decrypted = self.decrypt_wnd.decrypted or xml:InitStatic("form:decrypt_wnd:decrypted", self.decrypt_wnd)
+	self.decrypt_wnd.decrypted.title = self.decrypt_wnd.decrypted.title or xml:InitStatic("form:decrypt_wnd:decrypted:title", self.decrypt_wnd.decrypted)
+	self.decrypt_wnd.decrypted.title:TextControl():SetFont(get_font("large"))
+	self.decrypt_wnd.decrypted.pct_bg = self.decrypt_wnd.decrypted.pct_bg or xml:InitStatic("form:decrypt_wnd:decrypted:pct_bg", self.decrypt_wnd.decrypted)
+	self.decrypt_wnd.decrypted.pct_bg:TextControl():SetFont(get_font("huge"))
+	self.decrypt_wnd.decrypted.pct_bg:TextControl():SetText( round_idp(self.data_decrypted, 1) .. "%")
+
+	self.dark_overlay = self.dark_overlay or xml:InitStatic("dark_overlay", self)
+	self.dark_overlay.status_title = self.dark_overlay.status_title or xml:InitStatic("dark_overlay:status_title", self.dark_overlay)
+	self.dark_overlay.status_title:TextControl():SetFont(get_font("huge"))
+	self.dark_overlay:Show(false)
+
+	self.form_hack:Show(false)
+
+	-- Build table of scripts from Anomaly install. Includes both vanilla and mod scripts
+	script_table = {}
+	local temp_script_t = {} -- keep track of duplicates
+	for k, v in pairs(_G) do
+		if type(_G[k]) == "table" then
+			local script_name = k:gsub("_mcm", "")
+			script_name = script_name:gsub("^(z+_)+", "")
+			--script_name = script_name:gsub("^z+_", "")
+
+			if not temp_script_t[script_name] and script_name:len() >= 3 then
+				temp_script_t[script_name] = true
+				script_table[#script_table+1] = script_name
+			end
+		end
+	end
+
+	self:Generate_Scripts(best_hack_device.scripts)
+end
+
+base_update = ui_pda_npc_tab.pda_npc_tab.Update
+function ui_pda_npc_tab.pda_npc_tab:Update()
+	base_update(self)
+
+	if not (self.form_hack and self.form_hack:IsShown()) then return end
+
+	if self.skey_unlock and self.dark_overlay.status_title:IsShown() then
+		local time = get_time_elapsed()
+		if round(time * 3) % 3 == 0 then
+			if round(time * 50) % 5 == 0 then
+				local scrambled_title = scramble_string(self.skey_title)
+				self.dark_overlay.status_title:TextControl():SetText(scrambled_title)
+				--self.dark_overlay.status_title:TextControl():SetTextColor(GetARGB(255, 0, 0, 0))
+			end
+		else
+			self.dark_overlay.status_title:TextControl():SetText(self.skey_title)
+			--self.dark_overlay.status_title:TextControl():SetTextColor(GetARGB(255, 55, 55, 55))
+		end
+	end
+
+	local prompt_set = false
+	if self.command_list then
+		for i = 0, self.command_list:GetSize() do
+			local item = self.command_list:GetItemByIndex(i)
+			if item and item.name == "SkeletonKey" and round(get_time_elapsed() * 55) % 5 == 0 then
+				item.str_title:SetText(scramble_string(gc("ui_st_pdahacking_skey") .. "#&$"))
+			end
+			if item and item:IsCursorOverWindow() then
+				if item.name == "SkeletonKey" then
+					if round(get_time_elapsed() * 50) % 5 == 0 then
+						self.terminal.prompt_wnd:SetText(gc("ui_st_pdahacking_preprompt") .. parse_keys(gc("ui_st_pdahacking_run"),{ ["name"] = scramble_string(gc("ui_st_pdahacking_skey"))}))
+					end
+					prompt_set = true
+				else
+					self.terminal.prompt_wnd:SetText(gc("ui_st_pdahacking_preprompt") .. parse_keys(gc("ui_st_pdahacking_run"),{ ["name"] = gc("ui_st_pdahacking_" .. name_key[item.name])}))
+					prompt_set = true
+				end
+			end
+		end
+	end
+
+	if self.terminal and self.terminal.prompt_wnd and not prompt_set then
+		local mod = round(get_time_elapsed() * 4) % 4
+		if mod == 0 or mod == 2 then
+			self.terminal.prompt_wnd:SetText(gc("ui_st_pdahacking_preprompt"))
+		else
+			self.terminal.prompt_wnd:SetText(gc("ui_st_pdahacking_preprompt_us"))
+		end
+	end
+
+	if self.hack_script_list then
+		for i = 0, self.hack_script_list:GetSize() do
+			local item = self.hack_script_list:GetItemByIndex(i)
+			if item and item:IsCursorOverWindow() then
+				self.terminal.prompt_wnd:SetText(gc("ui_st_pdahacking_preprompt") .. parse_keys(gc("ui_st_pdahacking_load"),{ ["script"] = item.name}))
+			end
+		end
+	end
+end
+
+ui_pda_npc_tab.pda_npc_tab.OnSelectScript = function(self)
+	if self.data_decrypted_target >= 100 then return end
+	if self.scripts_to_add > 0 then return end
+	if self.loaded_script and self.loaded_script.name == self.hack_script_list:GetSelectedItem().name then return end
+	if self.cmds_remaining <= 0 then return end
+
+	self.command_list:RemoveAll()
+
+	if self.loaded_script then
+		self.loaded_script.str_title:SetTextColor(GetARGB(255, 255, 255, 255))
+	end
+	self.loaded_script = self.hack_script_list:GetSelectedItem()
+	self.loaded_script.str_title:SetTextColor(colors_argb.rescan)
+
+	self.script_wnd.scriptname:SetText(self.loaded_script.name .. ".script")
+	self.script_wnd.powernumber:TextControl():SetText(self.loaded_script.power)
+	self.script_wnd:Show(true)
+
+	local total_power = self.loaded_script.power
+
+	math.randomseed( self.loaded_script.seed )
+
+	if math.random() <= 0.40 then
+		self.command_list:AddExistingItem(command_entry("CommandUp", total_power))
+	end
+	if math.random() <= 0.40 then
+		self.command_list:AddExistingItem(command_entry("Re-Scan", total_power))
+	end
+	if math.random() <= 0.40 then
+		self.command_list:AddExistingItem(command_entry("BruteForce", total_power))
+	end
+	if math.random() <= 0.40 and self.encryption_strength > 0 then
+		self.command_list:AddExistingItem(command_entry("Nuke", total_power, self.encryption_strength))
+	end
+	if math.random() <= 0.01 then -- 0.01
+		self.command_list:AddExistingItem(command_entry("SkeletonKey", total_power))
+	end
+	if math.random() <= 0.40 or self.command_list:GetSize() == 0 then
+		self.command_list:AddExistingItem(command_entry("Decrypt", total_power, self.encryption_strength))
+	end
+	if math.random() <= 0.10 and self.extracts_remaining > 0 and settings.extract_reward_mult > 0 then
+		self.command_list:AddExistingItem(command_entry("Extract", total_power, self.encryption_strength, self.encryption_strength_base))
+	end
+
+	self.cmd_list_wnd:Show(true)
+
+	self:Change_Commands(-1)
+
+	local text = parse_keys(gc("ui_st_pdahacking_loaded"), {["script"] = self.loaded_script.name})
+	self:Write_Terminal(text)
+end
+
+ui_pda_npc_tab.pda_npc_tab.OnSelectCommand = function(self)
+	if self.data_decrypted_target >= 100 then return end
+	local item = self.command_list:GetSelectedItem()
+	if item.name ~= "CommandUp" and self.cmds_remaining <= 0 then return end
+
+	if item.name == "Nuke" then
+		local nuke_effect = get_nuke_effect(item.power, self.encryption_strength)
+		self:Change_Encryption(nuke_effect)
+		self.hack_script_list:RemoveItem(self.loaded_script)
+
+		local effect_str = "%" .. colors_str.nuke .. "-" .. round_idp(nuke_effect, 1) .. "%%%" .. colors_str.terminal
+		self:Write_Terminal(parse_keys(gc("ui_st_pdahacking_running"), {["name"] = gc("ui_st_pdahacking_" .. name_key[item.name]), ["effect"] = effect_str}))
+	elseif item.name == "Decrypt" then
+		local decrypt_effect = get_decrypt_effect(item.power, self.encryption_strength)
+		if decrypt_effect <= 0 then return end
+		self:Set_Data_Decrypted(self.data_decrypted + decrypt_effect)
+		self.hack_script_list:RemoveItem(self.loaded_script)
+
+		local effect_str = "%" .. colors_str.decrypt .. "+" .. round_idp(decrypt_effect, 1) .. "%%%" .. colors_str.terminal
+		self:Write_Terminal(parse_keys(gc("ui_st_pdahacking_running"), {["name"] = gc("ui_st_pdahacking_" .. name_key[item.name]), ["effect"] = effect_str}))
+	elseif item.name == "Re-Scan" then
+		self.hack_script_list:RemoveItem(self.loaded_script)
+		local gen_count = get_rescan_count(item.power)
+		self:Generate_Scripts(gen_count)
+		self.hack_script_list:Show(true)
+
+		local effect_str = "%" .. colors_str.rescan .. "+" .. gen_count .. "%" .. colors_str.terminal
+		self:Write_Terminal(parse_keys(gc("ui_st_pdahacking_running"), {["name"] = gc("ui_st_pdahacking_" .. name_key[item.name]), ["effect"] = effect_str}))
+	elseif item.name == "CommandUp" then
+		local cmd_bonus = get_command_up(item.power)
+		self:Change_Commands(cmd_bonus)
+		self.hack_script_list:RemoveItem(self.loaded_script)
+
+		local effect_str = "%" .. colors_str.cmdup .. "+" .. cmd_bonus .. "%" .. colors_str.terminal
+		self:Write_Terminal(parse_keys(gc("ui_st_pdahacking_running"), {["name"] = gc("ui_st_pdahacking_" .. name_key[item.name]), ["effect"] = effect_str}))
+	elseif item.name =="BruteForce" then
+		local chance = get_brute_chance(item.power)
+
+		local effect_str = "%" .. colors_str.bruteforce .. round_idp(chance, 1) .. "%%%" .. colors_str.terminal
+		local text = parse_keys(gc("ui_st_pdahacking_running"), {["name"] = gc("ui_st_pdahacking_" .. name_key[item.name]), ["effect"] = effect_str})
+
+		if chance > (math.random() * 100) then
+			self:Set_Data_Decrypted(100)
+			text = text .. "... " .. colors_str.decrypt .. gc("ui_st_pdahacking_bruteforce_success")
+		else
+			text = text .. "... " .. colors_str.failed .. gc("ui_st_pdahacking_bruteforce_fail")
+		end
+		self:Write_Terminal(text)
+		self.hack_script_list:RemoveItem(self.loaded_script)
+	elseif item.name == "Extract" then
+		local extracted_ru = get_extract_money(item.power, self.encryption_strength_base)
+		db.actor:give_money(extracted_ru)
+		local header = gc("ui_st_pdahacking_extract_header")
+		local msg = parse_keys(gc("ui_st_pdahacking_extract_msg"), { ["income"] = extracted_ru })
+		xr_sound.set_sound_play(AC_ID, "pda_tips")
+		db.actor:give_game_news(header, msg, "ui_inGame2_PD_Sostoyatelniy_klient", 0, 5000)
+
+		self.extracts_remaining = self.extracts_remaining - 1
+		self.pda_info.extracts_used = self.pda_info.extracts_used and (self.pda_info.extracts_used + 1) or 1
+		self.hack_script_list:RemoveItem(self.loaded_script)
+
+		local effect_str = "%" .. colors_str.extract .. "+" .. gc("ui_st_pdahacking_ruble") .. extracted_ru .. "%" .. colors_str.terminal
+		self:Write_Terminal(parse_keys(gc("ui_st_pdahacking_running"), {["name"] = gc("ui_st_pdahacking_" .. name_key[item.name]), ["effect"] = effect_str}))
+	elseif item.name == "SkeletonKey" then
+		self:Set_Data_Decrypted(100)
+		self.skey_unlock = true
+
+		if self.snd_skey and settings.soundfx_volume > 0 then
+			self.snd_skey.volume = 1 * settings.soundfx_volume
+			self.snd_skey:play(db.actor, 0, sound_object.s2d)
+		end
+
+		self.dark_overlay:Show(true)
+		self.dark_overlay.status_title:Show(false)
+		local skey_used_before = load_var(db.actor, "pdahack_skeys_used", 0)
+		local str_index = skey_used_before
+		if str_index >= 7 then
+			str_index = str_index % 7
+		end
+		self.skey_title = gc("ui_st_pdahacking_skey_" .. str_index)
+		save_var(db.actor, "pdahack_skeys_used", skey_used_before + 1)
+
+		CreateTimeEvent("pdahack", "show_skey_status", 1, function()
+			local h = hit()
+			h.type = hit.telepatic
+			h.power = 0.2
+			h.impulse = 1
+			h.direction = VEC_Z
+			h.draftsman = db.actor
+			db.actor:hit(h)
+
+			self.dark_overlay.status_title:TextControl():SetTextColor(GetARGB(255, 0, 0, 0))
+			--self.dark_overlay.status_title:TextControl():SetTextColor(GetARGB(255, 55, 55, 55))
+			self.dark_overlay.status_title:TextControl():SetText(self.skey_title)
+			self.dark_overlay.status_title:Show(true)
+			return true
+		end)
+	end
+
+	self.loaded_script = nil
+	self.command_list:RemoveAll()
+	if not (item.name == "CommandUp") then
+		self:Change_Commands(-1)
+	end
+	self.cmd_list_wnd:Show(false)
+	self.script_wnd:Show(false)
+
+--[[ 	pr("scroll pos " .. self.hack_script_list:GetCurrentScrollPos())
+	if self.hack_script_list:GetSize() * 27 > self.hack_script_list:GetCurrentScrollPos() then
+		self.hack_script_list:ScrollToEnd()
+	end ]]
+
+	if self.hack_script_list:GetSize() == 0 and self.data_decrypted_target < 100 and self.scripts_to_add <= 0 then
+		self:HackFailed()
+	end
+end
+
+function ui_pda_npc_tab.pda_npc_tab:Start_Hack()
+	self.form_text:Show(false)
+	self.hack_button:Show(false)
+	self.form_hack:Show(true)
+	self.hack_script_list:Show(true)
+	self.pda_info.attempted_hack = true
+end
+
+function ui_pda_npc_tab.pda_npc_tab:Change_Commands(change)
+	if change < 0 then
+		self.cmd_wnd.number:SetText(self.cmds_remaining .. " -1")
+		self.cmds_remaining = self.cmds_remaining + change
+		CreateTimeEvent("pdahack", "set_cmd_text", 0.4, function()
+			self.cmd_wnd.number:SetText(self.cmds_remaining)
+			return true
+		end)
+
+		local cmd_up_in_list = false
+		for i = 0, self.command_list:GetSize() do
+			local cmd_item = self.command_list:GetItemByIndex(i)
+			if cmd_item and cmd_item.name == "CommandUp" then
+				cmd_up_in_list = true
+				break
+			end
+		end
+		if self.cmds_remaining <= 0 and self.data_decrypted_target < 100 and not cmd_up_in_list then
+			self:HackFailed()
+		end
+	elseif change > 0 then
+		self.cmd_wnd.number:SetText(self.cmds_remaining .. " +" .. change)
+		self.cmds_remaining = self.cmds_remaining + change
+		CreateTimeEvent("pdahack", "set_cmd_text", 0.4, function()
+			self.cmd_wnd.number:SetText(self.cmds_remaining)
+			return true
+		end)
+	end
+end
+
+function ui_pda_npc_tab.pda_npc_tab:HackFailed()
+	self.script_wnd:Show(false)
+	self.hack_script_list:Show(false)
+	self.cmd_list_wnd:Show(false)
+	self.hack_button:Show(false)
+	self.form_text:SetText(gc("ui_st_npc_pda_access_denied") .. "\\n\\n" .. gc("ui_st_pdahacking_failed"))
+
+	CreateTimeEvent("pdahack", "darkoverlay", 1, function() 
+		if self.snd_failed and settings.soundfx_volume > 0 then
+			self.snd_failed.volume = 0.8 * settings.soundfx_volume
+			self.snd_failed:play(db.actor, 0, sound_object.s2d)
+		end
+
+		self.dark_overlay:Show(true)
+		self.dark_overlay.status_title:TextControl():SetTextColor(colors_argb.failed)
+		if self.cmds_remaining <= 0 then
+			self.dark_overlay.status_title:TextControl():SetText(gc("ui_st_pdahacking_outof_cmd"))
+		else
+			self.dark_overlay.status_title:TextControl():SetText(gc("ui_st_pdahacking_outof_scripts"))
+		end
+		return true
+	end)
+
+	CreateTimeEvent("pdahack", "setfail", 4, function() 
+		self:Reset(self.pda_info)
+	end)
+end
+
+function ui_pda_npc_tab.pda_npc_tab:Write_Terminal(text)
+	self.terminal_scroll:RemoveWindow(self.terminal.text_wnd)
+	self.terminal_scroll:Clear()
+
+	local console_text = self.terminal.text_wnd:GetText()
+	console_text = console_text .. "\\n" .. colors_str.terminal .. text
+	self.terminal.text_wnd:SetText(console_text)
+
+	local scroll_height = self.terminal_scroll:GetHeight()
+	self.terminal.text_wnd:AdjustHeightToText()
+	local term_text_height = self.terminal.text_wnd:GetHeight()
+
+	if term_text_height < scroll_height then
+		local width = self.terminal.text_wnd:GetWidth()
+		self.terminal.text_wnd:SetWndSize(vector2():set(width, scroll_height))
+	end
+
+	self.terminal_scroll:AddWindow(self.terminal.text_wnd, true)
+	self.terminal.text_wnd:SetAutoDelete(false)
+	self.terminal_scroll:ScrollToEnd()
+end
+
+function lerpup(start, target, step)
+	return start + step >= target and target or start + step
+end
+
+function ui_pda_npc_tab.pda_npc_tab:Set_Data_Decrypted(data)
+	self.data_decrypted_target = clamp(data, self.data_decrypted_target, 100)
+	if self.data_decrypted_target == 100 then
+		self.script_wnd:Show(false)
+		self.hack_script_list:Show(false)
+		self.pda_info.state = "default"
+	end
+
+	CreateTimeEvent("pdahack", "set_decrypt_bar", 0, function()
+		self.data_decrypted	= lerpup(self.data_decrypted, self.data_decrypted_target, 0.75)
+		self.decrypt_wnd.bar:SetProgressPos( self.data_decrypted )
+		self.decrypt_wnd.decrypted.pct_bg:TextControl():SetText( round_idp(self.data_decrypted, 1) .. "%")
+
+		if self.data_decrypted >= 100 then
+			if not self.skey_unlock then
+				self.dark_overlay:Show(true)
+				self.dark_overlay.status_title:TextControl():SetText(gc("ui_st_pdahacking_unlocked"))
+				self.dark_overlay.status_title:TextControl():SetTextColor(colors_argb.decrypt)
+	
+				if self.snd_unlock and settings.soundfx_volume > 0 then
+					self.snd_unlock.volume = 1 * settings.soundfx_volume
+					self.snd_unlock:play(db.actor, 0, sound_object.s2d)
+				end
+			end
+	
+			local unlock_delay = self.skey_unlock and 5 or 3
+	
+			CreateTimeEvent("pdahack", "unlockpda", unlock_delay, function()
+				self:Reset(self.pda_info)
+			end)
+			return true
+		elseif self.data_decrypted >= self.data_decrypted_target then
+			return true
+		end
+	end)
+end
+
+function lerpdown(start, target, step)
+	return start - step <= target and target or start - step
+end
+
+function ui_pda_npc_tab.pda_npc_tab:Change_Encryption(change)
+	self.encryption_strength = self.encryption_strength - change
+
+	CreateTimeEvent("pdahack", "set_encrypt", 0, function() 
+		self.encryption_strength_visual = lerpdown(self.encryption_strength_visual, self.encryption_strength, 0.1)
+		self.decrypt_wnd.encr_str.pct:SetText( round_idp(self.encryption_strength_visual, 1) .. "%")
+		if self.encryption_strength_visual <= self.encryption_strength then
+			return true
+		end
+	end)
+end
+
+function ui_pda_npc_tab.pda_npc_tab:Generate_Scripts(count)
+	self.scripts_to_add = self.scripts_to_add + count
+	CreateTimeEvent("pdahack", "genscript", 0.1, function()
+		local index = math.random(#script_table)
+
+		local script_name = script_table[index]
+		table.remove(script_table, index)
+
+		local seed = get_seed_from_string(script_name)
+		math.randomseed( seed )
+		local rnd = math.random()
+		local min_power = settings.script_power_min --25
+		local max_power = clamp(settings.script_power_max, min_power, settings.script_power_max) --100
+		local power = (rnd * (max_power - min_power)) + min_power
+		power = round(power)
+
+		local item = script_message_entry(script_name, power, seed)
+		self.hack_script_list:AddExistingItem(item)
+
+		self.scripts_to_add = self.scripts_to_add - 1
+		if self.scripts_to_add <= 0 then return true end
+		ResetTimeEvent("pdahack", "genscript", 0.1)
+	end)
+end
+
+function get_time_elapsed()
+    return (game.get_game_time():diffSec(level.get_start_time()) /level.get_time_factor())
+end
+
+function get_seed_from_string(string)
+	local seed = 0
+	for i = 1, string:len() do
+		seed = seed + string.byte(string, i)
+	end
+	return seed
+end
+
+function scramble_string(str)
+	local letters = {}
+	for letter in str:gmatch'.[\128-\191]*' do
+	   letters[#letters+1] = {letter = letter, rnd = math.random()}
+	end
+	table.sort(letters, function(a, b) return a.rnd < b.rnd end)
+	for i, v in ipairs(letters) do letters[i] = v.letter end
+	return table.concat(letters)
+ end
+
+-- HACK FORMULAS
+function get_nuke_effect(power, encryption_strength)
+	return encryption_strength * (power * 0.2 / 100)
+end
+
+function get_decrypt_effect(power, encryption_strength)
+	return power * 0.30 * (1 - (encryption_strength / 100))
+end
+
+function get_brute_chance(power)
+	return (power / 8)
+end
+
+function get_command_up(power)
+	return math.floor(power / 12) + 1
+end
+
+function get_rescan_count(power)
+	return math.floor(power / 20) + 1
+end
+
+function get_extract_money(power, base_encryption_strength)
+	return math.ceil(power * 0.2 * clamp(base_encryption_strength, 20, 100)) * settings.extract_reward_mult
+end
+
+-- GUI
+class "script_message_entry" (CUIListBoxItem)
+
+function script_message_entry:__init(name, power, seed) super(name, power, seed)
+	self:GetTextItem():SetText("")
+	
+	self.name = name
+	self.power = power
+	self.seed = seed
+	math.randomseed( seed + 1 )
+	self.hidden_power = math.random(0, 75)
+
+	local total_w = 155
+	local padding_h = 3
+	local padding_w = padding_h * 0.75
+	local target_h = 30 - padding_h
+
+	local icon_h = target_h - (padding_h * 2)
+	local icon_w = icon_h --[[ * 0.75 ]]
+
+	self.background = self:AddIconField(1)
+	self.background:InitTexture("ui_pdahack_bg_list")
+	self.background:SetStretchTexture(true)
+	self.background:SetTextureColor(GetARGB(60, 255, 255, 255))
+	self.background:SetWndPos(vector2():set(0, padding_h))
+	self.background:SetWndSize(vector2():set(total_w, target_h))
+
+	self.icon = self:AddIconField(1)
+	self.icon:InitTexture("ui_pdahack_icon_script")
+	self.icon:SetStretchTexture(true)
+	self.icon:SetTextureColor(colors_argb.rescan)
+	self.icon:SetWndPos(vector2():set(padding_w, padding_h * 2))
+	self.icon:SetWndSize(vector2():set(icon_w, icon_h))
+
+	self.str_title = self:AddTextField("",1)
+	self.str_title:SetWndPos(vector2():set(icon_w + padding_w * 2, padding_h))
+	self.str_title:SetWndSize(vector2():set(total_w - (padding_w * 2) - icon_w, target_h))
+	self.str_title:SetTextColor(GetARGB(255, 255, 255, 255))
+	self.str_title:SetFont(get_font("large"))
+	self.str_title:SetEllipsis(true)
+	self.str_title:SetTextAlignment(0)
+	self.str_title:SetVTextAlignment(2)
+	self.str_title:SetText(self.name .. ".script")
+
+	self.power_nr_bg = self:AddIconField(1)
+	self.power_nr_bg:InitTexture("ui_pdahack_bg_list")
+	self.power_nr_bg:SetStretchTexture(true)
+	self.power_nr_bg:SetTextureColor(GetARGB(120, 0, 0, 0))
+	self.power_nr_bg:SetWndPos(vector2():set(total_w + padding_w, padding_h))
+	self.power_nr_bg:SetWndSize(vector2():set(25 - padding_w, target_h))
+
+	self.power_nr = self:AddTextField("",1)
+	self.power_nr:SetWndPos(vector2():set(total_w, padding_h + 1))
+	self.power_nr:SetWndSize(vector2():set(25, target_h))
+	self.power_nr:SetTextColor(colors_argb.decrypt)
+	self.power_nr:SetFont(get_font("large"))
+	self.power_nr:SetTextAlignment(2)
+	self.power_nr:SetVTextAlignment(2)
+	self.power_nr:SetText(self.power)
+end
+
+class "command_entry" (CUIListBoxItem)
+
+function command_entry:__init(name, power, encrypt_strength, base_encr_str) super(name, power, encrypt_strength, base_encr_str)
+	self:GetTextItem():SetText("")
+	
+	self.name = name
+	self.power = power
+
+	local total_w = 154
+	local padding_h = 3
+	local padding_w = padding_h * 0.75
+	local target_h = 30 - padding_h
+
+	local icon_h = target_h - (padding_h * 2)
+	local icon_w = icon_h --[[ * 0.75 ]]
+
+	self.background = self:AddIconField(1)
+	self.background:InitTexture("ui_pdahack_bg_list")
+	self.background:SetStretchTexture(true)
+	self.background:SetTextureColor(GetARGB(60, 255, 255, 255))
+	self.background:SetWndSize(vector2():set(total_w, target_h))
+	self.background:SetWndPos(vector2():set(0, padding_h))
+
+	self.icon_hack = self:AddIconField(1)
+	self.icon_hack:InitTexture("ui_pdahack_icon_hack")
+	self.icon_hack:SetStretchTexture(true)
+	self.icon_hack:SetTextureColor(GetARGB(255, 191, 191, 191))
+	self.icon_hack:SetWndSize(vector2():set(icon_w, icon_h))
+	self.icon_hack:SetWndPos(vector2():set(padding_w, padding_h * 2))
+
+	self.str_title = self:AddTextField("",1)
+	self.str_title:SetWndRect(Frect():set(icon_w + padding_w * 2, padding_h, total_w - padding_w * 2 - icon_w, target_h))
+	self.str_title:SetTextColor(GetARGB(255, 255, 255, 255))
+	self.str_title:SetFont(get_font("large"))
+	self.str_title:SetWndSize(vector2():set(total_w - padding_w * 2 - icon_w, target_h))
+	self.str_title:SetEllipsis(true)
+	self.str_title:SetTextAlignment(0)
+	self.str_title:SetVTextAlignment(2)
+	self.str_title:SetText( gc("ui_st_pdahacking_" .. name_key[name]) )
+
+	self.bonus_text = self:AddTextField("",1)
+	self.bonus_text:SetWndPos(vector2():set(total_w * 0.65 + target_h * 0.5 * 0.75, padding_h))
+	self.bonus_text:SetWndSize(vector2():set(total_w * 0.35 - target_h * 0.5 * 0.75, target_h))
+	self.bonus_text:SetFont(get_font("large"))
+	self.bonus_text:SetTextAlignment(2)
+	self.bonus_text:SetVTextAlignment(2)
+
+	self.bonus_icon = self:AddIconField(1)
+	self.bonus_icon:SetStretchTexture(true)
+	self.bonus_icon:SetWndPos(vector2():set(total_w * 0.65, target_h * 0.25 + padding_h))
+	self.bonus_icon:SetWndSize(vector2():set(target_h * 0.5 * 0.75, target_h * 0.5))
+
+	if name == "Nuke" then
+		self.bonus_text:SetText("-" .. round_idp(get_nuke_effect(power, encrypt_strength), 1) .. "%" )
+		self.bonus_icon:InitTexture("ui_pdahack_icon_shield")
+		self.bonus_text:SetTextColor(colors_argb.nuke)
+		self.bonus_icon:SetTextureColor(colors_argb.nuke)
+	elseif name == "Decrypt" then
+		self.bonus_icon:Show(false)
+		self.bonus_text:SetWndPos(vector2():set(total_w * 0.65, padding_h))
+		self.bonus_text:SetWndSize(vector2():set(total_w * 0.35, target_h))
+		self.bonus_text:SetTextAlignment(2)
+		self.bonus_text:SetText("+" .. round_idp(get_decrypt_effect(power, encrypt_strength), 1) .. "%" )
+		self.bonus_text:SetTextColor(colors_argb.decrypt)
+	elseif name == "Re-Scan" then
+		self.bonus_text:SetText("+" .. get_rescan_count(power) )
+		self.bonus_icon:InitTexture("ui_pdahack_icon_script")
+		self.bonus_icon:SetWndPos(vector2():set(total_w * 0.65 - (target_h / 16), target_h * 0.25 + padding_h))
+		self.bonus_icon:SetWndSize(vector2():set(target_h * 0.5, target_h * 0.5))
+		self.bonus_icon:SetTextureColor(colors_argb.rescan)
+		self.bonus_text:SetTextColor(colors_argb.rescan)
+	elseif name == "CommandUp" then
+		self.bonus_text:SetText("+" .. get_command_up(power) )
+		self.bonus_icon:InitTexture("ui_pdahack_icon_cmd")
+		self.bonus_text:SetTextColor(colors_argb.cmdup)
+		self.bonus_icon:SetTextureColor(colors_argb.cmdup)
+	elseif name == "BruteForce" then
+		self.bonus_text:SetText( round_idp(get_brute_chance(power), 1) .. "%" )
+		self.bonus_icon:InitTexture("ui_pdahack_icon_dice")
+		self.bonus_text:SetTextColor(colors_argb.bruteforce)
+		self.bonus_icon:SetTextureColor(colors_argb.bruteforce)
+	elseif name == "SkeletonKey" then
+		self.bonus_text:Show(false)
+		self.str_title:SetText(scramble_string(gc("ui_st_pdahacking_skey") .. "#&$"))
+		self.str_title:SetTextColor(colors_argb.skey)
+		self.icon_hack:SetTextureColor(colors_argb.skey)
+	elseif name == "Extract" then
+		self.bonus_text:SetFont(get_font("medium"))
+		self.bonus_text:SetText("+" .. gc("ui_st_pdahacking_ruble") .. get_extract_money(power, base_encr_str) )
+		self.bonus_icon:InitTexture("ui_pdahack_icon_money")
+		self.bonus_text:SetTextColor(colors_argb.extract)
+		self.bonus_icon:SetTextureColor(colors_argb.extract)
+	end
+end
+
+fonts = {
+	["high_res"] = {
+		["medium"] = GetFontGraffiti22Russian(),
+		["large"] = GetFontLetterica25(),
+		["huge"] = GetFontGraffiti50Russian();
+	},
+	["normal_res"] = {
+		["medium"] = GetFontLetterica18Russian(),
+		["large"] = GetFontGraffiti22Russian(),
+		["huge"] = GetFontLetterica25(),
+	}
+}
+
+name_key = {
+	["CommandUp"] = "cmdup",
+	["Decrypt"] = "decrypt",
+	["Re-Scan"] = "rescan",
+	["Nuke"] = "nuke",
+	["BruteForce"] = "bruteforce",
+	["SkeletonKey"] = "skey",
+	["Extract"] = "extract",
+}
+
+function get_font(font)
+	local dev = device()
+	pr( dev.width .. "x" .. dev.height)
+	if dev.height > 1080 and dev.width > 1920 then
+		return fonts["high_res"][font]
+	else
+		return fonts["normal_res"][font]
+	end
+end
+
+-- Hack Device spawning
+drop_table = {
+	["pda_hack_usb_1"] = {
+		["novice"] 			= 0.00,
+		["trainee"] 		= 0.005,
+		["experienced"] 	= 0.01,
+		["professional"] 	= 0.01,
+		["veteran"] 		= 0.005,
+		["expert"] 			= 0.00,
+		["master"] 			= 0.00,
+		["legend"] 			= 0.00,
+	},
+	["pda_hack_usb_2"] = {
+		["novice"] 			= 0.00,
+		["trainee"] 		= 0.00,
+		["experienced"] 	= 0.00,
+		["professional"] 	= 0.005,
+		["veteran"] 		= 0.01,
+		["expert"] 			= 0.01,
+		["master"] 			= 0.005,
+		["legend"] 			= 0.00,
+	},	
+	["pda_hack_usb_3"] = {
+		["novice"] 			= 0.00,
+		["trainee"] 		= 0.00,
+		["experienced"] 	= 0.00,
+		["professional"] 	= 0.00,
+		["veteran"] 		= 0.00,
+		["expert"] 			= 0.005,
+		["master"] 			= 0.01,
+		["legend"] 			= 0.02,
+	},
+}
+
+function npc_drop_hack_device(npc, npc_rank, npc_comm)
+	for sec, rank_table in pairs(drop_table) do
+		local chance = rank_table[npc_rank] * settings.hack_device_drop_mult
+--[[ 		if debug and table[npc_rank] > 0 then
+			chance = 1
+		end ]]
+		if (math.random() < chance) then
+			alife_create_item(sec, npc, nil)
+		end
+	end
+end
+
+SpawnCosmetics = death_manager.spawn_cosmetics
+function death_manager.spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, rand_condition)
+    SpawnCosmetics(npc, npc_id, npc_comm, npc_rank, visual, rand_condition)
+    npc_drop_hack_device(npc, npc_rank, npc_comm)
+end
+
+-- Lower hack device sell price
+function on_get_item_cost(kind, obj, profile, calculated_cost, ret)
+	if profile.mode == 1 and drop_table[obj:section()] then -- when selling
+		ret.new_cost = math.floor((ret.new_cost or calculated_cost) * 0.25)
+	end
+end
+
+-- MCM multipliers
+if ui_pda_npc_tab.faction_encyption and ui_pda_npc_tab.stash_factor_per_pda then
+	base_register_pda = ui_pda_npc_tab.register_pda
+	function ui_pda_npc_tab.register_pda(npc, pda_sec, pda_id)
+		local temp_encr_tbl = dup_table(ui_pda_npc_tab.faction_encyption)
+		if settings.locked_chance_mult ~= 1 then
+			for comm, encr in pairs(ui_pda_npc_tab.faction_encyption) do
+				ui_pda_npc_tab.faction_encyption[comm] = encr * settings.locked_chance_mult
+			end
+		end
+
+		local temp_stash_factor_tbl = dup_table(ui_pda_npc_tab.stash_factor_per_pda)
+		if settings.stash_chance_mult ~= 1 then
+			for sec, factor in pairs(ui_pda_npc_tab.stash_factor_per_pda) do
+				ui_pda_npc_tab.stash_factor_per_pda[sec] = factor * settings.stash_chance_mult
+			end
+		end
+
+		base_register_pda(npc, pda_sec, pda_id)
+		ui_pda_npc_tab.faction_encyption = dup_table(temp_encr_tbl)
+		ui_pda_npc_tab.stash_factor_per_pda = dup_table(temp_stash_factor_tbl)
+	end
+else
+	printf("-PDA Hacking mod: Error modifying locked PDA/stash chance. Please update your Modded Exes")
+end
+
+-- MCM
+function load_defaults()
+	local t = {}
+	local op = pda_hacking_mcm.op
+	for i, v in ipairs(op.gr) do
+		if v.def ~= nil then
+			t[v.id] = v.def
+		end
+	end
+	return t
+end
+
+settings = load_defaults()
+
+function load_settings()
+	settings = load_defaults()
+	if ui_mcm then
+		for k, v in pairs(settings) do
+			settings[k] = ui_mcm.get("pda_hacking/" .. k)
+		end
+	end
+
+	return settings
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update", load_settings)
+	RegisterScriptCallback("on_option_change", load_settings)
+	RegisterScriptCallback("on_get_item_cost", on_get_item_cost) 
+end           

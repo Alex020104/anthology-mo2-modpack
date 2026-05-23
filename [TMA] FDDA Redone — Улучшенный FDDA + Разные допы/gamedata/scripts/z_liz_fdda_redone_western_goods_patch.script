@@ -1,0 +1,8 @@
+--getting rid of western goods lighter patch to call it manually
+if western_goods_core then
+    itms_manager.actor_on_item_before_use = function (obj, flags)
+        liz_fdda_redone_consumables.actor_on_item_before_use(obj, flags, function(item_obj, item_flags)
+            SendScriptCallback("western_goods_on_item_before_use", item_obj, item_flags)
+        end)
+    end
+end

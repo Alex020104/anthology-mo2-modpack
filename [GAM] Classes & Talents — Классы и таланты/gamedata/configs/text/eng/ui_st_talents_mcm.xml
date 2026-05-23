@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="ui_mcm_talents_title">
+		<text>Classes and talents</text>
+	</string>
+	<string id="ui_mcm_menu_talents">
+		<text>Classes and talents</text>
+	</string>
+
+	<string id="ui_mcm_talents_talents_key">
+		<text>Talents window button</text>
+	</string>
+
+	<!-- exp -->
+	<string id="ui_mcm_talents_header_main">
+		<text>Experience gain multipliers</text>
+	</string>
+
+	<string id="ui_mcm_talents_offensive">
+		<text>Offensive</text>
+	</string>
+	<string id="ui_mcm_talents_defensive">
+		<text>Defensive</text>
+	</string>
+	<string id="ui_mcm_talents_endurance">
+		<text>Endurance</text>
+	</string>
+	<string id="ui_mcm_talents_speech">
+		<text>Speech</text>
+	</string>
+
+
+	<!-- hud -->
+	<string id="ui_mcm_talents_header_hud">
+		<text>HUD buffs</text>
+	</string>
+
+	<string id="ui_mcm_talents_hud_enable">
+		<text>Enable HUD</text>
+	</string>
+	<string id="ui_mcm_talents_hud_x">
+		<text>Position X</text>
+	</string>
+	<string id="ui_mcm_talents_hud_y">
+		<text>Position Y</text>
+	</string>
+
+
+	<!-- dbg -->
+	<string id="ui_mcm_talents_talents_dbg">
+		<text>debug</text>
+	</string>
+
+</string_table>

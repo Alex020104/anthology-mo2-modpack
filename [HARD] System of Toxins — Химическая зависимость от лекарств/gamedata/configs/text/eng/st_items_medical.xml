@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!--
+	Medical Items + Drugs
+-->
+
+<string_table>
+	
+	<string id="st_antirad">
+		<text>Anti-radiation drug</text>
+	</string>
+	<string id="st_antirad_descr">
+		<text>The drug of radioprotective action "Mexamine", widely distributed in the territory of the Zone. When applied, it causes narrowing of peripheral blood vessels and oxygen starvation, which in this case is a means of preventing and treating radiation sickness. It is well tolerated by the vast majority of people. In some cases, mild nausea, dizziness, pain, and less often vomiting are possible.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] 1 dose outputs ~1400 mSv\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] quick use (syringe)\n
+		</text>
+	</string>
+	<string id="st_bandage">
+		<text>FAP</text>
+	</string>
+	<string id="st_bandage_descr">
+		<text>First aid packet to stop bleeding and prevent infection from entering the wound. With normal bleeding, it allows you to bandage the wound, and with severe bleeding, it allows you to tighten the artery.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] instantly stops medium bleeding (1500 ml/min)\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] first aid product\n
+		%c[d_blue] • %c[ui_gray_2] quick use\n
+		</text>
+	</string>
+	
+		<string id="st_bandage_homemade">
+		<text>Homemade bandage</text>
+	</string>
+	<string id="st_bandage_homemade_descr">
+		<text>A homemade bandage made from a piece of some kind of cloth and heavily soaked in strong alcohol for disinfection purposes. It can help with mild bleeding and prevent dirt from getting into the wound, but you shouldn't count on more.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] instantly stops mild bleeding (750 ml/min)\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] first aid product\n
+		%c[d_blue] • %c[ui_gray_2] fast usage\n
+		%c[d_red] • %c[ui_gray_2] low quality\n
+		</text>
+	</string>
+	
+	<string id="st_drug_coagulant">
+		<text>Vinca</text>
+	</string>
+	<string id="st_drug_coagulant_descr">
+		<text>An improved analogue of Yadulin. The main effect is to increase blood clotting. It is in demand among stalkers because it allows the body to heal lacerations faster. It has a long-lasting effect. Taking 2 tablets each.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 5%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_red] • %c[ui_gray_2] intoxication +15%\n
+		%c[d_purple] • %c[ui_gray_2] dulls mild pain\n
+		</text>
+	</string>
+	
+	<string id="st_drug_anabiotic">
+		<text>Anabiotic</text>
+	</string>
+	<string id="st_drug_anabiotic_descr">
+		<text>An experimental drug developed for scientific research groups operating in the Zone. Tetradotoxin, known as "zombie powder," which is part of the drug's formula, causes complete paralysis of the central nervous system. Presumably, this can ensure survival outside the shelter during the release. After six years of field testing, most prudent stalkers now keep a couple of them with them in case of sudden releases.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[0,153,255,255] • %c[ui_gray_2] medicine\n
+		%c[d_red] • %c[ui_gray_2] causes temporary memory lapses\n
+		%c[d_red] • %c[ui_gray_2] intoxication +45%\n
+		</text>
+	</string>
+	
+	<string id="st_drug_psy_blockade">
+		<text>Psy-block</text>
+	</string>
+	<string id="st_drug_psy_blockade_descr">
+		<text>A narcotic drug that blocks avalanche-like nerve impulses. An interesting side effect is that after taking the drug, there is a short-term disappearance of any emotions. It is used in the Zone to counteract anomalous fields of increased psy activity. I have not found any use outside of it. It has a long-lasting effect. Taking 2 tablets each.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_red] • %c[ui_gray_2] causes severe dizziness\n
+		%c[d_red] • %c[ui_gray_2] intoxication +5%\n
+		</text>
+	</string>
+	
+	<string id="st_drug_antidot">
+		<text>Antidote</text>
+	</string>
+	<string id="st_drug_antidot_descr">
+		<text>The drug "Antitoxicant IP2" is a complex of antidotes: metoclopramide, pyridoxine, thiamine, riboxin and others. It introduces substances into the blood that can decompose protein poisons, as well as absorbents of synthetic poisons. It is not particularly popular, since most stalkers rely more on a gas mask and overalls. Nevertheless, there are still those stalkers who have several hidden packages of this drug in case of an emergency. It has a long-lasting effect. Take 1 capsule.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_red] • %c[ui_gray_2] causes mild dizziness\n
+		%c[d_green] • %c[ui_gray_2] intoxication -25%\n
+		%c[d_green] • %c[ui_gray_2] enhances detoxification by 100 times for 420 seconds\n
+		</text>
+	</string>
+	
+	<string id="st_drug_booster">
+		<text>Hercules</text>
+	</string>
+	<string id="st_drug_booster_descr">
+		<text>The main component is an artificially created steroid, similar in chemical composition to testosterone. It is used by stalkers in long transitions to increase the threshold of muscle fatigue. It helps to significantly increase the weight carried. A long-acting drug.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] drink\n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] weak sobering effect\n
+		</text>
+	</string>
+	
+	<string id="st_drug_radioprotector">
+		<text>Radioprotectant</text>
+	</string>
+	<string id="st_drug_radioprotector_descr">
+		<text>The Indralin-B190 Radioprotectant was part of the personal first-aid kits of the NPP workers. It appeared in the Zone as a substitute for the excessively toxic cystamine hydrochloride (PC1). Reduces the effect of gamma radiation on the tissues of a living organism. It is advisable to use this drug preemptively, that is, before irradiation, since it does not have an instant effect. It has a long-lasting effect. Take 1 capsule.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_red] • %c[ui_gray_2] slight dizziness\n
+		%c[d_red] • %c[ui_gray_2] intoxication +2%\n
+		</text>
+	</string>
+	
+	<string id="st_akvatab">
+		<text>Akvatabs</text>
+	</string>
+	<string id="st_akvatab_descr">
+		<text>A small plastic package with tablets designed to disinfect water from harmful bacteria, viruses and radiation. Taking 2 tablets each. Despite its direct purpose, some stalkers take the drug orally in emergency cases to remove radiation when there is no other alternative.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] 1 dose outputs ~190 mSv\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_red] • %c[ui_gray_2] slow usage (soluble tablets)\n
+		%c[d_red] • %c[ui_gray_2] intoxication +8%\n
+		</text>
+	</string>
+	
+	<string id="st_medkit_ai1">
+		<text>Medical Kit (Basic)</text>
+	</string>
+	<string id="st_medkit_ai1_descr">
+		<text>A medical kit that includes medications to help with minor injuries. The total cost of the drugs in this kit is estimated at about fifteen thousand.\n \n
+		%c[ui_gray_3]CONTENTS: \n
+		%c[d_cyan] • %c[default] Bandage (2)\n
+		%c[d_cyan] • %c[default] Tourniquet\n
+		%c[d_cyan] • %c[default] Yadulin\n
+		%c[d_cyan] • %c[default] Tetanus vaccine\n
+		%c[d_cyan] • %c[default] Small Glucose injection\n
+		%c[d_cyan] • %c[default] Diclofenac sodium\n
+		%c[d_cyan] • %c[default] Chlortetracycline\n
+		%c[d_cyan] • %c[default] Sulfadimethoxine\n
+		%c[d_cyan] • %c[default] Improvised stimpack\n
+		%c[d_cyan] • %c[default] Akvatabs\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medical kit\n
+		</text>
+	</string>
+	
+	<string id="st_medkit_ai2">
+		<text>Medical Kit (Army)</text>
+	</string>
+	<string id="st_medkit_ai2_descr">
+		<text>An army medical kit that includes a large number of stimulating medications. It allows you to cope with injuries of various types and degrees of complexity: wounds, burns, poisoning. The total cost of the drugs in this kit is estimated at about thirty-seven thousand.\n \n
+		%c[ui_gray_3]CONTENTS: \n
+		%c[d_cyan] • %c[default] Bandage (3)\n
+		%c[d_cyan] • %c[default] Tourniquet (2)\n
+		%c[d_cyan] • %c[default] Improvised stimpack\n
+		%c[d_cyan] • %c[default] Large glucose injection\n
+		%c[d_cyan] • %c[default] Metamizole ampoule\n
+		%c[d_cyan] • %c[default] Vinca\n
+		%c[d_cyan] • %c[default] Potassium iodide\n
+		%c[d_cyan] • %c[default] Cystamine\n
+		%c[d_cyan] • %c[default] Etperazine\n
+		%c[d_cyan] • %c[default] 027 R pills\n
+		%c[d_cyan] • %c[default] Caffeine tablets\n
+		%c[d_cyan] • %c[default] Morphine ampoule\n
+		%c[d_cyan] • %c[default] Military stimpack\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medical kit\n
+		</text>
+	</string>
+	
+	<string id="st_medkit_ai3">
+		<text>Medical Kit (Scientific)</text>
+	</string>
+	<string id="st_medkit_ai3_descr">
+		<text>A medical kit assembled specifically for researchers who work in the conditions of the Zone. It contains a large list of drugs aimed at preventing and protecting against radiation, chemical and psy threats. The total cost of the drugs in this kit is estimated at about forty-nine thousand.\n \n
+		%c[ui_gray_3]CONTENTS: \n
+		%c[d_cyan] • %c[default] Bandage (3)\n
+		%c[d_cyan] • %c[default] Harness (3)\n
+		%c[d_cyan] • %c[default] Anti-radiation drug\n
+		%c[d_cyan] • %c[default] radioprotective\n
+		%c[d_cyan] • %c[default] Antidote\n
+		%c[d_cyan] • %c[default] Psy-block\n
+		%c[d_cyan] • %c[default] Epinephrine shot\n
+		%c[d_cyan] • %c[default] Military stimpack\n
+		%c[d_cyan] • %c[default] Scientific stimpack\n
+		%c[d_cyan] • %c[default] Anabiotic\n
+		%c[d_cyan] • %c[default] Hercules\n
+		%c[d_cyan] • %c[default] Large Glucose injection\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medical kit\n
+		</text>
+	</string>
+	
+	<string id="st_analgetic">
+		<text>Diclofenac sodium</text>
+	</string>
+	<string id="st_analgetic_descr">
+		<text>A nonsteroidal anti-inflammatory drug (NSAID) from the group of phenylacetic acid derivatives. The mechanism of action of the drug is to dull nervous activity. Due to the huge number of side effects, such as headache, dizziness, drowsiness, in some cases - memory disorders, disorientation, irritability - it is not used for medicinal purposes in most countries of the world. However, it has gained popularity in the Zone due to a side effect expressed in a violation of the sensitivity of the central nervous system, which allows it to withstand severe injuries such as bullet and shrapnel wounds.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 15%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_purple] • %c[ui_gray_2] dulls the average pain\n
+		%c[d_red] • %c[ui_gray_2] intoxication +15%\n
+		</text>
+	</string>
+	
+	<string id="st_jgut_zhgut">
+		<text>Tourniquet</text>
+	</string>
+	<string id="st_jgut_descr">
+		<text>Hemostatic rubber tourniquet. It is applied to the injured limb with severe bleeding. Judging by its appearance, it is quite old and worn, as microcracks have formed on the rubber. This clearly indicates a high probability of the tourniquet breaking even from one or two applications.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] instantly stops heavy bleeding (3750 ml/min)\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] first aid product\n
+		%c[d_blue] • %c[ui_gray_2] quick use\n
+		</text>
+	</string>
+	
+	<string id="st_yadylin">
+		<text>Yadulin</text>
+	</string>
+	<string id="st_yadylin_descr">
+		<text>A tool created in the conditions of the Zone, which makes it possible to accelerate the recovery of the body by accelerating metabolism. It is popular among stalkers, as it helps to improve well-being due to the weak effect of anesthesia and is the most affordable, albeit weak, regenerative drug. It is rumored that an unknown group of chemical stalkers was able to synthesize it from the bodies of mutants. Anyway, the active ingredient of this remedy allows you to speed up recovery, even though it is toxic.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 5%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_purple] • %c[ui_gray_2] dulls mild pain\n
+		%c[d_red] • %c[ui_gray_2] intoxication +15%\n
+		</text>
+	</string>
+	
+	<string id="st_medkit">
+		<text>First-aid kit</text>
+	</string>
+	<string id="st_medkit_descr">
+		<text>A general-purpose medical kit. It contains painkillers, a regenerative drug, a tetanus vaccine and glucose. Despite the very outdated tissue regeneration product, this kit still continues to be popular due to its accessibility. It won't do much to help in battle, but it's great to heal wounds in a calm environment. The main active ingredients in this kit cause a large accumulation of toxins in the body, so you should not use it often.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 10%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] widespread use\n
+		%c[d_red] • %c[ui_gray_2] slow usage (field kit)\n
+		%c[d_purple] • %c[ui_gray_2] dulls very little pain\n
+		%c[d_red] • %c[ui_gray_2] intoxication +45%\n
+		</text>
+	</string>
+	
+	<string id="st_medkit_army">
+		<text>Army medkit</text>
+	</string>
+	<string id="st_medkit_army_descr">
+		<text>A specialized medical kit developed by scientists for military personnel serving in the Exclusion Zone. Unlike the common general-purpose medical kit, this one includes more modern and effective drugs. This allows you to recover faster from various kinds of injuries. Despite the improved formula of the regenerative substance, the use of the kit leads to intoxication of the body.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 15%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] military product\n
+		%c[d_red] • %c[ui_gray_2] slow usage (field kit)\n
+		%c[d_purple] • %c[ui_gray_2] dulls mild pain\n
+		%c[d_red] • %c[ui_gray_2] intoxication +40%\n
+		</text>
+	</string>
+	
+	<string id="st_medkit_science">
+		<text>Scientific medkit</text>
+	</string>
+	<string id="st_medkit_science_descr">
+		<text>The most modern medical kit, which includes the best drugs for rapid rehabilitation after various types of injuries. The regeneration drug in this kit has been improved, which has reduced intoxication and accelerated the body's ability to recover.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 20%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] high value\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_red] • %c[ui_gray_2] slow usage (field kit)\n
+		%c[d_purple] • %c[ui_gray_2] dulls the average pain\n
+		%c[d_red] • %c[ui_gray_2] intoxication +35%\n
+		</text>
+	</string>
+	
+	<string id="st_glucose_s">
+		<text>Small glucose injection</text>
+	</string>
+	<string id="st_glucose_s_descr">
+		<text>Glucose injection is used in severe cases of diabetes - hypoglycemia. But stalkers use it as a stimulant - an instant increase in carbohydrates in the body causes a rapid increase in energy and strength.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 5%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine \n
+		%c[d_blue] • %c[ui_gray_2] quick use (syringe)\n
+		</text>
+	</string>
+	
+	<string id="st_glucose">
+		<text>Large glucose injection</text>
+	</string>
+	<string id="st_glucose_descr">
+		<text>Glucose injection is used in severe cases of diabetes - hypoglycemia. But stalkers use it as a stimulant - an instant increase in carbohydrates in the body causes a rapid increase in energy and strength. Contains a large dose of the drug.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 10%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine \n
+		%c[d_blue] • %c[ui_gray_2] quick use (syringe)\n
+		</text>
+	</string>
+	
+	<string id="st_stim_impro">
+		<text>Improvised stimpack</text>
+	</string>
+	<string id="st_stim_impro_descr">
+		<text>Improvised stimulators (stimpacks) are very popular among novice stalkers because they are easy to get, and they are relatively inexpensive. They are made from ingredients widely available in the Area without proper cleaning and without the use of special equipment, which leads to severe intoxication and dizziness during use. Thanks to the huge doses of the regenerative drug, the wounds heal right before our eyes. And the painkiller in the composition will allow you to continue the fight despite the injuries. Due to the strong acceleration of metabolism, a huge amount of nutrients is consumed, which greatly increases hunger.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 10%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] quick use (syringe)\n
+		%c[d_purple] • %c[ui_gray_2] dulls very little pain\n
+		%c[d_red] • %c[ui_gray_2] intoxication +70%\n
+		</text>
+	</string>
+	
+	<string id="st_stim_military">
+		<text>Military stimpack</text>
+	</string>
+	<string id="st_stim_military_descr">
+		<text>Military stimulators (stimpacks) are part of the standard military equipment for operations in the Exclusion Zone. But this is on paper - ordinary military personnel are rarely lucky enough to receive stimpacks to help. They are quite common on the goods market and can be bought for a reasonable price. They are popular among experienced stalkers, as they are significantly more powerful and faster-acting than their affordable homemade counterparts, which makes them ideal for use in dangerous situations. Despite the production in good conditions and the modified composition, this drug still remains sufficiently toxic and causes side effects, including hunger. It is intended for the treatment of various kinds of injuries and wounds in dangerous situations, as well as pain relief. It allows wounded soldiers to quickly get back on their feet and continue to conduct active combat operations.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 20%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] military product\n
+		%c[d_blue] • %c[ui_gray_2] quick use (syringe)\n
+		%c[d_blue] • %c[ui_gray_2] average health recovery\n
+		%c[d_purple] • %c[ui_gray_2] dulls mild pain\n
+		%c[d_red] • %c[ui_gray_2] intoxication +65%\n
+		</text>
+	</string>
+	
+	<string id="st_stim_scientic">
+		<text>Scientific stimpack</text>
+	</string>
+	<string id="st_stim_scientic_descr">
+		<text>It is produced by the same Chemical Department in Kiev that developed the famous SEVA suit. This stimulant is the most powerful health stabilizer available on the territory of the Zone. The best ingredients of excellent quality and an improved formula allow you to restore your health fairly quickly. Side effects are minimized. They are very expensive, therefore they are used only by very lucky and successful stalkers. In comparison with other similar drugs, this one is the least harmful in terms of intoxication.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 30%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_blue] • %c[ui_gray_2] quick use (syringe)\n
+		%c[d_blue] • %c[ui_gray_2] fast recovery of health\n
+		%c[d_purple] • %c[ui_gray_2] dulls the average pain\n
+		%c[d_red] • %c[ui_gray_2] intoxication +60%\n
+		</text>
+	</string>
+	
+	<string id="st_sleepingpills">
+		<text>027 R pills</text>
+	</string>
+	<string id="st_sleepingpills_descr">
+		<text>A small package of Alprazolam in 0.25 mg tablets. This drug is well known among chemists and pharmacists for its properties that help in the treatment and prevention of panic disorders, depression and anxiety disorders. An indispensable tool for stalkers who decide to explore dangerous territories, such as the Yantar plant, Radar and the Red Forest, or simply go to secret laboratories. Side effects include severe drowsiness after application. For this reason, some stalkers prefer to take simple caffeine pills with them. It is best to drink water.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_red] • %c[ui_gray_2] intoxication +1%\n
+		</text>
+	</string>
+	
+	<string id="st_cocaine">
+		<text>Cocaine</text>
+	</string>
+	<string id="st_cocaine_descr">
+		<text>Small aluminum case containing cocaine doses and injection tools. Cocaine is a powerful stimulant of the nervous system. Its effect lasts from 15-30 minutes to an hour, depending on the injection site. Cocaine increases alertness, a sense of well-being and euphoria, increases energy and long-term activity, a sense of competence and sexuality. Physical strength can be increased in sports where long-term attention and endurance are required. Anxiety, paranoia, and restlessness are also common symptoms of its use. With excessive dosage, concussions, convulsions and increased body temperature are observed. Bandits often snort this drug immediately before storming bases and camps.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 20%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] stimulator\n
+		%c[d_blue] • %c[ui_gray_2] is a very powerful sobering action\n
+		%c[d_purple] • %c[ui_gray_2] dulls very severe pain\n
+		%c[d_red] • %c[ui_gray_2] intoxication +45%\n
+		</text>
+	</string>
+	
+	<string id="st_adrenalin">
+		<text>Epinephrine shot</text>
+	</string>
+	<string id="st_adrenalin_descr">
+		<text>Epinephrine (also known as adrenaline) is a hormone combined with a neurotransmitter. Epinephrine performs many functions in the body: it instantly regulates the heart rate, dilates blood vessels, making it easier for air to pass through them, and also causes metabolic shifts. Adrenaline is released during fight or flight from the sympathetic nervous system. The effects lead to an increase in blood glucose and fatty acids, thereby providing the body with instant substrates for energy production inside cells throughout the body.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 15%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_blue] • %c[ui_gray_2] quick use (syringe)\n
+		%c[d_blue] • %c[ui_gray_2] is a very powerful sobering action\n
+		%c[d_red] • %c[ui_gray_2] intoxication +5%\n
+		%c[d_purple] • %c[ui_gray_2] dulls severe pain\n
+		</text>
+	</string>
+	
+	<string id="st_morphine">
+		<text>Morphine ampoule</text>
+	</string>
+	<string id="st_morphine_descr">
+		<text>An iron ampoule designed as field equipment for military field personnel for instant pain reduction. This ampoule contains a powerful dose of morphine. In clinical medicine, morphine is considered the gold standard of opioid analgesics, used to relieve severe and excruciating pain. As with other opioids such as oxycodone, hydromorphone, and diacetylmorphine (heroin), morphine acts directly on the central nervous system to relieve and reduce feelings of pain. Injected into the arm or thigh.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 50%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_blue] • %c[ui_gray_2] quick use (syringe)\n
+		%c[d_purple] • %c[ui_gray_2] dulls very severe pain\n
+		%c[d_red] • %c[ui_gray_2] intoxication +25%\n
+		</text>
+	</string>
+	
+	<string id="st_salicidic_acid">
+		<text>Metamizole ampoule</text>
+	</string>
+	<string id="st_salicidic_acid_descr">
+		<text>An iron ampoule designed as field equipment for military field personnel for instant pain reduction. Metamizole is one of the strongest Non-Steroidal Anti-Inflammatory Drugs (NSAIDs), especially effective at easing aches and pains as well as reducing fevers. It is also useful as anti-inflammatory drug when used in higher doses. Injected into an arm or a thigh.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 30%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_blue] • %c[ui_gray_2] quick use (syringe)\n
+		%c[d_purple] • %c[ui_gray_2] dulls severe pain\n
+		%c[d_red] • %c[ui_gray_2] intoxication +20%\n
+		</text>
+	</string>
+	
+	<string id="st_caffeine">
+		<text>Caffeine tablets</text>
+	</string>
+	<string id="st_caffeine_descr">
+		<text>Caffeine and sodium benzoate, which make the nervous system work as efficiently as possible. Significantly reduce drowsiness. Taking 2 tablets each.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] stimulator\n
+		%c[d_blue] • %c[ui_gray_2] powerful sobering effect\n
+		%c[d_red] • %c[ui_gray_2] intoxication +1%\n
+		</text>
+	</string>
+	
+		<string id="st_antirad_cystamine">
+		<text>Cystamine</text>
+	</string>
+	<string id="st_antirad_cystamine_descr">
+		<text>Cystamine dihydrochloride. It helps to cope with the negative effects of ionizing radiation on the body. The effect of the drug is based on the ability to bind free radicals, ionized and excited molecules formed in tissues during irradiation. In medicine, it is used in the form of dihydrochloride.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] 1 dose outputs ~700 mSv\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] imported\n
+		%c[d_red] • %c[ui_gray_2] slight dizziness\n
+		</text>
+	</string>
+	
+	<string id="st_antibio_sulfad">
+		<text>Sulfadimethoxine</text>
+	</string>
+	<string id="st_antibio_sulfad_descr">
+		<text>A long-acting sulfonamide drug. It is effective against Gram-positive and gram-negative bacteria: it acts on pneumococci, streptococci, staphylococci, E. coli, Klebsiella bacillus (Friedlander's bacillus), pathogens of dysentery; less active against proteus; active against trachoma virus (an infectious eye disease that can lead to blindness); does not act on strains of bacteria resistant to other sulfonamide preparations. Possible headaches, dyspeptic disorders (digestive disorders), skin rashes, drug fever (a sharp increase in body temperature when taking the drug), leukopenia (a decrease in the level of white blood cells in the blood).\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 5%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_red] • %c[ui_gray_2] intoxication +2%\n
+		</text>
+	</string>
+	
+	<string id="st_antibio_chlor">
+		<text>Chlortetracycline</text>
+	</string>
+	<string id="st_antibio_chlor_descr">
+		<text>An antibiotic of the tetracycline group. Golden yellow crystalline powder, bitter taste, soluble in water. It is one of the first antibiotics discovered after penicillin. Chlortetracycline hydrochloride has a bacteriostatic effect on Gram-positive and Gram-negative microbes, rickettsias and some large viruses.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 3%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_red] • %c[ui_gray_2] intoxication +1%\n
+		</text>
+	</string>
+	
+	<string id="st_antiemetic">
+		<text>Etperazine</text>
+	</string>
+	<string id="st_antiemetic_descr">
+		<text>Film-coated tablets. A tablet of the drug contains 4.6 and 10 mg of perphenazine. The drug is an antipsychotic neuroleptic that has antiallergic, sedative, muscle relaxant, antiemetic, weak anticholinergic, hypotensive and hypothermic effects. The effectiveness of Etperazine is due to the blockade of D2 receptors of the mesocortical and mesolimbic systems. It is used in the Zone as a cheap analogue of an antidote.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] anti-poisoning medicine\n
+		%c[d_green] • %c[ui_gray_2] intoxication -20%\n
+		%c[d_green] • %c[ui_gray_2] enhances detoxification by 50 times for 420 seconds\n
+		</text>
+	</string>
+	
+	<string id="st_joint">
+		<text>Cannabis joint</text>
+	</string>
+	<string id="st_joint_descr">
+		<text>A few joints in a cigarette pack. Due to its calming effect, it is quite popular among stalkers who often encounter psy-rays. A joint will calm your nerves and help you relax for a while. And in combination with alcohol, it has a great calming effect. It causes a feeling of hunger. It is rumored that thanks to the ritual of smoking a joint right before the battle, members of the Freedom group repeatedly managed to emerge victorious despite the fact that the advantage was clearly not on their side.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 8%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] stimulator \n
+		%c[d_blue] • %c[ui_gray_2] was made in the Zone\n
+		%c[d_blue] • %c[ui_gray_2] slight increase in drowsiness\n
+		%c[d_purple] • %c[ui_gray_2] dulls mild pain\n
+		%c[d_red] • %c[ui_gray_2] intoxication +3%\n
+		</text>
+	</string>
+	
+	<string id="st_rebirth">
+		<text>Axyltallisal "The Rebirth"</text>
+	</string>
+	<string id="st_rebirth_descr">
+		<text>This drug was developed somewhere in the laboratories of the Zone and acts as a powerful stimulant that triggers rapid tissue regeneration and greatly dulls pain.  The first effect of this powerful substance is loss of consciousness. However, after regaining consciousness (if it happens at all), there comes a feeling of a gigantic increase in strength and invulnerability. Attention! The drug is very toxic, so do not use it in conjunction with other stimulant drugs, as this can lead to rapid death from severe intoxication.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 30%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] quick use (syringe)\n
+		%c[d_red] • %c[ui_gray_2] causes temporary memory lapses\n
+		%c[d_purple] • %c[ui_gray_2] dulls severe pain\n
+		%c[d_red] • %c[ui_gray_2] intoxication +90%\n
+		</text>
+	</string>
+	
+	<string id="st_tetanus">
+		<text>Tetanus vaccine</text>
+	</string>
+	<string id="st_tetanus_descr">
+		<text>The tetanus vaccine is an inactivated tetanus toxin that will help prevent infection. Tetanus, known as "Jaw trismus," is a disease caused by bacteria from the Clostridia family that enter the body through open wounds, forming the poison tetanospasmin. It is a potentially fatal disease because the poison affects the nervous system, blocking nerve signals from the spinal cord to the muscles. All animals of the Exclusion Zone and mutants are carriers of Clostridium bacteria, which can be transmitted to stalkers through bites. The tetanus vaccine can boost the protection of your immune system without having side effects. In addition, it contains additional antitoxins that expand the purpose of this vaccine in addition to treating tetanus.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 5%\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_blue] • %c[ui_gray_2] quick use (syringe)\n
+		%c[d_red] • %c[ui_gray_2] intoxication +3%\n
+		</text>
+	</string>
+	
+	<string id="st_antirad_kalium">
+		<text>Potassium iodide</text>
+	</string>
+	<string id="st_antirad_kalium_descr">
+		<text>Pharmacological action compensating for iodine deficiency, antithyroid, mucolytic, expectorant, antifungal, resorbing, radioprotective. In the Black Sea region, it is used as a cheap analogue of radioprotective drugs. It has a number of side effects, expressed in gastrointestinal disorders, headaches, and thyroid dysfunction.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] medicine\n
+		%c[d_red] • %c[ui_gray_2] slight dizziness\n
+		%c[d_red] • %c[ui_gray_2] intoxication +3%\n
+		</text>
+	</string>
+	
+	<string id="st_marijuana">
+		<text>Marijuana</text>
+	</string>
+	<string id="st_marijuana_descr">
+		<text>Self-grown cannabis. Smoking it is a popular pastime, especially among Freedomers who've served at the Barrier. In the Exclusion Zone, marijuana can be bought in bags here and there. Some believe that it, like a drug, helps to maintain balance in the head and not go crazy from the psy effects. It is enough to find a piece of paper for this bag, and you can roll up a few jambs.\n \n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] helps you relax\n
+		%c[d_blue] • %c[ui_gray_2] you can make a joint with paper\n
+		%c[d_red] • %c[ui_gray_2] you need to roll a joint to smoke\n
+		</text>
+	</string>
+	
+	<string id="a_st_survival_kit">
+		<text>Emergency Medical Kit</text>
+	</string>
+	<string id="a_st_survival_kit_descr">
+		<text>A kit for providing medical care in an emergency. The kit includes a powerful regenerative stimulator and epinephrine, which can instantly put a person on their feet. There is also a tourniquet to stop very heavy bleeding and threads to sew up a deep wound.\n \n
+		%c[ui_gray_3]HEALTH: \n
+		%c[d_blue] • %c[ui_gray_2] improves well-being by 25%\n
+		%c[d_blue] • %c[ui_gray_2] instantly stops very heavy bleeding (15000 ml/min)\n
+		%c[d_blue] • %c[ui_gray_2] heals any injury at a rate of 25%/sec for 5 sec\n
+		%c[ui_gray_3]PROPERTIES: \n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_red] • %c[ui_gray_2] intoxication +30%\n
+		</text>
+	</string>
+	
+</string_table>
+
+<!-- Translation made with Stalker Translation XML TOOL -->
+<!-- https://www.moddb.com/mods/stalker-anomaly/addons/stalker-translation-xml-tool-v12-executable-version -->

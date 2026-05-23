@@ -1,0 +1,278 @@
+<?xml version='1.0' encoding='windows-1251'?>
+<string_table>
+	<string id="ui_mcm_toxic_air_title">
+		<text>Радиоактивный Воздух</text>
+		</string>
+	<string id="ui_mcm_menu_toxic_air">
+		<text>Радиоактивный Воздух</text>
+		</string>
+	<string id="ui_mcm_toxic_air_enable_hud">
+		<text>Вкл. HUD</text>
+		</string>
+	<string id="ui_mcm_toxic_air_enable_hud_desc">
+		<text>Отображает текущее состояние фильтра/баллона.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_position_x">
+		<text>HUD Позиция X</text>
+		</string>
+	<string id="ui_mcm_toxic_air_position_y">
+		<text>HUD Позиция Y</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radioactive_air">
+		<text>Радиоактивный воздух</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radioactive_air_desc">
+		<text>Если включено, то воздух на всех локациях станет радиоактивным и при выходе из безопасной зоны вы будете регулярно вдыхать радиоактивную пыль, которая также увеличит скорость деградации фильтров. Чем севернее расположена локация, тем сильнее загрязнен в ней воздух. Если ваши органы дыхания будут иметь недостаточную защиту от радиации (фильтр/кислородный баллон/тряпичные головные уборы), то вы будете регулярно заражаться радиацией. Костюмы и эффект повышения радиозащиты от препаратов не влияют на количество радиации, полученной из-за радиоактивного воздуха.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radioactive_air_mult">
+		<text>Множитель урона от радиоактивного воздуха</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radioactive_air_mult_desc">
+		<text>Влияет на итоговое количество полученной радиации от радиоактивного воздуха, если защиты фильтра/кислородного баллона/тряпичного головного убора будет недостаточно. Чем выше будет ваша защита и ниже значение множителя, тем медленнее происходит заражение радиацией (1.0 по умолчанию).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radiation_penetration">
+		<text>Проникающая радиация</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radiation_penetration_desc">
+		<text>Если включено, то при нахождении в радиоактивных полях вы будете дополнительно заражаться радиацией, когда вашей радиозащиты без учета шлема недостаточно. Фильтры, кислородные баллоны и задержка дыхания не влияют на количество радиации, которую добавляет эта механика.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_rad_penetration_mult">
+		<text>Множитель проникающей радиации</text>
+		</string>
+	<string id="ui_mcm_toxic_air_rad_penetration_mult_desc">
+		<text>Влияет на итоговое количество полученной радиации после вычитания вашей радиозащиты без учета шлема. Чем выше будет ваша защита и ниже значение множителя, тем медленнее происходит заражение радиацией (0.15 по умолчанию).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radiation_damage">
+		<text>Проникающая радиация наносит урон здоровью</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radiation_damage_desc">
+		<text>Если включено, то при нахождении в радиоактивных полях вы будете получать прямой урон здоровью, когда вашей радиозащиты без учета шлема недостаточно. Фильтры, кислородные баллоны и задержка дыхания не влияют на получаемый урон.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_rad_damage_mult">
+		<text>Множитель радиационного урона</text>
+		</string>
+	<string id="ui_mcm_toxic_air_rad_damage_mult_desc">
+		<text>Влияет на итоговое количество урона здоровью от радиоактивных полей после вычитания вашей радиозащиты без учета шлема. Чем выше будет ваша защита и ниже значение множителя, тем меньше будет урон (0.25 по умолчанию).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_breathe_feature">
+		<text>Задержка дыхания</text>
+		</string>
+	<string id="ui_mcm_toxic_air_breathe_feature_desc">
+		<text>Разрешить использовать задержку дыхания.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_breathe_key">
+		<text>Клавиша активации задержки дыхания</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_animation">
+		<text>Анимация</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_animation_desc">
+		<text>Отключение/включение анимации смены фильтра и анимации камеры баллона (только для экипированных предметов).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_metro_toggle">
+		<text>Сигнализация в стиле Метро</text>
+		</string>
+	<string id="ui_mcm_toxic_air_metro_toggle_desc">
+		<text>Отключить/включить звуковые эффекты часов в стиле Метро и всплывающие окна с новостями, когда фильтр достигает 15% (короткий сигнал) и когда фильтр достигает 0% (длинный сигнал).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_equip_key">
+		<text>Клавиша снятия/установки фильтра</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_equip_key_desc">
+		<text>Стандартный режим. При наличии нескольких фильтров с разной радиозащитой всегда будет выбираться фильтр с самой лучшей защитой. В этом режиме также учитывается радиозащита шлема, которая выступает ограничением. Если фильтра с защитой, равной защите шлема, не оказалось, то будет выбран лучший фильтр из доступных с радиозащитой ниже. Фильтры с защитой выше, чем у шлема, будут игнорироваться.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_min_condition">
+		<text>Минимальное состояние фильтра</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_min_condition_desc">
+		<text>Не устанавливать и не выбирать фильтр, если его состояние будет ниже указанного значения(0.15 = 15% по умолчанию).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_choose_max_quality_filter">
+		<text>Ограничить установку фильтров с высокой радиозащитой</text>
+		</string>
+	<string id="ui_mcm_toxic_air_choose_max_quality_filter_desc">
+		<text>Эта опция будет полезна, если вы используете шлем с высокой радиозащитой (40% и выше) и носите в инвентаре фильтры с высоким уровнем защиты, которые не хотите устанавливать, используя стандартный режим замены фильтров.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_max_quality">
+		<text>Диапазон ограничения установки фильтров</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_max_quality_desc">
+		<text>Если включено ограничение, то фильтры с радиозащитой выше этого значения (0.4 - 40% по умолчанию) будут игнорироваться при выборе. Эта опция влияет только на стандартный режим установки фильтров.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_mod_equip_key">
+		<text>Клавиша снятия/установки фильтра(альтернативный режим)</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_mod_equip_key_desc">
+		<text>Альтернативный режим. При наличии нескольких фильтров с разной радиозащитой всегда будет выбираться фильтр с самой худшей защитой. Радиозащита шлема здесь не учитывается.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_choose_low_quality_filter">
+		<text>Ограничить установку фильтров с низкой радиозащитой</text>
+		</string>
+	<string id="ui_mcm_toxic_air_choose_low_quality_filter_desc">
+		<text>Эта опция будет полезна, если вы хотите, чтобы при использовании альтернативного режима выбирались фильтры с защитой выше указанного значения.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_min_low_quality">
+		<text>Диапазон ограничения установки фильтров</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_min_low_quality_desc">
+		<text>Если включено ограничение, то фильтры с радиозащитой равной или ниже этого значения (0.4 - 40% по умолчанию) будут игнорироваться при выборе. Эта опция влияет только на альтернативный режим установки фильтров.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_check_key">
+		<text>Клавиша проверки фильтра</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_check_key_desc">
+		<text>Выводит название установленного фильтра или сообщение о его отсутствии.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_check_cond">
+		<text>Показывать состояние фильтра</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_check_cond_desc">
+		<text>При активации проверки фильтра, кроме его названия, также будет показываться примерное состояние с помощью текста.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_toxic_underground">
+		<text>Токсичный воздух в подземельях</text>
+		</string>
+	<string id="ui_mcm_toxic_air_toxic_underground_desc">
+		<text>Если включено, то без достаточной химической защиты будет наносится урон, а состояние фильтров будет снижаться быстрее.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_toxic_damage_mult">
+		<text>Урон от токсичного воздуха</text>
+		</string>
+	<string id="ui_mcm_toxic_air_toxic_damage_mult_desc">
+		<text>Множитель урона от токсичного воздуха, который вы получаете, когда защита недостаточно высока. \n 
+				\n По умолчанию: 1.0</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_degradation_mult">
+		<text>Скорость деградации фильтра</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_degradation_mult_desc">
+		<text>Множитель деградации фильтра. Влияет на скорость деградации в зависимости от локации, нахождения в радиоактивных и химических зонах, наличия токсичного воздуха на локации. \n 
+				\n По умолчанию: 1.0</text>
+		</string>
+	<string id="ui_mcm_toxic_air_flow_rate_mult">
+		<text>Расход воздуха</text>
+		</string>
+	<string id="ui_mcm_toxic_air_flow_rate_mult_desc">
+		<text>Множитель для расхода воздуха в кислородном баллоне. \n 
+				\n По умолчанию: 1.0</text>
+		</string>
+	<string id="ui_mcm_toxic_air_trader_items">
+		<text>Количество вещей в продаже</text>
+		</string>
+	<string id="ui_mcm_toxic_air_trader_items_desc">
+		<text>Множитель для количества вещей (фильтров/баллонов) появляющихся в инвентаре торговцев. \n 
+				\n По умолчанию: 1.0</text>
+		</string>
+	<string id="ui_mcm_toxic_air_sound_toggle">
+		<text>Звуковые эффекты</text>
+		</string>
+	<string id="ui_mcm_toxic_air_sound_toggle_desc">
+		<text>Отключение/включение звука удушья, когда вы находитесь в токсичной зоне без достаточно высокой защиты.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_ppe_toggle">
+		<text>Визуальные эффекты</text>
+		</string>
+	<string id="ui_mcm_toxic_air_ppe_toggle_desc">
+		<text>Отключение/включение визуальных эффектов, когда вы находитесь в токсичной зоне без достаточно высокой защиты.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_spawn_items_with_chance">
+		<text>Спавн предметов у трупов с определенным шансом</text>
+		</string>
+	<string id="ui_mcm_toxic_air_spawn_items_with_chance_desc">
+		<text>Если включено, то спавн предметов будет зависеть от шанса выпадения, установленного ниже. Если отключено, то на трупах всегда будет появляться фильтр или кислородный баллон.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_chance_items_spawn">
+		<text>Шанс выпадения предметов</text>
+		</string>
+	<string id="ui_mcm_toxic_air_chance_items_spawn_desc">
+		<text>Чем выше значение, тем больший шанс спавна предмета (0.5 = 50% по умолчанию).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_spawn_items_cond_mult">
+		<text>Увеличение максимального состояния предметов</text>
+		</string>
+	<string id="ui_mcm_toxic_air_spawn_items_cond_mult_desc">
+		<text>По умолчанию, максимально возможное состояние предметов, появляющихся в инвентаре у трупов, в среднем не превышает 30%. Этот параметр увеличивает их максимально возможное состояние. Установив значение 0.25 (0 по умолчанию), вы повысите максимально возможное состояние выпадающих предметов на 25%. То есть расширите диапазон состояния примерно с 5-30% до 5-55%.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_delete_items">
+		<text>УДАЛЕНИЕ ВСЕХ БАЛЛОНОВ ПРИ СЛЕД ЗАГРУЗКЕ</text>
+		</string>
+	<string id="ui_mcm_toxic_air_delete_items_desc">
+		<text>Чтобы предотвратить повреждение файла сохранения, эта опция удалит все новые предметы, добавленные этим аддоном при следующей загрузке. \n 
+				\n Итак, если вы хотите удалить аддон: \n
+				\n 1) Включите эту опцию; \n
+				\n 2) Сохранитесь, загрузитесь и сохранитесь снова; \n
+				\n 3) Выйдите из игры и отключите аддон.</text>
+		</string>
+	<string id="st_toxic_air_tooltip_prefix">
+		<text>Токсичный воздух:</text>
+		</string>
+	<string id="st_toxic_air_tooltip_filter">
+		<text>фильтр</text>
+		</string>
+	<string id="st_toxic_air_tooltip_tank">
+		<text>баллон</text>
+		</string>
+	<string id="st_ta_ui_filter_installed">
+		<text>Фильтр: установлен</text>
+		</string>
+	<string id="st_ta_ui_filter_missing">
+		<text>Фильтр: отсутствует</text>
+		</string>
+	<string id="st_ta_ui_tank_connected">
+		<text>Баллон: подключён</text>
+		</string>
+	<string id="st_ta_ui_tank_missing">
+		<text>Баллон: отсутствует</text>
+		</string>
+	<string id="st_ta_ui_filter_class">
+		<text>Класс защиты фильтра:</text>
+		</string>
+	<string id="st_ta_ui_tank_class">
+		<text>Класс защиты баллона:</text>
+		</string>
+	<string id="st_ta_ui_allowed_filter_class">
+		<text>Допустимый класс фильтра:</text>
+		</string>
+	<string id="st_ta_ui_allowed_tank_class">
+		<text>Допустимый класс баллона:</text>
+		</string>
+	<string id="st_ta_ui_filter_condition">
+		<text>Состояние фильтра:</text>
+		</string>
+	<string id="st_ta_ui_tank_condition">
+		<text>Состояние баллона:</text>
+		</string>
+	<string id="st_ta_ui_filter_drain">
+		<text>Расход фильтра:</text>
+		</string>
+	<string id="st_ta_ui_air_drain">
+		<text>Расход воздуха:</text>
+		</string>
+	<string id="st_ta_ui_rad_air">
+		<text>Защита от радиоактивного воздуха:</text>
+		</string>
+	<string id="st_ta_ui_toxic_air">
+		<text>Защита от токсичного воздуха:</text>
+		</string>
+	<string id="st_ta_ui_rad_toxic_air">
+		<text>Защита от радиоактивного и токсичного воздуха:</text>
+		</string>
+	<string id="st_ta_ui_present">
+		<text>есть</text>
+		</string>
+	<string id="st_ta_ui_absent">
+		<text>отсутствует</text>
+		</string>
+	<string id="st_ta_ui_full">
+		<text>полная</text>
+		</string>
+	<string id="st_ta_ui_per_hour">
+		<text>%/час</text>
+		</string>
+	<string id="st_ta_ui_filter_note">
+		<text>Работает только после установки на совместимый шлем или костюм.</text>
+		</string>
+	<string id="st_ta_ui_tank_note">
+		<text>Работает только с научной системой подачи воздуха.</text>
+		</string>
+	</string_table>

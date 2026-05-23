@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="ui_mcm_menu_cozy_campfire">
+		<text>Campfire Regens</text>
+	</string>
+	<string id="ui_mcm_cozy_campfire_health">
+		<text>Amount of health regen</text>
+	</string>
+	<string id="ui_mcm_cozy_campfire_rad">
+		<text>Amount of radiation removal</text>
+	</string>
+	<string id="ui_mcm_cozy_campfire_psy">
+		<text>Amount of psy regen</text>
+	</string>
+</string_table>

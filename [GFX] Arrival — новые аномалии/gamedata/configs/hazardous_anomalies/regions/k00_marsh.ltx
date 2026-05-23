@@ -1,0 +1,30 @@
+;Determines the spawn percentage per each anomaly and max number of them
+[spawn_properties]
+spawn_percent = 0.3
+anomaly_max_number = 25
+anomaly_max_active = 15 ; Unused
+
+;Determines the range of anomaly radius
+[radius_properties]
+min_radius = 2
+max_radius = 3
+
+;Determines the list of anomalies that can be spawned
+[anomaly_types]
+zone_mine_vapour
+zone_mine_flash
+zone_mine_blast
+zone_mine_vortex
+zone_mine_net
+zone_mine_sloth
+
+
+;Determines the smarts around which anomalies will be created
+[available_smarts]
+mar_smart_terrain_5_10
+mar_smart_terrain_7_7
+mar_smart_terrain_8_4
+
+;Determines the smarts around which anomalies will be created, with reduced amount (see script for how much)
+[available_smarts_reduced]
+mar_smart_terrain_6_11

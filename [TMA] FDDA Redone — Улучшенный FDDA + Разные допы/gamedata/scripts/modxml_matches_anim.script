@@ -1,0 +1,26 @@
+function on_xml_read()
+    RegisterScriptCallback("on_xml_read", function(xml_file_name, xml_obj)
+        local xml_to_change = [[ui\game_tutorials.xml]]
+
+        if xml_file_name == xml_to_change then
+            local empty_tutorial = 
+[[
+<tutorial_campfire_none>
+		<global_wnd/>
+		<item>
+			<disabled_key>quit</disabled_key>
+			<length_sec/>
+			<action id="use" finalize="1">zzz_matches_anim.e</action>
+			<guard_key>use</guard_key>
+			<disabled_key>quit</disabled_key>
+			<grab_input>0</grab_input>
+			<main_wnd>
+				
+			</main_wnd>
+		</item>
+</tutorial_campfire_none>
+]]
+            xml_obj:insertFromXMLString(empty_tutorial)
+        end
+    end)
+end

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="st_spleen_wastelander">
+        <text>Классный костюм, дружище. Его несложно прокачать — у меня всё есть для апгрейда, но покажи, что серьёзно настроен. Принеси редкий артефакт — и я улучшу твой костюм.</text>
+    </string>
+
+    <string id="st_beard_binocs">
+        <text>Один из ребят вчера на Оукпайне подобрал нормальные артефакты, но бинокль уронил в яму. Есть у тебя парочка запасных?</text>
+    </string>
+    <string id="st_beard_artygear">
+        <text>Привет, сталкер.</text>
+    </string>
+</string_table>

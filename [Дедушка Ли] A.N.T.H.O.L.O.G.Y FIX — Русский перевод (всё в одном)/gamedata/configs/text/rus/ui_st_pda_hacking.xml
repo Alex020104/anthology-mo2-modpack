@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="ui_st_pdahacking_preprompt">
+		<text>[pda_main ~/]> </text>
+	</string>
+	<string id="ui_st_pdahacking_preprompt_us">
+		<text>[pda_main ~/]> _</text>
+	</string>
+	<string id="ui_st_pdahacking_run">
+		<text>Запуск $name.exe...</text>
+	</string>
+	<string id="ui_st_pdahacking_running">
+		<text>Запускаю $name.exe ($effect)</text>
+	</string>
+	<string id="ui_st_pdahacking_load">
+		<text>Загрузка файла $script.script</text>
+	</string>
+	<string id="ui_st_pdahacking_loaded">
+		<text>Загружен файл $script.script</text>
+	</string>
+	<string id="ui_st_pdahacking_welcome">
+		<text>Добро пожаловать \n
+		Выберите скрипт для загрузки</text>
+	</string>
+
+	<string id="ui_st_pdahacking_nuke">
+		<text>Ядро</text>
+	</string>
+	<string id="ui_st_pdahacking_cmdup">
+		<text>Управление</text>
+	</string>
+	<string id="ui_st_pdahacking_decrypt">
+		<text>Расшифровка</text>
+	</string>
+	<string id="ui_st_pdahacking_rescan">
+		<text>Повторное сканирование</text>
+	</string>
+	<string id="ui_st_pdahacking_bruteforce">
+		<text>Грубая сила</text>
+	</string>
+	<string id="ui_st_pdahacking_bruteforce_success">
+		<text>УСПЕХ!!!</text>
+	</string>
+	<string id="ui_st_pdahacking_bruteforce_fail">
+		<text>ПРОВАЛ</text>
+	</string>
+	<string id="ui_st_pdahacking_skey">
+		<text>Скелетный Ключ</text>
+	</string>
+	<string id="ui_st_pdahacking_extract">
+		<text>Извлечение</text>
+	</string>
+	<string id="ui_st_pdahacking_extract_header">
+		<text>Извлеченная валюта</text>
+	</string>
+	<string id="ui_st_pdahacking_extract_msg">
+		<text>%c[ui_2]Вы извлекли %c[yellow]+$income рублей %c[ui_2]из скрытого криптовалютного кошелька</text>
+	</string>
+
+	<string id="ui_st_pdahacking_cmd_remain">
+		<text>Команд осталось</text>
+	</string>
+	<string id="ui_st_pdahacking_title_hacks">
+		<text>Взлом</text>
+	</string>
+	<string id="ui_st_pdahacking_title_scripts">
+		<text>Скрипты</text>
+	</string>
+	<string id="ui_st_pdahacking_title_encry_str">
+		<text>Уровень надежности шифрования:</text>
+	</string>
+	<string id="ui_st_pdahacking_title_data_decry">
+		<text>Расшифровка завершена:</text>
+	</string>
+	<string id="ui_st_pdahacking_total_power">
+		<text>Общая мощность = $power</text>
+	</string>
+	<string id="ui_st_pdahacking_power">
+		<text>Мощность:</text>
+	</string>
+	<string id="ui_st_pdahacking_selectedscript">
+		<text>Выбор скрипта</text>
+	</string>
+	<string id="ui_st_pdahacking_loadscript">
+		<text>Загрузка скрипта</text>
+	</string>
+	<string id="ui_st_pdahacking_loadcmd">
+		<text>Выполнить взлом</text>
+	</string>
+	<string id="ui_st_pdahacking_cmdcost">
+		<text>Стоимость скрипта/хака:</text>
+	</string>
+
+	<string id="ui_st_pdahacking_start">
+		<text>Взломать</text>
+	</string>
+	<string id="ui_st_pdahacking_failed">
+		<text>Взлом не удался</text>
+	</string>
+
+	<string id="ui_st_pdahacking_ruble">
+		<text>ru</text>
+	</string>
+
+	<string id="ui_st_pdahacking_unlocked">
+		<text>КПК разблокирован</text>
+	</string>
+	<string id="ui_st_pdahacking_outof_cmd">
+		<text>Команды отсутствуют</text>
+	</string>
+	<string id="ui_st_pdahacking_outof_scripts">
+		<text>Скрипты отсутствуют</text>
+	</string>
+	<string id="ui_st_pdahacking_behind">
+		<text>Назад</text>
+	</string>
+	<string id="ui_st_pdahacking_skey_1">
+		<text>Оно видит тебя</text>
+	</string>
+	<string id="ui_st_pdahacking_skey_2">
+		<text>Тебе не сбежать</text>
+	</string>
+	<string id="ui_st_pdahacking_skey_3">
+		<text>Конца не будет</text>
+	</string>
+	<string id="ui_st_pdahacking_skey_4">
+		<text>Все еще дышишь?</text>
+	</string>
+	<string id="ui_st_pdahacking_skey_5">
+		<text>Чувствуешь запах пепла?</text>
+	</string>
+	<string id="ui_st_pdahacking_skey_6">
+		<text>Твой мир будет поглощен</text>
+	</string>
+
+	<string id="st_pdahacking_usb1">
+		<text>Основные программы для взлома</text>
+	</string>
+	<string id="st_pdahacking_usb1_descr">
+		<text>Каково бы ни было первоначальное назначение этого USB-устройства, оно явно было модифицировано в противозаконных целях кем-то, кто знал, что делает. 
+		Пользовательская прошивка содержит базу данных сложных скриптов и эксплойтов, объединенных в набор удобных утилит, 
+		что позволяет человеку с минимальными техническими знаниями взламывать различные виды шифрования КПК.\n \n Важно отметить, что это программное обеспечение должно использоваться только в этических целях, а не для какой-либо незаконной деятельности.\n \n%c[255, 123, 217, 76]Добавляет к КПК в категории "Возможности" руководство, объясняющее, как работает взлом..\n \n
+
+		%c[ui_gray_3]СВОЙСТВА:\n
+		%c[d_blue] • %c[ui_gray_2] технологическая деталь\n
+		%c[255, 63, 192, 255] • %c[ui_gray_2] командные пункты: %c[255, 63, 192, 255]20\n
+		%c[255, 54, 217, 136] • %c[ui_gray_2] начальные сценарии: %c[255, 54, 217, 136]5\n</text>
+	</string>
+	<string id="st_pdahacking_usb2">
+		<text>Программное обеспечение для расширенного взлома</text>
+	</string>
+	<string id="st_pdahacking_usb2_descr">
+		<text>Каково бы ни было первоначальное назначение этого USB-устройства, оно явно было модифицировано в противозаконных целях кем-то, кто знал, что делает. 
+		Пользовательская прошивка содержит базу данных сложных скриптов и эксплойтов, объединенных в набор удобных утилит, 
+		что позволяет человеку с минимальными техническими знаниями взламывать различные виды шифрования КПК.\n \n Важно отметить, что это программное обеспечение должно использоваться только в этических целях, а не для какой-либо незаконной деятельности.\n \n%c[255, 123, 217, 76]Добавляет к КПК в категории "Возможности" руководство, объясняющее, как работает взлом..\n \n
+
+		%c[ui_gray_3]СВОЙСТВА:\n
+		%c[d_blue] • %c[ui_gray_2] технологическая деталь\n
+		%c[255, 63, 192, 255] • %c[ui_gray_2] командные пункты: %c[255, 63, 192, 255]24\n
+		%c[255, 54, 217, 136] • %c[ui_gray_2] начальные сценарии: %c[255, 54, 217, 136]6\n
+		%c[255, 255, 184, 28] • %c[ui_gray_2] максимальные валютные выписки: %c[255, 255, 184, 28]1\n</text>
+	</string>
+	<string id="st_pdahacking_usb3">
+		<text>Экспертное программное обеспечение для взлома</text>
+	</string>
+	<string id="st_pdahacking_usb3_descr">
+		<text>Каково бы ни было первоначальное назначение этого USB-устройства, оно явно было модифицировано в противозаконных целях кем-то, кто знал, что делает. 
+		Пользовательская прошивка содержит базу данных сложных скриптов и эксплойтов, объединенных в набор удобных утилит, 
+		что позволяет человеку с минимальными техническими знаниями взламывать различные виды шифрования КПК.\n \n Важно отметить, что это программное обеспечение должно использоваться только в этических целях, а не для какой-либо незаконной деятельности.\n \n%c[255, 123, 217, 76]Добавляет к КПК в категории "Возможности" руководство, объясняющее, как работает взлом..\n \n
+
+		%c[ui_gray_3]СВОЙСТВА:\n
+		%c[d_blue] • %c[ui_gray_2] технологическая деталь\n
+		%c[255, 63, 192, 255] • %c[ui_gray_2] командные пункты: %c[255, 63, 192, 255]28\n
+		%c[255, 54, 217, 136] • %c[ui_gray_2] начальные сценарии: %c[255, 54, 217, 136]7\n
+		%c[255, 255, 184, 28] • %c[ui_gray_2] максимальные валютные выписки: %c[255, 255, 184, 28]2\n</text>
+	</string>
+
+	<string id="st_pdahacking_rarity_itm_pda_common">
+		<text>Обычный</text>
+	</string>
+	<string id="st_pdahacking_rarity_itm_pda_unОбычный">
+		<text>Необычный</text>
+	</string>
+	<string id="st_pdahacking_rarity_itm_pda_rare">
+		<text>Редкий</text>
+	</string>
+
+	<!--	compatibility for Better Encryption Overhaul		-->
+	<string id="st_pdahacking_rarity_itm_pda_encrypted_Обычный">
+		<text>Обычный</text>
+	</string>
+	<string id="st_pdahacking_rarity_itm_pda_encrypted_Необычный">
+		<text>Необычный</text>
+	</string>
+	<string id="st_pdahacking_rarity_itm_pda_encrypted_Редкий">
+		<text>Редкий</text>
+	</string>
+
+	<!--	Unlock Cost addon		-->
+	<string id="st_pdahacking_unlock_cost">
+		<text>Если вы готовы отдать немного денег, конечно. %s руб. для каждого КПК, который я могу разблокировать.</text>
+	</string>
+
+	<!--	Unfail dialog addon		-->
+	<string id="st_pdahacking_unfail_text_0">
+		<text>Мне не удалось взломать КПК. Можете ли вы сбросить шифрование?</text>
+	</string>
+	<string id="st_pdahacking_unfail_text_1">
+		<text>Проблема с навыком. Но если вы готовы дать немного денег, конечно. %s руб. для каждого вышедшего из строя КПК.</text>
+	</string>
+	<string id="st_pdahacking_unfail_text_2">
+		<text>Хорошо, вот %s руб. для сброса %s моих КПК.</text>
+	</string>
+	<string id="st_pdahacking_unfail_text_3">
+		<text>Забей...</text>
+	</string>
+	<string id="st_pdahacking_unfail_text_4">
+		<text>Теперь вы можете попробовать взломать их снова. Развлекайтесь.</text>
+	</string>
+	<string id="st_pdahacking_unfail_text_5">
+		<text>Ладно.</text>
+	</string>
+	<!-- 
+		MCM
+	-->
+	<string id="ui_mcm_pda_hacking_title">
+		<text>Взлом КПК</text>
+	</string>
+	<string id="ui_mcm_menu_pda_hacking">
+		<text>Взлом КПК</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_locked_chance_mult">
+		<text>Множитель шанса блокировки КПК</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_stash_chance_mult">
+		<text>Множитель шанса получения тайника из КПК</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_script_power_min">
+		<text>Минимальная мощность скрипта</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_script_power_max">
+		<text>Максимальная мощность скрипта</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_hack_device_drop_mult">
+		<text>Множитель шанса выпадения флешек с софтом</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_extract_reward_mult">
+		<text>Множитель вознаграждения</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_soundfx_volume">
+		<text>Громкость звуков FX</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_enable_tech_unlock_cost">
+		<text>Включить переопределение стоимости разблокировки КПК</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_tech_unlock_cost">
+		<text>Стоимость разблокировки КПК техником</text>
+	</string>
+	<string id="ui_mcm_pda_hacking_tech_unfail_cost">
+		<text>Стоимость повторной разблокировки КПК у техника (при провале взлома игроком)</text>
+	</string>
+
+	<string id="encyclopedia_features_pdahacking">
+		<text>Взлом КПК</text>
+	</string>
+	<string id="encyclopedia_features_pdahacking_text">
+		<text>
+			%c[pda_green]Взлом КПК мод от Utjan%c[ui_gray_1]\n \n
+			Этот мод позволяет взламывать заблокированные КПК, найденные у мертвых сталкеров, играя в мини-игру на КПК.\n
+			Чтобы взломать КПК, сначала нужно получить в руки USB-носитель с программой для взлома. 
+			Держите USB-носитель в инвентаре, и при использовании заблокированного КПК появится кнопка, позволяющая начать мини-игру по взлому.\n \n
+			
+			%c[pda_green]I. Информация%c[ui_gray_1]\n
+			\n- Шифрование завершено
+			\n Чтобы выиграть мини-игру и разблокировать КПК, необходимо достичь 100%-ной степени завершенности шифрования. Текущее значение показано в правом нижнем углу экрана.
+			\n- Надежность шифрования
+			\n В зависимости от фракции преследователя, бросившего заблокированный КПК, шифрование будет иметь определенную силу. 
+			Сила шифрования снижает эффективность некоторых взломов и делает мини-игру сложнее, чем выше ее значение. Сила отображается в левом нижнем углу.
+			\n- командные пункты
+			\n Вы начинаете мини-игру со взломом, имея определенное количество командных пунктов. Они используются для запуска скриптов и хаков. 
+			Если они закончатся, вы провалите мини-игру. Синяя цифра в левом верхнем углу экрана показывает, сколько их у вас.
+
+			\n- Список скриптов
+			\В левой части экрана находится список скриптов и значение их мощности. Выбор скрипта стоит 1 команду повышения уровня и показывает список взломов.\n
+			Имена скриптов основаны на реальных файлах в вашей установке Anomaly. Имя скрипта используется в качестве затравки для генерации его мощности и хаков. 
+			Это означает, что один и тот же скрипт, запущенный на разных заблокированных pdas, будет иметь одинаковую мощность и хаки.\n
+			Скрипты, с которыми вы начинаете, случайны для каждой сессии мини-игры.\n
+			Если у вас закончатся скрипты, вы провалите мини-игру.
+
+			\n• Список хаков
+			\n В центре экрана находится список хаков. Он отображается только после выбора скрипта. Запуск хака стоит 1 командное очко.
+			Взломы используются для продвижения по мини-игре. Эффективность взлома зависит от мощности выбранного скрипта.\n \n
+
+			%c[pda_green]II. Взломы%c[ui_gray_1]\n
+			\n%c[255, 123, 217, 76]- Расшифровать%c[ui_gray_1]
+			\nЭто самый важный хак, так как его выполнение увеличивает количество завершенных шифровок. Его эффективность снижается в зависимости от силы шифрования.
+			\n%c[255, 255, 255, 255]- Ядро%c[ui_gray_1]
+			\n Уменьшает силу шифрования. Эффективность тем выше, чем больше сила шифрования.
+			\n%c[255, 63, 192, 255]- Команда повышения уровня%c[ui_gray_1]
+			\n Увеличивает ваши командные пункты. Не стоит ни одного очка. Если этот хак доступен, когда у вас 0 очков, мини-игра не будет провалена.
+			\n%c[255, 54, 217, 136]- Повторное сканирование%c[ui_gray_1]
+			\n Генерирует дополнительные скрипты.
+			\n%c[255, 255, 255, 63]- Брутфорс%c[ui_gray_1]
+			\n Имеет шанс мгновенно получить 100% завершение шифрования.
+			\n%c[255, 255, 184, 28]- Извлечение%c[ui_gray_1]
+			\n Награждает вас небольшим количеством рублей.\n \n
+
+						%c[pda_green]III. Программное обеспечение для взлома%c[ui_gray_1]\n
+			\n- Это предметы с изображением USB-носителя. Существует три уровня этих предметов, каждый из которых дает возможность лучше начать игру. 
+			Для появления взлома извлечение информации требуется уровень Продвинутый и Эксперт.\n
+			Предметы программного обеспечения для взлома можно купить у механиков, а более высокие уровни доступны после сдачи наборов инструментов Продвинутый и Эксперт.\n
+			Программное обеспечение для взлома также можно найти на трупах сталкеров. У сталкеров более высокого ранга больше шансов выпасть более высокие уровни программного обеспечения.\n
+			Не забудьте сохранить предмет в инвентаре, чтобы включить мини-игру при открытии заблокированного КПК.\n \n
+
+			%c[pda_green]IV. Поток мини-игр%c[ui_gray_1]\n
+			\n1. Нажмите на скрипт, чтобы выбрать его и показать список хаков. Желательно, чтобы это был скрипт с высокой мощностью.
+			\n2. Просмотрите список хаков. Если вы не хотите использовать один из доступных, вы можете выбрать другой скрипт для нового списка хаков.
+			\n3. Щелкните по хаку, чтобы выполнить его. Это очистит список хаков и удалит выбранный скрипт.
+			\n4. Повторяйте шаги с 1 по 3, пока не добьетесь 100%-ного завершения шифрования, что приведет к победе в мини-игре и разблокирует КПК.\n \n
+
+			%c[pda_green]V. Примечания%c[ui_gray_1]\n
+			\n- Если вы разблокируете КПК во время мини-игры, она автоматически завершится неудачей.
+			\n- Если вы потерпели неудачу в мини-игре, вы навсегда лишаетесь возможности запускать мини-игру снова на этом КПК.
+
+			%c[pda_green]VI. Техники%c[ui_gray_1]\n
+			\nПо умолчанию этот мод повышает стоимость разблокировки КПК у техников. Неудачный взлом КПК не помешает вам разблокировать его у технического специалиста.
+			\nОднако он также добавляет опцию диалога, позволяющую вам заплатить за сброс настроек КПК, которые вам не удалось взломать, чтобы вы могли попытаться взломать их снова. Стоимость этого ниже, чем платить за разблокировку КПК.
+		</text>
+	</string>
+</string_table>
+                        

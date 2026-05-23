@@ -1,0 +1,620 @@
+--[[
+	scheme_type: generic
+	author: Lanforse
+	adapted for Anomaly
+--]]
+
+actid = 188120
+evaid = 188120
+
+local scheme_name = "npc_vs_box"
+local script_name = "axr_npc_vs_box"
+local lock_sections = {
+	["stash_lock"] = true,
+}
+
+local looting = {}
+
+local anm_low_list = {"pickup_crouch", "search"}
+local anm_high_list = {"search"}
+
+local anim_low = {
+	["pickup_crouch"] = true,
+	["search"] = true,
+}
+
+local anim_high = {
+	["search"] = true,
+}
+
+local looted_message_keys = {
+	"st_npc_stash_lock_looted_1",
+	"st_npc_stash_lock_looted_2",
+	"st_npc_stash_lock_looted_3",
+	"st_npc_stash_lock_looted_4",
+	"st_npc_stash_lock_looted_5",
+	"st_npc_stash_lock_looted_6",
+}
+
+local looted_message_fallbacks = {
+	"%s grinned at the stash: \"Jackpot. I'm taking: %s\".",
+	"%s perked up: \"Well, hello there. Found: %s\".",
+	"%s muttered happily: \"Not bad at all. Looted: %s\".",
+	"%s chuckled: \"Somebody hid this badly. Took: %s\".",
+	"%s sounded pleased: \"That's useful. Into the pack: %s\".",
+	"%s laughed under his breath: \"The owner will miss this: %s\".",
+}
+
+local function ensure_scheme_registered()
+	if not (_G.schemes and _G.schemes_by_stype and LoadScheme) then
+		return false
+	end
+
+	if _G.schemes[scheme_name] ~= script_name then
+		LoadScheme(script_name, scheme_name, _G.stype_stalker or 0)
+	end
+
+	return _G.schemes[scheme_name] == script_name
+end
+
+ensure_scheme_registered()
+
+function on_game_start()
+	ensure_scheme_registered()
+end
+
+local function current_state(npc)
+	return npc and state_mgr and state_mgr.get_state and state_mgr.get_state(npc)
+end
+
+local function is_locked_section(sec)
+	return sec and lock_sections[sec] == true
+end
+
+local function is_lootable_item(item)
+	if not item then
+		return false
+	end
+
+	local sec = item:section()
+	if is_locked_section(sec) then
+		return false
+	end
+
+	local lootable = xr_corpse_detection and xr_corpse_detection.lootable_table
+	return lootable and lootable[sec] ~= nil
+end
+
+local function is_inventory_box(box, se_box)
+	if box and box:is_inventory_box() then
+		return true
+	end
+
+	local cls = se_box and se_box:clsid()
+	return IsInvbox and IsInvbox(nil, cls) == true
+end
+
+local function box_has_lock(box)
+	if not is_inventory_box(box) then
+		return false
+	end
+
+	local locked = false
+	local function check_lock(inv_box, item)
+		if item and is_locked_section(item:section()) then
+			locked = true
+		end
+	end
+
+	box:iterate_inventory_box(check_lock, box)
+	return locked
+end
+
+local function box_has_lootable_items(box)
+	if not is_inventory_box(box) or box_has_lock(box) then
+		return false
+	end
+
+	local found = false
+	local function check_loot(inv_box, item)
+		if is_lootable_item(item) then
+			found = true
+		end
+	end
+
+	box:iterate_inventory_box(check_loot, box)
+	return found
+end
+
+local function clear_target(st)
+	if not st then
+		return
+	end
+
+	if st.box_id then
+		looting[st.box_id] = nil
+	end
+
+	st.__tmr = nil
+	st.box_id = nil
+	st.box_vid = nil
+	st.vid = nil
+	st.state = nil
+end
+
+local function item_display_name(item)
+	local sec = item and item:section()
+	if not sec then
+		return "unknown"
+	end
+
+	local id = SYS_GetParam and SYS_GetParam(0, sec, "inv_name", sec) or sec
+	local translated = game and game.translate_string and game.translate_string(id) or id
+	if translated and translated ~= "" and translated ~= id then
+		return translated
+	end
+
+	return id or sec
+end
+
+local function remember_found(found, item)
+	if not (found and item) then
+		return
+	end
+
+	local name = item_display_name(item)
+	local idx = found.by_name[name]
+	if idx then
+		found.items[idx].count = found.items[idx].count + 1
+	else
+		idx = #found.items + 1
+		found.items[idx] = {name = name, count = 1}
+		found.by_name[name] = idx
+	end
+
+	found.total = found.total + 1
+end
+
+local function format_found_items(found)
+	if not (found and found.total and found.total > 0) then
+		return ""
+	end
+
+	local parts = {}
+	local max_items = math.min(#found.items, 5)
+	for i = 1, max_items do
+		local entry = found.items[i]
+		parts[#parts + 1] = entry.count > 1 and strformat("%s x%s", entry.name, entry.count) or entry.name
+	end
+
+	if #found.items > max_items then
+		local fmt = game and game.translate_string and game.translate_string("st_npc_stash_lock_more") or "and %s more"
+		if not fmt or fmt == "st_npc_stash_lock_more" then
+			fmt = "and %s more"
+		end
+		parts[#parts + 1] = strformat(fmt, #found.items - max_items)
+	end
+
+	return table.concat(parts, ", ")
+end
+
+local function translate_or_fallback(id, fallback)
+	local text = game and game.translate_string and game.translate_string(id) or nil
+	if text and text ~= "" and text ~= id then
+		return text
+	end
+
+	return fallback
+end
+
+local function pick_looted_message_format()
+	local idx = math.random(#looted_message_keys)
+	return translate_or_fallback(looted_message_keys[idx], looted_message_fallbacks[idx])
+end
+
+local function get_npc_icon(npc)
+	if not npc then
+		return "default"
+	end
+
+	local ok, icon = pcall(function()
+		return npc:character_icon()
+	end)
+
+	return ok and icon or "default"
+end
+
+local function notify_found_items(npc, found)
+	local actor = db and db.actor
+	if not (actor and found and found.total and found.total > 0) then
+		return
+	end
+
+	local npc_name = npc and npc:character_name() or "NPC"
+	local items = format_found_items(found)
+	local fmt = pick_looted_message_format()
+	local msg = strformat(fmt, npc_name, items)
+
+	if dynamic_news_helper and dynamic_news_helper.send_tip then
+		local icon = get_npc_icon(npc)
+		local sent = dynamic_news_helper.send_tip(msg, npc_name, nil, 9, icon, "news", "npc")
+		if sent ~= false then
+			printf("axr_npc_vs_box: %s", msg)
+			return
+		end
+	end
+
+	if news_manager and news_manager.send_tip then
+		news_manager.send_tip(actor, msg, nil, npc, 7000)
+	elseif actor_menu and actor_menu.set_msg then
+		actor_menu.set_msg(1, msg, 7)
+	end
+
+	printf("axr_npc_vs_box: %s", msg)
+end
+
+local function get_treasure_manager()
+	return treasure_manager or coc_treasure_manager
+end
+
+local function get_player_created_stashes()
+	if not (alife_storage_manager and alife_storage_manager.get_state) then
+		return nil
+	end
+
+	local m_data = alife_storage_manager.get_state()
+	return m_data and m_data.player_created_stashes
+end
+
+local function is_treasure_cache(tm, id)
+	return tm and tm.caches and tm.caches[id] ~= nil
+end
+
+local function is_excluded_cache(tm, name)
+	return tm and tm.caches_exclude and tm.caches_exclude[name] == true
+end
+
+local function try_spawn_cache_items(tm, box)
+	if tm and tm.try_spawn_treasure and is_treasure_cache(tm, box:id()) then
+		tm.try_spawn_treasure(box)
+	end
+end
+
+local function mark_cache_searched(tm, id)
+	if is_treasure_cache(tm, id) then
+		tm.caches[id] = false
+		return true
+	end
+
+	return false
+end
+
+-----------------------------------------------------------------------------------------
+-- Evaluator NPC vs BOX
+-----------------------------------------------------------------------------------------
+
+class "evaluator_npc_vs_box" (property_evaluator)
+function evaluator_npc_vs_box:__init(npc, name, storage) super(nil, name)
+	self.st = storage
+end
+
+function evaluator_npc_vs_box:evaluate()
+	local tg = time_global()
+	if xr_actor and xr_actor.first_update_time and (tg < xr_actor.first_update_time + 10000) then
+		return false
+	end
+
+	local npc = self.object
+	if not (npc and npc:alive()) then
+		return false
+	end
+
+	if npc:has_info("npcx_is_companion") then
+		return false
+	end
+
+	if IsWounded(npc) then
+		return false
+	end
+
+	if self.st.box_id or self.st.box_vid then
+		return true
+	end
+
+	local state = current_state(npc)
+	if anim_low[state] or anim_high[state] then
+		return false
+	end
+
+	local actor = db and db.actor
+	local level_obj = level
+	local alife_fn = alife
+	local al = alife_fn and alife_fn()
+	local tm = get_treasure_manager()
+	local caches = tm and tm.caches
+	local player_stashes = get_player_created_stashes()
+	if not (actor and al and level_obj and level_obj.object_by_id and level_obj.vertex_id and (caches or player_stashes)) then
+		return false
+	end
+
+	self.st.__dtimer = self.st.__dtimer or tg + 5000
+	if tg < self.st.__dtimer then
+		return false
+	end
+	self.st.__dtimer = nil
+
+	local function try_target_box(id, spawn_treasure)
+		local box = level_obj.object_by_id(id)
+		local se_box = box and al:object(box:id())
+
+		if se_box and is_inventory_box(box, se_box) and looting[box:id()] ~= true then
+			local name = box:name()
+			local npc_pos = npc:position()
+			local box_pos = box:position()
+			local angle = se_box.angle.y
+
+			box_pos.x = box_pos.x + math.sin(angle) * 1.3
+			box_pos.z = box_pos.z - math.cos(angle) * 1.3
+
+			local dist_to_actor = box_pos:distance_to_sqr(actor:position())
+			local vid = level_obj.vertex_id(box_pos)
+			local y_diff = box_pos.y - npc_pos.y
+			local y_check = (y_diff < 1) and (y_diff > -1)
+
+			if (vid < 4294967295)
+				and npc:accessible(vid)
+				and y_check
+				and (dist_to_actor > 25)
+				and not (spawn_treasure and is_excluded_cache(tm, name))
+			then
+				if spawn_treasure then
+					try_spawn_cache_items(tm, box)
+				end
+
+				if box_has_lootable_items(box) then
+					self.st.box_id = box:id()
+					self.st.box_vid = vid
+					self.st.state = "patrol"
+					looting[self.st.box_id] = true
+					if DEV_DEBUG_DEV then
+						printf("-SEND %s to %s", npc:name(), box:name())
+					end
+					return true
+				end
+			end
+		end
+
+		return false
+	end
+
+	if caches then
+		for id, val in pairs(caches) do
+			if try_target_box(id, true) then
+				return true
+			end
+		end
+	end
+
+	if player_stashes then
+		for id, val in pairs(player_stashes) do
+			if not is_treasure_cache(tm, id) and try_target_box(id, false) then
+				return true
+			end
+		end
+	end
+
+	return false
+end
+
+-----------------------------------------------------------------------------------------
+-- Action NPC vs BOX
+-----------------------------------------------------------------------------------------
+
+class "action_npc_vs_box" (action_base)
+function action_npc_vs_box:__init(npc, name, storage) super(nil, name)
+	self.st = storage
+end
+
+function action_npc_vs_box:initialize()
+	local npc = self.object
+	if npc then
+		npc:set_desired_position()
+		npc:set_desired_direction()
+		npc:set_path_type(game_object.level_path)
+		state_mgr.set_state(npc, self.st.state, nil, nil, nil, {fast_set = true})
+	end
+	self.st.vid = self.st.box_vid
+	action_base.initialize(self)
+end
+
+function action_npc_vs_box:execute()
+	action_base.execute(self)
+
+	local npc = self.object
+	local level_obj = level
+	if not (level_obj and level_obj.object_by_id) then
+		clear_target(self.st)
+		return
+	end
+
+	local box = self.st.box_id and level_obj.object_by_id(self.st.box_id)
+	local vid = self.st.box_vid
+
+	if not (npc and box and vid and is_inventory_box(box)) then
+		if DEV_DEBUG_DEV then
+			printf("action_npc_vs_box:execute() break")
+		end
+		clear_target(self.st)
+		return
+	end
+
+	if box_has_lock(box) then
+		clear_target(self.st)
+		return
+	end
+
+	local state = current_state(npc)
+	if anim_low[state] or anim_high[state] then
+		self.st.__tmr = self.st.__tmr or time_global() + 8000
+		if time_global() > self.st.__tmr then
+			clear_target(self.st)
+		end
+		return
+	end
+
+	if npc:level_vertex_id() == self.st.vid then
+		if box:position().y - npc:position().y > 0.5 then
+			self.st.state = anm_high_list[math.random(#anm_high_list)]
+		else
+			self.st.state = anm_low_list[math.random(#anm_low_list)]
+		end
+
+		npc:set_desired_position()
+		npc:set_desired_direction()
+		state_mgr.set_state(npc, self.st.state, nil, nil, {look_position = box:position()})
+
+		local tm = get_treasure_manager()
+		local is_cache = mark_cache_searched(tm, box:id())
+		if is_cache and level_obj.map_remove_object_spot then
+			level_obj.map_remove_object_spot(box:id(), "treasure")
+		end
+
+		local found = {items = {}, by_name = {}, total = 0}
+		local function transfer(inv_box, item)
+			if is_lootable_item(item) then
+				remember_found(found, item)
+
+				if dynamic_news_manager and axr_main and axr_main.config and axr_main.config:r_value("mm_options", "enable_dynamic_news", 1) then
+					if IsArtefact(item) then
+						dynamic_news_manager.get_dynamic_news():FoundArtefact(npc, item)
+					elseif IsMedicine(item) then
+						dynamic_news_manager.get_dynamic_news():FoundMedicine(npc, item)
+					elseif IsFood(item) then
+						dynamic_news_manager.get_dynamic_news():FoundFood(npc, item)
+					end
+				end
+
+				if item:section() == "mine_wire" then
+					local blow_particle = particles_object("explosions\\explosion_04")
+					blow_particle:play_at_pos(box:position())
+					xr_sound.set_sound_play(box:id(), "stash_explosion")
+
+					db.storage[npc:id()].tagged_by_actor = true
+
+					local h = hit()
+					h.type = hit.explosion
+					h:bone("pelvis")
+					h.power = 4
+					h.impulse = 20
+					h.direction = vector():set(0, 0, 1)
+					h.draftsman = npc
+					npc:hit(h)
+
+					local alife_fn = alife
+					local al = alife_fn and alife_fn()
+					local se_obj = alife_object(item:id())
+					if al and se_obj then
+						al:release(se_obj, true)
+					end
+				else
+					inv_box:transfer_item(item, npc)
+				end
+			end
+		end
+
+		box:iterate_inventory_box(transfer, box)
+		notify_found_items(npc, found)
+
+		if not self.sound then
+			xr_sound.set_sound_play(npc:id(), "corpse_loot_begin")
+			self.sound = true
+		end
+	else
+		local dist = npc:position():distance_to_sqr(box:position())
+
+		if npc:path_type() ~= game_object.level_path then
+			npc:set_path_type(game_object.level_path)
+		end
+
+		self.st.state = (dist < 200) and "rush" or "patrol"
+		state_mgr.set_state(npc, self.st.state)
+		utils.send_to_nearest_accessible_vertex(npc, self.st.vid, "npc_vs_box")
+	end
+end
+
+function action_npc_vs_box:finalize()
+	action_base.finalize(self)
+end
+
+---------------------------------------------------------
+---------------------- binder ---------------------------
+
+function setup_generic_scheme(npc, ini, scheme, section, stype, temp)
+	xr_logic.assign_storage_and_bind(npc, ini, scheme, section, temp)
+end
+
+function add_to_binder(npc, ini, scheme, section, storage, temp)
+	local manager = npc and npc:motivation_action_manager()
+	if not manager then
+		return
+	end
+
+	if (not npc:alive()) or (npc:character_community() == "zombied" or npc:section() == "actor_visual_stalker") then
+		manager:add_evaluator(evaid, property_evaluator_const(false))
+		if temp then
+			temp.needs_configured = false
+		end
+	else
+		manager:add_evaluator(evaid, evaluator_npc_vs_box(npc, "eva_npc_vs_box", storage))
+	end
+
+	temp.action = action_npc_vs_box(npc, "act_npc_vs_box", storage)
+	temp.action:add_precondition(world_property(stalker_ids.property_alive, true))
+	temp.action:add_precondition(world_property(stalker_ids.property_danger, false))
+	temp.action:add_precondition(world_property(stalker_ids.property_anomaly, false))
+	temp.action:add_precondition(world_property(stalker_ids.property_enemy, false))
+	temp.action:add_precondition(world_property(evaid, true))
+	temp.action:add_effect(world_property(evaid, false))
+
+	manager:add_action(actid, temp.action)
+end
+
+function configure_actions(npc, ini, scheme, section, stype, temp)
+	local manager = npc and npc:motivation_action_manager()
+	if not (manager and temp and temp.action) then
+		return
+	end
+
+	temp.action:add_precondition(world_property(xr_evaluators_id.sidor_wounded_base, false))
+	temp.action:add_precondition(world_property(xr_evaluators_id.wounded_exist, false))
+
+	if _G.schemes["gl"] then
+		temp.action:add_precondition(world_property(rx_gl.evid_gl_reload, false))
+	end
+
+	local action
+	local actions = {
+		stalker_ids.action_combat_planner,
+		xr_actions_id.state_mgr + 2,
+		xr_actions_id.alife,
+	}
+
+	for i = 1, #actions do
+		action = manager:action(actions[i])
+		if action then
+			action:add_precondition(world_property(evaid, false))
+		end
+	end
+end
+
+function disable_generic_scheme(npc, scheme, stype)
+	local id = npc and npc:id()
+	local st = id and db.storage[id] and db.storage[id][scheme_name]
+	if st then
+		st.enabled = false
+	end
+end
+
+function npc_add_precondition(action)
+	action:add_precondition(world_property(evaid, false))
+end

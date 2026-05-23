@@ -1,0 +1,23 @@
+
+-- PDA Hacking
+-- Generated with AnomalyModCreator
+
+op = { id= "pda_hacking",sh=true ,gr={
+		{ id= "title", type= "slide", link= "ui_options_slider_player", text="ui_mcm_pda_hacking_title", size= {512,50}, spacing= 20 },
+		{id = "script_power_min", type = "track", val = 2, min=1, max=100, step=1, def = 25},
+		{id = "script_power_max", type = "track", val = 2, min=25, max=200, step=1, def = 100},
+		{id = "hack_device_drop_mult", type = "track", val = 2, min=0, max=10, step=0.1, def = 1},
+		{id = "extract_reward_mult", type = "track", val = 2, min=0, max=5, step=0.1, def = 1},
+		{id = "locked_chance_mult", type = "track", val = 2, min=1, max=10, step=0.1, def = 1},
+		{id = "stash_chance_mult", type = "track", val = 2, min=0.1, max=10, step=0.1, def = 1},
+		{id = "soundfx_volume", type = "track", val = 2, min=0, max=1, step=0.1, def = 1},
+		{id = "enable_tech_unlock_cost", type = "check", val = 1, def = true},
+		{id = "tech_unlock_cost", type = "track", val = 2, min=600, max=5000, step=100, def = 1500},
+		{id = "tech_unfail_cost", type = "track", val = 2, min=100, max=2000, step=100, def = 500},
+	}
+}
+
+function on_mcm_load()
+	return op
+end
+                        

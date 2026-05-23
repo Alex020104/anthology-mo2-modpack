@@ -1,0 +1,22 @@
+<w>
+  <file name="ui\chemaddict\him_kolba_green">
+	<texture id="him_kolba_green_e" x="335" y="-2" width="170" height="151" />
+	<texture id="him_kolba_green_h" x="167" y="-2" width="170" height="151" />
+	<texture id="him_kolba_green_t" x="-1" y="-2" width="170" height="151" />
+	<texture id="him_kolba_green_d" x="-1" y="-2" width="170" height="151" />
+  </file>
+  
+  <file name="ui\chemaddict\him_kolba_yolo">
+	<texture id="him_kolba_yolo_e" x="0" y="0" width="5" height="5" />
+	<texture id="him_kolba_yolo_h" x="0" y="35" width="5" height="5" />
+	<texture id="him_kolba_yolo_t" x="0" y="55" width="5" height="5" />
+	<texture id="him_kolba_yolo_d" x="0" y="0" width="5" height="5" />
+  </file>
+  
+  <file name="ui\chemaddict\him_kolba_red">
+	<texture id="him_kolba_red_e" x="0" y="0" width="5" height="5" />
+	<texture id="him_kolba_red_h" x="0" y="35" width="5" height="5" />
+	<texture id="him_kolba_red_t" x="0" y="55" width="5" height="5" />
+	<texture id="him_kolba_red_d" x="0" y="0" width="5" height="5" />
+  </file>
+</w>

@@ -1,0 +1,8 @@
+<string_table>
+	<string id="st_xp_notif_gain">
+        <text>Gained</text>
+    </string>
+    <string id="st_xp_notif_for">
+        <text>xp for</text>
+    </string>
+</string_table>

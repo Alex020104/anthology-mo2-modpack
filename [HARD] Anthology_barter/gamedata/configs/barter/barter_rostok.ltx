@@ -1,0 +1,184 @@
+
+; petrenko
+[petrenko_ammo1] ; ammo for trophies
+trader          = bar_dolg_general_petrenko_stalker
+give            = ammo_9x18_pmm
+take            = mutant_part_dog_tail:1,mutant_part_flesh_eye:1,mutant_part_cat_claw:1,mutant_part_tushkano_head:2,bandit_patch:2
+type            = anyOf
+repeat          = restock
+limit           = 14
+desc            = st_petrenko_trophies
+desc_done       = st_petrenko_trophies_done
+
+[petrenko_ammo2]:petrenko_ammo1
+give            = ammo_7.62x25_p
+
+[petrenko_ammo3]:petrenko_ammo1
+give            = ammo_5.45x39_fmj
+take            = mutant_part_psevdodog_tail:1,mutant_part_boar_leg:2,mutant_part_lurker_tail:1,mutant_part_snork_mask:1,bandit_patch:3,freedom_patch:2
+faction         = dolg
+goodwill        = 200
+
+[petrenko_ammo3b]:petrenko_ammo3
+give            = ammo_5.45x39_ep
+addon           = arti_ballistics
+
+[petrenko_ammo4]:petrenko_ammo3 
+give            = ammo_7.62x39_fmj
+
+[petrenko_ammo_grenade]:petrenko_ammo3 
+give            = grenade_rgd5
+
+[petrenko_ammo5]:petrenko_ammo3
+give            = ammo_9x39_pab9
+take            = mutant_part_krovosos_jaw:1,mutant_part_psysucker_hand:1,freedom_patch:4
+goodwill        = 400
+limit           = 6
+
+[petrenko_ammo6]:petrenko_ammo5
+give            = ammo_7.62x54_7h14
+
+[petrenko_ammo6b]:petrenko_ammo5
+give            = ammo_7.62x54_7h14_bad
+
+[petrenko_ammo6g]:petrenko_ammo5
+give            = ammo_vog-25
+limit           = 4
+
+[petrenko_ammo7]:petrenko_ammo5
+give            = ammo_pkm_100
+take            = mutant_part_pseudogigant_eye:1,mutant_part_chimera_kogot:1
+goodwill        = 600
+limit           = 2
+
+[petrenko_ammo8]:petrenko_ammo7
+give            = ammo_og-7b
+
+; mangun
+[mangun_parts_p] ; parts for repair item
+trader          = bar_visitors_stalker_mechanic
+give            = cleaning_kit_p:2
+take            = prt_w_p_barrel_1:1,prt_w_p_trigger_3:1,prt_w_p_spring_1:1
+repeat          = restock
+limit           = 1
+desc            = st_mangun_parts
+desc_done       = st_mangun_parts_done
+
+[mangun_parts_p2]:mangun_parts_p
+take            = prt_w_p_barrel_5:1,prt_w_p_trigger_3:1,prt_w_p_spring_1:1
+[mangun_parts_p3]:mangun_parts_p
+take            = prt_w_p_barrel_6:1,prt_w_p_trigger_1:1,prt_w_p_spring_5:1
+[mangun_parts_p_full]:mangun_parts_p
+give            = toolkit_p
+take            = prt_w_p_barrel_1:1,prt_w_p_barrel_5:1,prt_w_p_barrel_6:1,prt_w_p_trigger_3:1,prt_w_p_trigger_1:2,prt_w_p_spring_1:2,prt_w_p_spring_5:1
+
+[mangun_parts_r]:mangun_parts_p
+faction         = dolg
+goodwill        = 200
+give            = cleaning_kit_r5:2
+take            = prt_w_barrel_8:1,prt_w_trigger_components_2:1,prt_w_bolt_carrier_1:1,prt_w_bolt_6:1,prt_w_gas_tube_5:1
+[mangun_parts_r2]:mangun_parts_r
+give            = cleaning_kit_r5
+take            = prt_w_barrel_8:1,prt_w_trigger_components_3:1,prt_w_bolt_carrier_1:1,prt_w_bolt_6:1,prt_w_gas_tube_5:1
+[mangun_parts_r3]:mangun_parts_r
+give            = cleaning_kit_r5
+take            = prt_w_barrel_7:1,prt_w_trigger_components_2:1,prt_w_bolt_carrier_1:1,prt_w_bolt_6:1,prt_w_gas_tube_5:1
+[mangun_parts_r_full]:mangun_parts_r
+give            = toolkit_r5
+take            = prt_w_barrel_7:1,prt_w_barrel_8:2,prt_w_trigger_components_2:2,prt_w_trigger_components_3:1,prt_w_bolt_carrier_1:3,prt_w_bolt_6:3,prt_w_gas_tube_5:3
+
+
+; medic, revise these
+[asp_smokes]
+trader          = bar_dolg_medic
+type            = anyOf
+give            = stimpack
+take            = cigarettes,cigarettes_lucky,cigarettes_russian
+repeat          = restock
+limit           = 5
+desc            = st_asp_smokes
+
+[asp_smokes2]:asp_smokes
+give            = morphine
+take            = cigarettes,cigarettes_lucky,cigarettes_russian
+
+[asp_smokes3]:asp_smokes
+give            = stimpack_army
+take            = cigar1,cigar2,cigar3
+
+[asp_smokes4]:asp_smokes
+give            = antirad
+take            = cigar1:full,cigar2:full,cigar3:full
+
+; add more
+[barkeep_fuel]
+trader          = bar_visitors_barman_stalker_trader
+type            = anyOf
+give            = bread:3
+take            = charcoal
+repeat          = restock
+limit           = 5
+desc            = st_barman_fuel
+
+[barkeep_fuel2]:barkeep_fuel
+give            = flask:9
+take            = charcoal,explo_balon_gas:2
+[barkeep_fuel3]:barkeep_fuel
+give            = energy_drink
+take            = explo_balon_gas:2
+[barkeep_fuel4]:barkeep_fuel
+give            = sausage
+take            = explo_jerrycan_fuel:2
+[barkeep_fuel5]:barkeep_fuel
+give            = vodka
+take            = explo_jerrycan_fuel:2
+
+; t2 arty
+[barkeep_artifacts]
+trader          = bar_visitors_barman_stalker_trader
+type            = anyOf
+give            = wpn_ppsh41
+take            = af_eye
+repeat          = fixed
+limit           = 1
+sort_rank       = 2
+desc            = st_barman_artifacts
+
+[barkeep_artifacts2]:barkeep_artifacts
+give            = wpn_fort500
+take            = af_sandstone
+[barkeep_artifacts3]:barkeep_artifacts
+give            = wpn_aks74
+take            = af_black_spray
+[barkeep_artifacts4]:barkeep_artifacts
+give            = wpn_l85
+take            = af_fireball
+[barkeep_artifacts5]:barkeep_artifacts
+give            = stalker_drought_outfit
+take            = af_fuzz_kolobok
+
+; t3 arty
+[barkeep_artifacts6]:barkeep_artifacts
+give            = scientific_outfit
+take            = af_cristall_flower
+sort_rank       = 3
+[barkeep_artifacts7]:barkeep_artifacts6
+give            = light_loner_outfit
+take            = af_dummy_battery
+[barkeep_artifacts8]:barkeep_artifacts6
+give            = wpn_spas12
+take            = af_electra_moonlight
+[barkeep_artifacts9]:barkeep_artifacts6
+give            = wpn_g36
+take            = af_glass
+[barkeep_artifacts10]:barkeep_artifacts6
+give            = wpn_fal
+take            = af_ring
+
+; arnie
+; [arnie_ammo]
+; trader          = bar_arena_manager
+; type            = anyOf
+; give            = wpn_ppsh41
+; take            = af_eye
+; desc            = st_barman_artifacts

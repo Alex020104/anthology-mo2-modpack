@@ -1,0 +1,79 @@
+--[[
+	Adds another state to companion quick command for combat
+	(attack_only_actor_combat_enemy_state)
+
+        Author: Singustromo <singustromo at disroot.org>
+--]]
+
+local parent = axr_companions
+
+combat_states = {
+	"set_companion_to_attack_state",
+	"set_companion_to_attack_only_actor_combat_enemy_state",
+	"set_companion_to_ignore_combat_state"
+}
+
+CycleCompanionsCombatMode = parent.cycle_companions_combat_mode
+function parent.cycle_companions_combat_mode(force_mode, no_msg)
+	parent.cycle_state(combat_states, "combat", true, force_mode, no_msg )
+end
+
+SetCompanionSquadCombatMode = parent.set_companion_squad_combat_mode
+function parent.set_companion_squad_combat_mode(mode,npc,squad)
+	local f = this[combat_states[mode]]
+	if (not f) then return end
+
+	squad = squad or get_object_squad(npc)
+	if not (squad and squad.commander_id) then return end
+	if (axr_task_manager.hostages_by_id[squad:commander_id()]) then return end
+
+	for k in squad:squad_members() do
+		local member = db.storage[k.id] and db.storage[k.id].object
+		if (member and member:alive()) then
+			f(member)
+		end
+	end
+end
+
+-- We circumvent the on_str and off_str for combat command as we cycle through more than one command
+originalUIWheelCompanionUpdate = parent.UIWheelCompanion.Update
+function parent.UIWheelCompanion:Update()
+	CUIScriptWnd.Update(self)
+
+        -- Needs unlocalizer
+        local cw_commands = parent.cw_commands
+	
+	for cmd,element in pairs(self.cmd_btn) do
+		if element:IsCursorOverWindow() then
+                        local str
+                        if cmd == 'combat' then -- This is our cycle patch
+                                local state = get_next_combat_state()
+                                str = state and string.format("st_%s", state)
+                        else
+                                str = (self.states[cmd])
+                                        and cw_commands[cmd].off_str
+                                        or cw_commands[cmd].on_str
+                        end
+
+                        self.hint:SetText(str and game.translate_string(str) or "")
+                        return
+		end
+	end
+	
+	self.hint:SetText("")
+end
+
+-- Needs unlocalizer (_current_states)
+function get_next_combat_state()
+        local current_states = parent._current_states
+
+		if (hg_companion) then
+            local group = hg_companion.return_group()
+            current_states = current_states and current_states["squad_" .. group]
+        end
+        if not current_states then return end
+
+        return (current_states.combat +1 > #combat_states)
+                and combat_states[1]
+                or combat_states[current_states.combat +1]
+end

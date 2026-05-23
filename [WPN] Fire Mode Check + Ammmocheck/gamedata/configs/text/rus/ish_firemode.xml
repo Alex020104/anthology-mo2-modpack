@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="ui_mcm_menu_fireModeCheck">
+		<text>Fire Mode Check</text>
+	</string>
+	<string id="ui_mcm_fireModeCheck_title">
+		<text>Настройка проверки режима стрельбы</text>
+	</string>
+	<string id="ui_mcm_fireModeCheck_userMode">
+		<text>Способ проверки режима стрельбы</text>
+	</string>
+	<string id="ui_mcm_fireModeCheck_userMode_desc">
+		<text>%c[d_green]•%c[DEFAULT] Основной: Поведение кнопок переключения режима стрельбы не изменилось. Новый режим отображается после переключения.
+\n \n%c[d_green]•%c[DEFAULT] Двойная клавиша: клавиша "Предыдущий режим стрельбы" отображает текущий режим без переключения. "Следующий режим стрельбы" ключевые циклы между режимами стрельбы.
+\n \n%c[d_green]•%c[DEFAULT] Одна клавиша: Обе горячие клавиши работают одинаково: одно нажатие для отображения текущего режима, двойное нажатие для переключения режимов. Помогает освободить одну привязку клавиш.</text>
+	</string>
+	<string id="ui_mcm_fireModeCheck_displayMode">
+		<text>Режим отображения</text>
+	</string>
+	<string id="ui_mcm_fireModeCheck_displayMode_desc">
+		<text>Стиль отображения индикатора переводчика огня.</text>
+	</string>
+	<string id="ui_mcm_fireModeCheck_hideGui">
+		<text>Скрыть оригнальный индикатор переводчика огня</text>
+	</string>
+	<string id="ui_mcm_fireModeCheck_hideGui_desc">
+		<text>Скрыть индикатор переводчика огня, предоставляемый в игре поумолчанию.</text>
+	</string>
+	<string id="ui_mcm_lst_fireModeCheck_disabled">
+		<text>%c[ui_gray]Отключено</text>
+	</string>
+	<string id="ui_mcm_lst_fireModeCheck_basic">
+		<text>Основной</text>
+	</string>
+	<string id="ui_mcm_lst_fireModeCheck_dual_key">
+		<text>Двойная клавиша</text>
+	</string>
+	<string id="ui_mcm_lst_fireModeCheck_single_key">
+		<text>Одна клавиша (рекомендуется)</text>
+	</string>
+	<string id="ui_mcm_lst_fireModeCheck_full">
+		<text>Полный</text>
+	</string>
+	<string id="ui_mcm_lst_fireModeCheck_text_only">
+		<text>Только текст</text>
+	</string>
+	<string id="ui_mcm_lst_fireModeCheck_image_only">
+		<text>Только изображение</text>
+	</string>
+</string_table>

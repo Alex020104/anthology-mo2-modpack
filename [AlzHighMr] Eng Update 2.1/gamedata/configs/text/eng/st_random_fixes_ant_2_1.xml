@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+<!-- ===================================== -->
+<!--    Faction names                     -->
+<!-- ===================================== -->
+<string id="atribute">
+	<text>Atributte</text>
+</string>
+
+<string id="milstalk">
+	<text>Millitary Stalker</text>
+</string>
+
+
+
+<!-- ===================================== -->
+<!--    Misc                               -->
+<!-- ===================================== -->
+
+<string id="ui_mcm_menu_companions_dont_die">
+	<text>Companions Don't Die</text>
+</string>
+
+<string id="ui_mcm_menu_companions_dont_die">
+	<text>Companions Don't Die</text>
+</string>
+<string id="ui_mcm_menu_companions_dont_die_immortal_companions">
+	<text>Enabled</text>
+</string>
+
+
+
+<string id="drx_sl_start_msg_isg">
+	<text>A new assignment is available from ISG command. The details are classified, but the objectives are critical. Report to ISG headquarters for a full briefing.</text>
+</string>
+<string id="drx_sl_start_msg_renegade">
+    <text>Listen up — the Zone doesn't care about you, but I do. If you plan on hanging around these parts, you’ll be answering to me. Get over here, and I’ll lay out what you need to do.</text>
+</string>
+
+<!-- ===================================== -->
+<!--    QUESTS                             -->
+<!-- ===================================== -->
+<!-- ===================== -->
+<!--   DUTY — DEFEND AREA  -->
+<!-- ===================== -->
+
+<string id="sim_default_dolg_trader_task_1_name">
+    <text>Defend Duty Territory</text>
+</string>
+
+<string id="sim_default_dolg_trader_task_1_text">
+    <text>Duty reports enemy activity near one of their outposts. Move in, eliminate hostile forces, and secure the position before it falls.</text>
+</string>
+
+<string id="gar_dolg_blokpost_commander_task_1_about">
+    <text>The commander needs reinforcement at a threatened position. Head to the marked location and assist Duty fighters in holding the line.</text>
+</string>
+
+<string id="sim_default_dolg_trader_task_1_finish">
+    <text>You successfully defended the area and helped Duty retain control. The commander acknowledges your efforts.</text>
+</string>
+
+<!-- ===================== -->
+<!--   DUTY — CAPTURE AREA -->
+<!-- ===================== -->
+
+<string id="sim_default_dolg_trader_task_2_name">
+    <text>Capture Territory for Duty</text>
+</string>
+
+<string id="sim_default_dolg_trader_task_2_text">
+    <text>Duty has identified an important strategic point held by enemy forces. Your mission is to assault the area and secure it for Duty.</text>
+</string>
+
+<string id="gar_dolg_blokpost_commander_task_2_about">
+    <text>Enemy forces are occupying ground that rightfully belongs to Duty. Push in, neutralize resistance, and secure the location.</text>
+</string>
+
+<string id="sim_default_dolg_trader_task_2_finish">
+    <text>The area has been cleared, allowing Duty forces to advance and take control. Well done.</text>
+</string>
+
+<!-- ===================== -->
+<!--   DUTY — ASSASSINATION -->
+<!-- ===================== -->
+
+<string id="sim_default_dolg_trader_task_3_name">
+    <text>Eliminate Priority Target</text>
+</string>
+
+<string id="sim_default_dolg_trader_task_3_text">
+    <text>Duty has marked a high-risk hostile for termination. Find the target and eliminate them before they can cause further damage.</text>
+</string>
+
+<string id="gar_dolg_blokpost_commander_task_3_about">
+    <text>Обнаружен опасный человек. Задание требует скорости и точности. Выследите цель и устраните её.</text>
+</string>
+
+<string id="sim_default_dolg_trader_task_3_finish">
+    <text>The hostile target has been neutralized. Duty appreciates your efficiency.</text>
+</string>
+
+<!-- =============================== -->
+<!--   LONERS — TOOLKIT LEVEL 1     -->
+<!-- =============================== -->
+
+<string id="sim_default_stalker_mechanic_task_1_name">
+    <text>Find Basic Toolkit</text>
+</string>
+
+<string id="sim_default_stalker_mechanic_task_1_text">
+    <text>The mechanic needs a basic toolkit to continue with standard repairs. Search the Zone and bring one back.</text>
+</string>
+
+<string id="sim_default_stalker_mechanic_task_1_about">
+    <text>I'm working with worn-out tools here. Bring me a basic toolkit so I can resume proper repairs.</text>
+</string>
+
+<string id="sim_default_stalker_mechanic_task_1_fetch_about">
+    <text>Bring the mechanic a Basic Toolkit.</text>
+</string>
+
+<string id="sim_default_stalker_mechanic_task_1_fetch_finish">
+    <text>Perfect. This will help a lot — thanks.</text>
+</string>
+
+<!-- =============================== -->
+<!--   LONERS — TOOLKIT LEVEL 2     -->
+<!-- =============================== -->
+
+<string id="sim_default_stalker_mechanic_task_2_name">
+    <text>Find Advanced Toolkit</text>
+</string>
+
+<string id="sim_default_stalker_mechanic_task_2_text">
+    <text>To upgrade his workshop, the mechanic requires an advanced toolkit.</text>
+</string>
+
+<string id="sim_default_stalker_mechanic_task_2_about">
+    <text>With an advanced toolkit, I’ll be able to work on more complex improvements. Bring one if you can find it.</text>
+</string>
+
+<string id="sim_default_stalker_mechanic_task_2_fetch_about">
+    <text>Bring the mechanic an Advanced Toolkit.</text>
+</string>
+
+<string id="sim_default_stalker_mechanic_task_2_fetch_finish">
+    <text>Great — now I can start handling more serious upgrades.</text>
+</string>
+
+<!-- =============================== -->
+<!--   LONERS — TOOLKIT LEVEL 3     -->
+<!-- =============================== -->
+
+<string id="sim_default_stalker_mechanic_task_3_name">
+    <text>Find Expert Toolkit</text>
+</string>
+
+<string id="sim_default_stalker_mechanic_task_3_text">
+    <text>To perform high-end weapon and armor upgrades, the mechanic needs an expert-grade toolkit.</text>
+</string>
+
+<string id="sim_default_stalker_mechanic_task_3_about">
+    <text>If you can track down an expert toolkit, I’ll be able to handle top-tier modifications.</text>
+</string>
+
+<string id="sim_default_stalker_mechanic_task_3_fetch_about">
+    <text>Bring the mechanic an Expert Toolkit.</text>
+</string>
+
+<string id="sim_default_stalker_mechanic_task_3_fetch_finish">
+    <text>Excellent — with this, I can finally work at full capacity.</text>
+</string>
+
+</string_table>

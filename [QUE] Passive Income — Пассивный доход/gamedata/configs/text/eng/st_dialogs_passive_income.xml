@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+
+<string_table>
+
+    <string id="passinc_ask_for_employment_default">
+        <text>I heard you're looking for people to work for you.</text>
+    </string> 
+
+    <string id="passinc_ask_for_transfer_default">
+        <text>I want to transfer my salary contract to you.</text>
+    </string> 
+
+    <string id="passinc_ask_transfer_confirm_default">
+        <text>You sure? I will become your new employer.</text>
+    </string> 
+
+    <string id="passinc_transfer_confirm_default">
+        <text>Yes, I'm sure.</text>
+    </string> 
+
+    <!-- MERCS FACTION -->
+    <string id="passinc_ask_for_employment_killer"> <!-- PLAYER -->
+        <text>I heard you're looking for people to work for you.</text>
+    </string>
+    <string id="passinc_salary_preview_killer"> <!-- NPC -->
+        <text>Yes, you heard right. This is what I can do: I will pay you a base daily salary of %s rubles and I will add %s rubles for every job you complete. Try to keep busy everyday and you will earn more, otherwise you can kiss our contract goodbye and will have to start from the beginning. Come talk to me when you want your money.</text>
+    </string>
+    <string id="passinc_employment_confirm_killer"> <!-- PLAYER -->
+        <text>Yeah, it's a deal.</text>
+    </string>
+    <string id="passinc_ask_for_salary_killer"> <!-- PLAYER -->
+        <text>I'm here for my money.</text>
+    </string>
+    <string id="passinc_show_salary_killer"> <!-- NPC -->
+        <text>Sure, I have it here, your total salary amounts to</text>
+    </string>
+    <string id="passinc_show_salary_bonus_killer"> <!-- NPC -->
+        <text>Sure, I have it here, your total salary amounts to %s rubles, I also threw in a small bonus for the great work you did, keep it up.</text>
+    </string>
+    <string id="passinc_get_salary_killer"> <!-- PLAYER -->
+        <text>Good, thank you sir.</text>
+    </string>
+    <string id="passinc_not_share_salary_killer"> <!-- PLAYER -->
+        <text>Perfect, I'll take it all for myself.</text>
+    </string>
+    <string id="passinc_share_salary_killer"> <!-- PLAYER -->
+        <text>Good, I'll share it with my squad mates.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_killer"> <!-- PLAYER -->
+        <text>I thought about it and I want to end my salary contract.</text>
+    </string>
+    <string id="passinc_stop_employment_available_killer"> <!-- NPC -->
+        <text>You certain about this, agent?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_killer"> <!-- PLAYER -->
+        <text>Yes, I need a break.</text>
+    </string>
+    <string id="passinc_stop_employment_end_killer"> <!-- NPC -->
+        <text>No worries! If you change your mind, come back tomorrow, and we'll discuss a new contract.</text>
+    </string>
+    <string id="passinc_employment_back_killer"> <!-- PLAYER -->
+        <text>On second thought, nevermind.</text>
+    </string>
+
+    <!-- MILITARY FACTION -->
+    <string id="passinc_ask_for_employment_army"> <!-- PLAYER -->
+        <text>I've heard you're looking for soldiers to work for you.</text>
+    </string>
+    <string id="passinc_salary_preview_army"> <!-- NPC -->
+        <text>Indeed, listen up. I will provide you with a daily base salary of %s rubles. Additionally, you'll earn %s rubles for each completed job and %s for every enemy of our faction dealt with. Stay active, or our contract ends. Come see me when you're ready for your payment.</text>
+    </string>
+    <string id="passinc_employment_confirm_army"> <!-- PLAYER -->
+        <text>Acknowledged, it's a deal.</text>
+    </string>
+    <string id="passinc_ask_for_salary_army"> <!-- PLAYER -->
+        <text>I'm here to collect my earnings.</text>
+    </string>
+    <string id="passinc_show_salary_army"> <!-- NPC -->
+        <text>Affirmative, I have it here. Your total salary is</text>
+    </string>
+    <string id="passinc_show_salary_bonus_army"> <!-- NPC -->
+        <text>Affirmative, I have it here, your total salary amounts to %s rubles, I also added a bonus for the splendid work you did, soldier.</text>
+    </string>
+    <string id="passinc_get_salary_army"> <!-- PLAYER -->
+        <text>That's good, thank you sir.</text>
+    </string>
+    <string id="passinc_not_share_salary_army"> <!-- PLAYER -->
+        <text>Excellent, I'll keep it all for myself.</text>
+    </string>
+    <string id="passinc_share_salary_army"> <!-- PLAYER -->
+        <text>Good, I'll share it with my squad mates.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_army"> <!-- PLAYER -->
+        <text>I've reconsidered; I wish to terminate my contract.</text>
+    </string>
+    <string id="passinc_stop_employment_available_army"> <!-- NPC -->
+        <text>You certain about this, agent?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_army"> <!-- PLAYER -->
+        <text>Affirmative, I need a break.</text>
+    </string>
+    <string id="passinc_stop_employment_end_army"> <!-- NPC -->
+        <text>Not a problem. If you change your mind, return tomorrow, and we can discuss a new assignment!</text>
+    </string>
+    <string id="passinc_employment_back_army"> <!-- PLAYER -->
+        <text>Nevermind, sir.</text>
+    </string>
+
+    <!-- DUTY FACTION -->
+    <string id="passinc_ask_for_employment_dolg"> <!-- PLAYER -->
+        <text>I've heard you're looking for stalkers to join the salary program.</text>
+    </string>
+    <string id="passinc_salary_preview_dolg"> <!-- NPC -->
+        <text>You've heard right, here's the deal: You'll receive a daily base salary of %s rubles. Additionally, you earn %s for each completed job from Duty, %s for every mutant scum you neutralize and %s for every enemy of ours you take down. Stay active, or our contract ends. Come talk to me when you want your hard-earned money.</text>
+    </string>
+    <string id="passinc_employment_confirm_dolg"> <!-- PLAYER -->
+        <text>Affirmative, it's a deal.</text>
+    </string>
+    <string id="passinc_ask_for_salary_dolg"> <!-- PLAYER -->
+        <text>I'm here to collect my earnings.</text>
+    </string>
+    <string id="passinc_show_salary_dolg"> <!-- NPC -->
+        <text>Affirmative, I have it here. Your total salary amounts to</text>
+    </string>
+    <string id="passinc_show_salary_bonus_dolg"> <!-- NPC -->
+        <text>Affirmative, I have it here, your total salary amounts to %s rubles. Thanks to the great job you did, you are also entitled to a bonus package.</text>
+    </string>
+    <string id="passinc_get_salary_dolg"> <!-- PLAYER -->
+        <text>Nice, thank you sir.</text>
+    </string>
+    <string id="passinc_not_share_salary_dolg"> <!-- PLAYER -->
+        <text>Perfect, I'll keep it all for myself.</text>
+    </string>
+    <string id="passinc_share_salary_dolg"> <!-- PLAYER -->
+        <text>Good, I'll share it with my fellow squad members.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_dolg"> <!-- PLAYER -->
+        <text>I've thought it over; I wish to terminate my contract.</text>
+    </string>
+    <string id="passinc_stop_employment_available_dolg"> <!-- NPC -->
+        <text>You certain about this, soldier?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_dolg"> <!-- PLAYER -->
+        <text>Yes, I need a break.</text>
+    </string>
+    <string id="passinc_stop_employment_end_dolg"> <!-- NPC -->
+        <text>That's ok. If you change your mind, return tomorrow, and we'll discuss a new contract.</text>
+    </string>
+    <string id="passinc_employment_back_dolg"> <!-- PLAYER -->
+        <text>On second thought, nevermind.</text>
+    </string>
+ 
+    <!-- ECOLOGISTS FACTION -->
+    <string id="passinc_ask_for_employment_ecolog"> <!-- PLAYER -->
+        <text>Heard you're offering a salary to stalkers who aid you in your research.</text>
+    </string>
+    <string id="passinc_salary_preview_ecolog"> <!-- NPC -->
+        <text>Indeed, you heard right. Here's the deal: You'll receive a daily base salary of %s rubles. On top of that, you earn %s for each completed task and %s for every artifact you find. Stay engaged, or our contract ends. Come talk to me when you want your hard-earned money.</text>
+    </string>
+    <string id="passinc_employment_confirm_ecolog"> <!-- PLAYER -->
+        <text>Affirmative, it's a deal.</text>
+    </string>
+    <string id="passinc_ask_for_salary_ecolog"> <!-- PLAYER -->
+        <text>I'm here to collect my earnings.</text>
+    </string>
+    <string id="passinc_show_salary_ecolog"> <!-- NPC -->
+        <text>Yes, I have it here. Your total salary amounts to</text>
+    </string>
+    <string id="passinc_show_salary_bonus_ecolog"> <!-- NPC -->
+        <text>Yes, I have it here. Your total salary amounts to %s rubles, I also put together a small bonus for the good job you did, colleague.</text>
+    </string>
+    <string id="passinc_get_salary_ecolog"> <!-- PLAYER -->
+        <text>Good, thank you professor.</text>
+    </string>
+    <string id="passinc_not_share_salary_ecolog"> <!-- PLAYER -->
+        <text>Perfect, I'll keep it all for myself.</text>
+    </string>
+    <string id="passinc_share_salary_ecolog"> <!-- PLAYER -->
+        <text>Good, I'll share it with my team.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_ecolog"> <!-- PLAYER -->
+        <text>I've thought it over; I wish to terminate my contract.</text>
+    </string>
+    <string id="passinc_stop_employment_available_ecolog"> <!-- NPC -->
+        <text>You certain about this, colleague?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_ecolog"> <!-- PLAYER -->
+        <text>Yes, I need a break.</text>
+    </string>
+    <string id="passinc_stop_employment_end_ecolog"> <!-- NPC -->
+        <text>No worries! If you change your mind, come back tomorrow, and we'll discuss a new contract.</text>
+    </string>
+    <string id="passinc_employment_back_ecolog"> <!-- PLAYER -->
+        <text>On second thought, nevermind.</text>
+    </string>
+
+    <!-- FREEDOM FACTION -->
+    <string id="passinc_ask_for_employment_freedom"> <!-- PLAYER -->
+        <text>Word on the street is you're looking for stalkers to work for you. Is it true?</text>
+    </string>
+    <string id="passinc_salary_preview_freedom"> <!-- NPC -->
+        <text>Yep, you heard right. Here's the deal: I'll throw your way a base daily salary of %s rubles. On top of that, you pocket %s for each completed job for our comrades and %s for every enemy of Freedom you drop. Stay active, or our deal takes a nosedive. Swing by when you're ready to cash in your hard-earned money.</text>
+    </string>
+    <string id="passinc_employment_confirm_freedom"> <!-- PLAYER -->
+        <text>Deal. We're in business.</text>
+    </string>
+    <string id="passinc_ask_for_salary_freedom"> <!-- PLAYER -->
+        <text>I'm here to cash in.</text>
+    </string>
+    <string id="passinc_show_salary_freedom"> <!-- NPC -->
+        <text>Certainly, I've got it here. Your total salary adds up to</text>
+    </string>
+    <string id="passinc_show_salary_bonus_freedom"> <!-- NPC -->
+        <text>Certainly, I've got it here. Your total salary adds up to %s rubles, I also threw in a small bonus for the great work you did, keep it up.</text>
+    </string>
+    <string id="passinc_get_salary_freedom"> <!-- PLAYER -->
+        <text>Good, I'll grab it.</text>
+    </string>
+    <string id="passinc_not_share_salary_freedom"> <!-- PLAYER -->
+        <text>Perfect, keeping it all for myself.</text>
+    </string>
+    <string id="passinc_share_salary_freedom"> <!-- PLAYER -->
+        <text>Good, I'll spread the wealth with my squad mates.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_freedom"> <!-- PLAYER -->
+        <text>I've been thinking, and I'm ready to pull the plug on our contract.</text>
+    </string>
+    <string id="passinc_stop_employment_available_freedom"> <!-- NPC -->
+        <text>You certain about this, stalker?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_freedom"> <!-- PLAYER -->
+        <text>Yeah, I need a breather.</text>
+    </string>
+    <string id="passinc_stop_employment_end_freedom"> <!-- NPC -->
+        <text>No worries! If you change your mind, swing by tomorrow and we can hash out a new contract!</text>
+    </string>
+    <string id="passinc_employment_back_freedom"> <!-- PLAYER -->
+        <text>On second thought, nevermind.</text>
+    </string>
+
+    <!-- UNISG FACTION -->
+    <string id="passinc_ask_for_employment_isg"> <!-- PLAYER -->
+        <text>Heard you're offering a salary to stalkers who aid you in your research.</text>
+    </string>
+    <string id="passinc_salary_preview_isg"> <!-- NPC -->
+        <text>Indeed, you heard right. Here's the deal: You'll receive a daily base salary of %s rubles. On top of that, you earn %s for each completed task, %s for every enemy you kill and %s for every mutant you eliminate. Stay engaged, or our contract ends. Come talk to me when you want your hard-earned money.</text>
+    </string>
+    <string id="passinc_employment_confirm_isg"> <!-- PLAYER -->
+        <text>Affirmative, it's a deal.</text>
+    </string>
+    <string id="passinc_ask_for_salary_isg"> <!-- PLAYER -->
+        <text>I'm here to collect my earnings.</text>
+    </string>
+    <string id="passinc_show_salary_isg"> <!-- NPC -->
+        <text>Yes, I have it here. Your total salary amounts to</text>
+    </string>
+    <string id="passinc_show_salary_bonus_isg"> <!-- NPC -->
+        <text>Yes, I have it here. Your total salary amounts to %s rubles, I also put together a small bonus for the good job you did, colleague.</text>
+    </string>
+    <string id="passinc_get_salary_isg"> <!-- PLAYER -->
+        <text>Good, thank you sir.</text>
+    </string>
+    <string id="passinc_not_share_salary_isg"> <!-- PLAYER -->
+        <text>Perfect, I'll keep it all for myself.</text>
+    </string>
+    <string id="passinc_share_salary_isg"> <!-- PLAYER -->
+        <text>Good, I'll share it with my team.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_isg"> <!-- PLAYER -->
+        <text>I've thought it over; I wish to terminate my contract.</text>
+    </string>
+    <string id="passinc_stop_employment_available_isg"> <!-- NPC -->
+        <text>You certain about this, colleague?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_isg"> <!-- PLAYER -->
+        <text>Yes, I need a break.</text>
+    </string>
+    <string id="passinc_stop_employment_end_isg"> <!-- NPC -->
+        <text>No worries! If you change your mind, come back tomorrow, and we'll discuss a new contract.</text>
+    </string>
+    <string id="passinc_employment_back_isg"> <!-- PLAYER -->
+        <text>On second thought, nevermind.</text>
+    </string>
+
+    <!-- MONOLITH FACTION -->
+    <string id="passinc_ask_for_employment_monolith"> <!-- PLAYER -->
+        <text>I'm here to serve the Almighty Monolith, brother.</text>
+    </string>
+    <string id="passinc_salary_preview_monolith"> <!-- NPC -->
+        <text>Well, look at you, finally coming to your senses and realizing that this is the only way? Come and help spread The Monolith's influence. You'll receive daily %s rubles. On top of that you'll get %s for every completed job, %s for every enemy of the Monolith you kill and %s for each mutant. Stick around, prove your worth, and you'll be basking in the riches of The Monolith. Fail to complete your share of the work, and our agreement will come to an end, with your life forfeit. Understand brother?</text>
+    </string>
+    <string id="passinc_employment_confirm_monolith"> <!-- PLAYER -->
+        <text>For the Monolith.</text>
+    </string>
+    <string id="passinc_ask_for_salary_monolith"> <!-- PLAYER -->
+        <text>I'm here to collect my payment.</text>
+    </string>
+    <string id="passinc_show_salary_monolith"> <!-- NPC -->
+        <text>Welcome back Brother. You've made excellent progress, here's your payment:</text>
+    </string>
+    <string id="passinc_show_salary_bonus_monolith"> <!-- NPC -->
+        <text>You're back, with plenty of vital information I hope? I've heard of your efforts in The Zone, I knew there was something special about you when you arrived. Here is your reward: %s. We've thrown in a special bonus for the exceptional work. Keep it up, brother.</text>
+    </string>
+    <string id="passinc_get_salary_monolith"> <!-- PLAYER -->
+        <text>Thank you, Brother. Kindest regards.</text>
+    </string>
+    <string id="passinc_not_share_salary_monolith"> <!-- PLAYER -->
+        <text>Thank you, Brother. Kindest regards.</text>
+    </string>
+    <string id="passinc_share_salary_monolith"> <!-- PLAYER -->
+        <text>Good, I'll share the wealth with my brothers.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_monolith"> <!-- PLAYER -->
+        <text>I wish to cancel our agreement, Brother.</text>
+    </string>
+    <string id="passinc_stop_employment_available_monolith"> <!-- NPC -->
+        <text>Are you so sure brother? You will be labelled a heretic to the cause. But, I think we can come to an agreement to keep you alive a little longer, no?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_monolith"> <!-- PLAYER -->
+        <text>Well, I just need a moment to catch my breath, that's all Brother.</text>
+    </string>
+    <string id="passinc_stop_employment_end_monolith"> <!-- NPC -->
+        <text>Fair enough. If you ever change your mind, we welcome you with open arms. I can't swear by your safety from here on but you will always have a place with us.</text>
+    </string>
+    <string id="passinc_employment_back_monolith"> <!-- PLAYER -->
+        <text>A lapse in judgement, apologies Brother...</text>
+    </string>
+
+    <!-- SIN FACTION -->
+    <string id="passinc_ask_for_employment_greh"> <!-- PLAYER -->
+        <text>Heard you're seeking help spreading The Zone's influence.</text>
+    </string>
+    <string id="passinc_salary_preview_greh"> <!-- NPC -->
+        <text>Well, look at you, finally coming to your senses and realizing that this is the only way? Come and help spread The Zone's influence. You will receive %s rubles each day, plus %s for every enemy of the cause and %s for every filthy mutant. Stick around, prove your worth, and you'll be basking in the riches of Sin. Fail to complete your share of the work, and our agreement will come to an end. Understand brother?</text>
+    </string>
+    <string id="passinc_employment_confirm_greh"> <!-- PLAYER -->
+        <text>My blood for Sin.</text>
+    </string>
+    <string id="passinc_ask_for_salary_greh"> <!-- PLAYER -->
+        <text>I'm here to collect my tithes.</text>
+    </string>
+    <string id="passinc_show_salary_greh"> <!-- NPC -->
+        <text>Back for more, eh? The Zone has never felt so alive, here's your payment. In full...:</text>
+    </string>
+    <string id="passinc_show_salary_bonus_greh"> <!-- NPC -->
+        <text>Back for more, eh? The Zone is flourishing! Here is your reward: %s. We've thrown in something special for the exceptional work. Keep it up, brother.</text>
+    </string>
+    <string id="passinc_get_salary_greh"> <!-- PLAYER -->
+        <text>Thank you, Brother. Kindest regards.</text>
+    </string>
+    <string id="passinc_not_share_salary_greh"> <!-- PLAYER -->
+        <text>Thank you, Brother. Kindest regards.</text>
+    </string>
+    <string id="passinc_share_salary_greh"> <!-- PLAYER -->
+        <text>Good, I'll share the wealth with my brothers.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_greh"> <!-- PLAYER -->
+        <text>I wish to cancel our agreement, Brother.</text>
+    </string>
+    <string id="passinc_stop_employment_available_greh"> <!-- NPC -->
+        <text>Are you so sure brother? You will be labelled a heretic to the cause. But, I think we can come to an agreement to keep you alive a little longer, no?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_greh"> <!-- PLAYER -->
+        <text>Well, I just need a moment to catch my breath, that's all Brother.</text>
+    </string>
+    <string id="passinc_stop_employment_end_greh"> <!-- NPC -->
+        <text>Fair enough. If you ever change your mind, we welcome you with open arms. I can't swear by your safety from here on but you will always have a place with us.</text>
+    </string>
+    <string id="passinc_employment_back_greh"> <!-- PLAYER -->
+        <text>A lapse in judgement, apologies Brother...</text>
+    </string>
+
+    <!-- UNORG FACTIONS -->
+
+    <!-- LONERS (Sidorovich and Butcher) -->
+    <string id="passinc_ask_for_employment_stalker"> <!-- PLAYER -->
+        <text>Heard you're looking for stalkers to work for you.</text>
+    </string>
+    <string id="passinc_salary_preview_stalker"> <!-- NPC -->
+        <text>So you want to be my little assistant, huh? You heard right, here's the deal: if you can complete at least one job for me each day I'll make your life easier by giving you some supplies every day. Every %s jobs you complete will earn you a bonus. Work for me enough time and you'll get better and more supplies. Start screwing around too much and you can kiss our deal goodbye. What do you say?</text>
+    </string>
+    <string id="passinc_employment_confirm_stalker"> <!-- PLAYER -->
+        <text>Let's do it.</text>
+    </string>
+    <string id="passinc_ask_for_salary_stalker"> <!-- PLAYER -->
+        <text>I'm here to collect my supplies.</text>
+    </string>
+    <string id="passinc_show_salary_stalker"> <!-- NPC -->
+        <text>Look who's back! Yes, yes, judging by your work I can give this number of supply packages: %s</text>
+    </string>
+    <string id="passinc_show_salary_bonus_stalker"> <!-- NPC -->
+        <text>Look who's back! Yes, yes, judging by your work I can give this number of supply packages: %s. I also threw in %s rubles for the exceptional work.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_stalker"> <!-- PLAYER -->
+        <text>Hey listen, I wanted to stop our work deal.</text>
+    </string>
+    <string id="passinc_stop_employment_available_stalker"> <!-- NPC -->
+        <text>You sure stalker? The job was too hard for you?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_stalker"> <!-- PLAYER -->
+        <text>Well, I just needed a break, that's all.</text>
+    </string>
+    <string id="passinc_stop_employment_end_stalker"> <!-- NPC -->
+        <text>Alright, if you ever change your mind come and talk to me.</text>
+    </string>
+    <string id="passinc_get_salary_stalker"> <!-- PLAYER -->
+        <text>Good, thanks.</text>
+    </string>
+    <string id="passinc_employment_back_stalker"> <!-- PLAYER -->
+        <text>Nevermind.</text>
+    </string>
+
+    <!-- BANDITS (Sultan) -->
+    <string id="passinc_ask_for_employment_bandit"> <!-- PLAYER -->
+        <text>Heard you're lookin' for stalkers to do some dirty work.</text>
+    </string>
+    <string id="passinc_salary_preview_bandit"> <!-- NPC -->
+        <text>So you wanna be my little assistant, huh? You ain't afraid to get your hands dirty. Here's the deal: If you manage to pull off at least one job for me each day, I'll throw some supplies your way. Complete %s jobs, and I'll sweeten the pot with a bonus. Stick with me, and the quality and quantity of those supplies will get better. Start slacking, and our deal's as good as gone. What do you say?</text>
+    </string>
+    <string id="passinc_employment_confirm_bandit"> <!-- PLAYER -->
+        <text>Let's do it.</text>
+    </string>
+    <string id="passinc_ask_for_salary_bandit"> <!-- PLAYER -->
+        <text>I'm here to collect my loot.</text>
+    </string>
+    <string id="passinc_show_salary_bandit"> <!-- NPC -->
+        <text>Look who's back! Judging by your efforts, I can hand you this number of supply packages: %s</text>
+    </string>
+    <string id="passinc_show_salary_bonus_bandit"> <!-- NPC -->
+        <text>Look who's back! Judging by your efforts, I can hand you this number of supply packages: %s. I also threw in %s rubles for the exceptional work.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_bandit"> <!-- PLAYER -->
+        <text>Hey listen, I reckon it's time to call it quits on our little arrangement.</text>
+    </string>
+    <string id="passinc_stop_employment_available_bandit"> <!-- NPC -->
+        <text>You sure, stalker? The job getting too rough for ya?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_bandit"> <!-- PLAYER -->
+        <text>Well, I just needed a breather, that's all.</text>
+    </string>
+    <string id="passinc_stop_employment_end_bandit"> <!-- NPC -->
+        <text>Alright, if you ever change your mind, come and talk to me. There's always work for someone like you.</text>
+    </string>
+    <string id="passinc_get_salary_bandit"> <!-- PLAYER -->
+        <text>Good, thanks.</text>
+    </string>
+    <string id="passinc_employment_back_bandit"> <!-- PLAYER -->
+        <text>Nevermind.</text>
+    </string>
+
+    <!-- CLEAR SKY (Librarian) -->
+    <string id="passinc_ask_for_employment_csky"> <!-- PLAYER -->
+        <text>Heard you're lookin' for stalkers to work for you.</text>
+    </string>
+    <string id="passinc_salary_preview_csky"> <!-- NPC -->
+        <text>Well, look at you, wanting to be my right-hand man, huh? Got wind of it, did ya? Here's the lowdown: You pull off at least one job for me each day, and I'll keep you alive and kickin' with some supplies. Rack up %s successful jobs, and I'll toss in a little bonus for ya. Stick around, prove your worth, and you'll be swimmin' in better and more loot. Get sloppy, though, and our little agreement might go south. What's your take on that, stalker?</text>
+    </string>
+    <string id="passinc_employment_confirm_csky"> <!-- PLAYER -->
+        <text>Let's do it.</text>
+    </string>
+    <string id="passinc_ask_for_salary_csky"> <!-- PLAYER -->
+        <text>I'm here to collect my provisions.</text>
+    </string>
+    <string id="passinc_show_salary_csky"> <!-- NPC -->
+        <text>Back for more, eh? Judgin' by your hustle, you've earned this number of supply packages: %s</text>
+    </string>
+    <string id="passinc_show_salary_bonus_csky"> <!-- NPC -->
+        <text>Back for more, eh? Judgin' by your hustle, you've earned this number of supply packages: %s. Tossed in %s rubles for the exceptional work, too.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_csky"> <!-- PLAYER -->
+        <text>Listen, reckon it's time to put a halt to our collaboration.</text>
+    </string>
+    <string id="passinc_stop_employment_available_csky"> <!-- NPC -->
+        <text>You sure, stalker? The tasks gettin' too much for ya?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_csky"> <!-- PLAYER -->
+        <text>Well, I just need a moment to catch my breath, that's all.</text>
+    </string>
+    <string id="passinc_stop_employment_end_csky"> <!-- NPC -->
+        <text>Fair enough. If you ever change your mind, swing by. The Zone always needs more dedicated folks like yourself.</text>
+    </string>
+    <string id="passinc_get_salary_csky"> <!-- PLAYER -->
+        <text>Good, thanks.</text> 
+    </string>
+    <string id="passinc_employment_back_csky"> <!-- PLAYER -->
+        <text>Nevermind.</text>
+    </string>
+
+    <string id="passinc_ask_for_employment_milstalk"> <!-- PLAYER -->
+        <text>I've heard you're looking for soldiers to work for you.</text>
+    </string>
+    <string id="passinc_salary_preview_milstalk"> <!-- NPC -->
+        <text>Indeed, listen up. I will provide you with a daily base salary of %s rubles. Additionally, you'll earn %s rubles for each completed job and %s for every enemy of our faction dealt with. Stay active, or our contract ends. Come see me when you're ready for your payment.</text>
+    </string>
+    <string id="passinc_employment_confirm_milstalk"> <!-- PLAYER -->
+        <text>Acknowledged, it's a deal.</text>
+    </string>
+    <string id="passinc_ask_for_salary_milstalk"> <!-- PLAYER -->
+        <text>I'm here to collect my earnings.</text>
+    </string>
+    <string id="passinc_show_salary_milstalk"> <!-- NPC -->
+        <text>Affirmative, I have it here. Your total salary is</text>
+    </string>
+    <string id="passinc_show_salary_bonus_milstalk"> <!-- NPC -->
+        <text>Affirmative, I have it here, your total salary amounts to %s rubles, I also added a bonus for the splendid work you did, soldier.</text>
+    </string>
+    <string id="passinc_get_salary_milstalk"> <!-- PLAYER -->
+        <text>That's good, thank you sir.</text>
+    </string>
+    <string id="passinc_not_share_salary_milstalk"> <!-- PLAYER -->
+        <text>Excellent, I'll keep it all for myself.</text>
+    </string>
+    <string id="passinc_share_salary_milstalk"> <!-- PLAYER -->
+        <text>Good, I'll share it with my squad mates.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_milstalk"> <!-- PLAYER -->
+        <text>I've reconsidered; I wish to terminate my contract.</text>
+    </string>
+    <string id="passinc_stop_employment_available_milstalk"> <!-- NPC -->
+        <text>You certain about this, agent?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_milstalk"> <!-- PLAYER -->
+        <text>Affirmative, I need a break.</text>
+    </string>
+    <string id="passinc_stop_employment_end_milstalk"> <!-- NPC -->
+        <text>Not a problem. If you change your mind, return tomorrow, and we can discuss a new assignment!</text>
+    </string>
+    <string id="passinc_employment_back_milstalk"> <!-- PLAYER -->
+        <text>Nevermind, sir.</text>
+    </string>
+
+    <string id="passinc_ask_for_employment_spectrum"> <!-- PLAYER -->
+        <text>Heard you're offering a salary to stalkers who aid you in your research.</text>
+    </string>
+    <string id="passinc_salary_preview_spectrum"> <!-- NPC -->
+        <text>Indeed, you heard right. Here's the deal: You'll receive a daily base salary of %s rubles. On top of that, you earn %s for each completed task, %s for every enemy you kill and %s for every mutant you eliminate. Stay engaged, or our contract ends. Come talk to me when you want your hard-earned money.</text>
+    </string>
+    <string id="passinc_employment_confirm_spectrum"> <!-- PLAYER -->
+        <text>Affirmative, it's a deal.</text>
+    </string>
+    <string id="passinc_ask_for_salary_spectrum"> <!-- PLAYER -->
+        <text>I'm here to collect my earnings.</text>
+    </string>
+    <string id="passinc_show_salary_spectrum"> <!-- NPC -->
+        <text>Yes, I have it here. Your total salary amounts to</text>
+    </string>
+    <string id="passinc_show_salary_bonus_spectrum"> <!-- NPC -->
+        <text>Yes, I have it here. Your total salary amounts to %s rubles, I also put together a small bonus for the good job you did, colleague.</text>
+    </string>
+    <string id="passinc_get_salary_spectrum"> <!-- PLAYER -->
+        <text>Good, thank you sir.</text>
+    </string>
+    <string id="passinc_not_share_salary_spectrum"> <!-- PLAYER -->
+        <text>Perfect, I'll keep it all for myself.</text>
+    </string>
+    <string id="passinc_share_salary_spectrum"> <!-- PLAYER -->
+        <text>Good, I'll share it with my team.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_spectrum"> <!-- PLAYER -->
+        <text>I've thought it over; I wish to terminate my contract.</text>
+    </string>
+    <string id="passinc_stop_employment_available_spectrum"> <!-- NPC -->
+        <text>You certain about this, colleague?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_spectrum"> <!-- PLAYER -->
+        <text>Yes, I need a break.</text>
+    </string>
+    <string id="passinc_stop_employment_end_spectrum"> <!-- NPC -->
+        <text>No worries! If you change your mind, come back tomorrow, and we'll discuss a new contract.</text>
+    </string>
+    <string id="passinc_employment_back_spectrum"> <!-- PLAYER -->
+        <text>On second thought, nevermind.</text>
+    </string>
+
+</string_table>

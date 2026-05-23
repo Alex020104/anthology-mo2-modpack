@@ -1,0 +1,9 @@
+<?xml version="1.1" encoding="windows-1251"?>
+<string_table>
+    <string id="st_fetch_count_have">
+        <text>%$clr_txtУ вас есть %$clr_numberx$count %$clr_txtв вашем инвентаре</text>
+    </string>
+	<string id="st_fetch_count_in_stashes">
+        <text>%$clr_txtУ вас есть %$clr_numberx$count %$clr_txtв расположенных поблизости ваших тайниках</text>
+    </string>
+</string_table>

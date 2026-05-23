@@ -1,0 +1,46 @@
+<string_table>
+
+<string id="ui_mcm_menu_healmed">
+	<text>Самолечение НПС</text>
+</string>
+<string id="ui_mcm_limp_title">
+	<text>Лечение/Хромание НПС (Травмы и Лечение)</text>
+</string>
+<string id="ui_mcm_healmed_title">
+	<text>Травмы и Лечение</text>
+</string>
+<string id="ui_mcm_healmed_enable">
+	<text>Включить мод</text>
+</string>
+<string id="ui_mcm_healmed_enablebandage">
+	<text>Разрешить бинты</text>
+</string>
+<string id="ui_mcm_healmed_enablemedkit">
+	<text>Разрешить аптечки</text>
+</string>
+<string id="ui_mcm_healmed_med_health_thres">
+	<text>Порог использования аптечек</text>
+</string>
+<string id="ui_mcm_healmed_med_health_thres_desc">
+	<text>НПС начнёт лечиться, если его здоровье упадёт ниже этого значения</text>
+</string>
+<string id="ui_mcm_healmed_limp_health_thres">
+	<text>Порог хромания</text>
+</string>
+<string id="ui_mcm_healmed_limp_health_thres_desc">
+	<text>НПС начнёт хромать, если его здоровье упадёт ниже этого значения</text>
+</string>
+<string id="ui_mcm_healmed_cheatnpc">
+	<text>Разрешить НПС лечиться без медикаментов</text>
+</string>
+<string id="ui_mcm_healmed_cheatnpc_desc">
+	<text>При включенной опции НПС будут лечиться вне боя, даже при отсутствии аптечки или бинта у себя в инвентаре</text>
+</string>
+<string id="ui_mcm_healmed_enabledebug">
+	<text>Включить отладку</text>
+</string>
+<string id="ui_mcm_healmed_enabledebug_desc">
+	<text>Включает многочисленные выводы информации в консоль</text>
+</string>
+
+</string_table>

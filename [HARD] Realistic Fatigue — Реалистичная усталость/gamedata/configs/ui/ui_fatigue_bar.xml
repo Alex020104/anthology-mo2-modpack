@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<window>
+
+	<fatigue_bg x="240" y="700" width="164" height="27" stretch="1">
+		<texture>ui_fatigue_bar_bg</texture>
+	</fatigue_bg>
+
+	<fatigue_bar x="34" y="0" width="116" height="14" horz="1" min="0" max="1" stretch="1" pos="0">
+		<progress stretch="1">
+			<texture>ui_fatigue_bar</texture>
+		</progress>
+	</fatigue_bar>
+
+	<fatigue_text_num x="4" y="9" width="22" height="16" stretch="1">
+		<text complex_mode="1" r="230" g="230" b="230" align="c" vert_align="с" font="di"></text>
+	</fatigue_text_num>
+
+	<fatigue_text_title x="35" y="14" width="114" height="16" stretch="1">
+		<text complex_mode="1" r="200" g="200" b="200" align="c" vert_align="с" font="letterica16">ui_mcm_fatigue_title</text>
+	</fatigue_text_title>
+
+</window>

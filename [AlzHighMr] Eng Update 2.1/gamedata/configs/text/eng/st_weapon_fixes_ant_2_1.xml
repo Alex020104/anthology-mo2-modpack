@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+
+
+<string id="st_addon_sil_agram2000">
+    <text>Agram2000 suppressor</text>
+</string>
+
+<string id="st_addon_sil_agram2000_descr">
+    <text>A compact suppressor designed for modern pistols and carbines. It reduces muzzle flash and sound signature while keeping handling changes minimal.\n \n
+In the Zone, it is valued for its balance between size and efficiency. It won’t make a weapon silent, but it’s enough to keep a stalker hidden during close-range encounters or stealth movement.\n \n
+A practical choice for those who rely on staying unnoticed.</text>
+</string>
+
+
+<string id="st_addon_scope_zf39">
+    <text>ZF39 scope</text>
+</string>
+
+<string id="st_addon_scope_zf39_descr">
+    <text>A German optical sight originally developed for military bolt-action rifles. It provides solid magnification and a simple, clear reticle suited for long-range shooting.\n \n
+In the Zone, it is commonly reused on hunting and sniper rifles due to its durability and reliability in harsh conditions. It lacks modern features, but remains dependable in the field.\n \n
+A straightforward optic for precise, deliberate shots.</text>
+</string>
+
+
+<string id="st_addon_scope_1p69">
+    <text>1P69 scope</text>
+</string>
+
+<string id="st_addon_scope_1p69_descr">
+    <text>A Russian variable magnification optic designed for designated marksman rifles. The 1P69 offers adjustable zoom and a versatile reticle suitable for mid to long-range engagements.\n \n
+In the Zone, it is favored by experienced stalkers who need flexibility across different combat ranges. It balances clarity, durability, and adaptability in one package.\n \n
+A reliable sight for unpredictable situations.</text>
+</string>
+
+
+<string id="st_grenade_laucher_m320">
+    <text>M320 grenade launcher</text>
+</string>
+
+<string id="st_grenade_laucher_m320_descr">
+    <text>An underbarrel grenade launcher designed for modern assault rifles. It allows quick engagement of enemies behind cover or inside fortified positions using explosive rounds.\n \n
+In the Zone, it is used carefully due to weight and limited ammunition supply, but remains extremely effective against mutant groups and entrenched targets.\n \n
+A harsh but efficient solution when gunfire alone is not enough.</text>
+</string>
+
+<string id="st_sight_elbit_falcon2">
+    <text>Elbit Falcon 2 sight</text>
+</string>
+
+<string id="st_sight_elbit_falcon2_descr">
+    <text>A modern electro-optical sight developed for enhanced target acquisition in variable combat conditions. It provides improved clarity and faster target tracking compared to traditional optics.\n \n
+In the Zone, it is appreciated for its stability and adaptability in low visibility environments such as fog, rain, or underground areas. Advanced electronics make it effective, but also dependent on power and maintenance.\n \n
+A high-end tool for stalkers who rely on precision and modern systems.</text>
+</string>
+
+
+<string id="st_fg42_scope">
+    <text>FG42 scope</text>
+</string>
+
+<string id="st_fg42_scope_descr">
+    <text>A German optical sight originally paired with the FG42 rifle. It offers moderate magnification with a simple, functional reticle designed for both semi-automatic and automatic fire control.\n \n
+In the Zone, it survives as a relic optic repurposed for various rifles. It is not the most advanced scope, but its rugged construction makes it surprisingly reliable even after decades.\n \n
+Old-world engineering still holding its ground.</text>
+</string>
+
+
+<string id="st_addon_garand_scope">
+    <text>M1 Garand scope</text>
+</string>
+
+<string id="st_addon_garand_scope_descr">
+    <text>A period-correct optical sight adapted for the M1 Garand platform. It provides basic magnification and a straightforward reticle suitable for mid-range engagement.\n \n
+In the Zone, it is often found on modified hunting rifles or restored military weapons. While outdated by modern standards, it remains functional and dependable under field conditions.\n \n
+A simple optic for disciplined shooting.</text>
+</string>
+
+
+<string id="st_addon_scope_pks07">
+    <text>PKS-07 scope</text>
+</string>
+
+<string id="st_addon_scope_pks07_descr">
+    <text>A Soviet-era optical sight designed for designated marksman and sniper rifles. The PKS-07 offers clear magnification and a durable housing built for military field conditions.\n \n
+In the Zone, it is widely used due to its balance of reliability and ease of maintenance. It performs consistently even after heavy exposure to dust, moisture, and impact.\n \n
+A trusted optic among veteran stalkers.</text>
+</string>
+
+
+<string id="st_sight_komz_rusak">
+    <text>KOMZ Rusak sight</text>
+</string>
+
+<string id="st_sight_komz_rusak_descr">
+    <text>A rugged Soviet optical sight produced by KOMZ, known for its simplicity and mechanical durability. The Rusak provides basic magnification with minimal features, focusing purely on reliability.\n \n
+In the Zone, it is often seen on hunting rifles and improvised sniper setups. It lacks modern refinement, but rarely fails even under extreme conditions.\n \n
+A rough but dependable piece of old equipment.</text>
+</string>
+
+
+<string id="st_grenade_laucher_groza">
+    <text>Groza grenade launcher</text>
+</string>
+
+<string id="st_grenade_laucher_groza_descr">
+    <text>An underbarrel grenade launcher integrated with the Groza weapon system. Designed for close support roles, it allows quick delivery of explosive ordnance without switching weapons.\n \n
+In the Zone, it is used for clearing mutants, destroying cover, or breaking entrenched positions. Limited ammunition forces careful use, but its impact is decisive when needed.\n \n
+A brutal close-support tool for dangerous situations.</text>
+</string>
+
+<string id="st_addon_sil_groza">
+    <text>Groza suppressor</text>
+</string>
+
+<string id="st_addon_sil_groza_descr">
+    <text>A compact suppressor designed specifically for the Groza weapon system. It reduces muzzle flash and sound signature while maintaining the weapon’s compact profile.\n \n
+In the Zone, it is mainly used for controlled operations and close-quarters engagements where staying undetected matters more than sustained fire. Heat buildup limits long bursts.\n \n
+A practical attachment for short, precise encounters.</text>
+</string>
+
+
+<string id="st_addon_l26">
+    <text>L26 suppressor</text>
+</string>
+
+<string id="st_addon_l26_descr">
+    <text>A lightweight suppressor designed for intermediate-caliber firearms. It offers a balance between sound reduction, durability, and minimal impact on weapon handling.\n \n
+In the Zone, it is often seen on modified carbines and service rifles. It performs reliably under rough conditions, though prolonged firing can affect efficiency.\n \n
+A general-purpose solution for suppressed operations.</text>
+</string>
+
+
+<string id="st_addon_sil_agram2000">
+    <text>Agram2000 suppressor</text>
+</string>
+
+<string id="st_addon_sil_agram2000_descr">
+    <text>A compact suppressor designed for pistols and lightweight carbines. It reduces muzzle flash and sound signature without heavily affecting handling.\n \n
+In the Zone, it is valued for its simplicity and effectiveness in stealth scenarios. It does not eliminate sound completely, but it helps mask the shooter’s position at close range.\n \n
+A reliable choice for discreet movement.</text>
+</string>
+
+
+<string id="st_addon_silencer_shak12">
+    <text>ShAK-12 suppressor</text>
+</string>
+
+<string id="st_addon_silencer_shak12_descr">
+    <text>A heavy-duty suppressor built for the ShAK-12 platform. Designed to handle extreme pressure and large-caliber ammunition, it prioritizes durability over sound reduction efficiency.\n \n
+In the Zone, it is rarely used due to weight and size, but it remains effective for specialized assault roles where stopping power is more important than stealth.\n \n
+A brutal tool for extreme close-range combat.</text>
+</string>
+
+
+<string id="st_addon_sil_six_68_qd">
+    <text>Six-68 QD suppressor</text>
+</string>
+
+<string id="st_addon_sil_six_68_qd_descr">
+    <text>A quick-detach suppressor system designed for rapid mounting and removal in field conditions. It provides moderate sound reduction while maintaining weapon balance.\n \n
+In the Zone, it is favored by stalkers who frequently switch between stealth and direct engagement. Its modular design makes it practical but slightly less durable than fixed systems.\n \n
+A flexible attachment for adaptive combat styles.</text>
+</string>
+
+
+<string id="st_addon_sil_sten">
+    <text>Sten suppressor</text>
+</string>
+
+<string id="st_addon_sil_sten_descr">
+    <text>An improvised suppressor originally designed for the Sten submachine gun. Simple in construction, it offers basic sound reduction with minimal reliability concerns.\n \n
+In the Zone, it is often seen as a field modification rather than factory equipment. While not efficient by modern standards, it is easy to repair and replace.\n \n
+A crude but functional solution born from necessity.</text>
+</string>
+
+
+<string id="st_addon_scope_garand_proto">
+    <text>Garand prototype scope</text>
+</string>
+
+<string id="st_addon_scope_garand_proto_descr">
+    <text>An experimental optical sight developed for early adaptations of the M1 Garand platform. It provides basic magnification with a simplified reticle system intended for rapid target acquisition.\n \n
+In the Zone, it appears mostly on experimental or modified rifles. It lacks refinement, but its durability and straightforward design make it usable even in harsh conditions.\n \n
+An early attempt at improving battlefield optics.</text>
+</string>
+
+
+	<string id="st_wpn_addon_scope_pu">
+		<text>PU scope</text>
+	</string>
+	<string id="st_wpn_addon_scope_pu_descr">
+		<text>\n \n%c[ui_gray_2]COMPATIBILITY:\n \n%c[d_cyan] • %c[ui_gray_2] historic Russian rifles\n \n%c[ui_gray_1]Standard-issue telescopic sight of the Red Army in World War II and years after it, designed to fit infantry and precision rifles such as Mosin-Nagant or SVT-40. It features a fixed 3.5x zoom making it a good choice for long-distance combat. Like all Soviet designs, it is durable and effective, remaining in production and use to this day.\n \n
+		%c[d_purple] • %c[ui_gray_2] Magnification: %c[ui_gray_1]3.5x\n
+		%c[d_purple] • %c[ui_gray_2] Condition: %c[ui_gray_1]average\n
+		%c[d_purple] • %c[ui_gray_2] Reticule pattern: %c[ui_gray_1]PU</text>
+	</string>
+
+
+<string id="st_wpn_addon_scope_zf4">
+    <text>ZF-4 SCOPE</text>
+</string>
+
+<string id="st_wpn_addon_scope_zf4_descr">
+    <text>The ZF-4 is an old military telescopic sight originally designed for mid-20th century service rifles. Despite its age, it remains highly valued for its clear glass, simple construction, and resistance to harsh field conditions.\n \n
+In the Zone, it is often repurposed for bolt-action and hunting rifles like the Sharps 1874, where precision matters more than modern features. It lacks advanced adjustments, but what it offers is reliability and a stable sight picture even in bad weather.\n \n
+A rugged optic for stalkers who trust fundamentals over technology.</text>
+</string>
+
+		<string id="st_wpn_dvl_10">
+		<text>DVL-10 Urbana</text>
+	</string>
+	<string id="st_wpn_dvl_10_descr">
+		<text>DVL-10 is a lightweight and compact sniper rifle in proprietary and current military subsonic calibers has been developed for special service and combat missions where exceptional accuracy and range are needed.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Scopes: All scopes for picatinny/weaver except of red dot sights.\n 
+		%c[d_purple] • %c[ui_gray_2] Silencer: None \n</text>
+	</string>	
+
+<string id="st_wpn_beretta_92fs">
+    <text>BERETTA 92FS</text>
+</string>
+
+<string id="st_wpn_beretta_92fs_descr">
+    <text>The Beretta 92FS is a well-known Italian semi-automatic pistol widely adopted by military and police forces around the world. It is valued for its solid construction, smooth operation, and high reliability even after heavy use.\n \n
+In the Zone, it is considered a dependable sidearm that performs consistently under rough conditions. While not the most modern design, its accuracy and ease of maintenance keep it relevant among stalkers who prefer proven hardware over experimental weapons.\n \n
+A steady, no-surprises pistol that gets the job done when things go wrong.</text>
+</string>
+
+<string id="ammo_tbg_29">
+    <text>Ammo TBG-29</text>
+</string>
+<string id="ammo_tbg_29_descr">
+    <text>A large-caliber explosive projectile of unclear origin, commonly found in old military caches and abandoned supply depots. Its construction suggests it was designed for heavy anti-material or bunker suppression roles.\n \n
+In the Zone, these rounds are rare and unstable, but highly valued for their destructive potential against armored targets and dense mutant packs. Handling requires caution, as aging stock can suffer from inconsistent performance.\n \n
+No clear manufacturer markings remain, only improvised storage codes used by unknown military units.</text>
+</string>
+
+
+<string id="ammo_pg_26">
+    <text>Ammo PG-26</text>
+</string>
+<string id="ammo_pg_26_descr">
+    <text>A shaped-charge projectile of unknown military origin, likely intended for anti-armor launchers. The design follows older Soviet-era concepts, but its exact production source cannot be confirmed.\n \n
+Recovered mostly from sealed crates and battlefield debris, the PG-26 is still effective against light vehicles, fortified positions, and large mutated targets. However, long storage in Zone conditions may affect its reliability.\n \n
+Its markings are partially erased, suggesting repackaging or redistribution through unofficial military channels.</text>
+</string>
+
+<string id="st_wpn_am17">
+    <text>AM-17</text>
+</string>
+
+<string id="st_wpn_am17_descr">
+    <text>A compact and ergonomic assault rifle developed as a modern replacement for the AKS-74U in Russian special forces and internal security units.\n \n
+The AM-17 is based on the concept of the experimental compact rifle designed by Evgeny Dragunov. Unlike most standard Russian service weapons (AK, PK, SVD families), it uses a modern modular layout with a polymer upper and a separate trigger housing connected from below, similar in concept to designs like the PPSh, PPS, or StG 44.\n \n
+The upper receiver combines steel reinforcement with polymer elements, while the lower assembly and magazine housing are fully polymer. The action operates on a gas system with a short-stroke piston, and the barrel is locked via a rotating bolt with three locking lugs. The weapon features integrated Picatinny rails, a folding and adjustable telescopic stock, and ambidextrous controls for improved usability.\n \n
+Its compact size and adaptability make it effective both in close-quarters combat and at medium ranges.\n \n
+%c[0,255,255,255]PRODUCTION:\n
+%c[d_cyan] • %c[0,255,255,255] Country: %c[ui_gray_2]Russia\n
+%c[d_cyan] • %c[0,255,255,255] Manufacturer: %c[ui_gray_2]Kalashnikov\n
+</text>
+</string>
+
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="st_wpn_amb17">
+		<text>AM-17</text>
+	</string>
+
+	<string id="st_wpn_amb17_descr">
+		<text>A compact and ergonomic assault rifle developed as a modern replacement for the AKS-74U in Russian special forces units. The AM-17 is based on the design philosophy of the experimental compact weapons developed by Evgeny Dragunov.\n \n
+The AM-17 is a lightweight, modern firearm. Its layout uses a polymer upper receiver combined with a lower trigger assembly, improving modularity and reducing overall weight. The weapon is designed for improved handling in confined spaces while still maintaining effectiveness at medium range engagements.\n \n
+Its compact design, ambidextrous controls, and adjustable folding stock make it suitable for a wide range of combat situations, from close-quarters fighting to urban operations.\n \n
+%c[pda_white]PRODUCTION:\n
+%c[d_cyan] • %c[pda_white] Country: %c[ui_gray_2]Russia\n
+%c[d_cyan] • %c[pda_white] Manufacturer: %c[ui_gray_2]Kalashnikov\n
+		</text>
+	</string>
+</string_table>
+
+
+<string id="st_wpn_pk">
+    <text>PK</text>
+</string>
+
+<string id="st_wpn_saiga12c_dolg">
+    <text>Saiga-12c "DUTY"</text>
+</string>
+
+<string id="st_wpn_saiga12c_dolg_descr">
+    <text>The Saiga-12C is a Russian semi-automatic shotgun based on the Kalashnikov platform, modified for smoothbore shotgun ammunition. The "Duty" special variant is issued exclusively to Duty operatives and features reinforced internals, improved recoil control, and factory tuning for higher reliability under sustained combat conditions.\n \n
+Designed for close-quarters suppression, it excels in urban combat and tight corridors often encountered during Zone containment operations. Its high stopping power and magazine-fed system make it a brutal yet efficient tool for clearing mutant infestations and hostile factions.\n \n</text>
+</string>
+
+<string id="st_wpn_toz34_hunter">
+    <text>TOZ-34 HUNTER SHOTGUN</text>
+</string>
+
+<string id="st_wpn_toz34_hunter_descr">
+    <text>The TOZ-34 is a classic Soviet over-under double-barrel shotgun, widely used by hunters and civilians for decades. Known for its simple construction and reliability, it remains effective despite its age. The "Hunter" variant is typically better maintained, often featuring improved condition and handling compared to standard field-worn models.\n \n
+In the Zone, the TOZ-34 is a common sight among rookies and seasoned stalkers alike. Its powerful close-range performance makes it ideal for dealing with mutants, though its limited capacity and slower reload require careful shot placement.\n \n</text>
+</string>
+
+<string id="st_wpn_mossberg590a1_s">
+    <text>Mossberg B590a1</text>
+</string>
+
+<string id="st_wpn_sw917_snub_short">
+    <text>S&W 1917 Snub</text>
+</string>
+
+<string id="st_wpn_mossberg590a1_wood_s">
+    <text>Mossberg B590a1</text>
+</string>
+
+<string id="st_wpn_automav">
+    <text>AutoMAV Pistol</text>
+</string>
+
+<string id="st_wpn_automav_descr">
+    <text>
+A compact automatic pistol designed for close-quarters combat. The AutoMAV offers a high rate of fire in a lightweight frame, making it effective in tight situations where speed matters more than precision. 
+Its relatively low stopping power and small magazine capacity make it less suitable for prolonged engagements.
+    </text>
+</string>
+
+<string id="st_wpn_sw1917_snub">
+    <text>S&W 1917 Snub</text>
+</string>
+
+<string id="st_wpn_sw1917_snub_descr">
+    <text>
+A compact, snub-nosed variant of the classic Smith & Wesson 1917 revolver chambered in .45 ACP. Its shortened barrel improves handling and draw speed, making it suitable for close-range encounters. 
+Despite its solid stopping power, the limited cylinder capacity and slower reload speed put it at a disadvantage in prolonged firefights.
+    </text>
+</string>
+
+<string id="st_wpn_p320">
+    <text>SIG P320</text>
+</string>
+
+<string id="st_wpn_p320_descr">
+    <text>A modular semi-automatic pistol developed by SIG Sauer. The P320 gained popularity due to its reliability, simple design, and the ability to easily swap frames and barrels to suit the user's needs. In the Zone, it is valued for its accuracy, widely available ammunition, and solid stopping power. A good choice for stalkers looking for a balanced and versatile sidearm.</text>
+</string>
+
+<string id="st_wpn_benelli_m4">
+    <text>BENELLI M4 SHOTGUN</text>
+</string>
+
+<string id="st_wpn_benelli_m4_descr">
+    <text>The Benelli M4 is a semi-automatic shotgun developed by the Italian manufacturer Benelli Armi SpA. It uses a reliable auto-regulating gas-operated system designed specifically for military use, ensuring consistent performance even under harsh and dirty conditions.\n \n
+Adopted by several armed forces worldwide, the M4 has proven itself in real combat scenarios thanks to its durability, smooth cycling, and strong stopping power. Its design balances modern reliability with practical field use, making it a trusted weapon in close-quarters engagements.\n \n
+In the Zone, it is valued by experienced stalkers who need a dependable shotgun that won’t fail when things get messy.</text>
+</string>
+
+<string id="st_wpn_kriss_cust">
+    <text>KRISS VECTOR CUSTOM</text>
+</string>
+<string id="st_wpn_kriss_cust_descr">
+    <text>The KRISS Vector Custom is a modified submachine gun built around an unconventional recoil mitigation system that redirects energy downward, keeping the weapon stable during rapid fire. The custom variant found in the Zone is often tuned and altered by independent gunsmiths, improving handling and adapting it for field use.\n \n
+It thrives in close-quarters engagements where speed matters more than precision. High rate of fire, controllable recoil, and compact size make it especially dangerous in confined spaces like bunkers, corridors, and urban ruins.\n \n
+In the Zone, it’s a weapon for stalkers who prefer to end fights before they properly begin.</text>
+</string>
+
+
+<string id="st_wpn_wincheaster1300_trapper">
+    <text>WINCHESTER 1300 TRAPPER</text>
+</string>
+
+<string id="st_wpn_wincheaster1300_trapper_descr">
+    <text>Old pump shotgun cut down for fast work in tight places. The Winchester 1300 Trapper is nothing fancy, but it cycles smooth and hits hard enough to make mutants think twice before closing in.\n \n
+Popular among stalkers who spend more time in abandoned buildings and underground tunnels than out in the open. It’s light, quick to shoulder, and forgiving when things go loud and messy.\n \n
+In the Zone, reliability beats refinement—and this thing just keeps working when it shouldn’t.</text>
+</string>
+
+	<string id="st_wpn_benelli_m1014">
+		<text>BENELLI M1014 SHOTGUN </text>
+	</string>
+	<string id="st_wpn_benelli_m1014_descr">
+		<text>The Benelli M4 is a semi-automatic shotgun produced by Italian firearm manufacturer Benelli Armi SpA, and the fourth and last model of the Benelli Super 90 line of semi-automatic shotguns. The M4 uses a proprietary action design called the "auto-regulating gas-operated" (ARGO) system, which was created specifically for the weapon. Designed in 1998, the M4 was adopted by the armed forces of Italy, the United States, and United Kingdom, among others, and has been used in a variety of conflicts.\n \n
+		%c[ui_gray_2]ATTACHMENTS: \n
+		%c[d_purple] • %c[ui_gray_2] Sights : 0kp2, e0t2, eot, ac10632, c-more, ekp8_18, rmr, deltapoint, aim_low, d0cter\n 
+		%c[d_purple] • %c[ui_gray_2] Silencer: SALVO12 \n</text>
+	</string>	
+
+	<string id="st_wpn_benelli_m3">
+    <text>BENELLI M3 SHOTGUN</text>
+</string>
+
+<string id="st_wpn_benelli_m3_descr">
+    <text>The Benelli M3 is a dual-mode shotgun produced by the Italian manufacturer Benelli Armi SpA. It features a unique hybrid system that allows the user to switch between semi-automatic and pump-action modes, making it highly adaptable in various combat situations. This versatility ensures reliable operation with a wide range of ammunition, from standard loads to low-power shells.\n \n
+In the Zone, the M3 is prized for its flexibility and rugged performance under harsh conditions. Whether clearing tight spaces or dealing with tougher targets, it remains a dependable choice for stalkers who need both power and reliability.\n \n
+</text>
+</string>
+
+<string id="st_deagle_niger">
+    <text>Desert Eagle (Suppressed)</text>
+</string>
+<string id="st_deagle_super">
+    <text>Desert Eagle (Suppressed)</text>
+</string>
+<string id="st_st_deagle_niger_descr">
+    <text>
+A modified version of the Desert Eagle pistol equipped with a suppressor. It retains its high stopping power while reducing firing noise, making it a deadly tool for stealth engagements. 
+However, it still suffers from heavy recoil and a limited magazine capacity.
+    </text>
+</string>
+<string id="st_deagle_niger_descr">
+    <text>
+A modified version of the Desert Eagle pistol equipped with a suppressor. It retains its high stopping power while reducing firing noise, making it a deadly tool for stealth engagements. 
+However, it still suffers from heavy recoil and a limited magazine capacity.
+    </text>
+</string>
+
+
+<string id="st_wpn_fn2000_camo_short">
+	<text>FN 2000 Camo</text>
+</string>
+<string id="st_wpn_fn2000_tact_short">
+	<text>FN 2000 Tac</text>
+</string>
+
+<string id="st_wpn_sig320_u2p2g0r">
+	<text>SIG Sauer P320</text>
+</string>
+<string id="st_wpn_sig320_u2p2g0r_short">
+	<text>SIG P320</text>
+</string>
+<string id="st_wpn_sig320_u2p2g0r_descr">
+	<text>
+		The SIG Sauer P320 is a modern semi-automatic pistol widely used by military and law enforcement units.
+		It features a modular design, high reliability, and solid ergonomics.
+		In the Zone, it serves as a dependable sidearm for personal defense, offering good accuracy,
+		manageable recoil, and compatibility with various tactical attachments.
+	</text>
+</string>
+
+
+<string id="st_wpn_sig320_upg220">
+	<text>SIG Sauer P320</text>
+</string>
+
+<string id="st_wpn_sig320_upg220_short">
+	<text>SIG P320</text>
+</string>
+
+<string id="st_wpn_sig320_upg220_descr">
+	<text>
+		The SIG Sauer P320 is a heavy-hitting semi-automatic pistol designed for close-quarters combat.
+		Compared to smaller calibers, it offers increased stopping power at the cost of higher recoil and reduced magazine capacity.
+		In the Zone, this variant is favored by experienced stalkers who value raw impact and reliability over rapid follow-up shots.
+	</text>
+</string>
+
+<string id="st_wpn_molot_101">
+    <text>Molot 101</text>
+</string>
+<string id="st_wpn_molot_101_descr">
+    <text>The Molot 101 is a Russian semi-automatic pistol developed for civilian and security use. Known for its reliability and compact design, it uses standard 9x18 Makarov ammunition and features a simple blowback operation. The pistol is suitable for close-quarters self-defense and is widely used by security forces and law enforcement.\n \n
+    %c[ui_gray_2]ACCESSORIES: \n
+    %c[d_purple] • %c[ui_gray_2] Sights: standard iron sights\n
+    %c[d_purple] • %c[ui_gray_2] Optional suppressor (if compatible)\n \n</text>
+</string>
+
+
+
+</string_table>

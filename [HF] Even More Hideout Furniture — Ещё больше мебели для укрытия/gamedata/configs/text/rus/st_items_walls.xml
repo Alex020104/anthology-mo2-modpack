@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+   <string id="st_placeable_wall">
+		<text>Стена пуленепробиваемая 5x3м</text>
+	</string>
+	<string id="st_placeable_wall_descr">
+		<text>
+		%c[ui_gray_3]Свойства:\n
+		%c[d_blue] • %c[ui_gray_2] размещаемый предмет\n
+		%c[d_green] • %c[ui_gray_2] структурный элемент; используется для создания дополнительных комнат на базах.\n</text>
+	</string>	
+	
+   <string id="st_placeable_wall_metal">
+		<text>Стена из металлических листов пуленепробиваемая 5x3м</text>
+	</string>
+	<string id="st_placeable_wall_metal_descr">
+		<text>
+		%c[ui_gray_3]Свойства:\n
+		%c[d_blue] • %c[ui_gray_2] размещаемый предмет\n
+		%c[d_green] • %c[ui_gray_2] структурный элемент; используется для создания дополнительных комнат на базах.\n</text>
+	</string>	
+	
+   <string id="st_placeable_wall02">
+		<text>Стена пуленепробиваемая 2x3м</text>
+	</string>
+	<string id="st_placeable_wall02_descr">
+		<text>
+		%c[ui_gray_3]Свойства:\n
+		%c[d_blue] • %c[ui_gray_2] размещаемый предмет\n
+		%c[d_green] • %c[ui_gray_2] структурный элемент; используется для создания дополнительных комнат на базах.\n</text>
+	</string>	
+	
+   <string id="st_placeable_wall02_metal">
+		<text>Стена из металлических листов пуленепробиваемая 2x3м</text>
+	</string>
+	<string id="st_placeable_wall02_metal_descr">
+		<text>
+		%c[ui_gray_3]Свойства:\n
+		%c[d_blue] • %c[ui_gray_2] размещаемый предмет\n
+		%c[d_green] • %c[ui_gray_2] структурный элемент; используется для создания дополнительных комнат на базах.\n</text>
+	</string>	
+	
+   <string id="st_placeable_wall_doorway">
+		<text>Деревянная стена с дверным проемом пуленепробиваемая 5x3м</text>
+	</string>
+	<string id="st_placeable_wall_doorway_descr">
+		<text>
+		%c[ui_gray_3]Свойства:\n
+		%c[d_blue] • %c[ui_gray_2] размещаемый предмет\n
+		%c[d_blue] • %c[ui_gray_2] совместимая дверь: 100x190см\n
+		%c[d_green] • %c[ui_gray_2] структурный элемент; используется для создания дополнительных комнат на базах.\n</text>
+	</string>	
+	
+   <string id="st_placeable_wall_doorway_metal">
+		<text>Стена из металлических листов с дверным проемом пуленепробиваемая 5x3м</text>
+	</string>
+	<string id="st_placeable_wall_doorway_metal_descr">
+		<text>
+		%c[ui_gray_3]Свойства:\n
+		%c[d_blue] • %c[ui_gray_2] размещаемый предмет\n
+		%c[d_blue] • %c[ui_gray_2] совместимая дверь: 100x190см\n
+		%c[d_green] • %c[ui_gray_2] структурный элемент; используется для создания дополнительных комнат на базах.\n</text>
+	</string>		
+</string_table>

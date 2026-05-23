@@ -1,0 +1,19 @@
+<string_table>
+	<string id="ui_mcm_menu_quick_melee">
+		<text>Быстрый ближний бой</text>
+	</string>
+
+	<string id="ui_mcm_quick_melee_title">
+		<text>Быстрый ближний бой</text>
+	</string>	
+	<string id="ui_mcm_quick_melee_keybind">
+		<text>Клавиша быстрой атаки (для аддона "Quick Melee Reworked" /"Переработанный быстрый ближний бой"/)</text>
+	</string>
+	<string id="ui_mcm_quick_melee_normal_dmg">
+		<text>Множитель обычного урона</text>
+	</string>
+	<string id="ui_mcm_quick_melee_critical_dmg">
+		<text>Множитель критического урона</text>
+	</string>
+	
+</string_table>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!--
+	Weapons
+-->
+
+<string_table>
+
+	<string id="st_wpn_aug_9mm_spectre">
+		<text>Steyr AUG A3 Spectre Tactical</text>
+	</string>
+	<string id="st_wpn_aug_9mm_spectre_descr">
+		<text>AUG 9x19mm submachine gun. This version is the standard AUG A3 assault rifle with the use of the 9x19mm Nightsword conversion kit. The trigger mechanism allows firing in single and fully automatic modes with a closed bolt. The basic components and mechanisms are the same as those of the assault rifle, except for the new shortened barrel, bolt, magazine adapter, and new 32-round magazines.\n \n
+		This Tactical Kit is equipped with an extended barrel which affects the characteristics of the weapon such as: Damage, accuracy, bullet velocity and effective range.\n \n		
+		%c[ui_gray_2]Features: \n
+		%c[d_green] • %c[ui_gray_2] Extended barrel (417mm).\n
+		%c[d_green] • %c[ui_gray_2] Silencer (9mm).\n
+		%c[d_green] • %c[ui_gray_2] Low-profile VLTOR receiver.\n
+		%c[d_green] • %c[ui_gray_2] Corvus Defensio tactical rail.\n
+		%c[d_green] • %c[ui_gray_2] Custom Spectre Tactical black stock.\n
+		%c[d_green] • %c[ui_gray_2] Etherium Holo sight with 3X Magnifier.\n
+		%c[d_green] • %c[ui_gray_2] MAWL-C1+ Laser.\n \n</text>
+	</string>
+	
+	<string id="st_wpn_aug_9mm_infiltrator">
+		<text>Steyr AUG A3 Inflitrator</text>
+	</string>
+	<string id="st_wpn_aug_9mm_infiltrator_descr">
+		<text>AUG 9x19mm submachine gun. This version is the standard AUG A3 assault rifle with the use of the 9x19mm Nightsword conversion kit. The trigger mechanism allows firing in single and fully automatic modes with a closed bolt. The basic components and mechanisms are the same as those of the assault rifle, except for the new shortened barrel, bolt, magazine adapter, and new 32-round magazines.\n \n
+		This Tactical Kit is equipped with an Long heavy barrel that GREATLY increases the weapon's characteristics such as: Damage, accuracy, bullet velocity and effective range.\n \n		
+		%c[ui_gray_2]Features: \n
+		%c[d_green] • %c[ui_gray_2] Long Heavy Barrel (508mm).\n
+		%c[d_green] • %c[ui_gray_2] Silencer (9mm).\n
+		%c[d_green] • %c[ui_gray_2] Low-profile VLTOR receiver.\n
+		%c[d_green] • %c[ui_gray_2] Corvus Defensio tactical rail.\n		
+		%c[d_green] • %c[ui_gray_2] Voodoo-s thermal sight with ACOG (TA47C Reticle).\n
+		%c[d_green] • %c[ui_gray_2] MAWL-C1+ Laser.\n \n</text>
+	</string>	
+
+</string_table>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+<!-- Bomber Combat Suit -->
+<string id="st_bomber_outfit_name">
+    <text>Bomber Combat Suit</text>
+</string>
+<string id="st_bomber_outfit_description">
+    <text>A lightweight tactical bomber suit designed for rapid assault operations. Reinforced with flexible armor plates, it provides balanced protection without restricting mobility.</text>
+</string>
+
+<!-- MilStalk Standard Outfit -->
+<string id="milstalk_outfit_name">
+    <text>MilStalk Standard Combat Uniform</text>
+</string>
+<string id="milstalk_outfit_description">
+    <text>The standard-issue combat uniform of the MilStalk brigade, offering reliable ballistic protection and resistance against harsh environmental effects.</text>
+</string>
+
+<!-- MilStalk SpecOps Suit -->
+<string id="milstalk_specops_outfit_name">
+    <text>MilStalk Special Operations Suit</text>
+</string>
+<string id="milstalk_specops_outfit_description">
+    <text>An elite special-operations combat suit with reinforced armor layers, tactical camouflage, and improved stealth capabilities for high-risk missions.</text>
+</string>
+
+<!-- MilStalk Military Suit -->
+<string id="milstalk_military_outfit_name">
+    <text>MilStalk Enhanced Military Armor</text>
+</string>
+<string id="milstalk_military_outfit_description">
+    <text>A fortified military suit favored by frontline MilStalk units. It provides increased ballistic resistance and additional anomaly protection.</text>
+</string>
+
+<!-- MilStalk Proto Exo -->
+<string id="milstalk_proto_exo_outfit_name">
+    <text>MilStalk Prototype Exoskeleton</text>
+</string>
+<string id="milstalk_proto_exo_outfit_description">
+    <text>An early prototype exoskeleton offering enhanced strength and solid protection. Less refined than full exosuits, but highly effective in the field.</text>
+</string>
+
+<!-- MilStalk Exoskeleton -->
+<string id="milstalk_exo_outfit_name">
+    <text>MilStalk Heavy Exoskeleton</text>
+</string>
+<string id="milstalk_exo_outfit_description">
+    <text>A fully powered military exoskeleton engineered for maximum survivability. Its reinforced frame grants exceptional protection and load-bearing capacity.</text>
+</string>
+
+<!-- MilStalk Nosorog -->
+<string id="milstalk_nosorog_outfit_name">
+    <text>MilStalk Nosorog Assault Armor</text>
+</string>
+<string id="nosorog_outfit_description">
+    <text>An advanced “Nosorog” armor variant with composite plating and exoskeletal support. Balances mobility with extraordinary defensive capability for elite units.</text>
+</string>
+
+</string_table>

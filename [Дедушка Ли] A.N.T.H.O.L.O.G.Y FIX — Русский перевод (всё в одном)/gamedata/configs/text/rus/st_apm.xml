@@ -1,0 +1,92 @@
+<string_table>
+    <!-- MCM -->
+    <string id="ui_mcm_menu_ui_popup_messages">
+        <text>Всплывающие сообщения</text>
+    </string>
+    <string id="ui_mcm_ui_popup_messages_title">
+        <text>Всплывающие сообщения</text>
+    </string>
+
+    <string id="ui_mcm_menu_apm_main">
+        <text>Главная</text>
+    </string>
+
+    <string id="ui_mcm_ui_popup_messages_apm_main_scaling">
+        <text>Масштабирование сообщений</text>
+    </string>
+    <string id="ui_mcm_ui_popup_messages_apm_main_window_amount">
+        <text>Количество сообщений</text>
+    </string>
+    <string id="ui_mcm_ui_popup_messages_apm_main_display_time">
+        <text>Время отображения сообщений</text>
+    </string>
+    <string id="ui_mcm_ui_popup_messages_apm_main_animation_time">
+        <text>Время анимации иконок в сообщениях</text>
+    </string>
+
+    <string id="ui_mcm_ui_popup_messages_apm_main_item_shadow">
+        <text>Включить фоновую подсветку в сообщениях</text>
+    </string>
+    <string id="ui_mcm_ui_popup_messages_apm_main_shadow_alpha">
+        <text>Регулировка фоновой подсветки</text>
+    </string>
+
+    <string id="ui_mcm_ui_popup_messages_apm_main_text_background">
+        <text>Стиль фоновой подсветки текста</text>
+    </string>
+    <string id="ui_mcm_lst_apm_background">
+        <text>По умолчанию</text>
+    </string>
+    <string id="ui_mcm_lst_apm_background2">
+        <text>Сдвинута в бок</text>
+    </string>
+    <string id="ui_mcm_lst_apm_background3">
+        <text>Фон "apm_background3"</text>
+    </string>
+    <string id="ui_mcm_lst_apm_background4">
+        <text>Между строками текста</text>
+    </string>
+
+    <string id="ui_mcm_ui_popup_messages_apm_main_animate_style">
+        <text>Показать/скрыть стиль анимации сообщений</text>
+    </string>
+    <string id="ui_mcm_lst_CircularEaseOut">
+        <text>Простой вывод сообщений сверху вниз (без подпрыгивания)</text>
+    </string>
+    <string id="ui_mcm_lst_BackEaseOut">
+        <text>BackEaseOut (подпрыгивает больше)</text>
+    </string>
+    <string id="ui_mcm_lst_BackEaseOutQuadratic">
+        <text>BackEaseOutQuadratic (подпрыгивает меньше)</text>
+    </string>
+
+    <string id="ui_mcm_ui_popup_messages_apm_main_color_r">
+        <text>Красный цвет текста</text>
+    </string>
+    <string id="ui_mcm_ui_popup_messages_apm_main_color_g">
+        <text>Зеленый цвет текста</text>
+    </string>
+    <string id="ui_mcm_ui_popup_messages_apm_main_color_b">
+        <text>Синий цвет текста</text>
+    </string>
+
+    <string id="ui_mcm_ui_popup_messages_apm_main_color_r_bg">
+        <text>Красный цвет фоновой подсветки</text>
+    </string>
+    <string id="ui_mcm_ui_popup_messages_apm_main_color_g_bg">
+        <text>Зеленый цвет фоновой подсветки</text>
+    </string>
+    <string id="ui_mcm_ui_popup_messages_apm_main_color_b_bg">
+        <text>Синий цвет фоновой подсветки</text>
+    </string>
+
+    <string id="ui_mcm_ui_popup_messages_apm_main_position">
+        <text>Регулировка расположения сообщений</text>
+    </string>
+    <string id="ui_mcm_ui_popup_messages_apm_main_pos_x">
+        <text>Смещение по горизонтальной оси X</text>
+    </string>
+    <string id="ui_mcm_ui_popup_messages_apm_main_pos_y">
+        <text>Смещение по вертикальной оси Y</text>
+    </string>
+</string_table>

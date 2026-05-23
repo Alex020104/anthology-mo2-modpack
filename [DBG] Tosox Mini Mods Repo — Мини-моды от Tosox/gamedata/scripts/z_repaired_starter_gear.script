@@ -1,0 +1,28 @@
+--[[
+	=====================================================================
+	Addon      : Tosox Mini Mods Repo: Repaired Starter Gear
+	Link       : https://www.moddb.com/mods/stalker-anomaly/addons/tosox-mini-mods-repo/
+	Author     : Tosox
+	Date       : 17.11.2023
+	Last Edit  : 19.01.2024
+	=====================================================================
+--]]
+
+orig_new_game_equipment = itms_manager.new_game_equippment
+itms_manager.new_game_equippment = function(...)
+	orig_new_game_equipment(...)
+
+	-- Repair equipment
+	local function repair_items(actor, itm)
+		local sec = itm:section()
+		if (IsWeapon(itm) and (sec ~= "wpn_binoc_inv")) or IsOutfit(itm) or IsHeadgear(itm) or IsItem("device", sec) then
+			itm:set_condition(1)
+		end
+	end
+	db.actor:iterate_inventory(repair_items, db.actor)
+	
+	-- Override autosave again
+	exec_console_cmd("save " .. user_name() .. " - autosave")
+	
+	return true
+end

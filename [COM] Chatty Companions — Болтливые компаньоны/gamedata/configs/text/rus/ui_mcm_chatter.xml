@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="ui_mcm_chatter_title">
+		<text>Настройки сообщений от напарников</text>
+	</string>
+	<string id="ui_mcm_menu_chatter">
+		<text>Болтливые напарники</text>
+	</string>
+	<string id="ui_mcm_chatter_desc1">
+		<text>Основные настройки</text>
+	</string>
+
+	<string id="ui_mcm_chatter_show_time">
+		<text>Длительность показа сообщений (сек)</text>
+	</string>
+	<string id="ui_mcm_chatter_show_time_long">
+		<text>Длительность показа длинных сообщений (сек)</text>
+	</string>
+	<string id="ui_mcm_chatter_beep_before">
+		<text>Проигрывать звук при появлении сообщения</text>
+	</string>
+	<string id="ui_mcm_chatter_beep_after">
+		<text>Проигрывать звук при исчезновении сообщения</text>
+	</string>
+	<string id="ui_mcm_chatter_msg_state">
+		<text>Настраиваемый цвет сообщения</text>
+	</string>
+	<string id="ui_mcm_chatter_msg_argb">
+		<text>Значения ARGB цвета сообщения</text>
+	</string>
+
+	<string id="ui_mcm_chatter_desc2">
+		<text>Настройка особых сообщений</text>
+	</string>
+
+
+	<string id="ui_mcm_chatter_anomaly_state">
+		<text>Сообщения об аномалиях</text>
+	</string>
+	<string id="ui_mcm_chatter_anomaly_timer">
+		<text>Мин. время между сообщениями об аномалиях</text>
+	</string>
+
+	<string id="ui_mcm_chatter_clear_state">
+		<text>Сообщения после зачистки сектора</text>
+	</string>
+
+	<string id="ui_mcm_chatter_campfire_state">
+		<text>Истории у костра</text>
+	</string>
+	<string id="ui_mcm_chatter_wpm">
+		<text>Частота рассказа историй у костра (реплик в минуту)</text>
+	</string>
+
+	<string id="ui_mcm_chatter_npc_death_state">
+		<text>Сообщения умирающего напарника (Их говорит умирающий напарник)</text>
+	</string>
+
+	<string id="ui_mcm_chatter_npc_death_comment_state">
+		<text>Сообщения об умирающем напарнике (Их говорит второй напарник, если такой есть в группе)</text>
+	</string>
+
+	<string id="ui_mcm_chatter_emission_state">
+		<text>Сообщения о выбросах</text>
+	</string>
+
+	<string id="ui_mcm_chatter_enemy_state">
+		<text>Сообщения о врагах</text>
+	</string>
+
+	<string id="ui_mcm_chatter_headshot_state">
+		<text>Комментарий напарника при убийстве в голову</text>
+	</string>
+
+	<string id="ui_mcm_chatter_level_state">
+		<text>Комментарии о локации</text>
+	</string>
+	<string id="ui_mcm_chatter_level_chance">
+		<text>Процентная вероятность комментария о текущей локации</text>
+	</string>
+
+	<string id="ui_mcm_chatter_npc_health_state">
+		<text>Сообщения напарника при его низком здоровья </text>
+	</string>
+
+
+	<string id="ui_mcm_chatter_player_death_state">
+		<text>Сообщения при смерти игрока</text>
+	</string>
+
+	<string id="ui_mcm_chatter_psistorm_state">
+		<text>Комментарии о пси-шторме</text>
+	</string>
+
+	<string id="ui_mcm_chatter_reload_state">
+		<text>Комментарий при перезарядке игрока</text>
+	</string>
+	<string id="ui_mcm_chatter_reload_chance">
+		<text>Процентная вероятность комментария при перезарядке игрока</text>
+	</string>
+
+	<string id="ui_mcm_chatter_jammed_state">
+		<text>Комментарий при заклинившем оружии у игрока</text>
+	</string>
+
+	<string id="ui_mcm_chatter_random_state">
+		<text>Случайные комментарии</text>
+	</string>
+	<string id="ui_mcm_chatter_random_chance">
+		<text>Множитель частоты случайных сообщений</text>
+	</string>
+
+	<string id="ui_mcm_chatter_safe_area_state">
+		<text>Комментарии при входе в безопасную зону</text>
+	</string>
+	<string id="ui_mcm_chatter_safe_area_chance">
+		<text>Процентная вероятность комментария при входе в безопасную зону</text>
+	</string>
+</string_table>

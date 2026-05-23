@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+
+<string_table>
+
+	<string id="passinc_ask_for_employment_default">
+		<text>He escuchado que est&#225;s buscando personas que trabajen para ti.</text>
+	</string>
+
+	<!-- FACTIONES MERCS -->
+	<!-- NPC -->
+	<string id="passinc_stop_employment_available_killer">
+		<text>&#191;Est&#225;s seguro, recluta?</text>
+	</string>
+	<string id="passinc_stop_employment_end_killer">
+		<text>No te preocupes. Si cambias de opini&#243;n, vuelve ma&#241;ana y podemos negociar un nuevo contrato.</text>
+	</string>
+	<string id="passinc_salary_preview_killer">
+		<text>S&#237;, escuchaste bien. Esto es lo que puedo ofrecerte: te pagar&#233; un salario base diario de %s rublos y agregar&#233; %s rublos por cada tarea que completes, %s por cada mutante que mates y %s por cada enemigo de nuestra facci&#243;n. Intenta mantenerte ocupado todos los d&#237;as y ganar&#225;s m&#225;s, de lo contrario, puedes despedirte de nuestro contrato y tendr&#225;s que empezar desde el principio. Ven a hablar conmigo cuando quieras tu dinero.</text>
+	</string>
+	<string id="passinc_show_salary_killer">
+		<text>Claro, lo tengo aqu&#237;, tu salario total es de</text>
+	</string>
+	<string id="passinc_show_salary_bonus_killer">
+		<text>Claro, lo tengo aqu&#237;, tu salario total asciende a %s rublos. Tambi&#233;n te inclu&#237; un peque&#241;o bono por el excelente trabajo que hiciste, sigue as&#237;.</text>
+	</string>
+	<!-- PLAYER -->
+	<string id="passinc_ask_for_employment_killer">
+		<text>He escuchado que est&#225;s buscando gente para trabajar contigo.</text>
+	</string>
+	<string id="passinc_employment_back_killer">
+		<text>En realidad, olv&#237;dalo.</text>
+	</string>
+	<string id="passinc_employment_confirm_killer">
+		<text>S&#237;, es un trato.</text>
+	</string>
+	<string id="passinc_ask_for_stop_employment_killer">
+		<text>Lo pens&#233; y quiero terminar mi contrato.</text>
+	</string>
+	<string id="passinc_stop_employment_confirm_killer">
+		<text>S&#237;, necesito un descanso.</text>
+	</string>
+	<string id="passinc_ask_for_salary_killer">
+		<text>Estoy aqu&#237; por mi dinero.</text>
+	</string>
+	<string id="passinc_get_salary_killer">
+		<text>Bien, lo tomar&#233;.</text>
+	</string>
+	<string id="passinc_not_share_salary_killer">
+		<text>Perfecto, me lo quedo todo para m&#237;.</text>
+	</string>
+	<string id="passinc_share_salary_killer">
+		<text>Bien, lo compartir&#233; con mis compa&#241;eros.</text>
+	</string>
+
+	<!-- FACTION MILITAR -->
+	<!-- NPC -->
+	<string id="passinc_stop_employment_available_army">
+		<text>Soldado, &#191;est&#225;s seguro de tu decisi&#243;n?</text>
+	</string>
+	<string id="passinc_stop_employment_end_army">
+		<text>No hay problema. Si cambias de opini&#243;n, vuelve ma&#241;ana y podemos discutir una nueva asignaci&#243;n.</text>
+	</string>
+	<string id="passinc_salary_preview_army">
+		<text>En efecto, escucha. Te proporcionar&#233; un salario diario de %s rublos. Adem&#225;s, ganar&#225;s %s rublos por cada tarea completada, %s por cada mutante eliminado y %s por cada enemigo de nuestra facci&#243;n. Mantente activo, o nuestro contrato termina. Ven a verme cuando est&#233;s listo para tu pago.</text>
+	</string>
+	<string id="passinc_show_salary_army">
+		<text>Afirmativo, tengo los detalles. Tu salario total es de</text>
+	</string>
+	<string id="passinc_show_salary_bonus_army">
+		<text>Afirmativo, lo tengo aqu&#237;, tu salario total asciende a %s rublos. Tambi&#233;n agregu&#233; un bono por el espl&#233;ndido trabajo que hiciste, soldado.</text>
+	</string>
+	<!-- PLAYER -->
+	<string id="passinc_ask_for_employment_army">
+		<text>He escuchado que est&#225;s buscando soldados para trabajar contigo.</text>
+	</string>
+	<string id="passinc_employment_back_army">
+		<text>Mejor olv&#237;delo, se&#241;or.</text>
+	</string>
+	<string id="passinc_employment_confirm_army">
+		<text>Afirmativo, es un trato.</text>
+	</string>
+	<string id="passinc_ask_for_stop_employment_army">
+		<text>Lo he pensado, y quiero terminar mi contrato, se&#241;or.</text>
+	</string>
+	<string id="passinc_stop_employment_confirm_army">
+		<text>Afirmativo, necesito un descanso de mis asignaciones.</text>
+	</string>
+	<string id="passinc_ask_for_salary_army">
+		<text>Estoy aqu&#237; para cobrar.</text>
+	</string>
+	<string id="passinc_get_salary_army">
+		<text>Eso est&#225; bien, gracias se&#241;or.</text>
+	</string>
+	<string id="passinc_not_share_salary_army">
+		<text>Excelente, me lo quedo todo para m&#237;.</text>
+	</string>
+	<string id="passinc_share_salary_army">
+		<text>Bien, lo compartir&#233; con mis compa&#241;eros de escuadr&#243;n.</text>
+	</string>
+
+	<!-- FACTION DUTY -->
+	<!-- NPC -->
+	<string id="passinc_stop_employment_available_dolg">
+		<text>&#191;Est&#225;s seguro de esto, soldado?</text>
+	</string>
+	<string id="passinc_stop_employment_end_dolg">
+		<text>Est&#225; bien. Si cambias de opini&#243;n, vuelve ma&#241;ana y discutiremos un nuevo contrato.</text>
+	</string>
+	<string id="passinc_salary_preview_dolg">
+		<text>Escuchaste bien, aqu&#237; est&#225; el trato: recibir&#225;s un salario base diario de %s rublos. Adem&#225;s, ganar&#225;s %s por cada tarea completada, %s por cada mutante que neutralices y %s por cada enemigo de la facci&#243;n Duty que elimines. Mantente activo, o nuestro contrato termina. Ven a hablar conmigo cuando quieras tu merecido dinero.</text>
+	</string>
+	<string id="passinc_show_salary_dolg">
+		<text>Afirmativo, lo tengo aqu&#237;. Tu salario total asciende a</text>
+	</string>
+	<string id="passinc_show_salary_bonus_dolg">
+		<text>Afirmativo, lo tengo aqu&#237;, tu salario total asciende a %s rublos. Gracias al excelente trabajo que hiciste, tambi&#233;n tienes derecho a una bonificaci&#243;n.</text>
+	</string>
+	<!-- PLAYER -->
+	<string id="passinc_ask_for_employment_dolg">
+		<text>He escuchado que est&#225;s buscando stalkers para unirse al programa salarial.</text>
+	</string>
+	<string id="passinc_employment_back_dolg">
+		<text>Pens&#225;ndolo bien, mejor olv&#237;dalo.</text>
+	</string>
+	<string id="passinc_employment_confirm_dolg">
+		<text>De acuerdo, es un trato.</text>
+	</string>
+	<string id="passinc_ask_for_stop_employment_dolg">
+		<text>Lo he pensado; quiero terminar mi contrato.</text>
+	</string>
+	<string id="passinc_stop_employment_confirm_dolg">
+		<text>S&#237;, necesito un descanso.</text>
+	</string>
+	<string id="passinc_ask_for_salary_dolg">
+		<text>Estoy aqu&#237; para cobrar.</text>
+	</string>
+	<string id="passinc_get_salary_dolg">
+		<text>Bien, gracias se&#241;or.</text>
+	</string>
+	<string id="passinc_not_share_salary_dolg">
+		<text>Perfecto, me lo quedo todo para m&#237;.</text>
+	</string>
+	<string id="passinc_share_salary_dolg">
+		<text>Bien, lo compartir&#233; con mis compa&#241;eros.</text>
+	</string>
+
+	<!-- FACTION ECOLOGISTAS -->
+	<!-- NPC -->
+	<string id="passinc_stop_employment_available_ecolog">
+		<text>&#191;Est&#225;s seguro de esto, colega?</text>
+	</string>
+	<string id="passinc_stop_employment_end_ecolog">
+		<text>No te preocupes. Si cambias de opini&#243;n, vuelve ma&#241;ana y discutiremos un nuevo contrato.</text>
+	</string>
+	<string id="passinc_salary_preview_ecolog">
+		<text>De hecho, escuchaste bien. Aqu&#237; est&#225; el trato: recibir&#225;s un salario base diario de %s rublos. Adem&#225;s, ganar&#225;s %s rublos por cada tarea completada, %s por cada mutante que neutralices y %s por cada enemigo de nuestra facci&#243;n. Mantente comprometido, o nuestro contrato termina. Ven a hablar conmigo cuando quieras tu merecido dinero.</text>
+	</string>
+	<string id="passinc_show_salary_ecolog">
+		<text>S&#237;, lo tengo aqu&#237;. Tu salario total asciende a</text>
+	</string>
+	<string id="passinc_show_salary_bonus_ecolog">
+		<text>S&#237;, lo tengo aqu&#237;. Tu salario total asciende a %s rublos, tambi&#233;n he preparado un peque&#241;o bono por el buen trabajo que hiciste.</text>
+	</string>
+	<!-- PLAYER -->
+	<string id="passinc_ask_for_employment_ecolog">
+		<text>Escuch&#233; que est&#225;s ofreciendo un salario a los stalkers que te ayudan en tu investigaci&#243;n.</text>
+	</string>
+	<string id="passinc_employment_back_ecolog">
+		<text>Pens&#225;ndolo bien, mejor olv&#237;dalo.</text>
+	</string>
+	<string id="passinc_employment_confirm_ecolog">
+		<text>Claro, es un trato.</text>
+	</string>
+	<string id="passinc_ask_for_stop_employment_ecolog">
+		<text>Lo he pensado; quiero terminar mi contrato.</text>
+	</string>
+	<string id="passinc_stop_employment_confirm_ecolog">
+		<text>S&#237;, necesito un descanso.</text>
+	</string>
+	<string id="passinc_ask_for_salary_ecolog">
+		<text>Estoy aqu&#237; para cobrar.</text>
+	</string>
+	<string id="passinc_get_salary_ecolog">
+		<text>Bien, gracias profesor.</text>
+	</string>
+	<string id="passinc_not_share_salary_ecolog">
+		<text>Perfecto, me lo quedo todo para m&#237;.</text>
+	</string>
+	<string id="passinc_share_salary_ecolog">
+		<text>Bien, lo compartir&#233; con mi equipo.</text>
+	</string>
+
+	<!-- FACTION FREEDOM -->
+	<!-- NPC -->
+	<string id="passinc_stop_employment_available_freedom">
+		<text>&#191;Est&#225;s seguro de esto, stalker?</text>
+	</string>
+	<string id="passinc_stop_employment_end_freedom">
+		<text>No te preocupes. Si cambias de opini&#243;n, pasa ma&#241;ana y podemos negociar un nuevo contrato.</text>
+	</string>
+	<string id="passinc_salary_preview_freedom">
+		<text>S&#237;, escuchaste bien. Aqu&#237; est&#225; el trato: te dar&#233; un salario base diario de %s rublos. Adem&#225;s, te llevas %s por cada tarea completada, %s por cada mutante que derribes, y %s por cada enemigo de nuestra facci&#243;n que elimines. Mantente activo, o nuestro acuerdo se desplomar&#225;. Pasa cuando est&#233;s listo para cobrar tu dinero bien ganado.</text>
+	</string>
+	<string id="passinc_show_salary_freedom">
+		<text>Claro, lo tengo aqu&#237;. Tu salario total suma</text>
+	</string>
+	<string id="passinc_show_salary_bonus_freedom">
+		<text>Claro, lo tengo aqu&#237;. Tu salario total asciende a %s rublos, tambi&#233;n he incluido un peque&#241;o bono por el excelente trabajo que hiciste, sigue as&#237;.</text>
+	</string>
+	<!-- PLAYER -->
+	<string id="passinc_ask_for_employment_freedom">
+		<text>Se rumorea que est&#225;s buscando stalkers para trabajar contigo. &#191;Es cierto?</text>
+	</string>
+	<string id="passinc_employment_back_freedom">
+		<text>Mejor lo pienso dos veces, olv&#237;dalo.</text>
+	</string>
+	<string id="passinc_employment_confirm_freedom">
+		<text>Trato hecho. Estamos en negocios.</text>
+	</string>
+	<string id="passinc_ask_for_stop_employment_freedom">
+		<text>He estado pensando y estoy listo para dar por terminado nuestro contrato.</text>
+	</string>
+	<string id="passinc_stop_employment_confirm_freedom">
+		<text>S&#237;, necesito un descanso.</text>
+	</string>
+	<string id="passinc_ask_for_salary_freedom">
+		<text>Estoy aqu&#237; para cobrar.</text>
+	</string>
+	<string id="passinc_get_salary_freedom">
+		<text>Bien, lo agarrar&#233;.</text>
+	</string>
+	<string id="passinc_not_share_salary_freedom">
+		<text>Perfecto, me quedo con todo para m&#237;.</text>
+	</string>
+	<string id="passinc_share_salary_freedom">
+		<text>Bien, compartir&#233; la riqueza con mis compa&#241;eros de escuadr&#243;n.</text>
+	</string>
+
+	<!-- UNISG FACTION (IDENTICAL TO ECOLOGISTS ASIDE FROM "passinc_get_salary_isg") -->
+	<!-- NPC -->
+	<string id="passinc_stop_employment_available_isg">
+		<text>&#191;Est&#225;s seguro de esto, agente?</text>
+	</string>
+	<string id="passinc_stop_employment_end_isg">
+		<text>No te preocupes. Si cambias de opini&#243;n, vuelve ma&#241;ana y discutiremos un nuevo contrato.</text>
+	</string>
+	<string id="passinc_salary_preview_isg">
+		<text>Efectivamente, escuchaste bien. Aqu&#237; est&#225; el trato: Recibir&#225;s un salario base diario de %s rublos. Adem&#225;s, ganar&#225;s %s por cada tarea completada, %s por cada mutante que neutralices y %s por cada enemigo de nuestra facci&#243;n que elimines. Mantente comprometido, o nuestro contrato termina. Ven a hablarme cuando quieras tu dinero bien ganado.</text>
+	</string>
+	<string id="passinc_show_salary_isg">
+		<text>S&#237;, lo tengo aqu&#237;. La suma total de tu salario es</text>
+	</string>
+	<string id="passinc_show_salary_bonus_isg">
+		<text>S&#237;, lo tengo aqu&#237;. Tu salario total asciende a %s rublos, tambi&#233;n he incluido un peque&#241;o bono por el excelente trabajo que hiciste. Sigue as&#237;, agente.</text>
+	</string>
+	<!-- PLAYER -->
+	<string id="passinc_ask_for_employment_isg">
+		<text>He escuchado que est&#225;s ofreciendo un salario a los stalkers que te ayuden en tu investigaci&#243;n. &#191;Es cierto?</text>
+	</string>
+	<string id="passinc_employment_back_isg">
+		<text>Mejor lo pienso dos veces, olv&#237;dalo.</text>
+	</string>
+	<string id="passinc_employment_confirm_isg">
+		<text>Afirmativo, es un trato.</text>
+	</string>
+	<string id="passinc_ask_for_stop_employment_isg">
+		<text>Lo he pensado; quiero terminar mi contrato.</text>
+	</string>
+	<string id="passinc_stop_employment_confirm_isg">
+		<text>S&#237;, necesito un descanso.</text>
+	</string>
+	<string id="passinc_ask_for_salary_isg">
+		<text>Estoy aqu&#237; para cobrar mis ganancias.</text>
+	</string>
+	<string id="passinc_get_salary_isg">
+		<text>Bien, gracias se&#241;or.</text>
+	</string>
+	<string id="passinc_not_share_salary_isg">
+		<text>Perfecto, me lo quedo todo para m&#237;.</text>
+	</string>
+	<string id="passinc_share_salary_isg">
+		<text>Bien, compartir&#233; con mi equipo.</text>
+	</string>
+
+    <!-- UNORG FACTIONS -->
+
+   <!-- LONERS (Sidorovich and Butcher) -->
+	<string id="passinc_ask_for_employment_stalker">
+		<text>Escuch&#233; que est&#225;s buscando stalkers para que trabajen para ti.</text>
+	</string>
+	<string id="passinc_salary_preview_stalker">
+		<text>Entonces, &#191;quieres ser mi peque&#241;o asistente, eh? Escucha bien, aqu&#237; est&#225; el trato: si puedes completar al menos un trabajo para m&#237; cada d&#237;a, te facilitar&#233; la vida d&#225;ndote algunos suministros todos los d&#237;as. Cada %s trabajos que completes te dar&#225;n un bono. Trabaja lo suficiente para m&#237; y obtendr&#225;s suministros mejores y m&#225;s abundantes. Comienza a holgazanear demasiado y puedes despedir nuestro trato. &#191;Qu&#233; dices?</text>
+	</string>
+	<string id="passinc_employment_confirm_stalker">
+		<text>Est&#225; bien, hag&#225;moslo.</text>
+	</string>
+	<string id="passinc_ask_for_salary_stalker">
+		<text>Estoy aqu&#237; para recoger mis suministros.</text>
+	</string>
+	<string id="passinc_show_salary_stalker">
+		<text>&#161;Mira qui&#233;n volvi&#243;! S&#237;, s&#237;, juzgando por tu trabajo, puedo darte este n&#250;mero de paquetes de suministros: %s</text>
+	</string>
+	<string id="passinc_show_salary_bonus_stalker">
+		<text>&#161;Mira qui&#233;n volvi&#243;! S&#237;, s&#237;, juzgando por tu trabajo, puedo darte este n&#250;mero de paquetes de suministros: %s. Tambi&#233;n arroj&#233; %s rublos por el trabajo excepcional.</text>
+	</string>
+	<string id="passinc_ask_for_stop_employment_stalker">
+		<text>Oye, escucha, quer&#237;a poner fin a nuestro trato laboral.</text>
+	</string>
+	<string id="passinc_stop_employment_available_stalker">
+		<text>&#191;Est&#225;s seguro, stalker? &#191;El trabajo fue demasiado dif&#237;cil para ti?</text>
+	</string>
+	<string id="passinc_stop_employment_confirm_stalker">
+		<text>Bueno, solo necesitaba un descanso, eso es todo.</text>
+	</string>
+	<string id="passinc_stop_employment_end_stalker">
+		<text>Est&#225; bien, si alguna vez cambias de opini&#243;n, ven y habla conmigo.</text>
+	</string>
+	<string id="passinc_get_salary_stalker">
+		<text>Bien, gracias.</text>
+	</string>
+	<string id="passinc_employment_back_stalker">
+		<text>Nada.</text>
+	</string>
+
+	<!-- BANDITS (Sultan) -->
+	<string id="passinc_ask_for_employment_bandit">
+		<text>Escuch&#233; que est&#225;s buscando stalkers para hacer algunos trabajos sucios.</text>
+	</string>
+	<string id="passinc_salary_preview_bandit">
+		<text>As&#237; que quieres ser mi peque&#241;o asistente, &#191;eh? No tienes miedo de ensuciarte las manos. Aqu&#237; est&#225; el trato: si logras hacer al menos un trabajo para m&#237; cada d&#237;a, te dar&#233; algunos suministros. Completa %s trabajos, y mejorar&#225; con un bono. Qu&#233;date conmigo, y la calidad y cantidad de esos suministros mejorar&#225;n. Comienza a relajarte, y nuestro trato ser&#225; historia. &#191;Qu&#233; dices?</text>
+	</string>
+	<string id="passinc_employment_confirm_bandit">
+		<text>Hag&#225;moslo.</text>
+	</string>
+	<string id="passinc_ask_for_salary_bandit">
+		<text>Estoy aqu&#237; para recoger mi bot&#237;n.</text>
+	</string>
+	<string id="passinc_show_salary_bandit">
+		<text>&#161;Mira qui&#233;n volvi&#243;! Juzgando por tus esfuerzos, puedo entregarte este n&#250;mero de paquetes de suministros: %s</text>
+	</string>
+	<string id="passinc_show_salary_bonus_bandit">
+		<text>&#161;Mira qui&#233;n volvi&#243;! Juzgando por tus esfuerzos, puedo entregarte este n&#250;mero de paquetes de suministros: %s. Tambi&#233;n arroj&#233; %s rublos por el trabajo excepcional.</text>
+	</string>
+	<string id="passinc_ask_for_stop_employment_bandit">
+		<text>Oye, escucha, creo que es hora de dar por terminada nuestra peque&#241;a colaboraci&#243;n.</text>
+	</string>
+	<string id="passinc_stop_employment_available_bandit">
+		<text>&#191;Est&#225;s seguro, stalker? &#191;El trabajo se est&#225; poniendo demasiado duro para ti?</text>
+	</string>
+	<string id="passinc_stop_employment_confirm_bandit">
+		<text>Bueno, solo necesitaba un respiro, eso es todo.</text>
+	</string>
+	<string id="passinc_stop_employment_end_bandit">
+		<text>Est&#225; bien, si alguna vez cambias de opini&#243;n, ven y habla conmigo. Siempre hay trabajo para alguien como t&#250;.</text>
+	</string>
+	<string id="passinc_get_salary_bandit">
+		<text>Bien, gracias.</text>
+	</string>
+	<string id="passinc_employment_back_bandit">
+		<text>Nada.</text>
+	</string>
+
+	<!-- CLEAR SKY (Librarian) -->
+	<string id="passinc_ask_for_employment_csky">
+		<text>Escuch&#233; que est&#225;s buscando stalkers para trabajar para ti.</text>
+	</string>
+	<string id="passinc_salary_preview_csky">
+		<text>Bueno, m&#237;rate, &#191;quieres ser mi hombre de confianza, eh? &#191;Te enteraste, eh? Aqu&#237; est&#225; la situaci&#243;n: realiza al menos un trabajo para m&#237; cada d&#237;a y te mantendr&#233; con vida y coleando con algunos suministros. Acumula %s trabajos exitosos, y lanzar&#233; un peque&#241;o bono para ti. Qu&#233;date, demuestra tu val&#237;a y nadar&#225;s en bot&#237;n mejor y m&#225;s abundante. Descuida, y nuestro peque&#241;o acuerdo podr&#237;a desmoronarse. &#191;Cu&#225;l es tu opini&#243;n al respecto, stalker?</text>
+	</string>
+	<string id="passinc_employment_confirm_csky">
+		<text>Hag&#225;moslo.</text>
+	</string>
+	<string id="passinc_ask_for_salary_csky">
+		<text>Estoy aqu&#237; para recoger mis provisiones.</text>
+	</string>
+	<string id="passinc_show_salary_csky">
+		<text>De vuelta por m&#225;s, &#191;eh? Juzgando por tu astucia, te has ganado este n&#250;mero de paquetes de suministros: %s</text>
+	</string>
+	<string id="passinc_show_salary_bonus_csky">
+		<text>De vuelta por m&#225;s, &#191;eh? Juzgando por tu astucia, te has ganado este n&#250;mero de paquetes de suministros: %s. Tambi&#233;n arroj&#233; %s rublos por el trabajo excepcional, tambi&#233;n.</text>
+	</string>
+	<string id="passinc_ask_for_stop_employment_csky">
+		<text>Escucha, creo que es hora de poner fin a nuestra colaboraci&#243;n.</text>
+	</string>
+	<string id="passinc_stop_employment_available_csky">
+		<text>&#191;Est&#225;s seguro, stalker? &#191;La tarea se est&#225; volviendo demasiado dif&#237;cil para ti?</text>
+	</string>
+	<string id="passinc_stop_employment_confirm_csky">
+		<text>Bueno, solo necesito un momento para tomar aliento, eso es todo.</text>
+	</string>
+	<string id="passinc_stop_employment_end_csky">
+		<text>Bastante bien. Si alguna vez cambias de opini&#243;n, pasa por aqu&#237;. La Zona siempre necesita m&#225;s personas dedicadas como t&#250;.</text>
+	</string>
+	<string id="passinc_get_salary_csky">
+		<text>Bien, gracias.</text>
+	</string>
+	<string id="passinc_employment_back_csky">
+		<text>Nada.</text>
+		
+	</string>
+
+	
+</string_table>

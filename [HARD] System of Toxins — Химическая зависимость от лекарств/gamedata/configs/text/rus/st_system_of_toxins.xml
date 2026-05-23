@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="ui_toxine">
+		<text>Интоксикация</text>
+	</string>
+	
+	<string id="ui_boost_detox">
+		<text>Усиленная детоксикация</text>
+	</string>
+	
+	<string id="ui_boost_detox_time">
+		<text>Длительность эффекта</text>
+	</string>
+	
+	<string id="ui_nat_detox">
+		<text>Естественная детоксикация</text>
+	</string>
+	
+	<string id="ui_toxine_time">
+		<text>%/сек</text>
+	</string>
+	
+	<string id="ui_toxins_status_0">
+		<text>Фух, кажись отпустило</text>
+	</string>
+	
+	<string id="ui_toxins_status_1">
+		<text>Что-то меня подташнивает</text>
+	</string>
+	
+	<string id="ui_toxins_status_2">
+		<text>Ух, еда так и просится наружу</text>
+	</string>
+	
+	<string id="ui_toxins_status_3">
+		<text>Зараза, мне конкретно так хреново</text>
+	</string>
+	
+	<string id="ui_toxins_status_4">
+		<text>Мутит так, что и помереть недолго!</text>
+	</string>
+	
+	<string id="ui_toxins_status_5">
+		<text>Еще чуть-чуть и точно копыта откину!</text>
+	</string>
+	
+	<string id="ui_toxins_status_6">
+		<text>Не хочу сдохнуть вот так...</text>
+	</string>
+
+
+	<string id="st_dm_medic_general_text_17">
+		<text>Что-то я плохо себя чувствую...</text>
+	</string>
+
+	<string id="st_dm_medic_general_text_19">
+		<text>Выведи токсины %c[d_orange][880 руб]</text>
+	</string>
+
+	<string id="st_dm_medic_general_text_20">
+		<text>Нет уж, спасибо. Я лучше тогда просто пойду отлежусь.</text>
+	</string>
+
+	<string id="st_dm_medic_general_text_21">
+		<text>Ладно, проехали.</text>
+	</string>
+
+	<string id="st_dm_medic_general_text_7_0">
+		<text>Лады. Снять интоксикацию я смогу без проблем, только влетит тебе это в 880 руб. Зато мигом полегчает. Где-то тут у меня были подходящие медикаменты... А вот если ты умудрился облучиться неслабо, то выводить только токсины бесполезно - спустя время опять плохо станет. Радиацию я из тебя выведу за отдельные 1,480 руб.\nНу так что? Как лечить будем?</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_7_1">
+		<text>Сейчас возьму прибор для измерения количества токсинов в крови и посмотрим, что с тобой... Угу, понятно. Сожрал что-то не то, бухал или препаратами разными злоупотреблял?</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_7_2">
+		<text>Хорошо, закати рукав, проверять уровень токсинов будем. Если снова заметишь, что мир вокруг приобрел желтизну и в глазах помутнело, то это явный признак интоксикации. С передозом шутки плохи. Если снова отравишься и окажешься далеко от базы, то носи с собой хотя бы активированный уголь на такой случай.</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_7_3">
+		<text>Ну давай посмотрим, насколько все плохо. Если интоксикация не слишком сильная, ты можешь просто поспать. Или принять антидот. Но это лучше оставь на случай, если до медика идти окажется далеко, а интоксикацию снять нужно срочно.</text>
+	</string>
+
+
+	<string id="st_dm_medic_general_text_70_0">
+		<text>Прибор показывает минимальный уровень токсинов, все в пределах нормы.</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_70_1">
+		<text>Ты уверен, что у тебя интоксикация? Показали в норме.</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_70_2">
+		<text>Видите ли плохо ему, а ведь на интоксикацию даже намека нет! Признавайся, бухал вчера? Иди лучше минералочки попей.</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_70_3">
+		<text>Тебя после очередного передоза галлюцинации все никак не отпустят? Нет никаких признаков интоксикации, иди лучше проспись.</text>
+	</string>
+	
+	<string id="st_dm_medic_general_text_70_4">
+		<text>Расслабься. Никаких намеков на интоксикацию у тебя и близко нет. И чего ты только переживал?</text>
+	</string>
+	
+</string_table>

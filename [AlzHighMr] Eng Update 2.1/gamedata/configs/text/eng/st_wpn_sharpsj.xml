@@ -1,0 +1,17 @@
+<string_table>
+	<string id="st_wpn_sharps_j">
+		<text>Sharps 1874</text>
+	</string>
+	<string id="st_wpn_sharps_j_descr">
+		<text>The Sharps 1874 rifle, a legendary single-shot firearm known for its accuracy and range, is a hallmark of American craftsmanship in the late 19th century. Originally designed for long-range hunting and target shooting, this rifle features a robust falling block action and a heavy octagonal barrel, ensuring precision and reliability. One of its distinguishing features is the capability to mount a scope, enhancing its already impressive accuracy for sharpshooting enthusiasts and professional marksmen alike. The Sharps 1874's historical significance and performance made it a favored choice among buffalo hunters and competitive shooters, solidifying its place in the annals of firearm history. 
+		\n \n %c[ui_gray_2]ATTACHMENTS: \n %c[d_purple] - %c[ui_gray_2] ZF-4 Scope\n \n</text>
+	</string>
+	
+		<string id="st_ammo_5090sharps">
+		<text>.50-90 Sharps Ammunition</text>
+	</string>
+	<string id="st_ammo_5090sharps_descr">
+		<text>The .50-90 Sharps ammunition, introduced in the late 19th century, is a powerful cartridge designed for the Sharps 1874 rifle. With a .50 caliber bullet and 90 grains of black powder, it excels in big game hunting, capable of taking down large animals at long distances, and holds a legendary status in American firearm history.\n \n</text>
+	</string>
+	
+</string_table>

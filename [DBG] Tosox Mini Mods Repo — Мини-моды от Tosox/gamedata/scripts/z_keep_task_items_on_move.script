@@ -1,0 +1,76 @@
+--[[
+	=====================================================================
+	Addon      : Tosox Mini Mods Repo: Keep Task Items on Move All
+	Link       : https://www.moddb.com/mods/stalker-anomaly/addons/tosox-mini-mods-repo/
+	Author     : Tosox
+	Credits    : Utjan
+	Date       : 07.01.2024
+	Last Edit  : 19.01.2024
+	=====================================================================
+--]]
+
+local do_move_all = false
+
+orig_ui_inventory_put_all = ui_inventory.UIInventory.LMode_PutAll
+ui_inventory.UIInventory.LMode_PutAll = function(self)
+	do_move_all = true
+	orig_ui_inventory_put_all(self)
+	do_move_all = false
+end
+
+function is_task_item(obj)
+	if not db.actor then
+		return false
+	end
+	if not obj then
+		return false
+	end
+
+	local sec = obj:section()
+	local task_info = task_manager.get_task_manager().task_info
+	local _multifetch_data = nil
+
+	for tid, _ in pairs(task_info) do
+		local status = task_info[tid].last_check_task
+		if (status ~= "complete") and (status ~= "fail") then
+			-- Fetch
+			local fetch_sec = load_var(db.actor, tid .. "_fetch")
+			if (fetch_sec) and (fetch_sec == sec) then
+				return true
+			end
+
+			-- Delivery
+			local delivery_table = load_var(db.actor, tid)
+			if (delivery_table) and (type(delivery_table) == "table") and (delivery_table.item_1_sec) and (delivery_table.item_1_sec == sec) then
+				return true
+			end
+
+			-- Multi fetch
+			_multifetch_data = _multifetch_data or alife_storage_manager.get_state().multifetch_data
+			local required_items = _multifetch_data and _multifetch_data[tid] and _multifetch_data[tid].required_items
+			if required_items then
+				for k, _ in pairs(required_items) do
+					if required_items[k].sec == sec then
+						return true
+					end
+				end
+			end
+			local optional_items = _multifetch_data and _multifetch_data[tid] and _multifetch_data[tid].optional_items
+			if optional_items then
+				for k, _ in pairs(optional_items) do
+					if optional_items[k].sec == sec then
+						return true
+					end
+				end
+			end
+		end
+	end
+end
+
+function ActorMenu_on_item_before_move(flags, npc_id, obj, mode, bag)
+	flags.ret_value = flags.ret_value and not (do_move_all and is_task_item(obj))
+end
+
+function on_game_start()
+	RegisterScriptCallback("ActorMenu_on_item_before_move", ActorMenu_on_item_before_move)
+end

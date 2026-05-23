@@ -1,0 +1,403 @@
+-- One in the chamber script
+-- Adds extra bullet after reload from inventory to the gun, emulating bullet in the chamber mechanic
+-- For checking if weapon is supported, see check_valid_weapon function, there are all conditions
+-- Written by demonized
+
+--Protected function call to prevent crashes to desktop
+--Prints error in console if occured, otherwise proceed normally
+--Use for test only, slower than usual
+local try = try or function(func, ...)
+	local status, error_or_result = pcall(func, ...)
+	if not status then
+		printf(error_or_result)
+		return false, status, error_or_result
+	else
+		return error_or_result, status
+	end
+end
+
+local debug_mode = false
+local function printf(str, ...)
+	if debug_mode then
+		_G.printf("One In The Chamber: " .. str, ...)
+	end
+end
+
+local CreateTimeEvent = demonized_time_events.CreateTimeEvent
+local ignore_sections = one_in_the_chamber_blacklist.ignore_sections
+
+function get_ignore_section(sec)
+	for k, v in pairs(ignore_sections) do
+		if string.find(sec, k) then
+			return true
+		end
+	end
+end
+
+function infinite_ammo_on()
+	local res = get_console_cmd(1, "g_unlimitedammo")
+	printf("g_unlimitedammo = %s", res)
+	return res
+end
+
+local reload_state = false
+local manual_reload = false
+
+function reload_state_on(manual)
+	reload_state = true
+	if manual then
+		printf("manual reload triggered")
+		manual_reload = true
+	end
+end
+
+function reload_state_off()
+	reload_state = false
+	manual_reload = false
+end
+
+function actor_on_weapon_lowered()
+	printf("actor_on_weapon_lowered")
+	reload_state_off()
+end
+
+function actor_on_weapon_raised()
+	printf("actor_on_weapon_raised")
+	reload_state_off()
+end
+
+function get_ammo_sec_and_type(cobj)
+	if not cobj then return end
+	local ammo_type = cobj:GetAmmoType()
+	local ammo_sec = (function()
+		local s
+
+		cobj:AmmoTypeForEach(function(i, sec)
+			if not s then
+				if ammo_type == i then
+					printf("found type %s, sec %s", i, sec)
+					s = sec
+				end
+			end
+		end)
+
+		return s
+	end)()
+	return ammo_sec, ammo_type
+end
+
+function actor_on_update()
+	local wpn = db.actor:active_item()
+
+	-- Cancel if no weapon (or dropped)
+	if not wpn then
+		return reload_state_off()
+	end
+	
+	local state = wpn:get_state()
+
+	-- Cancel if hiding weapon or raising another one
+	if state == 1 or state == 2 then
+		return reload_state_off()
+	end
+
+	if reload_state then
+		printf("reloading")
+		local cobj = wpn:cast_Weapon()
+		local mag_ammo
+		local mag_size
+		if cobj then
+			mag_ammo = cobj:GetAmmoElapsed()
+			mag_size = cobj:GetAmmoMagSize()
+		end
+
+		-- If switched from reloading state, ie. reload should be done, process adding to chamber
+		if state ~= 7 or (not manual_reload and mag_ammo and mag_size and mag_ammo == mag_size) then
+			if state == 7 then
+				printf("reload done, state %s, reload motion mark reached", wpn:get_state())
+			else
+				printf("reload done, state %s", wpn:get_state())
+			end
+
+			local cobj = wpn:cast_Weapon()
+			if cobj then
+				try(function()
+					local mag_ammo = cobj:GetAmmoElapsed()
+					local mag_size = cobj:GetAmmoMagSize()
+
+					-- Check if elapsed ammo == mag_size
+					if mag_ammo == mag_size then
+						if infinite_ammo_on() then
+
+							-- Get ammo count again in case of something happened in check process
+							local mag_ammo = cobj:GetAmmoElapsed()
+							cobj:SetAmmoElapsed(mag_ammo + 1)
+						else
+							local ammo_sec, ammo_type = get_ammo_sec_and_type(cobj)
+
+							-- If ammo section found
+							if ammo_sec then
+								printf("ammo_sec %s", ammo_sec)
+								CreateTimeEvent("one_in_the_chamber", 0, 0.015, function()
+									local ammo_obj = db.actor:object(ammo_sec)
+								
+									-- If actor has additional ammo of this section
+									if ammo_obj then
+										printf("ammo_obj found")
+										local count = ammo_obj:ammo_get_count()
+										local new_count = count - 1
+
+										if new_count <= 0 then
+											alife_release(ammo_obj)
+										else
+											ammo_obj:ammo_set_count(new_count)
+										end
+										printf("setting new ammo elapsed")
+
+										-- Get ammo count again in case of something happened in check process
+										local mag_ammo = cobj:GetAmmoElapsed()
+										cobj:SetAmmoElapsed(mag_ammo + 1)
+									else
+										printf("no ammo obj found in inventory, %s, ammo %s", wpn:section(), ammo_sec)
+									end
+
+									return true
+								end)
+							else
+								printf("no ammo sec found in inventory, %s, ammo %s", wpn:section(), ammo_sec)
+							end
+						end
+					else
+						printf("mag_ammo ~= mag_size, wpn %s", wpn:section())
+					end
+				end)
+			else
+				printf("no cobj found for %s", wpn:section())
+			end
+			reload_state_off()
+		end
+	end
+end
+
+function check_valid_weapon(wpn)
+	if not wpn then
+		printf("no wpn found")
+		return false
+	end
+
+	local sec = wpn:section()
+	local hud_sec = SYS_GetParam(0, sec, "hud")
+
+	-- Disable when no hud sec
+	if not hud_sec then
+		printf("no hud_sec found for %s", sec)
+		return false
+	end
+
+	-- Disable when no cobj
+	local cobj = wpn:cast_Weapon()
+	if not cobj then
+		printf("no cobj found for %s", sec)
+		return false
+	end
+
+	-- Disable if ammo elapsed is 0
+	if cobj:GetAmmoElapsed() <= 0 then
+		printf("ammo elapsed is 0 for %s", sec)
+		return false
+	end
+
+	-- Disable when in ignore sections
+	if ignore_sections[sec] or get_ignore_section(sec) then
+		printf("ignore_sections for %s", sec)
+		return false
+	end
+
+	-- Disable when has anm_add_catridge (bolt/pump actions and other one by one reload weapons)
+	if SYS_GetParam(0, hud_sec, "anm_add_cartridge") then
+		printf("has anm_add_cartridge for %s", sec)
+		return false
+	end
+
+	-- Disable when has anm_reload_1 or anm_reload_2 (single, double barrel shottys)
+	if SYS_GetParam(0, hud_sec, "anm_reload_1") or SYS_GetParam(0, hud_sec, "anm_reload_2") then
+		printf("has anm_reload_1 or anm_reload_2 for %s", sec)
+		return false
+	end
+
+	-- Disable if mag size < 2
+	if cobj:GetAmmoMagSize() < 2 then
+		printf("mag size < 2 for %s", sec)
+		return false
+	end
+
+	-- Disable if weapon is explosive weapon (RPG, RG-6)
+	if SYS_GetParam(0, sec, "kind", "") == "w_explosive" then
+		printf("weapon_is w_explosive for %s", sec)
+		return false
+	end
+
+	local has_gl = cobj:IsGrenadeLauncherAttached()	
+
+	-- Disable if weapon has grenade launcher and its on
+	if has_gl and wpn:weapon_in_grenade_mode() then
+		printf("weapon_in_grenade_mode for %s", sec)
+		return false
+	end
+
+	-- Get proper anim if GL is attached
+	local anm_reload = has_gl and SYS_GetParam(0, hud_sec, "anm_reload_w_gl") or SYS_GetParam(0, hud_sec, "anm_reload")
+	local anm_reload_empty = has_gl and SYS_GetParam(0, hud_sec, "anm_reload_empty_w_gl") or SYS_GetParam(0, hud_sec, "anm_reload_empty")
+
+	-- Disable if anims are same
+	if not (anm_reload and anm_reload_empty and anm_reload ~= anm_reload_empty) then
+		printf("weapon has same reload for empty/non-empty for %s", sec)
+		return false
+	end
+
+	if not infinite_ammo_on() then
+		-- Return if ammo is not available
+		local ammo_sec, ammo_type = get_ammo_sec_and_type(cobj)
+		if not (ammo_sec and db.actor:object(ammo_sec)) then
+			printf("no ammo sec found in inventory, %s, ammo %s", sec, ammo_sec)
+			return false
+		end
+
+		-- Disable if remaining ammo is exact for filling mag size
+		local mag_ammo = cobj:GetAmmoElapsed()
+		local mag_size = cobj:GetAmmoMagSize()
+		if mag_ammo < mag_size then
+			local ammo_count = 0
+			db.actor:iterate_inventory(function(owner, obj)
+				local sec = obj:section()
+				if sec == ammo_sec then
+					ammo_count = ammo_count + obj:ammo_get_count()
+				end
+			end, db.actor)
+			if ammo_count <= (mag_size - mag_ammo) then
+				printf("actor has <= ammo for filling mag size for %s, ammo %s", sec, ammo_sec)
+				return false
+			end
+		end
+	end
+
+	return true
+end
+
+function actor_on_weapon_reload(wpn, ammo_total)
+	printf("reload %s, %s", wpn:name(), ammo_total)
+	local _, status = try(function()
+		if not check_valid_weapon(wpn) then
+			return reload_state_off()
+		end
+
+		-- Disable if ammo elapsed >= mag size (in case of jam after extra bullet)
+		local cobj = wpn:cast_Weapon()
+		if cobj:GetAmmoElapsed() >= cobj:GetAmmoMagSize() then
+			printf("ammo elapsed >= mag size for %s", wpn:section())
+			return reload_state_off()
+		end
+
+		reload_state_on()
+	end)
+
+	-- Disable if something is wrong
+	if not status then
+		printf("something is wrong for sec %s", wpn:section())
+		return reload_state_off()
+	end
+end
+
+function check_key_release(key, wpn)
+	-- Return if key is not reload one
+	local bind = dik_to_bind(key)
+	if bind ~= key_bindings.kWPN_RELOAD then
+		return false
+	end
+
+	-- Return if GUI is on
+	if not _G.KEYS_UNLOCK then 
+		printf("GUI is on")
+		return false
+	end
+
+	-- Return if inventory is on
+	if _GUIs.UIInventory then
+		printf("inventory UI is on")
+		return false
+	end
+
+	-- Return if no item in hands
+	if not wpn then
+		printf("No wpn found")
+		return false
+	end
+
+	local sec = wpn:section()
+
+	-- Return if weapon isn't valid
+	if not check_valid_weapon(wpn) then return false end
+
+	-- Return if weapon state isn't idle or bored
+	local state = wpn:get_state()
+	if not (state == 0 or state == 4)  then 
+		printf("not idle state, wpn %s", sec)
+		return false
+	end
+	
+	-- Return if no cobj
+	local cobj = wpn:cast_Weapon()
+	if not cobj then
+		printf("no cobj found, wpn %s", sec)
+		return false
+	end
+
+	-- Return if mag size ~= mag elapsed
+	local mag_ammo = cobj:GetAmmoElapsed()
+	local mag_size = cobj:GetAmmoMagSize()
+	if mag_ammo ~= mag_size then
+		printf("mag_ammo ~= mag_size, wpn %s", sec)
+		return false
+	end
+
+	-- Return if ammo is not available
+	local ammo_sec, ammo_type = get_ammo_sec_and_type(cobj)
+	if not (infinite_ammo_on() or ammo_sec and db.actor:object(ammo_sec)) then
+		printf("no ammo sec found in inventory, %s, ammo %s", sec, ammo_sec)
+		return false
+	end
+
+	return true
+end
+
+-- Special case if loaded ammo = mag size
+-- Trigger reload manually to add extra bullet
+function on_key_release(key)
+	local _, status = try(function()
+		local wpn = db.actor:active_item()
+		if not check_key_release(key, wpn) then return end
+
+		-- Switch state
+		wpn:switch_state(7)
+		reload_state_on(true)
+	end)
+
+	if not status then
+		printf("something is wrong with on_key_release")
+		return reload_state_off()
+	end
+end
+
+function on_game_start()
+
+	-- Disable feature if Mags Redux is installed
+	if magazine_binder or magazines then
+		return
+	end
+
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+	-- RegisterScriptCallback("actor_on_weapon_lower", actor_on_weapon_lowered)
+	-- RegisterScriptCallback("actor_on_weapon_raise", actor_on_weapon_raised)
+	RegisterScriptCallback("actor_on_weapon_reload", actor_on_weapon_reload)
+	RegisterScriptCallback("on_key_release", on_key_release)
+end

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+<string id="st_mag_m24_300">
+    <text>.300 Winchester Magnum magazine</text>
+</string>
+<string id="st_mag_m24_300_descr">
+    <text>
+Removable 10-round magazine designed for the high-precision M24 sniper rifle modified for the powerful .300 Winchester Magnum cartridge. Provides reliable ammunition feeding during long-range shooting. Due to the increased muzzle velocity and strong penetration capability, it is used by experienced shooters to eliminate armored targets and large mutants./nA rare and valuable component found on elite fighters and in secret caches.
+    </text>
+</string>
+
+<string id="st_mag_m24_308">
+    <text>.308 Winchester (7.62x51 mm NATO) magazine</text>
+</string>
+<string id="st_mag_m24_308_descr">
+    <text>
+Removable 10-round magazine intended for the M24 bolt-action sniper rifle modified for .308 Winchester (7.62x51 mm NATO) cartridges. Ensures stable feeding and reliable weapon lock-in. Used by hunters, mercenaries, and professional marksmen in the Zone./nCompatible with various .308 ammunition types, including armor-piercing and expanding rounds.
+    </text>
+</string>
+
+<string id="st_mag_m82_50_bmg">
+    <text>M82 .50 BMG (12.7x99 mm NATO) magazine</text>
+</string>
+<string id="st_mag_m82_50_bmg_descr">
+    <text>
+Removable 10-round magazine for the semi-automatic large-caliber Barrett M82 sniper rifle chambered in .50 BMG (12.7x99 mm). Used to engage heavily armored targets, vehicles, and highly dangerous mutants. Distinguished by highly reliable feeding even under extreme conditions./nDue to its size and weight, it requires experienced handling. An extremely rare trophy in the Zone, typically found among elite mercenaries and security forces.
+    </text>
+</string>
+
+<string id="st_mag_vityaz_9x21_sn">
+    <text>Vityaz magazine (9x21 SP)</text>
+</string>
+<string id="st_mag_vityaz_9x21_sn_descr">
+    <text>
+Removable 30-round magazine for the PP-19-01 “Vityaz” submachine gun, intended for 9x21 mm SP ammunition — special rounds with increased penetration. Provides reliable feeding even during intensive fire. Used by special forces and security personnel in situations requiring high rate of fire and armor penetration./nThe rarity of the ammunition makes it a valuable choice for experienced stalkers who prefer compact but powerful close-quarters weapons.
+    </text>
+</string>
+
+<string id="st_mag_bizon_357_p">
+    <text>Bizon .357 magazine</text>
+</string>
+
+<string id="st_mag_bizon_357_p_descr">
+    <text>
+A 42-round detachable magazine designed for modified PP-19 “Bizon” variants chambered in .357.  
+Thanks to its helical-feed design, it offers high ammunition capacity in a compact form factor, ensuring stable feeding even during sustained automatic fire.  
+Used by experienced stalkers and close-quarters fighters who rely on fast, accurate bursts and strong stopping power./n
+A rare alternative configuration valued for its reliability and increased lethality at short to medium ranges.
+    </text>
+</string>
+
+<string id="st_mag_300_Blk_default">
+    <text>.300 Blackout standard magazine</text>
+</string>
+
+<string id="st_mag_300_Blk_default_descr">
+    <text>
+A standard 30-round magazine designed for rifles chambered in 7.62x35 (.300 Blackout).  
+Provides reliable feeding, stable performance, and low weight, making it suitable for versatile combat roles in the Zone.  
+Its balanced capacity and durability make it a common choice among stalkers, mercenaries, and patrol units./n
+Widely available and compatible with most modern platforms adapted for .300 Blackout ammunition.
+    </text>
+</string>
+
+<string id="st_mag_300_Blk_extended">
+    <text>.300 Blackout extended magazine</text>
+</string>
+
+<string id="st_mag_300_Blk_extended_descr">
+    <text>
+An extended 40-round magazine for weapons chambered in 7.62x35 (.300 Blackout).  
+Offers increased ammunition capacity while maintaining reliable feed characteristics, making it ideal for prolonged engagements, suppression, and high-intensity firefights.  
+Favored by assault teams and seasoned stalkers who require additional firepower without frequent reloads./n
+Heavier than the standard variant, but highly valued for its improved combat endurance.
+    </text>
+</string>
+
+		
+	</string_table>
+
+
+
+
+
+
+
+
+
+

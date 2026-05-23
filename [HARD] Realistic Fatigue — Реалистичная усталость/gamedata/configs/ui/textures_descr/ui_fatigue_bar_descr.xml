@@ -1,0 +1,8 @@
+<w>
+ 
+	<file name="ui\ui_fatigue_bar_texture">
+		<texture id="ui_fatigue_bar_bg"		x="0" y="0" width="164" height="27" />
+		<texture id="ui_fatigue_bar"		x="0" y="28" width="116" height="14" />
+	</file>
+
+</w>

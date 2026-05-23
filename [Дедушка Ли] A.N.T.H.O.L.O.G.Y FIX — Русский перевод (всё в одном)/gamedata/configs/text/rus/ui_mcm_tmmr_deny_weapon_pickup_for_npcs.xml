@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="ui_mcm_menu_tmmr">
+		<text>Мини-моды от Tosox</text>
+	</string>
+
+	<string id="ui_mcm_menu_protect_dropped_weapons">
+		<text>Защита выпавшего оружия</text>
+	</string>
+	<string id="ui_mcm_tmmr_protect_dropped_weapons_title">
+		<text>Защита выпавшего оружия</text>
+	</string>
+	<string id="ui_mcm_tmmr_protect_dropped_weapons_protection_rule">
+		<text>Правило защиты</text>
+	</string>
+	<string id="ui_mcm_tmmr_protect_dropped_weapons_protection_rule_desc">
+		<text>Всегда - Всегда защищайте оружие от того, чтобы его не подобрали \nПри ударе - Защищайте оружие только в том случае, если причиной падения оружия был удар.</text>
+	</string>	
+	<string id="ui_mcm_tmmr_protect_dropped_weapons_no_pickup_time">
+        <text>Время, в течение которого НПС не могут подобрать оружие (секунды)</text>
+    </string>
+    <string id="ui_mcm_tmmr_protect_dropped_weapons_no_pickup_time_desc">
+        <text>Период времени в секундах, в течение которого НПС не могут подобрать оружие, которое вы уронили после удара (установите значение «0» для «навсегда»)</text>
+    </string>
+
+	<string id="ui_mcm_lst_tmmr_always_protect">
+		<text>Всегда</text>
+	</string>
+	<string id="ui_mcm_lst_tmmr_protect_when_hit">
+		<text>При ударе</text>
+	</string>
+</string_table>

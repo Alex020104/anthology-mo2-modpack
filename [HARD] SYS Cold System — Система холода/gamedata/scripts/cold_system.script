@@ -1,0 +1,1511 @@
+if zz_item_cooking_keep_crafting_window_open then end
+local tmr
+local tmr_delta = 0.5
+local tmr_meals
+local meals = {}
+local trader_meals = {}
+local trade_opened = false
+local cold = {}
+local max_cold = 2000
+local rain_indoors = {}
+local max_wind_velocity
+local outfit_mult = 0
+local outfit_freeze_immune = false
+local hud_env_temp_blue = 0
+local hud_env_temp_red = 0
+local hud_prot_temp_offset = 0
+local hud_prot_temp = 0
+local hud_freeze_step = 0
+local hud_campfire_dist = nil
+local hud_campfire_mult = 0
+local sfind = string.find
+local slower = string.lower
+local rnd = math.random
+local gc = game.translate_string
+
+local cold_factors = {
+	["wind"] = {},
+	["rain"] = {},
+	["time"] = {},
+	["sun"] = {},
+	["outfit"] = {},
+	["campfire"] = {},
+	["movement"] = {},
+	["artefact"] = {},
+}
+
+local outfit_kind = {
+	["no_outfit"] = 0.08,
+	["o_light"] = 0.35,
+	["o_medium"] = 0.85,
+	["o_sci"] = 1.35,
+	["o_heavy"] = 1.75,
+}
+
+local outfit_grade = {
+	["jacket"] = 0.3,
+	["sunrise"] = 0.85,
+	["ps5"] = 1.0,
+	["sts"] = 1.05,
+	["nbc"] = 1.15,
+	["seva"] = 1.55,
+	["ssp"] = 1.55,
+	["skat"] = 1.9,
+	["exolight"] = 2.75,
+	["proto_exo"] = 3.0,
+	["exo"] = 4.0,
+	["nosorog"] = 5.0,
+}
+
+local warm_headgear_bonus = 0.5
+local warm_headgear = {
+	["spartan"] = true,
+	["spart"] = true,
+	["helm_spartan"] = true,
+	["zaslon"] = true,
+	["protective"] = true,
+	["ppm88"] = true,
+	["sphere"] = true,
+	["m40"] = true,
+	["helm_m40"] = true,
+	["m50"] = true,
+	["helm_m50"] = true,
+	["battle"] = true,
+	["battl"] = true,
+	["helm_battle"] = true,
+	["tactic"] = true,
+	["tactical"] = true,
+	["helm_tactic"] = true,
+	["balaclava"] = true,
+	["balaklava"] = true,
+	["rp_bala"] = true,
+	["_bala"] = true,
+	["helm_exo"] = true,
+	["exo_helmet"] = true,
+	["helmet_exo"] = true,
+}
+
+local alcohol = {
+	["vodka"] = 0.095,
+	["vodka2"] = 0.085,
+	["vodka_quality"] = 0.09,
+	["bottle_metal"] = 0.098,
+	["tea"] = 0.2,
+        ["wg_pringles"] = 0.30,
+        ["wg_wine_chateau_latour"] = 0.15,
+}
+
+local medicine = {
+    ["tea"] = true,
+	["akvatab"] = true,
+	["medkit"] = true,
+	["medkit_army"] = true,
+	["medkit_scientic"] = true,
+	["stimpack"] = true,
+	["stimpack_army"] = true,
+	["stimpack_scientic"] = true,
+	["salicidic_acid"] = true,
+	["antibio_sulfad"] = true,
+	["antibio_chlor"] = true,
+	["antiemetic"] = true,
+	["antirad_kalium"] = true,
+        ["rebirth"] = true,
+        ["yadylin"] = true,
+        ["drug_coagulant"] = true,
+        ["glucose"] = true,
+        ["glucose_s"] = true,
+        ["adrenalin"] = true,
+		["paracetamol"] = true,
+		["iodine"] = true,
+		["multivitamin"] = true,
+		["dutymedkit"] = true,
+	["banditmedkit"] = true,
+	["freedommedkit"] = true,
+	["mercmedkit"] = true,
+	["monolithmedkit"] = true,
+	["clearskymedkit"] = true,
+	["sinmedkit"] = true,
+	["renegademedkit"] = true,
+	["isgmedkit"] = true
+		
+		
+		
+}
+
+local hot_artefacts = { "af_itcher", "af_pin", "af_cristall", "af_fireball", "af_dummy_glassbeads", "af_eye", "af_fire", "af_lobster_eyes" }
+local cold_artefacts = { "af_electra_sparkler", "af_sponge", "af_ring", "af_electra_flash", "af_dummy_battery", "af_dummy_dummy", "af_ice", "af_electra_moonlight" }
+
+local hides = {
+	["hide_chimera"] = true,
+	["hide_pseudogiant"] = true,
+	["hide_psy_dog"] = true,
+	["hide_pseudodog"] = true,
+	["hide_burer"] = true,
+	["hide_controller"] = true,
+	["hide_bloodsucker"] = true,
+	["hide_psysucker"] = true,
+	["hide_lurker"] = true,
+	["hide_boar"] = true,
+	["hide_flesh"] = true,
+}
+
+local compatibility_t = {
+    ["i_arty"] = true,
+    ["i_arty_cont"] = true,
+    ["i_arty_junk"] = true,
+    ["i_attach"] = true,
+    ["i_mutant_belt"] = true,
+}
+
+function save_state(m_data)
+	m_data.meals = meals
+    m_data.cold = cold
+end
+
+function load_state(m_data)
+	meals = m_data.meals or {}
+    cold = m_data.cold or {}
+end
+
+----------------------------------------------------------
+----------------------- utils ------------------------------
+----------------------------------------------------------
+function pr(...)
+	if not (cold_system_mcm.get_config("debugx")) then return end
+	printf(...)
+end
+
+function r(val)
+	return round_idp(val, 2)
+end
+
+function cold_system_get_state()
+	return cold
+end
+
+function cold_system_get_status_info()
+	local cold_val = tonumber(cold and cold.val) or 0
+	local sickness_val = tonumber(cold and cold.sickness) or 0
+	local cold_percent = 0
+	if (max_cold or 0) > 0 then
+		cold_percent = math.floor((cold_val / max_cold) * 100 + 0.5)
+	end
+
+	return {
+		cold_val = cold_val,
+		cold_percent = cold_percent,
+		sickness = sickness_val,
+		max_cold = max_cold,
+	}
+end
+
+cold_system = cold_system or {}
+cold_system.get_state = cold_system_get_state
+cold_system.get_status_info = cold_system_get_status_info
+
+function haruwu_sort(a)
+	local t = {}
+	for k, v in pairs(a) do
+		t[#t+1] =  v
+	end
+	table.sort(t)
+
+	return t[#t]
+end
+
+function get_pos_vec(add_pos_x, add_pos_y, add_pos_z)
+	local pos = device().cam_pos
+	pos.x = pos.x + add_pos_x
+	pos.y = pos.y + add_pos_y
+	pos.z = pos.z + add_pos_z
+
+	return pos
+end
+
+function ray_main(add_x, add_y, add_z, range, dir_x, dir_y, dir_z)
+	local pick = ray_pick()
+	local pos = get_pos_vec(add_x, add_y, add_z)
+	pick:set_position(pos)
+	pick:set_direction(vector():set(dir_x, dir_y, dir_z))
+	pick:set_flags(2)
+	pick:set_range(range)
+	pick:query()
+	local distance = pick:get_distance()
+
+	return distance
+end
+
+----------------------------------------------------------
+----------------------- freeze funcs xd -------------------
+----------------------------------------------------------
+
+--------------------- wind  ---------------------
+function actor_on_first_update()
+	local g_pairs = pairs
+	if not (cold.val) then cold.val = 0 end
+	if not (cold.sickness) then cold.sickness = 0 end
+
+	-- get config names
+	local wthr_tbl = {}
+	local folder = getFS():file_list_open("$game_weathers$", 1)
+	local folder_size = folder:Size()
+	for i = 1, folder_size - 1 do
+		local file = folder:GetAt(i)
+		wthr_tbl[i] = file
+	end
+
+	-- get wind_velocity of each config's section
+	local wind_tbl = {}
+	for id, file_name in g_pairs(wthr_tbl) do
+		local wthr_ini = ini_file_ex("environment\\weathers\\" .. tostring(file_name) .. "").ini
+		wthr_ini:section_for_each(function(section)
+			wind_tbl[#wind_tbl + 1] = wthr_ini:r_float_ex(section, "wind_velocity") or 0
+		end)
+	end
+
+	-- get max wind_velocity
+	max_wind_velocity = haruwu_sort(wind_tbl)
+
+	-- extra outfit check
+	outfit_check()
+
+	for k, v in g_pairs(wthr_tbl) do
+		pr("wthr tbl: [ %s ] | [ %s ] ", k, v)
+	end
+
+	for k, v in g_pairs(wind_tbl) do
+		pr("wind tbl: [ %s ] | [ %s ]", k, v)
+	end
+
+	pr("max_wind_velocity: [ %s ]", max_wind_velocity)
+
+end
+
+--------------------- indoors ---------------------
+function actor_indoors()
+	local indoors = GetEvent("current_safe_cover")
+	if indoors then
+		return true
+	end
+
+	return false
+end
+
+--------------------- rain ---------------------
+function set_rain_rays()
+	local hitbox = 0.6
+	local range = 200
+	rain_indoors[1] = ray_main(0, 0, 0, range, 0, 0.5, 0)
+	rain_indoors[2] = ray_main(hitbox, 0, 0, range, 0, 0.5, 0)
+	rain_indoors[3] = ray_main(-hitbox, 0, 0, range, 0, 0.5, 0)
+	rain_indoors[4] = ray_main(0, 0, hitbox, range, 0, 0.5, 0)
+	rain_indoors[5] = ray_main(0, 0, -hitbox, range, 0, 0.5, 0)
+
+end
+
+function actor_rain_indoors()
+	set_rain_rays()
+
+	local cnt = 0
+	for k, v in pairs(rain_indoors) do
+		if v > 0 then
+			cnt = cnt + 1
+		end
+	end
+
+	if cnt >= 3 then
+		return true
+	end
+
+	return false
+end
+
+--------------------- time ---------------------
+function calc_winter_time()
+	local winter_time
+	local hours = level.get_time_hours() + level.get_time_minutes() / 60
+	local min_period = (hours >= 12 and hours <= 14) and 0.25 or nil
+	local max_period = (hours >= 23 or hours <= 4) and 1 or nil
+
+	if hours > 4 and hours < 12 then
+		winter_time = -0.1036 * hours + 1.44
+	elseif hours > 14 and hours < 23 then
+		winter_time = 0.0816 * hours - 0.897
+	else
+		winter_time = min_period or max_period or 0.25
+	end
+
+	return winter_time * 2
+end
+
+function calc_summer_time()
+	local summer_time
+	local hours = level.get_time_hours() + level.get_time_minutes() / 60
+	local min_period = (hours >= 11 and hours <= 16) and 0 or nil
+	local max_period = (hours >= 1 and hours <= 3) and 0.75 or nil
+
+	if hours >= 0 and hours < 1 then
+		hours = hours + 24
+	end
+
+	if hours > 3 and hours < 11 then
+		summer_time = -0.09 * hours + 1.02
+	elseif hours > 16 and hours < 25 then
+		summer_time = 0.0816 * hours - 1.311
+	else
+		summer_time = min_period or max_period or 0
+	end
+
+	return summer_time
+end
+
+--------------------- outfit ---------------------
+local function section_has_marker(sec, marker_t)
+	if not sec then return false end
+	local s = slower(sec)
+	for marker, _ in pairs(marker_t) do
+		if sfind(s, marker, 1, true) then
+			return true
+		end
+	end
+
+	return false
+end
+
+local function is_exo_section(sec)
+	if not sec then return false end
+	sec = slower(sec)
+	return sfind(sec, "nosorog", 1, true) or sfind(sec, "exolight", 1, true) or sfind(sec, "proto_exo", 1, true) or sfind(sec, "_exo", 1, true) or sfind(sec, "exo_", 1, true)
+end
+
+local function get_outfit_cold_protection(sec, kind)
+	local prot = kind and outfit_kind[kind] or nil
+	if not prot then
+		prot = outfit_kind["no_outfit"]
+	end
+
+	if sec then
+		local s = slower(sec)
+		for marker, value in pairs(outfit_grade) do
+			if sfind(s, marker, 1, true) and value > prot then
+				prot = value
+			end
+		end
+	end
+
+	return prot
+end
+
+local function is_warm_headgear(obj)
+	local sec = obj and obj:section() or nil
+	if section_has_marker(sec, warm_headgear) then
+		return true
+	end
+
+	local inv_name = sec and ini_sys:r_string_ex(sec, "inv_name") or nil
+	if section_has_marker(inv_name, warm_headgear) then
+		return true
+	end
+
+	local inv_name_short = sec and ini_sys:r_string_ex(sec, "inv_name_short") or nil
+	return section_has_marker(inv_name_short, warm_headgear)
+end
+
+local function refresh_equipment_cold_protection()
+	local outfit = db.actor:item_in_slot(7)
+	local sec = outfit and outfit:section() or nil
+	local kind = sec and ini_sys:r_string_ex(sec, "kind") or nil
+	outfit_mult = get_outfit_cold_protection(sec, kind)
+	outfit_freeze_immune = is_exo_section(sec)
+
+	for i = 1, 13 do
+		local obj = db.actor:item_in_slot(i)
+		if obj and IsHeadgear(obj) and is_warm_headgear(obj) then
+			outfit_mult = outfit_mult + warm_headgear_bonus
+			break
+		end
+	end
+end
+
+function slot_in_out(obj)
+	if obj and not (IsOutfit(obj) or IsHeadgear(obj)) then return end
+	refresh_equipment_cold_protection()
+end
+
+function outfit_check()
+	refresh_equipment_cold_protection()
+end
+
+--------------------- campfire (arti) ---------------------
+function campfire_check(dist)
+    if not (bind_campfire and bind_campfire.campfires_all and db and db.actor) then
+        return nil
+    end
+
+    local pos = db.actor:position()
+    local nearest_dist = nil
+
+    for _, binder in pairs(bind_campfire.campfires_all) do
+        if binder and binder.campfire and binder.object and binder.campfire:is_on() then
+            local campfire_pos = binder.object:position()
+            if campfire_pos then
+                local current_dist = pos:distance_to(campfire_pos)
+                if current_dist <= dist and (not nearest_dist or current_dist < nearest_dist) then
+                    nearest_dist = current_dist
+                end
+            end
+        end
+    end
+
+    return nearest_dist
+end
+----------------------------------------------------------
+---------------------- misc ------------------------------
+----------------------------------------------------------
+
+------------------- water step ------------------
+function actor_on_footstep(mat)
+	if string.find(mat, "water") then
+		cold.val = cold.val + 3
+	end
+
+end
+
+--------------------- sleep ---------------------
+function actor_on_sleep(hours)
+	local mcm_sleep = cold_system_mcm.get_config("sleep")
+	local sleep_mult = db.actor:object("beadspread") and 150 or 100
+	local sleep_cold_reduction = sleep_mult * hours * mcm_sleep
+	cold.val = cold.val - sleep_cold_reduction
+	cold.val = cold.val > 0 and cold.val or 0
+
+	cold.sickness = cold.sickness - hours
+	cold.sickness = cold.sickness > 0 and cold.sickness or 0
+
+end
+
+--------------------- consumables ---------------------
+-- cook
+local cook = item_cooking.UICook.OnCook
+local max_food_warmth = 1000
+
+function item_cooking.UICook:OnCook()
+	local meal = self:GetSelectedMeal()
+	if (not meal) then
+		return
+	end
+
+	cook(self)
+
+	if meal.sec then
+		CreateTimeEvent("cold_cook_ev", "cold_cook_act", 0.3, make_food_hot, meal.sec)
+		pr("- last cooked meal: [ %s ]", meal.sec)
+	end
+
+end
+
+function make_food_hot(meal_sec)
+	db.actor:iterate_inventory( function(actor, item)
+		if meal_sec and item:section() == meal_sec and not (meals[item:id()]) then
+			meals[item:id()] = max_food_warmth		-- set warmth value
+			return true
+		end
+	end)
+
+	return true
+end
+
+function manage_meal_table()
+	local tg = time_global()
+	if (tmr_meals and tg < tmr_meals) then return end
+	tmr_meals = tg + 10000
+
+	pr("-------- Food table ----------")
+	local cooling_down_rate = 3
+	local mcm_food_cooling = cold_system_mcm.get_config("food_cooling")
+	for id, value in pairs(meals) do
+		meals[id] = value - cooling_down_rate * mcm_food_cooling		-- default: 	very hot = 16 mins; 	hot = 33 mins; 	warm = 55 mins
+
+		local sim = alife()
+		local se_obj = alife_object(id)
+		if (meals[id] <= 0) or not (se_obj) then
+			meals[id] = nil
+		end
+		pr("food id: [ %s ] || warmth: [ %s ]", id, value)
+	end
+
+	pr("-------- Traders food ----------")
+	for id, value in pairs(trader_meals) do
+		pr("trade food id: [ %s ] || warmth: [ %s ]", id, value)
+	end
+
+end
+
+function ui_inventory.UIInventory:Picker_Toggle(bag, idx, update_mode, force_hide)
+	
+--	if (not enable_item_picker) then
+--		return
+--	end
+	
+	if force_hide then
+		self:Picker_Update(true)
+		return
+	end
+	
+	-- This is needed to avoid resetting picker when we click on item property
+	-- (300 ms should be fine because low time scope might not be enough)
+	local no_hide = self.item_props.action_moment and (time_continual() < self.item_props.action_moment + 300)
+	
+	-- Avoid hiding picker if we are scrolling a pad
+	for bag,cc in pairs(self.CC) do
+		if cc:IsShown() and cc.pad:IsShown() and cc.pad:IsCursorOverWindow() then
+			no_hide = true
+			break
+		end
+	end
+	
+	local cc = self.CC["picker"]
+	
+	if (update_mode) then
+		if (not cc:IsShown()) then
+			return
+		end
+		
+		bag = cc.parent.bag
+		idx = cc.parent.idx
+		if not (bag and idx) then
+			return
+		end
+		
+		no_hide = true
+	else
+		if no_hide then
+			self:Print(nil, "Picker_Toggle(%s, %s) | clicked item property -> continue", bag, idx)
+			return
+		end
+		
+		-- Interacting with picker: hide if clicking outside
+		if cc:IsShown() then
+			if cc:IsCursorOverWindow() then
+				self:Print(nil, "Picker_Toggle(%s, %s) | dealing with picker -> continue", bag, idx)
+				return
+
+			elseif cc.hold.ico and type(cc.hold.ico) == "table" and cc.hold.ico.IsShown and cc.hold.ico:IsShown() then
+				self:Print(nil, "Picker_Toggle(%s, %s) | was holding cell -> continue", bag, idx)
+				return
+			else
+				self:Print(nil, "Picker_Toggle(%s, %s) | clicking outside picker area -> hide", bag, idx)
+				self:Picker_Update(true)
+				return
+			end
+		end
+		
+		-- Nothing to interact with
+		if not (bag and idx) then
+			self:Print(nil, "Picker_Toggle(%s, %s) | nothing to deal with -> hide", bag, idx)
+			self:Picker_Update(true)
+			return
+		end
+
+		-- Interacting with picker cell
+		if (bag == "picker") then
+			self:Print(nil, "Picker_Toggle(%s, %s) | dealing with picker -> continue", bag, idx)
+			return
+		end
+	end
+	
+	-- Interacting with cell 
+	local ci = self.CC[bag].cell[idx]
+	if not (ci and ci:HasChild() and ( cc:IsCursorOverWindow() or ci:IsCursorOverWindow() or no_hide )) then
+		self:Print(nil, "Picker_Toggle(%s, %s) | cell has no childs or not focused-> hide", bag, idx)
+		self:Picker_Update(true)
+		return
+	end
+	
+	local obj = level.object_by_id(ci.ID)
+	if (not obj) then
+		self:Print(nil, "Picker_Toggle(%s, %s) | cell has no object -> hide", bag, idx)
+		self:Picker_Update(true)
+		return
+	end
+	
+	-- cold system meals
+	local meal_kind = SYS_GetParam(0, obj:section(), "kind", nil)
+	local is_cooked_food = meal_kind and meal_kind == "i_mutant_cooked"
+	-- compatibility
+	local stuff_for_comp = meal_kind and compatibility_t[meal_kind]
+	-- No picker for items without condition bar
+	local clsid = obj:clsid()
+	local use_cond = SYS_GetParam(1,ci.section,"use_condition") or IsWeapon(nil,clsid) or IsOutfit(nil,clsid) or IsHeadgear(nil,clsid) or is_cooked_food or stuff_for_comp
+	if not (use_cond or IsAmmo(nil,clsid)) then
+		self:Print(nil, "Picker_Toggle(%s, %s) | cell has no condition -> hide", bag, idx)
+		self:Picker_Update(true)
+		return
+	end
+	
+	-- Prepare picker
+	local t = {}
+	t[#t+1] = obj
+	for id,_ in pairs(ci.childs) do
+		t[#t+1] = level.object_by_id(id)
+	end
+
+	if self.mode == "trade" then
+		cc.trade_profile = dup_table( self.CC[bag].trade_profile )
+	end
+	cc:Reinit(t)
+	cc:Show(true)
+	cc.parent.bag = bag
+	cc.parent.idx = idx
+	
+	-- For closing picker if player clicked M1 in outer areas
+	self.tg_m1 = time_global()
+	
+	self:Print(nil, "Picker_Toggle(%s, %s) | started picker -> stop", bag, idx)
+end
+
+-- traders
+function open_trade(mode)
+	if mode ~= "trade" then return end
+	trade_opened = true
+
+	local npc = mob_trade.GetTalkingNpc()
+	local is_trader = npc and trade_manager.get_trade_profile(npc:id(), "cfg_ltx")
+	if is_trader then
+		npc:iterate_inventory( function(owner, item)
+			local meal_kind = SYS_GetParam(0, item:section(), "kind", nil)
+			local is_cooked_food = meal_kind and meal_kind == "i_mutant_cooked"
+			if is_cooked_food and not trader_meals[item:id()] and not meals[item:id()] then
+				trader_meals[item:id()] = max_food_warmth
+			end
+		end)
+	end
+
+end
+
+function close_trade()
+	if not (trade_opened) then return end
+	trade_opened = false
+	trader_meals = {}
+
+end
+
+function actor_on_item_buy(item)
+	local item_id = item:id()
+	if trader_meals[item_id] and not meals[item_id] then
+		meals[item_id] = trader_meals[item_id]
+	end
+
+end
+
+function ActorMenu_on_trade_started()
+	RegisterScriptCallback("actor_on_item_take", actor_on_item_buy)
+end
+
+function ActorMenu_on_trade_closed()
+	UnregisterScriptCallback("actor_on_item_take", actor_on_item_buy)
+end
+
+-- ui
+BuildHeader = ui_item.build_desc_header
+function ui_item.build_desc_header(obj, sec, str)
+	str = str or gc(ini_sys:r_string_ex(sec, "description"))
+	if (not str) then return "" end
+
+	local _str = ""
+	local obj_id = obj and obj:id()
+
+	-- inventory
+	local mcm_consumables = cold_system_mcm.get_config("consumables")
+	if obj and meals[obj_id] then
+		-- food cold value reduction
+		local satiety = ini_sys:r_float_ex(sec, "eat_satiety") or 0
+		local base_cold_reduce = satiety / 4
+		local very_hot_reduce = base_cold_reduce
+		local hot_reduce = base_cold_reduce * 0.66
+		local warm_reduce = base_cold_reduce * 0.33
+		----------------------------
+		local red_clr = utils_xml.get_color("d_red")
+		local orange_clr = utils_xml.get_color("d_orange")
+		local yellow_clr = utils_xml.get_color("yellow")
+		local stage_very_hot = meals[obj_id] > (max_food_warmth * 0.7)
+		local stage_hot = meals[obj_id] > (max_food_warmth * 0.4)
+		local stage_warm = meals[obj_id] > 0
+		-- very hot
+		if stage_very_hot then
+			_str = red_clr .. " Х " .. gc("st_food_very_hot") .. " " .. gc("st_cold_cold") .. ": -" .. round_idp(very_hot_reduce * 100 * mcm_consumables, 1) .. "% " .. "\\n \\n" .. utils_xml.get_color("ui_gray_1")
+			return _str .. BuildHeader(obj, sec, str)
+		-- hot
+		elseif stage_hot then
+			_str = orange_clr .. " Х " .. gc("st_food_hot") .. " " .. gc("st_cold_cold") .. ": -" .. round_idp(hot_reduce * 100 * mcm_consumables, 1) .. "% " .. "\\n \\n" .. utils_xml.get_color("ui_gray_1")
+			return _str .. BuildHeader(obj, sec, str)
+		-- warm
+		elseif stage_warm then
+			_str = yellow_clr .. " Х " .. gc("st_food_warm") .. " " .. gc("st_cold_cold") .. ": -" .. round_idp(warm_reduce * 100 * mcm_consumables, 1) .. "% " .. "\\n \\n" .. utils_xml.get_color("ui_gray_1")
+			return _str .. BuildHeader(obj, sec, str)
+		-- none, just in case
+		else
+			return BuildHeader(obj, sec, str)
+		end
+	-- traders
+	elseif obj and trader_meals[obj_id] then
+		local satiety = ini_sys:r_float_ex(sec, "eat_satiety") or 0
+		local base_cold_reduce = satiety / 4
+		local very_hot_reduce = base_cold_reduce
+		local red_clr = utils_xml.get_color("d_red")
+		local traders_stage = trader_meals[obj_id] > (max_food_warmth * 0.7)
+		if traders_stage then
+			_str = red_clr .. " Х " .. gc("st_food_very_hot") .. " " .. gc("st_cold_cold") .. ": -" .. round_idp(very_hot_reduce * 100 * mcm_consumables, 1) .. "% " .. "\\n \\n" .. utils_xml.get_color("ui_gray_1")
+			return _str .. BuildHeader(obj, sec, str)
+		-- none, just in case
+		else
+			return BuildHeader(obj, sec, str)
+		end
+	-- alcohol
+	elseif obj and alcohol[sec] then
+		local red_clr = utils_xml.get_color("d_red")
+		_str = red_clr .. " Х " .. gc("st_cold_cold") .. ": -" .. round_idp(alcohol[sec] * 100 * mcm_consumables, 1) .. "%" .. "\\n \\n" .. utils_xml.get_color("ui_gray_1")
+		return _str .. BuildHeader(obj, sec, str)
+	-- medicine (sickness)
+	elseif obj and medicine[sec] then
+		local med_cure_val = get_med_cure_value(sec)
+		local pink_clr = strformat("%c[%s,%s,%s,%s]", 255, 200, 100, 255)
+		_str = pink_clr .. " Х " .. gc("st_cold_fever") .. ": -" .. med_cure_val .. "%" .. "\\n \\n" .. utils_xml.get_color("ui_gray_1")
+		return _str .. BuildHeader(obj, sec, str)
+	else
+		return BuildHeader(obj, sec, str)
+	end
+
+end
+
+local bags = {actor_bag = true,actor_trade_bag= true, picker=true}
+function tint_functor(cell)
+	if not bags[cell.container.ID] then return end
+	if not meals[cell.ID] then return end
+
+	local stage_very_hot = meals[cell.ID] > (max_food_warmth * 0.7)
+	local stage_hot = meals[cell.ID] > (max_food_warmth * 0.4)
+	local stage_warm = meals[cell.ID] > 0
+
+	if stage_very_hot then
+		return GetARGB(240, 250, 0, 0)
+	elseif stage_hot then
+		return GetARGB(240, 250, 180, 0)
+	elseif stage_warm then
+		return GetARGB(240, 250, 250, 0)
+	end
+
+end
+
+function get_med_cure_value(sec)
+	local cost = ini_sys:r_float_ex(sec, "cost") or 0
+	local max_use = ini_sys:r_float_ex(sec, "max_uses") or 1
+	local tier = ini_sys:r_float_ex(sec, "tier") or 1
+
+	local cure_val = math.floor(cost / max_use * 0.001 * tier + 0.5)
+
+    if sec == "stimpack_army" or sec == "stimpack_scientic" then
+        cure_val = cure_val * 0.5
+    elseif sec == "akvatab" then
+        -- Calculate cure_val differently for akvatab
+        cure_val = 25 -- Set cure_val to 25 for akvatab
+    end
+
+	return cure_val
+end
+
+function actor_on_item_use(item)
+	local mcm_consumables = cold_system_mcm.get_config("consumables")
+
+	local sec = item:section()
+	local id = item:id()
+	-- alcohol
+	if sec and alcohol[sec] then
+		local alcohol_cold_reduction = max_cold * alcohol[sec] * mcm_consumables
+		cold.val = cold.val - alcohol_cold_reduction
+	end
+
+	-- food
+	local stage_very_hot = max_food_warmth * 0.7
+	local stage_hot = max_food_warmth * 0.4
+	if meals[id] then
+		local satiety = ini_sys:r_float_ex(sec, "eat_satiety") or 0
+		local base_cold_reduce = satiety / 4
+		local very_hot_reduce = base_cold_reduce
+		local hot_reduce = base_cold_reduce * 0.66
+		local warm_reduce = base_cold_reduce * 0.33
+
+		if meals[id] > stage_very_hot then
+			cold.val = cold.val - max_cold * very_hot_reduce * mcm_consumables
+		elseif meals[id] > stage_hot then
+			cold.val = cold.val - max_cold * hot_reduce * mcm_consumables
+		else
+			cold.val = cold.val - max_cold * warm_reduce * mcm_consumables
+		end
+		meals[id] = nil
+	end
+
+	-- medicine (sickness)
+	if medicine[sec] then
+		local mcm_medicine = cold_system_mcm.get_config("medicine")
+		local med_cure_val = get_med_cure_value(sec)
+		cold.sickness = cold.sickness - med_cure_val * mcm_medicine
+	end
+
+	cold.val = cold.val > 0 and cold.val or 0
+	cold.sickness = cold.sickness > 0 and cold.sickness or 0
+
+end
+
+----------------------------------------------------------
+----------------------- penalties -------------------------
+----------------------------------------------------------
+function add_sickness()
+	local cold_delta = cold.val / max_cold
+	if cold_delta < 0.3 then return end
+	local mcm_sickness = cold_system_mcm.get_config("sickness")
+
+	local base_chance = 0.1 * tmr_delta * mcm_sickness * cold_delta		-- 33 mins - 10 mins
+
+	if base_chance > rnd() then
+		cold.sickness = cold.sickness + 1
+	end
+
+	cold.sickness = cold.sickness > 100 and 100 or cold.sickness
+
+end
+
+function manage_penalties()
+	local delta = cold.val / max_cold
+	local stamina_cap = 1
+	local hp_regen_koef = 0
+	local health_cap = 1
+	local satiety = db.actor.satiety
+	local satiety_critical = ini_sys:r_float_ex("actor_condition", "satiety_critical")
+	local satiety_health_v = ini_sys:r_float_ex("actor_condition", "satiety_health_v")
+
+	local critical_something = db.actor.satiety >= satiety_critical and 1 - satiety_critical or satiety_critical
+	local satiety_health_koef = (db.actor.satiety - satiety_critical) / critical_something
+	local delta_health = satiety_health_v * satiety_health_koef * 6 * tmr_delta		-- hp regen according to engine (per our 0.5 irl sec update)
+
+	if cold.sickness >= 10 then
+		stamina_cap = -0.004 * cold.sickness + 1
+		hp_regen_koef = 0.01 * cold.sickness
+		health_cap = -0.0025 * cold.sickness + 1
+	end
+
+	pr("~sickness: [ %s ]", cold.sickness)
+	db.actor.power = db.actor.power > stamina_cap and stamina_cap or db.actor.power
+	db.actor.health = hp_regen_koef > 0 and db.actor.health - hp_regen_koef * delta_health or db.actor.health
+	db.actor.health = db.actor.health > health_cap and health_cap or db.actor.health
+
+
+-- ppe
+	--[[local mcm_ppe = cold_system_mcm.get_config("ppe")
+	if not (mcm_ppe) then
+		level.remove_pp_effector(573829)
+		return
+	end]]
+
+	local ppe_power = (1.3 * delta - 0.13) * 0.4	-- 10% start
+	ppe_power = ppe_power > 0 and ppe_power or 0
+
+	--[[level.add_pp_effector("freezex.ppe", 573829, true)
+	level.set_pp_effector_factor(573829, ppe_power)]]
+	local hud = get_hud()
+	local cs = hud:GetCustomStatic("hud_frost1")
+	if not cs then
+		cs = hud:AddCustomStatic("hud_frost1")
+	end
+	if cs then
+		wnd = cs:wnd()
+		opac = 255 * ppe_power
+		wnd:SetTextureColor(GetARGB(opac, 255, 255, 255))
+	end
+	if ppe_power < 0 then
+		if cs then
+			hud:RemoveCustomStatic("hud_frost1")
+			cs = nil
+		end
+	end
+end
+
+function breath_actor()
+	local delta = cold.val
+	if delta < 0.1 then return end
+	breath_particles.on_update()
+end
+
+function damage_actor()
+	local delta = cold.val / max_cold
+	if delta < 0.9 then return end
+
+	local hit_power = delta * 0.00166 * tmr_delta		-- max delta 10% per irl min	(0.00166 per sec)
+	db.actor.health = db.actor.health - hit_power
+
+end
+
+function speed_slow()
+	local delta = cold.val / max_cold
+	local speed_reduction = -0.25 * delta + 1											-- delta: 0, 1 = speed: 1, 0.75
+	local run_coef = (-0.007 * cold.sickness + 1) * speed_reduction			-- sickness: 0, 50, 100 = speed: 1, 0.65, 0.3
+	speed.add_speed("freeze_speed_run", run_coef, false, true)
+
+	if not (cold_system_mcm.get_config("debugx")) then return end
+	local vec = db.actor:get_movement_speed()
+	local ms = (vec.x)^2 + (vec.y)^2 + (vec.z)^2
+	if ms <= 0 then return end
+	news_manager.send_tip(db.actor, string.format("Move Speed: [ %s ]", r(ms)), 0, nil, 1500)
+end
+
+----------------------------------------------------------
+------------------- HUD (super cringe) ------------------
+----------------------------------------------------------
+local main_background = nil
+local main_progress_bar = nil
+local main_sickness_background = nil
+local main_sickness_bar = nil
+local thermo_background = nil
+local thermo_bar_blue = nil
+local thermo_bar_red = nil
+local thermo_yellow_indicator = nil
+local enable_hud = false
+local main_text = nil
+local thermo_text = nil
+local thermo_campfire_text = nil
+
+local hud_font_table = {
+	[1] = GetFontSmall(),
+	[2] = GetFontMedium(),
+	[3] = GetFontDI(),
+	[4] = GetFontLetterica16Russian(),
+	[5] = GetFontLetterica18Russian(),
+	[6] = GetFontLetterica25(),
+	[7] = GetFontGraffiti19Russian(),
+	[8] = GetFontGraffiti22Russian(),
+	[9] = GetFontGraffiti32Russian(),
+	[10] = GetFontGraffiti50Russian(),
+}
+
+function get_hud_font_main()
+	local mcm_font = cold_system_mcm.get_config("main_hud_font")
+	local font
+	for id, func in pairs(hud_font_table) do
+		if id == mcm_font then
+			font = func
+		end
+	end
+
+	return font
+end
+
+function get_hud_font_thermo()
+	local mcm_font = cold_system_mcm.get_config("thermo_hud_font")
+	local font
+	for id, func in pairs(hud_font_table) do
+		if id == mcm_font then
+			font = func
+		end
+	end
+
+	return font
+end
+
+function get_thermo_state_label(value)
+	if value >= 3 then
+		return "“епло"
+	elseif value > 0 then
+		return "Ќормально"
+	elseif value > -1.5 then
+		return "ѕрохладно"
+	elseif value > -4 then
+		return "’олодно"
+	end
+
+	return "ќчень холодно"
+end
+
+function get_thermo_text_color(value)
+	if value >= 3 then
+		return GetARGB(255, 255, 170, 110)
+	elseif value > 0 then
+		return GetARGB(255, 255, 220, 170)
+	elseif value > -1.5 then
+		return GetARGB(255, 255, 255, 255)
+	elseif value > -4 then
+		return GetARGB(255, 170, 215, 255)
+	end
+
+	return GetARGB(255, 110, 175, 255)
+end
+
+function hud_update()
+    local g_tostring = tostring
+    local hud = get_hud()
+    if (not db.actor:alive()) or (not (main_hud_shown())) then 
+        cs_remove() 
+        return 
+    end
+
+    local cs = hud:GetCustomStatic("mp_ah_buy") 
+    if (cs == nil) then 
+        hud:AddCustomStatic("mp_ah_buy", true)
+        local xml = CScriptXmlInit()
+        xml:ParseFile("ui_freeze.xml")
+        cs = hud:GetCustomStatic("mp_ah_buy")
+        local w = cs:wnd()
+
+        main_background = xml:InitStatic("main_background", w)
+        main_progress_bar = xml:InitProgressBar("main_bar", w)
+        main_sickness_background = xml:InitStatic("main_fever_background", w)
+        main_sickness_bar = xml:InitProgressBar("main_fever_bar", w)
+        main_text = xml:InitStatic("main_text", w)
+
+        thermo_background = xml:InitStatic("thermo_background", w)
+        thermo_bar_blue = xml:InitProgressBar("thermo_blue_bar", w)
+        thermo_bar_red = xml:InitProgressBar("thermo_red_bar", w)
+        thermo_yellow_indicator = xml:InitStatic("thermo_yellow_indicator", w)
+        thermo_text = xml:InitStatic("thermo_text", w)
+        thermo_campfire_text = xml:InitStatic("thermo_campfire_text", w)
+
+        local pos = w:GetWndPos()
+        if pos.x ~= 0 then
+            pos.x = 0
+            pos.y = 0
+            w:SetWndPos(pos)
+        end
+    end
+
+    local val = (cold and cold.val or 0) / (max_cold or 1)
+    local main_pos_x = cold_system_mcm.get_config("main_hud_position_x")
+    local main_pos_y = cold_system_mcm.get_config("main_hud_position_y")
+
+    if not (cold_system_mcm.get_config("main_bar_text_mode")) then
+        if main_text then
+            main_text:Show(false)
+        end
+
+        if main_background then
+            main_background:Show(true)
+            main_background:SetWndPos(vector2():set(main_pos_x, main_pos_y))
+        end
+
+        if main_progress_bar then
+            main_progress_bar:Show(true)
+            main_progress_bar:SetProgressPos(val)
+            main_progress_bar:SetWndPos(vector2():set(main_pos_x, main_pos_y))
+        end
+
+        if main_sickness_background then
+            main_sickness_background:Show(true)
+            main_sickness_background:SetWndPos(vector2():set(main_pos_x, main_pos_y + 15))
+        end
+
+        if main_sickness_bar then
+            main_sickness_bar:Show(true)
+            main_sickness_bar:SetProgressPos(cold.sickness)
+            main_sickness_bar:SetWndPos(vector2():set(main_pos_x, main_pos_y + 15))
+        end
+    else
+        if main_background then main_background:Show(false) end
+        if main_progress_bar then main_progress_bar:Show(false) end
+        if main_sickness_background then main_sickness_background:Show(false) end
+        if main_sickness_bar then main_sickness_bar:Show(false) end
+
+        if main_text then
+            main_text:Show(true)
+            main_text:SetWndPos(vector2():set(main_pos_x, main_pos_y))
+            local text1 = main_text:TextControl()
+            local str_val = g_tostring(r(cold.val) .. " / " .. max_cold) .. " (" .. gc("cold_main_sickness_val") .. " " .. g_tostring(math.floor(cold.sickness + 0.5)) .. "%)"
+            local str_perc = g_tostring(math.floor(val * 100 + 0.5)) .. "%" .. " (" .. gc("cold_main_sickness_val") .. " " .. g_tostring(math.floor(cold.sickness + 0.5)) .. "%)"
+            local main_string_type_mcm = cold_system_mcm.get_config("main_hud_descr_type")
+            local text_str = (main_string_type_mcm == 1 and str_val) or (main_string_type_mcm == 2 and str_perc) or ""
+            text1:SetText(text_str)
+            text1:SetTextColor(GetARGB(255, 255, 255, 255))
+            local font1 = get_hud_font_main()
+            text1:SetFont(font1)
+        end
+    end
+
+    local thermo_pos_x = cold_system_mcm.get_config("thermo_hud_position_x")
+    local thermo_pos_y = cold_system_mcm.get_config("thermo_hud_position_y")
+    if not (cold_system_mcm.get_config("thermo_bar_text_mode")) then
+        if thermo_text then
+            thermo_text:Show(false)
+        end
+        if thermo_campfire_text then
+            thermo_campfire_text:Show(false)
+        end
+
+        if thermo_background then
+            thermo_background:Show(true)
+            thermo_background:SetWndPos(vector2():set(thermo_pos_x, thermo_pos_y))
+            local pos = thermo_background:GetWndPos()
+
+            if thermo_bar_blue then
+                thermo_bar_blue:Show(true)
+                thermo_bar_blue:SetProgressPos(hud_env_temp_blue)
+                thermo_bar_blue:SetWndPos(vector2():set(pos.x + 1, pos.y + 45))
+            end
+
+            if thermo_bar_red then
+                thermo_bar_red:Show(true)
+                thermo_bar_red:SetProgressPos(hud_env_temp_red)
+                thermo_bar_red:SetWndPos(vector2():set(pos.x + 1, pos.y + 3))
+            end
+
+            if thermo_yellow_indicator then
+                thermo_yellow_indicator:Show(true)
+                local blue_pos = thermo_bar_blue:GetWndPos()
+                thermo_yellow_indicator:SetWndPos(vector2():set(blue_pos.x, blue_pos.y + hud_prot_temp_offset))
+            end
+        end
+    else
+        if thermo_background then thermo_background:Show(false) end
+        if thermo_bar_blue then thermo_bar_blue:Show(false) end
+        if thermo_bar_red then thermo_bar_red:Show(false) end
+        if thermo_yellow_indicator then thermo_yellow_indicator:Show(false) end
+
+        if thermo_text then
+            thermo_text:Show(true)
+            thermo_text:SetWndSize(vector2():set(260, 25))
+            local thermo_text_x = thermo_pos_x - 240
+            thermo_text_x = thermo_text_x > 0 and thermo_text_x or 0
+            thermo_text:SetWndPos(vector2():set(thermo_text_x, thermo_pos_y))
+            local text2 = thermo_text:TextControl()
+            local thermo_display_value = -hud_freeze_step
+            local thermo_label = get_thermo_state_label(thermo_display_value)
+            local thermo_str_short = thermo_label
+            local thermo_str_long = gc("cold_thermo_long_env") .. " " .. g_tostring(r(hud_env_temp_blue)) .. "  " .. gc("cold_thermo_long_prot") .. " " .. g_tostring(r(hud_prot_temp)) .. "  " .. gc("cold_thermo_long_tot") .. " " .. g_tostring(r(-hud_freeze_step * tmr_delta))
+            local thermo_string_type_mcm = cold_system_mcm.get_config("thermo_hud_descr_type")
+            local text_str2 = (thermo_string_type_mcm == 1 and thermo_str_short) or (thermo_string_type_mcm == 2 and thermo_str_long) or ""
+            text2:SetText(text_str2)
+            text2:SetTextColor(get_thermo_text_color(thermo_display_value))
+            local font2 = get_hud_font_thermo()
+            text2:SetFont(font2)
+        end
+
+        if thermo_campfire_text then
+            if hud_campfire_mult > 0 and hud_campfire_dist and hud_campfire_dist <= 3.0 then
+                thermo_campfire_text:Show(true)
+                thermo_campfire_text:SetWndSize(vector2():set(320, 25))
+                local campfire_text_x = thermo_pos_x - 300
+                campfire_text_x = campfire_text_x > 0 and campfire_text_x or 0
+                thermo_campfire_text:SetWndPos(vector2():set(campfire_text_x, thermo_pos_y + 16))
+
+                local text3 = thermo_campfire_text:TextControl()
+                local total_step = -hud_freeze_step
+                local campfire_text = string.format(" остер | %.1fм | %+0.2f/с", r(hud_campfire_dist), r(total_step))
+                text3:SetText(campfire_text)
+                text3:SetTextColor(GetARGB(220, 255, 235, 190))
+                text3:SetFont(get_hud_font_thermo())
+            else
+                thermo_campfire_text:Show(false)
+            end
+        end
+    end
+
+end
+
+
+function on_key_press(key)
+	if (key == tonumber(cold_system_mcm.get_config("keybind"))) then
+		RemoveTimeEvent("freeze_ev", "freeze_act")
+		enable_hud = true
+		CreateTimeEvent("freeze_ev", "freeze_act", 5, cs_remove)
+	end
+
+end
+
+function cs_remove()
+	enable_hud = false
+	main_background = nil
+	main_progress_bar = nil
+	main_sickness_background = nil
+	main_sickness_bar = nil
+	main_text = nil
+	thermo_background = nil
+	thermo_bar_blue = nil
+	thermo_bar_red = nil
+	thermo_yellow_indicator = nil
+	thermo_text = nil
+	thermo_campfire_text = nil
+	local hud = get_hud()
+	local cs = hud and hud:GetCustomStatic("mp_ah_buy") 
+	if (cs) then
+		hud:RemoveCustomStatic("mp_ah_buy")
+	end
+
+	return true
+end
+
+
+----------------------------------------------------------
+---------------------- calc ------------------------------
+----------------------------------------------------------
+
+function calc_wind()
+	if actor_indoors() then return 0 end
+
+	local mcm_winter = cold_system_mcm.get_config("winter")
+	local winter_mult = mcm_winter and 2 or 1
+	local wind_velocity = weather.get_value_numric("wind_velocity") or 0
+	wind_velocity = clamp(wind_velocity, 1, max_wind_velocity)
+	local wind_mult = (wind_velocity / max_wind_velocity)
+	wind_mult = wind_mult * winter_mult
+
+	return wind_mult
+end
+
+function calc_rain()
+	local rain_density = weather.get_value_numric("rain_density") or 0
+	if rain_density <= 0 then return 0 end
+	breath_particles.on_update()
+	
+	if actor_rain_indoors() then return 0 end
+
+	local rain_mult = rain_density
+
+	return rain_mult
+end
+
+function calc_time()
+	local mcm_winter = cold_system_mcm.get_config("winter")
+	local time_mult = mcm_winter and calc_winter_time() or calc_summer_time()
+
+	return time_mult
+end
+
+function calc_indoors_status()
+    local indoors_effect = 0
+
+    -- Check if the actor is indoors
+    if actor_indoors() then
+        indoors_effect = 1.2
+		breath_particles.BREATH_ENABLED = false
+    else
+        indoors_effect = 0
+		breath_particles.BREATH_ENABLED = true
+    end
+
+    return indoors_effect
+end
+
+
+function calc_sun()
+	local hours = level.get_time_hours()
+	local is_night = hours < 5 or hours >= 22
+	if is_night then return 0 end
+
+	local sun_color = weather.get_value_vector("sun_color") or 0.01
+	sun_color = (sun_color.x + sun_color.y + sun_color.z) / 3
+	local sun_mult = clamp(sun_color, 0.01, 0.99)
+
+	if actor_indoors() then
+		sun_mult = sun_mult / 2
+	end
+
+	sun_mult = sun_mult
+
+	return sun_mult
+end
+
+function calc_campfire()
+	local dist = 10
+	local campfire_dist = campfire_check(dist)
+	local campfire_mult = 0
+
+	if campfire_dist then
+		if campfire_dist <= 1.5 then
+			campfire_mult = 6
+		elseif campfire_dist <= 3 then
+			campfire_mult = 4.5
+		elseif campfire_dist <= 5 then
+			campfire_mult = 3
+		else
+			campfire_mult = 1.5
+		end
+	end
+
+	hud_campfire_dist = campfire_dist
+	hud_campfire_mult = campfire_mult
+
+	return campfire_mult
+end
+
+function calc_movement()
+	local move_state_mult = 0
+	local move_state = level.actor_moving_state()
+	local walk = IsMoveState('mcAccel')
+	local sprint = IsMoveState('mcSprint')
+
+	if (walk) then
+		move_state_mult = 0.15
+	end
+
+	if (move_state <= 26) and (move_state >= 1) then
+		move_state_mult = 0.3
+	end
+
+	if (sprint) then
+		move_state_mult = 0.75
+	end
+
+	return move_state_mult
+end
+
+function calc_artefacts()
+	local arte_mult = 0
+	db.actor:iterate_belt( function(owner, item)
+		local sec = item:section()
+
+		if sec and hides[sec] then
+			local tier = ini_sys:r_float_ex(sec, "tier") or 1
+			arte_mult = arte_mult + tier
+		end
+
+		for i = 1, #cold_artefacts do
+			if sec and sfind(sec, cold_artefacts[i]) then
+				local tier = ini_sys:r_float_ex(cold_artefacts[i], "tier") or 1
+				arte_mult = arte_mult - tier
+			end
+		end
+
+		for i = 1, #hot_artefacts do
+			if sec and sfind(sec, hot_artefacts[i]) then
+				local tier = ini_sys:r_float_ex(hot_artefacts[i], "tier") or 1
+				arte_mult = arte_mult + tier
+			end
+		end
+
+	end)
+
+	arte_mult = arte_mult * 0.05
+
+	-- unwary  scarf hack.
+	local scarfed = 0
+	local scarf = db.actor:item_in_slot(10)
+	
+	if (scarf and (scarf:section() == "itm_scarf")) then
+		scarfed = 0.5
+	end
+
+	arte_mult = arte_mult + scarfed
+
+	return arte_mult
+end
+
+function calc_freeze()
+	-- negative
+	cold_factors["wind"].base = calc_wind()						-- winter (0; 2], others (0; 1]
+	cold_factors["rain"].base = calc_rain()							-- [0; 1]
+	cold_factors["time"].base = calc_time()							-- winter [0.5; 2], others [0; 0.75]
+	-- positive
+	cold_factors["sun"].base = -calc_sun() 							-- [0.01; 1]
+	cold_factors["outfit"].base = -outfit_mult						-- [0; 0.9]
+	cold_factors["campfire"].base = -calc_campfire() 			-- [0; 3]
+	cold_factors["movement"].base = -calc_movement() 	-- [0; 0.75]
+	cold_factors["artefact"].base = -calc_artefacts()			-- [-1; 1]
+
+-- add mcm
+	for name, _ in pairs(cold_factors) do
+		cold_factors[name].new = cold_factors[name].mcm > 0 and cold_factors[name].base * cold_factors[name].mcm or 0
+	end
+
+-- calc hud
+	local env_hud = cold_factors["wind"].new + cold_factors["rain"].new + cold_factors["time"].new + cold_factors["sun"].new - calc_indoors_status()
+	hud_env_temp_blue = env_hud
+	hud_env_temp_red = -env_hud
+
+	local prot_hud = cold_factors["outfit"].new + cold_factors["campfire"].new + cold_factors["movement"].new + cold_factors["artefact"].new
+	hud_prot_temp_offset = clamp(math.ceil(13.45 * -(prot_hud)), 0 , 76)			-- 1	=	max (y = +76)	;	0 = min (y = +0)	;	
+	hud_prot_temp = prot_hud
+
+-- Adjust for indoors status with square root
+	local indoors_status = calc_indoors_status()
+	local indoors_adjustment = indoors_status > 0 and math.log(indoors_status) or 0
+
+-- calc cold value step
+	local freeze_step = 0
+	for name, _ in pairs(cold_factors) do
+		freeze_step = freeze_step + cold_factors[name].new - indoors_adjustment
+	end
+	if outfit_freeze_immune and freeze_step > 0 then
+		freeze_step = 0
+	end
+	hud_freeze_step = freeze_step / tmr_delta
+
+	if (cold_system_mcm.get_config("debugx")) then
+		actor_menu.set_msg(1, strformat("Wind: +%s | Rain: +%s | Time: +%s | Sun: %s | Outfit: %s | Campfire: %s | Move: %s | Attachments: %s |Indoors: %s || TOTAL: %s", r(cold_factors["wind"].new), r(cold_factors["rain"].new), r(cold_factors["time"].new), r(cold_factors["sun"].new), r(cold_factors["outfit"].new), r(cold_factors["campfire"].new), r(cold_factors["movement"].new), r(cold_factors["artefact"].new), r(calc_indoors_status()), r(freeze_step)))
+	end
+
+	return freeze_step
+end
+
+--------------------------------------------------------------------------------------------------------------------
+function on_option_change()
+	cold_factors["wind"].mcm = cold_system_mcm.get_config("wind")
+	cold_factors["rain"].mcm = cold_system_mcm.get_config("rain")
+	cold_factors["time"].mcm = cold_system_mcm.get_config("time")
+	cold_factors["sun"].mcm = cold_system_mcm.get_config("sun")
+	cold_factors["outfit"].mcm = cold_system_mcm.get_config("outfit")
+	cold_factors["campfire"].mcm = cold_system_mcm.get_config("campfire")
+	cold_factors["movement"].mcm = cold_system_mcm.get_config("move")
+	cold_factors["artefact"].mcm = cold_system_mcm.get_config("artefact")
+end
+
+function actor_on_update()
+	local mcm_show_hud = cold_system_mcm.get_config("hud")
+	local text_hud_mode = cold_system_mcm.get_config("main_bar_text_mode") or cold_system_mcm.get_config("thermo_bar_text_mode")
+	if enable_hud or mcm_show_hud or text_hud_mode then
+		hud_update()
+	else
+		cs_remove()
+	end
+	local tg = time_global()
+	if (tmr and tg < tmr) then return end
+	tmr = tg + 1000 * tmr_delta
+
+	local freeze_step = calc_freeze()
+	cold.val = cold.val + freeze_step
+	cold.val = clamp(cold.val, 0, max_cold)
+
+	manage_meal_table()
+    breath_actor()
+	add_sickness()
+	manage_penalties()
+	damage_actor()
+	speed_slow()
+
+	if not (cold_system_mcm.get_config("debugx")) then return end
+	news_manager.send_tip(db.actor, string.format("Cold Value: [ %s ]", r(cold.val)), 0, nil, 1500)
+
+end
+
+function actor_on_before_death()
+	if not db.actor:alive() then
+		cs_remove()
+	end
+end
+
+function on_game_start()
+	RegisterScriptCallback("save_state", save_state)
+	RegisterScriptCallback("load_state", load_state)
+	RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+	RegisterScriptCallback("actor_item_to_slot", slot_in_out)
+	RegisterScriptCallback("actor_item_to_ruck", slot_in_out)
+	RegisterScriptCallback("actor_on_item_drop", slot_in_out)
+	RegisterScriptCallback("actor_on_footstep", actor_on_footstep)
+	RegisterScriptCallback("actor_on_sleep", actor_on_sleep)
+	RegisterScriptCallback("ActorMenu_on_before_init_mode", open_trade)
+	RegisterScriptCallback("GUI_on_hide", close_trade)
+	RegisterScriptCallback("ActorMenu_on_trade_started", ActorMenu_on_trade_started)
+	RegisterScriptCallback("ActorMenu_on_trade_closed", ActorMenu_on_trade_closed)
+	RegisterScriptCallback("actor_on_item_use", actor_on_item_use)
+	RegisterScriptCallback("on_key_press", on_key_press)
+	RegisterScriptCallback("on_option_change", on_option_change)
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+	RegisterScriptCallback("actor_on_before_death", actor_on_before_death)
+	on_option_change()
+	rax_icon_tint.register("xcvb_meal_tint", tint_functor)
+end

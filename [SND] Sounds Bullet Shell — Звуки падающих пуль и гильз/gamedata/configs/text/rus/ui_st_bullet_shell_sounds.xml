@@ -1,0 +1,14 @@
+<string_table>
+	<string id="ui_mcm_menu_bullet_shell_sounds">
+		<text>Звуки пуль</text>
+	</string>
+	<string id="ui_mcm_title_bullet_shell_sounds">
+		<text>Звуки пуль</text>
+	</string>
+	<string id="ui_mcm_bullet_shell_sounds_enabled">
+		<text>Включить</text>
+	</string>
+	<string id="ui_mcm_bullet_shell_sounds_volume">
+		<text>Громкость</text>
+	</string>
+</string_table>

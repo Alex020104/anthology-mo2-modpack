@@ -1,0 +1,24 @@
+--[[
+	=====================================================================
+	Addon      : Tosox Mini Mods Repo: Keep Torn Patches
+	Link       : https://www.moddb.com/mods/stalker-anomaly/addons/tosox-mini-mods-repo/
+	Author     : Tosox
+	Date       : 19.11.2023
+	Last Edit  : 26.01.2024
+	=====================================================================
+--]]
+
+orig_menu_patch_action = gameplay_disguise.menu_patch_action
+gameplay_disguise.menu_patch_action = function(obj)
+	orig_menu_patch_action(obj)
+
+	-- Determine the patch item and give it back if it was torn
+	local outfit_comm = ini_sys:r_string_ex(obj:section(), "community")
+	if (outfit_comm) and (outfit_comm ~= "") and (gameplay_disguise.possible_factions[outfit_comm]) then
+		local patch_section = gameplay_disguise.get_patch(outfit_comm, true)
+		local is_unpatched = se_load_var(obj:id(), obj:name(), "unpatched")
+		if (is_unpatched) and (patch_section) then
+			alife_create_item(patch_section, db.actor)
+		end
+	end
+end

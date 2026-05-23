@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="st_porn_pb">
+		<text>Magazine «PLAYBOY»</text>
+	</string>
+	<string id="st_porn_pb_descr">
+		<text>Erotic magazine for men, published since 1953 by Hugh Hefner and his colleagues, which grew into the publishing house Playboy Enterprises, whose activities extend to many areas of the adult media business. In addition to the magazine, magazines in various languages are published in the USA all over the world.\n \n
+		%c[ui_gray_3]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] everyday item\n
+		</text>
+	</string>
+
+	<string id="st_porn_max">
+		<text>Magazine "MAXIM"</text>
+	</string>
+	<string id="st_porn_max_descr">
+		<text>International men's (with elements of eroticism) magazine, founded in the UK in 1995 and today is published in 42 countries around the world. The magazine confidently leads among men's magazines in terms of audience. In each issue there is a poster with a photo of the model in a semi-nude form.\n \n
+		%c[ui_gray_3]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] everyday item\n
+		</text>
+	</string>
+	
+
+
+
+	<string id="pinup_formen1">
+		<text>Poster №1</text>
+    	</string>
+	<string id="pinup_formen2">
+		<text>Poster №2</text>
+	</string>
+	<string id="pinup_formen3">
+		<text>Poster №3</text>
+	</string>
+	<string id="pinup_formen4">
+		<text>Poster №4</text>
+	</string>
+	<string id="pinup_formen5">
+		<text>Poster №5</text>
+	</string>
+	<string id="pinup_formen6">
+		<text>Poster №6</text>
+	</string>
+	<string id="pinup_formen7">
+		<text>Poster №7</text>
+	</string>
+	<string id="pinup_formen8">
+		<text>Poster №8</text>
+	</string>
+	<string id="pinup_formen9">
+		<text>Poster №9</text>
+	</string>
+	<string id="pinup_formen10">
+		<text>Poster №10</text>
+	</string>
+	<string id="pinup_formen11">
+		<text>Poster №11</text>
+	</string>
+	<string id="pinup_formen12">
+		<text>Poster №12</text>
+	</string>
+	<string id="pinup_formen13">
+		<text>Poster №13</text>
+	</string>
+	<string id="pinup_formen14">
+		<text>Poster №14</text>
+	</string>
+	<string id="pinup_formen15">
+		<text>Poster №15</text>
+	</string>
+	<string id="pinup_formen16">
+		<text>Poster №16</text>
+	</string>
+	<string id="pinup_formen17">
+		<text>Poster №17</text>
+	</string>
+	<string id="pinup_formen18">
+		<text>Poster №18</text>
+	</string>
+	<string id="pinup_formen19">
+		<text>Poster №19</text>
+	</string>
+	<string id="pinup_formen20">
+		<text>Poster №20</text>
+	</string>
+	<string id="pinup_formen21">
+		<text>Poster №21</text>
+	</string>
+	<string id="pinup_formen22">
+		<text>Poster №22</text>
+	</string>
+	<string id="pinup_formen23">
+		<text>Poster №23</text>
+	</string>
+	<string id="pinup_formen24">
+		<text>Poster №24</text>
+	</string>
+	<string id="pinup_formen25">
+		<text>Poster №25</text>
+	</string>
+	<string id="pinup_formen26">
+		<text>Poster №26</text>
+	</string>
+	<string id="pinup_formen27">
+		<text>Poster №27</text>
+	</string>
+	<string id="pinup_formen28">
+		<text>Poster №28</text>
+	</string>
+	<string id="pinup_formen29">
+		<text>Poster №29</text>
+	</string>
+	<string id="pinup_formen30">
+		<text>Poster №30</text>
+	</string>
+	<string id="pinup_formen31">
+		<text>Poster №31</text>
+	</string>
+	<string id="pinup_formen32">
+		<text>Poster №32</text>
+	</string>
+	<string id="pinup_formen33">
+		<text>Poster №33</text>
+	</string>
+	<string id="pinup_formen34">
+		<text>Poster №34</text>
+	</string>
+	<string id="pinup_formen35">
+		<text>Poster №35</text>
+	</string>
+	<string id="pinup_formen36">
+		<text>Poster №36</text>
+	</string>
+	<string id="pinup_formen37">
+		<text>Poster №37</text>
+	</string>
+	<string id="pinup_formen38">
+		<text>Poster №38</text>
+	</string>
+	<string id="pinup_formen39">
+		<text>Poster №39</text>
+	</string>
+	<string id="pinup_formen40">
+		<text>Poster №40</text>
+	</string>
+	<string id="pinup_formen41">
+		<text>Poster №41</text>
+	</string>
+	<string id="pinup_formen42">
+		<text>Poster №42</text>
+	</string>
+	<string id="pinup_formen43">
+		<text>Poster №43</text>
+	</string>
+	<string id="pinup_formen44">
+		<text>Poster №44</text>
+	</string>
+	<string id="pinup_formen45">
+		<text>Poster №45</text>
+	</string>
+	<string id="pinup_formen46">
+		<text>Poster №46</text>
+	</string>
+	<string id="pinup_formen47">
+		<text>Poster №47</text>
+	</string>
+	<string id="pinup_formen48">
+		<text>Poster №48</text>
+	</string>
+	<string id="pinup_formen49">
+		<text>Poster №49</text>
+	</string>
+	<string id="pinup_formen50">
+		<text>Poster №50</text>
+	</string>
+	<string id="pinup_formen51">
+		<text>Poster №51</text>
+	</string>
+	<string id="pinup_formen52">
+		<text>Poster №52</text>
+	</string>
+	<string id="pinup_formen53">
+		<text>Poster №53</text>
+	</string>
+	<string id="pinup_formen54">
+		<text>Poster №54</text>
+	</string>
+	<string id="pinup_formen55">
+		<text>Poster №55</text>
+	</string>
+	<string id="pinup_formen56">
+		<text>Poster №56</text>
+	</string>
+	<string id="pinup_formen57">
+		<text>Poster №57</text>
+	</string>
+	<string id="pinup_formen58">
+		<text>Poster №58</text>
+	</string>
+	<string id="pinup_formen59">
+		<text>Poster №59</text>
+	</string>
+	<string id="pinup_formen60">
+		<text>Poster №60</text>
+	</string>
+
+	<string id="pinup_formen61">
+		<text>Poster №61</text>
+	</string>
+
+	<string id="pinup_formen62">
+		<text>Poster №62</text>
+	</string>
+
+	<string id="pinup_formen63">
+		<text>Poster №63</text>
+	</string>
+
+	<string id="pinup_formen64">
+		<text>Poster №64</text>
+	</string>
+
+	<string id="pinup_formen65">
+		<text>Poster №65</text>
+	</string>
+
+	<string id="pinup_formen66">
+		<text>Poster №66</text>
+	</string>
+
+	<string id="pinup_formen67">
+		<text>Poster №67</text>
+	</string>
+
+	<string id="pinup_formen68">
+		<text>Poster №68</text>
+	</string>
+
+	<string id="pinup_formen69">
+		<text>Poster №69</text>
+	</string>
+
+	<string id="pinup_formen70">
+		<text>Poster №70</text>
+	</string>
+
+	<string id="pinup_formen71">
+		<text>Poster №71</text>
+	</string>
+
+	<string id="pinup_formen72">
+		<text>Poster №72</text>
+	</string>
+
+	<string id="pinup_formen73">
+		<text>Poster №73</text>
+	</string>
+
+	<string id="pinup_formen74">
+		<text>Poster №74</text>
+	</string>
+
+	<string id="pinup_formen75">
+		<text>Poster №75</text>
+	</string>
+
+	<string id="pinup_formen76">
+		<text>Poster №76</text>
+	</string>
+
+	<string id="pinup_formen77">
+		<text>Poster №77</text>
+	</string>
+
+	<string id="pinup_formen78">
+		<text>Poster №78</text>
+	</string>
+
+	<string id="pinup_formen79">
+		<text>Poster №79</text>
+	</string>
+
+	<string id="pinup_formen80">
+		<text>Poster №80</text>
+	</string>
+
+	<string id="pinup_formen81">
+		<text>Poster №81</text>
+	</string>
+
+	<string id="pinup_formen82">
+		<text>Poster №82</text>
+	</string>
+
+	<string id="pinup_formen83">
+		<text>Poster №83</text>
+	</string>
+
+	<string id="pinup_formen84">
+		<text>Poster №84</text>
+	</string>
+
+	<string id="pinup_formen85">
+		<text>Poster №85</text>
+	</string>
+
+	<string id="pinup_formen86">
+		<text>Poster №86</text>
+	</string>
+
+	<string id="pinup_formen87">
+		<text>Poster №87</text>
+	</string>
+
+	<string id="pinup_formen88">
+		<text>Poster №88</text>
+	</string>
+
+	<string id="pinup_formen89">
+		<text>Poster №89</text>
+	</string>
+
+	<string id="pinup_formen90">
+		<text>Poster №90</text>
+	</string>
+
+	<string id="pinup_formen91">
+		<text>Poster №91</text>
+	</string>
+
+	<string id="pinup_formen92">
+		<text>Poster №92</text>
+	</string>
+
+	<string id="pinup_formen93">
+		<text>Poster №93</text>
+	</string>
+
+	<string id="pinup_formen94">
+		<text>Poster №94</text>
+	</string>
+
+	<string id="pinup_formen95">
+		<text>Poster №95</text>
+	</string>
+
+	<string id="pinup_formen96">
+		<text>Poster №96</text>
+	</string>
+
+	<string id="pinup_formen97">
+		<text>Poster №97</text>
+	</string>
+
+	<string id="pinup_formen98">
+		<text>Poster №98</text>
+	</string>
+
+	<string id="pinup_formen99">
+		<text>Poster №99</text>
+	</string>
+
+	<string id="pinup_formen100">
+		<text>Poster №100</text>
+	</string>
+	
+</string_table>

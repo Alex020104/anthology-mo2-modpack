@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_loot_searching_title">
+		<text>Loot Searching</text>
+	</string>
+	<string id="ui_mcm_menu_loot_searching">
+		<text>Loot Searching</text>
+	</string>
+
+			<!-- TIME -->
+	<string id="ui_mcm_loot_searching_header_time">
+		<text>Time \n 
+				random(time_min, time_max) - weight - (icon_x * icon_y)</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_time_min">
+		<text>Time Min</text>
+	</string>
+	<string id="ui_mcm_loot_searching_time_min_desc">
+		<text>Default: 5</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_time_max">
+		<text>Time Max</text>
+	</string>
+	<string id="ui_mcm_loot_searching_time_max_desc">
+		<text>Default: 15</text>
+	</string>
+
+			<!-- HUD -->
+	<string id="ui_mcm_loot_searching_header_hud">
+		<text>Loot Indicator</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_hud_enable">
+		<text>Enable loot indicator</text>
+	</string>
+	<string id="ui_mcm_loot_searching_hud_enable_desc">
+		<text>Shows when you still looting a body.</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_hud_icon">
+		<text>Indicator type (need reloading)</text>
+	</string>
+	<string id="ui_mcm_loot_searching_hud_icon_desc">
+		<text>Longreed helped a lot with this addon, so to thank him I'll leave a texture he sent initially as optional.</text>
+	</string>
+
+			<!-- SOUND -->
+	<string id="ui_mcm_loot_searching_header_sound">
+		<text>Sound</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_sound_enable">
+		<text>Items Sound</text>
+	</string>
+	<string id="ui_mcm_loot_searching_sound_enable_desc">
+		<text>Sound of items when they appear.</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_sound_enable_vol">
+		<text>Items Sound Volume</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_sound_bg_enable">
+		<text>Background Sound</text>
+	</string>
+	<string id="ui_mcm_loot_searching_sound_bg_enable_desc">
+		<text>Background Sound while looting a body.</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_sound_bg_enable_vol">
+		<text>Background Sound Volume</text>
+	</string>
+
+			<!-- DEBUG -->
+	<string id="ui_mcm_loot_searching_header_debug">
+		<text>Debug</text>
+	</string>
+
+	<string id="ui_mcm_loot_searching_debugx">
+		<text>Debug</text>
+	</string>
+	<string id="ui_mcm_loot_searching_debugx_desc">
+		<text>Shows some useful info in console.</text>
+	</string>
+
+
+
+			<!-- non-mcm -->
+	<string id="st_xcvb_looting">
+		<text>Looting</text>
+	</string>
+
+</string_table>

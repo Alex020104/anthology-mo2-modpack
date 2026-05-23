@@ -1,0 +1,81 @@
+<w>
+	<!-- Main part - wheel -->
+	<wheel x="410.46875" y="205" width="203.0625" height="361" stretch="1">
+		<background x="0" y="0" width="203.0625" height="361" stretch="1">
+			<texture>ui_hud2_wheel_ammo</texture>
+		</background>
+		
+		<!-- Images -->
+		<box_combat x="0" y="130" width="56.25" height="100" stretch="1"/>
+		<btn_combat x="0" y="130" width="56.25" height="100" stretch="1">
+			<texture>ui_companion_combat_btn</texture>
+		</btn_combat>
+		
+		<box_movement x="37.125" y="18" width="56.25" height="100" stretch="1"/>
+		<btn_movement x="37.125" y="18" width="56.25" height="100" stretch="1">
+			<texture>ui_companion_movement_btn</texture>
+		</btn_movement>
+		
+		<box_stealth x="109.6875" y="18" width="56.25" height="100" stretch="1"/>
+		<btn_stealth x="109.6875" y="18" width="56.25" height="100" stretch="1">
+			<texture>ui_companion_stealth_btn</texture>
+		</btn_stealth>
+		
+		<box_distance x="146.25" y="130" width="56.25" height="100" stretch="1"/>
+		<btn_distance x="146.25" y="130" width="56.25" height="100" stretch="1">
+			<texture>ui_companion_distance_btn</texture>
+		</btn_distance>
+		
+		<box_trade x="109.6875" y="243" width="56.25" height="100" stretch="1"/>
+		<btn_trade x="109.6875" y="243" width="56.25" height="100" stretch="1">
+			<texture>ui_companion_trade_btn</texture>
+		</btn_trade>
+		
+		<box_loot x="37.125" y="243" width="56.25" height="100" stretch="1"/>
+		<btn_loot x="37.125" y="243" width="56.25" height="100" stretch="1">
+			<texture>ui_companion_loot_btn</texture>
+		</btn_loot>
+		
+		<hint x="73.125" y="130" width="56.25" height="100" stretch="1">
+			<text complex_mode="1" r="200" g="200" b="200" align="c" vert_align="c" font="letterica18"/>
+		</hint>
+	</wheel>
+	
+	<!-- Extended part - info -->
+	<info x="410.46875" y="604" width="203.0625" height="80" stretch="1">
+		<background x="0" y="0" width="203.0625" height="80" stretch="1">
+			<texture>ui_hud2_wheel_extent</texture>
+		</background>
+		
+		<icon x="15.75" y="8" width="56.25" height="64" stretch="1"/>
+		<name x="78.75" y="12" width="105.75" height="24" stretch="1">
+			<text complex_mode="1" r="200" g="150" b="100" align="l" vert_align="t" font="letterica18"/>
+		</name>
+		<health x="78.75" y="34" width="31.5" height="16" stretch="1">
+			<caption x="0" y="0" width="31.5" height="16" stretch="1">
+				<text r="100" g="100" b="100" align="l" vert_align="c" font="letterica16">st_ui_health_sensor</text>
+			</caption>
+			<value x="36" y="0" width="69.75" height="16" stretch="1" horz="1" min="0" max="1" pos="0">
+				<progress stretch="1">
+					<texture a="200" r="255" g="50" b="50">ui_inGame2_inventory_progress_bar</texture>
+				</progress>
+			</value>
+			<prog_back x="36" y="0" width="69.75" height="16" stretch="1">
+				<texture a="200" r="70" g="20" b="20">ui_inGame2_inventory_progress_bar_bg</texture>
+			</prog_back>
+		</health>
+		<weight x="78.75" y="54" width="31.5" height="16" stretch="1">
+			<caption x="0" y="0" width="31.5" height="16" stretch="1">
+				<text r="100" g="100" b="100" align="l" vert_align="c" font="letterica16">st_weight_full</text>
+			</caption>
+			<value x="36" y="0" width="69.75" height="16" stretch="1" horz="1" min="0" max="1" pos="0">
+				<progress stretch="1">
+					<texture a="200" r="100" g="255" b="150">ui_inGame2_inventory_progress_bar</texture>
+				</progress>
+			</value>
+			<prog_back x="36" y="0" width="69.75" height="16" stretch="1">
+				<texture a="200" r="30" g="70" b="50">ui_inGame2_inventory_progress_bar_bg</texture>
+			</prog_back>
+		</weight>
+	</info>
+</w>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+ <!-- 7.62x51 -->
+	
+    <string id="st_mag_hinge_7.62x51_drum">
+		<text>7.62x51 50-round Drum Mag</text>
+	</string>
+	<string id="st_mag_hinge_7.62x51_drum_descr">
+		<text>
+		50-round drum magazine for 7.62x51 rifles.
+		</text>
+	</string>
+	
+</string_table>

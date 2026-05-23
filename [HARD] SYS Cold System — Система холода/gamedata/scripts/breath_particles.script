@@ -1,0 +1,57 @@
+breath_time = 0
+npc_table = {}
+MIN_INTERVAL = 3000
+MAX_INTERVAL = 5000
+MIN_ACTOR_INTERVAL = 3000
+MAX_ACTOR_INTERVAL = 5000
+BREATH_ENABLED = true
+--function on_game_start()
+--	RegisterScriptCallback("actor_on_update", on_update)
+	--npc_table = {}
+--end
+function on_update()
+	local tg = time_global()
+	if not BREATH_ENABLED then return end
+	if tg > breath_time  then
+		pos = device().cam_pos
+		dir = device().cam_dir
+		if pos:distance_to(db.actor:bone_position("bip01_head")) > 1 then
+			pos = db.actor:bone_position("bip01_head")
+			dir = db.actor:direction()
+		end
+		--pos = pos:mad(dir, 0.15)
+		actor_breath = thial_particle_cacher_br_ex.add("semitone\\characters\\actor\\cold_breath\\cold_breath_actor",pos, false, 3000)
+		thial_particle_cacher_br_ex.get(actor_breath):set_direction(dir)
+		thial_particle_cacher_br_ex.follow_actor(actor_breath)
+		--printf("actor breath")
+		breath_time = tg + math.random(MIN_ACTOR_INTERVAL, MAX_ACTOR_INTERVAL)
+		level.iterate_nearest(db.actor:position(), 15, iterate_npc_for_breath)
+	end
+	--ITERATE SAVED NPCS
+	for k,v in pairs(npc_table) do
+		local obj = level.object_by_id(k)
+		if not IsStalker(obj) or not obj:alive() or (k==AC_ID) or (obj:position():distance_to(db.actor:position()) > 15) then
+			npc_table[k] = nil 
+			return 
+		end
+		if v < tg then
+			--printf("breath %s", k)
+			local npos = obj:bone_position("bip01_head")
+			local ndir = obj:direction()
+			local npc_breath = thial_particle_cacher_br_ex.add("semitone\\characters\\npc\\cold_breath\\cold_breath_npc",npos, false, 3000)
+			thial_particle_cacher_br_ex.follow(npc_breath,obj:id(),"bip01_head")
+			npc_table[k] = tg + math.random(MIN_INTERVAL, MAX_INTERVAL)
+		end
+	end
+end
+
+function iterate_npc_for_breath(obj)
+	local tg = time_global()
+	if not IsStalker(obj) or not obj:alive() or (obj:id()==AC_ID) then
+		npc_table[obj:id()] = nil
+		return 
+	end
+	if not npc_table[obj:id()] then
+		npc_table[obj:id()] = tg + math.random(MIN_INTERVAL, MAX_INTERVAL)
+	end
+end

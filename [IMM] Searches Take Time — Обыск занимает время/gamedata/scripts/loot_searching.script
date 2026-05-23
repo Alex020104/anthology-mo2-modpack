@@ -1,0 +1,342 @@
+local corpses = {}
+local initial_inv = {}
+local cur_npc_id = nil
+local sfind = string.find
+
+local snd_t = {
+	["w_ammo"] = { "ammo_1", "ammo_2", "ammo_3", "ammo_4" },
+	["w_misc"] = { "parts_1", "parts_2", "parts_3" },
+	["w_explosive"] = { "grenade_1", "grenade_2" },
+	["w_melee"] = { "knife_1", "knife_2" },
+	["wpn"] = { "wpn_1", "wpn_2" },
+	["o_helmet"] = { "cloth_1" },
+	["outfit"] = { "cloth_2", "cloth_3" },
+	["i_arty"] = { "cloth_1", "cloth_2" },
+	["i_arty_cont"] = { "wpnbig_1", "wpnbig_2" },
+	["i_arty_junk"] = { "cloth_1", "cloth_2" },
+	["i_attach"] = { "parts_1", "parts_2", "parts_3" },
+	["i_drink"] = { "bottle_1", "bottle_2", "bottle_3", "bottle_4" },
+	["i_medical"] = { "pills_1", "pills_2" },
+	["i_tool"] = { "take_all" },
+	["i_device"] = { "parts_1", "parts_2" },
+	["i_letter"] = { "money_paper" },
+	["i_part"] = { "parts_1", "parts_2", "parts_3" },
+	["money_paper"] = { "money_paper" },
+	["money_coin"] = { "money_coin_1", "money_coin_2" },
+
+	["generic"] = { "generic_3", "generic_4", "generic_5", "parts_2" },		-- i_upgrade, i_repair, i_kit, i_food, i_mutant_cooked, i_mutant_raw, i_mutant_part, i_mutant_belt, i_backpack
+}
+
+local replace_snd_by_sec = {
+	["money_paper"] = { "cash", "money" },
+	["money_coin"] = { "roubles" },
+	["generic"] = { "joint", "marijuana", "cigarettes", "cigar", "tobacco", "drug_booster", "bandage", "jgut", "stimpack", "rebirth", "tetanus", "glucose", "cocaine", "salicidic_acid", "morphine", "adrenalin" },
+}
+
+local replace_snd_by_kind = {
+	["wpn"] = { "w_rifle", "w_pistol", "w_smg", "w_shotgun", "w_sniper" },
+	["outfit"] = { "o_heavy", "o_light", "o_medium", "o_sci" },
+}
+
+-- mcm
+local time_min = loot_searching_mcm.get_config("time_min")
+local time_max = loot_searching_mcm.get_config("time_max")
+local hud_enable = loot_searching_mcm.get_config("hud_enable")
+local sound_enable = loot_searching_mcm.get_config("sound_enable")
+local sound_enable_vol = loot_searching_mcm.get_config("sound_enable_vol")
+local sound_background_enable = loot_searching_mcm.get_config("sound_bg_enable")
+local sound_background_enable_vol = loot_searching_mcm.get_config("sound_bg_enable_vol")
+local hud_icon = loot_searching_mcm.get_config("hud_icon")
+local debugx = loot_searching_mcm.get_config("debugx")
+--------
+
+function pr(...)
+	if not debugx then return end
+	printf(...)
+end
+
+function GUI_on_show()
+	CreateTimeEvent("init_inv_ev", "init_inv_ac", 0, save_initial_inv)		-- has to be on next update
+end
+
+function save_initial_inv()
+	local inventory = ui_inventory.GUI
+	if not inventory then
+		return true
+	end
+
+	local npc = inventory:GetPartner() or nil
+	local npc_id = npc and npc:id() or nil
+	if inventory.mode ~= "loot" or not npc_id then
+		return true
+	end
+
+	if not IsStalker(npc) or IsInvbox(npc) then
+		return true
+	end
+
+	if not initial_inv[npc_id] then
+		initial_inv[npc_id] = {}
+		corpses[npc_id] = {}
+
+		local function initial_items(owner, obj)
+			if not initial_inv[npc_id][obj:id()] then
+				pr("$ GUI ON SHOW npc item: [ %s ]", obj:id())
+				initial_inv[npc_id][obj:id()] = true
+			end
+		end
+		npc:iterate_inventory(initial_items, npc)
+		npc:iterate_ruck(initial_items, npc)
+
+	end
+
+	cur_npc_id = npc_id	-- for hud
+
+	return true
+end
+
+local basePI = ui_inventory.UIInventory.ParseInventory
+function ui_inventory.UIInventory:ParseInventory(npc, all, id_list, ignore_kind)
+	local inv = basePI(self, npc, all, id_list, ignore_kind)
+
+	if not (self:IsInvOwner(npc) and npc:id() ~= AC_ID and self.mode == "loot" and all and id_list) then
+		return inv
+	end
+
+	local res = dup_table(inv)
+
+	-- corpses == (nil = timer for item does not exist, true = timer ticking, false = timer ended)
+	local npc_id = npc:id()
+	for item_id, item in pairs(res) do
+		local item_timer = show_item_time(item_id)
+		-- if item was in initial spawn and item isn't on timer
+		if initial_inv[npc_id] and initial_inv[npc_id][item_id] and corpses[npc_id] then
+			-- create timer if it does not exist
+			if corpses[npc_id][item_id] == nil then
+				corpses[npc_id][item_id] = true
+				pr("~ id_list || Creating Time Event for npc_id: [ %s ] || itm_sec: [ %s ] || itm_id: [ %s ] || itm_tmr: [ %s ]", npc_id, item:section(), item_id, item_timer)
+				CreateTimeEvent("item_hiding", "item_hiding_" .. npc_id .. "_" .. item_id, item_timer, show_item, npc_id, item_id)
+			end
+			-- and pass table without this item if timer didn't exist or still ticking (guess just true works)
+			if corpses[npc_id][item_id] ~= false then
+				res[item_id] = nil
+			end
+		end
+	end
+
+	return res
+end
+
+function show_item_time(id)
+	local item = level.object_by_id(id)
+	local sec = item:section()
+	local weight = SYS_GetParam(2, sec, "inv_weight", 2)
+	weight = weight > 0.05 and weight or 0.05
+	local grid = SYS_GetParam(2, sec, "inv_grid_width", 1) * SYS_GetParam(2, sec, "inv_grid_height", 1)	-- size of item xd
+	local time = math.random(time_min, time_max) - weight - grid
+	time = time > 1 and time or 1
+
+	return time
+end
+
+function show_item(npc_id, id)
+	local gui = GetActorMenu()
+	if corpses[npc_id] and corpses[npc_id][id] then
+		pr("- Show at npc: [ %s ] item: [ %s ]", npc_id, id)
+		item_found_snd(id)
+		corpses[npc_id][id] = false
+		if actor_menu.get_last_mode() == 4 and gui.npc_id == npc_id then --if loot gui not open or is open to a diff NPC don't refresh.
+
+			--Sorting plus fix
+			if zzz_rax_sortingplus_mcm and zzz_rax_sortingplus_mcm.NPCINV then 
+				ui_inventory.GUI.CC["npc_bag"]:Reset()
+			end
+
+			gui:UpdateInventories()
+		end
+	end
+
+	return true
+end
+
+function item_found_snd(id)
+	if not sound_enable then return end
+	local item = level.object_by_id(id)
+	local sec = item and item:section() or nil
+	if not sec then return end
+
+	local kind = SYS_GetParam(0, sec, "kind", "generic")
+
+	-- generalize some kinds
+	local skip_sfind = false
+	for new_kind, t in pairs(replace_snd_by_kind) do
+		for i = 1, #t do
+			if t[i] == kind then
+				kind = new_kind
+				skip_sfind = true
+				break
+			end
+		end
+	end
+
+	-- replace some kinds by section string find
+	if not skip_sfind then
+		for new_kind, t in pairs(replace_snd_by_sec) do
+			for i = 1, #t do
+				if sfind(sec, t[i]) then
+					kind = new_kind
+					break
+				end
+			end
+		end
+	end
+
+	local snd_kind = snd_t[kind] or snd_t["generic"]
+	local random_kind_snd = snd_kind[math.random(1, #snd_kind)]
+	local snd_file = "interface\\items\\inv_items_" .. random_kind_snd
+	local snd = sound_object(snd_file)
+	if snd then
+		snd:play_at_pos(db.actor, VEC_ZERO, 0, sound_object.s2d)
+		snd.volume = snd.volume * sound_enable_vol
+	else
+		pr("! sound: [ %s ] not found", snd_file)
+	end
+
+end
+
+function GUI_on_hide()
+	local inventory = ui_inventory.GUI
+	if not inventory then return end
+
+	local npc = inventory:GetPartner() or nil
+	local npc_id = npc and npc:id() or nil
+
+	if inventory.mode ~= "loot" then return end
+	if not npc_id then return end
+
+	-- check if val is true (timer still ticking) when we close loot window
+	for npc_id, t in pairs(corpses) do
+		for item_id, val in pairs(t) do
+			if val == true then
+				pr("! Removing time event for npc: [ %s ] and item: [ %s ]", npc_id, item_id)
+				RemoveTimeEvent("item_hiding", "item_hiding_" .. npc_id .. "_" .. item_id)
+				corpses[npc_id][item_id] = nil		-- start timer again next time we loot, if item didnt appear and we have closed the window before
+			end
+		end
+	end
+
+	cur_npc_id = nil		-- for hud
+
+end
+
+-- HUD
+function ui_inventory.UIInventory:InitIconX()
+	self.loot_xml = CScriptXmlInit()
+	self.loot_xml:ParseFile("ui_xcvb_looting.xml")
+
+	if hud_icon == 1 then
+		self.loot_icon_x = self.loot_xml:InitTextWnd("looting_text", self)
+		self.loot_icon_x:SetText(game.translate_string("st_xcvb_looting"))
+	elseif hud_icon == 2 then
+		self.loot_icon_x = self.loot_xml:InitStatic("poarch_cringe_seq", self)
+	end
+
+end
+
+local base = ui_inventory.UIInventory.UpdateInfo
+function ui_inventory.UIInventory:UpdateInfo(go)
+    self:LootUpdateX()
+    base(self, go)
+end
+
+local hud_tmr
+local snd_tmr = 0
+local dots = 0
+function ui_inventory.UIInventory:LootUpdateX()
+	local tg = time_global()
+	if (hud_tmr and tg < hud_tmr) then return end
+	hud_tmr = tg + 500
+
+	if not self.loot_icon_x then
+		self:InitIconX()
+	end
+
+	if not cur_npc_id then
+		self.loot_icon_x:Show(false)
+		return
+	end
+
+	if not hud_enable then
+		self.loot_icon_x:Show(false)
+		return
+	end
+
+	local itms = 0		-- numeric instead of boolean in case of percents or bars someday
+	for npc_id, t in pairs(corpses) do
+		if npc_id == cur_npc_id then
+			for item_id, val in pairs(t) do
+				if val then
+					itms = itms + 1
+				end
+			end
+		end
+	end
+
+	if itms <= 0 then
+		self.loot_icon_x:Show(false)
+		return
+	end
+
+	local function dots_str()
+		local str = game.translate_string("st_xcvb_looting")
+		dots = dots < 5 and dots + 1 or 1
+		for i = 1, dots do
+			str = str .. " ."
+		end
+		return str
+	end
+
+	-- looting sound
+	if sound_background_enable and tg > snd_tmr then
+		local snd_file = "looting\\looting_" .. math.random(1, 12)
+		local snd = sound_object(snd_file)
+		if snd then
+			snd_tmr = tg + snd:length() * 0.5
+			pr("new sound: %s || delay_by: %s", snd_file, snd:length() * 0.5)
+			snd:play_at_pos(db.actor, VEC_ZERO, 0, sound_object.s2d)
+			snd.volume = snd.volume * sound_background_enable_vol
+		end
+	end
+	---------
+
+	self.loot_icon_x:Show(true)
+	if hud_icon == 1 then
+		self.loot_icon_x:SetText(dots_str())
+	end
+
+end
+----------------------
+
+function server_entity_on_unregister(se_obj, typ)
+	local id = se_obj.id
+	corpses[id] = nil
+	initial_inv[id] = nil
+end
+
+function on_option_change()
+	time_min = loot_searching_mcm.get_config("time_min")
+	time_max = loot_searching_mcm.get_config("time_max")
+	hud_enable = loot_searching_mcm.get_config("hud_enable")
+	sound_enable = loot_searching_mcm.get_config("sound_enable")
+	sound_enable_vol = loot_searching_mcm.get_config("sound_enable_vol")
+	sound_background_enable = loot_searching_mcm.get_config("sound_bg_enable")
+	sound_background_enable_vol = loot_searching_mcm.get_config("sound_bg_enable_vol")
+	debugx = loot_searching_mcm.get_config("debugx")
+end
+
+function on_game_start()
+	RegisterScriptCallback("GUI_on_show", GUI_on_show)
+	RegisterScriptCallback("GUI_on_hide", GUI_on_hide)
+	RegisterScriptCallback("server_entity_on_unregister", server_entity_on_unregister)
+	RegisterScriptCallback("on_option_change", on_option_change)
+end

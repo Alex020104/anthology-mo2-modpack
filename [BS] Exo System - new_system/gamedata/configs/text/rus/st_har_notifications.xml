@@ -1,0 +1,31 @@
+<string_table>
+    <string id="ui_mcm_menu_haru_suit_notifications_mcm">
+        <text>H.A.R. System </text>
+    </string>
+    
+    <string id="ui_mcm_haru_suit_notifications_mcm_volume">
+        <text>Громкость</text>
+    </string>
+     <string id="ui_mcm_haru_suit_notifications_mcm_delay">
+        <text>Задержка между уведомлениями</text>
+    </string>
+     <string id="ui_mcm_haru_suit_notifications_mcm_nomusic">
+        <text>Отключить музыку</text>
+    </string>
+     <string id="ui_mcm_haru_suit_notifications_mcm_eco_only">
+        <text>Применять только к ССП</text>
+    </string>
+    
+    <string id="ui_mcm_haru_suit_notifications_mcm_language">
+        <text>Язык</text>
+    </string>
+    <string id="ui_mcm_lst_haru_suit_notifications_mcm_eng">
+        <text>eng</text>
+    </string>
+    <string id="ui_mcm_lst_haru_suit_notifications_mcm_rus">
+        <text>rus</text>
+    </string>
+    <string id="ui_mcm_lst_haru_suit_notifications_mcm_ua">
+        <text>ua</text>
+    </string>
+</string_table>

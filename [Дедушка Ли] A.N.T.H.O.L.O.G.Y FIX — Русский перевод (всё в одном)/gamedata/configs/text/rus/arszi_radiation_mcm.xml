@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+  
+    <!-- MCM -->
+    <string id="ui_mcm_arszi_radiation_title">
+      <text>Капитальный ремонт радиации Arszi Demonized Edition</text>
+    </string>
+    <string id="ui_mcm_menu_arszi_radiation">
+      <text>Радиация от Arszi</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_ENABLE_DYNAMIC_RADIATION_ZONES">
+      <text>Включить динамические зоны радиации</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_ENABLE_DYNAMIC_RADIATION_ZONES_desc">
+      <text>Включает порождение зон динамической радиации в новой игре</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_ENABLE_DYNAMIC_RADIATION_ZONES_NPP">
+      <text>Включить динамические радиационные зоны в интерьере ЧАЭС</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_ENABLE_DYNAMIC_RADIATION_ZONES_NPP_desc">
+      <text>Включает создание зон динамической радиации в новой игре для внутренних помещений атомной электростанции</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_MAX_WIND_VELOCITY">
+      <text>Максимальная скорость ветра</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_MAX_WIND_VELOCITY_desc">
+      <text>Максимальное значение для скорости ветра, которое влияет на силу и размер зоны радиации. Для корректной работы настройте в соответствии с вашим модом погоды (Примеры: ваниль - 800, погода Мичико - 1000).</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_POWER_REDUCTION_BY_RAIN">
+      <text>Снижение силы при дожде</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_POWER_REDUCTION_BY_RAIN_desc">
+      <text>В случае дождя или шторма радиационные зоны будут наносить данный процент урона.</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_MAX_SIZE_INCREASEMENT_BY_WIND">
+      <text>Увеличение размера в зависимости от ветра</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_MAX_SIZE_INCREASEMENT_BY_WIND_desc">
+      <text>При максимальной силе ветра радиационные зоны будут увеличивать свой размер на этот коэффициент</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_MAX_POWER_INCREASEMENT_BY_WIND">
+      <text>Увеличение силы в зависимости ветра</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_MAX_POWER_INCREASEMENT_BY_WIND_desc">
+      <text>При максимальной силе ветра зоны радиации будут умножать свою мощность на этот коэффициент</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_ENABLE_WEATHER_REPORTS">
+      <text>Включить отчеты о погоде</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_ENABLE_WEATHER_REPORTS_desc">
+      <text>Включить сообщения о переходах карты и об изменении погоды</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_displayRadIcon">
+      <text>Отображение иконки радиации</text>
+    </string>
+    <string id="ui_mcm_lst_ui_mcm_arszi_radiation_rad_icon_disabled">
+      <text>Отключено</text>
+    </string>
+    <string id="ui_mcm_lst_ui_mcm_arszi_radiation_rad_icon_enabled_above_damage_threshold">
+      <text>Включено, если излучение выше порога повреждения</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_fastTravelWithRads">
+      <text>Быстрые путешествия c радиацией</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_sleepWithRads">
+      <text>Сон с радиацией</text>
+    </string>
+    <string id="ui_mcm_lst_ui_mcm_arszi_radiation_fast_travel_disabled">
+      <text>Отключено</text>
+    </string>
+    <string id="ui_mcm_lst_ui_mcm_arszi_radiation_fast_travel_enabled_below_grace">
+      <text>Включено, если радиация ниже порога дебаффов</text>
+    </string>
+    <string id="ui_mcm_lst_ui_mcm_arszi_radiation_fast_travel_enabled">
+      <text>Включено</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_WEATHER_INFO_KEY">
+      <text>Клавиша "Информация о погоде"</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_RADIATION_THRESHOLD_HELP">
+      <text>В ванильной игре 0,01 = 38,7 мЗв.</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_RADIATION_THRESHOLD">
+      <text>Порог радиационной защиты</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_RADIATION_THRESHOLD_desc">
+      <text>При таком излучении вы не будете получать дебаффы или урон. Начиная с этого излучения, вы начнете получать дебаффы, пока не достигнете максимального уровня излучения. Вы все еще не сможете спать без полного излечения от радиации.</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_RADIATION_DAMAGE_THRESHOLD">
+      <text>Порог урона</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_RADIATION_DAMAGE_THRESHOLD_desc">
+      <text>При превышении этого излучения вы начнете получать урон</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_RADIATION_MAX_DAMAGE">
+      <text>Максимальный урон от радиации</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_RADIATION_MAX_DAMAGE_desc">
+      <text>Максимальный урон в секунду, который вы получите при достижении максимального уровня радиации.</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_medDigestibilityHelp">
+      <text>Ниже вы можете настроить уникальную механику Medication Digestibility. С ее помощью, чем ниже уровень радиации, тем менее эффективными будут лекарства. Если ваши условия в основном в норме, основное количество лекарств не будет усвоено вашим организмом и останется непереработанным. Самая низкая эффективность достигается, когда уровень радиации ниже порога дебаффов. Чтобы лекарства были полностью эффективны, необходимо, чтобы уровень радиации превышал порог радиационного повреждения. Лекарства с низким, но длительным эффектом не подвержены влиянию этой механики.</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_medDigestibility">
+      <text>Включить</text>
+    </string>
+    
+    <string id="ui_mcm_arszi_radiation_minMedEfficiency">
+      <text>Минимальная эффективность лекарств</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_minMedEfficiency_desc">
+      <text>Минимальная эффективность лекарств, когда уровень радиации ниже порога дебаффов</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_ARSZI_POWER_REGENERATION_REDUCTION_RATIO">
+      <text>Коэффициент уменьшения регенерации стамины</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_ARSZI_POWER_REGENERATION_REDUCTION_RATIO_desc">
+      <text>Энергия будет восстанавливаться в x раз медленнее при максимальной радиации</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_ARSZI_POWER_CAP_REDUCTION_RATIO">
+      <text>Коэффициент уменьшения кол-ва стамины</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_ARSZI_POWER_CAP_REDUCTION_RATIO_desc">
+      <text>Максимальная стамина будет в x раз ниже при максимальной радиации</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_powerReduceCurve">
+      <text>Кривая уменьшения мощности</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_powerReduceCurve_desc">
+      <text>меньше 1 означает более агрессивный дебафф, больше 1 означает более отложенный дебафф</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_ARSZI_SATIETY_REDUCTION_RATIO">
+      <text>Коэффициент снижения сытости</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_ARSZI_SATIETY_REDUCTION_RATIO_desc">
+      <text>Потребляемые калории будут в x раз ниже</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_satietyReduceCurve">
+      <text>Кривая снижения сытости</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_satietyReduceCurve_desc">
+      <text>меньше 1 означает более агрессивный дебафф, больше 1 означает более отложенный дебафф</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_ARSZI_INTEGRATED_SUIT_BONUS_ENABLED">
+      <text>Включен бонус интегрированного костюма</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_ARSZI_INTEGRATED_SUIT_BONUS_ENABLED_desc">
+      <text>Включает 20% бонус радиационной защиты интегрированного костюма</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_OUTFIT_WITH_HELMET_RADIATION_PROTECTION_REDUCTION_RATIO">
+      <text>(Радиоактивная вода) Коэффициент снижения радиационной защиты костюма со шлемом</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_OUTFIT_WITH_HELMET_RADIATION_PROTECTION_REDUCTION_RATIO_desc">
+      <text>Снижает защиту от радиации костюмов со встроенным головным убором при нахождении в радиоактивной воде. Костюмы с отдельным шлемом имеют отдельный расчет урона от радиоактивной воды. Эмулирует значение защиты костюма без шлема</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_DOSIMETER_VOLUME_UP_KEY">
+      <text>Клавиша увеличения громкости дозиметра</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_DOSIMETER_VOLUME_DOWN">
+      <text>Клавиша уменьшения громкости дозиметра</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_giveDosimeterOnStart">
+      <text>(CHEAT) Дать дозиметр на старте новой игры</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_radiationPenetrationHelp">
+      <text>Эта функция управляет механикой Radiaiton Penetration. Если эта функция включена, то независимо от того, какая у вас защита, некоторое кол-во радиации всегда будут пробиваться через нее.</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_radiationPenetration">
+      <text>Включить</text>
+    </string>
+    
+    <string id="ui_mcm_arszi_radiation_radiationPenetrationAmount">
+      <text>Сила эффекта</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_radiationPenetrationAmount_desc">
+      <text>Управляет силой эффекта. !ВНИМАНИЕ! Этот параметра также увеличивает общую силу радиационных полей</text>
+    </string>
+
+    <string id="ui_mcm_arszi_radiation_radiationPenetrationDefense">
+      <text>Коэффициент защиты</text>
+    </string>
+    <string id="ui_mcm_arszi_radiation_radiationPenetrationDefense_desc">
+      <text>Этот параметр определяет защиту от проникновения. Чем больше значение, тем эффективнее защита</text>
+    </string>
+
+</string_table>

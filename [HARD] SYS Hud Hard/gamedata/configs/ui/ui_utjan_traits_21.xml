@@ -1,0 +1,73 @@
+<w>
+	<traits x="331.4375" y="113" width="361.125" height="542" stretch="1">
+		<background x="0" y="0" width="361.125" height="542" stretch="1">
+			<texture>ui_uttraits_background</texture>
+		</background>
+		
+		<title x="0" y="20" width="361.125" height="50">
+			<text r="200" g="200" b="200" font="graffiti50" align="c" vert_align="c">st_traits_title</text>
+		</title>
+		
+		<listbg x="28.125" y="80" width="127.125" height="412" stretch="1">
+			<texture>ui_uttraits_background2</texture>
+		</listbg>
+		
+		<scroll x="29.25" y="80" width="127.125" height="412" right_ident="0" left_ident="0" top_indent="6" bottom_indent="6" vert_interval="0" always_show_scroll="0"/>
+		
+		<st x="0" y="0" width="124.875" height="40"/>
+		<name x="4.5" y="0" width="115.875" height="40" stretch="1">
+			<text y="4" r="200" g="200" b="200" font="letterica18" align="l" vert_align="c"/>
+		</name>
+		<listbtn x="0" y="0" width="115.875" height="40" stretch="1" >
+			<texture>ui_ut_traits_listbtn</texture>
+		</listbtn>
+		<listbtn_icon x="104.625" y="10" width="11.25" height="20" stretch="1"/>
+		
+		<infobg x="183.375" y="80" width="149.625" height="272" stretch="1">
+			<texture>ui_uttraits_background3</texture>
+		</infobg>
+		<trait_title x="189" y="80" width="138.375" height="70">
+			<text complex_mode="1" r="200" g="200" b="200" font="graffiti32" align="c" vert_align="c"/>
+		</trait_title>
+		<trait_icon x="246.9375" y="150" width="22.5" height="40" stretch="1"/>
+		<trait_desc x="189" y="190" width="138.375" height="162">
+			<text complex_mode="1" r="200" g="200" b="200" font="letterica16" align="c" vert_align="c"/>
+		</trait_desc>
+		
+		<btn_learn x="221.0625" y="362" width="74.25" height="40" stretch="1">
+			<text font="letterica25">st_btn_learn</text>
+			<texture>ui_button_ordinary</texture>
+		</btn_learn>
+		
+		<trait_pts x="183.375" y="402" width="149.625" height="40">
+			<text r="200" g="200" b="200" font="letterica25" align="c" vert_align="c"/>
+		</trait_pts>
+		
+		<btn_enable x="183.375" y="362" width="35.4375" height="40" check_mode="1" stretch="1">
+			<text y="4" font="letterica18">st_btn_enable</text>
+			<texture>ui_button_ordinary</texture>
+		</btn_enable>
+		<btn_disable x="529" y="362" width="35.4375" height="40" check_mode="2" stretch="1">
+			<text y="4" font="letterica18">st_btn_disable</text>
+			<texture>ui_button_ordinary</texture>
+		</btn_disable>
+		
+		<tlvl_title x="183.375" y="452" width="149.625" height="20">
+			<text r="200" g="200" b="200" font="letterica18" align="c" vert_align="c">st_traits_total_level</text>
+		</tlvl_title>
+		<exp_bar_back x="201.375" y="472" width="113.625" height="20" horz="1" min="0" max="1" stretch="1">
+			<texture>ui_uttraits_progbar_bg</texture>
+		</exp_bar_back>
+		<exp_bar x="201.375" y="472" width="113.625" height="20" horz="1" min="0" max="1" stretch="1">
+			<progress>
+				<texture>ui\ui_ut_traits_barbg.dds</texture>
+			</progress>
+		</exp_bar>
+		<tlvl_cur x="183.375" y="472" width="18" height="20" stretch="1">
+			<text complex_mode="1" r="200" g="150" b="100" align="c" vert_align="c" font="letterica18"/>
+		</tlvl_cur>
+		<tlvl_next x="315" y="472" width="18" height="20" stretch="1">
+			<text complex_mode="1" r="200" g="150" b="100" align="c" vert_align="c" font="letterica18"/>
+		</tlvl_next>
+	</traits>
+</w>

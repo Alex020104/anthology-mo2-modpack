@@ -1,0 +1,14 @@
+<string_table>
+	<string id="ui_mcm_menu_bullet_shell_sounds">
+		<text>Bullet Shell Sounds</text>
+	</string>
+	<string id="ui_mcm_title_bullet_shell_sounds">
+		<text>Bullet Shell Sounds</text>
+	</string>
+	<string id="ui_mcm_bullet_shell_sounds_enabled">
+		<text>Enable</text>
+	</string>
+	<string id="ui_mcm_bullet_shell_sounds_volume">
+		<text>Sounds volume</text>
+	</string>
+</string_table>

@@ -1,0 +1,30 @@
+local section_id = "eptTalents"
+local current_wrapper = nil
+
+local function get_talents_ui()
+	if talents_gui and talents_gui.get_pda_ui then
+		return talents_gui.get_pda_ui()
+	end
+end
+
+local function patch_pda_subdialog()
+	if not (pda and pda.set_active_subdialog) then return end
+	if pda.set_active_subdialog == current_wrapper then return end
+
+	local next_set_active_subdialog = pda.set_active_subdialog
+	current_wrapper = function(section)
+		if section == section_id then
+			local ui = get_talents_ui()
+			if ui then return ui end
+		end
+
+		return next_set_active_subdialog(section)
+	end
+
+	pda.set_active_subdialog = current_wrapper
+end
+
+function on_game_start()
+	patch_pda_subdialog()
+	RegisterScriptCallback("on_game_load", patch_pda_subdialog)
+end

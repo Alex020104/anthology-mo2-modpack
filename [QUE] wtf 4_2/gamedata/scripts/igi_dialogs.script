@@ -1,0 +1,73 @@
+function on_game_start()
+    ensure_dialog_data()
+    RegisterScriptCallback("actor_on_first_update", igi_helper.safe(actor_on_first_update))
+end
+
+function actor_on_first_update()
+    ensure_dialog_data()
+    igi_helper.trace_dbg("dialog data", data)
+end
+
+data = {}
+
+local function false_functor()
+    return false
+end
+
+local function ensure_task_table(task)
+    if not task then
+        return {}
+    end
+
+    local task_data = rawget(data, task)
+    if not task_data then
+        task_data = {}
+        rawset(data, task, task_data)
+    end
+
+    if not getmetatable(task_data) then
+        setmetatable(task_data, {__index = function()
+            return false_functor
+        end})
+    end
+
+    return task_data
+end
+
+setmetatable(data, {__index = function(_, task)
+    return ensure_task_table(task)
+end})
+
+function ensure_dialog_data()
+    local safe_lookup = igi_helper.safe(lookup_data)
+    for _, func in pairs(modxml_wtf.get_dialogs().funcs or {}) do
+        local task = func[1]
+        local data_key = func[2]
+        ensure_task_table(task)[data_key] = function (a, b)
+            return safe_lookup(task, data_key, dialogs.who_is_npc(a, b))
+        end
+    end
+end
+
+function lookup_data(quest_id, data_key, npc)
+    if not npc then return end
+
+    local npc_id = npc:id()
+    for _, CACHE in pairs(igi_generic_task.TASKS_CACHE) do
+        if quest_id == CACHE.quest_id[1] .. '_' .. CACHE.quest_id[2] then
+            for _, entity in ipairs(CACHE.entities) do
+                if entity.id == npc_id and entity[data_key] then
+                    local out = entity[data_key]
+                    if type(out) == "string" then
+                        local link_context = igi_text_processor.get_link_context(CACHE, entity)
+                        return igi_text_processor.eval_logic_macro(out, link_context)
+                    end
+
+                    return out
+                end
+            end
+        end
+    end
+
+    return nil
+end

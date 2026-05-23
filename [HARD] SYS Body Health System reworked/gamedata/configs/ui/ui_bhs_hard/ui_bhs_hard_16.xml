@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<window>
+
+    <body_health_system x="0" y="0" width="450" height="500" la_text="1" la_alpha="1" complex_mode="1" stretch="1">
+        <text font="letterica16" r="255" g="255" b="255" a="255" align="l"/>
+        <texture>ui_hud_bhs_bg_hard</texture>
+    </body_health_system>
+
+
+    <body_health_system_hud x="0" y="0" width="375" height="375" la_text="1" la_alpha="1" complex_mode="1" stretch="1">
+    </body_health_system_hud>
+
+    <bhs_health_bar_bg x="153" y="40" width="93" height="261" complex_mode="1" stretch="1">
+        <texture>ui_hud_bhs_health_bg_hard</texture>
+    </bhs_health_bar_bg>
+
+
+    <bhs_health x="0" y="0" width="118" height="364" min="0" max="1" stretch="1">
+        <progress stretch="1">
+            <texture>ui_hud_bhs_health_hard</texture>
+        </progress>
+    </bhs_health>
+
+    <bhs_stamina_bar_bg x="65.5" y="438" width="255" height="30" complex_mode="1" stretch="1">
+        <texture>ui_hud_bhs_stamina_bg_hard</texture>
+    </bhs_stamina_bar_bg>
+
+    <bhs_stamina x="0" y="0" width="298" height="19" horz="1" min="0" max="1" stretch="1">
+        <progress stretch="1">
+            <texture>ui_hud_bhs_stamina_hard</texture>
+        </progress>
+    </bhs_stamina>
+
+    <bhs_psi x="65.5" y="50" width="85" height="5" horz="1" min="0" max="1" stretch="1">
+        <progress stretch="1">
+            <texture>ui_hud_bhs_psi_2</texture>
+        </progress>
+    </bhs_psi>
+
+    <bhs_health_head_bar_bg x="65.5" y="79.5" width="75" height="12" complex_mode="1" stretch="1">
+        <texture>ui_hud_bhs_bar_bg_hard</texture>
+    </bhs_health_head_bar_bg>
+
+    <bhs_health_torso_bar_bg x="277.5" y="79.5" width="75" height="12" complex_mode="1" stretch="1">
+        <texture>ui_hud_bhs_bar_bg_hard</texture>
+    </bhs_health_torso_bar_bg>
+
+    <bhs_health_leftarm_bar_bg x="65.5" y="186" width="75" height="12" complex_mode="1" stretch="1">
+        <texture>ui_hud_bhs_bar_bg_hard</texture>
+    </bhs_health_leftarm_bar_bg>
+
+
+    <bhs_health_rightarm_bar_bg x="277.5" y="186" width="75" height="12" complex_mode="1" stretch="1">
+        <texture>ui_hud_bhs_bar_bg_hard</texture>
+    </bhs_health_rightarm_bar_bg>
+
+    <bhs_health_leftleg_bar_bg x="65.5" y="295" width="75" height="12" complex_mode="1" stretch="1">
+        <texture>ui_hud_bhs_bar_bg_hard</texture>
+    </bhs_health_leftleg_bar_bg>
+
+    <bhs_health_rightleg_bar_bg x="277.5" y="295" width="75" height="12" complex_mode="1" stretch="1">
+        <texture>ui_hud_bhs_bar_bg_hard</texture>
+    </bhs_health_rightleg_bar_bg>
+
+    <bhs_health_bodypart x="0" y="0" width="85" height="16" horz="1" min="0" max="1">
+        <progress stretch="1">
+            <texture>ui_hud_bhs_bar_hard</texture>
+        </progress>
+    </bhs_health_bodypart>
+
+    <bhs_health_bodypart_green x="0" y="0" width="85" height="16" horz="1" min="0" max="1">
+        <progress stretch="1">
+            <texture>ui_hud_bhs_bar_green_hard</texture>
+        </progress>
+    </bhs_health_bodypart_green>
+
+    <bhs_health_bodypart_blue x="0" y="0" width="20" height="4" horz="1" min="0" max="1">
+        <progress stretch="1">
+            <texture>ui_hud_bhs_bar_blue_hard</texture>
+        </progress>
+    </bhs_health_bodypart_blue>
+
+    <bhs_cold_label x="70" y="350" width="72" height="18" complex_mode="1">
+        <text font="letterica16" r="220" g="210" b="185" a="255" align="l">Cold:</text>
+    </bhs_cold_label>
+
+    <bhs_cold_value x="110" y="350" width="220" height="18" complex_mode="1">
+        <text font="letterica16" r="255" g="255" b="255" a="255" align="l">Normal</text>
+    </bhs_cold_value>
+
+    <bhs_sickness_label x="70" y="370" width="92" height="18" complex_mode="1">
+        <text font="letterica16" r="220" g="210" b="185" a="255" align="l">Sick:</text>
+    </bhs_sickness_label>
+
+    <bhs_sickness_value x="120" y="370" width="200" height="18" complex_mode="1">
+        <text font="letterica16" r="255" g="255" b="255" a="255" align="l">None</text>
+    </bhs_sickness_value>
+
+    <bhs_advice_value x="70" y="390" width="340" height="24" complex_mode="1">
+        <text font="letterica16" r="220" g="210" b="185" a="255" align="l">Advice: Stable</text>
+    </bhs_advice_value>
+
+</window>

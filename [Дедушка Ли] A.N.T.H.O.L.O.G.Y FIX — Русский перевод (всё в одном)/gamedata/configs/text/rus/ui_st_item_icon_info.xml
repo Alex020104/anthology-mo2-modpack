@@ -1,0 +1,253 @@
+
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<!-- 
+		MCM
+	-->
+	<string id="ui_mcm_item_icon_info_title">
+		<text>Улучшения пользовательского интерфейса предметов</text>
+	</string>
+	<string id="ui_mcm_menu_item_icon_info">
+		<text>Улучшения UI предметов</text>
+	</string>
+
+	<string id="ui_mcm_menu_cond_text">
+		<text>Состояние в %</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_cond_text_title">
+		<text>Количественное состояние в процентах</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_cond_text_enable">
+		<text>Включить</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_cond_text_enable_equipped">
+		<text>Показывать на экипированном снаряжении</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_cond_text_hide_bar">
+		<text>Скрыть строку состояния</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_cond_text_hide_bg">
+		<text>Не показывать количественное состояние в фоне</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_cond_text_alt_artefact_pos">
+		<text>Положение о состоянии артефактов</text>
+	</string>
+	<string id="ui_mcm_lst_alt_art_pos_lower_left">
+		<text>Внизу слева</text>
+	</string>
+	<string id="ui_mcm_lst_alt_art_pos_lower_right">
+		<text>Внизу справа</text>
+	</string>
+	<string id="ui_mcm_lst_alt_art_pos_top_left">
+		<text>Вверху слева</text>
+	</string>
+	<string id="ui_mcm_lst_alt_art_pos_top_right">
+		<text>Вверху справа</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_cond_text_padding">
+		<text>Отступы в тексте</text>
+	</string>
+
+	<string id="ui_mcm_menu_part_dots">
+		<text>Индикаторы деталей</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_part_dots_title">
+		<text>Индикаторы состояния деталей</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_part_dots_enable">
+		<text>Включить</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_part_dots_show_on_equipped">
+		<text>Показывать на экипированном снаряжении</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_part_dots_show_on_wpn">
+		<text>Показывать на оружии</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_part_dots_show_on_armor">
+		<text>Показывать на броне/шлемах</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_part_dots_size_mult">
+		<text>Размер</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_part_dots_separator_width">
+		<text>Интервал между индикаторами</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_part_dots_position">
+		<text>Позиция</text>
+	</string>
+	<string id="ui_mcm_lst_part_dot_top">
+		<text>Верхняя часть полосы состояния</text>
+	</string>
+	<string id="ui_mcm_lst_part_dot_right">
+		<text>Правая часть полосы состояния</text>
+	</string>
+	<string id="ui_mcm_lst_part_dot_top_pistol">
+		<text>Верхняя часть полосы состояния 
+		(только для короткоствольного оружия)</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_part_dots_wpo_mode">
+		<text>Использовать пороговые значения цвета</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_part_dots_wpo_green">
+		<text>Пороговое значение состояния зеленого цвета</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_part_dots_wpo_yellow">
+		<text>Пороговое значение состояния желтого цвета</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_part_dots_wpo_orange">
+		<text>Пороговое значение состояния оранжевого цвета</text>
+	</string>
+
+	<string id="ui_mcm_menu_ammo_name">
+		<text>Название боеприпасов</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_ammo_name_title">
+		<text>Текст краткого названия боеприпаса</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_ammo_name_enable">
+		<text>Включить</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_ammo_name_bad_color">
+		<text>Цвет текста зависит от качества патронов (плохие/старые)</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_ammo_name_show_expl">
+		<text>Включить для гранат M203/VOG и боеголовок</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_ammo_name_expl_bad_color">
+		<text>Цвет текста зависит от качества боеприпасов (взрывчатых веществ)</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_ammo_name_padding">
+		<text>Отступы в тексте</text>
+	</string>
+
+	<string id="ui_mcm_menu_recipe_text">
+		<text>Прочитано/Не прочитано</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_recipe_text_title">
+		<text>Рецепты, заметки и карты - показать прочитанный/непрочитанный текст</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_recipe_text_enable">
+		<text>Включить</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_recipe_text_show_on_pda">
+		<text>Показать подсказку на КПК с информацией о тайнике</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_recipe_text_padding">
+		<text>Отступы в тексте</text>
+	</string>
+	
+	<string id="ui_mcm_menu_mag_info">
+		<text>Информация о магазине</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_mag_info_title">
+		<text>Количество патронов в магазине и название пули (только для Mags Redux)</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_mag_info_enable">
+		<text>Включить</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_mag_info_show_ammo_name">
+		<text>Показать краткое название патронов</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_mag_info_show_ammo_count">
+		<text>Показать количество патронов</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_mag_info_hide_bar">
+		<text>Скрыть строку состояния магазина</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_mag_info_padding">
+		<text>Отступы в тексте</text>
+	</string>
+
+	<string id="ui_mcm_menu_money_text">
+		<text>Деньги</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_money_text_title">
+		<text>Текст для денег</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_money_text_enable">
+		<text>Включить</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_money_text_hide_bg">
+		<text>Без фона</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_money_text_padding">
+		<text>Отступы в тексте</text>
+	</string>
+
+	<string id="ui_mcm_menu_armor_info">
+		<text>Информация о броне</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_armor_info_title">
+		<text>Тип нашивки и ремонта брони</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_armor_info_show_patch">
+		<text>Показать значок нашивки группировки на броне</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_armor_info_show_armor_type">
+		<text>Показать тип ремонта брони</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_armor_info_show_helmet_type">
+		<text>Показать тип шлема</text>
+	</string>
+
+	<string id="ui_mcm_menu_wpn_info">
+		<text>Информация об оружии</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_wpn_info_title">
+		<text>Название оружия и тип ремонта</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_wpn_info_show_gun_repair_type">
+		<text>Показать иконку типа ремонта оружия</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_wpn_info_show_wpn_name">
+		<text>Показать название оружия</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_wpn_info_main_slots_only">
+		<text>Оборудовано только для отображения названия на первичном/вторичном</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_wpn_info_show_grenade_name">
+		<text>Показать название на гранатах</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_wpn_info_show_melee">
+		<text>Показывать название на оружии ближнего боя</text>
+	</string>
+
+	<string id="ui_mcm_menu_wpn_scaling">
+		<text>Масштабирование оружия</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_wpn_scaling_not_installed">
+		<text>Масштабирование оружия не установлено</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_wpn_scaling_title">
+		<text>Масштабирование и выравнивание оружия</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_wpn_scaling_enable_equip_hor_scale">
+		<text>Масштабирование и выравнивание горизонтально расположенного оружия</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_wpn_scaling_enable_equip_vert_scale">
+		<text>Масштабирование и выравнивание вертикально расположенного оружия</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_wpn_scaling_equip_vert_padding">
+		<text>Отступы на масштабированном вертикальном оружии</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_wpn_scaling_equip_hor_padding">
+		<text>Отступы на масштабированном горизонтальном оружии</text>
+	</string>
+	<string id="ui_mcm_item_icon_info_wpn_scaling_enable_inv_scaling">
+		<text>Масштабирование и выравнивание оружия с глушителем в инвентаре</text>
+	</string>
+	
+	<!-- 
+		Mods
+	-->
+	<string id="ui_utjan_recipe_read">
+		<text>прочитано</text>
+	</string>
+	<string id="ui_utjan_recipe_unread">
+		<text>непрочитано</text>
+	</string>
+	<string id="ui_utjan_ruble">
+		<text>руб.</text>
+	</string>
+</string_table>
+                        

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="ui_mcm_menu_tmmr">
+		<text>Tosox Mini Mods Repo</text>
+	</string>
+
+	<string id="ui_mcm_menu_protect_dropped_weapons">
+		<text>Protect dropped Weapons</text>
+	</string>
+	<string id="ui_mcm_tmmr_protect_dropped_weapons_title">
+		<text>Protect dropped Weapons</text>
+	</string>
+	<string id="ui_mcm_tmmr_protect_dropped_weapons_protection_rule">
+		<text>Protection rule</text>
+	</string>
+	<string id="ui_mcm_tmmr_protect_dropped_weapons_protection_rule_desc">
+		<text>Always - Always protect the weapon from getting picked up \nWhen punched - Only protect the weapon when the reason for dropping the gun was getting punched</text>
+	</string>
+	<string id="ui_mcm_tmmr_protect_dropped_weapons_no_pickup_time">
+		<text>No weapon pickup time (seconds)</text>
+	</string>
+	<string id="ui_mcm_tmmr_protect_dropped_weapons_no_pickup_time_desc">
+		<text>Period of time in seconds during which NPCs cannot pick up the weapon you dropped after getting punched (set it to "0" for "forever")</text>
+	</string>
+
+	<string id="ui_mcm_lst_tmmr_always_protect">
+		<text>Always</text>
+	</string>
+	<string id="ui_mcm_lst_tmmr_protect_when_hit">
+		<text>When punched</text>
+	</string>
+</string_table>

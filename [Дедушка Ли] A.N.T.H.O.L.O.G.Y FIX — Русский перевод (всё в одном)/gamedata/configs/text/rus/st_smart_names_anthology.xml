@@ -1,0 +1,1490 @@
+<?xml version="1.0" encoding="Windows-1251" ?>
+<string_table>
+
+
+	<string id="e_b_anomal_zone_1_spot_name">
+    <text>Туристическая ловушка</text>
+</string>
+<string id="st_ds_merc_terrain1_name">
+    <text>Темная лощина. Старая баржа</text>
+</string>
+<string id="st_ds_mine_bandit_name">
+    <text>Темная лощина. Лагерь бандитов в пещере</text>
+</string>
+<string id="st_ds_stalker_terrain1_name">
+    <text>Темная лощина. Лагерь одиночек в пещере</text>
+</string>
+<string id="st_ds_military_terrain_name">
+    <text>Темная лощина. Бронетранспортер за автобусной остановкой</text>
+</string>
+<string id="st_ds_mutants_terrain2_name">
+    <text>Темная лощина. Южный контрольно-пропускной пункт</text>
+</string>
+<string id="st_ds_mutants_terrain5_name">
+    <text>Темная лощина. Портовые краны</text>
+</string>
+<string id="st_ds_mutants_terrain7_name">
+    <text>Темная лощина. Автобусная остановка</text>
+</string>
+<string id="st_ds_mutants_terrain10_name">
+    <text>Темная лощина. Мост</text>
+</string>
+<string id="st_ds_mutants_terrain11_name">
+    <text>Темная лощина. Северный контрольно-пропускной пункт</text>
+</string>
+<string id="st_ds_zombie_terrain1_name">
+    <text>Темная лощина. Сарай</text>
+</string>
+<string id="st_ds_zombie_terrain2_name">
+    <text>Темная лощина. Хижина в лесу</text>
+</string>
+<string id="st_ds2_domik_st_name">
+    <text>Темная лощина. Лесопилка</text>
+</string>
+<string id="st_ds_autostop_name">
+    <text>Темная лощина. Заправочная станция</text>
+</string>
+<string id="st_ds_dark_stalker_name">
+    <text>Темная лощина. Мины</text>
+</string>
+<string id="st_ds_most_terrain_name">
+    <text>Темная лощина. Светящийся мост</text>
+</string>
+<string id="st_ds_dog_terrain3_name">
+    <text>Темная лощина. Грузовик</text>
+</string>
+
+
+<!-- The graveyard of technology -->
+	<string id="st_trc_sim_1_name">
+    <text>Кладбище техники. Наблюдательный пункт</text>
+</string>
+<string id="st_trc_sim_2_name">
+    <text>Кладбище техники. Лагерь у контейнеров</text>
+</string>
+<string id="st_trc_sim_3_name">
+    <text>Кладбище техники. Развилка на дороге</text>
+</string>
+<string id="st_trc_sim_4_name">
+    <text>Кладбище техники. Сожженный дом</text>
+</string>
+<string id="st_trc_sim_5_name">
+    <text>Кладбище техники. Перекресток</text>
+</string>
+<string id="st_trc_sim_6_name">
+    <text>Кладбище техники. Сторожевая башня</text>
+</string>
+<string id="st_trc_sim_7_name">
+    <text>Кладбище техники. Лес</text>
+</string>
+<string id="st_trc_sim_8_name">
+    <text>Кладбище техники. Топливные цистерны</text>
+</string>
+<string id="st_trc_sim_9_name">
+    <text>Кладбище техники. Вершина холма</text>
+</string>
+<string id="st_trc_sim_10_name">
+    <text>Кладбище техники. Остановка для отдыха в лесу</text>
+</string>
+<string id="st_trc_sim_11_name">
+    <text>Кладбище техники. Военная техника</text>
+</string>
+<string id="st_trc_sim_12_name">
+    <text>Кладбище техники. Лесное убежище</text>
+</string>
+<string id="st_trc_sim_13_name">
+    <text>Кладбище техники. Место сбора у оврага</text>
+</string>
+<string id="st_trc_sim_14_name">
+    <text>Кладбище техники. Пожарные машины</text>
+</string>
+<string id="st_trc_sim_15_name">
+    <text>Кладбище техники. Разбившиеся вертолеты</text>
+</string>
+<string id="st_trc_sim_16_name">
+    <text>Кладбище техники. Край Свалки</text>
+</string>
+<string id="st_trc_sim_17_name">
+    <text>Кладбище техники. Радиоактивные холмы</text>
+</string>
+<string id="st_trc_sim_18_name">
+    <text>Кладбище техники. Лагерь в центре Свалки</text>
+</string>
+<string id="st_trc_sim_19_name">
+    <text>Кладбище техники. Грузовики</text>
+</string>
+<string id="st_trc_sim_20_name">
+    <text>Кладбище техники. Восточный контрольно-пропускной пункт</text>
+</string>
+<string id="st_trc_sim_21_name">
+    <text>Кладбище техники. Пустыня</text>
+</string>
+
+<!-- Dead City Lost Alpha -->
+	<string id="st_cit_army_raid_name">
+    <text>Мёртвый город. Олимпийская улица</text>
+</string>
+<string id="st_cit_bloodsucker_lair_name">
+    <text>Мёртвый город. Улица Дружбы</text>
+</string>
+<string id="st_cit_bloodsucker_nest_name">
+    <text>Мёртвый город. Улица Мира</text>
+</string>
+<string id="st_cit_controller_lair_name">
+    <text>Мёртвый город. Магазин “Коопторг”</text>
+</string>
+<string id="st_cit_dog_lair2_name">
+    <text>Мёртвый город. Народная улица</text>
+</string>
+<string id="st_cit_mercs_base_name">
+    <text>Мёртвый город. Школа</text>
+</string>
+<string id="st_cit_snork_lair_name">
+    <text>Мёртвый город. Болото</text>
+</string>
+<string id="st_cit_stalker_base_name">
+    <text>Мёртвый город. Дом у моста</text>
+</string>
+<string id="st_cit_bandit_village_name">
+    <text>Мёртвый город. Деревня</text>
+</string>
+<string id="st_cit_freedom_house_name">
+    <text>Мёртвый город. Дом “Свобода”</text>
+</string>
+<string id="st_cit_gym_lager_name">
+    <text>Мёртвый город. Вход в магазин “Коопторг”</text>
+</string>
+<string id="st_cit_partei_lager_name">
+    <text>Мёртвый город. Слава КПСС</text>
+</string>
+<string id="st_cit_patrolers_name">
+    <text>Мёртвый город. Памятник Ленину</text>
+</string>
+<string id="st_cit_poltergeist_flat_name">
+    <text>Мёртвый город. Снайперская позиция в высотном здании</text>
+</string>
+<string id="st_cit_pseudog_lair_name">
+    <text>Мёртвый город. Аномалия «Аллея»</text>
+</string>
+<string id="st_cit_dog_lair1_name">
+    <text>Мёртвый город. Аномалия “Электрическое поле”</text>
+</string>
+<string id="st_cit_fleshes_lair1_name">
+    <text>Мёртвый город. Аномалия “Гравитационное поле”</text>
+</string>
+<string id="st_cit_zombies_graveyard_name">
+    <text>Мёртвый город. Кладбище</text>
+</string>
+<string id="st_cit_swamp_lair_name">
+    <text>Мёртвый город. Мост через болото</text>
+</string>
+<string id="st_cit_swamp_lair2_name">
+    <text>Мёртвый город. Смертельное болото</text>
+</string>
+<!-- Polygon SA41 -->
+<string id="st_pro_smart_2_name">
+    <text>Полигон. Лагерь на холме</text>
+</string>
+<string id="st_pro_smart_3_name">
+    <text>Полигон. Барьер</text>
+</string>
+<string id="st_pro_smart_terrain_1_0_quest_name">
+    <text>Полигон. Главный вход в Старый склад</text>
+</string>
+<string id="st_pro_smart_terrain_1_1_name">
+    <text>Полигон. Старый склад</text>
+</string>
+<string id="st_pro_smart_terrain_1_2_name">
+    <text>Полигон. Подвал старого склада</text>
+</string>
+<string id="st_pro_smart_terrain_2_0_name">
+    <text>Полигон. Диспетчерская</text>
+</string>
+<string id="st_pro_smart_terrain_2_1_name">
+    <text>Полигон. Заповедник</text>
+</string>
+<string id="st_pro_smart_terrain_3_0_name">
+    <text>Полигон. Хранение продуктов питания</text>
+</string>
+<string id="st_pro_smart_terrain_4_1_quest_name">
+    <text>Полигон. Башня</text>
+</string>
+
+<!-- Металлургический завод -->
+	<string id="st_rosf_duty_construction_terrain_name">
+    <text>Металлургический завод. Строительная площадка</text>
+</string>
+<string id="st_rosf_duty_hq_name">
+    <text>Металлургический завод. Отель</text>
+</string>
+<string id="st_rosf_duty_village_name">
+    <text>Металлургический завод. Деревня</text>
+</string>
+<string id="st_rosf_eco_tunnel_name">
+    <text>Металлургический завод. Тоннель</text>
+</string>
+<string id="st_rosf_loner_group1_name">
+    <text>Металлургический завод. Магазин “Товары”</text>
+</string>
+<string id="st_rosf_loner_group2_name">
+    <text>Металлургический завод. Проход</text>
+</string>
+<string id="st_rosf_military_blokpost_name">
+    <text>Металлургический завод. Военный контрольно-пропускной пункт</text>
+</string>
+<string id="st_rosf_sim_1_name">
+    <text>Металлургический завод. Двор</text>
+</string>
+<string id="st_rosf_sim_5_name">
+    <text>Металлургический завод. Вход</text>
+</string>
+<string id="st_rosf_sim_7_name">
+    <text>Металлургический завод. Аномалия “Электрическая подстанция”</text>
+</string>
+<!-- Topi -->
+<string id="st_topi_sim_mut_3_name">
+    <text>Топи. Северо-западный лес</text>
+</string>
+<string id="st_topi_sim_mut_5_name">
+    <text>Топи. Вертолет в лесу</text>
+</string>
+<string id="st_topi_sim_mut_7_name">
+    <text>Топи. Юго-восточный лес</text>
+</string>
+<string id="st_topi_sim_mut_9_name">
+    <text>Топи. Северо-восточный лес</text>
+</string>
+<string id="st_topi_sim_mut_13_name">
+    <text>Топи. Юго-западный лес</text>
+</string>
+<string id="st_topi_sim_mut_29_name">
+    <text>Топи. Заброшенная ферма</text>
+</string>
+<string id="st_topi_sim_mut_39_name">
+    <text>Топи. Временный лагерь</text>
+</string>
+<string id="st_topi_sim_nps_3_name">
+    <text>Топи. Химическая аномалия</text>
+</string>
+<string id="st_topi_sim_nps_7_name">
+    <text>Топи. Деревня</text>
+</string>
+<string id="st_topi_sim_nps_8_name">
+    <text>Топи. База “Сталкеры”</text>
+</string>
+
+<!-- Chertovo Urochishche -->
+	<string id="st_grim_1_name">
+    <text>Чертово урочище. Северный лагерь</text>
+</string>
+<string id="st_grim_2_name">
+    <text>Чертово урочище. Пропускной пункт</text>
+</string>
+<string id="st_grim_3_name">
+    <text>Чертово урочище. Юго-западная роща</text>
+</string>
+<string id="st_grim_4_name">
+    <text>Чертово урочище. Северный лес</text>
+</string>
+<string id="st_grim_5_name">
+    <text>Чертово урочище. Лес у контрольно-пропускного пункта</text>
+</string>
+<string id="st_grim_6_name">
+    <text>Чертово урочище. Расчистка под опорами линий электропередач</text>
+</string>
+<string id="st_grim_7_name">
+    <text>Чертово урочище. Южный путь</text>
+</string>
+<string id="st_grim_8_name">
+    <text>Чертово урочище. Роща за причалом</text>
+</string>
+<string id="st_grim_9_name">
+    <text>Чертово урочище. Док</text>
+</string>
+<string id="st_grim_10_name">
+    <text>Чертово урочище. Лагерь на главной дороге</text>
+</string>
+<string id="st_grim_11_name">
+    <text>Чертово урочище. Дорога к заброшенному зданию</text>
+</string>
+<string id="st_grim_12_name">
+    <text>Чертово урочище. Южный лес</text>
+</string>
+<string id="st_grim_13_name">
+    <text>Чертово урочище. Северо-восточный лес</text>
+</string>
+<string id="st_grim_14_name">
+    <text>Чертово урочище. Восточный лес</text>
+</string>
+<string id="st_grim_15_name">
+    <text>Чертово урочище. Лес над заброшенным зданием</text>
+</string>
+<string id="st_grim_16_name">
+    <text>Чертово урочище. Заброшенное здание</text>
+</string>
+<string id="st_grim_17_name">
+    <text>Чертово урочище. Лагерь у пруда</text>
+</string>
+<!-- Abandoned land -->
+<string id="st_el_merc_base_1_smart_name">
+    <text>Заброшенные земли. Дом в деревне</text>
+</string>
+<string id="st_el_sim_1_name">
+    <text>Заброшенные земли. Лесной лагерь</text>
+</string>
+<string id="st_el_stalker_base_1_smart_name">
+    <text>Заброшенные земли. Бар “Хавчик”</text>
+</string>
+<string id="st_el_stalker_base_2_smart_name">
+    <text>Заброшенные земли. Восточное здание</text>
+</string>
+<string id="st_el_zavod_monolith_01_smart_name">
+    <text>Заброшенные земли. Главный вход на фабрику</text>
+</string>
+<string id="st_el_zavod_monolith_02_smart_name">
+    <text>Заброшенные земли. Фабрика</text>
+</string>
+<string id="st_el_zavod_monolith_03_smart_name">
+    <text>Заброшенные земли. Резервуары</text>
+</string>
+<string id="st_ex_gar_a1_name">
+    <text>Заброшенные земли. Базовый вход</text>
+</string>
+<string id="st_ex_gar_a2_name">
+    <text>Заброшенные земли. Производственные помещения</text>
+</string>
+<string id="st_ex_gar_a3_name">
+    <text>Заброшенные земли. Лес</text>
+</string>
+<string id="st_ex_gar_b1_name">
+    <text>Заброшенные земли. Вход в бар</text>
+</string>
+<string id="st_ex_gar_b2_name">
+    <text>Заброшенные земли. Временный лагерь наемников</text>
+</string>
+<string id="st_ex_gar_sim_02_name">
+    <text>Заброшенные земли. Проходить</text>
+</string>
+<string id="st_ex_gar_sim_03_name">
+    <text>Заброшенные земли. Аномалия "Кислотный бассейн"</text>
+</string>
+<string id="st_ex_gar_sim_04_name">
+    <text>Заброшенные земли. Аномалия "Химическая катастрофа"</text>
+</string>
+<string id="st_ex_gar_sim_05_name">
+    <text>Заброшенные земли. Дом у башни</text>
+</string>
+<string id="st_ex_gar_sim_09_name">
+    <text>Заброшенные земли. Остановка</text>
+</string>
+
+	<!-- The neighbourhood of the Dome -->
+	<string id="st_cit_a2_name">
+    <text>Окрестности Купола. Пропускной пункт</text>
+</string>
+<string id="st_cit_b39_name">
+    <text>Окрестности Купола. Испытательный комплекс "P-I"</text>
+</string>
+<string id="st_kup_atr_name">
+    <text>Окрестности Купола. ВНЗ "Луч"</text>
+</string>
+<string id="st_cit_sim_5_name">
+    <text>Окрестности Купола. Заброшенный участок ЗРК</text>
+</string>
+<string id="st_cit_sim_11_name">
+    <text>Окрестности Купола. Путь к переходу</text>
+</string>
+<string id="st_cit_sim_13_name">
+    <text>Окрестности Купола. Аномалия "Пожарный беспилотник"</text>
+</string>
+<string id="st_cit_sim_16_name">
+    <text>Окрестности Купола. Выход с контрольно-пропускного пункта</text>
+</string>
+<string id="st_cit_sim_21_name">
+    <text>Окрестности Купола. Вход на базу Радара</text>
+</string>
+<string id="st_cit_sim_22_name">
+    <text>Окрестности Купола. Дорога к Секретному комплексу</text>
+</string>
+<string id="st_cit_sim_24_name">
+    <text>Окрестности Купола. Дорога мимо неизвестной деревни</text>
+</string>
+<string id="st_cit_sim_30_name">
+    <text>Окрестности Купола. Аномалия "Паучий крик"</text>
+</string>
+<string id="st_cit_sim_35_name">
+    <text>Окрестности Купола. Аномалия "Остров"</text>
+</string>
+<string id="st_cit_sim_37_name">
+    <text>Окрестности Купола. Резервуары</text>
+</string>
+<!-- Station -->
+<string id="st_l2_9_baracks_name">
+    <text>Станция. Казармы</text>
+</string>
+<string id="st_l2_9_buliding_name">
+    <text>Станция. Здания</text>
+</string>
+<string id="st_l2_9_house_name">
+    <text>Станция. Дом</text>
+</string>
+<string id="st_l2_9_masterskaya_name">
+    <text>Станция. Мастерская</text>
+</string>
+<string id="st_l2_9_prud_name">
+    <text>Станция. Пруд</text>
+</string>
+<string id="st_l2_9_sim_9_name">
+    <text>Станция. Железнодорожные пути</text>
+</string>
+<string id="st_l2_9_stoyanka_name">
+    <text>Станция. Парковка</text>
+</string>
+<string id="st_l2_9_tank_name">
+    <text>Станция. Топливные баки</text>
+</string>
+<string id="st_l2_9_vokzal_limansk_name">
+    <text>Станция. Железнодорожный вокзал “Лиманск”</text>
+</string>
+
+<!-- Neighbourhood -->
+<string id="st_okr_a2_name">
+<text>Окрестности. Возле учебного корпуса</text>
+</string>	
+<string id="st_okr_base_dolg_name">
+<text>Окрестности. Склад</text>
+</string>
+<string id="st_okr_base_freedom_name">
+    <text>Окрестности. Ангар</text>
+</string>
+<string id="st_okr_base_monolith_name">
+    <text>Окрестности. Санаторий "Победа"</text>
+</string>
+<string id="st_okr_base_killer_name">
+    <text>Окрестности. Жилое здание</text>
+</string>
+<string id="st_okr_base_stalker_name">
+    <text>Окрестности. Промышленное предприятие</text>
+</string>
+<string id="st_okr_base_greh_name">
+    <text>Окрестности. Администрация</text>
+</string>
+<string id="st_okr_base_csky_name">
+    <text>Окрестности. Рыболовство</text>
+</string>
+<string id="st_okr_base_bandit_name">
+    <text>Окрестности. Недостроенный завод</text>
+</string>
+<string id="st_okr_sim_5_name">
+    <text>Окрестности. Инженерный район</text>
+</string>
+<string id="st_okr_sim_7_name">
+    <text>Окрестности. Вертолет на болоте</text>
+</string>
+<string id="st_okr_sim_8_name">
+    <text>Окрестности. Аномалия0"Химическое строение"</text>
+</string>
+<string id="st_okr_sim_11_name">
+    <text>Окрестности. Советский самолет</text>
+</string>
+<string id="st_okr_sim_13_name">
+    <text>Окрестности. Мост рядом с рыбзаводом</text>
+</string>
+<string id="st_okr_sim_18_name">
+    <text>Окрестности. Аномалия "Гравитационное кольцо"</text>
+</string>
+<string id="st_okr_sim_22_name">
+    <text>Окрестности. Авиабаза</text>
+</string>
+<string id="st_okr_sim_23_name">
+    <text>Окрестности. Взлетная полоса</text>
+</string>
+<string id="st_okr_sim_24_name">
+    <text>Окрестности. Футбольное поле</text>
+</string>
+<string id="st_okr_sim_25_name">
+    <text>Окрестности. Северное болото</text>
+</string>
+<string id="st_okr_sim_27_name">
+    <text>Окрестности. Тропа к железнодорожной станции</text>
+</string>
+<string id="st_okr_sim_29_name">
+    <text>Окрестности. Два резервуара</text>
+</string>
+<string id="st_okr_sim_33_name">
+    <text>Окрестности. Аномалия "Трансформаторная будка №2"</text>
+</string>
+<string id="st_okr_sim_38_name">
+    <text>Окрестности. Аномалия " "Огненный тандем"</text>
+</string>
+<string id="st_okr_zombied_1_name">
+    <text>Окрестности. Северный контрольно-пропускной пункт</text>
+</string>
+<string id="st_okr_zombied_2_name">
+    <text>Окрестности. Заброшенный комплекс "Венера"</text>
+</string>
+<string id="st_okr_zombied_3_name">
+    <text>Окрестности. Старый ангар</text>
+</string>
+<string id="st_okr_zombied_4_name">
+    <text>Окрестности. Вход в метро</text>
+</string>
+<string id="st_okr_zombied_9_name">
+    <text>Окрестности. Западный контрольно-пропускной пункт</text>
+</string>
+<!-- An anomalous forest -->
+<string id="st_ano_smart_terrain_1_1_name">
+    <text>Аномальный лес. Кусты</text>
+</string>
+<string id="st_ano_smart_terrain_2_1_name">
+    <text>Аномальный лес. Аномалия "Вулкан"</text>
+</string>
+<string id="st_ano_smart_terrain_2_4_name">
+    <text>Аномальный лес. Мертвые деревья</text>
+</string>
+<string id="st_ano_smart_terrain_3_1_name">
+    <text>Аномальный лес. Мобильная лаборатория "Оникс"</text>
+</string>
+<string id="st_ano_smart_terrain_3_3_name">
+    <text>Аномальный лес. Разрушенное здание</text>
+</string>
+<string id="st_ano_smart_terrain_4_4_name">
+    <text>Аномальный лес. Аномалия "Гравитационный вертолет"</text>
+</string>
+<string id="st_ano_smart_terrain_4_5_name">
+    <text>Аномальный лес. Дорога на окраину Припяти</text>
+</string>
+<string id="st_ano_smart_terrain_5_1_name">
+    <text>Аномальный лес. Караван</text>
+</string>
+<string id="st_ano_smart_terrain_5_2_name">
+    <text>Аномальный лес. Два пути</text>
+</string>
+<string id="st_ano_smart_terrain_6_1_name">
+    <text>Аномальный лес. Аномалия "Кислотный туннель"</text>
+</string>
+<string id="st_ano_smart_terrain_6_2_name">
+    <text>Аномальный лес. Казармы</text>
+</string>
+<string id="st_ano_smart_terrain_6_3_name">
+    <text>Аномальный лес. Гаражи</text>
+</string>
+<string id="st_ano_smart_terrain_6_4_name">
+    <text>Аномальный лес. Мастерская</text>
+</string>
+<string id="st_ano_smart_terrain_8_1_name">
+    <text>Аномальный лес. Аномалия "Трещины"</text>
+</string>
+<!-- Unexplored land -->
+<string id="st_aver_arhara_sniper_makrogulag2_name">
+    <text>Неизведанная земля. Скалы на горе</text>
+</string>
+<string id="st_aver_otshelnik_name">
+    <text>Неизведанная земля. Хижина отшельника</text>
+</string>
+<string id="st_land_arhara_sniper_name">
+    <text>Неизведанная земля. Лагерь Архары</text>
+</string>
+<string id="st_aver_lair_2_name">
+    <text>Неизведанная земля. Аномалия "Кислотные болота"</text>
+</string>
+<string id="st_nz_dog_krater_name">
+    <text>Неизведанная земля. Аномалия "Каменное поле"</text>
+</string>
+<string id="st_nz_dog_uzimovia_name">
+    <text>Неизведанная земля. У зимовья</text>
+</string>
+<string id="st_nz_pseudo_val_road_name">
+    <text>Неизведанная земля. Развилка на дороге</text>
+</string>
+<string id="st_aver_hunter_name">
+    <text>Неизведанная земля. Костер на горе</text>
+</string>
+<string id="st_aver_lazaret_name">
+    <text>Неизведанная земля. Лазарет</text>
+</string>
+<string id="st_aver_lair_4_name">
+    <text>Неизведанная земля. Недалеко от тропы</text>
+</string>
+<!-- Outpost SA41 -->
+<string id="st_blck_val_a31_name">
+    <text>Аванпост. Северная усадьба</text>
+</string>
+<string id="st_blck_val_a35_name">
+    <text>Аванпост. Мастерская</text>
+</string>
+<string id="st_blck_val_a37_name">
+    <text>Аванпост. Плавательный бассейн</text>
+</string>
+<string id="st_blck_val_b208_name">
+    <text>Аванпост. Металлургический завод</text>
+</string>
+<string id="st_blck_val_sim_1_name">
+    <text>Аванпост. Строительная площадка</text>
+</string>
+<string id="st_blck_val_sim_2_name">
+    <text>Аванпост. Аномалия "Аномальная роща"</text>
+</string>
+<string id="st_blck_val_sim_4_name">
+    <text>Аванпост. Кладбище</text>
+</string>
+<string id="st_blck_val_sim_9_name">
+    <text>Аванпост. Радиоактивная свалка</text>
+</string>
+<string id="st_blck_val_b1_name">
+    <text>Аванпост. Аномалия "Адский круг"</text>
+</string>
+<string id="st_blck_val_b2_name">
+    <text>Аванпост. Усадьба помещика</text>
+</string>
+<!-- Science Station -->
+<string id="st_yan_sci_bunker_name">
+    <text>Научная станция. Мобильная лаборатория "Янтарь"</text>
+</string>
+<string id="st_yan_sim_1_name">
+    <text>Научная станция. Дом военного</text>
+</string>
+<string id="st_yan_bandit_gastation_terrain_name">
+    <text>Научная станция. Заправочная станция</text>
+</string>
+<string id="st_yan_boar_terrain_name">
+    <text>Научная станция. Аномалия "Болотная кислушка"</text>
+</string>
+<string id="st_yan_dolg_terrain_name">
+    <text>Научная станция. Лагерь на болоте</text>
+</string>
+<string id="st_yan_dog_terrain2_name">
+    <text>Научная станция. Аномалия "Болотная карусель"</text>
+</string>
+<string id="st_yan_rat_terrain2_name">
+    <text>Научная станция. Военный ангар</text>
+</string>
+<string id="st_yan_rat_terrain3_name">
+    <text>Научная станция. Восточная деревня</text>
+</string>
+<string id="st_yan_fort_terrain_name">
+    <text>Научная станция. Пропускной пункт</text>
+</string>
+<string id="st_yan_stalker_bunker_name">
+    <text>Научная станция. Подвал</text>
+</string>
+<string id="st_yan_village2_bandit_terrain_name">
+    <text>Научная станция. Деревня</text>
+</string>
+<string id="st_yan_village_dog_terrain_name">
+    <text>Научная станция. Центр деревни</text>
+</string>
+<string id="st_yan_zombie_terrain1_name">
+    <text>Научная станция. Радиолокационная станция</text>
+</string>
+<!-- The cursed forest -->
+<string id="st_forest_cat_terrain1_name">
+    <text>Проклятый лес. Проклятая дорога</text>
+</string>
+<string id="st_forest_flesh_terrain2_name">
+    <text>Проклятый лес. Проклятая поляна</text>
+</string>
+<string id="st_forest_mine_bandits_name">
+    <text>Проклятый лес. Вход в пещеру</text>
+</string>
+<string id="st_forest_diseased_name">
+    <text>Проклятый лес. Проход в деревню</text>
+</string>
+<string id="st_forest_sim_1_name">
+    <text>Проклятый лес. Автобусная остановка</text>
+</string>
+<string id="st_forest_sim_2_name">
+    <text>Проклятый лес. Пропускной пункт</text>
+</string>
+<string id="st_forest_swampbeast_terrain1_name">
+    <text>Проклятый лес. Проклятое болото</text>
+</string>
+
+<!-- Kurchatov -->
+<string id="st_city_smart_terrain_1_2_name">
+    <text>Курчатов. Здание КПСС</text>
+</string>
+<string id="st_city_smart_terrain_1_3_name">
+    <text>Курчатов. Дом культуры</text>
+</string>
+<string id="st_city_smart_terrain_1_4_name">
+    <text>Курчатов. Аномалия "Отчаяние"</text>
+</string>
+<string id="st_city_smart_terrain_2_2_name">
+    <text>Курчатов. Северная игровая площадка</text>
+</string>
+<string id="st_city_smart_terrain_2_4_name">
+    <text>Курчатов. Южный двор</text>
+</string>
+<string id="st_city_smart_terrain_2_5_name">
+    <text>Курчатов. Северный двор</text>
+</string>
+<string id="st_city_smart_terrain_2_6_name">
+    <text>Курчатов. Парк Гагарина</text>
+</string>
+<string id="st_city_smart_terrain_2_7_name">
+    <text>Курчатов. Западная игровая площадка</text>
+</string>
+
+<!-- East Topi -->
+<string id="st_swamp_bandit_terrain1_name">
+    <text>Восточные Топи. Хижина</text>
+</string>
+<string id="st_swamp_doc_terrain_name">
+    <text>Восточные Топи. Хижина болотного Доктора</text>
+</string>
+<string id="st_swamp_sim_2_name">
+    <text>Восточные Топи. Усадьба</text>
+</string>
+<string id="st_swamp_boar_terrain1_name">
+    <text>Восточные Топи. Разрушенный дом</text>
+</string>
+<string id="st_swamp_boar_terrain3_name">
+    <text>Восточные Топи. Тузла</text>
+</string>
+<string id="st_swamp_swampbeast_terrain2_name">
+    <text>Восточные Топи. Дом на болоте</text>
+</string>
+<string id="st_swamp_swampbeast_terrain5_name">
+    <text>Восточные Топи. Аномалия "Зов Припяти"</text>
+</string>
+
+<!-- The Valley of the Rustlers -->
+<string id="st_sad_b1_name">
+    <text>Долина шорохов. Лагерь сталкеров</text>
+</string>
+<string id="st_sad_b2_name">
+    <text>Долина шорохов. Северная база</text>
+</string>
+<string id="st_sad_b3_name">
+    <text>Долина шорохов. Склад контейнеров</text>
+</string>
+<string id="st_sad_b3a_name">
+    <text>Долина шорохов. Вход на склад контейнеров</text>
+</string>
+<string id="st_sad_b4_name">
+    <text>Долина шорохов. Восточная база</text>
+</string>
+<string id="st_sad_ban_name">
+    <text>Долина шорохов. Аномалия "Дом у огня"</text>
+</string>
+<string id="st_sad_ran_name">
+    <text>Долина шорохов. Западная база</text>
+</string>
+<string id="st_sad_sher_name">
+    <text>Долина шорохов. Место упокоения</text>
+</string>
+<string id="st_sad_sim_1_name">
+    <text>Долина шорохов. Пси-болотная аномалия</text>
+</string>
+<string id="st_sad_sim_6_name">
+    <text>Долина шорохов. Аномалия "Гравитационная горелка"</text>
+</string>
+<string id="st_sad_sim_8_name">
+    <text>Долина шорохов. Советский вертолет</text>
+</string>
+<string id="st_sad_sim_9_name">
+    <text>Долина шорохов. Аномалия "Огненное дерево"</text>
+</string>
+<string id="st_sad_sim_14_name">
+    <text>Долина шорохов. Охраняемое место отдыха</text>
+</string>
+<string id="st_sad_sim_15_name">
+    <text>Долина шорохов. Аномалия "Гравитационные трещины"</text>
+</string>
+<string id="st_sad_sim_16_name">
+    <text>Долина шорохов. Аномалия "Феномен"</text>
+</string>
+<string id="st_sad_sim_17_name">
+    <text>Долина шорохов. Аномалия "Шорох"</text>
+</string>
+<string id="st_sad_sim_18_name">
+    <text>Долина шорохов. Аномалия "Мясорубка"</text>
+</string>
+<string id="st_sad_sim_21_name">
+    <text>Долина шорохов. Аномалия "Кислотный круг"</text>
+</string>
+<string id="st_sad_sim_23_name">
+    <text>Долина шорохов. Машина</text>
+</string>
+<string id="st_sad_start_name">
+    <text>Долина шорохов. Аномалия "Огненный симбионт"</text>
+</string>
+<!-- Kasiany -->
+<string id="st_kas_base_name">
+    <text>Касьяны. Военная база в Касьянах</text>
+</string>
+<string id="st_kas_kpp_name">
+    <text>Касьяны. Южный контрольно-пропускной пункт</text>
+</string>
+<string id="st_kas_kpp2_name">
+    <text>Касьяны. Северный контрольно-пропускной пункт</text>
+</string>
+<string id="st_kas_kpp3_name">
+    <text>Касьяны. Западный контрольно-пропускной пункт</text>
+</string>
+<string id="st_kas_perekrestok_name">
+    <text>Касьяны. Перекресток</text>
+</string>
+<string id="st_kas_sim_1_name">
+    <text>Касьяны. Смертельная аномалия</text>
+</string>
+<string id="st_kas_sim_2_name">
+    <text>Касьяны. Аномалия "Центр дьявола"</text>
+</string>
+<string id="st_kas_sim_7_name">
+    <text>Касьяны. Поле</text>
+</string>
+<string id="st_kas_sim_12_name">
+    <text>Касьяны. Озеро</text>
+</string>
+<string id="st_kas_sim_13_name">
+    <text>Касьяны. Уничтоженный танк</text>
+</string>
+<string id="st_kas_sim_14_name">
+    <text>Касьяны. Лес</text>
+</string>
+<string id="st_kas_sim_17_name">
+    <text>Касьяны. Аномалия "Паутина лжи"</text>
+</string>
+<string id="st_kas_sim_18_name">
+    <text>Касьяны. Химическое болото</text>
+</string>
+
+<!-- Industrial zone -->
+<string id="st_prom_1_name">
+    <text>Промзона. Фабрика (Запад)</text>
+</string>
+<string id="st_prom_2_name">
+    <text>Промзона. Фабрика (Центр)</text>
+</string>
+<string id="st_prom_3_name">
+    <text>Промзона. Фабрика (Восток)</text>
+</string>
+<string id="st_prom_4_name">
+    <text>Промзона. Заводской контрольный пункт</text>
+</string>
+<string id="st_prom_5_name">
+    <text>Промзона. Задние дворы</text>
+</string>
+<string id="st_prom_6_name">
+    <text>Промзона. Межпутье</text>
+</string>
+<string id="st_prom_7_name">
+    <text>Промзона. Тоннель</text>
+</string>
+<string id="st_prom_8_name">
+    <text>Промзона. Роща у вокзала</text>
+</string>
+<string id="st_prom_9_name">
+    <text>Промзона. Южный вокзал</text>
+</string>
+<string id="st_prom_10_name">
+    <text>Промзона. Поляна под холмом</text>
+</string>
+<string id="st_prom_11_name">
+    <text>Промзона. Лагерь в вагоне</text>
+</string>
+<string id="st_prom_12_name">
+    <text>Промзона. Заправочная станция</text>
+</string>
+<string id="st_prom_13_name">
+    <text>Промзона. Лагерь у радара</text>
+</string>
+<string id="st_prom_14_name">
+    <text>Промзона. Радиолокационная станция</text>
+</string>
+<string id="st_prom_15_name">
+    <text>Промзона. Болото</text>
+</string>
+<!-- Dead Lake -->
+<string id="st_deadlake_bandits_quest_smart_name">
+    <text>Мёртвое озеро. Неизвестный лагерь</text>
+</string>
+<string id="st_dl_attakers_smart_name">
+    <text>Мёртвое озеро. Разрушенная башня</text>
+</string>
+<string id="st_dl_shturm_smart_name">
+    <text>Мёртвое озеро. Автобус</text>
+</string>
+<string id="st_lake_smart_terrain_1_name">
+    <text>Мёртвое озеро. Автобусная остановка</text>
+</string>
+<string id="st_lake_smart_terrain_2_name">
+    <text>Мёртвое озеро. Восточная парковка на ферме</text>
+</string>
+<string id="st_lake_smart_terrain_3_name">
+    <text>Мёртвое озеро. Северная деревня</text>
+</string>
+<string id="st_lake_smart_terrain_4_name">
+    <text>Мёртвое озеро. Южный контрольно-пропускной пункт</text>
+</string>
+<string id="st_lake_smart_terrain_5_name">
+    <text>Мёртвое озеро. Западная деревушка</text>
+</string>
+<string id="st_qwe_smart_terrain_2_name">
+    <text>Мёртвое озеро. Западное болото</text>
+</string>
+<string id="st_val_b1_name">
+    <text>Мёртвое озеро. Бассейн</text>
+</string>
+<string id="st_val_sim_4_name">
+    <text>Мёртвое озеро. Северный контрольно-пропускной пункт</text>
+</string>
+<string id="st_val_sim_12_name">
+    <text>Мёртвое озеро. Западная деревня</text>
+</string>
+
+<!-- The neighbourhood of the former research institute -->
+<string id="st_wiz_bandits_boloto_name">
+    <text>Окрестности НИИ. Болото</text>
+</string>
+<string id="st_wiz_bandits_squad_doroga_name">
+    <text>Окрестности НИИ. Дорога</text>
+</string>
+<string id="st_wiz_nauch_name">
+    <text>Окрестности НИИ. Двор базы сталкеров</text>
+</string>
+<string id="st_wiz_sim_1_name">
+    <text>Окрестности НИИ. Лагерь у туннеля</text>
+</string>
+<string id="st_wiz_bivsh_nii_name">
+    <text>Окрестности НИИ. База сталкеров</text>
+</string>
+<string id="st_wiz_derevnya_bandits_name">
+    <text>Окрестности НИИ. Северная деревня</text>
+</string>
+<string id="st_wiz_baza_name">
+    <text>Окрестности НИИ. Неизвестная база</text>
+</string>
+<string id="st_wiz_sim_2_name">
+    <text>Окрестности НИИ. Тоннель</text>
+</string>
+<string id="st_wiz_sim_3_name">
+    <text>Окрестности НИИ. Автомобильная мастерская</text>
+</string>
+<string id="st_wiz_sim_6_name">
+    <text>Окрестности НИИ. Магазин</text>
+</string>
+<string id="st_wiz_sim_7_name">
+    <text>Окрестности НИИ. Аномалия "Электрический круг"</text>
+</string>
+<string id="st_wiz_sim_8_name">
+    <text>Окрестности НИИ. Грузовик на дороге</text>
+</string>
+<string id="st_wiz_stalkers_boloto_name">
+    <text>Окрестности НИИ. Аномалия "Кислотная мясорубка"</text>
+</string>
+<string id="st_wiz_stalkers_derevnya_name">
+    <text>Окрестности НИИ. Южная деревня</text>
+</string>
+
+<!-- Тихие холмы -->
+<string id="st_dol_general_terrain1_name">
+    <text>Тихие холмы. Каменная гора</text>
+</string>
+<string id="st_dol_general_terrain4_name">
+    <text>Тихие холмы. Небольшой лес</text>
+</string>
+<string id="st_dol_cat_terrain_name">
+    <text>Тихие холмы. Гравитационная яма</text>
+</string>
+<string id="st_dol_poltergeist_terrain2_name">
+    <text>Тихие холмы. Аномалия "Аномалия"</text>
+</string>
+<string id="st_dol_poltergeist_terrain3_name">
+    <text>Тихие холмы. Пещера под деревней</text>
+</string>
+<string id="st_dolina_stables_lager_name">
+    <text>Тихие холмы. Парковка на Южной ферме</text>
+</string>
+<string id="st_dolina_military_assault_name">
+    <text>Тихие холмы. Фабрика X-6</text>
+</string>
+<string id="st_dol_swampbeast_terrain_name">
+    <text>Тихие холмы. Мост</text>
+</string>
+<string id="st_dolina_bandit_base_name">
+    <text>Тихие холмы. Фабрика</text>
+</string>
+<string id="st_dolina_monolith_base_name">
+    <text>Тихие холмы. Вход на фабрику X-6</text>
+</string>
+<!-- Central landfill -->
+<string id="st_gar_bandit_sniper_terrain_name">
+    <text>Центральная свалка. Бандитский мост</text>
+</string>
+<string id="st_gar_bridge_lager_name">
+    <text>Центральная свалка. Лагерь у Бандитского моста</text>
+</string>
+<string id="st_gar_cranes_lager_name">
+    <text>Центральная свалка. Кран</text>
+</string>
+<string id="st_gar_greenhouse_lager_name">
+    <text>Центральная свалка. Теплица</text>
+</string>
+<string id="st_gar_hangar_lager_name">
+    <text>Центральная свалка. Вход в Депо</text>
+</string>
+<string id="st_gar_hangar_patrol_name">
+    <text>Центральная свалка. Депо</text>
+</string>
+<string id="st_gar_small_hangar_name">
+    <text>Центральная свалка. Небольшой ангар рядом со складом</text>
+</string>
+<string id="st_gar_dolg_blockpost_name">
+    <text>Центральная свалка. Северный контрольно-пропускной пункт "Долга"</text>
+</string>
+<string id="st_gar_dogs_lair2_name">
+    <text>Центральная свалка. Спуск к Свалке</text>
+</string>
+<string id="st_gar_dram_moment_terrain_name">
+    <text>Центральная свалка. Аномалия "Разрушенная дорога"</text>
+</string>
+<string id="st_gar_road_lager1_name">
+    <text>Центральная свалка. Вход на Свалку</text>
+</string>
+<string id="st_gar_zombies_graveyard_name">
+    <text>Центральная свалка. Свалка</text>
+</string>
+<string id="st_gar_smart_tunnel_name">
+    <text>Центральная свалка. Туннель</text>
+</string>
+<string id="st_gar_smart_terrain_3_6_name">
+    <text>Центральная свалка. Куча радиоактивного хлама</text>
+</string>
+<!-- Anomalous fields -->
+<string id="st_bcr_boar_terrain5_name">
+    <text>Аномальные поля. Опасный путь</text>
+</string>
+<string id="st_bcr_boar_terrain15_name">
+    <text>Аномальные поля. Опасные кусты</text>
+</string>
+<string id="st_bcr_boar_terrain17_name">
+    <text>Аномальные поля. Дорога к контрольно-пропускному пункту</text>
+</string>
+<string id="st_bcr_dog_terrain3_name">
+    <text>Аномальные поля. Поляна у дороги</text>
+</string>
+<string id="st_country_ecolog_terrain1_name">
+    <text>Аномальные поля. Научная база "Алмаз"</text>
+</string>
+<string id="st_country_csky_terrain1_name">
+    <text>Аномальные поля. Деревня у дороги</text>
+</string>
+<string id="st_country_blockpost_name">
+    <text>Аномальные поля. Пропускной пункт</text>
+</string>
+<string id="st_country_bandit_terrain1_name">
+    <text>Аномальные поля. Деревня</text>
+</string>
+<string id="st_country_renegade_terrain1_name">
+    <text>Аномальные поля. Церковь</text>
+</string>
+<string id="st_country_stalker_terrain1_name">
+    <text>Аномальные поля. Дом у аномалии "Кислушка"</text>
+</string>
+
+<!-- South Village -->
+<string id="st_posug_1_name">
+    <text>Южный посёлок. Поляна за болотом</text>
+</string>
+<string id="st_posug_2_name">
+    <text>Южный посёлок. Болотная пасть</text>
+</string>
+<string id="st_posug_3_name">
+    <text>Южный посёлок. Котельная</text>
+</string>
+<string id="st_posug_4_name">
+    <text>Южный посёлок. Скотный двор</text>
+</string>
+<string id="st_posug_5_name">
+    <text>Южный посёлок. Дикая роща</text>
+</string>
+<string id="st_posug_6_name">
+    <text>Южный посёлок. Лагерь у каньона</text>
+</string>
+<string id="st_posug_7_name">
+    <text>Южный посёлок. Гаражи</text>
+</string>
+<string id="st_posug_8_name">
+    <text>Южный посёлок. Дом рядом с гаражами</text>
+</string>
+<string id="st_posug_9_name">
+    <text>Южный посёлок. Жилой квартал</text>
+</string>
+<string id="st_posug_10_name">
+    <text>Южный посёлок. Мертвая поляна</text>
+</string>
+<string id="st_posug_11_name">
+    <text>Южный посёлок. Холм у подстанции</text>
+</string>
+<string id="st_posug_12_name">
+    <text>Южный посёлок. Болотный берег</text>
+</string>
+<string id="st_posug_13_name">
+    <text>Южный посёлок. Школа</text>
+</string>
+<string id="st_posug_14_name">
+    <text>Южный посёлок. Детский сад</text>
+</string>
+<string id="st_posug_15_name">
+    <text>Южный посёлок. Дом рядом с детским садом</text>
+</string>
+<string id="st_posug_16_name">
+    <text>Южный посёлок. Аптека</text>
+</string>
+<string id="st_posug_17_name">
+    <text>Южный посёлок. Дом на холме</text>
+</string>
+<string id="st_posug_18_name">
+    <text>Южный посёлок. Культурный центр "Южный"</text>
+</string>
+<string id="st_posug_19_name">
+    <text>Южный посёлок. Южный частный сектор</text>
+</string>
+<string id="st_posug_20_name">
+    <text>Южный посёлок. Заброшенная заправочная станция</text>
+</string>
+<string id="st_posug_21_name">
+    <text>Южный посёлок. Магазин "Книги"</text>
+</string>
+<string id="st_posug_22_name">
+    <text>Южный посёлок. Главная аллея</text>
+</string>
+<string id="st_posug_23_name">
+    <text>Южный посёлок. Парк</text>
+</string>
+<string id="st_posug_24_name">
+    <text>Южный посёлок. Старые казармы</text>
+</string>
+<string id="st_posug_25_name">
+    <text>Южный посёлок. Поляна у Южной дороги</text>
+</string>
+<string id="st_posug_26_name">
+    <text>Южный посёлок. Мертвые холмы</text>
+</string>
+<string id="st_posug_27_name">
+    <text>Южный посёлок. Северный частный сектор</text>
+</string>
+<string id="st_posug_28_name">
+    <text>Южный посёлок. Перекресток между двориками</text>
+</string>
+<string id="st_posug_29_name">
+    <text>Южный посёлок. Жилой дом рядом с парком</text>
+</string>
+<string id="st_posug_30_name">
+    <text>Южный посёлок. Административные здания</text>
+</string>
+<string id="st_posug_31_name">
+    <text>Южный посёлок. Внутренний двор с гаражами</text>
+</string>
+<string id="st_posug_32_name">
+    <text>Южный посёлок. Тихие холмы</text>
+</string>
+
+	<string id="st_posug_33_name">
+    <text>Южный посёлок. Складская площадь</text>
+</string>
+<string id="st_posug_34_name">
+    <text>Южный посёлок. Зловещий район</text>
+</string>
+<string id="st_posug_35_name">
+    <text>Южный посёлок. Мастерская по ремонту автомобилей</text>
+</string>
+<string id="st_posug_36_name">
+    <text>Южный посёлок. Восточный частный сектор</text>
+</string>
+<string id="st_posug_37_name">
+    <text>Южный посёлок. Поляна на окраине</text>
+</string>
+
+<!-- East Dump -->
+<string id="st_svalk_kpp2_smart_terrain_name">
+    <text>Восточная свалка. Северный контрольно-пропускной пункт "Долга"</text>
+</string>
+<string id="st_svalk_konteyneri_smart_terrain_name">
+    <text>Восточная свалка. Восточный блошиный рынок</text>
+</string>
+<string id="st_svalk_digger_smart_terrain_name">
+    <text>Восточная свалка. Стоянка для экскаваторов</text>
+</string>
+<string id="st_svalk_piron_smart_terrain_name">
+    <text>Восточная свалка. Пирон</text>
+</string>
+<string id="st_svalk_depo_smart_terrain_name">
+    <text>Восточная свалка. Восточное депо</text>
+</string>
+<string id="st_svalk_antena_smart_terrain_name">
+    <text>Восточная свалка. Антенна</text>
+</string>
+<string id="st_svalk_perekrestok_smart_terrain_name">
+    <text>Восточная свалка. Перекресток</text>
+</string>
+<string id="st_svalk_kpp_smart_terrain_name">
+    <text>Восточная свалка. Южный контрольно-пропускной пункт</text>
+</string>
+<string id="st_svalk_sim_10_name">
+    <text>Восточная свалка. Восточная свалка</text>
+</string>
+
+<!-- East Бар -->
+<string id="st_bar_smart_terrain_0_0_name">
+    <text>Восточный Бар. Бар "100 ренген"</text>
+</string>
+<string id="st_bar_smart_terrain_0_1_name">
+    <text>Восточный Бар. Заброшенный ангар</text>
+</string>
+<string id="st_bar_smart_terrain_0_3_name">
+    <text>Восточный Бар. Арена</text>
+</string>
+<string id="st_bar_smart_terrain_1_0_name">
+    <text>Восточный Бар. Казармы "Долга"</text>
+</string>
+<string id="st_bar_smart_terrain_1_1_name">
+    <text>Восточный Бар. База "Долга"</text>
+</string>
+<string id="st_bar_smart_terrain_1_3_name">
+    <text>Восточный Бар. Южный контрольно-пропускной пункт "Долга"</text>
+</string>
+<string id="st_bar_smart_terrain_1_4_name">
+    <text>Восточный Бар. Северный контрольно-пропускной пункт "Долга"</text>
+</string>
+<string id="st_bar_smart_terrain_1_5_name">
+    <text>Восточный Бар. Подземный путь</text>
+</string>
+<string id="st_bar_smart_terrain_2_0_name">
+    <text>Восточный Бар. Вербовочный лагерь "Чистое небо"</text>
+</string>
+<string id="st_bar_smart_terrain_3_0_name">
+    <text>Восточный Бар. Дорога к Восточной свалке</text>
+</string>
+<string id="st_bar_smart_terrain_3_2_name">
+    <text>Восточный Бар. Туманный лес</text>
+</string>
+<string id="st_bar_smart_terrain_3_3_name">
+    <text>Восточный Бар. Переход в Южную деревню</text>
+</string>
+
+<!-- East Cordon -->
+<string id="st_esc_smart_terrain_0_0_name">
+    <text>Восточный Кордон. Барьер</text>
+</string>
+<string id="st_esc_smart_terrain_0_1_name">
+    <text>Восточный Кордон. Аномалия "Пекарня"</text>
+</string>
+<string id="st_esc_smart_terrain_0_1_surge_name">
+    <text>Восточный Кордон. Лифт</text>
+</string>
+<string id="st_esc_smart_terrain_0_0_2_name">
+    <text>Восточный Кордон. Палатка Сталкера</text>
+</string>
+<string id="st_esc_smart_terrain_1_0_name">
+    <text>Восточный Кордон. Восточный транспортный узел</text>
+</string>
+<string id="st_esc_smart_terrain_1_1_name">
+    <text>Восточный Кордон. Западная деревня новичков</text>
+</string>
+<string id="st_esc_smart_terrain_1_2_name">
+    <text>Восточный Кордон. Лагерь у трейлера</text>
+</string>
+<string id="st_esc_smart_terrain_2_0_name">
+    <text>Восточный Кордон. База бандитов</text>
+</string>
+<string id="st_esc_smart_terrain_2_1_name">
+    <text>Восточный Кордон. Тоннель</text>
+</string>
+<string id="st_esc_smart_terrain_2_2_name">
+    <text>Восточный Кордон. Северный контрольно-пропускной пункт</text>
+</string>
+<string id="st_esc_smart_terrain_2_2_surge_name">
+    <text>Восточный Кордон. Восточные руины деревни</text>
+</string>
+<string id="st_esc_smart_terrain_3_5_name">
+    <text>Восточный Кордон. Поезд</text>
+</string>
+<string id="st_esc_smart_terrain_3_6_name">
+    <text>Восточный Кордон. Лесок</text>
+</string>
+<string id="st_esc_smart_terrain_3_9_name">
+    <text>Восточный Кордон. Аномалия "Глухая яма"</text>
+</string>
+<string id="st_esc_smart_terrain_q_name">
+    <text>Восточный Кордон. Аномалия "Горящая земля"</text>
+</string>
+
+<!-- Chernobyl1 -->
+<string id="st_out_smart_terrain_1_name">
+    <text>Чернобыль-1. Северная база сталкеров</text>
+</string>
+<string id="st_out_smart_terrain_3_name">
+    <text>Чернобыль-1. Лагерь "Долга"</text>
+</string>
+<string id="st_out_smart_terrain_4_name">
+    <text>Чернобыль-1. Лагерь "Приют"</text>
+</string>
+<string id="st_out_smart_shturm_name">
+    <text>Чернобыль-1. Дорога к военной базе Х-2</text>
+</string>
+<string id="st_out_smart_controz_name">
+    <text>Чернобыль-1. Вход на военную базу Х-2</text>
+</string>
+<string id="st_out_smart_terrain_5_name">
+    <text>Чернобыль-1. Военная база Х-2</text>
+</string>
+<string id="st_out_sim_13_name">
+    <text>Чернобыль-1. Небольшой контрольно-пропускной пункт</text>
+</string>
+<string id="st_out_b2_anomaly_name">
+    <text>Чернобыль-1. Аномалия "Спираль"</text>
+</string>
+<string id="st_out_faradey_zombie_name">
+    <text>Чернобыль-1. Дорога к Предбаннику</text>
+</string>
+<string id="st_out_sim_1_name">
+    <text>Чернобыль-1. Овощной магазин</text>
+</string>
+<string id="st_out_kgb_go_name">
+    <text>Чернобыль-1. Тренировочная площадка</text>
+</string>
+<string id="st_out_start_controller_name">
+    <text>Чернобыль-1. Дорога из Предбанника</text>
+</string>
+<string id="st_out_zdanie_kgb_name">
+    <text>Чернобыль-1. Здание КГБ</text>
+</string>
+<string id="st_out_wounded_kv_2_name">
+    <text>Чернобыль-1. Перекресток</text>
+</string>
+<!-- Predbannik -->
+<string id="st_pre_sim_1_name">
+    <text>Предбанник. Северный контрольно-пропускной пункт</text>
+</string>
+<string id="st_pre_sim_2_name">
+    <text>Предбанник. Скрытый клад</text>
+</string>
+<string id="st_pre_sim_3_name">
+    <text>Предбанник. Лягушачья деревня</text>
+</string>
+<string id="st_pre_sim_4_name">
+    <text>Предбанник. Опасный лагерь</text>
+</string>
+<string id="st_pre_sim_5_name">
+    <text>Предбанник. Токсичный оазис</text>
+</string>
+<string id="st_pre_sim_6_name">
+    <text>Предбанник. Магазин "Товары"</text>
+</string>
+<string id="st_pre_sim_10_name">
+    <text>Предбанник. Аномалия "Потрошитель"</text>
+</string>
+<string id="st_pre_sim_11_name">
+    <text>Предбанник. Вход на военную вертолетную площадку</text>
+</string>
+<string id="st_pre_sim_12_name">
+    <text>Предбанник. Военная вертолетная площадка</text>
+</string>
+<string id="st_pre_baza1_name">
+    <text>Предбанник. Вход на военную базу</text>
+</string>
+<string id="st_pre_baza2_name">
+    <text>Предбанник. Военная база</text>
+</string>
+<string id="st_pre_zavod_name">
+    <text>Предбанник. Восточная фабрика</text>
+</string>
+<string id="st_pre_master_roman_name">
+    <text>Предбанник. Военный ангар</text>
+</string>
+<string id="st_pre_bar_name">
+    <text>Предбанник. Бар</text>
+</string>
+<string id="st_pre_lair2_name">
+    <text>Предбанник. Второе логово</text>
+</string>
+<string id="st_pre_lair3_name">
+    <text>Предбанник. Третье логово</text>
+</string>
+<string id="st_pre_sim_7_name">
+    <text>Предбанник. Вход в туннель</text>
+</string>
+<string id="st_pre_sim_8_name">
+    <text>Предбанник. Северо-западная часть деревни</text>
+</string>
+<string id="st_pre_sim_9_name">
+    <text>Предбанник. Северная лачуга</text>
+</string>
+<!-- Glade -->
+<string id="st_pol_smart_terrain_1_1_name">
+    <text>Поляна. Перекресток полян</text>
+</string>
+<string id="st_pol_smart_terrain_1_3_name">
+    <text>Поляна. Лагерь бандитов</text>
+</string>
+<string id="st_pol_smart_terrain_1_5_name">
+    <text>Поляна. Одинокий дом</text>
+</string>
+<string id="st_pol_smart_terrain_zombie_yard_name">
+    <text>Поляна. Двор</text>
+</string>
+
+<!-- The Forgotten Лес -->
+<string id="st_les_controller_centr_name">
+    <text>Забытый лес. Лес</text>
+</string>
+<string id="st_les_rotan_vkustah_name">
+    <text>Забытый лес. Переход на Свалку</text>
+</string>
+<string id="st_les_zombi_naholme_name">
+    <text>Забытый лес. Переход на Поляну</text>
+</string>
+
+<!-- Dark Hollow -->
+<string id="st_ds_autostop_name">
+    <text>Темная лощина. Заправочная станция</text>
+</string>
+<string id="st_ds_dark_stalker_name">
+    <text>Темная лощина. Мины</text>
+</string>
+<string id="st_ds_most_terrain_name">
+    <text>Темная лощина. Светящийся мост</text>
+</string>
+<!-- The old road -->
+<string id="st_old_atp_freedom_terrain_name">
+    <text>Старая дорога. Юго-восточное АТП "Свобода"</text>
+</string>
+<string id="st_old_farm_bandit_terrain_name">
+    <text>Старая дорога. Старая ферма</text>
+</string>
+<string id="st_old_bath_monolith_terrain_name">
+    <text>Старая дорога. Северный бассейн</text>
+</string>
+<string id="st_old_sim_1_name">
+    <text>Старая дорога. Тихий лес рядом со Старой фермой</text>
+</string>
+<string id="st_old_sim_2_name">
+    <text>Старая дорога. Тихий лес</text>
+</string>
+<string id="st_old_sim_11_name">
+    <text>Старая дорога. Лес у дороги</text>
+</string>
+<string id="st_old_sim_13_name">
+    <text>Старая дорога. Аномалия "Симбионт"</text>
+</string>
+<string id="st_old_sim_14_name">
+    <text>Старая дорога. Маленькое озеро</text>
+</string>
+<string id="st_old_stancia_stalker_terrain_name">
+    <text>Старая дорога. Восточная насосная станция</text>
+</string>
+<string id="st_old_swamp_swampbeast_terrain_name">
+    <text>Старая дорога. Аномалия "Соснодуб на болоте"</text>
+</string>
+<string id="st_old_village_zombie_terrain_name">
+    <text>Старая дорога. Деревня зомби</text>
+</string>
+<string id="st_old_workshop_zombie_terrain_name">
+    <text>Старая дорога. Советская мастерская</text>
+</string>
+
+</string_table>

@@ -1,0 +1,53 @@
+<string_table>
+	<string id="st_player_skills_medicine">
+		<text>First Aid</text>
+	</string>
+	<string id="st_new_level_medicine">
+		<text>$clr_green• $clr_whiteRestoration boost from medical items improved.</text>
+	</string>
+	
+	<string id="st_player_skills_insanity">
+		<text>Stress Resistance</text>
+	</string>
+	<string id="st_new_level_insanity">
+		<text>$clr_cyan• $clr_whitePsy recovery rate improved.\n$clr_cyan• $clr_whitePsy damage resistance improved.</text>
+	</string>
+	
+	<string id="st_player_skills_tinkering">
+		<text>Maintenance</text>
+	</string>
+	<string id="st_new_level_tinkering">
+		<text>$clr_cyan• $clr_whiteRepair tool handling improved.</text>
+	</string>
+	<string id="st_tinkering_refund">
+		<text>You repaired the item without spending a use of the repair tool.</text>
+	</string>
+	
+	<string id="st_player_skills_bartering">
+		<text>Charisma</text>
+	</string>
+	<string id="st_new_level_bartering">
+		<text>$clr_yellow• $clr_whiteBuy and sell prices improved.\n$clr_yellow• $clr_whiteMoney from task rewards increased.</text>
+	</string>
+	
+	<string id="st_player_skills_magloading">
+		<text>Mag Drills</text>
+	</string>
+	<string id="st_new_level_magloading">
+		<text>$clr_green• $clr_whiteAmmo loading and unloading speed improved.</text>
+	</string>
+	
+	<string id="st_player_skills_lockpicking">
+		<text>Lockpicking</text>
+	</string>
+	<string id="st_new_level_lockpicking">
+		<text>$clr_purple• $clr_whiteLocks are easier to pick.</text>
+	</string>
+	
+	<string id="st_player_skills_reloading">
+		<text>Weapon Handling</text>
+	</string>
+	<string id="st_new_level_reloading">
+		<text>$clr_cyan• $clr_whiteReload speed improved.\n$clr_green• $clr_whiteGun raise/holster speed improved.</text>
+	</string>
+</string_table>

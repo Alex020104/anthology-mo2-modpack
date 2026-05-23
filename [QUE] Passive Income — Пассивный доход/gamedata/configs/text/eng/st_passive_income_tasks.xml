@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+
+<string_table>
+
+    <string id="passinc_task_title">
+        <text>Employment active</text>
+    </string>
+
+    <string id="passinc_task_descr">
+        <text>You are employed.</text>
+    </string>
+
+    <string id="passinc_employer_community_ecolog">
+        <text>Ecologists</text>
+    </string>
+    <string id="passinc_employer_community_isg">
+        <text>UNISG</text>
+    </string>
+    <string id="passinc_employer_community_army">
+        <text>Military</text>
+    </string>
+    <string id="passinc_employer_community_dolg">
+        <text>Duty</text>
+    </string>
+    <string id="passinc_employer_community_killer">
+        <text>Mercenaries</text>
+    </string>
+    <string id="passinc_employer_community_freedom">
+        <text>Freedom</text>
+    </string>
+	
+	<!-- New Factions -->
+	<string id="passinc_employer_community_monolith">
+		<text>Monolith</text>
+	</string>
+	
+	<string id="passinc_employer_community_greh">
+		<text>Sin</text>
+	</string>
+
+	
+	
+    <string id="passinc_employer_name">
+        <text>You have a contract with %s</text>
+    </string>
+
+    <string id="passinc_descr_middle">
+        <text>\nYou will earn each day:</text>
+    </string>
+
+    <string id="passinc_descr_base">
+        <text>\nA base salary of %s.</text>
+    </string>
+
+    <string id="passinc_descr_complete_task">
+        <text>\n%s for every completed task.</text>
+    </string>
+
+    <string id="passinc_descr_monster_killed">
+        <text>\n%s for every mutant killed.</text>
+    </string>
+
+    <string id="passinc_descr_npc_killed">
+        <text>\n%s for every enemy of our faction killed.</text>
+    </string>
+    
+    <string id="passinc_descr_arti_found">
+        <text>\n%s for every artifact you find.</text>
+    </string>
+
+    <string id="passinc_descr_employment_stage">
+        <text>\nEmployment stage:</text>
+    </string>
+    
+    <string id="passinc_unorg_descr_employment_stage">
+        <text>\nEmployer's trust:</text>
+    </string>
+    
+    <string id="passinc_unorg_descr_middle">
+        <text>\nComplete at least one job for %s each day to keep the contract active.</text>
+    </string>
+
+    <string id="passinc_unorg_complete_task">
+        <text>\nToday you completed %s jobs for %s</text>
+    </string>
+    
+    <string id="passinc_unorg_descr_bonus">
+        <text>\nBonus package every %s completed jobs</text>
+    </string>
+
+    <string id="passinc_task_title_fallback">
+        <text>Salary contract active</text>
+    </string>
+
+    <string id="passinc_task_title_functor">
+        <text>Salary contract active (%s)</text>
+    </string>
+    
+    <string id="passinc_descr_progress">
+        <text>\nProgress to next promotion: %s%</text>
+    </string>
+
+    <string id="passinc_descr_completed">
+        <text>\nYou have completed you contract's objectives for today</text>
+    </string>
+
+    <string id="passinc_descr_not_completed">
+        <text>\nYou have not yet completed you contract's objectives for today</text>
+    </string>
+
+    <string id="passinc_descr_divider">
+        <text>\n----------------------------------------</text>
+    </string>
+
+
+
+</string_table>

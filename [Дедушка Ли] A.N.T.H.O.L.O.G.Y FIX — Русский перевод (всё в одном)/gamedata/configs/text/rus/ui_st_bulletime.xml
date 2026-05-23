@@ -1,0 +1,48 @@
+<!-- 
+	Anomaly Modconfiguration Menu strings
+	
+-->
+
+<string_table>
+
+
+	<string id="ui_mcm_title_bullettime">
+		<text>Замедление времени полёта пули</text>
+	</string>
+
+	<string id="ui_mcm_menu_bullettime">
+		<text>Время пули</text>
+	</string>
+	<string id="ui_mcm_bullettime_screenfx">
+		<text>Включить ScreenFX</text>
+	</string>
+	<string id="ui_mcm_bullettime_screenfx_desc">
+		<text>Включить экранные эффекты при активном "Bullet Time".</text>
+	</string>
+
+    <string id="ui_mcm_bullettime_drainrate">
+		<text>Скорость расхода выносливости</text>
+	</string>
+	<string id="ui_mcm_bullettime_drainrate_desc">
+		<text>Насколько быстро расходуется выносливость во время использования.</text>
+	</string>
+
+    <string id="ui_mcm_bullettime_mintime">
+		<text>Фактор времени</text>
+	</string>
+	<string id="ui_mcm_bullettime_mintime_desc">
+		<text>Минимальный фактор времени.</text>
+	</string>
+
+    <string id="ui_mcm_bullettime_dodge">
+		<text>Уклонение</text>
+	</string>
+	<string id="ui_mcm_bullettime_dodge_desc">
+		<text>Выполните уклонение при активации "Bullet Time".</text>
+	</string>
+	
+	<string id="kb_bullet_time">
+		<text>Bullet Time</text>
+	</string>
+
+</string_table>

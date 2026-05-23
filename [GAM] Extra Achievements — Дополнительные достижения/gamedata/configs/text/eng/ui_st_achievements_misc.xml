@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="st_achieve_misc_cur_points">
+		<text>Current points:</text>
+	</string>
+
+	<string id="st_achieve_misc_tot_points">
+		<text>Total points earned:</text>
+	</string>
+
+	<string id="st_achieve_misc_tot_achievements">
+		<text>Achievements:</text>
+	</string>
+
+	<string id="st_achieve_misc_buy_btn">
+		<text>b\nu\ny</text>
+	</string>
+
+	<string id="st_achieve_misc_reward">
+		<text>%s points</text>
+	</string>
+
+	<string id="st_achieve_box_buy">
+		<text>Buy</text>
+	</string>
+
+	<string id="st_achieve_box_open">
+		<text>Received items: \n</text>
+	</string>
+
+	<string id="st_achieve_circle">
+		<text>•</text>
+	</string>
+
+	<string id="st_achieve_box_descr">
+		<text>Possible items:</text>
+	</string>
+	<string id="st_achieve_box_type_junk">
+		<text>junk</text>
+	</string>
+	<string id="st_achieve_box_type_food">
+		<text>food/drink/cigarettes</text>
+	</string>
+	<string id="st_achieve_box_type_medical">
+		<text>medicine</text>
+	</string>
+	<string id="st_achieve_box_type_repair">
+		<text>repair item</text>
+	</string>
+	<string id="st_achieve_box_type_ammo">
+		<text>ammo</text>
+	</string>
+	<string id="st_achieve_box_type_artefact">
+		<text>artefact</text>
+	</string>
+	<string id="st_achieve_box_type_weapon">
+		<text>weapon</text>
+	</string>
+	<string id="st_achieve_box_type_armor">
+		<text>outfit</text>
+	</string>
+	<string id="st_achieve_box_type_helmet">
+		<text>helmet</text>
+	</string>
+
+	<string id="st_achievement_box_1">
+		<text>Small achievement bag</text>
+	</string>
+	<string id="st_achievement_box_1_descr">
+		<text>A small bag containing a number of cheap items.</text>
+	</string>
+
+	<string id="st_achievement_box_2">
+		<text>Medium achievement bag</text>
+	</string>
+	<string id="st_achievement_box_2_descr">
+		<text>An average bag containing a number of different items.</text>
+	</string>
+
+	<string id="st_achievement_box_3">
+		<text>Huge achievement box</text>
+	</string>
+	<string id="st_achievement_box_3_descr">
+		<text>A huge box containing items of different value.</text>
+	</string>
+
+
+	<!-- MCM -->
+	<string id="ui_mcm_xcvb_achievements_title">
+		<text>Achievements</text>
+	</string>
+	<string id="ui_mcm_menu_xcvb_achievements">
+		<text>Achievements</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_achievements_open_btn">
+		<text>Open achievements menu</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_achievements_hud_snd">
+		<text>Achievement gain sound</text>
+	</string>
+
+</string_table>

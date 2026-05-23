@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+	<string id="ui_mcm_fatigue_title">
+		<text>Fatigue</text>
+	</string>
+	<string id="ui_mcm_menu_fatigue">
+		<text>Fatigue</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_campfire_regen">
+		<text>Campfire Regen Multiplier</text>
+	</string>
+	<string id="ui_mcm_fatigue_campfire_regen_desc">
+		<text>Multiplier for fatigue reduction rate when in 5 meters radius of lit campfire. Value of "1" means 6% reduction per hour. (Default: 1)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_increase_mult">
+		<text>Overall Fatigue Multiplier</text>
+	</string>
+	<string id="ui_mcm_fatigue_increase_mult_desc">
+		<text>Multiplier for power drain caused by fatigue. Bigger multiplier drains your power faster. (Default: 1)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_walk_mult">
+		<text>Walk Multiplier</text>
+	</string>
+	<string id="ui_mcm_fatigue_walk_mult_desc">
+		<text>Multiplier of fatigue during walking. (Default: 1)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_run_mult">
+		<text>Run Multiplier</text>
+	</string>
+	<string id="ui_mcm_fatigue_run_mult_desc">
+		<text>Multiplier of fatigue during running. (Default: 1)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_sprint_mult">
+		<text>Sprint Multiplier</text>
+	</string>
+	<string id="ui_mcm_fatigue_sprint_mult_desc">
+		<text>Multiplier of fatigue during sprinting. (Default: 1)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_jump_mult">
+		<text>Jump Multiplier</text>
+	</string>
+	<string id="ui_mcm_fatigue_jump_mult_desc">
+		<text>Multiplier of fatigue during jumping. (Default: 1)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_sleep_regen_per_hour">
+		<text>Sleep Regeneration in %</text>
+	</string>
+	<string id="ui_mcm_fatigue_sleep_regen_per_hour_desc">
+		<text>Regeneration for each hour of sleep. (Default: 8)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_max_fatigue">
+		<text>Maximum Fatigue in %</text>
+	</string>
+	<string id="ui_mcm_fatigue_max_fatigue_desc">
+		<text>Maximum amount that fatigue can reach. Won't go above than this value. (Default: 75)</text>
+	</string>
+
+	<string id="ui_mcm_fatigue_debug_mode">
+		<text>Debug Mode</text>
+	</string>
+	<string id="ui_mcm_fatigue_debug_mode_desc">
+		<text>Activates debug mode. In debug mode you can see: total fatigue (bottom of the screen); movement speed (dynamic news); fatigue increase/decrease from consumables (console). (Default: obviously "disabled" xd)</text>
+	</string>
+
+</string_table>

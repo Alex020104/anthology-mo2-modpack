@@ -1,0 +1,36 @@
+function on_game_start()
+    RegisterScriptCallback("on_mouse_wheel",on_mouse_wheel)
+end
+
+function on_mouse_wheel(d, flags)
+	local MOD_ALT = key_state(DIK_keys.DIK_RMENU) ~= 0	or key_state(DIK_keys.DIK_LMENU) ~= 0
+	if not MOD_ALT then return end
+
+	local inv_gui = ui_inventory.GUI
+	if not (inv_gui and inv_gui:IsShown()) then return end
+
+	local index
+	local cat_count = #inv_gui.sort_btn
+	for i=1, cat_count do
+		if inv_gui.sort_btn[i]:GetCheck() then
+			index = i
+			break
+		end
+	end
+
+	if d > 0 then
+		index = index + 1
+		if index > cat_count then
+			index = 1
+		end
+	else
+		index = index - 1
+		if index < 1 then
+			index = cat_count
+		end
+	end
+
+	inv_gui:On_Sort(index,true)
+	inv_gui:On_Sort(index)
+	flags.ret_value = false -- prevents scrolling down in the inventory window
+end

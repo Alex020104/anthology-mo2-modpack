@@ -1,0 +1,1875 @@
+-- arm bones without delay of "0" are crashing game when NPC uses weapon !!
+-- when body part has delay it will hide only the last parent i.e. if u try to hide upperarm it will hide only hand
+
+-- mcm configs
+local enable_for_stalkers = dismemb_mcm.get_config("enable_stalker")
+local enable_for_mutants = dismemb_mcm.get_config("enable_mutant")
+
+local enable_particles = true
+local hit_power_threshold = dismemb_mcm.get_config("hit_threshold")		-- if last hit passed threshold we hide body part (0.6 def)
+local enable_foot = dismemb_mcm.get_config("enable_foot")		-- looks weird
+local wm_ttl = dismemb_mcm.get_config("wm_lifetime")		-- blood lifetime in seconds
+
+local enable_meshes = dismemb_mcm.get_config("enable_meshes")
+local obj_ttl = dismemb_mcm.get_config("meshes_lifetime")		-- seconds for limb objects to be deleted
+
+local debugx = dismemb_mcm.get_config("debugx")
+local debug_hit = dismemb_mcm.get_config("debug_hit")
+
+local allow_mutant_muti = dismemb_mcm.get_config("mutant_muti")		-- mutilation from mutant
+local max_explosion_limbs = dismemb_mcm.get_config("max_explosion_limbs")
+
+local allowed_hit_types = {
+	[hit.explosion] = dismemb_mcm.get_config("allow_exp"),		-- 8	(explosions)
+	[hit.wound] = dismemb_mcm.get_config("allow_wound"),		-- 5	(melee/mutants)
+	[hit.strike] = dismemb_mcm.get_config("allow_strike"),			-- 7	(some mutants)
+	[hit.fire_wound] = dismemb_mcm.get_config("allow_ball"),	-- 6	(bullets)
+}
+
+local wound_t = {}
+local obj_t = {}		-- for limb objects
+local obj_wm = {}		-- for limb wms (not to run updates in obj_t constantly)
+
+local def_wm_size = dismemb_mcm.get_config("wm_size")	-- default wallmark size if [3] missing
+local arm_delay = 0		-- need next frame delay for arms [4]
+
+local creatures_cls = {
+	[clsid.script_stalker]			= { "human", "stalker_damage" },
+	[clsid.dog_s] 					= { "dog", "m_dog_damage" },
+	[clsid.pseudodog_s] 		= { "pseudo_dog", "m_pseudodog_damage" },
+	[clsid.psy_dog_s] 			= { "pseudo_dog", "m_pseudodog_damage" },
+	[clsid.boar_s]					= { "boar", "m_boar_damage" },
+	[clsid.flesh_s]					= { "flesh", "m_flesh_damage" },
+	[clsid.cat_s] 						= { "cat", "cat_damage" },
+	[clsid.zombie_s] 				= { "zombie", "m_zombie_damage" },
+	[clsid.tushkano_s] 			= { "tushkano", "m_tushkano_damage" },
+	[clsid.snork_s] 					= { "snork", "m_snork_damage" },
+	[clsid.controller_s] 			= { "controller", "m_controller_damage" },
+	[clsid.bloodsucker_s] 		= { "bloodsucker", "m_bloodsucker_damage" },
+	[clsid.chimera_s] 				= { "chimera" },
+	[clsid.burer_s] 					= { "burer", "m_burer_damage" },
+	[clsid.fracture_s] 				= { "fracture", "fracture_normal_damage" },
+	[clsid.gigant_s] 				= { "giant", "m_giant_damage" },
+}
+
+local creatures_kind = {
+	["SM_KARLIK"] 	 = { "karlik", "m_tushkano_damage" },
+	["SM_PSYSUCKER"] = { "bloodsucker", "m_bloodsucker_damage" },
+	["SM_LURKER"] 	 = { "chimera" },
+}
+
+-- [hitted_bone] = { bone_to_remove, { wm_size, wm_pos, wm_dir_y }, delay }
+local limb_map = {
+
+------------------ stalkers ------------------
+	human = {
+		-- head
+		bip01_head = { "bip01_head", { nil, nil, -1 } },
+		jaw_1 = { "jaw_1", { nil, nil, -1 } },
+		eye_left = { "bip01_head", { nil, nil, -1 } },
+		eyelid_1 = { "bip01_head", { nil, nil, -1 } },
+		eye_right = { "bip01_head", { nil, nil, -1 }},
+		bip01_neck = { "bip01_head", { nil, nil, -1 } },
+
+		-- left arm
+--		bip01_l_forearm = { "bip01_l_forearm", nil, arm_delay },
+
+		-- left upper arm
+--		bip01_l_upperarm = { "bip01_l_upperarm", nil, arm_delay },
+
+		-- left hand
+		bip01_l_hand = { "bip01_l_hand", nil, arm_delay },
+		bip01_l_finger2 = { "bip01_l_hand", nil, arm_delay },
+		bip01_l_finger21 = { "bip01_l_hand", nil, arm_delay },
+		bip01_l_finger22 = { "bip01_l_hand", nil, arm_delay },
+		bip01_l_finger1 = { "bip01_l_hand", nil, arm_delay },
+		bip01_l_finger11 = { "bip01_l_hand", nil, arm_delay },
+		bip01_l_finger12 = { "bip01_l_hand", nil, arm_delay },
+		bip01_l_finger0 = { "bip01_l_hand", nil, arm_delay },
+		bip01_l_finger01 = { "bip01_l_hand", nil, arm_delay },
+		bip01_l_finger02 = { "bip01_l_hand", nil, arm_delay },
+
+		-- right arm
+--		bip01_r_forearm = { "bip01_r_forearm", nil, arm_delay },
+
+		-- right upper arm
+--		bip01_r_upperarm = { "bip01_r_upperarm", nil, arm_delay },
+
+		-- right hand
+		bip01_r_hand = { "bip01_r_hand", nil, arm_delay },
+		bip01_r_finger2 = { "bip01_r_hand", nil, arm_delay },
+		bip01_r_finger21 = { "bip01_r_hand", nil, arm_delay },
+		bip01_r_finger22 = { "bip01_r_hand", nil, arm_delay },
+		bip01_r_finger1 = { "bip01_r_hand", nil, arm_delay },
+		bip01_r_finger11 = { "bip01_r_hand", nil, arm_delay },
+		bip01_r_finger12 = { "bip01_r_hand", nil, arm_delay },
+		bip01_r_finger0 = { "bip01_r_hand", nil, arm_delay },
+		bip01_r_finger01 = { "bip01_r_hand", nil, arm_delay },
+		bip01_r_finger02 = { "bip01_r_hand", nil, arm_delay },
+
+		-- left foot
+		bip01_l_toe0 = { enable_foot and "bip01_l_foot" or "bip01_l_calf" },
+		bip01_l_foot = { enable_foot and "bip01_l_foot" or "bip01_l_calf" },
+
+		-- left leg
+		bip01_l_calf = { "bip01_l_calf" },
+
+		-- left upper leg
+		bip01_l_thigh = { "bip01_l_thigh" },
+
+		-- right foot
+		bip01_r_toe0 = { enable_foot and "bip01_r_foot" or "bip01_r_calf" },
+		bip01_r_foot = { enable_foot and "bip01_r_foot" or "bip01_r_calf" },
+
+		-- right leg
+		bip01_r_calf = { "bip01_r_calf" },
+
+		-- right upper leg
+		bip01_r_thigh = { "bip01_r_thigh" },
+
+		-- explosion
+		explosion_1 = { "bip01_l_hand", nil, arm_delay },
+		explosion_2 = { "bip01_r_hand", nil, arm_delay },
+		explosion_3 = { "bip01_l_calf" },
+		explosion_4 = { "bip01_r_calf" },
+		explosion_5 = { "bip01_l_calf" },
+		explosion_6 = { "bip01_r_calf" },
+		explosion_7 = { "bip01_l_thigh" },
+		explosion_8 = { "bip01_r_thigh" },
+	},
+
+
+------------------ doggo ------------------
+	dog = {
+		-- legs back
+		bip01_l_toe0 = { "bip01_l_horselink" },
+		bip01_l_foot = { "bip01_l_horselink" },
+		bip01_l_horselink = { "bip01_l_horselink" },
+		bip01_l_calf = { "bip01_l_calf" },
+		bip01_l_thigh = { "bip01_l_thigh" },
+
+		bip01_r_toe0 = { "bip01_r_horselink" },
+		bip01_r_foot = { "bip01_r_horselink" },
+		bip01_r_horselink = { "bip01_r_horselink" },
+		bip01_r_calf = { "bip01_r_calf" },
+		bip01_r_thigh = { "bip01_r_thigh" },
+
+		-- legs front
+		bip01_l_finger01 = { "bip01_l_hand" },
+		bip01_l_finger0 = { "bip01_l_hand" },
+		bip01_l_hand = { "bip01_l_hand" },
+		bip01_l_forearm = { "bip01_l_forearm" },
+		bip01_l_upperarm = { "bip01_l_upperarm" },
+
+		bip01_r_finger01 = { "bip01_r_hand" },
+		bip01_r_finger0 = { "bip01_r_hand" },
+		bip01_r_hand = { "bip01_r_hand" },
+		bip01_r_forearm = { "bip01_r_forearm" },
+		bip01_r_upperarm = { "bip01_r_upperarm" },
+
+		-- head
+		bip01_ponytail2 = { "bip01_ponytail2", { nil, nil, -1 } }, 	-- "bip01_head"
+		bip01_head = { "bip01_head", { nil, nil, -1 } },
+		bip01_neck = { "bip01_neck", { nil, nil, -1 } },	-- half of body disappear
+
+		-- explosion
+		explosion_1 = { "bip01_l_forearm" },
+		explosion_2 = { "bip01_r_forearm" },
+		explosion_3 = { "bip01_l_upperarm" },
+		explosion_4 = { "bip01_r_upperarm" },
+		explosion_5 = { "bip01_l_calf" },
+		explosion_6 = { "bip01_r_calf" },
+		explosion_7 = { "bip01_l_thigh" },
+		explosion_8 = { "bip01_r_thigh" },
+	},
+
+
+------------------ pseudo dog ------------------
+	pseudo_dog = {
+		-- legs back
+		bip01_l_toe0 = { "bip01_l_horselink" },
+		bip01_l_foot = { "bip01_l_horselink" },
+		bip01_l_horselink = { "bip01_l_horselink" },
+		bip01_l_calf = { "bip01_l_calf" },
+		bip01_l_thigh = { "bip01_l_thigh" },
+
+		bip01_r_toe0 = { "bip01_r_horselink" },
+		bip01_r_foot = { "bip01_r_horselink" },
+		bip01_r_horselink = { "bip01_r_horselink" },
+		bip01_r_calf = { "bip01_r_calf" },
+		bip01_r_thigh = { "bip01_r_thigh" },
+
+		-- legs front
+		bip01_l_finger0 = { "bip01_l_hand" },
+		bip01_l_hand = { "bip01_l_hand" },
+		bip01_l_forearm = { "bip01_l_forearm" },
+		bip01_l_upperarm = { "bip01_l_upperarm" },
+
+		bip01_r_finger0 = { "bip01_r_hand" },
+		bip01_r_hand = { "bip01_r_hand" },
+		bip01_r_forearm = { "bip01_r_forearm" },
+		bip01_r_upperarm = { "bip01_r_upperarm" },
+
+		-- head
+		bone02 = { "bone01", { nil, nil, -1 } },
+		bone01 = { "bone01", { nil, nil, -1 } },
+		bip01_ponytail1 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail2 = { "bip01_head", { nil, nil, -1 } },
+		bip01_head = { "bip01_head", { nil, nil, -1 } },
+
+		-- explosion
+		explosion_1 = { "bip01_l_forearm" },
+		explosion_2 = { "bip01_r_forearm" },
+		explosion_3 = { "bip01_l_upperarm" },
+		explosion_4 = { "bip01_r_upperarm" },
+		explosion_5 = { "bip01_l_calf" },
+		explosion_6 = { "bip01_r_calf" },
+		explosion_7 = { "bip01_l_thigh" },
+		explosion_8 = { "bip01_r_thigh" },
+	},
+
+
+------------------ boar ------------------
+	boar = {
+		-- legs back
+		bip01_l_toe0 = { "bip01_l_horselink" },
+		bip01_l_foot = { "bip01_l_horselink" },
+		bip01_l_horselink = { "bip01_l_horselink" },
+		bip01_l_calf = { "bip01_l_calf" },
+		bip01_l_thigh = { "bip01_l_thigh" },
+
+		bip01_r_toe0 = { "bip01_r_horselink" },
+		bip01_r_foot = { "bip01_r_horselink" },
+		bip01_r_horselink = { "bip01_r_horselink" },
+		bip01_r_calf = { "bip01_r_calf" },
+		bip01_r_thigh = { "bip01_r_thigh" },
+
+		-- legs front
+		bip01_l_finger0 = { "bip01_l_hand" },
+		bip01_l_hand = { "bip01_l_hand" },
+		bip01_l_forearm = { "bip01_l_forearm" },
+		bip01_l_upperarm = { "bip01_l_upperarm" },
+
+		bip01_r_finger0 = { "bip01_r_hand" },
+		bip01_r_hand = { "bip01_r_hand" },
+		bip01_r_forearm = { "bip01_r_forearm" },
+		bip01_r_upperarm = { "bip01_r_upperarm" },
+
+		-- head
+		snout = { "bone01", { nil, nil, -1 } },		-- or "bip01_neck" on all
+		leftlowear = { "bip01_head", { nil, nil, -1 } },
+		rightlowear = { "bip01_head", { nil, nil, -1 } },
+		bone8 = { "bone01", { nil, nil, -1 } },
+		bone6 = { "bone01", { nil, nil, -1 } },
+		bone4 = { "bone01", { nil, nil, -1 } },
+		bone10 = { "bone01", { nil, nil, -1 } },
+		bone01 = { "bone01", { nil, nil, -1 } },
+		bip01_ponytail2 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail1 = { "bip01_head", { nil, nil, -1 } },
+		bip01_head = { "bip01_head", { nil, nil, -1 } },
+
+		-- explosion
+		explosion_1 = { "bip01_l_forearm" },
+		explosion_2 = { "bip01_r_forearm" },
+		explosion_3 = { "bip01_l_upperarm" },
+		explosion_4 = { "bip01_r_upperarm" },
+		explosion_5 = { "bip01_l_calf" },
+		explosion_6 = { "bip01_r_calf" },
+		explosion_7 = { "bip01_l_thigh" },
+		explosion_8 = { "bip01_r_thigh" },
+	},
+
+
+------------------ flesh ------------------
+	flesh = {
+		-- legs back
+		bip01_l_toe0 = { "bip01_l_horselink" },
+		bip01_l_foot = { "bip01_l_horselink" },
+		bip01_l_horselink = { "bip01_l_horselink" },
+		bip01_l_calf = { "bip01_l_calf" },
+		bip01_l_thigh = { "bip01_l_thigh" },
+
+		bip01_r_toe0 = { "bip01_r_horselink" },
+		bip01_r_foot = { "bip01_r_horselink" },
+		bip01_r_horselink = { "bip01_r_horselink" },
+		bip01_r_calf = { "bip01_r_calf" },
+		bip01_r_thigh = { "bip01_r_thigh" },
+		
+		-- legs front
+		bip01_l_finger0 = { "bip01_l_hand" },
+		bip01_l_hand = { "bip01_l_hand" },
+		bip01_l_forearm = { "bip01_l_forearm" },
+		bip01_l_upperarm = { "bip01_l_upperarm" },
+
+		bip01_r_finger0 = { "bip01_r_hand" },
+		bip01_r_hand = { "bip01_r_hand" },
+		bip01_r_forearm = { "bip01_r_forearm" },
+		bip01_r_upperarm = { "bip01_r_upperarm" },
+
+		-- head
+		bip01_ponytail1 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail2 = { "bip01_head", { nil, nil, -1 } },
+		bip01_head = { "bip01_head", { nil, nil, -1 } },
+
+		-- explosion
+		explosion_1 = { "bip01_l_forearm" },
+		explosion_2 = { "bip01_r_forearm" },
+		explosion_3 = { "bip01_l_upperarm" },
+		explosion_4 = { "bip01_r_upperarm" },
+		explosion_5 = { "bip01_l_calf" },
+		explosion_6 = { "bip01_r_calf" },
+		explosion_7 = { "bip01_l_thigh" },
+		explosion_8 = { "bip01_r_thigh" },
+	},
+
+
+------------------ cat ------------------
+	cat = {
+		-- legs back
+		bip01_l_toe0 = { "bip01_l_foot" },
+		bip01_l_foot = { "bip01_l_foot" },
+		bip01_l_calf = { "bip01_l_calf" },
+
+		bip01_r_toe0 = { "bip01_r_foot" },
+		bip01_r_foot = { "bip01_r_foot" },
+		bip01_r_calf = { "bip01_r_calf" },
+
+		-- legs front
+		bip01_l_hand = { "bip01_l_forearm" },
+		bip01_l_forearm = { "bip01_l_forearm" },
+		bip01_l_upperarm = { "bip01_l_forearm" },
+
+		bip01_r_hand = { "bip01_r_forearm" },
+		bip01_r_forearm = { "bip01_r_forearm" },
+		bip01_r_upperarm = { "bip01_r_forearm" },
+
+		-- head
+		bone05 = { "bip01_head", { nil, nil, -1 } },
+		bone03 = { "bip01_head", { nil, nil, -1 } },
+		bone01 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail1 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail2 = { "bip01_head", { nil, nil, -1 } },
+		bip01_head = { "bip01_head", { nil, nil, -1 } },
+		bip01_neck = { "bip01_head", { nil, nil, -1 } },
+
+		-- explosion
+		explosion_1 = { "bip01_l_forearm" },
+		explosion_2 = { "bip01_r_forearm" },
+		explosion_3 = { "bip01_r_forearm" },
+		explosion_4 = { "bip01_r_forearm" },
+		explosion_5 = { "bip01_l_calf" },
+		explosion_6 = { "bip01_r_calf" },
+		explosion_7 = { "bip01_l_foot" },
+		explosion_8 = { "bip01_r_foot" },
+	},
+
+
+------------------ zombie ------------------
+	zombie = {
+		-- legs
+		bip01_l_toe0 = { "bip01_l_foot" },
+		bip01_l_foot = { "bip01_l_foot" },
+		bip01_l_calf = { "bip01_l_calf" },
+		bip01_l_thigh = { "bip01_l_thigh" },
+
+		bip01_r_toe0 = { "bip01_r_foot" },
+		bip01_r_foot = { "bip01_r_foot" },
+		bip01_r_calf = { "bip01_r_calf" },
+		bip01_r_thigh = { "bip01_r_thigh" },
+
+		-- hands
+		bip01_l_finger31 = { "bip01_l_hand" },
+		bip01_l_finger3 = { "bip01_l_hand" },
+		bip01_l_finger21 = { "bip01_l_hand" },
+		bip01_l_finger2 = { "bip01_l_hand" },
+		bip01_l_finger11 = { "bip01_l_hand" },
+		bip01_l_finger1 = { "bip01_l_hand" },
+		bip01_l_finger01 = { "bip01_l_hand" },
+		bip01_l_finger0 = { "bip01_l_hand" },
+		bip01_l_hand = { "bip01_l_hand" },
+
+		bip01_l_forearm = { "bip01_l_forearm" },
+		bip01_l_upperarm = { "bip01_l_upperarm" },
+
+		bip01_r_finger31 = { "bip01_r_hand" },
+		bip01_r_finger3 = { "bip01_r_hand" },
+		bip01_r_finger21 = { "bip01_r_hand" },
+		bip01_r_finger2 = { "bip01_r_hand" },
+		bip01_r_finger11 = { "bip01_r_hand" },
+		bip01_r_finger1 = { "bip01_r_hand" },
+		bip01_r_finger01 = { "bip01_r_hand" },
+		bip01_r_finger0 = { "bip01_r_hand" },
+		bip01_r_hand = { "bip01_r_hand" },
+
+		bip01_r_forearm = { "bip01_r_forearm" },
+		bip01_r_upperarm = { "bip01_r_upperarm" },
+
+		-- head
+		bone01 = { "bip01_head", { nil, nil, -1 } },
+		bone03 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail1 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail2 = { "bip01_head", { nil, nil, -1 } },
+		bip01_head = { "bip01_head", { nil, nil, -1 } },
+		bip01_neck = { "bip01_head", { nil, nil, -1 } },
+
+		-- explosion
+		explosion_1 = { "bip01_l_forearm" },
+		explosion_2 = { "bip01_r_forearm" },
+		explosion_3 = { "bip01_l_upperarm" },
+		explosion_4 = { "bip01_r_upperarm" },
+		explosion_5 = { "bip01_l_calf" },
+		explosion_6 = { "bip01_r_calf" },
+		explosion_7 = { "bip01_l_thigh" },
+		explosion_8 = { "bip01_r_thigh" },
+	},
+
+
+------------------ tushkano ------------------
+	tushkano = {
+		-- legs
+		bip01_l_toe0 = { "bip01_l_calf" },
+		bip01_l_foot = { "bip01_l_calf" },
+		bip01_l_horselink = { "bip01_l_calf" },
+		bip01_l_calf = { "bip01_l_calf" },
+
+		bip01_r_toe0 = { "bip01_r_calf" },
+		bip01_r_foot = { "bip01_r_calf" },
+		bip01_r_horselink = { "bip01_r_calf" },
+		bip01_r_calf = { "bip01_r_calf" },
+
+		-- hands
+		bip01_l_finger21 = { "bip01_l_forearm" },
+		bip01_l_finger2 = { "bip01_l_forearm" },
+		bip01_l_finger11 = { "bip01_l_forearm" },
+		bip01_l_finger1 = { "bip01_l_forearm" },
+		bip01_l_finger01 = { "bip01_l_forearm" },
+		bip01_l_finger0 = { "bip01_l_forearm" },
+		bip01_l_hand = { "bip01_l_forearm" },
+
+		bip01_l_forearm = { "bip01_l_forearm" },
+		bip01_l_upperarm = { "bip01_l_upperarm" },
+
+		bip01_r_finger21 = { "bip01_r_forearm" },
+		bip01_r_finger2 = { "bip01_r_forearm" },
+		bip01_r_finger11 = { "bip01_r_forearm" },
+		bip01_r_finger1 = { "bip01_r_forearm" },
+		bip01_r_finger01 = { "bip01_r_forearm" },
+		bip01_r_finger0 = { "bip01_r_forearm" },
+		bip01_r_hand = { "bip01_r_forearm" },
+
+		bip01_r_forearm = { "bip01_r_forearm" },
+		bip01_r_upperarm = { "bip01_r_upperarm" },
+
+		-- head
+		bone21 = { "bip01_head", { nil, nil, -1 } },
+		bone19 = { "bip01_head", { nil, nil, -1 } },
+		bone17 = { "bip01_head", { nil, nil, -1 } },
+		bone15 = { "bip01_head", { nil, nil, -1 } },
+		bone13 = { "bip01_head", { nil, nil, -1 } },
+		bone11 = { "bip01_head", { nil, nil, -1 } },
+		bone09 = { "bip01_head", { nil, nil, -1 } },
+		bone07 = { "bip01_head", { nil, nil, -1 } },
+		bone05 = { "bip01_head", { nil, nil, -1 } },
+		bone03 = { "bip01_head", { nil, nil, -1 } },
+		bone01 = { "bip01_head", { nil, nil, -1 } },
+		bip01_head = { "bip01_head", { nil, nil, -1 } },
+
+		-- explosion
+		explosion_1 = { "bip01_l_forearm" },
+		explosion_2 = { "bip01_r_forearm" },
+		explosion_3 = { "bip01_l_upperarm" },
+		explosion_4 = { "bip01_r_upperarm" },
+		explosion_5 = { "bip01_l_calf" },
+		explosion_6 = { "bip01_r_calf" },
+		explosion_7 = { "bip01_head" },
+		explosion_8 = { "bip01_head" },
+	},
+
+
+------------------ snork ------------------
+	snork = {
+		-- legs
+		bip01_l_toe0 = { "leftfoot" },
+		leftfoot = { "leftfoot" },
+		bip01_l_calf = { "bip01_l_calf" },
+		leftupleg = { "leftupleg" },
+
+		bip01_r_toe0 = { "rightupleg" },
+		rightfoot = { "rightfoot" },
+		bip01_r_calf = { "bip01_r_calf" },
+		rightupleg = { "rightupleg" },
+
+		-- hands
+		lefthandthumb3 = { "lefthand" },
+		lefthandthumb2 = { "lefthand" },
+		lefthandthumb1 = { "lefthand" },
+		lefthandring3 = { "lefthand" },
+		lefthandring2 = { "lefthand" },
+		lefthandring1 = { "lefthand" },
+		lefthandpinky3 = { "lefthand" },
+		lefthandpinky2 = { "lefthand" },
+		lefthandpinky1 = { "lefthand" },
+		lefthandmiddle3 = { "lefthand" },
+		lefthandmiddle2 = { "lefthand" },
+		lefthandmiddle1 = { "lefthand" },
+		lefthandindex3 = { "lefthand" },
+		lefthandindex2 = { "lefthand" },
+		lefthandindex1 = { "lefthand" },
+		lefthand = { "lefthand" },
+
+		bip01_l_forearm = { "bip01_l_forearm" },
+		leftarm = { "leftarm" },
+
+		righthandthumb3 = { "righthand" },
+		righthandthumb2 = { "righthand" },
+		righthandthumb1 = { "righthand" },
+		righthandring3 = { "righthand" },
+		righthandring2 = { "righthand" },
+		righthandring1 = { "righthand" },
+		righthandpinky3 = { "righthand" },
+		righthandpinky2 = { "righthand" },
+		righthandpinky1 = { "righthand" },
+		righthandmiddle3 = { "righthand" },
+		righthandmiddle2 = { "righthand" },
+		righthandmiddle1 = { "righthand" },
+		righthandindex3 = { "righthand" },
+		righthandindex2 = { "righthand" },
+		righthandindex1 = { "righthand" },
+		righthand = { "righthand" },
+
+		bip01_r_forearm = { "bip01_r_forearm" },
+		rightarm = { "rightarm" },
+
+		-- head
+		bip01_ponytail22 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail21 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail23 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail1 = { "bip01_head", { nil, nil, -1 } },
+		bip01_head = { "bip01_head", { nil, nil, -1 } },
+		bip01_neck = { "bip01_neck", { nil, nil, -1 } },		-- test change to bip01_head
+
+		-- explosion
+		explosion_1 = { "bip01_l_forearm" },
+		explosion_2 = { "bip01_r_forearm" },
+		explosion_3 = { "leftarm" },
+		explosion_4 = { "rightarm" },
+		explosion_5 = { "bip01_l_calf" },
+		explosion_6 = { "bip01_r_calf" },
+		explosion_7 = { "leftupleg" },
+		explosion_8 = { "rightupleg" },
+	},
+
+
+------------------ controller ------------------
+	controller = {
+		-- legs
+		bip01_l_toe1 = { "bip01_l_foot" },
+		bip01_l_toe0 = { "bip01_l_foot" },
+		bip01_l_foot = { "bip01_l_foot" },
+		bip01_l_calf = { "bip01_l_calf" },
+		bip01_l_thigh = { "bip01_l_thigh" },
+
+		bip01_r_toe1 = { "bip01_r_foot" },
+		bip01_r_toe0 = { "bip01_r_foot" },
+		bip01_r_foot = { "bip01_r_foot" },
+		bip01_r_calf = { "bip01_r_calf" },
+		bip01_r_thigh = { "bip01_r_thigh" },
+
+		-- hands
+		bip01_l_finger32 = { "bip01_l_hand" },
+		bip01_l_finger31 = { "bip01_l_hand" },
+		bip01_l_finger3 = { "bip01_l_hand" },
+		bip01_l_finger22 = { "bip01_l_hand" },
+		bip01_l_finger21 = { "bip01_l_hand" },
+		bip01_l_finger2 = { "bip01_l_hand" },
+		bip01_l_finger12 = { "bip01_l_hand" },
+		bip01_l_finger11 = { "bip01_l_hand" },
+		bip01_l_finger1 = { "bip01_l_hand" },
+		bip01_l_finger02 = { "bip01_l_hand" },
+		bip01_l_finger01 = { "bip01_l_hand" },
+		bip01_l_finger0 = { "bip01_l_hand" },
+		bip01_l_hand = { "bip01_l_hand" },
+
+		bip01_l_forearm = { "bip01_l_forearm" },
+		bip01_l_upperarm = { "bip01_l_upperarm" },
+
+		bip01_r_finger32 = { "bip01_r_hand" },
+		bip01_r_finger31 = { "bip01_r_hand" },
+		bip01_r_finger3 = { "bip01_r_hand" },
+		bip01_r_finger22 = { "bip01_r_hand" },
+		bip01_r_finger21 = { "bip01_r_hand" },
+		bip01_r_finger2 = { "bip01_r_hand" },
+		bip01_r_finger12 = { "bip01_r_hand" },
+		bip01_r_finger11 = { "bip01_r_hand" },
+		bip01_r_finger1 = { "bip01_r_hand" },
+		bip01_r_finger02 = { "bip01_r_hand" },
+		bip01_r_finger01 = { "bip01_r_hand" },
+		bip01_r_finger0 = { "bip01_r_hand" },
+		bip01_r_hand = { "bip01_r_hand" },
+
+		bip01_r_forearm = { "bip01_r_forearm" },
+		bip01_r_upperarm = { "bip01_r_upperarm" },
+
+		-- head
+		bone09 = { "bip01_head", { nil, nil, -1 } },
+		bone07 = { "bip01_head", { nil, nil, -1 } },
+		bone05 = { "bip01_head", { nil, nil, -1 } },
+		bone03 = { "bip01_head", { nil, nil, -1 } },
+		bone01 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail2 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail1 = { "bip01_head", { nil, nil, -1 } },
+		bip01_head = { "bip01_head", { nil, nil, -1 } },
+
+		-- explosion
+		explosion_1 = { "bip01_l_forearm" },
+		explosion_2 = { "bip01_r_forearm" },
+		explosion_3 = { "bip01_l_upperarm" },
+		explosion_4 = { "bip01_r_upperarm" },
+		explosion_5 = { "bip01_l_calf" },
+		explosion_6 = { "bip01_r_calf" },
+		explosion_7 = { "bip01_l_thigh" },
+		explosion_8 = { "bip01_r_thigh" },
+	},
+
+
+------------------ bloodsucker ------------------
+	bloodsucker = {
+		-- legs
+		bip01_l_toe1 = { "bip01_l_foot" },
+		bip01_l_foot = { "bip01_l_foot" },
+		bip01_l_calf = { "bip01_l_calf" },
+		bip01_l_thigh = { "bip01_l_thigh" },
+
+		bip01_r_toe1 = { "bip01_r_foot" },
+		bip01_r_foot = { "bip01_r_foot" },
+		bip01_r_calf = { "bip01_r_calf" },
+		bip01_r_thigh = { "bip01_r_thigh" },
+
+		-- hand
+		bip01_l_finger41 = { "bip01_l_hand" },
+		bip01_l_finger4 = { "bip01_l_hand" },
+		bip01_l_finger31 = { "bip01_l_hand" },
+		bip01_l_finger3 = { "bip01_l_hand" },
+		bip01_l_finger21 = { "bip01_l_hand" },
+		bip01_l_finger2 = { "bip01_l_hand" },
+		bip01_l_finger11 = { "bip01_l_hand" },
+		bip01_l_finger1 = { "bip01_l_hand" },
+		bip01_l_finger01 = { "bip01_l_hand" },
+		bip01_l_finger0 = { "bip01_l_hand" },
+		bip01_l_hand = { "bip01_l_hand" },
+
+		bip01_l_forearm = { "bip01_l_forearm" },
+		bip01_l_upperarm = { "bip01_l_upperarm" },
+
+		bip01_r_finger41 = { "bip01_r_hand" },
+		bip01_r_finger4 = { "bip01_r_hand" },
+		bip01_r_finger31 = { "bip01_r_hand" },
+		bip01_r_finger3 = { "bip01_r_hand" },
+		bip01_r_finger21 = { "bip01_r_hand" },
+		bip01_r_finger2 = { "bip01_r_hand" },
+		bip01_r_finger11 = { "bip01_r_hand" },
+		bip01_r_finger1 = { "bip01_r_hand" },
+		bip01_r_finger01 = { "bip01_r_hand" },
+		bip01_r_finger0 = { "bip01_r_hand" },
+		bip01_r_hand = { "bip01_r_hand" },
+
+		bip01_r_forearm = { "bip01_r_forearm" },
+		bip01_r_upperarm = { "bip01_r_upperarm" },
+
+		-- head
+		bone22 = { "bip01_head", { nil, nil, -1 } },
+		bone21 = { "bip01_head", { nil, nil, -1 } },
+		bone20 = { "bip01_head", { nil, nil, -1 } },
+		bone24 = { "bip01_head", { nil, nil, -1 } },
+		bone12 = { "bip01_head", { nil, nil, -1 } },
+		bone11 = { "bip01_head", { nil, nil, -1 } },
+		bone10 = { "bip01_head", { nil, nil, -1 } },
+		bone19 = { "bip01_head", { nil, nil, -1 } },
+		bone17 = { "bip01_head", { nil, nil, -1 } },
+		bone16 = { "bip01_head", { nil, nil, -1 } },
+		bone15 = { "bip01_head", { nil, nil, -1 } },
+		bone14 = { "bip01_head", { nil, nil, -1 } },
+		bone04 = { "bip01_head", { nil, nil, -1 } },
+		bone03 = { "bip01_head", { nil, nil, -1 } },
+		bone02 = { "bip01_head", { nil, nil, -1 } },
+		bone01 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail1 = { "bip01_head", { nil, nil, -1 } },
+		bip01_ponytail2 = { "bip01_head", { nil, nil, -1 } },
+		bip01_head = { "bip01_head", { nil, nil, -1 } },
+
+		-- explosion
+		explosion_1 = { "bip01_l_forearm" },
+		explosion_2 = { "bip01_r_forearm" },
+		explosion_3 = { "bip01_l_upperarm" },
+		explosion_4 = { "bip01_r_upperarm" },
+		explosion_5 = { "bip01_l_calf" },
+		explosion_6 = { "bip01_r_calf" },
+		explosion_7 = { "bip01_l_thigh" },
+		explosion_8 = { "bip01_r_thigh" },
+	},
+
+
+------------------ chimera ------------------
+	chimera = {
+		-- legs
+		l_toe_pinky_1 = { "l_foot" },
+		l_toe_pinky = { "l_foot" },
+		l_toe_middle_1 = { "l_foot" },
+		l_toe_middle = { "l_foot" },
+		l_toe_index_1 = { "l_foot" },
+		l_toe_index = { "l_foot" },
+		l_foot = { "l_foot" },
+		l_leg_1 = { "l_leg_1" },
+		l_leg = { "l_leg" },
+		l_thing = { "l_thing" },
+
+		r_toe_pinky_1 = { "r_foot" },
+		r_toe_pinky = { "r_foot" },
+		r_toe_middle_1 = { "r_foot" },
+		r_toe_middle = { "r_foot" },
+		r_toe_index_1 = { "r_foot" },
+		r_toe_index = { "r_foot" },
+		r_foot = { "r_foot" },
+		r_leg_1 = { "r_leg_1" },
+		r_leg = { "r_leg" },
+		r_thing = { "r_thing" },
+
+		-- hands
+		l_thumb_1 = { "hand_l" },
+		l_thumb = { "hand_l" },
+		l_pinky_1 = { "hand_l" },
+		l_pinky = { "hand_l" },
+		l_middle_1 = { "hand_l" },
+		l_middle = { "hand_l" },
+		l_index_1 = { "hand_l" },
+		l_index = { "hand_l" },
+		hand_l = { "hand_l" },
+		forearm_l = { "forearm_l" },
+		arm_l = { "arm_l" },
+
+		r_thumb_1 = { "hand_r" },
+		r_thumb = { "hand_r" },
+		r_pinky_1 = { "hand_r" },
+		r_pinky = { "hand_r" },
+		r_middle_1 = { "hand_r" },
+		r_middle = { "hand_r" },
+		r_index_1 = { "hand_r" },
+		r_index = { "hand_r" },
+		hand_r = { "hand_r" },
+		forearm_r = { "forearm_r" },
+		arm_r = { "arm_r" },
+
+		-- head
+		jaw_little = { "head_little", { nil, nil, -1 } },
+		ear_l = { "head_little", { nil, nil, -1 } },
+		head_little = { "head_little", { nil, nil, -1 } },
+		neck_l = { "neck_l", { nil, nil, -1 } },
+
+		eye_r = { "head_boss", { nil, nil, -1 } },
+		eye_l = { "head_boss", { nil, nil, -1 } },
+		ear_r = { "head_boss", { nil, nil, -1 } },
+		head_boss = { "head_boss", { nil, nil, -1 } },
+		boss_jaw_1 = { "boss_jaw", { nil, nil, -1 } },
+		boss_jaw = { "boss_jaw", { nil, nil, -1 } },
+		neck_r = { "neck_r", { nil, nil, -1 } },
+
+		-- explosion
+		explosion_1 = { "l_leg" },
+		explosion_2 = { "r_leg" },
+		explosion_3 = { "l_thing" },
+		explosion_4 = { "r_thing" },
+		explosion_5 = { "forearm_l" },
+		explosion_6 = { "forearm_r" },
+		explosion_7 = { "arm_l" },
+		explosion_8 = { "arm_r" },
+	},
+
+
+------------------ burer ------------------
+	burer = {
+		-- legs
+		left_toe = { "left_toe" },
+		left_foot = { "left_foot" },
+		left_leg = { "left_leg" },
+
+		right_toe = { "right_toe" },
+		right_foot = { "right_foot" },
+		right_leg = { "right_leg" },
+
+		-- hands
+		left_thumb_1 = { "left_hand" },
+		left_thumb = { "left_hand" },
+		left_ring_1 = { "left_hand" },
+		left_ring = { "left_hand" },
+		left_pink_1 = { "left_hand" },
+		left_pink = { "left_hand" },
+		left_middle_1 = { "left_hand" },
+		left_middle = { "left_hand" },
+		left_index_1 = { "left_hand" },
+		left_index = { "left_hand" },
+		left_hand = { "left_hand" },
+
+		left_forearm = { "left_forearm" },
+		left_arm = { "left_arm" },
+
+		right_thumb_1 = { "right_hand" },
+		right_thumb = { "right_hand" },
+		right_ring_1 = { "right_hand" },
+		right_ring = { "right_hand" },
+		right_pink_1 = { "right_hand" },
+		right_pink = { "right_hand" },
+		right_middle_1 = { "right_hand" },
+		right_middle = { "right_hand" },
+		right_index_1 = { "right_hand" },
+		right_index = { "right_hand" },
+		right_hand = { "right_hand" },
+
+		right_forearm = { "right_forearm" },
+		right_arm = { "right_arm" },
+
+		-- head
+		right_lip = { "head", { nil, nil, -1 } },
+		right_eye = { "head", { nil, nil, -1 } },
+		right_click = { "head", { nil, nil, -1 } },
+		left_lip = { "head", { nil, nil, -1 } },
+		left_eye = { "head", { nil, nil, -1 } },
+		left_click = { "head", { nil, nil, -1 } },
+		jaw = { "head", { nil, nil, -1 } },
+		hood = { "head", { nil, nil, -1 } },
+		brow = { "head", { nil, nil, -1 } },
+		head = { "head", { nil, nil, -1 } },
+
+		-- explosion
+		explosion_1 = { "left_foot" },
+		explosion_2 = { "right_foot" },
+		explosion_3 = { "left_leg" },
+		explosion_4 = { "right_leg" },
+		explosion_5 = { "left_forearm" },
+		explosion_6 = { "right_forearm" },
+		explosion_7 = { "left_arm" },
+		explosion_8 = { "right_arm" },
+	},
+
+
+------------------ fracture ------------------
+	fracture = {
+		-- legs
+		bip01_l_toe0 = { "bip01_l_foot" },
+		bip01_l_foot = { "bip01_l_foot" },
+		bip01_l_calf = { "bip01_l_calf" },
+		bip01_l_thigh = { "bip01_l_thigh" },
+
+		bip01_r_toe0 = { "bip01_r_foot" },
+		bip01_r_foot = { "bip01_r_foot" },
+		bip01_r_calf = { "bip01_r_calf" },
+		bip01_r_thigh = { "bip01_r_thigh" },
+
+		-- hands
+		bip01_l_finger41 = { "bip01_l_hand" },
+		bip01_l_finger4 = { "bip01_l_hand" },
+		bip01_l_finger31 = { "bip01_l_hand" },
+		bip01_l_finger3 = { "bip01_l_hand" },
+		bip01_l_finger21 = { "bip01_l_hand" },
+		bip01_l_finger2 = { "bip01_l_hand" },
+		bip01_l_finger11 = { "bip01_l_hand" },
+		bip01_l_finger1 = { "bip01_l_hand" },
+		bip01_l_finger01 = { "bip01_l_hand" },
+		bip01_l_finger0 = { "bip01_l_hand" },
+		bip01_l_hand = { "bip01_l_hand" },
+
+		bip01_l_forearm = { "bip01_l_forearm" },
+		bip01_l_upperarm = { "bip01_l_upperarm" },
+
+		bip01_r_finger41 = { "bip01_r_hand" },
+		bip01_r_finger4 = { "bip01_r_hand" },
+		bip01_r_finger31 = { "bip01_r_hand" },
+		bip01_r_finger3 = { "bip01_r_hand" },
+		bip01_r_finger21 = { "bip01_r_hand" },
+		bip01_r_finger2 = { "bip01_r_hand" },
+		bip01_r_finger11 = { "bip01_r_hand" },
+		bip01_r_finger1 = { "bip01_r_hand" },
+		bip01_r_finger01 = { "bip01_r_hand" },
+		bip01_r_finger0 = { "bip01_r_hand" },
+		bip01_r_hand = { "bip01_r_hand" },
+
+		bip01_r_forearm = { "bip01_r_forearm" },
+		bip01_r_upperarm = { "bip01_r_upperarm" },
+
+		-- head
+		bone05 = { "bip01_head", { nil, "bip01_neck", -1 } },
+		bone04 = { "bip01_head", { nil, "bip01_neck", -1 } },
+		bone03 = { "bip01_head", { nil, "bip01_neck", -1 } },
+		bone02 = { "bip01_head", { nil, "bip01_neck", -1 } },
+		bone01 = { "bip01_head", { nil, "bip01_neck", -1 } },
+		bip01_ponytail2 = { "bip01_head", { nil, "bip01_neck", -1 } },
+		bip01_ponytail1 = { "bip01_head", { nil, "bip01_neck", -1 } },
+		bip01_head = { "bip01_head", { nil, "bip01_neck", -1 } },
+		bip01_neck = { "bip01_head", { nil, "bip01_neck", -1 } },
+
+		-- explosion
+		explosion_1 = { "bip01_l_calf" },
+		explosion_2 = { "bip01_r_calf" },
+		explosion_3 = { "bip01_l_thigh" },
+		explosion_4 = { "bip01_r_thigh" },
+		explosion_5 = { "bip01_l_forearm" },
+		explosion_6 = { "bip01_r_forearm" },
+		explosion_7 = { "bip01_l_upperarm" },
+		explosion_8 = { "bip01_r_upperarm" },
+	},
+
+
+------------------ giant ------------------
+	giant = {
+		-- legs
+		leftthumb2 = { "lefthand" },
+		leftthumb1 = { "lefthand" },
+		leftthumb = { "lefthand" },
+		leftring2 = { "lefthand" },
+		leftring1 = { "lefthand" },
+		leftring = { "lefthand" },
+		leftpink2 = { "lefthand" },
+		leftpink1 = { "lefthand" },
+		leftpink = { "lefthand" },
+		leftmiddle2 = { "lefthand" },
+		leftmiddle1 = { "lefthand" },
+		leftmiddle = { "lefthand" },
+		leftindex2 = { "lefthand" },
+		leftindex1 = { "lefthand" },
+		leftindex = { "lefthand" },
+		lefthand = { "lefthand" },
+		
+		leftforearm = { "leftforearm" },
+		leftarm = { "leftarm" },
+
+		rightthumb2 = { "righthand" },
+		rightthumb1 = { "righthand" },
+		rightthumb = { "righthand" },
+		rightring2 = { "righthand" },
+		rightring1 = { "righthand" },
+		rightring = { "righthand" },
+		rightpink2 = { "righthand" },
+		rightpink1 = { "righthand" },
+		rightpink = { "righthand" },
+		rightmiddle2 = { "righthand" },
+		rightmiddle1 = { "righthand" },
+		rightmiddle = { "righthand" },
+		rightindex2 = { "righthand" },
+		rightindex1 = { "righthand" },
+		rightindex = { "righthand" },
+		righthand = { "righthand" },
+
+		rightforearm = { "rightforearm" },
+		rightarm = { "rightarm" },
+
+		-- hands
+		lefttopthumb1 = { "lefttopforearm" },
+		lefttopthumb = { "lefttopforearm" },
+		lefttopindex1 = { "lefttopforearm" },
+		lefttopindex = { "lefttopforearm" },
+		lefttophand = { "lefttopforearm" },
+		lefttopforearm = { "lefttopforearm" },
+		lefttoparm = { "lefttoparm" },
+
+		righttopthumb1 = { "righttopforearm" },
+		righttopthumb = { "righttopforearm" },
+		righttopindex1 = { "righttopforearm" },
+		righttopindex = { "righttopforearm" },
+		righttophand = { "righttopforearm" },
+		righttopforearm = { "righttopforearm" },
+		righttoparm = { "righttoparm" },
+
+		-- head
+		righteye = { "head", { nil, nil, -1 } },
+		lefteye = { "head", { nil, nil, -1 } },
+		leftbrow = { "head", { nil, nil, -1 } },
+		head = { "head", { nil, nil, -1 } },
+		jaw = { "jaw", { nil, nil, -1 } },
+
+		-- explosion
+		explosion_1 = { "leftforearm" },
+		explosion_2 = { "rightforearm" },
+		explosion_3 = { "leftarm" },
+		explosion_4 = { "rightarm" },
+		explosion_5 = { "lefttopforearm" },
+		explosion_6 = { "righttopforearm" },
+		explosion_7 = { "lefttoparm" },
+		explosion_8 = { "righttoparm" },
+	},
+
+------------------ karlik ------------------
+	karlik = {
+		-- legs
+		bip01_l_toe01 = { "bip01_l_calf" },
+		bip01_l_toe0 = { "bip01_l_calf" },
+		bip01_l_foot = { "bip01_l_calf" },
+		bip01_l_calf = { "bip01_l_calf" },
+		bip01_l_thigh = { "bip01_l_thigh" },
+
+		bip01_r_toe01 = { "bip01_r_calf" },
+		bip01_r_toe0 = { "bip01_r_calf" },
+		bip01_r_foot = { "bip01_r_calf" },
+		bip01_r_calf = { "bip01_r_calf" },
+		bip01_r_thigh = { "bip01_r_thigh" },
+
+		-- hands
+		bip01_l_finger42 = { "bip01_l_hand" },
+		bip01_l_finger41 = { "bip01_l_hand" },
+		bip01_l_finger4 = { "bip01_l_hand" },
+		bip01_l_finger32 = { "bip01_l_hand" },
+		bip01_l_finger31 = { "bip01_l_hand" },
+		bip01_l_finger3 = { "bip01_l_hand" },
+		bip01_l_finger22 = { "bip01_l_hand" },
+		bip01_l_finger21 = { "bip01_l_hand" },
+		bip01_l_finger2 = { "bip01_l_hand" },
+		bip01_l_finger12 = { "bip01_l_hand" },
+		bip01_l_finger11 = { "bip01_l_hand" },
+		bip01_l_finger1 = { "bip01_l_hand" },
+		bip01_l_finger02 = { "bip01_l_hand" },
+		bip01_l_finger01 = { "bip01_l_hand" },
+		bip01_l_finger0 = { "bip01_l_hand" },
+		bip01_l_hand = { "bip01_l_hand" },
+		bip01_l_forearm = { "bip01_l_forearm" },
+		bip01_l_upperarm = { "bip01_l_upperarm" },
+
+		bip01_r_finger42 = { "bip01_r_hand" },
+		bip01_r_finger41 = { "bip01_r_hand" },
+		bip01_r_finger4 = { "bip01_r_hand" },
+		bip01_r_finger32 = { "bip01_r_hand" },
+		bip01_r_finger31 = { "bip01_r_hand" },
+		bip01_r_finger3 = { "bip01_r_hand" },
+		bip01_r_finger22 = { "bip01_r_hand" },
+		bip01_r_finger21 = { "bip01_r_hand" },
+		bip01_r_finger2 = { "bip01_r_hand" },
+		bip01_r_finger12 = { "bip01_r_hand" },
+		bip01_r_finger11 = { "bip01_r_hand" },
+		bip01_r_finger1 = { "bip01_r_hand" },
+		bip01_r_finger02 = { "bip01_r_hand" },
+		bip01_r_finger01 = { "bip01_r_hand" },
+		bip01_r_finger0 = { "bip01_r_hand" },
+		bip01_r_hand = { "bip01_r_hand" },
+		bip01_r_forearm = { "bip01_r_forearm" },
+		bip01_r_upperarm = { "bip01_r_upperarm" },
+
+		-- head
+		leye = { "bip01_head", { nil, nil, -1 } },
+		reye = { "bip01_head", { nil, nil, -1 } },
+		bone04 = { "bip01_head", { nil, nil, -1 } },
+		bone03 = { "bip01_head", { nil, nil, -1 } },
+		bone02 = { "bip01_head", { nil, nil, -1 } },
+		bone01 = { "bip01_head", { nil, nil, -1 } },
+		bip01_head = { "bip01_head", { nil, nil, -1 } },
+
+		-- explosion
+		explosion_1 = { "bip01_l_calf" },
+		explosion_2 = { "bip01_r_calf" },
+		explosion_3 = { "bip01_l_thigh" },
+		explosion_4 = { "bip01_r_thigh" },
+		explosion_5 = { "bip01_l_forearm" },
+		explosion_6 = { "bip01_r_forearm" },
+		explosion_7 = { "bip01_l_upperarm" },
+		explosion_8 = { "bip01_r_upperarm" },
+	},
+
+}
+
+-- section indices of ltx
+local mesh_map = {
+	human = {
+		jaw_1 = { 2 },
+		bip01_head = { 1, 2, 1, 2 },
+		bip01_l_hand = { 2 },
+		bip01_r_hand = { 2 },
+		bip01_l_foot = { 1, 2 },
+		bip01_r_foot = { 1, 2 },
+		bip01_l_calf = { 1, 2, 8, 2 },
+		bip01_r_calf = { 1, 2, 8, 2 },
+		bip01_l_thigh = { 1, 2, 8, 2, 3, 5 },
+		bip01_r_thigh = { 1, 2, 8, 2, 3, 5 },
+	},
+
+	dog = {
+		bip01_l_horselink = { 2 },		-- 1
+		bip01_l_calf = { 2, 4 },		-- 2
+		bip01_l_thigh = { 2, 4, 5 },	-- 3
+		bip01_r_horselink = { 2 },
+		bip01_r_calf = { 2, 4 },
+		bip01_r_thigh = { 2, 4, 5 },
+		bip01_l_hand = { 2 },	-- 1
+		bip01_l_forearm = { 2, 4 },	-- 2
+		bip01_l_upperarm = { 2, 4, 3 },	-- 3
+		bip01_r_hand = { 2 },
+		bip01_r_forearm = { 2, 4 },
+		bip01_r_upperarm = { 2, 4, 3 },
+		bip01_ponytail2 = { 2 },	-- 1
+		bip01_head = { 2, 1 },	-- 2
+		bip01_neck = { 3, 3, 2, 4, 4 }, -- 5
+	},
+
+	pseudo_dog = {
+		bip01_l_horselink = { 2 },		-- 1
+		bip01_l_calf = { 2, 4 },		-- 2
+		bip01_l_thigh = { 2, 4, 5 },	-- 3
+		bip01_r_horselink = { 2 },
+		bip01_r_calf = { 2, 4 },
+		bip01_r_thigh = { 2, 4, 5 },
+		bip01_l_hand = { 2 },	-- 1
+		bip01_l_forearm = { 2, 4 },	-- 2
+		bip01_l_upperarm = { 2, 4, 3 },	-- 3
+		bip01_r_hand = { 2 },
+		bip01_r_forearm = { 2, 4 },
+		bip01_r_upperarm = { 2, 4, 3 },
+		bip01_ponytail2 = { 2 },	-- 1
+		bip01_head = { 2, 1, 2 },	-- 2
+		bone01 = { 1 },	-- 1
+	},
+
+	boar = {
+		bip01_l_horselink = { 5, 2 },		-- 1
+		bip01_l_calf = { 5, 8 },		-- 2
+		bip01_l_thigh = { 5, 8, 5, 3 },	-- 4
+		bip01_r_horselink = { 5, 2 },
+		bip01_r_calf = { 5, 8 },
+		bip01_r_thigh = { 5, 8, 5, 3 },
+		bip01_l_hand = { 5, 2 },	-- 1
+		bip01_l_forearm = { 5, 8 },	-- 2
+		bip01_l_upperarm = { 5, 8, 5, 3 },	-- 4
+		bip01_r_hand = { 5, 2 },
+		bip01_r_forearm = { 5, 8 },
+		bip01_r_upperarm = { 5, 8, 5, 3 },
+		bone01 = { 1 },	-- 1
+		bip01_head = { 1, 5, 2, 5 },	-- 3
+	},
+
+	flesh = {
+		bip01_l_horselink = { 2 },		-- 1
+		bip01_l_calf = { 2, 2 },		-- 2
+		bip01_l_thigh = { 2, 2, 5, 5 },	-- 4
+		bip01_r_horselink = { 2 },
+		bip01_r_calf = { 2, 2 },
+		bip01_r_thigh = { 2, 2, 5, 5 },
+		bip01_l_hand = { 2 },	-- 1
+		bip01_l_forearm = { 2, 2 },	-- 2
+		bip01_l_upperarm = { 2, 2, 5, 5 },	-- 4
+		bip01_r_hand = { 2 },
+		bip01_r_forearm = { 2, 2 },
+		bip01_r_upperarm = { 2, 2, 5, 5 },
+		bip01_head = { 1, 5, 2, 5 },	-- 3
+	},
+
+	cat = {
+		bip01_l_foot = { 2 },	-- 1
+		bip01_l_calf = { 2, 4, 2 },		-- 2
+		bip01_r_foot = { 2 },
+		bip01_r_calf = { 2, 4, 2 },
+		bip01_l_forearm = { 2, 4, 2 },	-- 1
+		bip01_r_forearm = { 2, 4, 2 },
+		bip01_head = { 1, 2, 1 },	-- 2
+	},
+
+	zombie = {
+		bip01_l_foot = { 1, 4 },	-- 1
+		bip01_l_calf = { 11, 4, 3, 2, 4 },	-- 2
+		bip01_l_thigh = { 14, 4, 3, 2, 5 },	-- 3
+		bip01_r_foot = { 1, 4 },
+		bip01_r_calf = { 11, 4, 3, 2, 4 },
+		bip01_r_thigh = { 14, 4, 3, 2, 5 },
+		bip01_l_hand = { 2 },	-- 1
+		bip01_l_forearm = { 12, 4, 2, 4, 2 },	-- 2
+		bip01_l_upperarm = { 12, 8, 4, 2, 3, 3 },	-- 3
+		bip01_r_hand = { 2 },
+		bip01_r_forearm = { 12, 4, 2, 4, 2 },
+		bip01_r_upperarm = { 12, 8, 4, 2, 3, 3 },
+		bip01_head = { 1, 2, 1, 2 },	-- 2
+	},
+
+	tushkano = {
+		bip01_l_calf = { 2 },
+		bip01_r_calf = { 2 },
+		bip01_l_forearm = { 2 },
+		bip01_l_upperarm = { 2, 2 },
+		bip01_r_forearm = { 2 },
+		bip01_r_upperarm = { 2, 2 },
+		bip01_head = { 2, 2, 2 },
+	},
+
+	snork = {
+		leftfoot = { 1, 4 },	-- 1
+		bip01_l_calf = { 11, 4, 3, 2, 4 },	-- 2
+		leftupleg = { 14, 4, 3, 2, 5 },	-- 3
+		rightfoot = { 1, 4 },
+		bip01_r_calf = { 11, 4, 3, 2, 4 },
+		rightupleg = { 14, 4, 3, 2, 5 },
+		lefthand = { 2 },	-- 1
+		bip01_l_forearm = { 12, 4, 2, 4, 2 },	-- 2
+		leftarm = { 12, 8, 4, 2, 3, 3 },	-- 3
+		righthand = { 2 },
+		bip01_r_forearm = { 12, 4, 2, 4, 2 },
+		rightarm = { 12, 8, 4, 2, 3, 3 },
+		bip01_head = { 1, 2, 1, 2 },	-- 2
+		bip01_neck = { 1, 2, 1, 2, 2 },	-- 3
+	},
+
+	controller = {
+		bip01_l_foot = { 1, 4 },	--1
+		bip01_l_calf = { 11, 4, 3, 2, 4 },	-- 2
+		bip01_l_thigh = { 14, 4, 3, 2, 5 },	-- 3
+		bip01_r_foot = { 1, 4 },
+		bip01_r_calf = { 11, 4, 3, 2, 4 },
+		bip01_r_thigh = { 14, 4, 3, 2, 5 },
+		bip01_l_hand = { 2 },	-- 1
+		bip01_l_forearm = { 12, 4, 2, 4, 2 },	-- 2
+		bip01_l_upperarm = { 12, 8, 4, 2, 3, 3 },	-- 3
+		bip01_r_hand = { 2 },
+		bip01_r_forearm = { 12, 4, 2, 4, 2 },
+		bip01_r_upperarm = { 12, 8, 4, 2, 3, 3 },
+		bip01_head = { 1, 2, 1, 2, 2 },	-- 2
+	},
+
+	bloodsucker = {
+		bip01_l_foot = { 1, 1, 2 },	--1
+		bip01_l_calf = { 1, 1, 2, 4, 4 },	-- 2
+		bip01_l_thigh = { 1, 1, 2, 6, 3, 5 },	-- 3
+		bip01_r_foot = { 1, 1, 2 },
+		bip01_r_calf = { 1, 1, 2, 4, 4 },
+		bip01_r_thigh = { 1, 1, 2, 6, 3, 5 },
+		bip01_l_hand = { 1, 2, 2 },	-- 1
+		bip01_l_forearm = { 1, 2, 2, 4, 4 },	-- 2
+		bip01_l_upperarm = { 1, 2, 2, 8, 2, 3, 3 },	-- 3
+		bip01_r_hand = { 1, 2, 2 },
+		bip01_r_forearm = { 1, 2, 2, 4, 4 },
+		bip01_r_upperarm = { 1, 2, 2, 8, 2, 3, 3 },
+		bip01_head = { 1, 1, 1, 2, 2},	-- 2
+	},
+
+	chimera = {
+		l_foot = { 1, 2, 2 },	-- 1
+		l_leg_1 = { 1, 2, 2, 4, 4 },	-- 2
+		l_leg = { 1, 2, 2, 6, 3, 3 },	-- 3
+		l_thing = { 1, 2, 2, 6, 6, 5, 5 },	-- 4
+		r_foot = { 1, 2, 2 },
+		r_leg_1 = { 1, 2, 2, 4, 4 },
+		r_leg = { 1, 2, 2, 6, 3, 3 },
+		r_thing = { 1, 2, 2, 6, 6, 5, 5 },
+		hand_l = { 1, 1, 2 },	-- 1
+		forearm_l = { 1, 1, 2, 3, 4 },	-- 2
+		arm_l = { 1, 1, 2, 6, 3, 5, 5 },	-- 3
+		hand_r = { 1, 1, 2 },
+		forearm_r = { 1, 1, 2, 3, 4 },
+		arm_r = { 1, 1, 2, 6, 3, 5, 5 },
+		head_little = { 1, 2, 2 },	-- 1
+		neck_l = { 1, 2, 2, 1 },	-- 2
+		head_boss = { 1, 1, 1, 2, 2 },	-- 2
+		boss_jaw = { 1 },	-- 1
+		neck_r = { 1, 1, 1, 2, 5, 5 },	-- 3
+	},
+
+	burer = {
+		left_toe = { 1, 2, 5 },	-- 1
+		left_foot = { 1, 2, 5, 3, 5 },	-- 2
+		left_leg = { 1, 2, 5, 10, 5 },	-- 3
+		right_toe = { 1, 2, 5 },
+		right_foot = { 1, 2, 5, 3, 5 },
+		right_leg = { 1, 2, 5, 10, 5 },
+		left_hand = { 1, 2, 5 },	-- 1
+		left_forearm = { 1, 2, 5, 3, 5, 5 },	-- 2
+		left_arm = { 1, 2, 5, 6, 5, 5 },	-- 3
+		right_hand = { 1, 2, 5 },
+		right_forearm = { 1, 2, 5, 3, 5, 5 },
+		right_arm = { 1, 2, 5, 6, 5, 5 },
+		head = { 1, 5, 5, 2, 1 },	-- 4
+	},
+
+	fracture = {
+		bip01_l_foot = { 1, 2, 4 },	-- 1
+		bip01_l_calf = { 11, 2, 4, 3, 3 },	-- 2
+		bip01_l_thigh = { 14, 2, 3, 3, 3 },	-- 3
+		bip01_r_foot = { 1, 2, 4 },
+		bip01_r_calf = { 11, 2, 4, 3, 3 },
+		bip01_r_thigh = { 14, 2, 3, 3, 3 },
+		bip01_l_hand = { 1, 1, 2 },	-- 2
+		bip01_l_forearm = { 1, 1, 2, 4, 4, 4, 2 },	-- 3
+		bip01_l_upperarm = { 1, 1, 2, 8, 8, 2, 3, 3 },	-- 4
+		bip01_r_hand = { 1, 2 },	 -- 1
+		bip01_r_forearm = { 1, 2, 4, 4, 2 },	-- 2
+		bip01_r_upperarm = { 1, 2, 8, 4, 3 },	-- 3
+		bip01_head = { 1, 2, 1, 2, 2 },	-- 2
+	},
+
+	giant = {
+		lefthand = { 5, 1, 2, 1 },	-- 2
+		leftforearm = { 5, 1, 2, 5, 5, 5 },	-- 3
+		leftarm = { 5, 1, 2, 10, 5, 5, 5, 5 },	-- 4
+		righthand = { 5, 1, 2, 1 },
+		rightforearm = { 5, 1, 2, 5, 5, 5 },
+		rightarm = { 5, 1, 2, 10, 5, 5, 5, 5 },
+		lefttopforearm = { 1, 2, 3 },	-- 1
+		lefttoparm = { 1, 2, 3, 2, 3},	-- 2
+		righttopforearm = { 1, 2, 3 },
+		righttoparm = { 1, 2, 3, 2, 3},
+		head = { 1, 5, 5, 2 },	-- 3
+		jaw = { 1 },	-- 1
+	},
+
+	karlik = {
+		bip01_l_calf = { 11, 2, 4, 4 },		-- 1
+		bip01_l_thigh = { 14, 2, 4, 3 },	-- 2
+		bip01_r_calf = { 11, 2, 4, 4 },
+		bip01_r_thigh = { 14, 2, 4, 3 },
+		bip01_l_hand = { 1, 2 },	-- 1
+		bip01_l_forearm = { 12, 4, 4, 2 },	-- 1
+		bip01_l_upperarm = { 12, 8, 2, 3, 4 },	-- 2
+		bip01_r_hand = { 1, 2 },
+		bip01_r_forearm = { 12, 4, 4, 2 },
+		bip01_r_upperarm = { 12, 8, 2, 3, 4 },
+		bip01_head = { 2, 2, 2 },	-- 2
+	},
+
+}
+
+local bone_groups = {
+	human = {
+		{ "jaw_1", "bip01_head" },
+		{ "bip01_l_hand" },
+		{ "bip01_l_foot", "bip01_l_calf", "bip01_l_thigh" },
+		{ "bip01_r_hand" },
+		{ "bip01_r_foot", "bip01_r_calf", "bip01_r_thigh" },
+	},
+
+	dog = {
+		{ "bip01_l_horselink", "bip01_l_calf", "bip01_l_thigh" },
+		{ "bip01_l_hand", "bip01_l_forearm", "bip01_l_upperarm" },
+		{ "bip01_r_horselink", "bip01_r_calf", "bip01_r_thigh" },
+		{ "bip01_r_hand", "bip01_r_forearm", "bip01_r_upperarm" },
+		{ "bip01_ponytail2", "bip01_head" },
+	},
+
+	pseudo_dog = {
+		{ "bip01_l_horselink", "bip01_l_calf", "bip01_l_thigh" },
+		{ "bip01_l_hand", "bip01_l_forearm", "bip01_l_upperarm" },
+		{ "bip01_r_horselink", "bip01_r_calf", "bip01_r_thigh" },
+		{ "bip01_r_hand", "bip01_r_forearm", "bip01_r_upperarm" },
+		{ "bip01_ponytail2", "bip01_head", "bone01" },
+	},
+
+	boar = {
+		{ "bip01_l_horselink", "bip01_l_calf", "bip01_l_thigh" },
+		{ "bip01_l_hand", "bip01_l_forearm", "bip01_l_upperarm" },
+		{ "bip01_r_horselink", "bip01_r_calf", "bip01_r_thigh" },
+		{ "bip01_r_hand", "bip01_r_forearm", "bip01_r_upperarm" },
+		{ "bip01_head", "bone01" },
+	},
+
+	flesh = {
+		{ "bip01_l_horselink", "bip01_l_calf", "bip01_l_thigh" },
+		{ "bip01_l_hand", "bip01_l_forearm", "bip01_l_upperarm" },
+		{ "bip01_r_horselink", "bip01_r_calf", "bip01_r_thigh" },
+		{ "bip01_r_hand", "bip01_r_forearm", "bip01_r_upperarm" },
+		{ "bip01_head" },
+	},
+
+	cat = {
+		{ "bip01_l_foot", "bip01_l_calf" },
+		{ "bip01_l_forearm" },
+		{ "bip01_r_foot", "bip01_r_calf" },
+		{ "bip01_r_forearm" },
+		{ "bip01_head" },
+	},
+
+	zombie = {
+		{ "bip01_l_foot", "bip01_l_calf", "bip01_l_thigh" },
+		{ "bip01_l_hand", "bip01_l_forearm", "bip01_l_upperarm" },
+		{ "bip01_r_foot", "bip01_r_calf", "bip01_r_thigh" },
+		{ "bip01_r_hand", "bip01_r_forearm", "bip01_r_upperarm" },
+		{ "bip01_head" },
+	},
+
+	tushkano = {
+		{ "bip01_l_calf" },
+		{ "bip01_l_forearm", "bip01_l_upperarm" },
+		{ "bip01_r_calf" },
+		{ "bip01_r_forearm", "bip01_r_upperarm" },
+		{ "bip01_head" },
+	},
+
+	snork = {
+		{ "leftfoot", "bip01_l_calf", "leftupleg" },
+		{ "rightfoot", "bip01_r_calf", "rightupleg" },
+		{ "lefthand", "bip01_l_forearm", "leftarm" },
+		{ "righthand", "bip01_r_forearm", "rightarm" },
+		{ "bip01_head" },
+	},
+
+	controller = {
+		{ "bip01_l_foot", "bip01_l_calf", "bip01_l_thigh" },
+		{ "bip01_l_hand", "bip01_l_forearm", "bip01_l_upperarm" },
+		{ "bip01_r_foot", "bip01_r_calf", "bip01_r_thigh" },
+		{ "bip01_r_hand", "bip01_r_forearm", "bip01_r_upperarm" },
+		{ "bip01_head" },
+	},
+
+	bloodsucker = {
+		{ "bip01_l_foot", "bip01_l_calf", "bip01_l_thigh" },
+		{ "bip01_l_hand", "bip01_l_forearm", "bip01_l_upperarm" },
+		{ "bip01_r_foot", "bip01_r_calf", "bip01_r_thigh" },
+		{ "bip01_r_hand", "bip01_r_forearm", "bip01_r_upperarm" },
+		{ "bip01_head" },
+	},
+
+	chimera = {
+		{ "l_foot", "l_leg_1", "l_leg", "l_thing" },
+		{ "r_foot", "r_leg_1", "r_leg", "r_thing" },
+		{ "hand_l", "forearm_l", "arm_l" },
+		{ "hand_r", "forearm_r", "arm_r" },
+		{ "head_little" },
+		{ "head_boss", "boss_jaw" },
+	},
+
+	burer = {
+		{ "left_toe", "left_foot", "left_leg" },
+		{ "left_hand", "left_forearm", "left_arm" },
+		{ "right_toe", "right_foot", "right_leg" },
+		{ "right_hand", "right_forearm", "right_arm" },
+		{ "head" },
+	},
+
+	fracture = {
+		{ "bip01_l_foot", "bip01_l_calf", "bip01_l_thigh" },
+		{ "bip01_l_hand", "bip01_l_forearm", "bip01_l_upperarm" },
+		{ "bip01_r_foot", "bip01_r_calf", "bip01_r_thigh" },
+		{ "bip01_r_hand", "bip01_r_forearm", "bip01_r_upperarm" },
+		{ "bip01_head" },
+	},
+
+	giant = {
+		{ "lefthand", "leftforearm", "leftarm" },
+		{ "lefttopforearm", "lefttoparm" },
+		{ "righthand", "rightforearm", "rightarm" },
+		{ "righttopforearm", "righttoparm" },
+		{ "head", "jaw" },
+	},
+
+	karlik = {
+		{ "bip01_l_foot", "bip01_l_calf", "bip01_l_thigh" },
+		{ "bip01_l_hand", "bip01_l_forearm", "bip01_l_upperarm" },
+		{ "bip01_r_foot", "bip01_r_calf", "bip01_r_thigh" },
+		{ "bip01_r_hand", "bip01_r_forearm", "bip01_r_upperarm" },
+		{ "bip01_head" },
+	},
+
+}
+
+-- [section_idx] = { collision_wm_size, impulse_min, impulse_max }
+local meshes_params = {
+	[1] = { 0.3, 30, 140 },
+	[2] = { 0.2, 30, 180 },
+	[3] = { 0.3, 30, 140 },
+	[4] = { 0.25, 30, 160 },
+	[5] = { 0.35, 30, 120 },
+
+	[6] = { 0.45, 10, 60 },
+	[7] = { 0.5, 10, 50 },
+	[8] = { 0.4, 20, 90 },
+	[9] = { 0.45, 10, 50 },
+	[10] = { 0.55, 10, 40 },
+
+	[11] = { 0.35, 20, 90 },
+	[12] = { 0.25, 30, 120 },
+	[13] = { 0.45, 10, 50 },
+	[14] = { 0.55, 10, 40 },
+	[15] = { 0.6, 10, 20 },
+	[16] = { 0.65, 10, 20 },
+}
+
+-- save bone id and sum up hit power for over 0.5 sec (for shotgun pellets)
+function npc_on_before_hit(npc, shit, bone_id)
+	if not (npc:alive()) then return end
+
+	wound_t[npc:id()] = wound_t[npc:id()] or {}
+	wound_t[npc:id()].bone_id = bone_id
+	wound_t[npc:id()].hit_type = shit.type
+	wound_t[npc:id()].direction = shit.direction
+
+	pr("---------------------------")
+	pr("on_hit original hit_power: %s || type: %s", round_idp(shit.power, 3), shit.type)
+
+--[[
+	local draft_pos = vector():set(shit.draftsman:position())
+	local draft2obj_dir = vec_sub(draft_pos, vector():set(npc:position())):normalize()
+	pr("draft to obj dir: %s", draft2obj_dir)
+	pr("shit.direction to obj: %s", shit.direction)
+--]]
+
+	-- save only damage from allowed hit types
+	if not (allowed_hit_types[shit.type]) then return end
+
+	local npc_kind = ini_sys:r_string_ex(npc:section(), "kind")
+	local npc_damage_section = (creatures_cls[npc:clsid()] and creatures_cls[npc:clsid()][2]) or (npc_kind and creatures_kind[npc_kind] and creatures_kind[npc_kind][2]) or (npc:section())
+	pr("on_hit bone_name: %s || damage_sec: %s", npc:bone_name(bone_id), npc_damage_section)
+
+	if debug_hit then shit.power = 1000 end
+
+	-- get bone damage mult
+	local new_hit_power = shit.power
+	if npc_damage_section then
+		local bone_name = npc:bone_name(bone_id)
+		local str = bone_name and ini_sys:r_string_ex(npc_damage_section, bone_name)
+		local p = str and str_explode(str, ",")
+		if p and p[1] then
+			local hit_power_mult = tonumber(p[1]) or 1	-- if not found then 1
+			hit_power_mult = hit_power_mult < 1 and 1 or hit_power_mult	-- if less than 1 then 1
+			pr("on_hit bone: %s || set_bone: %s || mult: %s", bone_name, str, tonumber(p[1]) or "def")
+			new_hit_power = shit.power * hit_power_mult
+		end
+	end
+
+	wound_t[npc:id()].hit_power = (wound_t[npc:id()].hit_power and wound_t[npc:id()].hit_power + new_hit_power) or new_hit_power
+
+	CreateTimeEvent("reset_hit_power_e", "reset_hit_power_" .. npc:id() .. "_a", 0.5, reset_hit_power, npc:id())
+
+end
+
+function reset_hit_power(id)
+	if not wound_t[id] then return end
+	wound_t[id].hit_power = 0
+
+	return true
+end
+
+-- use last hitted bone on npc death
+function npc_on_death_callback(npc, killer)
+	local math_random = math.random
+	if not wound_t[npc:id()] then return end
+
+	-- some options check
+	if IsStalker(npc) and (not enable_for_stalkers) then
+		wound_t[npc:id()] = nil
+		return
+	end
+
+	if IsMonster(npc) and (not enable_for_mutants) then
+		wound_t[npc:id()] = nil
+		return
+	end
+
+
+	-- get npc bone table
+	local npc_kind = ini_sys:r_string_ex(npc:section(), "kind")
+	local npc_key = (creatures_cls[npc:clsid()] and creatures_cls[npc:clsid()][1]) or (npc_kind and creatures_kind[npc_kind] and creatures_kind[npc_kind][1])
+	pr("npc_key: %s", npc_key)
+	local npc_bone_table = npc_key and limb_map[npc_key]
+	if not npc_bone_table then
+		wound_t[npc:id()] = nil
+		return
+	end
+
+	-- get last hitted bone name
+	local hitted_bone = wound_t[npc:id()].bone_id and npc.bone_name and npc:bone_name(wound_t[npc:id()].bone_id)
+	pr("hit: %s", hitted_bone)
+
+	-- get relative bone to remove
+	local bone_key = hitted_bone and npc_bone_table[hitted_bone]
+
+	-- set new bone_key for mutant hits
+	local mutant_hit = allow_mutant_muti and IsMonster(killer)
+
+	if (not bone_key) and (mutant_hit) then
+		bone_key = npc_bone_table["explosion_" .. math_random(1, 8)]
+		pr("~ random bone picked")
+	end
+
+	-- compare hit power
+	local hit_power = wound_t[npc:id()].hit_power
+	pr("power: %s", hit_power)
+	pr("hit_type: %s", wound_t[npc:id()].hit_type)
+
+	if (not hit_power) or (hit_power < hit_power_threshold) then
+		wound_t[npc:id()] = nil
+		return
+	end
+
+
+	local explosion_bones = {}
+	-- collect few bones for explosions
+	if wound_t[npc:id()].hit_type == hit.explosion then
+		local bones_amount = math_random(1, max_explosion_limbs)
+
+		local groups_array = dup_table(bone_groups[npc_key])
+		groups_array = shuffle_t(groups_array)
+
+		for idx, group in ipairs(groups_array) do
+
+			if #explosion_bones < bones_amount then
+				local random_bone = group[math_random(1, #group)]
+				explosion_bones[#explosion_bones + 1] = random_bone
+			end
+		end
+
+	end
+
+	-- some npc info
+	for i = 1, #explosion_bones > 0 and #explosion_bones or 1 do
+
+		if #explosion_bones > 0 then
+			bone_key = npc_bone_table[explosion_bones[i]]
+			pr("~ npc_id: %s || bone_name: %s", npc:id(), explosion_bones[i])
+		end
+
+		if (not bone_key) then
+			wound_t[npc:id()] = nil
+			return
+		end
+
+		local bone_to_remove = bone_key[1]
+		local meshes_t = (mesh_map[npc_key] and mesh_map[npc_key][bone_to_remove]) or {1}
+		local wm_size = (bone_key[2] and bone_key[2][1]) or def_wm_size
+		local wm_bone = (bone_key[2] and bone_key[2][2]) or bone_to_remove
+		local wm_dir_y = (bone_key[2] and bone_key[2][3]) or 1
+		local delay_time = bone_key[3]
+
+		local wm_pos = vector():set(npc:bone_position(wm_bone))
+
+	--	wallmarks_manager():place_skeleton(npc, picked_wm, wm_pos, vector():set(0, wm_dir_y, 0), wm_size, wm_ttl)
+
+
+		-- meshes
+		play_meshes(npc, meshes_t, wm_pos)
+
+
+		-- particles
+		play_particles(wm_pos)
+
+
+		-- hide bone
+		local function hide(id, bone)
+			local obj = level.object_by_id(id)
+			if obj then
+				-- remove bone and its childs
+				pr("removing: %s", bone)
+				obj:set_bone_visible(bone, false, true)
+			end
+
+			-- delete key if last index
+			if i == bones_amount then
+				wound_t[id] = nil
+			end
+
+			return true
+		end
+
+		if delay_time then
+			CreateTimeEvent("xcv_bone_test", "xcv_bone_test_" .. npc:id() .. "_" .. i, delay_time, hide, npc:id(), bone_to_remove)
+		else
+			hide(npc:id(), bone_to_remove)
+		end
+
+		-- wallmark on body
+		local picked_wm = "limb_blood_" .. math_random(1, 6)
+	--	pr("wm: %s", picked_wm)
+		wallmarks_manager():place_skeleton(npc, picked_wm, wm_pos, vector():set(0, wm_dir_y, 0), wm_size, wm_ttl)
+
+	end
+
+end
+
+function play_meshes(npc, meshes_t, wm_pos)
+	if not enable_meshes then return end
+
+	local shuf_meshes_t = shuffle_t(meshes_t)
+
+	local wm_off_x, wm_off_y, wm_off_z = -0.1, 0, -0.1
+
+	for i = 1, #shuf_meshes_t do
+
+		local mesh_pos = vector():set(wm_pos.x + wm_off_x, wm_pos.y + wm_off_y, wm_pos.z + wm_off_z)
+		local se_obj = alife_create("limb_obj_" .. shuf_meshes_t[i], mesh_pos, npc:level_vertex_id(), npc:game_vertex_id())
+
+		wm_off_x = wm_off_x + 0.1
+		wm_off_y = wm_off_y --+ 0.1
+		wm_off_z = wm_off_z + 0.1
+
+		if se_obj then
+			obj_t[se_obj.id] = obj_ttl
+
+			-- punch mesh
+			local time_start = time_global()
+			local function punch(id, dir)
+				local game_obj = level.object_by_id(id)
+				if game_obj then
+					obj_wm[game_obj:id()] = shuf_meshes_t[i]		-- storing for raycast and wallmarks (remove after 4 sec anyway)
+					CreateTimeEvent("remove_obj_wm_key", "remove_obj_wm_key_" .. game_obj:id(), 4, remove_wm_obj_keys, game_obj:id())
+
+					local root_bone = game_obj:bone_name(0)
+					pr("punch")
+					local h = hit()
+					h.type = hit.wound
+					h.power = 0.0
+					local mesh_impulse_min = meshes_params[shuf_meshes_t[i]] and meshes_params[shuf_meshes_t[i]][2] or 30
+					local mesh_impulse_max = meshes_params[shuf_meshes_t[i]] and meshes_params[shuf_meshes_t[i]][3] or 80
+					mesh_impulse_max = mesh_impulse_max < mesh_impulse_min and mesh_impulse_min or mesh_impulse_max
+					local mesh_impulse = math.random(mesh_impulse_min, mesh_impulse_max)
+			--		pr("mesh_idx: %s || impulse: %s", shuf_meshes_t[i], mesh_impulse)
+					h.impulse = mesh_impulse
+					h:bone(root_bone)
+					h.direction = dir
+					h.draftsman = killer or db.actor
+					game_obj:hit(h)
+					return true
+				end
+				-- end loop if object hasnt been found
+				local func_time = time_global() - time_start
+				if func_time > 1000 then
+					pr("!mesh loop ended before")
+					return true
+				end
+			end
+			CreateTimeEvent("punch_limb_e", "punch_limb_" .. se_obj.id .. "_" .. i .. "_a", 0, punch, se_obj.id, wound_t[npc:id()].direction)
+
+		end
+	end
+
+end
+
+function play_particles(pos)
+	if not enable_particles then return end
+
+	local part_obj = particles_object("hit_fx\\hit_xcvb")
+	if not part_obj then return end
+
+	part_obj:play_at_pos(pos)
+
+end
+
+local tmr = 0
+function limb_release_upd()
+	local tg = time_global()
+	if tg < tmr then return end
+	tmr = tg + 2000
+
+	for id, ttl in pairs(obj_t) do
+		obj_t[id] = ttl - 2
+		if obj_t[id] <= 0 then
+			if alife_object(id) then
+				alife_release_id(id)
+			end
+			obj_t[id] = nil
+		end
+	end
+
+end
+
+function remove_wm_obj_keys(id)
+	obj_wm[id] = nil
+
+	return true
+end
+
+local obj_dir_wm = {
+	[1] = { 1, 0, 0 },
+	[2] = { -1, 0, 0 },
+	[3] = { 0, 1, 0 },
+	[4] = { 0, -1, 0 },
+	[5] = { 0, 0, 1 },
+	[6] = { 0, 0, -1 },
+}
+
+function limb_ray_upd()
+	if (is_empty(obj_wm)) then return end
+
+	for id, mesh_idx in pairs(obj_wm) do
+		local remove_k = false
+		local obj = level.object_by_id(id)
+		local pos = obj and vector():set(obj:position())
+
+	--	pr("--------- id: %s ---------", id)
+		if pos then
+			for i = 1, #obj_dir_wm do
+				local dir_a = obj_dir_wm[i]
+				local dir = vector():set(dir_a[1], dir_a[2], dir_a[3]) 
+				local col_dist = get_col_dist(pos, dir)
+		--		pr("i: %s || col_dist: %s", i, col_dist)
+				if col_dist and col_dist > 0 and col_dist <= 0.05 then
+					local wm_dist = 0.1
+					local wm_size = meshes_params[mesh_idx] and meshes_params[mesh_idx][1] or 0.3
+					local wm_tex = "limb_blood_" .. math.random(1, 6)
+					wallmarks_manager():place(dir, pos, wm_dist, wm_size, wm_tex, obj, wm_ttl, true)
+
+					remove_k = true
+				end
+			end
+		end
+
+		if remove_k then
+			obj_wm[id] = nil
+		end
+
+	end
+
+
+end
+
+function get_col_dist(pos, dir, obj)
+	local pick = ray_pick()
+	pick:set_position(vector():set(pos))
+	pick:set_direction(vector():set(dir))
+	pick:set_flags(2)
+	pick:set_range(15)
+	pick:query()
+	local dist = pick:get_distance()
+	local col_pos = vector():set(pos):add(vector():set(dir):mul(dist))
+	local dist_to_col = vector():set(pos):distance_to(vector():set(col_pos))
+
+	return dist_to_col
+end
+
+function shuffle_t(t)
+	local new_t = {}
+	for idx, val in ipairs(t) do
+		local pos = math.random(1, #new_t + 1)
+		table.insert(new_t, pos, val)
+	end
+
+	return new_t
+end
+
+function save_state(m_data)
+	m_data.obj_t = obj_t
+end
+
+function load_state(m_data)
+	obj_t = m_data.obj_t or {}
+end
+
+function pr(...)
+	if not debugx then return end
+	printf(...)
+end
+
+function on_option_change()
+	enable_for_stalkers = dismemb_mcm.get_config("enable_stalker")
+	enable_for_mutants = dismemb_mcm.get_config("enable_mutant")
+
+	hit_power_threshold = dismemb_mcm.get_config("hit_threshold")
+	enable_foot = dismemb_mcm.get_config("enable_foot")
+	wm_ttl = dismemb_mcm.get_config("wm_lifetime")
+	allow_mutant_muti = dismemb_mcm.get_config("mutant_muti")
+	max_explosion_limbs = dismemb_mcm.get_config("max_explosion_limbs")
+
+	enable_meshes = dismemb_mcm.get_config("enable_meshes")
+	obj_ttl = dismemb_mcm.get_config("meshes_lifetime")
+
+	def_wm_size = dismemb_mcm.get_config("wm_size")
+	debugx = dismemb_mcm.get_config("debugx")
+	debug_hit = dismemb_mcm.get_config("debug_hit")
+end
+
+function on_game_start()
+	RegisterScriptCallback("npc_on_before_hit", npc_on_before_hit)
+	RegisterScriptCallback("monster_on_before_hit", npc_on_before_hit)
+	RegisterScriptCallback("npc_on_death_callback", npc_on_death_callback)
+	RegisterScriptCallback("monster_on_death_callback", npc_on_death_callback)
+	RegisterScriptCallback("actor_on_update", limb_release_upd)
+	RegisterScriptCallback("actor_on_update", limb_ray_upd)
+	RegisterScriptCallback("save_state", save_state)
+	RegisterScriptCallback("load_state", load_state)
+	RegisterScriptCallback("on_option_change", on_option_change)
+end

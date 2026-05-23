@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_dismemb_title">
+		<text>Расчленение</text>
+	</string>
+	<string id="ui_mcm_menu_dismemb">
+		<text>Расчленение</text>
+	</string>
+
+
+	<!-- Main configs -->
+	<string id="ui_mcm_dismemb_enable_stalker">
+		<text>Включить для сталкеров</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_enable_mutant">
+		<text>Включить для мутантов</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_hit_threshold">
+		<text>Порог урона</text>
+	</string>
+	<string id="ui_mcm_dismemb_hit_threshold_desc">
+		<text>Минимальное количество летального урона для отделения конечности, сейчас не проверяет броню и прочее.</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_wm_lifetime">
+		<text>Время жизни крови на теле</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_enable_foot">
+		<text>Включить отделение стопы у Сталкеров (выглядит не очень)</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_mutant_muti">
+		<text>Больше расчлененки от мутантов (см. описание)</text>
+	</string>
+	<string id="ui_mcm_dismemb_mutant_muti_desc">
+		<text>Мутанты в основном бьют по "root" кости, которая ничего не отделяет. Эта опция будет отделять случайную конечность (кроме головы) когда мутант убивает кого-нибудь (если пройдет проверку на урон).</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_max_explosion_limbs">
+		<text>Макс. кол-во частей при взрыве</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_max_explosion_limbs_desc">
+		<text>Случайное количество от 1 до этого значения.</text>
+	</string>
+
+	<!-- Meshes -->
+	<string id="ui_mcm_dismemb_enable_meshes">
+		<text>Включить отдельные конечности</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_meshes_lifetime">
+		<text>Время жизни отделенных конечностей</text>
+	</string>
+
+
+	<!-- Hit types -->
+	<string id="ui_mcm_dismemb_allow_exp">
+		<text>Разрешить тип explosion (взрывы)</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_allow_wound">
+		<text>Разрешить тип wound (мили/мутанты)</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_allow_strike">
+		<text>Разрешить тип strike (некоторые мутанты)</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_allow_ball">
+		<text>Разрешить тип ballistic (пули)</text>
+	</string>
+
+
+	<!-- Debug -->
+	<string id="ui_mcm_dismemb_wm_size">
+		<text>Размер крови на теле (Может помочь с крашем драйверов GPU)</text>
+	</string>
+	<string id="ui_mcm_dismemb_wm_size_desc">
+		<text>Если у вас фризит игра, а после вылетает с ошибкой GPU suspended, уменьшение этого значения может помочь.</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_debugx">
+		<text>Дебаг Инфо</text>
+	</string>
+	<string id="ui_mcm_dismemb_debugx_desc">
+		<text>Немного информации в консоли.</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_debug_hit">
+		<text>Дебаг hit_power*1000</text>
+	</string>
+
+</string_table>

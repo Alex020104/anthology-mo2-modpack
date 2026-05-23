@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+<!-- SNIPER OFFENSIVE -->
+    <string id="sniper_rifles_name">
+        <text>Sniper rifles</text>
+    </string>
+    <string id="assault_rifles_novice_name">
+        <text>Assault rifles novice</text>
+    </string>
+    <string id="pistols_name">
+        <text>Pistols</text>
+    </string>
+    <string id="experienced_sniper_name">
+        <text>Experienced sniper</text>
+    </string>
+    <string id="steady_name">
+        <text>Steady</text>
+    </string>
+    <string id="convenience_name">
+        <text>Convenience</text>
+    </string>
+    <string id="gunslinger_name">
+        <text>Gunslinger</text>
+    </string>
+    <string id="sharpshooter_name">
+        <text>Sharpshooter</text>
+    </string>
+    <string id="ambush_name">
+        <text>Ambush</text>
+    </string>
+    <string id="deep_wound_name">
+        <text>Deep wound</text>
+    </string>
+    <string id="loner_name">
+        <text>Loner</text>
+    </string>
+    <string id="soft_spot_name">
+        <text>Soft spot</text>
+    </string>
+    <string id="nocturnal_name">
+        <text>Nocturnal</text>
+    </string>
+    <string id="carnage_name">
+        <text>Carnage</text>
+    </string>
+	
+<!-- TROOPER OFFENSIVE-->
+	<string id="assault_rifles_name">
+        <text>Assault rifles</text>
+    </string>
+    <string id="shotguns_novice_name">
+        <text>Shotguns novice</text>
+    </string>
+    <string id="submachine_guns_name">
+        <text>Submachine guns</text>
+    </string>
+    <string id="experienced_rifleman_name">
+        <text>Experienced rifleman</text>
+    </string>
+    <string id="demolition_expert_name">
+        <text>Demolition expert</text>
+    </string>
+    <string id="duelist_name">
+        <text>Duelist</text>
+    </string>
+    <string id="focus_name">
+        <text>Focus</text>
+    </string>
+    <string id="thrill_name">
+        <text>Thrill</text>
+    </string>
+    <string id="precision_name">
+        <text>Precision</text>
+    </string>
+    <string id="barrage_name">
+        <text>Barrage</text>
+    </string>
+    <string id="reckless_name">
+        <text>Reckless</text>
+    </string>
+    <string id="veteran_rifleman_name">
+        <text>Veteran rifleman</text>
+    </string>
+    <string id="collector_name">
+        <text>Collector</text>
+    </string> 
+
+<!-- JUGGER OFFENSIVE-->
+    <string id="shotguns_name">
+        <text>Shotguns</text>
+    </string>
+    <string id="machine_guns_name">
+        <text>Machine guns</text>
+    </string>
+    <string id="submachine_name">
+        <text>Submachine</text>
+    </string>
+    <string id="hunter_name">
+        <text>Hunter</text>
+    </string>
+    <string id="bounty_hunter_name">
+        <text>Bounty Hunter</text>
+    </string>
+    <string id="mangle_name">
+        <text>Mangle</text>
+    </string>
+    <string id="heavy_guns_expert_name">
+        <text>Heavy Guns Expert</text>
+    </string>
+    <string id="merciless_name">
+        <text>Merciless</text>
+    </string>
+    <string id="fury_name">
+        <text>Fury</text>
+    </string>
+    <string id="bloodthirst_name">
+        <text>Bloodthirst</text>
+    </string>
+    <string id="execution_name">
+        <text>Execution</text>
+    </string>
+    <string id="frightening_name">
+        <text>Frightening</text>
+    </string>
+    <string id="selective_name">
+        <text>Selective</text>
+    </string>
+    <string id="mastery_name">
+        <text>Mastery</text>
+    </string> 
+	
+<!-- SNIPER DEFENSIVE -->
+	<string id="adaptive_name">
+		<text>Adaptive</text>
+	</string>
+	<string id="mild_name">
+		<text>Mild</text>
+	</string>
+	<string id="iron_stomach_name">
+		<text>Iron stomach</text>
+	</string>
+	<string id="plastic_pads_name">
+		<text>Plastic pads</text>
+	</string>
+	<string id="aluminum_plates_name">
+		<text>Aluminum plates</text>
+	</string>
+	<string id="nature_resistance_name">
+		<text>Nature resistance</text>
+	</string>
+	<string id="rad_resistant_name">
+		<text>Rad resistant</text>
+	</string>
+	<string id="technician_name">
+		<text>Technician</text>
+	</string>
+	<string id="inventor_name">
+		<text>Inventor</text>
+	</string>
+	<string id="expert_technician_name">
+		<text>Expert technician</text>
+	</string>
+	<string id="agile_name">
+		<text>Agile</text>
+	</string>
+	<string id="reflexes_name">
+		<text>Reflexes</text>
+	</string>
+	
+<!-- TROOPER DEFENSIVE -->
+	<string id="ceramic_plates_name">
+		<text>Ceramic plates</text>
+	</string>
+	<string id="first_aid_name">
+		<text>First aid</text>
+	</string>
+	<string id="isolated_name">
+		<text>Isolated</text>
+	</string>
+	<string id="armorer_name">
+		<text>Armorer</text>
+	</string>
+	<string id="chem_resistant_name">
+		<text>Chem resistant</text>
+	</string>
+	<string id="suppresion_fire_name">
+		<text>Suppression fire</text>
+	</string>
+	<string id="cautious_name">
+		<text>Cautious</text>
+	</string>
+	<string id="fireproof_name">
+		<text>Fireproof</text>
+	</string>
+	<string id="composure_name">
+		<text>Composure</text>
+	</string>
+	<string id="enduring_name">
+		<text>Enduring</text>
+	</string>
+	<string id="adorned_name">
+		<text>Adorned</text>
+	</string>
+	<string id="expert_armorer_name">
+		<text>Expert armorer</text>
+	</string>
+	<string id="last_stand_name">
+		<text>Last stand</text>
+	</string>
+	<string id="leap_name">
+		<text>Leap</text>
+	</string> 
+
+<!-- JUGGER DEFENSIVE -->
+	<string id="steel_plates_name">
+		<text>Steel plates</text>
+	</string>
+	<string id="steel_pads_name">
+		<text>Steel pads</text>
+	</string>
+	<string id="regenerative_name">
+		<text>Regenerative</text>
+	</string>
+	<string id="heavy_armor_expert_name">
+		<text>Heavy armor expert</text>
+	</string>
+	<string id="dismorale_name">
+		<text>Dismorale</text>
+	</string>
+	<string id="sturdy_name">
+		<text>Sturdy</text>
+	</string>
+	<string id="sanity_name">
+		<text>Sanity</text>
+	</string>
+	<string id="anxiety_name">
+		<text>Anxiety</text>
+	</string>
+	<string id="turmoil_name">
+		<text>Turmoil</text>
+	</string>
+	<string id="bulky_name">
+		<text>Bulky</text>
+	</string>
+	<string id="secure_name">
+		<text>Secure</text>
+	</string>
+	<string id="lucid_name">
+		<text>Lucid</text>
+	</string>
+	<string id="robust_name">
+		<text>Robust</text>
+	</string> 
+
+<!-- SNIPER ENDURANCE -->
+	<string id="ease_name">
+		<text>Ease</text>
+	</string>
+	<string id="refreshing_name">
+		<text>Refreshing</text>
+	</string>
+	<string id="hiker_name">
+		<text>Hiker</text>
+	</string>
+	<string id="resting_name">
+		<text>Resting</text>
+	</string>
+	<string id="prudent_name">
+		<text>Prudent</text>
+	</string>
+	<string id="swifty_name">
+		<text>Swifty</text>
+	</string>
+	<string id="tireless_name">
+		<text>Tireless</text>
+	</string>
+	<string id="hoarder_name">
+		<text>Hoarder</text>
+	</string>
+	<string id="adrenaline_rush_name">
+		<text>Adrenaline Rush</text>
+	</string>
+	<string id="second_wind_name">
+		<text>Second Wind</text>
+	</string>
+	<string id="organizer_name">
+		<text>Organizer</text>
+	</string>
+	<string id="insomnia_name">
+		<text>Insomnia</text>
+	</string>
+	<string id="courage_name">
+		<text>Courage</text>
+	</string>
+	<string id="belt_braces_name">
+		<text>Belt Braces</text>
+	</string>
+	<string id="athletic_name">
+		<text>Athletic</text>
+	</string>
+	<string id="iron_spine_name">
+		<text>Iron Spine</text>
+	</string> 
+
+<!-- SNIPER SPEECH -->
+	<string id="preparation_name">
+		<text>Preparation</text>
+	</string>
+	<string id="confidence_name">
+		<text>Confidence</text>
+	</string>
+	<string id="supplier_name">
+		<text>Supplier</text>
+	</string>
+	<string id="observant_name">
+		<text>Observant</text>
+	</string>
+	<string id="smuggler_name">
+		<text>Smuggler</text>
+	</string>
+	<string id="gregarious_name">
+		<text>Gregarious</text>
+	</string>
+	<string id="encouragement_name">
+		<text>Encouragement</text>
+	</string>
+	<string id="persuasion_name">
+		<text>Persuasion</text>
+	</string>
+	<string id="charismatic_name">
+		<text>Charismatic</text>
+	</string>
+	<string id="shady_name">
+		<text>Shady</text>
+	</string>
+	<string id="artistic_name">
+		<text>Artistic</text>
+	</string>
+	<string id="rally_name">
+		<text>Rally</text>
+	</string>
+	<string id="cynical_name">
+		<text>Cynical</text>
+	</string>
+	<string id="well_liked_name">
+		<text>Well Liked</text>
+	</string>
+	<string id="deceitful_name">
+		<text>Deceitful</text>
+	</string>
+
+<!-- MONSTER HUNTER OFFENSIVE -->
+	<string id="dog_hunter_name">
+		<text>Dog hunter</text>
+	</string>
+	<string id="boar_hunter_name">
+		<text>Boar hunter</text>
+	</string>
+	<string id="zombie_hunter_name">
+		<text>Zombie hunter</text>
+	</string>
+	<string id="trophies_name">
+		<text>Trophies</text>
+	</string>
+	<string id="deep_cut_name">
+		<text>Deep cut</text>
+	</string>
+	<string id="beast_anatomy_name">
+		<text>Beast anatomy</text>
+	</string>
+	<string id="humanoid_anatomy_name">
+		<text>Humanoid anatomy</text>
+	</string>
+	<string id="expert_hunter_name">
+		<text>Expert hunter</text>
+	</string>
+	<string id="beast_rivalry_name">
+		<text>Beast rivalry</text>
+	</string>
+	<string id="humanoid_rivalry_name">
+		<text>Humanoid rivalry</text>
+	</string>
+	<string id="master_hunter_name">
+		<text>Master hunter</text>
+	</string>
+	<string id="fierce_name">
+		<text>Fierce</text>
+	</string>
+	<string id="ranger_name">
+		<text>Ranger</text>
+	</string>
+	<string id="deadly_blow_name">
+		<text>Deadly blow</text>
+	</string>
+
+<!-- MONSTER HUNTER DEFENSIVE -->
+	<string id="shoulder_pads_name">
+		<text>Shoulder pads</text>
+	</string>
+	<string id="careful_name">
+		<text>Careful</text>
+	</string>
+	<string id="melee_defense_name">
+		<text>Melee defense</text>
+	</string>
+	<string id="special_diet_name">
+		<text>Special diet</text>
+	</string>
+	<string id="clarity_name">
+		<text>Clarity</text>
+	</string>
+	<string id="tracker_name">
+		<text>Tracker</text>
+	</string>
+	<string id="soft_armor_name">
+		<text>Soft armor</text>
+	</string>
+	<string id="stable_mind_name">
+		<text>Stable mind</text>
+	</string>
+	<string id="beast_demeanor_name">
+		<text>Beast demeanor</text>
+	</string>
+	<string id="humanoid_demeanor_name">
+		<text>Humanoid demeanor</text>
+	</string>
+	<string id="second_skin_name">
+		<text>Second skin</text>
+	</string>
+	<string id="custom_fit_name">
+		<text>Custom fit</text>
+	</string>
+	<string id="kindred_name">
+		<text>Kindred</text>
+	</string>
+
+<!-- MERC OFFENSIVE -->
+	<string id="firearm_enthusiast_name">
+		<text>Firearm enthusiast</text>
+	</string>
+	<string id="combat_engineer_name">
+		<text>Combat engineer</text>
+	</string>
+	<string id="overdrive_name">
+		<text>Overdrive</text>
+	</string>
+	<string id="head_hunter_name">
+		<text>Head hunter</text>
+	</string>
+	<string id="arrogance_name">
+		<text>Arrogance</text>
+	</string>
+	<string id="aim_torso_name">
+		<text>Aim torso</text>
+	</string>
+	<string id="aim_limbs_name">
+		<text>Aim limbs</text>
+	</string>
+	<string id="modified_bullets_name">
+		<text>Modified bullets</text>
+	</string>
+	<string id="bullseye_name">
+		<text>Deadshot</text>
+	</string>
+	<string id="searcher_name">
+		<text>Blood money</text>
+	</string>
+	<string id="assault_rifles_expert_name">
+		<text>Assault rifles expert</text>
+	</string>
+	<string id="light_guns_expert_name">
+		<text>Light guns expert</text>
+	</string>
+	<string id="sniper_rifles_expert_name">
+		<text>Sniper rifles expert</text>
+	</string>
+	<string id="liquidator_name">
+		<text>Liquidator</text>
+	</string>
+
+<!-- MERC DEFENSIVE -->
+	<string id="mercenary_vest_name">
+		<text>Mercenary vest</text>
+	</string>
+	<string id="insensitive_name">
+		<text>Insensitive</text>
+	</string>
+	<string id="chem_reliant_name">
+		<text>Chem reliant</text>
+	</string>
+	<string id="grenadier_name">
+		<text>Grenadier</text>
+	</string>
+	<string id="confusion_name">
+		<text>Confusion</text>
+	</string>
+	<string id="addictive_name">
+		<text>Addictive</text>
+	</string>
+	<string id="direct_name">
+		<text>Direct</text>
+	</string>
+	<string id="disguise_master_name">
+		<text>Disguise master</text>
+	</string>
+	<string id="flurry_name">
+		<text>Flurry</text>
+	</string>
+	<string id="loose_fit_name">
+		<text>Loose fit</text>
+	</string>
+	<string id="reposition_name">
+		<text>Reposition</text>
+	</string>
+
+<!-- ASSASSIN OFFENSIVE -->
+	<string id="smg_novice_name">
+		<text>Submachine guns</text>
+	</string>
+	<string id="handgun_novice_name">
+		<text>Pistols</text>
+	</string>
+	<string id="knifeman_name">
+		<text>Knifeman</text>
+	</string>
+	<string id="spot_weakness_name">
+		<text>Spot weakness</text>
+	</string>
+	<string id="undercover_name">
+		<text>Undercover</text>
+	</string>
+	<string id="tactical_name">
+		<text>Tactical</text>
+	</string>
+	<string id="backstab_name">
+		<text>Backstab</text>
+	</string>
+	<string id="saboteur_name">
+		<text>Saboteur</text>
+	</string>
+	<string id="surprise_attack_name">
+		<text>Surprise attack</text>
+	</string>
+	<string id="assassination_name">
+		<text>Assassination</text>
+	</string>
+	<string id="vile_name">
+		<text>Vile</text>
+	</string>
+	<string id="pragmatic_name">
+		<text>Pragmatic</text>
+	</string>
+	<string id="assassin_observant_name">
+		<text>Observant</text>
+	</string>
+
+<!-- ASSASSIN DEFENSIVE -->
+	<string id="ordinary_name">
+		<text>Ordinary</text>
+	</string>
+	<string id="acrobatic_name">
+		<text>Acrobatics</text>
+	</string>
+	<string id="quiet_name">
+		<text>Quiet</text>
+	</string>
+	<string id="evanescent_name">
+		<text>Evanescent</text>
+	</string>
+	<string id="lurking_name">
+		<text>Lurking</text>
+	</string>
+	<string id="subtle_name">
+		<text>Subtle</text>
+	</string>
+	<string id="covert_name">
+		<text>Covert</text>
+	</string>
+	<string id="cunning_name">
+		<text>Cunning</text>
+	</string>
+	<string id="deception_name">
+		<text>Deception</text>
+	</string>
+	<string id="vague_name">
+		<text>Vague</text>
+	</string>
+	<string id="sneaky_name">
+		<text>Sneaky</text>
+	</string>
+	<string id="incognito_name">
+		<text>Incognito</text>
+	</string>
+	<string id="ghost_name">
+		<text>Ghost</text>
+	</string>
+	<string id="elusive_name">
+		<text>Elusive</text>
+	</string>
+
+</string_table>

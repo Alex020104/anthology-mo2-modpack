@@ -1,0 +1,1988 @@
+achievements_current_points = 0
+achievements_total_points = 0
+
+local ach_utils_inc = achievements_utils.inc_count
+local ctime_to_t = utils_data.CTime_to_table
+local t_to_ctime = utils_data.CTime_from_table
+
+achievement_boxes_cost = {
+	[1] = 500,
+	[2] = 1250,
+	[3] = 2500,
+}
+
+achievements_t = {
+	-- Kill mutants (50, 500, 2000)
+	["kill_mutants"] = {
+		index = 1,
+		count = 0,
+		stage = 1,
+		max_count = { 50, 500, 2000 },
+		reward = { 150, 1500, 6000 },
+	},
+
+	-- Kill mutant kinds (3, 10, 20)
+	["kill_all_mutant_kinds"] = {
+		index = 2,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 10, 20 },
+		collection = {
+			tushkano = 0,		flesh = 0,		dog = 0,		boar = 0,
+			cat = 0,		pseudodog = 0,		SM_LURKER = 0,		chimera = 0,
+			giant = 0,		zombie = 0,		fracture = 0,		snork = 0,
+			SM_POLTER_G = 0,		SM_PYRO_G = 0,		SM_PSEUDO_G = 0,
+			SM_KARLIK = 0,		burer = 0,		bloodsucker = 0,
+			SM_PSYSUCKER = 0,		controller = 0,
+		},
+		reward = { 100, 450, 1000 },
+	},
+
+	-- Kill stalkers (25, 150, 500)
+	["kill_stalkers"] = {
+		index = 3,
+		count = 0,
+		stage = 1,
+		max_count = { 25, 150, 500 },
+		reward = { 125, 750, 2500 },
+	},
+
+	-- Kill stalker factions (2, 6, 12)
+	["kill_all_stalker_factions"] = {
+		index = 4,
+		count = 0,
+		stage = 1,
+		max_count = { 2, 6, 12 },
+		collection = {
+			stalker = 0, monolith = 0, csky = 0, army = 0, bandit = 0, killer = 0,
+			ecolog = 0, dolg = 0, freedom = 0, renegade = 0, greh = 0, zombied = 0,
+		},
+		reward = { 100, 400, 900 },
+	},
+
+	-- Eat all mutant meals (2, 5, 10)
+	["eat_all_mutant_meals"] = {
+		index = 5,
+		count = 0,
+		stage = 1,
+		max_count = { 2, 5, 10 },
+		collection = {
+			meat_tushkano = 0,		meat_dog = 0,		meat_pseudodog = 0,
+			meat_flesh = 0,		meat_boar = 0,		meat_bloodsucker = 0,
+			meat_snork = 0,		meat_chimera = 0,		meat_lurker = 0,
+			meat_psysucker = 0,
+		},
+		reward = { 50, 275, 600 },
+	},
+
+	-- Find all artefacts (3, 10, 33)
+	["collect_all_artefacts"] = {
+		index = 6,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 10, 33 },
+		collection = {
+			af_black_spray = 0, af_night_star = 0, af_gravi = 0, af_gold_fish = 0,
+			af_medusa = 0, af_vyvert = 0, af_empty = 0, af_full_empty = 0,
+			af_death_lamp = 0, af_itcher = 0, af_pin = 0, af_cristall = 0,
+			af_fireball = 0, af_dummy_glassbeads = 0, af_eye = 0, af_fire = 0,
+			af_lobster_eyes = 0, af_blood = 0, af_mincer_meat = 0, af_bracelet = 0,
+			af_baloon = 0, af_soul = 0, af_fuzz_kolobok = 0, af_glass = 0,
+			af_cristall_flower = 0, af_electra_sparkler = 0, af_sponge = 0, af_ring = 0,
+			af_electra_flash = 0, af_dummy_battery = 0, af_dummy_dummy = 0, af_ice = 0,
+			af_electra_moonlight = 0,
+		},
+		reward = { 90, 400, 1600 },
+	},
+
+	-- Befriend factions (1, 3, 7)
+	["befriend_factions"] = {
+		index = 7,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 3, 7 },
+		collection = {
+			stalker = 0, monolith = 0, csky = 0, army = 0, bandit = 0, killer = 0,
+			ecolog = 0, dolg = 0, freedom = 0, renegade = 0, greh = 0,
+		},
+		reward = { 75, 300, 1000 },
+	},
+
+	-- Tasks done (10, 50, 200)
+	["tasks_done"] = {
+		index = 8,
+		count = 0,
+		stage = 1,
+		max_count = { 10, 50, 200 },
+		reward = { 250, 1250, 5000 },
+	},
+
+	-- Days in the zone (7, 60, 150, 365)
+	["days_in_zone"] = {
+		index = 9,
+		count = 0,
+		stage = 1,
+		max_count = { 7, 60, 150, 365 },
+		reward = { 70, 720, 2000, 5500 },
+	},
+
+	-- Kill tushkano
+	["kill_tushkano"] = {
+		index = 10,
+		count = 0,
+		stage = 1,
+		max_count = { 20, 150, 500 },
+		kind = "tushkano",
+		reward = { 30, 250, 750 },
+	},
+
+	-- Kill flesh
+	["kill_flesh"] = {
+		index = 11,
+		count = 0,
+		stage = 1,
+		max_count = { 10, 80, 300 },
+		kind = "flesh",
+		reward = { 30, 240, 800 },
+	},
+
+	-- Kill dog
+	["kill_dog"] = {
+		index = 12,
+		count = 0,
+		stage = 1,
+		max_count = { 25, 175, 600 },
+		kind = "dog",
+		reward = { 50, 350, 1200 },
+	},
+
+	-- Kill boar
+	["kill_boar"] = {
+		index = 13,
+		count = 0,
+		stage = 1,
+		max_count = { 10, 80, 300 },
+		kind = "boar",
+		reward = { 50, 400, 1500 },
+	},
+
+	-- Kill cat
+	["kill_cat"] = {
+		index = 14,
+		count = 0,
+		stage = 1,
+		max_count = { 10, 80, 300 },
+		kind = "cat",
+		reward = { 50, 400, 1500 },
+	},
+
+	-- Kill pseudodog
+	["kill_pseudodog"] = {
+		index = 15,
+		count = 0,
+		stage = 1,
+		max_count = { 10, 75, 250 },
+		kind = "pseudodog",
+		reward = { 65, 450, 1600 },
+	},
+
+	-- Kill lurker
+	["kill_lurker"] = {
+		index = 16,
+		count = 0,
+		stage = 1,
+		max_count = { 7, 50, 200 },
+		kind = "SM_LURKER",
+		reward = { 60, 400, 1700 },
+	},
+
+	-- Kill zombie
+	["kill_zombie"] = {
+		index = 17,
+		count = 0,
+		stage = 1,
+		max_count = { 15, 125, 450 },
+		kind = "zombie",
+		reward = { 40, 350, 1250 },
+	},
+
+	-- Kill fracture
+	["kill_fracture"] = {
+		index = 18,
+		count = 0,
+		stage = 1,
+		max_count = { 5, 40, 150 },
+		kind = "fracture",
+		reward = { 25, 200, 750 },
+	},
+
+	-- Kill karlik
+	["kill_karlik"] = {
+		index = 19,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 5, 20 },
+		kind = "SM_KARLIK",
+		reward = { 5, 25, 100 },
+	},
+
+	-- Kill snork
+	["kill_snork"] = {
+		index = 20,
+		count = 0,
+		stage = 1,
+		max_count = { 10, 90, 350 },
+		kind = "snork",
+		reward = { 90, 800, 3000 },
+	},
+
+	-- Kill chimera
+	["kill_chimera"] = {
+		index = 21,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 25, 80 },
+		kind = "chimera",
+		reward = { 200, 1600, 5000 },
+	},
+
+	-- Kill burer
+	["kill_burer"] = {
+		index = 22,
+		count = 0,
+		stage = 1,
+		max_count = { 4, 35, 120 },
+		kind = "burer",
+		reward = { 80, 700, 2400 },
+	},
+
+	-- Kill bloodsucker
+	["kill_bloodsucker"] = {
+		index = 23,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 30, 100 },
+		kind = "bloodsucker",
+		reward = { 100, 1000, 3500 },
+	},
+
+	-- Kill psysucker
+	["kill_psysucker"] = {
+		index = 24,
+		count = 0,
+		stage = 1,
+		max_count = { 2, 10, 40 },
+		kind = "SM_PSYSUCKER",
+		reward = { 70, 350, 1400 },
+	},
+
+	-- Kill giant
+	["kill_giant"] = {
+		index = 25,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 5, 20 },
+		kind = "giant",
+		reward = { 350, 1750, 7000 },
+	},
+
+	-- Kill controller
+	["kill_controller"] = {
+		index = 26,
+		count = 0,
+		stage = 1,
+		max_count = { 2, 10, 40 },
+		kind = "controller",
+		reward = { 175, 900, 3500 },
+	},
+
+	-- Kill poltergeist
+	["kill_poltergeist"] = {
+		index = 27,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 15, 60 },
+		kind = "SM_POLTER_G",
+		reward = { 35, 175, 700 },
+	},
+
+	-- Kill pyrogeist
+	["kill_pyrogeist"] = {
+		index = 28,
+		count = 0,
+		stage = 1,
+		max_count = { 2, 8, 30 },
+		kind = "SM_PYRO_G",
+		reward = { 70, 300, 1000 },
+	},
+
+	-- Kill black poltergeist
+	["kill_black_poltergeist"] = {
+		index = 29,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 3, 10 },
+		kind = "SM_PSEUDO_G",
+		reward = { 200, 600, 2000 },
+	},
+
+	-- Kill stalker
+	["kill_stalker"] = {
+		index = 30,
+		count = 0,
+		stage = 1,
+		max_count = { 10, 80, 400 },
+		comm = "stalker",
+		reward = { 60, 500, 2400 },
+	},
+
+	-- Kill clear sky
+	["kill_csky"] = {
+		index = 31,
+		count = 0,
+		stage = 1,
+		max_count = { 6, 50, 250 },
+		comm = "csky",
+		reward = { 25, 200, 950 },
+	},
+
+	-- Kill bandit
+	["kill_bandit"] = {
+		index = 32,
+		count = 0,
+		stage = 1,
+		max_count = { 10, 80, 400 },
+		comm = "bandit",
+		reward = { 25, 220, 1100 },
+	},
+
+	-- Kill dolg
+	["kill_dolg"] = {
+		index = 33,
+		count = 0,
+		stage = 1,
+		max_count = { 8, 65, 320 },
+		comm = "dolg",
+		reward = { 70, 550, 2700 },
+	},
+
+	-- Kill freedom
+	["kill_freedom"] = {
+		index = 34,
+		count = 0,
+		stage = 1,
+		max_count = { 7, 55, 280 },
+		comm = "freedom",
+		reward = { 60, 470, 2400 },
+	},
+
+	-- Kill ecolog
+	["kill_ecolog"] = {
+		index = 35,
+		count = 0,
+		stage = 1,
+		max_count = { 6, 50, 240 },
+		comm = "ecolog",
+		reward = { 25, 190, 900 },
+	},
+
+	-- Kill army
+	["kill_army"] = {
+		index = 36,
+		count = 0,
+		stage = 1,
+		max_count = { 6, 50, 240 },
+		comm = "army",
+		reward = { 30, 260, 1250 },
+	},
+
+	-- Kill killer
+	["kill_killer"] = {
+		index = 37,
+		count = 0,
+		stage = 1,
+		max_count = { 6, 50, 240 },
+		comm = "killer",
+		reward = { 200, 600, 2000 },
+	},
+
+	-- Kill renegade
+	["kill_renegade"] = {
+		index = 38,
+		count = 0,
+		stage = 1,
+		max_count = { 5, 40, 200 },
+		comm = "renegade",
+		reward = { 10, 80, 400 },
+	},
+
+	-- Kill monolith
+	["kill_monolith"] = {
+		index = 39,
+		count = 0,
+		stage = 1,
+		max_count = { 6, 50, 240 },
+		comm = "monolith",
+		reward = { 200, 1600, 7500 },
+	},
+
+	-- Kill greh
+	["kill_greh"] = {
+		index = 40,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 25, 120 },
+		comm = "greh",
+		reward = { 50, 410, 1950 },
+	},
+
+	-- Kill zombied
+	["kill_zombied"] = {
+		index = 41,
+		count = 0,
+		stage = 1,
+		max_count = { 10, 80, 400 },
+		comm = "zombied",
+		reward = { 25, 210, 1100 },
+	},
+
+	-- Have all buffs at once
+	["have_all_buffs"] = {
+		index = 42,
+		count = 0,
+		stage = 1,
+		max_count = { 1 },
+		reward = { 300 },
+	},
+
+	-- Drink strong alcohol (5, 20, 50)
+	["drink_alcohol"] = {
+		index = 43,
+		count = 0,
+		stage = 1,
+		max_count = { 5, 20, 50 },
+		reward = { 20, 100, 300 },
+	},
+
+	-- Use anabiotic (1, 10)
+	["use_anabiotic"] = {
+		index = 44,
+		count = 0,
+		stage = 1,
+		max_count = { 2, 10 },
+		reward = { 50, 350 },
+	},
+
+	-- Kill dutiers in bar in freedom outfit
+	["kill_bar_dutiers"] = {
+		index = 45,
+		count = 0,
+		stage = 1,
+		max_count = { 5 },
+		reward = { 250 },
+	},
+
+	-- Use healing medicine (5, 40, 250)
+	["use_heal_medicine"] = {
+		index = 46,
+		count = 0,
+		stage = 1,
+		max_count = { 5, 40, 250 },
+		reward = { 50, 500, 3500 },
+	},
+
+	-- Sell items
+	["sell_items"] = {
+		index = 47,
+		count = 0,
+		stage = 1,
+		max_count = { 25000, 200000, 2000000 },
+		reward = { 50, 425, 4500 },
+	},
+
+	-- Buy items
+	["buy_items"] = {
+		index = 48,
+		count = 0,
+		stage = 1,
+		max_count = { 25000, 200000, 2000000 },
+		reward = { 50, 425, 4500 },
+	},
+
+	-- Kill mutants with melee
+	["kill_mutants_melee"] = {
+		index = 49,
+		count = 0,
+		stage = 1,
+		max_count = { 5, 20, 60 },
+		reward = { 40, 200, 700 },
+	},
+
+	-- Kill stalkers with melee weapon
+	["kill_stalkers_melee"] = {
+		index = 50,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 10, 30 },
+		reward = { 50, 200, 900 },
+	},
+
+	-- Eat kcal
+	["eat_kcal"] = {
+		index = 51,
+		count = 0,
+		stage = 1,
+		max_count = { 10000, 100000, 500000 },
+		reward = { 35, 400, 2300 },
+	},
+
+	-- Get radiation msv
+	["get_radiation"] = {
+		index = 52,
+		count = 0,
+		stage = 1,
+		max_count = { 5000, 50000, 175000 },
+		reward = { 40, 450, 1800 },
+	},
+
+	-- Help injured stalkers
+	["help_stalkers"] = {
+		index = 53,
+		count = 0,
+		stage = 1,
+		max_count = { 2, 10, 35 },
+		reward = { 40, 250, 1000 },
+	},
+
+	-- Collect mutant parts and belts
+	["collect_mutant_parts"] = {
+		index = 54,
+		count = 0,
+		stage = 1,
+		max_count = { 5, 15, 40 },
+		collection = {
+			mutant_part_krovosos_jaw = 0, mutant_part_boar_leg = 0, mutant_part_chimera_kogot = 0,
+			mutant_part_chimera_claw = 0, mutant_part_dog_tail = 0, mutant_part_flesh_eye = 0,
+			mutant_part_psevdodog_tail = 0, mutant_part_snork_leg = 0, mutant_part_snork_mask = 0,
+			mutant_part_tushkano_head = 0, mutant_part_pseudogigant_hand = 0, mutant_part_pseudogigant_eye = 0,
+			mutant_part_controller_glass = 0, mutant_part_controller_hand = 0, mutant_part_burer_hand = 0,
+			mutant_part_cat_tail = 0, mutant_part_fracture_hand = 0, mutant_part_zombi_hand = 0,
+			mutant_part_lurker_tail = 0, mutant_part_lurker_eye = 0, mutant_part_psysucker_hand = 0,
+			mutant_part_dog_liver = 0, mutant_part_dog_heart = 0, mutant_part_cat_thyroid = 0,
+			mutant_part_cat_claw = 0, mutant_part_tusk_boar = 0, mutant_part_heart_bloodsucker = 0,
+			mutant_part_fang_psevdodog = 0, mutant_part_brain_burer = 0, mutant_part_heart_chimera = 0,
+			hide_chimera = 0, hide_pseudogiant = 0, hide_psy_dog = 0, hide_pseudodog = 0,
+			hide_burer = 0, hide_controller = 0, hide_bloodsucker = 0, hide_psysucker = 0,
+			hide_lurker = 0, hide_boar = 0, hide_flesh = 0,
+		},
+		reward = { 75, 375, 1400 },
+	},
+
+	-- Defend barrier
+	["defend_barrier"] = {
+		index = 55,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 3, 5 },
+		reward = { 150, 600, 1250 },
+	},
+
+	-- Find recipes
+	["collect_recipes"] = {
+		index = 56,
+		count = 0,
+		stage = 1,
+		max_count = { 2, 7, 20 },
+		collection = {
+			recipe_basic_1 = 0, recipe_basic_2 = 0, recipe_basic_3 = 0, recipe_basic_4 = 0,
+			recipe_advanced_1 = 0, recipe_advanced_2 = 0, recipe_advanced_3 = 0, recipe_advanced_4 = 0,
+			recipe_expert_1 = 0, recipe_expert_2 = 0, recipe_expert_3 = 0, recipe_expert_4 = 0,
+			recipe_drug_1 = 0, recipe_drug_2 = 0, recipe_drug_3 = 0, recipe_drug_4 = 0,
+			recipe_ammo_1 = 0, recipe_ammo_2 = 0, recipe_ammo_3 = 0, recipe_ammo_4 = 0,
+			recipe_cooking_1 = 0,
+		},
+		reward = { 120, 550, 2000 },
+	},
+
+	-- Find devices
+	["collect_devices"] = {
+		index = 57,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 8 },
+		collection = {
+			detector_advanced = 0, detector_elite = 0, detector_scientific = 0,
+			device_pda_2 = 0, device_pda_3 = 0, device_torch_nv_1 = 0,
+			device_torch_nv_2 = 0, device_torch_nv_3 = 0,
+		},
+		reward = { 300, 1600 },
+	},
+
+	-- Do footsteps
+	["do_footsteps"] = {
+		index = 58,
+		count = 0,
+		stage = 1,
+		max_count = { 25000, 150000, 500000 },
+		reward = { 50, 375, 1500 },
+	},
+
+	-- Find heart of oasis
+	["find_oasis_heart"] = {
+		index = 59,
+		count = 0,
+		stage = 1,
+		max_count = { 1 },
+		reward = { 550 },
+	},
+
+	-- Have junk items
+	["have_junk_items"] = {
+		index = 60,
+		count = 0,
+		stage = 1,
+		max_count = { 10, 30, 100 },
+		reward = { 20, 100, 400 },
+	},
+
+	-- Kill bandits in dark valley in Duty outfit
+	["kill_dv_bandits"] = {
+		index = 61,
+		count = 0,
+		stage = 1,
+		max_count = { 10 },
+		reward = { 350 },
+	},
+
+	-- Get best reputation
+	["get_best_rep"] = {
+		index = 62,
+		count = 0,
+		stage = 1,
+		max_count = { 1 },
+		reward = { 500 },
+	},
+
+	-- Get worst reputation
+	["get_worst_rep"] = {
+		index = 63,
+		count = 0,
+		stage = 1,
+		max_count = { 1 },
+		reward = { 500 },
+	},
+
+	-- Detect artefacts in ecolog outfit
+	["detect_artefacts_ecolog"] = {
+		index = 64,
+		count = 0,
+		stage = 1,
+		max_count = { 10 },
+		reward = { 400 },
+	},
+
+	-- Play on guitar and harmonica
+	["play_music"] = {
+		index = 65,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 2 },
+		collection = { guitar_a = 0, harmonica_a = 0 },
+		reward = { 50, 150 },
+	},
+
+	-- Throw bolts
+	["throw_bolts"] = {
+		index = 66,
+		count = 0,
+		stage = 1,
+		max_count = { 25, 100, 500 },
+		reward = { 10, 60, 400 },
+	},
+
+	-- Kill crows
+	["kill_crows"] = {
+		index = 67,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 15, 50 },
+		reward = { 10, 75, 400 },
+	},
+
+	-- Give optional documents from labs
+	["give_documents"] = {
+		index = 68,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 3, 7 },
+		collection = {
+			main_story_1_quest_case = 0, main_story_2_lab_x18_documents = 0,
+			main_story_3_lab_x16_documents = 0, main_story_4_lab_x10_documents = 0,
+			main_story_5_lab_x8_documents = 0, main_story_6_jup_ug_documents = 0,
+			main_story_7_mon_con_documents = 0,
+		},
+		reward = { 200, 675, 1750 },
+	},
+
+	-- Snipe down stalker from distance
+	["snipe_stalker"] = {
+		index = 69,
+		count = 0,
+		stage = 1,
+		max_count = { 100, 225, 350 },
+		reward = { 35, 150, 350 },
+	},
+
+	-- Kill stalkers on cordon with any ak and army outfit
+	["kill_cordon_stalkers"] = {
+		index = 70,
+		count = 0,
+		stage = 1,
+		max_count = { 7 },
+		reward = { 450 },
+	},
+
+	-- Hire stalkers
+	["hire_stalkers"] = {
+		index = 71,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 3, 10 },
+		reward = { 30, 120, 400 },
+	},
+
+	-- Repair items
+	["repair_items"] = {
+		index = 72,
+		count = 0,
+		stage = 1,
+		max_count = { 5, 25, 100, 500 },
+		reward = { 15, 100, 500, 3000 },
+	},
+
+	-- Kill stalkers with an axe in red forest in sin outfit
+	["kill_red_forest_stalkers"] = {
+		index = 73,
+		count = 0,
+		stage = 1,
+		max_count = { 5 },
+		reward = { 550 },
+	},
+
+	-- Kill 10 mutants in 10 seconds
+	["fast_kill_mutants"] = {
+		index = 74,
+		count = 0,
+		stage = 1,
+		max_count = { 10 },
+		reward = { 200 },
+	},
+
+	-- Have artefacts on belt
+	["have_belt_artefacts"] = {
+		index = 75,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 4, 5 },
+		reward = { 75, 125, 200 },
+	},
+
+	-- Kill giant with melee weapon
+	["melee_kill_giant"] = {
+		index = 76,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 3 },
+		reward = { 700, 2100 },
+	},
+
+	-- Kill mutants or renegades in swamp in csky outfit
+	["kill_in_swamps_csky"] = {
+		index = 77,
+		count = 0,
+		stage = 1,
+		max_count = { 20 },
+		reward = { 550 },
+	},
+
+	-- Kill csky in swamp in renegade outfit
+	["kill_in_swamps_renegade"] = {
+		index = 78,
+		count = 0,
+		stage = 1,
+		max_count = { 7 },
+		reward = { 450 },
+	},
+
+	-- Make shots
+	["make_shots"] = {
+		index = 79,
+		count = 0,
+		stage = 1,
+		max_count = { 500, 3500, 15000 },
+		reward = { 25, 250, 1350 },
+	},
+
+	-- Get hit by controller
+	["hit_by_controller"] = {
+		index = 80,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 5, 20 },
+		reward = { 30, 175, 800 },
+	},
+
+	-- Kick tushkanos
+	["kick_tushkanos"] = {
+		index = 81,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 10, 50 },
+		reward = { 10, 40, 250 },
+	},
+
+	-- Give vodka to gromov
+	["give_vodka_gromov"] = {
+		index = 82,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 3, 10 },
+		reward = { 10, 40, 150 },
+	},
+
+	-- Sleep hours
+	["sleep_hours"] = {
+		index = 83,
+		count = 0,
+		stage = 1,
+		max_count = { 50, 400, 1500 },
+		reward = { 25, 250, 900 },
+	},
+
+	-- Kill freedom in warehouses in monolith outfit
+	["kill_warehouse_freedom"] = {
+		index = 84,
+		count = 0,
+		stage = 1,
+		max_count = { 10 },
+		reward = { 450 },
+	},
+
+	-- Find zombie note
+	["find_zombie_note"] = {
+		index = 85,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 2, 3 },
+		collection = {
+			letter_ecologist_report_1_of_3 = 0,
+			letter_ecologist_report_2_of_3 = 0,
+			letter_ecologist_report_3_of_3 = 0,
+		},
+		reward = { 100, 300, 600 },
+	},
+
+	-- Find monolith prayer
+	["find_monolith_prayer"] = {
+		index = 86,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 2, 3 },
+		collection = {
+			letter_monolith_prayer_1_of_3 = 0,
+			letter_monolith_prayer_2_of_3 = 0,
+			letter_monolith_prayer_3_of_3 = 0,
+		},
+		reward = { 100, 300, 600 },
+	},
+
+	-- Get damage %
+	["get_damage"] = {
+		index = 87,
+		count = 0,
+		stage = 1,
+		max_count = { 100, 1000, 10000 },
+		reward = { 40, 450, 5000 },
+	},
+
+	-- Kill military on agroprom in military outfit
+	["kill_agroprom_military"] = {
+		index = 88,
+		count = 0,
+		stage = 1,
+		max_count = { 5 },
+		reward = { 400 },
+	},
+
+	-- Smoke
+	["smoke_stuff"] = {
+		index = 89,
+		count = 0,
+		stage = 1,
+		max_count = { 2, 6, 11 },
+		collection = {
+			joint = 0, marijuana = 0, cigarettes = 0, cigarettes_lucky = 0,
+			cigarettes_russian = 0, cigar = 0, cigar1 = 0, cigar2 = 0,
+			cigar3 = 0, tobacco = 0, hand_rolling_tobacco = 0,
+		},
+		reward = { 40, 150, 350 },
+	},
+
+	-- Get healed by medic
+	["medic_heal"] = {
+		index = 90,
+		count = 0,
+		stage = 1,
+		max_count = { 2, 7, 20 },
+		reward = { 30, 110, 350 },
+	},
+
+	-- Companions kill mutants
+	["companion_kill_mutants"] = {
+		index = 91,
+		count = 0,
+		stage = 1,
+		max_count = { 10, 50, 200 },
+		reward = { 30, 150, 600 },
+	},
+
+	-- Companions kill stalkers
+	["companion_kill_stalkers"] = {
+		index = 92,
+		count = 0,
+		stage = 1,
+		max_count = { 5, 25, 100 },
+		reward = { 30, 150, 600 },
+	},
+
+	-- Drop health below 1%
+	["low_health"] = {
+		index = 93,
+		count = 0,
+		stage = 1,
+		max_count = { 1 },
+		reward = { 400 },
+	},
+
+	-- Get rpg
+	["get_rpg"] = {
+		index = 94,
+		count = 0,
+		stage = 1,
+		max_count = { 1 },
+		reward = { 200 },
+	},
+
+	-- Find compass
+	["find_compass"] = {
+		index = 95,
+		count = 0,
+		stage = 1,
+		max_count = { 1 },
+		reward = { 750 },
+	},
+
+	-- Find gauss
+	["find_gauss"] = {
+		index = 96,
+		count = 0,
+		stage = 1,
+		max_count = { 1 },
+		reward = { 300 },
+	},
+
+	-- Collect melee weapons
+	["find_melee_weapons"] = {
+		index = 97,
+		count = 0,
+		stage = 1,
+		max_count = { 2, 4, 8 },
+		found = {},
+		reward = { 40, 120, 350 },
+	},
+
+	-- Find ammo kit or medical kit
+	["find_kits"] = {
+		index = 98,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 2 },
+		collection = {
+			itm_drugkit = 0, itm_ammokit = 0,
+		},
+		reward = { 100, 250 },
+	},
+
+	-- Find anomaly maps
+	["find_maps"] = {
+		index = 99,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 3, 9 },
+		collection = {
+			itm_mapkit_1 = 0, itm_mapkit_2 = 0, itm_mapkit_3 = 0,
+			itm_mapkit_4 = 0, itm_mapkit_5 = 0, itm_mapkit_6 = 0,
+			itm_mapkit_7 = 0, itm_mapkit_8 = 0, itm_mapkit_9 = 0,
+		},
+		reward = { 75, 250, 1000 },
+	},
+
+	-- Headshots on stalkers
+	["headshots"] = {
+		index = 100,
+		count = 0,
+		stage = 1,
+		max_count = { 5, 25, 100 },
+		reward = { 50, 150, 700 },
+	},
+
+	-- Get red icons thirst sleep hunger (changed to orange icons)
+	["get_red_icons"] = {
+		index = 101,
+		count = 0,
+		stage = 1,
+		max_count = { 1 },
+		reward = { 300 },
+	},
+
+	-- Get hit by mutants
+	["get_hit_by_mutants"] = {
+		index = 102,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 8, 16 },
+		collection = {
+			tushkano = 0,		flesh = 0,		dog = 0,		boar = 0,
+			cat = 0,		pseudodog = 0,		SM_LURKER = 0,		chimera = 0,
+			giant = 0,		zombie = 0,		fracture = 0,		snork = 0,
+			SM_KARLIK = 0,		burer = 0,		bloodsucker = 0,		SM_PSYSUCKER = 0,
+		},
+		reward = { 50, 200, 500 },
+	},
+
+	-- Kill legend stalkers
+	["kill_legend_stalkers"] = {
+		index = 103,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 5, 20 },
+		reward = { 40, 220, 1000 },
+	},
+
+	-- Have loadout with cost more than
+	["drip_cost"] = {
+		index = 104,
+		count = 0,
+		stage = 1,
+		max_count = { 75000, 250000, 700000 },		-- actually calculated xd
+		reward = { 100, 500, 2000 },
+	},
+
+	-- Equip upgraded firearm
+	["upgrade_weapon"] = {
+		index = 105,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 7, 13 },
+		reward = { 100, 350, 850 },
+	},
+
+	-- Equip upgraded armor
+	["upgrade_armor"] = {
+		index = 106,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 6, 12 },
+		reward = { 100, 300, 800 },
+	},
+
+	-- Collect backpacks
+	["collect_backpacks"] = {
+		index = 107,
+		count = 0,
+		stage = 1,
+		max_count = { 2, 4, 6 },
+		found = {},
+		reward = { 70, 180, 350 },
+	},
+
+	-- Steps overweight
+	["steps_overweight"] = {
+		index = 108,
+		count = 0,
+		stage = 1,
+		max_count = { 2500, 15000, 50000 },
+		reward = { 100, 600, 2250 },
+	},
+
+	-- Kill injured stalkers
+	["kill_injured_stalkers"] = {
+		index = 109,
+		count = 0,
+		stage = 1,
+		max_count = { 3, 15, 60 },
+		reward = { 35, 190, 800 },
+	},
+
+	-- Complete informant top 10 task
+	["informant_task"] = {
+		index = 110,
+		count = 0,
+		stage = 1,
+		max_count = { 2, 5, 10 },
+		reward = { 300, 800, 1800 },
+	},
+
+	-- Stay awake
+	["stay_awake"] = {
+		index = 111,
+		count = 0,
+		stage = 1,
+		max_count = { 24, 48, 96 },
+		reward = { 70, 175, 400 },
+	},
+
+	-- Complete arena
+	["complete_arena"] = {
+		index = 112,
+		count = 0,
+		stage = 1,
+		max_count = { 1 },
+		reward = { 1250 },
+	},
+
+	-- Time spent at night
+	["night_time"] = {
+		index = 113,
+		count = 0,
+		stage = 1,
+		max_count = { 35, 125, 400 },
+		reward = { 125, 450, 1500 },
+	},
+
+	-- Craft high end items
+	["craft_high_items"] = {
+		index = 114,
+		count = 0,
+		stage = 1,
+		max_count = { 1, 2, 3 },
+		collection = {
+			detector_scientific = 0, device_torch_nv_3 = 0, device_pda_3 = 0,
+		},
+		reward = { 200, 300, 400 },
+	},
+
+	-- Get achievement points xd
+	["get_achievement_points"] = {
+		index = 115,
+		count = 0,
+		stage = 1,
+		max_count = { 5000, 25000, 100000 },
+		reward = { 200, 1100, 5000 },
+	},
+
+}
+
+function squad_on_npc_death(squad, se_obj, se_killer)
+	local level_name = level.name()
+	local ac_is_killer = se_killer.id == 0
+	local comp_is_killer = level.object_by_id(se_killer.id) and level.object_by_id(se_killer.id):has_info("npcx_is_companion")
+	if not (ac_is_killer or comp_is_killer) then return end
+
+	local ach_t = achievements_t
+
+	local killer = level.object_by_id(se_killer.id)
+
+	-- Mutants
+	if IsMonster(se_obj) then
+		-- kill_mutants
+		ach_utils_inc("kill_mutants")
+
+		-- kill_all_mutant_kinds
+		local mutant_kind = achievements_utils.get_mutant_kind(se_obj.id)
+		local kind_in_t = mutant_kind and ach_t["kill_all_mutant_kinds"].collection[mutant_kind]
+		if kind_in_t and kind_in_t == 0 then
+			ach_t["kill_all_mutant_kinds"].collection[mutant_kind] = 1
+			ach_utils_inc("kill_all_mutant_kinds")
+		end
+
+		-- kill_certain_mutant
+		for achieve_name, t in pairs(ach_t) do
+			if t.kind and mutant_kind and mutant_kind == t.kind then
+				ach_utils_inc(achieve_name)
+			end
+		end
+
+		-- kill_mutants_melee
+		local wpn = killer and killer:active_item()
+		local wpn_kind = wpn and ini_sys:r_string_ex(wpn:section(), "kind")
+		if wpn_kind and wpn_kind == "w_melee" then
+			ach_utils_inc("kill_mutants_melee")
+		end
+
+		-- fast_kill_mutants
+		if ach_t["fast_kill_mutants"].stage == 1 then
+			ach_utils_inc("fast_kill_mutants")
+			if ach_t["fast_kill_mutants"].count == 1 then
+				CreateTimeEvent("ach_fast_kill_mut_e", "ach_fast_kill_mut_a", 10, function()
+					if achievements_t["fast_kill_mutants"].stage == 1 then		-- reset count if stage isnt increased after 10 sec
+						achievements_t["fast_kill_mutants"].count = 0
+					end
+					return true
+				end)
+			end
+		end
+
+		-- melee_kill_giant
+		if mutant_kind and mutant_kind == "giant" and wpn_kind and wpn_kind == "w_melee" then
+			ach_utils_inc("melee_kill_giant")
+		end
+
+		-- kill_in_swamps_csky 1
+		local outfit = db.actor:item_in_slot(7)
+		local outfit_comm = outfit and ini_sys:r_string_ex(outfit:section(), "community")
+		if level_name == "k00_marsh" and outfit_comm and outfit_comm == "csky" then
+			ach_utils_inc("kill_in_swamps_csky")
+		end
+
+		-- companion_kill_mutants
+		if comp_is_killer then
+			ach_utils_inc("companion_kill_mutants")
+		end
+	end
+
+	-- Stalkers
+	if IsStalker(se_obj) then
+		-- kill_stalkers
+		ach_utils_inc("kill_stalkers")
+
+		-- kill_all_stalker_factions
+		local stalker_comm = se_obj:community()
+		local comm_in_t = stalker_comm and ach_t["kill_all_stalker_factions"].collection[stalker_comm]
+		if comm_in_t and comm_in_t == 0 then
+			ach_t["kill_all_stalker_factions"].collection[stalker_comm] = 1
+			ach_utils_inc("kill_all_stalker_factions")
+		end
+
+		-- kill_certain_faction
+		for achieve_name, t in pairs(ach_t) do
+			if t.comm and stalker_comm and stalker_comm == t.comm then
+				ach_utils_inc(achieve_name)
+			end
+		end
+
+		-- kill_bar_dutiers
+		local outfit = db.actor:item_in_slot(7)
+		local outfit_comm = outfit and ini_sys:r_string_ex(outfit:section(), "community")
+		local is_freedom_outfit = outfit_comm and outfit_comm == "freedom"
+		local npc_is_dolg = stalker_comm and stalker_comm == "dolg"
+		if level_name == "l05_bar" and is_freedom_outfit and npc_is_dolg then
+			ach_utils_inc("kill_bar_dutiers")
+		end
+
+		-- kill_stalkers_melee
+		local wpn = killer and killer:active_item()
+		local wpn_kind = wpn and ini_sys:r_string_ex(wpn:section(), "kind")
+		if wpn_kind and wpn_kind == "w_melee" then
+			ach_utils_inc("kill_stalkers_melee")
+		end
+
+		-- kill_dv_bandits
+		local is_duty_outfit = outfit_comm and outfit_comm == "dolg"
+		local npc_is_bandit = stalker_comm and stalker_comm == "bandit"
+		if level_name == "l04_darkvalley" and is_duty_outfit and npc_is_bandit then
+			ach_utils_inc("kill_dv_bandits")
+		end
+
+		-- snipe_stalker
+		local dist = se_obj.position:distance_to(se_killer.position)
+		if dist and dist > ach_t["snipe_stalker"].count then
+			ach_utils_inc("snipe_stalker", round(dist))
+		end
+
+		-- kill_cordon_stalkers
+		local is_army_outfit = outfit_comm and outfit_comm == "army"
+		local npc_is_stalker = stalker_comm and stalker_comm == "stalker"
+		local wpn_is_ak = wpn and string.find(wpn:section(), "wpn_ak")
+		if level_name == "l01_escape" and is_army_outfit and npc_is_stalker and wpn_is_ak then
+			ach_utils_inc("kill_cordon_stalkers")
+		end
+
+		-- kill_red_forest_stalkers
+		local is_greh_outfit = outfit_comm and outfit_comm == "greh"
+		local npc_is_not_greh = stalker_comm and stalker_comm ~= "greh"
+		local wpn_is_axe = wpn and string.find(wpn:section(), "wpn_axe")
+		if level_name == "l10_red_forest" and is_greh_outfit and npc_is_not_greh and wpn_is_axe then
+			ach_utils_inc("kill_red_forest_stalkers")
+		end
+
+		-- kill_in_swamps_csky 2
+		local is_csky_outfit = outfit_comm and outfit_comm == "csky"
+		local npc_is_renegade = stalker_comm and stalker_comm == "renegade"
+		if level_name == "k00_marsh" and is_csky_outfit and npc_is_renegade then
+			ach_utils_inc("kill_in_swamps_csky")
+		end
+
+		-- kill_in_swamps_renegade
+		local is_renegade_outfit = outfit_comm and outfit_comm == "renegade"
+		local npc_is_csky = stalker_comm and stalker_comm == "csky"
+		if level_name == "k00_marsh" and is_renegade_outfit and npc_is_csky then
+			ach_utils_inc("kill_in_swamps_renegade")
+		end
+
+		-- kill_warehouse_freedom
+		local is_mono_outfit = outfit_comm and outfit_comm == "monolith"
+		local npc_is_freedom = stalker_comm and stalker_comm == "freedom"
+		if level_name == "l07_military" and is_mono_outfit and npc_is_freedom then
+			ach_utils_inc("kill_in_swamps_renegade")
+		end
+
+		-- kill_agroprom_military
+		local npc_is_military = stalker_comm and stalker_comm == "army"
+		if level_name == "l03_agroprom" and npc_is_military and is_army_outfit then
+			ach_utils_inc("kill_agroprom_military")
+		end
+
+		-- companion_kill_stalkers
+		if comp_is_killer then
+			ach_utils_inc("companion_kill_stalkers")
+		end
+
+		-- kill_legend_stalkers
+		local stalker_rank = ranks.get_se_obj_rank_name(se_obj)
+		if stalker_rank and stalker_rank == "legend" then
+			ach_utils_inc("kill_legend_stalkers")
+		end
+
+		-- kill_injured_stalkers
+		local online_npc = level.object_by_id(se_obj.id)
+		local is_injured = online_npc and xr_wounded.is_wounded(online_npc)
+		if is_injured then
+			ach_utils_inc("kill_injured_stalkers")
+		end
+	end
+
+end
+
+function actor_on_item_use(item)
+	local sec = item:section()
+	local kind = ini_sys:r_string_ex(sec, "kind")
+
+	local ach_t = achievements_t
+
+	-- eat_all_mutant_meals
+	if kind and kind == "i_mutant_cooked" then
+		for name, val in pairs(ach_t["eat_all_mutant_meals"].collection) do
+			if string.find(sec, name) and val == 0 then
+				ach_t["eat_all_mutant_meals"].collection[name] = 1
+				ach_utils_inc("eat_all_mutant_meals")
+				break
+			end
+		end
+	end
+
+	-- drink_alcohol
+	if kind and kind == "i_drink" then
+		local eat_alcohol = ini_sys:r_float_ex(sec, "eat_alcohol")
+		if eat_alcohol and eat_alcohol >= 0.1 then
+			ach_utils_inc("drink_alcohol")
+		end
+	end
+
+	-- use_anabiotic
+	if sec == "drug_anabiotic" then
+		ach_utils_inc("use_anabiotic")
+	end
+
+	-- eat_kcal
+	local eat_satiety = ini_sys:r_float_ex(sec, "eat_satiety")
+	if eat_satiety and eat_satiety > 0 then
+		local new_count = ach_t["eat_kcal"].count + eat_satiety * 1000
+		ach_utils_inc("eat_kcal", new_count)
+	end
+
+	-- smoke_stuff
+	if ach_t["smoke_stuff"].collection[sec] and ach_t["smoke_stuff"].collection[sec] == 0 then
+		ach_t["smoke_stuff"].collection[sec] = 1
+		ach_utils_inc("smoke_stuff")
+	end
+end
+
+function actor_on_item_take(item)
+	local sec = item:section()
+	local kind = ini_sys:r_string_ex(sec, "kind")
+
+	local ach_t = achievements_t
+
+	-- collect_all_artefacts
+	if kind and kind == "i_arty" then
+		if ach_t["collect_all_artefacts"].collection[sec] and ach_t["collect_all_artefacts"].collection[sec] == 0 then
+			ach_t["collect_all_artefacts"].collection[sec] = 1
+			ach_utils_inc("collect_all_artefacts")
+		end
+	end
+
+	-- collect_mutant_parts
+	if kind and (kind == "i_mutant_belt" or kind == "i_mutant_part") then
+		if ach_t["collect_mutant_parts"].collection[sec] and ach_t["collect_mutant_parts"].collection[sec] == 0 then
+			ach_t["collect_mutant_parts"].collection[sec] = 1
+			ach_utils_inc("collect_mutant_parts")
+		end
+	end
+
+	-- collect_recipes
+	if kind and kind == "i_letter" then
+		for name, val in pairs(ach_t["collect_recipes"].collection) do
+			if string.find(sec, name) and val == 0 then
+				ach_t["collect_recipes"].collection[name] = 1
+				ach_utils_inc("collect_recipes")
+				break
+			end
+		end
+	end
+
+	-- collect_devices
+	for name, val in pairs(ach_t["collect_devices"].collection) do
+		if string.find(sec, name) and val == 0 then
+			ach_t["collect_devices"].collection[name] = 1
+			ach_utils_inc("collect_devices")
+			break
+		end
+	end
+
+	-- find_oasis_heart
+	if sec == "af_oasis_heart" then
+		ach_utils_inc("find_oasis_heart")
+	end
+
+	-- have_junk_items
+	if kind == "i_misc" then
+		local junk_total = 1
+		db.actor:iterate_inventory(function(temp, obj)
+			local obj_kind = ini_sys:r_string_ex(obj:section(), "kind")
+			if obj_kind and obj_kind == "i_misc" then
+				junk_total = junk_total + 1
+			end
+		end)
+
+		if junk_total > ach_t["have_junk_items"].count then
+			ach_utils_inc("have_junk_items", junk_total)
+		end
+	end
+
+	-- find_zombie_note
+	if ach_t["find_zombie_note"].collection[sec] and ach_t["find_zombie_note"].collection[sec] == 0 then
+		ach_t["find_zombie_note"].collection[sec] = 1
+		ach_utils_inc("find_zombie_note")
+	end
+
+	-- find_monolith_prayer
+	if ach_t["find_monolith_prayer"].collection[sec] and ach_t["find_monolith_prayer"].collection[sec] == 0 then
+		ach_t["find_monolith_prayer"].collection[sec] = 1
+		ach_utils_inc("find_monolith_prayer")
+	end
+
+	-- get_rpg
+	if sec == "wpn_rpg7" then
+		ach_utils_inc("get_rpg")
+	end
+
+	-- find_compass
+	if sec == "af_compass" then
+		ach_utils_inc("find_compass")
+	end
+
+	-- find_gauss
+	if sec == "wpn_gauss" then
+		ach_utils_inc("find_gauss")
+	end
+
+	-- find_melee_weapons
+	if kind and kind == "w_melee" and (not ach_t["find_melee_weapons"].found[sec]) then
+		ach_t["find_melee_weapons"].found[sec] = true
+		ach_utils_inc("find_melee_weapons")
+	end
+
+	-- find_kits
+	if ach_t["find_kits"].collection[sec] and ach_t["find_kits"].collection[sec] == 0 then
+		ach_t["find_kits"].collection[sec] = 1
+		ach_utils_inc("find_kits")
+	end
+
+	-- find_maps
+	if ach_t["find_maps"].collection[sec] and ach_t["find_maps"].collection[sec] == 0 then
+		ach_t["find_maps"].collection[sec] = 1
+		ach_utils_inc("find_maps")
+	end
+
+	-- collect_backpacks
+	if kind and kind == "i_backpack" and (not ach_t["collect_backpacks"].found[sec]) then
+		ach_t["collect_backpacks"].found[sec] = true
+		ach_utils_inc("collect_backpacks")
+	end
+end
+
+function actor_on_item_trade(mode, item, cost)
+	local ach_t = achievements_t
+
+	-- sell_items
+	if mode == "sell" then
+	--	printf("sell count: %s || cost: %s", ach_t["sell_items"].count, cost)
+		local new_count = ach_t["sell_items"].count + cost
+		ach_utils_inc("sell_items", new_count)
+	end
+
+	-- buy_items
+	if mode == "buy" then
+	--	printf("buy count: %s || cost: %s", ach_t["buy_items"].count, cost)
+		local new_count = ach_t["buy_items"].count + cost
+		ach_utils_inc("buy_items", new_count)
+	end
+end
+
+function actor_on_footstep()
+	-- do_footsteps
+	ach_utils_inc("do_footsteps")
+
+	-- steps_overweight
+	if actor_status.get_overweight(true) > 0 then
+		ach_utils_inc("steps_overweight")
+	end
+end
+
+function actor_item_to_belt(item)
+	local ach_t = achievements_t
+
+	-- have_belt_artefacts
+	local kind = ini_sys:r_string_ex(item:section(), "kind")
+	if kind and (kind == "i_arty" or kind == "i_arty_cont") then
+
+		local cur_arts = 0
+		db.actor:iterate_belt( function(owner, obj)
+			local belt_kind = ini_sys:r_string_ex(obj:section(), "kind")
+			if belt_kind and (belt_kind == "i_arty" or belt_kind == "i_arty_cont") then
+				cur_arts = cur_arts + 1
+			end
+		end)
+
+		if ach_t["have_belt_artefacts"].count < cur_arts then
+			ach_utils_inc("have_belt_artefacts")
+		end
+	end
+
+	-- drip_cost 1
+	local tot_cost = achievements_utils.get_loadout_cost()
+	if ach_t["drip_cost"].count < tot_cost then
+		ach_utils_inc("drip_cost", tot_cost)
+	end
+end
+
+function actor_item_to_slot(item)
+	local ach_t = achievements_t
+
+	-- drip_cost 2
+	local tot_cost = achievements_utils.get_loadout_cost()
+	if ach_t["drip_cost"].count < tot_cost then
+		ach_utils_inc("drip_cost", tot_cost)
+	end
+
+	-- upgrade_weapon
+	local tot_upg = achievements_utils.get_total_upgrades(item)
+	if IsWeapon(item) and tot_upg and ach_t["upgrade_weapon"].count < tot_upg then
+		ach_utils_inc("upgrade_weapon", tot_upg)
+	end
+
+	-- upgrade_armor
+	if IsOutfit(item) and tot_upg and ach_t["upgrade_armor"].count < tot_upg then
+		ach_utils_inc("upgrade_armor", tot_upg)
+	end
+end
+
+function actor_on_weapon_fired()
+	-- make_shots
+	ach_utils_inc("make_shots")
+end
+
+function actor_on_before_hit(s_hit)
+	local ach_t = achievements_t
+	local draftsman = s_hit.draftsman
+
+	-- hit_by_controller
+	local psi_typ = s_hit.type == 4
+	local is_controller = draftsman and draftsman:clsid() == clsid.controller_s
+	if psi_typ and is_controller then
+		ach_utils_inc("hit_by_controller")
+	end
+
+	-- get_hit_by_mutants
+	local mutant_kind = draftsman and achievements_utils.get_mutant_kind(draftsman:id())
+	local kind_in_t = mutant_kind and ach_t["get_hit_by_mutants"].collection[mutant_kind]
+	if kind_in_t and kind_in_t == 0 then
+		ach_t["get_hit_by_mutants"].collection[mutant_kind] = 1
+		ach_utils_inc("get_hit_by_mutants")
+	end
+end
+
+function actor_on_sleep(hours)
+	local ach_t = achievements_t
+
+	-- sleep_hours
+	local set_hours = ach_t["sleep_hours"].count + hours
+	ach_utils_inc("sleep_hours", set_hours)
+
+	-- stay_awake 2 reset
+	local stay_awake_max_stage = #ach_t["stay_awake"].max_count
+	if ach_t["stay_awake"].stage <= stay_awake_max_stage then
+		ach_t["stay_awake"].count = 0
+		ach_t["stay_awake"].game_time_cache = nil
+	end
+end
+
+function actor_on_hit_callback(obj, amount)
+	-- get_damage
+	local new_amount = achievements_t["get_damage"].count + amount
+	ach_utils_inc("get_damage", round(new_amount))
+end
+
+function npc_on_hit_callback(npc, amount, dir, who, bone_index)
+	-- headshots
+	if amount > 0 and who and who:id() == 0 and achievements_utils.bone_is_head(npc, bone_index) then
+		ach_utils_inc("headshots")
+	end
+end
+
+local long_upd_tmr = 0
+function long_on_update()
+	local tg = time_global()
+	if long_upd_tmr > tg then return end
+	long_upd_tmr = tg + 10000
+
+	local ach_t = achievements_t
+
+	-- befriend_factions
+	for comm, val in pairs(ach_t["befriend_factions"].collection) do
+		if val == 0 and relation_registry.community_goodwill(comm, 0) >= 2000 then
+			ach_t["befriend_factions"].collection[comm] = 1
+			ach_utils_inc("befriend_factions")
+		end
+	end
+
+	-- days_in_zone
+	local d_in_zone = utils_obj.time_spent_in_zone(4)
+	if ach_t["days_in_zone"].count < d_in_zone then
+		ach_utils_inc("days_in_zone", d_in_zone)
+	end
+
+	-- get_achievement_points
+	if ach_t["get_achievement_points"].count < achievements_total_points then
+		ach_utils_inc("get_achievement_points", achievements_total_points)
+	end
+
+	-- informant_task
+	local tsk_info = task_manager.get_task_manager().task_info
+	local info = tsk_info and tsk_info["snitch_top_10_task"]
+	if info and info.stage and ach_t["informant_task"].count < info.stage + 1 then
+		ach_utils_inc("informant_task", info.stage)
+	end
+
+	-- stay_awake 1
+	local cur_time = game.get_game_time()
+	if not ach_t["stay_awake"].game_time_cache then
+		ach_t["stay_awake"].game_time_cache = ctime_to_t(cur_time)
+	end
+	local stay_awake_diff_s = cur_time:diffSec(t_to_ctime(ach_t["stay_awake"].game_time_cache))
+	local stay_awake_diff_h = stay_awake_diff_s and math.floor(stay_awake_diff_s / 3600)
+	if ach_t["stay_awake"].count < stay_awake_diff_h then
+		ach_utils_inc("stay_awake", stay_awake_diff_h)
+	end
+
+	-- night_time
+	local hrs = level.get_time_hours()
+	if hrs >= 23 or hrs < 6 then
+		local night_hrs = ach_t["night_time"].count + 0.016		-- 10*6/3600
+		ach_utils_inc("night_time", night_hrs)
+	end
+end
+
+local short_upd_tmr = 0
+local prev_rad
+function short_on_update()
+	local tg = time_global()
+	if short_upd_tmr > tg then return end
+	short_upd_tmr = tg + 1500
+
+	local ach_t = achievements_t
+
+	local cur_rad = db.actor.radiation
+	if (not prev_rad) or (prev_rad > cur_rad) then
+		prev_rad = cur_rad
+	end
+
+	-- have_all_buffs
+	if ach_t["have_all_buffs"].count == 0 then
+		local tot_boosters = 0
+		db.actor:cast_Actor():conditions():BoosterForEach( function(booster_type, booster_time, booster_value)
+			if booster_type < 13 then
+				tot_boosters = tot_boosters + 1
+			end
+		end)
+		if tot_boosters >= 8 then
+			ach_utils_inc("have_all_buffs")
+		end
+	end
+
+	-- get_radiation
+	if prev_rad < cur_rad then
+		local rad_gain = math.floor((cur_rad - prev_rad) * 10000 * 0.387)
+		ach_utils_inc("get_radiation", ach_t["get_radiation"].count + rad_gain)
+		prev_rad = cur_rad
+	end
+
+	-- low_health
+	if db.actor.health < 0.01 and db.actor.health > 0 then
+		ach_utils_inc("low_health")
+	end
+
+	-- get_red_icons
+	if ach_t["get_red_icons"].count == 0 then
+		local sat = actor_status.get_satienty(true)
+		local thirst = actor_status_thirst.get_water_deprivation(true)
+		local sleep = actor_status_sleep.get_sleep_deprivation(true)
+		if sat >= 3 and thirst >= 3 and sleep >= 3 then
+			ach_utils_inc("get_red_icons")
+		end
+	end
+
+end
+
+function actor_on_update()
+	long_on_update()
+	short_on_update()
+end
+
+game_stat_inc_base = game_statistics.increment_statistic
+function game_statistics.increment_statistic(value, custom_rank, custom_rept)
+	-- tasks_done
+	if value == "tasks_completed" then
+		ach_utils_inc("tasks_done")
+	end
+
+	-- help_stalkers
+	if value == "wounded_helped" then
+		ach_utils_inc("help_stalkers")
+	end
+
+	-- artefacts_detected
+	if value == "artefacts_detected" then
+		ach_utils_inc("detect_artefacts_ecolog")
+	end
+
+	-- repair_items
+	if value == "self_repairs" then
+		ach_utils_inc("repair_items")
+	end
+
+	-- craft_high_items
+	if value == "items_crafted" then
+		RegisterScriptCallback("actor_on_item_take", craft_high_items_on_take)
+	end
+
+	return game_stat_inc_base(value, custom_rank, custom_rept)
+end
+
+function craft_high_items_on_take(item)
+	local sec = item:section()
+	if achievements_t["craft_high_items"].collection[sec] and achievements_t["craft_high_items"].collection[sec] == 0 then
+		achievements_t["craft_high_items"].collection[sec] = 1
+		ach_utils_inc("craft_high_items")
+	end
+	UnregisterScriptCallback("actor_on_item_take", craft_high_items_on_take)
+end
+
+-- defend_barrier
+barrier_complete_base_monolith = tasks_defense.barrier_defense_monolith_complete
+function tasks_defense.barrier_defense_monolith_complete(a, b)
+	ach_utils_inc("defend_barrier")
+	return barrier_complete_base_monolith(a, b)
+end
+
+barrier_complete_base_zombie = tasks_defense.barrier_defense_zombie_complete
+function tasks_defense.barrier_defense_zombie_complete(a, b)
+	ach_utils_inc("defend_barrier")
+	return barrier_complete_base_zombie(a, b)
+end
+
+game_stat_rep_base = game_statistics.check_for_reputation_change
+function game_statistics.check_for_reputation_change(suppress)
+	game_stat_rep_base(suppress)
+
+	-- get_best_rep
+	local current_rept = db.actor:character_reputation()
+	local best_rep_val = achievements_utils.achieve_rep_t["best_rep"]
+	if best_rep_val and current_rept >= best_rep_val then
+		ach_utils_inc("get_best_rep")
+	end
+
+	-- get_worst_rep
+	local worst_rep_val = achievements_utils.achieve_rep_t["worst_rep"]
+	if worst_rep_val and current_rept < worst_rep_val then
+		ach_utils_inc("get_worst_rep")
+	end
+end
+
+-- play_music
+use_guitar_base = itms_manager.use_guitar
+function itms_manager.use_guitar(obj)
+	if achievements_t["play_music"].collection["guitar_a"] == 0 then
+		achievements_t["play_music"].collection["guitar_a"] = 1
+		ach_utils_inc("play_music")
+	end
+
+	return use_guitar_base(obj)
+end
+
+use_harmonica_base = itms_manager.use_harmonica
+function itms_manager.use_harmonica(obj)
+	if achievements_t["play_music"].collection["harmonica_a"] == 0 then
+		achievements_t["play_music"].collection["harmonica_a"] = 1
+		ach_utils_inc("play_music")
+	end
+
+	return use_harmonica_base(obj)
+end
+
+-- throw bolts
+g_bolt_cb_base = _G.CBolt__State
+function _G.CBolt__State(id)
+	if id == 0 then
+		local new_count = achievements_t["throw_bolts"].count + 0.5		-- fired twice idk why
+		ach_utils_inc("throw_bolts", new_count)
+	end
+
+	return g_bolt_cb_base(id)
+end
+
+-- kill_crows
+crow_binder_on_death_base = bind_crow.crow_binder.death_callback
+function bind_crow.crow_binder.death_callback(self, victim, who)
+	if who and who.id and who:id() == 0 and (not xr_conditions.surge_started()) then
+		ach_utils_inc("kill_crows")
+	end
+	return crow_binder_on_death_base(self, victim, who)
+end
+
+-- give_documents
+dialog_give_docs_base = dialogs.st_trade_important_documents_ask
+function dialogs.st_trade_important_documents_ask(a, b)
+	local ach_t = achievements_t
+	db.actor:iterate_inventory(function(temp, item)
+		if ach_t["give_documents"].collection[item:section()] and ach_t["give_documents"].collection[item:section()] == 0 then
+			ach_t["give_documents"].collection[item:section()] = 1
+			ach_utils_inc("give_documents")
+		end
+	end)
+
+	return dialog_give_docs_base(a, b)
+end
+
+-- hire_stalkers
+txr_paid_comp_register_base = txr_paid_companions.register_paid_companion
+function txr_paid_companions.register_paid_companion(actor, npc)
+	local npc = dialogs.who_is_npc(actor, npc)
+	local squad = get_object_squad(npc)
+	if not squad then return end
+
+	ach_utils_inc("hire_stalkers")
+
+	return txr_paid_comp_register_base(actor, npc)
+end
+
+-- kick_tushkanos
+bind_monster_kick_base = bind_monster.generic_object_binder.use_kick
+function bind_monster.generic_object_binder.use_kick(self, obj, who)
+	ach_utils_inc("kick_tushkanos")
+	return bind_monster_kick_base(self, obj, who)
+end
+
+-- give_vodka_gromov
+dialogs_vodka_base = dialogs_zaton.give_vodka
+function dialogs_zaton.give_vodka(a, b)
+	if level.name() == "l05_bar" then
+		ach_utils_inc("give_vodka_gromov")
+	end
+	return dialogs_vodka_base(a, b)
+end
+
+-- medic_heal
+medic_heal_base = medic_effects.medic_anim
+function medic_effects.medic_anim()
+	ach_utils_inc("medic_heal")
+	return medic_heal_base()
+end
+
+medic_rad_base = medic_effects.medic_rad_anim
+function medic_effects.medic_rad_anim()
+	ach_utils_inc("medic_heal")
+	return medic_rad_base()
+end
+
+-- complete_arena
+arena_reward_base = dialogs_bar.new_arena_give_reward
+function dialogs_bar.new_arena_give_reward(first_speaker, second_speaker)
+	if has_alife_info("bar_arena_fight_8_reward") then
+		ach_utils_inc("complete_arena")
+	end
+	return arena_reward_base(first_speaker, second_speaker)
+end
+
+function save_state(m_data)
+	m_data.xcvb_achievements_current_points = achievements_current_points
+	m_data.xcvb_achievements_total_points = achievements_total_points
+
+	if not m_data.xcvb_achievements_t then
+		m_data.xcvb_achievements_t = {}
+	end
+
+	-- store only some dynamic values in case someone will want to patch other keys
+	for name, t in pairs(achievements_t) do
+		m_data.xcvb_achievements_t[name] = m_data.xcvb_achievements_t[name] or {}
+		m_data.xcvb_achievements_t[name].count = t.count
+		m_data.xcvb_achievements_t[name].stage = t.stage
+		m_data.xcvb_achievements_t[name].collection = t.collection
+		m_data.xcvb_achievements_t[name].found = t.found
+		m_data.xcvb_achievements_t[name].game_time_cache = t.game_time_cache
+	end
+end
+
+function load_state(m_data)
+	achievements_current_points = m_data.xcvb_achievements_current_points or 0
+	achievements_total_points = m_data.xcvb_achievements_total_points or 0
+
+	if m_data.xcvb_achievements_t then
+		for name, m_data_t in pairs(m_data.xcvb_achievements_t) do
+			achievements_t[name].count = m_data_t.count or 0
+			achievements_t[name].stage = m_data_t.stage or 1
+			achievements_t[name].collection = m_data_t.collection or achievements_t[name].collection
+			achievements_t[name].found = m_data_t.found or achievements_t[name].found
+			achievements_t[name].game_time_cache = m_data_t.game_time_cache or nil
+		end
+	end
+end
+
+function on_game_start()
+	RegisterScriptCallback("squad_on_npc_death", squad_on_npc_death)
+	RegisterScriptCallback("actor_on_item_use", actor_on_item_use)
+	RegisterScriptCallback("actor_on_item_take", actor_on_item_take)
+	RegisterScriptCallback("actor_on_item_trade", actor_on_item_trade)
+	RegisterScriptCallback("actor_on_footstep", actor_on_footstep)
+	RegisterScriptCallback("actor_item_to_belt", actor_item_to_belt)
+	RegisterScriptCallback("actor_item_to_slot", actor_item_to_slot)
+	RegisterScriptCallback("actor_on_weapon_fired", actor_on_weapon_fired)
+	RegisterScriptCallback("actor_on_before_hit", actor_on_before_hit)
+	RegisterScriptCallback("actor_on_sleep", actor_on_sleep)
+	RegisterScriptCallback("actor_on_hit_callback", actor_on_hit_callback)
+	RegisterScriptCallback("npc_on_hit_callback", npc_on_hit_callback)
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+	RegisterScriptCallback("save_state", save_state)
+	RegisterScriptCallback("load_state", load_state)
+end

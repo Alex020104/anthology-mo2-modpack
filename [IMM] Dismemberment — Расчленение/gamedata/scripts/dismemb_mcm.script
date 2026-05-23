@@ -1,0 +1,61 @@
+-- If you don't use MCM, change your defaults from here.
+local defaults = {
+	["enable_stalker"] = true,
+	["enable_mutant"] = true,
+
+	["hit_threshold"] = 0.6,
+	["enable_foot"] = false,
+	["wm_lifetime"] = 600,
+	["mutant_muti"] = true,
+	["max_explosion_limbs"] = 5,
+
+	["enable_meshes"] = true,
+	["meshes_lifetime"] = 60,
+
+	["allow_exp"] = true,
+	["allow_wound"] = true,
+	["allow_strike"] = true,
+	["allow_ball"] = true,
+
+	["wm_size"] = 0.2,
+	["debugx"] = false,
+	["debug_hit"] = false,
+}
+
+function get_config(key)
+	if ui_mcm then return ui_mcm.get("dismemb/"..key) else return defaults[key] end
+end
+
+function on_mcm_load()
+	op = { id= "dismemb",sh=true ,gr={
+			{ id= "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_dismemb_title",size= {512,50},spacing= 20 },
+
+			{id = "enable_stalker", type = "check", val = 1, def = true},
+			{id = "enable_mutant", type = "check", val = 1, def = true},
+
+			{id= "divider", type = "line" },
+			{id = "hit_threshold", type = "track", val = 2, min=0.05,max=2,step=0.05, def = 0.6},
+			{id = "enable_foot", type = "check", val = 1, def = false},
+			{id = "wm_lifetime", type = "track", val = 2, min=20,max=1200,step=20, def = 600},
+			{id = "mutant_muti", type = "check", val = 1, def = true},
+			{id = "max_explosion_limbs", type = "track", val = 2, min=1,max=5,step=1, def = 5},
+
+			{id= "divider", type = "line" },
+			{id = "enable_meshes", type = "check", val = 1, def = true},
+			{id = "meshes_lifetime", type = "track", val = 2, min=10,max=900,step=10, def = 60},
+
+			{id= "divider", type = "line" },
+			{id = "allow_exp", type = "check", val = 1, def = true},
+			{id = "allow_wound", type = "check", val = 1, def = true},
+			{id = "allow_strike", type = "check", val = 1, def = true},
+			{id = "allow_ball", type = "check", val = 1, def = true},
+
+			{id= "divider", type = "line" },
+			{id = "wm_size", type = "track", val = 2, min=0,max=1,step=0.05, def = 0.2},
+			{id = "debugx", type = "check", val = 1, def = false},
+			{id = "debug_hit", type = "check", val = 1, def = false},
+		}
+	}
+
+	return op
+end

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_dismemb_title">
+		<text>Dismemberment</text>
+	</string>
+	<string id="ui_mcm_menu_dismemb">
+		<text>Dismemberment</text>
+	</string>
+
+
+	<!-- Main configs -->
+	<string id="ui_mcm_dismemb_enable_stalker">
+		<text>Enable for stalkers</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_enable_mutant">
+		<text>Enable for mutants</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_hit_threshold">
+		<text>Hit threshold</text>
+	</string>
+	<string id="ui_mcm_dismemb_hit_threshold_desc">
+		<text>Hit power for fatal hit to detach limb, does not check armor etc for now.</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_wm_lifetime">
+		<text>Blood on body lifetime</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_enable_foot">
+		<text>Enable Stalkers foot dismemberment (looks bad)</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_mutant_muti">
+		<text>More dismemberment from mutants (see desc.)</text>
+	</string>
+	<string id="ui_mcm_dismemb_mutant_muti_desc">
+		<text>Mutants usually hit "root" bone which does not detach anything. This option will make it detach random bone (except head) when mutant kills someone (if passed hit threshold).</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_max_explosion_limbs">
+		<text>Max detached limbs on explosion</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_max_explosion_limbs_desc">
+		<text>Random from 1 to this value.</text>
+	</string>
+
+
+	<!-- Meshes -->
+	<string id="ui_mcm_dismemb_enable_meshes">
+		<text>Enable detached limbs</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_meshes_lifetime">
+		<text>Detached limbs lifetime</text>
+	</string>
+
+
+	<!-- Hit types -->
+	<string id="ui_mcm_dismemb_allow_exp">
+		<text>Allow explosion type</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_allow_wound">
+		<text>Allow wound type (melee/mutants)</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_allow_strike">
+		<text>Allow strike type (some mutants)</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_allow_ball">
+		<text>Allow ballistic type</text>
+	</string>
+
+
+	<!-- Debug -->
+	<string id="ui_mcm_dismemb_wm_size">
+		<text>Wallmarks Size (Can prevent GPU driver crash)</text>
+	</string>
+	<string id="ui_mcm_dismemb_wm_size_desc">
+		<text>If you are having freezes and then GPU suspended errors, decreasing this value can help to prevent that.</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_debugx">
+		<text>Debug Info</text>
+	</string>
+	<string id="ui_mcm_dismemb_debugx_desc">
+		<text>Just some info in console.</text>
+	</string>
+
+	<string id="ui_mcm_dismemb_debug_hit">
+		<text>Debug hit_power*1000</text>
+	</string>
+
+</string_table>

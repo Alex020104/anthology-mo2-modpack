@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="ui_mcm_menu_tmmr">
+		<text>Мини-моды от Tosox</text>
+	</string>
+
+	<string id="ui_mcm_menu_ajustable_patch_chance">
+		<text>Выпадение нашивки</text>
+	</string>
+	<string id="ui_mcm_tmmr_ajustable_patch_chance_title">
+		<text>Настраиваемый шанс выпадения нашивки групировки</text>
+	</string>
+	<string id="ui_mcm_tmmr_ajustable_patch_chance_patch_chance">
+		<text>Шанс получить нашивку</text>
+	</string>
+</string_table>

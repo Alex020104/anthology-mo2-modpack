@@ -1,0 +1,20 @@
+local defaults = {
+    ["mode"] = false
+}
+
+function on_mcm_load()
+    options = {
+        id = "liz_dosimeter",
+        sh = true,
+        gr = {
+            { id = "banner", type = "slide", text = "ui_mcm_menu_liz_dosimeter", link = "ui_options_slider_player", size = { 512, 50 }, spacing = 20 },
+            { id = "mode",   type = "check", val = 1,                                   def = false }
+        }
+    }
+
+    return options
+end
+
+function get_config(key)
+    if ui_mcm and ui_mcm.key_hold then return ui_mcm.get("liz_dosimeter/" .. key) else return defaults[key] end
+end

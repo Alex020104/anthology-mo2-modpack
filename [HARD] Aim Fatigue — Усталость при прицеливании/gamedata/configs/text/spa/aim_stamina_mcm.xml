@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- Aim Stamina MCM xml v1.0a -->
+
+<string_table>
+	<string id="ui_mcm_menu_aim_stamina">
+		<text>Resistencia de punterнa</text>
+	</string>
+	
+	<!-- categorнas -->
+	<string id="ui_mcm_aim_stamina_title">
+		<text>Resistencia de punterнa</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_ASweaponsway">
+		<text>Ajustes de balanceo del arma</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AShudtitle">
+		<text>Configuraciуn de HUD</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_ASdebugtitle">
+		<text>Modo Depuraciуn</text>
+	</string>
+	
+	<!-- operational mode -->
+	<string id="ui_mcm_aim_stamina_AS_op_mode">
+		<text>MODO OPERATIVO</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_op_mode_desc">
+		<text>Elige entre 2 modos de funcionamiento diferentes. \nEl modo 1 introduce el balanceo del arma por debajo de cierto umbral de resistencia de punterнa y deja de apuntar cuando la resistencia de punterнa llega a cero. \nEl modo 2 te permite seguir apuntando cuando el aguante de punterнa llega a cero, pero se introduce el balanceo del arma.</text>
+	</string>
+	<string id="ui_mcm_lst_stop_aim">
+		<text>1</text>
+	</string>
+	<string id="ui_mcm_lst_keep_aim">
+		<text>2</text>
+	</string>
+	
+	<!-- hardcore mode -->
+	<string id="ui_mcm_aim_stamina_AS_mode">
+		<text>Modo Hardcore</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_mode_desc">
+		<text>Elige entre 2 modos diferentes de apuntar.\n"Apagado" es el modo normal. La resistencia de punterнa se agota al apuntar y se recupera al no hacerlo.\nEn el modo "Light" la resistencia de apuntar se agota al apuntar y se recupera al bajar el arma. el valor no cambia cuando el arma estб lista para apuntar.\nEn el modo "Heavy" la resistencia de apuntar se agota lentamente cuando el arma estб lista para apuntar y se agota normalmente al apuntar. Sуlo al bajar el arma se recupera la energнa de punterнa.</text>
+	</string>
+	<string id="ui_mcm_lst_off">
+		<text>Apagado</text>
+	</string>
+	<string id="ui_mcm_lst_light">
+		<text>Light</text>
+	</string>
+	<string id="ui_mcm_lst_heavy">
+		<text>Heavy</text>
+	</string>
+	
+	<!-- aim stamina -->
+	<string id="ui_mcm_aim_stamina_aim_stamina">
+		<text>Mбxima resistencia de punterнa</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_aim_stamina_desc">
+		<text>Cantidad mбxima de "unidades" de resistencia. Con influencia de peso de drenaje/recuperaciуn = 0 una unidad de resistencia corresponde a un segundo de tiempo de punterнa/recuperaciуn.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_drain_weight_influence">
+		<text>Influencia del peso de drenaje de resistencia</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_drain_weight_influence_desc">
+		<text>Influencia de peso del arma que sostienes mientras apuntas. Cuanto mбs pesada es el arma, mбs rбpido se agota la resistencia de punterнa. Los valores mбs altos aumentan la influencia, cero ignora el peso del arma por completo.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_recover_weight_influence">
+		<text>Influencia del peso de recuperaciуn de resistencia</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_recover_weight_influence_desc">
+		<text>Influencia del peso del arma que sostienes cuando no estбs apuntando. Cuanto mбs pesada sea el arma, mбs lentamente se recupera la resistencia de punterнa. Los valores mбs altos aumentan la influencia, cero ignora el peso del arma por completo.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_rate_range">
+		<text>Rango de tasa</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_rate_range_desc">
+		<text>Apuntar con un arma pesada, por ejemplo, un rifle Gauss, agota la resistencia de punterнa mucho mбs rбpido que apuntar con un arma ligera, por ejemplo, una Glock 19. (El rango de velocidad cambia la diferencia entre el drenaje/recuperaciуn rбpida y lenta de la resistencia. Los valores mбs bajos reducen la diferencia. Se aplica para el drenaje/recuperaciуn de aguante solo si la influencia del peso de drenaje/recuperaciуn > 0.</text>
+	</string>
+	
+		<!-- weapon sway -->
+	<string id="ui_mcm_aim_stamina_AS_wpn_sway_start">
+		<text>Inicio Del Balanceo Del Arma</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_wpn_sway_start_desc">
+		<text>Establece el umbral de resistencia de punterнa por debajo del cual comienza el balanceo del arma. Si el valor es cero, el balanceo del arma se desactiva.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_wpn_sway_power">
+		<text>Intensidad Del Balanceo Del Arma</text>
+	</string>
+	
+	<!-- HUD -->
+	<string id="ui_mcm_aim_stamina_show_AS_counter">
+		<text>Mostrar contador de resistencia de punterнa</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_show_AS_counter_desc">
+		<text>Muestra el valor de resistencia de punterнa como un nъmero.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_show_AS_bar">
+		<text>Mostrar barra de resistencia de punterнa</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_show_AS_bar_desc">
+		<text>Muestra el valor de resistencia de punterнa como una barra de energнa.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_hide_timer">
+		<text>Ocultar HUD despuйs de X segundos</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_hide_timer_desc">
+		<text>Cuando no se apunta, el HUD desaparece al cabo de cierto tiempo. Cuando el valor es cero, el HUD estб visible todo el tiempo.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_x_pos">
+		<text>Posiciуn x del HUD</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_x_pos_desc">
+		<text>Posiciуn horizontal del HUD. Aumentar el valor desplaza el HUD hacia la derecha.\nmin = 0, max = 1024, por defecto = 462.</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_y_pos">
+		<text>Posiciуn y de HUD</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_hud_y_pos_desc">
+		<text>Posiciуn vertical del HUD. Aumentar el valor desplaza el HUD hacia abajo.\nmin = 0, max = 768, por defecto = 720.</text>
+	</string>
+	
+	<string id="ui_mcm_aim_stamina_AS_counter_x_pos">
+		<text>Posiciуn horizontal del contador</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_counter_x_pos_desc">
+		<text>Muestra el contador a la izquierda, en el centro o a la derecha en relaciуn con la barra de energнa.</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_left">
+		<text>Izquierda</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_center">
+		<text>Centro</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_right">
+		<text>Derecha</text>
+	</string>
+	
+	<string id="ui_mcm_aim_stamina_AS_counter_y_pos">
+		<text>Posiciуn vertical del contador</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_counter_y_pos_desc">
+		<text>Muestra el contador por encima o por debajo de la barra de energнa</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_above">
+		<text>Encima</text>
+	</string>
+	<string id="ui_mcm_lst_AS_counter_pos_below">
+		<text>Debajo</text>
+	</string>
+	
+	<!-- for debug mode -->
+	<string id="ui_mcm_aim_stamina_AS_disable">
+		<text>Desactivar la resistencia de punterнa</text>
+	</string>
+	<string id="ui_mcm_aim_stamina_AS_disable_desc">
+		<text>Interrumpe el drenaje/recuperaciуn de stamina y oculta el HUD. Ъtil en el modo de depuraciуn, por ejemplo, cuando se utiliza el editor hud arma.</text>
+	</string>
+</string_table>

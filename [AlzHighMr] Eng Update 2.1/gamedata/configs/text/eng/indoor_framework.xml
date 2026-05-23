@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="ui_mcm_menu_indoor_framework">
+		<text>Indoor Framework</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_enable">
+		<text>Enable</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tick_interval">
+		<text>Tick Interval (in ms)</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_npc_tick_interval">
+		<text>Tick Interval For NPC (in ms)</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_volume">
+		<text>Volume</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_ray_bounce_count">
+		<text>Ray Bounce Count</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_npc_ray_bounce_count">
+		<text>NPC Ray Bounce Count</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_ray_lenght_mult">
+		<text>Ray Lenght</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_dbug">
+		<text>Debug Mode</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_ray_dbug">
+		<text>Ray Debug Mode</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_show_replaced_sound">
+		<text>Show Replaced Sound</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_new_threshold">
+		<text>Threshold</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_new_threshold_desc">
+		<text>If indoor score (the amount of ray hit) is above this threshold, the indoor sound will play</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_max_threshold">
+		<text>Max Threshold</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_max_threshold_desc">
+		<text>When indoor point is above the threshold but still not high enough, it will be in the transistion phase (blend out and indoor sounds). This control which part will play with full outdoor sounds, 0 = required all ray to be hit, 1 = no transistion phase</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_ray_drop_off_lenght">
+		<text>Volume Fall-off Lenght</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_ray_drop_off_lenght_desc">
+		<text>When the avarage of all ray's lenght greater than this, the volume will start to decrease</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_volume">
+		<text>Tail Volume</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_volume_desc">
+		<text>Volume for custom tail sounds in large indoor area</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_threshold">
+		<text>Tail Threshold</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_threshold_desc">
+		<text>The amount of score needed to activate indoor tail sounds</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_length">
+		<text>Tail Lenght</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_length_desc">
+		<text>Avarage length needed to play tail sounds at max volume, it will start increase then decrease volume before/after this point</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_bak_tail">
+		<text>Enable Backup Tail Sounds</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_bak_tail_desc">
+		<text>Play a tail sounds if no tail is configed for this gun (recommended)</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_enable_for_non">
+		<text>Enable Tail Sounds For Guns That Dont Have Indoor Sounds</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_desc_ray">
+		<text>Rays Settings</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_desc_threshold">
+		<text>Threshold Settings</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_desc_tail">
+		<text>Tail Settings</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_desc_dbug">
+		<text>Dev shits</text>
+	</string>
+</string_table>

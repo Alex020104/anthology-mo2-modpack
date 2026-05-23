@@ -1,0 +1,753 @@
+-- weapon_minigun_npc_fire_bullet_driven_v3lite.script
+-- NPC minigun audio driven by bullet_on_init
+-- Hybrid:
+--   - burst/core mode for short and irregular bursts
+--   - sustain mode for dense continuous fire
+--
+-- Supports:
+--   scripted_snd_fire_npc
+--   scripted_snd_fire_npc_indoor
+--   scripted_snd_fire_npc_silenced
+--   scripted_snd_fire_npc_silenced_indoor
+--
+--   scripted_snd_fire_sustain_npc
+--   scripted_snd_fire_sustain_npc_indoor
+--   scripted_snd_fire_sustain_npc_silenced
+--   scripted_snd_fire_sustain_npc_silenced_indoor
+--
+-- Notes:
+-- - NO tail sounds in this version
+-- - burst/core can be direct paths or collection sections
+-- - sustain should preferably be a direct sound path
+-- - designed for:
+--     core/burst sample ~320 ms
+--     sustain sample ~600 ms
+
+local TARGET_WEAPON = "wpn_m134"
+
+local NPC_MINIGUN_CFG = {
+    debug = false,
+
+    -- hard cull by distance to actor
+    max_distance = 650,
+
+    -- BURST / GENERAL ACTIVITY
+    fire_activity_timeout_ms = 320,
+    burst_core_min_interval_ms = 220,
+
+    -- SUSTAIN DETECTION
+    sustain_window_ms = 240,
+    sustain_enter_bullets = 4,
+    sustain_exit_inactivity_ms = 360,
+
+    -- avoid spamming sustain restarts too hard
+    sustain_refresh_min_interval_ms = 120,
+
+    enable_monsters = true,
+}
+
+local npc_state = {}
+
+----------------------------------------------------------------------------------------------------
+-- Debug
+----------------------------------------------------------------------------------------------------
+
+local function dbg(msg)
+    if NPC_MINIGUN_CFG.debug then
+        printf("[minigun_npc_v3lite] %s", tostring(msg))
+    end
+end
+
+----------------------------------------------------------------------------------------------------
+-- Generic helpers
+----------------------------------------------------------------------------------------------------
+
+local function now_ms()
+    return time_global()
+end
+
+local function is_target_weapon(item)
+    return item and item:section() == TARGET_WEAPON
+end
+
+local function actor_pos()
+    return db.actor and db.actor:position() or nil
+end
+
+local function object_distance_to_actor_sq(obj)
+    if not obj or not db.actor then
+        return math.huge
+    end
+
+    local ap = actor_pos()
+    local op = obj:position()
+    if not ap or not op then
+        return math.huge
+    end
+
+    return ap:distance_to_sqr(op)
+end
+
+local function within_max_distance(obj)
+    local max_sq = NPC_MINIGUN_CFG.max_distance * NPC_MINIGUN_CFG.max_distance
+    return object_distance_to_actor_sq(obj) <= max_sq
+end
+
+local function safe_level_object_by_id(id)
+    if not id then
+        return nil
+    end
+
+    local ok, obj = pcall(function()
+        return level.object_by_id(id)
+    end)
+
+    if ok then
+        return obj
+    end
+
+    return nil
+end
+
+local function weapon_has_silencer(wpn)
+    if not wpn then
+        return false
+    end
+
+    local ok, result = pcall(function()
+        local cw = wpn:cast_Weapon()
+        return cw and cw:IsSilencerAttached()
+    end)
+
+    return ok and result == true
+end
+
+local function is_actor_parent_id(parent_id)
+    return parent_id == 0 or parent_id == AC_ID
+end
+
+----------------------------------------------------------------------------------------------------
+-- Indoor detection
+----------------------------------------------------------------------------------------------------
+
+local function npc_is_indoor(npc)
+    if type(isIndoor) == "function" then
+        local ok, a = pcall(function()
+            return isIndoor(npc)
+        end)
+
+        if ok then
+            if type(a) == "boolean" then
+                return a
+            elseif type(a) == "number" then
+                if env_gunsnd_mcm and env_gunsnd_mcm.mcm_setup and env_gunsnd_mcm.mcm_setup.new_threshold then
+                    return a > env_gunsnd_mcm.mcm_setup.new_threshold[1]
+                end
+                return a > 0.75
+            end
+        end
+    end
+
+    return false
+end
+
+----------------------------------------------------------------------------------------------------
+-- Config resolution
+----------------------------------------------------------------------------------------------------
+
+local function first_existing_sound_line(section, keys)
+    for _, key in ipairs(keys) do
+        local value = ini_sys:r_string_ex(section, key)
+        if value and value ~= "" then
+            return value, key
+        end
+    end
+
+    return nil, nil
+end
+
+local function build_sound_key_candidates(base_key, silenced, indoor)
+    local keys = {}
+
+    if silenced and indoor then
+        table.insert(keys, base_key .. "_silenced_indoor")
+    end
+
+    if silenced then
+        table.insert(keys, base_key .. "_silenced")
+    end
+
+    if indoor then
+        table.insert(keys, base_key .. "_indoor")
+    end
+
+    table.insert(keys, base_key)
+
+    return keys
+end
+
+local function resolve_sound_value_for_weapon(wpn, base_key)
+    local section = wpn:section()
+    local silenced = weapon_has_silencer(wpn)
+    local indoor = npc_is_indoor(wpn:parent() or db.actor)
+
+    local keys = build_sound_key_candidates(base_key, silenced, indoor)
+    local value, chosen_key = first_existing_sound_line(section, keys)
+
+    dbg(string.format(
+        "resolve_sound_value_for_weapon | sec=%s base=%s silenced=%s indoor=%s key=%s value=%s",
+        tostring(section),
+        tostring(base_key),
+        tostring(silenced),
+        tostring(indoor),
+        tostring(chosen_key),
+        tostring(value)
+    ))
+
+    return value, chosen_key
+end
+
+----------------------------------------------------------------------------------------------------
+-- Sound playback helpers
+----------------------------------------------------------------------------------------------------
+
+local function parse_sound_line_from_value(value)
+    if not value or value == "" then
+        return nil
+    end
+
+    local parts = str_explode(value, ",")
+    if not parts or not parts[1] then
+        return nil
+    end
+
+    return {
+        path = parts[1],
+        volume = tonumber(parts[2]) or 1,
+        frequency = tonumber(parts[3]) or 1,
+        delay = tonumber(parts[4]) or 0,
+    }
+end
+
+local function get_collection_variant_count(collection_section, base_key)
+    local count = 0
+
+    if ini_sys:r_string_ex(collection_section, base_key) then
+        count = 1
+    else
+        return 0
+    end
+
+    local i = 1
+    while ini_sys:r_string_ex(collection_section, base_key .. i) do
+        count = count + 1
+        i = i + 1
+    end
+
+    return count
+end
+
+local function choose_variant_sound(collection_section, base_key)
+    local count = get_collection_variant_count(collection_section, base_key)
+    if count <= 0 then
+        return nil
+    end
+
+    if count == 1 then
+        return ini_sys:r_string_ex(collection_section, base_key)
+    end
+
+    local roll = math.random(1, count)
+    if roll == 1 then
+        return ini_sys:r_string_ex(collection_section, base_key)
+    end
+
+    return ini_sys:r_string_ex(collection_section, base_key .. (roll - 1))
+end
+
+local function play_collection_from_section(parent, collection_section)
+    local sounds = {}
+
+    local layer_index = 1
+    while true do
+        local layer_key = "snd_" .. layer_index .. "_layer"
+        if not ini_sys:r_string_ex(collection_section, layer_key) then
+            break
+        end
+
+        local file = choose_variant_sound(collection_section, layer_key)
+        if file and file ~= "" then
+            local data = parse_sound_line_from_value(file)
+
+            local path = file
+            local volume = 1.0
+            local frequency = 1.0
+            local delay = 0
+
+            if data and data.path then
+                path = data.path
+                volume = data.volume
+                frequency = data.frequency
+                delay = data.delay
+            end
+
+            local snd = sound_object(path)
+            if snd then
+                snd:play_no_feedback(parent, 0, delay, parent:position(), volume, frequency)
+                table.insert(sounds, snd)
+            end
+        end
+
+        layer_index = layer_index + 1
+    end
+
+    return sounds
+end
+
+local function play_direct_or_collection(parent, value)
+    if not value or value == "" then
+        return nil
+    end
+
+    if string.find(value, "\\") then
+        local data = parse_sound_line_from_value(value)
+        if not data or not data.path then
+            return nil
+        end
+
+        local snd = sound_object(data.path)
+        if snd then
+            snd:play_no_feedback(parent, 0, data.delay, parent:position(), data.volume, data.frequency)
+            return { snd }
+        end
+
+        return nil
+    end
+
+    local sounds = play_collection_from_section(parent, value)
+    if sounds and #sounds > 0 then
+        return sounds
+    end
+
+    return nil
+end
+
+local function play_direct_sustain_from_npc(parent, value)
+    if not value or value == "" then
+        return nil
+    end
+
+    if not string.find(value, "\\") then
+        return nil
+    end
+
+    local data = parse_sound_line_from_value(value)
+    if not data or not data.path then
+        return nil
+    end
+
+    local snd = sound_object(data.path)
+    if not snd then
+        return nil
+    end
+
+    snd:play_no_feedback(parent, 0, data.delay, parent:position(), data.volume, data.frequency)
+    return snd
+end
+
+local function sound_list_is_playing(sound_list)
+    if not sound_list then
+        return false
+    end
+
+    for i = 1, #sound_list do
+        local snd = sound_list[i]
+        if snd and snd:playing() then
+            return true
+        end
+    end
+
+    return false
+end
+
+local function stop_sound_list(sound_list)
+    if not sound_list then
+        return
+    end
+
+    for i = 1, #sound_list do
+        local snd = sound_list[i]
+        if snd and snd:playing() then
+            snd:stop()
+        end
+    end
+end
+
+local function stop_loop_sound(snd)
+    if snd and snd:playing() then
+        snd:stop()
+    end
+end
+
+----------------------------------------------------------------------------------------------------
+-- State
+----------------------------------------------------------------------------------------------------
+
+local function ensure_state_entry(parent_id)
+    if not npc_state[parent_id] then
+        npc_state[parent_id] = {
+            weapon_id = nil,
+
+            mode = "burst", -- burst / sustain
+
+            last_bullet_time = 0,
+            last_core_play_time = 0,
+            last_mode_switch_time = 0,
+            last_sustain_play_time = 0,
+
+            recent_bullet_times = {},
+
+            core_sounds = nil,
+            sustain_snd = nil,
+        }
+    end
+
+    return npc_state[parent_id]
+end
+
+local function clear_state_for_parent(parent_id)
+    local st = npc_state[parent_id]
+    if not st then
+        return
+    end
+
+    stop_sound_list(st.core_sounds)
+    stop_loop_sound(st.sustain_snd)
+
+    npc_state[parent_id] = nil
+end
+
+local function purge_old_bullets(st, now)
+    local kept = {}
+
+    for i = 1, #st.recent_bullet_times do
+        local t = st.recent_bullet_times[i]
+        if (now - t) <= NPC_MINIGUN_CFG.sustain_window_ms then
+            kept[#kept + 1] = t
+        end
+    end
+
+    st.recent_bullet_times = kept
+end
+
+----------------------------------------------------------------------------------------------------
+-- Sustain mode helpers
+----------------------------------------------------------------------------------------------------
+
+local function should_enter_sustain(st, now)
+    purge_old_bullets(st, now)
+    return #st.recent_bullet_times >= NPC_MINIGUN_CFG.sustain_enter_bullets
+end
+
+local function should_exit_sustain(st, now)
+    return (now - st.last_bullet_time) > NPC_MINIGUN_CFG.sustain_exit_inactivity_ms
+end
+
+local function enter_sustain_mode(parent_obj, wpn, st)
+    if st.mode == "sustain" then
+        return
+    end
+
+    local value = resolve_sound_value_for_weapon(wpn, "scripted_snd_fire_sustain_npc")
+    if not value then
+        return
+    end
+
+    local snd = play_direct_sustain_from_npc(parent_obj, value)
+    if not snd then
+        dbg("enter_sustain_mode | sustain config missing or not a direct path")
+        return
+    end
+
+    stop_sound_list(st.core_sounds)
+    st.core_sounds = nil
+
+    stop_loop_sound(st.sustain_snd)
+    st.sustain_snd = snd
+
+    local now = now_ms()
+    st.mode = "sustain"
+    st.last_mode_switch_time = now
+    st.last_sustain_play_time = now
+
+    dbg(string.format(
+        "ENTER_SUSTAIN | npc=%s bullets_in_window=%s",
+        tostring(parent_obj:id()),
+        tostring(#st.recent_bullet_times)
+    ))
+end
+
+local function exit_sustain_mode(parent_obj, st)
+    if st.mode ~= "sustain" then
+        return
+    end
+
+    stop_loop_sound(st.sustain_snd)
+    st.sustain_snd = nil
+
+    st.mode = "burst"
+    st.last_mode_switch_time = now_ms()
+
+    dbg(string.format(
+        "EXIT_SUSTAIN | npc=%s silence_ms=%s",
+        tostring(parent_obj:id()),
+        tostring(now_ms() - st.last_bullet_time)
+    ))
+end
+
+local function maybe_refresh_sustain(parent_obj, wpn, st)
+    if st.mode ~= "sustain" then
+        return
+    end
+
+    if st.sustain_snd and st.sustain_snd:playing() then
+        return
+    end
+
+    local now = now_ms()
+
+    if (now - st.last_sustain_play_time) < NPC_MINIGUN_CFG.sustain_refresh_min_interval_ms then
+        return
+    end
+
+    if (now - st.last_bullet_time) > NPC_MINIGUN_CFG.sustain_exit_inactivity_ms then
+        return
+    end
+
+    purge_old_bullets(st, now)
+
+    if #st.recent_bullet_times < NPC_MINIGUN_CFG.sustain_enter_bullets then
+        return
+    end
+
+    local value = resolve_sound_value_for_weapon(wpn, "scripted_snd_fire_sustain_npc")
+    if not value then
+        return
+    end
+
+    local snd = play_direct_sustain_from_npc(parent_obj, value)
+    if snd then
+        st.sustain_snd = snd
+        st.last_sustain_play_time = now
+
+        dbg(string.format(
+            "REFRESH_SUSTAIN | npc=%s bullets_in_window=%s",
+            tostring(parent_obj:id()),
+            tostring(#st.recent_bullet_times)
+        ))
+    end
+end
+
+----------------------------------------------------------------------------------------------------
+-- Burst/core policy
+----------------------------------------------------------------------------------------------------
+
+local function maybe_play_burst_core(parent_obj, wpn, st)
+    local now = now_ms()
+
+    if st.mode ~= "burst" then
+        return
+    end
+
+    if sound_list_is_playing(st.core_sounds) then
+        return
+    end
+
+    if (now - st.last_bullet_time) > NPC_MINIGUN_CFG.fire_activity_timeout_ms then
+        return
+    end
+
+    if (now - st.last_core_play_time) < NPC_MINIGUN_CFG.burst_core_min_interval_ms then
+        return
+    end
+
+    local value = resolve_sound_value_for_weapon(wpn, "scripted_snd_fire_npc")
+    if not value then
+        return
+    end
+
+    local sounds = play_direct_or_collection(parent_obj, value)
+    if sounds and #sounds > 0 then
+        st.last_core_play_time = now
+        st.core_sounds = sounds
+
+        dbg(string.format(
+            "BURST | npc=%s bullets_in_window=%s",
+            tostring(parent_obj:id()),
+            tostring(#st.recent_bullet_times)
+        ))
+    end
+end
+
+----------------------------------------------------------------------------------------------------
+-- Bullet-driven registration
+----------------------------------------------------------------------------------------------------
+
+local function register_npc_minigun_bullet(bullet)
+    if not bullet then
+        return
+    end
+
+    local parent_id = bullet.parent_id
+    local weapon_id = bullet.weapon_id
+
+    if not parent_id or is_actor_parent_id(parent_id) then
+        return
+    end
+
+    local parent_obj = safe_level_object_by_id(parent_id)
+    local weapon_obj = safe_level_object_by_id(weapon_id)
+
+    if not parent_obj or not weapon_obj then
+        return
+    end
+
+    if not parent_obj:alive() then
+        return
+    end
+
+    if not is_target_weapon(weapon_obj) then
+        return
+    end
+
+    if not within_max_distance(parent_obj) then
+        return
+    end
+
+    local st = ensure_state_entry(parent_id)
+    local now = now_ms()
+
+    st.weapon_id = weapon_id
+    st.last_bullet_time = now
+    st.recent_bullet_times[#st.recent_bullet_times + 1] = now
+
+    purge_old_bullets(st, now)
+
+    dbg(string.format(
+        "register_npc_minigun_bullet | npc=%s weapon=%s bullets_in_window=%s bullet_section=%s",
+        tostring(parent_id),
+        tostring(weapon_id),
+        tostring(#st.recent_bullet_times),
+        tostring(bullet.section)
+    ))
+end
+
+----------------------------------------------------------------------------------------------------
+-- Maintenance
+----------------------------------------------------------------------------------------------------
+
+local function maintain_parent_audio(parent_obj)
+    if not parent_obj then
+        return
+    end
+
+    local parent_id = parent_obj:id()
+    local st = npc_state[parent_id]
+    if not st then
+        return
+    end
+
+    if not parent_obj:alive() then
+        clear_state_for_parent(parent_id)
+        return
+    end
+
+    if not within_max_distance(parent_obj) then
+        clear_state_for_parent(parent_id)
+        return
+    end
+
+    local wpn = safe_level_object_by_id(st.weapon_id)
+    if not wpn or not is_target_weapon(wpn) then
+        clear_state_for_parent(parent_id)
+        return
+    end
+
+    local now = now_ms()
+
+    if st.mode == "burst" then
+        if should_enter_sustain(st, now) then
+            enter_sustain_mode(parent_obj, wpn, st)
+        end
+    else
+        if should_exit_sustain(st, now) then
+            exit_sustain_mode(parent_obj, st)
+        end
+    end
+
+    local now = now_ms()
+
+	if st.mode == "burst" then
+		maybe_play_burst_core(parent_obj, wpn, st)
+	else
+		maybe_refresh_sustain(parent_obj, wpn, st)
+	
+		-- Fallback:
+		-- si on est toujours en mode sustain mais qu'aucun sustain ne joue actuellement,
+		-- on autorise un burst pour éviter les trous de son
+		if (not st.sustain_snd or not st.sustain_snd:playing())
+			and (now - st.last_bullet_time) <= NPC_MINIGUN_CFG.fire_activity_timeout_ms
+		then
+			maybe_play_burst_core(parent_obj, wpn, st)
+		end
+	end
+end
+
+----------------------------------------------------------------------------------------------------
+-- Callbacks
+----------------------------------------------------------------------------------------------------
+
+function bullet_on_init(bullet)
+    register_npc_minigun_bullet(bullet)
+end
+
+function npc_on_update(npc, delta)
+    maintain_parent_audio(npc)
+end
+
+function monster_on_update(monster, delta)
+    if not NPC_MINIGUN_CFG.enable_monsters then
+        return
+    end
+
+    maintain_parent_audio(monster)
+end
+
+function game_object_on_net_destroy(obj)
+    if not obj then
+        return
+    end
+
+    local id = obj:id()
+
+    if npc_state[id] then
+        clear_state_for_parent(id)
+        return
+    end
+
+    for parent_id, st in pairs(npc_state) do
+        if st.weapon_id == id then
+            clear_state_for_parent(parent_id)
+        end
+    end
+end
+
+function on_game_start()
+    RegisterScriptCallback("bullet_on_init", bullet_on_init)
+    RegisterScriptCallback("npc_on_update", npc_on_update)
+    RegisterScriptCallback("game_object_on_net_destroy", game_object_on_net_destroy)
+
+    if NPC_MINIGUN_CFG.enable_monsters then
+        RegisterScriptCallback("monster_on_update", monster_on_update)
+    end
+end

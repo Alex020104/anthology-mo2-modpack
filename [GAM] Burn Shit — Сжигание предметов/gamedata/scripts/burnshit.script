@@ -1,0 +1,183 @@
+local Config  = burnshit_config
+local Functor = custom_functor_autoinject
+
+
+local USED_ITEMS = {}
+
+
+function refreshInventory()
+	local inventory = GetActorMenu()
+
+  if inventory then
+    inventory:UnHighlight_All()
+    inventory:UpdateItems()
+  end
+end
+
+
+function getNearbyLitCampfire(pos, radius)
+  radius = radius or 3.2
+  local campfire
+
+  for id, binders in pairs(bind_campfire.campfires_all) do
+    local dist = pos:distance_to(binders.object:position())
+
+    if dist <= radius and binders.campfire:is_on() then
+      return {
+        id       = id,
+        distance = dist,
+        object   = binders.object,
+        campfire = binders.campfire,
+      }
+    end
+  end
+end
+
+
+function isBurnable(item, radius)
+  if USED_ITEMS[item:id()] then
+    USED_ITEMS[item:id()] = nil
+    return false
+  end
+
+  local inventory = GetActorMenu()
+  if not (inventory and inventory:IsShown()) then
+    return
+  end
+
+  local se = alife_object(item:id())
+  if not se then
+    return
+  end
+
+  local parent = item:parent()
+  if not parent or parent:id() ~= db.actor:id() then
+    return false
+  end
+
+  if not getNearbyLitCampfire(db.actor:position(), radius or 3.2) then
+    return false
+  end
+
+  local override = Config.burnableItemOverrides[item:section()]
+  if override ~= nil then
+    return override
+  end
+
+  local burnQuestItems   = ui_mcm.get("burnshit/burnQuestItems")
+  local burnUntradeables = ui_mcm.get("burnshit/burnUntradeables")
+
+  if not burnQuestItems and SYS_GetParam(1, item:section(), "quest_item") == true then
+    return false
+  end
+
+  if not burnUntradeables and SYS_GetParam(1, item:section(), "can_trade") == false then
+    return false
+  end
+
+  return true
+end
+
+
+function isBurnableAll(item, radius)
+  if not ui_mcm.get("burnshit/useMenu") then
+    return false
+  end
+
+  if ui_mcm.get("burnshit/burnAll") == "never" then
+    return false
+  end
+
+  if not isBurnable(item, radius) then
+    return false
+  end
+
+  if ui_mcm.get("burnshit/burnAll") == "always" then
+    return true
+  end
+
+  local itemCount = 0
+
+  db.actor:iterate_inventory(function(owner, otherItem)
+    if item:section() == otherItem:section() then
+      itemCount = itemCount + 1
+      if itemCount > 1 then
+        return true
+      end
+    end
+  end, db.actor)
+
+  return itemCount > 1
+end
+
+
+function burnItem(item)
+  alife_release(item)
+  Config.burnSound:play_no_feedback(db.actor, 0, 0, db.actor:position(), Config.baseVolume, 1.0)
+  refreshInventory()
+end
+
+
+function burnItemsAll(item)
+  local itemCount = 0
+
+  db.actor:iterate_inventory(function(owner, otherItem)
+    if item:section() == otherItem:section() then
+      alife_release(otherItem)
+      itemCount = itemCount + 1
+    end
+  end, db.actor)
+
+  local volume = math.min(Config.baseVolume + (Config.volumePerItem * (itemCount - 1)), Config.maxVolume)
+  Config.burnSound:play_no_feedback(db.actor, 0, 0, db.actor:position(), volume, 1.0)
+
+  refreshInventory()
+end
+
+
+Functor.add_functor("burnshit_burn",
+  function(item)
+    return ui_mcm.get("burnshit/useMenu")
+      and isBurnable(item, Config.maxMenuRange)
+      or  false
+  end,
+  function()
+    return game.translate_string("st_burnshit_burn")
+  end,
+  nil,
+  burnItem
+)
+
+
+Functor.add_functor("burnshit_burn_all",
+  function(item)
+    return ui_mcm.get("burnshit/useMenu")
+      and isBurnableAll(item, Config.maxMenuRange)
+      or  false
+  end,
+  function()
+    return game.translate_string("st_burnshit_burn_all")
+  end,
+  nil,
+  burnItemsAll
+)
+
+
+function onItemUse(item)
+  if item:get_remaining_uses() == 0 then
+    USED_ITEMS[item:id()] = true
+  end
+end
+
+
+function onItemDrop(item)
+  if ui_mcm.get("burnshit/useDragDrop") and isBurnable(item, Config.maxDropRange) then
+    burnItem(item)
+  end
+end
+
+
+function on_game_start()
+  RegisterScriptCallback("actor_on_item_use", onItemUse)
+  RegisterScriptCallback("actor_on_item_drop", onItemDrop)
+end

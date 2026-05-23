@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+<string id="st_wpn_udp9">
+	<text>UDP-9 Carbine</text>
+</string>
+
+<string id="st_wpn_udp9_descr">
+	<text>
+		UDP-9 is a straight-blowback AR-9 pistol-caliber carbine. It features a number of AR-15–style components
+		while chambered for 9?19 mm ammunition. The weapon accepts standard 9 mm GLOCK magazines,
+		with the bolt locking open after the last round. \n \n
+		%c[ui_gray_2]Add-ons: \n
+		%c[d_purple] • %c[ui_gray_2] Optics: sights compatible with Picatinny/Weaver rails. \n
+		%c[d_purple] • %c[ui_gray_2] Suppressor: GemTech\n
+	</text>
+</string>
+
+<string id="st_wpn_udp9_sd">
+	<text>UDP-9-SD Carbine</text>
+</string>
+
+<string id="st_wpn_udp9_sd_descr">
+	<text>
+		UDP-9-SD is a carbine variant equipped with an integrated suppressor, optimized for subsonic ammunition.
+		It is designed for quiet operation and reduced muzzle signature in close-quarters engagements. \n \n
+		%c[ui_gray_2]Add-ons: \n
+		%c[d_purple] • %c[ui_gray_2] Optics: sights compatible with Picatinny/Weaver rails. \n
+		%c[d_purple] • %c[ui_gray_2] Integrated suppressor\n
+	</text>
+</string>
+
+</string_table>

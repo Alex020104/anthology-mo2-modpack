@@ -1,0 +1,10 @@
+op = {
+	id = "disassemble_all_items", sh = true, gr = {
+    	{id = "banner", type = "slide", text = "ui_mcm_disassemble_all_items_title", size = {512, 50}, spacing = 20},
+        {id = "ammo_maker_compatibility", type = "check", val = 1, def = true},        
+    }
+}
+
+function on_mcm_load()
+    return op
+end

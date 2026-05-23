@@ -1,0 +1,690 @@
+--[[
+================================================================================
+|                                                                              |
+|      A N T H O L O G Y   2.1   |   H A R D C O R E   E C O N O M Y          |
+|                                                                              |
+================================================================================
+|   SCRIPT ID: z_sys_balance.script                                            |
+|   VERSION:   1.0 "Elite Suffer"                                              |
+|   AUTHOR:    S Y S (Special for Anthology Team)                              |
+|                                                                              |
+|   Описание: Полная переработка системы дропа                                 |
+|   - Прогрессивные шансы выпадения в зависимости от ранга игрока              |
+|   - Система удачи (5% обычный шанс, 1.5% для элитных мобов)                  |
+|   - Разбор оружия и брони на запчасти                                        |
+|   - Динамическое количество патронов по рангам                               |
+|   - Состояние предметов растет с рангом игрока                               |
+================================================================================
+--]]
+
+-- ==========================================
+-- НАСТРОЙКИ
+-- ==========================================
+
+local debug_mode = false
+local luck_chance_base = 1.5
+local luck_chance_elite = 1.5
+local lucky_condition_min = 55
+local lucky_condition_max = 80
+local hard_condition_cap = 0.80
+
+-- Функция вывода отладочных сообщений
+function print_dbg(text, ...)
+    if debug_mode then
+        printf(" [DropSys] " .. text, ...)
+    end
+end
+
+function clamp_condition_cap(cond)
+    if cond > hard_condition_cap then
+        return hard_condition_cap
+    end
+    return cond
+end
+
+-- Переменные состояния удачи для текущего трупа (локальные, живут только внутри скрипта)
+local is_lucky_corpse = false
+local is_elite_lucky = false
+local corpse_luck_state = {}
+
+-- ==========================================
+-- СИСТЕМА УДАЧИ
+-- ==========================================
+-- Проверяем, повезло ли с этим трупом
+-- Вызывается в начале обработки каждого трупа
+function check_luck(npc)
+    local npc_id = npc and npc:id()
+    local state = npc_id and corpse_luck_state[npc_id]
+
+    if not state then
+        state = {
+            base = math.random(1000) <= math.floor(luck_chance_base * 10),
+            elite = math.random(1000) <= math.floor(luck_chance_elite * 10),
+        }
+
+        if npc_id then
+            corpse_luck_state[npc_id] = state
+        end
+    end
+
+    is_lucky_corpse = state.base
+    is_elite_lucky = state.elite
+
+    if is_lucky_corpse then print_dbg("!!! SYS_LUCK TRIGGERED !!!") end
+    if is_elite_lucky then print_dbg("!!! ELITE LUCK TRIGGERED !!!") end
+end
+
+-- ==========================================
+-- СОСТОЯНИЕ ПРЕДМЕТОВ (кондишн)
+-- ==========================================
+-- Возвращает минимальный и максимальный процент состояния предмета
+-- Чем выше ранг игрока, тем лучше состояние выпадающих вещей
+-- Если сработала удача - состояние значительно выше (45-85%)
+function get_condition_range_by_player_rank(item_section)
+    local player_rank = db.actor:character_rank()
+    local section = item_section or ""
+
+    local is_elite = string.find(section, "exo") 
+                  or string.find(section, "helm_spartan") 
+                  or string.find(section, "helm_exo")
+
+    local has_luck = (is_elite and is_elite_lucky) or is_lucky_corpse
+
+    if has_luck then
+        print_dbg("High condition for: %s", section)
+        return lucky_condition_min, lucky_condition_max
+    end
+
+    if player_rank < 2000 then return 1, 5
+    elseif player_rank < 4000 then return 3, 10
+    elseif player_rank < 7000 then return 5, 30
+    elseif player_rank < 10000 then return 10, 40
+    elseif player_rank < 15000 then return 15, 50
+    elseif player_rank < 21000 then return 20, 55
+    elseif player_rank < 28000 then return 25, 58
+    else return 28, 60 end
+end
+
+-- ==========================================
+-- КОЛИЧЕСТВО ПАТРОНОВ
+-- ==========================================
+-- Возвращает минимальное и максимальное количество патронов
+-- Разные типы патронов имеют разную базовую величину
+-- С ростом ранга игрока патронов становится больше
+function get_ammo_count_by_player_rank(ammo_section)
+    if type(ammo_section) ~= "string" or ammo_section == "" then
+        return 0, 0
+    end
+
+    if IsItem("fake_ammo", ammo_section) then
+        return 0, 0
+    end
+
+    local player_rank = db.actor:character_rank()
+    local min_base, max_base
+
+    if string.find(ammo_section, "12x76") or string.find(ammo_section, "vogr") or string.find(ammo_section, "m209") then
+        min_base, max_base = 1, 1
+    elseif string.find(ammo_section, "9x39") or string.find(ammo_section, "gauss") or string.find(ammo_section, "50bmg") or string.find(ammo_section, "_bad") then
+        min_base, max_base = 1, 2
+    else
+        min_base, max_base = 2, 4
+    end
+
+    if is_lucky_corpse or is_elite_lucky then
+        return math.floor(max_base * 1.1), math.floor(max_base * 1.35)
+    end
+
+    if player_rank < 2000 then 
+        return math.floor(min_base * 0.5), math.floor(max_base * 0.7)
+    elseif player_rank < 4000 then 
+        return math.floor(min_base * 0.7), math.floor(max_base * 0.9)
+    elseif player_rank < 7000 then 
+        return math.floor(min_base * 0.85), math.floor(max_base * 1.0)
+    elseif player_rank < 10000 then 
+        return math.floor(min_base * 0.95), math.floor(max_base * 1.1)
+    elseif player_rank < 15000 then 
+        return math.floor(min_base * 1.0), math.floor(max_base * 1.15)
+    elseif player_rank < 21000 then 
+        return math.floor(min_base * 1.05), math.floor(max_base * 1.25)
+    elseif player_rank < 28000 then 
+        return math.floor(min_base * 1.1), math.floor(max_base * 1.35)
+    else 
+        return math.floor(min_base * 1.15), math.floor(max_base * 1.45)
+    end
+end
+
+local mag_loot_patch_done = false
+
+function get_mag_ammo_limit_by_player_rank(mag_section, current_count)
+    local player_rank = db.actor and db.actor:character_rank() or 0
+    local mag_cap = mag_section and SYS_GetParam(2, mag_section, "max_mag_size") or current_count or 0
+
+    if mag_cap <= 0 then
+        return 0
+    end
+
+    local min_pct, max_pct
+    if player_rank < 2000 then
+        min_pct, max_pct = 0, 12
+    elseif player_rank < 4000 then
+        min_pct, max_pct = 0, 16
+    elseif player_rank < 7000 then
+        min_pct, max_pct = 5, 22
+    elseif player_rank < 10000 then
+        min_pct, max_pct = 8, 28
+    elseif player_rank < 15000 then
+        min_pct, max_pct = 10, 35
+    elseif player_rank < 21000 then
+        min_pct, max_pct = 14, 45
+    elseif player_rank < 28000 then
+        min_pct, max_pct = 18, 55
+    else
+        min_pct, max_pct = 22, 65
+    end
+
+    if is_lucky_corpse or is_elite_lucky then
+        min_pct = math.min(min_pct + 8, 75)
+        max_pct = math.min(max_pct + 12, 75)
+    end
+
+    local min_rounds = math.floor((mag_cap * min_pct) / 100)
+    local max_rounds = math.floor((mag_cap * max_pct) / 100)
+
+    if max_rounds > mag_cap then
+        max_rounds = mag_cap
+    end
+    if min_rounds > max_rounds then
+        min_rounds = max_rounds
+    end
+    if max_rounds <= 0 then
+        return 0
+    end
+
+    return math.random(min_rounds, max_rounds)
+end
+
+local function trim_loaded_rounds(loaded, max_rounds)
+    if type(loaded) ~= "table" then
+        return 0
+    end
+
+    local removed = 0
+    while #loaded > max_rounds do
+        if stack and stack.pop then
+            stack.pop(loaded)
+        else
+            loaded[#loaded] = nil
+        end
+        removed = removed + 1
+    end
+
+    return removed
+end
+
+function limit_magazine_loaded_rounds(item_id, mag_section)
+    if not (magazine_binder and magazine_binder.get_mag_loaded and magazine_binder.set_data) then
+        return false
+    end
+
+    local mag_data = magazine_binder.get_mag_loaded(item_id)
+    if not (mag_data and type(mag_data.loaded) == "table") then
+        return false
+    end
+
+    local section = mag_section or mag_data.section
+    local max_rounds = get_mag_ammo_limit_by_player_rank(section, #mag_data.loaded)
+    local old_count = #mag_data.loaded
+    local removed = trim_loaded_rounds(mag_data.loaded, max_rounds)
+
+    if removed > 0 then
+        magazine_binder.set_data(item_id, mag_data)
+        print_dbg("MAG loot limited: %s rounds -> %s for %s", old_count, #mag_data.loaded, section or "unknown")
+    end
+
+    return true
+end
+
+local function patch_magazines_loot()
+    if mag_loot_patch_done or type(random_pop_mag) ~= "function" then
+        return mag_loot_patch_done
+    end
+
+    local original_random_pop_mag = random_pop_mag
+    random_pop_mag = function(mag_id, mag_sec, ammo_table, rank)
+        local result = original_random_pop_mag(mag_id, mag_sec, ammo_table, rank)
+        limit_magazine_loaded_rounds(mag_id, mag_sec)
+        return result
+    end
+
+    mag_loot_patch_done = true
+    print_dbg("MAG loot limiter patched")
+    return true
+end
+
+local function table_has_value(t, expected, visited)
+    if type(t) ~= "table" then
+        return false
+    end
+
+    visited = visited or {}
+    if visited[t] then
+        return false
+    end
+    visited[t] = true
+
+    for _, v in pairs(t) do
+        if v == expected then
+            return true
+        end
+        if type(v) == "table" and table_has_value(v, expected, visited) then
+            return true
+        end
+    end
+
+    return false
+end
+
+local function is_igi_tracked_item(itm)
+    if not (itm and igi_generic_task and type(igi_generic_task.TASKS_CACHE) == "table") then
+        return false
+    end
+
+    local item_id = itm:id()
+    for _, cache in pairs(igi_generic_task.TASKS_CACHE) do
+        if table_has_value(cache and cache.entities, item_id) then
+            return true
+        end
+    end
+
+    return false
+end
+local function spawn_ranked_ammo(npc, section)
+    if not section or not ini_sys:section_exist(section) then
+        return
+    end
+
+    if IsItem("fake_ammo", section) then
+        return
+    end
+
+    local min_a, max_a = get_ammo_count_by_player_rank(section)
+    if min_a <= 0 or max_a <= 0 then
+        return
+    end
+
+    local amount = math.random(min_a, max_a)
+    if amount > 0 then
+        alife_create_item(section, npc, { ammo = amount })
+    end
+end
+
+-- ==========================================
+-- ШАНСЫ ВЫПАДЕНИЯ
+-- ==========================================
+-- Основная логика: разные типы предметов имеют разные шансы
+-- Шансы растут с рангом игрока
+-- Удача дает 80% шанс на выпадение брони/шлема
+function get_drop_chance_by_rank_and_type(item_type, player_rank, section)
+    if (is_lucky_corpse or is_elite_lucky) and (string.find(item_type, "outfit") or string.find(item_type, "helmet")) then
+        return 72
+    end
+
+    if item_type == "outfit_light" or item_type == "outfit_novice" then
+        if player_rank < 2000 then return 15
+        elseif player_rank < 4000 then return 20
+        elseif player_rank < 7000 then return 28
+        elseif player_rank < 10000 then return 35
+        elseif player_rank < 15000 then return 42
+        elseif player_rank < 21000 then return 45
+        elseif player_rank < 28000 then return 48
+        else return 50 end
+
+    elseif item_type == "outfit_medium" or item_type == "outfit" then
+        if player_rank < 2000 then return 5
+        elseif player_rank < 4000 then return 12
+        elseif player_rank < 7000 then return 20
+        elseif player_rank < 10000 then return 28
+        elseif player_rank < 15000 then return 34
+        elseif player_rank < 21000 then return 37
+        elseif player_rank < 28000 then return 40
+        else return 42 end
+
+    elseif item_type == "outfit_heavy" or item_type == "outfit_exo" or item_type == "exo_suit" then
+        if player_rank < 2000 then return 0
+        elseif player_rank < 4000 then return 3
+        elseif player_rank < 7000 then return 7
+        elseif player_rank < 10000 then return 12
+        elseif player_rank < 15000 then return 18
+        elseif player_rank < 21000 then return 21
+        elseif player_rank < 28000 then return 24
+        else return 26 end
+
+    elseif string.find(item_type, "helmet") then
+        if (section == "helm_spartan" or section == "helm_exo") then
+            if player_rank < 2000 then return 0
+            elseif player_rank < 4000 then return 3
+            elseif player_rank < 7000 then return 7
+            elseif player_rank < 10000 then return 12
+            elseif player_rank < 15000 then return 18
+            elseif player_rank < 21000 then return 21
+            elseif player_rank < 28000 then return 24
+            else return 26 end
+        end
+
+        if player_rank < 2000 then return 8
+        elseif player_rank < 4000 then return 16
+        elseif player_rank < 7000 then return 24
+        elseif player_rank < 10000 then return 32
+        elseif player_rank < 15000 then return 38
+        elseif player_rank < 21000 then return 41
+        elseif player_rank < 28000 then return 44
+        else return 46 end
+
+    elseif item_type == "weapon" then
+        if player_rank < 1000 then return 30
+        elseif player_rank < 4000 then return 40
+        elseif player_rank < 7000 then return 48
+        elseif player_rank < 10000 then return 55
+        elseif player_rank < 15000 then return 60
+        elseif player_rank < 21000 then return 64
+        elseif player_rank < 28000 then return 67
+        else return 70 end
+    else
+        return 30
+    end
+end
+
+-- ==========================================
+-- ОБРАБОТКА ВЫПАДЕНИЯ ОРУЖИЯ
+-- ==========================================
+-- Эта функция вызывается для каждого оружия на трупе
+-- Определяет: разобрать оружие на запчасти или оставить как есть
+function death_manager.set_weapon_drop_condition(npc, itm)
+    if not db.actor then return end
+    if is_igi_tracked_item(itm) then
+        print_dbg("Protected IGI task weapon: %s", itm:section())
+        return
+    end
+
+    check_luck(npc)
+
+    local min_cond, max_cond = get_condition_range_by_player_rank(itm:section())
+    local condition = math.random(min_cond, max_cond)
+
+    if condition > 80 then
+        condition = 80
+    end
+
+    condition = clamp(condition, 1, 100)
+    local condition_float = clamp_condition_cap(condition / 100.0)
+
+    itm:set_condition(condition_float)
+
+    local weapon_section = itm:section()
+
+    local death_dropped = se_load_var and se_load_var(npc:id(), npc:name(), "death_dropped")
+    if death_dropped then
+        itm:set_condition(clamp_condition_cap(condition_float))
+        return
+    end
+
+    local disassemble_chance = 35
+    if is_lucky_corpse or is_elite_lucky then
+        disassemble_chance = 12
+    end
+
+    if math.random(100) <= disassemble_chance then
+        spawn_weapon_parts_instead(npc, weapon_section, condition)
+        local se_item = alife_object and alife_object(itm:id())
+        if se_item then
+            alife_release(se_item)
+        end
+        return
+    end
+
+    itm:set_condition(clamp_condition_cap(condition_float))
+
+    if (IsWeapon(itm) and not IsMelee(itm) and not npc:marked_dropped(itm)) then
+        local ammo_class = parse_list(ini_sys, itm:section(), "ammo_class")
+        if (#ammo_class > 0) then
+            local valid_ammo = {}
+            for i = 1, #ammo_class do
+                local sec = ammo_class[i]
+                if sec and ini_sys:section_exist(sec) and not IsItem("fake_ammo", sec) then
+                    valid_ammo[#valid_ammo + 1] = sec
+                end
+            end
+
+            if #valid_ammo > 0 then
+                spawn_ranked_ammo(npc, valid_ammo[math.random(1, #valid_ammo)])
+            end
+        end
+
+        local ammo = itm:get_ammo_in_magazine()
+        if ammo > 3 then
+            if math.random(100) <= 80 then
+                itm:set_ammo_elapsed(math.random(1, 3))
+            else
+                itm:set_ammo_elapsed(3)
+            end
+        end
+
+        limit_magazine_loaded_rounds(itm:id(), nil)
+    end
+end
+
+-- ==========================================
+-- ДОПОЛНИТЕЛЬНЫЙ СПАВН ПАТРОНОВ
+-- ==========================================
+-- Спавнит патроны к оружию, которое осталось в инвентаре NPC
+-- Вызывается из create_release_item
+function death_manager.try_spawn_ammo(npc)
+    local function itr(npc, itm)
+        if (IsWeapon(itm) and not IsMelee(itm) and not npc:marked_dropped(itm)) then
+            -- Спавним патроны
+            local ammo_class = parse_list(ini_sys, itm:section(), "ammo_class")
+            if (#ammo_class > 0) then
+                local valid_ammo = {}
+                for i = 1, #ammo_class do
+                    local sec = ammo_class[i]
+                    if sec and ini_sys:section_exist(sec) and not IsItem("fake_ammo", sec) then
+                        valid_ammo[#valid_ammo + 1] = sec
+                    end
+                end
+
+                if #valid_ammo > 0 then
+                    spawn_ranked_ammo(npc, valid_ammo[math.random(1, #valid_ammo)])
+                end
+            end
+            
+            -- Если есть подствольник - спавним гранаты
+            if (ini_sys:r_float_ex(itm:section(), "grenade_launcher_status") or 0) > 0 then
+                local grenade_class = parse_list(ini_sys, itm:section(), "grenade_class")
+                for i = 1, #grenade_class do
+                    local sec = grenade_class[i]
+                    if (sec and ini_sys:section_exist(sec) and not IsItem("fake_ammo", sec)) then
+                        local min_g, max_g = get_ammo_count_by_player_rank(sec)
+                        local number = math.random(min_g, max_g)
+                        if number > 4 then number = math.random(1, 4) end
+                        if number > 0 then
+                            alife_create_item(sec, npc, { ammo = number })
+                        end
+                    end
+                end
+            end
+        end
+    end
+    npc:iterate_inventory(itr, npc)
+end
+
+-- ==========================================
+-- СПАВН БРОНИ, ШЛЕМА И НАШИВКИ
+-- ==========================================
+-- Определяет, что носил NPC по его визуалу
+-- Спавнит броню, шлем и нашивку (патч) группировки
+function death_manager.spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, rand_condition)
+    check_luck(npc)
+    local visual = visual or npc:get_visual_name()
+    local tbl = death_manager.get_outfit_by_npc_visual(visual)
+    local outfit_section = tbl and tbl[1]
+    local helmet_section = tbl and tbl[2]
+
+    if npc_comm and ini_sys:section_exist(npc_comm .. "_patch") then
+        if math.random(100) <= 30 then
+            alife_create_item(npc_comm .. "_patch", npc)
+        end
+    end
+
+    if outfit_section and ini_sys:section_exist(outfit_section) then
+        local min_cond, max_cond = get_condition_range_by_player_rank(outfit_section)
+        local cond = math.random(min_cond, max_cond)
+
+        if cond > 80 then cond = 80 end
+
+        local final_condition = clamp_condition_cap(cond / 100.0)
+
+        if death_manager.validate_drop(outfit_section) then
+            death_manager.spawn_with_condition(npc, outfit_section, final_condition)
+        else
+            spawn_parts_instead(npc, outfit_section, final_condition)
+        end
+    end
+
+    if helmet_section and ini_sys:section_exist(helmet_section) then
+        local h_min, h_max = get_condition_range_by_player_rank(helmet_section)
+        local h_cond = math.random(h_min, h_max)
+
+        if h_cond > 80 then h_cond = 80 end
+
+        local final_h_cond = clamp_condition_cap(h_cond / 100.0)
+
+        if death_manager.validate_drop(helmet_section) then
+            death_manager.spawn_with_condition(npc, helmet_section, final_h_cond)
+        end
+    end
+end
+
+-- ==========================================
+-- ПРОВЕРКА ВЫПАДЕНИЯ ПРЕДМЕТА
+-- ==========================================
+-- Определяет тип предмета (repair_type) и вычисляет шанс выпадения
+function death_manager.validate_drop(section)
+    -- Получаем тип предмета из system.ltx
+    local type = SYS_GetParam(0, section, "repair_type") or ""
+    
+    -- Нормализуем типы для единой системы
+    if type == "outfit_novice" then type = "outfit_light" end
+    if type == "outfit" then type = "outfit_medium" end
+
+    local player_rank = db.actor:character_rank()
+    local chance = get_drop_chance_by_rank_and_type(type, player_rank, section)
+
+    -- Рандом решает: выпадает или нет
+    return math.random(100) <= chance
+end
+
+-- ==========================================
+-- РАЗБОР ОРУЖИЯ НА ЗАПЧАСТИ
+-- ==========================================
+-- Вместо оружия спавнятся запчасти
+-- Количество и состояние запчастей зависит от состояния оружия
+function spawn_weapon_parts_instead(npc, weapon_section, condition)
+    -- Ищем список запчастей для этого оружия
+    local parts = itms_manager.ini_parts:r_string_ex("weapon_parts_list", weapon_section)
+    if not parts then
+        parts = itms_manager.ini_parts:r_string_ex("con_parts_list", weapon_section)
+    end
+    if not parts then 
+        print_dbg("No parts list for weapon: %s", weapon_section)
+        return 
+    end
+    
+    local parts_tbl = str_explode(parts, ",")
+    if not parts_tbl or #parts_tbl == 0 then return end
+    
+    shuffle_table(parts_tbl)
+    
+    -- Определяем количество запчастей в зависимости от состояния оружия
+    local max_parts = math.min(#parts_tbl, 4)
+    local parts_count = math.random(1, max_parts)
+    
+    if condition < 20 then
+        parts_count = math.random(1, 2)   -- Ржавое: 1-2 запчасти
+    elseif condition < 50 then
+        parts_count = math.random(2, 3)   -- Среднее: 2-3 запчасти
+    else
+        parts_count = math.random(3, max_parts)  -- Хорошее: 3-4 запчасти
+    end
+    
+    print_dbg("Weapon %s (cond %s%%) -> %s parts", weapon_section, condition, parts_count)
+    
+    -- Спавним запчасти
+    for i = 1, parts_count do
+        local part_name = parts_tbl[i]
+        local part_cond
+        
+        -- Состояние каждой запчасти зависит от состояния оружия
+        if condition < 20 then
+            part_cond = math.random(10, 30) / 100   -- 10-30% (рваные)
+        elseif condition < 50 then
+            part_cond = math.random(20, 50) / 100   -- 20-50% (потрепанные)
+        else
+            part_cond = math.random(40, 70) / 100   -- 40-70% (нормальные)
+        end
+        
+        alife_create_item(part_name, npc, { cond = part_cond })
+        print_dbg("Part: %s (cond %s%%)", part_name, math.floor(part_cond * 100))
+    end
+end
+
+-- ==========================================
+-- РАЗБОР БРОНИ НА ЗАПЧАСТИ
+-- ==========================================
+-- Если броня не выпала, с небольшим шансом можно найти запчасти
+function spawn_parts_instead(npc, section, cond)
+    -- 30% шанс, что найдутся запчасти (иначе вообще ничего)
+    if math.random(100) > 30 then 
+        print_dbg("No parts from: %s", section)
+        return 
+    end
+    
+    local parts = itms_manager.ini_parts:r_string_ex("con_parts_list", section)
+    if not parts then 
+        print_dbg("No parts list for armor: %s", section)
+        return 
+    end
+    
+    local parts_tbl = str_explode(parts, ",")
+    if not parts_tbl or #parts_tbl == 0 then return end
+    
+    shuffle_table(parts_tbl)
+    
+    -- Общая прочность запчастей равна прочности брони
+    local tot_con = cond * #parts_tbl
+    local ind = 1
+    
+    print_dbg("Spawning parts from: %s", section)
+
+    -- Распределяем прочность между запчастями
+    while tot_con > 0 and ind <= #parts_tbl do
+        local cond_to_set = math.random() * 0.5 + 0.1  -- Случайная прочность 10-60%
+        if cond_to_set > tot_con then cond_to_set = tot_con end
+
+        local part_name = parts_tbl[ind]
+        alife_create_item(part_name, npc, { cond = cond_to_set })
+        print_dbg("Part: %s (cond %s%%)", part_name, math.floor(cond_to_set * 100))
+
+        ind = ind + 1
+        tot_con = tot_con - cond_to_set
+    end
+end
+
+function actor_on_first_update()
+    patch_magazines_loot()
+end
+
+function on_game_start()
+    patch_magazines_loot()
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+end

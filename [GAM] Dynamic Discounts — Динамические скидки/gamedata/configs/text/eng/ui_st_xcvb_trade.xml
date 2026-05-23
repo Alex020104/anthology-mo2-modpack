@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<!-- Categories -->
+	<string id="xcvb_trade_mut_1">
+		<text>Mutant parts (common)</text>
+	</string>
+	<string id="xcvb_trade_mut_2">
+		<text>Mutant parts (uncommon)</text>
+	</string>
+	<string id="xcvb_trade_mut_3">
+		<text>Mutant parts (rare)</text>
+	</string>
+
+	<string id="xcvb_trade_meat_1">
+		<text>Meat (common)</text>
+	</string>
+	<string id="xcvb_trade_meat_2">
+		<text>Meat (rare)</text>
+	</string>
+
+	<string id="xcvb_trade_hide_1">
+		<text>Hides (common)</text>
+	</string>
+	<string id="xcvb_trade_hide_2">
+		<text>Hides (rare)</text>
+	</string>
+
+	<string id="xcvb_trade_arts_1">
+		<text>Artefacts (junk)</text>
+	</string>
+	<string id="xcvb_trade_arts_2">
+		<text>Artefacts (common)</text>
+	</string>
+	<string id="xcvb_trade_arts_3">
+		<text>Artefacts (uncommon)</text>
+	</string>
+	<string id="xcvb_trade_arts_4">
+		<text>Artefacts (rare)</text>
+	</string>
+
+	<string id="xcvb_trade_xt_weapons">
+		<text>Weapon</text>
+	</string>
+
+	<string id="xcvb_trade_xt_armors">
+		<text>Armor</text>
+	</string>
+
+	<string id="xcvb_trade_xt_repair">
+		<text>Repair</text>
+	</string>
+
+	<string id="xcvb_trade_xt_supplies">
+		<text>Supplies</text>
+	</string>
+
+	<string id="xcvb_trade_xt_med">
+		<text>Medicine</text>
+	</string>
+
+
+	<!-- for HUD -->
+	<string id="xcvb_trade_discount">
+		<text>Discount</text>
+	</string>
+
+	<string id="xcvb_trade_sell_to">
+		<text>Sell to trader</text>
+	</string>
+
+	<string id="xcvb_trade_buy_from">
+		<text>Buy from trader</text>
+	</string>
+
+	<string id="xcvb_trade_group">
+		<text>group:</text>
+	</string>
+
+	<string id="xcvb_trade_buy_krug">
+		<text>•</text>
+	</string>
+
+
+	<!-- message -->
+	<string id="xcvb_trade_trade">
+		<text>(Trade)</text>
+	</string>
+
+	<string id="xcvb_trade_hi">
+		<text>Stalkers, I've got new discounts:</text>
+	</string>
+
+	<string id="xcvb_trade_stay">
+		<text>those will stay for the next</text>
+	</string>
+
+	<string id="xcvb_trade_day">
+		<text>day.</text>
+	</string>
+
+	<string id="xcvb_trade_days">
+		<text>days.</text>
+	</string>
+
+	<string id="xcvb_trade_buy_msg">
+		<text>Selling</text>
+	</string>
+
+	<string id="xcvb_trade_sell_msg">
+		<text>Buying</text>
+	</string>
+
+</string_table>

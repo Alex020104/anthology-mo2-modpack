@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<game_dialogs>
+	<dialog id="pdahack_unfail">
+		<precondition>modxml_pdahacking_unfail.have_bricked_pda</precondition>
+		<phrase_list>
+			<phrase id="0">
+				<text>st_pdahacking_unfail_text_0</text>
+				<next>1</next>
+			</phrase>
+			<phrase id="1">
+				<script_text>modxml_pdahacking_unfail.pdahacking_unfail_text_1</script_text>
+				<next>2</next>
+				<next>3</next>
+			</phrase>
+			<phrase id="2">
+				<precondition>modxml_pdahacking_unfail.have_bricked_pda_money</precondition>
+				<script_text>modxml_pdahacking_unfail.pdahacking_unfail_text_2</script_text>
+				<next>4</next>
+			</phrase>
+			<phrase id="3">
+				<text>st_pdahacking_unfail_text_3</text>
+				<next>5</next>
+			</phrase>
+			<phrase id="4">
+				<action>modxml_pdahacking_unfail.take_bricked_pda_money</action>
+				<action>modxml_pdahacking_unfail.unlock_bricked_pda</action>
+				<text>st_pdahacking_unfail_text_4</text>
+			</phrase>
+			<phrase id="5">
+				<text>st_pdahacking_unfail_text_5</text>
+			</phrase>
+		</phrase_list>
+    </dialog>
+</game_dialogs>

@@ -1,0 +1,34 @@
+-- If you don't use MCM, change your defaults from here.
+local defaults = {
+	["min_event_time"] = 1,
+	["max_event_time"] = 4,
+	["min_event_disc"] = -20,
+	["max_event_disc"] = 20,
+	["max_disc_amount"] = 5,
+	["msg_threshold"] = 35,
+
+	["dbgx"] = false,
+}
+
+function get_config(key)
+	if ui_mcm then return ui_mcm.get("xcvb_trade/"..key) else return defaults[key] end
+end
+
+function on_mcm_load()
+	op = { id= "xcvb_trade",sh=true ,gr={
+			{ id= "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_xcvb_trade_title",size= {512,50},spacing= 20 },
+
+			{id = "min_event_time", type = "track", val = 2, min=1,max=4,step=1, def = 1},
+			{id = "max_event_time", type = "track", val = 2, min=4,max=10,step=1, def = 4},
+			{id = "min_event_disc", type = "track", val = 2, min=-50,max=-5,step=5, def = -20},
+			{id = "max_event_disc", type = "track", val = 2, min=5,max=50,step=5, def = 20},
+			{id = "max_disc_amount", type = "track", val = 2, min=1,max=10,step=1, def = 5},
+			{id = "msg_threshold", type = "track", val = 2, min=5,max=50,step=5, def = 35},
+
+			{id= "divider", type = "line" },
+			{id = "dbgx", type = "check", val = 1, def = false},
+		}
+	}
+
+	return op
+end

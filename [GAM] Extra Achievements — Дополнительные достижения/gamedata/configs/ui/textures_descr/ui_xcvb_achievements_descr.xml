@@ -1,0 +1,183 @@
+<w>
+
+	<!-- Background -->
+	<file name = "ui\items\ui_workshop">
+		<texture id="xcvb_achievements_bg" x="4" y="49" width="965" height="497" />
+	</file>
+
+	<!-- Achievement container -->
+	<file name = "ui\items\common_elements">
+		<texture id="xcvb_achievements_cont" x="698" y="4" width="298" height="232" />
+	</file>
+
+	<!-- Buy btn -->
+	<file name = "ui\xcvb_achievements\buy_btn">
+		<texture id="xcvb_achievements_buy_btn_h" x="0" y="0" width="50" height="90" />
+		<texture id="xcvb_achievements_buy_btn_t" x="0" y="0" width="50" height="90" />
+		<texture id="xcvb_achievements_buy_btn_d" x="51" y="0" width="50" height="90" />
+		<texture id="xcvb_achievements_buy_btn_e" x="51" y="0" width="50" height="90" />
+	</file>
+
+	<!-- Buy menu -->
+	<file name = "ui\xcvb_achievements\buy_menu">
+		<texture id="xcvb_achievements_buy_menu" x="0" y="0" width="212" height="620" />
+		<texture id="xcvb_achievements_box_cont" x="0" y="621" width="139" height="199" />
+	</file>
+
+	<!-- Items for UI -->
+	<file name = "ui\xcvb_achievements\achievement_boxes">
+		<texture id="xcvb_achievement_box_ui_1" x="0" y="0" width="50" height="50" />
+		<texture id="xcvb_achievement_box_ui_2" x="0" y="50" width="100" height="50" />
+		<texture id="xcvb_achievement_box_ui_3" x="0" y="100" width="100" height="100" />
+	</file>
+
+	<!-- Close btn -->
+	<file name = "ui\xcvb_achievements\close_btn">
+		<texture id="xcvb_achievements_close_btn_h" x="0" y="0" width="30" height="30" />
+		<texture id="xcvb_achievements_close_btn_t" x="0" y="0" width="30" height="30" />
+		<texture id="xcvb_achievements_close_btn_d" x="0" y="31" width="30" height="30" />
+		<texture id="xcvb_achievements_close_btn_e" x="0" y="31" width="30" height="30" />
+	</file>
+
+	<!-- HUD -->
+	<file name = "ui\xcvb_achievements\achievement_hud">
+		<texture id="xcvb_achievements_hud_bg" x="0" y="0" width="675" height="268" />
+	</file>
+
+	<!-- Achivement icons -->
+	<file name = "ui\xcvb_achievements\icons">
+		<texture id="achieve_icon_kill_mutants" x="0" y="0" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_all_mutant_kinds" x="100" y="0" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_stalkers" x="200" y="0" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_all_stalker_factions" x="300" y="0" width="99.5" height="99.5" />
+		<texture id="achieve_icon_eat_all_mutant_meals" x="400" y="0" width="99.5" height="99.5" />
+		<texture id="achieve_icon_collect_all_artefacts" x="500" y="0" width="99.5" height="99.5" />
+		<texture id="achieve_icon_befriend_factions" x="600" y="0" width="99.5" height="99.5" />
+		<texture id="achieve_icon_tasks_done" x="700" y="0" width="99.5" height="99.5" />
+		<texture id="achieve_icon_days_in_zone" x="800" y="0" width="99.5" height="99.5" />
+		<texture id="achieve_icon_get_achievement_points" x="900" y="0" width="99.5" height="99.5" />
+
+		<texture id="achieve_icon_kill_tushkano" x="0" y="100" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_flesh" x="100" y="100" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_dog" x="200" y="100" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_boar" x="300" y="100" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_cat" x="400" y="100" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_pseudodog" x="500" y="100" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_lurker" x="600" y="100" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_zombie" x="700" y="100" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_fracture" x="800" y="100" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_karlik" x="900" y="100" width="99.5" height="99.5" />
+
+		<texture id="achieve_icon_kill_snork" x="0" y="200" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_chimera" x="100" y="200" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_burer" x="200" y="200" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_bloodsucker" x="300" y="200" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_psysucker" x="400" y="200" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_giant" x="500" y="200" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_controller" x="600" y="200" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_poltergeist" x="700" y="200" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_pyrogeist" x="800" y="200" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_black_poltergeist" x="900" y="200" width="99.5" height="99.5" />
+
+		<texture id="achieve_icon_kill_stalker" x="0" y="300" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_csky" x="100" y="300" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_bandit" x="200" y="300" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_dolg" x="300" y="300" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_freedom" x="400" y="300" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_ecolog" x="500" y="300" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_army" x="600" y="300" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_killer" x="700" y="300" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_renegade" x="800" y="300" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_monolith" x="900" y="300" width="99.5" height="99.5" />
+
+		<texture id="achieve_icon_kill_greh" x="0" y="400" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_zombied" x="100" y="400" width="99.5" height="99.5" />
+		<texture id="achieve_icon_have_all_buffs" x="200" y="400" width="99.5" height="99.5" />
+		<texture id="achieve_icon_drink_alcohol" x="300" y="400" width="99.5" height="99.5" />
+		<texture id="achieve_icon_use_anabiotic" x="400" y="400" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_bar_dutiers" x="500" y="400" width="99.5" height="99.5" />
+		<texture id="achieve_icon_use_heal_medicine" x="600" y="400" width="99.5" height="99.5" />
+		<texture id="achieve_icon_sell_items" x="700" y="400" width="99.5" height="99.5" />
+		<texture id="achieve_icon_buy_items" x="800" y="400" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_mutants_melee" x="900" y="400" width="99.5" height="99.5" />
+
+		<texture id="achieve_icon_kill_stalkers_melee" x="0" y="500" width="99.5" height="99.5" />
+		<texture id="achieve_icon_eat_kcal" x="100" y="500" width="99.5" height="99.5" />
+		<texture id="achieve_icon_get_radiation" x="200" y="500" width="99.5" height="99.5" />
+		<texture id="achieve_icon_help_stalkers" x="300" y="500" width="99.5" height="99.5" />
+		<texture id="achieve_icon_collect_mutant_parts" x="400" y="500" width="99.5" height="99.5" />
+		<texture id="achieve_icon_defend_barrier" x="500" y="500" width="99.5" height="99.5" />
+		<texture id="achieve_icon_collect_recipes" x="600" y="500" width="99.5" height="99.5" />
+		<texture id="achieve_icon_collect_devices" x="700" y="500" width="99.5" height="99.5" />
+		<texture id="achieve_icon_do_footsteps" x="800" y="500" width="99.5" height="99.5" />
+		<texture id="achieve_icon_find_oasis_heart" x="900" y="500" width="99.5" height="99.5" />
+
+		<texture id="achieve_icon_have_junk_items" x="0" y="600" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_dv_bandits" x="100" y="600" width="99.5" height="99.5" />
+		<texture id="achieve_icon_get_best_rep" x="200" y="600" width="99.5" height="99.5" />
+		<texture id="achieve_icon_get_worst_rep" x="300" y="600" width="99.5" height="99.5" />
+		<texture id="achieve_icon_detect_artefacts_ecolog" x="400" y="600" width="99.5" height="99.5" />
+		<texture id="achieve_icon_play_music" x="500" y="600" width="99.5" height="99.5" />
+		<texture id="achieve_icon_throw_bolts" x="600" y="600" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_crows" x="700" y="600" width="99.5" height="99.5" />
+		<texture id="achieve_icon_give_documents" x="800" y="600" width="99.5" height="99.5" />
+		<texture id="achieve_icon_snipe_stalker" x="900" y="600" width="99.5" height="99.5" />
+
+		<texture id="achieve_icon_kill_cordon_stalkers" x="0" y="700" width="99.5" height="99.5" />
+		<texture id="achieve_icon_hire_stalkers" x="100" y="700" width="99.5" height="99.5" />
+		<texture id="achieve_icon_repair_items" x="200" y="700" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_red_forest_stalkers" x="300" y="700" width="99.5" height="99.5" />
+		<texture id="achieve_icon_fast_kill_mutants" x="400" y="700" width="99.5" height="99.5" />
+		<texture id="achieve_icon_have_belt_artefacts" x="500" y="700" width="99.5" height="99.5" />
+		<texture id="achieve_icon_melee_kill_giant" x="600" y="700" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_in_swamps_csky" x="700" y="700" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_in_swamps_renegade" x="800" y="700" width="99.5" height="99.5" />
+		<texture id="achieve_icon_make_shots" x="900" y="700" width="99.5" height="99.5" />
+
+		<texture id="achieve_icon_hit_by_controller" x="0" y="800" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kick_tushkanos" x="100" y="800" width="99.5" height="99.5" />
+		<texture id="achieve_icon_give_vodka_gromov" x="200" y="800" width="99.5" height="99.5" />
+		<texture id="achieve_icon_sleep_hours" x="300" y="800" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_warehouse_freedom" x="400" y="800" width="99.5" height="99.5" />
+		<texture id="achieve_icon_find_zombie_note" x="500" y="800" width="99.5" height="99.5" />
+		<texture id="achieve_icon_find_monolith_prayer" x="600" y="800" width="99.5" height="99.5" />
+		<texture id="achieve_icon_get_damage" x="700" y="800" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_agroprom_military" x="800" y="800" width="99.5" height="99.5" />
+		<texture id="achieve_icon_smoke_stuff" x="900" y="800" width="99.5" height="99.5" />
+
+		<texture id="achieve_icon_medic_heal" x="0" y="900" width="99.5" height="99.5" />
+		<texture id="achieve_icon_companion_kill_mutants" x="100" y="900" width="99.5" height="99.5" />
+		<texture id="achieve_icon_companion_kill_stalkers" x="200" y="900" width="99.5" height="99.5" />
+		<texture id="achieve_icon_low_health" x="300" y="900" width="99.5" height="99.5" />
+		<texture id="achieve_icon_get_rpg" x="400" y="900" width="99.5" height="99.5" />
+		<texture id="achieve_icon_find_compass" x="500" y="900" width="99.5" height="99.5" />
+		<texture id="achieve_icon_find_gauss" x="600" y="900" width="99.5" height="99.5" />
+		<texture id="achieve_icon_find_melee_weapons" x="700" y="900" width="99.5" height="99.5" />
+		<texture id="achieve_icon_find_kits" x="800" y="900" width="99.5" height="99.5" />
+		<texture id="achieve_icon_find_maps" x="900" y="900" width="99.5" height="99.5" />
+
+		<texture id="achieve_icon_headshots" x="0" y="1000" width="99.5" height="99.5" />
+		<texture id="achieve_icon_get_red_icons" x="100" y="1000" width="99.5" height="99.5" />
+		<texture id="achieve_icon_get_hit_by_mutants" x="200" y="1000" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_legend_stalkers" x="300" y="1000" width="99.5" height="99.5" />
+		<texture id="achieve_icon_drip_cost" x="400" y="1000" width="99.5" height="99.5" />
+		<texture id="achieve_icon_upgrade_weapon" x="500" y="1000" width="99.5" height="99.5" />
+		<texture id="achieve_icon_upgrade_armor" x="600" y="1000" width="99.5" height="99.5" />
+		<texture id="achieve_icon_collect_backpacks" x="700" y="1000" width="99.5" height="99.5" />
+		<texture id="achieve_icon_steps_overweight" x="800" y="1000" width="99.5" height="99.5" />
+		<texture id="achieve_icon_kill_injured_stalkers" x="900" y="1000" width="99.5" height="99.5" />
+
+		<texture id="achieve_icon_informant_task" x="0" y="1100" width="99.5" height="99.5" />
+		<texture id="achieve_icon_stay_awake" x="100" y="1100" width="99.5" height="99.5" />
+		<texture id="achieve_icon_complete_arena" x="200" y="1100" width="99.5" height="99.5" />
+		<texture id="achieve_icon_night_time" x="300" y="1100" width="99.5" height="99.5" />
+		<texture id="achieve_icon_craft_high_items" x="400" y="1100" width="99.5" height="99.5" />
+	</file>
+
+	<!-- Achievements tooltip and progress bar -->
+	<file name = "ui\xcvb_achievements\tooltip">
+		<texture id="xcvb_achievements_tooltip" x="0" y="0" width="208" height="135" />
+		<texture id="xcvb_achievements_bar_bg" x="0" y="136" width="130" height="8" />
+	</file>
+
+</w> 

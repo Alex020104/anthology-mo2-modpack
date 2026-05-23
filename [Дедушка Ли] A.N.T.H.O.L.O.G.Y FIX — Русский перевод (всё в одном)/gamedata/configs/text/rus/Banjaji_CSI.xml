@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	
+	<!-- Workshop crafting tab title in component window -->
+	<string id="st_cap_tools">
+		<text>Инструмент</text>
+	</string>
+	
+	<!-- Workshop crafting tab bottom tips -->
+	<string id="st_ui_workshop_info_craft_warning_2_banjaji">
+		<text>Вы еще не знаете, как это сделать. Вам не хватает следующих заметок: %s</text>
+	</string>
+	<string id="st_ui_workshop_info_craft_warning_4_banjaji">
+		<text>В вашем инвентаре отсутствуют некоторые необходимые компоненты или инструменты для его создания.</text>
+	</string>
+	<string id="st_ui_workshop_info_craft_tip_5_banjaji">
+		<text>У вас есть все необходимые компоненты для создания этого предмета. Если хотите продолжить, нажмите кнопку «Создать».</text>
+	</string>
+	
+	
+	<!-- ui_pda_encyclopedia new article strings -->
+	<string id="encyclopedia__notes__known_recipes">
+		<text>Известные рецепты</text>
+	</string>
+	<string id="encyclopedia__notes__known_recipes_text">
+		<text>Это рецепты крафта, которые знают все, а также те, которые вы узнали из заметок и книг.</text>
+	</string>
+	
+	<!-- Subtitle in encyclopedia note -->
+	<string id="pda_encyclopedia_content_banjaji">
+		<text>Изученные рецепты</text>
+	</string>
+	
+	
+	<!-- item_recipe.script -->
+	<string id="st_note_deleted">
+		<text>Записка рассыпалась в пыль в твоей руке</text>
+	</string>
+	
+	
+	<!-- One word stuff -->
+	<string id="st_notes">
+		<text>Заметки</text>
+	</string>
+	<string id="st_tools">
+		<text>Инструменты</text>
+	</string>
+	<string id="st_results">
+		<text>Результаты</text>
+	</string>
+	<string id="st_components">
+		<text>Компоненты</text>
+	</string>
+	<string id="st_nothing">
+		<text>Ничего</text>
+	</string>
+	<string id="st_common_knowledge">
+		<text>Общие знания</text>
+	</string>
+	<string id="st_learned_recipes">
+		<text>Изученные рецепты</text>
+	</string>
+	<string id="st_page">
+		<text>Страница</text>
+	</string>
+	<string id="st_pages">
+		<text>Страницы</text>
+	</string>
+	
+	<!-- MCM -->
+	<string id="ui_mcm_menu_banjajis_csi">
+		<text>CSI Баняйи</text>
+	</string>
+	<string id="banjajis_csi">
+		<text>CSI Баняйи</text>
+	</string>
+	<string id="banjajis_csi_title">
+		<text>Улучшения системы крафтинга Баняйи</text>
+	</string>
+	<string id="ui_mcm_banjajis_csi_delete_recipe">
+		<text>Удалить заметку к рецепту после первого прочтения</text>
+	</string>
+	<string id="ui_mcm_banjajis_csi_delete_letter">
+		<text>Удалить заметку к письму после первого прочтения</text>
+	</string>
+	<string id="ui_mcm_banjajis_csi_min_craft_item_cond">
+		<text>Минимальный процент условий для крафта</text>
+	</string>
+	<string id="ui_mcm_banjajis_csi_min_craft_item_cond_desc">
+		<text>Если состояние компонента или инструмента ниже этого уровня, то он не будет считаться доступным при изготовлении.</text>
+	</string>
+	
+</string_table>

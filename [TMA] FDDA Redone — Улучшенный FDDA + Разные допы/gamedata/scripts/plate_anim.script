@@ -1,0 +1,89 @@
+local allow_anms = false
+
+local anm_itm_sec = {
+	["af_kevlar"] = { "ballistic_plate_anm_kevlar_hud", "anm_plate_add" },
+	["af_kevlar_up"] = { "ballistic_plate_anm_kevlar_hud", "anm_plate_add" },
+	["af_plates"] = { "ballistic_plate_anm_plate_hud", "anm_plate_add" },
+	["af_plates_up"] = { "ballistic_plate_anm_plate_hud", "anm_plate_add" },
+}
+
+function actor_on_first_update()
+	CreateTimeEvent("dly_allowing_anm_e", "dly_allowing_anm_a", 1, function()
+		allow_anms = true
+		return true
+	end)
+
+end
+
+function put_in_belt(itm)
+	if not allow_anms then return end
+	if not (itm and anm_itm_sec[itm:section()]) then return end
+	play_skyw_anim(anm_itm_sec[itm:section()])
+end
+
+local cur_slot, hud_fov, det_active
+function play_skyw_anim(anm_sec)
+	-- prepare anm
+	hide_hud_inventory()
+
+	game.only_allow_movekeys(true)
+
+	hud_fov = ui_options.get("video/basic/hud_fov")
+	exec_console_cmd("hud_fov 0.6")
+
+	cur_slot = db.actor:active_slot()
+
+	det_active = db.actor:active_detector() or nil
+	if det_active then det_active:switch_state(2) end
+
+	db.actor:activate_slot(0)
+
+	local function check_n_play()
+		if db.actor:active_slot() == 0 and not db.actor:active_detector() then
+			play_anm(anm_sec)
+			return true
+		end
+		return false
+	end
+
+	CreateTimeEvent("skyw_anm_e", "skyw_anm_a", 1, check_n_play)
+
+end
+
+function play_anm(anm_sec)
+	local length = 0
+
+	length = length + game.get_motion_length(anm_sec[1], anm_sec[2], 1) / 1000
+	CreateTimeEvent("skyw_dly_anm_e", "skyw_dly_anm_a", 0, function()
+		game.play_hud_motion(2, anm_sec[1], anm_sec[2], false, 1)
+		local cam = ini_sys:r_string_ex(anm_sec[1], "cam_plate_add")
+		if cam then level.add_cam_effector(cam, 1300, false, "") end
+		local snd = ini_sys:r_string_ex(anm_sec[1], "snd_plate_add")
+		if snd then
+			local plate_snd = sound_object(snd)
+			plate_snd:play_no_feedback(db.actor, sound_object.s2d, 0, VEC_ZERO, 1.0, 1.0)
+		end
+		return true
+	end)
+
+	-- restore configs
+	CreateTimeEvent("skyw_restore_anm_e", "skyw_restore_anm_a", length, restore)
+
+end
+
+function restore()
+	game.only_allow_movekeys(false)
+
+	exec_console_cmd("hud_fov " .. hud_fov)
+
+	db.actor:activate_slot(cur_slot or 0)
+
+	if det_active then det_active:switch_state(1) end
+
+	return true
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+	RegisterScriptCallback("actor_item_to_belt", put_in_belt)
+end

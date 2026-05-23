@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+	<string id="st_achieve_misc_cur_points">
+		<text>Текущие очки:</text>
+	</string>
+
+	<string id="st_achieve_misc_tot_points">
+		<text>Всего очков заработано:</text>
+	</string>
+
+	<string id="st_achieve_misc_tot_achievements">
+		<text>Достижений:</text>
+	</string>
+
+	<string id="st_achieve_misc_buy_btn">
+		<text>к\nу\nп\nи\nт\nь</text>
+	</string>
+
+	<string id="st_achieve_misc_reward">
+		<text>%s очков</text>
+	</string>
+
+	<string id="st_achieve_box_buy">
+		<text>Купить</text>
+	</string>
+
+	<string id="st_achieve_box_open">
+		<text>Полученные предметы: \n</text>
+	</string>
+
+	<string id="st_achieve_circle">
+		<text>•</text>
+	</string>
+
+	<string id="st_achieve_box_descr">
+		<text>Возможность получить:</text>
+	</string>
+	<string id="st_achieve_box_type_junk">
+		<text>мусор</text>
+	</string>
+	<string id="st_achieve_box_type_food">
+		<text>еда/напитки/сигареты</text>
+	</string>
+	<string id="st_achieve_box_type_medical">
+		<text>медицина</text>
+	</string>
+	<string id="st_achieve_box_type_repair">
+		<text>предмет для ремонта</text>
+	</string>
+	<string id="st_achieve_box_type_ammo">
+		<text>патроны</text>
+	</string>
+	<string id="st_achieve_box_type_artefact">
+		<text>артефакт</text>
+	</string>
+	<string id="st_achieve_box_type_weapon">
+		<text>оружие</text>
+	</string>
+	<string id="st_achieve_box_type_armor">
+		<text>броня</text>
+	</string>
+	<string id="st_achieve_box_type_helmet">
+		<text>шлем</text>
+	</string>
+
+	<string id="st_achievement_box_1">
+		<text>Маленькая сумка достижений</text>
+	</string>
+	<string id="st_achievement_box_1_descr">
+		<text>Небольшая сумка, содержащая в себе некоторое количество дешевых предметов.</text>
+	</string>
+
+	<string id="st_achievement_box_2">
+		<text>Средняя сумка достижений</text>
+	</string>
+	<string id="st_achievement_box_2_descr">
+		<text>Средняя сумка, содержащая в себе некоторое количество разнообразных предметов.</text>
+	</string>
+
+	<string id="st_achievement_box_3">
+		<text>Большая коробка достижений</text>
+	</string>
+	<string id="st_achievement_box_3_descr">
+		<text>Большая коробка, содержащая в себе предметы разной стоимости.</text>
+	</string>
+
+
+	<!-- MCM -->
+	<string id="ui_mcm_xcvb_achievements_title">
+		<text>Достижения</text>
+	</string>
+	<string id="ui_mcm_menu_xcvb_achievements">
+		<text>Достижения</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_achievements_open_btn">
+		<text>Открытие меню достижений</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_achievements_hud_snd">
+		<text>Звук получения достижения</text>
+	</string>
+
+</string_table>

@@ -1,0 +1,90 @@
+--[[
+	=====================================================================
+	Addon      : Tosox Mini Mods Repo: Take Weapons from Prisoner Dialog Fix
+	Link       : https://www.moddb.com/mods/stalker-anomaly/addons/tosox-mini-mods-repo/
+	Author     : Tosox
+	Date       : 08.03.2024
+	Last Edit  : 09.03.2024
+	=====================================================================
+--]]
+
+dialogs_surrender_victim_answers_1 = dialogs.surrender_victim_answers_1
+dialogs.surrender_victim_answers_1 = function(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+
+	local r = math.random(1,5)
+
+	if (treasure_manager) and (r <= 2) then
+
+		local function itr(npc,itm)
+			if (IsWeapon(itm)) then
+				local cond = math.random(25,50)/100
+				itm:set_condition(cond)
+				npc:transfer_item(itm,db.actor)
+
+                -- Tosox: show weapon receive confirmation in dialog window
+                news_manager.relocate_item(db.actor, "in", itm:section())
+			end
+		end
+
+		npc:iterate_inventory(itr,npc)
+
+		if (treasure_manager) then
+			treasure_manager.create_random_stash(nil,game.translate_string("st_stash_of") .. " " .. npc:character_name(),nil,true)
+			if (game_achievements.has_achievement("silver_or_lead") and ((math.random(1,100)/100) <= 0.33)) then
+				treasure_manager.create_random_stash(nil,game.translate_string("st_stash_of") .. " " .. npc:character_name(),nil,true)
+			end
+		end
+
+		if (treasure_manager and treasure_manager.last_secret) then
+			return game.translate_string("st_surrender_victim_answer_"..math.random(3))
+		else
+			return game.translate_string("st_surrender_victim_answer_5")
+		end
+	elseif (r == 3) then
+		r = (math.random(1,100)/100)
+		local sec = "itm_pda_common"
+		if (r <= 0.10) then
+			sec = "itm_pda_rare"
+		elseif (r <= 0.5) then
+			sec = "itm_pda_uncommon"
+		end
+		dialogs.relocate_item_section_to_actor(a, b, sec, 1)
+		return game.translate_string("st_surrender_victim_answer_4")
+	elseif (r == 5) then
+		alife_create_item("medkit_script", npc)
+		xr_wounded.unlock_medkit(npc)
+		return game.translate_string("st_surrender_victim_answer_5")
+	end
+	return game.translate_string("st_surrender_victim_answer_5")
+end
+
+dialogs_surrender_victim_answers_2 = dialogs.surrender_victim_answers_2
+dialogs.surrender_victim_answers_2 = function(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	alife_create_item("medkit_script", npc)
+	xr_wounded.unlock_medkit(npc)
+	--npc:set_relation(game_object.enemy,db.actor)
+	local function itr(npc,itm)
+		if (IsWeapon(itm)) then
+			local cond = math.random(25,50)/100
+			itm:set_condition(cond)
+			npc:transfer_item(itm,db.actor)
+
+            -- Tosox: show weapon receive confirmation in dialog window
+            news_manager.relocate_item(db.actor, "in", itm:section())
+		end
+	end
+
+	game_statistics.increment_statistic("wounded_helped")
+
+	npc:iterate_inventory(itr,npc)
+
+	--if (math.random() <= 0.8) then
+		--npc:set_relation(game_object.neutral,db.actor)
+	--end
+
+	db.storage[npc:id()].panicked_to_actor = true
+
+	return game.translate_string("st_surrender_victim_answer_6")
+end

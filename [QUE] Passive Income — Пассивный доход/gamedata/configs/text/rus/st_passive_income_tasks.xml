@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+
+<string_table>
+
+    <string id="passinc_task_title">
+        <text>Контракт</text>
+    </string>
+
+    <string id="passinc_task_descr">
+        <text>Вы работаете по контракту.</text>
+    </string>
+
+    <string id="passinc_employer_community_ecolog">
+        <text>Ученые</text>
+    </string>
+    <string id="passinc_employer_community_isg">
+        <text>ИИГ</text>
+    </string>
+    <string id="passinc_employer_community_army">
+        <text>Военные</text>
+    </string>
+    <string id="passinc_employer_community_dolg">
+        <text>Долг</text>
+    </string>
+    <string id="passinc_employer_community_killer">
+        <text>Наёмники</text>
+    </string>
+    <string id="passinc_employer_community_freedom">
+        <text>Свобода</text>
+    </string>
+
+    <string id="passinc_employer_name">
+        <text>У тебя договоренность с %s</text>
+    </string>
+
+    <string id="passinc_descr_middle">
+        <text>\nКаждый день вы будете получать:</text>
+    </string>
+
+    <string id="passinc_descr_base">
+        <text>\nзарплату в размере %s рублей.</text>
+    </string>
+
+    <string id="passinc_descr_complete_task">
+        <text>\n%s рублей за каждое выполненное задание.</text>
+    </string>
+
+    <string id="passinc_descr_monster_killed">
+        <text>\n%s рублей за каждого убитого мутанта.</text>
+    </string>
+
+    <string id="passinc_descr_npc_killed">
+        <text>\n%s рублей за каждого убитого врага нашей группировки.</text>
+    </string>
+    
+    <string id="passinc_descr_employment_stage">
+        <text>\nУровень карьеры:</text>
+    </string>
+
+    <string id="passinc_unorg_descr_employment_stage">
+        <text>\nДоверие нанимателя:</text>
+    </string>
+    
+    <string id="passinc_unorg_descr_middle">
+        <text>\nВыполняйте хотя бы одно задание для %s каждый день, чтобы договор оставался активным.</text>
+    </string>
+
+    <string id="passinc_unorg_complete_task">
+        <text>\nСегодня ты выполнил %s заданий для %s</text>
+    </string>
+    
+    <string id="passinc_unorg_descr_bonus">
+        <text>\nБонусный набор припасов за каждыe % выполненных заданий</text>
+    </string>
+
+    <string id="passinc_task_title_fallback">
+        <text>Договор активен</text>
+    </string>
+
+    <string id="passinc_task_title_functor">
+        <text>Договор активен (%s)</text>
+    </string>
+
+</string_table>

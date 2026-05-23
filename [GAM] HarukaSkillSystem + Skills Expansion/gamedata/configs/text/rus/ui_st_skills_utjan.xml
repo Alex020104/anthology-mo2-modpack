@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="st_player_skills_medicine">
+		<text>Медицина</text>
+	</string>
+	<string id="st_new_level_medicine">
+		<text>$clr_red• $clr_whiteЭффективность медицинских предметов улучшена</text>
+	</string>
+	
+	<string id="st_player_skills_insanity">
+		<text>Безумие</text>
+	</string>
+	<string id="st_new_level_insanity">
+		<text>$clr_purple• $clr_whiteВы теряете ещё больше своего рассудка..\n$clr_purple• $clr_whiteРегенерация пси здоровья улучшена\n$clr_purple• $clr_whiteПси защита улучшена</text>
+	</string>
+	
+	<string id="st_player_skills_tinkering">
+		<text>Ремонт</text>
+	</string>
+	<string id="st_new_level_tinkering">
+		<text>$clr_cyan• $clr_whiteРем. наборы теперь более эффективные</text>
+	</string>
+	<string id="st_tinkering_refund">
+        <text>Вы починили предмет без использования Рем. набора.</text>
+    </string>
+	
+	<string id="st_player_skills_bartering">
+		<text>Бартер</text>
+	</string>
+	<string id="st_new_level_bartering">
+		<text>$clr_yellowХ $clr_whiteЦены улучшились\n$clr_yellowХ $clr_whiteУлучшено денежное вознаграждение за выполнение заданий</text>
+	</string>
+	
+	<string id="st_player_skills_magloading">
+		<text>Пополнение магазинов</text>
+	</string>
+	<string id="st_new_level_magloading">
+		<text>$clr_whiteХ $clr_whiteУлучшена скорость пополнения и опустошения магазинов.</text>
+	</string>
+	
+	<string id="st_player_skills_lockpicking">
+		<text>Взлом замков</text>
+	</string>
+	<string id="st_new_level_lockpicking">
+		<text>$clr_whiteХ $clr_whiteСложность замков лутбоксов снижена.</text>
+	</string>
+	
+	<string id="st_player_skills_reloading">
+		<text>Перезарядка оружия</text>
+	</string>
+	<string id="st_new_level_reloading">
+		<text>$clr_whiteХ $clr_whiteУлучшена скорость перезарядки и скорость подъема оружия/кобуры.</text>
+	</string>
+</string_table>

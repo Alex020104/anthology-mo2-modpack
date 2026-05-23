@@ -1,0 +1,238 @@
+-- HOW TO READ AND EDIT THE TABLES:
+-- stages_count means how many stages the contract for the faction or trader has, every other key in the table must have the correct number of values, one for each stage
+-- base_salary is the amount of base money you'll receive daily no matter what
+-- money_per_task is how much additional money you'll receive for every task you complete for that faction
+-- tasks_for_bonus is how many tasks you need to complete to receive a bonus package with your salary
+-- tasks_to_complete is how many tasks you need to complete in order to keep the contract alive and not get demoted (you need to satisfy AT LEAST ONE of the objectives between tasks_to_complete, npcs_to_kill monsters_to_kill or arti_to_find, not every objective)
+-- money_per_npc is how much additional money you'll receive for every enemy npc you kill, it serves as a base and will be increased depending on the killed enemy rank
+-- npcs_for_bonus same as tasks_for_bonus but with npcs killed
+-- npcs_to_kill same as tasks_to_complete but with npcs killed
+-- money_per_monster is how much additional money you'll receive for every enemy mutant you kill, it serves as a base and will be increased depending on the mutant rank
+-- monsters_for_bonus same as tasks_for_bonus but with mutants killed
+-- monsters_to_kill same as tasks_to_complete but with mutants killed
+-- money_per_arti is how much additional money you'll receive for every artifact you find, it serves as a base and is increased by the rarity of the artifact found
+-- arti_for_bonus same as tasks_for_bonus but with found artifacts
+-- arti_to_find same as tasks_to_complete but with found artifacts
+-- max_money is how much money you can receive each day
+-- promo_intervals is how much progress you need to accumulate to get a promotion. Progress is calculated based on the total money received daily but without the max_money limit. this key has one less value (because you will get promoted only 7 times in a 8 stages contract)
+-- promo_prizes are the items you'll receive after each promotion, this key has one less value (because you will get promoted only 7 times in a 8 stages contract)
+
+-- ORGANIZED FACTIONS SALARY TABLES
+
+-- ECOLOGISTS
+passinc_org_salary_table_ecolog = {
+    ["stages_count"] = 8,
+    ["base_salary"] = {360,600,900,1200,1600,2200,2800,3600},
+    ["money_per_task"] = {240,400,600,800,1000,1300,1600,2000},
+    ["tasks_for_bonus"] = {2,3,3,3,4,4,5,6},
+    ["tasks_to_complete"] = {1,1,2,2,3,3,4,4},
+    ["money_per_arti"] = {100,200,300,400,600,800,1000,1400},
+    ["arti_for_bonus"] = {2,2,3,3,4,4,5,5},
+    ["arti_to_find"] = {1,1,1,2,2,2,3,3},
+    ["max_money"] = {2000,4000,6000,10000,14000,20000,30000,50000},
+    ["promo_intervals"] = {16000,48000,104000,200000,400000,640000,880000},
+    ["promo_prizes"] = {"detector_advanced","wpn_spas12","ecolog_outfit_blue","equ_small_military_pack","wpn_g36","ecolog_outfit_red","detector_elite"}
+}
+
+-- DUTY
+passinc_org_salary_table_dolg = {
+    ["stages_count"] = 8,
+    ["base_salary"] = {300,400,500,600,700,800,900,1000},
+    ["money_per_task"] = {300,400,500,600,700,800,900,1000},
+    ["tasks_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["tasks_to_complete"] = {1,1,2,2,3,3,4,4},
+    ["money_per_npc"] = {100,120,130,160,190,200,240,320},
+    ["npcs_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["npcs_to_kill"] = {1,1,2,2,3,3,4,5},
+    ["money_per_monster"] = {200,300,400,500,700,1000,1200,1400},
+    ["monsters_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["monsters_to_kill"] = {1,2,2,3,3,4,5,6},
+    ["max_money"] = {2000,4000,6000,10000,14000,20000,30000,50000},
+    ["promo_intervals"] = {12000,32000,80000,160000,312000,512000,760000},
+    ["promo_prizes"] = {"helm_hardhat","wpn_ak74u","nbc_dolg_outfit","helm_tactic","wpn_groza_nimble","equ_military_pack","dolg_voin_outfit"}
+}
+
+-- MILITARY
+passinc_org_salary_table_army = {
+    ["stages_count"] = 8,
+    ["base_salary"] = {100,200,400,800,1600,2400,3200,4000},
+    ["money_per_task"] = {100,140,200,320,540,700,1000,1200},
+    ["tasks_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["tasks_to_complete"] = {1,1,2,2,3,3,4,4},
+    ["money_per_npc"] = {75,100,160,230,400,600,800,1200},
+    ["npcs_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["npcs_to_kill"] = {1,1,2,2,3,3,4,5},
+    ["max_money"] = {1000,2000,4000,6000,10000,15000,30000,60000},
+    ["promo_intervals"] = {16000,48000,104000,200000,340000,520000,720000},
+    ["promo_prizes"] = {"helm_hardhat","wpn_ak74u","specops_outfit","helm_tactic","wpn_ak74m_camo","equ_military_pack","military_outfit"}
+}
+
+-- MERCS
+passinc_org_salary_table_killer = {
+    ["stages_count"] = 8,
+    ["base_salary"] = {150,250,400,600,1000,1500,2000,3000},
+    ["money_per_task"] = {200,300,500,800,1200,1800,2400,3600},
+    ["tasks_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["tasks_to_complete"] = {1,1,2,2,3,3,4,4},
+    ["max_money"] = {4000,6000,8000,10000,15000,30000,50000,80000},
+    ["promo_intervals"] = {6000,16000,40000,120000,200000,400000,800000},
+    ["promo_prizes"] = {"wpn_glock","wpn_mp5sd","merc_sun_outfit","helm_ach7","wpn_ak101","specops_merc_outfit","wpn_g36nimble_rwap"}
+}
+
+-- FREEDOM
+passinc_org_salary_table_freedom = {
+    ["stages_count"] = 8,
+    ["base_salary"] = {400,800,1200,1800,2400,3200,4200,5200},
+    ["money_per_task"] = {300,400,500,600,700,800,900,1000},
+    ["tasks_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["tasks_to_complete"] = {1,1,2,2,3,3,4,4},
+    ["money_per_npc"] = {75,100,160,230,400,600,800,1200},
+    ["npcs_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["npcs_to_kill"] = {1,1,2,2,3,3,4,5},
+    ["max_money"] = {2000,4000,6000,10000,14000,20000,30000,50000},
+    ["promo_intervals"] = {10000,20000,40000,80000,160000,280000,600000},
+    ["promo_prizes"] = {"wpn_glock","wpn_mp5sd","merc_sun_outfit","helm_ach7","wpn_ak101","specops_merc_outfit","wpn_g36nimble_rwap"}
+}
+
+-- SIN
+passinc_org_salary_table_greh = {
+    ["stages_count"] = 8,
+    ["base_salary"] = {100,200,300,400,600,800,1000,1200},
+    ["money_per_task"] = {200,300,400,500,600,800,1000,1200},
+    ["tasks_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["tasks_to_complete"] = {1,1,2,2,3,3,4,4},
+    ["money_per_npc"] = {100,120,140,180,240,280,320,400},
+    ["npcs_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["npcs_to_kill"] = {1,1,2,2,3,3,4,5},
+    ["money_per_monster"] = {50,80,120,160,200,240,300,350},
+    ["monsters_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["monsters_to_kill"] = {1,1,2,2,3,3,4,4},
+    ["max_money"] = {2000,4000,6000,10000,14000,20000,30000,50000},
+    ["promo_intervals"] = {12000,32000,80000,160000,312000,512000,760000},
+    ["promo_prizes"] = {"helm_hardhat","wpn_ak74u","greh_armored_outfit","helm_tactic","wpn_groza_nimble","equ_military_pack","greh_armored_camo_outfit"}
+}
+
+-- MONOLITH
+passinc_org_salary_table_monolith = {
+    ["stages_count"] = 8,
+    ["base_salary"] = {100,200,300,400,600,800,1000,1200},
+    ["money_per_task"] = {200,300,400,500,600,800,1000,1200},
+    ["tasks_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["tasks_to_complete"] = {1,1,2,2,3,3,4,4},
+    ["money_per_npc"] = {100,120,140,180,240,280,320,400},
+    ["npcs_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["npcs_to_kill"] = {1,1,2,2,3,3,4,5},
+    ["money_per_monster"] = {50,80,120,160,200,240,300,350},
+    ["monsters_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["monsters_to_kill"] = {1,1,2,2,3,3,4,4},
+    ["max_money"] = {2000,4000,6000,10000,14000,20000,30000,50000},
+    ["promo_intervals"] = {12000,32000,80000,160000,312000,512000,760000},
+    ["promo_prizes"] = {"helm_hardhat","wpn_ak74u","monolith_nbc_outfit","helm_tactic","wpn_groza_nimble","equ_military_pack","monolith_scientific_outfit"}
+}
+
+-- UNISG
+passinc_org_salary_table_isg = {
+    ["stages_count"] = 8,
+    ["base_salary"] = {360,600,900,1200,1600,2200,2800,3600},
+    ["money_per_task"] = {240,400,600,800,1000,1300,1600,2000},
+    ["tasks_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["tasks_to_complete"] = {1,1,2,2,3,3,4,4},
+    ["money_per_npc"] = {100,120,130,160,190,200,240,320},
+    ["npcs_for_bonus"] = {2,2,3,3,4,4,5,6},
+    ["npcs_to_kill"] = {1,1,2,2,3,3,4,5},
+    ["max_money"] = {1000,2000,4000,6000,10000,15000,30000,60000},
+    ["promo_intervals"] = {16000,48000,104000,200000,340000,520000,720000},
+    ["promo_prizes"] = {"wpn_glock","wpn_mp5sd","isg_camo_outfit","helm_ach7","wpn_ak101","light_isg_outfit","wpn_g36nimble_rwap"}
+}
+
+-- UNORG LEADERS SALARY TABLES
+
+passinc_unorg_pack_table_sid = { -- sidorovich
+    ["stages_count"] = 6,
+    ["base_packs"] = {"bia_novicepackage", "bia_novicepackage", "bia_experiencedpackage", "bia_experiencedpackage", "bia_seasonedpackage", "bia_seasonedpackage"},
+    ["tasks_for_bonus"] = {2, 2, 3, 3, 4, 4},
+    ["tasks_to_complete"] = {1, 1, 2, 2, 3, 3},
+    ["upgrade_chance"] = {0.2, 0.4, 0.2, 0.4, 0.2, 0.3},
+    ["upgrade_chance_increment"] = {0.1, 0.2, 0.1, 0.15, 0.1, 0.2},
+    ["promo_intervals"] = {8000,16000,40000,80000,160000,320000},
+    ["promo_prizes"] = {"wpn_wincheaster1300_trapper", "helm_hardhat", "equ_small_pack", "stalker_tigerstripe_outfit", "wpn_akm"}
+}
+
+passinc_unorg_pack_table_sul = { -- sultan
+    ["stages_count"] = 8,
+    ["base_packs"] = {"bia_novicepackage", "bia_novicepackage", "bia_novicepackage", "bia_experiencedpackage", "bia_experiencedpackage", "bia_experiencedpackage", "bia_seasonedpackage", "bia_seasonedpackage"},
+    ["tasks_for_bonus"] = {3, 3, 4, 4, 4, 4, 4, 4},
+    ["tasks_to_complete"] = {1, 1, 2, 2, 3, 3, 4, 4},
+    ["upgrade_chance"] = {0.3, 0.4, 0.4, 0.3, 0.3, 0.4, 0.3, 0.3},
+    ["upgrade_chance_increment"] = {0.2, 0.3, 0.3, 0.1, 0.2, 0.25, 0.1, 0.2},
+    ["promo_intervals"] = {10000,20000,40000,80000,160000,280000,400000,600000},
+    ["promo_prizes"] = {"wpn_vz61", "banditmerc_outfit", "wpn_mossberg590", "helm_ach7", "bandit_ps5_outfit", "wpn_rpk74", "helm_metro"}
+}
+
+passinc_unorg_pack_table_but = { -- butcher
+    ["stages_count"] = 5,
+    ["base_packs"] = {"bia_novicepackage", "bia_novicepackage", "bia_experiencedpackage", "bia_experiencedpackage", "bia_seasonedpackage"},
+    ["tasks_for_bonus"] = {1, 2, 3, 3, 4},
+    ["tasks_to_complete"] = {1, 1, 2, 2, 3},
+    ["upgrade_chance"] = {0.1, 0.3, 0.2, 0.3, 0.3},
+    ["upgrade_chance_increment"] = {0.1, 0.2, 0.1, 0.1, 0.3},
+    ["promo_intervals"] = {10000,20000,40000,80000,160000},
+    ["promo_prizes"] = {"wpn_toz34", "kit_hunt", "wpn_knife3", "travel_outfit"}
+}
+
+passinc_unorg_pack_table_lib = {
+    ["stages_count"] = 8,
+    ["base_packs"] = {"bia_novicepackage", "bia_novicepackage", "bia_novicepackage", "bia_experiencedpackage", "bia_experiencedpackage", "bia_experiencedpackage", "bia_seasonedpackage", "bia_seasonedpackage"},
+    ["tasks_for_bonus"] = {3, 3, 4, 4, 4, 4, 4, 4},
+    ["tasks_to_complete"] = {1, 1, 2, 2, 3, 3, 4, 4},
+    ["upgrade_chance"] = {0.3, 0.4, 0.4, 0.3, 0.3, 0.4, 0.3, 0.3},
+    ["upgrade_chance_increment"] = {0.2, 0.3, 0.3, 0.1, 0.2, 0.25, 0.1, 0.2},
+    ["promo_intervals"] = {10000,20000,40000,80000,160000,280000,400000,600000},
+    ["promo_prizes"] = {"wpn_spas12", "cs_light_outfit", "helm_hardhat", "wpn_ak74", "cs_medium_outfit", "equ_small_military_pack", "helm_battle",}
+}
+
+function passinc_get_unorg_character_table(story_id)
+    local character_table
+    if not story_id then return end
+    if story_id == "esc_m_trader" or story_id == "esc_m_trader" then
+        character_table = passinc_unorg_pack_table_sid
+    elseif story_id == "zat_b7_bandit_boss_sultan" then
+        character_table = passinc_unorg_pack_table_sul
+    elseif story_id == "mar_base_stalker_barmen" then
+        character_table = passinc_unorg_pack_table_lib
+    elseif story_id == "hunter_gar_trader" then
+        character_table = passinc_unorg_pack_table_but
+    else
+        printdbg("unorg character id not found: " .. story_id)
+        return
+    end
+    return character_table
+end
+
+function passinc_get_org_faction_table(community)
+    local faction_table = {}
+    if community == "ecolog" then
+        faction_table = passinc_org_salary_table_ecolog
+    elseif community == "army" then
+        faction_table = passinc_org_salary_table_army
+    elseif community == "killer" then
+        faction_table = passinc_org_salary_table_killer
+    elseif community == "dolg" then
+        faction_table = passinc_org_salary_table_dolg
+    elseif community == "freedom" then
+        faction_table = passinc_org_salary_table_freedom
+    elseif community == "isg" then
+        faction_table = passinc_org_salary_table_isg
+    elseif community == "monolith" then
+        faction_table = passinc_org_salary_table_monolith
+    elseif community == "greh" then
+        faction_table = passinc_org_salary_table_greh
+    else
+        printdbg("faction table not found: " .. community)
+        return
+    end
+    return faction_table
+end
+
+
+

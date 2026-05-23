@@ -1,0 +1,98 @@
+-- Track stashes with capacities
+local stash_sections = {["inv_backpack"] = true, ["inventory_box"] = true}
+local function itr_for_stashes(section)
+	local placeable_type = ini_sys:r_string_ex(section, "placeable_type") or "prop"
+    if placeable_type == "stash" then
+        stash_sections[section] = true
+    end
+end
+ini_sys:section_for_each(itr_for_stashes)
+
+local default_capacity = 30
+local weight_add = nil -- used when moving items into a stash
+
+local function getInvWeight(stash_id)
+    local stash = get_object_by_id(stash_id)
+    local weight = 0
+    stash:iterate_inventory_box( function(owner,itm)
+        weight = weight + itm:weight()
+    end)
+
+    return weight
+end
+
+-- Update Max Capacity of stash inventories
+inventory_update = ui_inventory.UIInventory.UpdateWeight
+function ui_inventory.UIInventory:UpdateWeight()
+	inventory_update(self)
+	local stash = self:GetPartner()
+	if not stash then return end
+
+    local section = stash:section()
+	if not stash_sections[section] then return end
+	local capacity = ini_sys:r_float_ex(section,"capacity") or default_capacity
+	self.npc_weight_max:SetText( strformat("(max %s %s)", capacity, game.translate_string("st_kg")) )
+end
+
+-- Make Max Capacity text visible for stashes
+inventory_reset = ui_inventory.UIInventory.Reset
+function ui_inventory.UIInventory:Reset(obj)
+	inventory_reset(self, obj)
+    if self:GetPartner() then
+        self.npc_weight_max:Show( (self.npc_is_companion and self.mode == "loot") or stash_sections[self:GetPartner():section()])
+    end
+end
+
+put_all = ui_inventory.UIInventory.LMode_PutAll
+function ui_inventory.UIInventory:LMode_PutAll()
+    weight_add = 0
+    put_all(self)
+    weight_add = nil
+end
+
+function ui_inventory.UIInventory:Action_Move_All(obj, bag)
+    weight_add = 0
+
+    obj = self:CheckItem(obj,"Action_Move_All")
+
+	local ci = self.CC[bag]:GetCell_ID(obj:id())
+	for id,_ in pairs(ci.childs) do
+        if self:Cond_Move(id, bag) then
+		    self:Action_Move(id, bag)
+        end
+	end
+    if self:Cond_Move(obj, bag) then
+	    self:Action_Move(obj, bag)
+    end
+
+    weight_add = nil
+end
+
+local function actor_on_item_before_move(flags, npc_id, obj, mode, bag_from)
+	if (bag_from ~= EDDListType.iActorBag and bag_from ~= EDDListType.iActorSlot) then return end
+	if not obj then return end
+    if not npc_id then return end
+
+    local npc = get_object_by_id(npc_id)
+    if not npc then return end
+
+    local section = npc:section()
+
+    if not stash_sections[section] then return end
+
+	local capacity = ini_sys:r_float_ex(section,"capacity") or default_capacity
+    local weight = getInvWeight(npc_id) + (weight_add or 0)
+	if weight + obj:weight() > capacity then
+		flags.ret_value = false
+	end
+end
+
+local function actor_on_item_after_move(npc_id, obj, mode, bag_from)
+    if weight_add == nil then return end
+    weight_add = weight_add + obj:weight()
+end
+
+function on_game_start()
+	RegisterScriptCallback("ActorMenu_on_item_before_move", actor_on_item_before_move)
+    RegisterScriptCallback("ActorMenu_on_item_after_move", actor_on_item_after_move)
+end

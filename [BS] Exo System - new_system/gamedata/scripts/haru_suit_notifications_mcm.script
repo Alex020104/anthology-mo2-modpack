@@ -1,0 +1,514 @@
+--[[
+    Half-Life alike suit notification system
+
+    Author: HarukaSai
+    Credits: Alex_Marheaves
+    
+    05/02/2024
+]]
+
+notifications = {}
+tracked_suits = {}
+MCM_SETTINGS = {}
+last_condition = false
+
+function get_sound_folder()
+    return "har_suit_notifications\\" .. (MCM_SETTINGS.language or "eng") .. "\\"
+end
+
+local sound_queue = {}
+
+local function clear_sound_queue()
+    for i = #sound_queue, 1, -1 do
+        local entry = sound_queue[i]
+
+        if entry and entry.sound then
+            entry.sound:stop()
+        end
+
+        sound_queue[i] = nil
+    end
+end
+
+class "GenericNotification"
+
+function GenericNotification:__init()
+    self.sounds = {}
+    self:LoadSounds()
+end
+
+function GenericNotification:LoadSounds()
+end
+
+function GenericNotification:QeueuSound(snd)
+    if not snd then
+        return false
+    end
+
+    table.insert(sound_queue, {["sound"] = snd, ["played"] = false})
+    return true
+end
+
+function GenericNotification:Save()
+    return {}
+end
+
+function GenericNotification:Load(data)
+end
+
+
+class "DamageNotification" (GenericNotification)
+
+function DamageNotification:__init()
+    super()
+    self.last_played = false
+end
+
+function DamageNotification:LoadSounds()
+    local hit_types = {"burn", "chemical_burn", "explosion", "fire_wound", "light_burn", "shock", "strike", "wound"}
+
+    for _, type in ipairs(hit_types) do
+        self.sounds[hit[type]] = {}
+
+        for i = 1, 3 do
+            self.sounds[hit[type]][i] = sound_object(string.format("%s%s_%s", get_sound_folder(), type, i))
+        end
+    end            
+end
+
+function DamageNotification:CanPlay()
+    return (not self.last_played) or (game.get_game_time():diffSec(self.last_played) > MCM_SETTINGS.delay * 60 * level.get_time_factor())
+end
+
+function DamageNotification:GetLvl(health)
+    return 3 - math.floor((health * 100) / 25)
+end
+
+function DamageNotification:Play(type, health)
+    local lvl = self:GetLvl(health)
+
+    if lvl < 1 then
+        return
+    end
+
+    if self:CanPlay() then
+        local snd = self.sounds[type][lvl]
+
+        if snd then
+            self.last_played = game.get_game_time()
+            self:QeueuSound(snd)
+        end
+    end
+end
+
+function DamageNotification:Save()
+    return {
+        last_played = utils_data.CTime2table(self.last_played)
+    }
+end
+
+function DamageNotification:Load(data)
+    self.last_played = utils_data.table2CTime(data.last_played)
+end
+
+
+class "StatNotification" (GenericNotification)
+
+function StatNotification:__init(stat, getter)
+    self.stat = stat
+
+    super()
+    self.last_played = {false,false,false} -- track timer for each level separately
+    self.getter = getter
+end
+
+function StatNotification:LoadSounds()
+    for i = 1, 3 do 
+        self.sounds[i] = sound_object(string.format("%s%s_%s", get_sound_folder(), self.stat, i))
+    end
+end
+
+function StatNotification:CanPlay(lvl)
+    return (not self.last_played[lvl]) or (game.get_game_time():diffSec(self.last_played[lvl]) > MCM_SETTINGS.delay * 60 * level.get_time_factor())
+end
+
+function StatNotification:GetLvl()
+    local lvl = clamp(math.floor((self.getter() * 100) / 25), 0 , 3)
+    if self.stat == "psy" then lvl = 3 - lvl end
+    
+    return lvl
+end
+
+function StatNotification:Play()
+    local lvl = self:GetLvl()
+    if lvl < 1 then return end
+
+    if self:CanPlay(lvl) then
+        local snd = self.sounds[lvl]
+        
+        if snd then
+            self.last_played[lvl] = game.get_game_time()
+            self:QeueuSound(snd)
+        end
+    end
+end
+
+function StatNotification:Save()
+    local data = {}
+
+    for i = 1, 3 do
+        data[i] = utils_data.CTime2table(self.last_played[i]) or false
+    end
+
+    return data
+end
+
+function StatNotification:Load(data)
+    for i = 1, 3 do
+        self.last_played[i] = utils_data.table2CTime(data[i]) or false
+    end
+end
+
+
+class "OutfitIntroNotification" (GenericNotification)
+
+function OutfitIntroNotification:__init()
+    super()
+end
+
+function OutfitIntroNotification:LoadSounds()
+    for i = 1, 6 do 
+        self.sounds[i] = sound_object(string.format("%ssuit_intro_%s", get_sound_folder(), i)) 
+    end
+
+    self.sounds.nomusic = sound_object(string.format("%ssuit_intro_nomusic", get_sound_folder())) 
+end
+
+function OutfitIntroNotification:Play()
+    local snd = MCM_SETTINGS.nomusic and self.sounds.nomusic or self.sounds[math.random(#self.sounds)]
+
+    self:QeueuSound(snd)
+end
+
+
+class "OufitConditionNotification" (GenericNotification)
+
+function OufitConditionNotification:__init()
+    super()
+    self.last_played_lvl = false
+end
+
+function OufitConditionNotification:LoadSounds()
+    local conds = {50, 65, 70, 75, 80, 85, 90, 100} -- available sounds
+    
+    for i = 1, #conds do
+        self.sounds[conds[i]] = sound_object(string.format("%ssuit_cond_%s", get_sound_folder(), conds[i]))
+    end 
+end
+
+function OufitConditionNotification:GetLvl(condition)
+    condition = condition * 100
+    local smallest_so_far, smallest_idx = false, false
+
+    for val, _ in pairs(self.sounds) do
+        if (not smallest_so_far) or (math.abs(condition - val) < smallest_so_far) then
+            smallest_so_far = math.abs(condition - val)
+            smallest_idx = val
+        end
+    end
+
+    return smallest_idx
+end
+
+function OufitConditionNotification:CanPlay(lvl)
+    return self.last_played_lvl ~= lvl
+end
+
+function OufitConditionNotification:Play(condition)
+    local lvl = self:GetLvl(condition)
+
+    if (not lvl) then return end
+
+    if self:CanPlay(lvl) then
+        local snd = self.sounds[lvl]
+
+        if snd then
+            self:QeueuSound(snd)
+        end
+    end
+end
+
+
+class "DeathNotification" (GenericNotification)
+
+function DeathNotification:__init()
+    super()
+end
+
+function DeathNotification:LoadSounds()
+    for i = 1, 3 do
+        self.sounds[i] = sound_object(string.format("%sdeath_notification_%s", get_sound_folder(), i))
+    end
+end
+
+function DeathNotification:Play()
+    clear_sound_queue()
+
+    local snd = self.sounds[math.random(#self.sounds)]
+    if not snd then
+        return
+    end
+
+    snd:play(db.actor, 0, sound_object.s2d)
+    snd.volume = MCM_SETTINGS.volume
+end
+
+
+class "EventNotification" (GenericNotification)
+
+function EventNotification:__init(path)
+    super()
+    self.sound_path = path
+    self.play_on_interaction = true
+end
+
+function EventNotification:LoadSounds()
+    if not self.sound_path or self.sound_path == "" then
+        -- dl("Sound path is nil or empty for EventNotification")
+        return
+    end
+    local full_path = string.format("%s%s", get_sound_folder(), self.sound_path)
+    local snd = sound_object(full_path)
+    if not snd then
+        dl("Failed to load sound file: %s", full_path)
+        return
+    end
+    self.sounds[1] = snd
+end
+function EventNotification:Play()
+    local snd = self.sounds[1]
+
+    if snd then
+        self:QeueuSound(snd)
+    end
+end
+
+
+function actor_on_before_hit(s_hit, bone_id, flags)
+    local type = s_hit.type
+    
+    if (type == hit.radiation or type == hit.telepatic) then
+        return
+    end
+    
+    RemoveTimeEvent(script_name(), "damage_notification")
+    
+    CreateTimeEvent(script_name(), "damage_notification", 3, function()
+        notifications.damage:Play(type, db.actor.health)
+        return true
+    end)
+end
+
+function actor_on_update()
+    notifications.radiation:Play()
+    notifications.bleeding:Play()
+    notifications.psy:Play()
+
+    local suit = db.actor:item_in_slot(7)
+
+    if suit and last_condition and math.abs(last_condition - suit:condition()) > 0.06 then
+        notifications.outfit_condition:Play(suit:condition())
+        last_condition = suit:condition()
+    end
+
+    local entry = sound_queue[1]
+
+    if (not entry) then
+        return
+    end
+
+    if (not entry.sound) then
+        table.remove(sound_queue, 1)
+        return
+    end
+
+    if (not entry.played) then
+        entry.sound:play(db.actor, 0, sound_object.s2d)
+        entry.sound.volume = MCM_SETTINGS.volume
+        entry.played = true
+    elseif entry.played and (not entry.sound:playing()) then
+        table.remove(sound_queue, 1)
+    end
+end
+
+function actor_on_before_death()
+    notifications.death:Play()
+end
+
+function actor_on_interaction(typ, obj, name)
+    if notifications[name] and notifications[name].play_on_interaction then
+        notifications[name]:Play()
+    end
+end
+
+local invalid_sci_suits = {
+    ["nomad_outfit"] = true,
+    ["travel_outfit"] = true,
+    ["wastelander_outfit"] = true
+}
+
+function is_suitable(obj)
+    if not obj then
+        return false
+    end
+    return obj:section() == "exobackpack_exo_outfit"
+end
+
+local is_on = false
+
+function turn_on_outfit(obj)
+    if (is_on) then return end
+
+    is_on = true
+    last_condition = obj:condition()
+
+    RegisterScriptCallback("actor_on_before_death", actor_on_before_death)
+    RegisterScriptCallback("actor_on_before_hit", actor_on_before_hit)
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+end
+
+function turn_off_ouftit()
+    if (not is_on) then return end
+    
+    is_on = false
+    last_condition = false
+
+    clear_sound_queue()
+
+    UnregisterScriptCallback("actor_on_before_death", actor_on_before_death)
+    UnregisterScriptCallback("actor_on_before_hit", actor_on_before_hit)
+    UnregisterScriptCallback("actor_on_update", actor_on_update)
+end
+
+function actor_item_to_slot(obj)
+    local res = is_suitable(obj)
+    
+    if res then
+        turn_on_outfit(obj)
+
+        if (not tracked_suits[obj:section()]) then
+            notifications.outfit_intro:Play()
+            tracked_suits[obj:section()] = true
+        end
+    end
+end
+
+function check_suit()
+    local obj = db.actor:item_in_slot(7)
+
+    if (obj) and is_suitable(obj) then
+        turn_on_outfit(obj)
+    else
+        turn_off_ouftit()
+    end
+end
+
+function actor_on_first_update()
+    check_suit()
+    RegisterScriptCallback("actor_item_to_slot", actor_item_to_slot)
+    RegisterScriptCallback("actor_item_to_ruck", check_suit)
+    RegisterScriptCallback("actor_on_item_drop", check_suit)
+end
+
+local mcm_keybinds = ui_mcm and ui_mcm.key_hold
+local options = { id = script_name(), sh = true, gr = {
+    { id = "title", type= "slide", link= "ui_options_slider_player", text="ui_mcm_menu_haru_suit_notifications_mcm", size= {512,50},spacing= 20 },
+    { id = "volume", type = "track", val = 2, min = 0, max = 3, step = 0.01, def = 1},
+    { id = "delay", type = "track", val = 2, min = 0.5, max = 15, step = 0.5, def = 1},
+    { id = "nomusic" , type = "check", val = 1, def = false},
+    { id = "eco_only", type = "check", val = 1, def = false},
+    { id = "language", type = "list", val = 0, def = "eng",  content = { 
+        {"eng", strformat("%s_eng", script_name())},
+        {"rus", strformat("%s_rus", script_name())},
+        {"ua", strformat("%s_ua", script_name())},
+    }}
+}}
+
+function on_mcm_load()
+    return options
+end
+
+function load_defaults()
+    for _, option in pairs(options.gr) do
+        if option.val then
+            MCM_SETTINGS[option.id] = option.def
+        end
+    end
+end
+
+function on_option_change(mcm)
+    if (not mcm) then
+        return
+    end
+
+    for _, option in pairs(options.gr) do
+        if option.val then
+            MCM_SETTINGS[option.id] = ui_mcm.get(strformat("%s/%s", options.id, option.id))
+        end
+    end
+
+    for _, notification in pairs(notifications) do
+        notification:LoadSounds()
+    end
+end
+
+function save_state(m_data)
+    local data = {}
+
+    for id, notif in pairs(notifications) do
+        data[id] = notif:Save()
+    end
+
+    data.tracked_suits = tracked_suits
+    data.last_condition = last_condition
+
+    m_data.haru_suit_nofications = data
+end
+
+function load_state(m_data)
+    local data = m_data.haru_suit_nofications or {}
+
+    for id, data in pairs(data) do
+        if notifications[id] then
+            notifications[id]:Load(data)
+        end
+    end
+
+    tracked_suits = data.tracked_suits or {}
+    last_condition = data.last_condition or false
+end
+
+function on_game_start()
+    load_defaults()
+    on_option_change(mcm_keybinds)
+    
+    notifications.damage            = DamageNotification()
+    notifications.radiation         = StatNotification("radiation", function() return db.actor.radiation end)
+    notifications.bleeding          = StatNotification("bleeding" , function() return db.actor.bleeding end)
+    notifications.psy               = StatNotification("psy" , function() return arszi_psy.get_psy_health() end)
+    notifications.outfit_intro      = OutfitIntroNotification()
+    notifications.outfit_condition  = OufitConditionNotification()
+    notifications.death             = DeathNotification()
+
+    notifications.emission_start    = EventNotification("blowout")
+    notifications.psi_storm_start   = EventNotification("psy_storm")
+
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+    
+    RegisterScriptCallback("save_state", save_state)
+    RegisterScriptCallback("load_state", load_state)
+    
+    RegisterScriptCallback("actor_on_interaction", actor_on_interaction)
+
+    RegisterScriptCallback("on_option_change", on_option_change)
+end

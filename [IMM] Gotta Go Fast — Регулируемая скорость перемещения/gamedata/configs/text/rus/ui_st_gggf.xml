@@ -1,0 +1,29 @@
+<!-- 
+	Anomaly Modconfiguration Menu strings
+	
+-->
+
+<string_table>
+
+
+	<string id="ui_mcm_gggf_title">
+		<text>Настройка скорости актера</text>
+	</string>
+	<string id="ui_mcm_menu_gggf">
+		<text>Grok Gotta Go Fast</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_run">
+		<text>Множитель скорости бега</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_run_desc">
+		<text>Умножает скорость бега актера (когда вы двигаетесь без нажатия других клавиш) на заданный коэффициент.</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_sprint">
+		<text>Множитель скорости спринта</text>
+	</string>
+	<string id="ui_mcm_gggf_gotta_go_fast_sprint_desc">
+		<text>Умножает скорость спринта актера (когда вы двигаетесь с нажатой клавишей "Спринт") на заданный коэффициент.</text>
+	</string>
+
+
+</string_table>

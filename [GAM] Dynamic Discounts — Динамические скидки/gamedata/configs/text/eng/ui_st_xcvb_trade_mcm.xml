@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_xcvb_trade_title">
+		<text>Dynamic discounts</text>
+	</string>
+	<string id="ui_mcm_menu_xcvb_trade">
+		<text>Dynamic discounts</text>
+	</string>
+
+
+	<!-- Main -->
+	<string id="ui_mcm_xcvb_trade_min_event_time">
+		<text>Min event duration (days)</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_trade_max_event_time">
+		<text>Max event duration (days)</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_trade_min_event_disc">
+		<text>Min event discount (%)</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_trade_max_event_disc">
+		<text>Max event discount (%)</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_trade_max_disc_amount">
+		<text>Max amount of discounts per event</text>
+	</string>
+	<string id="ui_mcm_xcvb_trade_max_disc_amount_desc">
+		<text>Max amount of groups that can get dynamic discount when the event fires.</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_trade_msg_threshold">
+		<text>Event message threshold (%)</text>
+	</string>
+	<string id="ui_mcm_xcvb_trade_msg_threshold_desc">
+		<text>You will be notified of new discount only if it will be higher than this threshold (or lower than negative threshold).</text>
+	</string>
+
+	<string id="ui_mcm_xcvb_trade_dbgx">
+		<text>debug</text>
+	</string>
+
+</string_table>

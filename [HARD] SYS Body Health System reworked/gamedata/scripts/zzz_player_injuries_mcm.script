@@ -1,0 +1,99 @@
+-- If you don't use MCM, change your defaults from here.
+local defaults = {
+	["hud_type"] = "default",
+	["alt_mode_health"] = true,
+	["position_x"] = 0,
+	["position_y"] = 640,
+	["vanilla_bars"] = false,
+
+	["custom_colors"] = false,
+	["clr_main_r"] = 255,
+	["clr_main_g"] = 255,
+	["clr_main_b"] = 255,
+	["clr_timed_r"] = 255,
+	["clr_timed_g"] = 255,
+	["clr_timed_b"] = 255,
+
+	["regen"] = 60,
+	["damage_scale"] = 1,
+	["enable_display"] = true,
+	["numeric_at"] = 12,
+	["numeric_always"] = false,
+
+	["arm_opt"] = true,
+	["arm_pen_min_hp"] = 100,
+	["arm_anm_pwr"] = 1,
+
+	["leg_opt"] = true,
+	["leg_pen_min_hp"] = 100,
+	["leg_anm_pwr"] = 1.0,
+	["leg_dmg_min_hp"] = 60,
+	["new_voice_sounds"] = false,
+
+	["torso_opt"] = true,
+
+	["head_opt"] = true,
+	["head_pen_min_hp"] = 2,
+	["head_anm_pwr"] = 0.5,
+}
+
+function get_config(key)
+	if ui_mcm then return ui_mcm.get("body_health_system/"..key) else return defaults[key] end
+end
+
+function on_mcm_load()
+	op = { id= "body_health_system",sh=true ,gr={
+			{ id= "title",type= "slide",link= "ui_options_slider_player",text="ui_mcm_body_health_system_title",size= {512,50},spacing= 20 },
+
+			{ id= "title"				   ,type= "desc"	 ,text= "ui_mcm_body_health_system_header_hud" 			,align= "c"	,clr= {255,190,190,190}	},
+			{id = "hud_type", type= "list", val= 0, def= "default", 	content= { {"default", "bhs_default"} , {"eft", "bhs_eft"} , {"text", "bhs_text"} , {"hard", "bhs_hard"} } },
+			{id = "alt_mode_health", type = "check", val = 1, def = true},
+			{id = "position_x", type = "input", val = 2, min=0, max=1000, def = 0},
+			{id = "position_y", type = "input", val = 2, min=0, max=1000, def = 640},
+			{id = "vanilla_bars", type = "check", val = 1, def = false},
+
+			{id="divider", type="line" },
+			{id = "custom_colors", type = "check", val = 1, def = false},
+			{id = "clr_main_r", type = "input", val = 2, min=0, max=255, def = 255},
+			{id = "clr_main_g", type = "input", val = 2, min=0, max=255, def = 255},
+			{id = "clr_main_b", type = "input", val = 2, min=0, max=255, def = 255},
+			{id = "clr_timed_r", type = "input", val = 2, min=0, max=255, def = 255},
+			{id = "clr_timed_g", type = "input", val = 2, min=0, max=255, def = 255},
+			{id = "clr_timed_b", type = "input", val = 2, min=0, max=255, def = 255},
+
+			{id="divider", type="line" },
+			{ id= "title"				   ,type= "desc"	 ,text= "ui_mcm_body_health_system_header_general" 			,align= "c"	,clr= {255,190,190,190}	},
+			{id = "regen", type = "track", val = 2, min=0, max=1000, step=5, def = 60},
+			{id = "damage_scale", type = "track", val = 2, min=0.1, max=3, step=0.1, def = 1},
+			{id = "enable_display", type = "check", val = 1, def = true},
+			{id = "numeric_at", type = "track", val = 2, min=1, max=30, step=1, def = 12},
+			{id = "numeric_always", type = "check", val = 1, def = false},
+
+			{id="divider", type="line" },
+			{ id= "title"				   ,type= "desc"	 ,text= "ui_mcm_body_health_system_header_arms" 			,align= "c"	,clr= {255,190,190,190}	},
+			{id = "arm_opt", type = "check", val = 1, def = true},
+			{id = "arm_pen_min_hp", type = "track", val = 2, min=2,max=100,step=2, def = 100},
+			{id = "arm_anm_pwr", type = "track", val = 2, min=0.1,max=2,step=0.1, def = 1},
+
+			{id="divider", type="line" },
+			{ id= "title"				   ,type= "desc"	 ,text= "ui_mcm_body_health_system_header_legs" 			,align= "c"	,clr= {255,190,190,190}	},
+			{id = "leg_opt", type = "check", val = 1, def = true},
+			{id = "leg_pen_min_hp", type = "track", val = 2, min=2,max=100,step=2, def = 100},
+			{id = "leg_anm_pwr", type = "track", val = 2, min=0.1,max=2,step=0.1, def = 1},
+			{id = "leg_dmg_min_hp", type = "track", val = 2, min=2,max=100,step=2, def = 60},
+			{id = "new_voice_sounds", type = "check", val = 1, def = false},
+
+			{id="divider", type="line" },
+			{ id= "title"				   ,type= "desc"	 ,text= "ui_mcm_body_health_system_header_torso" 			,align= "c"	,clr= {255,190,190,190}	},
+			{id = "torso_opt", type = "check", val = 1, def = true},
+
+			{id="divider", type="line" },
+			{ id= "title"				   ,type= "desc"	 ,text= "ui_mcm_body_health_system_header_head" 			,align= "c"	,clr= {255,190,190,190}	},
+			{id = "head_opt", type = "check", val = 1, def = true},
+			{id = "head_pen_min_hp", type = "track", val = 2, min=1,max=10,step=1, def = 2},
+			{id = "head_anm_pwr", type = "track", val = 2, min=0.1,max=2,step=0.1, def = 0.5},
+		}
+	}
+
+	return op
+end

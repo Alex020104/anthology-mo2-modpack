@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+    <string id="ui_mcm_menu_passive_income">
+		<text>Пассивный доход</text>
+	</string>
+	<string id="ui_mcm_passinc_title">
+		<text>Настройки "Пассивного дохода в Зоне"</text>
+	</string>
+	
+	<string id="ui_mcm_passive_income_salary_mult">
+		<text>Множитель заработной платы</text>
+	</string>
+	<string id="ui_mcm_passive_income_salary_mult_desc">
+		<text>Используйте этот ползунок для изменения множителя зарплаты, чтобы подстроить балансировку под свои предпочтения.</text>
+	</string>
+	
+	<string id="ui_mcm_passive_income_max_money_mult">
+		<text>Максимальный ежедневный множитель денег</text>
+	</string>
+	<string id="ui_mcm_passive_income_max_money_mult_desc">
+		<text>С помощью этого ползунка вы можете изменить коэффициент умножения количества денег, которые вы можете получать каждый день из своей зарплаты.</text>
+	</string>
+
+	<string id="ui_mcm_passive_income_progress_mult">
+		<text>Множитель хода выполнения контракта</text>
+	</string>
+	<string id="ui_mcm_passive_income_progress_mult_desc">
+		<text>Используйте этот ползунок, чтобы контролировать скорость продвижения по контракту, получая повышения быстрее и с меньшими усилиями.</text>
+	</string>
+
+	<string id="ui_mcm_passive_income_give_promo_prizes">
+		<text>Поощрительные призы</text>
+	</string>
+	<string id="ui_mcm_passive_income_give_promo_prizes_desc">
+		<text>Получите бонусный предмет (например, оружие, экипировку или устройства), получив повышение. У каждой фракции есть свой список предметов, которые становятся все лучше, чем выше достигнуто повышение.</text>
+	</string>
+	
+	<string id="ui_mcm_passive_income_debug_mode">
+		<text>Режим отладки</text>
+	</string>
+	
+	<string id="ui_mcm_passive_income_paytime_start">
+		<text>Время оплаты</text>
+	</string>
+	<string id="ui_mcm_passive_income_paytime_start_desc">
+		<text>Укажите время суток, в которое вы хотите получать оплату (формат 24 часа) [По умолчанию: 10]</text>
+	</string>
+	
+	<string id="ui_mcm_passive_income_max_lazy_days">
+		<text>Больничные листы (Отпуск по болезни)</text>
+	</string>
+	<string id="ui_mcm_passive_income_max_lazy_days_desc">
+		<text>Количество доступных больничных листов (отпусков по болезни) [ui_mcm_Passive_income_max_lazy_days] [По умолчанию: 3]</text>
+	</string>	
+
+</string_table>

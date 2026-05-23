@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="st_spleen_wastelander">
+        <text>Here for a suit modification? Very well - I need a few things.</text>
+    </string>
+
+    <string id="st_beard_artygear">
+        <text>Hello, stalker. </text>
+    </string>
+</string_table>

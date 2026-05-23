@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="windows-1251" standalone="yes" ?>
+
+
+<string_table>
+	<string id="passinc_task_title">
+		<text>Empleo activo</text>
+	</string>
+
+	<string id="passinc_task_descr">
+		<text>Est&#225;s empleado.</text>
+	</string>
+
+	<string id="passinc_employer_community_ecolog">
+		<text>Ecologistas</text>
+	</string>
+	<string id="passinc_employer_community_isg">
+		<text>UNISG</text>
+	</string>
+	<string id="passinc_employer_community_army">
+		<text>Ej&#233;rcito</text>
+	</string>
+	<string id="passinc_employer_community_dolg">
+		<text>Deber</text>
+	</string>
+	<string id="passinc_employer_community_killer">
+		<text>Mercenarios</text>
+	</string>
+	<string id="passinc_employer_community_freedom">
+		<text>Libertad</text>
+	</string>
+
+    <string id="passinc_employer_name">
+        <text>Tienes un contrato con %s</text>
+    </string>
+
+	<string id="passinc_descr_middle">
+		<text>\nGanar&#225;s cada d&#237;a:</text>
+	</string>
+
+	<string id="passinc_descr_base">
+		<text>\nUn salario base de %s.</text>
+	</string>
+
+	<string id="passinc_descr_complete_task">
+		<text>\n%s por cada tarea completada.</text>
+	</string>
+
+	<string id="passinc_descr_monster_killed">
+		<text>\n%s por cada mutante eliminado.</text>
+	</string>
+
+	<string id="passinc_descr_npc_killed">
+		<text>\n%s por cada enemigo de nuestra facci&#243;n eliminado.</text>
+	</string>
+
+	<string id="passinc_descr_employment_stage">
+		<text>\nEtapa de empleo:</text>
+	</string>
+
+    <string id="passinc_unorg_descr_employment_stage">
+        <text>\nConfianza del empleador:</text>
+    </string>
+    
+    <string id="passinc_unorg_descr_middle">
+        <text>\nCompleta almenos %s trabajos por dia para mantener el contrato activo.</text>
+    </string>
+
+    <string id="passinc_unorg_complete_task">
+        <text>\nHoy completaste %s trabajos por %s</text>
+    </string>
+    
+    <string id="passinc_unorg_descr_bonus">
+        <text>\nBonus de paquetes cada %s trabajos cumplidos.</text>
+    </string>
+
+    <string id="passinc_task_title_fallback">
+        <text>Salario activo</text>
+    </string>
+
+    <string id="passinc_task_title_functor">
+        <text>Salario activo (%s)</text>
+    </string>
+
+</string_table>
