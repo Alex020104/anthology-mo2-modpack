@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.24.1",
+  "version": "2026.05.24.2",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Initial launcher ZIP updater version."
+  "notes": "Fix Interactive PDA raid updater crash when PDA GUI is unavailable."
 }
