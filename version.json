@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.24.3",
+  "version": "2026.05.24.4",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Mark R.A.K 3DSS weapon scopes addons_table as an override to prevent duplicate-section startup crashes."
+  "notes": "Use correct DLTX override syntax for R.A.K 3DSS addons_table."
 }
