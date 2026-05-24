@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.24.2",
+  "version": "2026.05.24.3",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Fix Interactive PDA raid updater crash when PDA GUI is unavailable."
+  "notes": "Mark R.A.K 3DSS weapon scopes addons_table as an override to prevent duplicate-section startup crashes."
 }
