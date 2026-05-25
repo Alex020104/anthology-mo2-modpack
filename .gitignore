@@ -8,6 +8,9 @@
 !.gitignore
 !.gitattributes
 
+# Managed manually outside the launcher update archive.
+*R.A.K Weapon Pack Adaptation Global A.N.T.H.O.L.O.G.Y*/**
+
 # Never track MO2/runtime/generated or large assets.
 *.mohidden
 meta.ini
