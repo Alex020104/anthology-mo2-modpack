@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.25.7",
+  "version": "2026.05.25.8",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Remove release test marker from the modpack update archive."
+  "notes": "Removed obsolete mutant config overrides."
 }
