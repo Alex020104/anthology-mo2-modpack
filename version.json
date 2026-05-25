@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.24.4",
+  "version": "2026.05.25.1",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Use correct DLTX override syntax for R.A.K 3DSS addons_table."
+  "notes": "Release pipeline test: marker file for launcher update verification."
 }
