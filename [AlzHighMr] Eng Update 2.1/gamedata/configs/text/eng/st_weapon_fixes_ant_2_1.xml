@@ -2,17 +2,6 @@
 <string_table>
 
 
-<string id="st_addon_sil_agram2000">
-    <text>Agram2000 suppressor</text>
-</string>
-
-<string id="st_addon_sil_agram2000_descr">
-    <text>A compact suppressor designed for modern pistols and carbines. It reduces muzzle flash and sound signature while keeping handling changes minimal.\n \n
-In the Zone, it is valued for its balance between size and efficiency. It won’t make a weapon silent, but it’s enough to keep a stalker hidden during close-range encounters or stealth movement.\n \n
-A practical choice for those who rely on staying unnoticed.</text>
-</string>
-
-
 <string id="st_addon_scope_zf39">
     <text>ZF39 scope</text>
 </string>
@@ -262,8 +251,7 @@ Its compact size and adaptability make it effective both in close-quarters comba
 </text>
 </string>
 
-<?xml version="1.0" encoding="windows-1251"?>
-<string_table>
+
 	<string id="st_wpn_amb17">
 		<text>AM-17</text>
 	</string>
@@ -277,7 +265,7 @@ Its compact design, ambidextrous controls, and adjustable folding stock make it 
 %c[d_cyan] • %c[pda_white] Manufacturer: %c[ui_gray_2]Kalashnikov\n
 		</text>
 	</string>
-</string_table>
+
 
 
 <string id="st_wpn_pk">
