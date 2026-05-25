@@ -1,5 +1,20 @@
 {
-  "version": "2026.05.25.8",
+  "version": "2026.05.25.9",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Removed obsolete mutant config overrides."
+  "notes": "Fix mon_sleep Busy Hands crash by avoiding NPC torch attachable calls.",
+  "removed_files": [
+    "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_cat.ltx",
+    "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_dog.ltx",
+    "[GAM] Bullet Time вЂ” Р—Р°РјРµРґР»РµРЅРёРµ РІСЂРµРјРµРЅРё/gamedata/configs/anthology_release_batch_test_01.ltx",
+    "[GAM] Bullet Time вЂ” Р—Р°РјРµРґР»РµРЅРёРµ РІСЂРµРјРµРЅРё/gamedata/configs/anthology_release_batch_test_02.ltx",
+    "[GAM] Bullet Time вЂ” Р—Р°РјРµРґР»РµРЅРёРµ РІСЂРµРјРµРЅРё/gamedata/configs/anthology_release_batch_test_03.ltx",
+    "[GAM] Bullet Time вЂ” Р—Р°РјРµРґР»РµРЅРёРµ РІСЂРµРјРµРЅРё/gamedata/configs/anthology_release_batch_test_04.ltx",
+    "[GAM] Bullet Time вЂ” Р—Р°РјРµРґР»РµРЅРёРµ РІСЂРµРјРµРЅРё/gamedata/configs/anthology_release_batch_test_05.ltx",
+    "[GAM] Bullet Time вЂ” Р—Р°РјРµРґР»РµРЅРёРµ РІСЂРµРјРµРЅРё/gamedata/configs/anthology_release_batch_test_06.ltx",
+    "[GAM] Bullet Time вЂ” Р—Р°РјРµРґР»РµРЅРёРµ РІСЂРµРјРµРЅРё/gamedata/configs/anthology_release_batch_test_07.ltx",
+    "[GAM] Bullet Time вЂ” Р—Р°РјРµРґР»РµРЅРёРµ РІСЂРµРјРµРЅРё/gamedata/configs/anthology_release_batch_test_08.ltx",
+    "[GAM] Bullet Time вЂ” Р—Р°РјРµРґР»РµРЅРёРµ РІСЂРµРјРµРЅРё/gamedata/configs/anthology_release_batch_test_09.ltx",
+    "[GAM] Bullet Time вЂ” Р—Р°РјРµРґР»РµРЅРёРµ РІСЂРµРјРµРЅРё/gamedata/configs/anthology_release_batch_test_10.ltx",
+    "[GAM] Bullet Time вЂ” Р—Р°РјРµРґР»РµРЅРёРµ РІСЂРµРјРµРЅРё/gamedata/configs/anthology_release_test_marker.ltx"
+  ]
 }

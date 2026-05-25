@@ -1049,11 +1049,6 @@ function action_sleep:execute()
 	end
 
 	if self.sleep then
-		local torch = npc:object("device_torch")
-		if torch and torch:attachable_item_enabled() then
-			pcall(torch.enable_attachable_item, torch, false)
-		end
-
 		local sleep_state = self.st.sit and "sleep_sit" or "sleep"
 		if state_mgr.get_state(npc) ~= sleep_state then
 			state_mgr.set_state(npc, sleep_state, nil, nil, {look_position = self.look_pos}, {animation = true})
