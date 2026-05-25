@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.25.3",
+  "version": "2026.05.25.4",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Release pipeline stress test: 10 tracked marker files."
+  "notes": "Release pipeline deletion test: remove 10 tracked marker files."
 }
