@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.25.5",
+  "version": "2026.05.25.6",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Stop tracking local R.A.K weapon pack folders; they are preserved and updated manually."
+  "notes": "Remove release test marker files from the modpack update archive."
 }
