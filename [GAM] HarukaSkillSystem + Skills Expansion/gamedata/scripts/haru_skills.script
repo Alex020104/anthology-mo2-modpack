@@ -150,11 +150,16 @@ function death_manager.create_release_item(npc)
 end
 
 function scavanger_effect(npc)
-    local rank = ranks.get_obj_rank_name(npc)
+    if not npc then return end
+    local ok_id, npc_id = pcall(function() return npc:id() end)
+    if not ok_id or not npc_id then return end
+    local ok_rank, rank = pcall(ranks.get_obj_rank_name, npc)
+    if not ok_rank or not rank then return end
     local inventory = ui_inventory.GUI
     local to_release = {}
-    if inventory and inventory.mode == "loot" and inventory.npc_id == npc:id() then
-        print_dbg("Actor is looting [%s]", npc:section())
+    if inventory and inventory.mode == "loot" and inventory.npc_id == npc_id then
+        local ok_section, section = pcall(function() return npc:section() end)
+        print_dbg("Actor is looting [%s]", ok_section and section or "unknown")
         increase_skill("scavenging", rank_table[rank] or 25)
     end
     local scavenging_skill = skills_stats["scavenging"].scavenging_skill
@@ -176,7 +181,10 @@ function scavanger_effect(npc)
             to_release[#to_release + 1] = item:id()
         end
     end 
-    npc:iterate_inventory(itr, npc)
+    local ok_inventory = pcall(function()
+        npc:iterate_inventory(itr, npc)
+    end)
+    if not ok_inventory then return end
     for i = 1, #to_release do
         local se_obj = alife_object(to_release[i])
         if se_obj then
