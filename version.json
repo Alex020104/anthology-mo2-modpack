@@ -1,5 +1,5 @@
 {
-  "version": "2026.05.25.1",
+  "version": "2026.05.25.2",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Release pipeline test: marker file for launcher update verification."
+  "notes": "Release pipeline test: tracked marker file for launcher update verification."
 }
