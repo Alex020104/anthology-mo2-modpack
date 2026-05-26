@@ -1,9 +1,6 @@
 <w>
 	<background x="0" y="0" width="1024" height="768">
 #include "ui\ui_mm_main_background_16.xml"
-		<auto_static x="0" y="730" width="1024" height="52" stretch="1">
-			<texture>ui\anthology\niz</texture> 
-		</auto_static>
 	</background>
 	
 	<shniaga_wnd x="382" y="300" width="260" height="330">
@@ -99,12 +96,12 @@
 	</menu_sound>
 	
 	
-	<static_version x="11.25" y="10">
-		<text complex_mode="0" r="0" g="0" b="0" align="l" font="arial_14"/>
+	<static_version x="18" y="14" width="520" height="24">
+		<text complex_mode="0" r="120" g="216" b="199" align="l" vert_align="c" font="letterica16"/>
 	</static_version>
 	
-	<static_disclaimer x="15" y="745" width="1000" height="100">
-		<text align="c" font="arial_14" r="0" g="0" b="0" complex_mode="1"/>
+	<static_disclaimer x="32" y="715" width="960" height="48">
+		<text align="c" vert_align="c" font="letterica16" r="139" g="238" b="219" complex_mode="1"/>
 	</static_disclaimer>
 
 	<msg_wnd x="0" y="0" width="210" height="100">
