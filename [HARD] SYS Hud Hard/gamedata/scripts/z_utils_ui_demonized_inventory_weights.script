@@ -1,0 +1,81 @@
+if (not utils_ui_demonized_inventory_weights) then
+	printf("original script not found, patch not activated")
+	return nil
+end
+
+local align_t			= ui_inventory.align_t
+local color_settings	= ui_inventory.color_settings
+
+utils_ui.UICellItem.Add_Weight = function(self, obj, sec)
+	
+	-- Hide counter
+	if self.weight then
+		self.weight:Show(false)
+	end
+	
+	if (not obj) or (not color_settings.use_inv_weights) then
+		return
+	end
+	sec = sec or obj:section()
+	local weight = obj:weight()
+	local pos = self.weight:GetWndPos()
+	
+	if self:HasChild() then
+		
+		-- Add weight of stacked items
+		for id,_ in pairs(self.childs) do
+			local child_obj = level.object_by_id(id)
+			if child_obj then
+				weight = weight + child_obj:weight()
+			end
+		end
+		
+		-- Move to below item count
+		pos.y = 9
+	else
+		-- If ammo or artefact or container - move it below always
+		if IsItem("ammo",sec)
+		or IsItem("artefact",sec)
+		or string.find(sec,"(lead.-_box)",3)
+		or string.find(sec,"(af.-_iam)",3)
+		or string.find(sec,"(af.-_aac)",3)
+		or string.find(sec,"(af.-_aam)",3)
+		then
+			pos.y = 9
+		else
+			-- Move to top
+			pos.y = -1
+		end
+	end
+	self.weight:SetWndPos(vector2():set( pos.x , pos.y ))
+	self:Set_Weight_Text(round_100(weight))
+	self.weight:Show(true)
+end
+
+local function on_key_press(key)
+	local gui = ui_inventory.GUI
+	if gui and gui:IsShown() then
+		if (key == color_settings.inv_weights_key) then
+			color_settings.use_inv_weights = not color_settings.use_inv_weights
+			if ui_mcm then
+				ui_mcm.set( efp_ui_mcm.mcm_id .. "/main_settings/use_inv_weights", color_settings.use_inv_weights )
+			end
+			-- gui:UpdateInfo(true) -- too many unnecessary updates
+			gui:UpdateItems()
+			gui:UpdateSlots()
+			gui:UpdateBelt()
+			-- change slot labels alignment
+			if color_settings.use_inv_labels then
+				local align = color_settings.use_inv_weights and align_t["r"] or align_t["l"]
+				local equ_cells = gui.CC["actor_equ"].cell
+				for i=1,13 do
+					equ_cells[i].txt:SetTextAlignment( align )
+				end
+			end
+		end
+	end
+end
+
+function on_game_start()
+	RegisterScriptCallback("on_key_press", on_key_press)
+end

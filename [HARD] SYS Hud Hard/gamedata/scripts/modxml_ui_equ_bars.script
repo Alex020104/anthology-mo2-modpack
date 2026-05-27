@@ -1,0 +1,23 @@
+function on_xml_read()
+	RegisterScriptCallback("on_xml_read", function(xml_file_name, xml_obj)
+		if xml_file_name == [[ui\ui_inventory.xml]]
+		or xml_file_name == [[ui\ui_inventory_16.xml]]
+		or xml_file_name == [[ui\ui_inventory_21.xml]]
+		or xml_file_name == [[ui\actor_menu_equipment.xml]]
+		or xml_file_name == [[ui\actor_menu_equipment_16.xml]]
+		or xml_file_name == [[ui\actor_menu_equipment_21.xml]]
+		then
+			local opt_bars = ui_mcm and ui_mcm.get( efp_ui_mcm.mcm_id .. "/main_settings/use_alt_equ_bars" ) or ui_inventory.color_settings.use_alt_equ_bars
+			local str_bars = ui_inventory.ui_rework_support.str_bars_lst[ opt_bars ]
+			local tex_bar  = "ui_inGame2_inventory_status_bar" .. str_bars
+			
+			for i=1,13 do
+				local res = xml_obj:query("equipment > cont_equ > cell_"..i.." > bar > progress > texture")
+				if res[1] then
+					local el = res[1]
+					xml_obj:setText(el, tex_bar)
+				end
+			end
+		end
+	end)
+end

@@ -1,0 +1,63 @@
+function on_xml_read()
+	RegisterScriptCallback("on_xml_read", function(xml_file_name, xml_obj)
+		if xml_file_name == [[ui\ui_inventory.xml]]
+		or xml_file_name == [[ui\ui_inventory_16.xml]]
+		or xml_file_name == [[ui\ui_inventory_21.xml]]
+		or xml_file_name == [[ui\actor_menu_state_info_htsp.xml]]
+		or xml_file_name == [[ui\actor_menu_state_info_htsp_16.xml]]
+		or xml_file_name == [[ui\actor_menu_state_info_htsp_21.xml]]
+		or xml_file_name == [[ui\actor_menu_state_info_hts_alt.xml]]
+		or xml_file_name == [[ui\actor_menu_state_info_hts_alt_16.xml]]
+		or xml_file_name == [[ui\actor_menu_state_info_hts_alt_21.xml]]
+		or xml_file_name == [[ui\actor_menu_state_info_hts_ext.xml]]
+		or xml_file_name == [[ui\actor_menu_state_info_hts_ext_16.xml]]
+		or xml_file_name == [[ui\actor_menu_state_info_hts_ext_21.xml]]
+		then
+			local opt_bars = ui_mcm and ui_mcm.get( efp_ui_mcm.mcm_id .. "/main_settings/use_alt_stats_bars" ) or ui_inventory.color_settings.use_alt_stats_bars
+			local str_bars = ui_inventory.ui_rework_support.str_bars_lst[ opt_bars ]
+			
+			for name,_ in pairs(ui_inventory.stat_colors) do
+				
+				local bar_type = "_progress"
+				
+				if (name == "health") then
+					if not (xml_file_name == [[ui\actor_menu_state_info_hts_ext.xml]]
+					or		xml_file_name == [[ui\actor_menu_state_info_hts_ext_16.xml]]
+					or		xml_file_name == [[ui\actor_menu_state_info_hts_ext_21.xml]])
+					then
+						bar_type = "_health"
+					end
+				elseif (name == "hunger") or (name == "thirst") or (name == "sleep") then
+					if xml_file_name == [[ui\ui_inventory.xml]]
+					or xml_file_name == [[ui\ui_inventory_16.xml]]
+					or xml_file_name == [[ui\ui_inventory_21.xml]]
+					or xml_file_name == [[ui\actor_menu_state_info_hts_ext.xml]]
+					or xml_file_name == [[ui\actor_menu_state_info_hts_ext_16.xml]]
+					or xml_file_name == [[ui\actor_menu_state_info_hts_ext_21.xml]]
+					then
+						bar_type = "_hts"
+					elseif xml_file_name == [[ui\actor_menu_state_info_htsp.xml]]
+						or xml_file_name == [[ui\actor_menu_state_info_htsp_16.xml]]
+						or xml_file_name == [[ui\actor_menu_state_info_htsp_21.xml]]
+					then
+						bar_type = "_hts_power"
+					end
+				end
+				
+				local tex_bar_bg = string.format( "ui_inGame2_inventory%s_bar%s_bg" , bar_type , str_bars )
+				local tex_bar    = string.format( "ui_inGame2_inventory%s_bar%s"    , bar_type , str_bars )
+				
+				local res = xml_obj:query("equipment > actor_state_info > "..name.."_sensor > state_progress > texture")
+				if res[1] then
+					local el = res[1]
+					xml_obj:setText(el, tex_bar_bg)
+				end
+				local res = xml_obj:query("equipment > actor_state_info > "..name.."_sensor > state_progress > progress > texture")
+				if res[1] then
+					local el = res[1]
+					xml_obj:setText(el, tex_bar)
+				end
+			end
+		end
+	end)
+end

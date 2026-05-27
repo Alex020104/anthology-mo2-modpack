@@ -1,0 +1,63 @@
+if (not faction_trade_ui) then
+	printf("original script not found, patch not activated")
+	return nil
+end
+
+ui_inventory.display_supply_level = true
+local ctrl_faction_lst	= ui_inventory.ui_rework_support.ctrl_faction_lst
+
+local haruka_ctrl_lst = {
+	"haruka_trader_supply_level",
+	"haruka_trader_multiplier"  ,
+	"haruka_player_multiplier"  ,
+}
+
+function ui_inventory.UIInventory:InitHarukaTradeWindow()
+	
+	self.haruka_xml = CScriptXmlInit()
+	self.haruka_xml:ParseFile("ui_haruka_trade_stats.xml")
+	local haruka_xml = self.haruka_xml
+	
+	local ctrl_faction_def = ctrl_faction_lst[1]
+	
+	for _,ctrl_faction in ipairs(ctrl_faction_lst) do
+		
+		if (ctrl_faction ~= ctrl_faction_def) then
+			haruka_xml = CScriptXmlInit()
+			haruka_xml:ParseFile("ui_haruka_trade_stats" .. ctrl_faction .. ".xml")
+		end
+		
+		self[ "haruka_trader_supply_level"	.. ctrl_faction ] = haruka_xml:InitTextWnd( "trader:level"		, self[ "npc_faction_dialog"	.. ctrl_faction ] )
+		self[ "haruka_trader_multiplier"	.. ctrl_faction ] = haruka_xml:InitTextWnd( "trader:multiplier"	, self[ "npc_faction_dialog"	.. ctrl_faction ] )
+		self[ "haruka_player_multiplier"	.. ctrl_faction ] = haruka_xml:InitTextWnd( "player:multiplier"	, self[ "player_faction_dialog"	.. ctrl_faction ] )
+	end
+	
+	for _,haruka_ctrl in ipairs(haruka_ctrl_lst) do
+		self[ haruka_ctrl ] = self[ haruka_ctrl .. ctrl_faction_def ]
+	end
+	
+	self.haruka_init = true
+end
+
+local sota_update_styles = ui_inventory.UIInventory.UpdateStyles
+function ui_inventory.UIInventory:UpdateStyles()
+	
+	sota_update_styles(self)
+	
+	if (not self.haruka_init) then
+		self:InitHarukaTradeWindow()
+	end
+	
+	local use_alt_factions = ui_inventory.color_settings.use_alt_factions
+	local ctrl_faction_crnt = ctrl_faction_lst[ (use_alt_factions == 1) and 1 or 2 ]
+	
+	for _,ctrl_faction in ipairs(ctrl_faction_lst) do
+		
+		if (ctrl_faction == ctrl_faction_crnt) then
+			
+			for _,haruka_ctrl in ipairs(haruka_ctrl_lst) do
+				self[ haruka_ctrl ] = self[ haruka_ctrl .. ctrl_faction ]
+			end
+		end
+	end
+end

@@ -1,0 +1,98 @@
+if Banjaji_CSI_mcm then
+	printf("Banjaji's Crafting System Improvements detected, vanilla recipe window patch disabled")
+	return nil
+end
+
+function item_recipe.UIRecipe:Reset(section)
+	self.section = section
+	
+	local name = ui_item.get_sec_name(section)
+	-- Edited by Sota
+--	self.cap_shadow:SetText( name )
+	self.cap:SetText( name )
+	
+	-- Reset recipes
+	empty_table(self.recipes)
+	self:LoadRecipes()
+	
+	-- Clear scroll
+	local xml = self.xml
+	self.scroll:Clear()
+	empty_table(self.cells)
+	
+	-- Collect valid items
+	local itm_counter = {}
+	db.actor:iterate_inventory( function(temp, item)
+		local sec = item:section()
+		local cnt = IsItem("multiuse",nil,item) and item:get_remaining_uses() or 1
+		itm_counter[sec] = (itm_counter[sec] or 0) + cnt
+	end)
+	-- Edited by Sota
+--	local fnt = GetFontSmall()
+	for i=1,#self.recipes do
+		local _st = xml:InitStatic("recipe:form", nil)
+		self.cells[i] = {}
+		
+		xml:InitFrame("recipe:list:frame_1", _st)
+		xml:InitFrame("recipe:list:frame_2", _st)
+		--xml:InitStatic("recipe:list:light", _st)
+		--xml:InitStatic("recipe:list:arrow", _st)
+		local line = xml:InitStatic("recipe:list:pic_line",_st)
+		-- Edited by Sota
+--		line:InitTexture("ui_itm_line")
+		
+		local j=1
+		while true do
+			if (j ~= 1) and (not self.recipes[i][j-1]) then
+				break
+			end
+			
+			--xml_itm_shadow = xml:InitStatic("recipe:list:itm_" .. tostring(j) .. "_shadow", _st)
+			--xml_itm_shadow:InitTexture("ui_button_light_h")
+			
+			local sec = (j == 1) and self.recipes[i].sec or self.recipes[i][j-1][1]
+			local amount_req = (j == 1) and 1 or self.recipes[i][j-1][2]
+			local multi = 1
+			if IsItem("ammo",sec) then
+				multi = IsItem("ammo",sec)
+			end
+			
+			local txt = ""
+			local clr = GetARGB(255, 255, 255, 255)
+			if (j == 1) then
+				txt = "x" .. (multi * amount_req)
+			else
+				txt = (multi * (itm_counter[sec] or 0)) .. "/" .. (multi * amount_req)
+				
+				-- Edited by Sota
+				if ( (itm_counter[sec] or 0) >= amount_req ) then
+					clr = GetARGB(255, 50, 255, 50)
+				-- added red text color if not enough items
+				else
+					clr = GetARGB(255, 255, 50, 50)
+				end
+			end
+			
+			self.cells[i][j] = utils_ui.UICellItem( {path="container" , xml=xml , grid_size=35 } , { path="recipe:list:itm_" .. tostring(j) , base= _st } )
+			self.cells[i][j].showcase = 2
+			self.cells[i][j].disable_bar = true
+			self.cells[i][j]:Set(sec)
+			
+			-- Edited by Sota - container with text can now be configured via xml file "ui_items_recipe.xml"
+--			self.cells[i][j]:Add_CustomText( txt, 4, nil, clr, fnt)
+			self.cells[i][j].txt = xml:InitTextWnd("recipe:list:itm_" .. tostring(j), _st)
+			self.cells[i][j].txt:SetText(txt)
+			self.cells[i][j].txt:SetTextColor(clr)
+			
+			j = j + 1
+		end
+		
+		self.scroll:AddWindow(_st, true)
+		_st:SetAutoDelete(true)
+	end
+	
+	-- Showing toolkit icon
+	if self.toolkit then
+		self.cells_tool:Set(self.toolkit)
+	end
+end

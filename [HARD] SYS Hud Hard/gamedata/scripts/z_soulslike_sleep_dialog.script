@@ -1,0 +1,36 @@
+if (not soulslike_sleep_dialog) then
+	printf("original script not found, patch not activated")
+	return nil
+end
+
+local _InitControls = soulslike_sleep_dialog._InitControls
+ui_sleep_dialog.UISleep.InitControls = function(self)
+	_InitControls(self)
+	
+	if not soulslike.IsSoulslikeMode() then
+		return
+	end
+	
+	local xml = CScriptXmlInit()
+	xml:ParseFile("soulslike_ui_sleep_dialog.xml")
+	
+	local function move(ctrl, deltaX, deltaY)
+		local pos = ctrl:GetWndPos()
+		ctrl:SetWndPos(vector2():set( pos.x + deltaX ,pos.y + deltaY ))
+	end
+	
+	-- Edited by Sota
+--	move(self.btn_sleep, 52, 0)
+--	move(self.btn_cancel, 52, 0)
+	local ratio = utils_xml.screen_ratio()
+	move(self.btn_sleep, 70.5 * ratio, 0)
+	move(self.btn_cancel, 70.5 * ratio, 0)
+	
+	self.btn_set_spawn = xml:Init3tButton("btn_set_spawn", self.back)
+	self:Register(self.btn_set_spawn, "btn_set_spawn")
+	
+	-- Edited by Sota
+--	if not utils_xml.is_widescreen() then
+--		move(self.btn_set_spawn, 40, 0)
+--	end
+end

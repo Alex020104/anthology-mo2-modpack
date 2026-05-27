@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<!-- Medicine -->
+	<string id="st_player_skills_hint_medicine">
+		<text>Дает кратковременное повышение восстановления здоровья и вывода радиации в зависимости от используемого препарата.\n \nОпыт накапливается, используя медицинские препараты.\n \n</text>
+	</string>
+	<string id="st_skills_stats_restore_boost_positive">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Бонус к восстановлению: %c[d_green]+$stat%</text>
+	</string>
+	<string id="st_skills_stats_restore_boost_negative">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Бонус к восстановлению: %c[d_red]$stat%</text>
+	</string>
+	
+	<!-- Insanity -->
+	<string id="st_player_skills_hint_insanity">
+		<text>Вы теряете рассудок... но при этом получаете повышение пси-регенерации и пси-защиты.\nБонус пси-регенерации удваивается при игре на музыкальном инструменте.\n \nОпыт накапливается, получая пси-урон или играя на инструменте во время боя.\n \n</text>
+	</string>
+	<string id="st_skills_stats_psy_regen_positive">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Пси-регенерация: %c[d_green]$stat% / сек</text>
+	</string>
+	
+	<string id="st_skills_stats_psy_hit_resistance_positive">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Пси-защита: %c[d_green]+$stat%</text>
+	</string>
+	<string id="st_skills_stats_psy_hit_resistance_negative">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Пси-защита: %c[d_red]$stat%</text>
+	</string>
+	
+	<!-- Tinkering -->
+	<string id="st_player_skills_hint_tinkering">
+		<text>Увеличивает шанс не потратить принадлежность для ремонта при починке снаряжения.\n \nОпыт накапливается, ремонтируя снаряжение при помощи ремонтных принадлежностей.\n \n</text>
+	</string>
+	<string id="st_skills_stats_refund_chance_positive">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Шанс не потратить рем. принадлежность: %c[d_green]$stat%</text>
+	</string>
+	
+	<!-- Bartering -->
+	<string id="st_player_skills_hint_bartering">
+		<text>Цены при торговле становятся выгоднее.\n \nОпыт накапливается, покупая или продавая предметы.\n \n</text>
+	</string>
+	<string id="st_skills_stats_discount_positive">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Скидка у торговцев: %c[d_green]$stat%</text>
+	</string>
+	<string id="st_skills_stats_discount_negative">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Скидка у торговцев: %c[d_red]$stat%</text>
+	</string>
+	<string id="st_skills_stats_sell_bonus_positive">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Стоимость продаваемых предметов: %c[d_green]+$stat%</text>
+	</string>
+	<string id="st_skills_stats_sell_bonus_negative">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Стоимость продаваемых предметов: %c[d_red]$stat%</text>
+	</string>
+	
+	<!-- Magloading -->
+	<string id="st_player_skills_hint_magloading">
+		<text>Увеличивает скорость снаряжения и разрядки магазинов.\n \nОпыт накапливается, снаряжая или разряжая магазины.\n(Максимальный уровень ограничен вашей Силой и Выносливостью).\n \n</text>
+	</string>
+	<string id="st_skills_stats_loadspeed_positive">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Скорость снаряжения магазинов: %c[d_green]+$stat%</text>
+	</string>
+	<string id="st_skills_stats_loadspeed_negative">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Скорость снаряжения магазинов: %c[d_red]$stat%</text>
+	</string>
+	
+	<!-- Lockpicking -->
+	<string id="st_player_skills_hint_lockpicking">
+		<text>Снижает сложность взлома замков закрытых контейнеров.\n \nОпыт накапливается, вскрывая контейнеры.\n(Использование Скелетного ключа не дает опыта).\n \n</text>
+	</string>
+	<string id="st_skills_stats_lockpick_diff_reduc_positive">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Сложность взлома замков: %c[d_green]-$stat%</text>
+	</string>
+	<string id="st_skills_stats_lockpick_diff_reduc_negative">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Сложность взлома замков: %c[d_red]$stat%</text>
+	</string>
+	
+	<!-- Reloading -->
+	<string id="st_player_skills_hint_reloading">
+		<text>Увеличивает скорость перезарядки и выхватывания оружия.\n \nОпыт накапливается при обычном использовании оружия.\n(Максимальный уровень ограничен вашей Выносливостью и Выживанием).\n \n</text>
+	</string>
+	<string id="st_skills_stats_reload_speed_positive">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Скорость перезарядки: %c[d_green]+$stat%</text>
+	</string>
+	<string id="st_skills_stats_reload_speed_negative">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Скорость перезарядки: %c[d_red]$stat%</text>
+	</string>
+	
+	<string id="st_skills_stats_equip_speed_positive">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Скорость выхватывания оружия: %c[d_green]+$stat%</text>
+	</string>
+	<string id="st_skills_stats_equip_speed_negative">
+		<text>\n%c[255,138,43,226]•%c[ui_6] Скорость выхватывания оружия: %c[d_red]$stat%</text>
+	</string>
+</string_table>

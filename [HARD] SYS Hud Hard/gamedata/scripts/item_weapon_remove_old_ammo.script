@@ -1,0 +1,90 @@
+local cache_ammo = {}
+
+function item_weapon.UIWheelAmmo:Reset(obj)
+	self.object    = obj
+	self.id        = obj:id()
+	self.section   = obj:section()
+	self.ammo_type = obj:get_ammo_type()
+	self.grenade_mode = obj:weapon_in_grenade_mode() and true or false
+
+	-- Collect weapon's ammo list
+	if (not cache_ammo[self.id]) then
+		cache_ammo[self.id] = utils_item.get_ammo(self.section, self.id)
+		
+		-- Cut anything with more than 12 ammo types
+		if (#cache_ammo[self.id] > self.ammo_max) then
+			for i=self.ammo_max, #cache_ammo[self.id] do
+				cache_ammo[self.id][i] = nil
+			end
+		end
+	end
+	
+--- ====================================================================================================================
+--- Author	: Tosox
+--- Date	: 04.11.2023
+--- ====================================================================================================================
+--- Removes old ammo so the hotkeys for good ammo become 1, 2, 3 instead of 1, 3, 5
+--- ====================================================================================================================
+	for i = 0, #cache_ammo[self.id] do
+		local ammo_sec_name = cache_ammo[self.id][i]
+		if (ammo_sec_name) and (string.find(ammo_sec_name, "_bad") or string.find(ammo_sec_name, "_verybad")) then
+			cache_ammo[self.id][i] = nil
+		end
+	end
+--- ====================================================================================================================
+	
+	self.ammo_list = self.grenade_mode and item_weapon.get_grenades(self.section) or cache_ammo[self.id]
+
+	if not self.ammo_list then
+		printf("ERROR: could not find ammo list for [%s] - grenade mode: %s", self.section, self.grenade_mode)
+		self:Close()
+	end
+	
+	-- Collect all ammo in inventory
+	empty_table(self.ammo_inv)
+	local function itr(temp, itm)
+		local section = itm:section()
+		if IsItem("ammo",section) or IsItem("grenade_ammo",section) then
+			self.ammo_inv[section] = (self.ammo_inv[section] or 0) + itm:ammo_get_count()
+		end
+	end
+	db.actor:iterate_inventory(itr, nil)
+
+	-- Reset XML elements
+	self.extended:Show((#self.ammo_list > 9) and (self.ammo_list[10] ~= "ammo_12x70_buck_self"))
+	--self.box_r:Show(false)
+	
+	local cnt = 0
+	empty_table(self.key)
+	for i=1,self.ammo_max do
+		local section = self.ammo_list[i]
+		local found_verybad = section and string.find(section,"verybad") and true or false
+		if section and (section ~= "ammo_12x70_buck_self") and ( self.show_verybad or ( (not self.show_verybad) and (not found_verybad) ) ) then
+			
+			-- Show box and highlighted ammo
+			local is_curr_ammo = (self.ammo_type == (i - 1))
+			self.box[i]:Show(true)
+			self.box_hl_1[i]:Show(is_curr_ammo)
+			self.box_hl_2[i]:Show(is_curr_ammo)
+			
+			self.avail[i] = self.ammo_inv[section] and (self.ammo_inv[section] > 0) and true or false
+			utils_xml.set_icon(section, (not self.avail[i]), self.box_icon[i], self.box_icon_tmp[i])
+			utils_xml.set_icon(section, nil, self.box_icon_tmp_r, self.box_icon_r[i])
+			
+			cnt = cnt + 1
+			self.key[cnt] = i
+			if self.avail[i] and i <= 9 then
+				self.box_num[i]:SetText(cnt)
+			else
+				self.box_num[i]:SetText("")
+			end
+			
+			-- Show ammo count
+			self.box_txt[i]:SetText("x" .. (self.avail[i] and self.ammo_inv[section] or 0))
+			self.box_txt_r[i]:SetText( ui_item.get_sec_name(section) )
+		else
+			self.avail[i] = false
+			self.box[i]:Show(false)
+		end
+	end
+end

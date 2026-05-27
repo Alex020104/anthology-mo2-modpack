@@ -1,0 +1,55 @@
+if (not barter_ui) then
+	printf("original script not found, patch not activated")
+	return nil
+end
+
+-- reinit barter button in take_all button place
+function barter_ui.ui_inventory.UIInventory:InitBarterButton()
+	local xml_barter = CScriptXmlInit()
+	xml_barter:ParseFile("ui_barter.xml")
+	self.npc_barter_btn = xml_barter:Init3tButton("barter_button", self.npc_dialog)
+	
+	self:Register(self.npc_barter_btn, "barter")
+	self:InitBarterButtonCallback()
+	
+	local npc = mob_trade.GetTalkingNpc()
+	local enable = barter_core.npc_has_barter(npc)
+	self.npc_barter_btn:Enable(enable)
+end
+
+local fnt = ui_inventory.font_t.letterica16
+local clr_g = utils_xml.get_color("d_green", true)
+local clr_r = utils_xml.get_color("d_red", true)
+
+-- change font and alignment of item count text
+local og_barter_init_inventory = barter_ui.UIBarter.InitInventory
+function barter_ui.UIBarter:InitInventory(n)
+	og_barter_init_inventory(self, n)
+	
+	if (n == 1) then
+		-- local fnt = GetFontSmall()
+		for i,ci in pairs(self.CC[n].cell) do
+			if ci:IsShown() then
+				local b = self.barters[ci.indx]
+				if (ci.flags.info ~= "") then
+					local clr = (b.amt < b.limit) and clr_g or clr_r
+--					ci:Add_CustomText(ci.flags.info, nil, nil, clr, fnt)
+					ci:Add_CustomText(ci.flags.info, 0, 0, clr, fnt)
+				end
+			end
+		end
+	elseif (n == 2) then
+		if (not self.selected) then return end
+		local barter_data = self.barters[self.selected]
+		local take = barter_data.take_items
+		-- local fnt = GetFontSmall()
+		for i,ci in pairs(self.CC[n].cell) do
+			if ci:IsShown() then
+				local data = take[ci.indx]
+				local clr = (data.amt < data.limit) and clr_r or clr_g
+--				ci:Add_CustomText(ci.flags.info, nil, nil, clr, fnt)
+				ci:Add_CustomText(ci.flags.info, 0, 0, clr, fnt)
+			end
+		end
+	end
+end

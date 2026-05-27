@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="ui_mm_menu_mcm">
+		<text>MCM Settings</text>
+	</string>
+	<string id="ui_mm_originals">
+		<text>Original Trilogy</text>
+	</string>
+	<string id="ui_mm_disclaimer">
+		<text>S.T.A.L.K.E.R.: Anomaly is a fan-created modification for S.T.A.L.K.E.R. games by GSC Game World.\nS.T.A.L.K.E.R.: Anomaly is not an official product of GSC Game World and is a\nderivative work based on their original S.T.A.L.K.E.R. games.</text>
+	</string>
+</string_table>

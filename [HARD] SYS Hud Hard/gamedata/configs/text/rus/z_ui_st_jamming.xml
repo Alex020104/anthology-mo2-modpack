@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+<!-- Jammin -->
+	<string id="kb_unjam">
+		<text>Устранить клин</text>
+	</string>
+	<string id="ui_st_misfire">
+		<text>Осечка!</text>
+	</string>
+	<string id="ui_st_jam">
+		<text>Заклинило!</text>
+	</string>
+	<string id="ui_st_superjam">
+		<text>Сильно заклинило!</text>
+	</string>
+	<string id="ui_st_nothing">
+		<text>В руках нет оружия</text>
+	</string>
+	<string id="ui_st_unjam">
+		<text>Клин устранён</text>
+	</string>
+	<string id="ui_st_functional">
+		<text>Оружие готово к стрельбе</text>
+	</string>
+	<string id="ui_st_oldjam">
+		<text>Вы используете Anomaly Magazines. Необходимо перезарядить оружие.</text>
+	</string>
+	<string id="ui_st_unjam_fail">
+		<text>Оружие сильно заклинило, перед устранением клина необходимо разрядить оружие.</text>
+	</string>
+	<string id="ui_st_parts_damage">
+		<text>Некторые детали оружия были повреждены.</text>
+	</string>
+	<string id="st_news_parts_alreadygood">
+		<text>Деталь не требует замены.</text>
+	</string>
+	<string id="ui_st_heat1">
+		<text>, но теплое.</text>
+	</string>
+	<string id="ui_st_heat2">
+		<text>, но горячее!</text>
+	</string>
+	<string id="ui_st_heat3">
+		<text>, но очень горячее!</text>
+	</string>
+	<string id="st_unjam">
+		<text>устранить клин</text>
+	</string>
+	
+<!-- Messages -->
+	<string id="st_news_parts_success">
+		<text>%c[d_green]Деталь успешно заменена:</text>
+	</string>
+	<string id="st_news_parts_fail">
+		<text>%c[d_red]Уже установлена деталь в лучшем состоянии.</text>
+	</string>
+	<string id="st_news_parts_incompatible">
+		<text>%c[d_red]Деталь не совместима с этим оружием.</text>
+	</string>
+	<string id="st_news_parts_barrel">
+		<text>%c[d_red]Стволы нельзя менять в полевых условиях.</text>
+	</string>
+	<string id="st_news_parts_rusty">
+		<text>%c[d_red]Оружие слишком ржавое, чтобы разобрать его в полевых условиях.</text>
+	</string>
+	<string id="st_news_dis_items">
+		<text>%c[d_red]Требуется подходящий инструмент для разборки.</text>
+	</string>
+	<string id="st_news_fieldstrip">
+		<text>Извлечённые детали:</text>
+	</string>
+	<string id="st_news_cleaned">
+		<text>Очищенная деталь:</text>
+	</string>
+	
+<!-- MCM -->
+	<string id="ui_mcm_menu_wpo">
+		<text>WPO</text>
+	</string>
+	<string id="ui_mcm_wpo_title">
+		<text>Настройки Weapon Parts Overhaul</text>
+	</string>
+	<string id="ui_mcm_wpo_profanity">
+		<text>Ругательства при заклинивании</text>
+	</string>
+	<string id="ui_mcm_wpo_profanity_desc">
+		<text>Включает ругательства главного героя при заклинивании оружия.</text>
+	</string>
+	<string id="ui_mcm_wpo_profanity_timeout">
+		<text>Отключить частые ругательства</text>
+	</string>
+	<string id="ui_mcm_wpo_profanity_timeout_desc">
+		<text>Добавляет тайм-аут для ругательств, если включено. Используйте, если вы ненавидите веселье.</text>
+	</string>
+	<string id="ui_mcm_wpo_profanity_language">
+		<text>Язык ругательств</text>
+	</string>
+	<string id="ui_mcm_wpo_jamchance">
+		<text>Шанс клина</text>
+	</string>
+	<string id="ui_mcm_wpo_jamchance_desc">
+		<text>Шанс, что ваше оружие снова заклинит.</text>
+	</string>
+	<string id="ui_mcm_wpo_superjam">
+		<text>Включить «супер-клин»</text>
+	</string>
+	<string id="ui_mcm_wpo_superjam_desc">
+		<text>Включает (или отключает) «супер-клин». Для устранения «супер-клина» оружие необходимо полностью разрядить.</text>
+	</string>
+	<string id="ui_mcm_wpo_simplejam">
+		<text>Разряжать оружие при «супер-клине»</text>
+	</string>
+	<string id="ui_mcm_wpo_simplejam_desc">
+		<text>Если включено, то нажатие на клавишу перезарядки (по умолчанию R) автоматически разрядит сильно заклинившее оружие. Больше никакой возни с инвентарем!</text>
+	</string>
+	<string id="ui_mcm_wpo_threshold">
+		<text>Порог состояния для повреждения деталей</text>
+	</string>
+	<string id="ui_mcm_wpo_threshold_desc">
+		<text>Состояние оружия, при котором есть шанс повреждения деталей. Чем ниже значение, тем реже будут повреждаться основные детали оружия.</text>
+	</string>
+	<string id="ui_mcm_wpo_cleancoef">
+		<text>Множитель чистки оружия у техника</text>
+	</string>
+	<string id="ui_mcm_wpo_cleancoef_desc">
+		<text>Настройка множителя стоимости чистки оружия у техника.</text>
+	</string>
+	<string id="ui_mcm_wpo_verbosity">
+		<text>Подробные сообщения о клине</text>
+	</string>
+	<string id="ui_mcm_wpo_verbosity_desc">
+		<text>
+			Подробные HUD сообщения о клине. Существует три варианта:
+			\n• Нет: предупреждение только о заклинивании (иначе будет сбивать с толку).
+			\n• Обычные (рекомендуется): уведомления о заклинивании и успешном устрании клина.
+			\n• Полные: то же, что и Обычные, но вы также будете уведомлены, когда возникнет сильное заклинивание, требующее разрядить оружие, а также когда будут повреждены основные детали оружия.
+		</text>
+	</string>
+	<string id="ui_mcm_wpo_minpart">
+		<text>Состояние деталей для продажи оружия торговцам</text>
+	</string>
+	<string id="ui_mcm_wpo_minpart_desc">
+		<text>Минимальное состояние ВСЕХ деталей оружия для возможности его продажи. Если у оружия есть ЛЮБАЯ деталь ниже этого значения, то оружие нельзя будет продать. Установите значение 0, чтобы отключить.</text>
+	</string>
+	<string id="ui_mcm_wpo_fun">
+		<text>Уровень веселья</text>
+	</string>
+	<string id="ui_mcm_wpo_title">
+		<text>Weapon Parts Overhaul</text>
+	</string>
+	<string id="ui_mcm_lst_eng">
+		<text>Английский</text>
+	</string>
+	<string id="ui_mcm_lst_rus">
+		<text>Русский</text>
+	</string>
+	<string id="ui_mcm_lst_verbosity_none">
+		<text>Нет</text>
+	</string>
+	<string id="ui_mcm_lst_verbosity_normal">
+		<text>Обычные</text>
+	</string>
+	<string id="ui_mcm_lst_verbosity_full">
+		<text>Полные</text>
+	</string>
+	<string id="ui_mcm_lst_no">
+		<text>Долг</text>
+	</string>
+	<string id="ui_mcm_lst_yes">
+		<text>Одиночки</text>
+	</string>
+	<string id="ui_mcm_lst_ofc">
+		<text>Свобода</text>
+	</string>
+	<string id="ui_mcm_wpo_debug">
+		<text>Ведение журнала отладки</text>
+	</string>
+	<string id="ui_mcm_wpo_debug_desc">
+		<text>Ведение журнала отладки позволяет хранить дополнительную информацию в журнале консоли.</text>
+	</string>
+	<string id="ui_mcm_wpo_babymode">
+		<text>Детский режим (без клина)</text>
+	</string>
+	<string id="ui_mcm_wpo_babymode_desc">
+		<text>Полностью отключает заклинивание на основе состояния деталей. Если вам нужно поставить эту галочку, то зачем вообще было устанавливать этот аддон?</text>
+	</string>
+	<string id="ui_mcm_wpo_newdrops">
+		<text>Включить альтернативное выпадение деталей</text>
+	</string>
+	<string id="ui_mcm_wpo_newdrops_desc">
+		<text>Выпадение деталей по новой формуле. Шанс найти хорошие детали ниже и зависит от состояния оружия и еще одного параметра. Усложняет игру при достаточно низком значении этого параметра. Отключите, чтобы использовать старый метод.</text>
+	</string>
+	<string id="ui_mcm_wpo_newdropschance">
+		<text>Шанс найти детали в хорошем состоянии по альтернативной формуле</text>
+	</string>
+	<string id="ui_mcm_wpo_degradation">
+		<text>Деградация оружия во время дождя</text>
+	</string>
+	<string id="ui_mcm_wpo_degradation_desc">
+		<text>Множитель скорости износа оружия в дождливую погоду.</text>
+	</string>
+	<string id="st_field_strip">
+		<text>извлечь детали</text>
+	</string>
+	<string id="st_field_strip_fail">
+		<text>Нет деталей для извлечения.</text>
+	</string>
+	<string id="ui_st_missing">
+		<text>В оружии отсутствуют детали.</text>
+	</string>
+	<string id="article_wpo">
+		<text>Обслуживание оружия WPO</text>
+	</string>
+	<string id="article_wpo_text">
+		<text>
+			%c[pda_green]Вопрос - Ответ
+			\n
+			\n%c[0,255,255,255]В. Почему мое оружие постоянно заклинивает?
+			\n%c[ui_gray_2]О. Скорее всего какие-то детали оружия повреждены. Проверьте состояние деталей и оружия.
+			\n%c[0,255,255,255]В. Как устранить клин?
+			\n%c[ui_gray_2]О. Нажмите два раза на клавишу использования (по умолчанию F). Или нажмите правой кнопкой мыши по оружию в инвентаре, чтобы вызвать команду «устранить клин».
+			\n%c[0,255,255,255]В. Почему ухудшается состояние оружия при замене деталей?
+			\n%c[ui_gray_2]О. Вам нужно заного смазать оружие. При замене деталей состояние оружия не может упасть ниже 60%. Носите с собой мультитул, чтобы уменьшить износ оружия при замене деталей, или используйте верстак для замены деталей без последствий.
+			\n%c[0,255,255,255]В. Почему техники не чинят оружейные детали?
+			\n%c[ui_gray_2]О. Детали необходимо искать или обслуживать. Их можно купить у техника или воспользоваться комплектом для ремонта оружейных деталей. В этом заключается основной смысл WPO.
+			\n
+			\nWeapon Parts Overhaul кардинально меняет то, как работает обслуживание оружия в Anomaly. Внимательно прочитайте это руководство, чтобы все понять.
+			\n \n
+			\n
+			%c[pda_green]I. Детали и обслуживание%c[ui_gray_1]
+			\n
+			\n• Общее состояние вашего оружия (шкала состояния, к которой вы обычно привыкли) теперь легче поддерживать. Механик восстановит её на 60% дешевле. Все предметы для ремонта оружия стали намного полезнее.
+			\n• Детали оружия требуют обслуживания. При наведении курсора мыши на оружие вы сразу можете увидеть состояние деталей.
+			\n• Цвет текста указывает на состояние:\n
+			%c[d_red]• отсутствует\n
+			%c[d_orange]• повреждено и не подлежит чистке\n
+			%c[pda_yellow]• загрязнено, но можно очистить%c[ui_gray_1]
+			\n• Детали оружия можно извлечь в полевых условиях. При этом демонтируется любой компонент, кроме ствола.
+			\n• Детали оружия также можно заменять перетаскиванием. %c[d_red]ОБРАТИТЕ ВНИМАНИЕ, ЧТО ЭТО УХУДШАЕТ СОСТОЯНИЕ ОРУЖИЯ, НО НЕ НИЖЕ 60%. Имейте при себе мультитул, чтобы уменьшить износ оружия при замене деталей.%c[ui_gray_1]
+			\n• Детали оружия также можно заменять на верстаке без последствий, если имеется подходящий ремонтный комплект. %c[pda_yellow]Это один из двух способов замены стволов.
+			\n \n
+			\n
+			%c[pda_green]II. Заклинивание и повреждение деталей%c[ui_gray_1]
+			\n
+			\n• Детали имеют пять уровней повреждений:\n
+			%c[d_red]• сломано\n
+			%c[d_red]• повреждено\n
+			%c[d_orange]• изношено\n
+			%c[0,250,250,0]• загрязнено\n
+			%c[d_green]• обслужено%c[ui_gray_1]
+			\n• Чем сильнее повреждены детали, тем выше шанс возникновения неисправности.
+			\n• Существует три типа неисправности: осечка, заклинивание и сильное заклинивание.
+			\n• Осечка и клин могут быть исправлены простым устранением клина.
+			\n• При сильном заклинивании необходимо разрядить оружие перед устранением клина.
+			\n• Состояние ствола не влияет на вероятность клина. Однако грязные или изношенные стволы снижают урон оружия до 50% и ниже.
+			\n• При стрельбе из оружия с состоянием ниже 85% (по умолчанию, можно изменить в %c[pda_yellow]MCM -> WPO -> Порог состояния для повреждения деталей%c[ui_gray_1]) есть шанс повредить детали оружия.
+			\n• Стрельба из оружия во время сильного дождя приводит к более быстрому износу оружия.
+			\n• Стрельба из оружия длинными очередями вызывает перегрев, что приводит к заклиниванию и более быстрому износу оружия.
+			\n \n
+			\n
+			%c[pda_green]III. Изменения экономики%c[ui_gray_1]
+			\n
+			\n• Наличие набора для чистки позволяет очистить «грязные» детали оружия (только с состоянием выше 60%). Это также восстанавливает 10% состояния оружия.
+			\n• Наличие ремкомплекта позволяет заменять детали через контекстное меню. При этом расходуется одно использование ремкомплекта и восстанавливается 10% состояния оружия. %c[pda_yellow]Это второй способ замены стволов.%c[ui_gray_1]
+			\n• Техники будут продавать случайные детали оружия с серьезной наценкой.
+			\n• Детали оружия с состоянием выше 60% можно отремонтировать с помощью напильников, шомполов или мультитулов.
+			\n• Детали оружия с состоянием выше 10% можно отремонтировать с помощью очень дорогого набора инструментов, доступного у торговцев.
+			\n
+			\nПо всем остальным вопросам обращайтесь в Discord (arti#3278). Мне слишком лень читать комментарии на ModDB.
+		</text>
+	</string>
+	<string id="st_partskit">
+		<text>Комплект для ремонта оружейных деталей</text>
+	</string>
+	<string id="st_partskit_descr">
+		<text>
+			Высокотехнологичный набор инструментов, включающий в себя надфили, эпоксидную смолу для холодной сварки металла, установка электролизной ванны, а также тонны смазочных материалов, бензина, дистиллятов и других растворителей. Эти инструменты могут превратить двигатель Лады в Ferrari, не говоря уже о том, что они могут сделать с деталями оружия. Только самые разбитые куски металлолома не удастся восстановить с помощью этого набора. Этот комплект чрезвычайно сложно собрать в Зоне, поэтому техники продают его в очень небольших количествах.\n \n
+			%c[0,255,255,255]ОСОБЕННОСТИ:\n
+			%c[d_cyan] • %c[ui_gray_2] ремкомплект\n
+			%c[d_orange] • %c[ui_gray_2] позволяет восстанавливать детали оружия с состоянием выше 10%\n
+		</text>
+	</string>
+	
+<!-- Info -->
+	<string id="st_dot">
+		<text>•</text>
+	</string>
+	<string id="st_damage_missing">
+		<text>[отсутствует]</text>
+	</string>
+	<string id="st_damage_0">
+		<text>[сломано]</text>
+	</string>
+	<string id="st_damage_1">
+		<text>[повреждено]</text>
+	</string>
+	<string id="st_damage_2">
+		<text>[изношено]</text>
+	</string>
+	<string id="st_damage_3">
+		<text>[загрязнено]</text>
+	</string>
+	<string id="st_damage_4">
+		<text>[обслужено]</text>
+	</string>
+	<string id="st_damage_5">
+		<text>[обслужено]</text>
+	</string>
+	<string id="st_wpo_replace_parts">
+		<text>обслужить</text>
+	</string>
+	<string id="st_wpo_replace">
+		<text>заменить</text>
+	</string>
+	<string id="st_wpo_clean">
+		<text>очистить</text>
+	</string>
+	<string id="st_wpo_remove">
+		<text>извлечь</text>
+	</string>
+	<string id="st_name_trigger">
+		<text>УСМ</text>
+	</string>
+	<string id="st_name_spring">
+		<text>возвратная пружина</text>
+	</string>
+	<string id="st_name_barrel">
+		<text>ствол</text>
+	</string>
+	<string id="st_name_bolt_carrier">
+		<text>затворная рама</text>
+	</string>
+	<string id="st_name_bolt">
+		<text>затвор</text>
+	</string>
+	<string id="st_name_gas_tube">
+		<text>газовая система</text>
+	</string>
+	<string id="st_name_extractor">
+		<text>экстрактор</text>
+	</string>
+	<string id="st_name_ejector">
+		<text>эжектор</text>
+	</string>
+	<string id="st_name_pump">
+		<text>помповый механизм</text>
+	</string>
+	<string id="st_name_hammers">
+		<text>курки</text>
+	</string>
+	<string id="st_name_chock">
+		<text>колодка</text>
+	</string>
+	<string id="st_name_all">
+		<text>всё</text>
+	</string>
+	<string id="st_name_issues">
+		<text>СОСТОЯНИЕ:</text>
+	</string>
+	
+</string_table>

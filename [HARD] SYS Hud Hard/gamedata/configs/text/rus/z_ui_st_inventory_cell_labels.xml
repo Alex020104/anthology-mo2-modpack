@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="st_equ_knife_cell">
+		<text>MELEE</text><!-- ХОЛОДНОЕ -->
+	</string>
+	<string id="st_equ_pistol_cell">
+		<text>SECONDARY</text><!-- ВТОРИЧНОЕ -->
+	</string>
+	<string id="st_equ_automatic_cell">
+		<text>PRIMARY</text><!-- ОСНОВНОЕ -->
+	</string>
+	<string id="st_equ_grenade_cell">
+		<text>G4</text><!-- Г4 -->
+	</string>
+	<string id="st_equ_binocular_cell">
+		<text>VISION</text><!-- БИНОКЛЬ -->
+	</string>
+	<string id="st_equ_bolt_cell">
+		<text>B6</text><!-- Б6 -->
+	</string>
+	<string id="st_equ_outfit_cell">
+		<text>BODY</text><!-- КОСТЮМ -->
+	</string>
+	<string id="st_equ_pda_cell">
+		<text>PDA</text><!-- ПДА -->
+	</string>
+	<string id="st_equ_detector_cell">
+		<text>DETECTOR</text><!-- ДЕТЕКТОР -->
+	</string>
+	<string id="st_equ_torch_cell">
+		<text>HEAD GEAR</text><!-- УСТРОЙСТВО -->
+	</string>
+	<string id="st_equ_helmet_cell">
+		<text>HEAD</text><!-- ШЛЕМ -->
+	</string>
+	<string id="st_equ_backpack_cell">
+		<text>BACK</text><!-- РЮКЗАК -->
+	</string>
+	
+</string_table>

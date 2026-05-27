@@ -1,0 +1,62 @@
+function on_xml_read()
+	if not ui_mcm then
+		return
+	end
+	
+	RegisterScriptCallback("on_xml_read", function(xml_file_name, xml_obj)
+		if xml_file_name == [[ui\ui_mm_main.xml]]
+		or xml_file_name == [[ui\ui_mm_main_16.xml]]
+		or xml_file_name == [[ui\ui_mm_main_21.xml]]
+		then
+			if is_not_empty(xml_obj:query("menu_main btn[name=btn_mcm]")) then
+				return
+			end
+			
+			local ratio = utils_xml.screen_ratio()
+			local mcm_logo = 
+				[[
+				<auto_static x="]] .. 1024-(15+(64+5)*3)*ratio .. [[" y="689" width="]] .. 64*ratio .. [[" height="64" stretch="1">
+					<texture>LogoAMCM.dds</texture>
+				</auto_static>
+				]]
+			local mcm_menu = [[<btn name="btn_mcm" caption="ui_mm_menu_mcm"/>]]
+			
+			local res = xml_obj:query("background")
+			if res[1] then
+				local el = res[1]
+				xml_obj:insertFromXMLString(mcm_logo, el, #el.kids)
+			end
+			local res = xml_obj:query("menu_main")
+			if res[1] then
+				local el = res[1]
+				xml_obj:insertFromXMLString(mcm_menu, el, #el.kids-1)
+			end
+			local res = xml_obj:query("menu_main_logout")
+			if res[1] then
+				local el = res[1]
+				xml_obj:insertFromXMLString(mcm_menu, el, #el.kids)
+			end
+			local res = xml_obj:query("menu_main_last_save")
+			if res[1] then
+				local el = res[1]
+				xml_obj:insertFromXMLString(mcm_menu, el, #el.kids)
+			end
+			local res = xml_obj:query("menu_main_single")
+			if res[1] then
+				local el = res[1]
+				xml_obj:insertFromXMLString(mcm_menu, el, #el.kids-1)
+			end
+			local res = xml_obj:query("menu_main_single_dead")
+			if res[1] then
+				local el = res[1]
+				xml_obj:insertFromXMLString(mcm_menu, el, #el.kids-1)
+			end
+			local res = xml_obj:query("menu_main_mm")
+			if res[1] then
+				local el = res[1]
+				xml_obj:insertFromXMLString(mcm_menu, el, #el.kids-1)
+			end
+			
+		end
+	end)
+end

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="st_money_low">
+		<text>Небольшая пачка рублей</text>
+	</string>
+	<string id="st_money_low_desc">
+		<text>Пачка мелких купюр, вероятно, взятых из кассы какого-то продуктового магазина.\n</text>
+	</string>
+	
+	<string id="st_money_med">
+		<text>Пачка рублей</text>
+	</string>
+	<string id="st_money_med_desc">
+		<text>Средняя пачка рублей с умеренной или высокой денежной суммой. Купюры все еще хрустящие.\n</text>
+	</string>
+	
+	<string id="st_money_high">
+		<text>Большая пачка рублей</text>
+	</string>
+	<string id="st_money_high_desc">
+		<text>Большая пачка рублей, стоит немало. Кто-то ограбил банк?\n</text>
+	</string>
+	
+	<string id="st_money_fat">
+		<text>Толстая пачка рублей</text>
+	</string>
+	<string id="st_money_fat_desc">
+		<text>Толстая пачка денег. Этого достаточно, чтобы стать чьей-то мишенью.\n</text>
+	</string>
+	
+	<string id="st_money_card_low">
+		<text>Дебетовая карта</text>
+	</string>
+	<string id="st_money_card_low_desc">
+		<text>Украденная банковская карта у какого-то бедного сталкера. Иногда крупные покупки совершаются электронным способом в Зоне по соображениям безопасности. Это обычная карточка, на счете вряд ли будет много денег.\n</text>
+	</string>
+	
+	<string id="st_money_card_med">
+		<text>Кредитная карта</text>
+	</string>
+	<string id="st_money_card_med_desc">
+		<text>Кредитная карта от международной кредитной компании. Несмотря на то, что такие карты имеют приличную защиту от мошенничества, можно совершить небольшую хитрую операцию, чтобы снять с карты немного денег, прежде чем владелец об этом узнает.</text>
+	</string>
+	
+	<string id="st_money_card_high">
+		<text>Представительская карта</text>
+	</string>
+	<string id="st_money_card_high_desc">
+		<text>Довольно причудливая западная карточка. Как и в случае с другими кредитками, такие карты имеют сложную защиту от мошенничества, однако их владельцы часто совершают бессмысленные покупки, поэтому будет довольно легко уйти с большой суммой денег. Во всяком случае, они не будут возражать — лучше обеспечить свое выживание, чем если бы эти деньги были потрачены на еще одну бутылку шампанского или эскорт.</text>
+	</string>
+	
+	<string id="st_use_money1">
+		<text>пересчитать</text>
+	</string>
+	<string id="st_use_money2">
+		<text>пересчитать</text>
+	</string>
+	<string id="st_use_money3">
+		<text>пересчитать</text>
+	</string>
+	<string id="st_use_money4">
+		<text>пересчитать</text>
+	</string>
+	<string id="st_use_money_card">
+		<text>обналичить</text>
+	</string>
+</string_table>

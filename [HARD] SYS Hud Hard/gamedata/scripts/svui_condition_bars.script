@@ -1,0 +1,48 @@
+XML_bars = CScriptXmlInit()
+XML_bars:ParseFile("ui_condition_bars.xml")
+
+local bar_list = {
+	["condition_progess_bar"]	= { min= {255,196,18,18,0}, mid= {255,255,255,118,0.5}, max= {255,107,207,119,1}, background= true},
+	["power_progess_bar"]		= { def= GetARGB(255,86,196,209), background= true },
+	["uses_progess_bar"]		= { def= GetARGB(255,255,255,255), background= false },
+}
+
+local lerp_color				= utils_xml.lerp_color
+
+function on_game_start()
+	_Add_ProgressBar = utils_ui.UICellItem.Add_ProgressBar
+	utils_ui.UICellItem.Add_ProgressBar = function(self, xml, obj, sec, clsid)
+		_Add_ProgressBar(self, xml, obj, sec, clsid)
+		
+		if (not self.bar) or (self.manual) or (self.alt_bar_set == sec) then return end
+		
+		-- Hide all bars
+		self.bar:Show(false)
+		
+		local multiuse = IsItem("multiuse",sec)
+		
+		self.bar = XML_bars:InitProgressBar(multiuse and "bar_uses" or "bar_cond", self.cell)
+		
+		local h_bar = self.bar:GetHeight()
+		self.bar:SetWndPos(vector2():set( 0 , (self.H - h_bar)))
+		
+		-- Set progress
+		local cond = multiuse and (obj:get_remaining_uses()/10) or round_idp(obj:condition(), 1)
+		self.bar:SetProgressPos( clamp(cond,0,1) )
+		
+		-- Bar properties
+		local str = SYS_GetParam(0,sec,"condition_bar","condition_progess_bar")
+		
+		local props = bar_list[str]
+		local color = props.def or lerp_color( cond , props.min , props.mid , props.max )
+		if color then
+			self.bar:SetColor( color )
+		end
+		 
+		self.bar:ShowBackground(props.background)
+		
+		self.bar:Show(true)
+		
+		self.alt_bar_set = sec -- so the bars don't constantly reset
+	end
+end

@@ -1,0 +1,48 @@
+function on_xml_read()
+	RegisterScriptCallback("on_xml_read", function(xml_file_name, xml_obj)
+		if xml_file_name == [[ui\maingame_pda_msg.xml]]
+		or xml_file_name == [[ui\maingame_pda_msg_16.xml]]
+		or xml_file_name == [[ui\maingame_pda_msg_21.xml]]
+		then
+			local ratio = utils_xml.screen_ratio()
+			local mul = 1
+			local fnt = "letterica16"
+			
+			local res = xml_obj:query("icon_static")
+			if res[1] then
+				local el = res[1]
+				xml_obj:setElementAttr(el, {x=0, y=0, width=49*ratio*mul, height=29*mul})
+			end
+			
+			local res = xml_obj:query("time_static")
+			if res[1] then
+				local el = res[1]
+				xml_obj:setElementAttr(el, {x=55*ratio*mul, y=0, width=35*ratio*mul, height=14*mul})
+				if el.kids[1] then
+					local el = el.kids[1]
+					xml_obj:setElementAttr(el, {font=fnt})
+				end
+			end
+			
+			local res = xml_obj:query("caption_static")
+			if res[1] then
+				local el = res[1]
+				xml_obj:setElementAttr(el, {x=90*ratio*mul, y=0, width=490*ratio*mul, height=14*mul})
+				if el.kids[1] then
+					local el = el.kids[1]
+					xml_obj:setElementAttr(el, {font=fnt})
+				end
+			end
+			
+			local res = xml_obj:query("msg_static")
+			if res[1] then
+				local el = res[1]
+				xml_obj:setElementAttr(el, {x=55*ratio*mul, y=16, width=545*ratio*mul, height=14*mul})
+				if el.kids[1] then
+					local el = el.kids[1]
+					xml_obj:setElementAttr(el, {font=fnt})
+				end
+			end
+		end
+	end)
+end

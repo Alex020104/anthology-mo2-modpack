@@ -1,0 +1,435 @@
+--[[  
+	MCM script made for EFP UI
+	Author: HarukaSai
+
+	08/04/2022
+]]
+
+--[[
+	Edit by Sota for UI Rework
+	
+	15/02/2024
+]]
+
+-- Added by Sota
+-- check if it's gamma
+local is_gamma = ui_inventory.is_gamma
+-- links to tabels
+local color_settings		= ui_inventory.color_settings
+local faction_colors		= ui_inventory.faction_colors
+local faction_text_colors	= ui_inventory.faction_text_colors
+local stat_colors			= ui_inventory.stat_colors
+local slot_colors			= ui_inventory.slot_colors
+
+mcm_id = "efp_ui"
+
+-- Added by Sota - convert color from GetARGB() to table {a= _, r= _, g= _, b= _}
+local function color_to_table(clr)
+	if (not clr) then
+		return {a= 255, r= 255, g= 255, b= 255}
+	end
+	return {
+		a = bit.band(bit.rshift(clr, 24), 255),
+		r = bit.band(bit.rshift(clr, 16), 255),
+		g = bit.band(bit.rshift(clr, 8), 255),
+		b = bit.band(clr, 255)
+	} 
+end
+
+-- Added by Sota - get defaults from ui_inventory.script
+local color_setting_defs = {}
+for name,val in pairs(color_settings) do
+	color_setting_defs[name] = val
+end
+
+-- Edited by Sota - get defaults from ui_inventory.script and fix for incorrect order of adding to settings
+local faction_color_defs = {
+	["stalker"]			= { i= 1	},
+	["bandit"]			= { i= 2	},
+	["csky"]			= { i= 3	},
+	["dolg"]			= { i= 4	},
+	["freedom"]			= { i= 5	},
+	["killer"]			= { i= 6	},
+	["army"]			= { i= 7	},
+	["ecolog"]			= { i= 8	},
+	["monolith"]		= { i= 9	},
+	["renegade"]		= { i= 10	},
+	["greh"]			= { i= 11	},
+	["isg"]				= { i= 12	},
+}
+for name,clr in pairs(faction_colors) do
+	local t_clr = color_to_table(clr)
+	faction_color_defs[name] = {
+		a = t_clr.a,
+		r = t_clr.r,
+		g = t_clr.g,
+		b = t_clr.b,
+		i = faction_color_defs[name].i
+	}
+end
+
+-- Edited by Sota - get defaults from ui_inventory.script
+local faction_text_color_defs = {}
+for name,clr in pairs(faction_text_colors) do
+	faction_text_color_defs[name] = color_to_table(clr)
+end
+
+-- Edited by Sota - get defaults from ui_inventory.script and fix for incorrect order of adding to settings
+local stat_color_defs = not is_gamma and { -- Edited by Sota - GAMMA v0.9.3 compatibility
+	["health"]			= { i= 1	},
+	["hunger"]			= { i= 2	},
+	["thirst"]			= { i= 3	},
+	["sleep"]			= { i= 4	},
+	["radia"]			= { i= 5	},
+	["acid"]			= { i= 6	},
+	["shock"]			= { i= 7	},
+	["fire"]			= { i= 8	},
+	["psi"]				= { i= 9	},
+	["fire_wound"]		= { i= 10	},
+	["wound"]			= { i= 11	},
+	["strike"]			= { i= 12	},
+	["explosion"]		= { i= 13	},
+	["power"]			= { i= 14	},
+} or {
+	["health"]			= { i= 1	},
+	["hunger"]			= { i= 2	},
+	["thirst"]			= { i= 3	},
+	["sleep"]			= { i= 4	},
+	["radia"]			= { i= 5	},
+	["acid"]			= { i= 6	},
+	["shock"]			= { i= 7	},
+	["fire"]			= { i= 8	},
+	["psi"]				= { i= 9	},
+	["wound"]			= { i= 10	},
+	["strike"]			= { i= 11	},
+	["explosion"]		= { i= 12	},
+	["head_fire_wound"]	= { i= 13	},
+	["head_br_class"]	= { i= 14	},
+	["fire_wound"]		= { i= 15	},
+	["br_class"]		= { i= 16	},
+}
+for name,clr in pairs(stat_colors) do
+	local t_clr = color_to_table(clr)
+	stat_color_defs[name] = {
+		a = t_clr.a,
+		r = t_clr.r,
+		g = t_clr.g,
+		b = t_clr.b,
+		i = stat_color_defs[name].i
+	}
+end
+
+-- Edited by Sota - get defaults from ui_inventory.script
+local slot_color_defs = { -- base slot = {UI slots to fit in}
+	["belt"]	= { st= "belt"			},
+	["quick"]	= { st= "quick"			},
+	[1]			= { st= "knife"			},	-- Knife
+	[2]			= { st= "pistol"		},	-- Pistol
+	[3]			= { st= "rifle"			},	-- Rifle
+	[4]			= { st= "grenade"		},	-- Grenade
+	[5]			= { st= "binoculars"	},	-- Binoculars
+	[6]			= { st= "bolt"			},	-- Bolt
+	[7]			= { st= "outfit"		},	-- Outfit
+	[8]			= { st= "pda"			},	-- PDA
+	[9]			= { st= "detector"		},	-- Detector
+	[10]		= { st= "torch"			},	-- Torch
+	[12]		= { st= "helmet"		},	-- Helmet
+	[13]		= { st= "backpack"		},	-- Backpack
+}
+for name,clr in pairs(slot_colors) do
+	local t_clr = color_to_table(clr)
+	slot_color_defs[name] = {
+		a = t_clr.a,
+		r = t_clr.r,
+		g = t_clr.g,
+		b = t_clr.b,
+		st = slot_color_defs[name].st
+	}
+end
+
+-- Edited by Sota - get defaults from ui_inventory.script
+local player_faction_color_defs			= color_to_table( ui_inventory.player_faction_color )
+local player_faction_text_color_defs	= color_to_table( ui_inventory.player_faction_text_color )
+
+function get_faction_color_template(faction)
+	local template = {
+		id= faction, sh= true, gr= {
+			{ id= "title"					, type= "slide", link= "ui_options_slider_warfare", text= "ui_mcm_menu_" .. mcm_id .. "_title", size= {512,50}, spacing= 20 },
+			{ id= "desc_faction_color"		, type= "desc", text= "ui_mcm_desc_faction_banner_color"},
+			{ id= "color_red"				, hint= mcm_id .. "_red"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= faction_color_defs[faction].r },
+			{ id= "color_green"				, hint= mcm_id .. "_green"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= faction_color_defs[faction].g },
+			{ id= "color_blue"				, hint= mcm_id .. "_blue"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= faction_color_defs[faction].b },
+			{ id= "color_alpha"				, hint= mcm_id .. "_alpha"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= faction_color_defs[faction].a },
+			{ id= "divider"					, type= "line" },
+			{ id= "desc_faction_text_color"	, type= "desc", text= "ui_mcm_desc_faction_text_color" },
+			{ id= "color_red_text"			, hint= mcm_id .. "_red"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= faction_text_color_defs[faction].r },
+			{ id= "color_green_text"		, hint= mcm_id .. "_green"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= faction_text_color_defs[faction].g },
+			{ id= "color_blue_text"			, hint= mcm_id .. "_blue"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= faction_text_color_defs[faction].b },
+			{ id= "color_alpha_text"		, hint= mcm_id .. "_alpha"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= faction_text_color_defs[faction].a },
+		}
+	}
+	return template
+end
+
+function get_stats_color_template(stat)
+	local template = {
+		{ id= "desc" .. stat, type= "desc", text= "ui_mcm_desc_stat_" .. stat },
+		{ id= "color_red"	.. stat, hint= mcm_id .. "_red"		, type= "track", val= 2, min= 0, max= 255, step= 1, def= stat_color_defs[stat].r },
+		{ id= "color_green"	.. stat, hint= mcm_id .. "_green"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= stat_color_defs[stat].g },
+		{ id= "color_blue"	.. stat, hint= mcm_id .. "_blue"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= stat_color_defs[stat].b },
+		{ id= "color_alpha"	.. stat, hint= mcm_id .. "_alpha"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= stat_color_defs[stat].a },
+		{ id= "divider", type= "line" },
+	}
+	return template
+end
+
+module_settings = {}
+
+function add_module_settings(t)
+	module_settings[#module_settings + 1] = t
+end
+
+function get_module_settings(path)
+	return ui_mcm.get( mcm_id .. "/modules_settings/" .. path )
+end
+
+function get_slot_cell_template(slot)
+	local template = {
+		{ id= "desc" .. slot_color_defs[slot].st, type= "desc", text= "ui_mcm_desc_cell_" .. slot_color_defs[slot].st },
+		{ id= "color_red"	.. slot, hint= mcm_id .. "_red"		, type= "track", val= 2, min= 0, max= 255, step= 1, def= slot_color_defs[slot].r },
+		{ id= "color_green"	.. slot, hint= mcm_id .. "_green"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= slot_color_defs[slot].g },
+		{ id= "color_blue"	.. slot, hint= mcm_id .. "_blue"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= slot_color_defs[slot].b },
+		{ id= "color_alpha"	.. slot, hint= mcm_id .. "_alpha"	, type= "track", val= 2, min= 0, max= 255, step= 1, def= slot_color_defs[slot].a },
+		{ id= "divider", type= "line" },
+	}
+	return template
+end
+
+-- Edited by Sota - add new MCM features for UI Rework
+function on_mcm_load()
+	local op = { id= mcm_id, gr= {{ id= "faction_settings", gr= {} }} }
+	
+	op.gr[1] = { id= "main_settings", sh= true, gr= {} }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "title", type= "slide", link= "ui_options_slider_warfare", text= "ui_mcm_menu_" .. mcm_id.. "_title", size= {512,50}, spacing= 20 }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "use_alt_ranks"			, hint= mcm_id .. "_use_alt_ranks"		, type= "list"		, val= 2, content= { { 1, "ranks" }		, { 2, "ranks_mui" }	, { 3, "ranks_svui" }	, { 4, "ranks_svui_alt" } }		, def= color_setting_defs["use_alt_ranks"] }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "use_alt_factions"		, hint= mcm_id .. "_use_alt_factions"	, type= "list"		, val= 2, content= { { 1, "factions" }	, { 2, "factions_alt" }	, { 3, "factions_alt2" } }								, def= color_setting_defs["use_alt_factions"] }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "use_alt_inv"			, hint= mcm_id .. "_use_alt_inv"		, type= "list"		, val= 2, content= { { 1, "inv" }		, { 2, "inv_alt" }		, { 3, "inv_alt_bg" } }									, def= color_setting_defs["use_alt_inv"] }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "use_alt_grid"			, hint= mcm_id .. "_use_alt_grid"		, type= "list"		, val= 2, content= { { 1, "no_grid" }	, { 2, "grid" }			, { 3, "grid_alt" } }									, def= color_setting_defs["use_alt_grid"] }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "use_alt_blockers"		, hint= mcm_id .. "_use_alt_blockers"	, type= "list"		, val= 2, content= { { 1, "blck_lock" }	, { 2, "blck_cross" }	, { 3, "blck_dash" } }									, def= color_setting_defs["use_alt_blockers"] }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "use_alt_upgr"			, hint= mcm_id .. "_use_alt_upgr"		, type= "list"		, val= 2, content= { { 1, "upgr" }		, { 2, "upgr_gear" }	, { 3, "upgr_arrow" }	, { 4, "upgr_wrench" } }		, def= color_setting_defs["use_alt_upgr"] }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "use_alt_equ_bars"		, hint= mcm_id .. "_use_alt_equ_bars"	, type= "list"		, val= 2, content= { { 1, "bars" }		, { 2, "bars_flat" }	, { 3, "bars_fade" } }									, def= color_setting_defs["use_alt_equ_bars"] }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "use_alt_inv_bars"		, hint= mcm_id .. "_use_alt_inv_bars"	, type= "list"		, val= 2, content= { { 1, "bars" }		, { 2, "bars_flat" }	, { 3, "bars_fade" } }									, def= color_setting_defs["use_alt_inv_bars"] }
+	
+	if (not is_gamma) then
+		op.gr[1].gr[#op.gr[1].gr + 1]	= { id= "use_alt_stats_bars"	, hint= mcm_id .. "_use_alt_stats_bars"	, type= "list"		, val= 2, content= { { 1, "bars" }		, { 2, "bars_flat" }	, { 3, "bars_fade" } }									, def= color_setting_defs["use_alt_stats_bars"] }
+	end
+	
+--	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "divider", type= "line" }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "use_inv_labels"		, hint= mcm_id .. "_use_inv_labels"		, type= "check"		, val= 1																												, def= color_setting_defs["use_inv_labels"] }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "use_small_icons"		, hint= mcm_id .. "_use_small_icons"	, type= "check"		, val= 1																												, def= color_setting_defs["use_small_icons"] }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "use_inv_vert"			, hint= mcm_id .. "_use_inv_vert"		, type= "check"		, val= 1																												, def= color_setting_defs["use_inv_vert"] }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "swap_wpn_slots"		, hint= mcm_id .. "_swap_wpn_slots"		, type= "check"		, val= 1																												, def= color_setting_defs["swap_wpn_slots"] }
+--	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "divider", type= "line" }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "inv_hint_alpha"		, hint= mcm_id .. "_inv_hint_alpha"		, type= "track"		, val= 2, min= 0, max= 255, step= 5																						, def= color_setting_defs["inv_hint_alpha"] }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "divider", type= "line" }
+	
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "full_stats_key"		, hint= mcm_id .. "_full_stats_key"		, type= "key_bind"	, val= 2																												, def= color_setting_defs["full_stats_key"] }
+	
+	if is_gamma then
+		op.gr[1].gr[#op.gr[1].gr + 1]	= { id= "radia_in_msv"			, hint= mcm_id .. "_radia_in_msv"		, type= "check"		, val= 1																												, def= color_setting_defs["radia_in_msv"] }
+		
+		local gr_idx = #op.gr[1].gr + 1
+		op.gr[1].gr[gr_idx]				= { id= "num_stats_font"		, hint= mcm_id .. "_num_stats_font"		, type= "list"		, val= 2, content= {}																									, def= color_setting_defs["num_stats_font"] }
+		local str_stats_font_lst = ui_inventory.ui_rework_support.str_stats_font_lst
+		for i,v in ipairs(str_stats_font_lst) do
+			op.gr[1].gr[gr_idx].content[i] = { i , v }
+		end
+	else
+		if hts_inventory_bars then
+		op.gr[1].gr[#op.gr[1].gr + 1]	= { id= "use_alt_hts"			, hint= mcm_id .. "_use_alt_hts"		, type= "list"		, val= 2, content= { { 1, "hts" } , { 2, "htsp" } , { 3, "hts_alt" } , { 4, "hts_ext" } }								, def= color_setting_defs["use_alt_hts"] }
+		end
+		op.gr[1].gr[#op.gr[1].gr + 1]	= { id= "show_stat_names"		, hint= mcm_id .. "_show_stat_names"	, type= "check"		, val= 1 																												, def= color_setting_defs["show_stat_names"] }
+		op.gr[1].gr[#op.gr[1].gr + 1]	= { id= "show_num_stats"		, hint= mcm_id .. "_show_num_stats"		, type= "check"		, val= 1 																												, def= color_setting_defs["show_num_stats"] }
+		op.gr[1].gr[#op.gr[1].gr + 1]	= { id= "show_num_stats_ext"	, hint= mcm_id .. "_show_num_stats_ext"	, type= "check"		, val= 1 																												, def= color_setting_defs["show_num_stats_ext"] }
+	end
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "idp_stats_inv"			, hint= mcm_id .. "_idp_stats_inv"		, type= "track"		, val= 2, min= 0, max= 2, step= 1																						, def= color_setting_defs["idp_stats_inv"] }
+	op.gr[1].gr[#op.gr[1].gr + 1]		= { id= "idp_stats_tt"			, hint= mcm_id .. "_idp_stats_tt"		, type= "track"		, val= 2, min= 0, max= 2, step= 1																						, def= color_setting_defs["idp_stats_tt"] }
+	
+	if utils_ui_demonized_inventory_weights and z_utils_ui_demonized_inventory_weights then
+		op.gr[1].gr[#op.gr[1].gr + 1]	= { id= "divider", type= "line" }
+		op.gr[1].gr[#op.gr[1].gr + 1]	= { id= "use_inv_weights"		, hint= mcm_id .. "_use_inv_weights"	, type= "check"		, val= 1																												, def= color_setting_defs["use_inv_weights"] }
+		op.gr[1].gr[#op.gr[1].gr + 1]	= { id= "inv_weights_key"		, hint= mcm_id .. "_inv_weights_key"	, type= "key_bind"	, val= 2																												, def= color_setting_defs["inv_weights_key"] }
+	end
+	
+	op.gr[1].gr[#op.gr[1].gr + 1]	= { id= "divider", type= "line" }
+	local gr_idx = #op.gr[1].gr + 1
+	op.gr[1].gr[gr_idx]				= { id= "num_parts_cond_font"		, hint= mcm_id .. "_num_parts_cond_font", type= "list"		, val= 2, content= {}																									, def= color_setting_defs["num_parts_cond_font"] }
+	local str_parts_cond_font_lst = ui_inventory.ui_rework_support.str_parts_cond_font_lst
+	for i,v in ipairs(str_parts_cond_font_lst) do
+		op.gr[1].gr[gr_idx].content[i] = { i , v }
+	end
+	
+	op.gr[2] = { id= "faction_settings", gr= {} }
+	op.gr[3] = {
+		id= "base_settings", gr= {
+			{ id= "slots", sh= true, gr= {
+				{ id= "title", type= "slide", link= "ui_options_slider_warfare", text= "ui_mcm_menu_" .. mcm_id.. "_title", size= {512,50}, spacing= 20 },
+				{ id= "use_faction"			, hint= mcm_id .. "_use_faction"	, type= "check", val= 1																						, def= color_setting_defs["slot_colors"] },
+				{ id= "divider", type= "line" },
+			}},
+			{ id= "stats", sh= true, gr= {
+				{ id= "title", type= "slide", link= "ui_options_slider_warfare", text= "ui_mcm_menu_" .. mcm_id.. "_title", size= {512,50}, spacing= 20 },
+				{ id= "use_faction"			, hint= mcm_id .. "_use_faction"	, type= "check", val= 1																						, def= color_setting_defs["stat_colors"] },
+				{ id= "divider", type= "line" },
+			}},
+			{ id= "faction_banner", sh= true, gr= {
+				{ id= "title", type= "slide", link= "ui_options_slider_warfare", text= "ui_mcm_menu_" .. mcm_id.. "_title", size= {512,50}, spacing= 20 },
+				{ id= "desc_faction_color", type= "desc", text= "ui_mcm_desc_faction_banner_color" },
+				{ id= "use_faction"			, hint= mcm_id .. "_use_faction"	, type= "check", val= 1																						, def= color_setting_defs["banner_color"] },
+				{ id= "color_red"			, hint= mcm_id .. "_red"			, type= "track", val= 2, min= 0, max= 255, step= 1															, def= player_faction_color_defs.r },
+				{ id= "color_green"			, hint= mcm_id .. "_green"			, type= "track", val= 2, min= 0, max= 255, step= 1															, def= player_faction_color_defs.g },
+				{ id= "color_blue"			, hint= mcm_id .. "_blue"			, type= "track", val= 2, min= 0, max= 255, step= 1															, def= player_faction_color_defs.b },
+				{ id= "color_alpha"			, hint= mcm_id .. "_alpha"			, type= "track", val= 2, min= 0, max= 255, step= 1															, def= player_faction_color_defs.a },
+				{ id= "divider", type= "line" },
+				{ id= "desc_faction_text_color", type= "desc", text= "ui_mcm_desc_faction_text_color" },
+				{ id= "use_faction_text"	, hint= mcm_id .. "_use_faction"	, type= "check", val= 1																						, def= color_setting_defs["text_color"] },
+				{ id= "color_red_text"		, hint= mcm_id .. "_red"			, type= "track", val= 2, min= 0, max= 255, step= 1															, def= player_faction_text_color_defs.r },
+				{ id= "color_green_text"	, hint= mcm_id .. "_green"			, type= "track", val= 2, min= 0, max= 255, step= 1															, def= player_faction_text_color_defs.g },
+				{ id= "color_blue_text"		, hint= mcm_id .. "_blue"			, type= "track", val= 2, min= 0, max= 255, step= 1															, def= player_faction_text_color_defs.b },
+				{ id= "color_alpha_text"	, hint= mcm_id .. "_alpha"			, type= "track", val= 2, min= 0, max= 255, step= 1															, def= player_faction_text_color_defs.a },
+			}}
+		}
+	}
+	
+	op.gr[3].gr[2].gr[#op.gr[3].gr[2].gr + 1]		= { id= "colored_stat_icons"	, hint= mcm_id .. "_colored_stat_icons"		, type= "check", val= 1										, def= color_setting_defs["colored_stat_icons"] }
+	op.gr[3].gr[2].gr[#op.gr[3].gr[2].gr + 1]		= { id= "colored_stats"			, hint= mcm_id .. "_colored_stats"			, type= "check", val= 1										, def= color_setting_defs["colored_stats"] }
+	if is_gamma then
+		op.gr[3].gr[2].gr[#op.gr[3].gr[2].gr + 1]	= { id= "colored_stats_cap"		, hint= mcm_id .. "_colored_stats_cap"		, type= "check", val= 1										, def= color_setting_defs["colored_stats_cap"] }
+		op.gr[3].gr[2].gr[#op.gr[3].gr[2].gr + 1]	= { id= "divider", type= "line" }
+	
+		op.gr[3].gr[2].gr[#op.gr[3].gr[2].gr + 1]	= { id= "bright_stat_icons"		, hint= mcm_id .. "_bright_stat_icons"		, type= "track", val= 2, min= 0, max= 1, step= 0.05			, def= color_setting_defs["bright_stat_icons"] }
+		op.gr[3].gr[2].gr[#op.gr[3].gr[2].gr + 1]	= { id= "bright_stats"			, hint= mcm_id .. "_bright_stats"			, type= "track", val= 2, min= 0, max= 1, step= 0.05			, def= color_setting_defs["bright_stats"] }
+		op.gr[3].gr[2].gr[#op.gr[3].gr[2].gr + 1]	= { id= "bright_stats_cap"		, hint= mcm_id .. "_bright_stats_cap"		, type= "track", val= 2, min= 0, max= 1, step= 0.05			, def= color_setting_defs["bright_stats_cap"] }
+		op.gr[3].gr[2].gr[#op.gr[3].gr[2].gr + 1]	= { id= "bright_stats_compare"	, hint= mcm_id .. "_bright_stats_compare"	, type= "track", val= 2, min= 0, max= 1, step= 0.05			, def= color_setting_defs["bright_stats_compare"] }
+	end
+	op.gr[3].gr[2].gr[#op.gr[3].gr[2].gr + 1]		= { id= "divider", type= "line" }
+	
+	if ( not is_empty(module_settings) ) then -- add modules if there's any
+		op.gr[4] = { id= "modules_settings", gr= module_settings }
+	end
+	
+	-- Edited by Sota - fix for incorrect order of adding to settings
+--	for faction,_ in pairs(faction_color_defs) do
+	for faction,v in pairs(faction_color_defs) do
+--		op.gr[2].gr[#op.gr[2].gr + 1] = get_faction_color_template(faction)
+		op.gr[2].gr[v.i] = get_faction_color_template(faction)
+	end
+	
+	for slot,_ in pairs(slot_color_defs) do
+		local slot_template = get_slot_cell_template(slot)
+		for key = 1, #slot_template do
+			op.gr[3].gr[1].gr[#op.gr[3].gr[1].gr + 1] = slot_template[key]
+		end
+	end
+	
+	-- Edited by Sota - fix for incorrect order of adding to settings
+	local last_stat_idx = #op.gr[3].gr[2].gr
+--	for stat,_ in pairs(stat_color_defs) do
+	for stat,v in pairs(stat_color_defs) do
+		local stat_template = get_stats_color_template(stat)
+		for key = 1, #stat_template do
+--			op.gr[3].gr[2].gr[#op.gr[3].gr[2].gr + 1] = stat_template[key]
+			local idx = last_stat_idx + v.i + (#stat_template - 1) * (v.i - 1) + key - 1
+			op.gr[3].gr[2].gr[idx] = stat_template[key]
+		end
+	end
+	
+	return op
+end
+
+-- Edited by Sota - set new values from MCM for new variables
+function on_option_change()
+	if (not ui_mcm) then return end
+	
+	for faction,_ in pairs(faction_color_defs) do
+		faction_colors[faction]						= get_colors_for_path(( mcm_id .. "/faction_settings/" .. faction ), "" )
+		faction_text_colors[faction]				= get_colors_for_path(( mcm_id .. "/faction_settings/" .. faction ), "_text" )
+	end
+	for slot,_ in pairs(slot_color_defs) do
+		slot_colors[slot]							= get_colors_for_path(( mcm_id .. "/base_settings/slots" ), slot )
+	end
+	for stat,_ in pairs(stat_color_defs) do
+		stat_colors[stat]							= get_colors_for_path(( mcm_id .. "/base_settings/stats" ), stat )
+	end
+	ui_inventory.player_faction_color				= get_colors_for_path(( mcm_id .. "/base_settings/faction_banner" ), "" )
+	ui_inventory.player_faction_text_color			= get_colors_for_path(( mcm_id .. "/base_settings/faction_banner" ), "_text" )
+	
+	color_settings["stat_colors"]					= ui_mcm.get( mcm_id .. "/base_settings/stats/use_faction" )
+	
+	color_settings["colored_stat_icons"]			= ui_mcm.get( mcm_id .. "/base_settings/stats/colored_stat_icons" )
+	color_settings["colored_stats"]					= ui_mcm.get( mcm_id .. "/base_settings/stats/colored_stats" )
+	
+	if is_gamma then
+		color_settings["colored_stats_cap"]			= ui_mcm.get( mcm_id .. "/base_settings/stats/colored_stats_cap" )
+		color_settings["bright_stat_icons"]			= ui_mcm.get( mcm_id .. "/base_settings/stats/bright_stat_icons" )
+		color_settings["bright_stats"]				= ui_mcm.get( mcm_id .. "/base_settings/stats/bright_stats" )
+		color_settings["bright_stats_cap"]			= ui_mcm.get( mcm_id .. "/base_settings/stats/bright_stats_cap" )
+		color_settings["bright_stats_compare"]		= ui_mcm.get( mcm_id .. "/base_settings/stats/bright_stats_compare" )
+	end
+	color_settings["banner_color"]					= ui_mcm.get( mcm_id .. "/base_settings/faction_banner/use_faction" )
+	color_settings["slot_colors"]					= ui_mcm.get( mcm_id .. "/base_settings/slots/use_faction" )
+	color_settings["text_color"]					= ui_mcm.get( mcm_id .. "/base_settings/faction_banner/use_faction_text" )
+	
+	color_settings["use_alt_ranks"]					= ui_mcm.get( mcm_id .. "/main_settings/use_alt_ranks" )
+	color_settings["use_alt_factions"]				= ui_mcm.get( mcm_id .. "/main_settings/use_alt_factions" )
+	color_settings["use_alt_inv"]					= ui_mcm.get( mcm_id .. "/main_settings/use_alt_inv" )
+	color_settings["use_alt_grid"]					= ui_mcm.get( mcm_id .. "/main_settings/use_alt_grid" )
+	color_settings["use_alt_blockers"]				= ui_mcm.get( mcm_id .. "/main_settings/use_alt_blockers" )
+	color_settings["use_alt_upgr"]					= ui_mcm.get( mcm_id .. "/main_settings/use_alt_upgr" )
+	color_settings["use_alt_equ_bars"]				= ui_mcm.get( mcm_id .. "/main_settings/use_alt_equ_bars" )
+	color_settings["use_alt_inv_bars"]				= ui_mcm.get( mcm_id .. "/main_settings/use_alt_inv_bars" )
+	if (not is_gamma) then
+		color_settings["use_alt_stats_bars"]		= ui_mcm.get( mcm_id .. "/main_settings/use_alt_stats_bars" )
+	end
+	color_settings["use_inv_labels"]				= ui_mcm.get( mcm_id .. "/main_settings/use_inv_labels" )
+	color_settings["use_small_icons"]				= ui_mcm.get( mcm_id .. "/main_settings/use_small_icons" )
+	color_settings["use_inv_vert"]					= ui_mcm.get( mcm_id .. "/main_settings/use_inv_vert" )
+	color_settings["swap_wpn_slots"]				= ui_mcm.get( mcm_id .. "/main_settings/swap_wpn_slots" )
+	color_settings["inv_hint_alpha"]				= ui_mcm.get( mcm_id .. "/main_settings/inv_hint_alpha" )
+	
+	color_settings["full_stats_key"]				= ui_mcm.get( mcm_id .. "/main_settings/full_stats_key" )
+	if is_gamma then
+		color_settings["radia_in_msv"]				= ui_mcm.get( mcm_id .. "/main_settings/radia_in_msv" )
+		color_settings["num_stats_font"]			= ui_mcm.get( mcm_id .. "/main_settings/num_stats_font" )
+	else
+		if hts_inventory_bars then
+		color_settings["use_alt_hts"]				= ui_mcm.get( mcm_id .. "/main_settings/use_alt_hts" )
+		end
+		color_settings["show_stat_names"]			= ui_mcm.get( mcm_id .. "/main_settings/show_stat_names" )
+		color_settings["show_num_stats"]			= ui_mcm.get( mcm_id .. "/main_settings/show_num_stats" )
+		color_settings["show_num_stats_ext"]		= ui_mcm.get( mcm_id .. "/main_settings/show_num_stats_ext" )
+	end
+	color_settings["idp_stats_inv"]					= ui_mcm.get( mcm_id .. "/main_settings/idp_stats_inv" )
+	color_settings["idp_stats_tt"]					= ui_mcm.get( mcm_id .. "/main_settings/idp_stats_tt" )
+	
+	if utils_ui_demonized_inventory_weights and z_utils_ui_demonized_inventory_weights then
+		color_settings["use_inv_weights"]			= ui_mcm.get( mcm_id .. "/main_settings/use_inv_weights" )
+		color_settings["inv_weights_key"]			= ui_mcm.get( mcm_id .. "/main_settings/inv_weights_key" )
+	end
+	
+	color_settings["num_parts_cond_font"]			= ui_mcm.get( mcm_id .. "/main_settings/num_parts_cond_font" )
+end
+
+function get_colors_for_path(path, str)
+	return GetARGB(
+		ui_mcm.get( path .. "/color_alpha"	.. str ),
+		ui_mcm.get( path .. "/color_red"	.. str ),
+		ui_mcm.get( path .. "/color_green"	.. str ),
+		ui_mcm.get( path .. "/color_blue"	.. str )
+	)
+end
+
+function on_game_start()
+	RegisterScriptCallback("on_option_change", on_option_change)
+	on_option_change()
+end

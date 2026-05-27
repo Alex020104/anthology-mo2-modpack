@@ -1,0 +1,6 @@
+function on_game_start()
+    RegisterScriptCallback("npc_on_death_callback", function(npc) 
+        _ = npc and level.map_add_object_spot_ser(npc:id(), "deadbody_location", "")
+    end)
+end
+

@@ -1,0 +1,54 @@
+-- Monkey patch by Sota for Bart's New Sorting Tabs
+
+local og_inventory_start = ui_inventory.start
+ui_inventory.start = function(mode, obj)
+	og_inventory_start(mode, obj)
+	
+	if ui_inventory.GUI and ui_inventory.GUI:IsShown() then
+		-- Bartoche70 for my addon Bart's New Sorting Tabs because "Keypad 0" toggle hud in inventory
+--		_GUIs_keyfree["UIInventory"] = true -- TODO: needs to be false, but then other on_key_press buttons don't work in the inventory (for example kR to display weight on icons)
+		_GUIs_keyfree["UIInventory"] = false 
+		
+		Register_UI("UIInventory","ui_inventory")
+	end
+end
+
+local og_inventory_init_controls = ui_inventory.UIInventory.InitControls
+function ui_inventory.UIInventory:InitControls()
+	og_inventory_init_controls(self)
+	
+	local xml = self.xml
+	-- Bartoche70 for my addon Bart's New Sorting Tabs 30/10/2020
+--	for i=1,8 do --> because tabs are now 10
+	-- Edited by Sota - buttons 1 to 8 are already initialized
+	for i=9,10 do
+		self.sort_btn[i] = xml:InitCheck( "equipment:sorter:btn_" .. i , self.sort_dialog )
+		self.sort_btn[i]:SetCheck(false)
+		local _wrapper = function(handler) -- we need wrapper in order to pass ctrl to method
+			self:On_Sort(i)
+		end
+		self:Register(self.sort_btn[i], "sort_" .. i)
+		self:AddCallback("sort_" .. i, ui_events.BUTTON_CLICKED, _wrapper, self)
+		
+		-- Edited by Sota - simplify init of tab text controls
+--		self.sort_num[i] = xml:InitTextWnd( "equipment:sorter:txt_" .. i , self.sort_dialog )
+--		self.sort_num[i]:SetFont(GetFontSmall())
+--		self.sort_num[i]:SetText(i)
+		self.sort_btn[i].num = xml:InitTextWnd( "equipment:sorter:num" , self.sort_btn[i] )
+		self.sort_btn[i].num:SetText(i)
+	end
+end
+
+local og_inventory_on_keyboard = ui_inventory.UIInventory.OnKeyboard
+function ui_inventory.UIInventory:OnKeyboard(dik, keyboard_action)
+	
+	if (keyboard_action == ui_events.WINDOW_KEY_PRESSED) then
+		-- Bartoche70 for my addon Bart's New Sorting Tabs --> To add a quick access for the tenth tab, 0 or keypad 0
+		if (dik == DIK_keys.DIK_0) or (dik == DIK_keys.DIK_NUMPAD0) then
+			self:On_Sort(10, true)
+			self:On_Sort(10)
+			return
+		end
+	end
+	og_inventory_on_keyboard(self, dik, keyboard_action)
+end

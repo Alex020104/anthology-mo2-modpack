@@ -1,0 +1,11 @@
+function get_satiety_val()
+	return db.actor:cast_Actor():conditions():GetSatiety()
+end
+
+function get_thirst_val()
+	return 1 - actor_status_thirst.get_water_deprivation()
+end
+
+function get_sleep_val()
+	return 1 - actor_status_sleep.get_sleep_deprivation()
+end

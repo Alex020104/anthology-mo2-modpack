@@ -1,0 +1,26 @@
+local og_initcontrols = ui_sleep_dialog.UISleep.InitControls
+ui_sleep_dialog.UISleep.InitControls = function(self)
+	og_initcontrols(self)
+	
+	self.wide = false
+end
+
+local og_initialize = ui_sleep_dialog.UISleep.Initialize
+ui_sleep_dialog.UISleep.Initialize = function(self)
+	og_initialize(self)
+	
+	local ratio = utils_xml.screen_ratio()
+	self.sleep_static:SetWndSize(vector2():set(self.sleep_static:GetWidth() * ratio, self.sleep_static:GetHeight() ))
+	self.sleep_static2:SetWndSize(vector2():set(self.sleep_static2:GetWidth() * ratio, self.sleep_static:GetHeight() ))
+	self.sleep_static2:SetWndPos(vector2():set(self.sleep_static:GetWndPos().x + self.sleep_static:GetWidth(), self.sleep_static:GetWndPos().y ))
+end
+
+local og_update = ui_sleep_dialog.UISleep.Update
+ui_sleep_dialog.UISleep.Update = function(self)
+	og_update(self)
+	
+	local ratio = utils_xml.screen_ratio()
+	if self:IsShown() then
+		self.st_marker:SetWndPos(vector2():set(self.st_marker:GetWndPos().x * ratio, 5))
+	end
+end

@@ -1,0 +1,413 @@
+local SetTip = ui_workshop.SetTip
+
+local clr_list = {
+	["g"]	 = utils_xml.get_color("d_green"),
+	["y"]	 = utils_xml.get_color("yellow"),
+	["o"]	 = utils_xml.get_color("d_orange"),
+	["r"]	 = utils_xml.get_color("d_red"),
+	["b"]	 = utils_xml.get_color("d_cyan"),
+	["b1"]	 = utils_xml.get_color("pda_blue"),
+	["b2"]	 = utils_xml.get_color("d_blue"),
+	["p"]	 = utils_xml.get_color("d_purple"),
+	["dark"] = utils_xml.get_color("ui_gray_2"),
+}
+
+local ui_workshop_init_controls = ui_workshop.UIWorkshop.InitControls
+ui_workshop.UIWorkshop.InitControls = function(self)
+	ui_workshop_init_controls(self)
+	
+	self.btn_back = self.xml:Init3tButton("workshop:btn_back", self.dialog)
+	self:Register(self.btn_back, "button_cancel")
+end
+
+local ui_workshop_init_callbacks = ui_workshop.UIWorkshop.InitCallBacks
+ui_workshop.UIWorkshop.InitCallBacks = function(self)
+	ui_workshop_init_callbacks(self)
+	
+	self:AddCallback("button_cancel", ui_events.BUTTON_CLICKED, self.Close, self)
+end
+--[[
+local ui_workshop_reset = ui_workshop.UIWorkshop.Reset
+ui_workshop.UIWorkshop.Reset = function(self, owner, mechanic, toolkits_workshop, dbg)
+	ui_workshop_reset(self, owner, mechanic, toolkits_workshop, dbg)
+	
+	-- Fix by Grok from GAMMA - blocking the Workshop UI with a tooltip window
+	if self.owner.item_info then
+		self.owner.item_info:Update()
+	end
+	if self.owner.upgr_info then
+		self.owner.upgr_info:Update()
+	end	
+end
+--]]
+local ui_workshop_repair_init_controls = ui_workshop.UIWorkshopRepair.InitControls
+ui_workshop.UIWorkshopRepair.InitControls = function(self, x, y)
+	ui_workshop_repair_init_controls(self, x, y)
+	
+	self.toolkit = nil
+end
+
+function ui_workshop.UIWorkshopRepair:Update()
+	CUIScriptWnd.Update(self)
+	
+	-- Updating item info box and item cell containers
+	local info_box = self.owner.item_info
+	
+	local found_cell = false
+	for name,cc in pairs(self.CC) do
+		found_cell = cc:Update(info_box) or found_cell
+	end
+	if found_cell then
+		return
+	end
+	
+	-- Added by Sota - Item repair toolkit
+	if self.itm_ico_rq and self.itm_ico_rq:IsCursorOverWindow() and self.toolkit then
+		info_box:Update(nil,self.toolkit)
+		return
+	end
+	
+	local focused = false
+	for i=1,6 do 
+		if self.parts[i] and self.parts[i].sec and (self.parts[i].sec ~= "na") and self.itm_ico[i]:IsCursorOverWindow() then
+			info_box:Update(nil, self.parts[i].sec)
+			focused = true
+			--return
+		end
+		if self.itm_btn[i] and self.itm_btn[i]:IsCursorOverWindow() then
+			self.highlight_btn = i
+			focused = true
+			--return
+		end
+		if focused then
+			return
+		end 
+	end
+	
+	info_box:Update()
+end
+
+local ui_workshop_state_reset = ui_workshop.UIWorkshopState.Reset
+ui_workshop.UIWorkshopState.Reset = function(self)
+	ui_workshop_state_reset(self)
+	
+	-- Mechanic availability
+	local mech_name = game.translate_string("st_ui_workshop_owner_nobody")
+	local str_intro = game.translate_string("st_ui_workshop_info_state_intro")
+	local str_owner = game.translate_string("st_ui_workshop_owner")
+	local mech_sec = self.owner.mechanic
+	if mech_sec then
+		local obj_mech = get_story_object(mech_sec)
+		if obj_mech then
+			mech_name = obj_mech:character_name()
+		end
+	end
+	self.info_text:SetText( str_intro .. clr_list["b2"] .. " \\n • " .. strformat(str_owner,mech_name) )
+	
+	-- Fix by Grok from GAMMA - blocking the Workshop UI with a tooltip window
+	if self.owner.item_info then
+		self.owner.item_info:Update()
+	end
+	if self.owner.upgr_info then
+		self.owner.upgr_info:Update()
+	end	
+end
+
+function ui_workshop.UIWorkshopState:OnKeyboard(dik, keyboard_action)
+	local res = CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+	if (res == false) then
+		local bind = dik_to_bind(dik)
+		if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+			if dik == DIK_keys.DIK_ESCAPE then
+				-- Fix by Grok from GAMMA - blocking the Workshop UI with a tooltip window
+				self:Reset()
+				self:Close()
+				Unregister_UI("UIWorkshopState")
+			end
+		end
+	end
+	return res
+end
+
+local ui_workshop_repair_reset = ui_workshop.UIWorkshopRepair.Reset
+ui_workshop.UIWorkshopRepair.Reset = function(self)
+	ui_workshop_repair_reset(self)
+	
+	-- Fix by Grok from GAMMA - blocking the Workshop UI with a tooltip window
+	if self.owner.item_info then
+		self.owner.item_info:Update()
+	end
+	if self.owner.upgr_info then
+		self.owner.upgr_info:Update()
+	end	
+end
+
+function ui_workshop.UIWorkshopRepair:OnKeyboard(dik, keyboard_action)
+	local res = CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+	if (res == false) then
+		for name,cc in pairs(self.CC) do
+			cc:OnKeyboard(dik, keyboard_action)
+		end
+		
+		local bind = dik_to_bind(dik)
+		if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+			if dik == DIK_keys.DIK_ESCAPE then
+				-- Fix by Grok from GAMMA - blocking the Workshop UI with a tooltip window
+				self:Reset()
+				self:Close()
+				Unregister_UI("UIWorkshopRepair")
+			end
+		end
+	end
+	return res
+end
+
+local ui_workshop_upgrade_reset = ui_workshop.UIWorkshopUpgrade.Reset
+ui_workshop.UIWorkshopUpgrade.Reset = function(self)
+	ui_workshop_upgrade_reset(self)
+	
+	-- Fix by Grok from GAMMA - blocking the Workshop UI with a tooltip window
+	if self.owner.item_info then
+		self.owner.item_info:Update()
+	end
+	if self.owner.upgr_info then
+		self.owner.upgr_info:Update()
+	end	
+end
+
+function ui_workshop.UIWorkshopUpgrade:Update()
+	CUIScriptWnd.Update(self)
+	
+	local info_box = self.owner.item_info
+	local upgr_box = self.owner.upgr_info
+	
+	-- Item upgrade toolkit
+	if self.itm_ico_rq and self.itm_ico_rq:IsCursorOverWindow() and self.upgr_toolkit then
+		self.update_cache["type"] = 1 -- reset cache
+		upgr_box:Update()
+		info_box:Update(nil,self.upgr_toolkit)
+		return
+	end
+	
+	-- Item cell containers
+	local found_cell = self.CC:Update(info_box)
+	if (found_cell) then
+		self.update_cache["type"] = 1 -- reset cache
+		upgr_box:Update()
+		return
+	end
+	
+	-- Upgrade tree
+	for k1,v1 in pairs(self.upgr_xml) do
+		for k2,v2 in pairs(v1) do
+			if v2.pic:IsCursorOverWindow() and self.upgr[k1][k2] then
+				-- Cache
+				if (self.update_cache["type"] == 2) and (self.update_cache["k1"] == k1) and (self.update_cache["k2"] == k2) then
+					upgr_box:Update(self.update_cache["section"], self.update_cache["prereq"], self.update_cache["installed"])
+					return
+				end
+				
+				local section = self.upgr[k1][k2].section
+				local installed = self.inst_upgr[section]
+				local prereq = ""
+				local t = self.upgr_flags[k1][k2]
+				local has_prereq = false
+				for i=1,#t do
+					if (not t[i]) then
+						local str = game.translate_string("st_ui_workshop_no_upgr_" .. tostring(i))
+						if (i == 1) then
+							local main_tool = self.upgr_toolkit or ""
+							str = strformat(str, ui_item.get_sec_name(main_tool))
+						elseif (i == 2) then
+							local tool = self.upgr[k1][k2].tool or ""
+							str = strformat(str, ui_item.get_sec_name(tool))
+						end
+						-- Edited by Sota
+--						prereq = prereq .. "\\n - " .. str
+						prereq = prereq .. "\\n • " .. str
+						
+						has_prereq = true
+					end
+				end
+				if has_prereq then
+					prereq = game.translate_string("st_upgr_disable") .. prereq
+				elseif installed then
+					prereq = game.translate_string("st_upgr_installed")
+				end
+				
+				-- Cache
+				self.update_cache["type"] = 2
+				self.update_cache["k1"] = k1
+				self.update_cache["k2"] = k2
+				self.update_cache["section"] = section
+				self.update_cache["installed"] = installed
+				self.update_cache["prereq"] = prereq
+				
+				upgr_box:Update(section, prereq, installed)
+				info_box:Update()
+				return
+				
+			-- Upgrade kit
+			elseif v2.itm:IsCursorOverWindow() and self.upgr[k1][k2] then
+				self.update_cache["type"] = 1 -- reset cache
+				local tool = self.upgr[k1][k2].tool
+				if tool then
+					upgr_box:Update()
+					info_box:Update(nil,tool)
+					return
+				end
+			end
+		end
+	end
+	
+	upgr_box:Update()
+	info_box:Update()
+end
+
+local ui_workshop_upgrade_list_upgrade_tree = ui_workshop.UIWorkshopUpgrade.ListUpgradeTree
+ui_workshop.UIWorkshopUpgrade.ListUpgradeTree = function(self)
+	ui_workshop_upgrade_list_upgrade_tree(self)
+	
+	local main_tool = self.upgr_toolkit
+	if main_tool and self.upgr_tools[main_tool] and is_not_empty(self.upgr_tools[main_tool]) then
+		SetTip("upgrade_tip_1", "upgrade_warning_2", "upgrade_solution_2", nil, false, self.info_text)
+	else
+		SetTip("upgrade_tip_1", "upgrade_warning_1", "upgrade_solution_1", self.upgr_toolkit, false, self.info_text)
+	end
+end
+
+function ui_workshop.UIWorkshopUpgrade:EvaluateUpgrades()
+	
+	-- First we process the newely installed upgrade
+	for row,w in pairs(self.upgr) do
+		for col,v in pairs(w) do
+			if self.upgr_xml[row][col].btn:GetCheck()
+			and (not self.inst_upgr[v.section])
+			then
+				self:DischargeKit(self.upgr_toolkit)
+				self:DischargeKit(v.tool)
+				self.inst_upgr[v.section] = true
+				
+				utils_obj.play_sound("interface\\inv_slot")
+				
+				SetTip("upgrade_tip_3", nil, nil, nil, true, self.info_text)
+				
+				self.btn_upgrade:Enable(true)
+			end
+		end
+	end
+	
+	-- Lock/Unlock upgrades according to requirements
+	for row,w in pairs(self.upgr) do
+		for col,v in pairs(w) do
+			self:EvaluateUpgrade(row, col, v)
+		end
+	end
+	
+	-- Workshop toolkit update
+	self:SetkitInfo(self.upgr_toolkit, self.itm_num_rq, self.itm_ico_rq, self.itm_ico_temp_rq)
+	-- Edited by Sota
+	--[[
+	local main_tool = self.upgr_toolkit
+	if main_tool and self.upgr_tools[main_tool] and is_not_empty(self.upgr_tools[main_tool]) then
+		SetTip("upgrade_tip_1", "upgrade_warning_2", "upgrade_solution_2", nil, false, self.info_text)
+	else
+		SetTip("upgrade_tip_1", "upgrade_warning_1", "upgrade_solution_1", self.upgr_toolkit, false, self.info_text)
+	end
+	--]]
+end
+
+function ui_workshop.UIWorkshopUpgrade:OnKeyboard(dik, keyboard_action)
+	local res = CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+	if (res == false) then
+		self.CC:OnKeyboard(dik, keyboard_action)
+		
+		local bind = dik_to_bind(dik)
+		if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+			if dik == DIK_keys.DIK_ESCAPE then
+				-- Fix by Grok from GAMMA - blocking the Workshop UI with a tooltip window
+				self:Reset()
+				self:Close()
+				Unregister_UI("UIWorkshopUpgrade")
+			end
+		end
+	end
+	return res
+end
+
+local ui_workshop_craft_reset = ui_workshop.UIWorkshopCraft.Reset
+ui_workshop.UIWorkshopCraft.Reset = function(self)
+	ui_workshop_craft_reset(self)
+	
+	-- Fix by Grok from GAMMA - blocking the Workshop UI with a tooltip window
+	if self.owner.item_info then
+		self.owner.item_info:Update()
+	end
+	if self.owner.upgr_info then
+		self.owner.upgr_info:Update()
+	end	
+end
+
+function ui_workshop.UIWorkshopCraft:OnKeyboard(dik, keyboard_action)
+	local res = CUIScriptWnd.OnKeyboard(self,dik,keyboard_action)
+	if (res == false) then
+		for name,cc in pairs(self.CC) do
+			cc:OnKeyboard(dik, keyboard_action)
+		end
+		
+		local bind = dik_to_bind(dik)
+		if keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+			if dik == DIK_keys.DIK_ESCAPE then
+				-- Fix by Grok from GAMMA - blocking the Workshop UI with a tooltip window
+				self:Reset()
+				self:Close()
+				Unregister_UI("UIWorkshopCraft")
+			end
+		end
+	end
+	return res
+end
+
+function ui_workshop.UIWorkshopCraft:Update()
+	CUIScriptWnd.Update(self)
+	
+	local info_box = self.owner.item_info
+	
+	-- Item cells
+	local found_cell = false
+	for name,cc in pairs(self.CC) do
+		found_cell = cc:Update(info_box) or found_cell
+	end
+	if found_cell then
+		return
+	end
+	
+	-- Added by Sota - Item craft toolkit
+	local item = self.last_type and self.last_index and self.recipes[self.last_type] and self.recipes[self.last_type][self.last_index]
+	if item then
+		local toolkit = ui_workshop.workshop_toolkits[item.tool]
+		if self.itm_ico_t:IsCursorOverWindow() and toolkit then
+			info_box:Update(nil,toolkit)
+			return
+		end
+	end
+	
+	-- Added by Sota - Item result
+	if self.itm_ico_r:IsCursorOverWindow() and self.craft_item_r[1] then
+		info_box:Update(nil,self.craft_item_r[1])
+		return
+	end
+	
+	-- Item of active recipe
+	for i=1,4 do 
+		if self.itm_ico[i] and self.itm_ico[i]:IsCursorOverWindow() then
+			local item = self.last_type and self.last_index and self.recipes[self.last_type] and self.recipes[self.last_type][self.selected_index]
+			if item and item[i] then
+				info_box:Update(nil,item[i][1])
+				return
+			end
+		end
+	end
+	
+	info_box:Update()
+end

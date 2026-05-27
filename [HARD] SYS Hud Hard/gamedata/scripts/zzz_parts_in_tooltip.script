@@ -1,0 +1,36 @@
+if (not zz_parts_in_tooltip) then
+	printf("original script not found, patch not activated")
+	return nil
+end
+
+-- intercepting the "offset" argument of the self:AddPartsContainer function
+local og_add_parts_container = utils_ui.UIInfoItem.AddPartsContainer
+function utils_ui.UIInfoItem:AddPartsContainer(offset, ...)
+	offset = (offset == 40) and 20 or offset
+	return og_add_parts_container(self, offset, ...)
+end
+
+local font_t			= ui_inventory.font_t
+local color_settings	= ui_inventory.color_settings
+local ui_rework_support	= ui_inventory.ui_rework_support
+
+-- change text alignment of parts condition
+local og_info_item_update = utils_ui.UIInfoItem.Update
+utils_ui.UIInfoItem.Update = function(self, obj, sec, flags)
+	og_info_item_update(self, obj, sec, flags)
+	
+	if self.CC["part"] then
+		-- local fnt = GetFontSmall()
+		local num_font		= color_settings.num_parts_cond_font
+		local str_font_lst	= ui_rework_support.str_parts_cond_font_lst
+		local fnt = font_t[ str_font_lst[ num_font ] ]
+		for idx, ci in pairs(self.CC["part"].cell) do
+			if ci:IsShown() then
+				local con = utils_item.get_cond_static(ci.flags.info)
+				local clr = utils_xml.get_color_con(ci.flags.info, true)
+--				ci:Add_CustomText( con, nil, nil, clr, fnt)
+				ci:Add_CustomText( con, 0, 0, clr, fnt)
+			end
+		end
+	end
+end

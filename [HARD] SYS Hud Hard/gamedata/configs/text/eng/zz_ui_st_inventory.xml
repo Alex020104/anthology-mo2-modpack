@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	
+<!-- Player states -->
+	<string id="st_ui_bleeding_sensor">
+		<text>BLEEDING</text>
+	</string>
+	<string id="st_ui_main_sensor">
+		<text>RADIATION</text>
+	</string>
+	<string id="st_ui_health_sensor_inv">
+		<text>HEALTH</text>
+	</string>
+	<string id="ui_inv_radiation_protection">
+		<text>RADIATION RES.</text>
+	</string>
+	<string id="ui_inv_chemical_burn_protection">
+		<text>CHEMICAL RES.</text>
+	</string>
+	<string id="ui_inv_shock_protection">
+		<text>ELECTRICAL RES.</text>
+	</string>
+	<string id="ui_inv_burn_protection">
+		<text>THERMAL RES.</text>
+	</string>
+	<string id="ui_inv_telepatic_protection">
+		<text>PSYCHIC RES.</text>
+	</string>
+	<string id="ui_inv_power_restore">
+		<text>STAMINA REC.</text>
+	</string>
+	<string id="ui_inv_fire_wound_protection">
+		<text>BALLISTIC RES.</text>
+	</string>
+	<string id="ui_inv_wound_protection">
+		<text>RUPTURE RES.</text>
+	</string>
+	<string id="ui_inv_strike_protection">
+		<text>IMPACT RES.</text>
+	</string>
+	<string id="ui_inv_explosion_protection">
+		<text>EXPLOSION RES.</text>
+	</string>
+	
+<!-- New units -->
+	<string id="st_stat_dmg">
+		<text>dmg</text>
+	</string>
+	<string id="st_stat_rpm">
+		<text>RPM</text>
+	</string>
+	
+	<string id="ui_inv_satiety">
+		<text>%c[0,255,255,255]Satiety:</text>
+	</string>
+	<string id="ui_inv_thirst">
+		<text>%c[0,255,255,255]Hydration:</text>
+	</string>
+	<string id="ui_inv_sleep">
+		<text>%c[0,255,255,255]Rest:</text>
+	</string>
+	
+</string_table>

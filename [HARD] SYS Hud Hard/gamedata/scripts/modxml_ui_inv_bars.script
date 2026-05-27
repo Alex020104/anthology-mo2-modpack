@@ -1,0 +1,23 @@
+function on_xml_read()
+	RegisterScriptCallback("on_xml_read", function(xml_file_name, xml_obj)
+		if xml_file_name == [[ui\ui_condition_bars.xml]]
+		or xml_file_name == [[ui\ui_condition_bars_16.xml]]
+		or xml_file_name == [[ui\ui_condition_bars_21.xml]]
+		then
+			local opt_bars = ui_mcm and ui_mcm.get( efp_ui_mcm.mcm_id .. "/main_settings/use_alt_inv_bars" ) or ui_inventory.color_settings.use_alt_inv_bars
+			local str_bars = ui_inventory.ui_rework_support.str_bars_lst[ opt_bars ]
+			local tex_bar  = "ui_svui_cond_bar" .. str_bars
+			
+			local res = xml_obj:query("bar_cond > background > texture")
+			if res[1] then
+				local el = res[1]
+				xml_obj:setText(el, tex_bar)
+			end
+			local res = xml_obj:query("bar_cond > progress > texture")
+			if res[1] then
+				local el = res[1]
+				xml_obj:setText(el, tex_bar)
+			end
+		end
+	end)
+end

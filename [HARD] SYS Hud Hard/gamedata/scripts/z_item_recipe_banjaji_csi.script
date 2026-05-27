@@ -1,0 +1,72 @@
+if (not Banjaji_CSI_mcm) then
+	printf("original script not found, patch not activated")
+	return nil
+end
+
+local og_init_workshop = item_recipe.UIRecipe.Init_workshop
+item_recipe.UIRecipe.Init_workshop = function(self)
+	og_init_workshop(self)
+	
+	self.intercept_draw = false
+	self.itm_name_size = nil
+	self.itm_name_color = GetARGB(255, 150, 150, 150)
+	self.itm_num_color = nil
+	self.cap_color = GetARGB(255, 170, 170, 170)
+end
+
+item_recipe.UIRecipe.InitControls_1st_page = function(self)
+	self:SetWndRect(Frect():set(0,0,1024,768))
+	self:SetAutoDelete(true) -- I guess free up memory after unregistering GUI
+	
+	-- Init xml object and read UI elements info from file
+	self.xml = CScriptXmlInit()
+	local xml = self.xml
+	-- Edited by Sota
+--	xml:ParseFile("ui_items_recipe.xml")
+	xml:ParseFile("Banjaji_CSI_items_recipe.xml")
+	
+	-- Main window
+	self.dialog = xml:InitStatic("recipe", self) -- main window frame. Class instance is parent
+	self.dialog:SetAutoDelete(true)
+	
+	-- Background is old letter texture
+	self.background_main = xml:InitStatic("recipe:background_main", self.dialog)
+	
+	-- Frame over writable background part for simpler coordinates
+	self.mainframe = xml:InitStatic("recipe:mainframe", self.dialog)
+	
+	-- Title (note name)
+	self.cap_shadow = xml:InitTextWnd("recipe:cap", self.mainframe) -- mainframe is parent: coordinates are relative to mainframe
+	self.cap = xml:InitTextWnd("recipe:cap", self.mainframe)
+	
+	-- Shift shadow text and color it different (create shadow)
+	-- Edited by Sota
+--	local pos = self.cap:GetWndPos()
+--	self.cap_shadow:SetWndPos(vector2():set(pos.x+1,pos.y+1))
+--	self.cap_shadow:SetTextColor(GetARGB(255, 120, 120, 120))
+	self.cap_shadow:Show(false)
+	
+	-- Main scrollbar that contains note texts (information, information2 and recipes_title) and cells_tool
+	self.main_scroll = xml:InitScrollView("recipe:scrollbar", self.mainframe) -- main scrollbar. mainframe is parent
+	
+	-- Get tooltip text window for self:Update() (hovering over items)
+	self.item_info = utils_ui.UIInfoItem(self, 1000)
+end
+
+local og_init_controls_recipe = item_recipe.UIRecipe.InitControls_recipe
+item_recipe.UIRecipe.InitControls_recipe = function(self)
+	og_init_controls_recipe(self)
+	
+	self.cap_shadow:Show(false)
+end
+
+local og_draw_text = item_recipe.UIRecipe.Draw_text
+item_recipe.UIRecipe.Draw_text = function(self)
+	og_draw_text(self)
+	
+	self.information:SetTextColor( self.cap_color )
+	local trans = game.translate_string(self.encyc_sec .. "_text2")
+	if (trans ~= (self.encyc_sec .. "_text2")) then
+		self.information2:SetTextColor( self.itm_name_color )
+	end
+end

@@ -1,0 +1,36 @@
+if (not indirect_parts_favoriter) then
+	printf("original script not found, patch not activated")
+	return nil
+end
+
+local gts = game.translate_string
+local explicitly_missing = true
+local all_lower_case = true
+
+function indirect_parts_favoriter.name_and_cond(sec, con, threshold, mode)
+	local line
+	
+	if mode == 1 then
+		local part_name = ui_item.get_sec_name(sec)
+		if con == -1 and explicitly_missing then
+			con = gts("st_part_missing")
+		else
+			con = con .. "%"
+		end
+		if indirect_parts_favoriter.is_favorite(sec) then
+			line = gts("st_unfavorite_part") .. " " .. part_name .. " (" .. con .. ")"
+		else
+			line = gts("st_favorite_part") .. " " .. part_name .. " (" .. con .. ")"
+		end
+	elseif mode == 2 then
+		line = gts("st_unfavorite_all_part") .. " " .. threshold .. gts("st_part_condition")
+	elseif mode == 3 then
+		line = gts("st_favorite_all_part") .. " " .. threshold .. gts("st_part_condition")
+	end
+	
+	if all_lower_case then
+		line = string.lower(line)
+	end
+	
+	return line
+end

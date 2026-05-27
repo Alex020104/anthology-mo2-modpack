@@ -4,7 +4,7 @@
   <global_wnd width="1920" height="1080">
 
 <auto_static x="0" y="0" width="1024" height="768" stretch="1">
-	<texture x="0" y="0" width="1920" height="1080">ui\anthology\menu_save</texture>
+	<texture x="0" y="0" width="2560" height="1440">ui\anthology\menu_save</texture>
 </auto_static>
 
 

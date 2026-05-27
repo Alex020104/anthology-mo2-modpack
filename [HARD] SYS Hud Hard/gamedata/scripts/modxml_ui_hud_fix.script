@@ -1,0 +1,19 @@
+function on_xml_read()
+	RegisterScriptCallback("on_xml_read", function(xml_file_name, xml_obj)
+		if xml_file_name == [[ui\ui_hud.xml]]
+		then
+			local ratio = utils_xml.screen_ratio()
+			
+			local res = xml_obj:query("indicators")
+			if res[1] then
+				local el = res[1]
+				xml_obj:setElementAttr(el, {x=136*ratio, y=734})
+			end
+			local res = xml_obj:query("belt")
+			if res[1] then
+				local el = res[1]
+				xml_obj:setElementAttr(el, {x=1024-156*ratio, y=742})
+			end
+		end
+	end)
+end
