@@ -179,6 +179,10 @@ end
 function update_immunities()
     if current_outfit ~= 0 then
         local outfit = db.actor:item_in_slot(7)
+        if not outfit or type(outfit) == "number" or outfit:id() ~= current_outfit then
+            empty_table(current_outfit_immunity)
+            return
+        end
         local immunities_sec =  SYS_GetParam(0,outfit:section(),"immunities_sect")
         for k,v in pairs(d2i) do        
             current_outfit_immunity[k] = SYS_GetParam(2, immunities_sec, v, 0)
@@ -199,19 +203,36 @@ local dtype = {
 -- categories of damage are: fabrics, retardants, ballistics, helms, support
 local PART_DMG_COEF = 0.9
 function actor_on_before_hit(shit,bone_id)
-    if current_outfit ~= 0 and current_outfit_immunity[dtype[shit.type]] then
+    if not shit or not shit.type then return end
+
+    local damage_type = dtype[shit.type]
+    if not damage_type then return end
+
+    if not db.actor then return end
+
+    local outfit = db.actor:item_in_slot(7)
+    if not outfit or type(outfit) == "number" then
+        actor_item_to_ruck()
+        return
+    end
+
+    if outfit:id() ~= current_outfit then
+        actor_item_to_slot(outfit)
+    end
+
+    if current_outfit ~= 0 and current_outfit_immunity[damage_type] then
         dump_immunities()
-        local immunity_name = d2i[dtype[shit.type]]
-        local immunity_val = current_outfit_immunity[dtype[shit.type]]
+        local immunity_name = d2i[damage_type]
+        local immunity_val = current_outfit_immunity[damage_type]
         if immunity_name then
-            local tier = tier_outfit(level.object_by_id(current_outfit):section())
+            local tier = tier_outfit(outfit:section())
             local damage_coef = tier > 0 and get_config("damage_"..tier) or 1
             local coef = damage_coef or PART_DMG_COEF
             local damage_to_armor = immunity_val * shit.power * coef
             -- in case actor got headshot only damage the attached helmet
             local helmet_only = (bone_id == 15 and shit.type == hit.fire_wound)
-            print_dbg("Actor took %s type damage with power %s. Actor immunity against damage is %s. Total condition damage is %s.", dtype[shit.type], shit.power, immunity_val, damage_to_armor)
-            degrade_parts(dtype[shit.type], damage_to_armor, helmet_only)
+            print_dbg("Actor took %s type damage with power %s. Actor immunity against damage is %s. Total condition damage is %s.", damage_type, shit.power, immunity_val, damage_to_armor)
+            degrade_parts(damage_type, damage_to_armor, helmet_only)
         end
     end
 end
