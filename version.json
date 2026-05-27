@@ -1,7 +1,7 @@
 {
-  "version": "2026.05.27.1",
+  "version": "2026.05.27.2",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Update SYS Hud Hard files.",
+  "notes": "Fix SYS ANTHOLOGY xr_effects spawn_object guard.",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_cat.ltx",
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_dog.ltx",
