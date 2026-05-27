@@ -42,6 +42,32 @@ function clamp_condition_cap(cond)
     return cond
 end
 
+local function is_valid_number(n)
+    return type(n) == "number" and n == n and n > -1000000 and n < 1000000
+end
+
+local function has_valid_npc_position(npc)
+    if not npc or type(npc.position) ~= "function" then
+        return false
+    end
+
+    local pos = npc:position()
+    return pos and is_valid_number(pos.x) and is_valid_number(pos.y) and is_valid_number(pos.z)
+end
+
+local function can_spawn_loot_on_npc(npc, context)
+    if has_valid_npc_position(npc) then
+        return true
+    end
+
+    printf("! [SYS_BALANCE] Skip generated loot for NPC with invalid position | context[%s] npc_id[%s] npc_name[%s]",
+        context or "unknown",
+        npc and npc.id and npc:id() or "nil",
+        npc and npc.name and npc:name() or "nil")
+
+    return false
+end
+
 -- Переменные состояния удачи для текущего трупа (локальные, живут только внутри скрипта)
 local is_lucky_corpse = false
 local is_elite_lucky = false
@@ -300,6 +326,10 @@ local function is_igi_tracked_item(itm)
     return false
 end
 local function spawn_ranked_ammo(npc, section)
+    if not can_spawn_loot_on_npc(npc, "ranked_ammo") then
+        return
+    end
+
     if not section or not ini_sys:section_exist(section) then
         return
     end
@@ -435,10 +465,16 @@ function death_manager.set_weapon_drop_condition(npc, itm)
     end
 
     if math.random(100) <= disassemble_chance then
-        spawn_weapon_parts_instead(npc, weapon_section, condition)
-        local se_item = alife_object and alife_object(itm:id())
-        if se_item then
-            alife_release(se_item)
+        if not can_spawn_loot_on_npc(npc, "weapon_disassemble") then
+            itm:set_condition(clamp_condition_cap(condition_float))
+            return
+        end
+
+        if spawn_weapon_parts_instead(npc, weapon_section, condition) then
+            local se_item = alife_object and alife_object(itm:id())
+            if se_item then
+                alife_release(se_item)
+            end
         end
         return
     end
@@ -500,6 +536,10 @@ function death_manager.try_spawn_ammo(npc)
             
             -- Если есть подствольник - спавним гранаты
             if (ini_sys:r_float_ex(itm:section(), "grenade_launcher_status") or 0) > 0 then
+                if not can_spawn_loot_on_npc(npc, "grenade_ammo") then
+                    return
+                end
+
                 local grenade_class = parse_list(ini_sys, itm:section(), "grenade_class")
                 for i = 1, #grenade_class do
                     local sec = grenade_class[i]
@@ -529,8 +569,9 @@ function death_manager.spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, 
     local tbl = death_manager.get_outfit_by_npc_visual(visual)
     local outfit_section = tbl and tbl[1]
     local helmet_section = tbl and tbl[2]
+    local can_spawn_loot = can_spawn_loot_on_npc(npc, "cosmetics")
 
-    if npc_comm and ini_sys:section_exist(npc_comm .. "_patch") then
+    if can_spawn_loot and npc_comm and ini_sys:section_exist(npc_comm .. "_patch") then
         if math.random(100) <= 30 then
             alife_create_item(npc_comm .. "_patch", npc)
         end
@@ -545,9 +586,13 @@ function death_manager.spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, 
         local final_condition = clamp_condition_cap(cond / 100.0)
 
         if death_manager.validate_drop(outfit_section) then
-            death_manager.spawn_with_condition(npc, outfit_section, final_condition)
+            if can_spawn_loot then
+                death_manager.spawn_with_condition(npc, outfit_section, final_condition)
+            end
         else
-            spawn_parts_instead(npc, outfit_section, final_condition)
+            if can_spawn_loot then
+                spawn_parts_instead(npc, outfit_section, final_condition)
+            end
         end
     end
 
@@ -560,7 +605,9 @@ function death_manager.spawn_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, 
         local final_h_cond = clamp_condition_cap(h_cond / 100.0)
 
         if death_manager.validate_drop(helmet_section) then
-            death_manager.spawn_with_condition(npc, helmet_section, final_h_cond)
+            if can_spawn_loot then
+                death_manager.spawn_with_condition(npc, helmet_section, final_h_cond)
+            end
         end
     end
 end
@@ -590,6 +637,10 @@ end
 -- Вместо оружия спавнятся запчасти
 -- Количество и состояние запчастей зависит от состояния оружия
 function spawn_weapon_parts_instead(npc, weapon_section, condition)
+    if not can_spawn_loot_on_npc(npc, "weapon_parts") then
+        return false
+    end
+
     -- Ищем список запчастей для этого оружия
     local parts = itms_manager.ini_parts:r_string_ex("weapon_parts_list", weapon_section)
     if not parts then
@@ -636,6 +687,8 @@ function spawn_weapon_parts_instead(npc, weapon_section, condition)
         alife_create_item(part_name, npc, { cond = part_cond })
         print_dbg("Part: %s (cond %s%%)", part_name, math.floor(part_cond * 100))
     end
+
+    return true
 end
 
 -- ==========================================
@@ -643,6 +696,10 @@ end
 -- ==========================================
 -- Если броня не выпала, с небольшим шансом можно найти запчасти
 function spawn_parts_instead(npc, section, cond)
+    if not can_spawn_loot_on_npc(npc, "armor_parts") then
+        return
+    end
+
     -- 30% шанс, что найдутся запчасти (иначе вообще ничего)
     if math.random(100) > 30 then 
         print_dbg("No parts from: %s", section)
