@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+
+<string_table>
+
+    <string id="ui_mcm_menu_stream_donation_interactive">
+        <text>Stream Donation Interactive</text>
+    </string>
+
+    <string id="ui_mcm_stream_donation_interactive_header">
+        <text>Настройки Stream Donation Interactive</text>
+    </string>
+
+    <string id="ui_mcm_stream_donation_interactive_enable_feature">
+        <text>Включить интерактив</text>
+    </string>
+
+    <string id="ui_mcm_stream_donation_interactive_enable_feature_desc">
+        <text>Включает чтение очереди донатов и запуск событий в игре.</text>
+    </string>
+
+    <string id="ui_sdi_popup_header">
+        <text>Интерактив Зоны</text>
+    </string>
+
+    <string id="ui_sdi_popup_amount">
+        <text>Сумма</text>
+    </string>
+
+    <string id="ui_sdi_popup_tone">
+        <text>Тип</text>
+    </string>
+
+    <string id="ui_sdi_popup_duration">
+        <text>Длительность</text>
+    </string>
+
+    <string id="ui_sdi_popup_comment">
+        <text>Комментарий</text>
+    </string>
+
+    <string id="ui_sdi_popup_result">
+        <text>Итог</text>
+    </string>
+
+    <string id="ui_sdi_tone_positive">
+        <text>помощь</text>
+    </string>
+
+    <string id="ui_sdi_tone_negative">
+        <text>угроза</text>
+    </string>
+
+    <string id="ui_sdi_tone_neutral">
+        <text>нейтрально</text>
+    </string>
+
+    <string id="ui_sdi_effect_unknown">
+        <text>Неизвестное событие</text>
+    </string>
+
+    <string id="ui_sdi_effect_message">
+        <text>Сообщение доната</text>
+    </string>
+
+    <string id="ui_sdi_effect_cash_in">
+        <text>Деньги в карман</text>
+    </string>
+
+    <string id="ui_sdi_effect_cash_out">
+        <text>Потеря денег</text>
+    </string>
+
+    <string id="ui_sdi_effect_heal">
+        <text>Лечение</text>
+    </string>
+
+    <string id="ui_sdi_effect_blood_restore">
+        <text>Переливание крови</text>
+    </string>
+
+    <string id="ui_sdi_effect_power_up">
+        <text>Бодрость</text>
+    </string>
+
+    <string id="ui_sdi_effect_power_down">
+        <text>Слабость</text>
+    </string>
+
+    <string id="ui_sdi_effect_satiety_up">
+        <text>Сытость</text>
+    </string>
+
+    <string id="ui_sdi_effect_satiety_down">
+        <text>Голод</text>
+    </string>
+
+    <string id="ui_sdi_effect_bleeding_stop">
+        <text>Кровь остановлена</text>
+    </string>
+
+    <string id="ui_sdi_effect_bleeding_up">
+        <text>Кровотечение</text>
+    </string>
+
+    <string id="ui_sdi_effect_radiation_down">
+        <text>Радиация снята</text>
+    </string>
+
+    <string id="ui_sdi_effect_radiation_up">
+        <text>Радиационный удар</text>
+    </string>
+
+    <string id="ui_sdi_effect_one_hp">
+        <text>Оставить 1 HP</text>
+    </string>
+
+    <string id="ui_sdi_effect_item">
+        <text>Предмет в инвентарь</text>
+    </string>
+
+    <string id="ui_sdi_effect_food_small">
+        <text>Пакет с едой</text>
+    </string>
+
+    <string id="ui_sdi_effect_kit_medical">
+        <text>Медицинский комплект</text>
+    </string>
+
+    <string id="ui_sdi_effect_kit_survival">
+        <text>Набор выживальщика</text>
+    </string>
+
+    <string id="ui_sdi_effect_vodka_fun">
+        <text>Залить водяры</text>
+    </string>
+
+    <string id="ui_sdi_effect_kit_generic">
+        <text>Набор предметов</text>
+    </string>
+
+    <string id="ui_sdi_effect_artifact_basic">
+        <text>Базовый артефакт</text>
+    </string>
+
+    <string id="ui_sdi_effect_artifact_mid">
+        <text>Хороший артефакт</text>
+    </string>
+
+    <string id="ui_sdi_effect_artifact_rare">
+        <text>Редкий артефакт</text>
+    </string>
+
+    <string id="ui_sdi_effect_artifact_any">
+        <text>Артефакт-сюрприз</text>
+    </string>
+
+    <string id="ui_sdi_effect_ammo_slots">
+        <text>Патроны к оружию</text>
+    </string>
+
+    <string id="ui_sdi_effect_repair_all">
+        <text>Ремонт снаряги</text>
+    </string>
+
+    <string id="ui_sdi_effect_degrade_all">
+        <text>Поломка снаряги</text>
+    </string>
+
+    <string id="ui_sdi_effect_weather_sun">
+        <text>Солнечная погода</text>
+    </string>
+
+    <string id="ui_sdi_effect_weather_rain">
+        <text>Дождливая погода</text>
+    </string>
+
+    <string id="ui_sdi_effect_weather_fog">
+        <text>Густой туман</text>
+    </string>
+
+    <string id="ui_sdi_effect_weather_generic">
+        <text>Смена погоды</text>
+    </string>
+
+    <string id="ui_sdi_effect_time_forward">
+        <text>Перемотка времени</text>
+    </string>
+
+    <string id="ui_sdi_effect_rename_actor">
+        <text>Сменить имя ГГ</text>
+    </string>
+
+    <string id="ui_sdi_effect_drop_weapon">
+        <text>Оружие выбито</text>
+    </string>
+
+    <string id="ui_sdi_effect_drunk_camera">
+        <text>Пьяная камера</text>
+    </string>
+
+    <string id="ui_sdi_effect_move_keys_only">
+        <text>Блок рюкзака и КПК</text>
+    </string>
+
+    <string id="ui_sdi_effect_no_shoot">
+        <text>Запрет на стрельбу</text>
+    </string>
+
+    <string id="ui_sdi_effect_regen_boost">
+        <text>Мега-хил</text>
+    </string>
+
+    <string id="ui_sdi_effect_exhaustion">
+        <text>Изнурение</text>
+    </string>
+
+    <string id="ui_sdi_effect_radiation_storm">
+        <text>Радиационная буря</text>
+    </string>
+
+    <string id="ui_sdi_effect_random_teleport">
+        <text>Рандом по текущей локации</text>
+    </string>
+
+    <string id="ui_sdi_effect_random_level_teleport">
+        <text>Рандом по локам</text>
+    </string>
+
+    <string id="ui_sdi_effect_spawn_mutant">
+        <text>Вызов мутантов</text>
+    </string>
+
+    <string id="ui_sdi_effect_spawn_npc">
+        <text>Вызов врагов</text>
+    </string>
+
+    <string id="ui_sdi_effect_weapon_low">
+        <text>Слабый ствол</text>
+    </string>
+
+    <string id="ui_sdi_effect_outfit_low">
+        <text>Слабая броня</text>
+    </string>
+
+    <string id="ui_sdi_effect_full_low">
+        <text>Слабый сет</text>
+    </string>
+
+    <string id="ui_sdi_effect_weapon_high">
+        <text>Хороший ствол</text>
+    </string>
+
+    <string id="ui_sdi_effect_outfit_high">
+        <text>Хорошая броня</text>
+    </string>
+
+    <string id="ui_sdi_effect_full_high">
+        <text>Крутой сет</text>
+    </string>
+
+    <string id="ui_sdi_effect_weapon_max">
+        <text>Максимальный ствол</text>
+    </string>
+
+    <string id="ui_sdi_effect_outfit_max">
+        <text>Максимальная броня</text>
+    </string>
+
+    <string id="ui_sdi_effect_full_max">
+        <text>Максимальная снаряга</text>
+    </string>
+
+    <string id="ui_sdi_effect_strip_weapon">
+        <text>Забрать оружие</text>
+    </string>
+
+    <string id="ui_sdi_effect_strip_outfit">
+        <text>Забрать броню</text>
+    </string>
+
+    <string id="ui_sdi_effect_strip_helmet">
+        <text>Забрать шлем</text>
+    </string>
+
+    <string id="ui_sdi_effect_strip_all">
+        <text>Забрать весь сет</text>
+    </string>
+
+    <string id="ui_sdi_effect_tier_bad">
+        <text>Опасная рулетка</text>
+    </string>
+
+    <string id="ui_sdi_effect_tier_good">
+        <text>Хорошая рулетка</text>
+    </string>
+
+    <string id="ui_sdi_effect_tier_max">
+        <text>Максимальная рулетка</text>
+    </string>
+
+    <string id="ui_sdi_spawn_dog">
+        <text>Собаки</text>
+    </string>
+
+    <string id="ui_sdi_spawn_cat">
+        <text>Кошки</text>
+    </string>
+
+    <string id="ui_sdi_spawn_boar">
+        <text>Кабаны</text>
+    </string>
+
+    <string id="ui_sdi_spawn_pseudodog">
+        <text>Псевдособаки</text>
+    </string>
+
+    <string id="ui_sdi_spawn_snork">
+        <text>Снорки</text>
+    </string>
+
+    <string id="ui_sdi_spawn_fracture">
+        <text>Изломы</text>
+    </string>
+
+    <string id="ui_sdi_spawn_psydog">
+        <text>Пси-собаки</text>
+    </string>
+
+    <string id="ui_sdi_spawn_bloodsucker">
+        <text>Кровососы</text>
+    </string>
+
+    <string id="ui_sdi_spawn_burer">
+        <text>Бюреры</text>
+    </string>
+
+    <string id="ui_sdi_spawn_controller">
+        <text>Контролер</text>
+    </string>
+
+    <string id="ui_sdi_spawn_chimera">
+        <text>Химеры</text>
+    </string>
+
+    <string id="ui_sdi_spawn_poltergeist">
+        <text>Полтергейсты</text>
+    </string>
+
+    <string id="ui_sdi_spawn_giant">
+        <text>Псевдогигант</text>
+    </string>
+
+    <string id="ui_sdi_spawn_jumper">
+        <text>Прыгающий гигант</text>
+    </string>
+
+    <string id="ui_sdi_spawn_zombied">
+        <text>Зомбированные</text>
+    </string>
+
+    <string id="ui_sdi_spawn_stalker">
+        <text>Одиночки</text>
+    </string>
+
+    <string id="ui_sdi_spawn_renegade">
+        <text>Ренегаты</text>
+    </string>
+
+    <string id="ui_sdi_spawn_bandit">
+        <text>Бандиты</text>
+    </string>
+
+    <string id="ui_sdi_spawn_military">
+        <text>Военные</text>
+    </string>
+
+    <string id="ui_sdi_spawn_merc">
+        <text>Наемники</text>
+    </string>
+
+    <string id="ui_sdi_spawn_monolith">
+        <text>Монолитовцы</text>
+    </string>
+
+    <string id="ui_sdi_spawn_sin">
+        <text>Бойцы Греха</text>
+    </string>
+
+    <string id="ui_sdi_spawn_isg">
+        <text>ИИГ</text>
+    </string>
+
+    <string id="ui_sdi_spawn_retry">
+        <text>Повтор спавна</text>
+    </string>
+
+    <string id="ui_sdi_spawn_retry_ready">
+        <text>Пробую еще раз через несколько секунд</text>
+    </string>
+
+    <string id="ui_sdi_result_message">
+        <text>сообщение</text>
+    </string>
+
+    <string id="ui_sdi_result_weapon_dropped">
+        <text>выбито</text>
+    </string>
+
+    <string id="ui_sdi_result_spawn_failed">
+        <text>спавн не удался</text>
+    </string>
+
+</string_table>

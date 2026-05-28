@@ -1,0 +1,2214 @@
+local OPTION_ROOT = "stream_donation_interactive"
+local SAVE_KEY = "stream_donation_interactive_state"
+local EVENT_GROUP = OPTION_ROOT
+local EVENT_ID = "poll_queue"
+local QUEUE_FILE_NAME = "stream_donation_interactive_queue.tsv"
+local CONSUMED_IDS_FILE_NAME = "stream_donation_interactive_consumed_ids.txt"
+local DEFAULT_POLL_SECONDS = 2
+local RETRY_FAILED_EVENT_MS = 10000
+local DEFAULT_MAX_EVENTS_PER_POLL = 3
+local MAX_RECENT_IDS = 32
+local MAX_CONSUMED_IDS = 2048
+local DONATION_ICON = "ui_inGame2_Hero"
+local POSITIVE_ICON = "ui_inGame2_Predmet_poluchen"
+local NEGATIVE_ICON = "ui_inGame2_Dengi_otdani"
+local MONEY_IN_ICON = "ui_inGame2_Dengi_polucheni"
+local MONEY_OUT_ICON = "ui_inGame2_Dengi_otdani"
+local ITEM_ICON = "ui_inGame2_Predmet_poluchen"
+local SLOT_SIDEARM = 2
+local SLOT_PRIMARY = 3
+local SLOT_OUTFIT = 7
+local SLOT_BACKPACK = 8
+local SLOT_HELMET = 12
+local POPUP_COLOR_TITLE = "%c[255,255,160,0]"
+local POPUP_COLOR_POSITIVE = "%c[green]"
+local POPUP_COLOR_NEGATIVE = "%c[red]"
+local POPUP_COLOR_SPAWN = "%c[255,255,140,60]"
+local POPUP_COLOR_MAJOR = "%c[255,255,96,96]"
+local POPUP_COLOR_NEUTRAL = "%c[255,215,215,215]"
+local POPUP_COLOR_MUTED = "%c[255,160,160,160]"
+local POPUP_COLOR_RESET = "%c[default]"
+local TIMED_EFFECT_DEFAULT_SECONDS = 150
+local TIMED_EFFECT_MIN_SECONDS = 10
+local TIMED_EFFECT_MAX_SECONDS = 900
+local DRUNK_CAMERA_EFFECT_ID = 49110
+local DRUNK_PP_EFFECT_ID = 49111
+local BLEED_PP_EFFECT_ID = 49112
+local EVENT_ACCENT_PP_EFFECT_ID = 49113
+local EVENT_ACCENT_CAM_EFFECT_ID = 49114
+local ACTIVE_EFFECT_TIP_INTERVAL_MS = 15000
+local ACTIVE_EFFECT_TIP_DURATION_MS = 4200
+local ACTIVE_EFFECT_TIP_MAX_LINES = 3
+local DONATION_ALERT_DURATION_MS = 4200
+local DONATION_DETAILS_DURATION_MS = 12000
+local DONATION_COMBO_WINDOW_MS = 18000
+local PRE_EVENT_SAVE_DELAY_MS = 2500
+local PRE_EVENT_SAVE_SLOT_COUNT = 3
+local PRE_EVENT_SAVE_NAME_PREFIX = "sdi_pre_event"
+local POST_SPAWN_SAVE_DELAY_MS = 1200
+local POST_SPAWN_SAVE_SLOT_COUNT = 3
+local POST_SPAWN_SAVE_NAME_PREFIX = "sdi_post_spawn"
+local CONFIG_MODULE_NAME = "stream_donation_interactive_config"
+local LOOT_MODULE_NAME = "stream_donation_interactive_loot"
+local SPAWN_MODULE_NAME = "stream_donation_interactive_spawns"
+local EFFECTS_MODULE_NAME = "stream_donation_interactive_effects"
+
+local sdi_config = nil
+local sdi_loot = nil
+local sdi_spawns = nil
+local sdi_effects = nil
+
+local function script_module(name)
+    local module = _G and _G[name] or nil
+    if type(module) == "table" then
+        return module
+    end
+    return nil
+end
+
+local PARTS_SYNC = {}
+do
+    local ok, loaded = pcall(require, "item_parts")
+    if ok and type(loaded) == "table" then
+        PARTS_SYNC.item_parts = loaded
+    end
+end
+
+do
+    local ok, loaded = pcall(require, "arti_jamming")
+    if ok and type(loaded) == "table" then
+        PARTS_SYNC.arti_jamming = loaded
+    end
+end
+
+
+local defaults = {
+    enable_feature = true,
+}
+
+local config = {
+    enable_feature = defaults.enable_feature,
+}
+
+local runtime_state = {
+    cursor = 0,
+    recent_ids = {},
+    consumed_order = {},
+    consumed_lookup = {},
+    active_effects = {},
+    next_poll_at = 0,
+    logged_first_update = false,
+    logged_first_poll = false,
+    logged_update_tick = false,
+    next_effect_tip_at = 0,
+    last_event_at = 0,
+    combo_count = 0,
+    pending_presave_event = nil,
+    pending_presave_ready_at = 0,
+    pending_presave_name = "",
+    pending_presave_event_id = "",
+    pending_presave_attempts = 0,
+    presave_slot_index = 0,
+    pending_postsave_ready_at = 0,
+    pending_postsave_name = "",
+    pending_postsave_event_id = "",
+    postsave_slot_index = 0,
+    pre_event_save_delay_ms = PRE_EVENT_SAVE_DELAY_MS,
+    post_spawn_save_delay_ms = POST_SPAWN_SAVE_DELAY_MS,
+    spawn_settings = {
+        entity_attempts = 4,
+        max_radius = 96,
+        retry_delay_seconds = 4,
+        retry_max_attempts = 2,
+    },
+}
+local clear_all_timed_effects = function()
+end
+local active_effects_empty = function()
+    return next(runtime_state.active_effects) == nil
+end
+local execute_event
+local event_sound_cache = {}
+
+local function clear_pending_presave()
+    runtime_state.pending_presave_event = nil
+    runtime_state.pending_presave_ready_at = 0
+    runtime_state.pending_presave_name = ""
+    runtime_state.pending_presave_event_id = ""
+    runtime_state.pending_presave_attempts = 0
+end
+
+local function clear_pending_postsave()
+    runtime_state.pending_postsave_ready_at = 0
+    runtime_state.pending_postsave_name = ""
+    runtime_state.pending_postsave_event_id = ""
+end
+
+local function option_path(key)
+    return OPTION_ROOT .. "/" .. key
+end
+
+local function log_message(text)
+    if log and text then
+        log("[stream_donation_interactive] " .. tostring(text))
+    end
+end
+
+local function current_time_ms()
+    if time_global then
+        return time_global()
+    end
+    return 0
+end
+
+local function actor_is_alive()
+    if not level or not level.present or not level.present() or not db or not db.actor then
+        return false
+    end
+
+    if db.actor.alive then
+        local ok, alive = pcall(function()
+            return db.actor:alive()
+        end)
+        if ok then
+            return alive == true
+        end
+    end
+
+    return (tonumber(db.actor.health) or 0) > 0
+end
+
+local function translate_text(key, fallback)
+    if game and game.translate_string and key and key ~= "" then
+        local ok, value = pcall(function()
+            return game.translate_string(key)
+        end)
+        if ok and value and value ~= "" and value ~= key then
+            return value
+        end
+    end
+    return fallback or key or ""
+end
+
+local function colorize(text, color)
+    if not text or text == "" then
+        return ""
+    end
+    return (color or POPUP_COLOR_RESET) .. tostring(text) .. POPUP_COLOR_RESET
+end
+
+local function refresh_config()
+    local value = nil
+    if ui_mcm then
+        value = ui_mcm.get(option_path("enable_feature"))
+    end
+    if value == nil then
+        value = defaults.enable_feature
+    end
+    config.enable_feature = value and true or false
+end
+
+local function reset_runtime_state()
+    clear_all_timed_effects()
+    runtime_state.cursor = 0
+    runtime_state.recent_ids = {}
+    runtime_state.consumed_order = {}
+    runtime_state.consumed_lookup = {}
+    runtime_state.active_effects = {}
+    runtime_state.next_poll_at = 0
+    runtime_state.logged_first_update = false
+    runtime_state.logged_first_poll = false
+    runtime_state.logged_update_tick = false
+    runtime_state.next_effect_tip_at = 0
+    runtime_state.last_event_at = 0
+    runtime_state.combo_count = 0
+    runtime_state.presave_slot_index = 0
+    runtime_state.postsave_slot_index = 0
+    runtime_state.pre_event_save_delay_ms = PRE_EVENT_SAVE_DELAY_MS
+    runtime_state.post_spawn_save_delay_ms = POST_SPAWN_SAVE_DELAY_MS
+    clear_pending_presave()
+    clear_pending_postsave()
+end
+
+local function remember_recent_id(event_id)
+    if not event_id or event_id == "" then
+        return
+    end
+
+    for i = 1, #runtime_state.recent_ids do
+        if runtime_state.recent_ids[i] == event_id then
+            return
+        end
+    end
+
+    runtime_state.recent_ids[#runtime_state.recent_ids + 1] = event_id
+    while #runtime_state.recent_ids > MAX_RECENT_IDS do
+        table.remove(runtime_state.recent_ids, 1)
+    end
+end
+
+local function was_recently_processed(event_id)
+    if not event_id or event_id == "" then
+        return false
+    end
+
+    for i = 1, #runtime_state.recent_ids do
+        if runtime_state.recent_ids[i] == event_id then
+            return true
+        end
+    end
+    return false
+end
+
+local function remember_consumed_id(event_id)
+    if not event_id or event_id == "" or runtime_state.consumed_lookup[event_id] then
+        return false
+    end
+
+    runtime_state.consumed_order[#runtime_state.consumed_order + 1] = event_id
+    runtime_state.consumed_lookup[event_id] = true
+
+    while #runtime_state.consumed_order > MAX_CONSUMED_IDS do
+        local removed = table.remove(runtime_state.consumed_order, 1)
+        if removed then
+            runtime_state.consumed_lookup[removed] = nil
+        end
+    end
+
+    return true
+end
+
+local function was_consumed(event_id)
+    return event_id and event_id ~= "" and runtime_state.consumed_lookup[event_id] == true or false
+end
+
+local function safe_tonumber(value, fallback)
+    local number = tonumber(value)
+    if number == nil then
+        return fallback
+    end
+    return number
+end
+
+local function clamp(value, min_value, max_value)
+    if value < min_value then
+        return min_value
+    end
+    if value > max_value then
+        return max_value
+    end
+    return value
+end
+
+local function trim(value)
+    if type(value) ~= "string" then
+        return ""
+    end
+    return string.match(value, "^%s*(.-)%s*$") or ""
+end
+
+local function format_decimal(value, decimals)
+    local number = safe_tonumber(value, 0)
+    local precision = decimals or 2
+    local fmt = "%." .. tostring(precision) .. "f"
+    local text = string.format(fmt, number)
+    text = string.gsub(text, "(%.%d-)0+$", "%1")
+    text = string.gsub(text, "%.$", "")
+    if text == "-0" then
+        return "0"
+    end
+    return text
+end
+
+local function format_signed_decimal(value, decimals)
+    local number = safe_tonumber(value, 0)
+    local prefix = number > 0 and "+" or ""
+    return prefix .. format_decimal(number, decimals)
+end
+
+local function format_duration_mmss(total_seconds)
+    local seconds = clamp(math.floor(math.abs(safe_tonumber(total_seconds, 0))), 0, TIMED_EFFECT_MAX_SECONDS)
+    local minutes = math.floor(seconds / 60)
+    local rest = seconds % 60
+    return string.format("%02d:%02d", minutes, rest)
+end
+
+local function parse_signed_percent(value, fallback)
+    local number = safe_tonumber(value, fallback)
+    if number > 1 or number < -1 then
+        number = number / 100
+    end
+    return number
+end
+
+local function parse_duration_seconds(value, fallback_seconds)
+    local raw = trim(value)
+    if raw == "" then
+        return clamp(math.floor(math.abs(safe_tonumber(fallback_seconds, TIMED_EFFECT_DEFAULT_SECONDS))), TIMED_EFFECT_MIN_SECONDS, TIMED_EFFECT_MAX_SECONDS)
+    end
+
+    local first = string.match(raw, "^([%-%d%.]+):")
+    if first then
+        raw = first
+    end
+
+    local seconds = math.floor(math.abs(safe_tonumber(raw, fallback_seconds or TIMED_EFFECT_DEFAULT_SECONDS)))
+    return clamp(seconds, TIMED_EFFECT_MIN_SECONDS, TIMED_EFFECT_MAX_SECONDS)
+end
+
+local function pct_decode(value)
+    if value == nil or value == "" then
+        return ""
+    end
+
+    return (string.gsub(value, "%%(%x%x)", function(hex)
+        local number = tonumber(hex, 16)
+        if not number then
+            return ""
+        end
+        return string.char(number)
+    end))
+end
+
+local function clip_text(value, limit)
+    if not value or value == "" then
+        return ""
+    end
+
+    if string.len(value) <= limit then
+        return value
+    end
+
+    return string.sub(value, 1, limit) .. "..."
+end
+
+local function queue_path()
+    local fs = getFS and getFS()
+    if not fs then
+        return QUEUE_FILE_NAME
+    end
+
+    local base = fs:update_path("$logs$", "")
+    if not base or base == "" then
+        return QUEUE_FILE_NAME
+    end
+
+    local last = string.sub(base, -1)
+    if last ~= "\\" and last ~= "/" then
+        base = base .. "\\"
+    end
+    return base .. QUEUE_FILE_NAME
+end
+
+local function consumed_ids_path()
+    local fs = getFS and getFS()
+    if not fs then
+        return CONSUMED_IDS_FILE_NAME
+    end
+
+    local base = fs:update_path("$logs$", "")
+    if not base or base == "" then
+        return CONSUMED_IDS_FILE_NAME
+    end
+
+    local last = string.sub(base, -1)
+    if last ~= "\\" and last ~= "/" then
+        base = base .. "\\"
+    end
+    return base .. CONSUMED_IDS_FILE_NAME
+end
+
+local function save_consumed_ids()
+    local file_handle = io.open(consumed_ids_path(), "wb")
+    if not file_handle then
+        log_message("failed to open consumed ids file for write")
+        return
+    end
+
+    for i = 1, #runtime_state.consumed_order do
+        local event_id = runtime_state.consumed_order[i]
+        if event_id and event_id ~= "" then
+            file_handle:write(event_id)
+            file_handle:write("\n")
+        end
+    end
+
+    file_handle:close()
+end
+
+local function load_consumed_ids()
+    runtime_state.consumed_order = {}
+    runtime_state.consumed_lookup = {}
+
+    local file_handle = io.open(consumed_ids_path(), "rb")
+    if not file_handle then
+        return
+    end
+
+    while true do
+        local line = file_handle:read("*line")
+        if not line then
+            break
+        end
+
+        local event_id = string.match(line, "^%s*(.-)%s*$") or ""
+        if event_id ~= "" then
+            remember_consumed_id(event_id)
+        end
+    end
+
+    file_handle:close()
+end
+
+local function show_runtime_news(header, message, duration_ms, icon)
+    if not db or not db.actor or not message or message == "" then
+        return
+    end
+
+    db.actor:give_game_news(header or "Donation", message, icon or DONATION_ICON, 0, duration_ms or 12000, 0)
+end
+
+local function show_runtime_tip(message, duration_ms, icon)
+    if not db or not db.actor or not message or message == "" then
+        return
+    end
+
+    if news_manager and news_manager.send_tip then
+        local ok = pcall(function()
+            news_manager.send_tip(db.actor, message, nil, icon, duration_ms or ACTIVE_EFFECT_TIP_DURATION_MS)
+        end)
+        if ok then
+            return
+        end
+    end
+
+    show_runtime_news(translate_text("ui_sdi_popup_header", "Zone Interactive"), message, duration_ms or ACTIVE_EFFECT_TIP_DURATION_MS, icon)
+end
+
+local function build_pre_event_save_name()
+    runtime_state.presave_slot_index = (runtime_state.presave_slot_index % PRE_EVENT_SAVE_SLOT_COUNT) + 1
+    return PRE_EVENT_SAVE_NAME_PREFIX .. "_" .. tostring(runtime_state.presave_slot_index)
+end
+
+local function build_post_spawn_save_name()
+    runtime_state.postsave_slot_index = (runtime_state.postsave_slot_index % POST_SPAWN_SAVE_SLOT_COUNT) + 1
+    return POST_SPAWN_SAVE_NAME_PREFIX .. "_" .. tostring(runtime_state.postsave_slot_index)
+end
+
+local function can_create_pre_event_save()
+    if type(exec_console_cmd) ~= "function" then
+        return false
+    end
+
+    if not level.present() or not db.actor or not db.actor.alive or not db.actor:alive() then
+        return false
+    end
+
+    return true
+end
+
+local function queue_pre_event_save(event)
+    if not event or not event.event_id or event.event_id == "" then
+        return false
+    end
+
+    if not can_create_pre_event_save() then
+        return false
+    end
+
+    local save_name = build_pre_event_save_name()
+
+    local ok, error_text = pcall(function()
+        exec_console_cmd("save " .. save_name)
+    end)
+    if not ok then
+        log_message("failed to create pre-event save '" .. tostring(save_name) .. "': " .. tostring(error_text))
+        return false
+    end
+
+    log_message("created pre-event save '" .. tostring(save_name) .. "' for event '" .. tostring(event.event_id) .. "'")
+    return true
+end
+
+local function queue_post_spawn_save(event)
+    if not event or not event.event_id or event.event_id == "" then
+        return false
+    end
+
+    if not can_create_pre_event_save() then
+        return false
+    end
+
+    local save_name = build_post_spawn_save_name()
+
+    if type(CreateTimeEvent) == "function" then
+        local action_id = "post_spawn_save_" .. tostring(event.event_id)
+    local delay_seconds = math.max(0.1, math.floor(safe_tonumber(runtime_state.post_spawn_save_delay_ms, POST_SPAWN_SAVE_DELAY_MS)) / 1000)
+        local ok = pcall(function()
+            CreateTimeEvent(EVENT_GROUP, action_id, delay_seconds, function()
+                local save_ok, error_text = pcall(function()
+                    exec_console_cmd("save " .. save_name)
+                end)
+                if save_ok then
+                    log_message("created post-spawn save '" .. tostring(save_name) .. "' for event '" .. tostring(event.event_id) .. "'")
+                else
+                    log_message("failed to create post-spawn save '" .. tostring(save_name) .. "': " .. tostring(error_text))
+                end
+                return true
+            end)
+        end)
+        if ok then
+            log_message("queued timed post-spawn save '" .. tostring(save_name) .. "' for event '" .. tostring(event.event_id) .. "'")
+            return true
+        end
+    end
+
+    runtime_state.pending_postsave_ready_at = current_time_ms() + math.max(250, math.floor(safe_tonumber(runtime_state.post_spawn_save_delay_ms, POST_SPAWN_SAVE_DELAY_MS)))
+    runtime_state.pending_postsave_name = save_name
+    runtime_state.pending_postsave_event_id = event.event_id
+    log_message("queued fallback post-spawn save '" .. tostring(save_name) .. "' for event '" .. tostring(event.event_id) .. "'")
+    return true
+end
+
+local function parse_event_line(line)
+    if not line or line == "" then
+        return nil
+    end
+
+    local event_id, created_at, action, action_arg, amount, currency, donor, message =
+        string.match(line, "^([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t([^\t]*)\t(.*)$")
+
+    if not event_id then
+        return nil
+    end
+
+    return {
+        event_id = pct_decode(event_id),
+        created_at = pct_decode(created_at),
+        action = string.lower(pct_decode(action)),
+        action_arg = pct_decode(action_arg),
+        amount = safe_tonumber(amount, 0),
+        currency = pct_decode(currency),
+        donor = pct_decode(donor),
+        message = pct_decode(message),
+    }
+end
+
+local function describe_amount(amount, currency)
+    local parts = {}
+    if amount and amount > 0 then
+        parts[#parts + 1] = tostring(amount)
+    end
+    if currency and currency ~= "" then
+        parts[#parts + 1] = currency
+    end
+    return table.concat(parts, " ")
+end
+
+local function popup_tone_color(tone)
+    if tone == "positive" then
+        return POPUP_COLOR_POSITIVE
+    end
+    if tone == "negative" then
+        return POPUP_COLOR_NEGATIVE
+    end
+    return POPUP_COLOR_NEUTRAL
+end
+
+local function popup_tone_text(tone)
+    if tone == "positive" then
+        return translate_text("ui_sdi_tone_positive", "POSITIVE")
+    end
+    if tone == "negative" then
+        return translate_text("ui_sdi_tone_negative", "NEGATIVE")
+    end
+    return translate_text("ui_sdi_tone_neutral", "NEUTRAL")
+end
+
+local function visual_theme_for_event(event, descriptor)
+    local action = event and event.action or ""
+    local amount = safe_tonumber(event and event.amount or 0, 0)
+
+    if action == "spawn_mutant" or action == "spawn_npc" then
+        if amount >= 349 then
+            return "major"
+        end
+        return "spawn"
+    end
+
+    if action == "radiation_storm" or action == "one_hp" then
+        return "major"
+    end
+
+    if descriptor and descriptor.tone == "positive" then
+        return "positive"
+    end
+    if descriptor and descriptor.tone == "negative" then
+        return "negative"
+    end
+    return "neutral"
+end
+
+local function visual_theme_color(theme)
+    if theme == "positive" then
+        return POPUP_COLOR_POSITIVE
+    end
+    if theme == "negative" then
+        return POPUP_COLOR_NEGATIVE
+    end
+    if theme == "spawn" then
+        return POPUP_COLOR_SPAWN
+    end
+    if theme == "major" then
+        return POPUP_COLOR_MAJOR
+    end
+    return POPUP_COLOR_NEUTRAL
+end
+
+local function visual_theme_sound(theme)
+    if theme == "positive" then
+        return EVENT_SOUND_POSITIVE
+    end
+    if theme == "spawn" then
+        return EVENT_SOUND_SPAWN
+    end
+    if theme == "major" then
+        return EVENT_SOUND_MAJOR
+    end
+    if theme == "negative" then
+        return EVENT_SOUND_NEGATIVE
+    end
+    return ""
+end
+
+local function play_event_sound(theme)
+    if not db or not db.actor or not sound_object then
+        return
+    end
+
+    local sound_path = visual_theme_sound(theme)
+    if sound_path == "" then
+        return
+    end
+
+    local snd = event_sound_cache[sound_path]
+    if not snd then
+        local ok, sound_instance = pcall(function()
+            return sound_object(sound_path)
+        end)
+        if not ok or not sound_instance then
+            return
+        end
+        event_sound_cache[sound_path] = sound_instance
+        snd = sound_instance
+    end
+
+    pcall(function()
+        snd:play(db.actor, 0, sound_object.s2d)
+    end)
+end
+
+local function play_event_accent(theme)
+    if not level or not level.present() then
+        return
+    end
+
+    if theme == "negative" or theme == "spawn" or theme == "major" then
+        if level.remove_pp_effector then
+            pcall(function()
+                level.remove_pp_effector(EVENT_ACCENT_PP_EFFECT_ID)
+            end)
+        end
+        if level.add_pp_effector then
+            pcall(function()
+                level.add_pp_effector("blink.ppe", EVENT_ACCENT_PP_EFFECT_ID, false)
+            end)
+        end
+    end
+
+    if theme == "spawn" or theme == "major" then
+        if level.remove_cam_effector then
+            pcall(function()
+                level.remove_cam_effector(EVENT_ACCENT_CAM_EFFECT_ID)
+            end)
+        end
+        if level.add_cam_effector then
+            pcall(function()
+                level.add_cam_effector("camera_effects\\earthquake_20.anm", EVENT_ACCENT_CAM_EFFECT_ID, false, "", 0, false)
+            end)
+        end
+    end
+end
+
+local function update_event_combo_counter()
+    local now = current_time_ms()
+    local combo_count = 1
+
+    if runtime_state.last_event_at > 0 and now - runtime_state.last_event_at <= DONATION_COMBO_WINDOW_MS then
+        combo_count = math.max(1, runtime_state.combo_count or 1) + 1
+    end
+
+    runtime_state.last_event_at = now
+    runtime_state.combo_count = combo_count
+    return combo_count
+end
+
+local function popup_effect_descriptor(event)
+    local action = event.action or ""
+    local arg = string.lower(trim(event.action_arg))
+    local signed_value = safe_tonumber(event.action_arg, 0)
+    local descriptor = {
+        tone = "neutral",
+        icon = DONATION_ICON,
+        label = translate_text("ui_sdi_effect_unknown", "Unknown event"),
+    }
+
+    if action == "" or action == "message" or action == "noop" then
+        descriptor.label = translate_text("ui_sdi_effect_message", "Donation message")
+        return descriptor
+    end
+
+    if action == "tier_roll" then
+        if arg == "good" then
+            descriptor.tone = "positive"
+            descriptor.icon = POSITIVE_ICON
+            descriptor.label = translate_text("ui_sdi_effect_tier_good", "Good roulette")
+        elseif arg == "max" then
+            descriptor.tone = "major"
+            descriptor.icon = NEGATIVE_ICON
+            descriptor.label = translate_text("ui_sdi_effect_tier_max", "Max roulette")
+        else
+            descriptor.tone = "negative"
+            descriptor.icon = NEGATIVE_ICON
+            descriptor.label = translate_text("ui_sdi_effect_tier_bad", "Bad roulette")
+        end
+        return descriptor
+    end
+
+    if action == "spawn_mutant" or action == "spawn_npc" then
+        local described = sdi_spawns and sdi_spawns.describe and sdi_spawns.describe(action, event.action_arg) or nil
+        descriptor.tone = described and described.tone or (action == "spawn_mutant" and "negative" or "neutral")
+        if descriptor.tone == "positive" then
+            descriptor.icon = POSITIVE_ICON
+        elseif descriptor.tone == "negative" or descriptor.tone == "major" then
+            descriptor.icon = NEGATIVE_ICON
+        else
+            descriptor.icon = DONATION_ICON
+        end
+        descriptor.label = described and described.label or translate_text(
+            action == "spawn_mutant" and "ui_sdi_effect_spawn_mutant" or "ui_sdi_effect_spawn_npc",
+            action == "spawn_mutant" and "Mutant call" or "NPC call"
+        )
+        return descriptor
+    end
+
+    if action == "gear_profile" then
+        local described = sdi_loot and sdi_loot.describe_gear_profile and sdi_loot.describe_gear_profile(event.action_arg) or nil
+        descriptor.tone = described and described.tone or "neutral"
+        descriptor.icon = descriptor.tone == "positive" and POSITIVE_ICON or (descriptor.tone == "negative" or descriptor.tone == "major") and NEGATIVE_ICON or ITEM_ICON
+        descriptor.label = described and described.label or "Gear loadout"
+        return descriptor
+    end
+
+    if action == "gear_strip" then
+        local described = sdi_loot and sdi_loot.describe_gear_strip and sdi_loot.describe_gear_strip(event.action_arg) or nil
+        descriptor.tone = described and described.tone or "negative"
+        descriptor.icon = NEGATIVE_ICON
+        descriptor.label = described and described.label or "Gear strip"
+        return descriptor
+    end
+
+    if action == "money_in" or action == "cash_random" then
+        descriptor.tone = "positive"
+        descriptor.icon = MONEY_IN_ICON
+        descriptor.label = translate_text("ui_sdi_effect_cash_in", "Cash bonus")
+        return descriptor
+    end
+
+    if action == "money_out" or action == "money_leave_one" then
+        descriptor.tone = "negative"
+        descriptor.icon = MONEY_OUT_ICON
+        descriptor.label = translate_text("ui_sdi_effect_cash_out", "Cash loss")
+        return descriptor
+    end
+
+    if action == "heal" then
+        descriptor.tone = "positive"
+        descriptor.icon = POSITIVE_ICON
+        descriptor.label = translate_text("ui_sdi_effect_heal", "Healing")
+        return descriptor
+    end
+
+    if action == "blood_restore" then
+        descriptor.tone = "positive"
+        descriptor.icon = POSITIVE_ICON
+        descriptor.label = translate_text("ui_sdi_effect_blood_restore", "Blood transfusion")
+        return descriptor
+    end
+
+    if action == "power" then
+        descriptor.tone = signed_value >= 0 and "positive" or "negative"
+        descriptor.icon = signed_value >= 0 and POSITIVE_ICON or NEGATIVE_ICON
+        descriptor.label = translate_text(signed_value >= 0 and "ui_sdi_effect_power_up" or "ui_sdi_effect_power_down", signed_value >= 0 and "Stamina boost" or "Stamina drain")
+        return descriptor
+    end
+
+    if action == "weakness" then
+        descriptor.tone = "negative"
+        descriptor.icon = NEGATIVE_ICON
+        descriptor.label = translate_text("ui_sdi_effect_power_down", "Stamina drain")
+        return descriptor
+    end
+
+    if action == "satiety" then
+        descriptor.tone = signed_value >= 0 and "positive" or "negative"
+        descriptor.icon = signed_value >= 0 and POSITIVE_ICON or NEGATIVE_ICON
+        descriptor.label = translate_text(signed_value >= 0 and "ui_sdi_effect_satiety_up" or "ui_sdi_effect_satiety_down", signed_value >= 0 and "Good meal" or "Hunger")
+        return descriptor
+    end
+
+    if action == "bleeding" then
+        descriptor.tone = signed_value <= 0 and "positive" or "negative"
+        descriptor.icon = signed_value <= 0 and POSITIVE_ICON or NEGATIVE_ICON
+        descriptor.label = translate_text(signed_value <= 0 and "ui_sdi_effect_bleeding_stop" or "ui_sdi_effect_bleeding_up", signed_value <= 0 and "Stop bleeding" or "Bleeding")
+        return descriptor
+    end
+
+    if action == "radiation" then
+        descriptor.tone = signed_value <= 0 and "positive" or "negative"
+        descriptor.icon = signed_value <= 0 and POSITIVE_ICON or NEGATIVE_ICON
+        descriptor.label = translate_text(signed_value <= 0 and "ui_sdi_effect_radiation_down" or "ui_sdi_effect_radiation_up", signed_value <= 0 and "Radiation cleanse" or "Radiation surge")
+        return descriptor
+    end
+
+    if action == "one_hp" then
+        descriptor.tone = "negative"
+        descriptor.icon = NEGATIVE_ICON
+        descriptor.label = translate_text("ui_sdi_effect_one_hp", "Leave 1 HP")
+        return descriptor
+    end
+
+    if action == "item" then
+        descriptor.tone = "positive"
+        descriptor.icon = ITEM_ICON
+        descriptor.label = translate_text("ui_sdi_effect_item", "Item drop")
+        return descriptor
+    end
+
+    if action == "kit" then
+        descriptor.tone = "positive"
+        descriptor.icon = ITEM_ICON
+        if arg == "food_small" then
+            descriptor.label = translate_text("ui_sdi_effect_food_small", "Food pack")
+        elseif arg == "medical" then
+            descriptor.label = translate_text("ui_sdi_effect_kit_medical", "Medical kit")
+        elseif arg == "survival" then
+            descriptor.label = translate_text("ui_sdi_effect_kit_survival", "Survival pack")
+        elseif arg == "vodka_fun" then
+            descriptor.label = translate_text("ui_sdi_effect_vodka_fun", "Vodka delivery")
+        else
+            descriptor.label = translate_text("ui_sdi_effect_kit_generic", "Supply pack")
+        end
+        return descriptor
+    end
+
+    if action == "artifact_random" then
+        descriptor.tone = "positive"
+        descriptor.icon = ITEM_ICON
+        descriptor.label = sdi_loot and sdi_loot.describe_artifact_tier and sdi_loot.describe_artifact_tier(arg)
+            or translate_text("ui_sdi_effect_artifact_any", "Artefact surprise")
+        return descriptor
+    end
+
+    if action == "ammo_slots" then
+        descriptor.tone = "positive"
+        descriptor.icon = ITEM_ICON
+        descriptor.label = translate_text("ui_sdi_effect_ammo_slots", "Ammo for active guns")
+        return descriptor
+    end
+
+    if sdi_effects and sdi_effects.describe and sdi_effects.describe(action) then
+        descriptor.label = sdi_effects.describe(action)
+        if action == "money_in" or action == "cash_random" or action == "heal" or action == "blood_restore" or action == "regen_boost" then
+            descriptor.tone = "positive"
+            descriptor.icon = POSITIVE_ICON
+        elseif action == "weather" or action == "rename_actor" then
+            descriptor.tone = "neutral"
+            descriptor.icon = DONATION_ICON
+        else
+            descriptor.tone = "negative"
+            descriptor.icon = NEGATIVE_ICON
+        end
+        if action == "money_in" or action == "cash_random" then
+            descriptor.icon = MONEY_IN_ICON
+        elseif action == "money_out" or action == "money_leave_one" then
+            descriptor.icon = MONEY_OUT_ICON
+        end
+        return descriptor
+    end
+
+    if action == "repair_all" then
+        descriptor.tone = "positive"
+        descriptor.icon = POSITIVE_ICON
+        descriptor.label = translate_text("ui_sdi_effect_repair_all", "Repair all gear")
+        return descriptor
+    end
+
+    if action == "degrade_all" then
+        descriptor.tone = "negative"
+        descriptor.icon = NEGATIVE_ICON
+        descriptor.label = translate_text("ui_sdi_effect_degrade_all", "Break gear")
+        return descriptor
+    end
+
+    return descriptor
+end
+
+local function show_donation_popup(event, action_summary)
+    if true then
+        if not db or not db.actor or type(event) ~= "table" then
+            return
+        end
+
+        -- Safe in-game notification path. The old rich popup used tips, sounds and PP
+        -- effects; in this pack it could stop the queue before the event was consumed.
+        local donor = clip_text(event.donor ~= "" and event.donor or "Anonymous", 48)
+        local descriptor = {
+            label = tostring(event.action or "event"),
+            icon = DONATION_ICON,
+        }
+        local ok_descriptor, resolved_descriptor = pcall(popup_effect_descriptor, event)
+        if ok_descriptor and type(resolved_descriptor) == "table" then
+            descriptor = resolved_descriptor
+        end
+
+        local theme = visual_theme_for_event(event, descriptor)
+        local theme_color = visual_theme_color(theme)
+        local separator = colorize(" | ", POPUP_COLOR_MUTED)
+        local combo_count = update_event_combo_counter()
+        local details = {}
+        local amount_text = describe_amount(event.amount, event.currency)
+        details[#details + 1] = colorize(clip_text(tostring(descriptor.label or event.action or "event"), 72), theme_color)
+        if amount_text ~= "" then
+            details[#details + 1] = colorize(translate_text("ui_sdi_popup_amount", "Amount") .. ": ", POPUP_COLOR_MUTED)
+                .. colorize(amount_text, POPUP_COLOR_TITLE)
+        end
+        details[#details + 1] = colorize(translate_text("ui_sdi_popup_tone", "Type") .. ": ", POPUP_COLOR_MUTED)
+            .. colorize(popup_tone_text(descriptor.tone), popup_tone_color(descriptor.tone))
+        if event.message and event.message ~= "" then
+            details[#details + 1] = colorize(translate_text("ui_sdi_popup_comment", "Comment") .. ": ", POPUP_COLOR_MUTED)
+                .. colorize(clip_text(event.message, 72), POPUP_COLOR_NEUTRAL)
+        end
+        if action_summary and action_summary ~= "" then
+            details[#details + 1] = colorize(translate_text("ui_sdi_popup_result", "Result") .. ": ", POPUP_COLOR_MUTED)
+                .. colorize(clip_text(tostring(action_summary), 96), POPUP_COLOR_NEUTRAL)
+        end
+        if combo_count > 1 then
+            details[#details + 1] = colorize("Combo: ", POPUP_COLOR_MUTED)
+                .. colorize("x" .. tostring(combo_count), theme_color)
+        end
+
+        local header = translate_text("ui_sdi_popup_header", "Zone Interactive") .. ": " .. donor
+        local message = table.concat(details, separator)
+        log_message("safe popup begin: " .. tostring(event.action) .. " -> " .. tostring(action_summary or ""))
+        local ok_news, error_text = pcall(function()
+            db.actor:give_game_news(header, message, descriptor.icon or DONATION_ICON, 0, DONATION_DETAILS_DURATION_MS, 0)
+        end)
+        if ok_news then
+            log_message("safe popup shown: " .. tostring(event.action))
+        else
+            log_message("safe popup failed: " .. tostring(error_text))
+        end
+        return
+    end
+
+    local donor = clip_text(event.donor ~= "" and event.donor or "Anonymous", 48)
+    local descriptor = popup_effect_descriptor(event)
+    local detail_segments = {}
+    local alert_segments = {}
+    local amount_text = describe_amount(event.amount, event.currency)
+    local separator = colorize(" | ", POPUP_COLOR_MUTED)
+    local theme = visual_theme_for_event(event, descriptor)
+    local theme_color = visual_theme_color(theme)
+    local combo_count = update_event_combo_counter()
+    local header = translate_text("ui_sdi_popup_header", "Zone Interactive")
+
+    alert_segments[#alert_segments + 1] = colorize(descriptor.label, theme_color)
+
+    if action_summary and action_summary ~= "" then
+        alert_segments[#alert_segments + 1] = colorize(action_summary, POPUP_COLOR_NEUTRAL)
+    end
+
+    if combo_count > 1 then
+        alert_segments[#alert_segments + 1] = colorize("x" .. tostring(combo_count), POPUP_COLOR_TITLE)
+    end
+
+    detail_segments[#detail_segments + 1] = colorize(descriptor.label, theme_color)
+
+    if amount_text ~= "" then
+        detail_segments[#detail_segments + 1] = colorize(translate_text("ui_sdi_popup_amount", "Amount") .. ": ", POPUP_COLOR_MUTED) .. amount_text
+    end
+
+    detail_segments[#detail_segments + 1] = colorize(translate_text("ui_sdi_popup_tone", "Type") .. ": ", POPUP_COLOR_MUTED) .. colorize(popup_tone_text(descriptor.tone), popup_tone_color(descriptor.tone))
+
+    if event.message and event.message ~= "" then
+        detail_segments[#detail_segments + 1] = colorize(translate_text("ui_sdi_popup_comment", "Comment") .. ": ", POPUP_COLOR_MUTED) .. clip_text(event.message, 72)
+    end
+
+    if action_summary and action_summary ~= "" then
+        detail_segments[#detail_segments + 1] = colorize(translate_text("ui_sdi_popup_result", "Result") .. ": ", POPUP_COLOR_MUTED) .. action_summary
+    end
+
+    if combo_count > 1 then
+        detail_segments[#detail_segments + 1] = colorize("Combo: ", POPUP_COLOR_MUTED) .. colorize("x" .. tostring(combo_count), theme_color)
+    end
+
+    play_event_sound(theme)
+    play_event_accent(theme)
+    show_runtime_tip(table.concat(alert_segments, colorize("  ", POPUP_COLOR_MUTED)), DONATION_ALERT_DURATION_MS, descriptor.icon)
+    show_runtime_news(header .. ": " .. donor, table.concat(detail_segments, separator), DONATION_DETAILS_DURATION_MS, descriptor.icon)
+end
+
+local function timed_effect_label(effect_key, effect)
+    if not effect_key or effect_key == "" then
+        return "Effect"
+    end
+
+    local event = {
+        action = effect.popup_action or effect_key,
+        action_arg = effect.popup_arg or "",
+    }
+    return popup_effect_descriptor(event).label
+end
+
+local function build_active_effects_tip_message()
+    if active_effects_empty() then
+        return ""
+    end
+
+    local now = current_time_ms()
+    local entries = {}
+    local lines = {}
+
+    for effect_key, effect in pairs(runtime_state.active_effects) do
+        if effect and effect.expires_at and effect.expires_at > now then
+            local remaining = math.max(0, math.floor((effect.expires_at - now) / 1000))
+            local descriptor = popup_effect_descriptor({
+                action = effect.popup_action or effect_key,
+                action_arg = effect.popup_arg or "",
+            })
+            entries[#entries + 1] = {
+                label = timed_effect_label(effect_key, effect),
+                remaining = remaining,
+                tone = descriptor.tone,
+            }
+        end
+    end
+
+    if #entries == 0 then
+        return ""
+    end
+
+    table.sort(entries, function(left, right)
+        if left.remaining == right.remaining then
+            return left.label < right.label
+        end
+        return left.remaining < right.remaining
+    end)
+
+    local max_lines = math.min(#entries, ACTIVE_EFFECT_TIP_MAX_LINES)
+    for index = 1, max_lines do
+        local entry = entries[index]
+        local tone_color = popup_tone_color(entry.tone)
+        lines[#lines + 1] = colorize(entry.label, tone_color)
+            .. colorize(" - ", POPUP_COLOR_MUTED)
+            .. colorize(format_duration_mmss(entry.remaining), POPUP_COLOR_TITLE)
+    end
+
+    if #entries > max_lines then
+        lines[#lines + 1] = colorize("+" .. tostring(#entries - max_lines), POPUP_COLOR_MUTED)
+    end
+
+    if #lines == 1 then
+        return lines[1]
+    end
+    return table.concat(lines, colorize(" | ", POPUP_COLOR_MUTED))
+end
+
+local function refresh_active_effects_tip(force)
+    if active_effects_empty() then
+        runtime_state.next_effect_tip_at = 0
+        return
+    end
+
+    local now = current_time_ms()
+    if not force and runtime_state.next_effect_tip_at and now < runtime_state.next_effect_tip_at then
+        return
+    end
+
+    runtime_state.next_effect_tip_at = now + ACTIVE_EFFECT_TIP_INTERVAL_MS
+
+    local message = build_active_effects_tip_message()
+    if message ~= "" then
+        show_runtime_tip(message, ACTIVE_EFFECT_TIP_DURATION_MS, DONATION_ICON)
+    end
+end
+
+local function parse_range(value, default_min, default_max)
+    local left, right = string.match(trim(value), "^([%-%d%.]+):([%-%d%.]+)$")
+    if not left or not right then
+        return default_min, default_max
+    end
+
+    local min_value = safe_tonumber(left, default_min)
+    local max_value = safe_tonumber(right, default_max)
+    if min_value > max_value then
+        min_value, max_value = max_value, min_value
+    end
+    return min_value, max_value
+end
+
+local function parse_int_range(value, default_min, default_max)
+    local min_value, max_value = parse_range(value, default_min, default_max)
+    min_value = math.floor(min_value)
+    max_value = math.floor(max_value)
+    if min_value > max_value then
+        min_value, max_value = max_value, min_value
+    end
+    return min_value, max_value
+end
+
+local function parse_time_shift(value)
+    local hours, minutes = string.match(trim(value), "^([%-%d]+):([%-%d]+)$")
+    if hours then
+        return clamp(math.floor(math.abs(safe_tonumber(hours, 8))), 0, 24), clamp(math.floor(math.abs(safe_tonumber(minutes, 0))), 0, 59)
+    end
+
+    local only_hours = safe_tonumber(value, 8)
+    return clamp(math.floor(math.abs(only_hours)), 0, 24), 0
+end
+
+local function actor_server_object()
+    local sim = alife and alife()
+    if not sim then
+        return nil
+    end
+
+    local ok, se_actor = pcall(function()
+        return sim:actor()
+    end)
+    if ok then
+        return se_actor
+    end
+    return nil
+end
+
+local function iterate_actor_inventory(callback)
+    if not db.actor or not db.actor.iterate_inventory or not callback then
+        return
+    end
+
+    local function itr(_, item)
+        if item then
+            callback(item)
+        end
+        return false
+    end
+
+    db.actor:iterate_inventory(itr, db.actor)
+end
+
+local function get_item_condition(item)
+    if not item then
+        return nil
+    end
+
+    local ok, value = pcall(function()
+        return item:condition()
+    end)
+    if ok and type(value) == "number" then
+        return value
+    end
+    return nil
+end
+
+local function set_item_condition(item, value)
+    if not item then
+        return false
+    end
+
+    local ok = pcall(function()
+        item:set_condition(value)
+    end)
+    return ok
+end
+
+function PARTS_SYNC.get_owner_section(item)
+    if not item then
+        return nil
+    end
+
+    local ok, section = pcall(function()
+        return item:section()
+    end)
+    if not ok or type(section) ~= "string" or section == "" then
+        return nil
+    end
+
+    if ini_sys and ini_sys.r_string_ex then
+        local parent_ok, parent_section = pcall(function()
+            return ini_sys:r_string_ex(section, "parent_section")
+        end)
+        if parent_ok and type(parent_section) == "string" and parent_section ~= "" then
+            section = parent_section
+        end
+    end
+
+    return section
+end
+
+function PARTS_SYNC.reset_active_weapon_cache(item)
+    if not PARTS_SYNC.arti_jamming or type(PARTS_SYNC.arti_jamming.reset_cgd) ~= "function" or not db.actor or not db.actor.active_item then
+        return
+    end
+
+    local active = db.actor:active_item()
+    if not active or not item then
+        return
+    end
+
+    local active_ok, active_id = pcall(function()
+        return active:id()
+    end)
+    local item_ok, item_id = pcall(function()
+        return item:id()
+    end)
+    if active_ok and item_ok and active_id and item_id and active_id == item_id then
+        pcall(PARTS_SYNC.arti_jamming.reset_cgd)
+    end
+end
+
+function PARTS_SYNC.get_state(item, evaluate)
+    if not PARTS_SYNC.item_parts or type(PARTS_SYNC.item_parts.get_parts_con) ~= "function" or not item then
+        return nil, nil
+    end
+
+    local owner_section = PARTS_SYNC.get_owner_section(item)
+    local ok, parts_state = pcall(function()
+        return PARTS_SYNC.item_parts.get_parts_con(item, nil, evaluate and true or false)
+    end)
+    if not ok or type(parts_state) ~= "table" then
+        return nil, owner_section
+    end
+
+    return parts_state, owner_section
+end
+
+function PARTS_SYNC.save_state(item, parts_state)
+    if not PARTS_SYNC.item_parts or type(PARTS_SYNC.item_parts.set_parts_con) ~= "function" or not item or type(parts_state) ~= "table" then
+        return false
+    end
+
+    local ok = pcall(function()
+        PARTS_SYNC.item_parts.set_parts_con(item:id(), parts_state)
+    end)
+    if ok then
+        PARTS_SYNC.reset_active_weapon_cache(item)
+    end
+    return ok
+end
+
+function PARTS_SYNC.update_state(item, main_condition, updater)
+    local parts_state, owner_section = PARTS_SYNC.get_state(item, true)
+    if not parts_state then
+        return false
+    end
+
+    local changed = false
+    if type(updater) == "function" and updater(parts_state, owner_section) then
+        changed = true
+    end
+
+    if owner_section and type(main_condition) == "number" then
+        local main_percent = clamp(math.floor((main_condition * 100) + 0.5), 1, 100)
+        local current_main = safe_tonumber(parts_state[owner_section], nil)
+        if current_main ~= main_percent then
+            parts_state[owner_section] = main_percent
+            changed = true
+        end
+    end
+
+    if not changed then
+        return false
+    end
+    return PARTS_SYNC.save_state(item, parts_state)
+end
+
+function PARTS_SYNC.repair_item(item, main_condition, target_condition)
+    local target_percent = clamp(math.floor((target_condition * 100) + 0.5), 1, 99)
+    return PARTS_SYNC.update_state(item, main_condition, function(parts_state, owner_section)
+        local changed = false
+        for section, part_condition in pairs(parts_state) do
+            if section ~= owner_section then
+                local numeric = safe_tonumber(part_condition, nil)
+                if numeric and numeric > 0 and numeric < target_percent then
+                    parts_state[section] = target_percent
+                    changed = true
+                end
+            end
+        end
+        return changed
+    end)
+end
+
+function PARTS_SYNC.degrade_item(item, main_condition, degrade_scale)
+    local scale = clamp(safe_tonumber(degrade_scale, 1.0), 0.01, 1.0)
+    return PARTS_SYNC.update_state(item, main_condition, function(parts_state, owner_section)
+        local changed = false
+        for section, part_condition in pairs(parts_state) do
+            if section ~= owner_section then
+                local numeric = safe_tonumber(part_condition, nil)
+                if numeric and numeric > 0 then
+                    local degraded = clamp(math.floor((numeric * scale) + 0.5), 1, 99)
+                    if degraded < numeric then
+                        parts_state[section] = degraded
+                        changed = true
+                    end
+                end
+            end
+        end
+        return changed
+    end)
+end
+
+local function is_repairable_item(item)
+    if not item then
+        return false
+    end
+
+    local cls = item:clsid()
+    if IsWeapon(nil, cls) or IsOutfit(nil, cls) or IsHeadgear(nil, cls) then
+        return true
+    end
+
+    local section = item:section()
+    return section == "itm_actor_backpack" or section == "wpn_binoc"
+end
+
+local function give_item_section(section, amount)
+    if not section or section == "" or not db.actor then
+        return 0
+    end
+
+    local count = clamp(math.floor(math.abs(safe_tonumber(amount, 1))), 1, 20)
+    local created = 0
+    log_message("giving item section '" .. tostring(section) .. "' x" .. tostring(count))
+    for _ = 1, count do
+        local ok, se_obj = pcall(function()
+            return alife_create_item(section, db.actor)
+        end)
+        if ok and se_obj then
+            created = created + 1
+        else
+            log_message("failed to give item section '" .. tostring(section) .. "'")
+        end
+    end
+
+    log_message("given item section '" .. tostring(section) .. "' created=" .. tostring(created))
+    return created
+end
+
+local function parse_item_entries(raw)
+    local entries = {}
+    if not raw or raw == "" then
+        return entries
+    end
+
+    for part in string.gmatch(raw, "[^,]+") do
+        local token = trim(part)
+        local section, amount_raw = string.match(token, "^([%w_]+):?(%d*)$")
+        if section and section ~= "" then
+            local count = math.floor(math.abs(safe_tonumber(amount_raw, 1)))
+            if count < 1 then
+                count = 1
+            end
+            entries[#entries + 1] = {
+                section = section,
+                count = count,
+            }
+        end
+    end
+
+    return entries
+end
+
+local function give_item_entries(entries)
+    local given = 0
+    for i = 1, #entries do
+        local entry = entries[i]
+        given = given + give_item_section(entry.section, entry.count)
+    end
+    return given
+end
+
+local function max_inventory_item_id_for_section(section)
+    if not section or section == "" then
+        return -1
+    end
+
+    local max_id = -1
+    iterate_actor_inventory(function(item)
+        if item and item:section() == section and item:id() > max_id then
+            max_id = item:id()
+        end
+    end)
+    return max_id
+end
+
+local function find_inventory_item_by_section(section, min_id)
+    if not section or section == "" then
+        return nil
+    end
+
+    local match = nil
+    local best_id = safe_tonumber(min_id, -1)
+    iterate_actor_inventory(function(item)
+        if item and item:section() == section and item:id() > best_id then
+            match = item
+            best_id = item:id()
+        end
+    end)
+    return match
+end
+
+local function weapon_ammo_section(section)
+    if not section or section == "" or not parse_list or not ini_sys then
+        return nil
+    end
+
+    local ammo_list = parse_list(ini_sys, section, "ammo_class") or nil
+    return ammo_list and ammo_list[1] or nil
+end
+
+local function spawn_tracked_item(section, condition)
+    if not section or section == "" then
+        return nil
+    end
+
+    local before_id = max_inventory_item_id_for_section(section)
+    local given = give_item_section(section, 1)
+    if given < 1 then
+        return nil
+    end
+
+    local item = find_inventory_item_by_section(section, before_id)
+    if item and condition then
+        set_item_condition(item, clamp(safe_tonumber(condition, 1.0), 0.05, 1.0))
+    end
+    return item
+end
+
+local function equip_item_to_slot(item, slot, make_active)
+    if not db.actor or not item then
+        return false
+    end
+
+    local moved = false
+    if slot and db.actor.move_to_slot then
+        local ok = pcall(function()
+            db.actor:move_to_slot(item, slot)
+        end)
+        moved = ok or moved
+    end
+
+    if make_active and db.actor.make_item_active then
+        local ok = pcall(function()
+            db.actor:make_item_active(item)
+        end)
+        moved = ok or moved
+    end
+
+    return moved
+end
+
+local function release_item_object(item)
+    if not item then
+        return false
+    end
+
+    local ok = pcall(function()
+        alife_release(item)
+    end)
+    return ok
+end
+
+local function release_equipped_slot(slot)
+    if not db.actor or not db.actor.item_in_slot then
+        return nil
+    end
+
+    local item = db.actor:item_in_slot(slot)
+    if not item then
+        return nil
+    end
+
+    if (slot == SLOT_SIDEARM or slot == SLOT_PRIMARY) and db.actor.active_slot and db.actor.activate_slot then
+        local ok_active, active_slot = pcall(function()
+            return db.actor:active_slot()
+        end)
+        if ok_active and active_slot == slot then
+            pcall(function()
+                db.actor:activate_slot(1)
+            end)
+        end
+    end
+
+    local section = item:section()
+    if release_item_object(item) then
+        return section
+    end
+    return nil
+end
+
+local function clear_equipped_slots(slots)
+    local removed = 0
+    for i = 1, #slots do
+        local section = release_equipped_slot(slots[i])
+        if section and section ~= "" then
+            removed = removed + 1
+        end
+    end
+    return removed
+end
+
+local function random_choice(list)
+    if not list or #list == 0 then
+        return nil
+    end
+    return list[math.random(1, #list)]
+end
+
+local function build_loot_api()
+    return {
+        config = sdi_config,
+        clamp = clamp,
+        safe_tonumber = safe_tonumber,
+        random_choice = random_choice,
+        give_item_section = give_item_section,
+        parse_item_entries = parse_item_entries,
+        give_item_entries = give_item_entries,
+        spawn_tracked_item = spawn_tracked_item,
+        equip_item_to_slot = equip_item_to_slot,
+        clear_equipped_slots = clear_equipped_slots,
+        get_item_condition = get_item_condition,
+        set_item_condition = set_item_condition,
+        iterate_actor_inventory = iterate_actor_inventory,
+        is_repairable_item = is_repairable_item,
+        PARTS_SYNC = PARTS_SYNC,
+        translate_text = translate_text,
+        ini_sys = ini_sys,
+        ui_item = ui_item,
+        db = db,
+        log_message = log_message,
+        weapon_ammo_section = weapon_ammo_section,
+        SLOT_SIDEARM = SLOT_SIDEARM,
+        SLOT_PRIMARY = SLOT_PRIMARY,
+        SLOT_OUTFIT = SLOT_OUTFIT,
+        SLOT_BACKPACK = SLOT_BACKPACK,
+        SLOT_HELMET = SLOT_HELMET,
+    }
+end
+
+local function build_effects_api()
+    return {
+        runtime_state = runtime_state,
+        current_time_ms = current_time_ms,
+        parse_duration_seconds = parse_duration_seconds,
+        TIMED_EFFECT_DEFAULT_SECONDS = TIMED_EFFECT_DEFAULT_SECONDS,
+        safe_tonumber = safe_tonumber,
+        clamp = clamp,
+        parse_signed_percent = parse_signed_percent,
+        parse_int_range = parse_int_range,
+        parse_time_shift = parse_time_shift,
+        format_duration_mmss = format_duration_mmss,
+        format_signed_decimal = format_signed_decimal,
+        format_decimal = format_decimal,
+        clip_text = clip_text,
+        translate_text = translate_text,
+        random_choice = random_choice,
+        refresh_active_effects_tip = refresh_active_effects_tip,
+        actor_server_object = actor_server_object,
+        log_message = log_message,
+        db = db,
+        level = level,
+        dialogs = dialogs,
+        news_manager = news_manager,
+        actor_effects = actor_effects,
+        game = game,
+        level_weathers = level_weathers,
+        surge_manager = surge_manager,
+        DRUNK_CAMERA_EFFECT_ID = DRUNK_CAMERA_EFFECT_ID,
+        DRUNK_PP_EFFECT_ID = DRUNK_PP_EFFECT_ID,
+        BLEED_PP_EFFECT_ID = BLEED_PP_EFFECT_ID,
+        trim = trim,
+    }
+end
+
+local function build_spawns_api()
+    return {
+        config = sdi_config,
+        db = db,
+        level = level,
+        clamp = clamp,
+        safe_tonumber = safe_tonumber,
+        translate_text = translate_text,
+        current_time_ms = current_time_ms,
+        runtime_state = runtime_state,
+        log_message = log_message,
+        show_runtime_tip = show_runtime_tip,
+        colorize = colorize,
+        queue_post_spawn_save = queue_post_spawn_save,
+        execute_event = function(ev)
+            return execute_event(ev)
+        end,
+        EVENT_GROUP = EVENT_GROUP,
+        DONATION_ICON = DONATION_ICON,
+        POPUP_COLOR_TITLE = POPUP_COLOR_TITLE,
+        POPUP_COLOR_MUTED = POPUP_COLOR_MUTED,
+        POPUP_COLOR_NEUTRAL = POPUP_COLOR_NEUTRAL,
+        random_choice = random_choice,
+        ini_sys = ini_sys,
+    }
+end
+
+local function bind_external_modules(force_reload)
+    local config_module = script_module(CONFIG_MODULE_NAME)
+    local loot_module = script_module(LOOT_MODULE_NAME)
+    local spawn_module = script_module(SPAWN_MODULE_NAME)
+    local effects_module = script_module(EFFECTS_MODULE_NAME)
+
+    if not (config_module and config_module.new and loot_module and loot_module.bind and spawn_module and spawn_module.bind and effects_module and effects_module.bind) then
+        log_message("stream donation helper modules are not ready")
+        return false
+    end
+
+    if force_reload or not sdi_config then
+        sdi_config = config_module.new(log_message)
+    elseif sdi_config.reload then
+        sdi_config:reload()
+    end
+
+    if not sdi_config then
+        return false
+    end
+
+    runtime_state.spawn_settings.entity_attempts = math.max(1, math.floor(sdi_config:get_number("settings", "spawn_entity_attempts", runtime_state.spawn_settings.entity_attempts)))
+    runtime_state.spawn_settings.max_radius = math.max(24, math.floor(sdi_config:get_number("settings", "spawn_search_radius_max", runtime_state.spawn_settings.max_radius)))
+    runtime_state.spawn_settings.retry_delay_seconds = math.max(1, math.floor(sdi_config:get_number("settings", "spawn_retry_delay_seconds", runtime_state.spawn_settings.retry_delay_seconds)))
+    runtime_state.spawn_settings.retry_max_attempts = math.max(0, math.floor(sdi_config:get_number("settings", "spawn_retry_max_attempts", runtime_state.spawn_settings.retry_max_attempts)))
+    runtime_state.pre_event_save_delay_ms = math.max(250, math.floor(sdi_config:get_number("settings", "pre_event_save_delay_ms", PRE_EVENT_SAVE_DELAY_MS)))
+    runtime_state.post_spawn_save_delay_ms = math.max(250, math.floor(sdi_config:get_number("settings", "post_spawn_save_delay_ms", POST_SPAWN_SAVE_DELAY_MS)))
+
+    sdi_loot = loot_module.bind(build_loot_api())
+    sdi_effects = effects_module.bind(build_effects_api())
+    sdi_spawns = spawn_module.bind(build_spawns_api())
+
+    active_effects_empty = sdi_effects.active_effects_empty or active_effects_empty
+    clear_all_timed_effects = sdi_effects.clear_all_timed_effects or clear_all_timed_effects
+    return true
+end
+
+local function build_tier_roll_event(event)
+    if not sdi_config then
+        return nil, "tier config?"
+    end
+
+    local tier_name = string.lower(trim(event and event.action_arg or ""))
+    if tier_name == "" then
+        tier_name = "bad"
+    end
+
+    local event_names = sdi_config:get_tier_events(tier_name)
+    if #event_names == 0 then
+        log_message("tier_roll '" .. tostring(tier_name) .. "' has no configured events")
+        return nil, "tier empty"
+    end
+
+    local picked_name = random_choice(event_names)
+    if not picked_name or picked_name == "" then
+        return nil, "tier pick?"
+    end
+
+    local template = sdi_config:get_event_template(picked_name)
+    if not template or trim(template.action) == "" then
+        log_message("tier_roll picked invalid template '" .. tostring(picked_name) .. "'")
+        return nil, "tier event?"
+    end
+
+    local rolled_event = {}
+    for key, value in pairs(event) do
+        rolled_event[key] = value
+    end
+
+    rolled_event.source_action = event.action
+    rolled_event.source_action_arg = event.action_arg
+    rolled_event.rolled_event = picked_name
+    rolled_event.action = string.lower(trim(template.action))
+    rolled_event.action_arg = trim(template.action_arg)
+    if rolled_event.action_arg == "" then
+        rolled_event.action_arg = trim(template.action_value)
+    end
+
+    log_message("tier_roll '" .. tostring(tier_name) .. "' -> '" .. tostring(picked_name) .. "' (" .. tostring(rolled_event.action) .. ")")
+    return rolled_event
+end
+
+execute_event = function(event)
+    if type(event) ~= "table" then
+        return
+    end
+
+    bind_external_modules(false)
+
+    local active_event = event
+    if active_event.action == "tier_roll" then
+        local rolled_event, tier_error = build_tier_roll_event(active_event)
+        if not rolled_event then
+            show_donation_popup(active_event, tier_error or "tier?")
+            return
+        end
+        active_event = rolled_event
+    end
+
+    local action = trim(active_event.action)
+    local action_summary = ""
+    local handler = sdi_effects and sdi_effects.handlers and sdi_effects.handlers[action] or nil
+    log_message("event action handler begin: " .. tostring(action) .. " " .. tostring(active_event.action_arg))
+
+    if action == "noop" then
+        action_summary = ""
+    elseif handler then
+        action_summary = handler(active_event)
+    elseif action == "item" and sdi_loot and sdi_loot.action_item then
+        action_summary = sdi_loot.action_item(active_event)
+    elseif action == "kit" and sdi_loot and sdi_loot.action_kit then
+        action_summary = sdi_loot.action_kit(active_event)
+    elseif action == "artifact_random" and sdi_loot and sdi_loot.action_artifact_random then
+        action_summary = sdi_loot.action_artifact_random(active_event)
+    elseif action == "ammo_slots" and sdi_loot and sdi_loot.action_ammo_slots then
+        action_summary = sdi_loot.action_ammo_slots(active_event)
+    elseif action == "gear_profile" and sdi_loot and sdi_loot.action_gear_profile then
+        action_summary = sdi_loot.action_gear_profile(active_event)
+    elseif action == "gear_strip" and sdi_loot and sdi_loot.action_gear_strip then
+        action_summary = sdi_loot.action_gear_strip(active_event)
+    elseif action == "repair_all" and sdi_loot and sdi_loot.action_repair_all then
+        action_summary = sdi_loot.action_repair_all(active_event)
+    elseif action == "degrade_all" and sdi_loot and sdi_loot.action_degrade_all then
+        action_summary = sdi_loot.action_degrade_all(active_event)
+    elseif action == "spawn_mutant" and sdi_spawns and sdi_spawns.action_spawn_mutant then
+        action_summary = sdi_spawns.action_spawn_mutant(active_event)
+    elseif action == "spawn_npc" and sdi_spawns and sdi_spawns.action_spawn_npc then
+        action_summary = sdi_spawns.action_spawn_npc(active_event)
+    else
+        action_summary = "unknown action: " .. tostring(action)
+        log_message("unsupported action '" .. tostring(action) .. "' for event " .. tostring(active_event.event_id))
+    end
+
+    log_message("event action handler done: " .. tostring(action) .. " -> " .. tostring(action_summary))
+    show_donation_popup(active_event, action_summary)
+    log_message("event popup done: " .. tostring(action))
+end
+
+local function advance_cursor(file_handle, fallback_cursor)
+    local ok, next_cursor = pcall(function()
+        return file_handle:seek()
+    end)
+
+    if ok and type(next_cursor) == "number" then
+        return next_cursor
+    end
+    return fallback_cursor
+end
+
+local function schedule_event_for_save_retry(event, reason)
+    if not event or not event.event_id or event.event_id == "" then
+        return false
+    end
+
+    runtime_state.pending_presave_event = event
+    runtime_state.pending_presave_ready_at = current_time_ms() + RETRY_FAILED_EVENT_MS
+    runtime_state.pending_presave_name = ""
+    runtime_state.pending_presave_event_id = event.event_id
+    runtime_state.pending_presave_attempts = math.max(0, math.floor(safe_tonumber(runtime_state.pending_presave_attempts, 0))) + 1
+    log_message("queued event '" .. tostring(event.event_id) .. "' for pre-save retry in 10s: " .. tostring(reason or "retry"))
+    return true
+end
+
+local function execute_and_consume_event(event, source)
+    if not event or not event.event_id or event.event_id == "" then
+        return false
+    end
+
+    if not actor_is_alive() then
+        log_message("event '" .. tostring(event.event_id) .. "' delayed: actor is not alive")
+        schedule_event_for_save_retry(event, "actor is not alive")
+        return false
+    end
+
+    log_message("executing event '" .. tostring(event.event_id) .. "' from " .. tostring(source or "queue") .. ": " .. tostring(event.action) .. " " .. tostring(event.action_arg))
+    local ok, error_text = pcall(execute_event, event)
+    if ok then
+        remember_recent_id(event.event_id)
+        if remember_consumed_id(event.event_id) then
+            save_consumed_ids()
+        end
+        clear_pending_presave()
+        log_message("event '" .. tostring(event.event_id) .. "' executed and marked consumed")
+        return true
+    end
+
+    log_message("failed to execute event '" .. tostring(event.event_id) .. "', retry in 10s: " .. tostring(error_text))
+    schedule_event_for_save_retry(event, "execute failed")
+    return false
+end
+
+local function process_queue_file()
+    if not actor_is_alive() then
+        return
+    end
+
+    if runtime_state.pending_presave_event then
+        if current_time_ms() < (runtime_state.pending_presave_ready_at or 0) then
+            return
+        end
+
+        local pending_event = runtime_state.pending_presave_event
+        clear_pending_presave()
+
+        if queue_pre_event_save(pending_event) then
+            execute_and_consume_event(pending_event, "retry")
+        else
+            schedule_event_for_save_retry(pending_event, "pre-save failed")
+        end
+        return
+    end
+
+    if runtime_state.pending_postsave_name ~= "" then
+        if current_time_ms() < (runtime_state.pending_postsave_ready_at or 0) then
+            return
+        end
+
+        local save_name = runtime_state.pending_postsave_name
+        local event_id = runtime_state.pending_postsave_event_id
+        clear_pending_postsave()
+
+        local ok, error_text = pcall(function()
+            exec_console_cmd("save " .. save_name)
+        end)
+        if ok then
+            log_message("created post-spawn save '" .. tostring(save_name) .. "' for event '" .. tostring(event_id) .. "'")
+        else
+            log_message("failed to create post-spawn save '" .. tostring(save_name) .. "': " .. tostring(error_text))
+        end
+        return
+    end
+
+    local file_path = queue_path()
+    local file_handle = io.open(file_path, "rb")
+    if not file_handle then
+        return
+    end
+
+    local ok_end, file_size = pcall(function()
+        return file_handle:seek("end")
+    end)
+    if not ok_end then
+        file_handle:close()
+        log_message("queue file does not support seek: " .. tostring(file_path))
+        return
+    end
+
+    if runtime_state.cursor > file_size then
+        runtime_state.cursor = 0
+    end
+
+    local ok_set = pcall(function()
+        file_handle:seek("set", runtime_state.cursor)
+    end)
+    if not ok_set then
+        file_handle:close()
+        runtime_state.cursor = 0
+        log_message("failed to seek queue file: " .. tostring(file_path))
+        return
+    end
+
+    local processed = 0
+    local did_event = false
+    while processed < DEFAULT_MAX_EVENTS_PER_POLL do
+        local line_start = runtime_state.cursor
+        local line = file_handle:read("*line")
+        if not line then
+            break
+        end
+
+        local next_cursor = advance_cursor(file_handle, runtime_state.cursor)
+        processed = processed + 1
+
+        local event = parse_event_line(line)
+        if event then
+            if was_consumed(event.event_id) or was_recently_processed(event.event_id) then
+                remember_recent_id(event.event_id)
+                runtime_state.cursor = next_cursor
+            else
+                did_event = true
+                if queue_pre_event_save(event) then
+                    if execute_and_consume_event(event, "queue") then
+                        runtime_state.cursor = next_cursor
+                    else
+                        runtime_state.cursor = line_start
+                    end
+                    break
+                end
+
+                runtime_state.cursor = line_start
+                schedule_event_for_save_retry(event, "could not create pre-event save")
+                break
+            end
+        else
+            runtime_state.cursor = next_cursor
+        end
+    end
+
+    if not did_event and file_size > 0 and runtime_state.cursor >= file_size then
+        local ok_rewind = pcall(function()
+            file_handle:seek("set", 0)
+        end)
+        if ok_rewind then
+            local recovered = 0
+            while recovered < DEFAULT_MAX_EVENTS_PER_POLL do
+                local line = file_handle:read("*line")
+                if not line then
+                    break
+                end
+
+                local next_cursor = advance_cursor(file_handle, runtime_state.cursor)
+                recovered = recovered + 1
+
+                local event = parse_event_line(line)
+                if event and not was_consumed(event.event_id) and not was_recently_processed(event.event_id) then
+                    log_message("recovered unread queue event before saved cursor: " .. tostring(event.event_id))
+                    if queue_pre_event_save(event) then
+                        if execute_and_consume_event(event, "recovered") then
+                            runtime_state.cursor = next_cursor
+                        end
+                        break
+                    end
+
+                    schedule_event_for_save_retry(event, "could not create recovered pre-event save")
+                    break
+                end
+            end
+        end
+    end
+
+    file_handle:close()
+end
+
+local function poll_queue()
+    ResetTimeEvent(EVENT_GROUP, EVENT_ID, DEFAULT_POLL_SECONDS)
+
+    if not config.enable_feature then
+        if not runtime_state.logged_first_poll then
+            runtime_state.logged_first_poll = true
+            log_message("poll skipped: feature disabled")
+        end
+        return false
+    end
+
+    if not actor_is_alive() then
+        if not runtime_state.logged_first_poll then
+            runtime_state.logged_first_poll = true
+            log_message("poll skipped: actor is not ready or not alive")
+        end
+        return false
+    end
+
+    if not runtime_state.logged_first_poll then
+        runtime_state.logged_first_poll = true
+        log_message("poll started: " .. tostring(queue_path()))
+    end
+
+    process_queue_file()
+    return false
+end
+
+local function actor_on_update()
+    if not config.enable_feature then
+        if not active_effects_empty() then
+            clear_all_timed_effects()
+        end
+        return
+    end
+
+    if not runtime_state.logged_update_tick then
+        runtime_state.logged_update_tick = true
+        log_message("actor update polling is active")
+    end
+
+    local now = current_time_ms()
+    if now >= (runtime_state.next_poll_at or 0) and actor_is_alive() then
+        runtime_state.next_poll_at = now + DEFAULT_POLL_SECONDS * 1000
+        local ok, error_text = pcall(process_queue_file)
+        if not ok then
+            log_message("actor update queue poll failed: " .. tostring(error_text))
+        end
+    end
+
+    if sdi_effects and sdi_effects.tick_donation_effects then
+        sdi_effects.tick_donation_effects()
+    end
+end
+
+local function actor_on_first_update()
+    local modules_ok = bind_external_modules(true)
+    load_consumed_ids()
+    RemoveTimeEvent(EVENT_GROUP, EVENT_ID)
+    CreateTimeEvent(EVENT_GROUP, EVENT_ID, DEFAULT_POLL_SECONDS, poll_queue)
+    runtime_state.next_poll_at = 0
+    if not runtime_state.logged_first_update then
+        runtime_state.logged_first_update = true
+        log_message("actor first update: enabled=" .. tostring(config.enable_feature) .. ", modules=" .. tostring(modules_ok) .. ", queue=" .. tostring(queue_path()) .. ", cursor=" .. tostring(runtime_state.cursor))
+    end
+
+    if config.enable_feature and actor_is_alive() then
+        local ok, error_text = pcall(process_queue_file)
+        if not ok then
+            log_message("first update queue poll failed: " .. tostring(error_text))
+        end
+    end
+
+    if config.enable_feature and sdi_effects and sdi_effects.restore_active_effects then
+        sdi_effects.restore_active_effects()
+    else
+        clear_all_timed_effects()
+    end
+end
+
+function save_state(m_data)
+    local saved_effects = {}
+    local now = current_time_ms()
+
+    for effect_key, effect in pairs(runtime_state.active_effects) do
+        if type(effect) == "table" then
+            local entry = {
+                remaining_ms = math.max(0, math.floor((effect.expires_at or now) - now)),
+                last_tick = 0,
+            }
+
+            for key, value in pairs(effect) do
+                if key ~= "expires_at" and key ~= "key" and type(value) ~= "function" and type(value) ~= "userdata" and type(value) ~= "thread" then
+                    entry[key] = value
+                end
+            end
+
+            saved_effects[effect_key] = entry
+        end
+    end
+
+    m_data[SAVE_KEY] = {
+        cursor = runtime_state.cursor,
+        recent_ids = runtime_state.recent_ids,
+        active_effects = saved_effects,
+        presaved_event_id = runtime_state.pending_presave_event_id,
+        pending_presave_event = runtime_state.pending_presave_event,
+        pending_presave_name = runtime_state.pending_presave_name,
+        pending_presave_attempts = runtime_state.pending_presave_attempts,
+    }
+end
+
+function load_state(m_data)
+    local saved = m_data[SAVE_KEY]
+    if type(saved) ~= "table" then
+        reset_runtime_state()
+        return
+    end
+
+    runtime_state.cursor = math.max(0, math.floor(safe_tonumber(saved.cursor, 0)))
+    clear_all_timed_effects()
+    runtime_state.recent_ids = {}
+    runtime_state.active_effects = {}
+    runtime_state.next_effect_tip_at = 0
+    runtime_state.last_event_at = 0
+    runtime_state.combo_count = 0
+    runtime_state.presave_slot_index = 0
+    runtime_state.postsave_slot_index = 0
+    clear_pending_presave()
+    clear_pending_postsave()
+
+    if type(saved.recent_ids) == "table" then
+        for i = 1, #saved.recent_ids do
+            local event_id = saved.recent_ids[i]
+            if type(event_id) == "string" and event_id ~= "" then
+                remember_recent_id(event_id)
+            end
+        end
+    end
+
+    if type(saved.pending_presave_event) == "table" and type(saved.pending_presave_event.event_id) == "string" and saved.pending_presave_event.event_id ~= "" then
+        runtime_state.pending_presave_event = saved.pending_presave_event
+        runtime_state.pending_presave_event_id = saved.pending_presave_event.event_id
+        runtime_state.pending_presave_name = type(saved.pending_presave_name) == "string" and saved.pending_presave_name or ""
+        runtime_state.pending_presave_attempts = math.max(0, math.floor(safe_tonumber(saved.pending_presave_attempts, 0)))
+        runtime_state.pending_presave_ready_at = current_time_ms() + 500
+        log_message("restored pending pre-saved event '" .. tostring(runtime_state.pending_presave_event_id) .. "'")
+    end
+
+    if type(saved.active_effects) == "table" then
+        local now = current_time_ms()
+        for effect_key, entry in pairs(saved.active_effects) do
+            if type(effect_key) == "string" and type(entry) == "table" then
+                local effect = {
+                    key = effect_key,
+                    expires_at = now + math.max(0, math.floor(safe_tonumber(entry.remaining_ms, 0))),
+                    last_tick = 0,
+                }
+
+                for key, value in pairs(entry) do
+                    if key ~= "remaining_ms" then
+                        effect[key] = value
+                    end
+                end
+
+                if effect.expires_at > now then
+                    runtime_state.active_effects[effect_key] = effect
+                end
+            end
+        end
+    end
+end
+
+function get_config(key)
+    if config[key] ~= nil then
+        return config[key]
+    end
+    return defaults[key]
+end
+
+function on_option_change(from_mcm)
+    if not from_mcm then
+        return
+    end
+    refresh_config()
+    bind_external_modules(true)
+end
+
+function on_game_start()
+    refresh_config()
+    local modules_ok = bind_external_modules(true)
+    RegisterScriptCallback("on_option_change", on_option_change)
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+    RegisterScriptCallback("save_state", save_state)
+    RegisterScriptCallback("load_state", load_state)
+    log_message("on_game_start: enabled=" .. tostring(config.enable_feature) .. ", modules=" .. tostring(modules_ok))
+end

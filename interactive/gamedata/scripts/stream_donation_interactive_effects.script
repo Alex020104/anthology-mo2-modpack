@@ -1,0 +1,1045 @@
+local M = {}
+
+local WEATHER_PRESETS = {
+    sun = "w_clear2",
+    sunny = "w_clear2",
+    clear = "w_clear2",
+    fog = "w_foggy1",
+    foggy = "w_foggy1",
+    rain = "w_rain1",
+    rainy = "w_rain1",
+    storm = "w_storm1",
+}
+
+local TELEPORT_SEARCH_ATTEMPTS = 28
+local TELEPORT_FALLBACK_ATTEMPTS = 14
+
+local RANDOM_LEVEL_TELEPORT_TARGETS = {
+    { key = "swamp", smart = "mar_smart_terrain_base" },
+    { key = "cordon", smart = "esc_smart_terrain_2_12" },
+    { key = "garbage", smart = "gar_smart_terrain_3_5" },
+    { key = "bar", smart = "bar_visitors" },
+    { key = "agroprom", smart = "agr_smart_terrain_1_6" },
+    { key = "yantar", smart = "yan_smart_terrain_6_4" },
+    { key = "warehouses", smart = "mil_smart_terrain_7_10" },
+    { key = "dead_city", smart = "cit_killers" },
+    { key = "zaton", smart = "zat_stalker_base_smart" },
+    { key = "jupiter", smart = "jup_a6" },
+}
+
+function M.bind(api)
+    local runtime_state = api.runtime_state
+    local current_time_ms = api.current_time_ms
+    local parse_duration_seconds = api.parse_duration_seconds
+    local timed_default_seconds = api.TIMED_EFFECT_DEFAULT_SECONDS
+    local safe_tonumber = api.safe_tonumber
+    local clamp = api.clamp
+    local parse_signed_percent = api.parse_signed_percent
+    local parse_int_range = api.parse_int_range
+    local parse_time_shift = api.parse_time_shift
+    local format_duration_mmss = api.format_duration_mmss
+    local format_signed_decimal = api.format_signed_decimal
+    local format_decimal = api.format_decimal
+    local clip_text = api.clip_text
+    local translate_text = api.translate_text
+    local random_choice = api.random_choice
+    local refresh_active_effects_tip = api.refresh_active_effects_tip
+    local actor_server_object = api.actor_server_object
+    local log_message = api.log_message
+
+    local db = api.db
+    local level = api.level
+    local dialogs = api.dialogs
+    local news_manager = api.news_manager
+    local actor_effects = api.actor_effects
+    local game = api.game
+    local level_weathers = api.level_weathers
+    local surge_manager = api.surge_manager
+
+    local effects = {}
+    local smart_cache = {}
+
+    local function trigger_drunk_camera_pulse(effect)
+        if not level then
+            return
+        end
+
+        local camera_variants = {
+            "camera_effects\\switch\\low1.anm",
+            "camera_effects\\switch\\low2.anm",
+            "camera_effects\\switch\\low3.anm",
+            "camera_effects\\switch\\low4.anm",
+            "camera_effects\\switch\\med1.anm",
+            "camera_effects\\switch\\med2.anm",
+            "camera_effects\\switch\\med3.anm",
+            "camera_effects\\switch\\med4.anm",
+        }
+
+        local camera_path = random_choice(camera_variants)
+        if camera_path and level.add_cam_effector then
+            pcall(function()
+                level.add_cam_effector(camera_path, api.DRUNK_CAMERA_EFFECT_ID, false, "", 0, false)
+            end)
+        end
+
+        if level.add_pp_effector then
+            pcall(function()
+                level.add_pp_effector("alcohol.ppe", api.DRUNK_PP_EFFECT_ID, true)
+            end)
+        end
+
+        if effect then
+            effect.last_tick = current_time_ms()
+        end
+    end
+
+    local function clear_timed_effect(effect_key)
+        local effect = runtime_state.active_effects[effect_key]
+        if not effect then
+            return
+        end
+
+        if effect_key == "no_shoot" then
+            if actor_effects and actor_effects.actor_can_shoot then
+                pcall(function()
+                    actor_effects.actor_can_shoot(true)
+                end)
+            end
+        elseif effect_key == "move_keys_only" then
+            if game and game.only_allow_movekeys then
+                pcall(function()
+                    game.only_allow_movekeys(false)
+                end)
+            end
+            if db.actor and db.actor.set_inventory_disabled then
+                pcall(function()
+                    db.actor:set_inventory_disabled(false)
+                end)
+            end
+        elseif effect_key == "drunk_camera" and level then
+            if level.remove_cam_effector then
+                pcall(function()
+                    level.remove_cam_effector(api.DRUNK_CAMERA_EFFECT_ID)
+                end)
+            end
+            if level.remove_pp_effector then
+                pcall(function()
+                    level.remove_pp_effector(api.DRUNK_PP_EFFECT_ID)
+                end)
+            end
+        end
+
+        runtime_state.active_effects[effect_key] = nil
+    end
+
+    local function clear_all_timed_effects()
+        local keys = {}
+        for effect_key in pairs(runtime_state.active_effects) do
+            keys[#keys + 1] = effect_key
+        end
+
+        for index = 1, #keys do
+            clear_timed_effect(keys[index])
+        end
+
+        runtime_state.next_effect_tip_at = 0
+    end
+
+    local function active_effects_empty()
+        return next(runtime_state.active_effects) == nil
+    end
+
+    local function apply_timed_effect_start(effect)
+        if not effect then
+            return
+        end
+
+        if effect.key == "no_shoot" then
+            if actor_effects and actor_effects.actor_can_shoot then
+                pcall(function()
+                    actor_effects.actor_can_shoot(false)
+                end)
+            end
+        elseif effect.key == "move_keys_only" then
+            if game and game.only_allow_movekeys then
+                pcall(function()
+                    game.only_allow_movekeys(true)
+                end)
+            end
+            if db.actor and db.actor.set_inventory_disabled then
+                pcall(function()
+                    db.actor:set_inventory_disabled(true)
+                end)
+            end
+        elseif effect.key == "drunk_camera" then
+            effect.last_tick = 0
+            trigger_drunk_camera_pulse(effect)
+        end
+    end
+
+    local function start_timed_effect(effect_key, duration_seconds, extra)
+        local now = current_time_ms()
+        local duration_ms = parse_duration_seconds(duration_seconds, timed_default_seconds) * 1000
+        local effect = runtime_state.active_effects[effect_key]
+
+        if effect then
+            effect.expires_at = math.max(effect.expires_at or now, now) + duration_ms
+            if type(extra) == "table" then
+                for key, value in pairs(extra) do
+                    effect[key] = value
+                end
+            end
+        else
+            effect = {
+                key = effect_key,
+                expires_at = now + duration_ms,
+                last_tick = 0,
+            }
+            if type(extra) == "table" then
+                for key, value in pairs(extra) do
+                    effect[key] = value
+                end
+            end
+            runtime_state.active_effects[effect_key] = effect
+            apply_timed_effect_start(effect)
+        end
+
+        refresh_active_effects_tip(true)
+        return format_duration_mmss(math.floor((effect.expires_at - now) / 1000))
+    end
+
+    local function restore_active_effects()
+        for _, effect in pairs(runtime_state.active_effects) do
+            apply_timed_effect_start(effect)
+        end
+        refresh_active_effects_tip(true)
+    end
+
+    local function tick_donation_effects()
+        if active_effects_empty() or not db.actor or not level or not level.present() then
+            return
+        end
+
+        local now = current_time_ms()
+        local expired = {}
+
+        for effect_key, effect in pairs(runtime_state.active_effects) do
+            if not effect or (effect.expires_at and now >= effect.expires_at) then
+                expired[#expired + 1] = effect_key
+            elseif effect_key == "drunk_camera" then
+                if now - (effect.last_tick or 0) >= (effect.interval_ms or 4500) then
+                    trigger_drunk_camera_pulse(effect)
+                end
+            elseif effect_key == "regen_boost" then
+                if now - (effect.last_tick or 0) >= (effect.interval_ms or 3000) then
+                    if db.actor.change_health then
+                        db.actor:change_health(effect.health_step or 0.04)
+                    end
+                    if db.actor.change_power then
+                        db.actor:change_power(effect.power_step or 0.04)
+                    end
+                    if db.actor.change_bleeding then
+                        db.actor:change_bleeding(effect.bleed_step or -0.12)
+                    end
+                    effect.last_tick = now
+                end
+            elseif effect_key == "weakness" then
+                if now - (effect.last_tick or 0) >= (effect.interval_ms or 1500) then
+                    local current_power = safe_tonumber(db.actor.power, 0.5)
+                    local power_cap = clamp(safe_tonumber(effect.power_cap, 0.25), 0.05, 0.95)
+                    if db.actor.change_power then
+                        if current_power > power_cap then
+                            db.actor:change_power(effect.power_step or -0.09)
+                        else
+                            db.actor:change_power(effect.hold_step or -0.025)
+                        end
+                    end
+                    effect.last_tick = now
+                end
+            elseif effect_key == "exhaustion" then
+                if now - (effect.last_tick or 0) >= (effect.interval_ms or 3500) then
+                    if db.actor.change_power then
+                        db.actor:change_power(effect.power_step or -0.07)
+                    end
+                    if db.actor.change_satiety then
+                        db.actor:change_satiety(effect.satiety_step or -0.04)
+                    end
+                    effect.last_tick = now
+                end
+            elseif effect_key == "radiation_storm" then
+                if now - (effect.last_tick or 0) >= (effect.interval_ms or 4000) then
+                    if db.actor.change_radiation then
+                        db.actor:change_radiation(effect.radiation_step or 0.015)
+                    end
+                    effect.last_tick = now
+                end
+            end
+        end
+
+        for index = 1, #expired do
+            clear_timed_effect(expired[index])
+        end
+
+        refresh_active_effects_tip(#expired > 0)
+    end
+
+    local function distance_sqr_between(position_a, position_b)
+        if not position_a or not position_b or not position_a.distance_to_sqr then
+            return nil
+        end
+
+        local ok, value = pcall(function()
+            return position_a:distance_to_sqr(position_b)
+        end)
+        if ok and type(value) == "number" then
+            return value
+        end
+        return nil
+    end
+
+    local function find_random_teleport_position(raw)
+        if not db.actor or not level or not level.present or not level.present() then
+            return nil, nil
+        end
+        if not db.actor.level_vertex_id or not db.actor.position or not db.actor.direction then
+            return nil, nil
+        end
+        if not level.vertex_in_direction or not level.vertex_position then
+            return nil, nil
+        end
+        if not vector_rotate_y or not vec_set then
+            return nil, nil
+        end
+
+        local min_radius, max_radius = parse_int_range(raw, 25, 65)
+        min_radius = clamp(math.floor(math.abs(min_radius)), 8, 96)
+        max_radius = clamp(math.floor(math.abs(max_radius)), min_radius, 128)
+
+        local ok_vertex, base_vertex_id = pcall(function()
+            return db.actor:level_vertex_id()
+        end)
+        local ok_position, base_position = pcall(function()
+            return db.actor:position()
+        end)
+        local ok_direction, base_direction = pcall(function()
+            return db.actor:direction()
+        end)
+        if not ok_vertex or type(base_vertex_id) ~= "number" or base_vertex_id < 0 then
+            return nil, nil
+        end
+        if not ok_position or not base_position or not ok_direction or not base_direction then
+            return nil, nil
+        end
+
+        local function try_ring(attempts, ring_min, ring_max)
+            for _ = 1, attempts do
+                local radius = math.random(ring_min, ring_max)
+                local angle = math.random(0, 359)
+                local direction = vector_rotate_y(vec_set(base_direction), angle)
+                local ok_target, target_vertex_id = pcall(function()
+                    return level.vertex_in_direction(base_vertex_id, direction, radius)
+                end)
+
+                if ok_target and type(target_vertex_id) == "number" and target_vertex_id >= 0 and target_vertex_id ~= base_vertex_id then
+                    local ok_target_position, target_position = pcall(function()
+                        return level.vertex_position(target_vertex_id)
+                    end)
+                    if ok_target_position and target_position then
+                        local min_distance_sqr = math.max(ring_min - 2, 1)
+                        min_distance_sqr = min_distance_sqr * min_distance_sqr
+                        local distance_sqr = distance_sqr_between(base_position, target_position)
+                        if not distance_sqr or distance_sqr >= min_distance_sqr then
+                            return target_position, target_vertex_id
+                        end
+                    end
+                end
+            end
+
+            return nil, nil
+        end
+
+        local target_position, target_vertex_id = try_ring(TELEPORT_SEARCH_ATTEMPTS, min_radius, max_radius)
+        if target_position then
+            return target_position, target_vertex_id
+        end
+
+        local fallback_min = clamp(math.max(10, math.floor(min_radius * 0.65)), 8, 128)
+        local fallback_max = clamp(math.max(max_radius + 18, fallback_min + 8), fallback_min, 160)
+        return try_ring(TELEPORT_FALLBACK_ATTEMPTS, fallback_min, fallback_max)
+    end
+
+    local function level_name_for_game_vertex(game_vertex_id)
+        if type(game_vertex_id) ~= "number" or not game_graph or not alife then
+            return ""
+        end
+
+        local ok_graph, graph = pcall(function()
+            return game_graph()
+        end)
+        if not ok_graph or not graph or not graph.vertex then
+            return ""
+        end
+
+        local ok_vertex, graph_vertex = pcall(function()
+            return graph:vertex(game_vertex_id)
+        end)
+        if not ok_vertex or not graph_vertex or not graph_vertex.level_id then
+            return ""
+        end
+
+        local ok_level, level_id = pcall(function()
+            return graph_vertex:level_id()
+        end)
+        if not ok_level or type(level_id) ~= "number" then
+            return ""
+        end
+
+        local ok_sim, sim = pcall(function()
+            return alife()
+        end)
+        if not ok_sim or not sim or not sim.level_name then
+            return tostring(level_id)
+        end
+
+        local ok_name, name = pcall(function()
+            return sim:level_name(level_id)
+        end)
+        if ok_name and name then
+            return tostring(name)
+        end
+        return tostring(level_id)
+    end
+
+    local function current_actor_level_name()
+        if level and level.name then
+            local ok_name, name = pcall(function()
+                return level.name()
+            end)
+            if ok_name and name then
+                return tostring(name)
+            end
+        end
+
+        local se_actor = actor_server_object()
+        return level_name_for_game_vertex(se_actor and se_actor.m_game_vertex_id)
+    end
+
+    local function find_smart_by_name(name)
+        if type(name) ~= "string" or name == "" then
+            return nil
+        end
+
+        if smart_cache[name] then
+            return smart_cache[name]
+        end
+
+        if SIMBOARD and SIMBOARD.get_smart_by_name then
+            local ok_smart, smart = pcall(function()
+                return SIMBOARD:get_smart_by_name(name)
+            end)
+            if ok_smart and smart then
+                smart_cache[name] = smart
+                return smart
+            end
+        end
+
+        if not alife then
+            return nil
+        end
+
+        local ok_sim, sim = pcall(function()
+            return alife()
+        end)
+        if not ok_sim or not sim or not sim.object then
+            return nil
+        end
+
+        for object_id = 1, 65534 do
+            local ok_object, smart = pcall(function()
+                return sim:object(object_id)
+            end)
+            if ok_object and smart and smart.name then
+                local ok_name, smart_name = pcall(function()
+                    return smart:name()
+                end)
+                if ok_name and smart_name == name then
+                    if not clsid or not clsid.smart_terrain or not smart.clsid then
+                        smart_cache[name] = smart
+                        return smart
+                    end
+
+                    local ok_class, class_id = pcall(function()
+                        return smart:clsid()
+                    end)
+                    if ok_class and class_id == clsid.smart_terrain then
+                        smart_cache[name] = smart
+                        return smart
+                    end
+                end
+            end
+        end
+
+        return nil
+    end
+
+    local function is_valid_level_target(smart)
+        return smart and smart.position
+            and type(smart.m_level_vertex_id) == "number"
+            and type(smart.m_game_vertex_id) == "number"
+            and smart.m_level_vertex_id >= 0
+            and smart.m_level_vertex_id < 4294967295
+            and smart.m_game_vertex_id >= 0
+    end
+
+    local function parse_level_target_filter(raw)
+        local filters = {}
+        local count = 0
+        local text = tostring(raw or "")
+        for token in string.gmatch(text, "[^,%s|;]+") do
+            local key = string.lower(api.trim(token))
+            if key ~= "" then
+                filters[key] = true
+                count = count + 1
+            end
+        end
+        return filters, count
+    end
+
+    local function pick_random_level_target(raw)
+        local filters, filter_count = parse_level_target_filter(raw)
+        local current_level = current_actor_level_name()
+        local candidates = {}
+
+        for index = 1, #RANDOM_LEVEL_TELEPORT_TARGETS do
+            local target = RANDOM_LEVEL_TELEPORT_TARGETS[index]
+            if filter_count == 0 or filters[target.key] or filters[target.smart] then
+                local smart = find_smart_by_name(target.smart)
+                if is_valid_level_target(smart) then
+                    local target_level = level_name_for_game_vertex(smart.m_game_vertex_id)
+                    if current_level == "" or target_level == "" or target_level ~= current_level then
+                        candidates[#candidates + 1] = {
+                            key = target.key,
+                            smart = smart,
+                        }
+                    end
+                end
+            end
+        end
+
+        return random_choice(candidates)
+    end
+
+    local function action_message_only(event)
+        return event.action_arg ~= "" and clip_text(event.action_arg, 64) or translate_text("ui_sdi_result_message", "message")
+    end
+
+    local function action_money_in(event)
+        local amount = math.floor(math.abs(safe_tonumber(event.action_arg, event.amount or 0)))
+        if amount < 1 or not db.actor then
+            return "0 RU"
+        end
+
+        db.actor:give_money(amount)
+
+        return "+" .. tostring(amount) .. " RU"
+    end
+
+    local function action_money_out(event)
+        if not db.actor then
+            return "0 RU"
+        end
+
+        local requested = math.floor(math.abs(safe_tonumber(event.action_arg, event.amount or 0)))
+        local amount = math.min(requested, math.max(db.actor:money(), 0))
+        if amount < 1 then
+            return "0 RU"
+        end
+
+        db.actor:give_money(-amount)
+
+        return "-" .. tostring(amount) .. " RU"
+    end
+
+    local function action_cash_random(event)
+        if not db.actor then
+            return "0 RU"
+        end
+
+        local min_value, max_value = parse_int_range(event.action_arg, 500, 2500)
+        min_value = clamp(min_value, 1, 50000)
+        max_value = clamp(max_value, min_value, 50000)
+
+        local amount = math.random(min_value, max_value)
+        db.actor:give_money(amount)
+
+        return "+" .. tostring(amount) .. " RU"
+    end
+
+    local function action_money_leave_one(event)
+        if not db.actor then
+            return "0 RU"
+        end
+
+        local keep_amount = math.floor(math.abs(safe_tonumber(event.action_arg, 1)))
+        local current_money = math.max(db.actor:money(), 0)
+        local remove_amount = math.max(0, current_money - keep_amount)
+        if remove_amount < 1 then
+            return tostring(keep_amount) .. " RU"
+        end
+
+        db.actor:give_money(-remove_amount)
+
+        return tostring(keep_amount) .. " RU"
+    end
+
+    local function action_radiation(event)
+        if not db.actor or not db.actor.change_radiation then
+            return "0 RAD"
+        end
+
+        local delta = clamp(parse_signed_percent(event.action_arg, 0.15), -1.0, 1.0)
+        if delta == 0 then
+            return "0 RAD"
+        end
+
+        db.actor:change_radiation(delta)
+        return format_signed_decimal(delta, 2) .. " RAD"
+    end
+
+    local function action_heal(event)
+        if not db.actor or not db.actor.change_health then
+            return "0 HP"
+        end
+
+        local delta = math.abs(safe_tonumber(event.action_arg, 0.35))
+        if delta > 1 then
+            delta = delta / 100
+        end
+        delta = clamp(delta, 0.01, 1.0)
+
+        db.actor:change_health(delta)
+        return "+" .. format_decimal(delta, 2) .. " HP"
+    end
+
+    local function action_blood_restore()
+        if not db.actor then
+            return "blood?"
+        end
+
+        if db.actor.change_health then
+            db.actor:change_health(0.14)
+        end
+        if db.actor.change_bleeding then
+            db.actor:change_bleeding(-1.0)
+        end
+        if db.actor.bleeding ~= nil then
+            db.actor.bleeding = 0
+        end
+        if db.actor.change_power then
+            db.actor:change_power(0.10)
+        end
+
+        if level and level.remove_pp_effector then
+            pcall(function()
+                level.remove_pp_effector(api.BLEED_PP_EFFECT_ID)
+            end)
+        end
+
+        return "+blood"
+    end
+
+    local function action_power(event)
+        if not db.actor or not db.actor.change_power then
+            return "0 STA"
+        end
+
+        local delta = clamp(parse_signed_percent(event.action_arg, 0.35), -1.0, 1.0)
+        if delta == 0 then
+            return "0 STA"
+        end
+
+        db.actor:change_power(delta)
+        return format_signed_decimal(delta, 2) .. " STA"
+    end
+
+    local function action_weakness(event)
+        return start_timed_effect("weakness", event.action_arg, {
+            interval_ms = 1500,
+            power_step = -0.09,
+            hold_step = -0.025,
+            power_cap = 0.22,
+            popup_action = "weakness",
+        })
+    end
+
+    local function action_satiety(event)
+        if not db.actor or not db.actor.change_satiety then
+            return "0 FOOD"
+        end
+
+        local delta = clamp(parse_signed_percent(event.action_arg, 0.25), -1.0, 1.0)
+        if delta == 0 then
+            return "0 FOOD"
+        end
+
+        db.actor:change_satiety(delta)
+        return format_signed_decimal(delta, 2) .. " FOOD"
+    end
+
+    local function action_bleeding(event)
+        if not db.actor then
+            return "0 BLEED"
+        end
+
+        local delta = clamp(parse_signed_percent(event.action_arg, 0.55), -1.0, 1.0)
+        if delta == 0 then
+            return "0 BLEED"
+        end
+
+        local current_bleeding = clamp(safe_tonumber(db.actor.bleeding, 0), 0, 1)
+        local target_bleeding = delta < 0 and 0 or clamp(math.max(current_bleeding + delta, 0.45), 0, 1)
+
+        if db.actor.change_bleeding then
+            db.actor:change_bleeding(target_bleeding - current_bleeding)
+        end
+        if db.actor.bleeding ~= nil then
+            db.actor.bleeding = target_bleeding
+        end
+
+        if target_bleeding > 0 and db.actor.change_health then
+            db.actor:change_health(-math.min(0.08, target_bleeding * 0.08))
+        end
+
+        if level then
+            if target_bleeding > 0 and level.add_pp_effector then
+                pcall(function()
+                    level.add_pp_effector("bloody.ppe", api.BLEED_PP_EFFECT_ID, false)
+                end)
+            elseif target_bleeding <= 0 and level.remove_pp_effector then
+                pcall(function()
+                    level.remove_pp_effector(api.BLEED_PP_EFFECT_ID)
+                end)
+            end
+        end
+
+        return format_signed_decimal(target_bleeding - current_bleeding, 2) .. " BLEED"
+    end
+
+    local function action_one_hp()
+        if not db.actor or not db.actor.change_health then
+            return "1 HP"
+        end
+
+        local current = safe_tonumber(db.actor.health, 1.0)
+        local target = 0.01
+        if current <= target then
+            return "1 HP"
+        end
+
+        db.actor:change_health(target - current)
+        return "1 HP"
+    end
+
+    local function action_weather(event)
+        local key = string.lower(api.trim(event.action_arg))
+        if key == "" then
+            key = "sun"
+        end
+
+        if key == "random" or key == "rnd" then
+            key = random_choice({ "sun", "fog", "rain", "storm" }) or "sun"
+        end
+
+        local preset = WEATHER_PRESETS[key] or key
+        local ok = pcall(function()
+            level.set_weather(preset, true)
+        end)
+        if not ok then
+            log_message("failed to change weather to " .. tostring(preset))
+            return "weather?"
+        end
+
+        if level_weathers and level_weathers.get_weather_manager then
+            local ok_manager, weather_manager = pcall(function()
+                return level_weathers.get_weather_manager()
+            end)
+            if ok_manager and weather_manager and weather_manager.forced_weather_change then
+                pcall(function()
+                    weather_manager:forced_weather_change()
+                end)
+            end
+        end
+
+        if key == "sun" or key == "sunny" or key == "clear" then
+            return translate_text("ui_sdi_effect_weather_sun", "sun")
+        elseif key == "rain" or key == "rainy" then
+            return translate_text("ui_sdi_effect_weather_rain", "rain")
+        elseif key == "fog" or key == "foggy" then
+            return translate_text("ui_sdi_effect_weather_fog", "fog")
+        end
+
+        return translate_text("ui_sdi_effect_weather_generic", key)
+    end
+
+    local function action_time_forward(event)
+        local hours, minutes = parse_time_shift(event.action_arg)
+        if hours < 1 and minutes < 1 then
+            hours = 8
+        end
+
+        local ok = pcall(function()
+            level.change_game_time(0, hours, minutes)
+        end)
+        if not ok then
+            return "time?"
+        end
+
+        if level_weathers and level_weathers.get_weather_manager then
+            local ok_manager, weather_manager = pcall(function()
+                return level_weathers.get_weather_manager()
+            end)
+            if ok_manager and weather_manager and weather_manager.forced_weather_change then
+                pcall(function()
+                    weather_manager:forced_weather_change()
+                end)
+            end
+        end
+
+        if surge_manager and surge_manager.SurgeManager then
+            surge_manager.SurgeManager.time_forwarded = true
+        end
+
+        return "+" .. string.format("%02d", hours) .. ":" .. string.format("%02d", minutes) .. " forward"
+    end
+
+    local function action_random_teleport(event)
+        if not db.actor or not db.actor.set_actor_position then
+            return "teleport?"
+        end
+
+        local target_position, target_vertex_id = find_random_teleport_position(event and event.action_arg or "")
+        if not target_position then
+            return "teleport?"
+        end
+
+        local ok = pcall(function()
+            db.actor:set_actor_position(target_position)
+        end)
+        if not ok then
+            return "teleport?"
+        end
+
+        if db.actor.set_actor_direction then
+            pcall(function()
+                db.actor:set_actor_direction(math.random(0, 628) / 100)
+            end)
+        end
+
+        return "vertex " .. tostring(target_vertex_id or "?")
+    end
+
+    local function action_random_level_teleport(event)
+        if not db.actor or not ChangeLevel then
+            return "level?"
+        end
+
+        local target = pick_random_level_target(event and event.action_arg or "")
+        if not target or not target.smart then
+            return "level?"
+        end
+
+        local angle = VEC_ZERO
+        if not angle and vector then
+            local ok_angle, zero = pcall(function()
+                return vector():set(0, 0, 0)
+            end)
+            if ok_angle then
+                angle = zero
+            end
+        end
+        if not angle then
+            return "level?"
+        end
+
+        local smart = target.smart
+        local ok = pcall(function()
+            ChangeLevel(smart.position, smart.m_level_vertex_id, smart.m_game_vertex_id, angle, true)
+        end)
+        if not ok then
+            log_message("failed to change level to " .. tostring(target.key))
+            return "level?"
+        end
+
+        return target.key
+    end
+
+    local function action_rename_actor(event)
+        local new_name = api.trim(event.action_arg)
+        if new_name == "" then
+            new_name = api.trim(event.donor)
+        end
+        new_name = clip_text(new_name, 32)
+        if new_name == "" then
+            return "name?"
+        end
+
+        local se_actor = actor_server_object()
+        if not se_actor or not se_actor.set_character_name then
+            return "name?"
+        end
+
+        local ok = pcall(function()
+            se_actor:set_character_name(new_name)
+        end)
+        if not ok then
+            return "name?"
+        end
+
+        return new_name
+    end
+
+    local function action_drop_active_weapon()
+        if not db.actor or not db.actor.active_slot or not db.actor.item_in_slot or not db.actor.drop_item then
+            return "weapon?"
+        end
+
+        local slot = db.actor:active_slot()
+        if slot ~= 2 and slot ~= 3 then
+            return "weapon?"
+        end
+
+        local weapon = db.actor:item_in_slot(slot)
+        if not weapon then
+            return "weapon?"
+        end
+
+        local ok = pcall(function()
+            db.actor:drop_item(weapon)
+        end)
+        if not ok then
+            return "weapon?"
+        end
+
+        return translate_text("ui_sdi_result_weapon_dropped", "dropped")
+    end
+
+    local function action_drunk_camera(event)
+        return start_timed_effect("drunk_camera", event.action_arg, {
+            interval_ms = 4500,
+            popup_action = "drunk_camera",
+        })
+    end
+
+    local function action_move_keys_only(event)
+        return start_timed_effect("move_keys_only", event.action_arg, {
+            popup_action = "move_keys_only",
+        })
+    end
+
+    local function action_no_shoot(event)
+        return start_timed_effect("no_shoot", event.action_arg, {
+            popup_action = "no_shoot",
+        })
+    end
+
+    local function action_regen_boost(event)
+        if db.actor and db.actor.change_health then
+            db.actor:change_health(0.08)
+        end
+        if db.actor and db.actor.change_bleeding then
+            db.actor:change_bleeding(-0.20)
+        end
+
+        return start_timed_effect("regen_boost", event.action_arg, {
+            interval_ms = 3000,
+            health_step = 0.04,
+            power_step = 0.04,
+            bleed_step = -0.12,
+            popup_action = "regen_boost",
+        })
+    end
+
+    local function action_exhaustion(event)
+        return start_timed_effect("exhaustion", event.action_arg, {
+            interval_ms = 3500,
+            power_step = -0.07,
+            satiety_step = -0.04,
+            popup_action = "exhaustion",
+        })
+    end
+
+    local function action_radiation_storm(event)
+        return start_timed_effect("radiation_storm", event.action_arg, {
+            interval_ms = 4000,
+            radiation_step = 0.015,
+            popup_action = "radiation_storm",
+        })
+    end
+
+    effects.handlers = {
+        message = action_message_only,
+        money_in = action_money_in,
+        money_out = action_money_out,
+        cash_random = action_cash_random,
+        money_leave_one = action_money_leave_one,
+        radiation = action_radiation,
+        heal = action_heal,
+        blood_restore = action_blood_restore,
+        power = action_power,
+        weakness = action_weakness,
+        satiety = action_satiety,
+        bleeding = action_bleeding,
+        one_hp = action_one_hp,
+        weather = action_weather,
+        time_forward = action_time_forward,
+        random_teleport = action_random_teleport,
+        random_level_teleport = action_random_level_teleport,
+        rename_actor = action_rename_actor,
+        drop_active_weapon = action_drop_active_weapon,
+        drunk_camera = action_drunk_camera,
+        move_keys_only = action_move_keys_only,
+        no_shoot = action_no_shoot,
+        regen_boost = action_regen_boost,
+        exhaustion = action_exhaustion,
+        radiation_storm = action_radiation_storm,
+    }
+
+    function effects.describe(action)
+        local labels = {
+            money_in = translate_text("ui_sdi_effect_cash_in", "Cash bonus"),
+            money_out = translate_text("ui_sdi_effect_cash_out", "Cash loss"),
+            heal = translate_text("ui_sdi_effect_heal", "Healing"),
+            blood_restore = translate_text("ui_sdi_effect_blood_restore", "Blood transfusion"),
+            weakness = translate_text("ui_sdi_effect_power_down", "Stamina drain"),
+            satiety = translate_text("ui_sdi_effect_satiety_down", "Hunger"),
+            bleeding = translate_text("ui_sdi_effect_bleeding_up", "Bleeding"),
+            radiation = translate_text("ui_sdi_effect_radiation_up", "Radiation surge"),
+            one_hp = translate_text("ui_sdi_effect_one_hp", "Leave 1 HP"),
+            weather = translate_text("ui_sdi_effect_weather_generic", "Weather shift"),
+            time_forward = translate_text("ui_sdi_effect_time_forward", "Time skip"),
+            random_teleport = translate_text("ui_sdi_effect_random_teleport", "Random teleport"),
+            random_level_teleport = translate_text("ui_sdi_effect_random_level_teleport", "Random location teleport"),
+            rename_actor = translate_text("ui_sdi_effect_rename_actor", "Rename the stalker"),
+            drop_active_weapon = translate_text("ui_sdi_effect_drop_weapon", "Drop active weapon"),
+            drunk_camera = translate_text("ui_sdi_effect_drunk_camera", "Drunk camera"),
+            move_keys_only = translate_text("ui_sdi_effect_move_keys_only", "Movement-only controls"),
+            no_shoot = translate_text("ui_sdi_effect_no_shoot", "Firearms locked"),
+            regen_boost = translate_text("ui_sdi_effect_regen_boost", "Mega-heal over time"),
+            exhaustion = translate_text("ui_sdi_effect_exhaustion", "Exhaustion over time"),
+            radiation_storm = translate_text("ui_sdi_effect_radiation_storm", "Radiation storm"),
+        }
+        return labels[action]
+    end
+
+    effects.active_effects_empty = active_effects_empty
+    effects.clear_timed_effect = clear_timed_effect
+    effects.clear_all_timed_effects = clear_all_timed_effects
+    effects.restore_active_effects = restore_active_effects
+    effects.tick_donation_effects = tick_donation_effects
+
+    return effects
+end
+
+bind = M.bind
+
+return M

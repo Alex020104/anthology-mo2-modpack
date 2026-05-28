@@ -1,0 +1,25 @@
+local OPTION_ROOT = "stream_donation_interactive"
+
+function on_mcm_load()
+    local options = {
+        id = OPTION_ROOT,
+        sh = true,
+        gr = {
+            {
+                id = "header",
+                type = "slide",
+                link = "AMCM_Banner.dds",
+                text = "ui_mcm_stream_donation_interactive_header",
+                size = {512, 50},
+                spacing = 20,
+            },
+            {
+                id = "enable_feature",
+                type = "check",
+                val = 1,
+                def = true,
+            },
+        },
+    }
+    return options
+end

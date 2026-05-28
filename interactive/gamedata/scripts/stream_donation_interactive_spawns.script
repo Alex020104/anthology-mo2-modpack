@@ -1,0 +1,381 @@
+local M = {}
+
+local SPAWN_SEARCH_ATTEMPTS = 18
+local SPAWN_FALLBACK_ATTEMPTS = 10
+
+local function trim(value)
+    if type(value) ~= "string" then
+        return ""
+    end
+    return value:match("^%s*(.-)%s*$") or ""
+end
+
+local function lower_trim(value)
+    return string.lower(trim(value))
+end
+
+function M.bind(api)
+    local config = api.config
+    local db = api.db
+    local level = api.level
+    local clamp = api.clamp
+    local safe_tonumber = api.safe_tonumber
+    local translate_text = api.translate_text
+    local current_time_ms = api.current_time_ms
+    local runtime_state = api.runtime_state
+    local log_message = api.log_message
+    local show_runtime_tip = api.show_runtime_tip
+    local colorize = api.colorize
+    local queue_post_spawn_save = api.queue_post_spawn_save
+    local execute_event = api.execute_event
+    local event_group = api.EVENT_GROUP
+    local donation_icon = api.DONATION_ICON
+    local popup_color_title = api.POPUP_COLOR_TITLE
+    local popup_color_muted = api.POPUP_COLOR_MUTED
+    local popup_color_neutral = api.POPUP_COLOR_NEUTRAL
+
+    local spawns = {}
+
+    local function parse_spawn_request(raw)
+        local alias_raw, count_raw = string.match(trim(raw), "^([%w_]+):?(%d*)$")
+        if not alias_raw or alias_raw == "" then
+            return "", 0
+        end
+
+        local count = math.floor(math.abs(safe_tonumber(count_raw, 1)))
+        if count < 1 then
+            count = 1
+        end
+
+        return string.lower(alias_raw), count
+    end
+
+    local function spawn_bonus_for_amount(amount)
+        local donation_amount = safe_tonumber(amount, 0)
+        if donation_amount >= 5000 then
+            return 8
+        end
+        if donation_amount >= 2000 then
+            return 4
+        end
+        if donation_amount >= 1000 then
+            return 2
+        end
+        return 0
+    end
+
+    local function load_spawn_preset(kind, alias)
+        local section = "spawn_" .. tostring(kind) .. "_" .. tostring(alias)
+        if not config:section_exists(section) then
+            return nil
+        end
+
+        local pool_name = config:get_string(section, "pool", "")
+        local sections = config:get_tokens(pool_name)
+        if #sections == 0 then
+            return nil
+        end
+
+        return {
+            section = section,
+            sections = sections,
+            label_key = config:get_string(section, "label_key", ""),
+            label = config:get_string(section, "label", "Spawn"),
+            tone = config:get_string(section, "tone", "negative"),
+            max_count = math.max(1, math.floor(config:get_number(section, "max_count", 1))),
+            tier_max_count = math.max(1, math.floor(config:get_number(section, "tier_max_count", 1))),
+            min_radius = math.max(6, math.floor(config:get_number(section, "min_radius", 12))),
+            max_radius = math.max(8, math.floor(config:get_number(section, "max_radius", 18))),
+        }
+    end
+
+    local function resolve_spawn_count(event, preset, requested_count)
+        local base_count = clamp(math.floor(math.abs(safe_tonumber(requested_count, 1))), 1, preset.max_count or 1)
+        local bonus_count = spawn_bonus_for_amount(event and event.amount or 0)
+        local cap = preset.max_count or base_count
+        if bonus_count > 0 and preset.tier_max_count then
+            cap = math.max(cap, preset.tier_max_count)
+        end
+        return clamp(base_count + bonus_count, 1, cap), bonus_count
+    end
+
+    local function get_spawn_preset(action, raw)
+        local alias, count = parse_spawn_request(raw)
+        if alias == "" then
+            return alias, count, nil
+        end
+
+        if action == "spawn_mutant" then
+            return alias, count, load_spawn_preset("mutant", alias)
+        end
+        if action == "spawn_npc" then
+            return alias, count, load_spawn_preset("npc", alias)
+        end
+
+        return alias, count, nil
+    end
+
+    local function get_spawn_label(preset)
+        if not preset then
+            return ""
+        end
+        return translate_text(preset.label_key, preset.label or "Spawn")
+    end
+
+    local function distance_sqr_between(position_a, position_b)
+        if not position_a or not position_b or not position_a.distance_to_sqr then
+            return nil
+        end
+
+        local ok, value = pcall(function()
+            return position_a:distance_to_sqr(position_b)
+        end)
+        if ok and type(value) == "number" then
+            return value
+        end
+        return nil
+    end
+
+    local function random_existing_section(list)
+        local available = {}
+        for index = 1, #(list or {}) do
+            if api.ini_sys and api.ini_sys.section_exist and api.ini_sys:section_exist(list[index]) then
+                available[#available + 1] = list[index]
+            end
+        end
+        return api.random_choice(available)
+    end
+
+    local function find_spawn_vertex_near_actor(min_radius, max_radius, used_vertices)
+        if not db.actor or not level or not level.present or not level.present() then
+            return nil, nil
+        end
+        if not level.vertex_in_direction or not level.vertex_position or not db.actor.level_vertex_id or not db.actor.direction then
+            return nil, nil
+        end
+        if not vector_rotate_y or not vec_set then
+            return nil, nil
+        end
+
+        local base_vertex_id = db.actor:level_vertex_id()
+        local base_position = db.actor:position()
+        local ok_direction, base_direction = pcall(function()
+            return db.actor:direction()
+        end)
+        if not ok_direction or not base_direction or not base_position then
+            return nil, nil
+        end
+
+        local radius_cap = math.max(32, math.floor(config:get_number("settings", "spawn_search_radius_max", 96)))
+        local inner_radius = clamp(math.floor(math.abs(safe_tonumber(min_radius, 12))), 6, 48)
+        local outer_radius = clamp(math.floor(math.abs(safe_tonumber(max_radius, 18))), inner_radius, math.max(inner_radius, radius_cap))
+
+        local function try_ring(attempts, ring_min, ring_max)
+            for _ = 1, attempts do
+                local radius = math.random(ring_min, ring_max)
+                local angle = math.random(0, 359)
+                local direction = vector_rotate_y(vec_set(base_direction), angle)
+                local ok_vertex, vertex_id = pcall(function()
+                    return level.vertex_in_direction(base_vertex_id, direction, radius)
+                end)
+
+                if ok_vertex and type(vertex_id) == "number" and vertex_id >= 0 and not (used_vertices and used_vertices[vertex_id]) then
+                    local ok_position, spawn_position = pcall(function()
+                        return level.vertex_position(vertex_id)
+                    end)
+                    if ok_position and spawn_position then
+                        local min_distance_sqr = math.max(ring_min - 1, 1)
+                        min_distance_sqr = min_distance_sqr * min_distance_sqr
+                        local distance_sqr = distance_sqr_between(base_position, spawn_position)
+                        if not distance_sqr or distance_sqr >= min_distance_sqr then
+                            if used_vertices then
+                                used_vertices[vertex_id] = true
+                            end
+                            return spawn_position, vertex_id
+                        end
+                    end
+                end
+            end
+
+            return nil, nil
+        end
+
+        local spawn_position, vertex_id = try_ring(SPAWN_SEARCH_ATTEMPTS, inner_radius, outer_radius)
+        if spawn_position then
+            return spawn_position, vertex_id
+        end
+
+        local fallback_min = clamp(math.max(inner_radius + 4, outer_radius - 2), inner_radius + 2, radius_cap - 8)
+        local fallback_max = clamp(math.max(fallback_min + 8, outer_radius + 18), fallback_min, radius_cap)
+        spawn_position, vertex_id = try_ring(SPAWN_FALLBACK_ATTEMPTS, fallback_min, fallback_max)
+        if spawn_position then
+            return spawn_position, vertex_id
+        end
+
+        local emergency_min = clamp(math.max(10, math.floor(inner_radius * 0.75)), 8, radius_cap - 8)
+        return try_ring(SPAWN_FALLBACK_ATTEMPTS * 2, emergency_min, radius_cap)
+    end
+
+    local function spawn_entities_from_preset(preset, requested_count)
+        if not preset or not db.actor or not db.actor.game_vertex_id or not alife_create then
+            return 0, 0
+        end
+
+        local count = clamp(math.floor(math.abs(safe_tonumber(requested_count, 1))), 1, preset.max_count or 1)
+        local game_vertex_id = db.actor:game_vertex_id()
+        local used_vertices = {}
+        local spawned = 0
+        local attempts_per_entity = math.max(1, math.floor(config:get_number("settings", "spawn_entity_attempts", 4)))
+
+        for _ = 1, count do
+            local created = false
+            for _ = 1, attempts_per_entity do
+                local spawn_position, level_vertex_id = find_spawn_vertex_near_actor(preset.min_radius, preset.max_radius, used_vertices)
+                local section = random_existing_section(preset.sections)
+                if spawn_position and level_vertex_id and section and section ~= "" then
+                    local ok, se_obj = pcall(function()
+                        return alife_create(section, spawn_position, level_vertex_id, game_vertex_id)
+                    end)
+                    if ok and se_obj then
+                        spawned = spawned + 1
+                        created = true
+                        break
+                    else
+                        log_message("failed to spawn section '" .. tostring(section) .. "'")
+                    end
+                end
+            end
+
+            if not created then
+                log_message("spawn entity retries exhausted for preset '" .. tostring(preset.label or "?") .. "'")
+            end
+        end
+
+        return spawned, count
+    end
+
+    local function format_spawn_summary(preset, spawned, requested)
+        local label = get_spawn_label(preset)
+        if label == "" then
+            label = "Spawn"
+        end
+
+        if spawned < 1 then
+            return translate_text("ui_sdi_result_spawn_failed", "spawn failed")
+        end
+
+        if requested and spawned < requested then
+            return label .. " x" .. tostring(spawned) .. "/" .. tostring(requested)
+        end
+
+        return label .. " x" .. tostring(spawned)
+    end
+
+    function spawns.describe(action, raw)
+        local _, _, preset = get_spawn_preset(action, raw)
+        if not preset then
+            return nil
+        end
+
+        local base_label = action == "spawn_mutant"
+            and translate_text("ui_sdi_effect_spawn_mutant", "Mutant call")
+            or translate_text("ui_sdi_effect_spawn_npc", "NPC call")
+
+        return {
+            tone = preset.tone or "negative",
+            label = base_label .. ": " .. get_spawn_label(preset),
+            summary = get_spawn_label(preset),
+        }
+    end
+
+    function spawns.queue_spawn_retry(event, alias, missing_count)
+        local retry_count = clamp(math.floor(math.abs(safe_tonumber(missing_count, 0))), 0, 99)
+        if retry_count < 1 or not event or not alias or alias == "" or type(CreateTimeEvent) ~= "function" then
+            return false
+        end
+
+        local attempt = math.max(0, math.floor(safe_tonumber(event.retry_attempt, 0)))
+        local max_attempts = math.max(0, math.floor(config:get_number("settings", "spawn_retry_max_attempts", 2)))
+        if attempt >= max_attempts then
+            return false
+        end
+
+        local retry_event = {}
+        for key, value in pairs(event) do
+            retry_event[key] = value
+        end
+        retry_event.action_arg = tostring(alias) .. ":" .. tostring(retry_count)
+        retry_event.retry_attempt = attempt + 1
+
+        local delay_seconds = math.max(1, math.floor(config:get_number("settings", "spawn_retry_delay_seconds", 4)))
+        local action_id = "spawn_retry_" .. tostring(event.event_id or current_time_ms()) .. "_" .. tostring(retry_event.retry_attempt)
+        local ok = pcall(function()
+            CreateTimeEvent(event_group, action_id, delay_seconds, function()
+                local retry_ok, error_text = pcall(execute_event, retry_event)
+                if not retry_ok then
+                    log_message("failed to execute spawn retry for '" .. tostring(retry_event.event_id) .. "': " .. tostring(error_text))
+                end
+                return true
+            end)
+        end)
+
+        if ok then
+            local retry_text = colorize(translate_text("ui_sdi_spawn_retry", "Spawn retry"), popup_color_title)
+                .. colorize(": ", popup_color_muted)
+                .. colorize(tostring(retry_count), popup_color_neutral)
+                .. colorize(" | ", popup_color_muted)
+                .. colorize(translate_text("ui_sdi_spawn_retry_ready", "Retrying again in a few seconds"), popup_color_neutral)
+            show_runtime_tip(retry_text, 3200, donation_icon)
+            log_message("queued spawn retry for event '" .. tostring(event.event_id) .. "' attempt " .. tostring(retry_event.retry_attempt) .. " count " .. tostring(retry_count))
+            return true
+        end
+
+        return false
+    end
+
+    function spawns.action_spawn_mutant(event)
+        local alias, count, preset = get_spawn_preset("spawn_mutant", event.action_arg)
+        if not preset then
+            log_message("unknown mutant spawn preset '" .. tostring(alias) .. "'")
+            return translate_text("ui_sdi_result_spawn_failed", "spawn failed")
+        end
+
+        local requested = resolve_spawn_count(event, preset, count)
+        local spawned, total_requested = spawn_entities_from_preset(preset, requested)
+        local summary = format_spawn_summary(preset, spawned, total_requested)
+        if spawned > 0 then
+            queue_post_spawn_save(event)
+        end
+        local missing = math.max(0, total_requested - spawned)
+        if missing > 0 and spawns.queue_spawn_retry(event, alias, missing) then
+            summary = summary .. " +retry"
+        end
+        return summary
+    end
+
+    function spawns.action_spawn_npc(event)
+        local alias, count, preset = get_spawn_preset("spawn_npc", event.action_arg)
+        if not preset then
+            log_message("unknown npc spawn preset '" .. tostring(alias) .. "'")
+            return translate_text("ui_sdi_result_spawn_failed", "spawn failed")
+        end
+
+        local requested = resolve_spawn_count(event, preset, count)
+        local spawned, total_requested = spawn_entities_from_preset(preset, requested)
+        local summary = format_spawn_summary(preset, spawned, total_requested)
+        if spawned > 0 then
+            queue_post_spawn_save(event)
+        end
+        local missing = math.max(0, total_requested - spawned)
+        if missing > 0 and spawns.queue_spawn_retry(event, alias, missing) then
+            summary = summary .. " +retry"
+        end
+        return summary
+    end
+
+    return spawns
+end
+
+bind = M.bind
+
+return M

@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<string_table>
+
+    <string id="ui_mcm_menu_stream_donation_interactive">
+        <text>Stream Donation Interactive</text>
+    </string>
+
+    <string id="ui_mcm_stream_donation_interactive_header">
+        <text>Stream Donation Interactive Settings</text>
+    </string>
+
+    <string id="ui_mcm_stream_donation_interactive_enable_feature">
+        <text>Enable feature</text>
+    </string>
+
+    <string id="ui_mcm_stream_donation_interactive_enable_feature_desc">
+        <text>Toggle the starter feature for this project.</text>
+    </string>
+
+    <string id="ui_sdi_popup_header">
+        <text>Zone Interactive</text>
+    </string>
+
+    <string id="ui_sdi_popup_amount">
+        <text>Amount</text>
+    </string>
+
+    <string id="ui_sdi_popup_tone">
+        <text>Type</text>
+    </string>
+
+    <string id="ui_sdi_popup_duration">
+        <text>Duration</text>
+    </string>
+
+    <string id="ui_sdi_popup_comment">
+        <text>Comment</text>
+    </string>
+
+    <string id="ui_sdi_popup_result">
+        <text>Result</text>
+    </string>
+
+    <string id="ui_sdi_tone_positive">
+        <text>Positive</text>
+    </string>
+
+    <string id="ui_sdi_tone_negative">
+        <text>Negative</text>
+    </string>
+
+    <string id="ui_sdi_tone_neutral">
+        <text>Neutral</text>
+    </string>
+
+    <string id="ui_sdi_effect_unknown">
+        <text>Unknown event</text>
+    </string>
+
+    <string id="ui_sdi_effect_message">
+        <text>Donation message</text>
+    </string>
+
+    <string id="ui_sdi_effect_cash_in">
+        <text>Cash bonus</text>
+    </string>
+
+    <string id="ui_sdi_effect_cash_out">
+        <text>Cash loss</text>
+    </string>
+
+    <string id="ui_sdi_effect_heal">
+        <text>Healing</text>
+    </string>
+
+    <string id="ui_sdi_effect_blood_restore">
+        <text>Blood transfusion</text>
+    </string>
+
+    <string id="ui_sdi_effect_power_up">
+        <text>Stamina boost</text>
+    </string>
+
+    <string id="ui_sdi_effect_power_down">
+        <text>Stamina drain</text>
+    </string>
+
+    <string id="ui_sdi_effect_satiety_up">
+        <text>Good meal</text>
+    </string>
+
+    <string id="ui_sdi_effect_satiety_down">
+        <text>Hunger</text>
+    </string>
+
+    <string id="ui_sdi_effect_bleeding_stop">
+        <text>Stop bleeding</text>
+    </string>
+
+    <string id="ui_sdi_effect_bleeding_up">
+        <text>Bleeding</text>
+    </string>
+
+    <string id="ui_sdi_effect_radiation_down">
+        <text>Radiation cleanse</text>
+    </string>
+
+    <string id="ui_sdi_effect_radiation_up">
+        <text>Radiation surge</text>
+    </string>
+
+    <string id="ui_sdi_effect_one_hp">
+        <text>Leave 1 HP</text>
+    </string>
+
+    <string id="ui_sdi_effect_item">
+        <text>Item drop</text>
+    </string>
+
+    <string id="ui_sdi_effect_food_small">
+        <text>Food pack</text>
+    </string>
+
+    <string id="ui_sdi_effect_kit_medical">
+        <text>Medical kit</text>
+    </string>
+
+    <string id="ui_sdi_effect_kit_survival">
+        <text>Survival pack</text>
+    </string>
+
+    <string id="ui_sdi_effect_vodka_fun">
+        <text>Vodka delivery</text>
+    </string>
+
+    <string id="ui_sdi_effect_kit_generic">
+        <text>Supply pack</text>
+    </string>
+
+    <string id="ui_sdi_effect_artifact_basic">
+        <text>Random artefact</text>
+    </string>
+
+    <string id="ui_sdi_effect_artifact_mid">
+        <text>Good artefact</text>
+    </string>
+
+    <string id="ui_sdi_effect_artifact_rare">
+        <text>Rare artefact</text>
+    </string>
+
+    <string id="ui_sdi_effect_artifact_any">
+        <text>Artefact surprise</text>
+    </string>
+
+    <string id="ui_sdi_effect_ammo_slots">
+        <text>Ammo for active guns</text>
+    </string>
+
+    <string id="ui_sdi_effect_repair_all">
+        <text>Repair all gear</text>
+    </string>
+
+    <string id="ui_sdi_effect_degrade_all">
+        <text>Break gear</text>
+    </string>
+
+    <string id="ui_sdi_effect_weather_sun">
+        <text>Sunny weather</text>
+    </string>
+
+    <string id="ui_sdi_effect_weather_rain">
+        <text>Rainy weather</text>
+    </string>
+
+    <string id="ui_sdi_effect_weather_fog">
+        <text>Dense fog</text>
+    </string>
+
+    <string id="ui_sdi_effect_weather_generic">
+        <text>Weather shift</text>
+    </string>
+
+    <string id="ui_sdi_effect_time_forward">
+        <text>Time skip</text>
+    </string>
+
+    <string id="ui_sdi_effect_rename_actor">
+        <text>Rename the stalker</text>
+    </string>
+
+    <string id="ui_sdi_effect_drop_weapon">
+        <text>Drop active weapon</text>
+    </string>
+
+    <string id="ui_sdi_effect_drunk_camera">
+        <text>Drunk camera</text>
+    </string>
+
+    <string id="ui_sdi_effect_move_keys_only">
+        <text>Movement-only controls</text>
+    </string>
+
+    <string id="ui_sdi_effect_no_shoot">
+        <text>Firearms locked</text>
+    </string>
+
+    <string id="ui_sdi_effect_regen_boost">
+        <text>Mega-heal over time</text>
+    </string>
+
+    <string id="ui_sdi_effect_exhaustion">
+        <text>Exhaustion over time</text>
+    </string>
+
+    <string id="ui_sdi_effect_radiation_storm">
+        <text>Radiation storm</text>
+    </string>
+
+    <string id="ui_sdi_effect_random_teleport">
+        <text>Random local teleport</text>
+    </string>
+
+    <string id="ui_sdi_effect_random_level_teleport">
+        <text>Random location teleport</text>
+    </string>
+
+    <string id="ui_sdi_effect_spawn_mutant">
+        <text>Mutant call</text>
+    </string>
+
+    <string id="ui_sdi_effect_spawn_npc">
+        <text>NPC call</text>
+    </string>
+
+    <string id="ui_sdi_effect_weapon_low">
+        <text>Rookie pistol</text>
+    </string>
+
+    <string id="ui_sdi_effect_outfit_low">
+        <text>Rookie armor</text>
+    </string>
+
+    <string id="ui_sdi_effect_full_low">
+        <text>Rookie loadout</text>
+    </string>
+
+    <string id="ui_sdi_effect_weapon_high">
+        <text>Assault rifle</text>
+    </string>
+
+    <string id="ui_sdi_effect_outfit_high">
+        <text>Assault armor</text>
+    </string>
+
+    <string id="ui_sdi_effect_full_high">
+        <text>Elite loadout</text>
+    </string>
+
+    <string id="ui_sdi_effect_weapon_max">
+        <text>Maximum weapon</text>
+    </string>
+
+    <string id="ui_sdi_effect_outfit_max">
+        <text>Maximum armor</text>
+    </string>
+
+    <string id="ui_sdi_effect_full_max">
+        <text>Maximum loadout</text>
+    </string>
+
+    <string id="ui_sdi_effect_strip_weapon">
+        <text>Weapon confiscation</text>
+    </string>
+
+    <string id="ui_sdi_effect_strip_outfit">
+        <text>Armor confiscation</text>
+    </string>
+
+    <string id="ui_sdi_effect_strip_helmet">
+        <text>Helmet confiscation</text>
+    </string>
+
+    <string id="ui_sdi_effect_strip_all">
+        <text>Full gear confiscation</text>
+    </string>
+
+    <string id="ui_sdi_effect_tier_bad">
+        <text>Danger roulette</text>
+    </string>
+
+    <string id="ui_sdi_effect_tier_good">
+        <text>Good roulette</text>
+    </string>
+
+    <string id="ui_sdi_effect_tier_max">
+        <text>Maximum roulette</text>
+    </string>
+
+    <string id="ui_sdi_spawn_dog">
+        <text>Dogs</text>
+    </string>
+
+    <string id="ui_sdi_spawn_cat">
+        <text>Cats</text>
+    </string>
+
+    <string id="ui_sdi_spawn_boar">
+        <text>Boars</text>
+    </string>
+
+    <string id="ui_sdi_spawn_pseudodog">
+        <text>Pseudodogs</text>
+    </string>
+
+    <string id="ui_sdi_spawn_snork">
+        <text>Snorks</text>
+    </string>
+
+    <string id="ui_sdi_spawn_fracture">
+        <text>Fractures</text>
+    </string>
+
+    <string id="ui_sdi_spawn_psydog">
+        <text>Psy-dogs</text>
+    </string>
+
+    <string id="ui_sdi_spawn_bloodsucker">
+        <text>Bloodsuckers</text>
+    </string>
+
+    <string id="ui_sdi_spawn_burer">
+        <text>Burers</text>
+    </string>
+
+    <string id="ui_sdi_spawn_controller">
+        <text>Controller</text>
+    </string>
+
+    <string id="ui_sdi_spawn_chimera">
+        <text>Chimeras</text>
+    </string>
+
+    <string id="ui_sdi_spawn_poltergeist">
+        <text>Poltergeists</text>
+    </string>
+
+    <string id="ui_sdi_spawn_giant">
+        <text>Pseudo-giant</text>
+    </string>
+
+    <string id="ui_sdi_spawn_jumper">
+        <text>Jumper giant</text>
+    </string>
+
+    <string id="ui_sdi_spawn_zombied">
+        <text>Zombified</text>
+    </string>
+
+    <string id="ui_sdi_spawn_stalker">
+        <text>Loners</text>
+    </string>
+
+    <string id="ui_sdi_spawn_bandit">
+        <text>Bandits</text>
+    </string>
+
+    <string id="ui_sdi_spawn_renegade">
+        <text>Renegades</text>
+    </string>
+
+    <string id="ui_sdi_spawn_military">
+        <text>Military</text>
+    </string>
+
+    <string id="ui_sdi_spawn_merc">
+        <text>Mercenaries</text>
+    </string>
+
+    <string id="ui_sdi_spawn_monolith">
+        <text>Monolith</text>
+    </string>
+
+    <string id="ui_sdi_spawn_sin">
+        <text>Sin fighters</text>
+    </string>
+
+    <string id="ui_sdi_spawn_isg">
+        <text>ISG</text>
+    </string>
+
+    <string id="ui_sdi_spawn_retry">
+        <text>Spawn retry</text>
+    </string>
+
+    <string id="ui_sdi_spawn_retry_ready">
+        <text>Trying again in a few seconds</text>
+    </string>
+
+    <string id="ui_sdi_result_message">
+        <text>message</text>
+    </string>
+
+    <string id="ui_sdi_result_weapon_dropped">
+        <text>dropped</text>
+    </string>
+
+    <string id="ui_sdi_result_spawn_failed">
+        <text>spawn failed</text>
+    </string>
+
+</string_table>

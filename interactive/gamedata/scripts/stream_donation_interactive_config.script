@@ -1,0 +1,237 @@
+local CONFIG_PATH = "plugins\\stream_donation_interactive.ltx"
+
+local Config = {}
+Config.__index = Config
+
+local function trim(value)
+    if type(value) ~= "string" then
+        return ""
+    end
+    return value:match("^%s*(.-)%s*$") or ""
+end
+
+local function split_csv(value)
+    local result = {}
+    local raw = trim(value)
+    if raw == "" then
+        return result
+    end
+
+    for token in string.gmatch(raw, "([^,]+)") do
+        token = trim(token)
+        if token ~= "" then
+            result[#result + 1] = token
+        end
+    end
+
+    return result
+end
+
+local function parse_bool(value, default_value)
+    local normalized = string.lower(trim(value))
+    if normalized == "true" or normalized == "1" or normalized == "yes" or normalized == "on" then
+        return true
+    end
+    if normalized == "false" or normalized == "0" or normalized == "no" or normalized == "off" then
+        return false
+    end
+    return default_value and true or false
+end
+
+local function safe_ini(path, logger)
+    local ok, ini = pcall(ini_file, path)
+    if ok and ini then
+        return ini
+    end
+
+    if logger then
+        logger("failed to load config ini '" .. tostring(path) .. "'")
+    end
+
+    return nil
+end
+
+function Config:new(logger)
+    local instance = {
+        logger = logger,
+        ini = nil,
+        path = CONFIG_PATH,
+    }
+    setmetatable(instance, self)
+    instance:reload()
+    return instance
+end
+
+function Config:reload()
+    self.ini = safe_ini(self.path, self.logger)
+    return self.ini ~= nil
+end
+
+function Config:section_exists(section)
+    return self.ini and self.ini:section_exist(section) or false
+end
+
+function Config:get_string(section, key, default_value)
+    if not (self.ini and self.ini:section_exist(section) and self.ini:line_exist(section, key)) then
+        return default_value
+    end
+
+    local ok, value = pcall(function()
+        return self.ini:r_string(section, key)
+    end)
+    if ok and type(value) == "string" and value ~= "" then
+        return value
+    end
+
+    return default_value
+end
+
+function Config:get_number(section, key, default_value)
+    local raw = self:get_string(section, key, "")
+    local value = tonumber(raw)
+    if value == nil then
+        return default_value
+    end
+    return value
+end
+
+function Config:get_bool(section, key, default_value)
+    return parse_bool(self:get_string(section, key, ""), default_value)
+end
+
+function Config:get_entries(section)
+    local entries = {}
+    if not self:section_exists(section) then
+        return entries
+    end
+
+    local count = self.ini:line_count(section) or 0
+    for index = 0, count - 1 do
+        local ok, result, id, value = pcall(function()
+            return self.ini:r_line(section, index, "", "")
+        end)
+
+        if ok and result then
+            entries[#entries + 1] = {
+                key = trim(id),
+                value = trim(value),
+            }
+        end
+    end
+
+    return entries
+end
+
+function Config:get_tokens(section)
+    local tokens = {}
+    local entries = self:get_entries(section)
+    for index = 1, #entries do
+        local entry = entries[index]
+        local key = entry.key
+        local value = entry.value
+
+        if value ~= "" then
+            local list = split_csv(value)
+            if #list > 0 then
+                for list_index = 1, #list do
+                    tokens[#tokens + 1] = list[list_index]
+                end
+            else
+                tokens[#tokens + 1] = value
+            end
+        elseif key ~= "" then
+            tokens[#tokens + 1] = key
+        end
+    end
+    return tokens
+end
+
+function Config:get_named_map(section)
+    local result = {}
+    local entries = self:get_entries(section)
+    for index = 1, #entries do
+        local entry = entries[index]
+        if entry.key ~= "" then
+            result[entry.key] = entry.value
+        end
+    end
+    return result
+end
+
+function Config:get_composite(section)
+    local composite = {
+        mode = "all",
+        entries = {},
+        slots_to_clear = {},
+        tone = "",
+        label_key = "",
+        label = "",
+        summary = "",
+    }
+
+    if not self:section_exists(section) then
+        return composite
+    end
+
+    local entries = self:get_entries(section)
+    for index = 1, #entries do
+        local entry = entries[index]
+        local key = entry.key
+        local value = entry.value
+
+        if key == "mode" then
+            composite.mode = trim(value)
+        elseif key == "slots_to_clear" then
+            composite.slots_to_clear = split_csv(value)
+        elseif key == "tone" then
+            composite.tone = trim(value)
+        elseif key == "label_key" then
+            composite.label_key = trim(value)
+        elseif key == "label" then
+            composite.label = trim(value)
+        elseif key == "summary" then
+            composite.summary = trim(value)
+        elseif string.find(key, "^entry_") == 1 then
+            composite.entries[#composite.entries + 1] = trim(value)
+        end
+    end
+
+    return composite
+end
+
+function Config:get_tier_events(tier_name)
+    return self:get_tokens("tier_" .. tostring(tier_name or ""))
+end
+
+function Config:get_event_template(name)
+    local section = tostring(name or "")
+    if section == "" then
+        return nil
+    end
+
+    if not self:section_exists(section) and self:section_exists("event_" .. section) then
+        section = "event_" .. section
+    end
+
+    if not self:section_exists(section) then
+        return nil
+    end
+
+    local data = self:get_named_map(section)
+    return {
+        section = section,
+        action = trim(data.action or ""),
+        action_arg = trim(data.action_arg or ""),
+        action_value = trim(data.action_value or ""),
+    }
+end
+
+function new(logger)
+    return Config:new(logger)
+end
+
+M = {
+    new = new,
+}
+
+return M

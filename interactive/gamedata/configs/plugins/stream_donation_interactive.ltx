@@ -1,0 +1,667 @@
+[settings]
+spawn_entity_attempts = 4
+spawn_search_radius_max = 96
+spawn_retry_delay_seconds = 4
+spawn_retry_max_attempts = 2
+pre_event_save_delay_ms = 2500
+post_spawn_save_delay_ms = 1200
+
+[weapon_interactive_bad]
+1 = wpn_pm
+2 = wpn_pb
+3 = wpn_tt33
+4 = wpn_bm16
+5 = wpn_toz34
+6 = wpn_aks74u
+
+[weapon_interactive_good]
+1 = wpn_ak74
+2 = wpn_abakan
+3 = wpn_lr300
+4 = wpn_sig550
+5 = wpn_vepr
+6 = wpn_saiga12s
+
+[weapon_interactive_max]
+1 = wpn_fn2000
+2 = wpn_groza
+3 = wpn_svd
+4 = wpn_sv98
+5 = wpn_pkm
+
+[outfit_interactive_bad]
+1 = novice_outfit
+2 = stalker_outfit
+3 = cs_light_outfit
+4 = trenchcoat_outfit
+5 = nomad_outfit
+
+[outfit_interactive_good]
+1 = scientific_outfit
+2 = military_outfit
+3 = specops_outfit
+4 = dolg_outfit
+5 = svoboda_heavy_outfit
+6 = merc_outfit
+7 = monolith_outfit
+
+[outfit_interactive_max]
+1 = exo_outfit
+2 = military_exolight_outfit
+3 = ecolog_exo_outfit
+
+[helmet_interactive_bad]
+1 = helm_bandana
+2 = helm_respirator_old
+3 = helm_respirator
+4 = helm_hardhat
+
+[helmet_interactive_good]
+1 = helm_m50
+2 = helm_tactic
+3 = helm_battle
+4 = helm_protective
+5 = helm_ranger
+
+[helmet_interactive_max]
+1 = helm_spartan
+2 = helm_metro
+3 = helm_exo
+
+[artifact_interactive]
+1 = af_medusa
+2 = af_cristall
+3 = af_gold_fish
+
+[artifact_interactive_bad]
+1 = af_medusa
+2 = af_cristall_flower
+3 = af_electra_sparkler
+4 = af_dummy_glassbeads
+5 = af_dummy_battery
+
+[artifact_interactive_good]
+1 = af_night_star
+2 = af_gravi
+3 = af_cristall
+4 = af_fireball
+5 = af_soul
+6 = af_fuzz_kolobok
+
+[artifact_interactive_max]
+1 = af_gold_fish
+2 = af_fire
+3 = af_eye
+4 = af_electra_moonlight
+5 = af_electra_flash
+6 = af_compass
+
+[item_interactive]
+1 = medkit_army
+2 = bandage
+3 = antirad
+
+[item_interactive_bad]
+1 = vodka
+2 = bread
+3 = kolbasa
+
+[item_interactive_good]
+1 = medkit_army
+2 = antirad
+3 = bandage
+4 = conserva
+
+[item_interactive_max]
+1 = repair_kit
+2 = toolkit_1
+3 = toolkit_2
+
+[backpack_interactive_good]
+1 = itm_actor_backpack
+
+[mutant_interactive_bad]
+1 = dog_weak
+2 = dog_normal
+3 = cat_weak_a
+4 = cat_weak_b
+5 = boar_01a_weak
+6 = boar_normal
+7 = snork_weak
+8 = fracture_weak
+
+[mutant_interactive_good]
+1 = pseudodog_weak
+2 = psy_dog
+3 = bloodsucker_weak
+4 = burer_weak
+5 = m_poltergeist_normal_tele
+6 = gigant_weak
+
+[mutant_interactive_max]
+1 = controller_tubeman
+2 = chimera_normal
+3 = gigant_normal
+4 = gigant_jumper
+
+[npc_enemy_interactive_bad]
+1 = sim_default_zombied_1
+2 = sim_default_renegade_0
+3 = sim_default_bandit_0
+
+[npc_enemy_interactive_good]
+1 = sim_default_military_0
+2 = sim_default_killer_0
+3 = sim_default_monolith_0
+4 = sim_default_greh_0
+5 = sim_default_isg_0
+
+[npc_enemy_interactive_max]
+1 = sim_default_monolith_2
+2 = sim_default_killer_3
+3 = sim_default_isg_4
+
+[kit_food_small]
+mode = all
+entry_1 = section:conserva|count=2
+entry_2 = section:bread|count=1
+entry_3 = section:kolbasa|count=1
+
+[kit_medical]
+mode = all
+entry_1 = section:bandage|count=2
+entry_2 = section:medkit_army|count=1
+entry_3 = section:antirad|count=1
+
+[kit_survival]
+mode = all
+entry_1 = section:bandage|count=2
+entry_2 = section:medkit_army|count=1
+entry_3 = section:antirad|count=1
+entry_4 = section:conserva|count=2
+entry_5 = section:bread|count=1
+
+[kit_vodka_fun]
+mode = all
+entry_1 = section:vodka|count=1
+entry_2 = section:kolbasa|count=1
+
+[kit_interactive1]
+mode = all
+entry_1 = pool:weapon_interactive_good|slot=primary|ammo_boxes=2|condition=0.97|active=true
+entry_2 = pool:outfit_interactive_good|slot=outfit|condition=0.97
+entry_3 = pool:helmet_interactive_good|slot=helmet|condition=0.97
+
+[kit_interactive2]
+mode = all
+entry_1 = pool:artifact_interactive_good|count=1
+entry_2 = section:medkit_army|count=1
+entry_3 = section:antirad|count=1
+
+[kit_interactive3]
+mode = one
+entry_1 = pool:weapon_interactive_max|slot=primary|ammo_boxes=3|condition=0.99|active=true
+entry_2 = pool:artifact_interactive_max|count=1
+entry_3 = pool:item_interactive_max|count=1
+
+[profile_weapon_low]
+tone = negative
+label_key = ui_sdi_effect_weapon_low
+label = Weak weapon
+summary = random weak gun
+slots_to_clear = sidearm,primary
+entry_1 = pool:weapon_interactive_bad|condition=0.95|ammo_boxes=2|active=true
+
+[profile_outfit_low]
+tone = negative
+label_key = ui_sdi_effect_outfit_low
+label = Weak armor
+summary = random weak armor
+slots_to_clear = outfit,helmet
+entry_1 = pool:outfit_interactive_bad|slot=outfit|condition=0.95
+entry_2 = pool:helmet_interactive_bad|slot=helmet|condition=0.95
+
+[profile_full_low]
+tone = negative
+label_key = ui_sdi_effect_full_low
+label = Weak loadout
+summary = random weak loadout
+slots_to_clear = sidearm,primary,outfit,helmet
+entry_1 = pool:outfit_interactive_bad|slot=outfit|condition=0.95
+entry_2 = pool:helmet_interactive_bad|slot=helmet|condition=0.95
+entry_3 = pool:weapon_interactive_bad|condition=0.95|ammo_boxes=2|active=true
+
+[profile_weapon_high]
+tone = positive
+label_key = ui_sdi_effect_weapon_high
+label = Strong weapon
+summary = random strong gun
+slots_to_clear = sidearm,primary
+entry_1 = pool:weapon_interactive_good|condition=0.98|ammo_boxes=3|active=true
+
+[profile_outfit_high]
+tone = positive
+label_key = ui_sdi_effect_outfit_high
+label = Strong armor
+summary = random strong armor
+slots_to_clear = outfit,helmet
+entry_1 = pool:outfit_interactive_good|slot=outfit|condition=0.98
+entry_2 = pool:helmet_interactive_good|slot=helmet|condition=0.98
+
+[profile_full_high]
+tone = positive
+label_key = ui_sdi_effect_full_high
+label = Strong loadout
+summary = random strong loadout
+slots_to_clear = sidearm,primary,outfit,helmet
+entry_1 = pool:outfit_interactive_good|slot=outfit|condition=0.98
+entry_2 = pool:helmet_interactive_good|slot=helmet|condition=0.98
+entry_3 = pool:weapon_interactive_good|condition=0.98|ammo_boxes=3|active=true
+
+[profile_weapon_max]
+tone = major
+label_key = ui_sdi_effect_weapon_max
+label = Max weapon
+summary = random max gun
+slots_to_clear = sidearm,primary
+entry_1 = pool:weapon_interactive_max|condition=0.99|ammo_boxes=4|active=true
+
+[profile_outfit_max]
+tone = major
+label_key = ui_sdi_effect_outfit_max
+label = Max armor
+summary = random max armor
+slots_to_clear = outfit,helmet
+entry_1 = pool:outfit_interactive_max|slot=outfit|condition=0.99
+entry_2 = pool:helmet_interactive_max|slot=helmet|condition=0.99
+
+[profile_full_max]
+tone = major
+label_key = ui_sdi_effect_full_max
+label = Max loadout
+summary = random max loadout
+slots_to_clear = sidearm,primary,outfit,helmet
+entry_1 = pool:outfit_interactive_max|slot=outfit|condition=0.99
+entry_2 = pool:helmet_interactive_max|slot=helmet|condition=0.99
+entry_3 = pool:weapon_interactive_max|condition=0.99|ammo_boxes=4|active=true
+
+[spawn_mutant_dog]
+pool = mutant_dog
+label_key = ui_sdi_spawn_dog
+label = Dogs
+tone = negative
+max_count = 4
+tier_max_count = 12
+min_radius = 12
+max_radius = 18
+
+[spawn_mutant_cat]
+pool = mutant_cat
+label_key = ui_sdi_spawn_cat
+label = Cats
+tone = negative
+max_count = 3
+tier_max_count = 10
+min_radius = 12
+max_radius = 18
+
+[spawn_mutant_boar]
+pool = mutant_boar
+label_key = ui_sdi_spawn_boar
+label = Boars
+tone = negative
+max_count = 3
+tier_max_count = 8
+min_radius = 14
+max_radius = 20
+
+[spawn_mutant_pseudodog]
+pool = mutant_pseudodog
+label_key = ui_sdi_spawn_pseudodog
+label = Pseudodogs
+tone = negative
+max_count = 2
+tier_max_count = 6
+min_radius = 14
+max_radius = 22
+
+[spawn_mutant_snork]
+pool = mutant_snork
+label_key = ui_sdi_spawn_snork
+label = Snorks
+tone = negative
+max_count = 2
+tier_max_count = 6
+min_radius = 14
+max_radius = 20
+
+[spawn_mutant_fracture]
+pool = mutant_fracture
+label_key = ui_sdi_spawn_fracture
+label = Fractures
+tone = negative
+max_count = 2
+tier_max_count = 6
+min_radius = 16
+max_radius = 24
+
+[spawn_mutant_psydog]
+pool = mutant_psydog
+label_key = ui_sdi_spawn_psydog
+label = Psy-dogs
+tone = negative
+max_count = 2
+tier_max_count = 5
+min_radius = 18
+max_radius = 28
+
+[spawn_mutant_bloodsucker]
+pool = mutant_bloodsucker
+label_key = ui_sdi_spawn_bloodsucker
+label = Bloodsuckers
+tone = negative
+max_count = 2
+tier_max_count = 4
+min_radius = 20
+max_radius = 30
+
+[spawn_mutant_burer]
+pool = mutant_burer
+label_key = ui_sdi_spawn_burer
+label = Burers
+tone = negative
+max_count = 2
+tier_max_count = 4
+min_radius = 18
+max_radius = 28
+
+[spawn_mutant_controller]
+pool = mutant_controller
+label_key = ui_sdi_spawn_controller
+label = Controllers
+tone = major
+max_count = 1
+tier_max_count = 3
+min_radius = 22
+max_radius = 32
+
+[spawn_mutant_chimera]
+pool = mutant_chimera
+label_key = ui_sdi_spawn_chimera
+label = Chimeras
+tone = major
+max_count = 2
+tier_max_count = 3
+min_radius = 24
+max_radius = 34
+
+[spawn_mutant_poltergeist]
+pool = mutant_poltergeist
+label_key = ui_sdi_spawn_poltergeist
+label = Poltergeists
+tone = negative
+max_count = 2
+tier_max_count = 4
+min_radius = 18
+max_radius = 28
+
+[spawn_mutant_giant]
+pool = mutant_giant
+label_key = ui_sdi_spawn_giant
+label = Pseudo-giants
+tone = major
+max_count = 1
+tier_max_count = 2
+min_radius = 26
+max_radius = 38
+
+[spawn_mutant_jumper]
+pool = mutant_jumper
+label_key = ui_sdi_spawn_jumper
+label = Jumper giant
+tone = major
+max_count = 1
+tier_max_count = 2
+min_radius = 28
+max_radius = 40
+
+[spawn_npc_zombied]
+pool = npc_enemy_zombied
+label_key = ui_sdi_spawn_zombied
+label = Zombified
+tone = negative
+max_count = 4
+tier_max_count = 10
+min_radius = 16
+max_radius = 24
+
+[spawn_npc_renegade]
+pool = npc_enemy_renegade
+label_key = ui_sdi_spawn_renegade
+label = Renegades
+tone = negative
+max_count = 3
+tier_max_count = 8
+min_radius = 16
+max_radius = 24
+
+[spawn_npc_bandit]
+pool = npc_enemy_bandit
+label_key = ui_sdi_spawn_bandit
+label = Bandits
+tone = negative
+max_count = 3
+tier_max_count = 8
+min_radius = 16
+max_radius = 24
+
+[spawn_npc_military]
+pool = npc_enemy_military
+label_key = ui_sdi_spawn_military
+label = Military
+tone = negative
+max_count = 2
+tier_max_count = 6
+min_radius = 18
+max_radius = 26
+
+[spawn_npc_merc]
+pool = npc_enemy_merc
+label_key = ui_sdi_spawn_merc
+label = Mercenaries
+tone = negative
+max_count = 3
+tier_max_count = 8
+min_radius = 18
+max_radius = 26
+
+[spawn_npc_monolith]
+pool = npc_enemy_monolith
+label_key = ui_sdi_spawn_monolith
+label = Monolith
+tone = major
+max_count = 2
+tier_max_count = 6
+min_radius = 18
+max_radius = 26
+
+[spawn_npc_sin]
+pool = npc_enemy_sin
+label_key = ui_sdi_spawn_sin
+label = Sin
+tone = major
+max_count = 3
+tier_max_count = 8
+min_radius = 18
+max_radius = 26
+
+[spawn_npc_isg]
+pool = npc_enemy_isg
+label_key = ui_sdi_spawn_isg
+label = ISG
+tone = major
+max_count = 3
+tier_max_count = 8
+min_radius = 18
+max_radius = 26
+
+[mutant_dog]
+1 = dog_weak
+2 = dog_normal
+
+[mutant_cat]
+1 = cat_weak_a
+2 = cat_weak_b
+3 = cat_weak_c
+
+[mutant_boar]
+1 = boar_01a_weak
+2 = boar_normal
+
+[mutant_pseudodog]
+1 = pseudodog_weak
+
+[mutant_snork]
+1 = snork_weak
+
+[mutant_fracture]
+1 = fracture_weak
+2 = fracture_normal
+
+[mutant_psydog]
+1 = psy_dog
+2 = psy_dog_normal
+
+[mutant_bloodsucker]
+1 = bloodsucker_weak
+2 = bloodsucker_normal
+
+[mutant_burer]
+1 = burer_weak
+2 = burer_normal
+
+[mutant_controller]
+1 = controller_tubeman
+
+[mutant_chimera]
+1 = chimera_weak
+2 = chimera_normal
+
+[mutant_poltergeist]
+1 = m_poltergeist_normal_tele
+2 = m_poltergeist_normal_flame
+
+[mutant_giant]
+1 = gigant_weak
+2 = gigant_normal
+
+[mutant_jumper]
+1 = gigant_jumper
+
+[npc_enemy_zombied]
+1 = sim_default_zombied_1
+2 = sim_default_zombied_2
+3 = sim_default_zombied_3
+4 = sim_default_zombied_4
+
+[npc_enemy_renegade]
+1 = sim_default_renegade_0
+2 = sim_default_renegade_1
+3 = sim_default_renegade_2
+4 = sim_default_renegade_3
+5 = sim_default_renegade_4
+
+[npc_enemy_bandit]
+1 = sim_default_bandit_0
+2 = sim_default_bandit_1
+3 = sim_default_bandit_2
+4 = sim_default_bandit_3
+5 = sim_default_bandit_4
+
+[npc_enemy_military]
+1 = sim_default_military_0
+2 = sim_default_military_1
+3 = sim_default_military_2
+4 = sim_default_military_3
+5 = sim_default_military_4
+
+[npc_enemy_merc]
+1 = sim_default_killer_0
+2 = sim_default_killer_1
+3 = sim_default_killer_2
+4 = sim_default_killer_3
+5 = sim_default_killer_4
+6 = sim_default_killer_5
+
+[npc_enemy_monolith]
+1 = sim_default_monolith_0
+2 = sim_default_monolith_1
+3 = sim_default_monolith_2
+4 = sim_default_monolith_3
+5 = sim_default_monolith_4
+
+[npc_enemy_sin]
+1 = sim_default_greh_0
+2 = sim_default_greh_1
+3 = sim_default_greh_2
+4 = sim_default_greh_3
+5 = sim_default_greh_4
+
+[npc_enemy_isg]
+1 = sim_default_isg_0
+2 = sim_default_isg_1
+3 = sim_default_isg_2
+4 = sim_default_isg_3
+5 = sim_default_isg_4
+6 = sim_default_isg_5
+
+[event_bad_1]
+action = bleeding
+action_value = 0.75
+
+[event_bad_2]
+action = spawn_mutant
+action_arg = dog:2
+
+[event_bad_3]
+action = gear_profile
+action_arg = weapon_low
+
+[event_good_1]
+action = kit
+action_arg = interactive1
+
+[event_good_2]
+action = artifact_random
+action_arg = good
+
+[event_good_3]
+action = gear_profile
+action_arg = full_high
+
+[event_max_1]
+action = spawn_mutant
+action_arg = controller:1
+
+[event_max_2]
+action = gear_profile
+action_arg = full_max
+
+[event_max_3]
+action = kit
+action_arg = interactive3
+
+[tier_bad]
+1 = event_bad_1
+2 = event_bad_2
+3 = event_bad_3
+
+[tier_good]
+1 = event_good_1
+2 = event_good_2
+3 = event_good_3
+
+[tier_max]
+1 = event_max_1
+2 = event_max_2
+3 = event_max_3

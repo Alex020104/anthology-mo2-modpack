@@ -1,0 +1,602 @@
+local M = {}
+
+local STRIP_PROFILES = {
+    weapon = {
+        tone = "negative",
+        label_key = "ui_sdi_effect_strip_weapon",
+        label = "Weapon confiscation",
+        summary = "weapons removed",
+        slots = { "sidearm", "primary" },
+    },
+    outfit = {
+        tone = "negative",
+        label_key = "ui_sdi_effect_strip_outfit",
+        label = "Armor confiscation",
+        summary = "armor removed",
+        slots = { "outfit" },
+    },
+    helmet = {
+        tone = "negative",
+        label_key = "ui_sdi_effect_strip_helmet",
+        label = "Helmet confiscation",
+        summary = "helmet removed",
+        slots = { "helmet" },
+    },
+    all = {
+        tone = "negative",
+        label_key = "ui_sdi_effect_strip_all",
+        label = "Full gear confiscation",
+        summary = "full strip",
+        slots = { "sidearm", "primary", "outfit", "helmet" },
+    },
+}
+
+local function trim(value)
+    if type(value) ~= "string" then
+        return ""
+    end
+    return value:match("^%s*(.-)%s*$") or ""
+end
+
+local function lower_trim(value)
+    return string.lower(trim(value))
+end
+
+local function split_csv(value)
+    local result = {}
+    for token in string.gmatch(trim(value or ""), "([^,]+)") do
+        token = trim(token)
+        if token ~= "" then
+            result[#result + 1] = token
+        end
+    end
+    return result
+end
+
+local function parse_entry_spec(raw)
+    local spec = {
+        source = "section",
+        target = "",
+        count = 1,
+        condition = nil,
+        ammo_boxes = nil,
+        slot = nil,
+        active = false,
+    }
+
+    local text = trim(raw)
+    if text == "" then
+        return spec
+    end
+
+    local segments = {}
+    for segment in string.gmatch(text, "([^|]+)") do
+        segments[#segments + 1] = trim(segment)
+    end
+
+    local head = segments[1] or ""
+    local source, target = string.match(head, "^([%w_]+)%:(.+)$")
+    if source and target then
+        spec.source = lower_trim(source)
+        spec.target = trim(target)
+    else
+        spec.target = head
+    end
+
+    for index = 2, #segments do
+        local key, value = string.match(segments[index], "^([%w_]+)%=(.+)$")
+        key = lower_trim(key or "")
+        value = trim(value or "")
+        if key == "count" then
+            spec.count = math.max(1, math.floor(tonumber(value) or 1))
+        elseif key == "condition" then
+            spec.condition = tonumber(value)
+        elseif key == "ammo_boxes" or key == "ammo" then
+            spec.ammo_boxes = math.max(0, math.floor(tonumber(value) or 0))
+        elseif key == "slot" then
+            spec.slot = value
+        elseif key == "active" then
+            spec.active = (value == "true" or value == "1" or value == "yes")
+        end
+    end
+
+    return spec
+end
+
+function M.bind(api)
+    local config = api.config
+    local clamp = api.clamp
+    local safe_tonumber = api.safe_tonumber
+    local random_choice = api.random_choice
+    local give_item_section = api.give_item_section
+    local parse_item_entries = api.parse_item_entries
+    local give_item_entries = api.give_item_entries
+    local spawn_tracked_item = api.spawn_tracked_item
+    local equip_item_to_slot = api.equip_item_to_slot
+    local clear_equipped_slots = api.clear_equipped_slots
+    local get_item_condition = api.get_item_condition
+    local set_item_condition = api.set_item_condition
+    local iterate_actor_inventory = api.iterate_actor_inventory
+    local is_repairable_item = api.is_repairable_item
+    local part_sync = api.PARTS_SYNC
+    local translate_text = api.translate_text
+    local ini_sys = api.ini_sys
+    local ui_item = api.ui_item
+    local db = api.db
+    local log_message = api.log_message
+    local weapon_ammo_section = api.weapon_ammo_section
+
+    local loot = {}
+
+    local function item_section_exists(section)
+        return section and section ~= "" and ini_sys and ini_sys.section_exist and ini_sys:section_exist(section)
+    end
+
+    local function section_display_name(section)
+        local fallback = tostring(section or "")
+        if fallback == "" then
+            return "item"
+        end
+
+        if ui_item and ui_item.get_sec_name then
+            local ok, value = pcall(function()
+                return ui_item.get_sec_name(section)
+            end)
+            if ok and value and value ~= "" then
+                return tostring(value)
+            end
+        end
+
+        if ini_sys and ini_sys.section_exist and ini_sys:section_exist(section) and ini_sys.line_exist and ini_sys:line_exist(section, "inv_name") then
+            local ok_key, key = pcall(function()
+                return ini_sys:r_string_ex(section, "inv_name")
+            end)
+            if ok_key and key and key ~= "" then
+                return translate_text(key, key)
+            end
+        end
+
+        return fallback
+    end
+
+    local function slot_id_by_key(value)
+        local key = lower_trim(value)
+        if key == "sidearm" or key == "weapon_1" then
+            return api.SLOT_SIDEARM
+        elseif key == "primary" or key == "weapon_2" then
+            return api.SLOT_PRIMARY
+        elseif key == "outfit" then
+            return api.SLOT_OUTFIT
+        elseif key == "backpack" then
+            return api.SLOT_BACKPACK
+        elseif key == "helmet" or key == "headgear" or key == "mask" then
+            return api.SLOT_HELMET
+        end
+        return nil
+    end
+
+    local function normalize_slot_list(slots)
+        local normalized = {}
+        for index = 1, #(slots or {}) do
+            local slot = slot_id_by_key(slots[index])
+            if slot then
+                normalized[#normalized + 1] = slot
+            end
+        end
+        return normalized
+    end
+
+    local function resolve_pool_name(base_name)
+        local name = trim(base_name or "")
+        if name == "" then
+            return nil
+        end
+        if config:section_exists(name) then
+            return name
+        end
+        return nil
+    end
+
+    local function available_pool_sections(pool_name)
+        local resolved_name = resolve_pool_name(pool_name)
+        local sections = {}
+        if not resolved_name then
+            return sections
+        end
+
+        local tokens = config:get_tokens(resolved_name)
+        for index = 1, #tokens do
+            local section = trim(tokens[index])
+            if item_section_exists(section) then
+                sections[#sections + 1] = section
+            end
+        end
+        return sections
+    end
+
+    local function random_existing_section(pool_name)
+        return random_choice(available_pool_sections(pool_name))
+    end
+
+    local function resolve_spec_to_entries(spec)
+        local entries = {}
+        if not spec or spec.target == "" then
+            return entries
+        end
+
+        if spec.source == "pool" then
+            local section = random_existing_section(spec.target)
+            if section then
+                entries[1] = {
+                    section = section,
+                    count = spec.count,
+                    condition = spec.condition,
+                    ammo_boxes = spec.ammo_boxes,
+                    slot = slot_id_by_key(spec.slot),
+                    active = spec.active,
+                }
+            end
+        elseif spec.source == "section" then
+            if item_section_exists(spec.target) then
+                entries[1] = {
+                    section = spec.target,
+                    count = spec.count,
+                    condition = spec.condition,
+                    ammo_boxes = spec.ammo_boxes,
+                    slot = slot_id_by_key(spec.slot),
+                    active = spec.active,
+                }
+            end
+        end
+
+        return entries
+    end
+
+    local function resolve_kit_section(name)
+        local raw = trim(name or "")
+        if raw == "" then
+            return nil
+        end
+
+        local candidates = {
+            raw,
+            "kit_" .. raw,
+            "kit_" .. string.lower(raw),
+        }
+
+        for index = 1, #candidates do
+            if config:section_exists(candidates[index]) then
+                return candidates[index]
+            end
+        end
+
+        return nil
+    end
+
+    local function resolve_profile_section(name)
+        local raw = trim(name or "")
+        if raw == "" then
+            return nil
+        end
+
+        local candidates = {
+            raw,
+            "profile_" .. raw,
+            "profile_" .. string.lower(raw),
+        }
+
+        for index = 1, #candidates do
+            if config:section_exists(candidates[index]) then
+                return candidates[index]
+            end
+        end
+
+        return nil
+    end
+
+    local function profile_label(section_name, fallback)
+        local data = config:get_composite(section_name)
+        return translate_text(data.label_key, data.label ~= "" and data.label or (fallback or "Gear"))
+    end
+
+    function loot.describe_gear_profile(arg)
+        local section_name = resolve_profile_section(arg)
+        if not section_name then
+            return nil
+        end
+        local data = config:get_composite(section_name)
+        return {
+            tone = data.tone ~= "" and data.tone or "neutral",
+            label = translate_text(data.label_key, data.label ~= "" and data.label or "Gear loadout"),
+            summary = data.summary ~= "" and data.summary or "",
+        }
+    end
+
+    function loot.describe_gear_strip(arg)
+        local profile = STRIP_PROFILES[lower_trim(arg)]
+        if not profile then
+            return nil
+        end
+        return {
+            tone = profile.tone,
+            label = translate_text(profile.label_key, profile.label),
+            summary = profile.summary,
+        }
+    end
+
+    function loot.describe_artifact_tier(arg)
+        local key = lower_trim(arg)
+        if key == "basic" or key == "bad" then
+            return translate_text("ui_sdi_effect_artifact_basic", "Random artefact")
+        elseif key == "mid" or key == "good" then
+            return translate_text("ui_sdi_effect_artifact_mid", "Good artefact")
+        elseif key == "rare" or key == "max" then
+            return translate_text("ui_sdi_effect_artifact_rare", "Rare artefact")
+        end
+        return translate_text("ui_sdi_effect_artifact_any", "Artefact surprise")
+    end
+
+    function loot.action_item(event)
+        local raw = trim(event.action_arg or "")
+        if raw == "" then
+            return "item?"
+        end
+
+        local entries = parse_item_entries(raw)
+        if #entries > 0 then
+            local given = give_item_entries(entries)
+            return tostring(given)
+        end
+
+        local pool_name = resolve_pool_name(raw)
+        if pool_name then
+            local section = random_existing_section(pool_name)
+            if section then
+                give_item_section(section, 1)
+                return section_display_name(section)
+            end
+        end
+
+        return "item?"
+    end
+
+    function loot.action_kit(event)
+        local section_name = resolve_kit_section(event.action_arg)
+        if not section_name then
+            return "kit?"
+        end
+
+        local data = config:get_composite(section_name)
+        local summary = {}
+        for index = 1, #data.entries do
+            local spec = parse_entry_spec(data.entries[index])
+            local entries = resolve_spec_to_entries(spec)
+            for entry_index = 1, #entries do
+                local entry = entries[entry_index]
+                local given = give_item_section(entry.section, entry.count)
+                if given > 0 then
+                    summary[#summary + 1] = section_display_name(entry.section)
+                end
+            end
+        end
+
+        if #summary == 0 then
+            return "kit?"
+        end
+
+        return table.concat(summary, ", ")
+    end
+
+    function loot.action_artifact_random(event)
+        local key = lower_trim(event.action_arg)
+        local pool_name = "artifact_interactive"
+        if key == "basic" or key == "bad" then
+            pool_name = "artifact_interactive_bad"
+        elseif key == "mid" or key == "good" then
+            pool_name = "artifact_interactive_good"
+        elseif key == "rare" or key == "max" then
+            pool_name = "artifact_interactive_max"
+        elseif resolve_pool_name(trim(event.action_arg or "")) then
+            pool_name = trim(event.action_arg)
+        end
+
+        local section = random_existing_section(pool_name)
+        if not section then
+            return "artefact?"
+        end
+
+        give_item_section(section, 1)
+        return section_display_name(section)
+    end
+
+    function loot.action_ammo_slots(event)
+        local total_boxes = clamp(math.floor(math.abs(safe_tonumber(event.action_arg, 2))), 1, 6)
+        local total_given = 0
+
+        if not db.actor or not db.actor.item_in_slot then
+            return "ammo?"
+        end
+
+        local weapon_slots = { api.SLOT_SIDEARM, api.SLOT_PRIMARY }
+        for index = 1, #weapon_slots do
+            local item = db.actor:item_in_slot(weapon_slots[index])
+            if item then
+                local ammo_section = weapon_ammo_section(item:section())
+                if ammo_section and item_section_exists(ammo_section) then
+                    total_given = total_given + give_item_section(ammo_section, total_boxes)
+                end
+            end
+        end
+
+        if total_given < 1 then
+            return "ammo?"
+        end
+
+        return "x" .. tostring(total_given)
+    end
+
+    function loot.action_gear_profile(event)
+        local section_name = resolve_profile_section(event.action_arg)
+        if not section_name then
+            return "gear?"
+        end
+
+        local profile = config:get_composite(section_name)
+        local slots = normalize_slot_list(profile.slots_to_clear)
+        if #slots > 0 then
+            clear_equipped_slots(slots)
+        end
+
+        local given_entries = {}
+        for index = 1, #profile.entries do
+            local spec = parse_entry_spec(profile.entries[index])
+            local entries = resolve_spec_to_entries(spec)
+            for entry_index = 1, #entries do
+                local entry = entries[entry_index]
+                local item = spawn_tracked_item(entry.section, entry.condition)
+                if item then
+                    if entry.slot or entry.active then
+                        equip_item_to_slot(item, entry.slot, entry.active)
+                    end
+
+                    if entry.ammo_boxes and entry.ammo_boxes > 0 then
+                        local ammo_section = weapon_ammo_section(entry.section)
+                        if ammo_section and item_section_exists(ammo_section) then
+                            give_item_section(ammo_section, entry.ammo_boxes)
+                        end
+                    end
+
+                    given_entries[#given_entries + 1] = entry
+                end
+            end
+        end
+
+        if #given_entries == 0 then
+            return "gear?"
+        end
+
+        local summary = {}
+        for index = 1, #given_entries do
+            summary[#summary + 1] = section_display_name(given_entries[index].section)
+        end
+
+        return profile_label(section_name, "Gear loadout") .. ": " .. table.concat(summary, ", ")
+    end
+
+    function loot.action_gear_strip(event)
+        local profile = STRIP_PROFILES[lower_trim(event.action_arg)]
+        if not profile then
+            return "gear?"
+        end
+
+        local removed = clear_equipped_slots(normalize_slot_list(profile.slots))
+        return translate_text(profile.label_key, profile.label) .. " x" .. tostring(removed)
+    end
+
+    function loot.action_repair_all(event)
+        local target = math.abs(safe_tonumber(event.action_arg, 1.0))
+        if target > 1 then
+            target = target / 100
+        end
+        target = clamp(target, 0.1, 1.0)
+        local repaired = 0
+
+        iterate_actor_inventory(function(item)
+            if not item or not is_repairable_item(item) then
+                return
+            end
+
+            local condition = get_item_condition(item)
+            if not condition then
+                return
+            end
+
+            local effective_condition = condition
+            local changed = false
+            if effective_condition >= target then
+                return
+            end
+
+            if set_item_condition and set_item_condition(item, target) then
+                effective_condition = target
+                changed = true
+            end
+
+            if part_sync.repair_item(item, effective_condition, target) then
+                changed = true
+            end
+
+            if changed then
+                repaired = repaired + 1
+            end
+        end)
+
+        return tostring(repaired)
+    end
+
+    function loot.action_degrade_all(event)
+        local raw = trim(event.action_arg or "")
+        local min_percent = 10
+        local max_percent = 25
+
+        local left, right = string.match(raw, "^(%-?[%d%.]+)%:(%-?[%d%.]+)$")
+        if left and right then
+            min_percent = tonumber(left) or min_percent
+            max_percent = tonumber(right) or max_percent
+        else
+            local single = tonumber(raw)
+            if single ~= nil then
+                min_percent = single
+                max_percent = single
+            end
+        end
+
+        if max_percent < min_percent then
+            min_percent, max_percent = max_percent, min_percent
+        end
+
+        local degrade_percent = min_percent
+        if max_percent > min_percent then
+            degrade_percent = min_percent + math.random() * (max_percent - min_percent)
+        end
+
+        local degrade_scale = 1 - clamp(math.abs(degrade_percent) / 100.0, 0.01, 0.95)
+        local degraded = 0
+
+        iterate_actor_inventory(function(item)
+            if not item or not is_repairable_item(item) then
+                return
+            end
+
+            local condition = get_item_condition(item)
+            if not condition or condition <= 0.05 then
+                return
+            end
+
+            local next_condition = clamp(condition * degrade_scale, 0.01, 1.0)
+            local changed = false
+            if set_item_condition and next_condition < condition and set_item_condition(item, next_condition) then
+                changed = true
+            end
+
+            if part_sync.degrade_item(item, next_condition, degrade_scale) then
+                changed = true
+            end
+
+            if changed then
+                degraded = degraded + 1
+            end
+        end)
+
+        return tostring(degraded)
+    end
+
+    loot.section_display_name = section_display_name
+    loot.profile_label = profile_label
+
+    return loot
+end
+
+bind = M.bind
+
+return M
