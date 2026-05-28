@@ -4,9 +4,9 @@
 	</background>
 	
 	<file_item>
-		<main width="390" height="18"/>
-		<fn width="300" height="18"/>
-		<fd width="90" height="18"/>
+		<main width="339" height="18"/>
+		<fn width="247" height="18"/>
+		<fd width="88" height="18"/>
 	</file_item>
 	<form x="282.5" y="200" width="390" height="411" stretch="1">
 		<caption x="12" y="6" width="135" height="24" stretch="1">
