@@ -21,10 +21,15 @@ function put_in_belt(itm)
 	play_skyw_anim(anm_itm_sec[itm:section()])
 end
 
-local cur_slot, hud_fov, det_active
+local cur_slot, hud_fov, det_active, anim_active
 function play_skyw_anim(anm_sec)
 	-- prepare anm
 	hide_hud_inventory()
+
+	if anim_active then
+		restore()
+	end
+	anim_active = true
 
 	game.only_allow_movekeys(true)
 
@@ -38,9 +43,17 @@ function play_skyw_anim(anm_sec)
 
 	db.actor:activate_slot(0)
 
+	local wait_started = time_global()
 	local function check_n_play()
+		if not anim_active then
+			return true
+		end
 		if db.actor:active_slot() == 0 and not db.actor:active_detector() then
 			play_anm(anm_sec)
+			return true
+		end
+		if time_global() - wait_started > 3000 then
+			restore()
 			return true
 		end
 		return false
@@ -53,15 +66,21 @@ end
 function play_anm(anm_sec)
 	local length = 0
 
-	length = length + game.get_motion_length(anm_sec[1], anm_sec[2], 1) / 1000
+	local ok_len, motion_length = pcall(game.get_motion_length, anm_sec[1], anm_sec[2], 1)
+	motion_length = ok_len and tonumber(motion_length) or 0
+	length = (motion_length and motion_length > 0) and (motion_length / 1000) or 0.5
 	CreateTimeEvent("skyw_dly_anm_e", "skyw_dly_anm_a", 0, function()
-		game.play_hud_motion(2, anm_sec[1], anm_sec[2], false, 1)
+		pcall(game.play_hud_motion, 2, anm_sec[1], anm_sec[2], false, 1)
 		local cam = ini_sys:r_string_ex(anm_sec[1], "cam_plate_add")
-		if cam then level.add_cam_effector(cam, 1300, false, "") end
+		if cam then pcall(level.add_cam_effector, cam, 1300, false, "") end
 		local snd = ini_sys:r_string_ex(anm_sec[1], "snd_plate_add")
 		if snd then
-			local plate_snd = sound_object(snd)
-			plate_snd:play_no_feedback(db.actor, sound_object.s2d, 0, VEC_ZERO, 1.0, 1.0)
+			local ok_snd, plate_snd = pcall(sound_object, snd)
+			if ok_snd and plate_snd then
+				pcall(function()
+					plate_snd:play_no_feedback(db.actor, sound_object.s2d, 0, VEC_ZERO, 1.0, 1.0)
+				end)
+			end
 		end
 		return true
 	end)
@@ -72,13 +91,24 @@ function play_anm(anm_sec)
 end
 
 function restore()
+	if not anim_active then
+		return true
+	end
+	anim_active = false
+
 	game.only_allow_movekeys(false)
 
-	exec_console_cmd("hud_fov " .. hud_fov)
+	if hud_fov then
+		exec_console_cmd("hud_fov " .. hud_fov)
+	end
 
 	db.actor:activate_slot(cur_slot or 0)
 
 	if det_active then det_active:switch_state(1) end
+
+	cur_slot = nil
+	hud_fov = nil
+	det_active = nil
 
 	return true
 end
