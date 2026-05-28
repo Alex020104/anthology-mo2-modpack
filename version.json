@@ -1,7 +1,7 @@
 {
-  "version": "2026.05.28.1",
+  "version": "2026.05.28.2",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Full MO2 refresh: encyclopedia text updates, SYS Hud Hard cleanup, interactive files update.",
+  "notes": "Full SYS Hud Hard refresh with UI texture descriptors.",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_cat.ltx",
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_dog.ltx",
@@ -115,10 +115,6 @@
     "[HARD] SYS Hud Hard/gamedata/configs/ui/talk.xml",
     "[HARD] SYS Hud Hard/gamedata/configs/ui/talk_16.xml",
     "[HARD] SYS Hud Hard/gamedata/configs/ui/talk_21.xml",
-    "[HARD] SYS Hud Hard/gamedata/configs/ui/textures_descr/ui_new faction_mm_faction_patches_anthology.xml",
-    "[HARD] SYS Hud Hard/gamedata/configs/ui/textures_descr/ui_new faction_new_game.xml",
-    "[HARD] SYS Hud Hard/gamedata/configs/ui/textures_descr/ui_new faction_new_game_anthology.xml",
-    "[HARD] SYS Hud Hard/gamedata/configs/ui/textures_descr/z_ui_new_game.xml",
     "[HARD] SYS Hud Hard/gamedata/configs/ui/ui_barter.xml",
     "[HARD] SYS Hud Hard/gamedata/configs/ui/ui_barter_16.xml",
     "[HARD] SYS Hud Hard/gamedata/configs/ui/ui_barter_21.xml",
