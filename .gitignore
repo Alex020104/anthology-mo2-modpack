@@ -38,3 +38,6 @@ meta.ini
 *.mp3
 *.avi
 *.mp4
+
+# SYS Hud Hard is launcher-managed as a complete mod, including textures.
+!\[HARD\] SYS Hud Hard/**
