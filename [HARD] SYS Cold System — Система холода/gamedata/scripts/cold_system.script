@@ -199,9 +199,16 @@ function cold_system_get_status_info()
 	}
 end
 
+function cold_system_treat_fever()
+	if not cold then cold = {} end
+	cold.sickness = 0
+	cold.val = 0
+end
+
 cold_system = cold_system or {}
 cold_system.get_state = cold_system_get_state
 cold_system.get_status_info = cold_system_get_status_info
+cold_system.treat_fever = cold_system_treat_fever
 
 function haruwu_sort(a)
 	local t = {}

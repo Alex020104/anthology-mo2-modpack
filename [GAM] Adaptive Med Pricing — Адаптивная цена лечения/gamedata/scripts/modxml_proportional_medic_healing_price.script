@@ -82,6 +82,7 @@ else
 						<next>2</next>
 						<next>3</next>
 						<next>4</next>
+						<next>22</next>
 						<next>19</next>
 						<next>5</next>
 					</phrase>
@@ -108,12 +109,19 @@ else
 						<next>6</next>
 					</phrase>
 					<phrase id="5"> <!-- actor - Decline heal -->
-						<script_text>proportional_medic_healing_price_mcm.get_heal_actor_decline_text</script_text> 
+						<script_text>proportional_medic_healing_price_mcm.get_heal_actor_decline_text</script_text>
 						<next>7</next>
 					</phrase>
-					
+					<phrase id="22"> <!-- actor - Treat Cold System fever -->
+						<precondition>proportional_medic_healing_price_mcm.is_actor_fevered_and_can_pay</precondition>
+						<script_text>proportional_medic_healing_price_mcm.get_heal_actor_fever_text</script_text>
+						<action>proportional_medic_healing_price_mcm.heal_actor_fever</action>
+						<action>medic_effects.medic_anim</action>
+						<next>6</next>
+					</phrase>
+
 					<phrase id="6"> <!-- npc - Medic after healing -->
-						<text>st_dm_medic_general_text_6</text> 
+						<text>st_dm_medic_general_text_6</text>
 					</phrase>
 					<phrase id="7"> <!-- npc - Medic after decline healing -->
 						<text>st_dm_medic_general_text_7</text> 

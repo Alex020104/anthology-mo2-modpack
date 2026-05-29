@@ -18,6 +18,8 @@
 local cached_healing_price_injured
 local cached_healing_price_irradiated
 local cached_healing_price_injured_irradiated
+local cached_healing_price_fever
+local cached_healing_price_total
 
 local bhs_installed = false
 local is_bhs_damaged = false
@@ -48,6 +50,41 @@ local bhs_heal_bodypart_price_multiplier = {
 	["rightleg"] = 0.45,
 }
 ------------
+
+
+local function get_cold_system_sickness()
+	if cold_system and cold_system.get_status_info then
+		local status = cold_system.get_status_info()
+		return tonumber(status and status.sickness) or 0
+	end
+
+	if cold_system and cold_system.get_state then
+		local state = cold_system.get_state()
+		return tonumber(state and state.sickness) or 0
+	end
+
+	return 0
+end
+
+local function is_actor_fevered()
+	return get_cold_system_sickness() > 0
+end
+
+local function treat_actor_fever()
+	if cold_system and cold_system.treat_fever then
+		cold_system.treat_fever()
+	end
+end
+
+local function get_fever_examine_string()
+	local sickness = get_cold_system_sickness()
+
+	if sickness <= 0 then
+		return game.translate_string("st_cold_fever") .. ": 0%."
+	end
+
+	return game.translate_string("st_cold_fever") .. ": " .. round(sickness) .. "%. " .. cached_healing_price_fever .. " RU."
+end
 
 
 -- MCM
@@ -220,7 +257,7 @@ end
 
 -- Precondition functions used in dialogs
 function is_actor_not_healthy(first_speaker, second_speaker)
-	if (db.actor.health < 1 or db.actor.bleeding > 0 or db.actor.radiation > 0 or (bhs_installed and is_bhs_damaged)) then return true end
+	if (db.actor.health < 1 or db.actor.bleeding > 0 or db.actor.radiation > 0 or (bhs_installed and is_bhs_damaged) or is_actor_fevered()) then return true end
 	return false
 end
 
@@ -249,6 +286,15 @@ end
 function is_actor_injured_irradiated(first_speaker, second_speaker)
 	if (db.actor.health < 1 or db.actor.bleeding > 0 or (bhs_installed and is_bhs_damaged)) and (db.actor.radiation > 0)
 	and (db.actor:money() >= cached_healing_price_injured_irradiated)
+	then
+		return true
+	end
+	return false
+end
+
+function is_actor_fevered_and_can_pay(first_speaker, second_speaker)
+	if is_actor_fevered()
+	and (db.actor:money() >= cached_healing_price_fever)
 	then
 		return true
 	end
@@ -288,6 +334,8 @@ function cache_healing_price()
 	
 	cached_healing_price_irradiated = round((db.actor.radiation * (6000 * radiation_heal_price_multiplier)))
 	cached_healing_price_injured_irradiated = cached_healing_price_injured + cached_healing_price_irradiated
+	cached_healing_price_fever = round(get_cold_system_sickness() * 30)
+	cached_healing_price_total = cached_healing_price_injured_irradiated + cached_healing_price_fever
 end
 
 function heal_actor_injury(first_speaker, second_speaker)
@@ -315,15 +363,22 @@ function heal_actor_injury_radiation(first_speaker, second_speaker)
 	db.actor.bleeding = 1
 end
 
+function heal_actor_fever(first_speaker, second_speaker)
+	dialogs.relocate_money_from_actor (first_speaker, second_speaker, cached_healing_price_fever)
+
+	treat_actor_fever()
+end
+
 function use_debt_heal(first_speaker, second_speaker)
 	bhs_heal()
 	db.actor.health = 1
 	db.actor.power = 1
 	db.actor.radiation = 0
 	db.actor.bleeding = 1
-	
+	treat_actor_fever()
+
 	local npc = dialogs.who_is_npc(first_speaker, second_speaker)
-	medics_debt[npc:name()] = round(cached_healing_price_injured_irradiated * 1.5)
+	medics_debt[npc:name()] = round(cached_healing_price_total * 1.5)
 end
 
 function pay_medic_debt(first_speaker, second_speaker)
@@ -340,8 +395,9 @@ end
 function get_medic_heal_text()
 	local injury_text = get_injury_examine_string()
 	local radiation_text = get_radiation_examine_string()
+	local fever_text = get_fever_examine_string()
 
-	return utils_data.parse_string_keys(injury_text.."\\n"..radiation_text, { ["injured_price"] = cached_healing_price_injured, ["irradiated_price"] = cached_healing_price_irradiated })
+	return utils_data.parse_string_keys(injury_text.."\\n"..radiation_text.."\\n"..fever_text, { ["injured_price"] = cached_healing_price_injured, ["irradiated_price"] = cached_healing_price_irradiated })
 end
 
 function get_heal_actor_injured_text()
@@ -356,6 +412,10 @@ function get_heal_actor_injured_irradiated_text()
 	return utils_data.parse_string_keys(game.translate_string("st_pmhp_heal_actor_injured_irradiated"), { ["injured_irradiated_price"] = cached_healing_price_injured_irradiated })
 end
 
+function get_heal_actor_fever_text()
+	return game.translate_string("st_cold_fever") .. ". " .. cached_healing_price_fever .. " RU."
+end
+
 function get_heal_actor_decline_text()
 	return game.translate_string("st_pmhp_heal_actor_decline")
 end
@@ -366,7 +426,7 @@ function get_actor_no_money_text()
 end
 
 function get_medic_offer_debt_heal_text()
-	return utils_data.parse_string_keys(get_random_text("st_pmhp_no_money_npc"), { ["debt_price"] = round(cached_healing_price_injured_irradiated * 1.5) })
+	return utils_data.parse_string_keys(get_random_text("st_pmhp_no_money_npc"), { ["debt_price"] = round(cached_healing_price_total * 1.5) })
 end
 
 function get_actor_debt_accept_text()
