@@ -1,7 +1,7 @@
 {
-  "version": "2026.05.28.5",
+  "version": "2026.05.29.1",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "MO2 fixes refresh and cleanup removed Grok stash script.",
+  "notes": "MO2 fixes refresh: offline combat guard, inventory label tuning, arena inventory purge fix.",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_cat.ltx",
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_dog.ltx",
