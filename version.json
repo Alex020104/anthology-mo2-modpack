@@ -1,7 +1,7 @@
 {
-  "version": "2026.05.29.7",
+  "version": "2026.05.29.8",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "ВАЖНО: после этого обновления нужно начать новую игру. Обновлены правки MO2 mods и баланс; из-за обновления spawn/db старые сохранения могут работать неправильно.",
+  "notes": "ВАЖНО: после этого обновления необходимо начать новую игру: был заменен all.spawn. Также добавлен фикс MO2 mods для ножа и защиты денег при спавне.",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_cat.ltx",
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_dog.ltx",
