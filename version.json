@@ -1,7 +1,7 @@
 {
-  "version": "2026.05.29.2",
+  "version": "2026.05.29.3",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Medics can now detect and treat Cold System fever through the normal medical help dialog.",
+  "notes": "Remove confirmed backup and junk files from the MO2 modpack.",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_cat.ltx",
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_dog.ltx",
@@ -17,6 +17,7 @@
     "[GAM] Bullet Time вЂ” Р—Р°РјРµРґР»РµРЅРёРµ РІСЂРµРјРµРЅРё/gamedata/configs/anthology_release_batch_test_10.ltx",
     "[GAM] Bullet Time вЂ” Р—Р°РјРµРґР»РµРЅРёРµ РІСЂРµРјРµРЅРё/gamedata/configs/anthology_release_test_marker.ltx",
     "[GAM] Grok's Stash Overhaul вЂ” РўР°Р№РЅРёРєРё РїРѕ РЅР°РІРѕРґРєРµ/gamedata/scripts/axr_npc_vs_box.script",
+    "[GAM] Pinup Collect вЂ” РљРѕР»Р»РµРєС†РёСЏ Р¶СѓСЂРЅР°Р»РѕРІ/gamedata/scripts/item_pinup_collect.script.codex_backup_20260501_pinup_texture",
     "[HARD] SYS Hud Hard/gamedata/configs/fonts.ltx",
     "[HARD] SYS Hud Hard/gamedata/configs/localization.ltx",
     "[HARD] SYS Hud Hard/gamedata/configs/mcm_key_localization.ltx",
@@ -187,6 +188,8 @@
     "[HARD] SYS Hud Hard/gamedata/configs/ui/zone_map_16.xml",
     "[HARD] SYS Hud Hard/gamedata/configs/ui/zone_map_21.xml",
     "[HARD] SYS Hud Hard/gamedata/configs/unlocalizers/unlocalize_actor_status.ltx",
-    "[HARD] SYS Hud Hard/gamedata/configs/unlocalizers/unlocalize_soulslike_original_init_controls.ltx"
+    "[HARD] SYS Hud Hard/gamedata/configs/unlocalizers/unlocalize_soulslike_original_init_controls.ltx",
+    "[HARD] System of Toxins вЂ” РҐРёРјРёС‡РµСЃРєР°СЏ Р·Р°РІРёСЃРёРјРѕСЃС‚СЊ РѕС‚ Р»РµРєР°СЂСЃС‚РІ/gamedata/scripts/system_of_toxins.script.codex_backup_20260502",
+    "[QUE] Western Goods вЂ” Р—Р°РїР°РґРЅС‹Рµ С‚РѕРІР°СЂС‹ Рё РєРІРµСЃС‚/gamedata/scripts/western_goods_ui_readable.script.codex_backup_20260501_pinup_readable"
   ]
 }
