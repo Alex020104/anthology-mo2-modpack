@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<!----------------  Непереведенные клавишы управления в МСМ-меню ------------------->
+	
+<string id="jaba_case_name">
+	<text>Locked case</text>
+</string>
+<string id="jaba_case_descr">
+	<text>A small sealed case with no markings. The locking mechanism is non-standard and shows signs of custom manufacture.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] unknown origin\n
+	%c[d_blue] • %c[ui_gray_2] sealed container\n
+	</text>
+</string>
+
+
+	
+	</string_table>
+
+
+
+
+
+
+
+
+
+

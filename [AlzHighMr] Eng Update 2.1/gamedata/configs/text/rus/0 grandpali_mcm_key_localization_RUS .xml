@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<!----------------  sad items ------------------->
+<string id="jaba_case_name">
+	<text>Запертый кейс</text>
+</string>
+<string id="jaba_case_descr">
+	<text>Небольшой запечатанный кейс без каких-либо обозначений. Запорный механизм нестандартный и имеет признаки кустарного изготовления.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] неизвестное происхождение\n
+	%c[d_blue] • %c[ui_gray_2] герметичный контейнер\n
+	</text>
+</string>
+
+<string id="pda_barbos_name">
+	<text>Повреждённый КПК</text>
+</string>
+<string id="pda_barbos_desc">
+	<text>Стандартный КПК, сильно повреждённый ударом и воздействием окружающей среды. Экран разбит, корпус треснул.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] частично повреждённое хранилище данных\n
+	</text>
+</string>
+
+<string id="pda_flibuster_name">
+	<text>Повреждённый КПК</text>
+</string>
+<string id="pda_flibuster_desc">
+	<text>КПК с фрагментированной внутренней памятью. Большинство функций не работает, остались лишь следы данных.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] нестабильное хранилище данных\n
+	</text>
+</string>
+
+<string id="pda_shmatko_name">
+	<text>Изношенный КПК</text>
+</string>
+<string id="pda_shmatko_desc">
+	<text>Старый КПК с признаками длительного использования в поле. Некоторые фрагменты данных частично читаемы.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] деградировавшее, но работоспособное хранилище\n
+	</text>
+</string>
+
+<string id="pda_tango_name">
+	<text>Повреждённый КПК</text>
+</string>
+<string id="pda_tango_desc">
+	<text>КПК с нестабильным запуском. Иногда включается, но сбивается на этапе инициализации системы.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] нестабильное электронное устройство\n
+	</text>
+</string>
+
+<string id="pda_tribun_name">
+	<text>Сломанный КПК</text>
+</string>
+<string id="pda_tribun_desc">
+	<text>Полностью неработающий КПК. Внутренние компоненты сильно повреждены и не подлежат восстановлению.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] не подлежит ремонту\n
+	</text>
+</string>
+
+<string id="escape_docs_name">
+	<text>Испачканные документы</text>
+</string>
+<string id="escape_docs_descr">
+	<text>Пачка документов, повреждённых влагой, грязью и временем. Читаемы лишь отдельные фрагменты текста.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] частично читаемые записи\n
+	</text>
+</string>
+
+<string id="bar_case_name">
+	<text>Запертый кейс</text>
+</string>
+<string id="bar_case_desc">
+	<text>Усиленный контейнер с надёжной системой запирания. Содержимое неизвестно.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] запертый предмет\n
+	</text>
+</string>
+
+<string id="st_pb_quest_shell_document">
+	<text>Найденная записка</text>
+</string>
+<string id="st_pb_quest_shell_document_descr">
+	<text>Рукописная записка, найденная в Зоне. Часть текста размазана и частично нечитаема.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] квестовый документ\n
+	</text>
+</string>
+
+<string id="sar_crystal_pda_mlr_2_name">
+	<text>Повреждённый КПК</text>
+</string>
+<string id="sar_crystal_pda_mlr_2_descr">
+	<text>КПК в нестабильном состоянии. Внутреннее хранилище демонстрирует признаки повреждения и потери данных.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] повреждённое хранилище данных\n
+	</text>
+</string>
+
+<string id="sar_crystal_pda_mlr_3_name">
+	<text>Повреждённый КПК</text>
+</string>
+<string id="sar_crystal_pda_mlr_3_descr">
+	<text>Сильно изношенный КПК. Большая часть секторов памяти нечитаема или утеряна.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] повреждённое хранилище данных\n
+	</text>
+</string>
+
+
+<string id="pda_freon_name">
+	<text>Зашифрованный КПК</text>
+</string>
+<string id="pda_freon_desc">
+	<text>КПК, защищённый неизвестным шифрованием. Стандартные методы доступа не позволяют извлечь читаемые данные.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] зашифрованное хранилище данных\n
+	</text>
+</string>
+
+<string id="pda_pinya_name">
+	<text>Сломанный КПК</text>
+</string>
+<string id="pda_pinya_desc">
+	<text>Сильно повреждённый КПК. Корпус смят, устройство больше не реагирует на питание.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] неработающая электроника\n
+	</text>
+</string>
+
+<!----------------  QUESTS ------------------->
+
+<string id="sad_sim_8_inventory_key">
+	<text>Ключ от ящика вертолёта</text>
+</string>
+<string id="sad_sim_8_inventory_key_desc">
+	<text>Ключ с военными идентификационными кодами. Вероятно, открывает грузовой ящик, доставленный вертолётом. Сообщалось, что вертолёт разбился где-то в Долине Шорохов.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] военное происхождение\n
+	</text>
+</string>
+
+<string id="sad_mudak_inventory_key_desc">
+	<text>Ключ с военными идентификационными кодами. Вероятно, открывает грузовой ящик, доставленный вертолётом. Сообщалось, что вертолёт разбился где-то в Долине Шорохов.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] военное происхождение\n
+	</text>
+</string>
+
+<string id="sad_b2_trader_notebook_name">
+	<text>Ноутбук</text>
+</string>
+<string id="sad_b2_trader_notebook_desc">
+	<text>Укреплённый военный ноутбук торговца по прозвищу Рокфеллер. Содержит важные данные, связанные с разбившимся военным вертолётом и его грузом.\n \n
+	%c[ui_gray_3]СВОЙСТВА:\n
+	%c[d_blue] • %c[ui_gray_2] квестовый предмет\n
+	%c[d_blue] • %c[ui_gray_2] данные критической важности\n
+	</text>
+</string>
+
+	
+	</string_table>
+
+
+
+
+
+
+
+
+
+

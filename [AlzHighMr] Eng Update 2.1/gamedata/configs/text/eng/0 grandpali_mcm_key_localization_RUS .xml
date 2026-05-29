@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<!----------------  sad items ------------------->
+	
+<string id="jaba_case_name">
+	<text>Locked case</text>
+</string>
+<string id="jaba_case_descr">
+	<text>A small sealed case with no markings. The locking mechanism is non-standard and shows signs of custom manufacture.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] unknown origin\n
+	%c[d_blue] • %c[ui_gray_2] sealed container\n
+	</text>
+</string>
+
+<string id="pda_barbos_name">
+	<text>Damaged PDA</text>
+</string>
+<string id="pda_barbos_desc">
+	<text>A standard PDA unit, heavily damaged by impact and environmental exposure. The display is shattered and the casing is cracked.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] partially corrupted storage device\n
+	</text>
+</string>
+
+<string id="pda_flibuster_name">
+	<text>Damaged PDA</text>
+</string>
+<string id="pda_flibuster_desc">
+	<text>A PDA with fragmented internal memory. Most functions are non-operational, with only residual data traces remaining.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] unstable data storage\n
+	</text>
+</string>
+
+
+<string id="pda_shmatko_name">
+	<text>Worn PDA</text>
+</string>
+<string id="pda_shmatko_desc">
+	<text>An old PDA showing signs of long-term field use. Some internal data fragments remain partially readable.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] degraded but usable storage\n
+	</text>
+</string>
+
+<string id="pda_tango_name">
+	<text>Damaged PDA</text>
+</string>
+<string id="pda_tango_desc">
+	<text>A PDA with unstable boot behavior. It occasionally powers on but fails during system initialization.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] unstable electronic device\n
+	</text>
+</string>
+
+<string id="pda_tribun_name">
+	<text>Broken PDA</text>
+</string>
+<string id="pda_tribun_desc">
+	<text>A completely non-functional PDA. Internal components are heavily damaged beyond recovery.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] irreparable device\n
+	</text>
+</string>
+
+<string id="escape_docs_name">
+	<text>Stained documents</text>
+</string>
+<string id="escape_docs_descr">
+	<text>A bundle of documents damaged by moisture, dirt, and time. Only fragments of text remain readable.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] partially readable records\n
+	</text>
+</string>
+
+<string id="bar_case_name">
+	<text>Locked case</text>
+</string>
+<string id="bar_case_desc">
+	<text>A reinforced container with a secure locking system. The contents remain unknown.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] locked item\n
+	</text>
+</string>
+
+<string id="st_pb_quest_shell_document">
+	<text>Recovered note</text>
+</string>
+<string id="st_pb_quest_shell_document_descr">
+	<text>A handwritten note recovered in the Zone. Parts of the text are smudged and partially unreadable.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] quest document\n
+	</text>
+</string>
+
+<string id="sar_crystal_pda_mlr_2_name">
+	<text>Damaged PDA</text>
+</string>
+<string id="sar_crystal_pda_mlr_2_descr">
+	<text>A PDA unit in unstable condition. Internal storage shows signs of corruption and data loss.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] damaged storage device\n
+	</text>
+</string>
+
+<string id="sar_crystal_pda_mlr_3_name">
+	<text>Damaged PDA</text>
+</string>
+<string id="sar_crystal_pda_mlr_3_descr">
+	<text>A heavily degraded PDA. Most internal data sectors are unreadable or lost.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] corrupted storage device\n
+	</text>
+</string>
+
+
+
+<string id="pda_freon_name">
+	<text>Encrypted PDA</text>
+</string>
+<string id="pda_freon_desc">
+	<text>A PDA protected by unknown encryption. Standard access methods fail to retrieve any readable data.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] encrypted storage device\n
+	</text>
+</string>
+
+<string id="pda_pinya_name">
+	<text>Broken PDA</text>
+</string>
+<string id="pda_pinya_desc">
+	<text>A heavily damaged PDA unit. The casing is crushed and the device no longer responds to power.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] non-functional electronics\n
+	</text>
+</string>
+
+<!----------------  QUESTS ------------------->
+
+<string id="sad_sim_8_inventory_key">
+	<text>Helicopter crate key</text>
+</string>
+<string id="sad_sim_8_inventory_key_desc">
+	<text>A key marked with military identification codes. It likely opens a supply crate transported by helicopter. The aircraft was reported to have crashed somewhere in the Valley of Rustles.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] military origin\n
+	</text>
+</string>
+
+<string id="sad_mudak_inventory_key_desc">
+	<text>A key marked with military identification codes. It likely opens a supply crate transported by helicopter. The aircraft was reported to have crashed somewhere in the Valley of Rustles.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] military origin\n
+	</text>
+</string>
+
+<string id="sad_b2_trader_notebook_name">
+	<text>Laptop</text>
+</string>
+<string id="sad_b2_trader_notebook_desc">
+	<text>A rugged military laptop belonging to a trader known as Rockefeller. It contains sensitive data related to a crashed military helicopter and its cargo.\n \n
+	%c[ui_gray_3]PROPERTIES:\n
+	%c[d_blue] • %c[ui_gray_2] quest item\n
+	%c[d_blue] • %c[ui_gray_2] mission-critical data storage\n
+	</text>
+</string>
+
+	
+	</string_table>
+
+
+
+
+
+
+
+
+
+
