@@ -101,6 +101,11 @@ local function safe_object_alive(obj)
 		return false
 	end
 
+	local ok_stalker, is_stalker = pcall(IsStalker, obj)
+	if not (ok_stalker and is_stalker) then
+		return false
+	end
+
 	local ok, alive = pcall(obj.alive, obj)
 	return ok and alive == true
 end
