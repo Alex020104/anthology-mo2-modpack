@@ -68,6 +68,15 @@ local function can_spawn_loot_on_npc(npc, context)
     return false
 end
 
+local function is_active_npc_weapon(npc, itm)
+    if not (npc and itm and type(npc.active_item) == "function") then
+        return false
+    end
+
+    local active = npc:active_item()
+    return active and active:id() == itm:id()
+end
+
 -- Переменные состояния удачи для текущего трупа (локальные, живут только внутри скрипта)
 local is_lucky_corpse = false
 local is_elite_lucky = false
@@ -464,7 +473,7 @@ function death_manager.set_weapon_drop_condition(npc, itm)
         disassemble_chance = 12
     end
 
-    if math.random(100) <= disassemble_chance then
+    if (not is_active_npc_weapon(npc, itm)) and math.random(100) <= disassemble_chance then
         if not can_spawn_loot_on_npc(npc, "weapon_disassemble") then
             itm:set_condition(clamp_condition_cap(condition_float))
             return
