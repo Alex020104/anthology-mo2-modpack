@@ -1197,7 +1197,7 @@ function UIInventory:UpdateStatsLayout()
 	
 	-- for def bars style (like columns), stats name and value labels above bar controls
 	local stat_bar_h	= self.stat["health"].bar:GetHeight()--18
-	local y_offset		= -(stat_bar_h * 1/6)
+	local y_offset		= -(stat_bar_h * 1/12)
 	local y_offset_txt	= is_def_bars and y_offset or 0
 	local y_offset_ext	= is_def_bars and y_offset or (stat_bar_h * 2/3)
 	
