@@ -375,6 +375,36 @@ local function coordinator()
 end
 
 
+local function is_online_se_object(se_obj)
+	if not se_obj then
+		return false
+	end
+
+	local id = se_obj.id
+	if id and level.object_by_id(id) then
+		return true
+	end
+
+	return se_obj.online == true
+end
+
+local function kill_offline_npc(se_victim, se_attacker, context)
+	if not se_victim then
+		return false
+	end
+
+	if is_online_se_object(se_victim) then
+		printf("! OCS | Skip offline death for online npc | context: %s | id: %s | name: %s",
+			tostring(context or "unknown"),
+			tostring(se_victim.id or "nil"),
+			tostring(se_victim.name and se_victim:name() or "nil"))
+		return false
+	end
+
+	se_victim:on_death(se_attacker)
+	return true
+end
+
 function validate_enemy(sim, lid, squad_1, id_1, id_2, community_1)
 
 	if (id_2 == id_1) then
@@ -429,11 +459,9 @@ function validate_enemy(sim, lid, squad_1, id_1, id_2, community_1)
 							local se_attacker = get_random_npc(squad_1)
 							for k in squad_2:squad_members() do
 								local victim = alife_object(k.id)
-								if victim then
-									victim:on_death(se_attacker)
-								end
+								kill_offline_npc(victim, se_attacker, "special_squad_2")
 							end
-							
+
 						elseif sid_2 then
 							if enable_debug then
 								printf("% OCS |  [%s] is special, [%s] is removed", squad_2:name(), squad_1:name())
@@ -443,9 +471,7 @@ function validate_enemy(sim, lid, squad_1, id_1, id_2, community_1)
 							local se_attacker = get_random_npc(squad_2)
 							for k in squad_1:squad_members() do
 								local victim = alife_object(k.id)
-								if victim then
-									victim:on_death(se_attacker)
-								end
+								kill_offline_npc(victim, se_attacker, "special_squad_1")
 							end
 						end
 						
@@ -530,9 +556,7 @@ function simulate_battle(id_1, id_2, squad_1, squad_2, community_1, community_2,
 		remove_squad_info(squad_2, id_2, id_1, lid)
 		for k in squad_2:squad_members() do
 			local victim = alife_object(k.id)
-			if victim then
-				victim:on_death(se_attacker)
-			end
+			kill_offline_npc(victim, se_attacker, "squad_wipe")
 		end
 		
 	-- Kill the victim NPC if the damage dealt exceeds its rank
@@ -552,9 +576,9 @@ function simulate_battle(id_1, id_2, squad_1, squad_2, community_1, community_2,
 		if squad_2:npc_count() <= 1 then
 			remove_squad_info(squad_2, id_2, id_1, lid)
 		end
-		
+
 		-- Release
-		se_victim:on_death(se_attacker)
+		kill_offline_npc(se_victim, se_attacker, "single_victim")
 		
 		--[[
 		squad_2:remove_npc(se_victim.id)
