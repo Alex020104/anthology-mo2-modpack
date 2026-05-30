@@ -1,0 +1,189 @@
+local EVENT_ID = "anthology_smooth_alife"
+
+local WARMUP_OBJECTS_PER_UPDATE = 8
+local NORMAL_OBJECTS_PER_UPDATE = 20
+local SLEEP_OBJECTS_PER_UPDATE = 8
+local RESTORE_DELAY_SEC = 30
+local OFFLINE_COMBAT_DELAY_SEC = 45
+local PRIMARY_SPOTS_DELAY_SEC = 30
+local DEFERRED_STORY_WORK_RELEASE_SEC = 45
+local MAP_SPOT_FLUSH_BATCH = 4
+local MAP_SPOT_FLUSH_INTERVAL_SEC = 0.35
+
+_G.anthology_smooth_story_id_defer = true
+_G.anthology_map_spot_visibility_restored = true
+
+local original_show_spot_on_map
+local map_spot_patch_installed = false
+local queued_map_spots = {}
+local queued_map_spot_index = 1
+
+local function set_objects_per_update(value)
+	if type(alife) ~= "function" then
+		return
+	end
+
+	local ok, sim = pcall(alife)
+	if not (ok and sim) then
+		return
+	end
+
+	pcall(function()
+		sim:set_objects_per_update(value)
+	end)
+end
+
+local function set_story_id_defer(enabled)
+	_G.anthology_smooth_story_id_defer = enabled and true or false
+end
+
+local function create_time_event(action_id, delay, func)
+	if type(CreateTimeEvent) ~= "function" then
+		return
+	end
+
+	if type(RemoveTimeEvent) == "function" then
+		RemoveTimeEvent(EVENT_ID, action_id)
+	end
+
+	CreateTimeEvent(EVENT_ID, action_id, delay, func)
+end
+
+local function queue_map_spot_request(actor, npc, p)
+	if type(p) ~= "table" then
+		return
+	end
+
+	queued_map_spots[#queued_map_spots + 1] = {
+		actor = actor,
+		npc = npc,
+		p = { p[1], p[2], p[3] },
+	}
+end
+
+local function flush_map_spot_queue()
+	if not original_show_spot_on_map then
+		return true
+	end
+
+	local processed = 0
+	while processed < MAP_SPOT_FLUSH_BATCH and queued_map_spot_index <= #queued_map_spots do
+		local entry = queued_map_spots[queued_map_spot_index]
+		queued_map_spot_index = queued_map_spot_index + 1
+		processed = processed + 1
+
+		if entry then
+			pcall(original_show_spot_on_map, entry.actor, entry.npc, entry.p)
+		end
+	end
+
+	if queued_map_spot_index <= #queued_map_spots then
+		create_time_event("flush_map_spot_queue", MAP_SPOT_FLUSH_INTERVAL_SEC, flush_map_spot_queue)
+	else
+		queued_map_spots = {}
+		queued_map_spot_index = 1
+	end
+
+	return true
+end
+
+local function ensure_map_spot_patch()
+	if map_spot_patch_installed then
+		return
+	end
+
+	if not (xr_effects and type(xr_effects.show_spot_on_map) == "function") then
+		return
+	end
+
+	original_show_spot_on_map = xr_effects.show_spot_on_map
+	xr_effects.show_spot_on_map = function(actor, npc, p)
+		if _G.anthology_smooth_story_id_defer then
+			queue_map_spot_request(actor, npc, p)
+			return true
+		end
+
+		return original_show_spot_on_map(actor, npc, p)
+	end
+
+	map_spot_patch_installed = true
+end
+
+local function delay_offline_combat()
+	if type(ResetTimeEvent) == "function" then
+		pcall(ResetTimeEvent, "cycle", "ocs", OFFLINE_COMBAT_DELAY_SEC)
+	end
+	return true
+end
+
+local function release_deferred_story_work()
+	set_story_id_defer(false)
+	flush_map_spot_queue()
+	return true
+end
+
+local function restore_objects_per_update()
+	set_story_id_defer(false)
+	flush_map_spot_queue()
+	set_objects_per_update(NORMAL_OBJECTS_PER_UPDATE)
+	return true
+end
+
+local function delay_known_events()
+	if type(ResetTimeEvent) == "function" then
+		pcall(ResetTimeEvent, 0, "ScanForSpots", PRIMARY_SPOTS_DELAY_SEC)
+	end
+	return true
+end
+
+local function start_warmup(objects_per_update)
+	ensure_map_spot_patch()
+	set_story_id_defer(true)
+	set_objects_per_update(objects_per_update)
+	create_time_event("delay_ocs", 0.2, delay_offline_combat)
+	create_time_event("delay_known_events_1", 0.5, delay_known_events)
+	create_time_event("warmup_refresh_1", 1.5, function()
+		set_objects_per_update(objects_per_update)
+		return true
+	end)
+	create_time_event("warmup_refresh_2", 5, function()
+		set_objects_per_update(objects_per_update)
+		return true
+	end)
+	create_time_event("delay_known_events_2", 6, delay_known_events)
+	create_time_event("warmup_refresh_3", 12, function()
+		set_objects_per_update(objects_per_update)
+		return true
+	end)
+	create_time_event("delay_known_events_3", 12, delay_known_events)
+	create_time_event("warmup_refresh_4", 25, function()
+		set_objects_per_update(objects_per_update)
+		return true
+	end)
+	create_time_event("warmup_refresh_5", 45, function()
+		set_objects_per_update(objects_per_update)
+		return true
+	end)
+	create_time_event("release_deferred_story_work", DEFERRED_STORY_WORK_RELEASE_SEC, release_deferred_story_work)
+	create_time_event("restore_objects", RESTORE_DELAY_SEC, restore_objects_per_update)
+end
+
+local function on_game_load()
+	start_warmup(WARMUP_OBJECTS_PER_UPDATE)
+end
+
+local function actor_on_first_update()
+	start_warmup(WARMUP_OBJECTS_PER_UPDATE)
+end
+
+local function actor_on_sleep()
+	start_warmup(SLEEP_OBJECTS_PER_UPDATE)
+end
+
+function on_game_start()
+	ensure_map_spot_patch()
+	set_story_id_defer(true)
+	RegisterScriptCallback("on_game_load", on_game_load)
+	RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+	RegisterScriptCallback("actor_on_sleep", actor_on_sleep)
+end
