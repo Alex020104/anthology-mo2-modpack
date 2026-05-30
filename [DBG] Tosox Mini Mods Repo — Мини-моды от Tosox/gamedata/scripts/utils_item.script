@@ -374,7 +374,13 @@ function has_attached_scope(wpn)
 		return false
 	end
 
-	return (wpn:weapon_scope_status() == 2) and wpn:weapon_is_scope() or has_scope(wpn:section())
+	local section = wpn:section()
+	local parent_section = ini_sys:r_string_ex(section, "parent_section")
+	if parent_section and parent_section ~= section then
+		return true
+	end
+
+	return (wpn:weapon_scope_status() == 2) and wpn:weapon_is_scope() or has_scope(section)
 end
 function can_attach_scope(wpn, addon, ignore)
 	if not (addon and support_attachments(wpn)) then
