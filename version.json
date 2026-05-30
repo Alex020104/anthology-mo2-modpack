@@ -1,7 +1,7 @@
 {
-  "version": "2026.05.30.2",
+  "version": "2026.05.30.3",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "ВАЖНО: после этого обновления необходимо начать новую игру: был заменен all.spawn. Удалена папка scripts из [FIX] SYS ANTHOLOGY - Все мои фисы.",
+  "notes": "Добавлен ui_sequential_load.xml в [FIX] SYS ANTHOLOGY - Все мои фисы.",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_cat.ltx",
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_dog.ltx",

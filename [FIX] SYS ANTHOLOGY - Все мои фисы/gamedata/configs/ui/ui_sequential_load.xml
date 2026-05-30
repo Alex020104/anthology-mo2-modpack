@@ -1,0 +1,91 @@
+<w>
+	<background x="0" y="0" width="1024" height="768" stretch="1"/>
+
+	<main x="302" y="118" width="420" height="532" stretch="1">
+		<title x="20" y="14" width="380" height="24">
+			<text r="238" g="238" b="238" a="255" font="letterica18" align="c" vert_align="c">Sequential magazine loading</text>
+		</title>
+
+		<caliber_label x="20" y="54" width="100" height="20">
+			<text r="190" g="190" b="190" a="255" font="letterica16" align="l" vert_align="c">Caliber</text>
+		</caliber_label>
+
+		<caliber_combo x="122" y="52" width="278" height="22">
+			<list_font r="220" g="220" b="220" font="letterica16"/>
+			<text_color>
+				<e r="220" g="220" b="220"/>
+				<d r="90" g="90" b="90"/>
+			</text_color>
+		</caliber_combo>
+
+		<preset_label x="20" y="88" width="180" height="20">
+			<text r="190" g="190" b="190" a="255" font="letterica16" align="l" vert_align="c">Preset</text>
+		</preset_label>
+
+		<default_hint x="205" y="88" width="195" height="20">
+			<text r="170" g="170" b="150" a="255" font="letterica16" align="r" vert_align="c">Default order</text>
+		</default_hint>
+
+		<add_combo x="20" y="410" width="235" height="22">
+			<list_font r="220" g="220" b="220" font="letterica16"/>
+			<text_color>
+				<e r="220" g="220" b="220"/>
+				<d r="90" g="90" b="90"/>
+			</text_color>
+		</add_combo>
+
+		<btn_add x="265" y="408" width="58" height="26" stretch="1">
+			<texture>ui_inGame2_inventory_button</texture>
+			<text r="238" g="238" b="238" a="255" font="letterica16" align="c" vert_align="c">Add</text>
+		</btn_add>
+
+		<btn_save x="20" y="474" width="92" height="28" stretch="1">
+			<texture>ui_inGame2_inventory_button</texture>
+			<text r="238" g="238" b="238" a="255" font="letterica16" align="c" vert_align="c">Save</text>
+		</btn_save>
+
+		<btn_reset x="122" y="474" width="92" height="28" stretch="1">
+			<texture>ui_inGame2_inventory_button</texture>
+			<text r="238" g="238" b="238" a="255" font="letterica16" align="c" vert_align="c">Reset</text>
+		</btn_reset>
+
+		<btn_close x="308" y="474" width="92" height="28" stretch="1">
+			<texture>ui_inGame2_inventory_button</texture>
+			<text r="238" g="238" b="238" a="255" font="letterica16" align="c" vert_align="c">Close</text>
+		</btn_close>
+	</main>
+
+	<row>
+		<bg x="0" y="0" width="380" height="42" stretch="1"/>
+		<icon x="4" y="5" width="32" height="32" stretch="1"/>
+		<name x="42" y="2" width="140" height="20">
+			<text r="238" g="238" b="238" a="255" font="letterica16" align="l" vert_align="c"/>
+		</name>
+		<ammo_sec x="42" y="21" width="140" height="18">
+			<text r="150" g="150" b="150" a="255" font="letterica16" align="l" vert_align="c"/>
+		</ammo_sec>
+		<count_text x="190" y="10" width="26" height="20">
+			<text r="238" g="238" b="238" a="255" font="letterica16" align="c" vert_align="c"/>
+		</count_text>
+		<btn_minus x="222" y="8" width="28" height="24" stretch="1">
+			<texture>ui_inGame2_inventory_button</texture>
+			<text r="238" g="238" b="238" a="255" font="letterica16" align="c" vert_align="c">-</text>
+		</btn_minus>
+		<btn_plus x="254" y="8" width="28" height="24" stretch="1">
+			<texture>ui_inGame2_inventory_button</texture>
+			<text r="238" g="238" b="238" a="255" font="letterica16" align="c" vert_align="c">+</text>
+		</btn_plus>
+		<btn_up x="286" y="8" width="30" height="24" stretch="1">
+			<texture>ui_inGame2_inventory_button</texture>
+			<text r="238" g="238" b="238" a="255" font="letterica16" align="c" vert_align="c">Up</text>
+		</btn_up>
+		<btn_down x="320" y="8" width="30" height="24" stretch="1">
+			<texture>ui_inGame2_inventory_button</texture>
+			<text r="238" g="238" b="238" a="255" font="letterica16" align="c" vert_align="c">Dn</text>
+		</btn_down>
+		<btn_remove x="354" y="8" width="26" height="24" stretch="1">
+			<texture>ui_inGame2_inventory_button</texture>
+			<text r="238" g="238" b="238" a="255" font="letterica16" align="c" vert_align="c">X</text>
+		</btn_remove>
+	</row>
+</w>
