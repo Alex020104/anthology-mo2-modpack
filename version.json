@@ -1,7 +1,7 @@
 {
-  "version": "2026.05.29.9",
+  "version": "2026.05.30.1",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "ВАЖНО: после этого обновления необходимо начать новую игру: был заменен all.spawn. Добавлены файлы обновления [AlzHighMr] Eng Update 2.1.",
+  "notes": "ВАЖНО: после этого обновления необходимо начать новую игру: был заменен all.spawn. Добавлен фикс безопасного A-Life warmup в MO2 модпаке.",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_cat.ltx",
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_m_dog.ltx",
