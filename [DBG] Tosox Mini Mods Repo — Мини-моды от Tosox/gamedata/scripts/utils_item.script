@@ -355,6 +355,26 @@ function has_scope(section)
 	end
 end
 
+local function get_scope_from_child_section(section)
+	local parent_section = ini_sys:r_string_ex(section, "parent_section")
+	if not (parent_section and parent_section ~= section) then
+		return
+	end
+
+	local dxr_scope = has_scope(section)
+	if dxr_scope then
+		return dxr_scope
+	end
+
+	local prefix = parent_section .. "_"
+	if string.sub(section, 1, string.len(prefix)) == prefix then
+		local scope_section = string.sub(section, string.len(prefix) + 1)
+		if scope_section and ini_sys:section_exist(scope_section) and IsItem("scope", scope_section) then
+			return scope_section
+		end
+	end
+end
+
 -- For attachment status = 2 only!
 function support_attachments(wpn)
 	if not (wpn) then
@@ -375,8 +395,7 @@ function has_attached_scope(wpn)
 	end
 
 	local section = wpn:section()
-	local parent_section = ini_sys:r_string_ex(section, "parent_section")
-	if parent_section and parent_section ~= section then
+	if get_scope_from_child_section(section) then
 		return true
 	end
 
@@ -408,12 +427,18 @@ function get_attached_scope(wpn, ignore)
 	
 	local has_attachment = (ignore ~= true) and has_attached_scope(wpn) or false
 	if (has_attachment) then
-		local dxr_scope = has_scope(wpn:section())
+		local section = wpn:section()
+		local child_scope = get_scope_from_child_section(section)
+		if child_scope then
+			return child_scope
+		end
+
+		local dxr_scope = has_scope(section)
 		if dxr_scope then
 			return dxr_scope
 		end
-		
-		return get_wpn_param(wpn, wpn:section(), "scopes_sect")
+
+		return get_wpn_param(wpn, section, "scopes_sect")
 	end
 end
 
@@ -514,8 +539,8 @@ function detach_addon(wpn, addon, typ, ignore)
 	local has_attached = ignore or (typ == "scope" and has_attached_scope(wpn)) or (typ == "sil" and has_attached_silencer(wpn)) or (typ == "gl" and has_attached_gl(wpn))
 	if has_attached then
 		if (typ == "scope") and item_weapon.menu_scope(wpn) then
-			item_weapon.detach_scope(wpn)
-			
+			item_weapon.detach_scope(wpn, addon)
+
 		elseif type(addon) == "string" and ini_sys:section_exist(addon) then
 			wpn:weapon_addon_detach(addon, true)
 			--printf("-detaching [%s] from [%s]", addon, wpn:section())
