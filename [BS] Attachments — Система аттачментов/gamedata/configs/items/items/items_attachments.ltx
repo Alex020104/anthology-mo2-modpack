@@ -62,7 +62,7 @@ surge_protection                                   = 0.25
 tier = 4
 
 [af_surge_up_absorbation]:af_base_absorbation
-shock_immunity 			                           = 0.25
+shock_immunity 			                           = 1.25
 
 ;--=====================================================================
 
@@ -74,7 +74,7 @@ visual                                             = dynamics\equipments\aa\freo
 description			                               = st_ass_descr
 inv_name			                               = st_ass_name
 inv_name_short			                           = st_ass_name
-inv_weight			                               = 2.72	;2.34
+inv_weight			                               = 1.72	;2.34
 inv_grid_x			                               = 3
 inv_grid_y			                               = 19
 cost				                               = 4580 ; 6200
@@ -104,7 +104,7 @@ $spawn				                               = "artefacts\af_freon_up"
 description			                               = st_ass_up_descr
 inv_name			                               = st_ass_up_name
 inv_name_short			                           = st_ass_up_name
-inv_weight			                               = 4.34
+inv_weight			                               = 2.64
 cost				                               = 11320 ; 6200
 1icon_layer_x       	                           = 0
 1icon_layer_y      		                           = 0
@@ -116,9 +116,9 @@ hit_absorbation_sect		                       = af_freon_up_absorbation
 tier = 4
 
 [af_freon_up_absorbation]:af_base_absorbation	
-burn_immunity 			                           = 0.0018		
-shock_immunity 			                           = 0.018
-chemical_burn_immunity                             = 0.00142
+burn_immunity 			                           = 0.0268		
+shock_immunity 			                           = 0.168
+chemical_burn_immunity                             = 0.00642
 
 ;--=====================================================================
 
@@ -350,9 +350,9 @@ tier = 3
 
 [af_kevlar_absorbation]:af_base_absorbation
 strike_immunity 		                           = 0.025
-wound_immunity 			                           = 0.025
-explosion_immunity 			                       = 0.025
-fire_wound_immunity  		                       = 0.025
+wound_immunity 			                           = 0.02
+explosion_immunity 			                       = 0.045
+fire_wound_immunity  		                       = 0.08
 
 
 ;--=====================================================================
@@ -362,7 +362,7 @@ $spawn				                               = "artefacts\af_kevlar"
 description			                               = st_af_new_kevlar_up_descr
 inv_name			                               = st_af_new_kevlar_up_name
 inv_name_short			                           = st_af_new_kevlar_up_name
-inv_weight			                               = 1.52
+inv_weight			                               = 1.12
 cost				                               = 4690 ; 13380 ; 6200
 1icon_layer_x       	                           = 0
 1icon_layer_y      		                           = 0
@@ -377,9 +377,9 @@ tier = 4
 
 [af_kevlar_up_absorbation]:af_base_absorbation
 strike_immunity 		                           = 0.06
-wound_immunity 			                           = 0.06
-explosion_immunity 			                       = 0.06
-fire_wound_immunity  		                       = 0.06
+wound_immunity 			                           = 0.04
+explosion_immunity 			                       = 0.08
+fire_wound_immunity  		                       = 0.14
 
 ;--=====================================================================
 
@@ -391,7 +391,7 @@ visual                                             = dynamics\equipments\aa\plat
 description			                               = st_af_plates_descr
 inv_name			                               = st_af_plates_name
 inv_name_short			                           = st_af_plates_name
-inv_weight			                               = 7.62
+inv_weight			                               = 5.62
 inv_grid_x			                               = 6
 inv_grid_y			                               = 19
 cost				                               = 3930 ; 6200
@@ -418,10 +418,10 @@ tier = 3
 
 [af_plates_absorbation]:af_base_absorbation
 strike_immunity 		                           = 0.1
-shock_immunity 			                           = -0.087
-wound_immunity 			                           = 0.1
-explosion_immunity 			                       = 0.1 ; 35 sheets of kevlar eq.
-fire_wound_immunity  		                       = 0.1 ; 35 sheets of kevlar eq.
+shock_immunity 			                           = -1.087
+wound_immunity 			                           = 0.08
+explosion_immunity 			                       = 0.13 ; 35 sheets of kevlar eq.
+fire_wound_immunity  		                       = 0.22 ; 35 sheets of kevlar eq.
 
 ;--=====================================================================
 
@@ -430,7 +430,7 @@ $spawn				                               = "artefacts\af_plates_up"
 description			                               = st_af_plates_up_descr
 inv_name			                               = st_af_plates_up_name
 inv_name_short			                           = st_af_plates_up_name
-inv_weight			                               = 9.15
+inv_weight			                               = 7.15
 cost				                               = 8430 ; 16860 ; 6200
 1icon_layer_x       	                           = 0
 1icon_layer_y      		                           = 0
@@ -444,10 +444,10 @@ tier = 5
 
 [af_plates_up_absorbation]:af_base_absorbation
 strike_immunity 		                           = 0.15
-shock_immunity 			                           = -0.087
-wound_immunity 			                           = 0.15 ; 398 sheets of kevlar eq.
-explosion_immunity 			                       = 0.15 ; 399 sheets of kevlar eq.
-fire_wound_immunity  		                       = 0.15 ; 367 sheets of kevlar eq.
+shock_immunity 			                           = -0.587
+wound_immunity 			                           = 0.1 ; 398 sheets of kevlar eq.
+explosion_immunity 			                       = 0.2 ; 399 sheets of kevlar eq.
+fire_wound_immunity  		                       = 0.33 ; 367 sheets of kevlar eq.
 
 ; Camelbak
 ;--=====================================================================
