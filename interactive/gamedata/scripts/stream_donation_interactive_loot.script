@@ -60,6 +60,7 @@ local function parse_entry_spec(raw)
         count = 1,
         condition = nil,
         ammo_boxes = nil,
+        magazines = nil,
         slot = nil,
         active = false,
     }
@@ -93,6 +94,8 @@ local function parse_entry_spec(raw)
             spec.condition = tonumber(value)
         elseif key == "ammo_boxes" or key == "ammo" then
             spec.ammo_boxes = math.max(0, math.floor(tonumber(value) or 0))
+        elseif key == "magazines" or key == "mags" then
+            spec.magazines = math.max(0, math.floor(tonumber(value) or 0))
         elseif key == "slot" then
             spec.slot = value
         elseif key == "active" then
@@ -128,6 +131,23 @@ function M.bind(api)
 
     local loot = {}
 
+    local GEAR_CONSUMABLES = {
+        helm_resp = "af_mask_filter_1",
+        helm_respirator = "af_mask_filter_1",
+        helm_respirator_old = "af_mask_filter_1",
+        helm_ppm88 = "af_mask_filter_2",
+        helm_m40 = "af_mask_filter_2",
+        helm_ach7ex = "af_mask_filter_2",
+        helm_tactic = "af_mask_filter_2",
+        helm_battle = "af_mask_filter_2",
+        helm_metro = "af_mask_filter_2",
+        helm_spartan = "af_mask_filter_2",
+        helm_m50 = "af_mask_filter_3",
+        helm_ranger = "af_mask_filter_3",
+        helm_exo = "af_mask_filter_3",
+        helm_protective = "af_oxygen_tank_1",
+    }
+
     local function item_section_exists(section)
         return section and section ~= "" and ini_sys and ini_sys.section_exist and ini_sys:section_exist(section)
     end
@@ -157,6 +177,37 @@ function M.bind(api)
         end
 
         return fallback
+    end
+
+    local function contained_artifact_section(section)
+        if not item_section_exists(section) then
+            return section
+        end
+
+        if string.find(section, "_lead_box$") or string.find(section, "_af_iam$") or string.find(section, "_af_aac$") or string.find(section, "_af_aam$") then
+            return section
+        end
+
+        local kind = nil
+        if ini_sys.r_string_ex then
+            local ok, value = pcall(function()
+                return ini_sys:r_string_ex(section, "kind")
+            end)
+            if ok then
+                kind = value
+            end
+        end
+
+        if kind ~= "i_arty" then
+            return section
+        end
+
+        local boxed_section = section .. "_lead_box"
+        if item_section_exists(boxed_section) then
+            return boxed_section
+        end
+
+        return section
     end
 
     local function slot_id_by_key(value)
@@ -232,6 +283,7 @@ function M.bind(api)
                     count = spec.count,
                     condition = spec.condition,
                     ammo_boxes = spec.ammo_boxes,
+                    magazines = spec.magazines,
                     slot = slot_id_by_key(spec.slot),
                     active = spec.active,
                 }
@@ -243,6 +295,7 @@ function M.bind(api)
                     count = spec.count,
                     condition = spec.condition,
                     ammo_boxes = spec.ammo_boxes,
+                    magazines = spec.magazines,
                     slot = slot_id_by_key(spec.slot),
                     active = spec.active,
                 }
@@ -271,6 +324,52 @@ function M.bind(api)
         end
 
         return nil
+    end
+
+    local function default_weapon_magazine(section)
+        if not (section and section ~= "" and magazine_binder and magazine_binder.weapon_default_magazine) then
+            return nil
+        end
+
+        local ok, mag_section = pcall(function()
+            return magazine_binder.weapon_default_magazine(section)
+        end)
+        if ok and item_section_exists(mag_section) then
+            return mag_section
+        end
+        return nil
+    end
+
+    local function give_weapon_supplies(entry)
+        if not entry then
+            return
+        end
+
+        if entry.ammo_boxes and entry.ammo_boxes > 0 then
+            local ammo_section = weapon_ammo_section(entry.section)
+            if ammo_section and item_section_exists(ammo_section) then
+                give_item_section(ammo_section, entry.ammo_boxes)
+            end
+        end
+
+        local mag_section = default_weapon_magazine(entry.section)
+        if mag_section then
+            local count = entry.magazines
+            if count == nil and entry.ammo_boxes and entry.ammo_boxes > 0 then
+                count = 2
+            end
+            count = math.max(0, math.floor(tonumber(count) or 0))
+            if count > 0 then
+                give_item_section(mag_section, count)
+            end
+        end
+    end
+
+    local function give_gear_consumable(section)
+        local consumable = GEAR_CONSUMABLES[section]
+        if consumable and item_section_exists(consumable) then
+            give_item_section(consumable, 1)
+        end
     end
 
     local function resolve_profile_section(name)
@@ -373,9 +472,12 @@ function M.bind(api)
             local entries = resolve_spec_to_entries(spec)
             for entry_index = 1, #entries do
                 local entry = entries[entry_index]
-                local given = give_item_section(entry.section, entry.count)
+                local reward_section = contained_artifact_section(entry.section)
+                local given = give_item_section(reward_section, entry.count)
                 if given > 0 then
-                    summary[#summary + 1] = section_display_name(entry.section)
+                    give_weapon_supplies(entry)
+                    give_gear_consumable(entry.section)
+                    summary[#summary + 1] = section_display_name(reward_section)
                 end
             end
         end
@@ -405,8 +507,9 @@ function M.bind(api)
             return "artefact?"
         end
 
-        give_item_section(section, 1)
-        return section_display_name(section)
+        local reward_section = contained_artifact_section(section)
+        give_item_section(reward_section, 1)
+        return section_display_name(reward_section)
     end
 
     function loot.action_ammo_slots(event)
@@ -442,10 +545,6 @@ function M.bind(api)
         end
 
         local profile = config:get_composite(section_name)
-        local slots = normalize_slot_list(profile.slots_to_clear)
-        if #slots > 0 then
-            clear_equipped_slots(slots)
-        end
 
         local given_entries = {}
         for index = 1, #profile.entries do
@@ -459,12 +558,8 @@ function M.bind(api)
                         equip_item_to_slot(item, entry.slot, entry.active)
                     end
 
-                    if entry.ammo_boxes and entry.ammo_boxes > 0 then
-                        local ammo_section = weapon_ammo_section(entry.section)
-                        if ammo_section and item_section_exists(ammo_section) then
-                            give_item_section(ammo_section, entry.ammo_boxes)
-                        end
-                    end
+                    give_weapon_supplies(entry)
+                    give_gear_consumable(entry.section)
 
                     given_entries[#given_entries + 1] = entry
                 end

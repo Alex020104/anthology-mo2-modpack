@@ -718,6 +718,36 @@ local function restore_tanks_after_load()
 	return false
 end
 
+local suppress_tank_out_animation = false
+
+local function reset_tank_runtime_state(tank_id)
+	clear_tank_state(tank_id)
+	tank_air_protection = 0
+	tank_rad_protection = 0
+	tank_chem_protection = 0
+	tank_rad_reduction = 0
+	tank_toxic_reduction = 0
+	tank_toxic_degrade_mult = 1
+end
+
+local function move_active_tanks_to_ruck_for_filter()
+	local tank_on_belt = false
+	local tank_sec_for_anm
+
+	suppress_tank_out_animation = true
+	db.actor:iterate_belt(function(owner, tank)
+		if tank and oxt_tbl[tank:section()] then
+			tank_on_belt = true
+			tank_sec_for_anm = tank_sec_for_anm or tank:section()
+			reset_tank_runtime_state(tank:id())
+			db.actor:move_to_ruck(tank)
+		end
+	end)
+	suppress_tank_out_animation = false
+
+	return tank_on_belt, tank_sec_for_anm
+end
+
 local function install_filter_to_gear(gear, filter_item, animations_enabled)
 	if not (gear and filter_item) then
 		return false
@@ -735,15 +765,7 @@ local function install_filter_to_gear(gear, filter_item, animations_enabled)
 	alife_release(filter_item)
 	set_filter_state(gear_id, filter_state)
 
-	local tank_on_belt = false
-	local tank_sec_for_anm
-	db.actor:iterate_belt(function(owner, tank)
-		if oxt_tbl[tank:section()] then
-			tank_on_belt = true
-			tank_sec_for_anm = tank_sec_for_anm or tank:section()
-			db.actor:move_to_ruck(tank)
-		end
-	end)
+	local tank_on_belt, tank_sec_for_anm = move_active_tanks_to_ruck_for_filter()
 
 	if tank_on_belt then
 		play_ta_anm("off", "on", nil, tank_sec_for_anm)
@@ -1416,23 +1438,12 @@ function equip_filter()
 	local helmet_id = gear_id
 
 	local animations_enabled = toxic_air_mcm.get_config("filter_animation")
-	local t_on_belt = false
-	db.actor:iterate_belt( function(owner, tank)
-					if (oxt_tbl[tank:section()]) then
-						t_on_belt = true
-						db.actor:move_to_ruck(tank)
-					end
-				end)
 	local item = get_installed_filter_item()
 		
 	if item then
 		func_filters(item)
 		if not animations_enabled then
 			news_manager.send_tip(db.actor, gc("st_filter_off"), 0, nil, 5000)
-		end
-	elseif t_on_belt then
-		if not animations_enabled then
-			news_manager.send_tip(db.actor, gc("st_tank_off"), 0, nil, 5000)
 		end
 	else
 		if not gear then
@@ -1499,23 +1510,12 @@ function mod_equip_filter()
 	local helmet_id = gear_id
 
 	local animations_enabled = toxic_air_mcm.get_config("filter_animation")
-	local t_on_belt = false
-	db.actor:iterate_belt( function(owner, tank)
-					if (oxt_tbl[tank:section()]) then
-						t_on_belt = true
-						db.actor:move_to_ruck(tank)
-					end
-				end)
 	local item = get_installed_filter_item()
 		
 	if item then
 		func_filters(item)
 		if not animations_enabled then
 			news_manager.send_tip(db.actor, gc("st_filter_off"), 0, nil, 5000)
-		end
-	elseif t_on_belt then
-		if not animations_enabled then
-			news_manager.send_tip(db.actor, gc("st_tank_off"), 0, nil, 5000)
 		end
 	else
 		if not gear then
@@ -1952,15 +1952,11 @@ function tank_out_belt(tank)
 		return
 	end
 
-	clear_tank_state(tank:id())
-	tank_air_protection = 0
-	tank_rad_protection = 0
-	tank_chem_protection = 0
-	tank_rad_reduction = 0
-	tank_toxic_reduction = 0
-	tank_toxic_degrade_mult = 1
+	reset_tank_runtime_state(tank:id())
 
-	play_tank_anm("off", tank:section())		-- tank off animation
+	if not suppress_tank_out_animation then
+		play_tank_anm("off", tank:section())		-- tank off animation
+	end
 	
 --	printf("tank: %s OUT", tank:section())
 
@@ -2151,18 +2147,8 @@ function on_item_drag_dropped(give, take, slot_from, slot_to)
 	local item_id = item:id()
 	if item and get_filter_state(item_id) then
 		-- check tanks on belt
-		local tank_on_belt = false
-		local tank_sec_for_anm
-		
 		local animations_enabled = toxic_air_mcm.get_config("filter_animation")
-		
-		db.actor:iterate_belt( function(owner, tank)
-			if (oxt_tbl[tank:section()]) then
-				tank_on_belt = true
-				tank_sec_for_anm = tank_sec_for_anm or tank:section()
-				db.actor:move_to_ruck(tank)
-			end
-		end)
+		local tank_on_belt, tank_sec_for_anm = move_active_tanks_to_ruck_for_filter()
 
 	-- play tank "off" anm if tank removed and delay filter anm
 		if tank_on_belt then
@@ -2687,11 +2673,54 @@ function play_tank_anm(tank_typ, tank_sec)
 	end)
 end
 
+local function queue_lam2_ta_animation(tank_typ, filter_typ, filter_delay, tank_sec)
+	if not (lam2 and lam2.get_template_action_play_animation and lam2.add_action) then
+		return false
+	end
+
+	if tank_typ ~= nil then
+		local tank_hud = get_tank_anim_hud_section(tank_sec)
+		local tank_action = lam2.get_template_action_play_animation()
+		tank_action.tag = "toxic_air"
+		tank_action.name = "tank_" .. tank_typ
+		tank_action.sec = tank_hud
+		tank_action.anm = tank_typ == "off" and "anm_off" or "anm_on"
+		tank_action.cam = "cam_" .. tank_typ
+		tank_action.snd = "snd_" .. tank_typ
+		tank_action.hands = 2
+		tank_action.fallback_duration = tank_anm_length
+		lam2.add_action(tank_action)
+	end
+
+	if filter_typ ~= nil then
+		if filter_delay and filter_delay > 0 then
+			lam2.add_action(lam2.get_template_action_wait_for_seconds(filter_delay))
+		end
+
+		local filter_action = lam2.get_template_action_play_animation()
+		filter_action.tag = "toxic_air"
+		filter_action.name = "filter_" .. filter_typ
+		filter_action.sec = "ta_filter_" .. filter_typ .. "_hud"
+		filter_action.anm = "anm_filter_show"
+		filter_action.cam = "cam"
+		filter_action.snd = "snd"
+		filter_action.hands = 2
+		filter_action.fallback_duration = 2
+		lam2.add_action(filter_action)
+	end
+
+	return true
+end
+
 function play_ta_anm(tank_typ, filter_typ, filter_delay, tank_sec)		-- types: "on" / "off" / nil
 	if not toxic_air_mcm.get_config("filter_animation") then return end
 	if not allow_anm_play then return end
 	if actor_dying or not actor_is_alive() then return end
 	if not (db and db.actor and level) then return end
+
+	if queue_lam2_ta_animation(tank_typ, filter_typ, filter_delay, tank_sec) then
+		return
+	end
 
 --	printf("ANM PLAYING")
 
@@ -2707,11 +2736,6 @@ function play_ta_anm(tank_typ, filter_typ, filter_delay, tank_sec)		-- types: "o
 	if hide_hud_inventory then
 		hide_hud_inventory()
 	end
-
-	game.only_allow_movekeys(true)
-
-	hud_fov = ui_options and ui_options.get and ui_options.get("video/basic/hud_fov") or nil
-	exec_console_cmd("hud_fov " .. tostring(get_anim_hud_fov(tank_typ, filter_typ, tank_sec)))
 
 	cur_slot = db.actor:active_slot()
 
@@ -2733,7 +2757,21 @@ function play_ta_anm(tank_typ, filter_typ, filter_delay, tank_sec)		-- types: "o
 		end
 
 		attempts = attempts + 1
-		if db.actor:active_slot() == 0 and not db.actor:active_detector() then
+		if db.actor:active_slot() ~= 0 then
+			db.actor:activate_slot(0)
+		end
+
+		local active_detector = db.actor:active_detector()
+		if active_detector then
+			active_detector:switch_state(2)
+		end
+
+		local menu_closed = (not actor_menu) or (not actor_menu.get_last_mode) or actor_menu.get_last_mode() == 0
+		local hands_ready = db.actor:active_slot() == 0 and not db.actor:active_detector()
+		if menu_closed and hands_ready then
+			game.only_allow_movekeys(true)
+			hud_fov = ui_options and ui_options.get and ui_options.get("video/basic/hud_fov") or nil
+			exec_console_cmd("hud_fov " .. tostring(get_anim_hud_fov(tank_typ, filter_typ, tank_sec)))
 			local ok, err = pcall(play_anm, tank_typ, filter_typ, filter_delay, tank_sec)
 			if not ok then
 				log_anim_message("toxic_air | animation failed: %s", tostring(err))
@@ -2742,7 +2780,7 @@ function play_ta_anm(tank_typ, filter_typ, filter_delay, tank_sec)		-- types: "o
 			return true
 		end
 
-		if attempts >= 5 then
+		if attempts >= 20 then
 			log_anim_message("toxic_air | animation cancelled: actor did not switch to idle slot")
 			restore()
 			return true
@@ -2987,7 +3025,9 @@ function tank_degradation_and_protection(tank)
 
 	if helm_gasmask then
 		
-		if not actor_in_safe_zone() and not hold_breathe then
+		local rad_air_active = mcm_rad_air and radioactive_dmg > 0 and get_profile_rad_reduction(tank_entry) > 0
+		local toxic_air_active = mcm_toxic_underground and chemical_dmg > 0 and get_profile_toxic_reduction(tank_entry) > 0
+		if (rad_air_active or toxic_air_active) and not actor_in_safe_zone() and not hold_breathe then
 			local oxt_cond_hit = ini_sys:r_float_ex(tank_sec, "flow_rate") or 0
 			check_actor_move()
 			oxt_cond_hit = oxt_cond_hit * mcm_flow_rate_mult * move_mult * get_profile_toxic_degrade_mult(tank_entry)
