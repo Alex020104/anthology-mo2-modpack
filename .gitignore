@@ -41,3 +41,6 @@ meta.ini
 
 # SYS Hud Hard is launcher-managed as a complete mod, including textures.
 !\[HARD\] SYS Hud Hard/**
+
+# SYS Anthology fixes are launcher-managed as a complete mod.
+!\[FIX\] SYS ANTHOLOGY - Все мои фисы/**
