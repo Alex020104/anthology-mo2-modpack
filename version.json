@@ -1,10 +1,8 @@
 {
-  "version": "2026.05.31.3",
+  "version": "2026.06.01.1",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Новый баланс [BS] Attachments — Система аттачментов",
+  "notes": "Все Самое новое!",
   "removed_files": [
-    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/mod_system_m_cat.ltx",
-    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/mod_system_m_dog.ltx",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/_g.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/anthology_smooth_alife.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/bind_stalker.script",
