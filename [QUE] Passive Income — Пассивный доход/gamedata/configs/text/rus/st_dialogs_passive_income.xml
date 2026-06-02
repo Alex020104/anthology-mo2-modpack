@@ -282,6 +282,50 @@
         <text>Хорошо, я поделюсь с командой.</text>
     </string>
 
+    <!-- MONOLITH -->
+    <string id="passinc_ask_for_employment_monolith"> <!-- PLAYER -->
+        <text>Я здесь, чтобы служить Всемогущему Монолиту, брат.</text>
+    </string>
+    <string id="passinc_salary_preview_monolith"> <!-- NPC -->
+        <text>Ну надо же, ты наконец пришел в себя и понял, что другого пути нет? Иди и помоги распространить влияние Монолита. Ты будешь получать по %s рублей каждый день. Кроме того, получишь %s за каждое выполненное задание, %s за каждого убитого врага Монолита и %s за каждого мутанта. Держись рядом, докажи свою ценность, и будешь купаться в богатствах Монолита. Не выполнишь свою часть работы - наш договор закончится, как и твоя жизнь. Понял, брат?</text>
+    </string>
+    <string id="passinc_employment_confirm_monolith"> <!-- PLAYER -->
+        <text>За Монолит.</text>
+    </string>
+    <string id="passinc_ask_for_salary_monolith"> <!-- PLAYER -->
+        <text>Я пришел за своей платой.</text>
+    </string>
+    <string id="passinc_show_salary_monolith"> <!-- NPC -->
+        <text>С возвращением, брат. Ты добился отличных успехов, вот твоя плата:</text>
+    </string>
+    <string id="passinc_show_salary_bonus_monolith"> <!-- NPC -->
+        <text>Ты вернулся, и, надеюсь, принес много важных сведений? Я слышал о твоих делах в Зоне и сразу понял, что в тебе есть нечто особенное. Вот твоя награда: %s. За выдающуюся работу мы добавили особую премию. Продолжай в том же духе, брат.</text>
+    </string>
+    <string id="passinc_get_salary_monolith"> <!-- PLAYER -->
+        <text>Благодарю, брат. С наилучшими пожеланиями.</text>
+    </string>
+    <string id="passinc_not_share_salary_monolith"> <!-- PLAYER -->
+        <text>Благодарю, брат. С наилучшими пожеланиями.</text>
+    </string>
+    <string id="passinc_share_salary_monolith"> <!-- PLAYER -->
+        <text>Хорошо, я поделюсь богатством с братьями.</text>
+    </string>
+    <string id="passinc_ask_for_stop_employment_monolith"> <!-- PLAYER -->
+        <text>Я хочу расторгнуть наш договор, брат.</text>
+    </string>
+    <string id="passinc_stop_employment_available_monolith"> <!-- NPC -->
+        <text>Ты уверен, брат? Тебя объявят еретиком нашего дела. Но, думаю, мы сможем договориться и оставить тебя в живых еще ненадолго, нет?</text>
+    </string>
+    <string id="passinc_stop_employment_confirm_monolith"> <!-- PLAYER -->
+        <text>Мне просто нужно перевести дух, вот и все, брат.</text>
+    </string>
+    <string id="passinc_stop_employment_end_monolith"> <!-- NPC -->
+        <text>Справедливо. Если когда-нибудь передумаешь, мы примем тебя с распростертыми объятиями. Я не могу поклясться, что отныне ты будешь в безопасности, но место среди нас у тебя всегда будет.</text>
+    </string>
+    <string id="passinc_employment_back_monolith"> <!-- PLAYER -->
+        <text>Помутнение рассудка, прости, брат...</text>
+    </string>
+
     <!-- UNORG FACTIONS -->
 
     <!-- LONERS (Sidorovich and Butcher) -->
