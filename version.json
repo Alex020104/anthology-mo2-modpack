@@ -1,7 +1,7 @@
 {
-  "version": "2026.06.02.6",
+  "version": "2026.06.02.7",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Исправлен Busy Hands при сне у игроков без магазинов. HarukaSkillSystem больше не падает",
+  "notes": "Вернул ошибки бусихендс",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/_g.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/anthology_smooth_alife.script",
