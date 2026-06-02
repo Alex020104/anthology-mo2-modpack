@@ -1,6 +1,11 @@
 mag_loading_bonus = 0
 mag_unloading_bonus = 0
 
+if not (magazines and magazines.load_magazine and magazines.unload_magazine) then
+	printf("utjan_mag_skill: magazines module is not available, magazine skill hooks disabled")
+	return
+end
+
 base_load_magazine = magazines.load_magazine
 function magazines.load_magazine(magazine, capacity, delay)
 	local mag_data = magazines.get_mag_data(magazine:id())
