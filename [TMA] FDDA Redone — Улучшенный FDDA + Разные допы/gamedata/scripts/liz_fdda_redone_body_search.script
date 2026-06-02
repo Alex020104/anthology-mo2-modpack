@@ -69,14 +69,16 @@ if haru_skills then
     haru_skills.death_manager.create_release_item = nil
     -- set flag that scavenger skill should run when open inventory evnet fires
     local is_haruka_scav_skill_add = false
-    local haruka_scav_skill_npc = nil
+    local haruka_scav_skill_npc_id = nil
     function death_manager.create_release_item(npc)
         originalCRI(npc)
+        local ok_id, npc_id = pcall(function() return npc and npc:id() end)
+        npc_id = ok_id and npc_id or nil
         CreateTimeEvent("haruka_scavenger", "haruka_scavanger", 0.1, function()
             -- haru_skills.scavanger_effect(npc)
             lam2.log("[BODY SEARCH] haruka patch timed event called")
             is_haruka_scav_skill_add = true
-            haruka_scav_skill_npc = npc
+            haruka_scav_skill_npc_id = npc_id
             return true
         end)
     end
@@ -84,12 +86,24 @@ if haru_skills then
     -- subscribe to event and fire it if scavenger skill should run
     function haruka_scavanger_effect()
         if not is_haruka_scav_skill_add then return end
-        if not haruka_scav_skill_npc then return end
+        if not haruka_scav_skill_npc_id then return end
+        local inventory = ui_inventory.GUI
+        if not (inventory and inventory.mode == "loot" and inventory.npc_id == haruka_scav_skill_npc_id) then
+            is_haruka_scav_skill_add = false
+            haruka_scav_skill_npc_id = nil
+            return
+        end
+        local haruka_scav_skill_npc = level.object_by_id(haruka_scav_skill_npc_id)
+        if not haruka_scav_skill_npc then
+            is_haruka_scav_skill_add = false
+            haruka_scav_skill_npc_id = nil
+            return
+        end
         lam2.log("[BODY SEARCH] event on inventory open called")
         lam2.log("[BODY SEARCH] skill add variable: %s | npc variable: %s", is_haruka_scav_skill_add, haruka_scav_skill_npc and "true" or "nil")
         haru_skills.scavanger_effect(haruka_scav_skill_npc)
         is_haruka_scav_skill_add = false
-        haruka_scav_skill_npc = nil
+        haruka_scav_skill_npc_id = nil
     end
 end
 

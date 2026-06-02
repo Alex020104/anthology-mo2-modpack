@@ -53,6 +53,13 @@ function is_low_condition(id, max_condition)
 	return item:condition() < (max_condition / 100)
 end
 
+function set_condition(id, condition)
+	local item = get_object_by_id(id)
+	if not (item and item.set_condition) then return false end
+	item:set_condition(condition)
+	return true
+end
+
 update_mark = function(id, mark)
 	local has_spot = level.map_has_object_spot(id, mark) == 1
 	local se_obj = alife_object(id)

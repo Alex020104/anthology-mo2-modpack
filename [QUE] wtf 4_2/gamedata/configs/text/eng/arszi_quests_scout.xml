@@ -1,118 +1,118 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
 	<string id="igi_task_text_arszi_scout_name">
-		<text>Scout</text>
+		<text>Разведка</text>
 	</string>
 <!-- Cold -->
 <!-- mar_smart_terrain_base_stalker_leader_marsh_arszi_scout -->
 	<string id="igi_task_text_arszi_scout_mar_smart_terrain_base_stalker_leader_marsh_name">
-		<text>Scout the area in the Great Marsh.</text>
+		<text>Разведать местность на Великих Болотах.</text>
 	</string>
     <string id="igi_task_text_arszi_scout_mar_smart_terrain_base_stalker_leader_marsh_text">
-		<text>Cold has asked me to scout an area in the Great Marsh.</text>
+		<text>Холод попросил меня разведать район на Великих Болотах.</text>
 	</string>
     <string id="igi_task_text_arszi_scout_mar_smart_terrain_base_stalker_leader_marsh_about">
-		<text>Listen, I need someone who will do some reconnaissance. All you have to do is to check some of the derelict buildings in the marsh and report back to me. I repeat, this is a reconnaissance mission! Do not try to be a hero, I need you back alive! Doing some killing won't yield any extra rewards this time! If you find any kind of resistance, flee and report back to me! This information would help us a lot to plan our next moves and keep ourselfes safe from harm in the marsh.</text>
+		<text>Слушай, мне нужен человек для разведки. От тебя требуется только проверить несколько заброшенных зданий на болотах и вернуться с докладом. Повторяю: это разведывательная миссия! Не геройствуй, ты нужен мне живым. За убийства в этот раз дополнительной награды не будет. Если встретишь сопротивление, уходи и сразу докладывай. Эта информация сильно поможет нам спланировать дальнейшие действия и не лезть вслепую в опасные места.</text>
 	</string>
 	<string id="igi_task_text_arszi_scout_mar_smart_terrain_base_stalker_leader_marsh_finish">
-		<text>What did you find? I see ... Thank you for you work, here is your reward!</text>
+		<text>Ну что, что удалось выяснить? Понятно... Спасибо за работу, вот твоя награда!</text>
 	</string>
 <!-- Fanatic -->
 <!-- esc_2_12_stalker_fanat_arszi_scout -->
 	<string id="igi_task_text_arszi_scout_esc_2_12_stalker_fanat_name">
-		<text>Scout the area around Rookie Village</text>
+		<text>Разведать окрестности Деревни новичков</text>
 	</string>
     <string id="igi_task_text_arszi_scout_esc_2_12_stalker_fanat_text">
-		<text>Fanatic has asked me to scout the area around Rookie Village</text>
+		<text>Фанат попросил меня разведать окрестности Деревни новичков.</text>
 	</string>
     <string id="igi_task_text_arszi_scout_esc_2_12_stalker_fanat_about">
-		<text>I would have a request for you. It is not easy to keep Rookie Village safe. To the south we have a merry bunch, called the military. To the north we have bandits, mutants and occasionally mercenaries ... It would be a great help for us if you could scout the area to the north and report back about the situation there. Knowing where the bandits and mutants camp can prevent fatal encounters for the rookies. I do not ask you to encounter them, just look around, try to avoid harm and come back safely. Not for free, of course.</text>
+		<text>У меня к тебе просьба. Деревню новичков непросто держать в безопасности. На юге у нас веселая компания под названием военные. На севере - бандиты, мутанты, а иногда и наемники... Нам бы очень помогло, если бы ты разведал местность к северу и сообщил Сидоровичу, что там творится. Если знать, где расположились бандиты и мутанты, можно уберечь новичков от смертельных встреч. Я не прошу тебя вступать с ними в бой, просто осмотрись, постарайся не влипнуть в неприятности и возвращайся целым. Не бесплатно, конечно.</text>
 	</string>
 	<string id="igi_task_text_arszi_scout_esc_2_12_stalker_fanat_finish">
-		<text>Well, it could be worse ... Thank you, I will tell everyone which areas to avoid for some time. Here is your reward, as promised!</text>
+		<text>Ну, могло быть и хуже... Спасибо, я расскажу всем, каких мест пока лучше избегать. Вот твоя награда, как и обещал!</text>
 	</string>
 <!-- General Voronin -->
 <!-- bar_dolg_leader_arszi_scout -->
 	<string id="igi_task_text_arszi_scout_bar_dolg_leader_name">
-		<text>Scout the area around Rostok.</text>
+		<text>Разведать местность вокруг завода "Росток".</text>
 	</string>
     <string id="igi_task_text_arszi_scout_bar_dolg_leader_text">
-		<text>General Voronin has asked me to scout the area around Rostok.</text>
+		<text>Генерал Воронин попросил меня разведать местность вокруг завода "Росток".</text>
 	</string>
     <string id="igi_task_text_arszi_scout_bar_dolg_leader_about">
-		<text>Excellent, I have orders for you! We have to gather intel about the movement of the enemy and the mutants. I am interested in the areas of Rostok, Garbage, Army Warehouses and Truck Cemetery. You will be sent to one of these areas, and your mission is to scout the enemy and report back! You are allowed to open fire upon encounter, but try to avoid it, if possible. The information you are about to gather is crucial in the planning of future operations! You will be compensated upon your return.</text>
+		<text>Отлично, у меня для тебя приказ! Мы должны собрать информацию о передвижениях врага и мутантов. Меня интересуют районы завода "Росток", Свалки, Армейские Складов и Кладбища Техники. Тебя направят в один из этих районов, и твоя задача состоит в том, чтобы разведать врага и доложить о нем! Разрешается открывать огонь при столкновении, но постарайся избежать этого, если это возможно. Информация, которую ты собираешься собрать, имеет решающее значение при планировании будущих операций! По возвращении ты получишь компенсацию.</text>
 	</string>
 	<string id="igi_task_text_arszi_scout_bar_dolg_leader_finish">
-		<text>Well done, this information will advance our plans. Here is your reward.</text>
+		<text>Хорошая работа, эта информация продвинет наши планы. Вот твоя награда.</text>
 	</string>
 <!-- Sultan -->
 <!-- zat_b7_bandit_boss_sultan_arszi_scout -->
 	<string id="igi_task_text_arszi_scout_zat_b7_bandit_boss_sultan_name">
-		<text>Scout the area around the hideout.</text>
+		<text>Разведать местность вокруг укрытия.</text>
 	</string>
     <string id="igi_task_text_arszi_scout_zat_b7_bandit_boss_sultan_text">
-		<text>Sultan has asked me to scout the area around the hideout.</text>
+		<text>Султан попросил меня разведать местность вокруг укрытия.</text>
 	</string>
     <string id="igi_task_text_arszi_scout_zat_b7_bandit_boss_sultan_about">
-		<text>Ah, look what the cat dragged in! Listen to me stalker, if you want some money for your playboys and vodka I need you to do me a solid. Go out there and take a peak at the southern and western parts of Dark Valley. Look for any information you think might be useful and there might be a reward in it for you! Just watch your ass around that damn lab and those fucking military guys. Them and some loners have been a pain in the ass for me recently. Now go, and don't come back till you have something interesting to tell me!</text>
+		<text>О, смотрите, что кошка притащила! Послушай меня, сталкер, если тебе нужны деньги на журналы и водку, мне нужно, чтобы ты сделал мне добро. Идите туда и осмотри южную и западную части Темной Долины. Ищи любую информацию, которая, по твоему мнению, может быть полезной, и за нее, сможешь получить награду! Просто следи за своей задницей вокруг этой чертовой лаборатории и этих гребаных военных парней. Они и некоторые одиночки были занозой в заднице для меня в последнее время. А теперь иди и не возвращайся, пока не расскажешь мне что-нибудь интересное!</text>
 	</string>
 	<string id="igi_task_text_arszi_scout_zat_b7_bandit_boss_sultan_finish">
-		<text>Well well, look who's back in one piece. And what's that, you even have some interesting information for me? Good job. Here's your payment. Don't waste it all on drinks, you hear me? We need capable men like you to do more business!</text>
+		<text>Так, так, посмотрите, кто вернулся целым и невредимым. И что же, у тебя  даже есть для меня кое-какая интересная информация? Хорошая работа. Вот твоя оплата. Не трать все это на выпивку, слышишь? Нам нужны такие дееспособные люди, как ты, чтобы провернуть побольше дел!</text>
 	</string>
 <!-- Major Kuznetsov -->
 <!-- agr_smart_terrain_1_6_near_2_military_colonel_kovalski_arszi_scout -->
 	<string id="igi_task_text_arszi_scout_agr_smart_terrain_1_6_near_2_military_colonel_kovalski_name">
-		<text>Scout the area around the base.</text>
+		<text>Разведать местность вокруг военной базы.</text>
 	</string>
     <string id="igi_task_text_arszi_scout_agr_smart_terrain_1_6_near_2_military_colonel_kovalski_text">
-		<text>Major Kuznetsov has asked me to scout the area around the base.</text>
+		<text>Майор Кузнецов попросил меня разведать местность вокруг военной базы.</text>
 	</string>
     <string id="igi_task_text_arszi_scout_agr_smart_terrain_1_6_near_2_military_colonel_kovalski_about">
-		<text>I have orders for you, soldier! I want to know what is going on around here. You will be sent on a reconaissance mission to gather intel about the surrounding area of the base. I am interested in the area of Agroprom, the northern part of the Great Marsh and HQ requested us to aid the scientists too. Gather intel and report back, try to avoid confrontation, this is a reconnaissance, not an elimination mission!</text>
+		<text>У меня есть приказ для тебя, солдат! Я хочу знать, что здесь происходит. Ты будешь отправлен на разведывательную миссию, чтобы собрать информацию об окрестностях базы. Меня интересует район Агропром, северная часть Болота, и штаб попросили нас помочь ученым. Собери информацию и доложи, постарайся избежать столкновений, это разведывательная, а не боевая миссия!</text>
 	</string>
 	<string id="igi_task_text_arszi_scout_agr_smart_terrain_1_6_near_2_military_colonel_kovalski_finish">
-		<text>So this is the situation. Well done, soldier! Here is your reward and some extra.</text>
+		<text>Значит, такова ситуация. Молодец, солдат! Вот твоя награда и немного лишнего.</text>
 	</string>
 <!-- Lukash -->
 <!-- mil_smart_terrain_7_7_freedom_leader_stalker_arszi_scout -->
 	<string id="igi_task_text_arszi_scout_mil_smart_terrain_7_7_freedom_leader_stalker_name">
-		<text>Scout the area around the warehouse.</text>
+		<text>Разведать местность около Складов.</text>
 	</string>
     <string id="igi_task_text_arszi_scout_mil_smart_terrain_7_7_freedom_leader_stalker_text">
-		<text>Lukash has asked me to scout the area around the warehouse.</text>
+		<text>Лукаш попросил меня разведать местность возле Складов.</text>
 	</string>
     <string id="igi_task_text_arszi_scout_mil_smart_terrain_7_7_freedom_leader_stalker_about">
-		<text>I would like to ask you to help defending our home. There have been a concerning amount of Duty and Monolith sightings recently, not to talk about bloodsuckers lurking closer and closer with every day from that cursed village. We require information about the current situation in the Army Warehouses. Check the spots which I marked you on the map, and report back. Try to avoid fighting if possible. Come back safely!</text>
+		<text>Я хотел бы попросить вас помочь защитить наш дом. В последнее время было немало встреч с Долгом и Монолитом, не говоря уже о кровососах, которые с каждым днем все ближе и ближе подкрадываются из этой проклятой деревни. Нам нужна информация о текущей ситуации в Армейских Складах. Проверь места, отмеченные мной на карте, и доложи о них. Постарайся избежать боя, если это возможно. Возвращайся целым и невредимым!</text>
 	</string>
 	<string id="igi_task_text_arszi_scout_mil_smart_terrain_7_7_freedom_leader_stalker_finish">
-		<text>Feels like a calm before the storm. Thank you, we are grateful for your aid.</text>
+		<text>Похоже на затишье перед бурей. Спасибо, мы благодарны тебе за помощь.</text>
 	</string>
 <!-- Dushman -->
 <!-- cit_killers_merc_trader_stalker_arszi_scout -->
 	<string id="igi_task_text_arszi_scout_cit_killers_merc_trader_stalker_name">
-		<text>Scout the area around Dead City.</text>
+		<text>Разведать местность вокруг Мертвого Города.</text>
 	</string>
     <string id="igi_task_text_arszi_scout_cit_killers_merc_trader_stalker_text">
-		<text>Dushman has asked me to scout the area around Dead City.</text>
+		<text>Душман попросил меня разведать местность вокруг Мертвого Города.</text>
 	</string>
     <string id="igi_task_text_arszi_scout_cit_killers_merc_trader_stalker_about">
-		<text>Listen, I am looking for volunteers to scout areas which will be subjects for future operations. You will infiltrate the operational area, gather intel, and report back. Low level of risk, acceptable reward. Occasional encounters might happen. What do you say?</text>
+		<text>Послушай, я ищу добровольцев для разведки районов, которые станут объектами будущих операций. Ты проникнешь в оперативную зону, соберешь информацию и доложишь о результатах. Низкий уровень риска, приемлемое вознаграждение. Есть вероятность на кого-то наткнуться. Что ты на это скажешь?</text>
 	</string>
 	<string id="igi_task_text_arszi_scout_cit_killers_merc_trader_stalker_finish">
-		<text>Well done! Here is your reward and some extra.</text>
+		<text>Молодец! Вот твоя награда и кое-что вдобавок.</text>
 	</string>
 <!-- Krolik -->
 <!-- pri_monolith_monolith_trader_stalker_arszi_scout -->
 	<string id="igi_task_text_arszi_scout_pri_monolith_monolith_trader_stalker_name">
-		<text>Scout the area around Pripjat.</text>
+		<text>Разведать местность вокруг Припяти.</text>
 	</string>
     <string id="igi_task_text_arszi_scout_pri_monolith_monolith_trader_stalker_text">
-		<text>Krolik has asked me to scout the area around Pripjat.</text>
+		<text>Кролик попросил меня разведать местность вокруг  Припяти.</text>
 	</string>
     <string id="igi_task_text_arszi_scout_pri_monolith_monolith_trader_stalker_about">
-		<text>Brother! The infidels are drawing closer to the heart of our holy land every day! They are crawling like worms everywhere! I ask you to find the the stones under which they crawl and the holes where they hide. The moment we learn their location, we will strike in the name of the Monolith! Go brother, and return with the information safely! It is not a shame not to encounter them and not to die an honourable death, there are situations when you can cause them more misery when you are just watching and listening, preparing for the strike! May the Monolith watch over you on your mission!</text>
+		<text>Брат! Неверные каждый день приближаются к сердцу нашей святой земли! Они повсюду ползают, как черви! Я прошу тебя найти камни, под которыми они ползают, и дыры, в которых они прячутся. Как только мы узнаем их местонахождение, мы нанесем удар во имя Монолита! Иди, брат, и возвращайся с информацией в целости и сохранности! Не стыдно не встретить их и не умереть почетной смертью, бывают ситуации, когда ты можешь причинить им еще больше страданий, когда ты просто смотришь и слушаешь, готовясь к удару! Пусть Монолит присмотрит за тобой на твоем задании!</text>
 	</string>
 	<string id="igi_task_text_arszi_scout_pri_monolith_monolith_trader_stalker_finish">
-		<text>Praise the Monolith! You did a great service for your brothers!</text>
+		<text>Славься, Монолит! Ты оказал большую услугу своим братьям!</text>
 	</string>
 </string_table>

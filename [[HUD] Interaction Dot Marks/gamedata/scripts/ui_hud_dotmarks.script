@@ -4092,7 +4092,9 @@ function setup_sec_interact_prompt(mark)
 			args.func = help_wounded_stalker
 			args.func_valid = is_still_wounded
 		elseif mark.is_container then
-			if (not cfg.sec_enable_takeall_act) and not mark.always_show_sec then return end
+			-- Anthology: containers must be opened normally; no remote take-all/autoloot action.
+			if true then return end
+			--if (not cfg.sec_enable_takeall_act) and not mark.always_show_sec then return end
 			if mark.is_backpack then
 				_ = debug_dump and dump("Setting up pick_up_backpack secondary action")
 				-- Pick up backpack and everything in it
@@ -4938,10 +4940,7 @@ function update_mark_after_autoloot(id)
 	if not mark then return end
 	mark.autolooted = true
 	if mark.alt_interact then
-		mark.alt_interact.args.func = take_all_from_box
-		mark.alt_interact.args.name = string.format("%s %s", first_upper( gts("st_alti_takeall") ), mark.name)
-		mark.alt_interact:Prompt(mark.alt_interact.args.name)
-		mark.alt_interact:SetPrompt()
+		mark.alt_interact:ShowPrompt(false)
 	end
 end
 
@@ -5101,6 +5100,7 @@ end
 --- @param mark utils_catspaw_hudmarks.UIHUDMarker
 --- @param skip_anim_check boolean
 function trigger_autoloot(id, mark, skip_anim_check)
+	if true then return true end
 	local box = get_game_object(id)
 	if not box then return true end
 	vl("[%s] trigger_autoloot | %s | skip_anim_check %s", time_global(), nameid(box), not not skip_anim_check)
@@ -5143,6 +5143,7 @@ end
 --- @param mark utils_catspaw_hudmarks.UIHUDMarker
 --- @param skip_anim_check boolean
 function take_all_from_box(id, mark, skip_anim_check)
+	if true then return true end
 	local box = id and get_game_object(id)
 	vl("take_all_from_box | %s | skip_anim_check %s", nameid(box), not not skip_anim_check)
 	if not box then return end
@@ -5179,9 +5180,7 @@ function pick_up_backpack(id)
 		return
 	end
 
-	if not obj:is_inv_box_empty() then
-		take_all_from_box(id)
-	end
+	if not obj:is_inv_box_empty() then return end
 	
 	local mark 	= cfg.markers[id]
 	local func 	= (mark and mark.func_pickup) and (
