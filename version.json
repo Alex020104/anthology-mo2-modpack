@@ -1,12 +1,13 @@
 {
-  "version": "2026.06.02.4",
+  "version": "2026.06.02.5",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Обновление и правки от Меня",
+  "notes": "удалил field_mag_loading",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/_g.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/anthology_smooth_alife.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/bind_stalker.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/dialogs_zaton.script",
+    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/field_mag_loading.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/mon_sleep.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/rx_knife.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/sim_offline_combat.script",
