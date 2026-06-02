@@ -1,7 +1,7 @@
 {
-  "version": "2026.06.02.1",
+  "version": "2026.06.02.2",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Причина: Ammo Maker на npc_on_net_spawn",
+  "notes": "Армейский котелок",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/_g.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/anthology_smooth_alife.script",
