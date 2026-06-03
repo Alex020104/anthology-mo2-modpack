@@ -118,7 +118,9 @@ end
 function npc_on_net_spawn(npc)
     if not (npc and IsStalker and IsStalker(npc)) then return end
 
-    CreateTimeEvent("downgrade_ammos",npc:id(), 0,function()
+    local npc_id = npc:id()
+    CreateTimeEvent("downgrade_ammos",npc_id, 0,function()
+        local npc = level.object_by_id(npc_id)
         if not (npc and IsStalker and IsStalker(npc)) then return true end
 
         npc:iterate_inventory(function(t, item)
