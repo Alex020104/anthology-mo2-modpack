@@ -152,7 +152,17 @@ local function patch_death_manager()
 			local npc_id = npc and npc:id()
 			local rank = npc and ranks and ranks.get_obj_rank_name(npc)
 
-			if (npc_id and death_grenade_by_npc[npc_id]) or not should_keep_grenade(rank) then
+			if npc_id and death_grenade_by_npc[npc_id] then
+				release_item(item)
+				return
+			end
+
+			if npc_id and loadout_grenade_by_npc[npc_id] then
+				death_grenade_by_npc[npc_id] = true
+				return
+			end
+
+			if not should_keep_grenade(rank) then
 				release_item(item)
 				return
 			end

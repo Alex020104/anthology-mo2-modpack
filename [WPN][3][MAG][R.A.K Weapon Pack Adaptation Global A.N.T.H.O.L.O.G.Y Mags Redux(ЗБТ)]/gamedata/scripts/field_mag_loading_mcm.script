@@ -1,0 +1,32 @@
+-- Field Mag Loading MCM settings
+function on_mcm_load()
+    local options = {
+        id = "field_mag_loading",
+        sh = true,
+        gr = {
+            {id = "title", type = "slide", link = "ui_options_slider_player", text = "ui_mcm_field_mag_loading_title", size = {512, 50}, spacing = 20},
+            
+            -- Loading/Unloading HUD
+            {id = "load_hud_title", type = "desc", text = "ui_mcm_field_mag_loading_load_hud_title", clr = {255, 200, 200, 200}},
+            {id = "enable_load_hud", type = "check", val = 1, def = true},
+
+            -- Direct Loading Feature
+            {id = "line_load_to_direct", type = "line"},
+            {id = "direct_load_title", type = "desc", text = "ui_mcm_field_mag_loading_direct_load_title", clr = {255, 200, 200, 200}},
+            {id = "enable_direct_load", type = "check", val = 1, def = true},
+            {id = "keybind_direct_load", type = "key_bind", val = 2, def = DIK_keys.DIK_LBRACKET},
+            {id = "modifier_direct_load", type = "list", val = 2, def = 0, content = {{0, "mcm_kb_mod_none"}, {1, "mcm_kb_mod_shift"}, {2, "mcm_kb_mod_ctrl"}, {3, "mcm_kb_mod_alt"}}},
+            
+            -- Visible Stores HUD Feature
+            {id = "line", type = "line"},
+            {id = "check_hud_title", type = "desc", text = "ui_mcm_field_mag_loading_check_hud_title", clr = {255, 200, 200, 200}},
+            {id = "enable_check_hud", type = "check", val = 1, def = true},
+            {id = "keybind_check_hud", type = "key_bind", val = 2, def = DIK_keys.DIK_RBRACKET},
+            {id = "modifier_check_hud", type = "list", val = 2, def = 0, content = {{0, "mcm_kb_mod_none"}, {1, "mcm_kb_mod_shift"}, {2, "mcm_kb_mod_ctrl"}, {3, "mcm_kb_mod_alt"}}},
+            {id = "check_hud_duration", type = "track", val = 2, min = 1, max = 10, step = 1, def = 3},
+            {id = "check_hud_x_offset", type = "track", val = 2, min = -500, max = 500, step = 1, def = 0},
+            {id = "check_hud_y_offset", type = "track", val = 2, min = -500, max = 500, step = 1, def = 0},
+        }
+    }
+    return options
+end

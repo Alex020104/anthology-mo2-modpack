@@ -11,6 +11,12 @@
 # Managed manually outside the launcher update archive.
 *R.A.K Weapon Pack Adaptation Global A.N.T.H.O.L.O.G.Y*/**
 
+# Launcher-managed scripts for R.A.K Mag Redux.
+!\[WPN\]\[3\]\[MAG\]\[R.A.K Weapon Pack Adaptation Global A.N.T.H.O.L.O.G.Y Mags Redux(ЗБТ)\]/
+!\[WPN\]\[3\]\[MAG\]\[R.A.K Weapon Pack Adaptation Global A.N.T.H.O.L.O.G.Y Mags Redux(ЗБТ)\]/gamedata/
+!\[WPN\]\[3\]\[MAG\]\[R.A.K Weapon Pack Adaptation Global A.N.T.H.O.L.O.G.Y Mags Redux(ЗБТ)\]/gamedata/scripts/
+!\[WPN\]\[3\]\[MAG\]\[R.A.K Weapon Pack Adaptation Global A.N.T.H.O.L.O.G.Y Mags Redux(ЗБТ)\]/gamedata/scripts/**
+
 # Never track MO2/runtime/generated or large assets.
 *.mohidden
 meta.ini
@@ -38,6 +44,11 @@ meta.ini
 *.mp3
 *.avi
 *.mp4
+
+# Launcher-managed UI texture for HoC outfit/backpack icons.
+!\[MOD\] HoC Icons Outfit+backpack/gamedata/textures/
+!\[MOD\] HoC Icons Outfit+backpack/gamedata/textures/ui/
+!\[MOD\] HoC Icons Outfit+backpack/gamedata/textures/ui/ui_stalker2_armors.dds
 
 # SYS Hud Hard is launcher-managed as a complete mod, including textures.
 !\[HARD\] SYS Hud Hard/**

@@ -1,0 +1,123 @@
+local knife_wear = {
+    wpn_knife   = 0.04,
+    wpn_knife2  = 0.03,
+    wpn_knife3  = 0.02,
+    wpn_knife4  = 0.015,
+    wpn_knife5  = 0.01,
+    wpn_knife1  = 0.04,
+    wpn_knife6  = 0.01,
+    wpn_knife7  = 0.01,
+    wpn_knife8  = 0.01,
+    wpn_knife9  = 0.01,
+    wpn_knife10 = 0.01,
+    wpn_knife11 = 0.01,
+    wpn_knife12 = 0.01,
+    wpn_knife13 = 0.01,
+    wpn_knife14 = 0.01,
+    wpn_knife15 = 0.01,
+    wpn_knife16 = 0.01,
+    wpn_knife17 = 0.01,
+    wpn_knife18 = 0.01,
+    wpn_knife19 = 0.01,
+    wpn_knife20 = 0.01,
+    wpn_knife21 = 0.01,
+    wpn_knife22 = 0.01,
+    wpn_knife23 = 0.01,
+    wpn_knife24 = 0.01,
+    wpn_knife25 = 0.01,
+    wpn_knife26 = 0.01,
+    wpn_knife27 = 0.01,
+    wpn_knife28 = 0.01,
+    wpn_knife110= 0.01,
+    wpn_knife220= 0.01,
+    wpn_knife330= 0.01,
+    wpn_knife440= 0.015,
+    wpn_knife550= 0.01,
+    wpn_knife660= 0.01,
+    wpn_knife770= 0.01,
+    wpn_knife880= 0.01,
+    wpn_knife990= 0.01,
+}
+
+local strong_monsters = {
+    boar = true,
+    chimera = true,
+    gigant = true,
+}
+
+local heavy_skin_knives = {
+    wpn_knife3   = true,
+    wpn_knife4   = true,
+    wpn_knife5   = true,
+    wpn_knife6   = true,
+    wpn_knife7   = true,
+    wpn_knife8   = true,
+    wpn_knife9   = true,
+    wpn_knife440 = true,
+    wpn_knife550 = true,
+    wpn_knife660 = true,
+    wpn_knife770 = true,
+    wpn_knife880 = true,
+    wpn_knife990 = true,
+}
+
+local can_loot_patched = false
+local original_can_loot
+
+local function is_strong_monster(section)
+    if not section then
+        return false
+    end
+
+    for name in pairs(strong_monsters) do
+        if section:match(name) then
+            return true
+        end
+    end
+
+    return false
+end
+
+local function patch_can_loot()
+    if can_loot_patched or not (item_knife and item_knife.can_loot) then
+        return
+    end
+
+    original_can_loot = item_knife.can_loot
+
+    item_knife.can_loot = function(monster)
+        if is_strong_monster(monster) and db.actor then
+            local obj = db.actor:active_item()
+            local section = obj and obj:section()
+
+            if section and not heavy_skin_knives[section] then
+                return false
+            end
+        end
+
+        return original_can_loot(monster)
+    end
+
+    can_loot_patched = true
+end
+
+local function patch_knife_table()
+    if not item_knife then
+        return
+    end
+
+    if type(item_knife.knifes) ~= "table" then
+        item_knife.knifes = {}
+    end
+
+    for section, wear in pairs(knife_wear) do
+        item_knife.knifes[section] = item_knife.knifes[section] or wear
+    end
+
+    patch_can_loot()
+end
+
+function on_game_start()
+    patch_knife_table()
+    RegisterScriptCallback("actor_on_first_update", patch_knife_table)
+end

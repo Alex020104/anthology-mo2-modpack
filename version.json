@@ -1,7 +1,7 @@
 {
-  "version": "2026.06.03.1",
+  "version": "2026.06.03.2",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Ammo Maker: delayed event держал старый npc userdata после сна, а при пробуждении таймер трогал уже уничтоженный объект. Фикс через npc_id -> level.object_by_id(npc_id) Починен busy Hends",
+  "notes": "Очень много правок От SYS 03.06.2026",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/_g.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/anthology_smooth_alife.script",
