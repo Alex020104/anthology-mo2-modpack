@@ -1,7 +1,7 @@
 {
-  "version": "2026.06.04.1",
+  "version": "2026.06.04.10",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Теперь после сна не будет старого удара 65534 + switch_distance 2000 сразу, но мир все равно будет просыпаться ступенчато",
+  "notes": "Обновление MO2 модпака.",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/_g.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/bind_stalker.script",
