@@ -227,7 +227,8 @@ IgiTask = {
 			Igi.quest_status(id) -- run once to setup current target
 			self.current_title = Igi.quest_text(id, "name")
 			self.current_descr = Igi.quest_text(id, "text")
-			self.current_target = Igi.quest_target(id)[1]
+			local targets = Igi.quest_target(id) or {}
+			self.current_target = targets[1]
 		end, self.id)
 		if not ok then
 			on_task_crashed(err)
@@ -296,6 +297,7 @@ IgiTask = {
 			on_task_crashed(t_targets, self.id)
 			return
 		end
+		t_targets = t_targets or {}
 		if (self.current_target ~= t_targets[1]) then
 			task_updated = true
 			self.current_target = t_targets[1]

@@ -1,7 +1,7 @@
 {
   "version": "2026.06.05.2",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Обновление MO2 модпака.",
+  "notes": "igi_ara.script: ARA больше не цепляется к assault-задачам и не валит квест, если её squad-наблюдатель",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/_g.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/bind_stalker.script",
