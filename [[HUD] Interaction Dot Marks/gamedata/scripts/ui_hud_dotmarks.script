@@ -116,6 +116,7 @@ printf("Interaction Dot Marks %s (rel %s) began initialization at %s %s", script
 local get_mcm           = get_mcm_or_default_val
 local nameid            = obj_name_and_id
 local get_argb          = utils_catspaw_mapspots.get_argb
+local valid_id          = utils_catspaw_common.valid_id
 local is_already_target = utils_catspaw_hudmarks.is_object_already_targeted
 local get_task_target   = utils_catspaw_taskmonitor and utils_catspaw_taskmonitor.get_active_target_id or function() end
 local tuthooks          = modxml_tutorial_hooks
@@ -124,6 +125,12 @@ local is_junk           = zzz_rax_sortingplus_mcm and zzz_rax_sortingplus_mcm.is
 local fdda_pickup       = z_fdda_pickup_intercept_dotmarks
 local fddar_bodysearch  = liz_fdda_redone_body_search
 local gts               = game.translate_string
+
+local function safe_alife_object(id)
+	if not valid_id(id) then return end
+	local sim = alife()
+	return sim and sim.object_by_id and sim:object_by_id(id) or nil
+end
 local psk       		= utils_data.parse_string_keys
 -- ======================================================================
 valid_mcm_version       = dotmarks_mcm.valid_mcm_version
@@ -649,7 +656,7 @@ function update_mark_stalker_health(mark, obj)
 		local last_squad = mark.squad_id
 		mark.squad_id = obj.group_id
 		if mark.squad_id ~= last_squad then
-			local squad = mark.squad_id and alife_object(mark.squad_id)
+			local squad = safe_alife_object(mark.squad_id)
 			mark.commander_id = squad and squad:commander_id()
 		end
 
@@ -705,7 +712,8 @@ function utils_catspaw_hudmarks.UIHUDMarker:ActiveSwap(state)
 	local _ = debug_dump and dump("[%s][UIHUDMarker:ActiveSwap] for %s: %s", time_global(), self.name or self.tutorial, state)
 	if self.destroyed then return end
 	if not (self.active_swap or self.task_swap) then return end
-	local is_task_target= match_squad_or_leader(self.args.id, cfg.active_task_target_id) and cfg.enable_icon_tasks
+	local mark_id       = self.args and self.args.id or self.id
+	local is_task_target= cfg.enable_icon_tasks and match_squad_or_leader(mark_id, cfg.active_task_target_id) or false
 	local is_storyline  = to_bool(utils_catspaw_taskmonitor and utils_catspaw_taskmonitor.is_task_storyline())
 	local last_swap     = self.task_swap or self.active_swap
 	self.task_swap      = is_task_target and dup_table(is_storyline and cfg.swap_task_pri or cfg.swap_task_sec) or nil
@@ -1626,8 +1634,9 @@ end
 --- @param id number
 --- @param comp_id number
 function match_squad_or_leader(id, comp_id)
+	if not (valid_id(id) and valid_id(comp_id)) then return false end
 	if (id == comp_id) then return true end
-	local se_obj    = comp_id and alife_object(comp_id)
+	local se_obj    = safe_alife_object(comp_id)
 	local cls       = se_obj and se_obj:clsid()
 	local is_squad  = cls and (cls == clsid.online_offline_group_s) or (cls == clsid.online_offline_group)
 	if is_squad then

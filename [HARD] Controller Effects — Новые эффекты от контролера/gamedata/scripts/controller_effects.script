@@ -2,9 +2,9 @@
 ---------------------------------------------- Change these ----------------------------------------------
 
 local shooting_enabled = true		-- random weapon shooting
-local shoot_min_duration = 1		-- random weapon shooting minimum duration
-local shoot_max_duration = 2		-- random weapon shooting maximum duration
-local shootin_cooldown = 60		-- minimum cooldown between random weapon bursts
+local shoot_min_duration = 0.3		-- random weapon shooting minimum duration
+local shoot_max_duration = 1		-- random weapon shooting maximum duration
+local shootin_cooldown = 120		-- minimum cooldown between random weapon bursts
 
 local camera_shaking_enabled = false		-- camera shaking (drunk animation)
 
@@ -30,7 +30,7 @@ local custom_effect_values = {
 
 	camera_shaking_chance = { min_dist = 100, min_dist_chance = 0.01, max_dist = 10, max_dist_chance = 0.3},
 
-	shooting_chance = { min_dist = 100, min_dist_chance = 0.01, max_dist = 5, max_dist_chance = 0.1},
+	shooting_chance = { min_dist = 50, min_dist_chance = 0.01, max_dist = 5, max_dist_chance = 0.1},
 
 }
 

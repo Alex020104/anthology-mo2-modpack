@@ -1469,6 +1469,41 @@ function remove_special_task_squad(actor,npc,p)
 	remove_squad(actor,npc,p)
 end
 
+function remove_special_task_squad_after_dialog(actor,npc,p)
+	local squad_id = p and p[1]
+	if squad_id == nil then
+		printf("Wrong squad identificator [NIL] in remove_special_task_squad_after_dialog function")
+		return
+	end
+
+	local delay = tonumber(p[2]) or 5
+	local event_id = "remove_special_task_squad_after_dialog"
+	local action_id = tostring(squad_id)
+	local started_at = nil
+
+	local function wait_and_remove()
+		if has_alife_info("dialog_wnd_open") then
+			started_at = nil
+			return false
+		end
+
+		if started_at == nil then
+			started_at = time_global()
+			return false
+		end
+
+		if (time_global() - started_at) < delay * 1000 then
+			return false
+		end
+
+		remove_special_task_squad(nil, nil, {squad_id})
+		return true
+	end
+
+	RemoveTimeEvent(event_id, action_id)
+	CreateTimeEvent(event_id, action_id, 0.1, wait_and_remove)
+end
+
 function reset_task_target_anomaly(actor,npc,p)
 	save_var(db.actor,"task_target_anomaly",nil)
 	if _G.WARFARE then
@@ -3447,8 +3482,30 @@ function remove_squad(actor, obj, p)
 	local story_id = p[1]
 	if story_id == nil then
 		printf("Wrong squad identificator [NIL] in remove_squad function")
+		return
 	end
+
+	local function is_squad(se_obj)
+		return se_obj and se_obj.clsid and (se_obj:clsid() == clsid.online_offline_group_s or se_obj:clsid() == clsid.online_offline_group)
+	end
+
 	local squad = get_story_squad(story_id)
+	if squad and not is_squad(squad) then
+		printf("Wrong squad identificator [%s]. story object [%s] is not a squad", tostring(story_id), squad:name())
+		squad = nil
+	end
+
+	if squad == nil then
+		local sim = alife()
+		for id = 1, 65534 do
+			local se_obj = sim:object(id)
+			if is_squad(se_obj) and se_obj:section_name() == story_id then
+				squad = se_obj
+				break
+			end
+		end
+	end
+
 	if squad == nil then
 		assert("Wrong squad identificator [%s]. squad doesnt exist", tostring(story_id))
 		return
