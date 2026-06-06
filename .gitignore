@@ -53,5 +53,8 @@ meta.ini
 # SYS Hud Hard is launcher-managed as a complete mod, including textures.
 !\[HARD\] SYS Hud Hard/**
 
+# R.A.K Simple Patch is launcher-managed as a complete add-on mod.
+!\[WPN\]\[100\]\[SPL\]\[R.A.K. Weapon Pack Adaptation Global Simple Patch\]/**
+
 # SYS Anthology fixes are launcher-managed as a complete mod.
 !\[FIX\] SYS ANTHOLOGY - Все мои фисы/**
