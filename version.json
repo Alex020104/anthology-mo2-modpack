@@ -1,7 +1,7 @@
 {
-  "version": "2026.06.06.5",
+  "version": "2026.06.06.6",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Принудительное обновление MO2: SYS Hud Hard texture/scripts refresh.",
+  "notes": "Обновление MO2: полный refresh SYS fixes configs/scripts/textures.",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/misc/squad_descr/squad_descr_soc_yantar.ltx",
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/misc/task/task_manager_anthology/tm_soc_bar.ltx",
