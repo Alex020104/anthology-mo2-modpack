@@ -24,6 +24,28 @@ local function time_delta()
 	return math.min(50, device().time_delta)
 end
 
+local function safe_number(value, fallback, min_value, max_value)
+	local n = tonumber(value)
+	if not n or n ~= n then
+		n = fallback
+	end
+	if min_value and n < min_value then
+		n = min_value
+	end
+	if max_value and n > max_value then
+		n = max_value
+	end
+	return n
+end
+
+local function safe_hud_fov(value, fallback)
+	return safe_number(value, fallback or 0.65, 0.1, 1)
+end
+
+local function safe_scene_fov(value, fallback)
+	return safe_number(value, fallback or 55, 5, 140)
+end
+
 -- LUT Lookup
 local function array_keys(t, sorted, sort_func)
 	local res = {}
@@ -238,13 +260,14 @@ function GUI_on_show(name)
 		saved_npc = GetTalkingNpc()
 		saved_dist = saved_npc and math.max(1, device().cam_pos:distance_to(utils_obj.safe_bone_pos(saved_npc, "bip01_head")) - 0.2)
 		if settings.zoom_fov_enabled then
-			saved_fov = zoom_fov_active and saved_fov or get_console_cmd(2, "fov")
-			local new_fov = math.min(settings.min_zoom_fov, saved_fov / settings.zoom_fov_modifier)
+			saved_fov = safe_scene_fov(zoom_fov_active and saved_fov or get_console_cmd(2, "fov"), 55)
+			local new_fov = math.min(safe_scene_fov(settings.min_zoom_fov, 55), saved_fov / safe_number(settings.zoom_fov_modifier, 1.3, 0.1, 10))
 			if saved_dist and settings.distance_fov then
 				new_fov = math.atan(math.tan(new_fov * (0.5 * math.pi / 180)) / saved_dist) / (0.5 * math.pi / 180)
 			end
-			saved_hud_fov = zoom_fov_active and saved_hud_fov or get_console_cmd(2, "hud_fov")
-			local new_hud_fov = saved_hud_fov / (saved_fov / new_fov)
+			new_fov = safe_scene_fov(new_fov, saved_fov)
+			saved_hud_fov = safe_hud_fov(zoom_fov_active and saved_hud_fov or get_console_cmd(2, "hud_fov"), 0.65)
+			local new_hud_fov = safe_hud_fov(saved_hud_fov / (saved_fov / new_fov), saved_hud_fov)
 			start_fov(saved_fov, new_fov, saved_hud_fov, new_hud_fov, true)
 		end
 		if settings.track_npc then
@@ -276,10 +299,10 @@ function change_fov()
 end
 
 function start_fov(fov_from, fov_to, fov_hud_from, fov_hud_to, active_always)
-	zoom_fov_from = fov_from or get_console_cmd(2, "fov")
-	zoom_fov_to = fov_to
-	zoom_hud_fov_from = fov_hud_from or get_console_cmd(2, "hud_fov")
-	zoom_hud_fov_to = fov_hud_to
+	zoom_fov_from = safe_scene_fov(fov_from or get_console_cmd(2, "fov"), 55)
+	zoom_fov_to = safe_scene_fov(fov_to, zoom_fov_from)
+	zoom_hud_fov_from = safe_hud_fov(fov_hud_from or get_console_cmd(2, "hud_fov"), 0.65)
+	zoom_hud_fov_to = safe_hud_fov(fov_hud_to, zoom_hud_fov_from)
 	zoom_fov_active = true
 	zoom_fov_active_always = active_always
 	RegisterScriptCallback("actor_on_update", change_fov)
@@ -297,8 +320,8 @@ function reset_fov()
 	stop_fov()
 	if not saved_fov then return end
 
-	exec_console_cmd("fov " .. saved_fov)
-	exec_console_cmd("hud_fov " .. saved_hud_fov)
+	exec_console_cmd("fov " .. safe_scene_fov(saved_fov, 55))
+	exec_console_cmd("hud_fov " .. safe_hud_fov(saved_hud_fov, 0.65))
 	saved_fov = nil
 	saved_hud_fov = nil
 end
