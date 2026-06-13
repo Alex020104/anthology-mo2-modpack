@@ -1,5 +1,5 @@
 {
-  "version": "2026.06.07.5",
+  "version": "2026.06.13.2",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
   "notes": "Обновление MO2 модпака.",
   "removed_files": [
@@ -13,6 +13,7 @@
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/bind_stalker.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/dialogs_zaton.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/field_mag_loading.script",
+    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/guaranteed_loot.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/mon_sleep.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/move_mgr.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/rx_knife.script",
@@ -21,22 +22,12 @@
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/smart_terrain.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/sr_crow_spawner.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/ui_options.script",
+    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/utils_obj.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/xr_conditions.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/xr_effects.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/xr_zones.script",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_01.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_02.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_03.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_04.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_05.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_06.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_07.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_08.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_09.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_10.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_test_marker.ltx",
+    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/zzz_loadout_grenade_chance.script",
     "[GAM] Grok's Stash Overhaul — Тайники по наводке/gamedata/scripts/axr_npc_vs_box.script",
-    "[GAM] Pinup Collect — Коллекция журналов/gamedata/scripts/item_pinup_collect.script.codex_backup_20260501_pinup_texture",
     "[HARD] SYS Hud Hard/gamedata/configs/fonts.ltx",
     "[HARD] SYS Hud Hard/gamedata/configs/localization.ltx",
     "[HARD] SYS Hud Hard/gamedata/configs/mcm_key_localization.ltx",
@@ -209,7 +200,9 @@
     "[HARD] SYS Hud Hard/gamedata/configs/unlocalizers/unlocalize_actor_status.ltx",
     "[HARD] SYS Hud Hard/gamedata/configs/unlocalizers/unlocalize_soulslike_original_init_controls.ltx",
     "[HARD] SYS tactic_compass/gamedata/scripts/bind_stalker.script",
-    "[HARD] System of Toxins — Химическая зависимость от лекарств/gamedata/scripts/system_of_toxins.script.codex_backup_20260502",
-    "[QUE] Western Goods — Западные товары и квест/gamedata/scripts/western_goods_ui_readable.script.codex_backup_20260501_pinup_readable"
+    "Inventory_Antifreeze/gamedata/configs/text/eng/st_demonized_utils_ui_uicellcontainer_optimize.xml",
+    "Inventory_Antifreeze/gamedata/configs/text/rus/st_demonized_utils_ui_uicellcontainer_optimize.xml",
+    "Inventory_Antifreeze/gamedata/configs/ui/ui_inventory_antifreeze.xml",
+    "Inventory_Antifreeze/gamedata/scripts/demonized_utils_ui_uicellcontainer_optimize_mcm.script"
   ]
 }

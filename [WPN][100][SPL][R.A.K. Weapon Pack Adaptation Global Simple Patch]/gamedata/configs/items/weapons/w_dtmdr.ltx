@@ -1,0 +1,3212 @@
+[wpn_dtmdr]:identity_immunities,weapon_probability,default_weapon_params,wpn_famas_sounds
+
+		GroupControlSection     = spawn_group
+		$spawn               	= "weapons\dtmdr"      ; option for Level Editor
+		$npc                    = on                                ; option for Level Editor
+		$prefetch               = 8
+		scheduled               = off                                ; option for ALife Simulator
+		cform                   = skeleton
+		parent_section          = wpn_dtmdr
+		
+		class                   = WP_AK74
+		slot                    = 2
+		animation_slot          = 8                ; type of the animation that will be used
+		ef_main_weapon_type     = 2
+		ef_weapon_type          = 6
+		default_to_ruck         = false
+		sprint_allowed       	= true
+		
+		hud_fov                                  = 0.65
+
+;___________________________ 3DSS Parameters ___________________________________
+ 
+        lewd_lens_hide_enabled       = true	
+        lewd_lens_hide_bone          = lens
+        lewd_lens_hide_delays        = 0.1,0
+        lewd_lens_hide_aim_mode      = true, false, false
+;_______________________________________________________________________________
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 18
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 93
+        ;inv_grid_y                               = 16
+		
+        ;inv_grid_scale     = 2
+			
+;___________________________ Description ___________________________________
+
+		inv_name          		= MDR
+		inv_name_short       	= MDR
+		description          	= MDR_descr
+;____________________________________________________________________
+        
+		visual                  = dynamics\weapons\wpn_dtmdr\wpn_dtmdr.ogf
+		hud                     = wpn_dtmdr_hud
+		
+		kind                                     = w_rifle
+		inv_weight                               = 3.77
+		cost                                     = 33880
+		repair_type                              = rifle_5
+		weapon_class                             = assault_rifle
+
+        orientation                      = -1.588342, -10.766377, 0
+        position                         = -0.022419, 0.105716, -0.199753
+
+		fire_point              = 0.0,0.186,0.435
+		fire_point2             = 0.0, 0.106, 0.468
+
+;___________________________ Particles ___________________________________
+
+		flame_particles                          = weapons\generic_weapon05
+		smoke_particles                          = weapons\generic_shoot_00
+		grenade_flame_particles                  = weapons\generic_weapon01
+
+		shell_point             = -0.020000,0.167000,0.082000
+		shell_dir               = 0.0, 0.0, 0.4
+		shell_particles         =
+;____________________________________________________________________
+
+        strap_orientation                = -7.140198, -8.038435, 100
+        strap_position                   = -0.20895, -0.125826, -0.017166
+		strap_bone0             = bip01_spine2
+		strap_bone1             = bip01_spine1
+
+		startup_ammo            = 90
+
+		light_disabled				= false
+		light_color             = 0.6,0.5,0.3
+		light_range             = 5
+		light_var_color         = 0.05
+		light_var_range         = 0.5
+		light_time              = 0.2
+
+		ph_mass                 = 5
+		
+;___________________________ Scopes ___________________________________
+
+        scopes                      = 0kp2, 1p69, 1p87, ac10632, ac11090, acog, ado, aim_acro, aim_low, aimpoint, point_aimpro, bravo4, bossxe, c-more, compm4s, cortex, deltapoint, devo, d0cter, e0t2, e0t2_magd, e0t2_magd_off, echo1, ekp8_18, elbit_falcon2, eot, exps3, gauss, gauss_sight, hamr, hartman_mh1, hco, he510, kemper, rusak, lco1, leupold, march_f_shorty, marchf, mepro, monstrum, p1x42, p4x32, pk6, pks07, pn23, po4x34, ps320, rakurs, razorhd, rmr, romeo4, romeo8, specter, susatov, t12, tac30, trihawk, uh1_magd, uh1_magd_off, uh2, vulcan
+        scope_status                = 0
+        scope_zoom_factor           = 0
+		use_alt_aim_hud  		    = true
+		
+;___________________________ Upgrades ___________________________________
+		
+		upgrades                = up_gr_firstab_scar, up_gr_seconab_scar, up_gr_thirdab_scar, up_gr_fourtab_scar, up_gr_fifthab_scar
+		installed_upgrades      =
+		upgrade_scheme          = upgrade_scheme_sig550
+        
+		upgr_icon_path          = ui\ui_rak_global_2
+		upgr_icon_x			    = 5400
+		upgr_icon_y			    = 600
+		upgr_icon_width		    = 350
+		upgr_icon_height     	= 150
+
+;___________________________ TTX ___________________________________ 
+
+		hit_power           	= 0.52, 0.52, 0.52, 0.52
+		hit_impulse				= 30
+		hit_type				= fire_wound
+		fire_distance           = 1000
+		bullet_speed            = 880         ;начальна§ скорость пули
+		rpm                     = 650
+		rpm_empty_click         = 120
+
+		use_aim_bullet          = false                ;ѕоддерживаетс¤ ли перва¤ суппер пул¤
+
+		time_to_aim             = 3.0
+
+;___________________________ Silencer ___________________________________
+
+		silencer_name           = wpn_sil_nato
+		silencer_status         = 2
+		
+		silencer_x 				= 217
+		silencer_y 				= 4
+
+		silencer_light_color    = 0.6,0.5,0.3
+		silencer_light_range    = 0.01
+		silencer_light_var_color= 0.05
+		silencer_light_var_range= 0.5
+		silencer_light_time     = 0.2
+
+		silencer_smoke_particles                 = weapons\generic_shoot_00
+
+;___________________________ Grenade launcher ___________________________________ 
+
+		grenade_launcher_status = 0
+
+		grenade_launcher_name 	= wpn_addon_grenade_launcher_m203
+		grenade_launcher_x 	= 128
+		grenade_launcher_y 	= 28
+
+;___________________________ TTX ___________________________________ 
+		
+		misfire_probability        	= 0.005
+		misfire_start_condition		= 0.875
+		misfire_end_condition		= 0.125
+		misfire_start_prob = 0.00275 ;	     	= 0.0045
+		misfire_end_prob = 0.07 ;	     	= 0.045
+		condition_shot_dec      	= 0.0010
+		condition_queue_shot_dec	= 0.0014
+
+		ammo_elapsed            = 30
+		ammo_mag_size           = 30
+
+		ammo_class              = ammo_5.56x45_fmj, ammo_5.56x45_fmj_bad, ammo_5.56x45_fmj_verybad, ammo_5.56x45_ss190, ammo_5.56x45_ss190_bad, ammo_5.56x45_ss190_verybad, ammo_5.56x45_ap, ammo_5.56x45_ap_bad, ammo_5.56x45_ap_verybad
+		grenade_class           = ammo_m209
+		fire_modes              = 1, -1
+		launch_speed            = 0
+		hand_dependence         = 1
+		single_handed           = 0
+
+		fire_dispersion_base    = 0.24        ;угол (в градусах) базовой дисперсии оружия (оружия зажатого в тисках)
+		fire_dispersion_condition_factor = 0.001 ; = 0.01 ; 7
+
+		control_inertion_factor = 1.0f
+		crosshair_inertion	= 5.3
+
+		cam_return                               = 0
+		cam_relax_speed                          = 10
+		cam_dispersion                           = 0.556
+		cam_dispersion_frac                      = 1.0
+		cam_dispersion_inc                       = 0.0675
+		cam_max_angle                            = 50.0
+		cam_max_angle_horz                       = 50.0
+		cam_step_angle_horz                      = 0.9
+
+		zoom_cam_relax_speed                     = 10
+		zoom_cam_dispersion                      = 0.466
+		zoom_cam_dispersion_frac                 = 1.0
+		zoom_cam_dispersion_inc                  = 0.0525
+		zoom_cam_max_angle                       = 50.0
+		zoom_cam_max_angle_horz                  = 50.0
+		zoom_cam_step_angle_horz                 = 0.85
+
+		PDM_disp_accel_factor                    = 2.3
+		PDM_disp_base                            = 0.8
+		PDM_disp_crouch                          = 1.0
+		PDM_disp_crouch_no_acc                   = 1.0
+		PDM_disp_vel_factor                      = 2.3
+
+		cam_relax_speed_ai                       = 360
+		zoom_cam_relax_speed_ai                  = 360
+		
+		holder_fov_modifier                      = 1.0
+		holder_range_modifier                    = 1.0
+		
+		min_radius                               = 0
+		max_radius                               = 500
+		
+		hit_probability_gd_novice                = 1.00
+		hit_probability_gd_stalker               = 1.00
+		hit_probability_gd_veteran               = 1.00
+		hit_probability_gd_master                = 1.00
+		
+		zoom_dof						= 0.5, 1.0, 180
+		reload_dof					= 0.0, 0.5, 5, 2
+
+		kill_msg_x           	= 84
+		kill_msg_y           	= 28
+		kill_msg_width       	= 73
+		kill_msg_height         = 30
+
+		zoom_enabled            = true                                                ; (on,off)zoom mode (right mouse button)
+		zoom_rotate_time		= 0.25
+
+;_________________________________________________ Sounds ______________________________________________________
+
+		snd_draw                                 = weapons\mdr\mdr_draw
+		snd_holster                              = weapons\mdr\mdr_hide
+		snd_reload                               = weapons\mdr\mdr_reload
+		snd_reload_empty                         = weapons\mdr\mdr_reload_empty
+		snd_reload_misfire                       = $no_sound
+		snd_shots_jammed						 = weapons\mdr\mdr_fire_jammed
+		snd_shots_jammed_empty					 = weapons\mdr\mdr_fire_jammed
+		snd_shot_l_jammed                        = weapons\mdr\mdr_fire_jammed
+		snd_shot_l_jammed_empty                  = weapons\mdr\mdr_fire_jammed
+		scripted_snd_bore                        = weapons\mdr\mdr_inspect
+		scripted_snd_bore_empty                  = weapons\mdr\mdr_inspect
+		scripted_snd_bore_jammed                 = weapons\mdr\mdr_fire_jammed
+		scripted_snd_bore_jammed_empty           = weapons\mdr\mdr_fire_jammed
+		scripted_snd_reload_misfire              = weapons\mdr\mdr_unjam
+		scripted_snd_ammo_check                  = weapons\mdr\mdr_magcheck
+		scripted_snd_ammo_check_aim              = weapons\mdr\mdr_magcheck
+		scripted_snd_ammo_check_empty_aim        = weapons\mdr\mdr_magcheck
+		scripted_snd_ammo_check_empty            = weapons\mdr\mdr_magcheck
+		scripted_snd_ammo_check_jammed           = weapons\mdr\mdr_magcheck
+		scripted_snd_ammo_check_aim_jammed       = weapons\mdr\mdr_magcheck
+		scripted_snd_ammo_check_empty_aim_jammed = weapons\mdr\mdr_magcheck
+		scripted_snd_ammo_check_empty_jammed     = weapons\mdr\mdr_magcheck
+		scripted_snd_reload_misfire_empty        = weapons\mdr\mdr_unjam
+
+;__________________________________________ HUD parameters ____________________________________________________
+
+[wpn_dtmdr_hud]:hud_base
+
+		item_visual					= anomaly_weapons\wpn_dtmdr\wpn_dtmdr_hud.ogf
+		zoom_hide_crosshair		    = true
+		attach_place_idx			= 0
+
+;======================== Hud Position =======================================================
+
+		item_position                            = 0, 0, 0
+		item_orientation                         = 0, 0, 0
+
+        aim_hud_offset_pos               = -0.059358, 0.011246, -0.057522
+        aim_hud_offset_pos_16x9          = -0.059358, 0.011246, -0.057522
+        aim_hud_offset_rot               = -0.006343, -0.000201, -0.043021
+        aim_hud_offset_rot_16x9          = -0.006343, -0.000201, -0.043021
+
+        hands_orientation                = -0.506225, -0.786798, 0
+        hands_orientation_16x9           = -0.506225, -0.786798, 0
+        hands_position                   = -0.005811, 0.008461, -0.003924
+        hands_position_16x9              = -0.005811, 0.008461, -0.003924
+
+		lowered_hud_offset_pos			= -0.018481, -0.023408, 0.015269
+		lowered_hud_offset_pos_16x9		= -0.018481, -0.023408, 0.015269
+		lowered_hud_offset_rot			= 0.1361, -0.451942, 0.18885
+		lowered_hud_offset_rot_16x9		= 0.1361, -0.451942, 0.18885
+
+		gl_hud_offset_pos                        = 0, 0, 0
+		gl_hud_offset_pos_16x9                   = 0, 0, 0
+		gl_hud_offset_rot                        = 0, 0, 0
+		gl_hud_offset_rot_16x9                   = 0, 0, 0
+
+		lean_hud_offset_pos                      = 0, 0, 0
+		lean_hud_offset_rot                      = 0, 0, 0
+
+		shell_point				= 0.0,0.0,0.0
+		shell_dir               = 0.0, 1.0, 0.0
+		shell_bone				= wpn_body
+
+		fire_point				= 0,0,0
+		fire_bone      	      	= muzzle
+
+;======================== BORING =======================================================
+
+        anm_bore                                 = hand_dtmdr_inspect, wpn_dtmdr_inspect
+		anm_bore_empty                           = hand_dtmdr_inspect, wpn_dtmdr_inspect_empty
+		
+		anm_bore_jammed                          = hand_dtmdr_fire_jammed, idle_jammed
+		anm_bore_jammed_empty                    = hand_dtmdr_fire_jammed, idle_jammed_empty
+		
+;======================== HIDE ==========================================================
+
+		anm_hide                                 = hand_dtmdr_hide, idle
+		anm_hide_empty                           = hand_dtmdr_hide, idle_empty
+		
+		anm_hide_jammed                          = hand_dtmdr_hide, idle_jammed
+		anm_hide_jammed_empty                    = hand_dtmdr_hide, idle_jammed_empty
+
+;======================== SHOW ==========================================================
+
+		anm_show                                 = hand_dtmdr_draw, idle
+		anm_show_empty                           = hand_dtmdr_draw, idle_empty
+		
+		anm_show_jammed                          = hand_dtmdr_draw, idle_jammed
+		anm_show_jammed_empty                           = hand_dtmdr_draw, idle_jammed_empty
+
+;======================== IDLE ==========================================================
+
+		anm_idle                                 = hand_dtmdr_idle, idle
+		anm_idle_moving                          = hand_dtmdr_walk, idle
+		anm_idle_moving_crouch                   = hand_dtmdr_walk, idle, 0.8
+        
+		anm_idle_empty                           = hand_dtmdr_idle, idle_empty
+		anm_idle_moving_crouch_empty             = hand_dtmdr_walk, idle_empty, 0.8
+		anm_idle_moving_empty                    = hand_dtmdr_walk, idle_empty
+        
+		anm_idle_jammed                          = hand_dtmdr_idle, idle_jammed
+		anm_idle_moving_crouch_jammed            = hand_dtmdr_walk, idle_jammed, 0.8
+		anm_idle_moving_jammed                   = hand_dtmdr_walk, idle_jammed
+        
+		anm_idle_jammed_empty                    = hand_dtmdr_idle, idle_jammed_empty
+		anm_idle_moving_crouch_jammed_empty      = hand_dtmdr_walk, idle_jammed_empty, 0.8
+		anm_idle_moving_jammed_empty             = hand_dtmdr_walk, idle_jammed_empty
+	
+;======================== SPRINT TRANSITIONS AND PATERN ====================================================
+		
+        anm_idle_sprint                          = hand_dtmdr_sprint, idle	
+		
+		anm_idle_sprint_empty                    = hand_dtmdr_sprint, idle_empty
+		
+		anm_idle_sprint_jammed                   = hand_dtmdr_sprint, idle_jammed
+		
+		anm_idle_sprint_jammed_empty             = hand_dtmdr_sprint, idle_jammed_empty
+		
+;----------------------------------------------------------------------------------------
+		ts_pattern_sprint_start                  = .+, anm_idle_sprint, anm_sprint_start, 1
+		ts_pattern_sprint_end                    = anm_idle_sprint, ^anm_idle.*, anm_sprint_end
+		ts_strict_sprint_end_move                = anm_sprint_start, anm_idle_moving, anm_sprint_end
+
+;======================== AIM TRANSITIONS ====================================================
+		
+		anm_idle_aim                             = hand_dtmdr_idle_aim, idle
+
+		anm_idle_aim_empty                       = hand_dtmdr_idle_aim, idle_empty
+
+		anm_idle_aim_jammed                      = hand_dtmdr_idle_aim, idle_jammed
+
+		anm_idle_aim_jammed_empty                       = hand_dtmdr_idle_aim, idle_jammed_empty
+		
+		anm_idle_aim_moving                      = hand_dtmdr_walk, idle
+		anm_idle_aim_moving_crouch               = hand_dtmdr_walk, idle, 0.75
+
+		anm_idle_aim_moving_crouch_empty         = hand_dtmdr_walk, idle_empty, 0.75
+		anm_idle_aim_moving_empty                = hand_dtmdr_walk, idle_empty
+
+		anm_idle_aim_moving_crouch_jammed        = hand_dtmdr_walk, idle_jammed, 0.75
+		anm_idle_aim_moving_jammed               = hand_dtmdr_walk, idle_jammed
+
+		anm_idle_aim_moving_crouch_jammed_empty  = hand_dtmdr_walk, idle_jammed_empty, 0.75
+		anm_idle_aim_moving_jammed_empty         = hand_dtmdr_walk, idle_jammed_empty
+		
+;======================== RELOAD ==========================================================
+
+		anm_reload                               = hand_dtmdr_reload, wpn_dtmdr_reload
+		anm_reload_aim                           = hand_dtmdr_reload, wpn_dtmdr_reload
+		
+		anm_reload_empty                         = hand_dtmdr_reload_empty, wpn_dtmdr_reload_empty
+		
+		anm_reload_misfire                       = hand_dtmdr_unjam, wpn_dtmdr_unjam
+		anm_reload_misfire_empty                 = hand_dtmdr_unjam, wpn_dtmdr_unjam_empty
+				
+;======================== SWITCH MODE =======================================================
+		
+		anm_switch_mode                 		 = hand_dtmdr_firemode, wpn_dtmdr_firemode
+		anm_switch_mode_empty					 = hand_dtmdr_firemode, wpn_dtmdr_firemode_empty
+		
+		anm_switch_mode_jammed				     = hand_dtmdr_firemode, wpn_dtmdr_firemode_jammed
+		anm_switch_mode_jammed_empty			 = hand_dtmdr_firemode, wpn_dtmdr_firemode_jammed_empty
+		
+;========================SHOOTS===========================================================
+
+		anm_shots                                = hand_dtmdr_fire01, wpn_dtmdr_fire01
+		
+		anm_shots_jammed                         = hand_dtmdr_fire_jammed, idle_jammed
+		anm_shots_jammed_empty                          = hand_dtmdr_fire_jammed, idle_jammed_empty
+		
+		anm_shots_variant1						 = hand_dtmdr_fire02, wpn_dtmdr_fire02
+		anm_shots_variant2						 = hand_dtmdr_fire03, wpn_dtmdr_fire03
+		
+		anm_shot_l                               = hand_dtmdr_fire01, wpn_dtmdr_fire_last
+		
+		anm_shot_l_jammed                        = hand_dtmdr_fire_jammed, idle_jammed
+		anm_shot_l_jammed_empty                  = hand_dtmdr_fire_jammed, idle_jammed_empty
+		
+;========================AMMO CHECK===========================================================
+
+		anm_ammo_check                           = hand_dtmdr_magcheck, wpn_dtmdr_magcheck
+		anm_ammo_check_empty                     = hand_dtmdr_magcheck, wpn_dtmdr_magcheck_empty
+		
+		anm_ammo_check_jammed                    = hand_dtmdr_magcheck, wpn_dtmdr_magcheck_jammed
+		anm_ammo_check_empty_jammed              = hand_dtmdr_magcheck, wpn_dtmdr_magcheck_jammed_empty
+		
+		anm_ammo_check_aim                       = hand_dtmdr_magcheck, wpn_dtmdr_magcheck
+		anm_ammo_check_empty_aim                 = hand_dtmdr_magcheck, wpn_dtmdr_magcheck_empty
+		
+		anm_ammo_check_aim_jammed                = hand_dtmdr_magcheck, wpn_dtmdr_magcheck_jammed
+		anm_ammo_check_empty_aim_jammed          = hand_dtmdr_magcheck, wpn_dtmdr_magcheck_jammed_empty
+
+;_____________________________________ Parameters of the shells sprite for HUD __________________________		
+
+		shell_point				= 0.0,0.0,0.0
+		shell_dir               = 0.0, 1.0, 0.0
+		shell_bone				= wpn_body
+
+		fire_point				= 0,0,0
+		fire_bone      	      	= muzzle
+		
+;____________________________________________________ Addons _______________________________________________________________________________________________________
+
+;__________________________________________________________ ОКП-7 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_0kp2]:wpn_dtmdr
+
+        1icon_layer	       = 0kp2
+        1icon_layer_x      = 99
+        1icon_layer_y      = -17
+
+        hud		   = wpn_dtmdr_0kp2_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_0kp2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_0kp2_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_0kp2_hud.ogf
+		
+        aim_hud_offset_pos               = -0.058398, 0.017979, -0.076872
+        aim_hud_offset_pos_16x9          = -0.058398, 0.017979, -0.076872
+        aim_hud_offset_rot               = -0.004212, -0.000304, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004212, -0.000304, -0.044872
+
+;__________________________________________________________ 1P69 (Joseph_Porta_84)[3DSS Only] ___________________________________________________
+
+[wpn_dtmdr_1p69]:wpn_dtmdr
+
+        1icon_layer	       = 1p69
+        1icon_layer_x      = 78
+        1icon_layer_y      = -22
+
+        hud		           = wpn_dtmdr_1p69_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_1p69_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = on
+        scope_zoom_factor  = 25
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_1p59
+		
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_1p69_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_1p69_hud.ogf
+
+        aim_hud_offset_pos               = -0.059517, 0.00285, -0.041948
+        aim_hud_offset_pos_16x9          = -0.059517, 0.00285, -0.041948
+        aim_hud_offset_rot               = -0.005491, 0.000332, -0.043021
+        aim_hud_offset_rot_16x9          = -0.005491, 0.000332, -0.043021
+		
+;__________________________________________________________ 1P87 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_1p87]:wpn_dtmdr
+
+        1icon_layer	   = 1p87
+        1icon_layer_x      = 99
+        1icon_layer_y      = -22
+
+        hud		   = wpn_dtmdr_1p87_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_1p87_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_1p87_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_1p87_hud.ogf
+		
+        aim_hud_offset_pos               = -0.05984, 0.004269, -0.061803
+        aim_hud_offset_pos_16x9          = -0.05984, 0.004269, -0.061803
+        aim_hud_offset_rot               = -0.005561, 0.000502, -0.053477
+        aim_hud_offset_rot_16x9          = -0.005561, 0.000502, -0.053477
+			
+;__________________________________________________________ AC10632 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_ac10632]:wpn_dtmdr
+
+        1icon_layer	   = ac10632
+        1icon_layer_x      = 98
+        1icon_layer_y      = -21
+
+        hud		   = wpn_dtmdr_ac10632_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_ac10632_world.ogf
+
+        ms_count = 8
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_ac10632_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_ac10632_hud.ogf
+		
+        aim_hud_offset_pos               = -0.059564, 0.009027, -0.066063
+        aim_hud_offset_pos_16x9          = -0.059564, 0.009027, -0.066063
+        aim_hud_offset_rot               = -0.004212, -0.000304, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004212, -0.000304, -0.044872
+
+;__________________________________________________________ AC11090 (Party_50 and MsPizza727)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_ac11090]:wpn_dtmdr
+
+        1icon_layer	       = ac11090
+        1icon_layer_x      = 98
+        1icon_layer_y      = -21
+
+        hud		   = wpn_dtmdr_ac11090_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_ac11090_world.ogf
+
+        ms_count = 8
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_ac11090_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_ac11090_hud.ogf
+		
+        aim_hud_offset_pos               = -0.05892, 0.017695, -0.076872
+        aim_hud_offset_pos_16x9          = -0.05892, 0.017695, -0.076872
+        aim_hud_offset_rot               = -0.004496, -0.002374, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004496, -0.002374, -0.044872
+		
+;__________________________________________________________ ACOG (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_dtmdr_acog]:wpn_dtmdr
+
+        1icon_layer	       = acog
+        1icon_layer_x      = 85
+        1icon_layer_y      = -26
+
+        hud		           = wpn_dtmdr_acog_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_acog_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_acog
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_acog_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_acog_hud.ogf
+		
+        aim_hud_offset_pos               = -0.059401, 0.011073, -0.070481
+        aim_hud_offset_pos_16x9          = -0.059401, 0.011073, -0.070481
+        aim_hud_offset_rot               = 0.009794, 0.000397, -0.041036
+        aim_hud_offset_rot_16x9          = 0.009794, 0.000397, -0.041036
+		
+;_____________________________ ADO (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_dtmdr_ado]:wpn_dtmdr
+
+        1icon_layer         = ado
+        1icon_layer_x       = 75
+        1icon_layer_y       = -29
+
+        hud                 = wpn_dtmdr_ado_hud
+        !visual				= dynamics\weapons\wpn_dtmdr\wpn_dtmdr_ado_world.ogf
+        zoom_step_count					 = 1
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        s3ds_reticle_size   = 4
+ 	    s3ds_eye_relief     = 2
+	    s3ds_exit_pupil		= 0.55		
+	    magnification 		= 9
+        min_magnification	= 3
+		
+ ;_______________________________________________________________________________
+
+        scope_status            = 1
+        scope_zoom_factor       = 20
+        scope_dynamic_zoom      = on
+		
+		!scope_texture	   = wpn_crosshair_ado
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_ado_hud]:wpn_dtmdr_hud
+
+        item_visual                              = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_ado_hud.ogf
+		
+        aim_hud_offset_pos               = -0.059299, 0.010032, -0.062922
+        aim_hud_offset_pos_16x9          = -0.059299, 0.010032, -0.062922
+        aim_hud_offset_rot               = -0.003644, 0.000544, -0.039755
+        aim_hud_offset_rot_16x9          = -0.003644, 0.000544, -0.039755
+
+        aim_hud_offset_alt_pos           = -0.059246, -0.021339, -0.082484
+        aim_hud_offset_alt_pos_16x9      = -0.059246, -0.021339, -0.082484
+        aim_hud_offset_alt_rot           = -0.002551, -0.000356, -0.041874
+        aim_hud_offset_alt_rot_16x9      = -0.002551, -0.000356, -0.041874
+		
+;__________________________________________________________ Aim Acro (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_aim_acro]:wpn_dtmdr
+
+        1icon_layer	       = aim_acro
+        1icon_layer_x      = 93
+        1icon_layer_y      = -25
+
+        hud		           = wpn_dtmdr_aim_acro_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_aim_acro_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_aim_acro_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_aim_acro_hud.ogf
+		
+        aim_hud_offset_pos               = -0.059572, 0.018542, -0.074385
+        aim_hud_offset_pos_16x9          = -0.059572, 0.018542, -0.074385
+        aim_hud_offset_rot               = -0.004567, -0.00009, -0.039609
+        aim_hud_offset_rot_16x9          = -0.004567, -0.00009, -0.039609
+				
+;__________________________________________________________ Aim Low (BaS)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_aim_low]:wpn_dtmdr
+
+        1icon_layer	       = aim_low
+        1icon_layer_x      = 94
+        1icon_layer_y      = -22
+
+        hud		           = wpn_dtmdr_aim_low_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_aim_low_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_aim_low_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_aim_low_hud.ogf
+
+        aim_hud_offset_pos               = -0.059511, 0.022807, -0.077653
+        aim_hud_offset_pos_16x9          = -0.059511, 0.022807, -0.077653
+        aim_hud_offset_rot               = -0.004283, -0.000092, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004283, -0.000092, -0.044872
+		
+;__________________________________________________________ Aimpoint (BaS)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_aimpoint]:wpn_dtmdr
+
+        1icon_layer	       = aimpoint
+        1icon_layer_x      = 94
+        1icon_layer_y      = -26
+		
+        hud		           = wpn_dtmdr_aimpoint_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_aimpoint_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_aimpoint_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_aimpoint_hud.ogf
+
+        aim_hud_offset_pos               = -0.059463, 0.009172, -0.07168
+        aim_hud_offset_pos_16x9          = -0.059463, 0.009172, -0.07168
+        aim_hud_offset_rot               = -0.004283, -0.000034, -0.052483
+        aim_hud_offset_rot_16x9          = -0.004283, -0.000034, -0.052483
+		
+;__________________________________________________________ Aimpoint Pro (BaS)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_point_aimpro]:wpn_dtmdr
+
+        1icon_layer	       = point_aimpro
+        1icon_layer_x      = 97
+        1icon_layer_y      = -28
+
+        hud		           = wpn_dtmdr_point_aimpro_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_aimpoint_pro_world.ogf
+		
+		ms_count = 2
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_point_aimpro_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_aimpoint_pro_hud.ogf
+
+        aim_hud_offset_pos               = -0.059722, 0.006405, -0.061728
+        aim_hud_offset_pos_16x9          = -0.059722, 0.006405, -0.061728
+        aim_hud_offset_rot               = -0.00407, 0.000385, -0.049274
+        aim_hud_offset_rot_16x9          = -0.00407, 0.000385, -0.049274
+						
+;__________________________________________________________ Bravo 4 (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_dtmdr_bravo4]:wpn_dtmdr
+
+        1icon_layer	       = bravo4
+        1icon_layer_x      = 65
+        1icon_layer_y      = -30
+
+        hud		   = wpn_dtmdr_bravo4_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_bravo4_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_hamr
+		
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_bravo4_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_bravo4_hud.ogf
+		
+        aim_hud_offset_pos               = -0.059723, 0.01273, -0.037115
+        aim_hud_offset_pos_16x9          = -0.059723, 0.01273, -0.037115
+        aim_hud_offset_rot               = -0.003644, 0.000544, -0.039755
+        aim_hud_offset_rot_16x9          = -0.003644, 0.000544, -0.039755
+
+        aim_hud_offset_alt_pos           = -0.059555, -0.030727, -0.070611
+        aim_hud_offset_alt_pos_16x9      = -0.059555, -0.030727, -0.070611
+        aim_hud_offset_alt_rot           = -0.00618, 0.000356, -0.039176
+        aim_hud_offset_alt_rot_16x9      = -0.00618, 0.000356, -0.039176
+		
+;__________________________________________________________ BossXE (ATHI)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_bossxe]:wpn_dtmdr
+
+        1icon_layer	       = bossxe
+        1icon_layer_x      = 92
+        1icon_layer_y      = -22
+
+        hud		   = wpn_dtmdr_bossxe_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_bossxe_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+		
+		laser_status = true
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_bossxe_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_bossxe_hud.ogf
+
+        aim_hud_offset_pos               = -0.059361, 0.002625, -0.076872
+        aim_hud_offset_pos_16x9          = -0.059361, 0.002625, -0.076872
+        aim_hud_offset_rot               = -0.004922, -0.000622, -0.041819
+        aim_hud_offset_rot_16x9          = -0.004922, -0.000622, -0.041819
+		
+;__________________________________________________________ C-MORE (BaS)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_c-more]:wpn_dtmdr
+
+        1icon_layer	   = c-more
+        1icon_layer_x      = 95
+        1icon_layer_y      = -19
+
+        hud		   = wpn_dtmdr_c-more_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_c-more_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_c-more_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_c-more_hud.ogf
+
+        aim_hud_offset_pos               = -0.059617, 0.014074, -0.076872
+        aim_hud_offset_pos_16x9          = -0.059617, 0.014074, -0.076872
+        aim_hud_offset_rot               = -0.004425, 0.000226, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004425, 0.000226, -0.044872
+		
+;__________________________________________________________ Compm4s (BaS)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_compm4s]:wpn_dtmdr
+
+        1icon_layer	       = compdtmdrs
+        1icon_layer_x      = 92
+        1icon_layer_y      = -24
+
+        hud		   = wpn_dtmdr_compm4s_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_compdtmdrs_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_compm4s_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_compm4s_hud.ogf
+
+        aim_hud_offset_pos               = -0.059723, 0.010382, -0.055038
+        aim_hud_offset_pos_16x9          = -0.059723, 0.010382, -0.055038
+        aim_hud_offset_rot               = -0.004425, 0.000226, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004425, 0.000226, -0.044872
+		
+;_________________________________________ Cortex (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_dtmdr_cortex]:wpn_dtmdr
+
+        1icon_layer         = cortex
+        1icon_layer_x       = 68
+        1icon_layer_y       = -26
+
+        hud                 = wpn_dtmdr_cortex_hud
+        !visual				= dynamics\weapons\wpn_dtmdr\wpn_dtmdr_cortex_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_zoom_factor       = 20
+        scope_dynamic_zoom      = on
+		
+		!scope_texture	   = wpn_crosshair_cortex
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_cortex_hud]:wpn_dtmdr_hud
+
+        item_visual                              = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_cortex_hud.ogf
+
+        aim_hud_offset_pos               = -0.059456, 0.000787, -0.04686
+        aim_hud_offset_pos_16x9          = -0.059456, 0.000787, -0.04686
+        aim_hud_offset_rot               = -0.003573, 0.000118, -0.039755
+        aim_hud_offset_rot_16x9          = -0.003573, 0.000118, -0.039755
+		
+;__________________________________________________________ Deltapoint(BaS)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_deltapoint]:wpn_dtmdr
+
+        1icon_layer	       = deltapoint
+        1icon_layer_x      = 91
+        1icon_layer_y      = -21
+
+        hud		   = wpn_dtmdr_deltapoint_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_deltapoint_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_deltapoint_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_deltapoint_hud.ogf
+
+        aim_hud_offset_pos               = -0.05967, 0.019541, -0.076872
+        aim_hud_offset_pos_16x9          = -0.05967, 0.019541, -0.076872
+        aim_hud_offset_rot               = -0.006626, 0.00012, -0.044872
+        aim_hud_offset_rot_16x9          = -0.006626, 0.00012, -0.044872
+		
+;_________________________________________ Devo (ATHI) [3DSS+PRS Only] ____________________________________________
+
+[wpn_dtmdr_devo]:wpn_dtmdr
+
+        1icon_layer         = devo
+        1icon_layer_x       = 70
+        1icon_layer_y       = -22
+
+        hud                 = wpn_dtmdr_devo_hud
+        !visual				= dynamics\weapons\wpn_dtmdr\wpn_dtmdr_devo_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_zoom_factor       = 0
+        scope_dynamic_zoom      = off
+		
+		!scope_texture	   = wpn_crosshair_devo
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_devo_hud]:wpn_dtmdr_hud
+
+        item_visual                              = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_devo_hud.ogf
+
+        aim_hud_offset_pos               = -0.059403, 0.020189, -0.071177
+        aim_hud_offset_pos_16x9          = -0.059403, 0.020189, -0.071177
+        aim_hud_offset_rot               = -0.005348, -0.00073, -0.044236
+        aim_hud_offset_rot_16x9          = -0.005348, -0.00073, -0.044236
+
+        aim_hud_offset_alt_pos           = -0.059978, 0.007883, -0.070611
+        aim_hud_offset_alt_pos_16x9      = -0.059978, 0.007883, -0.070611
+        aim_hud_offset_alt_rot           = -0.005328, 0.000853, -0.041874
+        aim_hud_offset_alt_rot_16x9      = -0.005328, 0.000853, -0.041874
+		
+;__________________________________________________________ Docter Sight III (BaS)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_d0cter]:wpn_dtmdr
+
+        1icon_layer	       = d0cter
+        1icon_layer_x      = 89
+        1icon_layer_y      = -19
+
+        hud		           = wpn_dtmdr_d0cter_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_docter_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_d0cter_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_docter_hud.ogf
+
+        aim_hud_offset_pos               = -0.059246, 0.024159, -0.058669
+        aim_hud_offset_pos_16x9          = -0.059246, 0.024159, -0.058669
+        aim_hud_offset_rot               = -0.005348, -0.000352, -0.055874
+        aim_hud_offset_rot_16x9          = -0.005348, -0.000352, -0.055874
+		
+;__________________________________________________________ EOTech XPS3-0 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_dtmdr_e0t2]:wpn_dtmdr
+
+        1icon_layer	       = e0t2
+        1icon_layer_x      = 98
+        1icon_layer_y      = -24
+
+        hud		           = wpn_dtmdr_e0t2_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_e0t2_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+		
+[wpn_dtmdr_e0t2_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_e0t2_hud.ogf
+
+        aim_hud_offset_pos               = -0.059829, 0.009317, -0.06258
+        aim_hud_offset_pos_16x9          = -0.059829, 0.009317, -0.06258
+        aim_hud_offset_rot               = -0.006981, 0.000173, -0.044872
+        aim_hud_offset_rot_16x9          = -0.006981, 0.000173, -0.044872
+		
+;__________________________________________________________ EOTech XPS3-0 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_dtmdr_e0t2_magd]:wpn_dtmdr
+
+        1icon_layer	       = e0t2_magd
+        1icon_layer_x      = 67
+        1icon_layer_y      = -27
+		
+        hud		           = wpn_dtmdr_e0t2_magd_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_e0t2_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_eot_magn
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_e0t2_magd_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_e0t2_magd_hud.ogf
+
+        aim_hud_offset_pos               = -0.05967, 0.010529, -0.070374
+        aim_hud_offset_pos_16x9          = -0.05967, 0.010529, -0.070374
+        aim_hud_offset_rot               = -0.003715, -0.000248, -0.039755
+        aim_hud_offset_rot_16x9          = -0.003715, -0.000248, -0.039755
+
+;___________________________ Flipped ___________________________________
+
+[wpn_dtmdr_e0t2_magd_off]:wpn_dtmdr
+
+        1icon_layer	       = e0t2_magd
+        1icon_layer_x      = 67
+        1icon_layer_y      = -27
+
+        hud		           = wpn_dtmdr_e0t2_magd_off_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_e0t2_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_e0t2_magd_off_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_e0t2_magd_off_hud.ogf
+
+        aim_hud_offset_pos               = -0.060094, 0.010103, -0.069251
+        aim_hud_offset_pos_16x9          = -0.060094, 0.010103, -0.069251
+        aim_hud_offset_rot               = -0.006484, 0.00018, -0.037838
+        aim_hud_offset_rot_16x9          = -0.006484, 0.00018, -0.037838
+		
+;_________________________________________ Echo1 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_dtmdr_echo1]:wpn_dtmdr
+
+        1icon_layer         = echo1
+        1icon_layer_x       = 59
+        1icon_layer_y       = -30
+		
+        hud                 = wpn_dtmdr_echo1_hud
+        !visual				= dynamics\weapons\wpn_dtmdr\wpn_dtmdr_echo1_world.ogf
+        zoom_step_count					 = 1
+ 
+        scope_status            = 1
+        scope_zoom_factor       = 20
+        scope_dynamic_zoom      = on
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_echo1_hud]:wpn_dtmdr_hud
+
+        item_visual                              = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_echo1_hud.ogf
+	
+        aim_hud_offset_pos               = -0.060631, 0.000852, -0.066271
+        aim_hud_offset_pos_16x9          = -0.060631, 0.000852, -0.066271
+        aim_hud_offset_rot               = -0.012951, 0.007643, -0.039755
+        aim_hud_offset_rot_16x9          = -0.012951, 0.007643, -0.039755
+
+        aim_hud_offset_alt_pos           = -0.059384, -0.018431, -0.053688
+        aim_hud_offset_alt_pos_16x9      = -0.059384, -0.018431, -0.053688
+        aim_hud_offset_alt_rot           = -0.003876, 0.000076, -0.044359
+        aim_hud_offset_alt_rot_16x9      = -0.003876, 0.000076, -0.044359
+		
+;__________________________________________________________ Кобра ЭКП-8-18 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_dtmdr_ekp8_18]:wpn_dtmdr
+
+        1icon_layer	       = ekp8_18
+        1icon_layer_x      = 94
+        1icon_layer_y      = -17
+
+        hud		           = wpn_dtmdr_ekp8_18_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_ekp8_18_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_ekp8_18_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_ekp8_18_hud.ogf
+
+        aim_hud_offset_pos               = -0.059829, 0.004338, -0.076872
+        aim_hud_offset_pos_16x9          = -0.059829, 0.004338, -0.076872
+        aim_hud_offset_rot               = -0.004638, -0.000148, -0.036565
+        aim_hud_offset_rot_16x9          = -0.004638, -0.000148, -0.036565
+		
+;__________________________________________________________ FALCON 2 (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_elbit_falcon2]:wpn_dtmdr
+
+        1icon_layer	       = elbit_falcon2
+        1icon_layer_x      = 84
+        1icon_layer_y      = -20
+
+        hud		           = wpn_dtmdr_elbit_falcon2_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_elbit_falcon2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_elbit_falcon2_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_elbit_falcon2_hud.ogf
+
+        aim_hud_offset_pos               = -0.059722, 0.014789, -0.084257
+        aim_hud_offset_pos_16x9          = -0.059722, 0.014789, -0.084257
+        aim_hud_offset_rot               = -0.005277, 0.000066, -0.046148
+        aim_hud_offset_rot_16x9          = -0.005277, 0.000066, -0.046148
+		
+;__________________________________________________________ EOTech 553 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_dtmdr_eot]:wpn_dtmdr
+
+        1icon_layer	       = eot
+        1icon_layer_x      = 97
+        1icon_layer_y      = -23
+
+        hud		   = wpn_dtmdr_eot_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_eot_world.ogf
+		
+		ms_count = 6
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_eot_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_eot_hud.ogf
+
+        aim_hud_offset_pos               = -0.059834, 0.006757, -0.060585
+        aim_hud_offset_pos_16x9          = -0.059834, 0.006757, -0.060585
+        aim_hud_offset_rot               = -0.004425, 0.000226, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004425, 0.000226, -0.044872
+		
+;__________________________________________________________ Exps3 (RWAP)[PRS+MS Only] ___________________________________________________
+
+[wpn_dtmdr_exps3]:wpn_dtmdr
+
+        1icon_layer	       = exps3
+        1icon_layer_x      = 98
+        1icon_layer_y      = -26
+
+        hud		   = wpn_dtmdr_exps3_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_exps3_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_exps3_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_exps3_hud.ogf
+
+        aim_hud_offset_pos               = -0.059829, 0.007471, -0.065352
+        aim_hud_offset_pos_16x9          = -0.059829, 0.007471, -0.065352
+        aim_hud_offset_rot               = -0.004425, 0.000226, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004425, 0.000226, -0.044872
+
+;__________________________________________________________ Gauss Sight (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_dtmdr_gauss_sight]:wpn_dtmdr
+
+        1icon_layer	       = gauss_sight
+        1icon_layer_x      = 64
+        1icon_layer_y      = -19
+
+        hud		           = wpn_dtmdr_gauss_sight_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_gauss_sight_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = on
+        scope_zoom_factor  = 12
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_gauss_sight
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_gauss_sight_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_gauss_sight_hud.ogf
+
+        aim_hud_offset_pos               = -0.059033, 0.011945, -0.071708
+        aim_hud_offset_pos_16x9          = -0.059033, 0.011945, -0.071708
+        aim_hud_offset_rot               = 0.001681, -0.003499, -0.048209
+        aim_hud_offset_rot_16x9          = 0.001681, -0.003499, -0.048209
+		
+;__________________________________________________________ Gauss Sight (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_dtmdr_gauss]:wpn_dtmdr
+
+        1icon_layer	       = gauss
+        1icon_layer_x      = 67
+        1icon_layer_y      = -30
+
+        hud		           = wpn_dtmdr_gauss_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_gauss_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = on
+        scope_zoom_factor  = 12
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_gauss_sight
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_gauss_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_gauss_hud.ogf
+
+        aim_hud_offset_pos               = -0.059299, 0.005979, -0.074739
+        aim_hud_offset_pos_16x9          = -0.059299, 0.005979, -0.074739
+        aim_hud_offset_rot               = -0.004212, -0.000304, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004212, -0.000304, -0.044872
+		
+;__________________________________________________________ HAMR (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_dtmdr_hamr]:wpn_dtmdr
+
+        1icon_layer	       = hamr
+        1icon_layer_x      = 67
+        1icon_layer_y      = -30
+
+        hud		   = wpn_dtmdr_hamr_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_hamr_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_hamr
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_hamr_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_hamr_hud.ogf
+		
+        aim_hud_offset_pos               = -0.059246, 0.007541, -0.050218
+        aim_hud_offset_pos_16x9          = -0.059246, 0.007541, -0.050218
+        aim_hud_offset_rot               = -0.00336, -0.000847, -0.044872
+        aim_hud_offset_rot_16x9          = -0.00336, -0.000847, -0.044872
+
+        aim_hud_offset_alt_pos           = -0.059714, -0.021638, -0.068546
+        aim_hud_offset_alt_pos_16x9      = -0.059714, -0.021638, -0.068546
+        aim_hud_offset_alt_rot           = -0.006388, 0.000072, -0.042655
+        aim_hud_offset_alt_rot_16x9      = -0.006388, 0.000072, -0.042655
+		
+;__________________________________________________________ Hartman MH1 (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_hartman_mh1]:wpn_dtmdr
+
+        1icon_layer	       = hartman_mh1
+        1icon_layer_x      = 97
+        1icon_layer_y      = -17
+
+        hud		           = wpn_dtmdr_hartman_mh1_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_hartman_mh1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_hartman_mh1_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_hartman_mh1_hud.ogf
+
+        aim_hud_offset_pos               = -0.05983, 0.007044, -0.049786
+        aim_hud_offset_pos_16x9          = -0.05983, 0.007044, -0.049786
+        aim_hud_offset_rot               = -0.007478, 0.000067, -0.038054
+        aim_hud_offset_rot_16x9          = -0.007478, 0.000067, -0.038054
+		
+;__________________________________________________________ HCO (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_hco]:wpn_dtmdr
+
+        1icon_layer	       = hco
+        1icon_layer_x      = 100
+        1icon_layer_y      = -23
+
+        hud		   = wpn_dtmdr_hco_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_hco_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_hco_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_hco_hud.ogf
+
+        aim_hud_offset_pos               = -0.059882, 0.006476, -0.052477
+        aim_hud_offset_pos_16x9          = -0.059882, 0.006476, -0.052477
+        aim_hud_offset_rot               = -0.005703, 0.000226, -0.040683
+        aim_hud_offset_rot_16x9          = -0.005703, 0.000226, -0.040683
+		
+;__________________________________________________________ HE510 (RWAP)[PRS+MS Only] ___________________________________________________
+
+[wpn_dtmdr_he510]:wpn_dtmdr
+
+        1icon_layer	       = he510
+        1icon_layer_x      = 100
+        1icon_layer_y      = -23
+
+        hud		   = wpn_dtmdr_he510_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_he510_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_he510_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_he510_hud.ogf
+		
+        aim_hud_offset_pos               = -0.059829, 0.011092, -0.072166
+        aim_hud_offset_pos_16x9          = -0.059829, 0.011092, -0.072166
+        aim_hud_offset_rot               = -0.004425, 0.000226, -0.041606
+        aim_hud_offset_rot_16x9          = -0.004425, 0.000226, -0.041606
+						
+;__________________________________________________________ Kemper (BaS)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_kemper]:wpn_dtmdr
+
+        1icon_layer	       = kemper
+        1icon_layer_x      = 91
+        1icon_layer_y      = -21
+
+        hud		           = wpn_dtmdr_kemper_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_kemper_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_kemper_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_kemper_hud.ogf
+		
+        aim_hud_offset_pos               = -0.059829, 0.009743, -0.037407
+        aim_hud_offset_pos_16x9          = -0.059829, 0.009743, -0.037407
+        aim_hud_offset_rot               = -0.004425, 0.000226, -0.038405
+        aim_hud_offset_rot_16x9          = -0.004425, 0.000226, -0.038405
+		
+;__________________________________________________________ Rusak (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_rusak]:wpn_dtmdr
+
+        1icon_layer	       = rusak
+        1icon_layer_x      = 78
+        1icon_layer_y      = -25
+
+        hud		           = wpn_dtmdr_rusak_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_rusak_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_rusak_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_rusak_hud.ogf
+
+        aim_hud_offset_pos               = -0.05999, 0.011588, -0.03947
+        aim_hud_offset_pos_16x9          = -0.05999, 0.011588, -0.03947
+        aim_hud_offset_rot               = -0.005489, 0.000563, -0.044872
+        aim_hud_offset_rot_16x9          = -0.005489, 0.000563, -0.044872
+		
+;__________________________________________________________ LCO (Phant0m)[PRS+MS Only] ___________________________________________________
+
+[wpn_dtmdr_lco1]:wpn_dtmdr
+
+        1icon_layer	       = lco1
+        1icon_layer_x      = 95
+        1icon_layer_y      = -23
+
+        hud		   = wpn_dtmdr_lco1_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_lco1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_lco1_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_lco1_hud.ogf
+
+        aim_hud_offset_pos               = -0.059777, 0.008038, -0.061728
+        aim_hud_offset_pos_16x9          = -0.059777, 0.008038, -0.061728
+        aim_hud_offset_rot               = -0.004922, 0.000279, -0.042103
+        aim_hud_offset_rot_16x9          = -0.004922, 0.000279, -0.042103
+		
+;__________________________________________________________ Leupold (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_dtmdr_leupold]:wpn_dtmdr
+
+        1icon_layer	       = leupold
+        1icon_layer_x      = 79
+        1icon_layer_y      = -21
+		
+        hud		   = wpn_dtmdr_leupold_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_leupold_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = on
+        scope_zoom_factor  = 12
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_leupold
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_leupold_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_leupold_hud.ogf
+
+        aim_hud_offset_pos               = -0.059297, 0.008322, -0.062502
+        aim_hud_offset_pos_16x9          = -0.059297, 0.008322, -0.062502
+        aim_hud_offset_rot               = -0.003999, -0.000409, -0.044872
+        aim_hud_offset_rot_16x9          = -0.003999, -0.000409, -0.044872
+			
+;__________________________________________________________ March Shorty (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_dtmdr_march_f_shorty]:wpn_dtmdr
+
+        1icon_layer	       = march_f_shorty
+        1icon_layer_x      = 77
+        1icon_layer_y      = -26
+
+        hud		           = wpn_dtmdr_march_f_shorty_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_march_f_shorty_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = on
+        scope_zoom_factor  = 12
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_march_shorty
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_march_f_shorty_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_march_f_shorty_hud.ogf
+
+        aim_hud_offset_pos               = -0.059191, 0.00605, -0.053477
+        aim_hud_offset_pos_16x9          = -0.059191, 0.00605, -0.053477
+        aim_hud_offset_rot               = -0.003289, -0.000357, -0.042743
+        aim_hud_offset_rot_16x9          = -0.003289, -0.000357, -0.042743
+		
+;__________________________________________________________ Marchf (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_dtmdr_marchf]:wpn_dtmdr
+
+        1icon_layer	       = marchf
+        1icon_layer_x      = 78
+        1icon_layer_y      = -19
+
+        hud		   = wpn_dtmdr_marchf_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_marchf_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = on
+        scope_zoom_factor  = 12
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_marchf
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_marchf_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_marchf_hud.ogf
+
+        aim_hud_offset_pos               = -0.059299, 0.005198, -0.019864
+        aim_hud_offset_pos_16x9          = -0.059299, 0.005198, -0.019864
+        aim_hud_offset_rot               = -0.003147, -0.001102, -0.044872
+        aim_hud_offset_rot_16x9          = -0.003147, -0.001102, -0.044872
+		
+;__________________________________________________________ Mepro (BaS)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_mepro]:wpn_dtmdr
+
+        1icon_layer	       = mepro
+        1icon_layer_x      = 94
+        1icon_layer_y      = -20
+
+        hud		   = wpn_dtmdr_mepro_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_mepro_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_mepro_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_mepro_hud.ogf
+
+        aim_hud_offset_pos               = -0.059671, 0.009529, -0.061728
+        aim_hud_offset_pos_16x9          = -0.059671, 0.009529, -0.061728
+        aim_hud_offset_rot               = -0.004709, 0.00012, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004709, 0.00012, -0.044872
+		
+;_________________________________________ Monstrum (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_dtmdr_monstrum]:wpn_dtmdr
+
+        1icon_layer         = monstrum
+        1icon_layer_x       = 89
+        1icon_layer_y       = -25
+
+        hud                 = wpn_dtmdr_monstrum_hud
+        !visual				= dynamics\weapons\wpn_dtmdr\wpn_dtmdr_monstrum_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_zoom_factor       = 20
+        scope_dynamic_zoom      = on
+		
+		!scope_texture	   = wpn_crosshair_monstrum
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_monstrum_hud]:wpn_dtmdr_hud
+
+        item_visual                              = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_monstrum_hud.ogf
+
+        aim_hud_offset_pos               = -0.05972, 0.017632, -0.040807
+        aim_hud_offset_pos_16x9          = -0.05972, 0.017632, -0.040807
+        aim_hud_offset_rot               = -0.004425, 0.000484, -0.045441
+        aim_hud_offset_rot_16x9          = -0.004425, 0.000484, -0.045441
+
+;__________________________________________________________ P1X42 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_p1x42]:wpn_dtmdr
+
+        1icon_layer	       = p1x42
+        1icon_layer_x      = 93
+        1icon_layer_y      = -25
+
+        hud		   = wpn_dtmdr_p1x42_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_p1x42_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_p1x42_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_p1x42_hud.ogf
+
+        aim_hud_offset_pos               = -0.059722, 0.010523, -0.043372
+        aim_hud_offset_pos_16x9          = -0.059722, 0.010523, -0.043372
+        aim_hud_offset_rot               = -0.003005, 0.001242, -0.040043
+        aim_hud_offset_rot_16x9          = -0.003005, 0.001242, -0.040043
+		
+;_________________________________________ P4X32 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_dtmdr_p4x32]:wpn_dtmdr
+
+        1icon_layer         = p4x32
+        1icon_layer_x       = 81
+        1icon_layer_y       = -21
+
+        hud                 = wpn_dtmdr_p4x32_hud
+        !visual				= dynamics\weapons\wpn_dtmdr\wpn_dtmdr_p4x32_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_zoom_factor       = 20
+        scope_dynamic_zoom      = on
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_p4x32_hud]:wpn_dtmdr_hud
+
+        item_visual                              = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_p4x32_hud.ogf	
+
+        aim_hud_offset_pos               = -0.059033, 0.016777, -0.065648
+        aim_hud_offset_pos_16x9          = -0.059033, 0.016777, -0.065648
+        aim_hud_offset_rot               = -0.004354, -0.000888, -0.041817
+        aim_hud_offset_rot_16x9          = -0.004354, -0.000888, -0.041817
+		
+;__________________________________________________________ PK6 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_pk6]:wpn_dtmdr
+
+        1icon_layer	   = pk6
+        1icon_layer_x      = 91
+        1icon_layer_y      = -25
+
+        hud		   = wpn_dtmdr_pk6_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_pk6_world.ogf
+		
+		ms_count 			= 3
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_pk6_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_pk6_hud.ogf
+		
+        aim_hud_offset_pos               = -0.059512, 0.019279, -0.058168
+        aim_hud_offset_pos_16x9          = -0.059512, 0.019279, -0.058168
+        aim_hud_offset_rot               = -0.006921, -0.000092, -0.038834
+        aim_hud_offset_rot_16x9          = -0.006921, -0.000092, -0.038834
+
+;________________________________________________ PKS-07 (Party_50 and MsPizza727)[3DSS Only] ___________________________________________________
+
+[wpn_dtmdr_pks07]:wpn_dtmdr
+
+        1icon_layer	       = pks07
+        1icon_layer_x      = 79
+        1icon_layer_y      = -23
+
+        hud		           = wpn_dtmdr_pks07_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_pks07_world.ogf
+ 
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_pks07_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_pks07_hud.ogf
+		
+        aim_hud_offset_pos               = -0.058978, 0.011377, -0.055208
+        aim_hud_offset_pos_16x9          = -0.058978, 0.011377, -0.055208
+        aim_hud_offset_rot               = -0.001656, -0.004242, -0.044872
+        aim_hud_offset_rot_16x9          = -0.001656, -0.004242, -0.044872
+		
+;__________________________________________________________ PN23 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_dtmdr_pn23]:wpn_dtmdr
+
+        1icon_layer	       = pn23
+        1icon_layer_x      = 56
+        1icon_layer_y      = -29
+
+        hud		   = wpn_dtmdr_pn23_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_pn23_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 25
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_pn23
+		
+		!nv_scope_status   = 1
+		!scope_nightvision = !scope_nightvision_1gen
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;--------------------------------------------------------------------------------------
+
+[wpn_dtmdr_pn23_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_pn23_hud.ogf
+
+        aim_hud_offset_pos               = -0.060469, -0.001628, -0.072477
+        aim_hud_offset_pos_16x9          = -0.060469, -0.001628, -0.072477
+        aim_hud_offset_rot               = -0.005135, 0.000014, -0.041677
+        aim_hud_offset_rot_16x9          = -0.005135, 0.000014, -0.041677
+
+;_________________________________________ PO4X34 (MsPizza727) [3DSS Only] ____________________________________________
+
+[wpn_dtmdr_po4x34]:wpn_dtmdr
+
+        1icon_layer         = po4x34
+        1icon_layer_x       = 76
+        1icon_layer_y       = -21
+
+        hud                 = wpn_dtmdr_po4x34_hud
+        !visual				= dynamics\weapons\wpn_dtmdr\wpn_dtmdr_po4x34_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_zoom_factor       = 20
+        scope_dynamic_zoom      = on
+		
+		!scope_texture	   = wpn_crosshair_po4x34
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_po4x34_hud]:wpn_dtmdr_hud
+
+        item_visual                              = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_po4x34_hud.ogf
+
+        aim_hud_offset_pos               = -0.059405, 0.013582, -0.048584
+        aim_hud_offset_pos_16x9          = -0.059405, 0.013582, -0.048584
+        aim_hud_offset_rot               = -0.00549, -0.000198, -0.043381
+        aim_hud_offset_rot_16x9          = -0.00549, -0.000198, -0.043381
+		
+;_________________________________________ Valdai PS320 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_dtmdr_ps320]:wpn_dtmdr
+
+        1icon_layer         = ps320
+        1icon_layer_x       = 67
+        1icon_layer_y       = -27
+
+        hud                 = wpn_dtmdr_ps320_hud
+        !visual				= dynamics\weapons\wpn_dtmdr\wpn_dtmdr_ps320_world.ogf
+        zoom_step_count					 = 1
+
+        zoom_rotate_time    = 0.25
+
+        scope_status            = 1
+        scope_zoom_factor       = 20
+        scope_dynamic_zoom      = on
+		
+		!scope_texture	   = wpn_crosshair_ps320
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_ps320_hud]:wpn_dtmdr_hud
+
+        item_visual                              = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_ps320_hud.ogf
+
+        aim_hud_offset_pos               = -0.059301, 0.010381, -0.045586
+        aim_hud_offset_pos_16x9          = -0.059301, 0.010381, -0.045586
+        aim_hud_offset_rot               = -0.004212, -0.000304, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004212, -0.000304, -0.044872
+				
+;__________________________________________________________ Rakurs (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_dtmdr_rakurs]:wpn_dtmdr
+
+        1icon_layer	       = rakurs
+        1icon_layer_x      = 85
+        1icon_layer_y      = -24
+
+        hud		   = wpn_dtmdr_rakurs_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_rakurs_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_rakurs_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_rakurs_hud.ogf
+
+        aim_hud_offset_pos               = -0.05951, 0.019334, -0.061728
+        aim_hud_offset_pos_16x9          = -0.05951, 0.019334, -0.061728
+        aim_hud_offset_rot               = -0.004283, -0.000145, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004283, -0.000145, -0.044872
+		
+;__________________________________________________________ RazorHD (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_dtmdr_razorhd]:wpn_dtmdr
+
+        1icon_layer	       = razorhd
+        1icon_layer_x      = 69
+        1icon_layer_y      = -26
+
+        hud		   = wpn_dtmdr_razorhd_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_razorhd_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = on
+        scope_zoom_factor  = 12
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_razorhd
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_razorhd_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_razorhd_hud.ogf
+
+        aim_hud_offset_pos               = -0.058982, 0.00676, -0.030371
+        aim_hud_offset_pos_16x9          = -0.058982, 0.00676, -0.030371
+        aim_hud_offset_rot               = -0.003644, 0.00028, -0.042884
+        aim_hud_offset_rot_16x9          = -0.003644, 0.00028, -0.042884
+
+        aim_hud_offset_alt_pos           = -0.05929, -0.037191, -0.070611
+        aim_hud_offset_alt_pos_16x9      = -0.05929, -0.037191, -0.070611
+        aim_hud_offset_alt_rot           = -0.005272, -0.00007, -0.042868
+        aim_hud_offset_alt_rot_16x9      = -0.005272, -0.00007, -0.042868
+		
+;__________________________________________________________ RMR (BaS)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_rmr]:wpn_dtmdr
+
+        1icon_layer	       = rmr
+        1icon_layer_x      = 91
+        1icon_layer_y      = -23
+
+        hud		   = wpn_dtmdr_rmr_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_rmr_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_rmr_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_rmr_hud.ogf
+
+        aim_hud_offset_pos               = -0.059511, 0.024035, -0.061728
+        aim_hud_offset_pos_16x9          = -0.059511, 0.024035, -0.061728
+        aim_hud_offset_rot               = -0.004425, 0.000067, -0.046008
+        aim_hud_offset_rot_16x9          = -0.004425, 0.000067, -0.046008
+		
+;__________________________________________________________ Romeo 4 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_romeo4]:wpn_dtmdr
+
+        1icon_layer	       = romeo4
+        1icon_layer_x      = 92
+        1icon_layer_y      = -26
+
+        hud		   = wpn_dtmdr_romeo4_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_romeo4_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+		
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_romeo4_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_romeo4_hud.ogf
+
+        aim_hud_offset_pos               = -0.059512, 0.012227, -0.061728
+        aim_hud_offset_pos_16x9          = -0.059512, 0.012227, -0.061728
+        aim_hud_offset_rot               = -0.003502, 0.000067, -0.047144
+        aim_hud_offset_rot_16x9          = -0.003502, 0.000067, -0.047144
+		
+;__________________________________________________________ Romeo 8 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_dtmdr_romeo8]:wpn_dtmdr
+
+        1icon_layer	   = romeo8
+        1icon_layer_x      = 94
+        1icon_layer_y      = -24
+
+        hud		   = wpn_dtmdr_romeo8_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_romeo8_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_romeo8_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_romeo8_hud.ogf
+
+        aim_hud_offset_pos               = -0.059936, 0.01173, -0.061728
+        aim_hud_offset_pos_16x9          = -0.059936, 0.01173, -0.061728
+        aim_hud_offset_rot               = -0.00336, 0.000385, -0.044304
+        aim_hud_offset_rot_16x9          = -0.00336, 0.000385, -0.044304
+		
+;__________________________________________________________ Specter (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_dtmdr_specter]:wpn_dtmdr
+
+        1icon_layer	       = specter
+        1icon_layer_x      = 72
+        1icon_layer_y      = -25
+
+        hud		           = wpn_dtmdr_specter_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_specter_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom = on
+        scope_zoom_factor  = 12
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_specter
+		
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_specter_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_specter_hud.ogf
+
+        aim_hud_offset_pos               = -0.05951, 0.008109, -0.084125
+        aim_hud_offset_pos_16x9          = -0.05951, 0.008109, -0.084125
+        aim_hud_offset_rot               = -0.002863, 0.000334, -0.039043
+        aim_hud_offset_rot_16x9          = -0.002863, 0.000334, -0.039043
+		
+        aim_hud_offset_alt_pos           = -0.059555, -0.030656, -0.070611
+        aim_hud_offset_alt_pos_16x9      = -0.059555, -0.030656, -0.070611
+        aim_hud_offset_alt_rot           = -0.005967, -0.000354, -0.041874
+        aim_hud_offset_alt_rot_16x9      = -0.005967, -0.000354, -0.041874
+		
+;__________________________________________________________ Susat (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_dtmdr_susatov]:wpn_dtmdr
+
+        1icon_layer	       = susatov
+        1icon_layer_x      = 81
+        1icon_layer_y      = -29
+
+        hud		   = wpn_dtmdr_susatov_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_susatov_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_susat
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_susatov_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_susatov_hud.ogf
+		
+        aim_hud_offset_pos               = -0.059298, -0.0064, -0.084481
+        aim_hud_offset_pos_16x9          = -0.059298, -0.0064, -0.084481
+        aim_hud_offset_rot               = -0.004425, -0.000357, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004425, -0.000357, -0.044872
+
+        aim_hud_offset_alt_pos           = -0.059449, -0.027603, -0.105026
+        aim_hud_offset_alt_pos_16x9      = -0.059449, -0.027603, -0.105026
+        aim_hud_offset_alt_rot           = -0.006278, 0.000213, -0.043436
+        aim_hud_offset_alt_rot_16x9      = -0.006278, 0.000213, -0.043436
+		
+;_________________________________________ T12 (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_dtmdr_t12]:wpn_dtmdr
+
+        1icon_layer             = t12
+        1icon_layer_x			= 92
+        1icon_layer_y			= -23
+		
+        hud					= wpn_dtmdr_t12_hud
+        !visual				= dynamics\weapons\wpn_dtmdr\wpn_dtmdr_t12_world.ogf
+		
+        scope_status            = 1
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------		
+	
+[wpn_dtmdr_t12_hud]:wpn_dtmdr_hud
+
+        item_visual                		= anomaly_weapons\wpn_dtmdr\wpn_dtmdr_t12_hud.ogf
+
+        aim_hud_offset_pos               = -0.059338, 0.022666, -0.047573
+        aim_hud_offset_pos_16x9          = -0.059338, 0.022666, -0.047573
+        aim_hud_offset_rot               = 0.002107, 0.000068, -0.047144
+        aim_hud_offset_rot_16x9          = 0.002107, 0.000068, -0.047144
+		
+;_________________________________________ Tac30 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_dtmdr_tac30]:wpn_dtmdr
+
+        1icon_layer         = tac30
+        1icon_layer_x       = 69
+        1icon_layer_y       = -24
+
+        hud                 = wpn_dtmdr_tac30_hud
+        !visual				= dynamics\weapons\wpn_dtmdr\wpn_dtmdr_tac30_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_zoom_factor       = 20
+        scope_dynamic_zoom      = on
+		
+		!scope_texture	   = wpn_crosshair_tac30
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_tac30_hud]:wpn_dtmdr_hud
+
+        item_visual                              = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_tac30_hud.ogf
+
+        aim_hud_offset_pos               = -0.059458, 0.005269, -0.051985
+        aim_hud_offset_pos_16x9          = -0.059458, 0.005269, -0.051985
+        aim_hud_offset_rot               = -0.002792, 0.001191, -0.026531
+        aim_hud_offset_rot_16x9          = -0.002792, 0.001191, -0.026531
+		
+;_________________________________________ Trihawk (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_dtmdr_trihawk]:wpn_dtmdr
+
+        1icon_layer         = trihawk
+        1icon_layer_x       = 85
+        1icon_layer_y       = -25
+
+        hud                 = wpn_dtmdr_trihawk_hud
+        !visual				= dynamics\weapons\wpn_dtmdr\wpn_dtmdr_trihawk_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_zoom_factor       = 0
+        scope_dynamic_zoom      = off
+		
+		!scope_texture	   = wpn_crosshair_trihawk
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_trihawk_hud]:wpn_dtmdr_hud
+
+        item_visual                              = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_trihawk_hud.ogf
+
+        aim_hud_offset_pos               = -0.059406, 0.006255, -0.056687
+        aim_hud_offset_pos_16x9          = -0.059406, 0.006255, -0.056687
+        aim_hud_offset_rot               = -0.003502, 0.000067, -0.047144
+        aim_hud_offset_rot_16x9          = -0.003502, 0.000067, -0.047144
+		
+;__________________________________________________________ UH-1 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_dtmdr_uh1_magd]:wpn_dtmdr
+
+        1icon_layer	       = uh1_magd
+        1icon_layer_x      = 71
+        1icon_layer_y      = -25
+
+        hud		           = wpn_dtmdr_uh1_magd_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_uh1_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+		
+		!scope_texture	   = wpn_crosshair_uh1_magn
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+		
+[wpn_dtmdr_uh1_magd_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_uh1_magd_hud.ogf
+
+        aim_hud_offset_pos               = -0.059511, 0.010452, -0.068985
+        aim_hud_offset_pos_16x9          = -0.059511, 0.010452, -0.068985
+        aim_hud_offset_rot               = -0.004354, -0.000092, -0.044872
+        aim_hud_offset_rot_16x9          = -0.004354, -0.000092, -0.044872
+		
+;___________________________ Flipped ___________________________________
+
+[wpn_dtmdr_uh1_magd_off]:wpn_dtmdr
+
+        1icon_layer	       = uh1_magd
+        1icon_layer_x      = 71
+        1icon_layer_y      = -25
+
+        hud		           = wpn_dtmdr_uh1_magd_off_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_uh1_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_uh1_magd_off_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_uh1_magd_off_hud.ogf
+
+        aim_hud_offset_pos               = -0.059617, 0.007612, -0.074739
+        aim_hud_offset_pos_16x9          = -0.059617, 0.007612, -0.074739
+        aim_hud_offset_rot               = -0.0062, -0.00025, -0.042314
+        aim_hud_offset_rot_16x9          = -0.0062, -0.00025, -0.042314
+		
+;__________________________________________________________ UH2 (Phant0m)[PRS+MS Only] ___________________________________________________
+
+[wpn_dtmdr_uh2]:wpn_dtmdr
+
+        1icon_layer	       = uh2
+        1icon_layer_x      = 95
+        1icon_layer_y      = -28
+
+        hud		   = wpn_dtmdr_uh2_hud
+        !visual             = dynamics\weapons\wpn_dtmdr\wpn_dtmdr_uh2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom      = off
+        scope_zoom_factor  = 0
+        zoom_rotate_time   = 0.25
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_uh2_hud]:wpn_dtmdr_hud 
+
+        item_visual        = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_uh2_hud.ogf
+
+        aim_hud_offset_pos               = -0.059459, 0.008819, -0.061728
+        aim_hud_offset_pos_16x9          = -0.059459, 0.008819, -0.061728
+        aim_hud_offset_rot               = -0.005561, -0.00041, -0.047144
+        aim_hud_offset_rot_16x9          = -0.005561, -0.00041, -0.047144
+		
+;_________________________________________ Vulcan (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_dtmdr_vulcan]:wpn_dtmdr
+
+        1icon_layer         = vulcan
+        1icon_layer_x       = 66
+        1icon_layer_y       = -28
+
+        hud                 = wpn_dtmdr_vulcan_hud
+        !visual				= dynamics\weapons\wpn_dtmdr\wpn_dtmdr_vulcan_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_zoom_factor       = 0
+        scope_dynamic_zoom      = off
+		
+		!scope_texture	   = wpn_crosshair_vulcan
+		
+		!nv_scope_status   = 1
+		!scope_nightvision = !scope_nightvision_1gen
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 103
+        inv_grid_y                               = 16
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 83
+        ;inv_grid_y                               = 16
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_dtmdr_vulcan_hud]:wpn_dtmdr_hud
+
+        item_visual                              = anomaly_weapons\wpn_dtmdr\wpn_dtmdr_vulcan_hud.ogf
+
+        aim_hud_offset_pos               = -0.05941, 0.010174, -0.086684
+        aim_hud_offset_pos_16x9          = -0.05941, 0.010174, -0.086684
+        aim_hud_offset_rot               = -0.003715, -0.000569, -0.044872
+        aim_hud_offset_rot_16x9          = -0.003715, -0.000569, -0.044872
