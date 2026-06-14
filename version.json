@@ -1,7 +1,7 @@
 {
-  "version": "2026.06.13.2",
+  "version": "2026.06.14.1",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Обновление MO2 модпака.",
+  "notes": "РХБЗ Толже имеет теперь баллон!",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/misc/squad_descr/squad_descr_soc_yantar.ltx",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/misc/task/task_manager_anthology/tm_soc_bar.ltx",
