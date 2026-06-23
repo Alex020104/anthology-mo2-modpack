@@ -1,5 +1,5 @@
 {
-  "version": "2026.06.17.2",
+  "version": "2026.06.23.1",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
   "notes": "Обновление MO2 модпака.",
   "removed_files": [
@@ -24,7 +24,6 @@
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/ui_options.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/utils_obj.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/xr_conditions.script",
-    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/xr_effects.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/xr_zones.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/zzz_loadout_grenade_chance.script",
     "[GAM] Grok's Stash Overhaul — Тайники по наводке/gamedata/scripts/axr_npc_vs_box.script",
