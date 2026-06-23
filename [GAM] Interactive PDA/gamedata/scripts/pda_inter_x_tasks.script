@@ -711,7 +711,11 @@ function add_giver()
 		local anom_id = Tasks_available_givers[#Tasks_available_givers].anomaly_id
 		local anom_obj = anom_id and alife_object(anom_id)
 		local anom_level_id = anom_obj and game_graph():vertex(anom_obj.m_game_vertex_id):level_id()
-		local anom_level_name = anom_level_id and alife():level_name(anom_level_id) or "nil"
+		local anom_level_name = anom_level_id and alife():level_name(anom_level_id)
+		if not anom_level_name then
+			table.remove(Tasks_available_givers, #Tasks_available_givers)
+			return
+		end
 		Tasks_available_givers[#Tasks_available_givers].anomaly_level_name = anom_level_name
 	end
 
@@ -2372,8 +2376,11 @@ function get_anomaly_zone_id(giver_id)
 	-- exclude zones outside of radius
 	for level_id, t in pairs(zones_t) do
 		for obj_id, _ in pairs(t) do
-			local dist = get_distx(obj_id, se_giver)
-			if dist and (dist < 700 or dist > 2000) then
+			local zone_obj = alife_object(obj_id)
+			local zone_level_id = zone_obj and game_graph():vertex(zone_obj.m_game_vertex_id):level_id()
+			local zone_level_name = zone_level_id and alife():level_name(zone_level_id)
+			local dist = zone_obj and get_distx(obj_id, se_giver)
+			if (not zone_level_name) or (not dist) or (dist < 700 or dist > 2000) then
 				zones_t[level_id][obj_id] = nil
 			end
 		end

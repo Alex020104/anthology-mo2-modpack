@@ -3033,6 +3033,11 @@ function tank_degradation_and_protection(tank)
 			oxt_cond_hit = oxt_cond_hit * mcm_flow_rate_mult * move_mult * get_profile_toxic_degrade_mult(tank_entry)
 			local oxt_cond = tank:condition() - oxt_cond_hit
 			tank:set_condition(oxt_cond)
+		elseif not hold_breathe then
+			local base_leak = (ini_sys:r_float_ex(tank_sec, "flow_rate") or 0) * mcm_flow_rate_mult * 0.05
+			check_actor_move()
+			local oxt_cond = tank:condition() - base_leak * move_mult
+			tank:set_condition(oxt_cond)
 		end
 		
 		tank_rad_reduction = get_profile_rad_reduction(tank_entry)
