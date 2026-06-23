@@ -1,7 +1,7 @@
 {
   "version": "2026.06.23.1",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Обновление MO2 модпака.",
+  "notes": "Обновление MO2 модпака. Fix вылетов",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/misc/squad_descr/squad_descr_soc_yantar.ltx",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/misc/task/task_manager_anthology/tm_soc_bar.ltx",
@@ -14,6 +14,7 @@
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/dialogs_zaton.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/field_mag_loading.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/guaranteed_loot.script",
+    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/itms_manager.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/mon_sleep.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/move_mgr.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/rx_knife.script",
@@ -24,6 +25,7 @@
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/ui_options.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/utils_obj.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/xr_conditions.script",
+    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/xr_effects.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/xr_zones.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/zzz_loadout_grenade_chance.script",
     "[GAM] Grok's Stash Overhaul — Тайники по наводке/gamedata/scripts/axr_npc_vs_box.script",
