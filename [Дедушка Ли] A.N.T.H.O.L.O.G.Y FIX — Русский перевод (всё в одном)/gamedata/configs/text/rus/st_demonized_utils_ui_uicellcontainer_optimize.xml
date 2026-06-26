@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	
+    <string id="ui_mcm_uicellcontainer_optimize_title">
+		<text>Оптимизация инвентаря</text>
+	</string>
+    <string id="ui_mcm_menu_uicellcontainer_optimize">
+		<text>Оптимизация инвентаря</text>
+	</string>
+    <string id="ui_mcm_uicellcontainer_optimize_enabled">
+		<text>Включить</text>
+	</string>
+	<string id="ui_mcm_uicellcontainer_optimize_deferredLimit">
+		<text>Минимальное количество предметов в контейнере для включения оптимизации</text>
+	</string>
+	<string id="ui_mcm_uicellcontainer_optimize_sort_step2">
+		<text>Количество вызовов сортировщика на обновление пользовательского интерфейса</text>
+	</string>
+	<string id="ui_mcm_uicellcontainer_optimize_sort_step2_desc">
+		<text>Увеличение значения приведет к более быстрому, но менее плавному открытию инвентаря (возможно понижение FPS).</text>
+	</string>
+	<string id="ui_mcm_uicellcontainer_optimize_icon_step">
+		<text>Количество отрисовок иконок при каждом обновлении пользовательского интерфейса.</text>
+	</string>
+	<string id="ui_mcm_uicellcontainer_optimize_icon_step_desc">
+		<text>Увеличение значения приведет к увеличению количества отрисовок иконок за кадр, но сильнее снизит FPS.</text>
+	</string>
+</string_table>

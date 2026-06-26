@@ -1,0 +1,39 @@
+local defaults = {
+    watch_alarm = true,
+    pda_alarm = true,
+    alarm_priority = 0, -- 0 = Watch, 1 = PDA
+}
+
+function get_config(key)
+    if ui_mcm then
+        return ui_mcm.get("alarm_wakeup/" .. key)
+    else
+        return defaults[key]
+    end
+end
+
+function on_mcm_load()
+    local op = {
+        id = "alarm_wakeup",
+        sh = true,
+        gr = {
+            {type = "title", text = "ui_mcm_alarm_wakeup_header", align = "c", clr = {255,200,200,200}},
+            
+            {id = "watch_alarm", type = "check", val = 1, def = true,
+             text = "ui_mcm_alarm_wakeup_watch_alarm",
+             desc = "ui_mcm_alarm_wakeup_watch_alarm_desc"},
+
+            {id = "pda_alarm", type = "check", val = 1, def = true,
+             text = "ui_mcm_alarm_wakeup_pda_alarm",
+             desc = "ui_mcm_alarm_wakeup_pda_alarm_desc"},
+
+            {type = "line"},
+            {type = "desc", text = "ui_mcm_alarm_wakeup_priority_desc"},
+            {id = "alarm_priority", type = "radio_h", val = 2, def = 0,
+            content = { {0, "alarm_wakeup_priority_watch"}, {1, "alarm_wakeup_priority_pda"} },
+            hint = "alarm_wakeup_priority"
+            }
+        }
+    }
+    return op
+end

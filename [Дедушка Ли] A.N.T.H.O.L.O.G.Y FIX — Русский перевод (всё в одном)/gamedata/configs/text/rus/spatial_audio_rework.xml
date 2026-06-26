@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="ui_mcm_menu_spatial_audio">
+		<text>Переработка пространственного звука</text>
+	</string>
+	<string id="ui_mcm_menu_sar_main">
+		<text>Основные настройки</text>
+	</string>
+	<string id="ui_mcm_menu_sar_editor">
+		<text>Редактор эффектов</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_enable">
+		<text>Включить</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_enable_npc">
+		<text>Включить определение лучей для конкретных НПС</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_enable_npc_desc">
+		<text>Эта функция определяет, находится ли NPC в помещении, когда он стреляет из оружия и находится на достаточно близком расстоянии от игрока (100 единиц); если значение достаточно высокое, будет воспроизведен пользовательский звук для помещения. Если отключить эту функцию, вместо нее будет использоваться определение по объекту. Отключите ее, если хотите повысить производительность.</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_enable_editor">
+		<text>Включить</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_ray_per_frame_mult">
+		<text>Множитель лучей на кадр</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_ray_per_frame_mult_desc">
+		<text>Множитель количества лучей, испускаемых за кадр. Не сильно влияет на производительность, рекомендуется 2.</text>
+	</string>		  
+	<string id="ui_mcm_spatial_audio_sar_main_npc_tick_interval">
+		<text>Интервал тактов НПС (в мс)</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_interpolation_interval">
+		<text>Интервал интерполяции размера</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_size_interpolation_interval">
+		<text>Интервал интерполяции длины</text>
+	</string>
+		<string id="ui_mcm_spatial_audio_sar_main_interpolation_interval_desc">
+		<text>Время интерполяции от одного значения размера помещения к другому. Меньшее время приводит к более резкому изменению значения, это сделано для предотвращения сильного дрожания эффекта.</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_volume">
+		<text>Громкость</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_ray_bounce_count">
+		<text>Количество отражений луча</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_ray_bounce_count_desc">
+		<text>Сколько раз луч отскочит. Сильнее всего влияет на производительность.</text>
+	</string>	
+	<string id="ui_mcm_spatial_audio_sar_main_npc_ray_bounce_count">
+		<text>Количество отражений луча НПС</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_ray_length_mult">
+		<text>Длина луча</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_dbug">
+		<text>Режим отладки</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_ray_dbug">
+		<text>Режим отладки лучей</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_show_replaced_sound">
+		<text>Показывать заменённый звук</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_upper_threshold">
+		<text>Верхний порог</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_upper_threshold_desc">
+		<text>Если показатель помещения (количество попаданий луча) превышает этот порог, эффект применяется на полную мощность и воспроизводится звук помещения.</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_lower_threshold">
+		<text>Нижний порог</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_lower_threshold_desc">
+		<text>Если показатель помещения (количество попаданий луча) превышает этот порог, реверберация начнёт влиять на звук.</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_cus_snd_threshold">
+		<text>Порог пользовательского звука выстрелов</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_cus_snd_desc">
+		<text>Если показатель помещения (количество попаданий луча) превышает этот порог, будет воспроизведён пользовательский внутренний звук выстрелов.</text>
+	</string>
+<string id="ui_mcm_spatial_audio_sar_main_very_small_preset">
+		<text>Пресет очень маленького помещения</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_very_small_preset_desc">
+		<text>Пресет реверберации для использования в очень маленьком помещении.</text>
+	</string>
+
+	<string id="ui_mcm_spatial_audio_sar_main_very_small_strength">
+		<text>Интенсивность пресета «Очень маленький»</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_very_small_strength_desc">
+		<text>По сути, степень выраженности эффекта «реверберации». 0 — реверберации нет, 1 — эффект применён полностью.</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_very_small_size">
+		<text>Расстояние для очень маленького пресета</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_very_small_size_desc">
+		<text>Если расстояние от точек попадания лучей до игрока меньше этого значения, будет использован очень маленький пресет.</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_small_preset">
+		<text>Пресет маленького помещения</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_small_preset_desc">
+		<text>Пресет реверберации для использования в маленьком помещении.</text>
+	</string>
+
+	<string id="ui_mcm_spatial_audio_sar_main_small_strength">
+		<text>Интенсивность пресета «Маленький»</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_small_strength_desc">
+		<text>По сути, степень выраженности эффекта «реверберации». 0 — реверберации нет, 1 — эффект применён полностью.</text>
+	</string>
+
+	<string id="ui_mcm_spatial_audio_sar_main_small_size">
+		<text>Расстояние для маленького пресета</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_small_size_desc">
+		<text>Если расстояние от точек попадания лучей до игрока меньше этого значения, будет использован маленький пресет.</text>
+	</string>
+
+	<string id="ui_mcm_spatial_audio_sar_main_mid_preset">
+		<text>Пресет среднего помещения</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_mid_preset_desc">
+		<text>Пресет реверберации для использования в среднем помещении.</text>
+	</string>
+
+	<string id="ui_mcm_spatial_audio_sar_main_mid_strength">
+		<text>Интенсивность пресета «Средний»</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_mid_strength_desc">
+		<text>По сути, степень выраженности эффекта «реверберации». 0 — реверберации нет, 1 — эффект применён полностью.</text>
+	</string>
+
+	<string id="ui_mcm_spatial_audio_sar_main_mid_size">
+		<text>Расстояние для среднего пресета</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_mid_size_desc">
+		<text>Если расстояние от точек попадания лучей до игрока равно этому значению, средний пресет будет применён полностью.</text>
+	</string>
+
+	<string id="ui_mcm_spatial_audio_sar_main_large_preset">
+		<text>Пресет большого помещения</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_large_preset_desc">
+		<text>Пресет реверберации для использования в большом помещении.</text>
+	</string>
+
+	<string id="ui_mcm_spatial_audio_sar_main_large_strength">
+		<text>Интенсивность пресета «Большой»</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_large_strength_desc">
+		<text>По сути, степень выраженности эффекта «реверберации». 0 — реверберации нет, 1 — эффект применён полностью.</text>
+	</string>
+
+	<string id="ui_mcm_spatial_audio_sar_main_large_size">
+		<text>Расстояние для большого пресета</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_large_size_desc">
+		<text>Если расстояние от точек попадания лучей до игрока равно этому значению или больше, большой пресет будет применён полностью.</text>
+	</string>
+
+	<string id="ui_mcm_spatial_audio_sar_main_outdoor_preset">
+		<text>Пресет открытой местности</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_main_outdoor_preset_desc">
+		<text>Пресет реверберации для использования на открытой местности (обычно без реверберации).</text>
+	</string>
+
+	<string id="ui_mcm_spatial_audio_desc_npc">
+		<text>Настройки НПС</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_desc_ray">
+		<text>Настройки лучей</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_desc_threshold">
+		<text>Настройки порогов - Насколько чувствительно обнаружение</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_desc_preset">
+		<text>Настройки пресетов - Настройки эффекта реверберации. Стандартные пресеты можно найти в script/sar_reverb_preset.script или создать пользовательский пресет на вкладке «Редактор пресетов».</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_desc_dbug">
+		<text>Для разработчиков</text>
+	</string>
+
+	<string id="ui_mcm_spatial_audio_desc_editor1">
+		<text>Добро пожаловать в редактор пресетов. Прокрутите вниз, чтобы узнать, как им пользоваться.</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_desc_editor2">
+		<text>1. Включите редактор, затем загрузите пользовательский пресет (или любой другой как основу).</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_desc_editor3">
+		<text>2. Начните редактирование — изменяйте значения и выходите, чтобы увидеть эффект в действии.</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_desc_editor4">
+		<text>3. Когда закончите — прокрутите вниз, введите название пресета (можно перезаписать существующий) и нажмите «Экспорт».</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_desc_editor5">
+		<text>4. Готово! Теперь пресет можно выбрать в основных настройках MCM.</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_desc_editor6">
+		<text>Документация по всем эффектам находится в mod-folder/SAR-DOC/Effect Extension Guide.pdf. После экспорта файл пресета будет в mo2/overwrite/gamedata/script/[название_пресета]_preset_inject.script — его можно передать другим для обмена пресетами.</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_load_reverb_name">
+		<text>Имя загружаемой реверберации</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_load_reverb">
+		<text>Загрузить</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_edit">
+		<text>Включить режим редактирования</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_reverb_name">
+		<text>Название для экспорта</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_export">
+		<text>Экспорт</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_density">
+		<text>Плотность</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_diffusion">
+		<text>Диффузия</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_gain">
+		<text>Усиление</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_gain_hf">
+		<text>Усиление ВЧ</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_gain_lf">
+		<text>Усиление НЧ</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_decay_time">
+		<text>Время затухания</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_decay_hf_ratio">
+		<text>Коэффициент затухания ВЧ</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_decay_lf_ratio">
+		<text>Коэффициент затухания НЧ</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_reflections_gain">
+		<text>Усиление отражений</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_reflections_delay">
+		<text>Задержка отражений</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_late_reverb_gain">
+		<text>Усиление поздней реверберации</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_late_reverb_delay">
+		<text>Задержка поздней реверберации</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_echo_time">
+		<text>Время эха</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_echo_depth">
+		<text>Глубина эха</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_modulation_time">
+		<text>Время модуляции</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_modulation_depth">
+		<text>Глубина модуляции</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_air_absorption_gain_hf">
+		<text>Усиление поглощения воздуха ВЧ</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_hf_reference">
+		<text>Опорная частота ВЧ</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_lf_reference">
+		<text>Опорная частота НЧ</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_room_rolloff_factor">
+		<text>Коэффициент спада помещения</text>
+	</string>
+	<string id="ui_mcm_spatial_audio_sar_editor_decay_hf_limit">
+		<text>Предельное значение коэффициента затухания на ВЧ</text>
+	</string>
+</string_table>

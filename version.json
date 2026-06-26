@@ -1,7 +1,7 @@
 {
-  "version": "2026.06.23.1",
+  "version": "2026.06.26.1",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Обновление MO2 модпака. Fix вылетов",
+  "notes": "Добавлеение новых модов",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/misc/squad_descr/squad_descr_soc_yantar.ltx",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/misc/task/task_manager_anthology/tm_soc_bar.ltx",
@@ -201,6 +201,13 @@
     "[HARD] SYS Hud Hard/gamedata/configs/unlocalizers/unlocalize_actor_status.ltx",
     "[HARD] SYS Hud Hard/gamedata/configs/unlocalizers/unlocalize_soulslike_original_init_controls.ltx",
     "[HARD] SYS tactic_compass/gamedata/scripts/bind_stalker.script",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/st_random_fixes_ant_2_1.xml",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/ui_mcm_liz_oa.xml",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/ui_mcm_liz_qht.xml",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/ui_mcm_swm_legs.xml",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/ui_st_liz_body_search.xml",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/ui_st_liz_ha.xml",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/ui_st_pda_inter_mcm.xml",
     "Inventory_Antifreeze/gamedata/configs/text/eng/st_demonized_utils_ui_uicellcontainer_optimize.xml",
     "Inventory_Antifreeze/gamedata/configs/text/rus/st_demonized_utils_ui_uicellcontainer_optimize.xml",
     "Inventory_Antifreeze/gamedata/configs/ui/ui_inventory_antifreeze.xml",

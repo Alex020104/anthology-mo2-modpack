@@ -1,0 +1,143 @@
+-- MCM settings for ST2 ammo counter HUD.
+
+local MOD_ID = "st2_ammo_counter_hud"
+
+local defaults = {
+	["enable/enabled"] = true,
+	["enable/toggle_key"] = 0,
+	["enable/show_background"] = true,
+	["enable/show_ammo_icon"] = true,
+	["enable/show_ammo_name"] = true,
+	["enable/show_fire_modes"] = true,
+	["enable/show_counter"] = true,
+	["move/whole_x"] = 0,
+	["move/whole_y"] = 0,
+	["move/background_x"] = 0,
+	["move/background_y"] = 0,
+	["move/counter_x"] = 0,
+	["move/counter_y"] = 0,
+	["move/ammo_icon_x"] = 0,
+	["move/ammo_icon_y"] = 0,
+	["move/ammo_name_x"] = 0,
+	["move/ammo_name_y"] = 0,
+	["move/fire_mode_x"] = 0,
+	["move/fire_mode_y"] = 0,
+	["scale/whole"] = 1,
+	["scale/background"] = 1,
+	["scale/counter"] = 1,
+	["scale/ammo_icon"] = 1,
+	["scale/ammo_name"] = 1,
+	["scale/fire_mode"] = 1,
+	["events/visible_time"] = 30,
+	["events/fade_in_time"] = 0.6,
+	["events/fade_time"] = 2,
+	["events/reload"] = true,
+	["events/mag_check"] = true,
+	["events/bore"] = false,
+	["events/shot"] = false,
+	["events/ads"] = false,
+	["events/npc_aggro"] = false,
+	["events/show"] = false,
+}
+
+local line_id = 0
+
+local function read_bool(path, fallback)
+	if axr_main and axr_main.config and axr_main.config.r_value then
+		return axr_main.config:r_value("mcm", MOD_ID .. "/" .. path, 1, fallback)
+	end
+	return fallback
+end
+
+local function notify_runtime()
+	if st2_ammo_counter_hud and st2_ammo_counter_hud.on_mcm_settings_changed then
+		st2_ammo_counter_hud.on_mcm_settings_changed()
+	end
+end
+
+function get_config(path)
+	if ui_mcm and ui_mcm.get then
+		local ok, value = pcall(ui_mcm.get, MOD_ID .. "/" .. path)
+		if ok and value ~= nil then
+			return value
+		end
+	end
+	return defaults[path]
+end
+
+function set_config(path, value)
+	if ui_mcm and ui_mcm.set then
+		ui_mcm.set(MOD_ID .. "/" .. path, value)
+	end
+	defaults[path] = value
+	notify_runtime()
+end
+
+function toggle_enabled()
+	local value = not get_config("enable/enabled")
+	set_config("enable/enabled", value)
+	return value
+end
+
+function settings_enabled()
+	return read_bool("enable/enabled", defaults["enable/enabled"]) == true
+end
+
+local function title(id)
+	return { id = id, type = "slide", link = "ui_options_slider_player", text = "ui_mcm_st2_ammo_counter_hud_" .. id, size = { 512, 50 }, spacing = 20 }
+end
+
+local function line(precondition)
+	line_id = line_id + 1
+	local opt = { id = "line_" .. tostring(line_id), type = "line" }
+	if precondition then
+		opt.precondition = precondition
+	end
+	return opt
+end
+
+local function check(id, def, precondition)
+	local opt = { id = id, type = "check", val = 1, def = def }
+	if precondition then
+		opt.precondition = precondition
+	end
+	return opt
+end
+
+local function track(id, def, min, max, step)
+	return { id = id, type = "track", val = 2, def = def, min = min, max = max, step = step }
+end
+
+local function axis_pair(id, def_x, def_y)
+	return {
+		track(id .. "_x", def_x, -500, 500, 1),
+		track(id .. "_y", def_y, -300, 300, 1),
+	}
+end
+
+local function scale_track(id)
+	return track(id, defaults["scale/" .. id] or 1, 0.5, 2, 0.05)
+end
+
+function on_mcm_load()
+	line_id = 0
+	local enabled_gate = { settings_enabled }
+
+	return {
+		id = "enable",
+		sh = true,
+		text = "ui_mcm_st2_ammo_counter_hud_enable",
+		gr = {
+			title("enable_title"),
+			check("enabled", defaults["enable/enabled"]),
+			{ id = "toggle_key", type = "key_bind", val = 2, def = defaults["enable/toggle_key"] },
+			{ id = "disabled_hint", type = "desc", text = "ui_mcm_st2_ammo_counter_hud_disabled_hint", clr = { 255, 190, 170, 135 }, precondition = { function() return not settings_enabled() end } },
+			line(enabled_gate),
+			check("show_background", defaults["enable/show_background"], enabled_gate),
+			check("show_ammo_icon", defaults["enable/show_ammo_icon"], enabled_gate),
+			check("show_ammo_name", defaults["enable/show_ammo_name"], enabled_gate),
+			check("show_fire_modes", defaults["enable/show_fire_modes"], enabled_gate),
+			check("show_counter", defaults["enable/show_counter"], enabled_gate),
+		},
+	}, MOD_ID
+end

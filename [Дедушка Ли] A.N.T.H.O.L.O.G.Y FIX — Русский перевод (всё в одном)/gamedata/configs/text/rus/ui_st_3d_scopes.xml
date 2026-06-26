@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="ui_mcm_menu_3d_scopes">
+		<text>3D-прицелы</text>
+	</string>
+	
+	<string id="ui_mcm_3d_scopes_title">
+		<text>Шейдерные 3D-прицелы</text>
+	</string>
+
+	<string id="ui_mcm_3d_scopes_zoom_factor">
+		<text>Коэффициент масштабирования</text>
+	</string>
+
+	<string id="ui_mcm_3d_scopes_lens_brightness">
+		<text>Яркость отражения</text>
+	</string>
+
+	<string id="ui_mcm_3d_scopes_nvg_blur">
+		<text>Размытие изображения в ПНВ Бифа</text>
+	</string>
+
+	<string id="ui_mcm_3d_scopes_parallax_shadow">
+		<text>Прорисовка тени с эффектом параллакса</text>
+	</string>
+
+	<string id="ui_mcm_3d_scopes_see_through">
+		<text>Прицельная сетка и выходной зрачок всегда остаются видимыми</text>
+	</string>
+
+	<string id="ui_mcm_3d_scopes_thermal_pixelation">
+		<text>При использовании зума изображение с тепловизионного прицела становится зернистым</text>
+	</string>
+
+	<string id="ui_mcm_3d_scopes_chromatism">
+		<text>Оптические прицелы обладают хроматизмом</text>
+	</string>
+
+	<string id="ui_mcm_3d_scopes_lens_hider">
+		<text>Защитный кожух для объектива прицела</text>
+	</string>
+
+</string_table>

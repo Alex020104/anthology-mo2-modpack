@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="windows-1251"?>
-<string_table>
-
-    <string id="liz_ha_text_cant_consume_item">
-        <text>Невозможно использовать этот предмет в шлеме</text>
-    </string>
-
-</string_table>

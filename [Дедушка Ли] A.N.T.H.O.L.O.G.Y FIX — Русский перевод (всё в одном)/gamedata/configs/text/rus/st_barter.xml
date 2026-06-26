@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="st_ui_mm_barter">
+        <text>Бартер</text>
+    </string>
+
+    <string id="st_barter_anyOf">
+        <text>Выберите предмет для бартера</text>
+    </string>
+    <string id="st_barter_allOf">
+        <text>Нужно иметь все предметы, чтобы завершить этот обмен</text>
+    </string>
+    <string id="st_barter_goodwill">
+        <text>требуется репутация:</text>
+    </string>
+    <string id="st_barter_limit">
+        <text>лимит</text>
+    </string>
+    <string id="st_barter_info">
+        <text>требуется предварительный бартер</text>
+    </string>
+    <string id="st_barter_toolkit1">
+        <text>технику нужны инструменты для грубой работы</text>
+    </string>
+    <string id="st_barter_toolkit2">
+        <text>технику нужны инструменты для тонкой работы</text>
+    </string>
+    <string id="st_barter_toolkit3">
+        <text>технику нужны инструменты для калибровки</text>
+    </string>
+
+    <string id="st_barter_uses">
+        <text>Использований: </text>
+    </string>
+    <string id="st_barter_ammo">
+        <text>Патроны: </text>
+    </string>
+    <string id="st_barter_cond">
+        <text>состояние: %</text>
+    </string>
+
+    <string id="st_barter_restock">
+        <text>(обновляется при пополнении товаров)</text>
+    </string>
+    <string id="st_barter_fixed">
+        <text>(не обновляется)</text>
+    </string>
+    <string id="st_barter_init">
+        <text>Хотите что-нибудь обменять? %c[orange][Бартер]</text>
+    </string>
+	<string id="st_ui_itm_barter_base">
+		<text>Доступные бартеры</text>
+	</string>
+	<string id="st_ui_itm_barter_support">
+		<text>Необходимы предметы</text>
+	</string>
+	<string id="st_ui_barter_rules">
+		<text>Основные правила бартера:\n
+            • Предметы с состоянием должны быть не менее %s%.\n
+            • Предметы с несколькими использованиями должны быть полными.\n
+            • Боеприпасы должны быть в полной обойме/коробке.
+        </text>
+	</string>
+
+    
+    <string id="ui_mcm_menu_barter">
+        <text>Бартер</text>
+    </string>
+    <string id="ui_mcm_barter_title">
+        <text>Anomaly: Бартер с НПС</text>
+    </string>
+    <string id="ui_mcm_barter_cond">
+        <text>Минимальное состояние принимаемого оружия</text>
+    </string>
+    <string id="ui_mcm_barter_cond_desc">
+        <text>Минимальное требуемое состояние для предметов с состоянием (оружие, броня), предоставляемых игроком в бартере.
+        </text>
+    </string>
+    <string id="ui_mcm_barter_cond_part">
+        <text>Минимальное состояние детали</text>
+    </string>
+    <string id="ui_mcm_barter_cond_part_desc">
+        <text>Минимальное требуемое состояние для частей предметов, предоставляемых игроком (например, части оружия или брони), как отдельных предметов, так и в составе целого предмета.</text>
+    </string>
+    
+    <string id="ui_mcm_barter_debug">
+        <text>Отладка (вывод в консоль)</text>
+    </string>
+
+    <string id="st_dot">
+        <text>•</text>
+    </string>
+</string_table>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="ui_mcm_alarm_wakeup_title">
+        <text>Будильник</text>
+    </string>
+    <string id="ui_mcm_menu_alarm_wakeup">
+        <text>Будильник</text>
+    </string>
+	<!----------------  В скрипте alarm_wakeup_mcm изменил {type = "title", text = "Audio Settings", align = "c", clr = {255,200,200,200}}, на {type = "title", text = "ui_mcm_alarm_wakeup_header", align = "c", clr = {255,200,200,200}},  ------------------->	
+    <string id="ui_mcm_alarm_wakeup_header">
+        <text>Будильник (аудионастройки)</text>
+    </string>
+    <string id="ui_mcm_alarm_wakeup_watch_alarm">
+        <text>Звук будильника на наручных часах</text>
+    </string>
+    <string id="ui_mcm_alarm_wakeup_watch_alarm_desc">
+        <text>Включить звуковой сигнал будильника при пробуждении с помощью наручных часов.</text>
+    </string>
+    <string id="ui_mcm_alarm_wakeup_pda_alarm">
+        <text>Звук будильника КПК</text>
+    </string>
+    <string id="ui_mcm_alarm_wakeup_pda_alarm_desc">
+        <text>Включить звуковой сигнал будильника при пробуждении с помощью КПК.</text>
+    </string>
+    <string id="ui_mcm_alarm_wakeup_volume">
+        <text>Громкость будильника</text>
+    </string>
+    <string id="ui_mcm_alarm_wakeup_volume_desc">
+        <text>Регулировка громкости будильника (0 = без звука, 2 = максимум).</text>
+    </string>
+    <string id="ui_mcm_alarm_wakeup_priority">
+        <text>Приоритет будильника</text>
+    </string>
+    <string id="ui_mcm_alarm_wakeup_priority_desc">
+        <text>Выберите, какой будильник будет иметь приоритет, если доступны как часы, так и КПК.</text>
+    </string>
+    <string id="ui_mcm_lst_alarm_wakeup_priority_watch">
+        <text>Наручные часы</text>
+    </string>
+    <string id="ui_mcm_lst_alarm_wakeup_priority_pda">
+        <text>КПК</text>
+    </string>
+</string_table>

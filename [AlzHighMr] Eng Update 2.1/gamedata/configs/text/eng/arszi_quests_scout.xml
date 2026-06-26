@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+<string id="igi_task_text_arszi_scout_name">
+    <text>Reconnaissance</text>
+</string>
+
+<!-- Cold -->
+<!-- mar_smart_terrain_base_stalker_leader_marsh_arszi_scout -->
+<string id="igi_task_text_arszi_scout_mar_smart_terrain_base_stalker_leader_marsh_name">
+    <text>Scout the Great Swamps area.</text>
+</string>
+<string id="igi_task_text_arszi_scout_mar_smart_terrain_base_stalker_leader_marsh_text">
+    <text>Cold asked me to scout an area in the Great Swamps.</text>
+</string>
+<string id="igi_task_text_arszi_scout_mar_smart_terrain_base_stalker_leader_marsh_about">
+    <text>Listen, I need someone for a reconnaissance mission. All you have to do is check a few abandoned buildings in the swamps and return with a report. Let me repeat: this is a scouting mission! Don't play the hero, I need you alive. There won't be any extra reward for kills this time. If you encounter resistance, withdraw immediately and report back. This information will greatly help us plan our next moves and avoid blindly stumbling into dangerous places.</text>
+</string>
+<string id="igi_task_text_arszi_scout_mar_smart_terrain_base_stalker_leader_marsh_finish">
+    <text>So, what did you find out? I see... Thanks for the job well done, here's your reward!</text>
+</string>
+
+<!-- Fanatic -->
+<!-- esc_2_12_stalker_fanat_arszi_scout -->
+<string id="igi_task_text_arszi_scout_esc_2_12_stalker_fanat_name">
+    <text>Scout the area around the Rookie Village.</text>
+</string>
+<string id="igi_task_text_arszi_scout_esc_2_12_stalker_fanat_text">
+    <text>Fanatic asked me to scout the area around the Rookie Village.</text>
+</string>
+<string id="igi_task_text_arszi_scout_esc_2_12_stalker_fanat_about">
+    <text>I have a favor to ask. Keeping the Rookie Village safe isn't easy. To the south we've got a cheerful bunch called the military. To the north—bandits, mutants, and sometimes even mercenaries... It would help us a lot if you could scout the area to the north and let Sidorovich know what's going on there. If we know where the bandits and mutants are operating, we can keep the rookies from running into deadly encounters. I'm not asking you to fight them, just take a look around, try not to get into trouble, and come back in one piece. Not for free, of course.</text>
+</string>
+<string id="igi_task_text_arszi_scout_esc_2_12_stalker_fanat_finish">
+    <text>Well, it could have been worse... Thanks, I'll let everyone know which places are best avoided for now. Here's your reward, just as promised!</text>
+</string>
+
+<!-- General Voronin -->
+<!-- bar_dolg_leader_arszi_scout -->
+<string id="igi_task_text_arszi_scout_bar_dolg_leader_name">
+    <text>Scout the area around the Rostok Factory.</text>
+</string>
+<string id="igi_task_text_arszi_scout_bar_dolg_leader_text">
+    <text>General Voronin asked me to scout the area around the Rostok Factory.</text>
+</string>
+<string id="igi_task_text_arszi_scout_bar_dolg_leader_about">
+    <text>Excellent, I have an order for you! We must gather intelligence on enemy and mutant movements. I'm interested in the areas around the Rostok Factory, the Garbage, the Army Warehouses, and the Vehicle Graveyard. You'll be assigned to one of these sectors, and your task is to scout enemy activity and report back! You are authorized to open fire if necessary, but avoid combat whenever possible. The information you're about to gather is crucial for planning future operations. You will be compensated upon your return.</text>
+</string>
+<string id="igi_task_text_arszi_scout_bar_dolg_leader_finish">
+    <text>Good work. This information will help advance our plans. Here's your reward.</text>
+</string>
+
+<!-- Sultan -->
+<!-- zat_b7_bandit_boss_sultan_arszi_scout -->
+<string id="igi_task_text_arszi_scout_zat_b7_bandit_boss_sultan_name">
+    <text>Scout the area around the hideout.</text>
+</string>
+<string id="igi_task_text_arszi_scout_zat_b7_bandit_boss_sultan_text">
+    <text>Sultan asked me to scout the area around the hideout.</text>
+</string>
+<string id="igi_task_text_arszi_scout_zat_b7_bandit_boss_sultan_about">
+    <text>Well, look what the cat dragged in! Listen up, stalker. If you need money for magazines and vodka, I need you to do me a favor. Head out there and check the southern and western parts of the Dark Valley. Look for anything you think might be useful, and you'll get paid for it. Just watch your back around that damn laboratory and those military bastards. They've been a real pain in my ass lately, along with some of the loners. Now get moving, and don't come back until you've got something interesting to tell me!</text>
+</string>
+<string id="igi_task_text_arszi_scout_zat_b7_bandit_boss_sultan_finish">
+    <text>Well, well, look who made it back in one piece. And what's this? You actually brought me some useful information? Good work. Here's your payment. Don't spend it all on booze, you hear? We need capable people like you if we're going to pull off bigger jobs!</text>
+</string>
+
+<!-- Major Kuznetsov -->
+<!-- agr_smart_terrain_1_6_near_2_military_colonel_kovalski_arszi_scout -->
+<string id="igi_task_text_arszi_scout_agr_smart_terrain_1_6_near_2_military_colonel_kovalski_name">
+    <text>Scout the area around the military base.</text>
+</string>
+<string id="igi_task_text_arszi_scout_agr_smart_terrain_1_6_near_2_military_colonel_kovalski_text">
+    <text>Major Kuznetsov asked me to scout the area around the military base.</text>
+</string>
+<string id="igi_task_text_arszi_scout_agr_smart_terrain_1_6_near_2_military_colonel_kovalski_about">
+    <text>I have orders for you, soldier! I want to know what's going on out there. You'll be sent on a reconnaissance mission to gather intelligence about the areas surrounding the base. I'm interested in Agroprom, the northern Swamps, and headquarters has asked us to assist the scientists as well. Gather information and report back. Try to avoid engagements—this is a reconnaissance mission, not a combat operation!</text>
+</string>
+<string id="igi_task_text_arszi_scout_agr_smart_terrain_1_6_near_2_military_colonel_kovalski_finish">
+    <text>So that's the situation. Well done, soldier! Here's your reward, and a little extra.</text>
+</string>
+<!-- Lukash -->
+<!-- mil_smart_terrain_7_7_freedom_leader_stalker_arszi_scout -->
+<string id="igi_task_text_arszi_scout_mil_smart_terrain_7_7_freedom_leader_stalker_name">
+    <text>Scout the area around the Warehouses.</text>
+</string>
+<string id="igi_task_text_arszi_scout_mil_smart_terrain_7_7_freedom_leader_stalker_text">
+    <text>Lukash asked me to scout the area around the Warehouses.</text>
+</string>
+<string id="igi_task_text_arszi_scout_mil_smart_terrain_7_7_freedom_leader_stalker_about">
+    <text>I would like to ask for your help in protecting our home. We've had quite a few encounters with Duty and Monolith lately, not to mention the bloodsuckers that keep creeping closer and closer from that cursed village. We need information about the current situation in the Army Warehouses. Check the locations I've marked on your map and report back. Try to avoid combat whenever possible. Return safe and sound!</text>
+</string>
+<string id="igi_task_text_arszi_scout_mil_smart_terrain_7_7_freedom_leader_stalker_finish">
+    <text>Looks like the calm before the storm. Thank you, we're grateful for your help.</text>
+</string>
+
+<!-- Dushman -->
+<!-- cit_killers_merc_trader_stalker_arszi_scout -->
+<string id="igi_task_text_arszi_scout_cit_killers_merc_trader_stalker_name">
+    <text>Scout the area around Dead City.</text>
+</string>
+<string id="igi_task_text_arszi_scout_cit_killers_merc_trader_stalker_text">
+    <text>Dushman asked me to scout the area around Dead City.</text>
+</string>
+<string id="igi_task_text_arszi_scout_cit_killers_merc_trader_stalker_about">
+    <text>Listen, I'm looking for volunteers to scout areas that will become targets of future operations. You'll infiltrate the operational zone, gather intelligence, and report your findings. Low risk, reasonable pay. There's a chance you'll run into someone out there. What do you say?</text>
+</string>
+<string id="igi_task_text_arszi_scout_cit_killers_merc_trader_stalker_finish">
+    <text>Well done! Here's your reward, plus a little extra.</text>
+</string>
+
+<!-- Krolik -->
+<!-- pri_monolith_monolith_trader_stalker_arszi_scout -->
+<string id="igi_task_text_arszi_scout_pri_monolith_monolith_trader_stalker_name">
+    <text>Scout the area around Pripyat.</text>
+</string>
+<string id="igi_task_text_arszi_scout_pri_monolith_monolith_trader_stalker_text">
+    <text>Krolik asked me to scout the area around Pripyat.</text>
+</string>
+<string id="igi_task_text_arszi_scout_pri_monolith_monolith_trader_stalker_about">
+    <text>Brother! The infidels draw closer to the heart of our holy land every day! They crawl everywhere like worms! I ask you to find the stones beneath which they hide and the holes where they lurk. Once we know their positions, we shall strike in the name of the Monolith! Go, brother, and return with information intact and alive! There is no shame in not finding them or in surviving instead of dying a glorious death. There are times when you can cause them even greater suffering simply by watching and listening while preparing your strike. May the Monolith watch over you during your mission!</text>
+</string>
+<string id="igi_task_text_arszi_scout_pri_monolith_monolith_trader_stalker_finish">
+    <text>Glory to the Monolith! You have rendered a great service to your brothers!</text>
+</string>
+</string_table>

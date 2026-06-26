@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+	<!----------------  Все назначения клавиш в общем списке МСМ-меню: переведено Google Gemini Plus PRO  ------------------->
+
+	<string_table>
+
+	<!---	<string id="Pawsys Quickpin">
+		<text>PAW: Нажать клавишу, чтобы быстро ввести "Быстрый маркер"</text>
+	</string>--->
+	<string id="ui_mcm_pawsys/pawbinds_bind_quickpin">
+		<text>PAW: Нажать клавишу, чтобы быстро ввести "Быстрый маркер"</text>
+	</string>
+	<!---	
+	<string id="Pawsys Pin target object">
+		<text>PAW: Установить маркер на целевом объекте</text>
+	</string>--->
+	<string id="ui_mcm_pawsys/pawbinds_bind_pin_target">
+		<text>PAW: Установить маркер на целевом объекте</text>
+	</string>
+	
+	<string id="ui_mcm_pawsys/pawbinds_bind_cartmode">
+		<text>PAW: Режим карты / Курсора</text>
+	</string>
+	<string id="ui_mcm_pawsys/pawbinds_bind_wp_target_obj">
+		<text>PAW: Метка (путевая точка) на объект</text>
+	</string>
+	<string id="ui_mcm_pawsys/pawbinds_bind_wptoggle">
+		<text>PAW: Вкл/Откл видимость меток</text>
+	</string>
+	<string id="ui_mcm_pawsys/pawbinds_bind_set_next">
+		<text>PAW: Следующая группа меток</text>
+	</string>
+	<string id="ui_mcm_pawsys/pawbinds_bind_set_prev">
+		<text>PAW: Предыдущая группа меток</text>
+	</string>
+	<string id="ui_mcm_pawsys/pawbinds_bind_ico_next">
+		<text>PAW: Следующая иконка</text>
+	</string>
+	<string id="ui_mcm_pawsys/pawbinds_bind_ico_prev">
+		<text>PAW: Предыдущая иконка</text>
+	</string>
+	<string id="ui_mcm_pawsys/pawbinds_bind_set_scroll">
+		<text>PAW: Прокрутка групп (Модификатор + Колесо мыши)</text>
+	</string>
+	<string id="ui_mcm_pawsys/pawbinds_bind_ico_scroll">
+		<text>PAW: Прокрутка иконок (Модификатор + Колесо мыши)</text>
+	</string>
+	<string id="ui_mcm_pawsys_pawbinds_bind_wp_target_obj">
+		<text>PAW: Закрепить маркер на целевом объекте</text>
+	</string>
+	
+	<!---
+<string id="HF controls bind alignment">
+		<text>Hideout Furniture Мебель: Переключение между режимами выравнивания: игрок и поверхность</text>
+	</string>--->
+	<string id="ui_mcm_aol_hf/controls_bind_alignment">
+		<text>Hideout Furniture Мебель: Переключение между режимами выравнивания: игрок и поверхность</text>
+	</string>
+	<!---	
+	<string id="HF world object bind record">
+		<text>Hideout Furniture Мебель: Объект записи</text>
+	</string>--->
+	<string id="ui_mcm_aol_hf/world_object_bind_record">
+		<text>Hideout Furniture Мебель: Запись объекта в мире</text>
+	</string>
+	<string id="HF world object bind record">
+		<text>Hideout Furniture Мебель: Запись объекта в мире</text>
+	</string>
+	<string id="ui_mcm_aol_hf/controls_bind_collision">
+		<text>Hideout Furniture Мебель: Переключить коллизию</text>
+	</string>
+	<string id="ui_mcm_aol_hf/controls_bind_place_mode">
+		<text>Hideout Furniture Мебель: Режим размещения</text>
+	</string>
+	<string id="ui_mcm_aol_hf/debug_bind_creative_mode">
+		<text>Hideout Furniture Мебель: Творческий режим (Отладка)</text>
+	</string>
+	
+
+	<string id="ui_mcm_ledge_grabbing_mcm_key_climb">
+		<text>Ledge Grabbing — Паркур: Захват за выступ, чтобы забраться наверх</text>
+	</string>
+	<string id="ui_mcm_ledge_grabbing_key_climb">
+		<text>Ledge Grabbing — Паркур: Захват за выступ, чтобы забраться наверх</text>
+	</string>
+	<string id="ui_mcm_lgc_key_climb">
+		<text>Ledge Grabbing — Паркур: Захват за выступ, чтобы забраться наверх</text>
+	</string>
+
+	<string id="ui_mcm_dotmarks/dmarksec_bind_sec_interact">
+		<text>Точки взаимодействия: Клавиша для вторичного взаимодействия</text>
+	</string>
+	<string id="ui_mcm_dotmarks/dmarkadv_bind_toggle_marks">
+		<text>Точки взаимодействия: Показать/Скрыть все маркеры</text>
+	</string>
+
+	<string id="ui_mcm_fddar/headgear_anm_keybind">
+		<text>FDDA Redone: Анимация шлема/маски</text>
+	</string>
+	<string id="ui_mcm_fddar/outfit_anm_keybind">
+		<text>FDDA Redone: Анимация надевания костюма</text>
+	</string>
+
+	<string id="ui_mcm_fftd/gen_squad_tp_bind">
+		<text>Телепорт отряда (Призвать напарников))</text>
+	</string>
+
+	<string id="ui_mcm_haru_quick_action_wheel_mcm/controls_keybind">
+		<text>QAW: Колесо быстрых действий (Зажать)</text>
+	</string>
+
+	<string id="ui_mcm_wpo/wpojam_keybind">
+		<text>WPO: Осмотр / Устранение клина</text>
+	</string>
+
+	<string id="ui_mcm_dynahud/bhs_hud_hotkey">
+		<text>DYNAHUD: Здоровье тела (BHS): Показать виджет</text>
+	</string>
+
+	<string id="ui_mcm_fatal_error/fe_other_reboot_key">
+		<text>Fatal Error: Перезагрузка КПК (после ошибки)</text>
+	</string>
+
+	<string id="ui_mcm_tactic_compass/tc_keybinds_keybind">
+    <text>Клавиша переключения тактического компаса</text>
+	</string>
+
+</string_table>
+
+
+
+
+
+
+
+
+

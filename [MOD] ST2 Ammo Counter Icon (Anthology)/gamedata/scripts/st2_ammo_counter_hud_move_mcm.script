@@ -1,0 +1,64 @@
+-- Position settings tab for ST2 ammo counter HUD.
+
+local COLLECTION_ID = "st2_ammo_counter_hud"
+
+local function settings_enabled()
+	return st2_ammo_counter_hud_mcm
+		and st2_ammo_counter_hud_mcm.settings_enabled
+		and st2_ammo_counter_hud_mcm.settings_enabled()
+end
+
+local function title()
+	return { id = "move_title", type = "slide", link = "ui_options_slider_player", text = "ui_mcm_st2_ammo_counter_hud_move_title", size = { 512, 50 }, spacing = 20 }
+end
+
+local function line(id)
+	return { id = id, type = "line" }
+end
+
+local function track(id, def, min, max, step)
+	return { id = id, type = "track", val = 2, def = def, min = min, max = max, step = step }
+end
+
+local function axis_pair(id)
+	return {
+		track(id .. "_x", 0, -500, 500, 1),
+		track(id .. "_y", 0, -300, 300, 1),
+	}
+end
+
+local function options()
+	local whole = axis_pair("whole")
+	local background = axis_pair("background")
+	local counter = axis_pair("counter")
+	local ammo_icon = axis_pair("ammo_icon")
+	local ammo_name = axis_pair("ammo_name")
+	local fire_mode = axis_pair("fire_mode")
+	return {
+		title(),
+		whole[1],
+		whole[2],
+		line("line_1"),
+		background[1],
+		background[2],
+		counter[1],
+		counter[2],
+		ammo_icon[1],
+		ammo_icon[2],
+		ammo_name[1],
+		ammo_name[2],
+		fire_mode[1],
+		fire_mode[2],
+	}
+end
+
+function on_mcm_load()
+	return {
+		id = "move",
+		sh = true,
+		text = "ui_mcm_st2_ammo_counter_hud_move",
+		precondition = { settings_enabled },
+		output = "ui_mcm_st2_ammo_counter_hud_disabled_output",
+		gr = options(),
+	}, COLLECTION_ID
+end

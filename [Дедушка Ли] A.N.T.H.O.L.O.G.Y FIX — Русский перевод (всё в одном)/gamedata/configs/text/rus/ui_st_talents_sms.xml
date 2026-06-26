@@ -3,7 +3,7 @@
 <string_table>
 
 <string id="st_sms_talants_name">
-<text>%c[255,248,153,26]«Классы и таланты»:\n%c[default]Нажмите клавишу "минус" и выберите класс.</text>
+<text>%c[255,248,153,26]«Классы и таланты»:\n%c[default]Нажмите клавишу NUM7 и выберите класс.</text>
 </string>
 
 </string_table>

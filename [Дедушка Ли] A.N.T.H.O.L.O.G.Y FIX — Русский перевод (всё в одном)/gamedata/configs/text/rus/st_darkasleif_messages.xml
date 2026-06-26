@@ -1,0 +1,1864 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+
+    <!--multiple responses-->
+	<string id="st_darkasleif_multiple1">
+		<text>Осторожнее, он не один!</text>
+	</string>
+	<string id="st_darkasleif_multiple2">
+		<text>Погоди! Там ещё кто-то!</text>
+	</string>
+	<string id="st_darkasleif_multiple3">
+		<text>Проклятье! У них подкрепление!</text>
+	</string>
+	<string id="st_darkasleif_multiple4">
+		<text>Нет! Ещё прут! Смотри за флангами!</text>
+	</string>
+	<string id="st_darkasleif_multiple5">
+		<text>Похоже, у них численное преимущество!</text>
+	</string>
+	<string id="st_darkasleif_multiple6">
+		<text>Они повсюду! Найди укрытие!</text>
+	</string>
+	<string id="st_darkasleif_multiple7">
+		<text>Они пытаются окружить нас!</text>
+	</string>
+	<string id="st_darkasleif_multiple8">
+		<text>Это западня!</text>
+	</string>
+	<string id="st_darkasleif_multiple9">
+		<text>Его приятели пытаются нас прижать!</text>
+	</string>
+	<string id="st_darkasleif_multiple10">
+		<text>Что, ещё? Не теряй бдительность!</text>
+	</string>
+	
+	<!--short responces-->
+	<string id="st_darkasleif_short_army1">
+		<text>Судя по всему, нас засёк военный!</text>
+	</string>
+	<string id="st_darkasleif_short_army2">
+		<text>Неподалёку солдат! Он мог заметить нас, при патруле.</text>
+	</string>
+	<string id="st_darkasleif_short_army3">
+		<text>Это военные! Огонь на поражение! Обычно, арестом сталкеров они не занимаются.</text>
+	</string>
+	<string id="st_darkasleif_short_army4">
+		<text>Военный разведчик нас засек - видимо, прочёсывает территорию в поисках Одиночек.</text>
+	</string>
+	<string id="st_darkasleif_short_army5">
+		<text>Спецназ?! Зуб даю, боевики Кузнецова.</text>
+	</string>
+	<string id="st_darkasleif_short_army6">
+		<text>Думаю, этот солдат на разведке.</text>
+	</string>
+	<string id="st_darkasleif_short_bandit1">
+		<text>Это просто бандит.</text>
+	</string>
+	<string id="st_darkasleif_short_bandit2">
+		<text>Думаю, это бандит. Какой-то говнюк, высматривающий лёгкую добычу.</text>
+	</string>
+	<string id="st_darkasleif_short_bandit3">
+		<text>Это бандит? Эти засранцы убили моего друга. Ну всё, им хана!</text>
+	</string>
+	<string id="st_darkasleif_short_bandit4">
+	    <text>Похоже, это один из ублюдков Султана.</text>
+	</string>
+	<string id="st_darkasleif_short_bandit5">
+		<text>Это... хех. Не парься. Какая-то бандитская крыса из Тёмной Долины.</text>
+	</string>
+	<string id="st_darkasleif_short_csky1">
+		<text>Это Чистое Небо.</text>
+	</string>
+	<string id="st_darkasleif_short_csky2">
+		<text>Думаю, это член Чистого Неба. Ренегатов гоняют, что ли?</text>
+	</string>
+	<string id="st_darkasleif_short_csky3">
+		<text>Если ты не понял, это ЧНовцы с болот. Потерялись они, что ли?</text>
+	</string>
+	<string id="st_darkasleif_short_csky4">
+		<text>Это Чистое Небо? Давненько о них ничего не слышно.</text>
+	</string>
+	<string id="st_darkasleif_short_csky5">
+		<text>Наблюдаю одного из Чистого Неба. Думаешь, им на болотах наскучило?</text>
+	</string>
+	<string id="st_darkasleif_short_dolg1">
+		<text>Это Долг.</text>
+	</string>
+	<string id="st_darkasleif_short_dolg2">
+		<text>Похоже, это член Долга. Жопошник...</text>
+	</string>
+	<string id="st_darkasleif_short_dolg3">
+		<text>Кажется, это долгаш. И кто же их полицейскими Зоны сделал, а?</text>
+	</string>
+	<string id="st_darkasleif_short_dolg4">
+		<text>Нас засёк этот долговской козёл с Ростка. Одно их отступление за другим показывает, что они вполне себе уязвимы.</text>
+	</string>
+	<string id="st_darkasleif_short_dolg5">
+		<text>У нас тут бой с одним из защитников Зоны. И где только они надыбали такое снаряжение?</text>
+	</string>
+	<string id="st_darkasleif_short_ecolog1">
+		<text>Это эколог.</text>
+	</string>
+	<string id="st_darkasleif_short_ecolog2">
+		<text>Зацени, один из этих умников!</text>
+	</string>
+	<string id="st_darkasleif_short_ecolog3">
+		<text>Мы наткнулись на полевого ученого с Янтаря.</text>
+	</string>
+	<string id="st_darkasleif_short_ecolog4">
+		<text>Ха! Это один из ассистентов Сахарова! Интересно, есть ли у него что-то для нас?</text>
+	</string>
+	<string id="st_darkasleif_short_ecolog5">
+		<text>Замечен эколог! Осторожнее, хоть они и трусливы, но они точно гораздо умнее, чем кажется.</text>
+	</string>
+	<string id="st_darkasleif_short_freedom1">
+		<text>Впереди Свобода!</text>
+	</string>
+	<string id="st_darkasleif_short_freedom2">
+		<text>Это свободовец. Будем надеяться, он слишком обдолбан, чтобы стрелять точно.</text>
+	</string>
+	<string id="st_darkasleif_short_freedom3">
+		<text>Один из этих дымящих пограничников Барьера, прямо перед нами.</text>
+	</string>
+	<string id="st_darkasleif_short_freedom4">
+		<text>Обнаружен анархист со складов. И что им от нас надо?</text>
+	</string>
+	<string id="st_darkasleif_short_freedom5">
+		<text>Свобода. Как думаешь, много хорошего можно будет собрать, как только с ними разберёмся?</text>
+	</string>
+	<string id="st_darkasleif_short_greh1">
+		<text>Это культист Греха!</text>
+	</string>
+	<string id="st_darkasleif_short_greh2">
+		<text>Это лучший друг Монолита - Грех..</text>
+	</string>
+	<string id="st_darkasleif_short_greh3">
+		<text>А... погоди-ка. Выходит, истории не врут. Грех... они существуют?</text>
+	</string>
+	<string id="st_darkasleif_short_greh4">
+		<text>Э-Это ещё кто? Я... думаю... думаю, нам стоит валить. Валим! У меня крайне скверное предчувствие!</text>
+	</string>
+	<string id="st_darkasleif_short_greh5">
+		<text>Дерьмо! Грех! Ничего не жалей! Стреляй! Сражайся за свою жизнь, друг!</text>
+	</string>
+	<string id="st_darkasleif_short_isg1">
+		<text>ИИГ?</text>
+	</string>
+	<string id="st_darkasleif_short_isg2">
+		<text>Эм... Что означает И.И.Г.О.О.Н.?</text>
+	</string>
+	<string id="st_darkasleif_short_isg3">
+		<text>Кажется, это оперативник ИИГ!</text>
+	</string>
+	<string id="st_darkasleif_short_isg4">
+		<text>Я думаю это... хм. Нет, раньше мне такие нашивки не попадались.</text>
+	</string>
+	<string id="st_darkasleif_short_isg5">
+		<text>Не могу разобрать, неизвестный впереди. Не могу его идентифицировать! Плевать. Сначала стреляю, потом вопросы задаю!</text>
+	</string>
+	<string id="st_darkasleif_short_killer1">
+		<text>Наёмник!</text>
+	</string>
+	<string id="st_darkasleif_short_killer2">
+		<text>Кажется, это один из наёмных убийц Душмана.</text>
+	</string>
+	<string id="st_darkasleif_short_killer3">
+		<text>Вон там! Сталкер в синем! Ястребы Мёртвого Города по найму.</text>
+	</string>
+	<string id="st_darkasleif_short_killer4">
+		<text>Нас засёк наёмник! Ему стоило уйти в оставку, пока у него была такая возможность.</text>
+	</string>
+	<string id="st_darkasleif_short_killer5">
+		<text>Это кто-то из ЧВК? Брат, за твою голову награда назначена? Что-то я так не думаю.</text>
+	</string>
+	<string id="st_darkasleif_short_monolith1">
+		<text>Это Монолит.</text>
+	</string>
+	<string id="st_darkasleif_short_monolith2">
+		<text>Берегись! Охрана ЧАЭС! Мы что, рядом с Красным Лесом?! Радаром?! Припятью?!</text>
+	</string>
+	<string id="st_darkasleif_short_monolith3">
+		<text>Внимание на лунатика Исполнителя Желаний!</text>
+	</string>
+	<string id="st_darkasleif_short_monolith4">
+		<text>Дерьмо! ... Это Монолит!</text>
+	</string>
+	<string id="st_darkasleif_short_monolith5">
+		<text>Готовься! Это один из фанатиков. Помни, пленных они не берут!</text>
+	</string>
+	<string id="st_darkasleif_short_renegade1">
+		<text>Нас обнаружил ренегат!</text>
+	</string>
+	<string id="st_darkasleif_short_renegade2">
+		<text>Вижу! Шакал с болот. Даже бандиты от них нос воротят.</text>
+	</string>
+	<string id="st_darkasleif_short_renegade3">
+		<text>Это отброс Зоны. Не пожалей патронов на эту шваль!</text>
+	</string>
+	<string id="st_darkasleif_short_renegade4">
+		<text>Кажется, это один из этих психов. Их жестокость не знает границ.</text>
+	</string>
+	<string id="st_darkasleif_short_renegade5">
+		<text>Ренегаты! Признаюсь, мне даже как-то приятно, что у головорезов Султана есть какие-то рамки.</text>
+	</string>
+	<string id="st_darkasleif_short_stalker1">
+		<text>Вольный сталкер, вон там!</text>
+	</string>
+	<string id="st_darkasleif_short_stalker2">
+		<text>Полагаю, это искатель приключений? Охотник? Журналист? Может, Фотограф? С этими одиночками не разберёшься.</text>
+	</string>
+	<string id="st_darkasleif_short_stalker3">
+		<text>Это одиночка. Гуляет налегке по Зоне, похоже. Ну не прелесть ли?</text>
+	</string>
+	<string id="st_darkasleif_short_stalker4">
+		<text>Смотри, это какой-то турист. Надо было им отсюда свалить, пока была возможность!</text>
+	</string>
+	<string id="st_darkasleif_short_stalker5">
+		<text>Вольный сталкер. Эта жирная годюка Сидорович наверняка послал их на верную смерть за артефактами в какие-то аномалии.</text>
+	</string>
+	<string id="st_darkasleif_short_zombied1">
+		<text>Это зомби!</text>
+	</string>
+	<string id="st_darkasleif_short_zombied2">
+		<text>Зомбак. Прошу, кончай с ним быстрее. Не могу выносить их завывания...</text>
+	</string>
+	<string id="st_darkasleif_short_zombied3">
+		<text>Посмотри на эту несчастную мерзость. Лучше такие страдания прервать побыстрее.</text>
+	</string>
+	<string id="st_darkasleif_short_zombied4">
+		<text>Какая шатающаяся туша. Нам стоит предоставить ей упокоение.</text>
+	</string>
+	<string id="st_darkasleif_short_zombied5">
+		<text>Это сталкер? Нет... этот давно потерял свой разум. Прости уж меня за это, но никто такой ужасной участи не заслуживает...</text>
+	</string>
+	
+	<string id="st_darkasleif_short_bloodsucker1">
+		<text>Кажется, это кровосос! Скорее! Может, рядом есть пруд? По следам на воде легко понять, где он перемещается!</text>
+	</string>
+	<string id="st_darkasleif_short_bloodsucker2">
+		<text>Думаю... думаю, прямо на нас движется кровосос.</text>
+	</string>
+	<string id="st_darkasleif_short_bloodsucker3">
+		<text>Он исчез... но я точно знаю, что он где-то там!</text>
+	</string>
+	<string id="st_darkasleif_short_bloodsucker4">
+		<text>Кровосос! Шшш! Тихо! Бери его на слух...</text>
+	</string>
+	<string id="st_darkasleif_short_bloodsucker5">
+		<text>Погоди... куда он делся? Клянусь, он только что был здесь!</text>
+	</string>
+	<string id="st_darkasleif_short_boar1">
+		<text>Кабан! Скорее, вали его!</text>
+	</string>
+	<string id="st_darkasleif_short_boar2">
+		<text>Наблюдаю кабана в отдалении! Надеюсь, больше их там нет. А если есть, надеюсь, что у тебя достаточно патронов...</text>
+	</string>
+	<string id="st_darkasleif_short_boar3">
+		<text>Приближается! Кабан несётся прямо на нас!</text>
+	</string>
+	<string id="st_darkasleif_short_boar4">
+		<text>Кабан нас учуял! Если не сможешь от него убежать, делай рывок в сторону в последний момент!</text>
+	</string>
+	<string id="st_darkasleif_short_boar5">
+		<text>Не прекращай стрелять в этого кабана, пока не удостоверишься, что он сдох. Эти твари очень упорные!</text>
+	</string>
+	<string id="st_darkasleif_short_burer1">
+		<text>Погоди... это мутант? Вроде на нём плащ... Нет! Это бюрер!</text>
+	</string>
+	<string id="st_darkasleif_short_burer2">
+		<text>Это бюрер? Мне о них только слышать доводилось!</text>
+	</string>
+	<string id="st_darkasleif_short_burer3">
+		<text>Бюрер?! Ну и мерзотина.</text>
+	</string>
+	<string id="st_darkasleif_short_burer4">
+		<text>К этому бюреру лучше сбоку зайти!</text>
+	</string>
+	<string id="st_darkasleif_short_burer5">
+		<text>Это бюрер! Осторожнее! На других мутантов это не похоже!</text>
+	</string>
+	<string id="st_darkasleif_short_cat1">
+		<text>Аргх! Ненавижу этих проклятых тварей!</text>
+	</string>
+	<string id="st_darkasleif_short_cat2">
+		<text>Проклятье, коты! Мочи их! Скорее!</text>
+	</string>
+	<string id="st_darkasleif_short_cat3">
+		<text>Коты! Они нашли нас! Приближаются быстро!</text>
+	</string>
+	<string id="st_darkasleif_short_cat4">
+		<text>Ахх! Они такие шустрые! Убей их побыстрее, пока они нас не прикончили!</text>
+	</string>
+	<string id="st_darkasleif_short_cat5">
+		<text>Кошаки! Они быстрее и опаснее любой псины, которую тут можно повстречать. Готовься!</text>
+	</string>
+	<string id="st_darkasleif_short_controller1">
+		<text>А? Чего? Ты что... я... ААХ! Моя... голова. Вали из моей головы!</text>
+	</string>
+	<string id="st_darkasleif_short_controller2">
+		<text>Отвали от... меня! Нет! НЕТ! Я не... я тебе не позволю!</text>
+	</string>
+	<string id="st_darkasleif_short_controller3">
+		<text>Дерьмо, контролёр! КОНТРОЛЁР! Найди укрытие! В укрытие, живо!</text>
+	</string>
+	<string id="st_darkasleif_short_controller4">
+		<text>Гаси его! Быстрее! Вали его нахрен!</text>
+	</string>
+	<string id="st_darkasleif_short_controller5">
+		<text>Что бы ты не делал, не вздумай себя завалить! Убери оружие, если придётся! И удерживай от этой твари дистанцию!</text>
+	</string>
+	<string id="st_darkasleif_short_chimera1">
+		<text>Это... это... нет. А! АААА!</text>
+	</string>
+	<string id="st_darkasleif_short_chimera2">
+		<text>О, нет...</text>
+	</string>
+	<string id="st_darkasleif_short_chimera3">
+		<text>Беги! БЕГИ!</text>
+	</string>
+	<string id="st_darkasleif_short_chimera4">
+		<text>ХИМЕРА!</text>
+	</string>
+	<string id="st_darkasleif_short_chimera5">
+		<text>Нет. Нет. Нет! Нет! НЕТ!! НЕТ!!</text>
+	</string>
+	<string id="st_darkasleif_short_dog1">
+		<text>Тупые мутанты. В этой чёртовой зоне они просто везде!</text>
+	</string>
+	<string id="st_darkasleif_short_dog2">
+		<text>Вижу пса вон там. Надо убить его, пока не убежал!</text>
+	</string>
+	<string id="st_darkasleif_short_dog3">
+		<text>Псы! Если проредим стаю достаточно быстро, оставшиеся разбегутся от страха!</text>
+	</string>
+	<string id="st_darkasleif_short_dog4">
+		<text>Готовься! Где одна псина, там же есть и другие!</text>
+	</string>
+	<string id="st_darkasleif_short_dog5">
+		<text>Гончие! Слишком много сталкеров пало от зубов этих дворняг!</text>
+	</string>
+	<string id="st_darkasleif_short_pseudodog1">
+		<text>Псевдособаки! Эти хуже многих других мутантов!</text>
+	</string>
+	<string id="st_darkasleif_short_pseudodog2">
+		<text>Псевдособака! Осторожнее, эти ублюдки делают прыжок перед тем, как разорвать тебя на куски!</text>
+	</string>
+	<string id="st_darkasleif_short_pseudodog3">
+		<text>Идёт прямо на нас! Это... это псевдособака!</text>
+	</string>
+	<string id="st_darkasleif_short_pseudodog4">
+		<text>Эти твари более шустрые и яростные, чем большинство диких собак. Псевдопсы будут драться до самого конца!</text>
+	</string>
+	<string id="st_darkasleif_short_pseudodog5">
+		<text>Эта псевдопсина несётся прямо на нас!</text>
+	</string>
+	<string id="st_darkasleif_short_psy_dog1">
+		<text>Их так много! Ннгхх! Моя голова... это... пси-собака?</text>
+	</string>
+	<string id="st_darkasleif_short_psy_dog2">
+		<text>Что... ннгх! Чего это у меня голова так разболелась? Не... не могу сосредоточиться!</text>
+	</string>
+	<string id="st_darkasleif_short_psy_dog3">
+		<text>Они нас окружают! Они повсюду! Отвалите от меня!</text>
+	</string>
+	<string id="st_darkasleif_short_psy_dog4">
+		<text>Я... я не могу сказать, какая из этих сук настоящая! Отцепи их от меня!</text>
+	</string>
+	<string id="st_darkasleif_short_psy_dog5">
+		<text>Дерьмо, пси-собака! Осторожнее! Кажется, они запутывают своих жертв всякими трюками с разумом!</text>
+	</string>
+	<string id="st_darkasleif_short_flesh1">
+		<text>Не дай себя одурачить. Они могут быть опасны, но в целом плоти не представляют угрозы по одиночке.</text>
+	</string>
+	<string id="st_darkasleif_short_flesh2">
+		<text>О, как раз когда мысль о еде пришла! Хаха! Ты как, голоден?</text>
+	</string>
+	<string id="st_darkasleif_short_flesh3">
+		<text>Хм? Опа. Знаешь, из всех мутантов в Зоне, плоть не такая уж и плохая. На вкус ничего так, особенно если с овощами.</text>
+	</string>
+	<string id="st_darkasleif_short_flesh4">
+		<text>Похоже, плоть нас заметила. Не пойму, она на нас бежит или свалить пытается?</text>
+	</string>
+	<string id="st_darkasleif_short_flesh5">
+		<text>Плоть! Вон там!</text>
+	</string>
+	<string id="st_darkasleif_short_fracture1">
+		<text>Смотри! Слишком подвижное для зомби!</text>
+	</string>
+	<string id="st_darkasleif_short_fracture2">
+		<text>Разве это не излом?</text>
+	</string>
+	<string id="st_darkasleif_short_fracture3">
+		<text>Не думаю, что мы достаточно быстры, чтобы убежать. Может, сможем заманить его в ближайшую аномалию?</text>
+	</string>
+	<string id="st_darkasleif_short_fracture4">
+		<text>Излом! И как им удаётся так быстро двигаться?!</text>
+	</string>
+	<string id="st_darkasleif_short_fracture5">
+		<text>Убей этого излома до того, как он к нам подберётся! Они более опасны, чем кажутся!</text>
+	</string>
+	<string id="st_darkasleif_short_gigant1">
+		<text>Берегись! Псевдогигант! Надеюсь, у тебя мощная пушка!</text>
+	</string>
+	<string id="st_darkasleif_short_gigant2">
+		<text>Господь всемогущий... вот это масса!</text>
+	</string>
+	<string id="st_darkasleif_short_gigant3">
+		<text>Псевдогиганты известны своей силой! Они могут разбрасывать технику и могут своих противников ломать, словно игрушки!</text>
+	</string>
+	<string id="st_darkasleif_short_gigant4">
+		<text>Нет ничего постыдного в отступлении, сталкер! Псевдогиганты даже от лучших представителей Долга легко избавляются!</text>
+	</string>
+	<string id="st_darkasleif_short_gigant5">
+		<text>Слушай, думаю, эту зверюгу лучше избегать! Бой будет крайне трудным без подходящего вооружения.</text>
+	</string>
+	<string id="st_darkasleif_short_karlik1">
+		<text>Это... тут где-то неподалёку карлик?</text>
+	</string>
+	<string id="st_darkasleif_short_karlik2">
+		<text>Что за...? Выглядит как ребёнок, или это коротышка?</text>
+	</string>
+	<string id="st_darkasleif_short_karlik3">
+		<text>Аргх! Моя голова! Эта дрянь слишком мелкая для пси-кровососа!</text>
+	</string>
+	<string id="st_darkasleif_short_karlik4">
+		<text>А это редкая дрянь! Карлик!</text>
+	</string>
+	<string id="st_darkasleif_short_karlik5">
+		<text>Это что ещё за хрень? Гном?</text>
+	</string>
+	<string id="st_darkasleif_short_lurker1">
+		<text>Кикимора! Этот вой я узнаю где угодно.</text>
+	</string>
+	<string id="st_darkasleif_short_lurker2">
+		<text>Берегись кикимор! Они могут прыгать очень далеко.</text>
+	</string>
+	<string id="st_darkasleif_short_lurker3">
+		<text>Хмм, кикимора. Наверняка, ищет чего пожрать. Давай завалим её, да побыстрее!</text>
+	</string>
+	<string id="st_darkasleif_short_lurker4">
+		<text>Похоже на кикимору! Готовь оружие!</text>
+	</string>
+	<string id="st_darkasleif_short_lurker5">
+		<text>Говорят, это не такая уж дрянь, в отличие от химеры, но тем не менее, кикиморы опасны.</text>
+	</string>
+	<string id="st_darkasleif_short_poltergeist1">
+        <text>Ты видишь то-же, что и я? Это... призрак?</text>
+    </string>
+	<string id="st_darkasleif_short_poltergeist2">
+        <text>Это полтергейст! Будь внимателен!</text>
+    </string>
+	<string id="st_darkasleif_short_poltergeist3">
+		<text>Ай! Чёрт! Он кидает в меня камни! Это Полтергейст!</text>
+    </string>
+	<string id="st_darkasleif_short_poltergeist4">
+        <text>Он почти не опасен пока не найдёт чего в нас метнуть.</text>
+    </string>
+	<string id="st_darkasleif_short_poltergeist5">
+        <text>Полтергейсты редки, но по-настоящему опасны только в закрытых пространствах.</text>
+    </string>
+ 	<string id="st_darkasleif_short_psysucker1">
+		<text>Единственная тварь, которая хуже кровососа!</text>
+	</string>
+	<string id="st_darkasleif_short_psysucker2">
+		<text>Готовься! Пси-кровосос приближается! Нам нужно двигаться!</text>
+	</string>
+	<string id="st_darkasleif_short_psysucker3">
+		<text>Пси-кровосос! Есть ли рядом вода? Всплески выдадут его!</text>
+	</string>
+	<string id="st_darkasleif_short_psysucker4">
+		<text>Что... это такое? А! Нет! Держись... подальше! Не дай им меня достать!</text>
+	</string>
+	<string id="st_darkasleif_short_psysucker5">
+		<text>Не дай этой твари забраться тебе в голову! Сосредоточься на том, что реально!</text>
+    </string>
+	<string id="st_darkasleif_short_pyrogeist1">
+        <text>Следи за ним! Пирогейст!</text>
+    </string>
+	<string id="st_darkasleif_short_pyrogeist2">
+        <text>Пирогейст! Не стой на месте и избегай огня!</text>
+    </string>
+	<string id="st_darkasleif_short_pyrogeist3">
+        <text>Блин, я сейчас весь костюм пропотею от этой жары. Нужно эту тварь прикончить побыстрее.</text>
+    </string>
+	<string id="st_darkasleif_short_pyrogeist4">
+        <text>Это, это не "Жарка"! Стреляй в него!</text>
+    </string>
+	<string id="st_darkasleif_short_pyrogeist5">
+        <text>Не стой на месте! Опасайся пламени!</text>
+	</string>
+    <string id="st_darkasleif_short_snork1">
+		<text>Вон там! Ползает на четвереньках. Снорк!</text>
+	</string>
+	<string id="st_darkasleif_short_snork2">
+		<text>Будь на стрёме, сталкер. Снорки бешеные тварюги. Они нападают рывком издалека и пытаются прижать жертву к земле.</text>
+	</string>
+	<string id="st_darkasleif_short_snork3">
+		<text>Что... что за хрень сделала их такими? Это бывшие сталкеры?</text>
+	</string>
+	<string id="st_darkasleif_short_snork4">
+		<text>Снорки. Зона жестокое место...</text>
+	</string>
+	<string id="st_darkasleif_short_snork5">
+		<text>Они ничем не лучше, чем любая другая зверюга, которая бродят по Зоне.</text>
+	</string>
+	<string id="st_darkasleif_short_tushkano1">
+		<text>Тушкан! Мелкие ублюдки!</text>
+	</string>
+	<string id="st_darkasleif_short_tushkano2">
+		<text>Осторожнее, тушканчик! Доводилось мне видеть, как новичок помер от стаи таких. Но я... я не хочу об этом говорить...</text>
+	</string>
+	<string id="st_darkasleif_short_tushkano3">
+		<text>Ах! В тушканов не так уж просто попасть!</text>
+    </string>
+    <string id="st_darkasleif_short_tushkano4">
+		<text>Да стой ты на месте, дерьмо мелкое! Я эту кусаку лодыжек в землю затопчу.</text>
+	</string>
+	<string id="st_darkasleif_short_tushkano5">
+		<text>Вот мелочь-то! Это тушкан. Они мечутся вокруг, раздирая когтями твои голени, чтобы ты не смог убежать.</text>
+	</string>
+	<string id="st_darkasleif_short_zombi1">
+		<text>Зомби. Какая ужасная участь...</text>
+	</string>
+	<string id="st_darkasleif_short_zombi2">
+		<text>Не трать на них патроны, если у тебя есть топор. Зомби того не стоят.</text>
+    </string>
+	<string id="st_darkasleif_short_zombi3">
+		<text>Зомбак. Ну, в Зоне есть вещи и похуже.</text>
+	</string>
+	<string id="st_darkasleif_short_zombi4">
+		<text>Давай пошевелимся и побыстрее с ними закончим.</text>
+	</string>
+    <string id="st_darkasleif_short_zombi5">
+		<text>Интересно, кем они были до того, как их зомбировало?</text>
+	</string>
+	<string id="st_darkasleif_short_mutant1">
+		<text>Если ты это читаешь, в коде что-то сломалось. Напиши Darkasleif#8648 (на английском) в Discord чтобы это исправить. p.s. Не стоит всегда верить тому, что написано! С Уважением, дедушка Ли</text>
+	</string>
+
+	<!-- Anomaly Table 1 -->  
+	<string id="st_darkasleif_actor_on_feeling_anomaly_electric1">
+        <text>Это электрическая аномалия.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_electric2">
+        <text>Остерегайся этой молнии.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_electric3">
+        <text>Осторожнее, смотри не поджарься от этого тока.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_electric4">
+        <text>Держу в курсе, это электра.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_electric5">
+        <text>Смотри не вступи в электрическое поле.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_chemical1">
+        <text>А вот и химическая.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_chemical2">
+        <text>Химическая аномалия, осторожно.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_chemical3">
+        <text>Химическая. Быстро портит фильтры.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_chemical4">
+        <text>Это химическая.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_chemical5">
+        <text>Химоза. Ожоги от неё ужасные.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_thermal1">
+        <text>Как же жарко возле этих аномалий.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_thermal2">
+        <text>Смотри не прожарься, это огненная аномалия.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_thermal3">
+        <text>Вижу искры и марево, значит, термическая.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_thermal4">
+        <text>Видишь эту жарку?</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_thermal5">
+        <text>Обходи места, где много искр.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_gravitational1">
+        <text>Смотри, чтоб не затянуло в эту гравитационную аномалию.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_gravitational2">
+        <text>Не будь растяпой, осторожно проходи мимо гравитационных аномалий.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_gravitational3">
+        <text>Осторожно, тут гравитационная.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_gravitational4">
+        <text>Гравитационная аномалия, смотри куда идешь!</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_gravitational5">
+        <text>Гравитационная, держи дистанцию.</text>
+	</string>
+
+	<!-- Anomaly Table 2 -->
+	<string id="st_darkasleif_actor_on_feeling_anomaly_weak1">
+        <text>Весьма маленькая.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_weak2">
+        <text>Небольшая.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_weak3">
+        <text>Слабовата.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_weak4">
+        <text>Не крупная.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_weak5">
+        <text>Хах, довольно мило.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_normal1">
+        <text>Не ссы, она могла быть и побольше.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_normal2">
+        <text>Выглядит заурядно.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_normal3">
+        <text>Возможно, тут есть артефакты.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_normal4">
+        <text>Если она небольшая, это не значит, что не покалечит.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_normal5">
+        <text>Видел и побольше.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_strong1">
+        <text>Выглядит стремно.</text>
+	</string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_strong2">
+        <text>Крупная.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_strong3">
+        <text>Если честно, ближе к ней подходить не собираюсь.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_strong4">
+        <text>Великовата для поиска артефактов.</text>
+    </string>
+	<string id="st_darkasleif_actor_on_feeling_anomaly_strong5">
+        <text>Выглядит весьма опасно.</text>
+    </string>
+
+	<!-- Near Death Table -->
+	<string id="st_darkasleif_near_death1">
+		<text>Кровь, так много... крови... ухх...</text>
+	</string>
+	<string id="st_darkasleif_near_death2">
+		<text>Нет! Ну нет. Не... не так! Я... у меня есть обещание. Обещание...</text>
+   </string>
+	<string id="st_darkasleif_near_death3">
+		<text>Она была права. Мне не стоило... приходить сюда...</text>
+	</string>
+	<string id="st_darkasleif_near_death4">
+		<text>Брат был прав. Мне не стоило... приходить сюда...</text>
+	</string>
+	<string id="st_darkasleif_near_death5">
+		<text>Нннхх! Я не могу... не могу вот так умереть! Мы ещё не закончили!</text>
+	</string>
+	<string id="st_darkasleif_near_death6">
+		<text>Чёрт! Мне нужно... мне нужно продержаться! Ещё немного!</text>
+	</string>
+	<string id="st_darkasleif_near_death7">
+		<text>Сталкер! Помоги! Я не... не думаю, что продержусь!</text>
+	</string>
+	<string id="st_darkasleif_near_death8">
+		<text>Я тут разваливаюсь на части! Я... я же умру! Я умру...</text>
+	</string>
+	<string id="st_darkasleif_near_death9">
+		<text>Мне просто... Мне просто нужен... один момент. Нужно... себя подлатать...</text>
+	</string>
+	<string id="st_darkasleif_near_death10">
+		<text>Не оставляй меня умирать в одиночестве!</text>
+	</string>
+	<string id="st_darkasleif_near_death11">
+		<text>Нужно держаться... вот так. Просто... пройти сквозь это!</text>
+	</string>
+	<string id="st_darkasleif_near_death12">
+		<text>Брат! Помоги мне...</text>
+	</string>
+	<string id="st_darkasleif_near_death13">
+		<text>Что ж... вот оно как? Зона забирает меня... наконец-то.</text>
+	</string>
+	<string id="st_darkasleif_near_death14">
+		<text>Если я паду в бою, отомсти за меня, сталкер!</text>
+	</string>
+	<string id="st_darkasleif_near_death15">
+		<text>Нет! Если мне конец, эти черти отправятся со мной!</text>
+	</string>
+	<string id="st_darkasleif_near_death16">
+		<text>Я не... я не хочу умирать.</text>
+	</string>
+	<string id="st_darkasleif_near_death17">
+		<text>Тебе меня не убить! Рановато! Не сейчас!</text>
+	</string>
+	<string id="st_darkasleif_near_death18">
+		<text>Нннаахх! Мне ещё... столько... нужно сделать!</text>
+	</string>
+	<string id="st_darkasleif_near_death19">
+		<text>Сталкер, беги! Спасайся!</text>
+	</string>
+	<string id="st_darkasleif_near_death20">
+		<text>Похоже, я... я не продержусь, сталкер...</text>
+	</string>
+	<string id="st_darkasleif_near_death21">
+		<text>Если это... конец, то так тому и быть!</text>
+	</string>
+	<string id="st_darkasleif_near_death22">
+		<text>Сражаться... до конца!</text>
+	</string>
+	<string id="st_darkasleif_near_death23">
+		<text>Передай им... В моей смерти... не было... трусости...</text>
+	</string>
+	<string id="st_darkasleif_near_death24">
+		<text>Держу свою позицию до последнего. Без разницы!</text>
+	</string>
+	<string id="st_darkasleif_near_death25">
+		<text>В Зоне мне вещи и похуже встречались! Да... похуже...</text>
+	</string>
+	<string id="st_darkasleif_near_death26">
+		<text>Сваливай! Я их задержу!</text>
+	</string>
+	<string id="st_darkasleif_near_death27">
+		<text>Почему мне... так холодно?</text>
+	</string>
+	<string id="st_darkasleif_near_death28">
+		<text>Пока во мне ещё течёт кровь, я буду... драться!</text>
+	</string>
+	<string id="st_darkasleif_near_death29">
+		<text>Это... конец?</text>
+	</string>
+	<string id="st_darkasleif_near_death30">
+		<text>Сталкер! Мне... мне нужна помощь!</text>
+	</string>
+
+	<!-- Emission Table -->
+	<string id="st_darkasleif_on_before_surge1">
+		<text>Птицы беспокойные. Рядом есть какие-нибудь здания?</text>
+	</string>
+	<string id="st_darkasleif_on_before_surge2">
+		<text>Сталкер, гляди. Вон там, в небе. Не кажется, что эта гроза выглядит как-то ненормально?</text>
+	</string>
+	<string id="st_darkasleif_on_before_surge3">
+		<text>Чувствуешь? Небольшая дрожь в земле? Псевдогиганта неподалёку не наблюдаю...</text>
+	</string>
+	<string id="st_darkasleif_on_before_surge4">
+		<text>У меня плохие предчувствия на этот счёт. Куда все мутанты подевались?</text>
+	</string>
+	<string id="st_darkasleif_on_before_surge5">
+		<text>Эй, облака что-то быстро начали двигаться!</text>
+	</string>
+	<string id="st_darkasleif_on_before_surge6">
+		<text>Ты это слышал?</text>
+	</string>
+	<string id="st_darkasleif_on_before_surge7">
+		<text>В этом направлении ЧАЭС, верно? Там, вдалеке?</text>
+	</string>
+	<string id="st_darkasleif_on_before_surge8">
+		<text>Что-то у меня голова закружилась...</text>
+	</string>
+	<string id="st_darkasleif_on_before_surge9">
+		<text>Я с ума схожу? Тут какой-то внезапный штиль.</text>
+	</string>
+	<string id="st_darkasleif_on_before_surge10">
+		<text>Шшш! Шшш! Слышал это?</text>
+	</string>
+
+	<!-- Psi-Storm Table -->
+	<string id="st_darkasleif_on_before_psi_storm1">
+		<text>Сталкер, погляди. У меня на руке волосы внезапно дыбом встали...</text>
+	</string>
+	<string id="st_darkasleif_on_before_psi_storm2">
+		<text>У тебя ПДА тоже странно себя ведёт? В моём новые батарейки, им только день или два.</text>
+	</string>
+	<string id="st_darkasleif_on_before_psi_storm3">
+		<text>Ты... ты слышишь эту сирену?</text>
+	</string>
+	<string id="st_darkasleif_on_before_psi_storm4">
+		<text>Возможно, нам стоит поторопиться. Не похоже, что это обычная гроза на горизонте.</text>
+	</string>
+	<string id="st_darkasleif_on_before_psi_storm5">
+		<text>Мне тут весточка от приятеля пришла. Говорит, возле них пси-шторм формируется!</text>
+	</string>
+	<string id="st_darkasleif_on_before_psi_storm6">
+		<text>Там какие-то сталкеры ранее упоминали о пси-шторме, но я не помню, когда именно. А ты?</text>
+	</string>
+	<string id="st_darkasleif_on_before_psi_storm7">
+		<text>Думаю, у меня компас сломался. Смотри, крутится всё быстрее и быстрее!</text>
+	</string>
+	<string id="st_darkasleif_on_before_psi_storm8">
+		<text>Слышал всплески этих аномалий, которые импульсные? Там вдалеке, они вспыхивают одна за другой.</text>
+	</string>
+	<string id="st_darkasleif_on_before_psi_storm9">
+		<text>Странно. Экран на моём детекторе какой-то очень яркий. Ну не может быть вокруг нас столько аномалий...</text>
+	</string>
+	<string id="st_darkasleif_on_before_psi_storm10">
+		<text>А? Мой RF-ресивер сам по себе включился. Не знаю как, батарейки из него сейчас в фонарике.</text>
+	</string>
+
+	<!-- Death Table -->
+	<string id="st_darkasleif_npc_on_death_callback1">
+		<text>[Последние минуты жизни вашего спутника проходят так, что он захлёбывается собственной кровью, впиваясь ногтями в землю. В отчаянии он пытается уцепиться за жизнь, пока силы не покинули его тело. Ещё один сгинул в Зоне.]</text>
+	</string>
+	<string id="st_darkasleif_npc_on_death_callback2">
+		<text>[Когда жизнь начинает угасать в глазах вашего товарища, он обращается к вам за утешением в последние минуты жизни. Хотя он смирился со своей участью, он не хочет умирать в Зоне будучи одиноким.]</text>
+	</string>
+	<string id="st_darkasleif_npc_on_death_callback3">
+		<text>[Как бы вы ни старались, вы мало что можете сделать с ранами вашего спутника. Слёзы начинают струиться по щекам, тело постепенно обмякает, а разум наполняют размышления о смысле всего происходящего. Такова судьба многих в Зоне.]</text>
+	</string>
+	<string id="st_darkasleif_npc_on_death_callback4">
+		<text>[Несмотря на заверения вашего спутника, что он может продолжать, очевидно, что он находится в шоке от полученных травм. От потери крови он становится измождённым, веки тяжелеют. Союзник навсегда потерян, когда его глаза закрываются в последний раз. Это лучший конец, чем многое другое в Зоне.]</text>
+	</string>
+	<string id="st_darkasleif_npc_on_death_callback5">
+		<text>[Глаза вашего спутника расширились от шока, когда его осознал то, что смерть приближается. Однако, он принимает её, радуясь возможности вырваться из этого ада. Есть определенный покой в осознании того, что вам больше не придется бороться за выживание в Зоне.]</text>
+	</string>
+	<string id="st_darkasleif_npc_on_death_callback6">
+		<text>[Протянув руку, ваш спутник собирает последнюю волю в кулак, чтобы передать вам что-то. Письмо любимому человеку? Вещь личного значения? Возможно, местонахождение тайника? И тем не менее, он умирает от ран раньше, чем вы успеваете задать вопрос. Нарушенных обещаний и невыполненных обязанностей в Зоне предостаточно.]</text>
+	</string>
+	<string id="st_darkasleif_npc_on_death_callback7">
+		<text>[Вы нерешительно подходите к своему спутнику, прекрасно понимая, что его состояние плачевно. Ему удается рассмеяться, и он с улыбкой заверяет, что не жалеет о времени, проведённом в путешествии рядом с вами. Вы вместе предаетесь воспоминаниям. Вместе вы пережили и стали свидетелями многого. Но теперь пришло их время уходить. Друг или враг - для Зоны это не имеет значения.]</text>
+	</string>
+	<string id="st_darkasleif_npc_on_death_callback8">
+		<text>[Не успеваете вы это осознать, как ваш товарищ пал в схватке. Будь то пули из оружия или клыки мутанта, его тёплый и безжизненный труп - напоминание о том, как непостоянна жизнь в Зоне.]</text>
+	</string>
+	<string id="st_darkasleif_npc_on_death_callback9">
+		<text>Мне... жаль... Мне жаль... Мне... так... жаль...</text>
+	</string>
+	<string id="st_darkasleif_npc_on_death_callback10">
+		<text>Я хочу домой... Я хочу... вернуться домой... Хочу... вернуться...</text>
+    </string>
+	
+	<!-- Level Transition Table -->
+	<!-- agroprom -->
+	<string id="st_darkasleif_level_transition_agroprom1">
+        <text>Тут есть старый исследовательский институт. Он плотно занят военными. С летающей над головой вертушкой, только дурак-самоубийца бы подумал напасть на это место средь бела дня.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom2">
+        <text>Ходят слухи что на юго-западном болоте бандиты устраивают засады на тех кто идет на Янтарь или обратно. Меня не удивила новость о том, что Сахаров и Наёмники начали следить за этим местом пару недель назад. Теперь они стреляют по всем кто не Эколог или не соправаждает их.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom3">
+        <text>Военные и их чертовы вертолеты всегда держат меня в напряжении. Как они могут определить, кто есть кто, находясь там, наверху?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom4">
+        <text>Тут в КПК немало сообщений о множестве аномалий неподалёку. Есть с собой детектор? Мы можем здесь найти что-то интересное.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom5">
+        <text>Некоторые сталкеры говорят что легендарный Стрелок однажды пробрался в институт неподалёку от сюда, нашёл там огромную лабораторию и пробил свой путь через неё! Интересно, что он там нашел?</text>
+    </string>
+
+
+	<!-- agroprom_underground -->
+	<string id="st_darkasleif_level_transition_agroprom_underground1">
+        <text>Шшш... Ты это слышал? Думаю, мы тут не одни.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom_underground2">
+        <text>Ходят слухи что тут лазят бандиты. Нам нужно быть готовым к неожиданностям.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom_underground3">
+        <text>Да что тебе нужно в этих тоннелях? Здесь как-то тесновато.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom_underground4">
+        <text>Некоторые опытные сталкеры рассказывают истории про это место. Если им верить, у Стрелка здесь где-то схрон.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_agroprom_underground5">
+        <text>Я здесь уже был. И ушёл как только ящики поднялись в воздух. Я не трус, но не вижу смысла подвергать себя такой опасности.</text>
+    </string>
+
+	<!-- army_warehouses -->
+	<string id="st_darkasleif_level_transition_army_warehouses1">
+        <text>Осторожно. Говорят что это место иногда становится настоящим полем боя между Долгом, Свободой, Наёмниками, и Монолитом. </text>
+    </string>
+	<string id="st_darkasleif_level_transition_army_warehouses2">
+        <text>Сталкеры так говорят об этом месте, будто это порог в Ад. Когда понимаешь, что Барьер - единственное, что стоит между этим местом и Красным Лесом, то можно понять почему.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_army_warehouses3">
+        <text>Чёртов дозиметр! Похоже, чем дальше на север, тем сильнее радиация. Думаешь, люди просто вырубаются, как только видят ЧАЭС?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_army_warehouses4">
+        <text>Дружище, надеюсь, что нам никогда не придется проходить здесь ночью. Тут и так считай, линия фронта. Ещё и мутантов, поджидающих во тьме, не хватало</text>
+    </string>
+	<string id="st_darkasleif_level_transition_army_warehouses5">
+        <text>Мне товарищи говорили, что свободовцы редко бывают трезвыми что-бы защититься от чего-то, что за Барьером. Думаешь, это правда?</text>
+    </string>
+
+	<!-- chernobyl_npp_north -->
+	<string id="st_darkasleif_level_transition_chernobyl_npp_north1">
+        <text>Как может быть так много открытого неба, а все по-прежнему кажется таким угнетающим?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_north2">
+        <text>Здесь... так тихо. Мне так хочется крикнуть, просто чтобы хоть что-то услышать.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_north3">
+        <text>Посмотри на все эти пустые помещения. Как думаешь, может там спят монолитовцы?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_north4">
+        <text>Здесь нет ничего, кроме мутантов и зомби.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_north5">
+        <text>Это практически сердце зоны. За исключением, наверное, генераторов.</text>
+    </string>
+
+	<!-- chernobyl_npp_south -->
+	<string id="st_darkasleif_level_transition_chernobyl_npp_south1">
+        <text>Ладно, мы здесь, на краю света, так что пора вести себя соответствующе. Мы зашли так далеко не для того, чтобы умереть, как туристы.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_south2">
+        <text>Я знал нескольких парней, которые хотели совершить экспедицию в эту часть ЧАЭС до того, как «Выжигатель мозгов» снова заработал. Они так и не вернулись. Мы же не хотим закончить как они?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_south3">
+        <text>Некуда идти, кроме как на север, Сталкер. Просто помни, если мы оступимся здесь, нам конец. Никаких шуток, никакой напрасной траты времени и недооценивания монолитовцев, которые хотят нас убить.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_south4">
+        <text>Слушай, мы всё сможем. Всё дерьмо, через которое мы прошли... и теперь мы здесь. Давай, выдвигаемся.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_chernobyl_npp_south5">
+        <text>И это вид, который мы наблюдаем отовсюду в Зоне? Черт, не плохо, совсем неплохо, чувак. Тем не менее, будь начеку, здесь очень опасно.</text>
+    </string>
+
+	<!-- cordon -->
+	<string id="st_darkasleif_level_transition_cordon1">
+        <text>Эх, кордон. Всем нужно с чего-то начинать, правда? Наводит меня на вопрос, а каким был твой путь в Зону?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_cordon2">
+        <text>Эй, я думаю нам стоит избегать того моста. И не надо на меня так смотреть. Честно говоря, у меня не самые лучшие отношения с военными.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_cordon3">
+        <text>Если судить по сообщениям в КПК, на местнои АТП происходит немало перестрелок. Бандиты и Одиночки постоянно воюют за контроль над этим местом. Думаю, военным весело за этим следить с моста.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_cordon4">
+        <text>Говорят, что Сидорович плотно держит Кордон в своих руках. И то, что это единственная причина, из-за которой военные ещё не разнесли деревню новичков своими вертолётами. Думаешь, всего один человек может держать всё правительство в узде?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_cordon5">
+        <text>Если не считать мутантов и периодические перестрелки с Бандитами, Кордон весьма неплохое место.</text>
+    </string>
+
+	<!-- dark_valley -->
+	<string id="st_darkasleif_level_transition_dark_valley1">
+        <text>Вот он, тот самый завод. До развала Советского Союза на нём производили и ремонтировали автомобили. Теперь это не более чем логово для убийц, воров и лжецов.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dark_valley2">
+        <text>Знаешь, много сталкеров говорят о старой лаборатории, спрятянной здесь. Говорят, в Зоне есть и другие. Если их так старались спрятать, то можно догадаться, для чего их использовали. Может, будет лучше, если они останутся забытыми?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dark_valley3">
+        <text>Бандиты называют это место домом? Не удивительно, что им тяжело выжить в этом месте. Однако, некоторые считают что это изменится под управлением Султана.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dark_valley4">
+        <text>Правда? Сюда? Многие новички не добираются до Тёмной Долины, что-бы умереть в ней. Надеюсь ты подготовлен, друг мой. Это опасное место...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dark_valley5">
+        <text>Найти укрытие от выброса в Тёмной Долине может быть нелегкой задачей. Наверное стоит узнать, какие места для нас безопасны. Мне не очень хочется штурмовать здание, когда за спиной волна смерти.</text>
+    </string>
+
+	<!-- darkscape -->
+	<string id="st_darkasleif_level_transition_darkscape1">
+        <text>Сталкер, ты уверен, что нам нужно идти через это место? Я помню, другие говорили, что здесь мало мест, способных защитить в случае выброса...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_darkscape2">
+        <text>Эй, а ты слышал, что здесь иногда исчезают люди? Ни тела, ни КПК, вообще ничего. Странно. Я человек не суеверный, но некоторые верят, что это место проклято.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_darkscape3">
+        <text>Многие стараются не путешествовать через это место. Тёмная Лощина протягивается на километры. Не думаю что нам cтоит идти дальше, если у нас не хватает припасов на всю дорогу.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_darkscape4">
+        <text>Главный плюс этого места в том, что здесь весьма немного сталкеров, веди оно огромное. А из минусов? Тут много мутантов. Тут недостаточно людей, что-бы сдерживать популяцию. Так-что держи оружие на готове, и ушки на макушке.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_darkscape5">
+        <text>Я думаю нам стоит пройти через лощину, пока светло. Может проверить машины? Если повезёт, в одной из них может хватить топлива на быструю поездку через это место.</text>
+    </string>
+
+	<!-- dead_city -->
+	<string id="st_darkasleif_level_transition_dead_city1">
+        <text>Рекомендую быть здесь поосторожнее. Мёртвый Город - место непростое.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dead_city2">
+        <text>У наёмников здесь база, но если сравнивать с аномалиями и мутантами, то возможно для нас это найменьшая проблема.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dead_city3">
+        <text>Говорят, что этот город называют "Мёртвым" из-за большого количества зомбированных. Если я увижу, как кто-то следит за мной из окна, я буду стрелять.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dead_city4">
+        <text>Здесь у Наёмников на базе есть лотерея. Однажды Аслан выдал мне в качестве приза пистолет. Эта штука спасла мне жизнь. Надо будет как-нибудь рассказать тебе эту историю.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_dead_city5">
+        <text>Нужно закончить со своими делами и уйти отсюда побыстрее. Вдруг Наёмникам понадобятся наши нашивки?</text>
+    </string>
+
+	<!-- deserted_hospital -->
+	<string id="st_darkasleif_level_transition_deserted_hospital1">
+        <text>Ты когда-нибудь хотел светиться после того, как попил воды? Мой счетчик Гейгера сходит с ума каждый раз, когда я смотрю на эти лужи.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_deserted_hospital2">
+        <text>Исследование заброшенной больницы в зоне, наполненной мутантами. Об этом снято как минимум три фильма ужасов.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_deserted_hospital3">
+        <text>Ой, да тут всего-лишь Монолит, смертельная радиация, жуткие мутанты, опасные аномалии и вообще все в Зоне, что может нас убить! Замечательно. И почему мы снова здесь?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_deserted_hospital4">
+        <text>Сюда приезжали лечиться пожарные, участвовавшие в ликвидации Чернобыльской катастрофы. Их души преследуют это место, Сталкер, как и радиация. Не прикасайся к воде, если не хочешь закончить так же, как они.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_deserted_hospital5">
+        <text>Я не могу себе представить, чтобы это место использовалось сегодня как нечто иное, как база Монолита, не говоря уже о больнице. Я не думаю, что мы должны оставаться здесь надолго.</text>
+    </string>
+
+
+	<!-- garbage -->
+	<string id="st_darkasleif_level_transition_garbage1">
+        <text>Если тебя интересует экипировка, можешь заглянуть на Барахолку возле северного блокпоста. Но не забывай, что там проходит немало сталкеров. Уж больно часто там происходят перестрелки между Одиночками, Бандитами, Долгом, Наёмниками и даже иногда Военными.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_garbage2">
+        <text>Надеюсь, у тебя есть с собой дозиметр. После первой катастрофы, правительство закопало тут тонны радиоактивного мусора. Если тебе и этого не хватает, то тут немало аномалий и мутантов.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_garbage3">
+        <text>Нам стоит быть поакуратнее возле Депо. Предположительно, это безопасное убежище для сталкеров, но это сильно зависит от того, кто решил остановится там. Думаю, Мясник видел немало боёв за укрытие после начала выброса.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_garbage4">
+        <text>Чисто между нами, этот совет стоил мне денег. Если начнётся выброс, мы можем укрыться в подвале под Барахолкой. Там также можно безопасно переночевать, если не хочется идти к лагерю по темноте.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_garbage5">
+        <text>На Севере отсюда Росток - крепость Долга. Агропром на Западе, там главная база Военных. На Востоке Тёмная Долина, где бандиты кое-как выживают в своём забитом уголке зоны.</text>
+    </string>
+
+	<!-- generators -->
+	<string id="st_darkasleif_level_transition_generators1">
+        <text>Как ты думаешь, до нас тут были другие сталкеры? Я про тех, которым не промыли мозги.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_generators2">
+        <text>Если бы мне сказали, что я здесь окажусь, я бы решил остаться на юге. Здесь даже ветер кажется враждебным.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_generators3">
+        <text>Что это... сферы электричества? Какой-то механизм? Для чего?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_generators4">
+        <text>Стрелок приходил сюда, не так ли? Что за человек приходит в сердце зоны и остается неизменным.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_generators5">
+        <text>Мы станем легендами, если выберемся отсюда. Все говорят о достижении центра Зоны, но сколько людей на самом деле смогли добраться именно сюда?</text>
+    </string>
+
+	<!-- great_swamp -->
+	<string id="st_darkasleif_level_transition_great_swamp1">
+        <text>Нам стоит быть внимательнее, пока мы здесь. Будет нелегко заметить мутантов за этими густыми камышами и кустами.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_great_swamp2">
+        <text>Ходят слухи, что Чистое Небо основалось на окраинах этих болот. Не понимаю, как им удалось выжить в этой заднице Зоны, среди аномалий и мутантов?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_great_swamp3">
+        <text>Не худшее место в Зоне, но до этого недалеко. Если учесть репутацию Ренегатов, то оно им весьма подходит. С другой стороны, рано или поздно Болота разберутся с большинством из них.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_great_swamp4">
+        <text>Это место... пугает меня. Рассказывают, что здесь кровососы устраивают засады на сталкеров, резко выпрыгивая на них из воды, и так же быстро затаскивая свою жертву под воду. Ещё был один случай, когда группа наивных туристов решила тут переночевать под открытым небом. Через несколько дней их тела нашли в истерзанных спальных мешках, полусъеденными кабанами, почти без крови, застанными в расплох во сне...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_great_swamp5">_
+        <text>Это место - большой и опасный лабиринт. Но здесь есть ориентиры, которые помогут найти путь. Есть несколько сторожевых вышек, старая церковь, насосная станция, рыбацкий хутор и сгоревшая ферма. Можно легко понять, где находится машинный двор по вертолету военных, прочесывающему местность сверху.</text>
+    </string>
+
+	<!-- jupiter -->
+	<string id="st_darkasleif_level_transition_jupiter1">
+        <text>Это место выглядит незащищённым. Ты только посмотри на всю эту открытую местность! Счастье снайпера!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter2">
+        <text>Не давай спокойному виду этого места тебя обмануть. Кровососы на Севере. Зомби на Западе. Заброшенное минное поле. Хотя бы на железнодорожной станции относительно безопасно.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter3">
+        <text>Давай держаться подальше от комплекса ЗРК. Даже не знаю, в каком ещё месте может быть так много зомбированных.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter4">
+        <text>Местный бункер учёных - отличное место, что-бы отсидеться во время выброса. Да и вид на местность там неплохой, если забраться на крышу.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter5">
+        <text>Торговец на Янове весьма шумный, но дружелюбный. Эта станция - неплохое и безпасное место для тех, кто нейтрален со Свободой.</text>
+    </string>
+
+	<!-- jupiter_underground -->
+	<string id="st_darkasleif_level_transition_jupiter_underground1">
+        <text>Напомни еще раз, что мы здесь делаем? Проводники, обычно, обходят это место.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter_underground2">
+        <text>Запасные батарейки есть? Похоже, мои уже скоро сядут.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter_underground3">
+        <text>Темно, полно аномалий и мутантов. Классное место для тех, кому Зона показалась слишком скучной на поверхности.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter_underground4">
+        <text>Говорят, стрелок пробрался в центр Зоны именно этим путём. Думаешь, он оставил за собой какой-нибудь тайник?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_jupiter_underground5">
+        <text>Мой дозиметр странно себя ведёт. Сначала он трещит без остановки, а потом замолкает. Лучше здесь не задерживаться.</text>
+    </string>
+
+	<!-- lab_x-16 -->
+	<string id="st_darkasleif_level_transition_lab_x-161">
+        <text>Каждая экспедиционная группа, отправленная Экологами на X-16, никогда не возвращалась живой, но мы ведь не обычная экспедиционная команда, не так ли?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-162">
+        <text>Помни, Сталкер, подобные подземные области набиты снорками. Я полагаю, какая-то ужасная штука, создающая это пси-поле, так привлекает их. Не ослабляй бдительность.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-163">
+        <text>Лучше прими пси-блокаду. Мы понятия не имеем, что находится в этом месте. Если это пси-поле начнет действовать, нам здорово достанется.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-164">
+        <text>Боже, у меня голова раскалывается! Нахрена нам это место? Сумасшедшие яйцеголовые. Я, конечно, до последнего буду прикрывать твою спину, но у меня мурашки от этого места.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-165">
+        <text>Стоны? Думаю, это все, что осталось от экспедиционных групп, посланных сюда. Они, наверное, были тут не одни... Ты же взял что-нибудь против мутантов?</text>
+    </string>
+
+	<!-- lab_x-18 -->
+	<string id="st_darkasleif_level_transition_lab_x-181">
+        <text>Ух, этот запах. Это как запах в грузовике смерти, только ещё хуже.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-182">
+        <text>Говорю тебе, эта коробка просто сдвинулась сама по себе!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-183">
+        <text>Столько трупов. Что же здесь произошло?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-184">
+        <text>Мне кажется, я слышу аномалии дальше. Будь осторожен и смотри по сторонам.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-185">
+        <text>Мне кажется, если мы выберемся отсюда живыми, нам никто не поверит.</text>
+    </string>
+
+	<!-- lab_x-19 -->
+	<string id="st_darkasleif_level_transition_lab_x-191">
+        <text>Все, веселье закончилось. Двигаем задницами, чтобы поскорее выключить эту чертову штуку, пока наши мозги не поджарились!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-192">
+        <text>Я буду прикрывать твою спину, а ты отключишь эту чертову штуку, пока Монолит тут не закрепился!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-193">
+        <text>Ах! Бля, мои уши! Иди, иди на хуй! Выключи эту чертову штуку, пока мы не кончили, как эти фанатики!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-194">
+        <text>Сталкер, надеюсь, ты не скупился на технологическую хрень Сахарова, потому что у нас нет времени ждать! Вперед!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-195">
+        <text>Двигайся, двигайся! У нас нет времени, Монолит вызвал подкрепление, а это пси-поле превратит наши мозги в кашу!</text>
+    </string>
+
+	<!-- lab_x-8 -->
+	<string id="st_darkasleif_level_transition_lab_x-81">
+        <text>Как ты вообще нашел это место?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-82">
+        <text>Секретная лаборатория под КБО "Юбилейный"? Полагаю, я видел и более странные вещи.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-83">
+        <text>Что, черт возьми, это за место?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-84">
+        <text>Запоминай, откуда мы пришли. В этих лабораториях легко заблудиться.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_lab_x-85">
+        <text>Какие жуткие исследования нуждаются в таком уровне секретности?</text>
+    </string>
+
+	<!-- limansk -->
+	<string id="st_darkasleif_level_transition_limansk1">
+        <text>Говорят, что пока многие пытаются отважиться на путешествие через Лиманск, монолитовцы ждут в засаде, готовя новые ловушки...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_limansk2">
+        <text>Пусто. Тут только призраки и смерть...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_limansk3">
+        <text>Лиманск... его нет ни на одной официальной карте. Советский Союз иногда строил секретные города и поселки вдали от мира. Возможно, это одно из таких мест. Но если так, то для чего оно служило?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_limansk4">
+        <text>Ходят слухи о пути на Север, не затронутом Выжигателем мозгов, и что многие сражались и умирали, пытаясь следовать этому пути. Может, это он и есть?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_limansk5">
+        <text>Клянусь, чем дальше мы на Севере, тем больше я чувствую, как что-то копается в моих мыслях. У меня параноя? Возможно, эти истории все-таки меня достали.</text>
+    </string>
+
+	<!-- meadow -->
+	<string id="st_darkasleif_level_transition_meadow1">
+        <text>Это место... оно... прекрасное?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_meadow2">
+        <text>У меня никогда не было недежды найти такое спокойное место в Зоне. Оно... немного напоминает мне дом. А каким был твой дом, сталкер?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_meadow3">
+        <text>Это место называют Поляной. Интересно, почему никто ещё не занял этот маленький поселок или депо?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_meadow4">
+        <text>Наверное, одно из немногих мест, где мы можем отдохнуть, не сильно беспокоясь.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_meadow5">
+        <text>Если бы мне пришлось прожить остаток своих дней в Зоне, то я хочу, чтобы это было здесь. В этой небольшой деревушке.</text>
+    </string>
+
+	<!-- monolith_control_center -->
+	<string id="st_darkasleif_level_transition_monolith_control_center1">
+        <text>Ну давай же! Ты собрался сдаться? После всего того, через что ты прошёл? Ну уж нет, продолжай сражаться!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_monolith_control_center2">
+        <text>Какого черта? Зеленые… призраки? Что ж, Сталкер, не время расслабляться, мы разберемся с этими ебаными фанатиками!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_monolith_control_center3">
+        <text>Черт возьми, сколько экзоскелетов! Заряди в магазин несколько бронебойных патронов и убей этих фанатиков, черт возьми!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_monolith_control_center4">
+        <text>Сталкер! Приготовься! Мы в сердце Монолита, и им это не нравится! Я слышу экзоскелеты во всех этих туннелях!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_monolith_control_center5">
+        <text>Следи за тылом и флангом! Эти туннели кишат лучшими бойцами Монолита, и они не собираются нас отпускать!</text>
+    </string>
+
+	<!-- monolith_war_lab -->
+	<string id="st_darkasleif_level_transition_war_lab1">
+        <text>Есть, конечно, повреждения, но это место все ещё выглядит новым.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_war_lab2">
+        <text>У меня странное чувство. Как будто за нами наблюдают.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_war_lab3">
+        <text>Все эти двери заперты. Какие сокровища могут быть здесь спрятаны?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_war_lab4">
+        <text>Осторожно, ничего не трогай. Вдруг ты включишь сигнал тревоги?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_war_lab5">
+        <text>Да, здесь безопасно место от выбросов, но почему это место вообще существует?</text>
+    </string>
+
+	<!-- pripyat_outskirts -->
+	<string id="st_darkasleif_level_transition_pripyat_outskirts1">
+        <text>Одно дело слушать рассказы обо всем этом... Совсем другое дело самому быть свидетелем. Столько построек заброшенных.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat_outskirts2">
+        <text>На Окраинах мало что можно найти, кроме наемников и Монолита. Но, все-таки, это безопаснее, чем в центре Припяти.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat_outskirts3">
+        <text>До появления Зоны сюда проникали сталкеры, чтобы разграбить добро, оставленное прошлыми жителями. Представь, если бы ты был таким...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat_outskirts4">
+        <text>Странно, как много сталкеров знают так мало об истории Зоны до того, как она стала аномальной. Припять была построена СССР для размещения рабочих ЧАЭС. Получается, это был вполне зажиточный город. Какая тяжелая утрата...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat_outskirts5">
+        <text>Если бы мы были здесь через неделю после чернобыльской катастрофы и не имели защиты от радиации... Господи. Ты знаешь, что сделали ликвидаторы, верно? Выкопали радиоактивную почву и засыпали незагрязненной землей. Здесь все еще есть смертоносные пятна радиации, любезно предоставленные Зоной. Но если бы не они, все это место было бы еще более необитаемым, нежели сейчас.</text>
+    </string>
+
+	<!-- pripyat -->
+	<string id="st_darkasleif_level_transition_pripyat1">
+        <text>Тут жило пятьдесят тысяч человек. По крайней мере, они эвакуировались до того, как Зона стала такой, как сейчас.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat2">
+        <text>Так много окон. Кто знает, что за нами может следить из темноты.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat3">
+        <text>Этот город тише, чем любой другой. Теперь, единственные звуки что нарушают тишину - выстрелы и рёв мутантов.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat4">
+        <text>Нам и точно сюда нужно? Ходят слухи, что где-то здесь обосновались бойцы Монолита. </text>
+    </string>
+	<string id="st_darkasleif_level_transition_pripyat5">
+        <text>Что это было? А, ничего, забудь. Наверное показалось. Но нужно быть внимательными, не хотелось бы, чтобы нас застали врасплох именно здесь.</text>
+    </string>
+
+	<!-- radar -->
+	<string id="st_darkasleif_level_transition_radar1">
+        <text>Если честно, в мои первые дни на Кордоне, мне и в голову не приходило, что я окажусь так глубоко в Зоне.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_radar2">
+        <text>У тебя достаточно патронов и медикаментов? Это место не прощает недостаточной подготовки. Ещё не поздно вернуться.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_radar3">
+        <text>Проверь свой противогаз и костюм. Говорят, тут в некоторых местах бешенная радиация. Хотя, возможно, это будет найменьшей из наших проблем.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_radar4">
+        <text>Мне кажется, или чем дальше на север, тем мрачнее небо?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_radar5">
+        <text>Серьезное испытание для многих сталкеров. Много лет назад Долг и Свобода сражались здесь друг с другом, пытаясь добраться до Припяти.</text>
+    </string>
+
+	<!-- red_forest -->
+	<string id="st_darkasleif_level_transition_red_forest1">
+        <text>Многие опытные сталкеры считают этот лес проклятым, обходя его десятой дорогой.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_red_forest2">
+        <text>Много разных историй ходят об этом месте. Даже самые суровые сталкеры боятся сюда идти.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_red_forest3">
+        <text>Друг мой, мы должны действовать очень осторожно. Говорят, что большинство из тех, кто отважился отправиться в Рыжий Лес, никогда не возвращаются. Предпочитаю не думать, что с ними случилось...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_red_forest4">
+        <text>Ты тоже это чувствуешь? Даже через фильтр, воздух какой-то тяжелый, с привкусом металла, и ржавчины.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_red_forest5">
+        <text>Что-то здесь... не так. Это место как будто из какого-то сна.</text>
+    </string>
+
+	<!-- rostok -->
+	<string id="st_darkasleif_level_transition_rostok1">
+        <text>Для тех, кто в хороших отношениях с Долгом и Одиночками, Росток - это отличное место что-бы отдохнуть и расслабиться.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_rostok2">
+        <text>Думай о них что хочешь, но думаю, я понимаю Долговцев. Так или иначе, Зона будет забирать у тебя все больше и больше, пока у тебя не останется ничего, кроме боли и ненависти. И все же, Долгу было бы легче, если бы они не были такими мудаками.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_rostok3">
+        <text>Многие неопытные сталкеры жалуются на тщательные проверки на блокпостах Долга.  Новички, вероятно, не знают, что в прошлом сомнительные личности пронесли серьёзную взрывчатку через эти блокпосты. Это был ещё тот переполох...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_rostok4">
+        <text>Сколько бы долговцы их не стреляли, эти собаки все-равно возвращаются, чтобы кошмарить сталкеров. Должно быть, это вредит бизнесу Бармена, когда стая шавок затаскивает торговца или туриста в канаву и разрывает на части.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_rostok5">
+        <text>Наконец-то! После всего этого, можно и выпить. Может, заглянем к Бармену?</text>
+    </string>
+
+	<!-- sarcophagus -->
+	<string id="st_darkasleif_level_transition_sarcophagus1">
+        <text>Это место построили наши деды, и теперь это самая большая твердыня Монолита в Зоне... Что ж, вперед, давай сделаем это!</text>
+    </string>
+	<string id="st_darkasleif_level_transition_sarcophagus2">
+        <text>Твою мать, а я думал, что Лаборатория X-10 была жуткой и тесной, Черт возьми, что это место?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_sarcophagus3">
+        <text>Изначально, это место было источником радиации всего Чернобыля, а теперь здесь находится Монолит. Я не хотел бы этого говорить, но держи свое оружие наготове. Мы понятия не имеем, сколько их будет здесь.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_sarcophagus4">
+        <text>Этот голос... Ты тоже его слышишь? Черт, чувак. Просто продолжай двигаться, у нас есть задание.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_sarcophagus5">
+        <text>Саркофаг в основном состоит из туннелей и небольших комнат, если я правильно понял. Но не расслабляйся, смерть таится повсюду.</text>
+    </string>
+
+
+	<!-- truck_cemetery -->
+	<string id="st_darkasleif_level_transition_truck_cemetery1">
+        <text>Здесь иногда проходят военные патрули. Может, некоторые из этих машин ещё работают?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_truck_cemetery2">
+        <text>Надеюсь, у тебя хороший слух. Мутанты научились отлично подкрадываться к сталкерам, используя эти развалюхи как укрытие.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_truck_cemetery3">
+        <text>Единственный плюс этого места - много укрытий от выброса, или от пуль.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_truck_cemetery4">
+        <text>Один мой знакомый когда-то останавливался на одной из этих башен. Говорил, что там безопаснее чем на земле, ведь там к нему никто не подкрадётся.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_truck_cemetery5">
+        <text>Если нам нужно пройти через это место, может будем держаться окраины? Сталкеры разбивали лагеря на Западе и на Юге, там должно быть относительно спокойно.</text>
+    </string>
+
+	<!-- wild_territory -->
+	<string id="st_darkasleif_level_transition_wild_territory1">
+        <text>Свобода, Наёмники, Бандиты и мутанты. Все они сдерживают Долг и не дают им закрепиться в западной части этого завода.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_wild_territory2">
+        <text>Говорят, здесь неподалёку есть упавший военный вертолёт. Если мы будем проходить рядом, может остановимся взглянуть на него? Никогда в живую не видел МИ-8 на земле, а не в воздухе, в поиске бедолаг для отстрела.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_wild_territory3">
+        <text>Один опытный сталкер мне однажды говорил, что Дикая Территория даёт многим новичкам узнать, какова Зона на севере. Но скорее всего, у каждого сталкера по-разному.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_wild_territory4">
+        <text>В КПК немало сообщений о том, что наёмники держат контроль над этим местом. Интересно, что им вообще нужно в Дикой Территории?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_wild_territory5">
+        <text>Все знают, что в местных подземных переходах полно аномальных полей. Если ты не собираешься искать артефакты, нам не стоит туда спускаться? Многие сталкеры так и не вернулись.</text>
+    </string>
+
+	<!-- yantar -->
+	<string id="st_darkasleif_level_transition_yantar1">
+        <text>Мы ведь не собираемся приближаться к заводу? Я не думаю, что у меня достаточно пси-блокаторов.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_yantar2">
+        <text>Стены вокруг бункера достаточно толстые, чтобы даже параноидальный сталкер чувствовал себя в безопасности. Может пора отдохнуть?</text>
+    </string>
+	<string id="st_darkasleif_level_transition_yantar3">
+        <text>Я слышал, что где-то на заводе есть лаборатория. Интересно, какие тайны она хранит..</text>
+    </string>
+	<string id="st_darkasleif_level_transition_yantar4">
+        <text>До меня дошел слух, что наемники знают путь в Мертвый город где-то на севере этого места..</text>
+    </string>
+	<string id="st_darkasleif_level_transition_yantar5">
+        <text>Если бы не весь этот газ, возле того озерца можно было бы неплохо отдохнуть.</text>
+    </string>
+
+	<!-- zaton -->
+	<string id="st_darkasleif_level_transition_zaton1">
+        <text>Думаю нам стоит радоваться, что все эти корабли не радиоактивны.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_zaton2">
+        <text>На лесничестве происходило немало сомнительных сделок и перестрелок. Полагаю, безопастность его стен привлекает разных личностей.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_zaton3">
+        <text>Радиоактивная вода, безумные отшельники, мутанты и аномалии. И что может не нравиться в Затоне...</text>
+    </string>
+	<string id="st_darkasleif_level_transition_zaton4">
+        <text>Наемников часто можно встретить на той насосной станции на юге. Интересно, есть ли в нем что-то особенное, или им просто нравится, как там пахнет.</text>
+    </string>
+	<string id="st_darkasleif_level_transition_zaton5">
+        <text>Здесь когда-то упал военный вертолёт. Интерестно, насколько его уже размародёрили?</text>
+    </string>
+
+	<!-- Reload (5) -->
+	<string id="st_darkasleif_reload1">
+        <text>Я тебя прикрою!</text>
+	</string>
+	<string id="st_darkasleif_reload2">
+        <text>Перезаряжай, я держу их!</text>
+	</string>
+	<string id="st_darkasleif_reload3">
+        <text>Быстрее заряжай!</text>
+	</string>
+	<string id="st_darkasleif_reload4">
+        <text>Ты пустой?!</text>
+	</string>
+	<string id="st_darkasleif_reload5">
+        <text>Прикрываю тебя!</text>
+	</string>
+	
+	<!-- Jam (5) -->
+	<string id="st_darkasleif_jammed1">
+        <text>Держи оружие чистым, чёрт побери!</text>
+	</string>
+	<string id="st_darkasleif_jammed2">
+        <text>Сука! Прикрываю тебя!</text>
+	</string>
+	<string id="st_darkasleif_jammed3">
+        <text>Да когда ты свою пушку починишь?!</text>
+	</string>
+	<string id="st_darkasleif_jammed4">
+        <text>Чёрт! Сложно за оружием следить?!</text>
+	</string>
+	<string id="st_darkasleif_jammed5">
+        <text>У тебя клин?!</text>
+	</string>
+
+	<!-- Companions when another companion dies (5) -->
+	<string id="st_darkasleif_companion_death1">
+        <text>Мы одного потеряли!</text>
+	</string>
+	<string id="st_darkasleif_companion_death2">
+        <text>Возможно, нам конец.</text>
+	</string>
+	<string id="st_darkasleif_companion_death3">
+        <text>Чёрт! Нам отступить или дальше биться?!</text>
+	</string>
+	<string id="st_darkasleif_companion_death4">
+        <text>Вот дерьмо!</text>
+	</string>
+	<string id="st_darkasleif_companion_death5">
+        <text>У нас труп! Вот сволочи!</text>
+	</string>
+
+	<!-- Comments when the player dies (10) -->
+	<string id="st_darkasleif_companion_player_death1">
+        <text>Нет! Сталкер!</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death2">
+        <text>Вот чёрт... Пульса нет...</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death3">
+        <text>Боже мой!</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death4">
+        <text>Ну нахрен, я отсюда ухожу!</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death5">
+        <text>Я не смог тебя спасти. Прости меня...</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death6">
+        <text>Нет! Не так! Ты не можешь тут умереть!</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death7">
+        <text>Я тебя не забуду. Покойся с миром.</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death8">
+        <text>Почему это так неожиданно случилось...</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death9">
+        <text>Я выпью в твою честь. Прости...</text>
+	</string>
+	<string id="st_darkasleif_companion_player_death10">
+        <text>Ты был хорошим сталкером. Возможно одним из лучших.</text> <!-- Reference to Soldier from TF2, RIP Rick May -->
+	</string>
+	
+	<!--A Sore Loser-->
+	<string id="st_darkasleif_campfire_1_1">
+        <text>Я не могу в это поверить! Этот вороватый, лживый ублюдок ухитрился мне морочить глаза, и теперь у меня нет ни бабок, ни артефактов!</text>
+	</string>
+	<string id="st_darkasleif_campfire_1_2">
+        <text>Ты играл в азартные игры. Чего ты ожидал? Хм? Выиграть по-крупному? Тебе повезло, что он оставил тебе оружие с тем, как ты играл. Признайся, ты не умеешь играть в карточные игры. Ну ладно, что было, то было.</text>
+	</string>
+	<string id="st_darkasleif_campfire_1_3">
+        <text>Хм! Он мухлевал, я в этом уверен! Посмотрим, улыбнется ли он сегодня вечером, когда выиграет мой нож в своё горло.</text>
+	</string>
+	<string id="st_darkasleif_campfire_1_4">
+        <text>Ой, заткнись уже! Идиот.</text>
+	</string>
+
+	<!--A New Anomaly-->
+	<string id="st_darkasleif_campfire_2_1">
+        <text>Давай, расскажи уже. Какую самую странную аномалию ты видел в Зоне? Я слышал, ты уже давно здесь, да? У тебя должна быть история, которую нужно рассказать.</text>
+	</string>
+	<string id="st_darkasleif_campfire_2_2">
+        <text>Ладно! Ладно. Я расскажу тебе, если ты оставишь меня в покое, чувак. *вздох* Однажды я следил за командой экологов, думая, что смогу заработать немного денег. Они нашли этот странный участок… больших цветов.</text>
+	</string>
+	<string id="st_darkasleif_campfire_2_3">
+        <text>Цветы? Самое странное, что ты видел, это цветы? Пфф.</text>
+	</string>
+	<string id="st_darkasleif_campfire_2_4">
+        <text>Заткнись! Здесь все не так просто, как кажется. Вокруг них было жуткое сияние, корни корчились в воздухе. Одна из жалких душ споткнулась о цветы, а остальные в страхе разбежались. Все произошло так быстро. После того, как они ушли, я присмотрелся. Костюмы, которые носят яйцеголовые, полностью герметичны. Но все, что осталось от ученого, расплескалось в желтом костюме, как… суп. Ни одной косточки не осталось.</text>
+	</string>
+	<string id="st_darkasleif_campfire_2_5">
+        <text>Боже...</text>
+	</string>
+
+	<!--Stalkers Fighting 01-->
+	<string id="st_darkasleif_campfire_3_1">
+        <text>Мы должны были похоронить их! Было неправильно оставить их там. Это было… меньшее, что мы могли сделать.</text>
+	</string>
+	<string id="st_darkasleif_campfire_3_2">
+        <text>И что? Тратить драгоценное время на рытье земли? Мы бы попали в засаду мутантов или сталкеров после наступления ночи. У нас не было на это времени.</text>
+	</string>
+	<string id="st_darkasleif_campfire_3_3">
+        <text>Вы не могли знать наверняка! Предатели! Вы быстро взяли их вещи и убежали, когда у вас был шанс.</text>
+	</string>
+	<string id="st_darkasleif_campfire_3_4">
+        <text>Не повышай на меня тон, ублюдок! Я не собираюсь умирать, оплакивая ленивых или неопытных сталкеров. Это Зона - ей плевать. Смиритесь с этим.</text>
+	</string>
+	
+	<!--Death Trucks-->
+	<string id="st_darkasleif_campfire_4_1">
+        <text>Говорю тебе, я не сумасшедший. Я своими глазами видел, как во время грозы в него ударила молния. Оно ожило! Я мог только недоверчиво смотреть, как льет дождь, а грузовик исчезает в лесу.</text>
+	</string>
+	<string id="st_darkasleif_campfire_4_2">
+        <text>Грузовики смерти. Они ездят по Зоне, наполненные трупами павших сталкеров и ведомые призраками. Никто не знает, куда они едут.</text>
+	</string>
+	<string id="st_darkasleif_campfire_4_3">
+        <text>Легенды утверждают, что ими движет сама смерть, переправляя души злых и жадных во врата самого ада.</text>
+	</string>
+	<string id="st_darkasleif_campfire_4_4">
+        <text>Ха! Бред сивой кобылы! Я слышал, как какой-то пьяница рассказывал дикие истории о том, что грузовики отвезут вас к Исполнителю желаний, если вы дадите им достаточно артефактов. Ни у одного сталкера не хватает смелости гоняться за ним.</text>
+	</string>
+	<string id="st_darkasleif_campfire_4_5">
+        <text>Разве один из людей Сидоровича не нашел Меченого возле перевернутого грузовика смерти?</text>
+	</string>
+
+	<!--An Unpaid Debt-->
+    <string id="st_darkasleif_campfire_5_1">
+        <text>Послушай, большинство людей приезжают сюда, чтобы разбогатеть. Если они хотят яхту на берегу моря, это их выбор. Но я пришел сюда не для того, чтобы разбогатеть. Я здесь, чтобы отдать долг.</text>
+    </string>
+    <string id="st_darkasleif_campfire_5_2">
+        <text>Не вешай мне лапшу на уши! Какой долг требует копаться в Зоне? Ты мог бы расплатиться в городе и провести остаток своих дней, живя спокойной жизнью. Я думаю, ты выбрал быть здесь, как и все остальные.</text>
+    </string>
+    <string id="st_darkasleif_campfire_5_3">
+        <text>Это другое. Я связался с плохими людьми, совершил несколько темных делишек. Но, однажды, я провалил работу — крупную — и они не собирались отпускать меня с крючка. Итак... они забрали её. Моя Алена. Они сказали мне, что единственный способ вернуть её - здесь, в Зоне, после того, как я сделаю их богатыми...</text>
+    </string>
+    <string id="st_darkasleif_campfire_5_4">
+        <text>Я не знал... я сожалею. Что бы ты ни делал раньше, меня это не касается. Но я знаю, что нельзя терять любимых. Ты всегда был мне хорошим другом. После того, как все это закончится, мы вместе покончим с этими уродами.</text>
+    </string>
+
+	<!--Story 6-->
+    <string id="st_darkasleif_campfire_6_1">
+        <text>Ребята, вы когда-нибудь сомневались?</text>
+    </string>
+    <string id="st_darkasleif_campfire_6_2">
+        <text>Что ты имеешь ввиду?</text>
+    </string>
+    <string id="st_darkasleif_campfire_6_3">
+        <text>Я имею в виду, типа, почему наши тупые задницы вообще в Зоне? Вы когда-нибудь думали об этом? Я не знаю, это как одно дерьмо за другим. Кто-то убивает себя, у другого рак, у кого-то собака умирает или что-то в этом роде, Господи. Это место сказывается на нас.</text>
+    </string>
+    <string id="st_darkasleif_campfire_6_4">
+        <text>Что ж, я здесь ради Зоны, как и ты, и все, кого мы встретим. Я осознаю риск.</text>
+    </string>
+    <string id="st_darkasleif_campfire_6_5">
+        <text>Ну, хорошо.</text>
+    </string>
+
+	<!--Story 7-->
+    <string id="st_darkasleif_campfire_7_1">
+        <text>Приветствую, сталкер. Не обращай на нас внимания, просто хотим отдохнуть у костра.</text>
+    </string>
+    <string id="st_darkasleif_campfire_7_2">
+        <text>Не разговорчивый?</text>
+    </string>
+    <string id="st_darkasleif_campfire_7_3">
+        <text>А ты был бы? Взгляни на него, парень повидал всякого дерьма.</text>
+    </string>
+    <string id="st_darkasleif_campfire_7_4">
+        <text>Да... Да, ты прав. Расслабься с нами, чувак, выпей пару рюмок за павших..</text>
+    </string>
+    <string id="st_darkasleif_campfire_7_5">
+        <text>Аминь, ребят.</text>
+    </string>
+
+	<!--Story 8-->
+    <string id="st_darkasleif_campfire_8_1">
+        <text>Ладно, ладно, успокойтесь, новички. Хотите жуткую историю? У меня есть одна.</text>
+    </string>
+    <string id="st_darkasleif_campfire_8_2">
+        <text>Однажды занимался одним дерьмом, понимаешь? Странная работа для какого-то сталкера. Он хотел, чтобы я достал посылку с тела его мертвого приятеля. Я не задавал вопросов. А зачем? Бери и убирайся, я так уже делал.</text>
+    </string>
+    <string id="st_darkasleif_campfire_8_3">
+        <text>Хотя на этот раз было немного не по себе. В тот момент, когда я прибыл на Свалку, у меня появилось странное чувство в груди. Вы знаете это чувство, которое вы испытываете перед взрывом? Это, но хуже, и более резкое. У меня было такое чувство раньше. Я подумал, зачем мне это?</text>
+    </string>
+    <string id="st_darkasleif_campfire_8_4">
+        <text>Я добрался до того места, где, по его словам, было тело, на поляне в траве. На нем был костюм Заря, его окружили собаки и разгрызли на куски. Я попытался обыскать его. Я не помню, что произошло, но я потерял сознание и проснулся на Кордоне весь в грязи, моче и крови, мой рюкзак был ограблен, мой шлем сломан, а мой КПК пропал.</text>
+    </string>
+    <string id="st_darkasleif_campfire_8_5">
+        <text>По словам моих друзей, меня не было целую неделю. Никаких следов, никаких меток на КПК за 7 дней. Одному Богу известно, что произошло за это время, а мне нет.</text>
+    </string>
+    <string id="st_darkasleif_campfire_8_6">
+        <text>Это звучит как бред, чувак.</text>
+    </string>
+    <string id="st_darkasleif_campfire_8_7">
+        <text>Это Зона, бывает и похуже.</text>
+    </string>
+
+	<!--Story 9-->
+    <string id="st_darkasleif_campfire_9_1">
+        <text>Какая самая странная работа, которую вы получили от торговца?</text>
+    </string>
+    <string id="st_darkasleif_campfire_9_2">
+        <text>Бля, Сахаров. У этого парня всегда есть сумасшедшая работа. Он следил за каким-то мутантом и просил меня его убить. Очевидно, он не хотел говорить мне, что этот мутант был Псевдогигантом. До сих пор я понятия не имею, как ему вообще удалось засунуть туда этот трекер. А у тебя?</text>
+    </string>
+    <string id="st_darkasleif_campfire_9_3">
+        <text>Черт, бывало и хуже. Вам когда-нибудь платили за убийство чьего-то двойника? Был такой сталкер, который пришел к Мяснику в чертовой панике, рассказывая о том, что какой-то парень, который выглядит, говорит и ведет себя так же, как он, следует за ним через всю проклятую Зону!</text>
+    </string>
+    <string id="st_darkasleif_campfire_9_4">
+        <text>Почему он просто не пристрелил его?</text>
+    </string>
+    <string id="st_darkasleif_campfire_9_5">
+        <text>Без понятия, может быть, ему был не по себе, стреляя себе в лицо. В любом случае, Мясник сказал мне сделать это. Я убил его, снял с парня маску, и о чудо! Лицо у него было идентично тому бедолаге, что ходил к Мяснику. КПК также зарегистрирован на то же имя. Зона - чертовски странное место, чувак.</text>
+    </string>
+    <string id="st_darkasleif_campfire_9_6">
+        <text>Черт, тут ты прав.</text>
+    </string>
+
+	<!--Story 10-->
+    <string id="st_darkasleif_campfire_10_1">
+        <text>Знаешь, что у всего этого проклятого места есть тема западной торговли?</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_2">
+        <text>Конечно, туда и идут все артефакты.</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_3">
+        <text>Да, но не таким образом. Я и несколько парней были на Кордоне, делали кое-что для торговца, вы знаете, как это бывает. Неожиданно по нам начинает стрелять ВСУ. Мы даже близко не подошли к чертовому блокпосту, а они начали стрелять, как только мы оказались в поле зрения. Мы укрылись, и тут какой-то сорвиголова со своим ржавым Мосиным прибил несколько солдат. Далее, мы разграбили этот блокпост, прежде чем кто-нибудь понял, что произошло.</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_4">
+        <text>И что вы нашли?</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_5">
+        <text>Ты не поверишь, чувак. Пачки западных сигарет, закусок, MRE, кофе, алкоголь, журналы, книги, палатки, боеприпасы, еда. Целые ящики этого дерьма, все с английскими этикетками.</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_6">
+        <text>Капец, и что вы сделали со всем этими хабаром?</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_7">
+        <text>Взяли самое необходимое и ценное, а остальное сожгли.</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_8">
+        <text>Сожгли? Почему?</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_9">
+        <text>Мы прикинули, что если мы его сожжем, подкреплениям будет нечего спасать. Сработало довольно хорошо, якобы какие-то военные ребята сдались в Деревне Новичков где-то через неделю, потому что у них не осталось припасов, и они были в отчаянии.</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_10">
+        <text>Интересно. А у тебя ещё что-нибудь осталось?</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_11">
+        <text>Ха! А у тебя деньжата есть?</text>
+    </string>
+    <string id="st_darkasleif_campfire_10_12">
+        <text>Да пошел ты...</text>
+    </string>
+
+	<!--Headshots-->
+	<string id="st_darkasleif_headshot1">
+        <text>БАМ! прямо в голову!</text>
+	</string>
+	<string id="st_darkasleif_headshot2">
+        <text>Да! Попал в башку!</text>
+	</string>
+	<string id="st_darkasleif_headshot3">
+        <text>Как он всё ещё стоит? Я же в голову попал!</text>
+	</string>
+	<string id="st_darkasleif_headshot4">
+        <text>Хэдшот!</text>
+	</string>
+	<string id="st_darkasleif_headshot5">
+        <text>Люблю этот звук пули, попадающей в шлем!</text>
+	</string>
+
+	<!--Area Clear-->
+	<string id="st_darkasleif_clear1">
+        <text>Хух. Похоже, у нас получилось.</text>
+	</string>
+	<string id="st_darkasleif_clear2">
+        <text>Нужно не забыть купить ещё патронов, когда будем у торговца.</text>
+	</string>
+	<string id="st_darkasleif_clear3">
+        <text>Это было близко.</text>
+	</string>
+	<string id="st_darkasleif_clear4">
+        <text>Да уж, нам повезло. Но и мы неплохо постарались.</text>
+	</string>
+	<string id="st_darkasleif_clear5">
+        <text>Чисто! Но расслабляться не стоит, кто-то может прибежать на шум.</text>
+	</string>
+
+	<!--Random-->
+	<string id="st_darkasleif_random1">
+        <text>В этом месте есть странная красота, не так ли?</text>
+	</string>
+	<string id="st_darkasleif_random2">
+        <text>Будь на чеку. Ты прикроешь мою спину, я прикрою твою.</text>
+	</string>
+	<string id="st_darkasleif_random3">
+        <text>Собаки лают.</text>
+	</string>
+	<string id="st_darkasleif_random4">
+        <text>Разрежь ворону - найдешь косяк. Хах.</text>
+	</string>
+	<string id="st_darkasleif_random5">
+        <text>Ноги болят, бля.</text>
+	</string>
+	<string id="st_darkasleif_random6">
+        <text>Просто два сталкера в Зоне, занятые своими делами.</text>
+	</string>
+	<string id="st_darkasleif_random7">
+        <text>Слушай внимательно. Если мутанты начнут приближаться, я крикну.</text>
+	</string>
+	<string id="st_darkasleif_random8">
+        <text>Почему твоя пушка круче моей? Нечестно...</text>
+	</string>
+	<string id="st_darkasleif_random9">
+        <text>Ты чувствуешь? Черт, это ты?</text>
+	</string>
+	<string id="st_darkasleif_random10">
+        <text>Хороших друзей трудно найти, сталкер. Рад, что мне с тобой повезло.</text>
+	</string>
+	<string id="st_darkasleif_random11">
+        <text>Эй, эй, тут грязь! Подожди, так тут везде грязь. Черт.</text>
+	</string>
+	<string id="st_darkasleif_random12">
+        <text>У тебя есть семья? ... Ладно, вижу это щекотливая тема.</text>
+	</string>
+	<string id="st_darkasleif_random13">
+        <text>Эй, если я умру, не дай моему хабару пропасть зря, хорошо?</text>
+	</string>
+	<string id="st_darkasleif_random14">
+        <text>Хуже мутанта может быть только мутант ночью.</text>
+	</string>
+	<string id="st_darkasleif_random15">
+        <text>Интересно, почему мы никогда не видим здесь детей? А что? Просто наблюдение.</text>
+	</string>
+	<string id="st_darkasleif_random16">
+        <text>Пиздец холодно...</text>
+	</string>
+	<string id="st_darkasleif_random17">
+        <text>Есть Украина, а есть Зона, чувак. Обычные правила здесь не действуют.</text>
+	</string>
+	<string id="st_darkasleif_random18">
+        <text>Если вы видите кого-то, кого считаете враждебным, сначала стреляйте, а потом задавайте вопросы.</text>
+	</string>
+	<string id="st_darkasleif_random19">
+        <text>Хлам, хлам, еще хлам, трава... Да уж, ну и голяк</text>
+	</string>
+	<string id="st_darkasleif_random20">
+        <text>Мне нужно покурить.</text>
+	</string>
+	<string id="st_darkasleif_random21">
+        <text>Зона жива, будь всегда начеку.</text>
+	</string>
+	<string id="st_darkasleif_random22">
+        <text>Пожалуйста, не стой перед моей линией огня, ладно?</text>
+	</string>
+	<string id="st_darkasleif_random23">
+        <text>Мутанты пугают меня, чувак.</text>
+	</string>
+	<string id="st_darkasleif_random24">
+        <text>Ах, радиоактивный воздух, как мило.</text>
+	</string>
+	<string id="st_darkasleif_random25">
+        <text>Что бы ты ни делал, не касайся воды.</text>
+	</string>
+
+	<!--Friendly/Neutral Base-->
+	<string id="st_darkasleif_safe_area1">
+        <text>Мы вернулись!</text>
+	</string>
+	<string id="st_darkasleif_safe_area2">
+        <text>Слава Богу, я чертовски голоден.</text>
+	</string>
+	<string id="st_darkasleif_safe_area3">
+        <text>Боже, наконец-то я могу вздремнуть.</text>
+	</string>
+	<string id="st_darkasleif_safe_area4">
+        <text>Хорошее место для перекура, сталкер.</text>
+	</string>
+	<string id="st_darkasleif_safe_area5">
+        <text>Продай свой хабар, чувак.</text>
+	</string>
+	<string id="st_darkasleif_safe_area6">
+        <text>Давай сделаем перерыв здесь. Поболтаем с другими сталкерами.</text>
+	</string>
+	<string id="st_darkasleif_safe_area7">
+        <text>Пережил очередную вылазку...</text>
+	</string>
+	<string id="st_darkasleif_safe_area8">
+        <text>Слава Богу, мне нужно было сменить носки.</text>
+	</string>
+	<string id="st_darkasleif_safe_area9">
+        <text>Эх, если бы в этом месте был душ...</text>
+	</string>
+	<string id="st_darkasleif_safe_area10">
+        <text>Ммм, отсюда чувствуется запах костра.</text>
+	</string>
+	<string id="st_darkasleif_safe_area11">
+        <text>Пойдем немного пообщаемся, а?</text>
+	</string>
+	<string id="st_darkasleif_safe_area12">
+        <text>Я никогда не был так рад видеть парней с оружием.</text>
+	</string>
+	<string id="st_darkasleif_safe_area13">
+        <text>Мы сделали это, чувак, мы сделали это!</text>
+	</string>
+	<string id="st_darkasleif_safe_area14">
+        <text>Супер! Ну, пошли отметим!</text>
+	</string>
+	<string id="st_darkasleif_safe_area15">
+        <text>Купи немного припасов. Лекарства, еда, боеприпасы, что угодно. А ненужные вещи спрячь.</text>
+	</string>
+	<string id="st_darkasleif_safe_area16">
+        <text>Проверь, нет ли ни у кого работы.</text>
+	</string>
+	<string id="st_darkasleif_safe_area17">
+        <text>А теперь убери свое оружие, чувак, ты заставляешь людей нервничать.</text>
+	</string>
+	<string id="st_darkasleif_safe_area18">
+        <text>Тут кто-нибудь рад нам, а?</text>
+	</string>
+	<string id="st_darkasleif_safe_area19">
+        <text>Чувак, я так счастлив вернуться.</text>
+	</string>
+	<string id="st_darkasleif_safe_area20">
+        <text>Разве нельзя наслаждаться этим воздухом, как выпивкой?</text>
+	</string>
+	<string id="st_darkasleif_safe_area21">
+        <text>Блять!Камень в ботинке...Наконец вытащу его.</text>
+	</string>
+	<string id="st_darkasleif_safe_area22">
+        <text>Дом, милый дом, а, сталкер?</text>
+	</string>
+	<string id="st_darkasleif_safe_area23">
+        <text>Эй, осторожно, не создавай нам проблем.</text>
+	</string>
+	<string id="st_darkasleif_safe_area24">
+        <text>Время для отдыха и расслабления!</text>
+	</string>
+	<string id="st_darkasleif_safe_area25">
+        <text>Хорошее место для отдыха.</text>
+	</string>
+</string_table>

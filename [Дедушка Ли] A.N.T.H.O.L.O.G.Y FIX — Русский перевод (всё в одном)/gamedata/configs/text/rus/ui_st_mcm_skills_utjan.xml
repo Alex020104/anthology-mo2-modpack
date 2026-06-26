@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+	<string id="ui_mcm_ut_skill_system_exp_multiplier_medicine">
+        <text>Множитель опыта первой помощи</text>
+    </string>
+    <string id="ui_mcm_ut_skill_system_exp_multiplier_insanity">
+        <text>Множитель опыта стрессоустойчивости</text>
+    </string>
+    <string id="ui_mcm_ut_skill_system_exp_multiplier_tinkering">
+        <text>Множитель опыта ремонта</text>
+    </string>
+    <string id="ui_mcm_ut_skill_system_exp_multiplier_bartering">
+        <text>Множитель опыта бартера</text>
+    </string>
+	<string id="ui_mcm_ut_skill_system_exp_multiplier_reloading">
+        <text>Множитель опыта обращения с оружием</text>
+    </string>
+	
+    <string id="ui_mcm_ut_skill_system_exp_multiplier_magloading">
+        <text>Множитель опыта скоростной зарядки магазинов</text>
+    </string>
+    <string id="ui_mcm_ut_skill_system_exp_multiplier_lockpicking">
+        <text>Множитель опыта взлома замков</text>
+    </string>
+	<string id="ui_mcm_ut_skill_system_traits_gain_mult">
+        <text>Множитель получения очков черт характера</text>
+    </string>
+    <string id="ui_mcm_ut_skill_system_title">
+        <text>Настройки "Расширение навыков"</text>
+    </string>
+     <string id="ui_mcm_menu_ut_skill_system">
+        <text>Расширение навыков</text>
+    </string>
+	<string id="ui_mcm_ut_skill_system_traits_keybind">
+        <text>Клавиша вызова интерфейса черт</text>
+    </string>
+	<string id="ui_mcm_ut_skill_system_purge_ut_skills">
+        <text>Удалить "Расширение Навыков"</text>
+    </string>
+</string_table>

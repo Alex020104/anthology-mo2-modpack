@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_body_health_system_title">
+		<text>Body Health System</text>
+	</string>
+	<string id="ui_mcm_menu_body_health_system">
+		<text>Body Health System</text>
+	</string>
+
+
+	<!-- HUD -->
+	<string id="ui_mcm_body_health_system_header_hud">
+		<text>HUD</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_hud_type">
+		<text>Тип HUD</text>
+	</string>
+	<string id="ui_mcm_lst_bhs_default">
+		<text>Стандартный</text>
+	</string>
+	<string id="ui_mcm_lst_bhs_eft">
+		<text>EFT</text>
+	</string>
+	<string id="ui_mcm_lst_bhs_text">
+		<text>Текстовый интерфейс</text>
+	</string>
+	<string id="ui_mcm_lst_bhs_hard">
+		<text>Hard</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_alt_mode_health">
+		<text>(Только текстовый интерфейс) Включить отображение здоровья/выносливости/пси</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_position_x">
+		<text>Позиция HUD по оси X</text>
+	</string>
+	<string id="ui_mcm_body_health_system_position_y">
+		<text>Позиция HUD по оси Y</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_vanilla_bars">
+		<text>Вкл ванильные полоски (нужна перезагрузка)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_vanilla_bars_desc">
+		<text>Для совместимости с другими UI аддонами, которые используют ванильные полоски здоровья/стамины/пси.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_custom_colors">
+		<text>Пользовательские цвета HUD</text>
+	</string>
+	<string id="ui_mcm_body_health_system_custom_colors_desc">
+		<text>Только HUD без текста</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_clr_main_r">
+		<text>Основной R</text>
+	</string>
+	<string id="ui_mcm_body_health_system_clr_main_g">
+		<text>Основной G</text>
+	</string>
+	<string id="ui_mcm_body_health_system_clr_main_b">
+		<text>Основной B</text>
+	</string>
+	<string id="ui_mcm_body_health_system_clr_timed_r">
+		<text>Здоровье в зависимости от времени R</text>
+	</string>
+	<string id="ui_mcm_body_health_system_clr_timed_g">
+		<text>Здоровье в зависимости от времени G</text>
+	</string>
+	<string id="ui_mcm_body_health_system_clr_timed_b">
+		<text>Здоровье в зависимости от времени B</text>
+	</string>
+
+
+	<!-- General -->
+	<string id="ui_mcm_body_health_system_header_general">
+		<text>Общие</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_regen">
+		<text>Регенерация конечностей (игровые минуты)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_regen_desc">
+		<text>По истечении указанного количества игровых минут случайная конечность восстанавливает 1 HP (эффект суммируется, если прошло больше времени). Учитываются любые изменения игрового времени и период сна. Значение «0» отключает авторегенерацию.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_damage_scale">
+		<text>Множитель повреждения конечностей</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_enable_display">
+		<text>(Предметы) Отобразить описание BHS</text>
+	</string>
+	<string id="ui_mcm_body_health_system_enable_display_desc">
+		<text>Отключите эту функцию, если какие-либо другие дополнения используют собственное описание для BHS.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_numeric_at">
+		<text>(Предметы) Отобразить числовое значение в</text>
+	</string>
+	<string id="ui_mcm_body_health_system_numeric_at_desc">
+		<text>В описании предмета показатель восстановления конечностей будет отображаться в виде числа, если он превысит это значение.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_numeric_always">
+		<text>(Предметы) Всегда отображать число</text>
+	</string>
+
+
+	<!-- Arms -->
+	<string id="ui_mcm_body_health_system_header_arms">
+		<text>Руки</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_arm_opt">
+		<text>Штрафы рук</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_arm_pen_min_hp">
+		<text>Минимальное здоровье рук (в %) для активации штрафов</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_pen_min_hp_desc">
+		<text>Процент оставшегося здоровья обеих рук должен быть ниже этого значения, чтобы сработали эффекты. Значение ползунка по умолчанию — 100 — означает, что эффекты сработают, если суммарный процент оставшегося здоровья обеих рук составляет 99 % или меньше.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_arm_anm_pwr">
+		<text>Сила эффектов</text>
+	</string>
+	<string id="ui_mcm_body_health_system_arm_anm_pwr_desc">
+		<text>Множитель для силы эффектов. По умолчанию: 1.0.</text>
+	</string>
+
+
+	<!-- Legs -->
+	<string id="ui_mcm_body_health_system_header_legs">
+		<text>Ноги</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_leg_opt">
+		<text>Штрафы ног</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_leg_pen_min_hp">
+		<text>Минимальное здоровье ног (в %) для активации штрафов</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_pen_min_hp_desc">
+		<text>Процент оставшегося здоровья ног должен быть ниже этого значения, чтобы сработали соответствующие эффекты (скорость и хромание). Значение ползунка по умолчанию — 100 — означает, что эффекты сработают, если суммарный процент оставшегося здоровья обеих ног составляет 99 % или меньше.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_leg_anm_pwr">
+		<text>Множитель эффектов камеры (картинки от 1-го лица ГГ)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_anm_pwr_desc">
+		<text>Коэффициент влияния повреждений ног на эффекты камеры (картинки от 1-го лица ГГ). По умолчанию: 1.0.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_leg_dmg_min_hp">
+		<text>Минимальное количество здоровья при нанесении урона от бега (в %)</text>
+	</string>
+	<string id="ui_mcm_body_health_system_leg_dmg_min_hp_desc">
+		<text>Чтобы нанести урон во время бега, процент здоровья любой ноги должен быть ниже этого значения. Значение по умолчанию 60 означает, что есть вероятность получить урон, если здоровье хотя бы одной ноги составляет менее 60 %.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_new_voice_sounds">
+		<text>Новый голос при эффектах</text>
+	</string>
+	<string id="ui_mcm_body_health_system_new_voice_sounds_desc">
+		<text>Если включить эту опцию, во время бега с повреждёнными ногами будет звучать новый голос. Если отключить — вернётся голос из исходного мода.</text>
+	</string>
+
+
+	<!-- Torso -->
+	<string id="ui_mcm_body_health_system_header_torso">
+		<text>Туловище</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_torso_opt">
+		<text>Штрафы туловища</text>
+	</string>
+	<string id="ui_mcm_body_health_system_torso_opt_desc">
+		<text>Общий максимальный запас здоровья зависит от состояния туловища.</text>
+	</string>
+
+
+	<!-- Head -->
+	<string id="ui_mcm_body_health_system_header_head">
+		<text>Голова</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_head_opt">
+		<text>Штрафы головы</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_head_pen_min_hp">
+		<text>Минимальный урон головы для активации штрафов</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_pen_min_hp_desc">
+		<text>Для срабатывания эффектов требуется нанесение урона. Например, значение ползунка по умолчанию, равное 2, означает, что урон от каждого выстрела в голову должен составлять 2 или более HP.</text>
+	</string>
+
+	<string id="ui_mcm_body_health_system_head_anm_pwr">
+		<text>Сила эффектов</text>
+	</string>
+	<string id="ui_mcm_body_health_system_head_anm_pwr_desc">
+		<text>Множитель для силы эффектов. По умолчанию: 0.5.</text>
+	</string>
+
+
+	<string id="ui_bhs_label_cold"><text>Холод:</text></string>
+	<string id="ui_bhs_label_sickness"><text>Болезнь:</text></string>
+	<string id="ui_bhs_label_advice"><text>Совет:</text></string>
+	<string id="ui_bhs_cold_normal"><text>Норма</text></string>
+	<string id="ui_bhs_cold_cool"><text>Прохладно</text></string>
+	<string id="ui_bhs_cold_cold"><text>Холодно</text></string>
+	<string id="ui_bhs_cold_very_cold"><text>Очень холодно</text></string>
+	<string id="ui_bhs_cold_freezing"><text>Замерзание</text></string>
+	<string id="ui_bhs_sickness_none"><text>Нет</text></string>
+	<string id="ui_bhs_sickness_low"><text>Слабо</text></string>
+	<string id="ui_bhs_sickness_high"><text>Высоко</text></string>
+	<string id="ui_bhs_sickness_severe"><text>Сильно</text></string>
+	<string id="ui_bhs_sickness_critical"><text>Критично</text></string>
+	<string id="ui_bhs_advice_stable"><text>Состояние стабильное</text></string>
+	<string id="ui_bhs_advice_keep_warm"><text>Нужно держаться в тепле</text></string>
+	<string id="ui_bhs_advice_warmer_clothes"><text>Нужна более тёплая одежда</text></string>
+	<string id="ui_bhs_advice_heat_source"><text>Найти источник тепла</text></string>
+	<string id="ui_bhs_advice_warm_now"><text>Нужно срочно согреться</text></string>
+	<string id="ui_bhs_advice_warm_and_meds"><text>Согреться и принять лекарства</text></string>
+	<string id="ui_bhs_advice_treatment"><text>Нужно лечение</text></string>
+	<string id="ui_bhs_advice_urgent_treatment"><text>Нужно срочное лечение</text></string>
+	<string id="ui_bhs_limb_head_damaged"><text>Голова критически повреждена!</text></string>
+	<string id="ui_bhs_limb_torso_damaged"><text>Тело критически повреждёно!</text></string>
+	<string id="ui_bhs_limb_leftarm_damaged"><text>Левая рука повреждена!</text></string>
+	<string id="ui_bhs_limb_rightarm_damaged"><text>Правая рука повреждена!</text></string>
+	<string id="ui_bhs_limb_leftleg_damaged"><text>Левая нога повреждена!</text></string>
+	<string id="ui_bhs_limb_rightleg_damaged"><text>Правая нога повреждена!</text></string>
+	<string id="ui_bhs_limb_unknown_damaged"><text>Повреждена часть тела!</text></string>
+</string_table>

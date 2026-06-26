@@ -2,7 +2,7 @@
 <string_table>
 
     <string id="ui_mcm_menu_fddar">
-        <text>FDDA Переделанный</text>
+        <text>FDDA Redone</text>
     </string>
 
     <string id="ui_mcm_menu_consumables">
@@ -22,7 +22,7 @@
     </string>
 
     <string id="ui_mcm_menu_nvg">
-        <text>Анимация ПНВ</text>
+        <text>Анимация прибора ночного видения</text>
     </string>
 
     <string id="ui_mcm_menu_headgear_anm">
@@ -30,7 +30,7 @@
     </string>
 
     <string id="ui_mcm_menu_outfit_anm">
-        <text>Экипировка</text>
+        <text>Костюмы</text>
     </string>
 
     <string id="ui_mcm_menu_body_search">
@@ -40,11 +40,11 @@
 
 
     <string id="ui_mcm_fddar_backpack_speed_type_mcm">
-        <text>Одна максимальная скорость для всех рюкзаков</text>
+        <text>Использовать одну макс.скорость для всех рюкзаков</text>
     </string>
 
     <string id="ui_mcm_fddar_backpack_speed_type_load">
-        <text>Скорость зависит от переносимого веса</text>
+        <text>Скорость зависит от загруженности рюкзака</text>
     </string>
 
     <string id="ui_mcm_fddar_backpack_speed_type_config">
@@ -68,16 +68,19 @@
     
 
     <string id="ui_mcm_liz_qht_icon_state_none">
-        <text>Нет</text>
+        <text>Скрыть</text>
     </string>
 
     <string id="ui_mcm_liz_qht_icon_state_enabled">
-        <text>Показать, когда головной убор одет</text>
+        <text>Показать когда шлем одет</text>
     </string>
 
     <string id="ui_mcm_liz_qht_icon_state_inverted">
-        <text>Показывать, когда головной убор снят</text>
-    </string>        
+        <text>Показать когда шлем снят</text>
+    </string>
+
+
+    
     <string id="ui_mcm_qht_icon_type_anomaly">
         <text>Anomaly</text>
     </string>
@@ -91,33 +94,37 @@
     <string id="ui_mcm_fddar_consumables_enable">
         <text>Включить анимацию</text>
     </string>
+    
+    <string id="ui_mcm_fddar_consumables_recepie_anim_enable">
+        <text>Включить анимацию чтения рецептов</text>
+    </string>
 
     <string id="ui_mcm_fddar_consumables_allow_skip_abuse">
-        <text>Разрешить пропуск анимации после применения эффекта элемента</text>
+        <text>Разрешить пропуск анимации после применения эффекта к предмету</text>
     </string>
 
     <string id="ui_mcm_fddar_consumables_strict_sprinting">
-        <text>Отключение использования предметов при спринте</text>
+        <text>Отключить использование предметов во время бега</text>
     </string>
 
     <string id="ui_mcm_fddar_consumables_unequip_helmet">
-        <text>Автоматическое снятие шлема перед употреблением</text>
+        <text>Перед употреблением шлем снимается автоматически</text>
     </string>
 
     <string id="ui_mcm_fddar_consumables_auto_cancel">
-        <text>Включить автоматическую отмену анимаций</text>
+        <text>Включить автоматическую отмену анимации</text>
     </string>
 
     <string id="ui_mcm_fddar_consumables_ac_wound">
-        <text>Отмена анимации при атаке мутанта</text>
+        <text>Отменить анимацию при нападении мутанта</text>
     </string>
 
     <string id="ui_mcm_fddar_consumables_ac_fire_wound">
-        <text>Отмена анимации при огнестрельном ранении</text>
+        <text>Отменить анимацию при огнестрельном ранении</text>
     </string>
 
     <string id="ui_mcm_fddar_consumables_ac_explosion">
-        <text>Отмена анимации при получении урона от взрыва</text>
+        <text>Отменить анимацию при получении урона от взрыва</text>
     </string>
 
     
@@ -127,7 +134,7 @@
     </string>
 
     <string id="ui_mcm_fddar_backpack_type">
-        <text>Скорость открытия рюкзака зависит от:</text>
+        <text>Скорость рюкзака зависит от:</text>
     </string>
 
     <string id="ui_mcm_fddar_backpack_max_speed">
@@ -135,7 +142,7 @@
     </string>
 
     <string id="ui_mcm_fddar_backpack_min_weight_multiplier">
-        <text>Загруженность рюкзака в %, когда скорость открытия начинает снижаться</text>
+        <text>Загруженность рюкзака с которой начнет снижатся скорость анимации</text>
     </string>
 
     
@@ -144,8 +151,12 @@
         <text>Включить анимацию</text>
     </string>
 
+    <string id="ui_mcm_fddar_skinning_auto_loot_all">
+        <text>Автоматически брать все (не показывать UI)</text>
+    </string>
+
     <string id="ui_mcm_fddar_skinning_every_part_pickup">
-        <text>Воспроизведите анимацию подбора для каждой части мутанта</text>
+        <text>Проигрывать анимацию для каждой подобраной части мутанта</text>
     </string>
 
     
@@ -155,17 +166,16 @@
     </string>
     
     <string id="ui_mcm_fddar_pickup_multipickup">
-        <text>Подбор нескольких предметов одновременно</text>
+        <text>Подбирать несколько предметов сразу</text>
     </string>
 
     <string id="ui_mcm_fddar_pickup_speed">
         <text>Скорость анимации подбора</text>
     </string>
-	
-    <string id="ui_mcm_fddar_pickup_use_attachments">
-        <text>Прикрепить предмет к руке во время анимации подбора</text>
-    </string>															
 
+    <string id="ui_mcm_fddar_pickup_use_attachments">
+        <text>Прикрепить предмет к руке во время анимации</text>
+    </string>
 
 
     
@@ -180,7 +190,7 @@
     </string>
 
     <string id="ui_mcm_fddar_headgear_anm_keybind">
-        <text>Клавиша "снять/одеть противогаз"</text>
+        <text>Клавиша снять/одеть противогаз</text>
     </string>
 
     <string id="ui_mcm_fddar_update_mcm">
@@ -209,18 +219,20 @@
 
     <string id="ui_mcm_fddar_headgear_anm_icon_state">
         <text>Показать иконку статуса шлема/противогаза</text>
-	</string>	
-   <string id="ui_mcm_fddar_headgear_anm_icon_type">
+    </string>
+
+    <string id="ui_mcm_fddar_headgear_anm_icon_type">
         <text>Стиль иконки статуса</text>
     </string>
+
     <string id="liz_ha_text_cant_consume_item">
-        <text>Невозможно использовать этот предмет, при надетом шлеме</text>
+        <text>Нельзя употребить из-за шлема</text>
     </string>
 
     
 
     <string id="ui_mcm_fddar_outfit_anm_keybind">
-        <text>Выполнить анимацию проверки экипировки</text>
+        <text>Проиграть анимацию осмотра брони</text>
     </string>
 
     <!-- <string id="ui_mcm_fddar_outfit_anm_mode">
@@ -244,7 +256,7 @@
     </string>
 
     <string id="ui_mcm_fddar_outfit_anm_allow_movement">
-        <text>Разрешить движение во время анимации</text>
+        <text>Разрешить двигаться во время анимации</text>
     </string>
 
     <string id="ui_mcm_fddar_outfit_anm_enable_outfit_equip">
@@ -252,8 +264,9 @@
     </string>
 
     <string id="ui_mcm_fddar_outfit_anm_always_short">
-        <text>Всегда использовать короткую версию анимацию</text>
+        <text>Всегда использовать короткую версию анимации</text>
     </string>
+
     <string id="ui_mcm_fddar_outfit_anm_enable_backpack_equip">
         <text>Включить анимацию надевания/снятия рюкзака</text>
     </string>
@@ -263,11 +276,11 @@
     </string>
 
     <string id="ui_mcm_fddar_outfit_anm_enable_patches">
-        <text>Включить анимацию "сорвать/пришить нашивку"</text>
+        <text>Включить анимации нашивок</text>
     </string>
 
     <string id="ui_mcm_fddar_outfit_anm_enable_patches_inventory">
-        <text>Включить анимацию "сорвать/пришить нашивку" для не надетой экипировки</text>
+        <text>Включить анимации нашивок для не экипированной брони</text>
     </string>
 
     
@@ -278,13 +291,14 @@
 
     <string id="ui_mcm_fddar_body_search_ui_open_delay">
         <text>Задержка перед открытием инвентаря противника</text>
-    </string>	 
+    </string>
+
     <string id="ui_mcm_fddar_body_search_wpn_lower_mode">
         <text>Опустить оружие во время обыска</text>
     </string>
 
     <string id="ui_mcm_fddar_body_search_enable_anm_for_containers">
-        <text>Воспроизвести анимацию для контейнеров</text>
+        <text>Проигрывать анимацию для контейнеров</text>
     </string>
 
     <string id="ui_mcm_fddar_body_search_enable_crouch">
@@ -292,15 +306,15 @@
     </string>
 
     <string id="ui_mcm_fddar_body_search_disable_walk">
-        <text>Отключить движение во время обыска</text>
+        <text>Отключить ходьбу во время обыска</text>
     </string>
 
     <string id="ui_mcm_fddar_body_search_enable_random_search_time">
-        <text>Используйте случайную задержку перед открытием пользовательского интерфейса инвентаря</text>
+        <text>Использовать случайную задержку</text>
     </string>
 
     <string id="ui_mcm_fddar_body_search_random_search_time_max">
-        <text>Диапазон случайной задержки</text>
+        <text>Размер случайной задержки</text>
     </string>
 
 

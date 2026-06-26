@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+	<string id="ui_mcm_menu_indoor_framework">
+		<text>Indoor Framework (Акустика помещений)</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_enable">
+		<text>Включить</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tick_interval">
+		<text>Интервал опроса (в мс)</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_npc_tick_interval">
+		<text>Интервал опроса для НПС (в мс)</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_volume">
+		<text>Громкость</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_ray_bounce_count">
+		<text>Количество отражений лучей</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_npc_ray_bounce_count">
+		<text>Количество отражений от лучей НПС</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_ray_lenght_mult">
+		<text>Длина луча</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_dbug">
+		<text>Режим отладки</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_ray_dbug">
+		<text>Режим отладки лучей</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_show_replaced_sound">
+		<text>Показать замененный звук</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_new_threshold">
+		<text>Пороговое значение</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_new_threshold_desc">
+		<text>Если показатель «В помещении» (количество попаданий лучей) превышает этот порог, будет воспроизводиться звук «В помещении»</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_max_threshold">
+		<text>Максимальный порог</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_max_threshold_desc">
+		<text>Когда уровень звука в помещении превышает пороговое значение, но все еще недостаточно высок, наступает переходная фаза (плавное смешивание звуков из помещения и с улицы). Этот параметр определяет, какая часть звука будет воспроизводиться с полным уровнем звука с улицы: 0 = требуется попадание всех лучей, 1 = переходная фаза отсутствует</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_ray_drop_off_lenght">
+		<text>Длина спада громкости</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_ray_drop_off_lenght_desc">
+		<text>Когда среднее значение длины всех лучей превысит это значение, громкость начнет уменьшаться</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_volume">
+		<text> Громкость реверберации</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_volume_desc">
+		<text>Громкость для пользовательских звуков реверберации в больших помещениях</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_threshold">
+		<text>Пороговое значение реверберации</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_threshold_desc">
+		<text>Количество "очков" (indoor score от лучей), необходимое для активации звуков реверберации. То есть, если показатель помещения ниже этого порога — хвост (реверберация) не играет вообще.</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_length">
+		<text>Длина реверберации</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_length_desc">
+		<text>Средняя длина, необходимая для воспроизведения звуков реверберации на максимальной громкости. Громкость будет увеличиваться до достижения этого значения и уменьшаться после него.</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_bak_tail">
+		<text>Включить резервные звуки реверберации</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_bak_tail_desc">
+		<text>Воспроизводить звуки реверберации, если для этого оружия не настроены собственные звуки реверберации (рекомендуется).</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_tail_enable_for_non">
+		<text>Включить звуки реверберации для оружия, у которого нет звуков помещения</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_desc_ray">
+		<text>Настройки лучей</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_desc_threshold">
+		<text>Настройки порога</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_desc_tail">
+		<text>Настройки реверберации</text>
+	</string>
+	<string id="ui_mcm_indoor_framework_desc_dbug">
+		<text>Разработческий треш</text>
+	</string>
+</string_table>

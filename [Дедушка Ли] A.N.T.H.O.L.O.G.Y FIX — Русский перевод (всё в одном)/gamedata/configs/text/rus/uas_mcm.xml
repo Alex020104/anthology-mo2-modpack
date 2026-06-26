@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="ui_mcm_menu_uas">
+        <text>UAS (Универсальные анимационные скрипты от Аолдри)</text>
+    </string>
+
+    <string id="ui_mcm_uas">
+        <text>UAS (Универсальные анимационные скрипты от Аолдри)</text>
+    </string>
+
+    <string id="ui_mcm_uas_no_reload_on_unjam">
+        <text>Без перезарядки при устранении заклинивания</text>
+    </string>
+
+    <string id="ui_mcm_uas_no_reload_on_unjam_desc">
+        <text>Предотвращает перезарядку оружия во время анимации устранения заклинивания. Не работает, если установлен модуль WPO.</text>
+    </string>
+</string_table>

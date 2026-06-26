@@ -130,14 +130,14 @@
 	</string>
 
 	<string id="ui_mcm_weapon_sway_weapon_mount_feature">
-		<text>Mounted weapon feature</text>
+		<text>ќсобенность установленного оружи€</text>
 	</string>
 	<string id="ui_mcm_weapon_sway_weapon_mount_feature_desc">
 		<text>‘ункци€, котора€ позвол€ет вам поставить оружие на преп€тствие перед вами, чтобы уменьшить раскачивание оружи€.</text>
 	</string>
 
 	<string id="ui_mcm_weapon_sway_weapon_mounted_power">
-		<text>Mounted weapon уменьшение силы эффекта</text>
+		<text>”становленное оружие снижает мощность</text>
 	</string>
 	<string id="ui_mcm_weapon_sway_weapon_mounted_power_desc">
 		<text>ћножитель уменьшени€ раскачивани€ оружи€ если оно на преп€тствии. \n
@@ -145,7 +145,7 @@
 	</string>
 
 	<string id="ui_mcm_weapon_sway_y_axis_mounted_distance">
-		<text>ћаксимальна€ высота of mounted weapon</text>
+		<text>ћаксимальна€ высота установленного оружи€</text>
 	</string>
 	<string id="ui_mcm_weapon_sway_y_axis_mounted_distance_desc">
 		<text>”меньшите еще больше, если вы хотите, чтобы оружие по-прежнему считалось "установленным", когда вы поднимаете его выше. \n

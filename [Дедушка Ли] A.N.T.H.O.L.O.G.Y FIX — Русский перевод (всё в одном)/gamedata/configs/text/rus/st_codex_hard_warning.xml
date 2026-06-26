@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <string id="st_codex_hard_warning_stamp">
+        <text>ПРОТОКОЛ ВЫЖИВАНИЯ / РЕЖИМ HARD</text>
+    </string>
+    <string id="st_codex_hard_warning_title">
+        <text>ВНИМАНИЕ!</text>
+    </string>
+    <string id="st_codex_hard_warning_subtitle">
+        <text>Вы выбрали HARD-режим.</text>
+    </string>
+    <string id="st_codex_hard_warning_body">
+        <text>Уважаемый игрок, сейчас активен один из самых сложных режимов выживания. Тебя ждут суровая экономика, опасные противники, дефицит ресурсов и гораздо более сложная игра, в которой ошибки быстро обходятся дорого.</text>
+    </string>
+    <string id="st_codex_hard_warning_protocol">
+        <text>Этот режим рекомендуется опытным игрокам и ветеранам Зоны, которые уже хорошо знакомы с игровой механикой.</text>
+    </string>
+    <string id="st_codex_hard_warning_signature">
+        <text>Подготовьтесь заранее. «Зона» не пойдет на уступки.</text>
+    </string>
+    <string id="st_codex_hard_warning_accept">
+        <text>ПОНЯЛ, ВХОЖУ В ЗОНУ</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning">
+        <text>Кодекс «Строгое предупреждение»</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning_title">
+        <text>Предупреждение о запуске в режиме HARD</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning_enabled">
+        <text>Показать предупреждение при следующей загрузке</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning_enabled_desc">
+        <text>Если включено, то при следующем входе в игру появится записка-предупреждение. После его отображения этот флажок отключается автоматически.</text>
+    </string>
+    <string id="ui_mcm_codex_hard_warning_note">
+        <text>Этот флажок действует однократно: установите его, запустите игру, увидите предупреждение, после чего он отключится сам.</text>
+    </string>
+</string_table>
