@@ -1,0 +1,241 @@
+-- sys_ui.script
+-- Здоровье, выносливость, психика
+
+local HUD = nil
+
+-- Состояния иконок
+local icon_active = {
+    health = false, 
+    power = false, 
+    psy = false
+}
+
+-- НАСТРОЙКИ
+local ICON_SETTINGS = {
+    start_x = 448,
+    start_y = 743,
+    spacing = 23,           -- 17px icon + 6px gap
+    icon_width = 18,
+    icon_height = 18,
+    bg_width = 25,
+    bg_height = 26,    fade_time = 1000,
+    update_interval = 50,
+    full_alpha_at = 0.5     -- при 50% здоровья иконка полностью видна
+}
+
+-- ПОРОГОВЫЕ ЗНАЧЕНИЯ
+local THRESHOLDS = {
+    health = 0.95,  -- ниже 95% здоровья (почти сразу появляется)
+    power = 0.95,
+    psy = 0.95
+}
+
+----------------------------------------------------------
+----------------------- HUD ------------------------------
+----------------------------------------------------------
+
+function create_hud()
+	if HUD == nil then
+		HUD = StatusIconsHUD()
+		get_hud():AddDialogToRender(HUD)
+	end
+end
+
+function deactivate_hud()
+	if HUD ~= nil then
+		get_hud():RemoveDialogToRender(HUD)
+		HUD = nil
+	end
+end
+
+class "StatusIconsHUD" (CUIScriptWnd)
+
+function StatusIconsHUD:__init() super()
+    self.icons = {}
+    self.last_update = 0
+    self:InitControls()
+end
+
+function StatusIconsHUD:InitControls()
+    self:SetWndRect(Frect():set(0, 0, 1024, 768))
+    self:SetAutoDelete(true)
+
+    local all_icons = {
+        { name = "health", texture = "ui_status_health", bg_texture = "ui_status_bg" },
+        { name = "power",  texture = "ui_status_power",  bg_texture = "ui_status_bg" },
+        { name = "psy",    texture = "ui_status_psy",    bg_texture = "ui_status_bg" }
+    }
+    
+    for _, data in ipairs(all_icons) do
+        local bg = CUIStatic()
+        bg:SetAutoDelete(true)
+        bg:InitTexture(data.bg_texture, "ui\\sys_ico\\sys_alicons")
+        bg:SetWndSize(vector2():set(ICON_SETTINGS.bg_width, ICON_SETTINGS.bg_height))
+        bg:SetWndPos(vector2():set(0, ICON_SETTINGS.start_y))
+        bg:SetStretchTexture(true)
+        bg:SetTextureColor(GetARGB(0, 255, 255, 255))
+        self:AttachChild(bg)
+        bg:Show(true)
+
+        local icon = CUIStatic()
+        icon:SetAutoDelete(true)
+        icon:InitTexture(data.texture, "ui\\sys_ico\\sys_alicons")
+        icon:SetWndSize(vector2():set(ICON_SETTINGS.icon_width, ICON_SETTINGS.icon_height))
+        icon:SetWndPos(vector2():set((ICON_SETTINGS.bg_width - ICON_SETTINGS.icon_width) / 2, ICON_SETTINGS.start_y + ((ICON_SETTINGS.bg_height - ICON_SETTINGS.icon_height) / 2)))
+        icon:SetStretchTexture(true)
+        icon:SetTextureColor(GetARGB(0, 255, 255, 255))
+        self:AttachChild(icon)
+        icon:Show(true)
+        
+        self.icons[data.name] = {
+            static = icon,
+            background = bg,
+            active = false,
+            target_alpha = 0,
+            current_alpha = 0
+        }
+    end
+    self:Update()
+end
+
+-- ФУНКЦИИ ПОЛУЧЕНИЯ ЗНАЧЕНИЙ
+local function get_health_value() return db.actor and db.actor.health or 1.0 end
+local function get_power_value() return db.actor and db.actor.power or 1.0 end
+local function get_psy_value() return db.actor and db.actor.psy_health or 1.0 end
+
+-- ФУНКЦИИ ПРОВЕРКИ АКТИВНОСТИ
+local function is_icon_active(name)
+    if name == "health" then
+        return get_health_value() < THRESHOLDS.health
+    elseif name == "power" then
+        return get_power_value() < THRESHOLDS.power
+    elseif name == "psy" then
+        return get_psy_value() < THRESHOLDS.psy
+    end
+    return false
+end
+
+-- ЦВЕТ ДЛЯ ЗДОРОВЬЯ (строго по процентам)
+local function get_health_color(health)
+    local percent = health * 100
+    
+    -- 80-100% зеленый
+    if percent >= 80 then
+        if percent >= 95 then return 200, 255, 200      -- ярко-зеленый
+        elseif percent >= 90 then return 180, 240, 180
+        elseif percent >= 85 then return 160, 225, 160
+        else return 140, 210, 140 end                    -- тускло-зеленый
+    
+    -- 40-70% желтый
+    elseif percent >= 40 then
+        if percent >= 65 then return 255, 255, 150      -- ярко-желтый
+        elseif percent >= 55 then return 245, 245, 120
+        elseif percent >= 45 then return 235, 235, 90
+        else return 225, 225, 60 end                     -- тускло-желтый
+    
+    -- 10-30% красный
+    elseif percent >= 10 then
+        if percent >= 25 then return 255, 100, 100      -- ярко-красный
+        elseif percent >= 20 then return 235, 70, 70
+        elseif percent >= 15 then return 215, 50, 50
+        else return 195, 30, 30 end                      -- тускло-красный
+    
+    -- меньше 10% темно-красный
+    else
+        return 100, 0, 0
+    end
+end
+
+-- АЛЬФА для здоровья (прозрачность)
+local function get_health_alpha(health)
+    -- При 100% здоровья - альфа 0 (иконка не видна)
+    -- При 50% здоровья - альфа 255 (полностью видна)
+    if health >= 1.0 then
+        return 0
+    elseif health <= ICON_SETTINGS.full_alpha_at then
+        return 255
+    else
+        -- Плавное увеличение прозрачности
+        local factor = (1.0 - health) / (1.0 - ICON_SETTINGS.full_alpha_at)
+        return math.floor(255 * factor)
+    end
+end
+
+-- АЛЬФА ДЛЯ POWER и PSY
+local function get_target_alpha(value)
+    return math.floor((1 - value) * 255)
+end
+
+function StatusIconsHUD:Update()
+    CUIScriptWnd.Update(self)
+
+    if not db.actor then return end
+    
+    local current_time = time_global()
+    
+    if current_time - self.last_update < ICON_SETTINGS.update_interval then
+        return
+    end
+    self.last_update = current_time
+    
+    local health_val = get_health_value()
+    local power_val = get_power_value()
+    local psy_val = get_psy_value()
+    
+    -- ОБНОВЛЕНИЕ ЗДОРОВЬЯ
+    if self.icons.health then
+        local r, g, b = get_health_color(health_val)
+        local alpha = get_health_alpha(health_val)
+        self.icons.health.static:SetTextureColor(GetARGB(alpha, r, g, b)); self.icons.health.background:SetTextureColor(GetARGB(math.floor(alpha * 0.75), 255, 255, 255))
+    end
+    
+    -- ОБНОВЛЕНИЕ POWER
+    if self.icons.power then
+        local power_active = is_icon_active("power")
+        if power_active then
+            local alpha = get_target_alpha(power_val)
+            self.icons.power.static:SetTextureColor(GetARGB(alpha, 255, 255, 255)); self.icons.power.background:SetTextureColor(GetARGB(math.floor(alpha * 0.75), 255, 255, 255))
+            icon_active.power = true
+        else
+            self.icons.power.static:SetTextureColor(GetARGB(0, 255, 255, 255)); self.icons.power.background:SetTextureColor(GetARGB(0, 255, 255, 255))
+            icon_active.power = false
+        end
+    end
+    
+    -- ОБНОВЛЕНИЕ PSY
+    if self.icons.psy then
+        local psy_active = is_icon_active("psy")
+        if psy_active then
+            local alpha = get_target_alpha(psy_val)
+            self.icons.psy.static:SetTextureColor(GetARGB(alpha, 255, 255, 255)); self.icons.psy.background:SetTextureColor(GetARGB(math.floor(alpha * 0.75), 255, 255, 255))
+            icon_active.psy = true
+        else
+            self.icons.psy.static:SetTextureColor(GetARGB(0, 255, 255, 255)); self.icons.psy.background:SetTextureColor(GetARGB(0, 255, 255, 255))
+            icon_active.psy = false
+        end
+    end
+    
+    -- Расстановка иконок
+    local order = { "health", "power", "psy" }
+    local current_x = ICON_SETTINGS.start_x
+    
+    for _, name in ipairs(order) do
+        if self.icons[name] then
+            self.icons[name].background:SetWndPos(vector2():set(current_x, ICON_SETTINGS.start_y)); self.icons[name].static:SetWndPos(vector2():set(current_x + ((ICON_SETTINGS.bg_width - ICON_SETTINGS.icon_width) / 2), ICON_SETTINGS.start_y + ((ICON_SETTINGS.bg_height - ICON_SETTINGS.icon_height) / 2)))
+            current_x = current_x + ICON_SETTINGS.spacing
+        end
+    end
+end
+
+function StatusIconsHUD:__finalize()
+end
+
+----------------------------------------------------------
+---------------------- Колбеки ---------------------------
+----------------------------------------------------------
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update", create_hud)
+	RegisterScriptCallback("actor_on_net_destroy", deactivate_hud)
+	RegisterScriptCallback("actor_on_before_death", deactivate_hud)
+end
