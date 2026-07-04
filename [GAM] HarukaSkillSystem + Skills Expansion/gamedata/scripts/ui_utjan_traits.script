@@ -134,22 +134,29 @@ function UIUtjanTraits:TraitClicked(clickedtrait, traits_list)
 end
 
 function UIUtjanTraits:OnButtonEnable()
-	local trait_req = nil
-	if self.trait_selected then
-		trait_req = utjan_traits.traits_stats[self.trait_selected].trait_req
+	local trait = self.trait_selected
+	if not trait or not utjan_traits.traits_list[trait] or not utjan_traits.traits_stats[trait] then
+		return
 	end
+	
+	local trait_req = utjan_traits.traits_stats[trait].trait_req
 	
 	if self.plvl_cur > self.traits_enabled then
 		if (trait_req and utjan_traits.traits_list[trait_req].enabled) or not trait_req then
-			utjan_traits.traits_list[self.trait_selected].enabled = true
-			utjan_traits.update_trait(self.trait_selected)
+			utjan_traits.traits_list[trait].enabled = true
+			utjan_traits.update_trait(trait)
 			self:Reset()
 		end
 	end
 end
 
 function UIUtjanTraits:OnButtonDisable()
-	utjan_traits.traits_list[self.trait_selected].enabled = false
+	local trait = self.trait_selected
+	if not trait or not utjan_traits.traits_list[trait] then
+		return
+	end
+	
+	utjan_traits.traits_list[trait].enabled = false
 	self:Reset()
 end
 

@@ -1,0 +1,19 @@
+<!--
+	No Laser While ADS Strings
+	Аддон "Отключение лазера при прицеливании"
+-->
+
+<string_table>
+	<string id="ui_mcm_menu_no_laser_while_ads">
+		<text>Отключение лазера при прицеливании</text>
+	</string>
+	<string id="ui_mcm_title_no_laser_while_ads">
+		<text>Отключение лазера при прицеливании</text>
+	</string>
+	<string id="ui_mcm_no_laser_while_ads_primary_aim">
+		<text>Отключение лазера в основном режиме прицеливания</text>
+	</string>
+	<string id="ui_mcm_no_laser_while_ads_alt_aim">
+		<text>Отключение лазера в альтернативном режиме прицеливания</text>
+	</string>
+</string_table>

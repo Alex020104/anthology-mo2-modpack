@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+
+<string id="st_anthology_sms_name">
+<text>%c[255,248,153,26]Разработчик:\n%c[default]Вас приветствует мод «Антология». Загляни в КПК, найди раздел «Справочник», там найдешь информацию о моде. Удачной охоты сталкер!</text>
+</string>
+
+<string id="st_start_freeplay_name">
+<text>%c[255,248,153,26]Разработчик:\n%c[default]Вы выбрали свободную игру. Теперь доступна сюжетная линия <<Живая легенда>>. Удачной охоты сталкер!</text>
+</string>
+
+<string id="st_anthology_freeplay_text_yes_no">
+<text>Нажми <<ДА>> что бы остатся здесь, нажми <<НЕТ>> что бы переместится на Кордон.</text>
+</string>
+
+</string_table>

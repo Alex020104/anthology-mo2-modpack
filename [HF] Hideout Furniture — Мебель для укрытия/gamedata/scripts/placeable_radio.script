@@ -41,6 +41,11 @@ end
 
 local fileList, count, file									-- Variables for file reading
 
+local function get_sound_file_list(path)
+	printf("placeable_radio: skipping sound list [%s]", tostring(path))
+	return nil, 0
+end
+
 
 -- Volume controls
 local radio_vol = 0.5										-- In-game control: Radio volume - first value
@@ -95,8 +100,7 @@ function placeable_radio_wrapper:__init(obj) super(obj)
 		self.radio_ch_out[x] = {}
 		self.radio_index[x] = {}
 		self.radio_now[x] = 1
-		fileList = getFS():file_list_open("$game_sounds$", path_radio_ch[x], bit_or(FS.FS_ListFiles, FS.FS_RootOnly))		-- Reading the file list in channel x
-		count = fileList and fileList:Size() or 0																			-- Get the number of files per channel x
+		fileList, count = get_sound_file_list(path_radio_ch[x])															-- Get the number of files per channel x
 		if (count > 0) then
 			for i = 1, count do
 				file = fileList:GetAt(i - 1):sub(1, -5)								-- Get red off the extension
@@ -125,8 +129,7 @@ function placeable_radio_wrapper:__init(obj) super(obj)
 		self.radio_session_out[x] = {}
 		self.radio_session_now[x] = 1
 		self.radio_session_lock[x] = false
-		fileList = getFS():file_list_open("$game_sounds$", path_radio_session[x], bit_or(FS.FS_ListFiles, FS.FS_RootOnly))	-- Reading the file list in channel x sessions
-		count = fileList and fileList:Size() or 0				-- Get the number of files per channel x
+		fileList, count = get_sound_file_list(path_radio_session[x])	-- Get the number of files per channel x
 		if (count > 0) then
 			for i = 1, count do
 				file = fileList:GetAt(i - 1):sub(1, -5)

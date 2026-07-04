@@ -1,0 +1,82 @@
+-- Modified by Melanc 2022.02.12 to add HUD indicator when near campfire
+
+--[[ 
+	Updated by HarukaSai 25.05.2022 
+	- converted edit to arszi psy to monkey patch
+	- moved everything to get psy regen to reduce the amount of campfire look ups
+
+	31.07.2022
+	- added mcm configuration
+]]
+
+local regens = {
+   health = 0.0005,
+   rad    = -0.0005,
+   psy	  = 0.0075
+}
+
+local dist         = 10.0
+local mcm_id = "cozy_campfire"
+
+function get_nearby_lit_campfire()
+	local pos = db.actor:position()
+	for id,binder in pairs(bind_campfire.campfires_all) do
+		if (binder and binder.campfire and binder.campfire:is_on()) then
+			if (pos:distance_to_sqr(binder.object:position()) <= dist) then
+				return true
+			end
+		end 
+	end 
+	return false
+end
+
+local options = {
+	id = mcm_id, sh = true,
+	gr = {
+		{ id = mcm_id     , type = "slide", link = "ui_options_slider_player", text = "ui_mcm_menu_" .. mcm_id, size = {512, 50}, spacing = 20},
+		{ id = "health",    type = "track", val = 2, step = 0.5, def = 5 ,  min = 0, max = 100, _amp = 0.0001 					},
+		{ id = "rad", 		type = "track", val = 2, step = 0.5, def = 5 ,  min = 0, max = 100, _amp = 0.0001, _invert = true 	},
+		{ id = "psy", 		type = "track", val = 2, step = 0.5, def = 7.5, min = 0, max = 100, _amp = 0.001  				   	},
+	}
+}
+
+function on_mcm_load()
+    return options
+end
+
+function on_option_change()
+	for i = 2, #options.gr do
+		local id = options.gr[i].id
+		local val = ui_mcm.get(string.format("%s/%s", mcm_id, id)) * options.gr[i]._amp
+		regens[id] = options.gr[i]._invert and -val or val
+	end
+end
+
+function on_game_start()
+	actor_status.add_indicator("Campfire",{
+		index= 4,
+		typ= "booster",
+		functor= {"cozy_campfire_mcm","get_nearby_lit_campfire"},
+		icon= "ui\\campfire_hud\\campfire_buff.dds",
+		background= "ui\\campfire_hud\\campfire_background.dds",
+		anim_icon= false,
+		anim_bk= false,
+	})
+
+	RegisterScriptCallback("on_option_change", on_option_change)
+	on_option_change()
+
+	cached_get_psy_regen = arszi_psy.get_psy_health_regeneration
+	
+	arszi_psy.get_psy_health_regeneration = function()
+		local actor = db.actor
+		local campfire = get_nearby_lit_campfire()
+		
+		if campfire then
+			actor:change_health(regens.health)
+			actor:change_radiation(regens.rad)
+		end
+
+		return cached_get_psy_regen() + (campfire and regens.psy or 0)
+	end
+end

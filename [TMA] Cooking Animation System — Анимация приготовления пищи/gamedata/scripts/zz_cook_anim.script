@@ -81,14 +81,17 @@ function item_cooking.UICook:OnCook()
 	end
 
 	-- Discharge cooking fuel if its not a campfire
-	if (not is_campfire) then
+	if (not self.is_campfire) then
 		local sec_fuel = self:GetAvailFuel(meal.fuel_tier, true)
-		local id_fuel = sec_fuel and random_key_table(self.objs[sec_fuel])
+		local fuel_items = sec_fuel and self.objs and self.objs[sec_fuel]
+		local id_fuel = type(fuel_items) == "table" and random_key_table(fuel_items)
 		if id_fuel then
 			local obj_fuel = level.object_by_id(id_fuel)
 			if obj_fuel then
 				utils_item.discharge(obj_fuel)
 			end
+		else
+			return
 		end
 	end
 	

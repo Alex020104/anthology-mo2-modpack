@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<!----------------  21.06.26 Переводы (возможно неправильные) предметов в Спавнере ------------------->
+
+	<string id="st_itm_guide_usb_1">
+		<text>Флешка (карта памяти)</text>
+	</string>
+	<string id="itm_guide_usb_1_descr">
+		<text>Распространенный способ компактного хранения и транспортировки больших объемов информации, хотя для доступа к данным требуется компьютер.\n \n
+		%c[ui_gray_3]ХАРАКТЕРИСТИКИ:\n
+		%c[d_blue] • %c[ui_gray_2] технологическое приспособление\n
+		%c[d_blue] • %c[ui_gray_2] малое потребление энергии
+		</text>
+	</string>
+
+	<string id="st_energy_drink_nonstop">
+		<text>Энергетический напиток "Non-Stop"</text>
+	</string>
+	<string id="st_energy_drink_nonstop_descr">
+		<text>Любимый напиток в Украине, что объясняет обилие этого напитка здесь, в Зоне. Довольно полезная альтернатива энергетикам Red Bull или STALKER, не содержащая сахара. Сталкеры часто запасаются ими перед ходкой на длительные маршруты. Обладает бодрящим эффектом, очень пригождается при усталости. Напиток так же отрезвляет немного голову после похмелья, а так же вызывает выброс адреналина в кровь. Во избежание передозировки рекомендуется не злоупотреблять.\n \n
+		%c[ui_gray_3]ХАРАКТЕРИСТИКИ:\n
+		%c[d_blue] • %c[ui_gray_2] напиток\n
+		%c[d_blue] • %c[ui_gray_2] импортное\n
+		%c[d_blue] • %c[ui_gray_2] стимулятор\n
+		%c[d_blue] • %c[ui_gray_2] сильное отрезвляющее действие\n
+		%c[d_blue] • %c[ui_gray_2] здоровое питание\n</text>
+	</string>
+
+	<string id="st_wg_french_mre">
+		<text lang="en">Ration de Combat Individuelle Rechauffable</text>
+		<text lang="ru">«Индивидуальный боевой паек, который можно разогреть»</text>
+	</string>
+
+    <string id="st_wg_french_mre_s">
+        <text>RCIR MRE</text>
+    </string>
+
+    <string id="st_wg_french_mre_descr">
+        <text>
+            Ration de Combat Individuelle Rechauffable (что в переводе Индивидуальный Военный Рацион Питания) - ИРП, используемый во Французской армии. За годы существования, было несколько его итераций. Один - в 1995, другой - в 1999, и в последний раз - в 2004. К счастью, этот - из последней итерации, поэтому содержимое не старше 14 лет...\n
+            \n
+            %c[ui_gray_1]СВОЙСТВА:\n
+            %c[d_blue] • %c[ui_gray_2] еда\n
+            %c[d_blue] • %c[ui_gray_2] военная вещь\n
+            %c[d_blue] • %c[ui_gray_2] импортный\n
+            %c[d_cyan] • %c[ui_gray_2] ценная вещь\n
+            %c[d_green] • %c[ui_gray_2] чистый источник питания\n
+        </text>
+    </string>
+
+<string id="st_sad_gribok">
+        <text>Аномальный белый гриб</text>
+    </string>
+    <string id="sad_gribok_s">
+        <text>Белый гриб</text>
+    </string>
+	<string id="sad_gribok_desc">
+        <text>Образец местной флоры с аномальными свойствами. Употреблять в пищу категорически запрещено — концентрация токсинов смертельна для человека. Однако мякоть гриба содержит редкие ферменты, **полезные при кустарном изготовлении стимуляторов и лекарств**. Фонит как кусок реактора.\n \n
+            %c[ui_gray_1]СВОЙСТВА:\n
+            %c[d_blue] • %c[ui_gray_2] Базовая стоимость: 1000 RU\n
+            %c[d_blue] • %c[ui_gray_2] Состояние: Радиоактивен\n
+            %c[d_blue] • %c[ui_gray_2] Съедобность: Несъедобно\n
+            %c[d_cyan] • %c[ui_gray_2] Эффект: Токсическое поражение (5 сек)\n
+            %c[d_green] • %c[ui_gray_2] Вес: 0.6 кг\n
+        </text>
+    </string>
+
+	<!----------------  27.12.25 пытаюсь создать скрипт, чтобы можно было использовать все деньги сразу, а не поодиночке ------------------->
+	<string id="st_use_all">
+		<text>Использовать всё</text>
+	</string>
+
+	<!----------------  sad items ------------------->	
+	<string id="jaba_case">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="jaba_case_descr">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Файл в "GAMMA" ссылается на "Storylines 3.0".\n
+</text>
+	</string>
+	<string id="pda_barbos_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="pda_barbos_desc">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Файл в "GAMMA" ссылается на "Storylines 3.0".\n
+</text>
+	</string>
+	<string id="pda_flibuster_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="pda_flibuster_desc">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Файл в "GAMMA" ссылается на "Storylines 3.0".\n
+</text>
+	</string>
+	<string id="pda_freon_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="pda_freon_desc">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Файл в "GAMMA" ссылается на "Storylines 3.0".\n
+</text>
+	</string>
+	<string id="pda_pinya_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="pda_pinya_desc">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Файл в "GAMMA" ссылается на "Storylines 3.0".\n
+</text>
+	</string>
+	<string id="pda_shmatko_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="pda_shmatko_desc">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Файл в "GAMMA" ссылается на "Storylines 3.0".\n
+</text>
+	</string>
+	<string id="pda_tango_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="pda_tango_desc">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Файл в "GAMMA" ссылается на "Storylines 3.0".\n
+</text>
+	</string>
+	<string id="pda_tribun_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="pda_tribun_desc">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Файл в "GAMMA" ссылается на "Storylines 3.0".\n
+</text>
+	</string>
+	<string id="escape_docs_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="escape_docs_desc">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Файл в "GAMMA" ссылается на "Storylines 3.0".\n
+</text>
+	</string>
+	<string id="bar_case_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="bar_case_desc">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Файл в "GAMMA" ссылается на "Storylines 3.0".\n
+</text>
+	</string>
+
+	<!----------------  Неопознанные квесты ------------------->
+	
+	<string id="st_pb_quest_shell_document">
+		<text>Записка Гильзы</text>
+	</string>
+	<string id="st_pb_quest_shell_document_descr">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Совпадений в файлах разных сборок НЕТ!!!\n
+</text>
+	</string>
+
+	<string id="sar_crystal_pda_mlr_2_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="sar_crystal_pda_mlr_2_descr">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Совпадений в файлах разных сборок НЕТ!!!\n
+</text>
+	</string>	
+	<string id="sar_crystal_pda_mlr_3_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="sar_crystal_pda_mlr_3_descr">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Совпадений в файлах разных сборок НЕТ!!!\n
+</text>
+	</string>
+	<string id="sar_crystal_pda_mlr_4_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="sar_crystal_pda_mlr_4_descr">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Совпадений в файлах разных сборок НЕТ!!!\n
+</text>
+	</string>	
+	<string id="sar_crystal_pda_mlr_5_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="sar_crystal_pda_mlr_5_descr">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Совпадений в файлах разных сборок НЕТ!!!\n
+</text>
+	</string>	
+	<string id="sar_crystal_pda_mlr_1_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="sar_crystal_pda_mlr_1_desc">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Совпадений в файлах разных сборок НЕТ!!!\n
+</text>
+	</string>
+	<string id="sar_crystal_pda_mlr_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="sar_crystal_pda_mlr_desc">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Совпадений в файлах разных сборок НЕТ!!!\n
+</text>
+	</string>
+	<string id="st_sad_b4_jail_key">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="st_sad_b4_jail_key_desc">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Совпадений в файлах разных сборок НЕТ!!!\n
+</text>
+	</string>
+	<string id="mlr_x8_copybook">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="mlr_x8_copybook_desc">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Совпадений в файлах разных сборок НЕТ!!!\n
+</text>
+	</string>
+	<string id="st_doc_ba1_info_3_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="st_doc_ba1_info_3_descr">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Совпадений в файлах разных сборок НЕТ!!!\n
+</text>
+	</string>	
+	<string id="st_doc_ba1_info_4_name">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="st_doc_ba1_info_4_descr">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Совпадений в файлах разных сборок НЕТ!!!\n
+</text>
+	</string>
+	<string id="st_radio_volnagps_title">
+		<text>Неопознанный предмет</text>
+	</string>
+	<string id="st_radio_volnagps_descr">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Как это "вылечить" - НЕ ЗНАЮ!!!\n
+		%c[d_red] • %c[ui_gray_2] Совпадений в файлах разных сборок НЕТ!!!\n
+</text>
+	</string>
+	
+		<!----------------  Квесты, для которых нашлось описание ------------------->
+
+	<string id="sad_sim_8_inventory_key">
+		<text>Ключ от ящика с вертолета военных</text>
+	</string>
+	<string id="sad_sim_8_inventory_key_desc">
+		<text>Необходимо найти ящик, который был на вертолете военных. Вертолет упал где-то ближе к центру Долины Шорохов.\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Отдельная благодарность KuKi4 (с Дискорд-сервера "A.N.T.H.O.L.O.G.Y 1.2") за то, что он помог собрать все данные об этом задании!\n
+		%c[d_red] • %c[ui_gray_2] Описание придумано мной.\n
+</text>
+	</string>
+	<string id="sad_sim_8_inventory_key">
+		<text>Ключ от ящика с вертолета военных</text>
+	</string>
+	<string id="sad_mudak_inventory_key_desc">
+		<text>Необходимо найти ящик, который был на вертолете военных. Вертолет упал где-то ближе к центру Долины Шорохов.\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Отдельная благодарность KuKi4 (с Дискорд-сервера "A.N.T.H.O.L.O.G.Y 1.2") за то, что он помог собрать все данные об этом задании!\n
+		%c[d_red] • %c[ui_gray_2] Описание придумано мной.\n
+</text>
+	</string>	
+	<string id="sad_b2_trader_notebook_name">
+		<text>Ноутбук Рокфеллера</text>
+	</string>
+	<string id="sad_b2_trader_notebook_desc">
+		<text>Рокфеллер просит найти его ноутбук, который остался в вертолете военных. Надо найти ключ от ящика, который находится у капитана Козлова и найти ящик около упавшего вертолета.\n\n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Отдельная благодарность KuKi4 (с Дискорд-сервера "A.N.T.H.O.L.O.G.Y 1.2") за то, что он помог собрать все данные об этом задании!\n
+		%c[d_red] • %c[ui_gray_2] Описание придумано мной.\n
+</text>
+	</string>
+
+		<!----------------  Перевод квестовых предметов ------------------->	
+		
+	<string id="pda_jokera_name">
+		<text>КПК Джокера</text>
+	</string>
+	<string id="pda_jokera_descr">
+		<text>Из какой это сюжетной модификации - НЕИЗВЕСТНО!!!\n \n
+		%c[ui_gray_3]дедушка Ли:\n
+		%c[d_red] • %c[ui_gray_2] Кому он нужен и для чего - НЕ ЗНАЮ!!!\n</text>
+	</string>		
+	
+	</string_table>
+
+
+
+
+
+
+
+
+
+

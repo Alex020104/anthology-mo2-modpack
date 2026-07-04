@@ -1,0 +1,24 @@
+<string_table>
+    <string id="st_placeable_weapon_rack">
+        <text>—тойка дл€ демонстрации оружи€</text>
+    </string>
+    <string id="st_placeable_weapon_rack_descr">
+		<text>—таринный стеллаж дл€ оружи€, который можно использовать дл€ коллекционировани€ и демонстрации любимых винтовок и дробовиков.\n \n
+			%c[ui_gray_1]—¬ќ…—“¬ј:\n
+			%c[d_blue] Х %c[ui_gray_2] хранение предметов\n
+			%c[d_blue] Х %c[ui_gray_2] размещаемый объект\n
+			%c[d_blue] Х %c[ui_gray_2] слоты дл€ 6 видов оружи€\n
+			%c[d_blue] Х %c[ui_gray_2] подходит только дл€ винтовок, пистолетов-пулеметов и дробовиков\n</text>
+	</string>
+	
+	<string id="st_placeable_pistol_shelf">
+        <text>ѕолка дл€ демонстрации пистолетов</text>
+    </string>
+    <string id="st_placeable_pistol_shelf_descr">
+		<text>—тара€ полка, которую можно использовать дл€ демонстрации любимых пистолетов.\n \n
+			%c[ui_gray_1]—¬ќ…—“¬ј:\n
+			%c[d_blue] Х %c[ui_gray_2] хранение предметов\n
+			%c[d_blue] Х %c[ui_gray_2] размещаемый объект\n
+			%c[d_blue] Х %c[ui_gray_2] подходит только дл€ 4 пистолетов\n</text>
+	</string>
+</string_table>

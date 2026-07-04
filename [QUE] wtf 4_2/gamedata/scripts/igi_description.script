@@ -94,12 +94,42 @@ function item_to_string(item, label)
 
 	local details = {}
 	for value in pairs(item) do
-		details[#details+1] = game.translate_string(value)
+		details[#details+1] = translate_description_value(value)
 	end
 	table.sort(details)
 
 	label = game.translate_string(TEXT_HEADER..label)
 	return label..": "..table.concat(details, ', ')
+end
+
+function translate_description_value(value)
+	local text = game.translate_string(value)
+	if text ~= value then
+		return text
+	end
+
+	local smart = type(value) == "string" and string.match(value, "^st_(.+)_name$")
+	if smart then
+		return format_smart_name_fallback(smart)
+	end
+
+	return text
+end
+
+function format_smart_name_fallback(smart)
+	local level_key = string.match(smart, "^([a-z0-9]+)_")
+	local level_name = level_key and game.translate_string("igi_level_" .. level_key) or nil
+	if not level_name or level_name == "igi_level_" .. tostring(level_key) then
+		level_name = level_key or "unknown"
+	end
+
+	local name = smart
+	if level_key then
+		name = string.gsub(name, "^" .. level_key .. "_", "")
+	end
+	name = string.gsub(name, "_", " ")
+
+	return level_name .. ": " .. name
 end
 
 function show_description(CACHE)

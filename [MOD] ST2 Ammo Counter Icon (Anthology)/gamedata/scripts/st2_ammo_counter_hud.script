@@ -1,0 +1,889 @@
+-- ST2-style ammo counter overlay for Anomaly/A.N.T.H.O.L.O.G.Y.
+-- Drawn as a script HUD so it can sit above the active MO2 HUD without XML overrides.
+
+local HUD
+local tg_update_step = 80 -- ms
+local DEFAULT_VISIBLE_TIME = 30000 -- ms
+local DEFAULT_FADE_IN_TIME = 600 -- ms
+local DEFAULT_FADE_TIME = 2000 -- ms
+local WEAPON_STATE_RELOAD = 7
+local MCM_ID = "st2_ammo_counter_hud"
+
+local MODE_ORDER = { 1, 2, 3, -1 }
+local MODE_RECTS = {
+	[1]  = { 0, 0, 32, 24 },
+	[2]  = { 32, 0, 64, 24 },
+	[3]  = { 64, 0, 96, 24 },
+	[-1] = { 96, 0, 128, 24 },
+}
+local MODE_SIZES = {
+	[1]  = { 26, 20 },
+	[2]  = { 26, 20 },
+	[3]  = { 26, 20 },
+	[-1] = { 26, 20 },
+}
+local ammo_check_patched = false
+local base_check_ammo = nil
+local wrapped_check_ammo = nil
+local next_patch_try = 0
+
+local cfg = {
+	enabled = true,
+	show_background = true,
+	show_ammo_icon = true,
+	show_ammo_name = true,
+	show_fire_modes = true,
+	show_counter = true,
+	toggle_key = 0,
+	visible_time = DEFAULT_VISIBLE_TIME,
+	fade_in_time = DEFAULT_FADE_IN_TIME,
+	fade_time = DEFAULT_FADE_TIME,
+	event_reload = true,
+	event_mag_check = true,
+	event_bore = false,
+	event_shot = false,
+	event_ads = false,
+	event_npc_aggro = false,
+	event_show = false,
+	whole_x = 0,
+	whole_y = 0,
+	whole_scale = 1,
+	background_x = 0,
+	background_y = 0,
+	background_scale = 1,
+	counter_x = 0,
+	counter_y = 0,
+	counter_scale = 1,
+	ammo_icon_x = 0,
+	ammo_icon_y = 0,
+	ammo_icon_scale = 1,
+	ammo_name_x = 0,
+	ammo_name_y = 0,
+	ammo_name_scale = 1,
+	fire_mode_x = 0,
+	fire_mode_y = 0,
+	fire_mode_scale = 1,
+}
+
+local function alpha_value(alpha, base)
+	alpha = alpha or 1
+	if alpha < 0 then
+		alpha = 0
+	elseif alpha > 1 then
+		alpha = 1
+	end
+	return math.floor((base or 255) * alpha)
+end
+
+local function clr_white(alpha)
+	return GetARGB(alpha_value(alpha, 235), 246, 242, 232)
+end
+
+local function clr_empty(alpha)
+	return GetARGB(alpha_value(alpha, 235), 238, 64, 52)
+end
+
+local function clr_soft(alpha)
+	return GetARGB(alpha_value(alpha, 205), 226, 222, 210)
+end
+
+local function clr_dim(alpha)
+	return GetARGB(alpha_value(alpha, 150), 214, 210, 198)
+end
+
+local function clr_line(alpha)
+	return GetARGB(alpha_value(alpha, 115), 255, 255, 255)
+end
+
+local function clr_bg(alpha)
+	return GetARGB(alpha_value(alpha, 210), 255, 255, 255)
+end
+
+local function clr_icon(alpha)
+	return GetARGB(alpha_value(alpha, 215), 255, 255, 255)
+end
+
+local function clr_mode(alpha, active)
+	return GetARGB(alpha_value(alpha, active and 235 or 58), 242, 238, 226)
+end
+
+local function mcm_value(path, fallback)
+	local mcm = _G[MCM_ID .. "_mcm"]
+	if mcm and mcm.get_config then
+		local ok, value = pcall(mcm.get_config, path)
+		if ok and value ~= nil then
+			return value
+		end
+	end
+	return fallback
+end
+
+local function cfg_bool(path, fallback)
+	return mcm_value(path, fallback) and true or false
+end
+
+local function cfg_num(path, fallback, scale)
+	local value = tonumber(mcm_value(path, fallback))
+	if not value then
+		value = fallback
+	end
+	return value * (scale or 1)
+end
+
+local function load_settings()
+	cfg.enabled = cfg_bool("enable/enabled", true)
+	cfg.show_background = cfg_bool("enable/show_background", true)
+	cfg.show_ammo_icon = cfg_bool("enable/show_ammo_icon", true)
+	cfg.show_ammo_name = cfg_bool("enable/show_ammo_name", true)
+	cfg.show_fire_modes = cfg_bool("enable/show_fire_modes", true)
+	cfg.show_counter = cfg_bool("enable/show_counter", true)
+	cfg.toggle_key = tonumber(mcm_value("enable/toggle_key", 0)) or 0
+	cfg.visible_time = math.max(0, cfg_num("events/visible_time", 30, 1000))
+	cfg.fade_in_time = math.max(0, cfg_num("events/fade_in_time", 0.6, 1000))
+	cfg.fade_time = math.max(1, cfg_num("events/fade_time", 2, 1000))
+	cfg.event_reload = cfg_bool("events/reload", true)
+	cfg.event_mag_check = cfg_bool("events/mag_check", true)
+	cfg.event_bore = cfg_bool("events/bore", false)
+	cfg.event_shot = cfg_bool("events/shot", false)
+	cfg.event_ads = cfg_bool("events/ads", false)
+	cfg.event_npc_aggro = cfg_bool("events/npc_aggro", false)
+	cfg.event_show = cfg_bool("events/show", false)
+	cfg.whole_x = cfg_num("move/whole_x", 0)
+	cfg.whole_y = cfg_num("move/whole_y", 0)
+	cfg.background_x = cfg_num("move/background_x", 0)
+	cfg.background_y = cfg_num("move/background_y", 0)
+	cfg.counter_x = cfg_num("move/counter_x", 0)
+	cfg.counter_y = cfg_num("move/counter_y", 0)
+	cfg.ammo_icon_x = cfg_num("move/ammo_icon_x", 0)
+	cfg.ammo_icon_y = cfg_num("move/ammo_icon_y", 0)
+	cfg.ammo_name_x = cfg_num("move/ammo_name_x", 0)
+	cfg.ammo_name_y = cfg_num("move/ammo_name_y", 0)
+	cfg.fire_mode_x = cfg_num("move/fire_mode_x", 0)
+	cfg.fire_mode_y = cfg_num("move/fire_mode_y", 0)
+	cfg.whole_scale = math.max(0.25, cfg_num("scale/whole", 1))
+	cfg.background_scale = math.max(0.25, cfg_num("scale/background", 1))
+	cfg.counter_scale = math.max(0.25, cfg_num("scale/counter", 1))
+	cfg.ammo_icon_scale = math.max(0.25, cfg_num("scale/ammo_icon", 1))
+	cfg.ammo_name_scale = math.max(0.25, cfg_num("scale/ammo_name", 1))
+	cfg.fire_mode_scale = math.max(0.25, cfg_num("scale/fire_mode", 1))
+end
+
+local function event_enabled(reason)
+	if not cfg.enabled then
+		return false
+	elseif reason == "reload" then
+		return cfg.event_reload
+	elseif reason == "mag_check" then
+		return cfg.event_mag_check
+	elseif reason == "bore" then
+		return cfg.event_bore
+	elseif reason == "shot" then
+		return cfg.event_shot
+	elseif reason == "ads" then
+		return cfg.event_ads
+	elseif reason == "npc_aggro" then
+		return cfg.event_npc_aggro
+	elseif reason == "show" then
+		return cfg.event_show
+	end
+	return false
+end
+
+local function set_rect(wnd, x, y, w, h)
+	wnd:SetWndPos(vector2():set(x, y))
+	wnd:SetWndSize(vector2():set(w, h))
+end
+
+local function make_text(parent, x, y, w, h, font, align, color)
+	local wnd = CUITextWnd()
+	set_rect(wnd, x, y, w, h)
+	wnd:SetFont(font)
+	wnd:SetTextColor(color)
+	wnd:SetTextAlignment(align or 0)
+	wnd:SetText("")
+	parent:AttachChild(wnd)
+	return wnd
+end
+
+local function make_static(parent, x, y, w, h, texture, color)
+	local wnd = CUIStatic()
+	set_rect(wnd, x, y, w, h)
+	if texture then
+		wnd:InitTexture(texture)
+	end
+	if color then
+		wnd:SetTextureColor(color)
+	end
+	parent:AttachChild(wnd)
+	return wnd
+end
+
+local function safe_call(obj, method)
+	if not (obj and obj[method]) then
+		return nil
+	end
+
+	local ok, result = pcall(function()
+		return obj[method](obj)
+	end)
+	return ok and result or nil
+end
+
+local function trim_text(text)
+	text = tostring(text or "")
+	text = string.gsub(text, "[\r\n\t]+", " ")
+	text = string.gsub(text, "%s+", " ")
+	text = string.gsub(text, "^%s+", "")
+	text = string.gsub(text, "%s+$", "")
+	return text
+end
+
+local function translated_ltx(section, keys)
+	if not (section and ini_sys and ini_sys:section_exist(section)) then
+		return section or ""
+	end
+
+	for i = 1, #keys do
+		local id = ini_sys:r_string_ex(section, keys[i])
+		if id then
+			local text = game.translate_string(id)
+			text = trim_text(text ~= "" and text or id)
+			if text ~= "" then
+				return text
+			end
+		end
+	end
+
+	return section
+end
+
+local function split_sections(value)
+	local t = {}
+	if not value then
+		return t
+	end
+
+	for token in string.gmatch(value, "[^,%s]+") do
+		t[#t + 1] = trim_text(token)
+	end
+	return t
+end
+
+local function get_ammo_list(wpn, wpn_sec)
+	local list
+	if utils_item and utils_item.get_ammo then
+		local ok, result = pcall(utils_item.get_ammo, wpn_sec, wpn:id())
+		if ok then
+			list = result
+		end
+	end
+
+	if list and #list > 0 then
+		return list
+	end
+
+	return split_sections(ini_sys:r_string_ex(wpn_sec, "ammo_class"))
+end
+
+local function get_active_ammo_section(wpn, wpn_sec)
+	local ammo_type = tonumber(safe_call(wpn, "get_ammo_type")) or 0
+	local list = get_ammo_list(wpn, wpn_sec)
+	return list[ammo_type + 1] or list[1]
+end
+
+local function parse_fire_modes(wpn_sec)
+	local modes = {}
+	local count = 0
+	local first
+	local raw = ini_sys:r_string_ex(wpn_sec, "fire_modes") or "1"
+
+	for value in string.gmatch(raw, "%-?%d+") do
+		local n = tonumber(value)
+		if n and not modes[n] then
+			modes[n] = true
+			first = first or n
+			count = count + 1
+		end
+	end
+
+	if count == 0 then
+		modes[1] = true
+		first = 1
+		count = 1
+	end
+
+	return modes, count, first
+end
+
+local function layout_for_screen()
+	local ratio = device().width / device().height
+	local pull = 22
+
+	if ratio <= 1.45 then
+		pull = 20 -- 4:3
+	elseif ratio <= 1.9 then
+		pull = 22 -- 16:9
+	elseif ratio <= 2.6 then
+		pull = 34 -- 21:9
+	else
+		pull = 58 -- 32:9
+	end
+
+	local w = 196
+	return {
+		x = 1024 - w - pull,
+		y = 700,
+		w = w,
+		h = 64,
+	}
+end
+
+local function ui_pixel_aspect()
+	local dev = device()
+	local ratio = dev.width / dev.height
+	return math.max(1, ratio * 0.75)
+end
+
+local function get_current_fire_mode()
+	local ok, text = pcall(function()
+		local wnd = ActorMenu and ActorMenu.get_maingame and ActorMenu.get_maingame()
+		wnd = wnd and wnd.m_ui_hud_states and wnd.m_ui_hud_states.m_fire_mode
+		return wnd and wnd:GetText()
+	end)
+
+	if not (ok and text) then
+		return nil
+	end
+
+	text = trim_text(text)
+	if text == "A" then
+		return -1
+	end
+
+	return tonumber(text)
+end
+
+local function is_weapon_zoomed(wpn)
+	if axr_main and axr_main.weapon_is_zoomed then
+		return true
+	end
+
+	if not wpn then
+		return false
+	end
+
+	local ok, result = pcall(function()
+		local cast = wpn.cast_Weapon and wpn:cast_Weapon()
+		return cast and cast.IsZoomed and cast:IsZoomed()
+	end)
+	return ok and result == true
+end
+
+local function hud_state_allowed()
+	return main_hud_shown() or (axr_main and axr_main.weapon_is_zoomed == true)
+end
+
+class "UIST2AmmoCounter" (CUIScriptWnd)
+
+function UIST2AmmoCounter:__init() super()
+	self._tmr = 0
+	self._display_key = ""
+	self._show_until = 0
+	self._fade_in_start = 0
+	self._alpha = 0
+	self._ammo_icon_base = nil
+	self._last_fire_modes_section = nil
+	self._last_fire_mode = nil
+	self._last_wpn_id = nil
+	self._last_mag = nil
+	self._last_zoomed = false
+	self:SetWndRect(Frect():set(0, 0, 1024, 768))
+	self:SetAutoDelete(true)
+	self:InitControls()
+end
+
+function UIST2AmmoCounter:__finalize()
+end
+
+function UIST2AmmoCounter:InitControls()
+	local p = layout_for_screen()
+
+	self.dialog = make_static(self, p.x, p.y, p.w, p.h)
+	self.dialog:Show(false)
+	self.base = {
+		dialog = p,
+		background = { 0, 0, p.w, p.h },
+		cur = { 0, 2, 34, 24 },
+		slash = { 38, 8, 10, 18 },
+		reserve = { 52, 8, 42, 18 },
+		ammo_icon_anchor = { 66, -2, 96, 42 },
+		line = { 0, 36, 166, 3 },
+		ammo_name = { 92, 43, 100, 16 },
+		fire_modes = { 1, 42 },
+	}
+
+	self.bg = make_static(self.dialog, 0, 0, p.w, p.h, "ui\\st2_ammo_counter_bg", clr_bg(1))
+	self.bg:SetStretchTexture(true)
+
+	self.cur_ammo = make_text(self.dialog, 0, 2, 34, 24, GetFontGraffiti22Russian(), 1, clr_white(1))
+	self.slash = make_text(self.dialog, 38, 8, 10, 18, GetFontGraffiti19Russian(), 2, clr_dim(1))
+	self.slash:SetText("/")
+	self.reserve = make_text(self.dialog, 52, 8, 42, 18, GetFontGraffiti19Russian(), 0, clr_white(1))
+
+	self.ammo_icon = make_static(self.dialog, 76, 0, 86, 36)
+	self.ammo_icon:SetStretchTexture(true)
+	self.ammo_icon:Show(false)
+
+	self.line = make_static(self.dialog, 0, 36, 166, 3, "ui\\st2_ammo_counter_line", clr_line(1))
+	self.line:SetStretchTexture(true)
+
+	self.mode_icons = {}
+	for i = 1, #MODE_ORDER do
+		local mode = MODE_ORDER[i]
+		local size = MODE_SIZES[mode]
+		local icon = make_static(self.dialog, 1 + ((i - 1) * 18), 42, size[1], size[2], "ui\\st2_fire_mode_icons", clr_mode(1, false))
+		local r = MODE_RECTS[mode]
+		icon:SetTextureRect(Frect():set(r[1], r[2], r[3], r[4]))
+		icon:SetStretchTexture(true)
+		icon:Show(false)
+		self.mode_icons[mode] = icon
+	end
+
+	self.ammo_name = make_text(self.dialog, 92, 43, 100, 16, GetFontLetterica16Russian(), 0, clr_soft(1))
+	self:ApplyLayout()
+end
+
+function UIST2AmmoCounter:ScaleRect(x, y, w, h, ox, oy, scale)
+	local s = cfg.whole_scale * (scale or 1)
+	return (x + (ox or 0)) * cfg.whole_scale, (y + (oy or 0)) * cfg.whole_scale, w * s, h * s
+end
+
+function UIST2AmmoCounter:SetElementRect(wnd, base, ox, oy, scale)
+	local x, y, w, h = self:ScaleRect(base[1], base[2], base[3], base[4], ox, oy, scale)
+	set_rect(wnd, x, y, w, h)
+end
+
+function UIST2AmmoCounter:PlaceAmmoIcon()
+	if not self._ammo_icon_base then
+		return
+	end
+
+	local b = self._ammo_icon_base
+	local x, y, w, h = self:ScaleRect(b[1], b[2], b[3], b[4], cfg.ammo_icon_x, cfg.ammo_icon_y, cfg.ammo_icon_scale)
+	set_rect(self.ammo_icon, x, y, w, h)
+end
+
+function UIST2AmmoCounter:ApplyLayout()
+	local p = layout_for_screen()
+	self.base.dialog = p
+	set_rect(self.dialog, p.x + cfg.whole_x, p.y + cfg.whole_y, p.w * cfg.whole_scale, p.h * cfg.whole_scale)
+	self.base.background = { 0, 0, p.w, p.h }
+	self:SetElementRect(self.bg, self.base.background, cfg.background_x, cfg.background_y, cfg.background_scale)
+	self:SetElementRect(self.cur_ammo, self.base.cur, cfg.counter_x, cfg.counter_y, cfg.counter_scale)
+	self:SetElementRect(self.slash, self.base.slash, cfg.counter_x, cfg.counter_y, cfg.counter_scale)
+	self:SetElementRect(self.reserve, self.base.reserve, cfg.counter_x, cfg.counter_y, cfg.counter_scale)
+	self:SetElementRect(self.line, self.base.line, 0, 0, 1)
+	self:SetElementRect(self.ammo_name, self.base.ammo_name, cfg.ammo_name_x, cfg.ammo_name_y, cfg.ammo_name_scale)
+	self:PlaceAmmoIcon()
+	if self._last_fire_modes_section then
+		self:SetFireModes(self._last_fire_modes_section, self._last_fire_mode)
+	end
+end
+
+function UIST2AmmoCounter:ApplyVisibility()
+	self.bg:Show(cfg.show_background)
+	self.cur_ammo:Show(cfg.show_counter)
+	self.slash:Show(cfg.show_counter)
+	self.reserve:Show(cfg.show_counter)
+	self.ammo_name:Show(cfg.show_ammo_name)
+	self.ammo_icon:Show(cfg.show_ammo_icon and self._ammo_icon_base ~= nil)
+
+	for i = 1, #MODE_ORDER do
+		local mode = MODE_ORDER[i]
+		local icon = self.mode_icons[mode]
+		if icon and (not cfg.show_fire_modes) then
+			icon:Show(false)
+		end
+	end
+end
+
+function UIST2AmmoCounter:Clear()
+	self.dialog:Show(false)
+	self._show_until = 0
+	self._fade_in_start = 0
+	self._last_wpn_id = nil
+	self._last_mag = nil
+	self._last_zoomed = false
+end
+
+function UIST2AmmoCounter:AlphaForTime(tg)
+	if self._show_until <= 0 then
+		return 0
+	end
+
+	local alpha
+	if tg <= self._show_until then
+		alpha = 1
+	else
+		alpha = 1 - ((tg - self._show_until) / cfg.fade_time)
+	end
+
+	if self._fade_in_start > 0 and cfg.fade_in_time > 0 and tg < self._fade_in_start + cfg.fade_in_time then
+		local in_alpha = (tg - self._fade_in_start) / cfg.fade_in_time
+		if in_alpha < alpha then
+			alpha = in_alpha
+		end
+	end
+
+	return alpha
+end
+
+function UIST2AmmoCounter:Touch(tg, reason)
+	if not event_enabled(reason) then
+		return
+	end
+
+	tg = tg or time_global()
+	local current_alpha = self:AlphaForTime(tg)
+	if current_alpha < 0.98 then
+		self._fade_in_start = tg - (current_alpha * cfg.fade_in_time)
+	end
+	self._show_until = tg + cfg.visible_time
+	self.dialog:Show(true)
+end
+
+function UIST2AmmoCounter:ApplyAlpha(alpha, current_mode)
+	self._alpha = alpha
+	current_mode = current_mode or self._current_mode
+	self.bg:SetTextureColor(clr_bg(alpha))
+	self.cur_ammo:SetTextColor((self._cur_ammo == 0) and clr_empty(alpha) or clr_white(alpha))
+	self.slash:SetTextColor(clr_dim(alpha))
+	self.reserve:SetTextColor((self._reserve_ammo == 0) and clr_empty(alpha) or clr_white(alpha))
+	self.ammo_name:SetTextColor(clr_soft(alpha))
+	self.line:SetTextureColor(clr_line(alpha))
+	self.ammo_icon:SetTextureColor(clr_icon(alpha))
+
+	for i = 1, #MODE_ORDER do
+		local mode = MODE_ORDER[i]
+		local icon = self.mode_icons[mode]
+		icon:SetTextureColor(clr_mode(alpha, current_mode and mode == current_mode))
+	end
+end
+
+function UIST2AmmoCounter:SetAmmoIcon(section)
+	if not (section and ini_sys:section_exist(section)) then
+		self._ammo_icon_base = nil
+		self.ammo_icon:Show(false)
+		return
+	end
+
+	self.ammo_icon:InitTexture(utils_xml.get_icons_texture(section))
+	local x1, y1, x2, y2 = utils_xml.get_item_axis(section, nil, true)
+	if not (x1 and y1 and x2 and y2) then
+		self.ammo_icon:Show(false)
+		return
+	end
+
+	self.ammo_icon:SetTextureRect(Frect():set(x1, y1, x2, y2))
+	local src_w = math.max(1, x2 - x1)
+	local src_h = math.max(1, y2 - y1)
+	local a = self.base.ammo_icon_anchor
+	local max_w = a[3]
+	local max_h = a[4]
+	local scale = math.min(max_w / src_w, max_h / src_h)
+	local w = math.max(1, math.floor((src_w * scale) / ui_pixel_aspect() + 0.5))
+	local h = math.max(1, math.floor(src_h * scale + 0.5))
+	self._ammo_icon_base = { a[1] + math.floor((max_w - w) / 2), a[2] + math.floor((max_h - h) / 2), w, h }
+	self:PlaceAmmoIcon()
+	self.ammo_icon:SetTextureColor(clr_icon(self._alpha))
+	self.ammo_icon:Show(cfg.show_ammo_icon)
+end
+
+function UIST2AmmoCounter:SetFireModes(section, current_mode)
+	self._last_fire_modes_section = section
+	self._last_fire_mode = current_mode
+	local modes, count, first = parse_fire_modes(section)
+	if not current_mode and count == 1 then
+		current_mode = first
+	end
+	self._current_mode = current_mode
+	local pos = 1
+	local origin = self.base.fire_modes
+
+	for i = 1, #MODE_ORDER do
+		local mode = MODE_ORDER[i]
+		local icon = self.mode_icons[mode]
+		local show = cfg.show_fire_modes and modes[mode] and true or false
+		icon:Show(show)
+		if show then
+			local size = MODE_SIZES[mode]
+			local x, y, w, h = self:ScaleRect(origin[1] + pos - 1, origin[2], size[1], size[2], cfg.fire_mode_x, cfg.fire_mode_y, cfg.fire_mode_scale)
+			set_rect(icon, x, y, w, h)
+			icon:SetTextureColor(clr_mode(self._alpha, current_mode and mode == current_mode))
+			pos = pos + size[1] + 3
+		end
+	end
+end
+
+function UIST2AmmoCounter:Update(force)
+	CUIScriptWnd.Update(self)
+
+	local tg = time_global()
+	if not cfg.enabled then
+		self:Clear()
+		return
+	end
+
+	if force then
+		self._tmr = 0
+		self:ApplyLayout()
+	end
+	if self._tmr > tg then
+		return
+	end
+	self._tmr = tg + tg_update_step
+
+	if not (db and db.actor and hud_state_allowed()) then
+		self:Clear()
+		return
+	end
+
+	local wpn = db.actor:active_item()
+	if not (wpn and IsWeapon and IsWeapon(wpn)) then
+		self:Clear()
+		return
+	end
+
+	local cur = tonumber(safe_call(wpn, "get_ammo_in_magazine"))
+	local total = tonumber(safe_call(wpn, "get_ammo_total"))
+	local wpn_sec = wpn:section()
+	if not (cur and total and wpn_sec and ini_sys:section_exist(wpn_sec)) then
+		self:Clear()
+		return
+	end
+
+	local wpn_id = wpn:id()
+	local zoomed = is_weapon_zoomed(wpn)
+	if self._last_wpn_id ~= wpn_id then
+		self._last_wpn_id = wpn_id
+		self._last_mag = cur
+		self._last_zoomed = zoomed
+	elseif cfg.event_ads and zoomed and not self._last_zoomed then
+		self:Touch(tg, "ads")
+	elseif cfg.event_shot and zoomed and self._last_mag and cur < self._last_mag then
+		self:Touch(tg, "shot")
+	end
+	self._last_mag = cur
+	self._last_zoomed = zoomed
+
+	if tonumber(safe_call(wpn, "get_state")) == WEAPON_STATE_RELOAD then
+		self:Touch(tg, "reload")
+	end
+
+	local alpha = self:AlphaForTime(tg)
+	if alpha <= 0 then
+		self.dialog:Show(false)
+		return
+	end
+
+	local reserve = total - cur
+	if reserve < 0 then
+		reserve = 0
+	end
+	self._cur_ammo = cur
+	self._reserve_ammo = reserve
+
+	local ammo_sec = get_active_ammo_section(wpn, wpn_sec)
+	local current_mode = get_current_fire_mode()
+	local display_key = tostring(wpn:id()) .. "|" .. tostring(ammo_sec) .. "|" .. tostring(cur) .. "|" .. tostring(reserve) .. "|" .. tostring(current_mode)
+
+	if display_key ~= self._display_key or force then
+		self.cur_ammo:SetText(tostring(cur))
+		self.reserve:SetText(tostring(reserve))
+		self.ammo_name:SetText(translated_ltx(ammo_sec, { "inv_name_short", "inv_name", "description" }))
+		self:SetAmmoIcon(ammo_sec)
+		self:SetFireModes(wpn_sec, current_mode)
+		self._display_key = display_key
+	end
+
+	self:ApplyVisibility()
+	self:ApplyAlpha(alpha, current_mode)
+	self.dialog:Show(true)
+end
+
+function show_for_event(reason)
+	if HUD then
+		HUD:Touch(time_global(), reason)
+		HUD:Update(true)
+	end
+end
+
+function show_for_reload_or_mag_check()
+	show_for_event("mag_check")
+end
+
+local function patch_ammo_check()
+	if not (ammo_check_mcm and ammo_check_mcm.check_Ammo) then
+		ammo_check_patched = false
+		return
+	end
+
+	if ammo_check_mcm.check_Ammo == wrapped_check_ammo then
+		ammo_check_patched = true
+		return
+	end
+
+	base_check_ammo = ammo_check_mcm.check_Ammo
+	wrapped_check_ammo = function(...)
+		show_for_event("mag_check")
+		return base_check_ammo(...)
+	end
+	ammo_check_mcm.check_Ammo = wrapped_check_ammo
+	ammo_check_patched = true
+end
+
+function update_hud()
+	if HUD then
+		HUD:Update(true)
+	end
+end
+
+function on_mcm_settings_changed()
+	load_settings()
+	if HUD then
+		if not cfg.enabled then
+			HUD:Clear()
+		end
+		HUD._display_key = ""
+		HUD:ApplyLayout()
+		HUD:Update(true)
+	end
+end
+
+function on_option_change()
+	on_mcm_settings_changed()
+end
+
+local function animation_name(anm_table)
+	if type(anm_table) ~= "table" then
+		return ""
+	end
+	return tostring(anm_table.anm_name or anm_table.name or "")
+end
+
+local function has_token(text, token)
+	return text ~= "" and string.find(text, token, 1, true) ~= nil
+end
+
+function actor_on_hud_animation_play(anm_table, obj)
+	local name = animation_name(anm_table)
+	if cfg.event_bore and has_token(name, "anm_bore") then
+		show_for_event("bore")
+	elseif cfg.event_shot and (has_token(name, "anm_shot") or has_token(name, "anm_shoot")) then
+		show_for_event("shot")
+	elseif cfg.event_show and has_token(name, "anm_show") then
+		show_for_event("show")
+	end
+end
+
+function actor_on_weapon_zoom_in()
+	show_for_event("ads")
+end
+
+function actor_on_weapon_zoom_out()
+	if HUD then
+		HUD._last_zoomed = false
+	end
+end
+
+function npc_on_fighting_actor(npc)
+	show_for_event("npc_aggro")
+end
+
+function on_key_press(key)
+	if cfg.toggle_key == 0 or key ~= cfg.toggle_key then
+		return
+	end
+
+	local mcm = _G[MCM_ID .. "_mcm"]
+	if mcm and mcm.toggle_enabled then
+		mcm.toggle_enabled()
+	else
+		cfg.enabled = not cfg.enabled
+	end
+	on_mcm_settings_changed()
+end
+
+function actor_on_update()
+	local tg = time_global()
+	if tg >= next_patch_try then
+		next_patch_try = tg + 1000
+		patch_ammo_check()
+	end
+
+	if HUD then
+		HUD:Update(false)
+	end
+end
+
+function actor_on_weapon_reload()
+	show_for_event("reload")
+end
+
+function on_console_execute(name)
+	if name == "hud_draw" and HUD then
+		HUD:Update(true)
+	end
+end
+
+function actor_on_net_destroy()
+	if HUD then
+		get_hud():RemoveDialogToRender(HUD)
+		HUD = nil
+	end
+end
+
+function on_screen_resolution_changed()
+	actor_on_net_destroy()
+	load_settings()
+	activate_hud()
+end
+
+function activate_hud()
+	load_settings()
+	if not HUD then
+		HUD = UIST2AmmoCounter()
+		get_hud():AddDialogToRender(HUD)
+	end
+
+	HUD:Update(true)
+end
+
+function deactivate_hud()
+	actor_on_net_destroy()
+end
+
+function actor_on_first_update()
+	load_settings()
+	activate_hud()
+	patch_ammo_check()
+end
+
+function on_game_start()
+	load_settings()
+	patch_ammo_check()
+	RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+	RegisterScriptCallback("actor_on_net_destroy", actor_on_net_destroy)
+	RegisterScriptCallback("actor_on_update", actor_on_update)
+	RegisterScriptCallback("actor_on_weapon_reload", actor_on_weapon_reload)
+	RegisterScriptCallback("actor_on_hud_animation_play", actor_on_hud_animation_play)
+	RegisterScriptCallback("actor_on_weapon_zoom_in", actor_on_weapon_zoom_in)
+	RegisterScriptCallback("actor_on_weapon_zoom_out", actor_on_weapon_zoom_out)
+	RegisterScriptCallback("npc_on_fighting_actor", npc_on_fighting_actor)
+	RegisterScriptCallback("on_key_press", on_key_press)
+	RegisterScriptCallback("on_option_change", on_option_change)
+	RegisterScriptCallback("GUI_on_show", update_hud)
+	RegisterScriptCallback("GUI_on_hide", update_hud)
+	RegisterScriptCallback("on_console_execute", on_console_execute)
+	RegisterScriptCallback("on_screen_resolution_changed", on_screen_resolution_changed)
+end

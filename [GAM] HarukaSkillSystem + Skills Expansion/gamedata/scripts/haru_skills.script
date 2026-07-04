@@ -153,11 +153,16 @@ function scavanger_effect(npc)
     if not npc then return end
     local ok_id, npc_id = pcall(function() return npc:id() end)
     if not ok_id or not npc_id then return end
-    local ok_rank, rank = pcall(ranks.get_obj_rank_name, npc)
-    if not ok_rank or not rank then return end
     local inventory = ui_inventory.GUI
     local to_release = {}
-    if inventory and inventory.mode == "loot" and inventory.npc_id == npc_id then
+    if not (inventory and inventory.mode == "loot" and inventory.npc_id == npc_id) then
+        return
+    end
+
+    local ok_rank, rank = pcall(ranks.get_obj_rank_name, npc)
+    if not ok_rank or not rank then return end
+
+    do
         local ok_section, section = pcall(function() return npc:section() end)
         print_dbg("Actor is looting [%s]", ok_section and section or "unknown")
         increase_skill("scavenging", rank_table[rank] or 25)

@@ -1,0 +1,235 @@
+--[[
+    Script for common EFP utils
+    Author: HarukaSai
+
+    06-08-2022 - Added InputManager class
+]]
+
+
+--[[
+    Class used for easy creation and management of generic mcm binds
+]]
+
+input_instances = {}
+scope_overlay_active = false
+local mcm_keybinds = ui_mcm and ui_mcm.key_hold
+local string_format = string.format
+
+kb_modes = {
+    ["simple_press"] = 0,
+    ["double_tap"] = 1,
+    ["hold"] = 2
+}
+
+kb_mod = {
+    ["none"] = 0,
+    ["shift"] = 1,
+    ["ctrl"] = 2,
+    ["alt"] = 3
+}
+
+class "InputManager"
+
+function InputManager:__init(id, options, defaults, functor, cycle)
+    self.id = id
+    self.mcm_id = options.id
+
+    defaults.modifier = kb_modes[defaults.modifier] or defaults.modifier
+    defaults.second_key = kb_mod[defaults.second_key] or defaults.second_key
+    
+    table.insert(options.gr, { id = "keybind_" .. id, type = "key_bind", val = 2, def = defaults.keybind })
+    table.insert(options.gr, { id = "modifier_" .. id, type = ui_mcm.kb_mod_radio , val = 2, def = defaults.modifier, hint = "mcm_kb_mode",
+        content = {
+            {0, "mcm_kb_mode_press"},
+            {1, "mcm_kb_mode_dtap"},
+            {2, "mcm_kb_mode_hold"} 
+        }
+    })
+    table.insert(options.gr, { id = "second_key_" .. id, type = ui_mcm.kb_mod_radio , val = 2, def = defaults.second_key, hint = "mcm_kb_modifier",
+        content = { 
+            {0,"mcm_kb_mod_none"} , 
+            {1,"mcm_kb_mod_shift"} , 
+            {2,"mcm_kb_mod_ctrl"},
+            {3,"mcm_kb_mod_alt"}
+        }
+    })
+
+    if (not mcm_keybinds) then
+        defaults.modifier = 0
+        defaults.second_key = 0    
+    end
+
+    self.settings = defaults
+    self.functor = functor
+    self.modes = {
+        [0] = { 
+            call = "on_key_press", 
+            action = function(key) 
+                ui_mcm.simple_press(self.mcm_id .. id, key, function() 
+                    functor(id) 
+                end) 
+            end 
+        },
+        [1] = { 
+            call = "on_key_press", 
+            action = function(key) 
+                if ui_mcm.double_tap(self.mcm_id .. id, key) then 
+                    functor(id) 
+                end 
+            end 
+        },
+        [2] = { 
+            call = "on_key_hold", 
+            action = function(key) 
+                if ui_mcm.key_hold(self.mcm_id .. id, key, cycle) then 
+                    functor(id) 
+                end 
+            end 
+        }
+    }
+
+    self:register()
+end
+
+function InputManager:register()
+    if not (input_instances[self.mcm_id]) then
+        input_instances[self.mcm_id] = {}
+    end
+
+    input_instances[self.mcm_id][self.id] = self
+end
+
+function InputManager:on_game_start()
+    RegisterScriptCallback(self.modes[self.settings.modifier].call, self)    
+    RegisterScriptCallback("on_option_change", self)
+    self:on_option_change()
+end
+
+function InputManager:on_option_change()
+    if (not mcm_keybinds) then
+        return
+    end
+
+    self:destroy()
+
+    self.settings = {
+        keybind = ui_mcm.get(string_format("%s/keybind_%s", self.mcm_id, self.id)),
+        modifier = ui_mcm.get(string_format("%s/modifier_%s", self.mcm_id, self.id)),
+        second_key = ui_mcm.get(string_format("%s/second_key_%s", self.mcm_id, self.id))
+    }
+
+    RegisterScriptCallback(self.modes[self.settings.modifier].call, self)
+end
+
+function InputManager:destroy()
+    UnregisterScriptCallback(self.modes[self.settings.modifier].call, self)
+end
+
+function InputManager:on_key_press(key)
+    if key ~= self.settings.keybind then return end
+
+    if (not mcm_keybinds) then
+        self.functor(key)
+        return
+    end
+
+    if ui_mcm.get_mod_key(self.settings.second_key) then
+        self.modes[self.settings.modifier].action(key)
+    end
+end
+
+function InputManager:on_key_hold(key)
+    if key ~= self.settings.keybind then return end
+    if ui_mcm.get_mod_key(self.settings.second_key) then
+        self.modes[self.settings.modifier].action(key)
+    end
+end
+
+--[[
+    Credits: Thial
+]]
+
+class "geometry_ray"
+--[[
+(At least one range parameter should be specified)
+ray_range:
+    Defines the total range of the ray. If you want to attach the ray to
+    a fast moving object it is good to extend the ray so that you can reduce
+    the polling rate by using the get function.
+contact_range:
+    Defines the distance at which the result will report being in contact.
+    You can skip it or set it to a value lower than the ray_range to
+    still be able to get the intersection position from the result while
+    marking the ray as not being in contact yet
+distance_offset:
+    Defines how much the intersection position is offset.
+    You can use both positive and negative values or you can leave it blank.
+flags (bit map = values can be added together for combined effect):
+    0 : None
+    1 : Objects
+    2 : Statics
+    4 : Shapes
+    8 : Obstacles
+]]--
+function geometry_ray:__init(ray_range, contact_range, distance_offset, flags)
+    if ray_range == nil and contact_range == nil then
+        return nil
+    end
+    self.ray_range = ray_range or contact_range
+    self.contact_range = contact_range or ray_range
+    self.distance_offset = distance_offset ~= nil and distance_offset or 0
+    self.ray = ray_pick()
+    self.ray:set_ignore_object(db.actor)
+    self.ray:set_flags(flags or 2)
+    self.ray:set_range(self.ray_range)
+end
+--[[
+position:
+    position from which the ray will start
+direction:
+    direction in which the ray will be fired
+]]--
+function geometry_ray:get(position, direction)    
+    if position == nil or direction == nil then
+        return nil
+    end
+    self.ray:set_position(position)
+    self.ray:set_direction(direction)
+    local distance = self.ray:query() and self.ray:get_distance() or self.ray_range
+    local result = {}
+    result.in_contact = distance <= self.contact_range
+    result.position = position:add(direction:mul(distance + self.distance_offset))
+    result.distance = distance + self.distance_offset
+    return result
+end
+
+function actor_on_weapon_zoom_in(obj)
+    local c_obj = obj:cast_Weapon()
+	if (not c_obj:IsScopeAttached()) then return end
+
+    local sec = obj:section()
+    if (not SYS_GetParam(0, sec, "scope_texture")) then return end
+
+    local rotate_time = math.max(0, SYS_GetParam(2, sec, "zoom_rotate_time", 0) - 0.02)
+
+    CreateTimeEvent("efp_utils_zoom", "efp_utils_zoom", rotate_time, function()
+        scope_overlay_active = true
+        return true
+    end)
+end
+
+function actor_on_weapon_zoom_out()
+    RemoveTimeEvent("efp_utils_zoom", "efp_utils_zoom")
+    scope_overlay_active = false
+end
+
+function on_game_start()
+    for mcm_id, instances in pairs(input_instances) do
+        for id, instance in pairs(instances) do
+            instance:on_game_start()
+        end
+    end
+
+    RegisterScriptCallback("actor_on_weapon_zoom_in", actor_on_weapon_zoom_in)
+    RegisterScriptCallback("actor_on_weapon_zoom_out", actor_on_weapon_zoom_out)
+end

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="ui_mcm_menu_soulslike">
+		<text>Soulslike</text>
+	</string>
+
+    <!--General-->
+    <string id="ui_mcm_soulslike_general">
+        <text>Общий</text>
+    </string>
+    <string id="ui_mcm_soulslike_general_title">
+        <text>Настройки Jabbers' Soulslike</text>
+    </string>
+    <string id="ui_mcm_soulslike_general_description">
+        <text>Мод Soulslike привносит в Сталкер элементы игр в стиле Souls. После смерти вас спасает случайный сталкер в зоне. Он возвращает вас в установленное место последнего спавна, где вы просыпаетесь и находите сообщение от него о том, как вас нашли и на что он пошёл, чтобы доставить вас в безопасное место. Предметы, которые были на вашем персонаже, могут быть найдены, некоторые могут быть потеряны, а состояние ухудшено в зависимости от настроек.</text>
+    </string>
+    <string id="ui_mcm_soulslike_general_disclaimer">
+        <text>ОТКАЗ ОТ ОТВЕТСТВЕННОСТИ: Хватит плакать, этот мод призван усложнить игру. В связи с этим существует 100% возможность попасть в ситуацию, когда вы неожиданно потеряете свое снаряжение. Случайная потеря предметов при смерти означает, что вы можете потерять оружие или броню, умереть в центре аномалии и не иметь возможности вернуть свое снаряжение - это возможно и ожидаемо.  Всегда имейте запасной комплект, готовьтесь к худшему, надейтесь на лучшее.</text>
+    </string>
+
+    <!--Character-->
+    <string id="ui_mcm_soulslike_character">
+        <text>Персонаж</text>
+    </string>
+    <string id="ui_mcm_soulslike_character_title">
+        <text>Настройки персонажа</text>
+    </string>
+    <string id="ui_mcm_soulslike_character_rank_loss_percent">
+        <text>Потеря ранга %</text>
+    </string>
+    <string id="ui_mcm_soulslike_character_rank_loss_percent_desc">
+        <text>Количество ранга, которое вы потеряете при возрождении.</text>
+    </string>
+    <string id="ui_mcm_soulslike_character_rep_loss_percent">
+        <text>Потеря репутации %</text>
+    </string>
+    <string id="ui_mcm_soulslike_character_rep_loss_percent_desc">
+        <text>Количество личной репутации, теряемое при возрождении.</text>
+    </string>
+    <string id="ui_mcm_soulslike_character_health_loss_on_respawn">
+        <text>Потеря здоровья % при возрождении</text>
+    </string>
+    <string id="ui_mcm_soulslike_character_health_loss_on_respawn_desc">
+        <text>Это немного усложнит прохождение игры. Это количество здоровья, которое будет отнято при возрождении. Например: 25% означает, что у вас будет 75% здоровья при возрождении. Суть в том, что вы всё ещё будете немного ранены, и вам нужно будет иметь при себе аптечки, чтобы подлечиться, прежде чем пытаться продолжить игру и забрать свои вещи с места смерти.</text>
+    </string>
+
+    <!--Items-->
+    <string id="ui_mcm_soulslike_items">
+        <text>Предметы</text>
+    </string>
+    <string id="ui_mcm_soulslike_items_title">
+        <text>Настройки предметов</text>
+    </string>
+    <string id="ui_mcm_soulslike_items_keep_equipped_items_on_death">
+        <text>Сохранять снаряжение при смерти</text>
+    </string>
+    <string id="ui_mcm_soulslike_items_allow_desc">
+        <text>Нижеуказанные настройки применяются к предметам, выпадающим при смерти. Типы предметов ниже могут быть безвозвратно утрачены.</text>
+    </string>
+    <string id="ui_mcm_soulslike_items_allow_weapon_loss">
+        <text>Потеря оружия</text>
+    </string>
+    <string id="ui_mcm_soulslike_items_allow_outfit_loss">
+        <text>Потеря снаряжения</text>
+    </string>
+    <string id="ui_mcm_soulslike_items_allow_headgear_loss">
+        <text>Потеря головного убора</text>
+    </string>
+    <string id="ui_mcm_soulslike_items_allow_artifact_loss">
+        <text>Потеря артефактов</text>
+    </string>
+    <string id="ui_mcm_soulslike_items_allow_tool_loss">
+        <text>Потеря инструментов</text>
+    </string>
+    <string id="ui_mcm_soulslike_items_scalar_description">
+        <text>Потеря предметов и ухудшение их состояния зависят от вашего ранга. Чем выше ваш ранг, тем больше вероятность потери предмета или ухудшения его состояния при смерти. Это сделано для облегчения ситуации в начале новой игры, но по мере прохождения игры последствия смерти становятся всё более серьёзными. Более подробное объяснение см. во всплывающей подсказке к каждой настройке.</text>
+    </string>
+    <string id="ui_mcm_soulslike_items_item_loss_scalar">
+        <text>Коэффициент потери предметов</text>
+    </string>
+    <string id="ui_mcm_soulslike_items_item_loss_scalar_desc">
+        <text>На максимальном уровне ваш персонаж имеет 75%-ный шанс потерять каждый предмет при смерти. Параметр «Потеря предметов» позволяет вам управлять этим шансом по своему усмотрению. При значении по умолчанию 0,20 (или 20%) ваш максимальный шанс потери предмета составит 15%. Вам следует установить это значение, соответствующее вашему приемлемому уровню потери предметов. Примеры: 0,10 = 7,5%, 0,20 = 15%, 0,30 = 22%, 0,40 = 30%... вы поняли идею?</text>
+    </string>
+    <string id="ui_mcm_soulslike_items_item_condition_loss_scalar">
+        <text>Коэффициент потери состояния предметов</text>
+    </string>
+    <string id="ui_mcm_soulslike_items_item_condition_loss_scalar_desc">
+        <text>На максимальном уровне ваш персонаж будет терять 18 единиц состояния на каждом предмете после смерти. Параметр «Потеря состояния предмета» позволяет вам управлять этой потерей по своему усмотрению. При значении по умолчанию 0,05 (или 5%) максимальная потеря состояния на предмет составит 3,7. Вам следует установить это значение, соответствующее вашему приемлемому уровню потери состояния предметов. Примеры: 0,05 = 3,7, 0,10 = 7,4, 0,15 = 11... вы поняли идею?</text>
+    </string>
+ 
+    <!--Scenarios--> 
+    <string id="ui_mcm_soulslike_scenarios">
+        <text>Сценарии</text>
+    </string>
+    <string id="ui_mcm_soulslike_scenarios_title">
+        <text>Настройки сценариев</text>
+    </string>
+    <string id="ui_mcm_soulslike_scenarios_description">
+        <text>Сценарии в играх жанра Souls-like по своей природе динамичны. События возрождения происходят в зависимости от того, кто вас убил, как вас убили, где, насколько близко к месту возрождения вы находились в момент смерти, внутри или снаружи помещения, и это лишь некоторые из факторов. Эти настройки позволяют вам самостоятельно выбирать способы восстановления вашего снаряжения. По умолчанию, при возрождении у вас могут оказаться все ваши предметы при себе (опять же, в зависимости от событий), или же вы можете обнаружить свои предметы в рюкзаке на земле там, где было найдено ваше тело. Ниже представлены дополнительные варианты, и вес предметов можно изменить, чтобы сделать события возрождения более или менее частыми.</text>
+    </string>
+    <string id="ui_mcm_soulslike_scenarios_rf_detector_scenario_weight">
+        <text>Вес сценария RF-детектора</text>
+    </string>
+    <string id="ui_mcm_soulslike_scenarios_rf_detector_scenario_weight_desc">
+        <text>Для дополнительного усложнения и разнообразия ситуации, в этом сценарии ваш спасатель переместит все ваши вещи в тайник на той же карте, где вас нашли. Он сообщит вам радиочастоту, которую нужно прослушивать, чтобы отследить ваше снаряжение, а также оставит вам записку в инвентаре в качестве напоминания.</text>
+    </string>
+    <string id="ui_mcm_soulslike_scenarios_hidden_stash_scenario_weight">
+        <text>Вес сценария скрытого ящика</text>
+    </string>
+    <string id="ui_mcm_soulslike_scenarios_hidden_stash_scenario_weight_desc">
+        <text>Вещи будут переложены в тайник, отмеченный на КПК.</text>
+    </string>
+     <string id="ui_mcm_soulslike_scenarios_looter_npcs_marked">
+        <text>Отметить ворующих НПС на КПК</text>
+    </string>
+    <string id="ui_mcm_soulslike_scenarios_looter_npcs_marked_desc">
+        <text>Позволяет отслеживать НПС, которые подобрали ваше снаряжение.</text>
+    </string>
+	
+    <!--Ambush-->
+    <string id="ui_mcm_soulslike_ambush">
+        <text>Засада</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_title">
+        <text>Настройки засады</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_description">
+        <text>В зависимости от развития событий и наличия у вашего персонажа предметов, существует вероятность засады, в результате которой будет обнаружено ваше тело.</text>
+    </string>	
+    <string id="ui_mcm_soulslike_ambush_mutant_ambush_chance">
+        <text>Шанс засады мутантов</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_allow_boar_ambush">
+        <text>Разрешить кабанов</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_allow_flesh_ambush">
+        <text>Разрешить плотей</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_allow_dogs_ambush">
+        <text>Разрешить собак</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_allow_cats_ambush">
+        <text>Разрешить котов</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_allow_snorks_ambush">
+        <text>Разрешить снорков</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_allow_bloodsucker_ambush">
+        <text>Разрешить кровососов</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_allow_burer_ambush">
+        <text>Разрешить бюреров</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_allow_chimera_ambush">
+        <text>Разрешить химер</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_allow_controller_ambush">
+        <text>Разрешить контроллера</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_stalker_ambush_chance">
+        <text>Шанс засады сталкеров</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_allow_stalker_novice_ambush">
+        <text>Разрешить новичков</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_allow_stalker_advanced_ambush">
+        <text>Разрешить опытных</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_allow_stalker_veteran_ambush">
+        <text>Разрешить ветеранов</text>
+    </string>
+    <string id="ui_mcm_soulslike_ambush_allow_stalker_sniper_ambush">
+        <text>Разрешить снайперов</text>
+    </string>
+	
+    <!--Hardcore-->
+    <string id="ui_mcm_soulslike_hardcore">
+        <text>Хардкор</text>
+    </string>
+    <string id="ui_mcm_soulslike_hardcore_title">
+        <text>Настройки для хардкора</text>
+    </string>
+    <string id="ui_mcm_soulslike_hardcore_save_description">
+        <text>Режим «Хардкорное сохранение» — это как засунуть свой член в книгу в твердом переплете: ручные, быстрые и сохранения у костра отключены, и будет существовать только один файл сохранения. В режиме «Хардкорное сохранение» сохранение возможно только во время сна и при возрождении. Имейте в виду, что из-за наличия только одного файла сохранения, вы можете застрять в ситуации, когда продвижение будет затруднено, если вы потеряете все снаряжение и у вас не будет денег на лечение или еду.</text>
+     </string>
+    <string id="ui_mcm_soulslike_hardcore_is_enabled">
+        <text>Включить хардкорные сохранения</text>
+    </string>    
+    <string id="ui_mcm_soulslike_hardcore_override_campfire_hardcore_saves">
+        <text>Разрешить сохранения у костра</text>
+    </string>
+
+    <!--Debug-->
+    <string id="ui_mcm_soulslike_debug">
+        <text>Разработчик</text>
+    </string> 
+    <string id="ui_mcm_soulslike_debug_title">
+        <text>Настройки Разработчика</text>
+    </string>     
+    <string id="ui_mcm_soulslike_debug_is_enabled">
+        <text>Режим Отладки</text>
+    </string>  
+    <string id="ui_mcm_soulslike_debug_enable_tips">
+        <text>Показывать сообщения КПК</text>
+    </string>     
+    <string id="ui_mcm_soulslike_debug_debug_hidden_stashes">
+        <text>Отладка скрытых тайников</text>
+    </string>
+    <string id="ui_mcm_soulslike_debug_debug_item_loss">
+        <text>Отладка потери предметов</text>
+    </string>
+    <string id="ui_mcm_soulslike_debug_debug_the_tarkov_looter">
+        <text>Отладка "Тарковского" грабителя</text>
+    </string>
+    <string id="ui_mcm_soulslike_debug_debug_the_noloss_scenario">
+        <text>Отладка сценария без потерь</text>
+    </string>
+    <string id="ui_mcm_soulslike_debug_debug_the_default_scenario">
+        <text>Отладка сценария по умолчанию при потере</text>
+    </string>
+    <string id="ui_mcm_soulslike_debug_debug_the_rf_scenario">
+        <text>Сценарий отладки RF-детектора</text>
+    </string>
+    <string id="ui_mcm_soulslike_debug_debug_the_hidden_stash_scenario">
+        <text>Отладка сценария «Скрытый тайник»</text>
+    </string>
+	
+    <!--Debug - переведено Gemini-->	
+	<string id="ui_mcm_soulslike_debug_debug_squad_spawns">
+    <text>Отладка спавна отрядов</text>
+	</string>
+	<string id="ui_mcm_soulslike_debug_debug_always_spawn_ambush">
+    <text>Всегда спавнить засаду (отладка)</text>
+	</string>	
+</string_table>

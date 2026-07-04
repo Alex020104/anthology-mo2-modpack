@@ -17,6 +17,7 @@
 	<string id="igi_task_text_finish">
 		<text>Хорошая работа! Забирай награду.</text>
 	</string>
+
 	<!-- UI -->
 	<string id="igi_task_text_targets">
 		<text>Цель</text>
@@ -29,14 +30,5 @@
 	</string>
 	<string id="igi_task_text_treasure_unique">
 		<text>Что-то ценное</text>
-	</string>
-	<string id="igi_task_text_rewards">
-		<text>Награды: </text>
-	</string>
-	<string id="igi_task_text_money">
-		<text>RUB</text>
-	</string>
-	<string id="igi_task_text_goodwill">
-		<text>отношения</text>
 	</string>
 </string_table>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <!-- Переводы для MCM меню -->
+    <string id="ui_mcm_menu_serious_intro_screen">
+        <text>Вступительный экран</text>
+    </string>
+    <string id="ui_intro_screen_sld">
+        <text>Вступительный экран</text>
+    </string>
+    <string id="ui_mcm_intro_screen_sld_text">
+        <text>Настройки скорости печати</text>
+    </string>
+    <string id="ui_mcm_serious_intro_screen_type_anim_speed_desc">
+        <text>Устанавливает скорость печати текста во вступлении.</text>
+    </string>
+    <string id="ui_mcm_serious_intro_screen_type_anim_speed">
+        <text>Скорость анимации печати</text>
+    </string>
+    <string id="ui_mcm_lst_ui_mcm_lst_default">
+        <text>Стандартная</text>
+    </string>
+    <string id="ui_mcm_lst_ui_mcm_lst_slow">
+        <text>Медленная</text>
+    </string>
+	<string id="ui_mcm_lst_ui_mcm_lst_cinematic">
+    <text>Кинематографичная</text>
+</string>
+		    <string id="ui_mcm_lst_Intro_1">
+        <text>Интро 1</text>
+    </string>
+		    <string id="ui_mcm_lst_Intro_2">
+        <text>Интро 2</text>
+    </string>
+		    <string id="ui_mcm_lst_Intro_3">
+        <text>Интро 3</text>
+    </string>
+		    <string id="ui_mcm_lst_Intro_4">
+        <text>Интро 4</text>
+    </string>
+		    <string id="ui_mcm_lst_Intro_5">
+        <text>Интро 5</text>
+    </string>
+		    <string id="ui_mcm_lst_Intro_6">
+        <text>Интро 6</text>
+    </string>
+		    <string id="ui_mcm_lst_Intro_7">
+        <text>Интро 7</text>
+    </string>
+			    <string id="ui_mcm_lst_Typing_1">
+        <text>Печать 1</text>
+    </string>		    <string id="ui_mcm_lst_Typing_2">
+        <text>Печать 2</text>
+    </string>		    <string id="ui_mcm_lst_Typing_3">
+        <text>Печать 3</text>
+    </string>
+	<string id="ui_mcm_lst_Typing_4">
+    <text>Печать 4</text>
+</string>
+<string id="ui_mcm_lst_Typing_5">
+    <text>Печать 5</text>
+</string>
+    
+    <!-- Новые строки для выбора звуков -->
+    <string id="ui_mcm_sounds_title">
+        <text>Настройки звука</text>
+    </string>
+    <string id="ui_mcm_serious_intro_screen_ambient_sound">
+        <text>Звук интро</text>
+    </string>
+    <string id="ui_mcm_serious_intro_screen_typing_sound">
+        <text>Звук печати</text>
+    </string>
+	<string id="ui_mcm_lst_Random">
+    <text>Случайно</text>
+</string>
+
+    <!-- Строка для самого интро -->
+    <string id="sis_exclusion_zone_txt">
+        <text>Чернобыльская Аномальная Зона :</text>
+    </string>
+</string_table>

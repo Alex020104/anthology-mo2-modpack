@@ -1,6 +1,54 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
 
+<string id="ratniy_name">
+	<text>Warrior</text>
+</string>
+
+<string id="seven_name">
+	<text>Seventh</text>
+</string>
+
+<string id="sys_sergei_name">
+	<text>Partisan</text>
+</string>
+
+<string id="vanta_name">
+	<text>Vanta</text>
+</string>
+
+<string id="chimik_name">
+	<text>Chemist</text>
+</string>
+
+<string id="shura_name">
+	<text>Shura</text>
+</string>
+
+<string id="fenix_name">
+	<text>Phoenix</text>
+</string>
+
+<string id="daynega_name">
+	<text>Samurai</text>
+</string>
+
+<string id="eloquent_name">
+	<text>Eloquent</text>
+</string>
+
+<string id="dmitrov_kirill_name">
+	<text>Journalist</text>
+</string>
+
+<string id="evkor_name">
+	<text>Evkor</text>
+</string>
+
+<string id="st_actor_name_zver">
+	<text>Beast</text>
+</string>
+
 <string id="chimik_name">
 	<text>Chemist</text>
 </string>

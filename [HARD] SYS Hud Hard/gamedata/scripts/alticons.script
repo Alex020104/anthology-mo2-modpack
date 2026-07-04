@@ -8,6 +8,7 @@
 --]]
 
 size_adjust = 0.5
+bg_size_adjust = 0.72
 
 local hunger_icon_satiety_threshold = 0.5
 local thirst_icon_deprivation_threshold = 0.5
@@ -86,8 +87,8 @@ end
 
 function actor_status.UIIndicators:InitControls()
 	ratio = (device().height / device().width) / (768 / 1024)
-	self.W = 33 * size_adjust * ratio --Only change by amout of margin in the icon textures
-	self.offset = 2 * ratio * size_adjust -- controls the spacing between icons
+	self.W = 33 * bg_size_adjust * ratio -- slot width follows larger background plate
+	self.offset = 6 * ratio -- controls the spacing between icon plates
 	
 	local xml = utils_xml.get_hud_xml()
 	
@@ -117,22 +118,35 @@ function actor_status.UIIndicators:InitControls()
 		self.slot[i].xcvb_time = time_xml:InitTextWnd("quick_slot3_text", self)
 		local dialog_pos = self.dialog:GetWndPos()
 		--------------------
-		
-		for k, ele in pairs(self.slot[i]) do
-			ele:SetWndPos( vector2():set( x , 0 - ele:GetHeight() * (size_adjust -1 ) ))
-			ele:SetWndSize(vector2():set(ele:GetWidth() * ratio * size_adjust, ele:GetHeight() * size_adjust))
-		end
-		
-		-- xcvb boost time
-		local icon_pos = self.slot[i].icon_f:GetWndPos()
-		local text_x_pos = dialog_pos.x + icon_pos.x
-		local text_y_pos = dialog_pos.y + icon_pos.y - 1
-		self.slot[i].xcvb_time:SetWndPos(vector2():set( text_x_pos, text_y_pos ))
+		local bg_w = self.slot[i].back_s:GetWidth() * ratio * bg_size_adjust
+		local bg_h = self.slot[i].back_s:GetHeight() * bg_size_adjust
+		local icon_w = self.slot[i].icon_s:GetWidth() * ratio * size_adjust
+		local icon_h = self.slot[i].icon_s:GetHeight() * size_adjust
+		local icon_x = x + ((bg_w - icon_w) / 2)
+		local icon_y = 0 - self.slot[i].icon_s:GetHeight() * (size_adjust - 1)
+		local bg_y = icon_y - ((bg_h - icon_h) / 2)
 
-		local icon_width = self.slot[i].icon_f:GetWidth()
-		local self_height = self.slot[i].xcvb_time:GetHeight()
-		self.slot[i].xcvb_time:SetWndSize(vector2():set(icon_width, self_height))
-		self.slot[i].xcvb_time:SetText("")
+		self.slot[i].back_s:SetWndPos(vector2():set(x, bg_y))
+		self.slot[i].back_f:SetWndPos(vector2():set(x, bg_y))
+		self.slot[i].back_s:SetWndSize(vector2():set(bg_w, bg_h))
+		self.slot[i].back_f:SetWndSize(vector2():set(bg_w, bg_h))
+
+		self.slot[i].icon_s:SetWndPos(vector2():set(icon_x, icon_y))
+		self.slot[i].icon_f:SetWndPos(vector2():set(icon_x, icon_y))
+		self.slot[i].icon_s:SetWndSize(vector2():set(icon_w, icon_h))
+		self.slot[i].icon_f:SetWndSize(vector2():set(icon_w, icon_h))
+		-- xcvb boost time
+		if self.slot[i].xcvb_time then
+			local icon_pos = self.slot[i].icon_f:GetWndPos()
+			local text_x_pos = dialog_pos.x + icon_pos.x + 5
+			local text_y_pos = dialog_pos.y + icon_pos.y - 5
+			self.slot[i].xcvb_time:SetWndPos(vector2():set(text_x_pos, text_y_pos))
+
+			local icon_width = self.slot[i].icon_f:GetWidth() * 0.72
+			local self_height = self.slot[i].xcvb_time:GetHeight() * 0.72
+			self.slot[i].xcvb_time:SetWndSize(vector2():set(icon_width, self_height))
+			self.slot[i].xcvb_time:SetText("")
+		end
 		---------------------
 	end
 end

@@ -1,0 +1,195 @@
+-- R.A.K HoC HD icon scale patch.
+-- Loads late: sections with inv_grid_scale use that value, everything else stays scale = 1.
+
+local hoc_backpacks = ini_file_ex("icon_override\\ico_backpacks.ltx")
+local hoc_icon_override = icon_override or (aaa_rax_icon_override_mcm and aaa_rax_icon_override_mcm.icon_override) or ini_file_ex("icon_override\\icon_override.ltx")
+local sync_element = utils_xml.sync_element
+local clr_icon_1 = GetARGB(255, 255, 255, 255)
+local clr_icon_2 = GetARGB(70, 255, 255, 255)
+
+local function hoc_is_backpack(sec)
+	return sec and hoc_backpacks and hoc_backpacks:section_exist(sec)
+end
+
+local function hoc_raw_scale(sec)
+	if not sec then return 1 end
+	if hoc_is_backpack(sec) then
+		return hoc_backpacks:r_float_ex(sec, "inv_grid_scale") or 1
+	end
+	if hoc_icon_override and hoc_icon_override:section_exist(sec) then
+		return hoc_icon_override:r_float_ex(sec, "inv_grid_scale") or SYS_GetParam(2, sec, "inv_grid_scale", 1)
+	end
+	return SYS_GetParam(2, sec, "inv_grid_scale", 1)
+end
+
+local function hoc_is_hd(sec)
+	return (hoc_raw_scale(sec) or 1) ~= 1
+end
+
+local function hoc_param(sec, field, kind, default)
+	if hoc_is_backpack(sec) then
+		if kind == 0 then
+			return hoc_backpacks:r_string_ex(sec, field) or default
+		end
+		return hoc_backpacks:r_float_ex(sec, field) or default
+	end
+	if hoc_icon_override and hoc_icon_override:section_exist(sec) then
+		if kind == 0 then
+			return hoc_icon_override:r_string_ex(sec, field) or default
+		end
+		return hoc_icon_override:r_float_ex(sec, field) or default
+	end
+	return SYS_GetParam(kind, sec, field, default)
+end
+
+local function hoc_scale(sec)
+	return hoc_raw_scale(sec) or 1
+end
+
+function utils_xml.get_icons_texture(section)
+	if not section then return "ui\\ui_icon_equipment" end
+	if hoc_is_backpack(section) then
+		return hoc_backpacks:r_string_ex(section, "icons_texture") or "ui\\ui_icon_equipment"
+	end
+	if hoc_icon_override and hoc_icon_override:section_exist(section) then
+		return hoc_icon_override:r_string_ex(section, "icons_texture") or "ui\\ui_icon_equipment"
+	end
+	return ini_sys:r_string_ex(section, "icons_texture") or "ui\\ui_icon_equipment"
+end
+
+function utils_xml.get_item_axis(section, grid_size, unpacked)
+	grid_size = grid_size or 50
+	local inv_grid_x = hoc_param(section, "inv_grid_x", 2, 0) or 0
+	local inv_grid_y = hoc_param(section, "inv_grid_y", 2, 0) or 0
+	local inv_grid_width = hoc_param(section, "inv_grid_width", 2, 0) or 0
+	local inv_grid_height = hoc_param(section, "inv_grid_height", 2, 0) or 0
+	local scale = hoc_scale(section)
+	local x1 = inv_grid_x * grid_size
+	local y1 = inv_grid_y * grid_size
+	local raw_w = inv_grid_width * grid_size
+	local raw_h = inv_grid_height * grid_size
+	local x2 = x1 + raw_w
+	local y2 = y1 + raw_h
+	local w = math.ceil(raw_w / scale)
+	local h = math.ceil(raw_h / scale)
+	if unpacked then
+		return x1, y1, x2, y2
+	end
+	return { x1=x1, y1=y1, x2=x2, y2=y2, w=w, h=h }
+end
+
+function utils_xml.set_icon(sec, hidden, XML_temp, XML_box, XML_box_small)
+	if not (XML_temp and XML_box) then
+		callstack()
+		printe("!ERROR utils_xml.set_icon | XML_box or XML_temp doesn't exist")
+		return
+	end
+	if not (sec and ini_sys:section_exist(sec)) then
+		XML_box:Show(false)
+		callstack()
+		printe("!ERROR utils_xml.set_icon | section [%s] doesn't exist in system ini", sec)
+		return
+	end
+
+	local ico = utils_xml.get_item_axis(sec)
+	XML_box:InitTexture(utils_xml.get_icons_texture(sec))
+	XML_box:SetTextureRect(Frect():set(ico.x1, ico.y1, ico.x2, ico.y2))
+	XML_box:SetTextureColor(hidden and clr_icon_2 or clr_icon_1)
+	XML_box:SetStretchTexture(true)
+	XML_box:Show(true)
+
+	local pos = XML_temp:GetWndPos()
+	local frame_w = XML_temp:GetWidth()
+	local frame_h = XML_temp:GetHeight()
+	local ratio = utils_xml.screen_ratio()
+	local icon_mul = 1
+	local w = math.ceil(ico.w * icon_mul * ratio)
+	local h = math.ceil(ico.h * icon_mul)
+	local icon_ratio = w / h
+
+	if w > frame_w then
+		w = frame_w
+		h = w / icon_ratio
+	end
+	if h > frame_h then
+		h = frame_h
+		w = h * icon_ratio
+	end
+
+	local offset_x = (frame_w - w) / 2
+	local offset_y = (frame_h - h) / 2
+	XML_box:SetWndSize(vector2():set(w, h))	
+	XML_box:SetWndPos(vector2():set(pos.x + offset_x, pos.y + offset_y))
+
+	if XML_box_small then
+		local layer = SYS_GetParam(0, sec, "1icon_layer")
+		if layer then
+			utils_xml.set_icon(layer, hidden, XML_temp, XML_box_small)
+		end
+	end
+end
+
+function utils_ui.UICellItem:Set(obj, area)
+	local ratio = utils_xml.screen_ratio()
+	local ratio_1610 = (4/3) / (16/10)
+	ratio = (ratio > ratio_1610) and (ratio < 1) and ratio_1610 or ratio
+
+	local xml = self:GetXML()
+	local is_obj = (self.showcase == 0)
+	local grid_size = self.grid_size
+	local sec = is_obj and obj:section() or obj
+	local clsid = is_obj and obj:clsid()
+
+	local x = hoc_param(sec, "inv_grid_x", 2)
+	local y = hoc_param(sec, "inv_grid_y", 2)
+	local w = hoc_param(sec, "inv_grid_width", 2)
+	local h = hoc_param(sec, "inv_grid_height", 2)
+	if not x or not y or not w or not h then
+		return false
+	end
+
+	local scale = hoc_scale(sec)
+	x = x * grid_size
+	y = y * grid_size
+	local icon_w = math.ceil(w * grid_size / scale)
+	local icon_h = math.ceil(h * grid_size / scale)
+	local grid_line = self.grid_line or 0
+	w = math.ceil(w * grid_size / scale) + (math.ceil(w / scale) - 1) * grid_line
+	h = math.ceil(h * grid_size / scale) + (math.ceil(h / scale) - 1) * grid_line
+
+	self.ID = is_obj and obj:id() or nil
+	self.section = sec
+	self.area = area
+	self.X = x
+	self.Y = y
+	self.W = w
+	self.H = h
+
+	if area and (not self.manual) then
+		local area_x = ((area.x * grid_size) - grid_size) * ratio
+		local area_y = (area.y * grid_size) - grid_size
+		local area_xl = grid_line * area.x * ratio
+		local area_yl = grid_line * area.y
+		self.cell:SetWndPos(vector2():set(area_x + area_xl, area_y + area_yl))
+		self.cell:SetWndSize(vector2():set(w * ratio, h))
+		sync_element(self.hl, self.cell)
+	elseif self.st then
+		local st_x = ((self.st:GetWidth() / 2) - ((w * ratio) / 2))
+		local st_y = ((self.st:GetHeight() / 2) - (h / 2))
+		self.cell:SetWndPos(vector2():set(st_x, st_y))
+		self.cell:SetWndSize(vector2():set(w * ratio, h))
+		sync_element(self.hl, self.cell)
+	end
+
+	self:Add_Icon(sec, icon_w, icon_h)
+	self:Add_Shadow(sec, icon_w, icon_h)
+	self:Add_Layers(xml, obj, sec, clsid)
+
+	local is_updated = self:Update(is_obj and obj)
+	if not is_updated then
+		self:Reset()
+		return false
+	end
+	self.cell:Show(true)
+	return true
+end

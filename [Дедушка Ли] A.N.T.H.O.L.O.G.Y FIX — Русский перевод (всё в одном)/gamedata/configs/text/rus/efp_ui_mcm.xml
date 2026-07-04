@@ -398,5 +398,13 @@
 	<string id="ui_mcm_efp_ui_use_inv_weights">
 		<text>"Inventory Weights Revised" - Demonized\n(показывать вес на иконках предметов)</text>
 	</string>
+	<string id="ui_mcm_efp_ui_inv_weights_key">
+		<text>Показать клавишу</text>
+	</string>
+
+	<!-- num_parts_cond_font -->
+	<string id="ui_mcm_efp_ui_num_parts_cond_font">
+		<text>Шрифт текста о состоянии деталей</text>
+	</string>
 	
 </string_table>

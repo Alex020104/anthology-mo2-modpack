@@ -107,13 +107,13 @@
 		<text>Метод ввода</text>
 	</string>
 	<string id="ui_mcm_demonized_ledge_grabbing_keybind">
-		<text>Клавиша</text>
+		<text>Клавиша захвата за выступ</text>
 	</string>
 	<string id="ui_mcm_lst_demonized_ledge_grabbing_inputMethod_jumpHold">
 		<text>Удержание клавиши</text>
 	</string>
 	<string id="ui_mcm_lst_demonized_ledge_grabbing_inputMethod_buttonPress">
-		<text>Нажатие кнопки</text>
+		<text>Нажатие клавиши</text>
 	</string>
 	<string id="ui_mcm_lst_demonized_ledge_grabbing_inputMethod_both">
 		<text>Оба метода</text>

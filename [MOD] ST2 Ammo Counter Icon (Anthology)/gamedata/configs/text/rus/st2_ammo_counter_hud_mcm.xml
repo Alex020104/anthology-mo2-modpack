@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="ui_mcm_st2_ammo_counter_hud">
+		<text>ST2 счётчик патронов</text>
+	</string>
+	<string id="ui_mcm_menu_st2_ammo_counter_hud">
+		<text>ST2 счётчик патронов</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_disabled_output">
+		<text>Сначала включи главный параметр UI.</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_disabled_hint">
+		<text>UI выключен. Остальные вкладки и параметры скрыты до включения главного переключателя.</text>
+	</string>
+
+	<string id="ui_mcm_st2_ammo_counter_hud_enable">
+		<text>ВКЛ/ВЫКЛ</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_enable_title">
+		<text>ВКЛ/ВЫКЛ</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_enable_enabled">
+		<text>Включить ST2 счётчик патронов</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_enable_toggle_key">
+		<text>Клавиша ВКЛ/ВЫКЛ</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_enable_show_background">
+		<text>Показать/убрать: Бэкграунд</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_enable_show_ammo_icon">
+		<text>Показать/убрать: Иконку патронов</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_enable_show_ammo_name">
+		<text>Показать/убрать: Название патронов</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_enable_show_fire_modes">
+		<text>Показать/убрать: Режим огня</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_enable_show_counter">
+		<text>Показать/убрать: Счётчик патронов</text>
+	</string>
+
+	<string id="ui_mcm_st2_ammo_counter_hud_move">
+		<text>Перемещение</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_move_title">
+		<text>Перемещение</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_move_whole_x">
+		<text>Весь UI: X</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_move_whole_y">
+		<text>Весь UI: Y</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_move_background_x">
+		<text>Бэкграунд: X</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_move_background_y">
+		<text>Бэкграунд: Y</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_move_counter_x">
+		<text>Счётчик: X</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_move_counter_y">
+		<text>Счётчик: Y</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_move_ammo_icon_x">
+		<text>Иконка патронов: X</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_move_ammo_icon_y">
+		<text>Иконка патронов: Y</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_move_ammo_name_x">
+		<text>Название патронов: X</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_move_ammo_name_y">
+		<text>Название патронов: Y</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_move_fire_mode_x">
+		<text>Режим огня: X</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_move_fire_mode_y">
+		<text>Режим огня: Y</text>
+	</string>
+
+	<string id="ui_mcm_st2_ammo_counter_hud_scale">
+		<text>Масштабирование</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_scale_title">
+		<text>Масштабирование</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_scale_whole">
+		<text>Весь UI</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_scale_background">
+		<text>Бэкграунд</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_scale_counter">
+		<text>Счётчик патронов</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_scale_ammo_icon">
+		<text>Иконка патронов</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_scale_ammo_name">
+		<text>Название патронов</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_scale_fire_mode">
+		<text>Режим огня</text>
+	</string>
+
+	<string id="ui_mcm_st2_ammo_counter_hud_events">
+		<text>Появление/исчезание</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_events_title">
+		<text>Появление/исчезание</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_events_visible_time">
+		<text>Время до исчезновения, сек.</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_events_fade_in_time">
+		<text>Плавное появление, сек.</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_events_fade_time">
+		<text>Плавное исчезновение, сек.</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_events_reload">
+		<text>Появление при перезарядке</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_events_mag_check">
+		<text>Появление при осмотре магазина</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_events_bore">
+		<text>Появление при осмотре оружия (anm_bore)</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_events_shot">
+		<text>Появление при выстреле (anm_shot/anm_shoot)</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_events_ads">
+		<text>Появление при входе в прицеливание</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_events_npc_aggro">
+		<text>Появление при агре НПС</text>
+	</string>
+	<string id="ui_mcm_st2_ammo_counter_hud_events_show">
+		<text>Появление при доставании оружия (anm_show)</text>
+	</string>
+</string_table>

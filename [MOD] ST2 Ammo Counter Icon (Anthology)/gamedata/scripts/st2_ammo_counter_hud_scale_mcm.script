@@ -1,0 +1,33 @@
+-- Scale settings tab for ST2 ammo counter HUD.
+
+local COLLECTION_ID = "st2_ammo_counter_hud"
+
+local function settings_enabled()
+	return st2_ammo_counter_hud_mcm
+		and st2_ammo_counter_hud_mcm.settings_enabled
+		and st2_ammo_counter_hud_mcm.settings_enabled()
+end
+
+local function track(id, def)
+	return { id = id, type = "track", val = 2, def = def, min = 0.5, max = 2, step = 0.05 }
+end
+
+function on_mcm_load()
+	return {
+		id = "scale",
+		sh = true,
+		text = "ui_mcm_st2_ammo_counter_hud_scale",
+		precondition = { settings_enabled },
+		output = "ui_mcm_st2_ammo_counter_hud_disabled_output",
+		gr = {
+			{ id = "scale_title", type = "slide", link = "ui_options_slider_player", text = "ui_mcm_st2_ammo_counter_hud_scale_title", size = { 512, 50 }, spacing = 20 },
+			track("whole", 1),
+			{ id = "line_1", type = "line" },
+			track("background", 1),
+			track("counter", 1),
+			track("ammo_icon", 1),
+			track("ammo_name", 1),
+			track("fire_mode", 1),
+		},
+	}, COLLECTION_ID
+end

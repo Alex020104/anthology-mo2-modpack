@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+    <!-- S2 Ambience Sounds MCM - Расширенная версия -->
+    
+    <string id="ui_mcm_menu_s2_ambience"><text>S2 Окружающие звуки</text></string>
+    <string id="ui_mcm_s2_ambience_title"><text>S2 Окружающие звуки - Расширенные настройки</text></string>
+    <string id="ui_mcm_s2_ambience_desc"><text>Детальная настройка окружающих звуков с контролем отдельных категорий.</text></string>
+    
+    <!-- Master -->
+    <string id="ui_mcm_s2_ambience_master_title"><text>Основные настройки</text></string>
+    <string id="ui_mcm_s2_ambience_enabled"><text>Включить мод</text></string>
+    <string id="ui_mcm_s2_ambience_enabled_hint"><text>Включить/отключить систему окружающих звуков.</text></string>
+    <string id="ui_mcm_s2_ambience_master_volume"><text>Общая громкость</text></string>
+    <string id="ui_mcm_s2_ambience_master_volume_hint"><text>Множитель громкости (0 = тишина, 1 = норма, 2 = удвоенная).</text></string>
+    <string id="ui_mcm_s2_ambience_frequency_multiplier"><text>Частота звуков</text></string>
+    <string id="ui_mcm_s2_ambience_frequency_multiplier_hint"><text>Как часто играют звуки (0.25 = редко, 1 = норма, 3 = часто).</text></string>
+    
+    <!-- Context -->
+    <string id="ui_mcm_s2_ambience_context_title"><text>Контекстные настройки</text></string>
+    <string id="ui_mcm_s2_ambience_enable_day_sounds"><text>Дневные звуки</text></string>
+    <string id="ui_mcm_s2_ambience_enable_day_sounds_hint"><text>Звуки днём.</text></string>
+    <string id="ui_mcm_s2_ambience_enable_night_sounds"><text>Ночные звуки</text></string>
+    <string id="ui_mcm_s2_ambience_enable_night_sounds_hint"><text>Звуки ночью.</text></string>
+    <string id="ui_mcm_s2_ambience_enable_rain_sounds"><text>Звуки дождя</text></string>
+    <string id="ui_mcm_s2_ambience_enable_rain_sounds_hint"><text>Звуки во время дождя.</text></string>
+    <string id="ui_mcm_s2_ambience_enable_storm_sounds"><text>Звуки грозы</text></string>
+    <string id="ui_mcm_s2_ambience_enable_storm_sounds_hint"><text>Звуки во время грозы.</text></string>
+    <string id="ui_mcm_s2_ambience_enable_indoor_sounds"><text>Звуки в помещениях</text></string>
+    <string id="ui_mcm_s2_ambience_enable_indoor_sounds_hint"><text>Звуки внутри зданий.</text></string>
+    <string id="ui_mcm_s2_ambience_enable_underground_sounds"><text>Подземные звуки</text></string>
+    <string id="ui_mcm_s2_ambience_enable_underground_sounds_hint"><text>Звуки в подземельях.</text></string>
+    <string id="ui_mcm_s2_ambience_enable_static_emitters"><text>Статичные источники</text></string>
+    <string id="ui_mcm_s2_ambience_enable_static_emitters_hint"><text>Локационные источники звука.</text></string>
+    
+    <!-- Birds -->
+    <string id="ui_mcm_s2_ambience_birds_title"><text>Птицы</text></string>
+    <string id="ui_mcm_s2_ambience_cat_crows"><text>Вороны</text></string>
+    <string id="ui_mcm_s2_ambience_cat_crows_hint"><text>Карканье ворон.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_crows"><text>Громкость ворон</text></string>
+    <string id="ui_mcm_s2_ambience_vol_crows_hint"><text>Громкость звуков ворон.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_songbirds"><text>Певчие птицы</text></string>
+    <string id="ui_mcm_s2_ambience_cat_songbirds_hint"><text>Пение мелких птиц.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_songbirds"><text>Громкость певчих птиц</text></string>
+    <string id="ui_mcm_s2_ambience_vol_songbirds_hint"><text>Громкость пения птиц.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_hawks"><text>Ястребы</text></string>
+    <string id="ui_mcm_s2_ambience_cat_hawks_hint"><text>Крики ястребов.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_hawks"><text>Громкость ястребов</text></string>
+    <string id="ui_mcm_s2_ambience_vol_hawks_hint"><text>Громкость криков ястребов.</text></string>
+    
+    <!-- Dogs -->
+    <string id="ui_mcm_s2_ambience_dogs_title"><text>Собаки</text></string>
+    <string id="ui_mcm_s2_ambience_cat_dogs_bark"><text>Лай собак</text></string>
+    <string id="ui_mcm_s2_ambience_cat_dogs_bark_hint"><text>Далёкий лай собак.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_dogs_bark"><text>Громкость лая</text></string>
+    <string id="ui_mcm_s2_ambience_vol_dogs_bark_hint"><text>Громкость лая собак.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_dogs_howl"><text>Вой собак</text></string>
+    <string id="ui_mcm_s2_ambience_cat_dogs_howl_hint"><text>Далёкий вой собак и волков.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_dogs_howl"><text>Громкость воя</text></string>
+    <string id="ui_mcm_s2_ambience_vol_dogs_howl_hint"><text>Громкость воя.</text></string>
+    
+    <!-- Insects -->
+    <string id="ui_mcm_s2_ambience_insects_title"><text>Насекомые</text></string>
+    <string id="ui_mcm_s2_ambience_cat_crickets"><text>Сверчки</text></string>
+    <string id="ui_mcm_s2_ambience_cat_crickets_hint"><text>Стрекотание сверчков.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_crickets"><text>Громкость сверчков</text></string>
+    <string id="ui_mcm_s2_ambience_vol_crickets_hint"><text>Громкость сверчков.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_flies"><text>Мухи и насекомые</text></string>
+    <string id="ui_mcm_s2_ambience_cat_flies_hint"><text>Жужжание мух и насекомых.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_flies"><text>Громкость мух</text></string>
+    <string id="ui_mcm_s2_ambience_vol_flies_hint"><text>Громкость мух.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_fireflies"><text>Светлячки</text></string>
+    <string id="ui_mcm_s2_ambience_cat_fireflies_hint"><text>Звуки светлячков.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_fireflies"><text>Громкость светлячков</text></string>
+    <string id="ui_mcm_s2_ambience_vol_fireflies_hint"><text>Громкость светлячков.</text></string>
+    
+    <!-- Wind -->
+    <string id="ui_mcm_s2_ambience_wind_title"><text>Ветер</text></string>
+    <string id="ui_mcm_s2_ambience_cat_wind_light"><text>Лёгкий ветер</text></string>
+    <string id="ui_mcm_s2_ambience_cat_wind_light_hint"><text>Лёгкий бриз и порывы.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_wind_light"><text>Громкость лёгкого ветра</text></string>
+    <string id="ui_mcm_s2_ambience_vol_wind_light_hint"><text>Громкость лёгкого ветра.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_wind_strong"><text>Сильный ветер</text></string>
+    <string id="ui_mcm_s2_ambience_cat_wind_strong_hint"><text>Сильные порывы и завывания.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_wind_strong"><text>Громкость сильного ветра</text></string>
+    <string id="ui_mcm_s2_ambience_vol_wind_strong_hint"><text>Громкость сильного ветра.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_wind_interior"><text>Ветер в помещении</text></string>
+    <string id="ui_mcm_s2_ambience_cat_wind_interior_hint"><text>Ветер через окна и щели.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_wind_interior"><text>Громкость ветра в помещении</text></string>
+    <string id="ui_mcm_s2_ambience_vol_wind_interior_hint"><text>Громкость ветра внутри.</text></string>
+    
+    <!-- Wildlife -->
+    <string id="ui_mcm_s2_ambience_wildlife_title"><text>Живая природа</text></string>
+    <string id="ui_mcm_s2_ambience_cat_frogs"><text>Лягушки</text></string>
+    <string id="ui_mcm_s2_ambience_cat_frogs_hint"><text>Кваканье лягушек на болотах.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_frogs"><text>Громкость лягушек</text></string>
+    <string id="ui_mcm_s2_ambience_vol_frogs_hint"><text>Громкость лягушек.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_bats"><text>Летучие мыши</text></string>
+    <string id="ui_mcm_s2_ambience_cat_bats_hint"><text>Писк и хлопанье крыльев.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_bats"><text>Громкость летучих мышей</text></string>
+    <string id="ui_mcm_s2_ambience_vol_bats_hint"><text>Громкость летучих мышей.</text></string>
+    
+    <!-- Nature -->
+    <string id="ui_mcm_s2_ambience_nature_title"><text>Природа</text></string>
+    <string id="ui_mcm_s2_ambience_cat_grass"><text>Шелест травы</text></string>
+    <string id="ui_mcm_s2_ambience_cat_grass_hint"><text>Ветер в траве и растительности.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_grass"><text>Громкость травы</text></string>
+    <string id="ui_mcm_s2_ambience_vol_grass_hint"><text>Громкость шелеста травы.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_leaves"><text>Листья</text></string>
+    <string id="ui_mcm_s2_ambience_cat_leaves_hint"><text>Шелест листвы.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_leaves"><text>Громкость листьев</text></string>
+    <string id="ui_mcm_s2_ambience_vol_leaves_hint"><text>Громкость листвы.</text></string>
+    
+    <!-- Trees -->
+    <string id="ui_mcm_s2_ambience_trees_title"><text>Деревья (скрип древесины)</text></string>
+    <string id="ui_mcm_s2_ambience_cat_trees_light"><text>Лёгкий скрип</text></string>
+    <string id="ui_mcm_s2_ambience_cat_trees_light_hint"><text>Лёгкий скрип стволов и веток.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_trees_light"><text>Громкость лёгкого скрипа</text></string>
+    <string id="ui_mcm_s2_ambience_vol_trees_light_hint"><text>Громкость лёгкого скрипа.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_trees_heavy"><text>Сильный скрип</text></string>
+    <string id="ui_mcm_s2_ambience_cat_trees_heavy_hint"><text>Громкий скрип и треск деревьев.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_trees_heavy"><text>Громкость сильного скрипа</text></string>
+    <string id="ui_mcm_s2_ambience_vol_trees_heavy_hint"><text>Громкость сильного скрипа.</text></string>
+    
+    <!-- Metal -->
+    <string id="ui_mcm_s2_ambience_metal_title"><text>Металлические конструкции</text></string>
+    <string id="ui_mcm_s2_ambience_cat_metal_hangars"><text>Ангары</text></string>
+    <string id="ui_mcm_s2_ambience_cat_metal_hangars_hint"><text>Скрип ангаров и порывы ветра.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_metal_hangars"><text>Громкость ангаров</text></string>
+    <string id="ui_mcm_s2_ambience_vol_metal_hangars_hint"><text>Громкость ангаров.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_metal_small"><text>Мелкий металл</text></string>
+    <string id="ui_mcm_s2_ambience_cat_metal_small_hint"><text>Заборы, трубы, мелкие конструкции.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_metal_small"><text>Громкость мелкого металла</text></string>
+    <string id="ui_mcm_s2_ambience_vol_metal_small_hint"><text>Громкость мелкого металла.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_metal_large"><text>Крупный металл</text></string>
+    <string id="ui_mcm_s2_ambience_cat_metal_large_hint"><text>Большие металлические конструкции.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_metal_large"><text>Громкость крупного металла</text></string>
+    <string id="ui_mcm_s2_ambience_vol_metal_large_hint"><text>Громкость крупного металла.</text></string>
+    
+    <!-- Urban -->
+    <string id="ui_mcm_s2_ambience_urban_title"><text>Городские</text></string>
+    <string id="ui_mcm_s2_ambience_cat_urban_debris"><text>Мусор и пыль</text></string>
+    <string id="ui_mcm_s2_ambience_cat_urban_debris_hint"><text>Падающий мусор, пыль, шаги по обломкам.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_urban_debris"><text>Громкость мусора</text></string>
+    <string id="ui_mcm_s2_ambience_vol_urban_debris_hint"><text>Громкость мусора.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_urban_glass"><text>Стекло</text></string>
+    <string id="ui_mcm_s2_ambience_cat_urban_glass_hint"><text>Бьющееся и дребезжащее стекло.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_urban_glass"><text>Громкость стекла</text></string>
+    <string id="ui_mcm_s2_ambience_vol_urban_glass_hint"><text>Громкость стекла.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_urban_windows"><text>Окна</text></string>
+    <string id="ui_mcm_s2_ambience_cat_urban_windows_hint"><text>Дребезжание и хлопанье окон.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_urban_windows"><text>Громкость окон</text></string>
+    <string id="ui_mcm_s2_ambience_vol_urban_windows_hint"><text>Громкость окон.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_urban_garbage"><text>Летящий мусор</text></string>
+    <string id="ui_mcm_s2_ambience_cat_urban_garbage_hint"><text>Бумага и мусор, гонимый ветром.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_urban_garbage"><text>Громкость летящего мусора</text></string>
+    <string id="ui_mcm_s2_ambience_vol_urban_garbage_hint"><text>Громкость летящего мусора.</text></string>
+    
+    <!-- Rain -->
+    <string id="ui_mcm_s2_ambience_rain_title"><text>Эффекты дождя</text></string>
+    <string id="ui_mcm_s2_ambience_rain_frequency_multiplier"><text>Частота капель дождя</text></string>
+    <string id="ui_mcm_s2_ambience_rain_frequency_multiplier_hint"><text>Как часто звуки капель (0.1 = редко, 1 = норма, 3 = часто). Независим от общей частоты.</text></string>
+    <string id="ui_mcm_s2_ambience_dynamic_rain_frequency"><text>Динамическая частота дождя</text></string>
+    <string id="ui_mcm_s2_ambience_dynamic_rain_frequency_hint"><text>Когда включено, частота капель автоматически меняется в зависимости от интенсивности дождя - редкие капли при слабом дожде, частые при ливне.</text></string>
+        <string id="ui_mcm_s2_ambience_vol_rain_loop"><text>Rain Ambience Volume</text></string>
+    <string id="ui_mcm_s2_ambience_vol_rain_loop_hint"><text>Volume for continuous rain background loop.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_rain_general"><text>Обычный дождь</text></string>
+    <string id="ui_mcm_s2_ambience_cat_rain_general_hint"><text>Общие звуки дождя и капель.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_rain_general"><text>Громкость дождя</text></string>
+    <string id="ui_mcm_s2_ambience_vol_rain_general_hint"><text>Громкость обычного дождя.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_rain_metal"><text>Дождь по металлу</text></string>
+    <string id="ui_mcm_s2_ambience_cat_rain_metal_hint"><text>Капли по металлическим поверхностям.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_rain_metal"><text>Громкость дождя по металлу</text></string>
+    <string id="ui_mcm_s2_ambience_vol_rain_metal_hint"><text>Громкость капель по металлу.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_rain_wood"><text>Дождь по дереву</text></string>
+    <string id="ui_mcm_s2_ambience_cat_rain_wood_hint"><text>Капли по деревянным поверхностям.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_rain_wood"><text>Громкость дождя по дереву</text></string>
+    <string id="ui_mcm_s2_ambience_vol_rain_wood_hint"><text>Громкость капель по дереву.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_rain_bushes"><text>Дождь по кустам</text></string>
+    <string id="ui_mcm_s2_ambience_cat_rain_bushes_hint"><text>Капли по листве и кустам.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_rain_bushes"><text>Громкость дождя по кустам</text></string>
+    <string id="ui_mcm_s2_ambience_vol_rain_bushes_hint"><text>Громкость капель по кустам.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_rain_interior"><text>Дождь в помещении</text></string>
+    <string id="ui_mcm_s2_ambience_cat_rain_interior_hint"><text>Дождь слышимый изнутри.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_rain_interior"><text>Громкость дождя внутри</text></string>
+    <string id="ui_mcm_s2_ambience_vol_rain_interior_hint"><text>Громкость дождя внутри.</text></string>
+    
+    <!-- Underground -->
+    <string id="ui_mcm_s2_ambience_underground_title"><text>Подземелья</text></string>
+    <string id="ui_mcm_s2_ambience_cat_ug_metal"><text>Лязг металла</text></string>
+    <string id="ui_mcm_s2_ambience_cat_ug_metal_hint"><text>Подземные трубы и металл.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_ug_metal"><text>Громкость металла</text></string>
+    <string id="ui_mcm_s2_ambience_vol_ug_metal_hint"><text>Громкость подземного металла.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_ug_water"><text>Капли воды</text></string>
+    <string id="ui_mcm_s2_ambience_cat_ug_water_hint"><text>Капающая вода в туннелях.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_ug_water"><text>Громкость капель</text></string>
+    <string id="ui_mcm_s2_ambience_vol_ug_water_hint"><text>Громкость капель воды.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_ug_rocks"><text>Камни и бетон</text></string>
+    <string id="ui_mcm_s2_ambience_cat_ug_rocks_hint"><text>Осыпающиеся камни и бетон.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_ug_rocks"><text>Громкость камней</text></string>
+    <string id="ui_mcm_s2_ambience_vol_ug_rocks_hint"><text>Громкость камней.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_ug_rumble"><text>Глубокий гул</text></string>
+    <string id="ui_mcm_s2_ambience_cat_ug_rumble_hint"><text>Низкий гул и подземный ветер.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_ug_rumble"><text>Громкость гула</text></string>
+    <string id="ui_mcm_s2_ambience_vol_ug_rumble_hint"><text>Громкость подземного гула.</text></string>
+    
+    <!-- Interior -->
+    <string id="ui_mcm_s2_ambience_interior_title"><text>Интерьер</text></string>
+    <string id="ui_mcm_s2_ambience_cat_interior_wood"><text>Скрип дерева</text></string>
+    <string id="ui_mcm_s2_ambience_cat_interior_wood_hint"><text>Скрип полов и балок внутри.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_interior_wood"><text>Громкость скрипа</text></string>
+    <string id="ui_mcm_s2_ambience_vol_interior_wood_hint"><text>Громкость скрипа дерева.</text></string>
+    
+    <!-- USO -->
+    <string id="ui_mcm_s2_ambience_uso_title"><text>Фоновый эмбиент (USO)</text></string>
+    <string id="ui_mcm_s2_ambience_cat_uso_day"><text>Дневной эмбиент</text></string>
+    <string id="ui_mcm_s2_ambience_cat_uso_day_hint"><text>Дневные атмосферные звуки.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_uso_day"><text>Громкость дневного</text></string>
+    <string id="ui_mcm_s2_ambience_vol_uso_day_hint"><text>Громкость дневного эмбиента.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_uso_night"><text>Ночной эмбиент</text></string>
+    <string id="ui_mcm_s2_ambience_cat_uso_night_hint"><text>Ночные атмосферные звуки.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_uso_night"><text>Громкость ночного</text></string>
+    <string id="ui_mcm_s2_ambience_vol_uso_night_hint"><text>Громкость ночного эмбиента.</text></string>
+    
+    <!-- Horror -->
+    <string id="ui_mcm_s2_ambience_horror_title"><text>Хоррор / Лаборатории</text></string>
+    <string id="ui_mcm_s2_ambience_cat_lab_horror"><text>Лабораторный хоррор</text></string>
+    <string id="ui_mcm_s2_ambience_cat_lab_horror_hint"><text>Крики, шёпот, пси-эффекты в лабах.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_lab_horror"><text>Громкость хоррора</text></string>
+    <string id="ui_mcm_s2_ambience_vol_lab_horror_hint"><text>Громкость лабораторного хоррора.</text></string>
+    <string id="ui_mcm_s2_ambience_cat_acid"><text>Кислота / Аномалии</text></string>
+    <string id="ui_mcm_s2_ambience_cat_acid_hint"><text>Шипение кислоты и звуки аномалий.</text></string>
+    <string id="ui_mcm_s2_ambience_vol_acid"><text>Громкость аномалий</text></string>
+    <string id="ui_mcm_s2_ambience_vol_acid_hint"><text>Громкость звуков аномалий.</text></string>
+    
+    <!-- Advanced -->
+    <string id="ui_mcm_s2_ambience_advanced_title"><text>Расширенные настройки</text></string>
+    <string id="ui_mcm_s2_ambience_tick_interval"><text>Интервал обновления (мс)</text></string>
+    <string id="ui_mcm_s2_ambience_tick_interval_hint"><text>Частота обновления (50-500мс).</text></string>
+    <string id="ui_mcm_s2_ambience_debug_mode"><text>Режим отладки</text></string>
+    <string id="ui_mcm_s2_ambience_debug_mode_hint"><text>Отладочные сообщения в консоли.</text></string>
+</string_table>

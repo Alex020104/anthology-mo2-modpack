@@ -1,10 +1,8 @@
 {
-  "version": "2026.05.31.3",
+  "version": "2026.07.05.1",
   "zip_url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip",
-  "notes": "Новый баланс [BS] Attachments — Система аттачментов",
+  "notes": "Обновление MO2 модпака.",
   "removed_files": [
-    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/mod_system_m_cat.ltx",
-    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/mod_system_m_dog.ltx",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/_g.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/anthology_smooth_alife.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/bind_stalker.script",
@@ -16,19 +14,7 @@
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/sr_crow_spawner.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/xr_effects.script",
     "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/scripts/xr_zones.script",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_01.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_02.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_03.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_04.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_05.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_06.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_07.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_08.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_09.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_batch_test_10.ltx",
-    "[GAM] Bullet Time — Замедление времени/gamedata/configs/anthology_release_test_marker.ltx",
     "[GAM] Grok's Stash Overhaul — Тайники по наводке/gamedata/scripts/axr_npc_vs_box.script",
-    "[GAM] Pinup Collect — Коллекция журналов/gamedata/scripts/item_pinup_collect.script.codex_backup_20260501_pinup_texture",
     "[HARD] SYS Hud Hard/gamedata/configs/fonts.ltx",
     "[HARD] SYS Hud Hard/gamedata/configs/localization.ltx",
     "[HARD] SYS Hud Hard/gamedata/configs/mcm_key_localization.ltx",
@@ -200,7 +186,13 @@
     "[HARD] SYS Hud Hard/gamedata/configs/ui/zone_map_21.xml",
     "[HARD] SYS Hud Hard/gamedata/configs/unlocalizers/unlocalize_actor_status.ltx",
     "[HARD] SYS Hud Hard/gamedata/configs/unlocalizers/unlocalize_soulslike_original_init_controls.ltx",
-    "[HARD] System of Toxins — Химическая зависимость от лекарств/gamedata/scripts/system_of_toxins.script.codex_backup_20260502",
-    "[QUE] Western Goods — Западные товары и квест/gamedata/scripts/western_goods_ui_readable.script.codex_backup_20260501_pinup_readable"
+    "[HARD] SYS tactic_compass/gamedata/scripts/bind_stalker.script",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/st_random_fixes_ant_2_1.xml",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/ui_mcm_liz_oa.xml",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/ui_mcm_liz_qht.xml",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/ui_mcm_swm_legs.xml",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/ui_st_liz_body_search.xml",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/ui_st_liz_ha.xml",
+    "[Дедушка Ли] A.N.T.H.O.L.O.G.Y FIX — Русский перевод (всё в одном)/gamedata/configs/text/rus/ui_st_pda_inter_mcm.xml"
   ]
 }

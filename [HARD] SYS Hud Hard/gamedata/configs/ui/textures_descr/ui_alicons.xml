@@ -1,0 +1,30 @@
+<w>
+    <file name="ui\sys_ico\sys_alicons">
+        <texture id="ui_status_bg" x="0" y="0" width="64" height="64" />
+        <texture id="ui_restore_bg" x="64" y="0" width="64" height="64" />
+        <texture id="ui_booster_bg" x="128" y="0" width="64" height="64" />
+        <texture id="ui_status_health" x="192" y="0" width="64" height="64" />
+        <texture id="ui_status_bleeding" x="256" y="0" width="64" height="64" />
+        <texture id="ui_status_power" x="320" y="0" width="64" height="64" />
+        <texture id="ui_status_psy" x="384" y="0" width="64" height="64" />
+        <texture id="ui_status_radiation" x="448" y="0" width="64" height="64" />
+        <texture id="ui_status_hunger" x="512" y="0" width="64" height="64" />
+        <texture id="ui_status_thirst" x="576" y="0" width="64" height="64" />
+        <texture id="ui_status_sleep" x="640" y="0" width="64" height="64" />
+        <texture id="ui_status_overweight" x="704" y="0" width="64" height="64" />
+        <texture id="ui_booster_hp_restore" x="768" y="0" width="64" height="64" />
+        <texture id="ui_booster_bleeding_restore" x="0" y="64" width="64" height="64" />
+        <texture id="ui_booster_radiation_restore" x="64" y="64" width="64" height="64" />
+        <texture id="ui_booster_max_weight" x="128" y="64" width="64" height="64" />
+        <texture id="ui_booster_power_restore" x="192" y="64" width="64" height="64" />
+        <texture id="ui_booster_radiation_protection" x="256" y="64" width="64" height="64" />
+        <texture id="ui_booster_telepatic_protection" x="320" y="64" width="64" height="64" />
+        <texture id="ui_booster_chemical_burn_protection" x="384" y="64" width="64" height="64" />
+        <texture id="ui_imun_firewound" x="448" y="64" width="64" height="64" />
+        <texture id="ui_imun_wound" x="512" y="64" width="64" height="64" />
+        <texture id="ui_imun_explosive" x="576" y="64" width="64" height="64" />
+        <texture id="ui_imun_impact" x="640" y="64" width="64" height="64" />
+        <texture id="ui_imun_burn" x="704" y="64" width="64" height="64" />
+        <texture id="ui_imun_electric" x="768" y="64" width="64" height="64" />
+    </file>
+</w>

@@ -1,0 +1,41 @@
+-- Appearance and fade settings tab for ST2 ammo counter HUD.
+
+local COLLECTION_ID = "st2_ammo_counter_hud"
+
+local function settings_enabled()
+	return st2_ammo_counter_hud_mcm
+		and st2_ammo_counter_hud_mcm.settings_enabled
+		and st2_ammo_counter_hud_mcm.settings_enabled()
+end
+
+local function check(id, def)
+	return { id = id, type = "check", val = 1, def = def }
+end
+
+local function track(id, def, min, max, step)
+	return { id = id, type = "track", val = 2, def = def, min = min, max = max, step = step }
+end
+
+function on_mcm_load()
+	return {
+		id = "events",
+		sh = true,
+		text = "ui_mcm_st2_ammo_counter_hud_events",
+		precondition = { settings_enabled },
+		output = "ui_mcm_st2_ammo_counter_hud_disabled_output",
+		gr = {
+			{ id = "events_title", type = "slide", link = "ui_options_slider_player", text = "ui_mcm_st2_ammo_counter_hud_events_title", size = { 512, 50 }, spacing = 20 },
+			track("visible_time", 30, 1, 120, 1),
+			track("fade_in_time", 0.6, 0, 5, 0.1),
+			track("fade_time", 2, 0.1, 8, 0.1),
+			{ id = "line_1", type = "line" },
+			check("reload", true),
+			check("mag_check", true),
+			check("bore", false),
+			check("shot", false),
+			check("ads", false),
+			check("npc_aggro", false),
+			check("show", false),
+		},
+	}, COLLECTION_ID
+end

@@ -1,6 +1,6 @@
 <string_table>
     <string id="ui_mcm_menu_haru_quick_action_wheel_mcm">
-        <text>QAW Колесо быстрого действия</text>
+        <text>QAW Капитальный ремонт колеса быстрого действия</text>
     </string>
 
     <string id="ui_haru_add_item_to_qaw">
@@ -9,28 +9,33 @@
     <string id="ui_haru_qaw_override">
         <text>Переопределить</text>
     </string>
-	
+
     <string id="ui_mcm_qaw_controls">
         <text>Управление QAW</text>
     </string>
-     <string id="ui_mcm_haru_quick_action_wheel_mcm_controls_hold">
+    <string id="ui_mcm_haru_quick_action_wheel_mcm_controls_hold">
         <text>Удержание</text>
     </string>
     <string id="ui_mcm_haru_quick_action_wheel_mcm_controls_hold_desc">
-        <text>Удерживайте клавишу, чтобы "колесо быстрого действия" оставалось открытым</text>
-    </string>	
+        <text>Удерживайте клавишу, чтобы "колесо быстрого действия" оставалось открытым.</text>
+    </string>		
     <string id="ui_mcm_haru_quick_action_wheel_mcm_controls_keybind">
         <text>Клавиша "колеса быстрого действия" QAW</text>
     </string>
     <string id="ui_mcm_haru_quick_action_wheel_mcm_controls_override_ammo_wheel">
-        <text>Переопределение клавиши колеса боеприпасов с помощью QAW \n(Заменить типовое "колесо патронов" на QAW)</text>
+        <text>Переопределить клавишу колеса боеприпасов с помощью QAW</text>
     </string>
-	
+
     <string id="ui_mcm_qaw_tabs">
         <text>Настройки вкладок QAW</text>
     </string>
+<!-- 17.06.26 Пробовал перевести Manual Tab - нифига не получается! -->	
+    <string id="ui_mcm_qaw_manual">
+        <text>Вкладка «Ручной режим»</text>
+    </string>	
+	
     <string id="ui_mcm_qaw_devices">
-        <text>Динамическая вкладка устройств</text>
+        <text>Динамическая вкладка девайсов</text>
     </string>
     <string id="ui_mcm_qaw_grenades">
         <text>Динамическая вкладка гранат</text>
@@ -49,7 +54,10 @@
     </string>
     <string id="ui_mcm_qaw_slots">
         <text>Динамическая вкладка активных слотов</text>
-    </string>	
+    </string>
+	<string id="ui_mcm_qaw_manual_2">
+        <text>Вторая ручная вкладка</text>
+    </string>
     <string id="ui_mcm_qaw_enabled">
         <text>Включено</text>
     </string>
@@ -59,7 +67,9 @@
     <string id="ui_mcm_haru_quick_action_wheel_mcm_tabs_tab_count">
         <text>Количество вкладок</text>
     </string>
-
+	<string id="ui_mcm_haru_quick_action_wheel_mcm_tabs_tab_slot">
+        <text>Максимальное количество элементов на вкладке</text>
+    </string>
      <string id="ui_mcm_qaw_misc">
         <text>Прочие настройки QAW</text>
     </string>
@@ -69,7 +79,10 @@
     <string id="ui_mcm_haru_quick_action_wheel_mcm_misc_slowmo_factor">
         <text>Фактор замедления времени</text>
     </string>
-	     <string id="ui_mcm_haru_quick_action_wheel_mcm_misc_old_mags_compat">
-        <text>Совместимость со старой версией Mags Redux</text>
+    <string id="ui_mcm_haru_quick_action_wheel_mcm_misc_old_mags_compat">
+        <text>Совместимость со старой версией "Mags Redux"</text>
     </string>
+	<string id="ui_mcm_haru_quick_action_wheel_mcm_tabs_reset_on_close">
+        <text>Сброс выбора вкладок при закрытии</text>
+    </string>	
 </string_table>

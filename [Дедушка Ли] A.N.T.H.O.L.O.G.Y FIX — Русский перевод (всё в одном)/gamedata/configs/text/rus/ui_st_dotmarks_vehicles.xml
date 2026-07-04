@@ -1,0 +1,51 @@
+<!-- ====================================================================
+	Interaction Dot Marks
+    Vehicle module
+    Author: Catspaw
+    Updated: 20250715
+    Permission granted to freely translate this file into any language.
+===================================================================== -->
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+    <string id="ui_mcm_dotmarks_addons_vehicles">
+        <text>$clr_gldНастройки автомобиля</text>
+    </string>
+    
+    <string id="st_enter_vehicle">
+        <text>Сесть в автомобиль</text>
+    </string>
+
+    <string id="st_exit_vehicle">
+        <text>Выйти из автомобиля</text>
+    </string>
+
+    <string id="ui_mcm_dotmarks_dmarkobjs_scan_vehicles">
+        <text>Поставить метку на автомобиле</text>
+    </string>
+
+    <string id="ui_mcm_dotmarks_dmarkicons_argb_icon_vehicles">
+        <text>Настроить цвет иконки автомобиля</text>
+    </string>
+
+    <string id="ui_mcm_dotmarks_dmarkicons_enable_icon_vehicles">
+        <text>Включить специальную иконку для автомобиля</text>
+    </string>
+
+    <string id="ui_mcm_dotmarks_dmarkicons_enable_icon_vehicles_desc">
+        <text>Если эта опция включена, автомобили будут использовать свои специальные иконки вместо обычной точки-маркера.</text>
+    </string>
+
+    <string id="ui_mcm_dotmarks_dmarkmods_hide_marker_in_vehicle">
+        <text>Скрыть маркер во время движения автомобиля</text>
+    </string>
+
+    <string id="ui_mcm_dotmarks_dmarkmods_hide_marker_in_vehicle_desc">
+        <text>Если эта опция включена, маркер автомобиля и подсказка о взаимодействии не будут отображаться, пока игрок находится за рулем.</text>
+    </string>
+
+	<string id="ui_mcm_dotmarks_dmarkmods_vehicle_only_driver_door">
+		<text>Маркер взаимодействия только со стороны водительской двери</text>
+	</string>
+
+</string_table>

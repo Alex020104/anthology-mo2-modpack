@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="ui_mcm_menu_magnifier_switch">
+		<text>Переключатель увеличения 3DSS</text>
+	</string>
+	
+	<string id="ui_mcm_magnifier_switch_title">
+		<text>Переключатель увеличения 3DSS</text>
+	</string>
+
+	<string id="ui_mcm_magnifier_switch_use_mousewheel">
+		<text>Использовать колесо мыши (отключает настройки привязки клавиш ниже, если включено!)</text>
+	</string>
+
+	<string id="ui_mcm_magnifier_switch_use_mousewheel_desc">
+		<text>Использует вращение колеса мыши для переключения увеличения (подчиняется настройке 'mouse_wheel_invert_zoom', если она включена)</text>
+	</string>
+
+	<string id="ui_mcm_magnifier_switch_mwheel_switch_ads_only">
+		<text>Переключение колесом мыши только при прицеливании</text>
+	</string>
+
+	<string id="ui_mcm_magnifier_switch_mwheel_switch_ads_only_desc">
+		<text>Отключает переключение увеличения колесом мыши, когда вы не целитесь</text>
+	</string>
+
+	<string id="ui_mcm_magnifier_switch_mwheel_weapon_swap">
+		<text>Включить смену оружия колесом мыши</text>
+	</string>
+
+	<string id="ui_mcm_magnifier_switch_mwheel_weapon_swap_desc">
+		<text>Быстрый доступ к консольной команде 'mouse_wheel_change_weapon' и настройке из модифицированных exe-файлов, добавлено для удобства</text>
+	</string>
+
+	<string id="ui_mcm_magnifier_switch_switch_bind">
+		<text>Клавиша переключения увеличения</text>
+	</string>
+
+	<string id="ui_mcm_magnifier_switch_switch_bind_desc">
+		<text>Изменит стандартное поведение клавиши, если она назначена на клавишу переключения режима прицеливания, позволяя использовать её, когда увеличение не может быть переключено, или когда не используются определённая комбинация клавиш и режим ввода для переключения увеличения</text>
+	</string>
+
+	<string id="ui_mcm_magnifier_switch_keep_aim_toggle">
+		<text>Сохранять режим прицеливания</text>
+	</string>
+
+	<string id="ui_mcm_magnifier_switch_keep_aim_toggle_desc">
+		<text>Переключение во время прицеливания сохраняет режим прицеливания (для режима переключения прицела)</text>
+	</string>
+
+	<string id="ui_mcm_magnifier_switch_switch_sound">
+		<text>Воспроизводить звуковой эффект</text>
+	</string>
+
+	<string id="ui_mcm_magnifier_switch_switch_sound_desc">
+		<text>Воспроизводить звуковой эффект при переключении режима увеличения</text>
+	</string>
+
+	<string id="ui_mcm_magnifier_switch_debug">
+		<text>Ведение журнала отладки (очень подробное)</text>
+	</string>
+
+</string_table>

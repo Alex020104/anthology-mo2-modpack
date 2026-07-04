@@ -41,3 +41,10 @@ meta.ini
 
 # SYS Hud Hard is launcher-managed as a complete mod, including textures.
 !\[HARD\] SYS Hud Hard/**
+
+# Launcher-managed standard MO2 rule.
+!\[HARD\] SYS radioactive_air_toxic_air_rework/
+!\[HARD\] SYS radioactive_air_toxic_air_rework/gamedata/
+!\[HARD\] SYS radioactive_air_toxic_air_rework/gamedata/configs/**
+!\[HARD\] SYS radioactive_air_toxic_air_rework/gamedata/scripts/**
+!\[HARD\] SYS radioactive_air_toxic_air_rework/gamedata/textures/**
