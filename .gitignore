@@ -111,3 +111,6 @@ meta.ini
 # SYS Anthology fixes are launcher-managed as a complete mod.
 !\[FIX\] SYS ANTHOLOGY - Все мои фисы/**
 >>>>>>> f5c7c1b5d695b0e0ee2415c68c8820bc3ce8dee3
+
+# Launcher-managed full-folder MO2 rule.
+!\[HARD\] SYS radioactive_air_toxic_air_rework/**
