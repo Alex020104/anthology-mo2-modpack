@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Track only MO2 mod scripts/configs.
 *
 !*/
@@ -48,3 +49,65 @@ meta.ini
 !\[HARD\] SYS radioactive_air_toxic_air_rework/gamedata/configs/**
 !\[HARD\] SYS radioactive_air_toxic_air_rework/gamedata/scripts/**
 !\[HARD\] SYS radioactive_air_toxic_air_rework/gamedata/textures/**
+=======
+# Track only MO2 mod scripts/configs.
+*
+!*/
+!*/gamedata/
+!*/gamedata/configs/**
+!*/gamedata/scripts/**
+!README.md
+!.gitignore
+!.gitattributes
+
+# Managed manually outside the launcher update archive.
+*R.A.K Weapon Pack Adaptation Global A.N.T.H.O.L.O.G.Y*/**
+
+# Launcher-managed scripts for R.A.K Mag Redux.
+!\[WPN\]\[3\]\[MAG\]\[R.A.K Weapon Pack Adaptation Global A.N.T.H.O.L.O.G.Y Mags Redux(ЗБТ)\]/
+!\[WPN\]\[3\]\[MAG\]\[R.A.K Weapon Pack Adaptation Global A.N.T.H.O.L.O.G.Y Mags Redux(ЗБТ)\]/gamedata/
+!\[WPN\]\[3\]\[MAG\]\[R.A.K Weapon Pack Adaptation Global A.N.T.H.O.L.O.G.Y Mags Redux(ЗБТ)\]/gamedata/scripts/
+!\[WPN\]\[3\]\[MAG\]\[R.A.K Weapon Pack Adaptation Global A.N.T.H.O.L.O.G.Y Mags Redux(ЗБТ)\]/gamedata/scripts/**
+
+# Never track MO2/runtime/generated or large assets.
+*.mohidden
+meta.ini
+*.db*
+*.xdb*
+*.7z
+*.zip
+*.rar
+*.exe
+*.dll
+*.pdb
+*.log
+*.tmp
+*.dds
+*.tga
+*.png
+*.jpg
+*.jpeg
+*.ogf
+*.omf
+*.object
+*.thm
+*.ogg
+*.wav
+*.mp3
+*.avi
+*.mp4
+
+# Launcher-managed UI texture for HoC outfit/backpack icons.
+!\[MOD\] HoC Icons Outfit+backpack/gamedata/textures/
+!\[MOD\] HoC Icons Outfit+backpack/gamedata/textures/ui/
+!\[MOD\] HoC Icons Outfit+backpack/gamedata/textures/ui/ui_stalker2_armors.dds
+
+# SYS Hud Hard is launcher-managed as a complete mod, including textures.
+!\[HARD\] SYS Hud Hard/**
+
+# R.A.K Simple Patch is launcher-managed as a complete add-on mod.
+!\[WPN\]\[100\]\[SPL\]\[R.A.K. Weapon Pack Adaptation Global Simple Patch\]/**
+
+# SYS Anthology fixes are launcher-managed as a complete mod.
+!\[FIX\] SYS ANTHOLOGY - Все мои фисы/**
+>>>>>>> f5c7c1b5d695b0e0ee2415c68c8820bc3ce8dee3

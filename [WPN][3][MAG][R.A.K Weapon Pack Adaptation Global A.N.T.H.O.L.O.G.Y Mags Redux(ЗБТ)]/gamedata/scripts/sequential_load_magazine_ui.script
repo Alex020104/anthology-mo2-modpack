@@ -1,0 +1,397 @@
+----------------------------------------------------------------
+-- Sequential Load magazine UI overlay.
+-- Real-time overlay (does not pause the game world); lets the
+-- player select a caliber and configure the preset (ordered list
+-- of ammo types + consecutive-round counts) used by the context
+-- menu "Load sequentially" action.
+----------------------------------------------------------------
+
+local core = sequential_load_magazine
+local MAX_ROWS = 6
+local ROW_HEIGHT = 44
+local ROW_GAP = 2
+
+local GUI = nil
+
+--------------------------------------------------------------------
+-- Main dialog class
+--------------------------------------------------------------------
+
+class "UISequentialLoad" (CUIScriptWnd)
+
+function UISequentialLoad:__init() super()
+	self:SetWndRect(Frect():set(0, 0, 1024, 768))
+	self:InitControls()
+	self:InitCallbacks()
+end
+
+function UISequentialLoad:__finalize()
+end
+
+function UISequentialLoad:InitControls()
+	self.xml = CScriptXmlInit()
+	self.xml:ParseFile("ui_sequential_load.xml")
+
+	self.background = self.xml:InitStatic("background", self)
+	self.dialog     = self.xml:InitStatic("main", self)
+
+	self.xml:InitTextWnd("main:title", self.dialog)
+	self.xml:InitTextWnd("main:caliber_label", self.dialog)
+	self.xml:InitTextWnd("main:preset_label", self.dialog)
+
+	self.default_hint = self.xml:InitTextWnd("main:default_hint", self.dialog)
+	self.default_hint:Show(false)
+
+	self.caliber_combo = self.xml:InitComboBox("main:caliber_combo", self.dialog)
+	self:Register(self.caliber_combo, "caliber_combo")
+
+	-- Preset rows live directly inside self.dialog; their y-offset is
+	-- derived from MAX_ROWS * ROW_HEIGHT constants, not from any XML node.
+
+	self.add_combo = self.xml:InitComboBox("main:add_combo", self.dialog)
+	self:Register(self.add_combo, "add_combo")
+
+	self.btn_add = self.xml:Init3tButton("main:btn_add", self.dialog)
+	self:Register(self.btn_add, "btn_add")
+
+	self.btn_save = self.xml:Init3tButton("main:btn_save", self.dialog)
+	self:Register(self.btn_save, "btn_save")
+
+	self.btn_reset = self.xml:Init3tButton("main:btn_reset", self.dialog)
+	self:Register(self.btn_reset, "btn_reset")
+
+	self.btn_close = self.xml:Init3tButton("main:btn_close", self.dialog)
+	self:Register(self.btn_close, "btn_close")
+
+	-- Pre-allocate reusable row widget sets (MAX_ROWS rows).
+	self.rows = {}
+	for i = 1, MAX_ROWS do
+		self.rows[i] = self:CreateRow(i)
+	end
+
+	self:PopulateCaliberCombo()
+end
+
+function UISequentialLoad:InitCallbacks()
+	self:AddCallback("caliber_combo", ui_events.LIST_ITEM_SELECT, self.OnCaliberSelect, self)
+	self:AddCallback("btn_add",    ui_events.BUTTON_CLICKED, self.OnAddClick,   self)
+	self:AddCallback("btn_save",   ui_events.BUTTON_CLICKED, self.OnSaveClick,  self)
+	self:AddCallback("btn_reset",  ui_events.BUTTON_CLICKED, self.OnResetClick, self)
+	self:AddCallback("btn_close",  ui_events.BUTTON_CLICKED, self.OnCloseClick, self)
+
+	-- Dynamic row buttons: one callback per (row_index, action).
+	for i = 1, MAX_ROWS do
+		local idx = i
+		self:AddCallback("row_" .. i .. "_minus",  ui_events.BUTTON_CLICKED,
+			function() self:OnRowMinus(idx) end, self)
+		self:AddCallback("row_" .. i .. "_plus",   ui_events.BUTTON_CLICKED,
+			function() self:OnRowPlus(idx) end, self)
+		self:AddCallback("row_" .. i .. "_up",     ui_events.BUTTON_CLICKED,
+			function() self:OnRowMove(idx, -1) end, self)
+		self:AddCallback("row_" .. i .. "_down",   ui_events.BUTTON_CLICKED,
+			function() self:OnRowMove(idx, 1) end, self)
+		self:AddCallback("row_" .. i .. "_remove", ui_events.BUTTON_CLICKED,
+			function() self:OnRowRemove(idx) end, self)
+	end
+end
+
+--------------------------------------------------------------------
+-- Row construction
+--------------------------------------------------------------------
+
+function UISequentialLoad:CreateRow(i)
+	-- Anchor y inside self.dialog. preset_anchor origin is at (20, 118) per XML.
+	-- We attach row widgets to self.dialog and position them absolute-within-dialog.
+	local base_y = 118 + (i - 1) * (ROW_HEIGHT + ROW_GAP)
+	local base_x = 20
+
+	local row = {}
+
+	row.bg        = self.xml:InitStatic  ("row:bg",        self.dialog)
+	row.icon      = self.xml:InitStatic  ("row:icon",      self.dialog)
+	row.name      = self.xml:InitTextWnd ("row:name",      self.dialog)
+	row.sec       = self.xml:InitTextWnd ("row:ammo_sec",  self.dialog)
+	row.count_txt = self.xml:InitTextWnd ("row:count_text",self.dialog)
+	row.btn_minus = self.xml:Init3tButton("row:btn_minus", self.dialog)
+	row.btn_plus  = self.xml:Init3tButton("row:btn_plus",  self.dialog)
+	row.btn_up    = self.xml:Init3tButton("row:btn_up",    self.dialog)
+	row.btn_down  = self.xml:Init3tButton("row:btn_down",  self.dialog)
+	row.btn_remove= self.xml:Init3tButton("row:btn_remove",self.dialog)
+
+	-- Shift each widget by (base_x, base_y) since XML coords are row-local.
+	local function shift(w, dx, dy)
+		local p = w:GetWndPos()
+		w:SetWndPos(vector2():set(p.x + dx, p.y + dy))
+	end
+	for _, w in pairs(row) do
+		shift(w, base_x, base_y)
+	end
+
+	self:Register(row.btn_minus,  "row_" .. i .. "_minus")
+	self:Register(row.btn_plus,   "row_" .. i .. "_plus")
+	self:Register(row.btn_up,     "row_" .. i .. "_up")
+	self:Register(row.btn_down,   "row_" .. i .. "_down")
+	self:Register(row.btn_remove, "row_" .. i .. "_remove")
+
+	self:SetRowVisible(row, false)
+	return row
+end
+
+function UISequentialLoad:SetRowVisible(row, visible)
+	for _, w in pairs(row) do
+		w:Show(visible)
+	end
+end
+
+function UISequentialLoad:ApplyRow(i, entry)
+	local row = self.rows[i]
+	if not row then return end
+
+	local ammo = entry.ammo
+	local name = game.translate_string(ui_item.get_sec_name(ammo))
+	row.name:SetText(name)
+	row.sec:SetText(ammo)
+	row.count_txt:SetText(tostring(entry.count or 1))
+
+	-- Icon from inv grid.
+	local axis = utils_xml.get_item_axis(ammo)
+	if axis then
+		local texture = utils_xml.get_icons_texture and utils_xml.get_icons_texture(ammo)
+			or "ui\\ui_icon_equipment"
+		row.icon:InitTexture(texture)
+		row.icon:SetTextureRect(Frect():set(axis.x1, axis.y1, axis.x2, axis.y2))
+		row.icon:SetStretchTexture(true)
+	end
+
+	self:SetRowVisible(row, true)
+end
+
+--------------------------------------------------------------------
+-- Population / refresh
+--------------------------------------------------------------------
+
+function UISequentialLoad:PopulateCaliberCombo()
+	local calibers = core.get_all_calibers()
+	self.caliber_combo:ClearList()
+
+	if #calibers == 0 then
+		self.caliber_combo:SetText(game.translate_string("st_seqload_empty"))
+		return
+	end
+
+	for i, cal in ipairs(calibers) do
+		self.caliber_combo:AddItem(cal, i)
+	end
+
+	-- Default pick: remembered caliber OR first.
+	local pick = self.current_caliber or calibers[1]
+	local pick_idx = 1
+	for i, cal in ipairs(calibers) do
+		if cal == pick then pick_idx = i break end
+	end
+	self.caliber_combo:enable_id(pick_idx)
+	self.caliber_combo:SetText(calibers[pick_idx])
+	self.current_caliber = calibers[pick_idx]
+	self:LoadPresetForCurrent()
+end
+
+function UISequentialLoad:LoadPresetForCurrent()
+	if not self.current_caliber then
+		self.working_preset = {}
+		self:RefreshRows()
+		self:RefreshAddCombo()
+		return
+	end
+	local saved = core.get_preset(self.current_caliber)
+	if saved and #saved > 0 then
+		-- deep copy so edits don't mutate stored preset before Save
+		self.working_preset = {}
+		for _, e in ipairs(saved) do
+			table.insert(self.working_preset, {ammo = e.ammo, count = e.count or 1})
+		end
+		self.default_hint:Show(false)
+	else
+		-- Seed with default (alphabetical, 1 each) so user can edit.
+		local ammos = core.get_ammos_for_caliber(self.current_caliber)
+		self.working_preset = {}
+		for _, a in ipairs(ammos) do
+			table.insert(self.working_preset, {ammo = a, count = 1})
+		end
+		self.default_hint:Show(true)
+	end
+	self:RefreshRows()
+	self:RefreshAddCombo()
+end
+
+function UISequentialLoad:RefreshRows()
+	local n = math.min(#self.working_preset, MAX_ROWS)
+	for i = 1, MAX_ROWS do
+		if i <= n then
+			self:ApplyRow(i, self.working_preset[i])
+		else
+			self:SetRowVisible(self.rows[i], false)
+		end
+	end
+end
+
+function UISequentialLoad:RefreshAddCombo()
+	self.add_combo:ClearList()
+	if not self.current_caliber then
+		self.add_combo:SetText("")
+		return
+	end
+	local ammos = core.get_ammos_for_caliber(self.current_caliber)
+	local used = {}
+	for _, e in ipairs(self.working_preset) do
+		used[e.ammo] = true
+	end
+	local first_available = nil
+	local idx = 0
+	self.available_in_add = {}
+	for _, a in ipairs(ammos) do
+		if not used[a] then
+			idx = idx + 1
+			self.available_in_add[idx] = a
+			self.add_combo:AddItem(game.translate_string(ui_item.get_sec_name(a)), idx)
+			first_available = first_available or {idx = idx, ammo = a}
+		end
+	end
+	if first_available then
+		self.add_combo:enable_id(first_available.idx)
+		self.add_combo:SetText(game.translate_string(ui_item.get_sec_name(first_available.ammo)))
+	else
+		self.add_combo:SetText("")
+	end
+end
+
+--------------------------------------------------------------------
+-- Event handlers
+--------------------------------------------------------------------
+
+function UISequentialLoad:OnCaliberSelect()
+	local calibers = core.get_all_calibers()
+	local id = self.caliber_combo:CurrentID()
+	local cal = calibers[id]
+	if cal and cal ~= self.current_caliber then
+		self.current_caliber = cal
+		self:LoadPresetForCurrent()
+	end
+end
+
+function UISequentialLoad:OnRowPlus(idx)
+	local e = self.working_preset[idx]
+	if not e then return end
+	e.count = (e.count or 1) + 1
+	if e.count > 99 then e.count = 99 end
+	self.rows[idx].count_txt:SetText(tostring(e.count))
+end
+
+function UISequentialLoad:OnRowMinus(idx)
+	local e = self.working_preset[idx]
+	if not e then return end
+	e.count = (e.count or 1) - 1
+	if e.count < 1 then e.count = 1 end
+	self.rows[idx].count_txt:SetText(tostring(e.count))
+end
+
+function UISequentialLoad:OnRowMove(idx, delta)
+	local new_idx = idx + delta
+	if new_idx < 1 or new_idx > #self.working_preset then return end
+	self.working_preset[idx], self.working_preset[new_idx] =
+		self.working_preset[new_idx], self.working_preset[idx]
+	self:RefreshRows()
+end
+
+function UISequentialLoad:OnRowRemove(idx)
+	if not self.working_preset[idx] then return end
+	table.remove(self.working_preset, idx)
+	self:RefreshRows()
+	self:RefreshAddCombo()
+end
+
+function UISequentialLoad:OnAddClick()
+	if #self.working_preset >= MAX_ROWS then return end
+	local id = self.add_combo:CurrentID()
+	local ammo = self.available_in_add and self.available_in_add[id]
+	if not ammo then return end
+	table.insert(self.working_preset, {ammo = ammo, count = 1})
+	self.default_hint:Show(false)
+	self:RefreshRows()
+	self:RefreshAddCombo()
+end
+
+function UISequentialLoad:OnSaveClick()
+	if not self.current_caliber then return end
+	local clean = {}
+	for _, e in ipairs(self.working_preset) do
+		table.insert(clean, {ammo = e.ammo, count = e.count or 1})
+	end
+	core.save_preset(self.current_caliber, clean)
+	self.default_hint:Show(false)
+	news_manager.send_tip(db.actor, game.translate_string("st_seqload_saved"),
+		nil, "swiss_knife", 3000)
+		
+	-- FML hook: Automatically start loading after pressing save, if called from the direct load long press
+	if field_mag_loading and type(field_mag_loading.do_direct_mag_load) == "function" then
+		self:OnCloseClick()
+		field_mag_loading.do_direct_mag_load()
+	end
+end
+
+function UISequentialLoad:OnResetClick()
+	if not self.current_caliber then return end
+	core.reset_preset(self.current_caliber)
+	news_manager.send_tip(db.actor, game.translate_string("st_seqload_reset_done"),
+		nil, "swiss_knife", 3000)
+	self:LoadPresetForCurrent()
+end
+
+function UISequentialLoad:OnCloseClick()
+	hide()
+end
+
+function UISequentialLoad:OnKeyboard(dik, keyboard_action)
+	local res = CUIScriptWnd.OnKeyboard(self, dik, keyboard_action)
+	if res == false and keyboard_action == ui_events.WINDOW_KEY_PRESSED then
+		if dik == DIK_keys.DIK_ESCAPE then
+			hide()
+		end
+	end
+	return res
+end
+
+--------------------------------------------------------------------
+-- Public API
+--------------------------------------------------------------------
+
+function show()
+	if not db.actor then return end
+	if not (sequential_load_magazine and magazine_binder) then return end
+	if GUI and GUI:IsShown() then return end
+
+	if not GUI then GUI = UISequentialLoad() end
+	GUI:ShowDialog(true)
+	Register_UI("UISequentialLoad", "sequential_load_magazine_ui")
+end
+
+function hide()
+	if GUI and GUI:IsShown() then
+		GUI:HideDialog()
+	end
+	if _GUIs and _GUIs["UISequentialLoad"] then
+		Unregister_UI("UISequentialLoad")
+	end
+	GUI = nil
+end
+
+function toggle()
+	if GUI and GUI:IsShown() then
+		hide()
+	else
+		show()
+	end
+end
+
+function is_shown()
+	return GUI and GUI:IsShown() or false
+end
