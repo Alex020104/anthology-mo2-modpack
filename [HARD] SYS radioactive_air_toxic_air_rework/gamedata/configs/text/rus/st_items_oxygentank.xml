@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='windows-1251'?>
+<string_table>
+	<string id="st_af_oxygen_tank_1_name">
+		<text>Аварийный кислородный баллон</text>
+		</string>
+	<string id="st_af_oxygen_tank_1_descr">
+		<text>Баллон класса I для научных систем подачи воздуха. Полная защита от радиоактивного и токсичного воздуха применяется только после подключения к совместимой экипировке.</text>
+		</string>
+	<string id="st_af_oxygen_tank_1soviet_name">
+		<text>Фильтр ФГ-130</text>
+		</string>
+	<string id="st_af_oxygen_tank_1soviet_descr">
+		<text>Баллон класса I для научных систем подачи воздуха. Полная защита от радиоактивного и токсичного воздуха применяется только после подключения к совместимой экипировке.</text>
+		</string>
+	<string id="st_af_oxygen_tank_2_name">
+		<text>Современный кислородный баллон</text>
+		</string>
+	<string id="st_af_oxygen_tank_2_descr">
+		<text>Баллон класса II для научных систем подачи воздуха. Полная защита от радиоактивного и токсичного воздуха применяется только после подключения к совместимой экипировке.</text>
+		</string>
+	<string id="st_af_oxygen_tank_3_name">
+		<text>Научный кислородный баллон</text>
+		</string>
+	<string id="st_af_oxygen_tank_3_descr">
+		<text>Баллон класса III для научных систем подачи воздуха. Полная защита от радиоактивного и токсичного воздуха применяется только после подключения к совместимой экипировке.</text>
+		</string>
+	<string id="st_af_oxygen_tank_3military_name">
+		<text>Станция заправки баллонов</text>
+		</string>
+	<string id="st_af_oxygen_tank_3military_descr">
+		<text>Портативная станция для перезаправки баллонов и зарядки станции от фильтров или других баллонов.</text>
+		</string>
+	<string id="st_af_mask_filter_1_name">
+		<text>Фильтр ГП-5</text>
+		</string>
+	<string id="st_af_mask_filter_1_descr">
+		<text>Фильтр класса I. Даёт защиту от радиоактивного воздуха только после установки на совместимый шлем или костюм. От токсичного воздуха не защищает, если это не задано профилем экипировки.</text>
+		</string>
+	<string id="st_af_mask_filter_2_name">
+		<text>Фильтр М10</text>
+		</string>
+	<string id="st_af_mask_filter_2_descr">
+		<text>Фильтр класса II. Даёт защиту от радиоактивного воздуха только после установки на совместимый шлем или костюм. От токсичного воздуха не защищает, если это не задано профилем экипировки.</text>
+		</string>
+	<string id="st_af_mask_filter_2dolg_name">
+		<text>Фильтр М10 "Защитник"</text>
+		</string>
+	<string id="st_af_mask_filter_2dolg_descr">
+		<text>Фильтр класса II. Даёт защиту от радиоактивного воздуха только после установки на совместимый шлем или костюм. От токсичного воздуха не защищает, если это не задано профилем экипировки.</text>
+		</string>
+	<string id="st_af_mask_filter_3_name">
+		<text>Фильтр NBC-70 CBRN</text>
+		</string>
+	<string id="st_af_mask_filter_3_descr">
+		<text>Фильтр класса III. После установки даёт защиту от радиоактивного воздуха и может снижать урон токсичного воздуха на совместимой экипировке. Точные значения показываются после установки.</text>
+		</string>
+	<string id="st_af_mask_filter_3isg_name">
+		<text>Фильтр NBC-77 SOF</text>
+		</string>
+	<string id="st_af_mask_filter_3isg_descr">
+		<text>Фильтр класса III. После установки даёт защиту от радиоактивного воздуха и может снижать урон токсичного воздуха на совместимой экипировке. Точные значения показываются после установки.</text>
+		</string>
+	<string id="st_af_mask_filter_homemade_name">
+		<text>Самодельный фильтр</text>
+		</string>
+	<string id="st_af_mask_filter_homemade_descr">
+		<text>Фильтр без назначенного класса. В этой системе он заработает только после добавления в профиль экипировки в toxic_air_gear.ltx.</text>
+		</string>
+	<string id="st_af_mask_filter_dp1_name">
+		<text>Фильтр ДП-1</text>
+		</string>
+	<string id="st_af_mask_filter_dp1_descr">
+		<text>Фильтр класса I. Даёт защиту от радиоактивного воздуха только после установки на совместимый шлем или костюм. От токсичного воздуха не защищает, если это не задано профилем экипировки.</text>
+		</string>
+	<string id="st_af_mask_filter_ms4_name">
+		<text>Фильтр MS-4</text>
+		</string>
+	<string id="st_af_mask_filter_ms4_descr">
+		<text>Фильтр класса I. Даёт защиту от радиоактивного воздуха только после установки на совместимый шлем или костюм. От токсичного воздуха не защищает, если это не задано профилем экипировки.</text>
+		</string>
+	<string id="st_af_mask_filter_r18_name">
+		<text>Фильтр R18 NBC</text>
+		</string>
+	<string id="st_af_mask_filter_r18_descr">
+		<text>Фильтр класса III. После установки даёт защиту от радиоактивного воздуха и может снижать урон токсичного воздуха на совместимой экипировке. Точные значения показываются после установки.</text>
+		</string>
+	<string id="st_af_mask_filter_m58_name">
+		<text>Фильтр M.58</text>
+		</string>
+	<string id="st_af_mask_filter_m58_descr">
+		<text>Фильтр класса I. Даёт защиту от радиоактивного воздуха только после установки на совместимый шлем или костюм. От токсичного воздуха не защищает, если это не задано профилем экипировки.</text>
+		</string>
+	<string id="st_af_mask_filter_fp5_name">
+		<text>Фильтр FP-5</text>
+		</string>
+	<string id="st_af_mask_filter_fp5_descr">
+		<text>Фильтр без назначенного класса. В этой системе он заработает только после добавления в профиль экипировки в toxic_air_gear.ltx.</text>
+		</string>
+	<string id="st_af_mask_filter_mof6_name">
+		<text>Фильтр MOF-6</text>
+		</string>
+	<string id="st_af_mask_filter_mof6_descr">
+		<text>Фильтр класса II. Даёт защиту от радиоактивного воздуха только после установки на совместимый шлем или костюм. От токсичного воздуха не защищает, если это не задано профилем экипировки.</text>
+		</string>
+	<string id="st_af_mask_filter_clearsky_name">
+		<text>Фильтр N750-CS</text>
+		</string>
+	<string id="st_af_mask_filter_clearsky_descr">
+		<text>Фильтр без назначенного класса. В этой системе он заработает только после добавления в профиль экипировки в toxic_air_gear.ltx.</text>
+		</string>
+	<string id="st_air_is_toxic">
+		<text>Воздух слишком токсичен! Органы дыхания недостаточно защищены</text>
+		</string>
+	<string id="st_hold_breath">
+		<text>Нужно задержать дыхание</text>
+		</string>
+	<string id="st_need_restore_breath">
+		<text>Не хватает воздуха, нужно отдышаться</text>
+		</string>
+	<string id="st_breath_restored">
+		<text>Дыхание восстановилось</text>
+		</string>
+	<string id="st_remove_filter">
+		<text>Отсоединить фильтр</text>
+		</string>
+	<string id="st_wrong_equip">
+		<text>Вы не можете прикрепить фильтр к этому предмету</text>
+		</string>
+	<string id="st_already_active">
+		<text>У предмета уже есть фильтр</text>
+		</string>
+	<string id="st_filter_descr">
+		<text>Состояние установленного фильтра:</text>
+		</string>
+	<string id="st_krug_xd">
+		<text>•</text>
+		</string>
+	<string id="st_filter_location_rate">
+		<text>Влияние локации:</text>
+		</string>
+	<string id="st_filter_rad_prot">
+		<text>Уровень радиационной защиты:</text>
+		</string>
+	<string id="st_filter_immunity">
+		<text>Сопротивление загрязнению:</text>
+		</string>
+	<string id="st_filter_gasmask_prot">
+		<text>Максимальная радиационная защита шлема:</text>
+		</string>
+	<string id="st_filter_gasmask_max_prot">
+		<text>Фильтр обеспечивает полную радиационную защиту шлема</text>
+		</string>
+	<string id="st_filter_chem_prot">
+		<text>Уровень химической защиты:</text>
+		</string>
+	<string id="st_filter_gasmask_chem_prot">
+		<text>Максимальная химическая защита шлема:</text>
+		</string>
+	<string id="st_filter_gasmask_chem_max_prot">
+		<text>Фильтр обеспечивает полную химическую защиту шлема</text>
+		</string>
+	<string id="st_tank_flow_rate">
+		<text>Расход воздуха:</text>
+		</string>
+	<string id="st_tank_rad_prot">
+		<text>Уровень радиационной защиты в зависимости от герметичности шлема:</text>
+		</string>
+	<string id="st_tank_max_rad_prot">
+		<text>Максимальный уровень радиационной защиты, предоставляемый баллоном:</text>
+		</string>
+	<string id="st_tank_chem_prot">
+		<text>Уровень химической защиты в зависимости от герметичности шлема:</text>
+		</string>
+	<string id="st_tank_max_chem_prot">
+		<text>Максимальный уровень химической защиты, предоставляемый баллоном:</text>
+		</string>
+	<string id="st_tank_doesnt_protect">
+		<text>Не защищает на текущей локации</text>
+		</string>
+	<string id="st_tank_per_min">
+		<text>% в час</text>
+		</string>
+	<string id="st_refilling_tank_on_belt">
+		<text>заправить кислородный баллон на поясе</text>
+		</string>
+	<string id="st_start_refilling_tank_on_belt">
+		<text>Начата заправка кислородного баллона...</text>
+		</string>
+	<string id="st_install_filter">
+		<text>установить фильтр</text>
+		</string>
+	<string id="st_charge_station">
+		<text>Уровень кислорода:</text>
+		</string>
+	</string_table>

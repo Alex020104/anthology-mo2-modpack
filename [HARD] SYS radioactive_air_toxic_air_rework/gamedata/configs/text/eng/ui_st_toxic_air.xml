@@ -1,0 +1,278 @@
+<?xml version='1.0' encoding="windows-1251"?>
+<string_table>
+	<string id="ui_mcm_toxic_air_title">
+		<text>Radioactive Air</text>
+		</string>
+	<string id="ui_mcm_menu_toxic_air">
+		<text>Radioactive Air</text>
+		</string>
+	<string id="ui_mcm_toxic_air_enable_hud">
+		<text>Enable HUD</text>
+		</string>
+	<string id="ui_mcm_toxic_air_enable_hud_desc">
+		<text>Display condition of equipped tank/filter.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_position_x">
+		<text>HUD Position X</text>
+		</string>
+	<string id="ui_mcm_toxic_air_position_y">
+		<text>HUD Position Y</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radioactive_air">
+		<text>Radioactive air</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radioactive_air_desc">
+		<text>If enabled, the air in all locations will become radioactive and when leaving the safe zone you will regularly inhale radioactive dust, which will also increase the rate of degradation of filters. The more northerly a location is, the more polluted the air is. If your respiratory organs have insufficient protection from radiation (filter/oxygen tank/cloth headgear), then you will regularly become infected with radiation. Suits and the effect of increased radioprotection from drugs do not affect the amount of radiation received from radioactive air.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radioactive_air_mult">
+		<text>Radioactive Air Damage Multiplier</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radioactive_air_mult_desc">
+		<text>It affects the total amount of radiation received from radioactive air if the protection of the filter/oxygen tank/cloth headgear is insufficient. The higher your protection is and the lower the multiplier value, the slower the radiation infection occurs (1.0 by default).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radiation_penetration">
+		<text>Penetrating radiation</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radiation_penetration_desc">
+		<text>If enabled, then when you are in radioactive fields, you will additionally become infected with radiation when your radio protection is insufficient without taking into account the helmet. Filters, oxygen tanks, and breath retention do not affect the amount of radiation that this mechanic adds.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_rad_penetration_mult">
+		<text>Penetrating radiation multiplier</text>
+		</string>
+	<string id="ui_mcm_toxic_air_rad_penetration_mult_desc">
+		<text>It affects the total amount of radiation received after subtracting your radio protection without taking into account the helmet. The higher your protection is and the lower the multiplier value, the slower the radiation infection occurs (0.15 by default).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radiation_damage">
+		<text>Penetrating radiation causes damage to health</text>
+		</string>
+	<string id="ui_mcm_toxic_air_radiation_damage_desc">
+		<text>If enabled, then when you are in radioactive fields, you will receive direct damage to your health when your radio protection is insufficient without taking into account the helmet. Filters, oxygen tanks, and breath retention do not affect the damage received.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_rad_damage_mult">
+		<text>Radiation Damage Multiplier</text>
+		</string>
+	<string id="ui_mcm_toxic_air_rad_damage_mult_desc">
+		<text>It affects the total amount of health damage from radioactive fields after subtracting your radio protection without taking into account the helmet. The higher your defense is and the lower the multiplier value, the less damage you will take (0.25 by default).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_breathe_feature">
+		<text>Hold breath</text>
+		</string>
+	<string id="ui_mcm_toxic_air_breathe_feature_desc">
+		<text>Allow the use of breath retention.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_breathe_key">
+		<text>Breath retention activation key</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_animation">
+		<text>Animations</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_animation_desc">
+		<text>Disable/Enable filter changing animation and tank camera animation (for equipped items only).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_metro_toggle">
+		<text>Metro-style Alarm</text>
+		</string>
+	<string id="ui_mcm_toxic_air_metro_toggle_desc">
+		<text>Disable/Enable Metro-style watch alarm sound effects and news popup when filter reaches 15% (short alarm) and when filter reaches 0% (long alarm).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_equip_key">
+		<text>The filter removal/installation key</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_equip_key_desc">
+		<text>Standard mode. If there are several filters with different radioprotection, the filter with the best protection will always be selected. This mode also takes into account the helmet's radio protection, which acts as a limitation. If there is no filter with protection equal to that of a helmet, then the best filter available with lower radio protection will be selected. Filters with protection higher than that of a helmet will be ignored.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_min_condition">
+		<text>Minimum filter condition</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_min_condition_desc">
+		<text>Do not install or select a filter if its condition is below the specified value (0.15 = 15% by default).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_choose_max_quality_filter">
+		<text>Limit the installation of filters with high radioprotection</text>
+		</string>
+	<string id="ui_mcm_toxic_air_choose_max_quality_filter_desc">
+		<text>This option will be useful if you use a helmet with high radioprotection (40% or higher) and carry high-protection filters in your inventory that you do not want to install using the standard filter replacement mode.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_max_quality">
+		<text>The range of filter installation restrictions</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_max_quality_desc">
+		<text>If the restriction is enabled, filters with radio protection above this value (0.4 - 40% by default) will be ignored when selected. This option only affects the standard filter installation mode.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_mod_equip_key">
+		<text>Filter removal/installation key (alternative mode)</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_mod_equip_key_desc">
+		<text>Alternative mode. If there are several filters with different radioprotection, the filter with the worst protection will always be selected. Helmet radio protection is not taken into account here.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_choose_low_quality_filter">
+		<text>Limit the installation of filters with low radioprotection</text>
+		</string>
+	<string id="ui_mcm_toxic_air_choose_low_quality_filter_desc">
+		<text>This option will be useful if you want filters with protection above the specified value to be selected when using the alternative mode.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_min_low_quality">
+		<text>The range of filter installation restrictions</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_min_low_quality_desc">
+		<text>If the restriction is enabled, filters with radioprotection equal to or below this value (0.4 - 40% by default) will be ignored when selected. This option only affects the alternative filter setting mode.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_check_key">
+		<text>Filter verification key</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_check_key_desc">
+		<text>Displays the name of the installed filter or a message about its absence.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_check_cond">
+		<text>Show the filter condition</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_check_cond_desc">
+		<text>When the filter check is activated, in addition to its name, the approximate condition will also be shown using text.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_toxic_underground">
+		<text>Toxic air in undergrounds</text>
+		</string>
+	<string id="ui_mcm_toxic_air_toxic_underground_desc">
+		<text>If enabled, damage will be caused without sufficient chemical protection, and the condition of the filters will decrease faster.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_toxic_damage_mult">
+		<text>Toxic Damage</text>
+		</string>
+	<string id="ui_mcm_toxic_air_toxic_damage_mult_desc">
+		<text>Multiplier of toxic damage that you receive when air protection is not high enough. \n 
+				\n Default: 1.0</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_degradation_mult">
+		<text>Rate degradation of filter</text>
+		</string>
+	<string id="ui_mcm_toxic_air_filter_degradation_mult_desc">
+		<text>Degradation multiplier of filter. It affects the rate degradation depending on location, being in radioactive and chemical zones, and presence toxic air at location. \n 
+				\n Default: 1.0</text>
+		</string>
+	<string id="ui_mcm_toxic_air_flow_rate_mult">
+		<text>Flow Rate</text>
+		</string>
+	<string id="ui_mcm_toxic_air_flow_rate_mult_desc">
+		<text>Multiplier for oxygen tank's air flow rate. \n 
+				\n Default: 1.0</text>
+		</string>
+	<string id="ui_mcm_toxic_air_trader_items">
+		<text>Items amount at traders</text>
+		</string>
+	<string id="ui_mcm_toxic_air_trader_items_desc">
+		<text>Multiplier for amount of items (filters/tanks) to appear at trader's inventory. \n 
+				\n Default: 1.0</text>
+		</string>
+	<string id="ui_mcm_toxic_air_sound_toggle">
+		<text>Sound Effects</text>
+		</string>
+	<string id="ui_mcm_toxic_air_sound_toggle_desc">
+		<text>Disable/Enable choking sound effects when in a toxic area without high enough air protection.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_ppe_toggle">
+		<text>Screen Effects</text>
+		</string>
+	<string id="ui_mcm_toxic_air_ppe_toggle_desc">
+		<text>Disable/Enable screen effects when in a toxic area without high enough air protection.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_spawn_items_with_chance">
+		<text>Spawn items from corpses with a certain chance</text>
+		</string>
+	<string id="ui_mcm_toxic_air_spawn_items_with_chance_desc">
+		<text>If enabled, the item spawn will depend on the drop chance set below. If disabled, a filter or oxygen tank will always appear on corpses.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_chance_items_spawn">
+		<text>Chance of dropping items</text>
+		</string>
+	<string id="ui_mcm_toxic_air_chance_items_spawn_desc">
+		<text>The higher the value, the greater the chance of item spawn (0.5 = 50% by default).</text>
+		</string>
+	<string id="ui_mcm_toxic_air_spawn_items_cond_mult">
+		<text>Increasing the maximum condition of items</text>
+		</string>
+	<string id="ui_mcm_toxic_air_spawn_items_cond_mult_desc">
+		<text>By default, the maximum possible condition of items appearing in the inventory of corpses does not exceed 30% on average. This parameter increases their maximum possible condition. By setting the value to 0.25 (0 by default), you will increase the maximum possible condition of the drop-down items by 25%. That is, expand the state range from about 5-30% to 5-55%.</text>
+		</string>
+	<string id="ui_mcm_toxic_air_delete_items">
+		<text>DELETE ALL TANKS ON NEXT LOAD</text>
+		</string>
+	<string id="ui_mcm_toxic_air_delete_items_desc">
+		<text>To prevent save file corruption, this option will delete all new items added by this addon on next load. \n 
+				\n So, if you want to delete addon: \n
+				\n 1) Enable this option; \n
+				\n 2) Save, load, save again; \n
+				\n 3) Quit game and disable addon.</text>
+		</string>
+	<string id="st_toxic_air_tooltip_prefix">
+		<text>Toxic air:</text>
+		</string>
+	<string id="st_toxic_air_tooltip_filter">
+		<text>filter</text>
+		</string>
+	<string id="st_toxic_air_tooltip_tank">
+		<text>oxygen tank</text>
+		</string>
+	<string id="st_ta_ui_filter_installed">
+		<text>Filter: installed</text>
+		</string>
+	<string id="st_ta_ui_filter_missing">
+		<text>Filter: absent</text>
+		</string>
+	<string id="st_ta_ui_tank_connected">
+		<text>Oxygen tank: connected</text>
+		</string>
+	<string id="st_ta_ui_tank_missing">
+		<text>Oxygen tank: absent</text>
+		</string>
+	<string id="st_ta_ui_filter_class">
+		<text>Filter protection class:</text>
+		</string>
+	<string id="st_ta_ui_tank_class">
+		<text>Oxygen tank protection class:</text>
+		</string>
+	<string id="st_ta_ui_allowed_filter_class">
+		<text>Allowed filter class:</text>
+		</string>
+	<string id="st_ta_ui_allowed_tank_class">
+		<text>Allowed tank class:</text>
+		</string>
+	<string id="st_ta_ui_filter_condition">
+		<text>Filter condition:</text>
+		</string>
+	<string id="st_ta_ui_tank_condition">
+		<text>Tank condition:</text>
+		</string>
+	<string id="st_ta_ui_filter_drain">
+		<text>Filter drain:</text>
+		</string>
+	<string id="st_ta_ui_air_drain">
+		<text>Air drain:</text>
+		</string>
+	<string id="st_ta_ui_rad_air">
+		<text>Radioactive-air protection:</text>
+		</string>
+	<string id="st_ta_ui_toxic_air">
+		<text>Toxic-air protection:</text>
+		</string>
+	<string id="st_ta_ui_rad_toxic_air">
+		<text>Radioactive and toxic-air protection:</text>
+		</string>
+	<string id="st_ta_ui_present">
+		<text>available</text>
+		</string>
+	<string id="st_ta_ui_absent">
+		<text>absent</text>
+		</string>
+	<string id="st_ta_ui_full">
+		<text>full</text>
+		</string>
+	<string id="st_ta_ui_per_hour">
+		<text>%/h</text>
+		</string>
+	<string id="st_ta_ui_filter_note">
+		<text>Works only after installation on compatible headgear or outfit.</text>
+		</string>
+	<string id="st_ta_ui_tank_note">
+		<text>Works only with a scientific air-supply system.</text>
+		</string>
+	</string_table>

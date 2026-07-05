@@ -1,0 +1,30 @@
+[ta_filter_on_hud] 
+hands_position              = -0.005,-0.185, 0
+hands_position_16x9         = -0.005,-0.185, 0
+item_visual             	= toxic_air\filter_model_hud.ogf
+anm_filter_show					= filter_puton_hands, filter_weapon
+
+[ta_filter_off_hud]:ta_filter_on_hud
+hands_position              = -0.005,-0.19, 0
+hands_position_16x9         = -0.005,-0.19, 0
+anm_filter_show					= filter_remove_hands, filter_weapon
+
+[ta_rework_af_oxygen_tank_1_hud]
+hud_fov                     = 0.65
+hands_position              = 0, 0, 0
+hands_position_16x9         = 0, 0, 0
+item_visual                 = toxic_air\liz_oxygen_tank_1_hud.ogf
+anm_on                      = liz_oxygen_tank_equip, equip
+cam_on                      = toxic_air\liz_oxygen_tank_equip.anm
+snd_on                      = toxic_air\liz_oxygen_tank_equip
+anm_off                     = liz_oxygen_tank_unequip, unequip
+cam_off                     = toxic_air\liz_oxygen_tank_unequip.anm
+snd_off                     = toxic_air\liz_oxygen_tank_unequip
+
+[ta_rework_af_oxygen_tank_1soviet_hud]:ta_rework_af_oxygen_tank_1_hud
+
+[ta_rework_af_oxygen_tank_2_hud]:ta_rework_af_oxygen_tank_1_hud
+item_visual                 = toxic_air\liz_oxygen_tank_2_hud.ogf
+
+[ta_rework_af_oxygen_tank_3_hud]:ta_rework_af_oxygen_tank_1_hud
+item_visual                 = toxic_air\liz_oxygen_tank_3_hud.ogf
