@@ -632,15 +632,18 @@
       "id": "wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0",
       "folder": "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]",
       "mode": "full",
-      "version": "2026.07.05.8",
+      "version": "2026.07.06.1",
       "notes": "Обновление [WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch].",
-      "url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/releases/download/folder-wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0-2026.07.05.8/anthology-folder-wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0-2026.07.05.8.zip",
-      "asset_name": "anthology-folder-wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0-2026.07.05.8.zip",
-      "size": 1302872,
-      "sha256": "2a5d37e3410a1789cc40753e9a6a54bff37241d9c70f68c33f30a03b97454708",
+      "url": "https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/releases/download/folder-wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0-2026.07.06.1/anthology-folder-wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0-2026.07.06.1.zip",
+      "asset_name": "anthology-folder-wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0-2026.07.06.1.zip",
+      "size": 1307135,
+      "sha256": "47ba6015e56225b97cbb0b0fcd032acfed08e7556be181f36629e8a8c5113def",
       "files": [
+        "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/settings/npc_loadouts/rak_rank_knife_drops.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/meshes/dynamics/weapons/wpn_ak50/wpn_ak50_lod.ogf",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/meshes/dynamics/weapons/wpn_ak50/wpn_ak50_world.ogf",
+        "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/scripts/rak_rank_knife_drops.script",
+        "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/scripts/zzz_loadout_grenade_chance.script",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/meta.ini"
       ],
       "removed_files": []
