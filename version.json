@@ -589,6 +589,24 @@
       "removed_files": []
     },
     {
+      "id": "patch-r-a-k-fdda-knife-harvest-4b5e9e91d2",
+      "folder": "[PATCH] R.A.K FDDA Knife Harvest",
+      "mode": "full",
+      "version": "2026.07.08.5",
+      "notes": "Обновление [PATCH] R.A.K FDDA Knife Harvest.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-patch-r-a-k-fdda-knife-harvest-4b5e9e91d2-2026.07.08.5/anthology-folder-patch-r-a-k-fdda-knife-harvest-4b5e9e91d2-2026.07.08.5.zip",
+      "asset_name": "anthology-folder-patch-r-a-k-fdda-knife-harvest-4b5e9e91d2-2026.07.08.5.zip",
+      "size": 2399,
+      "sha256": "8a4f883453bdd3c9891675d8df963d8a651d7380d56ece98951b5eeb332c7e03",
+      "files": [
+        "[PATCH] R.A.K FDDA Knife Harvest/gamedata/configs/mod_system_rak_fdda_knife_harvest.ltx",
+        "[PATCH] R.A.K FDDA Knife Harvest/gamedata/configs/unlocalizers/unlocalizer_rak_fdda_knife_harvest.ltx",
+        "[PATCH] R.A.K FDDA Knife Harvest/gamedata/scripts/rak_fdda_knife_harvest.script",
+        "[PATCH] R.A.K FDDA Knife Harvest/meta.ini"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "patch-rak-rank-knife-drops-031c4372eb",
       "folder": "[PATCH] RAK Rank Knife Drops",
       "mode": "full",
@@ -628,4 +646,3 @@
     }
   ]
 }
-
