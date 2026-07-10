@@ -16,7 +16,7 @@ version.json
 Затем скачивает:
 
 ```text
-https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/main.zip
+https://github.com/Alex020104/anthology-mo2-modpack/archive/refs/heads/main.zip
 ```
 
 После установки он сохраняет список файлов в:
@@ -53,14 +53,14 @@ https://github.com/sysliveprime-ctrl/anthology-mo2-modpack/archive/refs/heads/ma
 ## Релиз Модпака
 
 ```powershell
-py -3 E:\dev\Anthology-Work-Git\skills\anthology-release-ops\scripts\anthology_release_ops.py modpack --version YYYY.MM.DD.N --notes "Описание обновления"
+py -3 F:\Editor_Stalker\Anthology-Work-Git\skills\anthology-release-ops\scripts\anthology_release_ops.py modpack --version YYYY.MM.DD.N --notes "Описание обновления"
 ```
 
 Скрипт:
 
 1. обновляет `version.json`;
 2. коммитит изменения модпака;
-3. пушит `main` в `sysliveprime-ctrl/anthology-mo2-modpack`.
+3. пушит `main` в `Alex020104/anthology-mo2-modpack`.
 
 Release assets для модпака не нужны: лаунчер скачивает `main.zip`.
 
