@@ -2,6 +2,18 @@
 <string_table>
 
 
+<!-- 1.4.1 fixes -->
+	<string id="e_b_anomal_zone_1_spot_name">
+    <text>Ловушка для туристов</text>
+</string>
+
+
+	<!-- Garbage fixes -->
+	<string id="st_gar_smart_terrain_3_6_name">
+    <text>Куча радиоактивных отходов</text>
+</string>
+
+	<!-- Darkscape -->
 	<string id="st_ds_merc_terrain1_name">
     <text>Старая баржа</text>
 </string>
@@ -9,13 +21,13 @@
     <text>Лагерь бандитов в пещере</text>
 </string>
 <string id="st_ds_stalker_terrain1_name">
-    <text>Лагерь одиночек в пещере</text>
+    <text>Лагерь Одиночек в пещере</text>
 </string>
 <string id="st_ds_military_terrain_name">
     <text>Бронетранспортер за автобусной остановкой</text>
 </string>
 <string id="st_ds_mutants_terrain2_name">
-    <text>Южный контрольно-пропускной пункт</text>
+    <text>Южный КПП</text>
 </string>
 <string id="st_ds_mutants_terrain5_name">
     <text>Портовые краны</text>
@@ -27,7 +39,7 @@
     <text>Мост</text>
 </string>
 <string id="st_ds_mutants_terrain11_name">
-    <text>Северный контрольно-пропускной пункт</text>
+    <text>Северный КПП</text>
 </string>
 <string id="st_ds_zombie_terrain1_name">
     <text>Сарай</text>
@@ -111,7 +123,7 @@
     <text>Грузовики</text>
 </string>
 <string id="st_trc_sim_20_name">
-    <text>Восточный контрольно-пропускной пункт</text>
+    <text>Восточный КПП</text>
 </string>
 <string id="st_trc_sim_21_name">
     <text>Пустыня</text>
@@ -128,7 +140,7 @@
     <text>Улица Мира</text>
 </string>
 <string id="st_cit_controller_lair_name">
-    <text>Магазин “Коопторг”</text>
+    <text>Магазин «Коопторг»</text>
 </string>
 <string id="st_cit_dog_lair2_name">
     <text>Народная улица</text>
@@ -146,10 +158,10 @@
     <text>Деревня</text>
 </string>
 <string id="st_cit_freedom_house_name">
-    <text>Дом “Свобода”</text>
+    <text>Дом Бойцов «Свободы»</text>
 </string>
 <string id="st_cit_gym_lager_name">
-    <text>Вход в магазин “Коопторг”</text>
+    <text>Вход в Магазин «Коопторг»</text>
 </string>
 <string id="st_cit_partei_lager_name">
     <text>Слава КПСС</text>
@@ -201,7 +213,7 @@
     <text>Заповедник</text>
 </string>
 <string id="st_pro_smart_terrain_3_0_name">
-    <text>Хранение продуктов питания</text>
+    <text>Продовольственный Склад</text>
 </string>
 <string id="st_pro_smart_terrain_4_1_quest_name">
     <text>Башня</text>
@@ -212,7 +224,7 @@
     <text>Строительная площадка</text>
 </string>
 <string id="st_rosf_duty_hq_name">
-    <text>Отель</text>
+    <text>Гостиница</text>
 </string>
 <string id="st_rosf_duty_village_name">
     <text>Деревня</text>
@@ -221,13 +233,13 @@
     <text>Тоннель</text>
 </string>
 <string id="st_rosf_loner_group1_name">
-    <text>Магазин “Товары”</text>
+    <text>Магазин «Продукты»</text>
 </string>
 <string id="st_rosf_loner_group2_name">
     <text>Проход</text>
 </string>
 <string id="st_rosf_military_blokpost_name">
-    <text>Военный контрольно-пропускной пункт</text>
+    <text>Военный КПП</text>
 </string>
 <string id="st_rosf_sim_1_name">
     <text>Двор</text>
@@ -267,7 +279,7 @@
     <text>Деревня</text>
 </string>
 <string id="st_topi_sim_nps_8_name">
-    <text>База “Сталкеры”</text>
+    <text>База «Сталкеров»</text>
 </string>
 
 <!-- Chertovo Urochishche -->
@@ -275,7 +287,7 @@
     <text>Северный лагерь</text>
 </string>
 <string id="st_grim_2_name">
-    <text>Пропускной пункт</text>
+    <text>Блокпост</text>
 </string>
 <string id="st_grim_3_name">
     <text>Юго-западная роща</text>
@@ -284,10 +296,10 @@
     <text>Северный лес</text>
 </string>
 <string id="st_grim_5_name">
-    <text>Лес у контрольно-пропускного пункта</text>
+    <text>Лес у КПП</text>
 </string>
 <string id="st_grim_6_name">
-    <text>Расчистка под опорами линий электропередач</text>
+    <text>Поляна под Опорами ЛЭП</text>
 </string>
 <string id="st_grim_7_name">
     <text>Южный путь</text>
@@ -330,7 +342,7 @@
     <text>Лесной лагерь</text>
 </string>
 <string id="st_el_stalker_base_1_smart_name">
-    <text>Бар “Хавчик”</text>
+    <text>Бар «Хавчик»</text>
 </string>
 <string id="st_el_stalker_base_2_smart_name">
     <text>Восточное здание</text>
@@ -345,7 +357,7 @@
     <text>Резервуары</text>
 </string>
 <string id="st_ex_gar_a1_name">
-    <text>Базовый вход</text>
+    <text>Вход на Базу</text>
 </string>
 <string id="st_ex_gar_a2_name">
     <text>Производственные помещения</text>
@@ -360,7 +372,7 @@
     <text>Временный лагерь наемников</text>
 </string>
 <string id="st_ex_gar_sim_02_name">
-    <text>Проходить</text>
+    <text>Проход</text>
 </string>
 <string id="st_ex_gar_sim_03_name">
     <text>Аномалия "Кислотный бассейн"</text>
@@ -377,10 +389,10 @@
 
 	<!-- The neighbourhood of the Dome -->
 	<string id="st_cit_a2_name">
-    <text>Пропускной пункт</text>
+    <text>Блокпост</text>
 </string>
 <string id="st_cit_b39_name">
-    <text>Испытательный комплекс "P-I"</text>
+    <text>Испытательный Комплекс «П-И»</text>
 </string>
 <string id="st_kup_atr_name">
     <text>ВНЗ "Луч"</text>
@@ -395,10 +407,10 @@
     <text>Аномалия "Пожарный беспилотник"</text>
 </string>
 <string id="st_cit_sim_16_name">
-    <text>Выход с контрольно-пропускного пункта</text>
+    <text>Выход с КПП</text>
 </string>
 <string id="st_cit_sim_21_name">
-    <text>Вход на базу Радара</text>
+    <text>Вход на Базу РЛС</text>
 </string>
 <string id="st_cit_sim_22_name">
     <text>Дорога к Секретному комплексу</text>
@@ -479,7 +491,7 @@
     <text>Вертолет на болоте</text>
 </string>
 <string id="st_okr_sim_8_name">
-    <text>Аномалия0"Химическое строение"</text>
+    <text>Аномалия "Химическое строение"</text>
 </string>
 <string id="st_okr_sim_11_name">
     <text>Советский самолет</text>
@@ -512,10 +524,10 @@
     <text>Аномалия "Трансформаторная будка №2"</text>
 </string>
 <string id="st_okr_sim_38_name">
-    <text>Аномалия " "Огненный тандем"</text>
+    <text>Аномалия "Огненный тандем"</text>
 </string>
 <string id="st_okr_zombied_1_name">
-    <text>Северный контрольно-пропускной пункт</text>
+    <text>Северный КПП</text>
 </string>
 <string id="st_okr_zombied_2_name">
     <text>Заброшенный комплекс "Венера"</text>
@@ -527,7 +539,7 @@
     <text>Вход в метро</text>
 </string>
 <string id="st_okr_zombied_9_name">
-    <text>Западный контрольно-пропускной пункт</text>
+    <text>Западный КПП</text>
 </string>
 <!-- An anomalous forest -->
 <string id="st_ano_smart_terrain_1_1_name">
@@ -626,7 +638,7 @@
     <text>Радиоактивная свалка</text>
 </string>
 <string id="st_blck_val_b1_name">
-    <text>Аномалия "Адский круг"</text>
+    <text>Аномалия «Адский Круг»</text>
 </string>
 <string id="st_blck_val_b2_name">
     <text>Усадьба помещика</text>
@@ -657,7 +669,7 @@
     <text>Восточная деревня</text>
 </string>
 <string id="st_yan_fort_terrain_name">
-    <text>Пропускной пункт</text>
+    <text>Блокпост</text>
 </string>
 <string id="st_yan_stalker_bunker_name">
     <text>Подвал</text>
@@ -688,7 +700,7 @@
     <text>Автобусная остановка</text>
 </string>
 <string id="st_forest_sim_2_name">
-    <text>Пропускной пункт</text>
+    <text>Блокпост</text>
 </string>
 <string id="st_forest_swampbeast_terrain1_name">
     <text>Проклятое болото</text>
@@ -809,19 +821,19 @@
     <text>Военная база в Касьянах</text>
 </string>
 <string id="st_kas_kpp_name">
-    <text>Южный контрольно-пропускной пункт</text>
+    <text>Южный КПП</text>
 </string>
 <string id="st_kas_kpp2_name">
-    <text>Северный контрольно-пропускной пункт</text>
+    <text>Северный КПП</text>
 </string>
 <string id="st_kas_kpp3_name">
-    <text>Западный контрольно-пропускной пункт</text>
+    <text>Западный КПП</text>
 </string>
 <string id="st_kas_perekrestok_name">
     <text>Перекресток</text>
 </string>
 <string id="st_kas_sim_1_name">
-    <text>Смертельная аномалия</text>
+    <text>Здание КПСС</text>
 </string>
 <string id="st_kas_sim_2_name">
     <text>Аномалия "Центр дьявола"</text>
@@ -856,7 +868,7 @@
     <text>Фабрика (Восток)</text>
 </string>
 <string id="st_prom_4_name">
-    <text>Заводской контрольный пункт</text>
+    <text>Заводской КПП</text>
 </string>
 <string id="st_prom_5_name">
     <text>Задние дворы</text>
@@ -911,7 +923,7 @@
     <text>Северная деревня</text>
 </string>
 <string id="st_lake_smart_terrain_4_name">
-    <text>Южный контрольно-пропускной пункт</text>
+    <text>Южный КПП</text>
 </string>
 <string id="st_lake_smart_terrain_5_name">
     <text>Западная деревушка</text>
@@ -923,7 +935,7 @@
     <text>Бассейн</text>
 </string>
 <string id="st_val_sim_4_name">
-    <text>Северный контрольно-пропускной пункт</text>
+    <text>Северный КПП</text>
 </string>
 <string id="st_val_sim_12_name">
     <text>Западная деревня</text>
@@ -1027,7 +1039,7 @@
     <text>Небольшой ангар рядом со складом</text>
 </string>
 <string id="st_gar_dolg_blockpost_name">
-    <text>Северный контрольно-пропускной пункт "Долга"</text>
+    <text>Северный КПП "Долга"</text>
 </string>
 <string id="st_gar_dogs_lair2_name">
     <text>Спуск к Свалке</text>
@@ -1052,7 +1064,7 @@
     <text>Опасные кусты</text>
 </string>
 <string id="st_bcr_boar_terrain17_name">
-    <text>Дорога к контрольно-пропускному пункту</text>
+    <text>Дорога к КПП</text>
 </string>
 <string id="st_bcr_dog_terrain3_name">
     <text>Поляна у дороги</text>
@@ -1064,7 +1076,7 @@
     <text>Деревня у дороги</text>
 </string>
 <string id="st_country_blockpost_name">
-    <text>Пропускной пункт</text>
+    <text>Блокпост</text>
 </string>
 <string id="st_country_bandit_terrain1_name">
     <text>Деревня</text>
@@ -1192,7 +1204,7 @@
 
 <!-- East Dump -->
 <string id="st_svalk_kpp2_smart_terrain_name">
-    <text>Северный контрольно-пропускной пункт "Долга"</text>
+    <text>Северный КПП "Долга"</text>
 </string>
 <string id="st_svalk_konteyneri_smart_terrain_name">
     <text>Восточный блошиный рынок</text>
@@ -1213,7 +1225,7 @@
     <text>Перекресток</text>
 </string>
 <string id="st_svalk_kpp_smart_terrain_name">
-    <text>Южный контрольно-пропускной пункт</text>
+    <text>Южный КПП</text>
 </string>
 <string id="st_svalk_sim_10_name">
     <text>Восточная свалка</text>
@@ -1236,10 +1248,10 @@
     <text>База "Долга"</text>
 </string>
 <string id="st_bar_smart_terrain_1_3_name">
-    <text>Южный контрольно-пропускной пункт "Долга"</text>
+    <text>Южный КПП "Долга"</text>
 </string>
 <string id="st_bar_smart_terrain_1_4_name">
-    <text>Северный контрольно-пропускной пункт "Долга"</text>
+    <text>Северный КПП "Долга"</text>
 </string>
 <string id="st_bar_smart_terrain_1_5_name">
     <text>Подземный путь</text>
@@ -1286,7 +1298,7 @@
     <text>Тоннель</text>
 </string>
 <string id="st_esc_smart_terrain_2_2_name">
-    <text>Северный контрольно-пропускной пункт</text>
+    <text>Северный КПП</text>
 </string>
 <string id="st_esc_smart_terrain_2_2_surge_name">
     <text>Восточные руины деревни</text>
@@ -1324,7 +1336,7 @@
     <text>Военная база Х-2</text>
 </string>
 <string id="st_out_sim_13_name">
-    <text>Небольшой контрольно-пропускной пункт</text>
+    <text>Небольшой КПП</text>
 </string>
 <string id="st_out_b2_anomaly_name">
     <text>Аномалия "Спираль"</text>
@@ -1349,7 +1361,7 @@
 </string>
 <!-- Predbannik -->
 <string id="st_pre_sim_1_name">
-    <text>Северный контрольно-пропускной пункт</text>
+    <text>Северный КПП</text>
 </string>
 <string id="st_pre_sim_3_name">
     <text>Лягушачья деревня</text>

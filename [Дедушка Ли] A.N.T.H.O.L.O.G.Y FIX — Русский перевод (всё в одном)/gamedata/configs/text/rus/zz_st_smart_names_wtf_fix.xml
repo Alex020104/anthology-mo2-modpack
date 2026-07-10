@@ -25,7 +25,7 @@
         <text>Агропром</text>
     </string>
     <string id="igi_level_val">
-        <text>Темная долина</text>
+        <text>Тёмная долина</text>
     </string>
     <string id="igi_level_mil">
         <text>Армейские склады</text>
@@ -115,7 +115,7 @@
         <text>Транспортный цех</text>
     </string>
     <string id="igi_level_aver">
-        <text>Окрестности Юпитера</text>
+        <text>Неизведанная земля</text>
     </string>
     <string id="igi_level_aes">
         <text>ЧАЭС</text>
@@ -190,7 +190,7 @@
         <text>ЧАЭС: Внутренний лагерь</text>
     </string>
     <string id="st_aes2_monolith_snipers_3_name">
-        <text>ЧАЭС: Правление</text>
+        <text>ЧАЭС: Администрация</text>
     </string>
     <string id="st_aes2_monsters1_name">
         <text>ЧАЭС: Выход</text>
@@ -198,21 +198,23 @@
     <string id="st_aes2_monsters2_name">
         <text>ЧАЭС: Площадка</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_agr_defector_stalker_name">
-        <text>Агропром: Перебежчик сталкеров</text>
+        <text>Агропром: Сталкер-перебежчик</text>
     </string>
     <string id="st_agr_factory_assault_name">
-        <text>Агропром: Завод штурм</text>
+        <text>Агропром: Штурм завода</text>
     </string>
     <string id="st_agr_factory_defence_name">
-        <text>Агропром: Завод оборона</text>
+        <text>Агропром: Защита завода</text>
     </string>
     <string id="st_agr_factory_hold_name">
-        <text>Агропром: Завод удержание</text>
+        <text>Агропром: Оборона Завода</text>
     </string>
     <string id="st_agr_rush_name">
         <text>Агропром: Прорыв</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->		
     <string id="st_agr_smart_terrain_1_2_name">
         <text>Агропром: Лагерь на болоте</text>
     </string>
@@ -231,12 +233,14 @@
     <string id="st_agr_smart_terrain_1_6_near_1_name">
         <text>Агропром: Северный вход</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->		
     <string id="st_agr_smart_terrain_1_6_near_2_military_colonel_kovalski_arszi_scout_name">
-        <text>Агропром: Разведчик АРСЗИ у военных</text>
+        <text>Агропром: Разведчик АРСЗИ на Военной Базе</text>
     </string>
     <string id="st_agr_smart_terrain_1_6_near_2_military_colonel_kovalski_name">
-        <text>Агропром: Полковник Ковальски у военных</text>
+        <text>Агропром: Полковник Ковальский на Военной Базе</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_agr_smart_terrain_1_6_near_2_name">
         <text>Агропром: Восточный вход</text>
     </string>
@@ -298,8 +302,9 @@
         <text>Агропром: Стоянка на холме</text>
     </string>
     <string id="st_agr_SRI_name">
-        <text>Агропром: НИИ «Агропром»</text>
+        <text>НИИ «Агропром»</text>
     </string>
+	
     <string id="st_agr_u_bandits_name">
         <text>Подземелья Агропрома: Спуск в шахту</text>
     </string>
@@ -313,7 +318,7 @@
         <text>Подземелья Агропрома: Лежбище</text>
     </string>
     <string id="st_agr_u_soldiers_name">
-        <text>Подземелья Агропрома: Выход на верх</text>
+        <text>Подземелья Агропрома: Выход наверх</text>
     </string>
     <string id="st_agr2_bandit_st_name">
         <text>Подземелья Агропрома: Стоянка бандитов</text>
@@ -321,14 +326,15 @@
     <string id="st_agr2_bloodsucker_lair2_name">
         <text>Подземелья Агропрома: Логово кровососов</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->		
     <string id="st_agr2_pseudodog_nest1_name">
-        <text>Подземелья Агропрома: Псевдособак гнездо 1</text>
+        <text>Подземелья Агропрома: точка 1</text>
     </string>
     <string id="st_agr2_pseudodog_nest2_name">
-        <text>Подземелья Агропрома: Псевдособак гнездо 2</text>
+        <text>Подземелья Агропрома: точка 2</text>
     </string>
     <string id="st_agr2_pseudodog_nest3_name">
-        <text>Подземелья Агропрома: Псевдособак гнездо 3</text>
+        <text>Подземелья Агропрома: точка 3</text>
     </string>
     <string id="st_ano_smart_terrain_1_1_name">
         <text>Аномальный лес: Кусты</text>
@@ -337,44 +343,45 @@
         <text>Аномальный лес: Аномалия "Вулкан"</text>
     </string>
     <string id="st_ano_smart_terrain_2_2_name">
-        <text>Аномальная зона</text>
+        <text>Аномальная лес</text>
     </string>
     <string id="st_ano_smart_terrain_2_3_name">
-        <text>Аномальная зона</text>
+        <text>Аномальный лес</text>
     </string>
     <string id="st_ano_smart_terrain_2_4_name">
         <text>Аномальный лес: Мертвые деревья</text>
     </string>
     <string id="st_ano_smart_terrain_2_5_name">
-        <text>Аномальная зона</text>
+        <text>Аномальная лес</text>
     </string>
     <string id="st_ano_smart_terrain_3_1_name">
         <text>Аномальный лес: Мобильная лаборатория "Оникс"</text>
     </string>
     <string id="st_ano_smart_terrain_3_1_scientists_name">
-        <text>Аномальная зона: Лагерь ученых</text>
+        <text>Аномальная лес: Лагерь ученых</text>
     </string>
     <string id="st_ano_smart_terrain_3_2_name">
-        <text>Аномальная зона</text>
+        <text>Аномальная лес</text>
     </string>
     <string id="st_ano_smart_terrain_3_3_name">
         <text>Аномальный лес: Разрушенное здание</text>
     </string>
     <string id="st_ano_smart_terrain_3_4_name">
-        <text>Аномальная зона</text>
+        <text>Аномальная лес</text>
     </string>
     <string id="st_ano_smart_terrain_3_5_name">
-        <text>Аномальная зона</text>
+        <text>Аномальная лес</text>
     </string>
     <string id="st_ano_smart_terrain_4_1_name">
-        <text>Аномальная зона</text>
+        <text>Аномальная лес</text>
     </string>
     <string id="st_ano_smart_terrain_4_2_name">
-        <text>Аномальная зона</text>
+        <text>Аномальная лес</text>
     </string>
     <string id="st_ano_smart_terrain_4_3_name">
-        <text>Аномальная зона</text>
+        <text>Аномальная лес</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_ano_smart_terrain_4_4_name">
         <text>Аномальный лес: Аномалия "Гравитационный вертолет"</text>
     </string>
@@ -405,6 +412,7 @@
     <string id="st_ano_smart_terrain_8_1_name">
         <text>Аномальный лес: Аномалия "Трещины"</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_arena_smart_enemy_name">
         <text>Арена: Противник</text>
     </string>
@@ -412,58 +420,62 @@
         <text>Арена: Союзник</text>
     </string>
     <string id="st_army_sim_squad_alpha_name">
-        <text>Военные: Отряд Альфа</text>
+        <text>Военные: Отряд "Альфа"</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_atp_brigada_name">
         <text>АТП: Бригада</text>
     </string>
     <string id="st_atp_burer_name">
         <text>АТП: Логово бюреров</text>
     </string>
-    <string id="st_atp_chimera1_name">
-        <text>АТП: Сектор химера 1</text>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало --> 
+ <string id="st_atp_chimera1_name">
+        <text>АТП: Химера Сектор 1</text>
     </string>
     <string id="st_atp_dog1_name">
-        <text>АТП: Сектор собаки 1</text>
+        <text>АТП: Собака Сектор 1</text>
     </string>
+
     <string id="st_atp_fabrika_bandit_name">
         <text>АТП: Фабрика бандитов</text>
     </string>
     <string id="st_atp_flesh1_name">
-        <text>АТП: Сектор плоти 1</text>
+        <text>АТП: Кабан Сектор 1</text>
     </string>
     <string id="st_atp_gigant_udereva_name">
-        <text>АТП: Псевдогиганта у дерева</text>
+        <text>АТП: Псевдогигант у дерева</text>
     </string>
-    <string id="st_aver_arhara_sniper_makrogulag2_name">
-        <text>Неизведанная земля: Скалы на горе</text>
+
+ <string id="st_aver_arhara_sniper_makrogulag2_name">
+        <text>Неизведанная Земля: горные утёсы</text>
     </string>
     <string id="st_aver_arhara_sniper_mikrogulag1_name">
-        <text>Окрестности Юпитера: Архара снайпер микролагерь 1</text>
+        <text>Неизведанная Земля: снайперский лагерь Архары 1</text>
     </string>
     <string id="st_aver_hunter_name">
-        <text>Неизведанная земля: Костер на горе</text>
+        <text>Неизведанная земля: костёр на горе</text>
     </string>
     <string id="st_aver_kaban_gulag_name">
-        <text>Окрестности Юпитера: Кабан лагерь</text>
+        <text>Неизведанная Земля: лагерь вепрей</text>
     </string>
     <string id="st_aver_lair_1_name">
-        <text>Окрестности Юпитера: Логово 1</text>
+        <text>Неизведанная Земля: логово 1</text>
     </string>
     <string id="st_aver_lair_2_name">
         <text>Неизведанная земля: Аномалия "Кислотные болота"</text>
     </string>
     <string id="st_aver_lair_3_name">
-        <text>Окрестности Юпитера: Логово 3</text>
+        <text>Неизведанная Земля: логово 3</text>
     </string>
     <string id="st_aver_lair_4_name">
-        <text>Неизведанная земля: Недалеко от тропы</text>
+        <text>Неизведанная земля: у тропы</text>
     </string>
     <string id="st_aver_lair_5_name">
-        <text>Окрестности Юпитера: Логово 5</text>
+        <text>Неизведанная Земля: логово 5</text>
     </string>
     <string id="st_aver_lair_6_name">
-        <text>Окрестности Юпитера: Логово 6</text>
+        <text>Неизведанная Земля: логово 6</text>
     </string>
     <string id="st_aver_lazaret_name">
         <text>Неизведанная земля: Лазарет</text>
@@ -471,12 +483,14 @@
     <string id="st_aver_otshelnik_name">
         <text>Неизведанная земля: Хижина отшельника</text>
     </string>
+
     <string id="st_ba1_smart_bandits_name">
         <text>База: Лагерь бандитов</text>
     </string>
     <string id="st_ba1_smart_terrain_name">
         <text>База: Участок</text>
     </string>
+	
     <string id="st_bar_arena_monstr_name">
         <text>Росток: Арена мутантов</text>
     </string>
@@ -487,23 +501,24 @@
         <text>Бар: База «Долга»</text>
     </string>
     <string id="st_bar_ecolog_crush_name">
-        <text>Росток: Ученых авария</text>
+        <text>Росток: место крушения Учёных</text>
     </string>
     <string id="st_bar_freedom_attack_name">
-        <text>Росток: Свободы атака</text>
+        <text>Росток: штурм Свободы</text>
     </string>
     <string id="st_bar_freedom_chasers_attack_name">
-        <text>Росток: Свободы преследователи атака</text>
+        <text>Росток: атака отряда преследования Свободы</text>
     </string>
     <string id="st_bar_giant_special_smart_name">
-        <text>Росток: Особое логово псевдогиганта</text>
+        <text>Росток: секретное логово Псевдогиганта</text>
     </string>
     <string id="st_bar_sim_1_name">
-        <text>Росток: Участок</text>
+        <text>Росток: Определённый Сектор</text>
     </string>
     <string id="st_bar_smart_friend_base_name">
-        <text>Росток: База союзников</text>
+        <text>Росток: База Союзников</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец --> 		
     <string id="st_bar_smart_terrain_0_0_name">
         <text>Восточный Бар: Бар "100 ренген"</text>
     </string>
@@ -531,6 +546,7 @@
     <string id="st_bar_smart_terrain_0_8_name">
         <text>Росток</text>
     </string>
+	
     <string id="st_bar_smart_terrain_1_0_name">
         <text>Восточный Бар: Казармы "Долга"</text>
     </string>
@@ -541,20 +557,23 @@
         <text>Росток</text>
     </string>
     <string id="st_bar_smart_terrain_1_3_name">
-        <text>Восточный Бар: Южный контрольно-пропускной пункт "Долга"</text>
+        <text>Восточный Бар: Южный КПП "Долга"</text>
     </string>
     <string id="st_bar_smart_terrain_1_4_name">
-        <text>Восточный Бар: Северный контрольно-пропускной пункт "Долга"</text>
+        <text>Восточный Бар: Северный КПП "Долга"</text>
     </string>
     <string id="st_bar_smart_terrain_1_5_name">
-        <text>Восточный Бар: Подземный путь</text>
+        <text>Восточный Бар: Подземный Проход</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало --> 	
     <string id="st_bar_smart_terrain_2_0_name">
-        <text>Восточный Бар: Вербовочный лагерь "Чистое небо"</text>
+        <text>Восточный Бар: Вербовочный лагерь "Чистого неба"</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_bar_smart_terrain_3_0_name">
-        <text>Восточный Бар: Дорога к Восточной свалке</text>
+        <text>Восточный Бар Дорога к Восточной свалке</text>
     </string>
+ 	
     <string id="st_bar_smart_terrain_3_1_name">
         <text>Росток</text>
     </string>
@@ -564,18 +583,20 @@
     <string id="st_bar_smart_terrain_3_3_name">
         <text>Восточный Бар: Переход в Южную деревню</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало --> 	
     <string id="st_bar_stalker_bedroom_name">
-        <text>Росток: Сталкеров спальня</text>
+        <text>Росток: Общежитие Сталкеров</text>
     </string>
     <string id="st_bar_stalker_hall_name">
-        <text>Росток: Сталкеров зал</text>
+        <text>Росток: Зал Сталкеров</text>
     </string>
     <string id="st_bar_stalker_sci_name">
-        <text>Росток: Сталкеров ученые</text>
+        <text>Росток: Группа Учёных</text>
     </string>
     <string id="st_bar_stalker_trader_out_name">
-        <text>Росток: Торговец сталкеров снаружи</text>
+        <text>Росток: Сталкер-Торговец на Улице</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_bar_visitors_name">
         <text>Бар: Бар «100 Рентген»</text>
     </string>
@@ -583,7 +604,7 @@
         <text>Бар: Западная застава</text>
     </string>
     <string id="st_bar_zastava_dogs_lair_2_name">
-        <text>Бар: Логово мутантов</text>
+        <text>Бар </text>
     </string>
     <string id="st_bar_zastava_dogs_lair_name">
         <text>Бар: Ров</text>
@@ -591,21 +612,24 @@
     <string id="st_bar_zastava_name">
         <text>Бар: Южная застава</text>
     </string>
+	
     <string id="st_bas_pseudo_smart_name">
         <text>Подземная база: Логово псевдособак</text>
     </string>
     <string id="st_bas_zombies_smart_name">
-        <text>Подземная база: Логово зомби</text>
+        <text>Подземная база</text>
     </string>
     <string id="st_bas_zombies_smart2_name">
-        <text>Подземная база: Скопление зомби</text>
+        <text>Подземная база</text>
     </string>
+	
     <string id="st_bcr_bloodsucker_terrain1_name">
         <text>Каньон: Логово кровососов</text>
     </string>
     <string id="st_bcr_bloodsucker_terrain2_name">
         <text>Каньон: Логово кровососов</text>
     </string>
+	
     <string id="st_bcr_boar_terrain1_name">
         <text>Каньон: Логово кабанов</text>
     </string>
@@ -630,9 +654,11 @@
     <string id="st_bcr_boar_terrain16_name">
         <text>Каньон: Логово кабанов</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_bcr_boar_terrain17_name">
-        <text>Аномальные поля: Дорога к контрольно-пропускному пункту</text>
+        <text>Аномальные поля: Дорога к КПП</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->		
     <string id="st_bcr_boar_terrain18_name">
         <text>Каньон: Логово кабанов</text>
     </string>
@@ -663,6 +689,7 @@
     <string id="st_bcr_boar_terrain9_name">
         <text>Каньон: Логово кабанов</text>
     </string>
+	
     <string id="st_bcr_dog_terrain1_name">
         <text>Каньон: Логово собак</text>
     </string>
@@ -681,6 +708,7 @@
     <string id="st_bcr_dog_terrain6_name">
         <text>Каньон: Логово собак</text>
     </string>
+	
     <string id="st_bcr_fracture_terrain1_name">
         <text>Каньон: Логово изломов</text>
     </string>
@@ -705,117 +733,124 @@
     <string id="st_bcr_ug_zombie_terrain_name">
         <text>Каньон: Подземное скопление зомби</text>
     </string>
+	
     <string id="st_blck_val_a31_name">
-        <text>Аванпост: Северная усадьба</text>
+        <text>Застава: Северная усадьба</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->		
     <string id="st_blck_val_a31_night_name">
-        <text>Черная долина: Ночная стоянка</text>
+        <text>Тёмная Долина: Ночная стоянка</text>
     </string>
     <string id="st_blck_val_a31_surge_name">
-        <text>Черная долина: Укрытие на время выброса</text>
+        <text>Тёмная Долина: Укрытие на время выброса</text>
     </string>
     <string id="st_blck_val_a32_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_blck_val_a35_name">
-        <text>Аванпост: Мастерская</text>
+        <text>Застава: Мастерская</text>
     </string>
     <string id="st_blck_val_a37_name">
-        <text>Аванпост: Плавательный бассейн</text>
+        <text>Застава: Бассейн</text>
     </string>
     <string id="st_blck_val_b1_name">
-        <text>Аванпост: Аномалия "Адский круг"</text>
+        <text>Застава: Аномалия "Адский круг"</text>
     </string>
     <string id="st_blck_val_b2_name">
-        <text>Аванпост: Усадьба помещика</text>
+        <text>Застава: Усадьба помещика</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_blck_val_b203_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_b204_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_b205_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_b206_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_b207_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_b208_name">
-        <text>Аванпост: Металлургический завод</text>
+        <text>Застава: Металлургический завод</text>
     </string>
     <string id="st_blck_val_b3_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_b45_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_hutor_quest_enemy_name">
-        <text>Черная долина: Сектор хутор квест враг</text>
+        <text>Тёмная Долина: Квестовый Враг в Секторе Фермы</text>
     </string>
     <string id="st_blck_val_hutor_quest_name">
-        <text>Черная долина: Сектор хутор квест</text>
+        <text>Тёмная Долина: Квест в Секторе Фермы</text>
     </string>
+	
     <string id="st_blck_val_sim_1_name">
-        <text>Аванпост: Строительная площадка</text>
+        <text>Застава: Строительная площадка</text>
     </string>
     <string id="st_blck_val_sim_10_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_sim_11_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_sim_12_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_sim_2_name">
-        <text>Аванпост: Аномалия "Аномальная роща"</text>
+        <text>Застава: Аномалия "Аномальная роща"</text>
     </string>
     <string id="st_blck_val_sim_3_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_sim_4_name">
-        <text>Аванпост: Кладбище</text>
+        <text>Застава: Кладбище</text>
     </string>
     <string id="st_blck_val_sim_5_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_sim_6_name">
-        <text>Черная долина</text>
+        <text>Тёмная ДолинаТёмная Долина</text>
     </string>
     <string id="st_blck_val_sim_7_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_sim_8_name">
-        <text>Черная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_blck_val_sim_9_name">
-        <text>Аванпост: Радиоактивная свалка</text>
+        <text>Застава: Радиоактивная свалка</text>
     </string>
+	
     <string id="st_bun_a2_smart_name">
-        <text>Бункер: Участок</text>
+        <text>Бункер: Сектор</text>
     </string>
     <string id="st_bun_a3_smart_name">
-        <text>Бункер: Участок</text>
+        <text>Бункер: Сектор</text>
     </string>
     <string id="st_bun_krovosos_nest_name">
         <text>Лаборатория X-18: Склад</text>
     </string>
     <string id="st_bun_sim_smart_1_name">
-        <text>Бункер: Участок</text>
+        <text>Бункер: Сектор</text>
     </string>
     <string id="st_bun_sim_smart_2_name">
-        <text>Бункер: Участок</text>
+        <text>Бункер: Сектор</text>
     </string>
     <string id="st_bun_sim_smart_3_name">
-        <text>Бункер: Участок</text>
+        <text>Бункер: Сектор</text>
     </string>
     <string id="st_bun_smart_terrain_heart_of_station_mlr_name">
-        <text>Бункер: Центр станции MLR</text>
+        <text>Бункер: Центр станции</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->		
     <string id="st_bun2_st_bloodsucker_name">
         <text>Лаборатория X-18: Генераторная</text>
     </string>
@@ -831,30 +866,34 @@
     <string id="st_chu_b1_name">
         <text>Чернобыль</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_chu_sim_1_name">
-        <text>Чернобыль: Участок</text>
+        <text>Чернобыль: Сектор</text>
     </string>
     <string id="st_chu_sim_2_name">
-        <text>Чернобыль: Участок</text>
+        <text>Чернобыль: Сектор</text>
     </string>
     <string id="st_chu_sim_3_name">
-        <text>Чернобыль: Участок</text>
+        <text>Чернобыль: Сектор</text>
     </string>
     <string id="st_chu_sim_4_name">
-        <text>Чернобыль: Участок</text>
+        <text>Чернобыль: Сектор</text>
     </string>
     <string id="st_chu_sim_5_name">
-        <text>Чернобыль: Участок</text>
+        <text>Чернобыль: Сектор</text>
     </string>
+
     <string id="st_cit_a2_name">
-        <text>Окрестности Купола: Пропускной пункт</text>
+        <text>Окрестности ЧАЭС: Блокпост</text>
     </string>
+	
     <string id="st_cit_army_raid_name">
         <text>Мёртвый город: Олимпийская улица</text>
     </string>
     <string id="st_cit_b39_name">
-        <text>Окрестности Купола: Испытательный комплекс "П-И"</text>
+        <text>Окрестности ЧАЭС: Тестовый Комплекс «П-И»</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->		
     <string id="st_cit_bandit_village_name">
         <text>Мёртвый город: Деревня</text>
     </string>
@@ -894,9 +933,11 @@
     <string id="st_cit_gym_lager_name">
         <text>Мёртвый город: Вход в магазин “Коопторг”</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->		
     <string id="st_cit_kanaliz1_name">
-        <text>Мертвый город: Огневая точка</text>
+        <text>Мёртвый Город: Огневая Позиция</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->		
     <string id="st_cit_kanaliz2_name">
         <text>Мертвый город: Унылая земля</text>
     </string>
@@ -909,15 +950,17 @@
     <string id="st_cit_killers_vs_bandits_name">
         <text>Мертвый город: Площадь</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_cit_lynx_lair_name">
-        <text>Мертвый город: Логово рыси</text>
+        <text>Мёртвый Город: Логово Рыси</text>
     </string>
     <string id="st_cit_mercs_base_name">
         <text>Мёртвый город: Школа</text>
     </string>
     <string id="st_cit_mercs_wave_name">
-        <text>Мертвый город: Наемников волна</text>
+        <text>Мёртвый Город: Волна Наёмников</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_cit_partei_lager_name">
         <text>Мёртвый город: Слава КПСС</text>
     </string>
@@ -925,7 +968,7 @@
         <text>Мёртвый город: Памятник Ленину</text>
     </string>
     <string id="st_cit_poltergeist_flat_name">
-        <text>Мёртвый город: Снайперская позиция в высотном здании</text>
+        <text>Мёртвый Город: Снайперская Позиция на Крыше</text>
     </string>
     <string id="st_cit_poltergeist_lair_name">
         <text>Мертвый город: Логово полтергейстов</text>
@@ -934,125 +977,126 @@
         <text>Мёртвый город: Аномалия «Аллея»</text>
     </string>
     <string id="st_cit_sim_1_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_10_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_11_name">
-        <text>Окрестности Купола: Путь к переходу</text>
+        <text>Окрестности ЧАЭС: Путь к Переходу</text>
     </string>
     <string id="st_cit_sim_12_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_13_name">
-        <text>Окрестности Купола: Аномалия "Пожарный беспилотник"</text>
+        <text>	Окрестности ЧАЭС: Аномалия «Огненный Беспилотник»</text>
     </string>
     <string id="st_cit_sim_14_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_15_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_16_name">
-        <text>Окрестности Купола: Выход с контрольно-пропускного пункта</text>
+        <text>Окрестности ЧАЭС: Выход с Блокпоста</text>
     </string>
     <string id="st_cit_sim_17_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_18_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_19_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_2_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_20_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_21_name">
-        <text>Окрестности Купола: Вход на базу Радара</text>
+        <text>Окрестности ЧАЭС: Вход на Базу РЛС</text>
     </string>
     <string id="st_cit_sim_22_name">
-        <text>Окрестности Купола: Дорога к Секретному комплексу</text>
+        <text>Окрестности ЧАЭС: Дорога к Секретному Комплексу</text>
     </string>
     <string id="st_cit_sim_23_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_24_name">
-        <text>Окрестности Купола: Дорога мимо неизвестной деревни</text>
+        <text>Окрестности ЧАЭС: Дорога мимо Неизвестной Деревни</text>
     </string>
     <string id="st_cit_sim_25_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_26_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_27_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_28_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_29_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_3_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_30_name">
-        <text>Окрестности Купола: Аномалия "Паучий крик"</text>
+        <text>Окрестности ЧАЭС: Аномалия «Паучий Крик»</text>
     </string>
     <string id="st_cit_sim_31_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_32_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_33_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_34_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_35_name">
-        <text>Окрестности Купола: Аномалия "Остров"</text>
+        <text>Окрестности ЧАЭС: Аномалия «Остров»</text>
     </string>
     <string id="st_cit_sim_36_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_37_name">
-        <text>Окрестности Купола: Резервуары</text>
+        <text>Окрестности ЧАЭС: Водохранилища</text>
     </string>
     <string id="st_cit_sim_38_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_39_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_4_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_40_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_5_name">
-        <text>Окрестности Купола: Заброшенный участок ЗРК</text>
+        <text>Окрестности ЧАЭС: Заброшенный  ЗРК</text>
     </string>
     <string id="st_cit_sim_6_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_7_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_8_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
     <string id="st_cit_sim_9_name">
-        <text>Мертвый город: Участок</text>
+        <text>Мёртвый Город: Сектор</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_cit_snork_lair_name">
         <text>Мёртвый город: Болото</text>
     </string>
@@ -1101,9 +1145,11 @@
     <string id="st_city_smart_terrain_2_7_name">
         <text>Курчатов: Западная игровая площадка</text>
     </string>
+	
     <string id="st_cld_p30_name">
         <text>Мертвое озеро</text>
     </string>
+	
     <string id="st_coll_b1_name">
         <text>Коллектор</text>
     </string>
@@ -1131,6 +1177,7 @@
     <string id="st_coll_b9_name">
         <text>Коллектор</text>
     </string>
+	
     <string id="st_collaider_1_name">
         <text>Медицинский пункт</text>
     </string>
@@ -1149,6 +1196,7 @@
     <string id="st_collaider_6_name">
         <text>Центр управления</text>
     </string>
+	
     <string id="st_country_bandit_terrain1_name">
         <text>Аномальные поля: Деревня</text>
     </string>
@@ -1167,6 +1215,7 @@
     <string id="st_country_stalker_terrain1_name">
         <text>Аномальные поля: Дом у аномалии "Кислушка"</text>
     </string>
+	
     <string id="st_dam_bloodsucker_terrain1_name">
         <text>Дамба: Логово кровососов</text>
     </string>
@@ -1176,27 +1225,30 @@
     <string id="st_dam_snork_terrain1_name">
         <text>Дамба: Логово снорков</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_dam_station_monolith_terrain_name">
-        <text>Дамба: Станция, пост Монолита</text>
+        <text>Дамба: Станция, Пост Монолита</text>
     </string>
     <string id="st_dam_station_snork_terrain_name">
-        <text>Дамба: Станция, логово снорков</text>
+        <text>Дамба: Станция, Логово Снорков</text>
     </string>
     <string id="st_dam_station_tushkano_terrain_name">
-        <text>Дамба: Станция, логово тушканов</text>
+        <text>Дамба: Станция, Логово Тушканов</text>
     </string>
     <string id="st_dam_station_zombie_terrain_name">
-        <text>Дамба: Станция, скопление зомби</text>
+        <text>Дамба: Станция, Скопление Зомби</text>
     </string>
     <string id="st_dam_zombie_entrance_terrain_name">
-        <text>Дамба: Вход, скопление зомби</text>
+        <text>Дамба: Станция, Скопление Зомби</text>
     </string>
+	
     <string id="st_dar_angar_name">
         <text>Лаборатория X-18: Ангар</text>
     </string>
     <string id="st_dar_control_poltergeist_name">
-        <text>Лаборатория X-18: Испытательная</text>
+        <text>Лаборатория X-18: Испытательная Камера</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_dar_military_scout_name">
         <text>Лаборатория X-18: Капсулы</text>
     </string>
@@ -1230,9 +1282,11 @@
     <string id="st_darklab_burer3_name">
         <text>Лаборатория X-18: Логово бюреров</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_darklab_giant_name">
         <text>Лаборатория X-18: Псевдогигант</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_darklab_polter1_name">
         <text>Лаборатория X-18: Логово полтергейстов</text>
     </string>
@@ -1257,48 +1311,53 @@
     <string id="st_darklab_tushkanos1_name">
         <text>Лаборатория X-18: Логово тушканов</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_darklab_zombies1_name">
-        <text>Лаборатория X-18: Логово зомби</text>
+        <text>Лаборатория X-18: Логово Зомби</text>
     </string>
     <string id="st_darklab_zombies2_name">
-        <text>Лаборатория X-18: Логово зомби</text>
+        <text>Лаборатория X-18: Логово Зомби</text>
     </string>
     <string id="st_darklab_zombies3_name">
-        <text>Лаборатория X-18: Логово зомби</text>
+        <text>Лаборатория X-18: Логово Зомби</text>
     </string>
     <string id="st_darklab_zombies4_name">
-        <text>Лаборатория X-18: Логово зомби</text>
+        <text>Лаборатория X-18: Логово Зомби</text>
     </string>
     <string id="st_darklab_zombies5_name">
-        <text>Лаборатория X-18: Логово зомби</text>
+        <text>Лаборатория X-18: Логово Зомби</text>
     </string>
+
     <string id="st_deadlake_bandits_quest_smart_name">
         <text>Мёртвое озеро: Неизвестный лагерь</text>
     </string>
     <string id="st_deadlake_sim_1_name">
-        <text>Мертвое озеро: Участок</text>
+        <text>Мёртвое Озеро: Зона</text>
     </string>
     <string id="st_deadlake_sim_2_name">
-        <text>Мертвое озеро: Участок</text>
+        <text>Мёртвое Озеро: Зона</text>
     </string>
     <string id="st_deadlake_sim_3_name">
-        <text>Мертвое озеро: Участок</text>
+        <text>Мёртвое Озеро: Зона</text>
     </string>
     <string id="st_deadlake_sim_4_name">
-        <text>Мертвое озеро: Участок</text>
+        <text>Мёртвое Озеро: Зона</text>
     </string>
+		
     <string id="st_depo_terrain_name">
         <text>Юпитер: Подземелья</text>
     </string>
     <string id="st_digst_smart_terrain_0_0_name">
-        <text>Станция диггеров</text>
+        <text>Станция Копателей</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_dl_attakers_smart_name">
         <text>Мёртвое озеро: Разрушенная башня</text>
     </string>
     <string id="st_dl_shturm_smart_name">
         <text>Мёртвое озеро: Автобус</text>
     </string>
+	
     <string id="st_dol_bloodsucker_terrain1_name">
         <text>Темная долина: Логово кровососов</text>
     </string>
@@ -1314,29 +1373,30 @@
     <string id="st_dol_flesh_terrain1_name">
         <text>Темная долина: Логово плотей</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_dol_general_terrain1_name">
-        <text>Тихие холмы: Каменная гора</text>
+        <text>Тихие холмы: Каменная Гора</text>
     </string>
     <string id="st_dol_general_terrain2_name">
-        <text>Темная долина: Общий участок</text>
+        <text>Тёмная Долина: Общая Зона</text>
     </string>
     <string id="st_dol_general_terrain3_name">
-        <text>Темная долина: Общий участок</text>
+        <text>Тёмная Долина: Общая Зона</text>
     </string>
     <string id="st_dol_general_terrain4_name">
         <text>Тихие холмы: Небольшой лес</text>
     </string>
     <string id="st_dol_general_terrain5_name">
-        <text>Темная долина: Общий участок</text>
+        <text>Тёмная Долина: Общая Зона</text>
     </string>
     <string id="st_dol_izlom_terrain_name">
-        <text>Темная долина: Логово изломов</text>
+        <text>Тёмная Долина: Логово Излома</text>
     </string>
     <string id="st_dol_poltergeist_terrain1_name">
         <text>Темная долина: Логово полтергейстов</text>
     </string>
     <string id="st_dol_poltergeist_terrain2_name">
-        <text>Тихие холмы: Аномалия "Аномалия"</text>
+        <text>Тихие холмы: Аномалия «Аномалия»</text>
     </string>
     <string id="st_dol_poltergeist_terrain3_name">
         <text>Тихие холмы: Пещера под деревней</text>
@@ -1354,14 +1414,15 @@
         <text>Тихие холмы: Фабрика X-6</text>
     </string>
     <string id="st_dolina_monolith_base_name">
-        <text>Тихие холмы: Вход на фабрику X-6</text>
+        <text>Тихие холмы: Вход на Завод X-6</text>
     </string>
     <string id="st_dolina_stables_lager_name">
-        <text>Тихие холмы: Парковка на Южной ферме</text>
+        <text>Тихие холмы: Парковка Южной Фермы</text>
     </string>
     <string id="st_dolina_suit_sucker_terrain_name">
-        <text>Темная долина: Тайник с костюмом кровососа</text>
+        <text>Темная долина: Тайник с Костюмом Кровососа</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_ds_administration_name">
         <text>Темная лощина: Администрация</text>
     </string>
@@ -1374,14 +1435,15 @@
     <string id="st_ds_boar_terrain2_name">
         <text>Темная лощина: Логово кабанов</text>
     </string>
+	
     <string id="st_ds_boars_nest_name">
         <text>Темная лощина: Утёс</text>
     </string>
     <string id="st_ds_chimera_terrain1_name">
-        <text>Темная лощина: Логово химер</text>
+        <text>Темная лощина: Логово Химеры</text>
     </string>
     <string id="st_ds_dark_stalker_name">
-        <text>Темная лощина: Мины</text>
+        <text>Тёмная Лощина: Шахты</text>
     </string>
     <string id="st_ds_deb1_name">
         <text>Темная лощина: Блокпост</text>
@@ -1393,10 +1455,10 @@
         <text>Темная лощина: Логово собак</text>
     </string>
     <string id="st_ds_dog_terrain3_name">
-        <text>Темная лощина: Грузовик</text>
+        <text>Тёмная Лощина: Грузовик</text>
     </string>
     <string id="st_ds_dolg_terrain_name">
-        <text>Темная лощина: Пост Долга</text>
+        <text>Темная лощина: Пост "Долга"</text>
     </string>
     <string id="st_ds_grverfer2_name">
         <text>Темная лощина: Стоянка на обочине</text>
@@ -1420,7 +1482,7 @@
         <text>Темная лощина: Старая баржа</text>
     </string>
     <string id="st_ds_military_terrain_name">
-        <text>Темная лощина: Бронетранспортер за автобусной остановкой</text>
+        <text>Тёмная Лощина: БТР за Автобусной Остановкой</text>
     </string>
     <string id="st_ds_mine_bandit_name">
         <text>Темная лощина: Лагерь бандитов в пещере</text>
@@ -1429,50 +1491,53 @@
         <text>Темная лощина: Светящийся мост</text>
     </string>
     <string id="st_ds_mutants_terrain1_name">
-        <text>Темная лощина: Логово мутантов</text>
+        <text>Тёмная Лощина: Логово Мутантов</text>
     </string>
     <string id="st_ds_mutants_terrain10_name">
         <text>Темная лощина: Мост</text>
     </string>
     <string id="st_ds_mutants_terrain11_name">
-        <text>Темная лощина: Северный контрольно-пропускной пункт</text>
+        <text>Темная лощина: Северный КПП</text>
     </string>
     <string id="st_ds_mutants_terrain2_name">
-        <text>Темная лощина: Южный контрольно-пропускной пункт</text>
+        <text>Темная лощина: Южный КПП</text>
     </string>
     <string id="st_ds_mutants_terrain3_name">
-        <text>Темная лощина: Логово мутантов</text>
+        <text>Тёмная Лощина: Логово Мутантов</text>
     </string>
     <string id="st_ds_mutants_terrain4_name">
-        <text>Темная лощина: Логово мутантов</text>
+        <text>Тёмная Лощина: Логово Мутантов</text>
     </string>
     <string id="st_ds_mutants_terrain5_name">
         <text>Темная лощина: Портовые краны</text>
     </string>
     <string id="st_ds_mutants_terrain6_name">
-        <text>Темная лощина: Логово мутантов</text>
+        <text>Тёмная Лощина: Логово Мутантов</text>
     </string>
     <string id="st_ds_mutants_terrain7_name">
         <text>Темная лощина: Автобусная остановка</text>
     </string>
     <string id="st_ds_mutants_terrain8_name">
-        <text>Темная лощина: Логово мутантов</text>
+        <text>Тёмная Лощина: Логово Мутантов</text>
     </string>
     <string id="st_ds_mutants_terrain9_name">
-        <text>Темная лощина: Логово мутантов</text>
+        <text>Тёмная Лощина: Логово Мутантов</text>
     </string>
+	
     <string id="st_ds_ptr_name">
         <text>Темная лощина: Ж/Д мост</text>
     </string>
     <string id="st_ds_ptr2_name">
-        <text>Темная лощина: Зона отдыха</text>
+        <text>Тёмная Лощина: Место Отдыха</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_ds_ptr3_name">
         <text>Темная лощина: Радиопятно</text>
     </string>
     <string id="st_ds_ptr4_name">
         <text>Темная лощина: Покинутый грузовик</text>
     </string>
+	
     <string id="st_ds_stalker_terrain1_name">
         <text>Темная лощина: Лагерь одиночек в пещере</text>
     </string>
@@ -1482,8 +1547,9 @@
     <string id="st_ds_zombie_terrain2_name">
         <text>Темная лощина: Хижина в лесу</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_ds_zombie_terrain3_name">
-        <text>Темная лощина: Логово зомби</text>
+        <text>Тёмная Лощина: Логово Зомби</text>
     </string>
     <string id="st_ds2_domik_st_name">
         <text>Темная лощина: Лесопилка</text>
@@ -1495,8 +1561,9 @@
         <text>Темная лощина: Привал в лесу</text>
     </string>
     <string id="st_ds2_st_hoofs_name">
-        <text>Темная лощина: Засада</text>
+        <text>Тёмная Лощина: Засада</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_el_merc_base_1_smart_name">
         <text>Заброшенные земли: Дом в деревне</text>
     </string>
@@ -1518,14 +1585,15 @@
     <string id="st_el_zavod_monolith_03_smart_name">
         <text>Заброшенные земли: Резервуары</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - начало -->		
     <string id="st_esc_alife_smart_random_name">
-        <text>Кордон: Случайная стоянка живности</text>
+        <text>Кордон: Случайное Место Появления Мутантов</text>
     </string>
     <string id="st_esc_assault_name">
         <text>Кордон: Штурм</text>
     </string>
     <string id="st_esc_bandit_factory_name">
-        <text>Кордон: Бандитов завод</text>
+        <text>Кордон: Бандитская Фабрика</text>
     </string>
     <string id="st_esc_blockpost_name">
         <text>Кордон: Блокпост</text>
@@ -1534,31 +1602,31 @@
         <text>Кордон: Логово кровососов</text>
     </string>
     <string id="st_esc_boar_back_name">
-        <text>Кордон: Кабанов задняя часть</text>
+        <text>Кордон: Тыловая Зона Кабанов</text>
     </string>
     <string id="st_esc_boars_lair_name">
         <text>Кордон: Логово кабанов</text>
     </string>
     <string id="st_esc_border_mutants_name">
-        <text>Кордон: Граница мутантов</text>
+        <text>Кордон: Граница Мутантов</text>
     </string>
     <string id="st_esc_bridge_blockpost_name">
-        <text>Кордон: Мост блокпост</text>
+        <text>Кордон: Блокпост на Мосту</text>
     </string>
     <string id="st_esc_dog_back_name">
-        <text>Кордон: Собак задняя часть</text>
+        <text>Кордон: Зона Обитания собак (Тыл)</text>
     </string>
     <string id="st_esc_dog_gar_name">
-        <text>Кордон: Собак Свалка</text>
+        <text>Кордон: Собаки на Свалке</text>
     </string>
     <string id="st_esc_dog_lair_sm_name">
-        <text>Кордон: Малое логово собак</text>
+        <text>Кордон: Логово Молодых Собак</text>
     </string>
     <string id="st_esc_dog_smart_1_name">
-        <text>Кордон: Стая собак</text>
+        <text>Кордон: Стая Собак</text>
     </string>
     <string id="st_esc_dogs_to_fox_name">
-        <text>Кордон: Собак к Лиса</text>
+        <text>Кордон: От Собак к Лисе</text>
     </string>
     <string id="st_esc_exit_smart_name">
         <text>Кордон: Выход</text>
@@ -1570,16 +1638,16 @@
         <text>Кордон: Логово плотей</text>
     </string>
     <string id="st_esc_fleshes_blockpost_name">
-        <text>Кордон: Плотей блокпост</text>
+        <text>Кордон: КПП, Захваченный Кабанами</text>
     </string>
     <string id="st_esc_fox_house_name">
-        <text>Кордон: Лиса дом</text>
+        <text>Кордон: Лисья Нора</text>
     </string>
     <string id="st_esc_karlik_smart_name">
-        <text>Кордон: Логово карлика</text>
+        <text>Кордон: Логово Карлика</text>
     </string>
     <string id="st_esc_mixed_lair_name">
-        <text>Кордон: Смешанное логово</text>
+        <text>Кордон: Логово Разных Мутантов</text>
     </string>
     <string id="st_esc_poltergeist_terrain_name">
         <text>Кордон: Логово полтергейстов</text>
@@ -1591,11 +1659,13 @@
         <text>Кордон: Логово крыс</text>
     </string>
     <string id="st_esc_sim_random_gar_name">
-        <text>Кордон: Случайный путь к Свалке</text>
+        <text>Кордон: Переход на Свалку (случайный)</text>
     </string>
+<!-- 28.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_esc_smart_terrain_0_0_1_name">
         <text>Кордон</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_esc_smart_terrain_0_0_2_name">
         <text>Восточный Кордон: Палатка Сталкера</text>
     </string>
@@ -1612,13 +1682,13 @@
         <text>Восточный Кордон: Барьер</text>
     </string>
     <string id="st_esc_smart_terrain_0_0_surge_name">
-        <text>Кордон: Место выброса</text>
+        <text>Кордон: Убежище от Выброса</text>
     </string>
     <string id="st_esc_smart_terrain_0_1_name">
         <text>Восточный Кордон: Аномалия "Пекарня"</text>
     </string>
     <string id="st_esc_smart_terrain_0_1_surge_name">
-        <text>Восточный Кордон: Лифт</text>
+        <text>Восточный Кордон: Элеватор</text>
     </string>
     <string id="st_esc_smart_terrain_1_0_1_name">
         <text>Кордон</text>
@@ -1630,7 +1700,7 @@
         <text>Восточный Кордон: Восточный транспортный узел</text>
     </string>
     <string id="st_esc_smart_terrain_1_0_quest_name">
-        <text>Кордон: Квестовое место</text>
+        <text>Кордон: Место Задания</text>
     </string>
     <string id="st_esc_smart_terrain_1_1_2_name">
         <text>Кордон</text>
@@ -1642,10 +1712,10 @@
         <text>Кордон: Бункер</text>
     </string>
     <string id="st_esc_smart_terrain_1_1_name">
-        <text>Восточный Кордон: Западная деревня новичков</text>
+        <text>Восточный Кордон: Западная Деревня Новичков</text>
     </string>
     <string id="st_esc_smart_terrain_1_1_quest_name">
-        <text>Кордон: Квестовое место</text>
+        <text>Кордон: Место Задания</text>
     </string>
     <string id="st_esc_smart_terrain_1_11_name">
         <text>Кордон: Тайный лагерь</text>
@@ -1687,22 +1757,22 @@
         <text>Кордон: Костёр под деревом</text>
     </string>
     <string id="st_esc_smart_terrain_2_2_name">
-        <text>Восточный Кордон: Северный контрольно-пропускной пункт</text>
+        <text>Восточный Кордон: Северный КПП</text>
     </string>
     <string id="st_esc_smart_terrain_2_2_operation_quest_name">
-        <text>Кордон: Квестовое местоовое место</text>
+        <text>Кордон: Место Задания</text>
     </string>
     <string id="st_esc_smart_terrain_2_2_quest_stalker_name">
-        <text>Кордон: Квестовое местоовое место сталкеров</text>
+        <text>Кордон: Место Квестового Сталкера</text>
     </string>
     <string id="st_esc_smart_terrain_2_2_surge_name">
-        <text>Восточный Кордон: Восточные руины деревни</text>
+        <text>Восточный Кордон: Руины Деревни</text>
     </string>
     <string id="st_esc_smart_terrain_2_3_name">
         <text>Кордон</text>
     </string>
     <string id="st_esc_smart_terrain_3_0_army_quest_name">
-        <text>Кордон: Квестовое местоовое место военных</text>
+        <text>Кордон: Место Квеста (Военные)</text>
     </string>
     <string id="st_esc_smart_terrain_3_0_name">
         <text>Кордон</text>
@@ -1711,19 +1781,19 @@
         <text>Кордон</text>
     </string>
     <string id="st_esc_smart_terrain_3_16_name">
-        <text>Кордон: Южный блокпост</text>
+        <text>Кордон: Южный Блокпост</text>
     </string>
     <string id="st_esc_smart_terrain_3_2_name">
         <text>Кордон</text>
     </string>
     <string id="st_esc_smart_terrain_3_2_quest_td_name">
-        <text>Кордон: Переход к Темной долине</text>
+        <text>Кордон: Переход в Тёмную Долину</text>
     </string>
     <string id="st_esc_smart_terrain_3_3_name">
         <text>Кордон</text>
     </string>
     <string id="st_esc_smart_terrain_3_3_quest_td_name">
-        <text>Кордон: Переход к Темной долине</text>
+        <text>Кордон: Переход в Тёмную Долину</text>
     </string>
     <string id="st_esc_smart_terrain_3_4_name">
         <text>Кордон</text>
@@ -1735,7 +1805,7 @@
         <text>Кордон</text>
     </string>
     <string id="st_esc_smart_terrain_3_6_name">
-        <text>Восточный Кордон: Лесок</text>
+        <text>Восточный Кордон: Небольшой Лес</text>
     </string>
     <string id="st_esc_smart_terrain_3_7_1_name">
         <text>Кордон</text>
@@ -1789,7 +1859,7 @@
         <text>Кордон: Привал на поляне</text>
     </string>
     <string id="st_esc_smart_terrain_5_7_loner_mechanic_stalker_name">
-        <text>Кордон: Механик одиночек</text>
+        <text>Кордон: Механик (Одиночка)</text>
     </string>
     <string id="st_esc_smart_terrain_5_7_name">
         <text>Кордон: Старая ферма</text>
@@ -1819,7 +1889,7 @@
         <text>Кордон: АТП</text>
     </string>
     <string id="st_esc_smart_terrain_8_0_name">
-        <text>Кордон</text>
+        <text>Кордон: Холм за АТП</text>
     </string>
     <string id="st_esc_smart_terrain_8_1_name">
         <text>Кордон</text>
@@ -1831,7 +1901,7 @@
         <text>Кордон</text>
     </string>
     <string id="st_esc_smart_terrain_8_9_name">
-        <text>Кордон: Стоянка в сосновом бору</text>
+        <text>Кордон: Лагерь в Сосновом Лесу</text>
     </string>
     <string id="st_esc_smart_terrain_9_10_name">
         <text>Кордон: Костёр у тоннеля</text>
@@ -1846,46 +1916,46 @@
         <text>Кордон: Логово контролера</text>
     </string>
     <string id="st_esc_smart_terrain_lisiy_name">
-        <text>Кордон: Место Лисия</text>
+        <text>Кордон: Лисья Точка</text>
     </string>
     <string id="st_esc_smart_terrain_q_name">
         <text>Восточный Кордон: Аномалия "Горящая земля"</text>
     </string>
     <string id="st_esc_smart_terrain_quest_1_name">
-        <text>Кордон: Квестовое место</text>
+        <text>Кордон: Место Квеста</text>
     </string>
     <string id="st_esc_smart_terrain_quest_2_name">
-        <text>Кордон: Квестовое место</text>
+        <text>Кордон: Место Квеста</text>
     </string>
     <string id="st_esc_smart_terrain_underground_1_name">
-        <text>Кордон: Подземелье, входная галерея</text>
+        <text>Кордон: Подземный Входной Тоннель</text>
     </string>
     <string id="st_esc_smart_terrain_underground_2_name">
-        <text>Кордон: Подземелье, нижний тоннель</text>
+        <text>Кордон: Подземелье, Нижний Тоннель</text>
     </string>
     <string id="st_esc_smart_terrain_underground_3_name">
-        <text>Кордон: Подземелье, лабораторный сектор</text>
+        <text>Кордон: Подземелье, Сектор Лабораторий</text>
     </string>
     <string id="st_esc_smart_terrain_underground_4_name">
-        <text>Кордон: Подземелье, выход к трубе</text>
+        <text>Кордон: Подземелье, Выход из Трубы</text>
     </string>
     <string id="st_esc_tuishkano_lair_name">
         <text>Кордон: Логово тушканов</text>
     </string>
     <string id="st_esc_tunnel_zombie_terrain_name">
-        <text>Кордон: Тоннель, скопление зомби</text>
+        <text>Кордон: Тоннель, Скопление Зомби</text>
     </string>
     <string id="st_esc_tutorial_flesh_terrain_name">
-        <text>Кордон: Место обучения у плотей</text>
+        <text>Кордон: Зона для Обучения (Кабаны)</text>
     </string>
     <string id="st_esc_ug_zombie_terrain_name">
-        <text>Кордон: Подземелье, скопление зомби</text>
+        <text>Кордон: Подземелье, Скопление Зомби</text>
     </string>
     <string id="st_esc_village_lager_name">
-        <text>Кордон: Деревня лагерь</text>
+        <text>Кордон: Лагерь у Деревни</text>
     </string>
     <string id="st_ex_gar_a1_name">
-        <text>Заброшенные земли: Базовый вход</text>
+        <text>Заброшенные Земли: Главный Вход</text>
     </string>
     <string id="st_ex_gar_a2_name">
         <text>Заброшенные земли: Производственные помещения</text>
@@ -1900,8 +1970,9 @@
         <text>Заброшенные земли: Временный лагерь наемников</text>
     </string>
     <string id="st_ex_gar_sim_02_name">
-        <text>Заброшенные земли: Проходить</text>
+        <text>Заброшенные Земли: Переход</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_ex_gar_sim_03_name">
         <text>Заброшенные земли: Аномалия "Кислотный бассейн"</text>
     </string>
@@ -1974,8 +2045,9 @@
     <string id="st_forest_swampbeast_terrain2_name">
         <text>Лес: Логово болотных тварей</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_forest_zombied_terrain1_name">
-        <text>Лес: Логово зомби</text>
+        <text>Лес: Логово Зомби</text>
     </string>
     <string id="st_forg_bandit_terrain_name">
         <text>Забытый хутор: Лагерь бандитов</text>
@@ -1987,7 +2059,7 @@
         <text>Забытый хутор: Логово кабанов</text>
     </string>
     <string id="st_forg_cat_terrain1_name">
-        <text>Забытый хутор: Логово котов</text>
+        <text>Забытый хутор: Кошачье Логово</text>
     </string>
     <string id="st_forg_chimeras_terrain_name">
         <text>Забытый хутор: Логово химер</text>
@@ -2011,13 +2083,13 @@
         <text>Забытый хутор: Логово собак</text>
     </string>
     <string id="st_forg_dolg_raid_terrain_name">
-        <text>Забытый хутор: Рейд Долга</text>
+        <text>Забытый хутор: Нападение Долга</text>
     </string>
     <string id="st_forg_flesh_terrain1_name">
         <text>Забытый хутор: Логово плотей</text>
     </string>
     <string id="st_forg_karlito_terrain_name">
-        <text>Забытый хутор: Место Карлито</text>
+        <text>Забытый хутор: Дом Карлито</text>
     </string>
     <string id="st_forg_merc_terrain_name">
         <text>Забытый хутор: Лагерь наемников</text>
@@ -2029,19 +2101,21 @@
         <text>Забытый хутор: Лагерь сталкеров</text>
     </string>
     <string id="st_forg_zombie_terrain1_name">
-        <text>Забытый хутор: Логово зомби</text>
+        <text>Забытый хутор: Логово Зомби</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_forg_zombie_terrain2_name">
-        <text>Забытый хутор: Логово зомби</text>
+        <text>Забытый хутор: Логово Зомби</text>
     </string>
     <string id="st_forg_zombie_terrain3_name">
-        <text>Забытый хутор: Логово зомби</text>
+        <text>Забытый хутор: Логово Зомби</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->
     <string id="st_gar_angar_name">
         <text>Свалка: Старый ангар</text>
     </string>
     <string id="st_gar_bandit_sniper_terrain_name">
-        <text>Центральная свалка: Бандитский мост</text>
+        <text>Центральная Свалка: Бандитский Мост</text>
     </string>
     <string id="st_gar_baraholka_name">
         <text>Свалка: Барахолка</text>
@@ -2056,13 +2130,13 @@
         <text>Свалка: Логово кабанов</text>
     </string>
     <string id="st_gar_boars_nest_name">
-        <text>Свалка: Кабанов гнездо</text>
+        <text>Свалка: Логово Кабанов</text>
     </string>
     <string id="st_gar_bridge_lager_name">
-        <text>Центральная свалка: Лагерь у Бандитского моста</text>
+        <text>Центральная Свалка: Лагерь у Бандитского Моста</text>
     </string>
     <string id="st_gar_chimeras_lair1_name">
-        <text>Свалка: Химер логово 1</text>
+        <text>Свалка: Логово Химеры 1</text>
     </string>
     <string id="st_gar_cranes_lager_name">
         <text>Центральная свалка: Кран</text>
@@ -2074,13 +2148,13 @@
         <text>Центральная свалка: Спуск к Свалке</text>
     </string>
     <string id="st_gar_dolg_blockpost_name">
-        <text>Центральная свалка: Северный контрольно-пропускной пункт "Долга"</text>
+        <text>Центральная свалка: Северный КПП "Долга"</text>
     </string>
     <string id="st_gar_dram_moment_terrain_name">
         <text>Центральная свалка: Аномалия "Разрушенная дорога"</text>
     </string>
     <string id="st_gar_dram_name">
-        <text>Свалка: Драма</text>
+        <text>Свалка: Драматическое Событие</text>
     </string>
     <string id="st_gar_fleshes_lair1_name">
         <text>Свалка: Логово плотей</text>
@@ -2095,7 +2169,7 @@
         <text>Центральная свалка: Депо</text>
     </string>
     <string id="st_gar_mixed_lair_name">
-        <text>Свалка: Смешанное логово</text>
+        <text>Свалка: Логово Разных Мутантов</text>
     </string>
     <string id="st_gar_outpost_name">
         <text>Свалка: Северный блокпост</text>
@@ -2104,8 +2178,9 @@
         <text>Центральная свалка: Вход на Свалку</text>
     </string>
     <string id="st_gar_small_hangar_name">
-        <text>Центральная свалка: Небольшой ангар рядом со складом</text>
+        <text>Центральная Свалка: Небольшой Ангар Возле Склада</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->		
     <string id="st_gar_smart_terrain_1_5_name">
         <text>Свалка: Баррикады</text>
     </string>
@@ -2145,8 +2220,9 @@
     <string id="st_gar_smart_terrain_5_2_name">
         <text>Свалка: Северный блокпост</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_gar_smart_terrain_5_4_name">
-        <text>Свалка: Точка сбора</text>
+        <text>Свалка: Точка Сбора</text>
     </string>
     <string id="st_gar_smart_terrain_5_5_name">
         <text>Свалка: Лагерь кладоискателей</text>
@@ -2155,7 +2231,7 @@
         <text>Свалка: Обломки крана</text>
     </string>
     <string id="st_gar_smart_terrain_5_8_name">
-        <text>Свалка: Блокпост-приёмник</text>
+        <text>Свалка: КПП Приёмного Пункта</text>
     </string>
     <string id="st_gar_smart_terrain_6_1_name">
         <text>Свалка: Лагерь на задворках</text>
@@ -2173,13 +2249,13 @@
         <text>Свалка: Каменная россыпь</text>
     </string>
     <string id="st_gar_smart_terrain_7_4_name">
-        <text>Свалка: Новая стоянка</text>
+        <text>Свалка: Новый Лагерь</text>
     </string>
     <string id="st_gar_smart_terrain_8_3_name">
         <text>Свалка: Лагерь на западе</text>
     </string>
     <string id="st_gar_smart_terrain_8_5_name">
-        <text>Свалка: Волчий кут</text>
+        <text>Свалка: Волчья Яма</text>
     </string>
     <string id="st_gar_smart_terrain_8_7_name">
         <text>Свалка</text>
@@ -2188,8 +2264,9 @@
         <text>Центральная свалка: Туннель</text>
     </string>
     <string id="st_gar_zombies_graveyard_name">
-        <text>Центральная свалка: Свалка</text>
+        <text>Центральная Свалка: Мусорный Двор</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_gen_smart_terrain_cemetery_name">
         <text>Генераторы: Кладбище</text>
     </string>
@@ -2211,9 +2288,11 @@
     <string id="st_gen_smart_terrain_urod_name">
         <text>Генераторы: Смотровая площадка</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_gen_undeground_smart_mlr_burers_name">
-        <text>Генераторы: Гнездо бюреров</text>
+        <text>Генераторы: Логово Бюреров</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_gen_undeground_smart_mlr_controller_name">
         <text>Генераторы: Логово контролёра</text>
     </string>
@@ -2221,55 +2300,57 @@
         <text>Генераторы: Лёжка гиганта</text>
     </string>
     <string id="st_grim_1_name">
-        <text>Чертово урочище: Северный лагерь</text>
+        <text>Мрачный лес: Северный лагерь</text>
     </string>
     <string id="st_grim_10_name">
-        <text>Чертово урочище: Лагерь на главной дороге</text>
+        <text>Мрачный лес: Лагерь на главной дороге</text>
     </string>
     <string id="st_grim_11_name">
-        <text>Чертово урочище: Дорога к заброшенному зданию</text>
+        <text>Мрачный лес: Дорога к заброшенному зданию</text>
     </string>
     <string id="st_grim_12_name">
-        <text>Чертово урочище: Южный лес</text>
+        <text>Мрачный лес: Южный лес</text>
     </string>
     <string id="st_grim_13_name">
-        <text>Чертово урочище: Северо-восточный лес</text>
+        <text>Мрачный лес: Северо-восточный лес</text>
     </string>
     <string id="st_grim_14_name">
-        <text>Чертово урочище: Восточный лес</text>
+        <text>Мрачный лес: Восточный лес</text>
     </string>
     <string id="st_grim_15_name">
-        <text>Чертово урочище: Лес над заброшенным зданием</text>
+        <text>Мрачный лес: Лес над заброшенным зданием</text>
     </string>
     <string id="st_grim_16_name">
-        <text>Чертово урочище: Заброшенное здание</text>
+        <text>Мрачный лес: Заброшенное здание</text>
     </string>
     <string id="st_grim_17_name">
-        <text>Чертово урочище: Лагерь у пруда</text>
+        <text>Мрачный лес: Лагерь у пруда</text>
     </string>
     <string id="st_grim_2_name">
-        <text>Чертово урочище: Пропускной пункт</text>
+        <text>Мрачный лес: Пропускной пункт</text>
     </string>
     <string id="st_grim_3_name">
-        <text>Чертово урочище: Юго-западная роща</text>
+        <text>Мрачный лес: Юго-западная роща</text>
     </string>
     <string id="st_grim_4_name">
-        <text>Чертово урочище: Северный лес</text>
+        <text>Мрачный лес: Северный лес</text>
     </string>
     <string id="st_grim_5_name">
-        <text>Чертово урочище: Лес у контрольно-пропускного пункта</text>
+        <text>Мрачный лес: Лес у контрольно-пропускного пункта</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_grim_6_name">
-        <text>Чертово урочище: Расчистка под опорами линий электропередач</text>
+        <text>Мрачный лес: Поляна под Линиями Электропередач</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_grim_7_name">
-        <text>Чертово урочище: Южный путь</text>
+        <text>Мрачный лес: Южный путь</text>
     </string>
     <string id="st_grim_8_name">
-        <text>Чертово урочище: Роща за причалом</text>
+        <text>Мрачный лес: Роща за причалом</text>
     </string>
     <string id="st_grim_9_name">
-        <text>Чертово урочище: Док</text>
+        <text>Мрачный лес: Док</text>
     </string>
     <string id="st_hotel_poless_smart_alife_name">
         <text>Припять: Задворки гостиницы</text>
@@ -2278,10 +2359,10 @@
         <text>Юпитер: КПП</text>
     </string>
     <string id="st_jup_a12_bandit_cashier_name">
-        <text>Юпитер: Кассир бандитов</text>
+        <text>Юпитер: Бандит-Кассир</text>
     </string>
     <string id="st_jup_a12_bandit_guard_name">
-        <text>Юпитер: Охрана бандитов</text>
+        <text>Юпитер: Охрана Бандитов</text>
     </string>
     <string id="st_jup_a12_merc_name">
         <text>Юпитер: Дорога</text>
@@ -2290,19 +2371,19 @@
         <text>Юпитер: Склад контейнеров</text>
     </string>
     <string id="st_jup_a6_freedom_leader_name">
-        <text>Юпитер: База Свободы, лидер</text>
+        <text>Юпитер</text>
     </string>
     <string id="st_jup_a6_freedom_trader_ashot_name">
-        <text>Юпитер: Торговец Свободы Ашот</text>
+        <text>Юпитер</text>
     </string>
     <string id="st_jup_a6_name">
         <text>Юпитер: Станция «Янов»</text>
     </string>
     <string id="st_jup_a6_stalker_barmen_name">
-        <text>Юпитер: Бармен сталкеров</text>
+        <text>Юпитер</text>
     </string>
     <string id="st_jup_a6_stalker_medik_name">
-        <text>Юпитер: Медик сталкеров</text>
+        <text>Юпитер</text>
     </string>
     <string id="st_jup_a9_conservation_info_desc_name">
         <text>Юпитер: Описание документов о консервации</text>
@@ -2410,7 +2491,7 @@
         <text>Юпитер: Подвал завода</text>
     </string>
     <string id="st_jup_b202_bandit_pda_name">
-        <text>Юпитер: КПК бандитов</text>
+        <text>Юпитер: КПК бандита</text>
     </string>
     <string id="st_jup_b202_name">
         <text>Юпитер: Полустанок</text>
@@ -2464,7 +2545,7 @@
         <text>Юпитер: Вентиляционный комплекс</text>
     </string>
     <string id="st_jup_b217_stalker_tech_name">
-        <text>Юпитер: Техник сталкеров</text>
+        <text>Юпитер</text>
     </string>
     <string id="st_jup_b219_name">
         <text>Юпитер: Цеха завода</text>
@@ -2503,7 +2584,7 @@
         <text>Юпитер: Описание КПК наемников</text>
     </string>
     <string id="st_jup_b47_merc_pda_name">
-        <text>Юпитер: КПК наемников</text>
+        <text>Юпитер: КПК наемника</text>
     </string>
     <string id="st_jup_b47_name">
         <text>Юпитер: Внутренний проезд</text>
@@ -2512,13 +2593,13 @@
         <text>Юпитер: Аномалия «Пепелище»</text>
     </string>
     <string id="st_jup_b6_scientist_biochemist_name">
-        <text>Юпитер: Ученый-биохимик</text>
+        <text>Юпитер</text>
     </string>
     <string id="st_jup_b6_scientist_nuclear_physicist_name">
-        <text>Юпитер: Ученый-физик</text>
+        <text>Юпитер</text>
     </string>
     <string id="st_jup_b6_scientist_tech_name">
-        <text>Юпитер: Ученый-техник</text>
+        <text>Юпитер</text>
     </string>
     <string id="st_jup_b8_smart_terrain_name">
         <text>Юпитер: Упавший вертолёт</text>
@@ -2536,7 +2617,7 @@
         <text>Юпитер: Стоянка у ж/д</text>
     </string>
     <string id="st_jup_sim_10_name">
-        <text>Юпитер: Земля мутантов</text>
+        <text>Юпитер</text>
     </string>
     <string id="st_jup_sim_11_name">
         <text>Юпитер: Лес</text>
@@ -2545,10 +2626,10 @@
         <text>Юпитер: Лагерь у венткомплекса</text>
     </string>
     <string id="st_jup_sim_13_name">
-        <text>Юпитер: Опасный лагерь</text>
+        <text>Юпитер</text>
     </string>
     <string id="st_jup_sim_14_name">
-        <text>Юпитер: Логово мутантов</text>
+        <text>Юпитер </text>
     </string>
     <string id="st_jup_sim_15_name">
         <text>Юпитер: Вершина холма</text>
@@ -2599,13 +2680,13 @@
         <text>Касьяны: Военная база в Касьянах</text>
     </string>
     <string id="st_kas_kpp_name">
-        <text>Касьяны: Южный контрольно-пропускной пункт</text>
+        <text>Касьяны: Южный КПП</text>
     </string>
     <string id="st_kas_kpp2_name">
-        <text>Касьяны: Северный контрольно-пропускной пункт</text>
+        <text>Касьяны: Северный КПП</text>
     </string>
     <string id="st_kas_kpp3_name">
-        <text>Касьяны: Западный контрольно-пропускной пункт</text>
+        <text>Касьяны: Западный КПП</text>
     </string>
     <string id="st_kas_perekrestok_name">
         <text>Касьяны: Перекресток</text>
@@ -2614,10 +2695,10 @@
         <text>Касьяны: Смертельная аномалия</text>
     </string>
     <string id="st_kas_sim_10_name">
-        <text>Каскад: Участок</text>
+        <text>Касьяны: Сектор</text>
     </string>
     <string id="st_kas_sim_11_name">
-        <text>Каскад: Участок</text>
+        <text>Касьяны: Сектор</text>
     </string>
     <string id="st_kas_sim_12_name">
         <text>Касьяны: Озеро</text>
@@ -2629,10 +2710,10 @@
         <text>Касьяны: Лес</text>
     </string>
     <string id="st_kas_sim_15_name">
-        <text>Каскад: Участок</text>
+        <text>Касьяны: Сектор</text>
     </string>
     <string id="st_kas_sim_16_name">
-        <text>Каскад: Участок</text>
+        <text>Касьяны: Сектор</text>
     </string>
     <string id="st_kas_sim_17_name">
         <text>Касьяны: Аномалия "Паутина лжи"</text>
@@ -2641,40 +2722,40 @@
         <text>Касьяны: Химическое болото</text>
     </string>
     <string id="st_kas_sim_19_name">
-        <text>Каскад: Участок</text>
+        <text>Касьяны: Сектор</text>
     </string>
     <string id="st_kas_sim_2_name">
         <text>Касьяны: Аномалия "Центр дьявола"</text>
     </string>
     <string id="st_kas_sim_20_name">
-        <text>Каскад: Участок</text>
+        <text>Касьяны: Сектор</text>
     </string>
     <string id="st_kas_sim_3_name">
-        <text>Каскад: Участок</text>
+        <text>Касьяны: Сектор</text>
     </string>
     <string id="st_kas_sim_4_name">
-        <text>Каскад: Участок</text>
+        <text>Касьяны: Сектор</text>
     </string>
     <string id="st_kas_sim_5_name">
-        <text>Каскад: Участок</text>
+        <text>Касьяны: Сектор</text>
     </string>
     <string id="st_kas_sim_6_name">
-        <text>Каскад: Участок</text>
+        <text>Касьяны: Сектор</text>
     </string>
     <string id="st_kas_sim_7_name">
         <text>Касьяны: Поле</text>
     </string>
     <string id="st_kas_sim_8_name">
-        <text>Каскад: Участок</text>
+        <text>Касьяны: Сектор</text>
     </string>
     <string id="st_kas_sim_9_name">
-        <text>Каскад: Участок</text>
+        <text>Касьяны: Сектор</text>
     </string>
     <string id="st_kat_smart_terrain_name">
-        <text>Катакомбы: Участок</text>
+        <text>Катакомбы: Сектор</text>
     </string>
     <string id="st_katacomb_smart_terrain_name">
-        <text>Заброшенный госпиталь: Заброшенный Госпиталь</text>
+        <text>Заброшенный госпиталь: Заброшенный госпиталь</text>
     </string>
     <string id="st_kbo_terrain_name">
         <text>Припять: Вход в КБО</text>
@@ -2697,14 +2778,15 @@
     <string id="st_kn_e3_name">
         <text>Каньон</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_kup_atr_name">
-        <text>Окрестности Купола: ВНЗ "Луч"</text>
+        <text>Окрестности Куплона: ВНЗ «Луч»</text>
     </string>
     <string id="st_l2_9_baracks_name">
         <text>Станция: Казармы</text>
     </string>
     <string id="st_l2_9_buliding_name">
-        <text>Станция: Здания</text>
+        <text>Станция: Постройки</text>
     </string>
     <string id="st_l2_9_house_name">
         <text>Станция: Дом</text>
@@ -2719,28 +2801,28 @@
         <text>Станция: Пруд</text>
     </string>
     <string id="st_l2_9_sim_1_name">
-        <text>Объект Л2: Участок</text>
+        <text>Объект L2: Сектор</text>
     </string>
     <string id="st_l2_9_sim_2_name">
-        <text>Объект Л2: Участок</text>
+        <text>Объект L2: Сектор</text>
     </string>
     <string id="st_l2_9_sim_3_name">
-        <text>Объект Л2: Участок</text>
+        <text>Объект L2: Сектор</text>
     </string>
     <string id="st_l2_9_sim_4_name">
-        <text>Объект Л2: Участок</text>
+        <text>Объект L2: Сектор</text>
     </string>
     <string id="st_l2_9_sim_5_name">
-        <text>Объект Л2: Участок</text>
+        <text>Объект Л2 </text>
     </string>
     <string id="st_l2_9_sim_6_name">
-        <text>Объект Л2: Участок</text>
+        <text>Объект L2: Сектор</text>
     </string>
     <string id="st_l2_9_sim_7_name">
-        <text>Объект Л2: Участок</text>
+        <text>Объект L2: Сектор</text>
     </string>
     <string id="st_l2_9_sim_8_name">
-        <text>Объект Л2: Участок</text>
+        <text>Объект L2: Сектор</text>
     </string>
     <string id="st_l2_9_sim_9_name">
         <text>Станция: Железнодорожные пути</text>
@@ -2755,25 +2837,25 @@
         <text>Станция: Железнодорожный вокзал “Лиманск”</text>
     </string>
     <string id="st_labx7_sim_1_name">
-        <text>Лаборатория X-7: Участок</text>
+        <text>Лаборатория X-7: Сектор</text>
     </string>
     <string id="st_labx7_sim_2_name">
-        <text>Лаборатория X-7: Участок</text>
+        <text>Лаборатория X-7: Сектор</text>
     </string>
     <string id="st_labx7_sim_3_name">
-        <text>Лаборатория X-7: Участок</text>
+        <text>Лаборатория X-7: Сектор</text>
     </string>
     <string id="st_labx7_sim_4_name">
-        <text>Лаборатория X-7: Участок</text>
+        <text>Лаборатория X-7: Сектор</text>
     </string>
     <string id="st_labx7_sim_5_name">
-        <text>Лаборатория X-7: Участок</text>
+        <text>Лаборатория X-7: Сектор</text>
     </string>
     <string id="st_labx7_sim_6_name">
-        <text>Лаборатория X-7: Участок</text>
+        <text>Лаборатория X-7: Сектор</text>
     </string>
     <string id="st_labx7_smart_terrain_bloodsuckers_sleepers_name">
-        <text>Лаборатория X-7: Спящие кровососы</text>
+        <text>Лаборатория X-7: Спящие Кровососы</text>
     </string>
     <string id="st_labx7_smart_terrain_monolith_corpus_name">
         <text>Лаборатория X-7: Корпус Монолита</text>
@@ -2785,25 +2867,26 @@
         <text>Лаборатория X-7: Патруль</text>
     </string>
     <string id="st_lake_monster_terrain_1_name">
-        <text>Озеро: Логово мутантов</text>
+        <text>Озеро: Логово Мутантов</text>
     </string>
     <string id="st_lake_monster_terrain_2_name">
-        <text>Озеро: Логово мутантов</text>
+        <text>Озеро: Логово Мутантов</text>
     </string>
     <string id="st_lake_monster_terrain_3_name">
-        <text>Озеро: Логово мутантов</text>
+        <text>Озеро: Логово Мутантов</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_lake_smart_terrain_1_name">
         <text>Мёртвое озеро: Автобусная остановка</text>
     </string>
     <string id="st_lake_smart_terrain_2_name">
-        <text>Мёртвое озеро: Восточная парковка на ферме</text>
+        <text>Мёртвое озеро</text>
     </string>
     <string id="st_lake_smart_terrain_3_name">
         <text>Мёртвое озеро: Северная деревня</text>
     </string>
     <string id="st_lake_smart_terrain_4_name">
-        <text>Мёртвое озеро: Южный контрольно-пропускной пункт</text>
+        <text>Мёртвое озеро: Южный КПП</text>
     </string>
     <string id="st_lake_smart_terrain_5_name">
         <text>Мёртвое озеро: Западная деревушка</text>
@@ -2814,42 +2897,44 @@
     <string id="st_lake_smart_terrain_7_name">
         <text>Озеро</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_land_arhara_sniper_name">
-        <text>Неизведанная земля: Лагерь Архары</text>
+        <text>Неизведанная Земля: Лагерь Архары</text>
     </string>
     <string id="st_les_burery_ukamney_name">
-        <text>Лес: Бюреры у камней</text>
+        <text>Лес: Бюреры у Скал</text>
     </string>
     <string id="st_les_chimera_sklon_name">
-        <text>Лес: Химеры склон</text>
+        <text>Лес: Химера на Склоне</text>
     </string>
     <string id="st_les_chimera_uperehoda_name">
-        <text>Лес: Химеры у перехода</text>
+        <text>Лес: Химера у Перехода</text>
     </string>
     <string id="st_les_controller_centr_name">
-        <text>Забытый лес: Лес</text>
+        <text>Забытый Лес: Лес</text>
     </string>
     <string id="st_les_gigant_derev_name">
-        <text>Лес: Псевдогиганта дерево</text>
+        <text>Лес: Псевдогигант у Дерева</text>
     </string>
     <string id="st_les_gigant_uholma_name">
-        <text>Лес: Псевдогиганта у холма</text>
+        <text>Лес: Псевдогигант у Холма</text>
     </string>
     <string id="st_les_gigant_ukamn_name">
-        <text>Лес: Псевдогиганта у камня</text>
+        <text>Лес: Псевдогигант у Скалы</text>
     </string>
     <string id="st_les_grizuny_sklon_name">
-        <text>Лес: Грызуны склон</text>
+        <text>Лес: Грызуны на Склоне</text>
     </string>
     <string id="st_les_pseudodog_polyna_name">
-        <text>Лес: Псевдособак поляна</text>
+        <text>Лес: Поляна Псевдособак</text>
     </string>
     <string id="st_les_rotan_vkustah_name">
         <text>Забытый лес: Переход на Свалку</text>
     </string>
     <string id="st_les_sosich_name">
-        <text>Лес: Сосич</text>
+        <text>Лес: Сосыч</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_les_zombi_naholme_name">
         <text>Забытый лес: Переход на Поляну</text>
     </string>
@@ -2907,8 +2992,9 @@
     <string id="st_lim_smart_terrain_9_name">
         <text>Лиманск: Лагерь на стройке</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_lim_smart_terrain_help_smart_name">
-        <text>Лиманск: Место помощи</text>
+        <text>Лиманск: Медпункт</text>
     </string>
     <string id="st_lim_village_csky_name">
         <text>Лиманск: База «Чистого неба»</text>
@@ -2920,7 +3006,7 @@
         <text>Лиманск: Застава</text>
     </string>
     <string id="st_lx8_smart_terrain_name">
-        <text>Лаборатория X-8: Лаборатория Х8</text>
+        <text>Лаборатория X-8</text>
     </string>
     <string id="st_mar_smart_terrain_10_10_name">
         <text>Болота: Костёр на берегу</text>
@@ -2929,14 +3015,15 @@
         <text>Болота: Механизаторский двор</text>
     </string>
     <string id="st_mar_smart_terrain_10_5_renegade_leader_name">
-        <text>Болота: Лидер ренегатов</text>
+        <text>Болото: Лидер Ренегатов</text>
     </string>
     <string id="st_mar_smart_terrain_10_5_renegade_tech_name">
-        <text>Болота: Техник ренегатов</text>
+        <text>Болото: Техник Ренегатов</text>
     </string>
     <string id="st_mar_smart_terrain_10_5_renegade_trader_name">
-        <text>Болота: Торговец ренегатов</text>
+        <text>Болото: Торговец Ренегатов</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_mar_smart_terrain_10_7_name">
         <text>Болота: Стоянка на болоте</text>
     </string>
@@ -3003,8 +3090,9 @@
     <string id="st_mar_smart_terrain_8_8_name">
         <text>Болота: Сгоревший хутор</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_mar_smart_terrain_8_9_name">
-        <text>Болота: Перевалочная</text>
+        <text>Болото: Точка Перехода</text>
     </string>
     <string id="st_mar_smart_terrain_9_10_name">
         <text>Болота</text>
@@ -3016,13 +3104,13 @@
         <text>Болота: Скрытая база</text>
     </string>
     <string id="st_mar_smart_terrain_base_stalker_leader_marsh_arszi_scout_name">
-        <text>Болота: База сталкеров, лидер АРСЗИ разведчик</text>
+        <text>Болото: Сталкерская База, Командир Разведки АРСЗИ</text>
     </string>
     <string id="st_mar_smart_terrain_base_stalker_leader_marsh_name">
-        <text>Болота: База сталкеров, лидер</text>
+        <text>Болото: Сталкерская База, Командир</text>
     </string>
     <string id="st_mar_smart_terrain_csky_respawn_name">
-        <text>Болота: Место появления Чистого неба</text>
+        <text>Болото: Точка Респавна "Чистого Неба"</text>
     </string>
     <string id="st_mar_smart_terrain_doc_2_name">
         <text>Болота: Аванпост</text>
@@ -3034,8 +3122,9 @@
         <text>Болота: Землянка</text>
     </string>
     <string id="st_merc_sim_squad_advanced_name">
-        <text>Наемники: Усиленный отряд</text>
+        <text>Наёмники: Усиленный Отряд</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_mil_note_name">
         <text>Записка военного</text>
     </string>
@@ -3063,8 +3152,9 @@
     <string id="st_mil_smart_terrain_3_5_name">
         <text>Армейские склады</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_mil_smart_terrain_3_8_monolith_side_name">
-        <text>Армейские склады: Монолита сторона</text>
+        <text>Армейские Склады: Территория Монолита</text>
     </string>
     <string id="st_mil_smart_terrain_3_8_name">
         <text>Армейские склады: «Барьер»</text>
@@ -3085,7 +3175,7 @@
         <text>Армейские склады: Привал на плитах</text>
     </string>
     <string id="st_mil_smart_terrain_4_8_name">
-        <text>Армейские склады: Лагерь</text>
+        <text>Армейские склады</text>
     </string>
     <string id="st_mil_smart_terrain_5_2_name">
         <text>Армейские склады</text>
@@ -3100,7 +3190,7 @@
         <text>Армейские склады</text>
     </string>
     <string id="st_mil_smart_terrain_7_10_freedom_trader_stalker_name">
-        <text>Армейские склады: Торговец Свободы</text>
+        <text>Армейские Склады: Торговец Свободы</text>
     </string>
     <string id="st_mil_smart_terrain_7_10_name">
         <text>Армейские склады: Разрушенный трансформатор</text>
@@ -3118,20 +3208,21 @@
         <text>Армейские склады: Брошенный хутор</text>
     </string>
     <string id="st_mil_smart_terrain_7_7_freedom_bodyguard_stalker_name">
-        <text>Армейские склады: Свободы телохранитель сталкеров</text>
+        <text>Армейские Склады: Охранник Свободы</text>
     </string>
     <string id="st_mil_smart_terrain_7_7_freedom_bodyguard2_stalker_name">
-        <text>Армейские склады: Свободы телохранитель 2 сталкеров</text>
+        <text>Армейские Склады: Охранник Свободы 2</text>
     </string>
     <string id="st_mil_smart_terrain_7_7_freedom_leader_stalker_arszi_scout_name">
-        <text>Армейские склады: Лидер Свободы и разведчик АРСЗИ</text>
+        <text>Армейские Склады: Командир Свободы и Разведчик АРСЗИ</text>
     </string>
     <string id="st_mil_smart_terrain_7_7_freedom_leader_stalker_name">
-        <text>Армейские склады: Лидер Свободы</text>
+        <text>Армейские Склады: Лидер Свободы</text>
     </string>
     <string id="st_mil_smart_terrain_7_7_freedom_mechanic_stalker_name">
-        <text>Армейские склады: Механик Свободы</text>
+        <text>Армейские Склады: Механик Свободы</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_mil_smart_terrain_7_7_name">
         <text>Армейские склады: Спортплощадка</text>
     </string>
@@ -3150,9 +3241,11 @@
     <string id="st_mtr_s1_name">
         <text>Станция «Санаторий»</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_mtr_s2_baza_name">
-        <text>Станция «Санаторий»: База С2</text>
+        <text>Станция «Санаторий»: База S2</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_mtr_z1_name">
         <text>Станция «Санаторий»</text>
     </string>
@@ -3184,298 +3277,304 @@
         <text>Неизведанная земля: Развилка на дороге</text>
     </string>
     <string id="st_okr_a1_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_a2_name">
-        <text>Окрестности: Возле учебного корпуса</text>
+        <text>Окраины Мёртвого города: Возле учебного корпуса</text>
     </string>
     <string id="st_okr_a3_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_a4_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_a5_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_a6_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_a7_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_okr_av_1_name">
-        <text>Окрестность: Авиация 1</text>
+        <text>Окраины Мёртвого города: Авиация 1</text>
     </string>
     <string id="st_okr_av_2_name">
-        <text>Окрестность: Авиация 2</text>
+        <text>Окраины Мёртвого города: Авиация 2</text>
     </string>
     <string id="st_okr_av_3_name">
-        <text>Окрестность: Авиация 3</text>
+        <text>Окраины Мёртвого города: Авиация 3</text>
     </string>
     <string id="st_okr_av_4_name">
-        <text>Окрестность: Авиация 4</text>
+        <text>Окраины Мёртвого города: Авиация 4</text>
     </string>
     <string id="st_okr_av_5_name">
-        <text>Окрестность: Авиация 5</text>
+        <text>Окраины Мёртвого города: Авиация 5</text>
     </string>
     <string id="st_okr_avia_1_name">
-        <text>Окрестность: Авиация 1</text>
+        <text>Окраины Мёртвого города: Авиация 1</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_okr_b1_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b10_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b11_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b12_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_okr_b13_name">
-        <text>Окрестности: На мосту</text>
+        <text>Окраины Мёртвого города: На Мосту</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_okr_b14_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b15_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b16_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b17_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b18_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b19_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b2_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b20_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b21_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b22_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b228_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b23_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_okr_b24_name">
-        <text>Окрестности: Меж домов</text>
+        <text>Окраины Мёртвого города: Между Домами</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_okr_b25_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b26_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b27_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b28_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b29_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b3_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b30_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b31_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b32_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b33_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b34_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b35_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b36_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b37_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b38_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b39_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b4_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b40_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b41_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b42_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b43_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b44_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b45_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b46_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b47_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b48_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b49_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b5_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b50_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b51_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b52_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b53_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b54_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b6_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b7_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b8_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_b9_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_base_bandit_name">
-        <text>Окрестности: Недостроенный завод</text>
+        <text>Окраины Мёртвого города: Недостроенный завод</text>
     </string>
     <string id="st_okr_base_csky_name">
-        <text>Окрестности: Рыболовство</text>
+        <text>Окраины Мёртвого города: Рыболовство</text>
     </string>
     <string id="st_okr_base_dolg_name">
-        <text>Окрестности: Склад</text>
+        <text>Окраины Мёртвого города: Склад</text>
     </string>
     <string id="st_okr_base_freedom_name">
-        <text>Окрестности: Ангар</text>
+        <text>Окраины Мёртвого города: Ангар</text>
     </string>
     <string id="st_okr_base_greh_name">
-        <text>Окрестности: Администрация</text>
+        <text>Окраины Мёртвого города: Администрация</text>
     </string>
     <string id="st_okr_base_killer_name">
-        <text>Окрестности: Жилое здание</text>
+        <text>Окраины Мёртвого города: Жилое здание</text>
     </string>
     <string id="st_okr_base_monolith_name">
-        <text>Окрестности: Санаторий "Победа"</text>
+        <text>Окраины Мёртвого города: Санаторий "Победа"</text>
     </string>
     <string id="st_okr_base_stalker_name">
-        <text>Окрестности: Промышленное предприятие</text>
+        <text>Окраины Мёртвого города: Промышленное предприятие</text>
     </string>
     <string id="st_okr_e51_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_e53_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_l1_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_r5_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_r7_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_s1_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_sim_11_name">
-        <text>Окрестности: Советский самолет</text>
+        <text>Окраины Мёртвого города: Советский самолет</text>
     </string>
     <string id="st_okr_sim_13_name">
-        <text>Окрестности: Мост рядом с рыбзаводом</text>
+        <text>Окраины Мёртвого города: Мост рядом с рыбзаводом</text>
     </string>
     <string id="st_okr_sim_18_name">
-        <text>Окрестности: Аномалия "Гравитационное кольцо"</text>
+        <text>Окраины Мёртвого города: Аномалия "Гравитационное кольцо"</text>
     </string>
     <string id="st_okr_sim_22_name">
-        <text>Окрестности: Авиабаза</text>
+        <text>Окраины Мёртвого города: Авиабаза</text>
     </string>
     <string id="st_okr_sim_23_name">
-        <text>Окрестности: Взлетная полоса</text>
+        <text>Окраины Мёртвого города: Взлетная полоса</text>
     </string>
     <string id="st_okr_sim_24_name">
-        <text>Окрестности: Футбольное поле</text>
+        <text>Окраины Мёртвого города: Футбольное поле</text>
     </string>
     <string id="st_okr_sim_25_name">
-        <text>Окрестности: Северное болото</text>
+        <text>Окраины Мёртвого города: Северное болото</text>
     </string>
     <string id="st_okr_sim_27_name">
-        <text>Окрестности: Тропа к железнодорожной станции</text>
+        <text>Окраины Мёртвого города: Тропа к железнодорожной станции</text>
     </string>
     <string id="st_okr_sim_29_name">
-        <text>Окрестности: Два резервуара</text>
+        <text>Окраины Мёртвого города: Два резервуара</text>
     </string>
     <string id="st_okr_sim_33_name">
-        <text>Окрестности: Аномалия "Трансформаторная будка №2"</text>
+        <text>Окраины Мёртвого города: Аномалия "Трансформаторная будка №2"</text>
     </string>
     <string id="st_okr_sim_38_name">
-        <text>Окрестности: Аномалия " "Огненный тандем"</text>
+        <text>Окраины Мёртвого города: Аномалия " "Огненный тандем"</text>
     </string>
     <string id="st_okr_sim_5_name">
-        <text>Окрестности: Инженерный район</text>
+        <text>Окраины Мёртвого города: Инженерный район</text>
     </string>
     <string id="st_okr_sim_7_name">
-        <text>Окрестности: Вертолет на болоте</text>
+        <text>Окраины Мёртвого города: Вертолет на болоте</text>
     </string>
     <string id="st_okr_sim_8_name">
-        <text>Окрестности: Аномалия0"Химическое строение"</text>
+        <text>Окраины Мёртвого города: Аномалия0"Химическое строение"</text>
     </string>
     <string id="st_okr_u28_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_okr_v2_name">
-        <text>Окрестность</text>
+        <text>Окраины Мёртвого города</text>
     </string>
     <string id="st_old_atp_freedom_terrain_name">
         <text>Старая дорога: Юго-восточное АТП "Свобода"</text>
@@ -3486,29 +3585,31 @@
     <string id="st_old_farm_bandit_terrain_name">
         <text>Старая дорога: Старая ферма</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_old_forest_boar_flesh_terrain_name">
-        <text>Старая локация: Лес кабанов плотей участок</text>
+        <text>Старая Локация: Лесной Участок Кабанов и Свиней</text>
     </string>
     <string id="st_old_forest_boar_flesh_terrain2_name">
-        <text>Старая локация: Лес кабанов плотей 2</text>
+        <text>Старая Локация: Лесной Участок Кабанов и Свиней 2</text>
     </string>
     <string id="st_old_forest_boar_flesh_terrain3_name">
-        <text>Старая локация: Лес кабанов плотей 3</text>
+        <text>Старая Локация: Лесной Участок Кабанов и Свиней 3</text>
     </string>
     <string id="st_old_forest_boar_flesh_terrain4_name">
-        <text>Старая локация: Лес кабанов плотей 4</text>
+        <text>Старая Локация: Лесной Участок Кабанов и Свиней 4</text>
     </string>
+
     <string id="st_old_sim_1_name">
         <text>Старая дорога: Тихий лес рядом со Старой фермой</text>
     </string>
     <string id="st_old_sim_10_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_11_name">
         <text>Старая дорога: Лес у дороги</text>
     </string>
     <string id="st_old_sim_12_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_13_name">
         <text>Старая дорога: Аномалия "Симбионт"</text>
@@ -3517,47 +3618,48 @@
         <text>Старая дорога: Маленькое озеро</text>
     </string>
     <string id="st_old_sim_15_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_16_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_17_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_18_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_19_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_2_name">
         <text>Старая дорога: Тихий лес</text>
     </string>
     <string id="st_old_sim_20_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_3_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_4_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_5_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_6_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_7_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_8_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
     <string id="st_old_sim_9_name">
-        <text>Старая локация: Участок</text>
+        <text>Старая Локация: Сектор</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->		
     <string id="st_old_stancia_stalker_terrain_name">
         <text>Старая дорога: Восточная насосная станция</text>
     </string>
@@ -3576,12 +3678,14 @@
     <string id="st_ountry_stalker_terrain1_name">
         <text>Загородная местность: Лагерь сталкеров</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_out_arrive_skyff_name">
-        <text>Окраина: Прибытие Скиф</text>
+        <text>Окраина: Прибытие Скифа</text>
     </string>
     <string id="st_out_art_hunters_name">
-        <text>Окраина: Артефакты охотники</text>
+        <text>Окраины: Охотники за Артефактами</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_out_b1_anomaly_name">
         <text>Окраина: Аномалия</text>
     </string>
@@ -3609,12 +3713,14 @@
     <string id="st_out_boar_terrain2_name">
         <text>Окраина: Логово кабанов</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_out_cat_terrain_name">
-        <text>Окраина: Логово котов</text>
+        <text>Окраины: Кошачье Логово</text>
     </string>
     <string id="st_out_dam_mono_terrain_name">
-        <text>Окраина: Участок Монолита у дамбы</text>
+        <text>Окраины: Сектор Монолита у Дамбы</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_out_dog_terrain1_name">
         <text>Окраина: Логово собак</text>
     </string>
@@ -3636,26 +3742,27 @@
     <string id="st_out_freedom_kamper_terrain_name">
         <text>Окраина: Лагерь Свободы</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_out_freedom2_terrain_name">
-        <text>Окраина: Второй лагерь Свободы</text>
+        <text>Окраины: Второй Лагерь Свободы</text>
     </string>
     <string id="st_out_gevara_killers_name">
-        <text>Окраина: Гевара наемники</text>
+        <text>Окраины: Отряд Наёмников Гевары</text>
     </string>
     <string id="st_out_hmur_name">
-        <text>Окраина: Хмурый</text>
+        <text>Окраины: Хмурый</text>
     </string>
     <string id="st_out_kgb_gevara_name">
-        <text>Окраина: КГБ Гевара</text>
+        <text>Окраины: Гевара из КГБ</text>
     </string>
     <string id="st_out_kgb_go_name">
         <text>Чернобыль-1: Тренировочная площадка</text>
     </string>
     <string id="st_out_killer_ambush_name">
-        <text>Окраина: Засада наемников</text>
+        <text>Окраины: Засада Наёмников</text>
     </string>
     <string id="st_out_kurier_name">
-        <text>Окраина: Курьер</text>
+        <text>Окраины: Курьер</text>
     </string>
     <string id="st_out_poltergeist_terrain1_name">
         <text>Окраина: Логово полтергейстов</text>
@@ -3667,71 +3774,73 @@
         <text>Окраина: Проводник</text>
     </string>
     <string id="st_out_shturm_lager_name">
-        <text>Окраина: Штурм лагерь</text>
+        <text>Окраина</text>
     </string>
     <string id="st_out_sim_1_name">
         <text>Чернобыль-1: Овощной магазин</text>
     </string>
     <string id="st_out_sim_10_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_11_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_12_name">
-        <text>Окраина: Участок</text>
+        <text>Окраина </text>
     </string>
     <string id="st_out_sim_13_name">
-        <text>Чернобыль-1: Небольшой контрольно-пропускной пункт</text>
+        <text>Чернобыль-1: Небольшой КПП</text>
     </string>
     <string id="st_out_sim_14_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_15_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_16_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_17_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_18_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_19_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_2_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_3_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_4_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_5_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_6_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_7_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_8_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
     <string id="st_out_sim_9_name">
-        <text>Окраина: Участок</text>
+        <text>Окраины: Сектор</text>
     </string>
+
     <string id="st_out_smart_controz_name">
         <text>Чернобыль-1: Вход на военную базу Х-2</text>
     </string>
     <string id="st_out_smart_escape_leaders_name">
-        <text>Окраина: Путь к лидерам на Кордоне</text>
+        <text>Окраины: Путь к Лидерам на Кордоне</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->		
     <string id="st_out_smart_shturm_name">
         <text>Чернобыль-1: Дорога к военной базе Х-2</text>
     </string>
@@ -3750,33 +3859,35 @@
     <string id="st_out_smart_terrain_5_name">
         <text>Чернобыль-1: Военная база Х-2</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_out_sokol_name">
-        <text>Окраина: Сокол</text>
+        <text>Окраины: Сокол</text>
     </string>
     <string id="st_out_stalker_bar_name">
-        <text>Окраина: Сталкеров бар</text>
+        <text>Окраины: Бар Сталкеров</text>
     </string>
     <string id="st_out_start_controller_name">
         <text>Чернобыль-1: Дорога из Предбанника</text>
     </string>
     <string id="st_out_start_skyff_name">
-        <text>Окраина: Старт Скиф</text>
+        <text>Окраины: Начало Пути Скифа</text>
     </string>
     <string id="st_out_technik_smart_name">
-        <text>Окраина: Техник участок</text>
+        <text>Окраины: Техническая Зона</text>
     </string>
     <string id="st_out_trader_bar_name">
-        <text>Окраина: Барный торговец</text>
+        <text>Окраины: Торговец в Баре</text>
     </string>
     <string id="st_out_vintorez_name">
-        <text>Окраина: Винторез</text>
+        <text>Окраины: Винторез</text>
     </string>
     <string id="st_out_walking_dead_name">
-        <text>Окраина: Ходячие мертвецы</text>
+        <text>Окраины: Ходячие Мертвецы</text>
     </string>
     <string id="st_out_wounded_actor_name">
-        <text>Окраина: Раненый актер</text>
+        <text>Окраины: Раненый Актер</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_out_wounded_kv_2_name">
         <text>Чернобыль-1: Перекресток</text>
     </string>
@@ -3798,9 +3909,11 @@
     <string id="st_pas_b400_elevator_name">
         <text>Путепровод Припять-1: Элеватор</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_pas_b400_fake_name">
-        <text>Путепровод Припять-1: Путепровод «Припять-1»</text>
+        <text>Путепровод Припять-1: «Припять-1»</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_pas_b400_hall_name">
         <text>Путепровод Припять-1: Холл</text>
     </string>
@@ -3816,9 +3929,11 @@
     <string id="st_pol_sim_1_name">
         <text>Поляна: Двор завода</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->		
     <string id="st_pol_smart_terrain_1_1_name">
-        <text>Поляна: Перекресток полян</text>
+        <text>Поляна: Перекрёсток</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->		
     <string id="st_pol_smart_terrain_1_2_name">
         <text>Поляна: Столовая</text>
     </string>
@@ -3877,7 +3992,7 @@
         <text>Южный посёлок: Южный частный сектор</text>
     </string>
     <string id="st_posug_2_name">
-        <text>Южный посёлок: Болотная пасть</text>
+        <text>Южный посёлок</text>
     </string>
     <string id="st_posug_20_name">
         <text>Южный посёлок: Заброшенная заправочная станция</text>
@@ -3954,66 +4069,68 @@
     <string id="st_posug_9_name">
         <text>Южный посёлок: Жилой квартал</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_posug_sim_1_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_10_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_11_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_12_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_13_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_14_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_15_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_16_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_17_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_18_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_19_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_2_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_20_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_3_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_4_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_5_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_6_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_7_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_8_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
     <string id="st_posug_sim_9_name">
-        <text>Подземелье: Участок</text>
+        <text>Подземелье: Сектор</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_pre_bar_name">
         <text>Предбанник: Бар</text>
     </string>
@@ -4023,20 +4140,22 @@
     <string id="st_pre_baza2_name">
         <text>Предбанник: Военная база</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_pre_lair1_name">
-        <text>Предбанник: Логово 1</text>
+        <text>Предзонье: Логово 1</text>
     </string>
     <string id="st_pre_lair2_name">
-        <text>Предбанник: Второе логово</text>
+        <text>Предбанник: Второе Логово</text>
     </string>
     <string id="st_pre_lair3_name">
-        <text>Предбанник: Третье логово</text>
+        <text>Предбанник: Третье Логово</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->		
     <string id="st_pre_master_roman_name">
         <text>Предбанник: Военный ангар</text>
     </string>
     <string id="st_pre_sim_1_name">
-        <text>Предбанник: Северный контрольно-пропускной пункт</text>
+        <text>Предбанник: Северный КПП</text>
     </string>
     <string id="st_pre_sim_10_name">
         <text>Предбанник: Аномалия "Потрошитель"</text>
@@ -4077,50 +4196,52 @@
     <string id="st_pri_a15_documents_name">
         <text>Припять: Документы</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_pri_a15_name">
-        <text>Окрайны Припяти: Вход в Путепровод</text>
+        <text>Окраины Припяти: Вход в Путепровод</text>
     </string>
     <string id="st_pri_a15_wpn_ak74_name">
-        <text>Припять: Автомат АК-74</text>
+        <text>Припять: АК-74</text>
     </string>
     <string id="st_pri_a15_wpn_ak74_unstrapped_name">
-        <text>Припять: Автомат АК-74 без ремня</text>
+        <text>Припять: АК-74 (Без Ремня)</text>
     </string>
     <string id="st_pri_a15_wpn_ak74u_name">
-        <text>Припять: Автомат АКС-74У</text>
+        <text>Припять: АКС-74У</text>
     </string>
     <string id="st_pri_a15_wpn_ak74u_unstrapped_name">
-        <text>Припять: Автомат АКС-74У без ремня</text>
+        <text>Припять: АКС-74У (Без Ремня)</text>
     </string>
     <string id="st_pri_a15_wpn_svu_name">
-        <text>Припять: Винтовка СВУ</text>
+        <text>Припять: СВУ (Снайперская Винтовка)</text>
     </string>
     <string id="st_pri_a15_wpn_svu_unstrapped_name">
-        <text>Припять: Винтовка СВУ без ремня</text>
+        <text>Припять: Винтовка СВУ (Без Ремня)</text>
     </string>
     <string id="st_pri_a15_wpn_wincheaster1300_name">
-        <text>Припять: Ружьё Винчестер 1300</text>
+        <text>Припять: Дробовик Winchester 1300</text>
     </string>
     <string id="st_pri_a15_wpn_wincheaster1300_unstrapped_name">
-        <text>Припять: Ружьё Винчестер 1300 без ремня</text>
+        <text>Припять: Дробовик Winchester 1300 (Без Ремня)</text>
     </string>
+	
     <string id="st_pri_a16_mlr_copy_name">
         <text>Припять: Вход в прачечную</text>
     </string>
     <string id="st_pri_a16_name">
-        <text>Окрайны Припяти: Прачечная</text>
+        <text>Окраины Припяти: Прачечная</text>
     </string>
     <string id="st_pri_a17_name">
-        <text>Окрайны Припяти: Госпиталь</text>
+        <text>Окраины Припяти: Госпиталь</text>
     </string>
     <string id="st_pri_a18_smart_terrain_name">
-        <text>Окрайны Припяти: Магазин «Книги»</text>
+        <text>Окраины Припяти: Магазин «Книги»</text>
     </string>
     <string id="st_pri_a19_american_experiment_info_name">
         <text>Тетрадь с записью об эксперименте</text>
     </string>
     <string id="st_pri_a19_lab_x10_info_name">
-        <text>Излучатель «Радуга» - основные ТТХ</text>
+        <text>Излучатель «Радуга» – Технические Характеристики</text>
     </string>
     <string id="st_pri_a19_lab_x16_info_name">
         <text>Документы об исследованиях</text>
@@ -4132,10 +4253,10 @@
         <text>Распоряжение о переводе</text>
     </string>
     <string id="st_pri_a21_smart_terrain_name">
-        <text>Окрайны Припяти: Гастроном</text>
+        <text>Окраины Припяти: Гастроном</text>
     </string>
     <string id="st_pri_a22_smart_terrain_name">
-        <text>Окрайны Припяти: Проход между домами</text>
+        <text>Окраины Припяти: Проход между домами</text>
     </string>
     <string id="st_pri_a25_explosive_charge_descr_name">
         <text>Припять: Описание взрывчатки</text>
@@ -4144,74 +4265,75 @@
         <text>Припять: Заряд взрывчатки</text>
     </string>
     <string id="st_pri_a25_explosive_gift_name">
-        <text>Припять: Подарочная взрывчатка</text>
+        <text>Припять</text>
     </string>
     <string id="st_pri_a25_explosive_name_name">
-        <text>Припять: Название взрывчатки</text>
+        <text>Припять</text>
     </string>
     <string id="st_pri_a25_name">
         <text>Припять</text>
     </string>
     <string id="st_pri_a25_smart_terrain_name">
-        <text>Окрайны Припяти: Детский сад</text>
+        <text>Окраины Припяти: Детский сад</text>
     </string>
     <string id="st_pri_a28_arch_name">
-        <text>Окрайны Припяти: Арка в здании</text>
+        <text>Окраины Припяти: Арка в здании</text>
     </string>
     <string id="st_pri_a28_base_name">
-        <text>Окрайны Припяти: Двор перед прачечной</text>
+        <text>Окраины Припяти: Двор перед прачечной</text>
     </string>
     <string id="st_pri_a28_evac_name">
-        <text>Окрайны Припяти: Высотка</text>
+        <text>Окраины Припяти: Высотка</text>
     </string>
     <string id="st_pri_a28_heli_name">
-        <text>Окрайны Припяти: Площадь перед кинотеатром</text>
+        <text>Окраины Припяти: Площадь перед кинотеатром</text>
     </string>
     <string id="st_pri_a28_school_name">
-        <text>Окрайны Припяти: Школьный двор</text>
+        <text>Окраины Припяти: Школьный двор</text>
     </string>
     <string id="st_pri_a28_shop_name">
-        <text>Окрайны Припяти: Магазин «Берёзка»</text>
+        <text>Окраины Припяти: Магазин «Берёзка»</text>
     </string>
     <string id="st_pri_b301_name">
-        <text>Окрайны Припяти: Школа</text>
+        <text>Окраины Припяти: Школа</text>
     </string>
     <string id="st_pri_b302_name">
-        <text>Окрайны Припяти: Схрон</text>
+        <text>Окраины Припяти: Схрон</text>
     </string>
     <string id="st_pri_b303_name">
-        <text>Окрайны Припяти: Старый КБО</text>
+        <text>Окраины Припяти: Старый КБО</text>
     </string>
     <string id="st_pri_b304_monsters_smart_terrain_name">
-        <text>Окрайны Припяти: Универмаг</text>
+        <text>Окраины Припяти: Универмаг</text>
     </string>
     <string id="st_pri_b305_dogs_name">
-        <text>Окрайны Припяти: Задний двор общежития</text>
+        <text>Окраины Припяти: Задний двор общежития</text>
     </string>
     <string id="st_pri_b306_envoy_pda_name">
         <text>КПК Барчука</text>
     </string>
     <string id="st_pri_b306_name">
-        <text>Окрайны Припяти: КБО «Юбилейный»</text>
+        <text>Окраины Припяти: КБО «Юбилейный»</text>
     </string>
     <string id="st_pri_b307_name">
-        <text>Окрайны Припяти: Аномалия «Вулкан»</text>
+        <text>Окраины Припяти: Аномалия «Вулкан»</text>
     </string>
     <string id="st_pri_b35_lab_x8_key_name">
         <text>Красная ключ-карта - «Х8»</text>
     </string>
     <string id="st_pri_b35_mercs_name">
-        <text>Окрайны Припяти: Общежитие</text>
+        <text>Окраины Припяти: Общежитие</text>
     </string>
     <string id="st_pri_b35_military_name">
-        <text>Окрайны Припяти: Крыльцо</text>
+        <text>Окраины Припяти: Крыльцо</text>
     </string>
     <string id="st_pri_b36_monolith_hiding_place_pda_name">
         <text>КПК бойца «Монолита»</text>
     </string>
     <string id="st_pri_b36_smart_terrain_name">
-        <text>Окрайны Припяти: Речной порт</text>
+        <text>Окраины Припяти: Речной порт</text>
     </string>
+	
     <string id="st_pri_depot_name">
         <text>Припять: Автобусная станция</text>
     </string>
@@ -4222,41 +4344,43 @@
         <text>Припять: ДК «Энергетик»</text>
     </string>
     <string id="st_pri_sim_1_name">
-        <text>Окрайны Припяти: Кинотеатр «Прометей»</text>
+        <text>Окраины Припяти: Кинотеатр «Прометей»</text>
     </string>
     <string id="st_pri_sim_10_name">
-        <text>Окрайны Припяти: Дьявольская дорога</text>
+        <text>Окраины Припяти: Дьявольская дорога</text>
     </string>
     <string id="st_pri_sim_11_name">
-        <text>Окрайны Припяти: Неохраняемый лагерь</text>
+        <text>Окраины Припяти: Неохраняемый лагерь</text>
     </string>
     <string id="st_pri_sim_12_name">
-        <text>Окрайны Припяти: Логово мутантов</text>
+        <text>Окраины Припяти: Логово Мутантов</text>
     </string>
     <string id="st_pri_sim_2_name">
-        <text>Окрайны Припяти: Мёртвая дорога</text>
+        <text>Окраины Припяти: Мёртвая дорога</text>
     </string>
     <string id="st_pri_sim_3_name">
-        <text>Окрайны Припяти: Детская площадка</text>
+        <text>Окраины Припяти: Детская площадка</text>
     </string>
     <string id="st_pri_sim_4_name">
-        <text>Окрайны Припяти: Вокзал</text>
+        <text>Окраины Припяти: Вокзал</text>
     </string>
     <string id="st_pri_sim_5_name">
-        <text>Окрайны Припяти: Улица Дружбы народов</text>
+        <text>Окраины Припяти: Улица Дружбы народов</text>
     </string>
     <string id="st_pri_sim_6_name">
-        <text>Окрайны Припяти: Аллея госпиталя</text>
+        <text>Окраины Припяти: Аллея госпиталя</text>
     </string>
     <string id="st_pri_sim_7_name">
-        <text>Окрайны Припяти: Одинокий уголок</text>
+        <text>Окраины Припяти: Одинокий уголок</text>
     </string>
     <string id="st_pri_sim_8_name">
-        <text>Окрайны Припяти: Логово собак</text>
+        <text>Окраины Припяти: Логово собак</text>
     </string>
+	
     <string id="st_pri_sim_9_name">
-        <text>ЛОкрайны Припяти: Агерь у подстанции</text>
+        <text>Окраины Припяти: Агерь у подстанции</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_pri_smart_bloodsucker_lair1_name">
         <text>Припять: Старый магазин</text>
     </string>
@@ -4303,13 +4427,14 @@
         <text>Припять: Статуя Ленина</text>
     </string>
     <string id="st_pri_smart_tushkano_lair1_name">
-        <text>Припять: Гостиница «Полiсся»</text>
+        <text>Припять: Гостиница «Полесье»</text>
     </string>
     <string id="st_pri_wave7_name">
-        <text>Припять: Сектор волна 7</text>
+        <text>Припять: Волновой Сектор 7</text>
     </string>
+<!-- 29.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_pro_smart_1_name">
-        <text>Промзона: Участок</text>
+        <text>Промзона: Сектор</text>
     </string>
     <string id="st_pro_smart_2_name">
         <text>Полигон: Лагерь на холме</text>
@@ -4339,7 +4464,7 @@
         <text>Полигон: Хранение продуктов питания</text>
     </string>
     <string id="st_pro_smart_terrain_4_0_quest_name">
-        <text>Промзона: Квестовое место</text>
+        <text>Промзона: Квестовая Локация</text>
     </string>
     <string id="st_pro_smart_terrain_4_1_quest_name">
         <text>Полигон: Башня</text>
@@ -4387,7 +4512,7 @@
         <text>Промзона: Фабрика (Восток)</text>
     </string>
     <string id="st_prom_4_name">
-        <text>Промзона: Заводской контрольный пункт</text>
+        <text>Промзона: Заводской КПП</text>
     </string>
     <string id="st_prom_5_name">
         <text>Промзона: Задние дворы</text>
@@ -4405,34 +4530,34 @@
         <text>Промзона: Южный вокзал</text>
     </string>
     <string id="st_prom_sim_1_name">
-        <text>Промзона: Участок</text>
+        <text>Промзона: Сектор</text>
     </string>
     <string id="st_prom_sim_10_name">
-        <text>Промзона: Участок</text>
+        <text>Промзона: Сектор</text>
     </string>
     <string id="st_prom_sim_2_name">
-        <text>Промзона: Участок</text>
+        <text>Промзона: Сектор</text>
     </string>
     <string id="st_prom_sim_3_name">
-        <text>Промзона: Участок</text>
+        <text>Промзона: Сектор</text>
     </string>
     <string id="st_prom_sim_4_name">
-        <text>Промзона: Участок</text>
+        <text>Промзона: Сектор</text>
     </string>
     <string id="st_prom_sim_5_name">
-        <text>Промзона: Участок</text>
+        <text>Промзона: Сектор</text>
     </string>
     <string id="st_prom_sim_6_name">
-        <text>Промзона: Участок</text>
+        <text>Промзона: Сектор</text>
     </string>
     <string id="st_prom_sim_7_name">
-        <text>Промзона: Участок</text>
+        <text>Промзона: Сектор</text>
     </string>
     <string id="st_prom_sim_8_name">
-        <text>Промзона: Участок</text>
+        <text>Промзона: Сектор</text>
     </string>
     <string id="st_prom_sim_9_name">
-        <text>Промзона: Участок</text>
+        <text>Промзона: Сектор</text>
     </string>
     <string id="st_qwe_monster_terrain_1_name">
         <text>Зона QWE: Мутанты 1</text>
@@ -4447,10 +4572,10 @@
         <text>Мёртвое озеро: Западное болото</text>
     </string>
     <string id="st_rad_after_tramplin_ambush_name">
-        <text>Радар: Засада после трамплина</text>
+        <text>Радар: Засада после "Трамплина"</text>
     </string>
     <string id="st_rad_after_valley_name">
-        <text>Радар: Битый транспорт</text>
+        <text>Радар: Разбитый Транспорт</text>
     </string>
     <string id="st_rad_antenna_camper_name">
         <text>Радар: Вход в X-10(X-19)</text>
@@ -4462,7 +4587,7 @@
         <text>Радар: Проход к «Выжигателю»</text>
     </string>
     <string id="st_rad_antenna_specnaz_name">
-        <text>Радар: Антенна спецназ</text>
+        <text>Радар: спецназ около Антенны</text>
     </string>
     <string id="st_rad_bloodsucker_name">
         <text>Радар: Пролом в заборе</text>
@@ -4471,7 +4596,7 @@
         <text>Радар: Разрушенный КПП</text>
     </string>
     <string id="st_rad_far_road_btr_ambush_name">
-        <text>Радар: Засада БТР на дальней дороге</text>
+        <text>Радар: Засада БТР на Дальней Дороге</text>
     </string>
     <string id="st_rad_freedom_vs_duty_name">
         <text>Радар: Дорога в Припять</text>
@@ -4480,7 +4605,7 @@
         <text>Радар: Бетонные плиты</text>
     </string>
     <string id="st_rad_prip_teleport_name">
-        <text>Радар: Припять телепорт</text>
+        <text>Радар: Телепорт в Припять</text>
     </string>
     <string id="st_rad_pseudodogs_name">
         <text>Радар: Вертолёт в лесу</text>
@@ -4498,7 +4623,7 @@
         <text>Радар: Брошенный танк</text>
     </string>
     <string id="st_rad_zombied1_name">
-        <text>Радар: Логово мутантов</text>
+        <text>Радар: Логово Мутантов</text>
     </string>
     <string id="st_rad_zombied2_name">
         <text>Радар: Унылое место</text>
@@ -4516,7 +4641,7 @@
         <text>Радар: Секретный объект</text>
     </string>
     <string id="st_red_bridge_ally_smart_name">
-        <text>Рыжий лес: Мост союзник участок</text>
+        <text>Рыжий лес: Сектор у Моста Союзников</text>
     </string>
     <string id="st_red_bridge_bandit_smart_skirmish_name">
         <text>Рыжий лес: Тоннель в Лиманск</text>
@@ -4540,10 +4665,10 @@
         <text>Рыжий лес: Логово кровососов</text>
     </string>
     <string id="st_red_smart_terrain_4_2_name">
-        <text>Рыжий лес: Лагерь у копра</text>
+        <text>Рыжий лес: Лагерь у Вышки</text>
     </string>
     <string id="st_red_smart_terrain_4_3_name">
-        <text>Рыжий лес: Собачья стоянка</text>
+        <text>Рыжий лес: Логово Собак</text>
     </string>
     <string id="st_red_smart_terrain_4_5_name">
         <text>Рыжий лес: Ведьмин круг</text>
@@ -4579,10 +4704,10 @@
         <text>Завод Росток: Проход на Дикую Территорию</text>
     </string>
     <string id="st_ros_smart_monster1_name">
-        <text>Росток: Логово мутантов</text>
+        <text>Росток: Логово Мутантов</text>
     </string>
     <string id="st_ros_smart_monster2_name">
-        <text>Росток: Логово мутантов</text>
+        <text>Росток: Логово Мутантов</text>
     </string>
     <string id="st_ros_smart_monster4_name">
         <text>Завод Росток: Поезд</text>
@@ -4591,13 +4716,13 @@
         <text>Завод Росток: Обрушенный тоннель</text>
     </string>
     <string id="st_ros_smart_monster6_name">
-        <text>Росток: Логово мутантов</text>
+        <text>Росток: Логово Мутантов</text>
     </string>
     <string id="st_ros_smart_monster7_name">
         <text>Завод Росток: Тоннель с «жарками»</text>
     </string>
     <string id="st_ros_smart_monster8_name">
-        <text>Росток: Логово мутантов</text>
+        <text>Росток: Логово Мутантов</text>
     </string>
     <string id="st_ros_smart_poltergeist1_name">
         <text>Росток: Логово полтергейстов</text>
@@ -4609,22 +4734,23 @@
         <text>Завод Росток: Радиоактивный навес</text>
     </string>
     <string id="st_ros_smart_stalker_bandits1_name">
-        <text>Росток: Лагерь бандитов у сталкеров</text>
+        <text>Росток: Бандитский Лагерь Рядом со Сталкерами</text>
     </string>
     <string id="st_ros_smart_stalker_killers1_name">
         <text>Завод Росток: Стройплощадка</text>
     </string>
     <string id="st_ros_smart_stalker1_name">
-        <text>Завод Росток: Стройматериалы</text>
+        <text>Завод Росток</text>
     </string>
     <string id="st_ros_smart_stalker2_name">
-        <text>Росток: Лагерь сталкеров</text>
+        <text>Росток: Лагерь Сталкеров</text>
     </string>
     <string id="st_ros_smart_stalker3_name">
-        <text>Росток: Лагерь сталкеров</text>
+        <text>Росток: Лагерь Сталкеров</text>
     </string>
+	
     <string id="st_rosf_bloodsucker_construction_terrain_name">
-        <text>Завод Росток: Стройка кровососов</text>
+        <text>Ростокский Завод: Стройплощадка Кровососов</text>
     </string>
     <string id="st_rosf_duty_bloodsucker_terrain_name">
         <text>Завод Росток: Пост Долга у логова кровососов</text>
@@ -4645,61 +4771,62 @@
         <text>Завод Росток: База бандитов на заводе</text>
     </string>
     <string id="st_rosf_factory_boar_terrain1_name">
-        <text>Завод Росток: Завод кабанов 1</text>
+        <text>Завод Росток: Зона Кабанов №1</text>
     </string>
     <string id="st_rosf_factory_dog_terrain1_name">
-        <text>Завод Росток: Завод собак 1</text>
+        <text>Завод Росток: Зона Собак №1</text>
     </string>
     <string id="st_rosf_factory_dog_terrain2_name">
-        <text>Завод Росток: Завод собак 2</text>
+        <text>Завод Росток: Зона Собак №2</text>
     </string>
     <string id="st_rosf_loner_group1_name">
         <text>Металлургический завод: Магазин “Товары”</text>
     </string>
     <string id="st_rosf_loner_group2_name">
-        <text>Металлургический завод: Проход</text>
+        <text>Металлургический Завод: Проход</text>
     </string>
     <string id="st_rosf_loner_group3_name">
-        <text>Завод Росток: Одиночек группа 3</text>
+        <text>Завод Росток: Отряд Одиночек №3</text>
     </string>
     <string id="st_rosf_military_blokpost_name">
-        <text>Металлургический завод: Военный контрольно-пропускной пункт</text>
+        <text>Металлургический завод: Военный КПП</text>
     </string>
     <string id="st_rosf_sim_1_name">
         <text>Металлургический завод: Двор</text>
     </string>
     <string id="st_rosf_sim_10_name">
-        <text>Завод Росток: Участок</text>
+        <text>Завод Росток: Сектор</text>
     </string>
     <string id="st_rosf_sim_2_name">
-        <text>Завод Росток: Участок</text>
+        <text>Завод Росток: Сектор</text>
     </string>
     <string id="st_rosf_sim_3_name">
-        <text>Завод Росток: Участок</text>
+        <text>Завод Росток: Сектор</text>
     </string>
     <string id="st_rosf_sim_4_name">
-        <text>Завод Росток: Участок</text>
+        <text>Завод Росток: Сектор</text>
     </string>
     <string id="st_rosf_sim_5_name">
         <text>Металлургический завод: Вход</text>
     </string>
     <string id="st_rosf_sim_6_name">
-        <text>Завод Росток: Участок</text>
+        <text>Завод Росток: Сектор</text>
     </string>
     <string id="st_rosf_sim_7_name">
         <text>Металлургический завод: Аномалия “Электрическая подстанция”</text>
     </string>
     <string id="st_rosf_sim_8_name">
-        <text>Завод Росток: Участок</text>
+        <text>Завод Росток: Сектор</text>
     </string>
     <string id="st_rosf_sim_9_name">
-        <text>Завод Росток: Участок</text>
+        <text>Завод Росток: Сектор</text>
     </string>
     <string id="st_rosf_sucker_scene_terrain_name">
         <text>Завод Росток: Логово кровососов</text>
     </string>
+	
     <string id="st_sad_atr_name">
-        <text>Сад: Двор</text>
+        <text>Долина шорохов: Внутренний Двор</text>
     </string>
     <string id="st_sad_b1_name">
         <text>Долина шорохов: Лагерь сталкеров</text>
@@ -4708,19 +4835,19 @@
         <text>Долина шорохов: Северная база</text>
     </string>
     <string id="st_sad_b2_stalker_barman_name">
-        <text>Сад: Бармен сталкеров</text>
+        <text>Долина шорохов: Сталкер-Бармен</text>
     </string>
     <string id="st_sad_b2_stalker_tech_name">
-        <text>Сад: Техник сталкеров</text>
+        <text>Долина шорохов: Сталкер-Техник</text>
     </string>
     <string id="st_sad_b3_name">
         <text>Долина шорохов: Склад контейнеров</text>
     </string>
     <string id="st_sad_b3_technic_name">
-        <text>Сад: Техник</text>
+        <text>Долина шорохов: Техникв</text>
     </string>
     <string id="st_sad_b3_trader_name">
-        <text>Сад: Торговец</text>
+        <text>Долина шорохов: Торговец</text>
     </string>
     <string id="st_sad_b3a_name">
         <text>Долина шорохов: Вход на склад контейнеров</text>
@@ -4732,13 +4859,13 @@
         <text>Долина шорохов: Аномалия "Дом у огня"</text>
     </string>
     <string id="st_sad_cave_name">
-        <text>Сад: Пещера</text>
+        <text>Долина шорохов: Пещера</text>
     </string>
     <string id="st_sad_oasis_name">
-        <text>Сад: Оазис</text>
+        <text>Долина шорохов: Оазис</text>
     </string>
     <string id="st_sad_psi_cave_name">
-        <text>Сад: Пси пещера</text>
+        <text>Долина шорохов: Пси пещера</text>
     </string>
     <string id="st_sad_ran_name">
         <text>Долина шорохов: Западная база</text>
@@ -4747,19 +4874,19 @@
         <text>Долина шорохов: Место упокоения</text>
     </string>
     <string id="st_sad_sim_1_name">
-        <text>Долина шорохов: Пси-болотная аномалия</text>
+        <text>Долина шорохов: Пси-аномалия на Болоте</text>
     </string>
     <string id="st_sad_sim_10_name">
-        <text>Сад: Участок</text>
+        <text>Долина шорохов: Сектор</text>
     </string>
     <string id="st_sad_sim_11_name">
-        <text>Сад: Участок</text>
+        <text>Долина шорохов: Сектор</text>
     </string>
     <string id="st_sad_sim_12_name">
-        <text>Сад: Участок</text>
+        <text>Долина шорохов: Сектор</text>
     </string>
     <string id="st_sad_sim_13_name">
-        <text>Сад: Участок</text>
+        <text>Долина шорохов: Сектор</text>
     </string>
     <string id="st_sad_sim_14_name">
         <text>Долина шорохов: Охраняемое место отдыха</text>
@@ -4777,40 +4904,40 @@
         <text>Долина шорохов: Аномалия "Мясорубка"</text>
     </string>
     <string id="st_sad_sim_19_name">
-        <text>Сад: Участок</text>
+        <text>Долина шорохов: Сектор</text>
     </string>
     <string id="st_sad_sim_2_name">
-        <text>Сад: Участок</text>
+        <text>Долина шорохов: Сектор</text>
     </string>
     <string id="st_sad_sim_20_name">
-        <text>Сад: Участок</text>
+        <text>Долина шорохов: Сектор</text>
     </string>
     <string id="st_sad_sim_21_name">
         <text>Долина шорохов: Аномалия "Кислотный круг"</text>
     </string>
     <string id="st_sad_sim_22_name">
-        <text>Сад: Участок</text>
+        <text>Долина шорохов: Сектор</text>
     </string>
     <string id="st_sad_sim_23_name">
         <text>Долина шорохов: Машина</text>
     </string>
     <string id="st_sad_sim_24_name">
-        <text>Сад: Участок</text>
+        <text>Долина шорохов: Сектор</text>
     </string>
     <string id="st_sad_sim_3_name">
-        <text>Сад: Участок</text>
+        <text>Долина шорохов: Сектор</text>
     </string>
     <string id="st_sad_sim_4_name">
-        <text>Сад: Участок</text>
+        <text>Долина шорохов: Сектор</text>
     </string>
     <string id="st_sad_sim_5_name">
-        <text>Сад: Участок</text>
+        <text>Долина шорохов: Сектор</text>
     </string>
     <string id="st_sad_sim_6_name">
         <text>Долина шорохов: Аномалия "Гравитационная горелка"</text>
     </string>
     <string id="st_sad_sim_7_name">
-        <text>Сад: Участок</text>
+        <text>Долина шорохов: Сектор</text>
     </string>
     <string id="st_sad_sim_8_name">
         <text>Долина шорохов: Советский вертолет</text>
@@ -4821,6 +4948,7 @@
     <string id="st_sad_start_name">
         <text>Долина шорохов: Аномалия "Огненный симбионт"</text>
     </string>
+	
     <string id="st_sar_monolith_bloodsuckers_name">
         <text>Саркофаг: Центр управления</text>
     </string>
@@ -4840,7 +4968,7 @@
         <text>Саркофаг: Запасной выход</text>
     </string>
     <string id="st_scf_av_1_name">
-        <text>Научная станция: Авиация 1</text>
+        <text>Научная Станция: Авиация 1</text>
     </string>
     <string id="st_scf_n1_name">
         <text>Научная станция</text>
@@ -4849,104 +4977,105 @@
         <text>Научная станция</text>
     </string>
     <string id="st_scf_sim_1_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_10_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_11_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_12_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_13_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_14_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_15_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_16_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_17_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_18_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_19_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_2_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_20_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_21_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_22_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_23_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_24_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_25_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_26_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_27_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_28_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_29_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_3_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_30_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_31_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_32_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_4_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_5_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_6_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_7_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_8_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_sim_9_name">
-        <text>Научная станция: Участок</text>
+        <text>Научная Станция: Сектор</text>
     </string>
     <string id="st_scf_v1_name">
         <text>Научная станция</text>
     </string>
+<!-- 30.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_secret_bloodsucker_terrain_name">
         <text>Секретный объект: Логово кровососов</text>
     </string>
@@ -4987,19 +5116,20 @@
         <text>Восточная свалка: Восточный блошиный рынок</text>
     </string>
     <string id="st_svalk_kpp_smart_terrain_name">
-        <text>Восточная свалка: Южный контрольно-пропускной пункт</text>
+        <text>Восточная свалка: Южный КПП</text>
     </string>
     <string id="st_svalk_kpp2_smart_terrain_name">
-        <text>Восточная свалка: Северный контрольно-пропускной пункт "Долга"</text>
+        <text>Восточная свалка: Северный КПП "Долга"</text>
     </string>
     <string id="st_svalk_perekrestok_smart_terrain_name">
         <text>Восточная свалка: Перекресток</text>
     </string>
+<!-- 30.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_svalk_piron_smart_terrain_name">
-        <text>Восточная свалка: Пирон</text>
+        <text>Восточная Свалка: Опора ЛЭП</text>
     </string>
     <string id="st_svalk_sim_10_name">
-        <text>Восточная свалка: Восточная свалка</text>
+        <text>Восточная Свалка: Зона Свалки</text>
     </string>
     <string id="st_swamp_bandit_terrain1_name">
         <text>Восточные Топи: Хижина</text>
@@ -5011,16 +5141,16 @@
         <text>Болота: Логово кровососов</text>
     </string>
     <string id="st_swamp_boar_terrain1_name">
-        <text>Восточные Топи: Разрушенный дом</text>
+        <text>Восточные Болота: Разрушенный дом</text>
     </string>
     <string id="st_swamp_boar_terrain2_name">
         <text>Болота: Логово кабанов</text>
     </string>
     <string id="st_swamp_boar_terrain3_name">
-        <text>Восточные Топи: Тузла</text>
+        <text>Восточные Болота: Тузла</text>
     </string>
     <string id="st_swamp_doc_terrain_name">
-        <text>Восточные Топи: Хижина болотного Доктора</text>
+        <text>Восточные Болота: Хижина Болотного Доктора</text>
     </string>
     <string id="st_swamp_flesh_terrain1_name">
         <text>Болота: Логово плотей</text>
@@ -5029,16 +5159,16 @@
         <text>Болота: Логово полтергейстов</text>
     </string>
     <string id="st_swamp_sim_1_name">
-        <text>Восточные Топи: Казарма «Тузла»</text>
+        <text>Восточные Болота: Казармы на Тузле</text>
     </string>
     <string id="st_swamp_sim_2_name">
-        <text>Восточные Топи: Усадьба</text>
+        <text>Восточные Болота: Усадьба</text>
     </string>
     <string id="st_swamp_swampbeast_terrain1_name">
         <text>Болота: Логово болотных тварей</text>
     </string>
     <string id="st_swamp_swampbeast_terrain2_name">
-        <text>Восточные Топи: Дом на болоте</text>
+        <text>Восточные Болота: Дом на болоте</text>
     </string>
     <string id="st_swamp_swampbeast_terrain3_name">
         <text>Болота: Логово болотных тварей</text>
@@ -5047,7 +5177,7 @@
         <text>Болота: Логово болотных тварей</text>
     </string>
     <string id="st_swamp_swampbeast_terrain5_name">
-        <text>Восточные Топи: Аномалия "Зов Припяти"</text>
+        <text>Восточные Болота: Аномалия «Зов Припяти»</text>
     </string>
     <string id="st_swamp_swampbeast_terrain6_name">
         <text>Болота: Логово болотных тварей</text>
@@ -5059,67 +5189,67 @@
         <text>Топи: Доктор</text>
     </string>
     <string id="st_topi_sim_mut_1_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_10_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_11_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_12_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_13_name">
         <text>Топи: Юго-западный лес</text>
     </string>
     <string id="st_topi_sim_mut_14_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_15_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_16_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_17_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_18_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_19_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_2_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_20_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_21_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_22_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_23_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_24_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_25_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_26_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_27_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_28_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_29_name">
         <text>Топи: Заброшенная ферма</text>
@@ -5128,83 +5258,84 @@
         <text>Топи: Северо-западный лес</text>
     </string>
     <string id="st_topi_sim_mut_30_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_31_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_32_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_33_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_34_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_35_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_36_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_37_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_38_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_39_name">
         <text>Топи: Временный лагерь</text>
     </string>
     <string id="st_topi_sim_mut_4_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_40_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_5_name">
         <text>Топи: Вертолет в лесу</text>
     </string>
     <string id="st_topi_sim_mut_6_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_7_name">
         <text>Топи: Юго-восточный лес</text>
     </string>
     <string id="st_topi_sim_mut_8_name">
-        <text>Топи: Логово мутантов</text>
+        <text>Топи: Логово Мутантов</text>
     </string>
     <string id="st_topi_sim_mut_9_name">
         <text>Топи: Северо-восточный лес</text>
     </string>
     <string id="st_topi_sim_nps_1_name">
-        <text>Топи: Место встречи НПС</text>
+        <text>Топи: Точка Встречи с НПС</text>
     </string>
     <string id="st_topi_sim_nps_2_name">
-        <text>Топи: Место встречи НПС</text>
+        <text>Топи: Точка Встречи с НПС</text>
     </string>
     <string id="st_topi_sim_nps_3_name">
         <text>Топи: Химическая аномалия</text>
     </string>
     <string id="st_topi_sim_nps_4_name">
-        <text>Топи: Место встречи НПС</text>
+        <text>Топи: Точка Встречи с НПС</text>
     </string>
     <string id="st_topi_sim_nps_5_name">
-        <text>Топи: Место встречи НПС</text>
+        <text>Топи: Точка Встречи с НПС</text>
     </string>
     <string id="st_topi_sim_nps_6_name">
-        <text>Топи: Место встречи НПС</text>
+        <text>Топи: Точка Встречи с НПС</text>
     </string>
     <string id="st_topi_sim_nps_7_name">
         <text>Топи: Деревня</text>
     </string>
     <string id="st_topi_sim_nps_8_name">
-        <text>Топи: База “Сталкеры”</text>
+        <text>Топи: База Сталкеров</text>
     </string>
     <string id="st_topi_sim_nps_9_name">
-        <text>Топи: Место встречи НПС</text>
+        <text>Топи: Точка Встречи с НПС</text>
     </string>
+<!-- 30.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_trc_sim_1_name">
         <text>Кладбище техники: Наблюдательный пункт</text>
     </string>
@@ -5242,7 +5373,7 @@
         <text>Кладбище техники: Лагерь у контейнеров</text>
     </string>
     <string id="st_trc_sim_20_name">
-        <text>Кладбище техники: Восточный контрольно-пропускной пункт</text>
+        <text>Кладбище техники: Восточный КПП</text>
     </string>
     <string id="st_trc_sim_21_name">
         <text>Кладбище техники: Пустыня</text>
@@ -5277,35 +5408,36 @@
     <string id="st_und_u8_name">
         <text>Подземелье</text>
     </string>
+<!-- 30.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_val_a3_name">
-        <text>Темная долина</text>
+        <text>Тёмная Долина</text>
     </string>
     <string id="st_val_b1_name">
-        <text>Мёртвое озеро: Бассейн</text>
+        <text>Темная долина: Бассейн</text>
     </string>
     <string id="st_val_escort_name">
-        <text>Темная долина: Сопровождение</text>
+        <text>Тёмная Долина: Сопровождение</text>
     </string>
     <string id="st_val_sim_1_name">
-        <text>Темная долина: Участок</text>
+        <text>Тёмная Долина: Сектор</text>
     </string>
     <string id="st_val_sim_12_name">
-        <text>Мёртвое озеро: Западная деревня</text>
+        <text>Темная долина: Западная деревня</text>
     </string>
     <string id="st_val_sim_4_name">
-        <text>Мёртвое озеро: Северный контрольно-пропускной пункт</text>
+        <text>Темная долина: Северный КПП</text>
     </string>
     <string id="st_val_sim_7_name">
-        <text>Темная долина: Участок</text>
+        <text>Тёмная Долина: Сектор</text>
     </string>
     <string id="st_val_smart_bloodsucker_lair_2_name">
         <text>Темная долина: Логово кровососов</text>
     </string>
     <string id="st_val_smart_monster_lair_6_name">
-        <text>Темная долина: Логово мутантов</text>
+        <text>Тёмная Долина: Логово Мутантов</text>
     </string>
     <string id="st_val_smart_monster_lair_8_name">
-        <text>Темная долина: Логово мутантов</text>
+        <text>Тёмная Долина: Логово Мутантов</text>
     </string>
     <string id="st_val_smart_terrain_1_2_name">
         <text>Темная долина: Завод над Х18</text>
@@ -5317,7 +5449,7 @@
         <text>Темная долина: Стоянка на ферме</text>
     </string>
     <string id="st_val_smart_terrain_5_10_name">
-        <text>Темная долина: Голая стоянка</text>
+        <text>Тёмная Долина: Пустой Тайник</text>
     </string>
     <string id="st_val_smart_terrain_5_7_name">
         <text>Темная долина: Крайний блокпост</text>
@@ -5326,23 +5458,24 @@
         <text>Темная долина: Полевой лагерь</text>
     </string>
     <string id="st_val_smart_terrain_6_4_name">
-        <text>Темная долина: Чахлая стоянка</text>
+        <text>Тёмная Долина: Разграбленный Схрон</text>
     </string>
     <string id="st_val_smart_terrain_6_5_name">
         <text>Темная долина: Лагерь под оврагом</text>
     </string>
     <string id="st_val_smart_terrain_7_11_name">
-        <text>Темная долина: Проезд в Тёмную лощину</text>
+        <text>Тёмная Долина: Переход к Тёмной Лощине</text>
     </string>
     <string id="st_val_smart_terrain_7_3_bandit_mechanic_stalker_name">
-        <text>Темная долина: Механик бандитов</text>
+        <text>Тёмная Долина: Механик-Бандит</text>
     </string>
     <string id="st_val_smart_terrain_7_3_name">
         <text>Темная долина: Ангар</text>
     </string>
     <string id="st_val_smart_terrain_7_4_bandit_trader_stalker_name">
-        <text>Темная долина: Торговец бандитов</text>
+        <text>Тёмная Долина: Торговец-Бандит</text>
     </string>
+
     <string id="st_val_smart_terrain_7_4_name">
         <text>Темная долина: Северная фабрика</text>
     </string>
@@ -5368,7 +5501,7 @@
         <text>Темная долина: Лагерь среди камней</text>
     </string>
     <string id="st_val_smart_terrain_9_2_name">
-        <text>Темная долина: Выворотень</text>
+        <text>Темная долина: "Выворотень"</text>
     </string>
     <string id="st_val_smart_terrain_9_4_name">
         <text>Темная долина: Диспетчерская АЗС</text>
@@ -5382,59 +5515,61 @@
     <string id="st_val_tushkani_lair_1_name">
         <text>Темная долина: Логово тушканов</text>
     </string>
+	
     <string id="st_warlab_common_consciousness_smart_terrain_name">
         <text>Генераторы: Военная лаборатория</text>
     </string>
     <string id="st_wiz_bandits_boloto_name">
-        <text>Окрестности НИИ: Болото</text>
+        <text>Окраины  НИИ: Болото</text>
     </string>
     <string id="st_wiz_bandits_squad_doroga_name">
-        <text>Окрестности НИИ: Дорога</text>
+        <text>Окраины  НИИ: Дорога</text>
     </string>
     <string id="st_wiz_baza_name">
-        <text>Окрестности НИИ: Неизвестная база</text>
+        <text>Окраины  НИИ: Неизвестная база</text>
     </string>
     <string id="st_wiz_bivsh_nii_name">
-        <text>Окрестности НИИ: База сталкеров</text>
+        <text>Окраины  НИИ: База сталкеров</text>
     </string>
     <string id="st_wiz_derevnya_bandits_name">
-        <text>Окрестности НИИ: Северная деревня</text>
+        <text>Окраины  НИИ: Северная деревня</text>
     </string>
     <string id="st_wiz_nauch_name">
-        <text>Окрестности НИИ: Двор базы сталкеров</text>
+        <text>Окраины  НИИ: Двор базы сталкеров</text>
     </string>
     <string id="st_wiz_sim_1_name">
-        <text>Окрестности НИИ: Лагерь у туннеля</text>
+        <text>Окраины  НИИ: Лагерь у туннеля</text>
     </string>
     <string id="st_wiz_sim_10_name">
-        <text>Пузырь: Участок</text>
+        <text>Пузырь: Сектор</text>
     </string>
     <string id="st_wiz_sim_2_name">
-        <text>Окрестности НИИ: Тоннель</text>
+        <text>Окраины  НИИ: Тоннель</text>
     </string>
     <string id="st_wiz_sim_3_name">
-        <text>Окрестности НИИ: Автомобильная мастерская</text>
+        <text>Окраины  НИИ: Автомобильная мастерская</text>
     </string>
     <string id="st_wiz_sim_4_name">
-        <text>Пузырь: Участок</text>
+        <text>Пузырь: Сектор</text>
     </string>
     <string id="st_wiz_sim_6_name">
-        <text>Окрестности НИИ: Магазин</text>
+        <text>Окраины НИИ: Магазин</text>
     </string>
     <string id="st_wiz_sim_7_name">
-        <text>Окрестности НИИ: Аномалия "Электрический круг"</text>
+        <text>Окраины НИИ: Аномалия "Электрический круг"</text>
     </string>
     <string id="st_wiz_sim_8_name">
-        <text>Окрестности НИИ: Грузовик на дороге</text>
+        <text>Окраины НИИ: Грузовик на дороге</text>
     </string>
     <string id="st_wiz_sim_9_name">
-        <text>Пузырь: Участок</text>
+        <text>Пузырь: Сектор</text>
     </string>
+<!-- 30.06.26 дедушка Ли - исправил названия - конец -->		
     <string id="st_wiz_stalkers_boloto_name">
-        <text>Окрестности НИИ: Аномалия "Кислотная мясорубка"</text>
+        <text>Окраины  НИИ: Аномалия "Кислотная мясорубка"</text>
     </string>
     <string id="st_wiz_stalkers_derevnya_name">
-        <text>Окрестности НИИ: Южная деревня</text>
+        <text>Окраины НИИ: Южная деревня</text>
     </string>
     <string id="st_x11_smart_terrain_1_1_name">
         <text>Лаборатория X-11</text>
@@ -5466,8 +5601,9 @@
     <string id="st_x162_st_gigant_name">
         <text>Лаборатория X-16: Генераторная</text>
     </string>
+<!-- 30.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_x162_st_poltergeist_name">
-        <text>Лаборатория X-16: Колба</text>
+        <text>Лаборатория X-16: Камера с Колбами</text>
     </string>
     <string id="st_x162_st_snork_name">
         <text>Лаборатория X-16: Шахта</text>
@@ -5494,17 +5630,18 @@
         <text>Лаборатория X-27</text>
     </string>
     <string id="st_y94_smart_1_name">
-        <text>Объект Y-94: Участок</text>
+        <text>Объект Y-94: Сектор</text>
     </string>
     <string id="st_y94_smart_2_name">
-        <text>Объект Y-94: Участок</text>
+        <text>Объект Y-94: Сектор</text>
     </string>
     <string id="st_y94_smart_3_name">
-        <text>Объект Y-94: Участок</text>
+        <text>Объект Y-94: Сектор</text>
     </string>
     <string id="st_y94_smart_4_name">
-        <text>Объект Y-94: Участок</text>
+        <text>Объект Y-94: Сектор</text>
     </string>
+<!-- 30.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_yan_bandit_gastation_terrain_name">
         <text>Научная станция: Заправочная станция</text>
     </string>
@@ -5550,8 +5687,9 @@
     <string id="st_yan_sim_1_name">
         <text>Научная станция: Дом военного</text>
     </string>
+<!-- 30.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_yan_sim_2_name">
-        <text>Янтарь: Участок</text>
+        <text>Янтарь: Сектор</text>
     </string>
     <string id="st_yan_smart_terrain_1_6_name">
         <text>Янтарь: Дальний рубеж</text>
@@ -5593,25 +5731,25 @@
         <text>Янтарь: Лагерь учёных</text>
     </string>
     <string id="st_yan_smart_terrain_for_squad_levsha_name">
-        <text>Янтарь: Место отряда Левши</text>
+        <text>Янтарь: Место Отряда Левши</text>
     </string>
     <string id="st_yan_smart_terrain_snork_u_name">
         <text>Янтарь: Логово снорков</text>
     </string>
     <string id="st_yan_smart_terrain_zombi_in_sci_base1_name">
-        <text>Янтарь: Зомби у научной базы 1</text>
+        <text>Янтарь: Зомби у Научной Базы 1</text>
     </string>
     <string id="st_yan_smart_terrain_zombi_in_sci_base3_name">
-        <text>Янтарь: Зомби у научной базы 3</text>
+        <text>Янтарь: Зомби у Научной Базы 3</text>
     </string>
     <string id="st_yan_smart_terrain_zombi_in_sci_base4_name">
-        <text>Янтарь: Зомби у научной базы 4</text>
+        <text>Янтарь: Зомби у Научной Базы 4</text>
     </string>
     <string id="st_yan_smart_terrain_zombi_in_sci_base5_name">
-        <text>Янтарь: Зомби у научной базы 5</text>
+        <text>Янтарь: Зомби у Научной Базы 5</text>
     </string>
     <string id="st_yan_smart_terrain_zombi_in_sci_base6_name">
-        <text>Янтарь: Зомби у научной базы 6</text>
+        <text>Янтарь: Зомби у Научной Базы 6</text>
     </string>
     <string id="st_yan_smart_terrain_zombi_spawn_name">
         <text>Янтарь: Выход из трубы</text>
@@ -5620,10 +5758,10 @@
         <text>Научная станция: Подвал</text>
     </string>
     <string id="st_yan_ug_zombie_terrain1_name">
-        <text>Янтарь: Подземелье зомби 1</text>
+        <text>Янтарь: Подземелье Зомби 1</text>
     </string>
     <string id="st_yan_ug_zombie_terrain2_name">
-        <text>Янтарь: Подземелье зомби 2</text>
+        <text>Янтарь: Подземелье Зомби 2</text>
     </string>
     <string id="st_yan_village_dog_terrain_name">
         <text>Научная станция: Центр деревни</text>
@@ -5641,11 +5779,12 @@
         <text>Затон: Дальний лагерь</text>
     </string>
     <string id="st_zat_a2_stalker_barmen_name">
-        <text>Затон: Бармен сталкеров</text>
+        <text>Затон: Бармен-Сталкер</text>
     </string>
     <string id="st_zat_a2_stalker_mechanic_name">
-        <text>Затон: Механик сталкеров</text>
+        <text>Затон: Механик-Сталкер</text>
     </string>
+<!-- 30.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_zat_a2_stalker_nimble_name">
         <text>Шустрый</text>
     </string>
@@ -5692,10 +5831,10 @@
         <text>Затон: Документы 2</text>
     </string>
     <string id="st_zat_b12_key_1_name">
-        <text>Затон: Ключ 1</text>
+        <text>Затон: Ключ Б12 часть 1 </text>
     </string>
     <string id="st_zat_b12_key_2_name">
-        <text>Затон: Ключ 2</text>
+        <text>Затон: Ключ Б12 часть 2</text>
     </string>
     <string id="st_zat_b12_name">
         <text>Затон: Мост им. Преображенского</text>
@@ -5721,9 +5860,11 @@
     <string id="st_zat_b22_medic_pda_name">
         <text>Затон: КПК медика</text>
     </string>
+<!-- 30.06.26 дедушка Ли - исправил названия - начало -->	
     <string id="st_zat_b22_stalker_medic_name">
-        <text>Затон: Медик сталкеров</text>
+        <text>Затон: Медик Сталкеров</text>
     </string>
+	
     <string id="st_zat_b28_name">
         <text>Затон: Холодные пещеры</text>
     </string>
@@ -5812,7 +5953,7 @@
         <text>Балон с газом «Перин-В3»</text>
     </string>
     <string id="st_zat_b7_bandit_boss_sultan_arszi_scout_name">
-        <text>Затон: Главарь бандитов Султан АРСЗИ разведчик</text>
+        <text>Затон: Бандитский Босс Султан, Разведчик АРСЗИ</text>
     </string>
     <string id="st_zat_b7_bandit_boss_sultan_name">
         <text>Султан</text>
@@ -5824,7 +5965,7 @@
         <text>Затон: Лагерь на «Шевченко»</text>
     </string>
     <string id="st_zat_b7_stalker_victim_1_name">
-        <text>Затон: Жертва сталкеров 1</text>
+        <text>Затон: Жертва Сталкера 1</text>
     </string>
     <string id="st_zat_medic_home_smart_name">
         <text>Затон: Домик у кранов</text>
@@ -5833,10 +5974,10 @@
         <text>Затон: Домик у кранов</text>
     </string>
     <string id="st_zat_sim_1_name">
-        <text>Затон: Пастбище мутантов</text>
+        <text>Затон: Пастбище Мутантов</text>
     </string>
     <string id="st_zat_sim_10_name">
-        <text>Затон: Глушь</text>
+        <text>Затон: Дикая Местность</text>
     </string>
     <string id="st_zat_sim_11_name">
         <text>Затон: Импровизированный лагерь</text>
@@ -5854,7 +5995,7 @@
         <text>Затон: Северо-восточная точка</text>
     </string>
     <string id="st_zat_sim_16_name">
-        <text>Затон: Логово мутантов</text>
+        <text>Затон: Логово Мутантов</text>
     </string>
     <string id="st_zat_sim_17_name">
         <text>Затон: Вход в пещеры</text>
@@ -5872,7 +6013,7 @@
         <text>Затон: Вход в подземелье</text>
     </string>
     <string id="st_zat_sim_21_name">
-        <text>Затон: Центральная точка</text>
+        <text>Затон: Центральная Точка</text>
     </string>
     <string id="st_zat_sim_22_name">
         <text>Затон: Склон</text>
@@ -5899,7 +6040,7 @@
         <text>Затон: Лесной холм</text>
     </string>
     <string id="st_zat_sim_3_name">
-        <text>Затон: Северная точка</text>
+        <text>Затон: Северная Точка</text>
     </string>
     <string id="st_zat_sim_30_name">
         <text>Затон: Забытые холмы</text>
@@ -5926,8 +6067,9 @@
         <text>Затон: «Скадовск»</text>
     </string>
     <string id="st_zombie_smart_ds_mlr_1_name">
-        <text>Мертвый город: Мёртвый двор</text>
+        <text>Мёртвый Город: Мёртвый Двор</text>
     </string>
+<!-- 30.06.26 дедушка Ли - исправил названия - конец -->	
     <string id="st_zombie_smart_ds_mlr_2_name">
         <text>Мертвый город: Апартаменты</text>
     </string>

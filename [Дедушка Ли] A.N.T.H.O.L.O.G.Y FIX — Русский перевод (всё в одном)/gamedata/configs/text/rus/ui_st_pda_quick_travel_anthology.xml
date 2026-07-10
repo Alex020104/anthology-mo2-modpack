@@ -1,0 +1,1766 @@
+<?xml version="1.0" encoding="Windows-1251" ?>
+<string_table>
+
+
+
+
+<!-- Jupiter CoP -->
+<string id="jup_a12">
+    <text>Склад контейнеров</text>
+</string>
+<string id="jup_sim_10">
+    <text>Земля мутантов</text>
+</string>
+<string id="jup_a12_merc">
+    <text>Дорога</text>
+</string>
+<string id="jup_b203">
+    <text>Подземный вентиляционный комплекс</text>
+</string>
+<string id="jup_b212">
+    <text>Вентиляционный комплекс</text>
+</string>
+<string id="jup_b32">
+    <text>Автостоянка</text>
+</string>
+<string id="jup_sim_1">
+    <text>Автостоянка у железной дороги</text>
+</string>
+<string id="jup_b205_smart_terrain">
+    <text>ЗРК "Волхов"</text>
+</string>
+<string id="jup_sim_16">
+    <text>Автостоянка на берегу озера</text>
+</string>
+<string id="jup_sim_9">
+    <text>Территория зомби</text>
+</string>
+<string id="jup_b19">
+    <text>Диггеры</text>
+</string>
+<string id="jup_b6_anom_2">
+    <text>Аномалия "Пепел"</text>
+</string>
+<string id="jup_b1">
+    <text>Северо-Западный туннель</text>
+</string>
+<string id="jup_b46">
+    <text>Градирня</text>
+</string>
+<string id="jup_sim_21">
+    <text>Мрачное убежище</text>
+</string>
+<string id="jup_sim_8">
+    <text>Болото</text>
+</string>
+<string id="jup_sim_14">
+    <text>Гнездо мутантов</text>
+</string>
+<string id="jup_b202">
+    <text>Промежуточная станция</text>
+</string>
+<string id="jup_a6">
+    <text>Станция "Янов"</text>
+</string>
+<string id="jup_b211">
+    <text>Аномалия «Затопление»</text>
+</string>
+<string id="jup_sim_20">
+    <text>Рухнувший мост</text>
+</string>
+<string id="jup_b200">
+    <text>Цементный завод</text>
+</string>
+<string id="jup_b200_tushkan_smart_terrain">
+    <text>Подвал завода</text>
+</string>
+<string id="jup_sim_7">
+    <text>Опасная роща</text>
+</string>
+<string id="jup_b25">
+    <text>Карьер</text>
+</string>
+<string id="jup_b207">
+    <text>Застава</text>
+</string>
+<string id="jup_b207_depot_attack">
+    <text>Равнина</text>
+</string>
+<string id="jup_sim_15">
+    <text>Вершина холма</text>
+</string>
+<string id="jup_b206">
+    <text>Аномальная роща</text>
+</string>
+<string id="jup_a10_smart_terrain">
+    <text>Блокпост</text>
+</string>
+<string id="jup_b41">
+    <text>Бункер ученых</text>
+</string>
+<string id="jup_sim_6">
+    <text>Склон карьера</text>
+</string>
+<string id="jup_b209">
+    <text>Аномалия "Битум"</text>
+</string>
+<string id="jup_sim_5">
+    <text>Вилка</text>
+</string>
+<string id="jup_sim_4">
+    <text>Брошенный локомотив</text>
+</string>
+<string id="jup_b204">
+    <text>Бандитский аванпост</text>
+</string>
+<string id="jup_sim_11">
+    <text>Лес</text>
+</string>
+<string id="jup_sim_12">
+    <text>Лагерь у вентиляционного комплекса</text>
+</string>
+<string id="jup_sim_18">
+    <text>Склады</text>
+</string>
+<string id="jup_sim_17">
+    <text>"Бетонная ванна"</text>
+</string>
+<string id="jup_a9">
+    <text>Фабрика "Юпитер"</text>
+</string>
+<string id="jup_b47">
+    <text>Внутренний проход</text>
+</string>
+<string id="jup_sim_19">
+    <text>Заводская свалка</text>
+</string>
+<string id="jup_b8_smart_terrain">
+    <text>Разбившийся вертолет</text>
+</string>
+<string id="jup_b219">
+    <text>Заводская мастерская</text>
+</string>
+<string id="jup_b4">
+    <text>Убежище под мостом</text>
+</string>
+<string id="jup_sim_3">
+    <text>Мелководное болото</text>
+</string>
+<string id="jup_sim_13">
+    <text>Опасный лагерь</text>
+</string>
+<string id="jup_b205_smart_terrain_tushkano">
+    <text>Подвал ТРЦ "Волхов"</text>
+</string>
+<string id="jup_sim_2">
+    <text>Западный туннель</text>
+</string>
+<string id="jup_b208">
+    <text>Восточный туннель</text>
+</string>
+
+
+<!-- Pripyat CoP -->
+<string id="pri_b36_smart_terrain">
+    <text>Речной порт</text>
+</string>
+<string id="pri_sim_2">
+    <text>Мертвая дорога</text>
+</string>
+<string id="pri_a28_heli">
+    <text>Площадь перед кинотеатром</text>
+</string>
+<string id="pri_sim_1">
+    <text>Кинотеатр "Прометей"</text>
+</string>
+<string id="pri_b303">
+    <text>Старый KBO</text>
+</string>
+<string id="pri_a28_evac">
+    <text>Высотное здание</text>
+</string>
+<string id="pri_b302">
+    <text>Укрытие</text>
+</string>
+<string id="pri_sim_6">
+    <text>Больничная аллея</text>
+</string>
+<string id="pri_a17">
+    <text>Больница</text>
+</string>
+<string id="pri_b301">
+    <text>Школа</text>
+</string>
+<string id="pri_a28_school">
+    <text>Школьный двор</text>
+</string>
+<string id="pri_b306">
+    <text>КБО "Юбилейный"</text>
+</string>
+<string id="pri_sim_10">
+    <text>Дорога дьявола</text>
+</string>
+<string id="pri_sim_12">
+    <text>Логово мутантов</text>
+</string>
+<string id="pri_a16">
+    <text>Прачечная</text>
+</string>
+<string id="pri_a28_base">
+    <text>Двор перед прачечной</text>
+</string>
+<string id="pri_b35_military">
+    <text>Крыльцо</text>
+</string>
+<string id="pri_sim_5">
+    <text>Улица "Дружбы народов"</text>
+</string>
+<string id="pri_a28_shop">
+    <text>Магазин "Березка"</text>
+</string>
+<string id="pri_a28_arch">
+    <text>Арка в здании</text>
+</string>
+<string id="pri_a22_smart_terrain">
+    <text>Проход между домами</text>
+</string>
+<string id="pri_sim_3">
+    <text>Игровая площадка</text>
+</string>
+<string id="pri_a25_smart_terrain">
+    <text>Детский сад</text>
+</string>
+<string id="pri_b307">
+    <text>Аномалия "Вулкан"</text>
+</string>
+<string id="pri_sim_7">
+    <text>Уединенный уголок</text>
+</string>
+<string id="pri_sim_9">
+    <text>Лагерь у подстанции</text>
+</string>
+<string id="pri_a21_smart_terrain">
+    <text>Продуктовый магазин</text>
+</string>
+<string id="pri_sim_8">
+    <text>Собачье логово</text>
+</string>
+<string id="pri_sim_11">
+    <text>Незащищенный лагерь</text>
+</string>
+<string id="pri_a18_smart_terrain">
+    <text>Магазин "Книги"</text>
+</string>
+<string id="pri_b304_monsters_smart_terrain">
+    <text>Универмаг</text>
+</string>
+<string id="pri_sim_4">
+    <text>Железнодорожная станция</text>
+</string>
+<string id="pri_b35_mercs">
+    <text>Общежитие</text>
+</string>
+<string id="pri_b305_dogs">
+    <text>Задний двор общежития</text>
+</string>
+<string id="pri_a15">
+    <text>Въезд на эстакаду</text>
+</string>
+
+<!-- Pripyat SoC -->
+<string id="pri_smart_neutral_stalker1">
+    <text>Сожженный лагерь</text>
+</string>
+<string id="pri_smart_monolith_stalker2">
+    <text>Лагерь</text>
+</string>
+<string id="pri_smart_monster_lair1">
+    <text>Сторожевой пост</text>
+</string>
+<string id="pri_smart_monolith_stalker3">
+    <text>Главная дорога</text>
+</string>
+<string id="pri_smart_controler_lair1">
+    <text>Заброшенное здание</text>
+</string>
+<string id="pri_smart_monolith_stalker4">
+    <text>Застава</text>
+</string>
+<string id="pri_depot">
+    <text>Автобусная остановка</text>
+</string>
+<string id="pri_smart_controler_lair2">
+    <text>Ржавые автобусы</text>
+</string>
+<string id="pri_smart_snork_lair2">
+    <text>Статуя Ленина</text>
+</string>
+<string id="pri_smart_tushkano_lair1">
+    <text>Гостиница "Полесье"</text>
+</string>
+<string id="pri_smart_snork_lair1">
+    <text>Руины</text>
+</string>
+<string id="pri_monolith">
+    <text>ДК "Энергетик"</text>
+</string>
+<string id="pri_smart_monolith_stalker6">
+    <text>Вход на стадион</text>
+</string>
+<string id="pri_smart_pseudodog_lair1">
+    <text>Мрачный лагерь</text>
+</string>
+<string id="pri_smart_giant_lair1">
+    <text>Стадион "Авангард"</text>
+</string>
+<string id="pri_smart_bloodsucker_lair1">
+    <text>Старый магазин</text>
+</string>
+
+
+<!-- The graveyard of technology -->
+<string id="trc_sim_1">
+    <text>Наблюдательный пункт</text>
+</string>
+<string id="trc_sim_2">
+    <text>Лагерь у контейнеров</text>
+</string>
+<string id="trc_sim_3">
+    <text>Вилка</text>
+</string>
+<string id="trc_sim_4">
+    <text>Сожженный дом</text>
+</string>
+<string id="trc_sim_5">
+    <text>Перекресток</text>
+</string>
+<string id="trc_sim_6">
+    <text>Сторожевая башня</text>
+</string>
+<string id="trc_sim_7">
+    <text>Лес</text>
+</string>
+<string id="trc_sim_8">
+    <text>Автоцистерны</text>
+</string>
+<string id="trc_sim_9">
+    <text>Вершина холма</text>
+</string>
+<string id="trc_sim_10">
+    <text>Отдых в лесу</text>
+</string>
+<string id="trc_sim_11">
+    <text>Военная техника</text>
+</string>
+<string id="trc_sim_12">
+    <text>Лесное убежище</text>
+</string>
+<string id="trc_sim_13">
+    <text>Место сбора в овраге</text>
+</string>
+<string id="trc_sim_14">
+    <text>Пожарные машины</text>
+</string>
+<string id="trc_sim_15">
+    <text>Разбитые вертолеты</text>
+</string>
+<string id="trc_sim_16">
+    <text>Окраина Свалки</text>
+</string>
+<string id="trc_sim_17">
+    <text>Радиоактивные холмы</text>
+</string>
+<string id="trc_sim_18">
+    <text>Лагерь посреди Свалки</text>
+</string>
+<string id="trc_sim_19_">
+    <text>Грузовики</text>
+</string>
+<string id="trc_sim_20">
+    <text>Восточный КПП</text>
+</string>
+<string id="trc_sim_21">
+    <text>Глухомань</text>
+</string>
+
+
+
+<!-- Dead City Lost Alpha -->
+<string id="cit_army_raid">
+    <text>Олимпийская улица</text>
+</string>
+<string id="cit_bloodsucker_lair">
+    <text>Улица Дружбы</text>
+</string>
+<string id="cit_bloodsucker_nest">
+    <text>Улица Мира</text>
+</string>
+<string id="cit_controller_lair">
+    <text>Магазин "Коопторг"</text>
+</string>
+<string id="cit_dog_lair2">
+    <text>Народная улица</text>
+</string>
+<string id="cit_mercs_base">
+    <text>Школа</text>
+</string>
+<string id="cit_snork_lair">
+    <text>Болото</text>
+</string>
+<string id="cit_stalker_base">
+    <text>Дом у моста</text>
+</string>
+<string id="cit_bandit_village">
+    <text>Деревня</text>
+</string>
+<string id="cit_freedom_house">
+    <text>Дом "Свободы"</text>
+</string>
+<string id="cit_gym_lager">
+    <text>Вход в магазин "Коопторг"</text>
+</string>
+<string id="cit_partei_lager">
+    <text>Слава КПСС</text>
+</string>
+<string id="cit_patrolers">
+    <text>Памятник Ленину</text>
+</string>
+<string id="cit_poltergeist_flat">
+    <text>Снайперская позиция в многоэтажке</text>
+</string>
+<string id="cit_pseudog_lair">
+    <text>Аномалия “Авеню”</text>
+</string>
+<string id="cit_dog_lair1">
+    <text>Аномалия “Электрическое поле”</text>
+</string>
+<string id="cit_fleshes_lair1">
+    <text>Аномалия “Гравитационное поле”</text>
+</string>
+<string id="cit_zombies_graveyard">
+    <text>Кладбище</text>
+</string>
+<string id="cit_swamp_lair">
+    <text>Мост через болото</text>
+</string>
+<string id="cit_swamp_lair2">
+    <text>Смертельное болото</text>
+</string>
+
+<!-- Polygon SA41 -->
+<string id="pro_smart_2">
+    <text>Лагерь на холме</text>
+</string>
+<string id="pro_smart_3">
+    <text>Барьер</text>
+</string>
+<string id="pro_smart_terrain_1_0_quest">
+    <text>Главный вход в Старый склад</text>
+</string>
+<string id="pro_smart_terrain_1_1">
+    <text>Старый склад</text>
+</string>
+<string id="pro_smart_terrain_1_2">
+    <text>Подвал Старого склада</text>
+</string>
+<string id="pro_smart_terrain_2_0">
+    <text>Диспетчерская</text>
+</string>
+<string id="pro_smart_terrain_2_1">
+    <text>Заповедник</text>
+</string>
+<string id="pro_smart_terrain_3_0">
+    <text>Склад Продуктов</text>
+</string>
+<string id="pro_smart_terrain_4_1_quest">
+    <text>Башня</text>
+</string>
+
+<!-- Металлургический завод -->
+<string id="rosf_duty_construction_terrain">
+    <text>Строительная площадка</text>
+</string>
+<string id="rosf_duty_hq">
+    <text>Отель</text>
+</string>
+<string id="rosf_duty_village">
+    <text>Деревня</text>
+</string>
+<string id="rosf_eco_tunnel">
+    <text>Тоннель</text>
+</string>
+<string id="rosf_loner_group1">
+    <text>Магазин "Товары"</text>
+</string>
+<string id="rosf_loner_group2">
+    <text>Проход</text>
+</string>
+<string id="rosf_military_blokpost">
+    <text>Военный КПП</text>
+</string>
+<string id="rosf_sim_1">
+    <text>Двор</text>
+</string>
+<string id="rosf_sim_5">
+    <text>Вход</text>
+</string>
+<string id="rosf_sim_7">
+    <text>Аномалия "Электрическая подстанция"</text>
+</string>
+
+<!-- Topi -->
+<string id="topi_sim_mut_3">
+    <text>Северо-западный лес</text>
+</string>
+<string id="topi_sim_mut_5">
+    <text>Вертолет в лесу</text>
+</string>
+<string id="topi_sim_mut_7">
+    <text>Юго-восточный лес</text>
+</string>
+<string id="topi_sim_mut_9">
+    <text>Северо-восточный лес</text>
+</string>
+<string id="topi_sim_mut_13">
+    <text>Юго-западный лес</text>
+</string>
+<string id="topi_sim_mut_29">
+    <text>Заброшенная ферма</text>
+</string>
+<string id="topi_sim_mut_39">
+    <text>Временный лагерь</text>
+</string>
+<string id="topi_sim_nps_3">
+    <text>Химическая аномалия</text>
+</string>
+<string id="topi_sim_nps_7">
+    <text>Деревня</text>
+</string>
+<string id="topi_sim_nps_8">
+    <text>База сталкеров</text>
+</string>
+
+<!-- Chertovo Urochishche -->
+<string id="grim_1">
+    <text>Северный лагерь</text>
+</string>
+<string id="grim_2">
+    <text>Блокпост</text>
+</string>
+<string id="grim_3">
+    <text>Юго-западная роща</text>
+</string>
+<string id="grim_4">
+    <text>Северный лес</text>
+</string>
+<string id="grim_5">
+    <text>Лес рядом с КПП</text>
+</string>
+<string id="grim_6">
+    <text>Поляна под опорами линии электропередач</text>
+</string>
+<string id="grim_7">
+    <text>Южный путь</text>
+</string>
+<string id="grim_8">
+    <text>Роща за причалом</text>
+</string>
+<string id="grim_9">
+    <text>Док</text>
+</string>
+<string id="grim_10">
+    <text>Лагерь на главной дороге</text>
+</string>
+<string id="grim_11">
+    <text>Дорога к заброшенному зданию</text>
+</string>
+<string id="grim_12">
+    <text>Южный лес</text>
+</string>
+<string id="grim_13">
+    <text>Северо-восточный лес</text>
+</string>
+<string id="grim_14">
+    <text>Восточный лес</text>
+</string>
+<string id="grim_15">
+    <text>Лес над заброшенным зданием</text>
+</string>
+<string id="grim_16">
+    <text>Заброшенное здание</text>
+</string>
+<string id="grim_17">
+    <text>Лагерь у пруда</text>
+</string>
+
+<!-- Abandoned land -->
+<string id="el_merc_base_1_smart">
+    <text>Коттедж в деревне</text>
+</string>
+<string id="el_sim_1">
+    <text>Лагерь в лесу</text>
+</string>
+<string id="el_stalker_base_1_smart">
+    <text>Бар "Хавчик"</text>
+</string>
+<string id="el_stalker_base_2_smart">
+    <text>Восточное здание</text>
+</string>
+<string id="el_zavod_monolith_01_smart">
+    <text>Главный вход на фабрику</text>
+</string>
+<string id="el_zavod_monolith_02_smart">
+    <text>Фабрика</text>
+</string>
+<string id="el_zavod_monolith_03_smart">
+    <text>Резервуары</text>
+</string>
+<string id="ex_gar_a1">
+    <text>Вход на базу</text>
+</string>
+<string id="ex_gar_a2">
+    <text>Производственные Объекты</text>
+</string>
+<string id="ex_gar_a3">
+    <text>Лес</text>
+</string>
+<string id="ex_gar_b1">
+    <text>Вход в Бар</text>
+</string>
+<string id="ex_gar_b2">
+    <text>Временный лагерь "Наемников"</text>
+</string>
+<string id="ex_gar_sim_02">
+    <text>Проход</text>
+</string>
+<string id="ex_gar_sim_03">
+    <text>Аномалия "Кислотный бассейн"</text>
+</string>
+<string id="ex_gar_sim_04">
+    <text>Аномалия "Химическая катастрофа"</text>
+</string>
+<string id="ex_gar_sim_05">
+    <text>Коттедж у башни</text>
+</string>
+<string id="ex_gar_sim_09">
+    <text>Автобусная остановка</text>
+</string>
+
+<!-- The neighbourhood of the Dome -->
+<string id="cit_a2">
+    <text>Блокпост</text>
+</string>
+<string id="cit_b39">
+    <text>Испытательный комплекс "P-I"</text>
+</string>
+<string id="kup_atr">
+    <text>Институт "Луч"</text>
+</string>
+<string id="cit_sim_5">
+    <text>Заброшенный участок ЗРК</text>
+</string>
+<string id="cit_sim_11">
+    <text>Дорога к Переходу</text>
+</string>
+<string id="cit_sim_13">
+    <text>Аномалия "Огненный беспилотник"</text>
+</string>
+<string id="cit_sim_16">
+    <text>Выезд с КПП</text>
+</string>
+<string id="cit_sim_21">
+    <text>Вход на базу радара</text>
+</string>
+<string id="cit_sim_22">
+    <text>Дорога к секретному комплексу</text>
+</string>
+<string id="cit_sim_24">
+    <text>Дорога рядом с неизвестной деревней</text>
+</string>
+<string id="cit_sim_30">
+    <text>Аномалия "Крик паука"</text>
+</string>
+<string id="cit_sim_35">
+    <text>Аномалия "Остров"</text>
+</string>
+<string id="cit_sim_37">
+    <text>Резервуары</text>
+</string>
+
+<!-- Station -->
+<string id="l2_9_baracks">
+    <text>Казармы</text>
+</string>
+<string id="l2_9_buliding">
+    <text>Здания</text>
+</string>
+<string id="l2_9_house">
+    <text>Дом</text>
+</string>
+<string id="l2_9_masterskaya">
+    <text>Мастерская</text>
+</string>
+<string id="l2_9_prud">
+    <text>Пруд</text>
+</string>
+<string id="l2_9_sim_9">
+    <text>Железнодорожные пути</text>
+</string>
+<string id="l2_9_stoyanka">
+    <text>Автостоянка</text>
+</string>
+<string id="l2_9_tank">
+    <text>Топливные баки</text>
+</string>
+<string id="l2_9_vokzal_limansk">
+    <text>Железнодорожный вокзал Лиманска</text>
+</string>
+
+<!-- Neighbourhood -->
+<string id="okr_base_dolg">
+    <text>Склад</text>
+</string>
+<string id="okr_base_freedom">
+    <text>Ангар</text>
+</string>
+<string id="okr_base_monolith">
+    <text>Санаторий "Победа"</text>
+</string>
+<string id="okr_base_killer">
+    <text>Жилой дом</text>
+</string>
+<string id="okr_base_stalker">
+    <text>Промышленный завод</text>
+</string>
+<string id="okr_base_greh">
+    <text>Администрация</text>
+</string>
+<string id="okr_base_csky">
+    <text>Рыболовство</text>
+</string>
+<string id="okr_base_bandit">
+    <text>Недостроенный завод</text>
+</string>
+<string id="okr_sim_5">
+    <text>Инженерный район</text>
+</string>
+<string id="okr_sim_7">
+    <text>Вертолет на болоте</text>
+</string>
+<string id="okr_sim_8">
+    <text>Аномалия "Химическая конструкция"</text>
+</string>
+<string id="okr_sim_11">
+    <text>Советский самолет</text>
+</string>
+<string id="okr_sim_13">
+    <text>Мост рядом с рыбным хозяйством</text>
+</string>
+<string id="okr_sim_18">
+    <text>Аномалия "Гравитационное кольцо"</text>
+</string>
+<string id="okr_sim_22">
+    <text>Авиационная база</text>
+</string>
+<string id="okr_sim_23">
+    <text>Взлетная полоса</text>
+</string>
+<string id="okr_sim_24">
+    <text>Футбольное поле</text>
+</string>
+<string id="okr_sim_25">
+    <text>Северное болото</text>
+</string>
+<string id="okr_sim_27">
+    <text>Тропа к железнодорожной станции</text>
+</string>
+<string id="okr_sim_29">
+    <text>Два резервуара</text>
+</string>
+<string id="okr_sim_33">
+    <text>Аномалия "Трансформаторная будка №2"</text>
+</string>
+<string id="okr_sim_38">
+    <text>Аномалия "Огненный тандем"</text>
+</string>
+<string id="okr_zombied_1">
+    <text>Северный контрольно-пропускной пункт</text>
+</string>
+<string id="okr_zombied_2">
+    <text>Заброшенный комплекс "Венера"</text>
+</string>
+<string id="okr_zombied_3">
+    <text>Старый ангар</text>
+</string>
+<string id="okr_zombied_4">
+    <text>Вход в подземелье</text>
+</string>
+<string id="okr_zombied_9">
+    <text>Западный КПП</text>
+</string>
+
+<!-- An anomalous forest -->
+<string id="ano_smart_terrain_1_1">
+    <text>Кусты</text>
+</string>
+<string id="ano_smart_terrain_2_1">
+    <text>Аномалия "Вулкан"</text>
+</string>
+<string id="ano_smart_terrain_2_4">
+    <text>Мертвые деревья</text>
+</string>
+<string id="ano_smart_terrain_3_1">
+    <text>Мобильная лаборатория "Оникс"</text>
+</string>
+<string id="ano_smart_terrain_3_3">
+    <text>Разрушенное здание</text>
+</string>
+<string id="ano_smart_terrain_4_4">
+    <text>Аномалия "Гравитационный вертолет"</text>
+</string>
+<string id="ano_smart_terrain_4_5">
+    <text>Дорога на окраину Припяти</text>
+</string>
+<string id="ano_smart_terrain_5_1">
+    <text>Прицеп</text>
+</string>
+<string id="ano_smart_terrain_5_2">
+    <text>Два пути</text>
+</string>
+<string id="ano_smart_terrain_6_1">
+    <text>Аномалия "Кислотный туннель"</text>
+</string>
+<string id="ano_smart_terrain_6_2">
+    <text>Казармы</text>
+</string>
+<string id="ano_smart_terrain_6_3">
+    <text>Гаражи</text>
+</string>
+<string id="ano_smart_terrain_6_4">
+    <text>Мастерская</text>
+</string>
+<string id="ano_smart_terrain_8_1">
+    <text>Аномалия "Трещины"</text>
+</string>
+<!-- Unexplored land -->
+<string id="aver_arhara_sniper_makrogulag2">
+    <text>Камни на горе</text>
+</string>
+<string id="aver_otshelnik">
+    <text>Хижина отшельника</text>
+</string>
+<string id="land_arhara_sniper">
+    <text>Лагерь Архара</text>
+</string>
+<string id="aver_lair_2">
+    <text>Аномалия "Кислотное болото"</text>
+</string>
+<string id="nz_dog_krater">
+    <text>Аномалия "Поле камней"</text>
+</string>
+<string id="aver_hunter">
+    <text>Костер на горе</text>
+</string>
+<string id="aver_lazaret">
+    <text>Лазарет</text>
+</string>
+
+<!-- Outpost SA41 -->
+<string id="blck_val_a31">
+    <text>Северная деревня</text>
+</string>
+<string id="blck_val_a35">
+    <text>Мастерская</text>
+</string>
+<string id="blck_val_a37">
+    <text>Плавательный бассейн</text>
+</string>
+<string id="blck_val_b208">
+    <text>Металлургический завод</text>
+</string>
+<string id="blck_val_sim_1">
+    <text>Строительная площадка</text>
+</string>
+<string id="blck_val_sim_2">
+    <text>Аномалия "Аномальная роща"</text>
+</string>
+<string id="blck_val_sim_4">
+    <text>Кладбище</text>
+</string>
+<string id="blck_val_sim_9">
+    <text>Радиоактивная свалка</text>
+</string>
+<string id="blck_val_b1">
+    <text>Аномалия "Адский круг"</text>
+</string>
+<string id="blck_val_b2">
+    <text>Деревня Лорда</text>
+</string>
+
+<!-- Science Station -->
+<string id="yan_sci_bunker">
+    <text>Мобильная лаборатория "Янтарь"</text>
+</string>
+<string id="yan_sim_1">
+    <text>Военный дом</text>
+</string>
+<string id="yan_bandit_gastation_terrain">
+    <text>Заправочная станция</text>
+</string>
+<string id="yan_boar_terrain">
+    <text>Аномалия "Болотная кислушка"</text>
+</string>
+<string id="yan_dolg_terrain">
+    <text>Болотный лагерь</text>
+</string>
+<string id="yan_dog_terrain2">
+    <text>Аномалия "Болотная карусель"</text>
+</string>
+<string id="yan_rat_terrain2">
+    <text>Военный ангар</text>
+</string>
+<string id="yan_rat_terrain3">
+    <text>Восточная деревня</text>
+</string>
+<string id="yan_fort_terrain">
+    <text>Пропускной пункт</text>
+</string>
+<string id="yan_stalker_bunker">
+    <text>Бункер</text>
+</string>
+<string id="yan_village2_bandit_terrain">
+    <text>Деревня</text>
+</string>
+<string id="yan_village_dog_terrain">
+    <text>Центр деревни</text>
+</string>
+<string id="yan_zombie_terrain1">
+    <text>Радиолокационная станция</text>
+</string>
+
+<!-- The cursed forest -->
+<string id="forest_cat_terrain1">
+    <text>Проклятая дорога</text>
+</string>
+<string id="forest_flesh_terrain2">
+    <text>Проклятая поляна</text>
+</string>
+<string id="forest_mine_bandits">
+    <text>Вход в пещеру</text>
+</string>
+<string id="forest_diseased">
+    <text>Проход в деревню</text>
+</string>
+<string id="forest_sim_1">
+    <text>Автобусная остановка</text>
+</string>
+<string id="forest_sim_2">
+    <text>Пропускной пункт</text>
+</string>
+<string id="forest_swampbeast_terrain1">
+    <text>Проклятое болото</text>
+</string>
+
+<!-- Kurchatov -->
+<string id="city_smart_terrain_1_2">
+    <text>Здание КПСУ</text>
+</string>
+<string id="city_smart_terrain_1_3">
+    <text>Дом культуры</text>
+</string>
+<string id="city_smart_terrain_1_4">
+    <text>Аномалия "Безнадежность"</text>
+</string>
+<string id="city_smart_terrain_2_2">
+    <text>Северная игровая площадка</text>
+</string>
+<string id="city_smart_terrain_2_4">
+    <text>Южный двор</text>
+</string>
+<string id="city_smart_terrain_2_5">
+    <text>Северный двор</text>
+</string>
+<string id="city_smart_terrain_2_6">
+    <text>Парк культуры и отдыха имени Гагарина</text>
+</string>
+<string id="city_smart_terrain_2_7">
+    <text>Западная игровая площадка</text>
+</string>
+
+<!-- East Topi -->
+<string id="swamp_bandit_terrain1">
+    <text>Хижина</text>
+</string>
+<string id="swamp_doc_terrain">
+    <text>Хижина болотного Доктора</text>
+</string>
+<string id="swamp_sim_2">
+    <text>Хижина</text>
+</string>
+<string id="swamp_boar_terrain1">
+    <text>Разрушенный дом</text>
+</string>
+<string id="swamp_boar_terrain3">
+    <text>Тузла</text>
+</string>
+<string id="swamp_swampbeast_terrain2">
+    <text>Дом на болоте</text>
+</string>
+<string id="swamp_swampbeast_terrain5">
+    <text>Аномалия "Зов Припяти"</text>
+</string>
+
+<!-- The Valley of the Rustlers -->
+<string id="sad_b1">
+    <text>Лагерь сталкеров</text>
+</string>
+<string id="sad_b2">
+    <text>Северная база</text>
+</string>
+<string id="sad_b3">
+    <text>Склад контейнеров</text>
+</string>
+<string id="sad_b3a">
+    <text>Вход на склад контейнеров</text>
+</string>
+<string id="sad_b4">
+    <text>Восточная база</text>
+</string>
+<string id="sad_ban">
+    <text>Аномалия "Дом у огня"</text>
+</string>
+<string id="sad_ran">
+    <text>Западная база</text>
+</string>
+<string id="sad_sher">
+    <text>Приют</text>
+</string>
+<string id="sad_sim_1">
+    <text>Аномалия "Пси-болото"</text>
+</string>
+<string id="sad_sim_6">
+    <text>Аномалия "Гравитационная горелка"</text>
+</string>
+<string id="sad_sim_8">
+    <text>Советский вертолет</text>
+</string>
+<string id="sad_sim_9">
+    <text>Аномалия "Огненное дерево"</text>
+</string>
+<string id="sad_sim_14">
+    <text>Защищенное убежище</text>
+</string>
+<string id="sad_sim_15">
+    <text>Аномалия "Гравитационные трещины"</text>
+</string>
+<string id="sad_sim_16">
+    <text>Феномен</text>
+</string>
+<string id="sad_sim_17">
+    <text>Аномалия "Шорох"</text>
+</string>
+<string id="sad_sim_18">
+    <text>Аномалия "Мясорубка"</text>
+</string>
+<string id="sad_sim_21">
+    <text>Аномалия "Кислотный круг"</text>
+</string>
+<string id="sad_sim_23">
+    <text>Машина</text>
+</string>
+<string id="sad_start">
+    <text>Аномалия "Огненный симбионт"</text>
+</string>
+
+<!-- Kasiany -->
+<string id="kas_base">
+    <text>Военная база "Касьяны"</text>
+</string>
+<string id="kas_kpp">
+    <text>Южный КПП</text>
+</string>
+<string id="kas_kpp2">
+    <text>Северный КПП</text>
+</string>
+<string id="kas_kpp3">
+    <text>Западный КПП</text>
+</string>
+<string id="kas_perekrestok">
+    <text>Перекресток</text>
+</string>
+<string id="kas_sim_1">
+    <text>Аномалия "Смерть вопреки всему"</text>
+</string>
+<string id="kas_sim_2">
+    <text>Аномалия "В сердце ада"</text>
+</string>
+<string id="kas_sim_7">
+    <text>Поле</text>
+</string>
+<string id="kas_sim_12">
+    <text>Озеро</text>
+</string>
+<string id="kas_sim_13">
+    <text>Уничтоженный танк</text>
+</string>
+<string id="kas_sim_14">
+    <text>Лес</text>
+</string>
+<string id="kas_sim_17">
+    <text>Аномалия "В паутине лжи"</text>
+</string>
+<string id="kas_sim_18">
+    <text>Химическое болото</text>
+</string>
+
+<!-- Industrial zone -->
+<string id="prom_1">
+    <text>Фабрика (Запад)</text>
+</string>
+<string id="prom_2">
+    <text>Фабрика (Центр)</text>
+</string>
+<string id="prom_3">
+    <text>Фабрика (Восток)</text>
+</string>
+<string id="prom_4">
+    <text>Заводской контрольный пункт</text>
+</string>
+<string id="prom_5">
+    <text>Задний двор</text>
+</string>
+<string id="prom_6">
+    <text>Между путями</text>
+</string>
+<string id="prom_7">
+    <text>Тоннель</text>
+</string>
+<string id="prom_8">
+    <text>Роща у железнодорожного вокзала</text>
+</string>
+<string id="prom_9">
+    <text>Железнодорожный вокзал "Южный"</text>
+</string>
+<string id="prom_10">
+    <text>Поляна под холмом</text>
+</string>
+<string id="prom_11">
+    <text>Лагерь в вагоне</text>
+</string>
+<string id="prom_12">
+    <text>Заправочная станция</text>
+</string>
+<string id="prom_13">
+    <text>Лагерь у Радара</text>
+</string>
+<string id="prom_14">
+    <text>Радиолокационная станция</text>
+</string>
+<string id="prom_15">
+    <text>Трясина</text>
+</string>
+
+<!-- Dead Lake -->
+<string id="deadlake_bandits_quest_smart">
+    <text>Неизвестный лагерь</text>
+</string>
+<string id="dl_attakers_smart">
+    <text>Разрушенная башня</text>
+</string>
+<string id="dl_shturm_smart">
+    <text>Автобус</text>
+</string>
+<string id="lake_smart_terrain_1">
+    <text>Автобусная остановка</text>
+</string>
+<string id="lake_smart_terrain_2">
+    <text>Восточный лагерь на ферме</text>
+</string>
+<string id="lake_smart_terrain_3">
+    <text>Северная деревня</text>
+</string>
+<string id="lake_smart_terrain_4">
+    <text>Южный КПП</text>
+</string>
+<string id="lake_smart_terrain_5">
+    <text>Западная деревня</text>
+</string>
+<string id="qwe_smart_terrain_2">
+    <text>Западное болото</text>
+</string>
+<string id="val_b1">
+    <text>Плавательный бассейн</text>
+</string>
+<string id="val_sim_4">
+    <text>Северный КПП</text>
+</string>
+<string id="val_sim_12">
+    <text>Западная деревня</text>
+</string>
+
+<!-- The neighbourhood of the former research institute -->
+<string id="wiz_bandits_boloto">
+    <text>Болото</text>
+</string>
+<string id="wiz_bandits_squad_doroga">
+    <text>Дорога</text>
+</string>
+<string id="wiz_nauch">
+    <text>Внутренний двор военной базы "Плутон"</text>
+</string>
+<string id="wiz_sim_1">
+    <text>Лагерь у туннеля</text>
+</string>
+<string id="wiz_bivsh_nii">
+    <text>Военная база "Плутон"</text>
+</string>
+<string id="wiz_derevnya_bandits">
+    <text>Северная деревня</text>
+</string>
+<string id="wiz_baza">
+    <text>Неизвестная база</text>
+</string>
+<string id="wiz_sim_2">
+    <text>Тоннель</text>
+</string>
+<string id="wiz_sim_3">
+    <text>Автомобильная мастерская</text>
+</string>
+<string id="wiz_sim_6">
+    <text>Магазин</text>
+</string>
+<string id="wiz_sim_7">
+    <text>Аномалия "Электрический круг"</text>
+</string>
+<string id="wiz_sim_8">
+    <text>Грузовик на дороге</text>
+</string>
+<string id="wiz_stalkers_boloto">
+    <text>Аномалия "Кислотная мясорубка"</text>
+</string>
+<string id="wiz_stalkers_derevnya">
+    <text>Южная деревня</text>
+</string>
+
+<!-- Quiet hills -->
+<string id="dol_general_terrain1">
+    <text>Каменная гора</text>
+</string>
+<string id="dol_general_terrain4">
+    <text>Небольшой лес</text>
+</string>
+<string id="dol_cat_terrain">
+    <text>Гравитационная яма</text>
+</string>
+<string id="dol_poltergeist_terrain2">
+    <text>Аномалия "Аномалия"</text>
+</string>
+<string id="dol_poltergeist_terrain3">
+    <text>Пещера под деревней</text>
+</string>
+<string id="dolina_stables_lager">
+    <text>Южный лагерь на ферме</text>
+</string>
+<string id="dolina_military_assault">
+    <text>Фабрика X-6</text>
+</string>
+<string id="dol_swampbeast_terrain">
+    <text>Мост</text>
+</string>
+<string id="dolina_bandit_base">
+    <text>Фабрика</text>
+</string>
+<string id="dolina_monolith_base">
+    <text>Вход на фабрику X-6</text>
+</string>
+
+<!-- Central landfill -->
+<string id="gar_bandit_sniper_terrain">
+    <text>Бандитский мост</text>
+</string>
+<string id="gar_bridge_lager">
+    <text>Лагерь у Бандитского моста</text>
+</string>
+<string id="gar_cranes_lager">
+    <text>Подъемные краны</text>
+</string>
+<string id="gar_greenhouse_lager">
+    <text>Теплица</text>
+</string>
+<string id="gar_hangar_lager">
+    <text>Вход в Депо</text>
+</string>
+<string id="gar_hangar_patrol">
+    <text>Депо</text>
+</string>
+<string id="gar_small_hangar">
+    <text>Небольшой ангар рядом со складом</text>
+</string>
+<string id="gar_dolg_blockpost">
+    <text>Северный КПП "Долга"</text>
+</string>
+<string id="gar_dogs_lair2">
+    <text>Спуск к свалке</text>
+</string>
+<string id="gar_dram_moment_terrain">
+    <text>Аномалия "Разрушенная дорога"</text>
+</string>
+<string id="gar_road_lager1">
+    <text>Вход на Свалку</text>
+</string>
+<string id="gar_zombies_graveyard">
+    <text>Свалка</text>
+</string>
+
+<!-- Anomalous fields -->
+<string id="bcr_boar_terrain5">
+    <text>Опасный путь</text>
+</string>
+<string id="bcr_boar_terrain15">
+    <text>Опасные кусты</text>
+</string>
+<string id="bcr_boar_terrain17">
+    <text>Дорога к КПП</text>
+</string>
+<string id="bcr_dog_terrain3">
+    <text>Расчистка у дороги</text>
+</string>
+<string id="country_ecolog_terrain1">
+    <text>Научная база "Алмаз"</text>
+</string>
+<string id="country_csky_terrain1">
+    <text>Деревня у дороги</text>
+</string>
+<string id="country_blockpost">
+    <text>Блокпост</text>
+</string>
+<string id="country_bandit_terrain1">
+    <text>Деревня</text>
+</string>
+<string id="country_renegade_terrain1">
+    <text>Церковь</text>
+</string>
+<string id="country_stalker_terrain1">
+    <text>Дом у аномалии "Кислушка"</text>
+</string>
+
+<!-- South Village -->
+<string id="posug_1">
+    <text>Поляна за болотом</text>
+</string>
+<string id="posug_2">
+    <text>Болотная пасть</text>
+</string>
+<string id="posug_3">
+    <text>Котельная</text>
+</string>
+<string id="posug_4">
+    <text>Скотный двор</text>
+</string>
+<string id="posug_5">
+    <text>Дикая роща</text>
+</string>
+<string id="posug_6">
+    <text>Лагерь у каньона</text>
+</string>
+<string id="posug_7">
+    <text>Гаражи</text>
+</string>
+<string id="posug_8">
+    <text>Дом рядом с гаражами</text>
+</string>
+<string id="posug_9">
+    <text>Жилой квартал</text>
+</string>
+<string id="posug_10">
+    <text>Мертвая поляна</text>
+</string>
+<string id="posug_11">
+    <text>Холм у подстанции</text>
+</string>
+<string id="posug_12">
+    <text>Болотный берег</text>
+</string>
+<string id="posug_13">
+    <text>Школа</text>
+</string>
+<string id="posug_14">
+    <text>Детский сад</text>
+</string>
+<string id="posug_15">
+    <text>Дом рядом с детским садом</text>
+</string>
+<string id="posug_16">
+    <text>Аптека</text>
+</string>
+<string id="posug_17">
+    <text>Дом на холме</text>
+</string>
+<string id="posug_18">
+    <text>Дом культуры "Южный"</text>
+</string>
+<string id="posug_19">
+    <text>Южный частный сектор</text>
+</string>
+<string id="posug_20">
+    <text>Заброшенная заправочная станция</text>
+</string>
+<string id="posug_21">
+    <text>Книжный магазин</text>
+</string>
+<string id="posug_22">
+    <text>Главная аллея</text>
+</string>
+<string id="posug_23">
+    <text>Парк</text>
+</string>
+<string id="posug_24">
+    <text>Старые казармы</text>
+</string>
+<string id="posug_25">
+    <text>Расчистка у Южной дороги</text>
+</string>
+<string id="posug_26">
+    <text>Мертвые холмы</text>
+</string>
+<string id="posug_27">
+    <text>Северный Частный сектор</text>
+</string>
+<string id="posug_28">
+    <text>Перекресток Между Дворами</text>
+</string>
+<string id="posug_29">
+    <text>Жилой дом рядом с парком</text>
+</string>
+<string id="posug_30">
+    <text>Административные здания</text>
+</string>
+<string id="posug_31">
+    <text>Двор с гаражами</text>
+</string>
+<string id="posug_32">
+    <text>Тихие холмы</text>
+</string>
+<string id="posug_33">
+    <text>Складской двор</text>
+</string>
+<string id="posug_34">
+    <text>Зловещий двор</text>
+</string>
+<string id="posug_35">
+    <text>Станция технического обслуживания автомобилей</text>
+</string>
+<string id="posug_36">
+    <text>Восточный частный сектор</text>
+</string>
+<string id="posug_37">
+    <text>Расчистка на окраине</text>
+</string>
+
+<!-- East Dump -->
+<string id="svalk_kpp2_smart_terrain">
+    <text>Северный КПП "Долга"</text>
+</string>
+<string id="svalk_konteyneri_smart_terrain">
+    <text>Восточный блошиный рынок</text>
+</string>
+<string id="svalk_digger_smart_terrain">
+    <text>Стоянка для экскаваторов</text>
+</string>
+<string id="svalk_piron_smart_terrain">
+    <text>Пирон</text>
+</string>
+<string id="svalk_depo_smart_terrain">
+    <text>Восточное депо</text>
+</string>
+<string id="svalk_antena_smart_terrain">
+    <text>Антенна</text>
+</string>
+<string id="svalk_perekrestok_smart_terrain">
+    <text>Перекресток</text>
+</string>
+<string id="svalk_kpp_smart_terrain">
+    <text>Южный КПП</text>
+</string>
+<string id="svalk_sim_10">
+    <text>Восточная свалка</text>
+</string>
+
+<!-- East Бар -->
+<string id="bar_smart_terrain_0_0">
+    <text>Бар "100 ренген"</text>
+</string>
+<string id="bar_smart_terrain_0_1">
+    <text>Заброшенный ангар</text>
+</string>
+<string id="bar_smart_terrain_0_3">
+    <text>Арена</text>
+</string>
+<string id="bar_smart_terrain_1_0">
+    <text>Казармы "Долга"</text>
+</string>
+<string id="bar_smart_terrain_1_1">
+    <text>База "Долга"</text>
+</string>
+<string id="bar_smart_terrain_1_3">
+    <text>Южный КПП "Долга"</text>
+</string>
+<string id="bar_smart_terrain_1_4">
+    <text>Северный КПП "Долга"</text>
+</string>
+<string id="bar_smart_terrain_1_5">
+    <text>Подземный ход</text>
+</string>
+<string id="bar_smart_terrain_2_0">
+    <text>Вербовочный лагерь "Чистое небо"</text>
+</string>
+<string id="bar_smart_terrain_3_0">
+    <text>Дорога к Восточной свалке</text>
+</string>
+<string id="bar_smart_terrain_3_2">
+    <text>Туманный лес</text>
+</string>
+<string id="bar_smart_terrain_3_3">
+    <text>Прохож в Южную деревню</text>
+</string>
+
+<!-- East Cordon -->
+<string id="esc_smart_terrain_0_0">
+    <text>Барьер</text>
+</string>
+<string id="esc_smart_terrain_0_1">
+    <text>Аномалия "Пекарня"</text>
+</string>
+<string id="esc_smart_terrain_0_1_surge">
+    <text>Элеватор</text>
+</string>
+<string id="esc_smart_terrain_0_0_2">
+    <text>Палатка сталкеров</text>
+</string>
+<string id="esc_smart_terrain_1_0">
+    <text>Восточный АТП</text>
+</string>
+<string id="esc_smart_terrain_1_1">
+    <text>Западная деревня новичков</text>
+</string>
+<string id="esc_smart_terrain_1_2">
+    <text>Лагерь возле вагона</text>
+</string>
+<string id="esc_smart_terrain_2_0">
+    <text>База бандитов</text>
+</string>
+<string id="esc_smart_terrain_2_1">
+    <text>Тоннель</text>
+</string>
+<string id="esc_smart_terrain_2_2">
+    <text>Северный форпост</text>
+</string>
+<string id="esc_smart_terrain_2_2_surge">
+    <text>Восточные руины усадьбы</text>
+</string>
+<string id="esc_smart_terrain_3_5">
+    <text>Поезд</text>
+</string>
+<string id="esc_smart_terrain_3_9">
+    <text>Аномалия "Глухая яма"</text>
+</string>
+<string id="esc_smart_terrain_q">
+    <text>Аномалия "Горящая земля"</text>
+</string>
+
+<!-- Chernobyl1 -->
+<string id="out_smart_terrain_1">
+    <text>Северная база сталкеров</text>
+</string>
+<string id="out_smart_terrain_3">
+    <text>Лагерь "Долга"</text>
+</string>
+<string id="out_smart_terrain_4">
+    <text>Лагерь "Приют"</text>
+</string>
+<string id="out_smart_shturm">
+    <text>Дорога к военной базе Х-2</text>
+</string>
+<string id="out_smart_controz">
+    <text>Вход на военную базу Х-2</text>
+</string>
+<string id="out_smart_terrain_5">
+    <text>Военная база Х-2</text>
+</string>
+<string id="out_sim_13">
+    <text>Небольшой КПП</text>
+</string>
+<string id="out_b2_anomaly">
+    <text>Аномалия "Спираль"</text>
+</string>
+<string id="out_faradey_zombie">
+    <text>Дорога в Предбанник</text>
+</string>
+<string id="out_sim_1">
+    <text>Магазин "Овощи"</text>
+</string>
+<string id="out_kgb_go">
+    <text>Тренировочная площадка</text>
+</string>
+<string id="out_start_controller">
+    <text>Дорога из Предбанника</text>
+</string>
+<string id="out_zdanie_kgb">
+    <text>Здание КГБ</text>
+</string>
+<string id="out_wounded_kv_2">
+    <text>Перекресток</text>
+</string>
+
+<!-- Predbannik -->
+<string id="pre_sim_1">
+    <text>Северный КПП</text>
+</string>
+<string id="pre_sim_3">
+    <text>Лягушачья деревня</text>
+</string>
+<string id="pre_sim_4">
+    <text>Опасный лагерь</text>
+</string>
+<string id="pre_sim_6">
+    <text>Магазин "Товары"</text>
+</string>
+<string id="pre_sim_11">
+    <text>Вход на военную вертолетную площадку</text>
+</string>
+<string id="pre_sim_12">
+    <text>Военная вертолетная площадка</text>
+</string>
+<string id="pre_baza1">
+    <text>Вход на военную базу</text>
+</string>
+<string id="pre_baza2">
+    <text>Военная база</text>
+</string>
+<string id="pre_zavod">
+    <text>Восточная фабрика</text>
+</string>
+<string id="pre_master_roman">
+    <text>Военный ангар</text>
+</string>
+<string id="pre_bar">
+    <text>Бар</text>
+</string>
+
+<!-- Glade -->
+<string id="pol_smart_terrain_1_1">
+    <text>Перекресток полян</text>
+</string>
+<string id="pol_smart_terrain_1_3">
+    <text>Бандитская парковка</text>
+</string>
+<string id="pol_smart_terrain_1_5">
+    <text>Одинокий дом</text>
+</string>
+<string id="pol_smart_terrain_zombie_yard">
+    <text>Двор</text>
+</string>
+
+<!-- The Forgotten Лес -->
+<string id="les_controller_centr">
+    <text>Лес</text>
+</string>
+<string id="les_rotan_vkustah">
+    <text>Переход на Свалку</text>
+</string>
+<string id="les_zombi_naholme">
+    <text>Переход на Поляну</text>
+</string>
+
+<!-- Dark Hollow Lost Alpha-->
+<string id="ds_merc_terrain1">
+    <text>Старая баржа</text>
+</string>
+<string id="ds_mine_bandit">
+    <text>Лагерь бандитов в пещере</text>
+</string>
+<string id="ds_stalker_terrain1">
+    <text>Лагерь одиночек в пещере</text>
+</string>
+<string id="ds_military_terrain">
+    <text>Бронированный автомобиль за остановкой</text>
+</string>
+<string id="ds_mutants_terrain2">
+    <text>Южный КПП</text>
+</string>
+<string id="ds_mutants_terrain5">
+    <text>Портовые краны</text>
+</string>
+<string id="ds_mutants_terrain7">
+    <text>Остановка</text>
+</string>
+<string id="ds_mutants_terrain10">
+    <text>Мост</text>
+</string>
+<string id="ds_mutants_terrain11">
+    <text>Северный КПП</text>
+    <text>Северный КПП</text>
+</string>
+<string id="ds_zombie_terrain1">
+    <text>Сарай</text>
+</string>
+<string id="ds_zombie_terrain2">
+    <text>Коттедж в лесу</text>
+</string>
+<string id="ds2_domik_st">
+    <text>Лесопилка</text>
+</string>
+<string id="ds_autostop">
+    <text>Заправочная станция</text>
+</string>
+<string id="ds_dark_stalker">
+    <text>Мины</text>
+</string>
+<string id="ds_most_terrain">
+    <text>Светящийся мост</text>
+</string>
+<string id="ds_dog_terrain3">
+    <text>Грузовик</text>
+</string>
+
+<!-- The old road -->
+<string id="old_atp_freedom_terrain">
+    <text>Юго-Восточное АТП "Свобода"</text>
+</string>
+<string id="old_farm_bandit_terrain">
+    <text>Старая ферма</text>
+</string>
+<string id="old_bath_monolith_terrain">
+    <text>Северный бассейн</text>
+</string>
+<string id="old_sim_1">
+    <text>Тихий лес рядом со Старой фермой</text>
+</string>
+<string id="old_sim_2">
+    <text>Тихий лес</text>
+</string>
+<string id="old_sim_11">
+    <text>Лес у дороги</text>
+</string>
+<string id="old_sim_13">
+    <text>Аномалия "Симбионт"</text>
+</string>
+<string id="old_sim_14">
+    <text>Маленькое озеро</text>
+</string>
+<string id="old_stancia_stalker_terrain">
+    <text>Восточная насосная станция</text>
+</string>
+<string id="old_swamp_swampbeast_terrain">
+    <text>Аномалия "Сосново-дубовое болото"</text>
+</string>
+<string id="old_village_zombie_terrain">
+    <text>Деревня зомби</text>
+</string>
+<string id="old_workshop_zombie_terrain">
+    <text>Советская мастерская</text>
+</string>
+
+</string_table>
+<!-- Translation made with Stalker Translation XML TOOL -->
+<!-- https://www.moddb.com/mods/stalker-anomaly/addons/stalker-translation-xml-tool-v12-executable-version -->

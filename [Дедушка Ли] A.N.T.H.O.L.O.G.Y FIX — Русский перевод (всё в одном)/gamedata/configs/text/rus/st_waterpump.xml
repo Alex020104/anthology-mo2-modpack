@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<string_table>
+    <string id="st_water_pump_spot">
+		<text>Точка пополнения воды</text>
+	</string>
+
+    <string id="st_prop_water_pump">
+        <text>Водяной насос</text>
+    </string>
+    <string id="st_prop_water_pump_descr">
+        <text>Позволяет установить точку пополнения воды в любом месте. Для работы требуется пустая фляга.</text>
+    </string>
+
+	<string id="st_water_pump_fill">
+		<text>Наполнить флягу ($$ACTION_USE$$)</text>
+	</string>
+
+	<string id="st_water_pump_no_canteen">
+		<text>Вам нужна пустая фляга чтобы набрать воды</text>
+	</string>
+</string_table>

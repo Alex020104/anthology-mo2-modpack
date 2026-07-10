@@ -1,0 +1,6109 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+  <string id="igi_level_zat">
+    <text>Zaton</text>
+</string>
+<string id="igi_level_jup">
+    <text>Jupiter</text>
+</string>
+<string id="igi_level_pri">
+    <text>Pripyat</text>
+</string>
+<string id="igi_level_pripyat">
+    <text>Pripyat</text>
+</string>
+<string id="igi_level_mar">
+    <text>Great Swamps</text>
+</string>
+<string id="igi_level_esc">
+    <text>Cordon</text>
+</string>
+<string id="igi_level_gar">
+    <text>Garbage</text>
+</string>
+<string id="igi_level_agr">
+    <text>Agroprom</text>
+</string>
+<string id="igi_level_val">
+    <text>Dark Valley</text>
+</string>
+<string id="igi_level_mil">
+    <text>Army Warehouses</text>
+</string>
+<string id="igi_level_bar">
+    <text>Rostok</text>
+</string>
+<string id="igi_level_ros">
+    <text>Rostok</text>
+</string>
+<string id="igi_level_yan">
+    <text>Yantar</text>
+</string>
+<string id="igi_level_red">
+    <text>Red Forest</text>
+</string>
+<string id="igi_level_lim">
+    <text>Limansk</text>
+</string>
+<string id="igi_level_cit">
+    <text>Dead City</text>
+</string>
+<string id="igi_level_ds">
+    <text>Darkscape</text>
+</string>
+<string id="igi_level_k00">
+    <text>Great Swamps</text>
+</string>
+<string id="igi_level_l01">
+    <text>Cordon</text>
+</string>
+<string id="igi_level_l02">
+    <text>Garbage</text>
+</string>
+<string id="igi_level_l03">
+    <text>Agroprom</text>
+</string>
+<string id="igi_level_l04">
+    <text>Dark Valley</text>
+</string>
+<string id="igi_level_l05">
+    <text>Rostok</text>
+</string>
+<string id="igi_level_l06">
+    <text>Wild Territory</text>
+</string>
+<string id="igi_level_l07">
+    <text>Army Warehouses</text>
+</string>
+<string id="igi_level_l08">
+    <text>Yantar</text>
+</string>
+<string id="igi_level_l09">
+    <text>Dead City</text>
+</string>
+<string id="igi_level_l10">
+    <text>Limansk</text>
+</string>
+<string id="igi_level_l11">
+    <text>Pripyat</text>
+</string>
+<string id="igi_level_gen">
+    <text>Generators</text>
+</string>
+<string id="igi_level_war">
+    <text>War Lab</text>
+</string>
+<string id="igi_level_warlab">
+    <text>War Lab</text>
+</string>
+<string id="igi_level_x5">
+    <text>Lab X-5</text>
+</string>
+<string id="igi_level_x8">
+    <text>Lab X-8</text>
+</string>
+<string id="igi_level_labx8">
+    <text>Lab X-8</text>
+</string>
+<string id="igi_level_pol">
+    <text>Meadow</text>
+</string>
+<string id="igi_level_ano">
+    <text>Anomalous Forest</text>
+</string>
+<string id="igi_level_trc">
+    <text>Truck Cemetery</text>
+</string>
+<string id="igi_level_aver">
+    <text>Uncharted Land</text>
+</string>
+<string id="igi_level_aes">
+    <text>CNPP</text>
+</string>
+<string id="igi_level_sar">
+    <text>Sarcophagus</text>
+</string>
+<string id="igi_level_mon">
+    <text>Monolith Control Center</text>
+</string>
+<string id="igi_level_dar">
+    <text>Agroprom Underground</text>
+</string>
+<string id="igi_level_pas">
+    <text>Pripyat Overpass</text>
+</string>
+<string id="igi_level_jupiter">
+    <text>Jupiter</text>
+</string>
+<string id="igi_level_zaton">
+    <text>Zaton</text>
+</string>
+
+<string id="st_aes_smart_terrain_monolit_blockpost_name">
+    <text>CNPP: Checkpoint</text>
+</string>
+<string id="st_aes_smart_terrain_monolit_blockpost2_name">
+    <text>CNPP: Gas Holders</text>
+</string>
+   <string id="st_aes_smart_terrain_monolit_blockpost4_name">
+    <text>CNPP: Substation</text>
+</string>
+<string id="st_aes_smart_terrain_monsters1_name">
+    <text>CNPP: Main Road</text>
+</string>
+<string id="st_aes_smart_terrain_monsters2_name">
+    <text>CNPP: Far Camp</text>
+</string>
+<string id="st_aes_smart_terrain_monsters3_name">
+    <text>CNPP: Power Lines</text>
+</string>
+<string id="st_aes_smart_terrain_monsters4_name">
+    <text>CNPP: Lone Camp</text>
+</string>
+<string id="st_aes_smart_terrain_soldier2_name">
+    <text>South CNPP: Office Complex</text>
+</string>
+<string id="st_aes_smart_terran_soldier_name">
+    <text>CNPP: Outpost</text>
+</string>
+<string id="st_aes_smart_terran_soldier2_name">
+    <text>CNPP: Administration Building</text>
+</string>
+<string id="st_aes2_monolith_camp1_name">
+    <text>CNPP: Large Camp</text>
+</string>
+<string id="st_aes2_monolith_camp2_name">
+    <text>CNPP: Observation Post</text>
+</string>
+<string id="st_aes2_monolith_camp3_name">
+    <text>CNPP: Rooftop Camp</text>
+</string>
+<string id="st_aes2_monolith_camp4_name">
+    <text>CNPP: Rooftop Storage</text>
+</string>
+<string id="st_aes2_monolith_camp5_name">
+    <text>CNPP-2: Monolith Camp</text>
+</string>
+<string id="st_aes2_monolith_snipers_1_name">
+    <text>CNPP: Rooftop</text>
+</string>
+<string id="st_aes2_monolith_snipers_2_name">
+    <text>CNPP: Inner Camp</text>
+</string>
+<string id="st_aes2_monolith_snipers_3_name">
+    <text>CNPP: Administration</text>
+</string>
+<string id="st_aes2_monsters1_name">
+    <text>CNPP: Exit</text>
+</string>
+<string id="st_aes2_monsters2_name">
+    <text>CNPP: Yard</text>
+</string>
+
+<string id="st_agr_defector_stalker_name">
+    <text>Agroprom: Stalker Defector</text>
+</string>
+<string id="st_agr_factory_assault_name">
+    <text>Agroprom: Factory Assault</text>
+</string>
+<string id="st_agr_factory_defence_name">
+    <text>Agroprom: Factory Defense</text>
+</string>
+<string id="st_agr_factory_hold_name">
+    <text>Agroprom: Factory Holdout</text>
+</string>
+<string id="st_agr_rush_name">
+    <text>Agroprom: Breakthrough</text>
+</string>
+<string id="st_agr_smart_terrain_1_2_name">
+    <text>Agroprom: Swamp Camp</text>
+</string>
+<string id="st_agr_smart_terrain_1_3_name">
+    <text>Agroprom: Old Parking Lot</text>
+</string>
+<string id="st_agr_smart_terrain_1_6_army_mechanic_stalker_name">
+    <text>Agroprom: Military Mechanic</text>
+</string>
+<string id="st_agr_smart_terrain_1_6_army_trader_stalker_name">
+    <text>Agroprom: Military Trader</text>
+</string>
+<string id="st_agr_smart_terrain_1_6_name">
+    <text>Agroprom: Agroprom Research Institute</text>
+</string>
+<string id="st_agr_smart_terrain_1_6_near_1_name">
+    <text>Agroprom: North Entrance</text>
+</string>
+<string id="st_agr_smart_terrain_1_6_near_2_military_colonel_kovalski_arszi_scout_name">
+    <text>Agroprom: ARSZI Scout at the Military Base</text>
+</string>
+<string id="st_agr_smart_terrain_1_6_near_2_military_colonel_kovalski_name">
+    <text>Agroprom: Colonel Kovalski at the Military Base</text>
+</string>
+<string id="st_agr_smart_terrain_1_6_near_2_name">
+    <text>Agroprom: East Entrance</text>
+</string>
+<string id="st_agr_smart_terrain_2_2_name">
+    <text>Agroprom: Boulder Camp</text>
+</string>
+<string id="st_agr_smart_terrain_2_3_name">
+    <text>Agroprom</text>
+</string>
+<string id="st_agr_smart_terrain_2_5_name">
+    <text>Agroprom</text>
+</string>
+<string id="st_agr_smart_terrain_3_5_name">
+    <text>Agroprom</text>
+</string>
+<string id="st_agr_smart_terrain_4_2_name">
+    <text>Agroprom</text>
+</string>
+<string id="st_agr_smart_terrain_4_4_2_name">
+    <text>Agroprom: Rear Exit</text>
+</string>
+<string id="st_agr_smart_terrain_4_4_name">
+    <text>Agroprom: Agroprom Factory</text>
+</string>
+<string id="st_agr_smart_terrain_4_4_near_1_name">
+    <text>Agroprom: Platform Square</text>
+</string>
+<string id="st_agr_smart_terrain_4_4_near_2_name">
+    <text>Agroprom: Rear Exit</text>
+</string>
+<string id="st_agr_smart_terrain_4_4_near_3_name">
+    <text>Agroprom: Eastern Checkpoint</text>
+</string>
+<string id="st_agr_smart_terrain_4_6_name">
+    <text>Agroprom: Road Checkpoint</text>
+</string>
+<string id="st_agr_smart_terrain_5_2_name">
+    <text>Agroprom: Stone Circle</text>
+</string>
+<string id="st_agr_smart_terrain_5_3_name">
+    <text>Agroprom: Railcar Barricades</text>
+</string>
+<string id="st_agr_smart_terrain_5_4_name">
+    <text>Agroprom: Crossroads</text>
+</string>
+<string id="st_agr_smart_terrain_5_7_name">
+    <text>Agroprom: Underground Checkpoint</text>
+</string>
+<string id="st_agr_smart_terrain_6_4_name">
+    <text>Agroprom: Tunnel Dead End</text>
+</string>
+<string id="st_agr_smart_terrain_6_6_name">
+    <text>Agroprom: Temporary Camp</text>
+</string>
+<string id="st_agr_smart_terrain_7_4_name">
+    <text>Agroprom: Road to Garbage</text>
+</string>
+<string id="st_agr_smart_terrain_7_5_name">
+    <text>Agroprom: Hill Camp</text>
+</string>
+<string id="st_agr_SRI_name">
+    <text>Agroprom: Agroprom Research Institute</text>
+</string>
+
+<string id="st_agr_u_bandits_name">
+    <text>Agroprom Underground: Mine Entrance</text>
+</string>
+<string id="st_agr_u_bloodsucker_2_name">
+    <text>Agroprom Underground: Cave-In</text>
+</string>
+<string id="st_agr_u_bloodsucker_name">
+    <text>Agroprom Underground: Ventilation</text>
+</string>
+<string id="st_agr_u_monsters_name">
+    <text>Agroprom Underground: Lair</text>
+</string>
+  <string id="st_agr_u_soldiers_name">
+    <text>Agroprom Underground: Surface Exit</text>
+</string>
+<string id="st_agr2_bandit_st_name">
+    <text>Agroprom Underground: Bandit Camp</text>
+</string>
+<string id="st_agr2_bloodsucker_lair2_name">
+    <text>Agroprom Underground: Bloodsucker Lair</text>
+</string>
+<string id="st_agr2_pseudodog_nest1_name">
+    <text>Agroprom Underground: Nest 1</text>
+</string>
+<string id="st_agr2_pseudodog_nest2_name">
+    <text>Agroprom Underground: Nest 2</text>
+</string>
+<string id="st_agr2_pseudodog_nest3_name">
+    <text>Agroprom Underground: Nest 3</text>
+</string>
+
+<string id="st_ano_smart_terrain_1_1_name">
+    <text>Anomalous Forest: Bushes</text>
+</string>
+<string id="st_ano_smart_terrain_2_1_name">
+    <text>Anomalous Forest: "Volcano" Anomaly</text>
+</string>
+<string id="st_ano_smart_terrain_2_2_name">
+    <text>Anomalous Forest</text>
+</string>
+<string id="st_ano_smart_terrain_2_3_name">
+    <text>Anomalous Forest</text>
+</string>
+<string id="st_ano_smart_terrain_2_4_name">
+    <text>Anomalous Forest: Dead Trees</text>
+</string>
+<string id="st_ano_smart_terrain_2_5_name">
+    <text>Anomalous Forest</text>
+</string>
+<string id="st_ano_smart_terrain_3_1_name">
+    <text>Anomalous Forest: Mobile Lab "Onyx"</text>
+</string>
+<string id="st_ano_smart_terrain_3_1_scientists_name">
+    <text>Anomalous Forest: Scientists' Camp</text>
+</string>
+<string id="st_ano_smart_terrain_3_2_name">
+    <text>Anomalous Forest</text>
+</string>
+<string id="st_ano_smart_terrain_3_3_name">
+    <text>Anomalous Forest: Ruined Building</text>
+</string>
+<string id="st_ano_smart_terrain_3_4_name">
+    <text>Anomalous Forest</text>
+</string>
+<string id="st_ano_smart_terrain_3_5_name">
+    <text>Anomalous Forest</text>
+</string>
+<string id="st_ano_smart_terrain_4_1_name">
+    <text>Anomalous Forest</text>
+</string>
+<string id="st_ano_smart_terrain_4_2_name">
+    <text>Anomalous Forest</text>
+</string>
+<string id="st_ano_smart_terrain_4_3_name">
+    <text>Anomalous Forest</text>
+</string>
+<string id="st_ano_smart_terrain_4_4_name">
+    <text>Anomalous Forest: "Gravitational Helicopter" Anomaly</text>
+</string>
+<string id="st_ano_smart_terrain_4_5_name">
+    <text>Anomalous Forest: Road to Pripyat Outskirts</text>
+</string>
+<string id="st_ano_smart_terrain_5_1_name">
+    <text>Anomalous Forest: Caravan</text>
+</string>
+<string id="st_ano_smart_terrain_5_2_name">
+    <text>Anomalous Forest: Two Paths</text>
+</string>
+<string id="st_ano_smart_terrain_6_1_name">
+    <text>Anomalous Forest: "Acid Tunnel" Anomaly</text>
+</string>
+<string id="st_ano_smart_terrain_6_2_name">
+    <text>Anomalous Forest: Barracks</text>
+</string>
+<string id="st_ano_smart_terrain_6_3_name">
+    <text>Anomalous Forest: Garages</text>
+</string>
+<string id="st_ano_smart_terrain_6_4_name">
+    <text>Anomalous Forest: Workshop</text>
+</string>
+<string id="st_ano_smart_terrain_7_1_name">
+    <text>Anomalous Forest</text>
+</string>
+<string id="st_ano_smart_terrain_8_1_name">
+    <text>Anomalous Forest: "Cracks" Anomaly</text>
+</string>
+
+<string id="st_arena_smart_enemy_name">
+    <text>Arena: Opponent</text>
+</string>
+<string id="st_arena_smart_friend_name">
+    <text>Arena: Ally</text>
+</string>
+
+<string id="st_army_sim_squad_alpha_name">
+    <text>Military: Alpha Squad</text>
+</string>
+
+<string id="st_atp_brigada_name">
+    <text>ATP: Brigade</text>
+</string>
+<string id="st_atp_burer_name">
+    <text>ATP: Burer Lair</text>
+</string>
+<string id="st_atp_chimera1_name">
+    <text>ATP: Chimera Sector 1</text>
+</string>
+<string id="st_atp_dog1_name">
+    <text>ATP: Dog Sector 1</text>
+</string>
+<string id="st_atp_fabrika_bandit_name">
+    <text>ATP: Bandit Factory</text>
+</string>
+<string id="st_atp_flesh1_name">
+    <text>ATP: Flesh Sector 1</text>
+</string>
+<string id="st_atp_gigant_udereva_name">
+    <text>ATP: Pseudogiant by the Tree</text>
+</string>
+
+<string id="st_aver_arhara_sniper_makrogulag2_name">
+    <text>Uncharted Land: Mountain Cliffs</text>
+</string>
+<string id="st_aver_arhara_sniper_mikrogulag1_name">
+    <text>Uncharted Land: Arhara Sniper Camp 1</text>
+</string>
+<string id="st_aver_hunter_name">
+    <text>Uncharted Land: Campfire on the Mountain</text>
+</string>
+<string id="st_aver_kaban_gulag_name">
+    <text>Uncharted Land: Boar Camp</text>
+</string>
+<string id="st_aver_lair_1_name">
+    <text>Uncharted Land: Lair 1</text>
+</string>
+<string id="st_aver_lair_2_name">
+    <text>Uncharted Land: "Acid Swamps" Anomaly</text>
+</string>
+<string id="st_aver_lair_3_name">
+    <text>Uncharted Land: Lair 3</text>
+</string>
+<string id="st_aver_lair_4_name">
+    <text>Uncharted Land: Near the Trail</text>
+</string>
+<string id="st_aver_lair_5_name">
+    <text>Uncharted Land: Lair 5</text>
+</string>
+<string id="st_aver_lair_6_name">
+    <text>Uncharted Land: Lair 6</text>
+</string>
+<string id="st_aver_lazaret_name">
+    <text>Uncharted Land: Infirmary</text>
+</string>
+<string id="st_aver_otshelnik_name">
+    <text>Uncharted Land: Hermit's Hut</text>
+</string>
+
+<string id="st_ba1_smart_bandits_name">
+    <text>Base: Bandit Camp</text>
+</string>
+<string id="st_ba1_smart_terrain_name">
+    <text>Base: Sector</text>
+</string>
+
+<string id="st_bar_arena_monstr_name">
+    <text>Rostok: Mutant Arena</text>
+</string>
+<string id="st_bar_dolg_bunker_name">
+    <text>Bar: Barracks</text>
+</string>
+<string id="st_bar_dolg_general_name">
+    <text>Bar: Duty Base</text>
+</string>
+<string id="st_bar_ecolog_crush_name">
+    <text>Rostok: Scientists' Crash Site</text>
+</string>
+<string id="st_bar_freedom_attack_name">
+    <text>Rostok: Freedom Assault</text>
+</string>
+<string id="st_bar_freedom_chasers_attack_name">
+    <text>Rostok: Freedom Pursuit Squad Assault</text>
+</string>
+<string id="st_bar_giant_special_smart_name">
+    <text>Rostok: Special Pseudogiant Lair</text>
+</string>
+<string id="st_bar_sim_1_name">
+    <text>Rostok: Sector</text>
+</string>
+<string id="st_bar_smart_friend_base_name">
+    <text>Rostok: Allied Base</text>
+</string>
+<string id="st_bar_smart_terrain_0_0_name">
+    <text>East Bar: 100 Rads Bar</text>
+</string>
+<string id="st_bar_smart_terrain_0_1_name">
+    <text>East Bar: Abandoned Hangar</text>
+</string>
+<string id="st_bar_smart_terrain_0_2_name">
+    <text>Rostok</text>
+</string>
+ <string id="st_bar_smart_terrain_0_3_name">
+    <text>East Bar: Arena</text>
+</string>
+<string id="st_bar_smart_terrain_0_4_name">
+    <text>Rostok</text>
+</string>
+<string id="st_bar_smart_terrain_0_5_name">
+    <text>Rostok</text>
+</string>
+<string id="st_bar_smart_terrain_0_6_name">
+    <text>Rostok</text>
+</string>
+<string id="st_bar_smart_terrain_0_7_name">
+    <text>Rostok</text>
+</string>
+<string id="st_bar_smart_terrain_0_8_name">
+    <text>Rostok</text>
+</string>
+
+<string id="st_bar_smart_terrain_1_0_name">
+    <text>East Bar: Duty Barracks</text>
+</string>
+<string id="st_bar_smart_terrain_1_1_name">
+    <text>East Bar: Duty Base</text>
+</string>
+<string id="st_bar_smart_terrain_1_2_name">
+    <text>Rostok</text>
+</string>
+<string id="st_bar_smart_terrain_1_3_name">
+    <text>East Bar: Southern Duty Checkpoint</text>
+</string>
+<string id="st_bar_smart_terrain_1_4_name">
+    <text>East Bar: Northern Duty Checkpoint</text>
+</string>
+<string id="st_bar_smart_terrain_1_5_name">
+    <text>East Bar: Underground Passage</text>
+</string>
+
+<string id="st_bar_smart_terrain_2_0_name">
+    <text>East Bar: Clear Sky Recruitment Camp</text>
+</string>
+
+<string id="st_bar_smart_terrain_3_0_name">
+    <text>East Bar: Road to East Garbage</text>
+</string>
+<string id="st_bar_smart_terrain_3_1_name">
+    <text>Rostok</text>
+</string>
+<string id="st_bar_smart_terrain_3_2_name">
+    <text>East Bar: Misty Forest</text>
+</string>
+<string id="st_bar_smart_terrain_3_3_name">
+    <text>East Bar: Passage to the Southern Village</text>
+</string>
+
+<string id="st_bar_stalker_bedroom_name">
+    <text>Rostok: Stalker Dormitory</text>
+</string>
+<string id="st_bar_stalker_hall_name">
+    <text>Rostok: Stalker Hall</text>
+</string>
+<string id="st_bar_stalker_sci_name">
+    <text>Rostok: Scientists</text>
+</string>
+<string id="st_bar_stalker_trader_out_name">
+    <text>Rostok: Stalker Trader Outside</text>
+</string>
+
+<string id="st_bar_visitors_name">
+    <text>Bar: 100 Rads Bar</text>
+</string>
+
+<string id="st_bar_zastava_2_name">
+    <text>Bar: Western Outpost</text>
+</string>
+<string id="st_bar_zastava_dogs_lair_2_name">
+    <text>Bar: Mutant Lair</text>
+</string>
+<string id="st_bar_zastava_dogs_lair_name">
+    <text>Bar: Trench</text>
+</string>
+<string id="st_bar_zastava_name">
+    <text>Bar: Southern Outpost</text>
+</string>
+
+<string id="st_bas_pseudo_smart_name">
+    <text>Underground Base: Pseudodog Lair</text>
+</string>
+<string id="st_bas_zombies_smart_name">
+    <text>Underground Base: Zombie Lair</text>
+</string>
+<string id="st_bas_zombies_smart2_name">
+    <text>Underground Base: Zombie Cluster</text>
+</string>
+
+<string id="st_bcr_bloodsucker_terrain1_name">
+    <text>Canyon: Bloodsucker Lair</text>
+</string>
+<string id="st_bcr_bloodsucker_terrain2_name">
+    <text>Canyon: Bloodsucker Lair</text>
+</string>
+
+<string id="st_bcr_boar_terrain1_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain10_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain11_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain12_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain13_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain14_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain15_name">
+    <text>Anomalous Fields: Dangerous Bushes</text>
+</string>
+<string id="st_bcr_boar_terrain16_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain17_name">
+    <text>Anomalous Fields: Road to the Checkpoint</text>
+</string>
+<string id="st_bcr_boar_terrain18_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain19_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain2_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain3_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain4_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain5_name">
+    <text>Anomalous Fields: Dangerous Path</text>
+</string>
+<string id="st_bcr_boar_terrain6_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain7_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain8_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+<string id="st_bcr_boar_terrain9_name">
+    <text>Canyon: Boar Lair</text>
+</string>
+
+<string id="st_bcr_dog_terrain1_name">
+    <text>Canyon: Dog Lair</text>
+</string>
+<string id="st_bcr_dog_terrain2_name">
+    <text>Canyon: Dog Lair</text>
+</string>
+<string id="st_bcr_dog_terrain3_name">
+    <text>Anomalous Fields: Roadside Clearing</text>
+</string>
+<string id="st_bcr_dog_terrain4_name">
+    <text>Canyon: Dog Lair</text>
+</string>
+<string id="st_bcr_dog_terrain5_name">
+    <text>Canyon: Dog Lair</text>
+</string>
+<string id="st_bcr_dog_terrain6_name">
+    <text>Canyon: Dog Lair</text>
+</string>
+
+<string id="st_bcr_fracture_terrain1_name">
+    <text>Canyon: Fracture Lair</text>
+</string>
+<string id="st_bcr_fracture_terrain2_name">
+    <text>Canyon: Fracture Lair</text>
+</string>
+  <string id="st_bcr_poltergeist_terrain1_name">
+    <text>Canyon: Poltergeist Lair</text>
+</string>
+<string id="st_bcr_swampbeast_terrain1_name">
+    <text>Canyon: Swamp Beast Lair</text>
+</string>
+<string id="st_bcr_ug_bloodsucker_terrain_name">
+    <text>Canyon: Underground Bloodsucker Lair</text>
+</string>
+<string id="st_bcr_ug_rats_terrain_name">
+    <text>Canyon: Underground Rat Lair</text>
+</string>
+<string id="st_bcr_ug_snork_terrain_name">
+    <text>Canyon: Underground Snork Lair</text>
+</string>
+<string id="st_bcr_ug_zombie_terrain_name">
+    <text>Canyon: Underground Zombie Cluster</text>
+</string>
+
+<string id="st_blck_val_a31_name">
+    <text>Outpost: Northern Manor</text>
+</string>
+<string id="st_blck_val_a31_night_name">
+    <text>Dark Valley: Night Camp</text>
+</string>
+<string id="st_blck_val_a31_surge_name">
+    <text>Dark Valley: Emission Shelter</text>
+</string>
+<string id="st_blck_val_a32_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_a35_name">
+    <text>Outpost: Workshop</text>
+</string>
+<string id="st_blck_val_a37_name">
+    <text>Outpost: Swimming Pool</text>
+</string>
+<string id="st_blck_val_b1_name">
+    <text>Outpost: "Hell Circle" Anomaly</text>
+</string>
+<string id="st_blck_val_b2_name">
+    <text>Outpost: Landowner's Manor</text>
+</string>
+
+<string id="st_blck_val_b203_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_b204_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_b205_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_b206_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_b207_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_b208_name">
+    <text>Outpost: Metallurgical Plant</text>
+</string>
+<string id="st_blck_val_b3_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_b45_name">
+    <text>Dark Valley</text>
+</string>
+
+<string id="st_blck_val_hutor_quest_enemy_name">
+    <text>Dark Valley: Farmstead Sector Quest Enemy</text>
+</string>
+<string id="st_blck_val_hutor_quest_name">
+    <text>Dark Valley: Farmstead Sector Quest</text>
+</string>
+
+<string id="st_blck_val_sim_1_name">
+    <text>Outpost: Construction Site</text>
+</string>
+<string id="st_blck_val_sim_10_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_sim_11_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_sim_12_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_sim_2_name">
+    <text>Outpost: "Anomalous Grove" Anomaly</text>
+</string>
+<string id="st_blck_val_sim_3_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_sim_4_name">
+    <text>Outpost: Cemetery</text>
+</string>
+<string id="st_blck_val_sim_5_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_sim_6_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_sim_7_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_sim_8_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_blck_val_sim_9_name">
+    <text>Outpost: Radioactive Dump</text>
+</string>
+
+<string id="st_bun_a2_smart_name">
+    <text>Bunker: Sector</text>
+</string>
+<string id="st_bun_a3_smart_name">
+    <text>Bunker: Sector</text>
+</string>
+<string id="st_bun_krovosos_nest_name">
+    <text>Lab X-18: Storage</text>
+</string>
+<string id="st_bun_sim_smart_1_name">
+    <text>Bunker: Sector</text>
+</string>
+<string id="st_bun_sim_smart_2_name">
+    <text>Bunker: Sector</text>
+</string>
+<string id="st_bun_sim_smart_3_name">
+    <text>Bunker: Sector</text>
+</string>
+<string id="st_bun_smart_terrain_heart_of_station_mlr_name">
+    <text>Bunker: MLR Station Center</text>
+</string>
+
+<string id="st_bun2_st_bloodsucker_name">
+    <text>Lab X-18: Generator Room</text>
+</string>
+<string id="st_bun2_tushkano_lair_name">
+    <text>Lab X-18: Control Center</text>
+</string>
+
+<string id="st_caz_v71_name">
+    <text>Canyon</text>
+</string>
+
+<string id="st_chu_a1_name">
+    <text>Chernobyl</text>
+</string>
+<string id="st_chu_b1_name">
+    <text>Chernobyl</text>
+</string>
+<string id="st_chu_sim_1_name">
+    <text>Chernobyl: Sector</text>
+</string>
+   <string id="st_chu_sim_2_name">
+    <text>Chernobyl: Sector</text>
+</string>
+<string id="st_chu_sim_3_name">
+    <text>Chernobyl: Sector</text>
+</string>
+<string id="st_chu_sim_4_name">
+    <text>Chernobyl: Sector</text>
+</string>
+<string id="st_chu_sim_5_name">
+    <text>Chernobyl: Sector</text>
+</string>
+
+<string id="st_cit_a2_name">
+    <text>CNPP Vicinity: Checkpoint</text>
+</string>
+<string id="st_cit_army_raid_name">
+    <text>Dead City: Olympic Street</text>
+</string>
+<string id="st_cit_b39_name">
+    <text>CNPP Vicinity: Test Complex "P-I"</text>
+</string>
+<string id="st_cit_bandit_village_name">
+    <text>Dead City: Village</text>
+</string>
+<string id="st_cit_bandits_2_name">
+    <text>Dead City: Abandoned Courtyard</text>
+</string>
+<string id="st_cit_bandits_name">
+    <text>Dead City: Ruined School</text>
+</string>
+<string id="st_cit_bloodsucker_lair_name">
+    <text>Dead City: Friendship Street</text>
+</string>
+<string id="st_cit_bloodsucker_nest_name">
+    <text>Dead City: Peace Street</text>
+</string>
+<string id="st_cit_boars_lair1_name">
+    <text>Dead City: Boar Lair</text>
+</string>
+<string id="st_cit_burer_lair_name">
+    <text>Dead City: Burer Lair</text>
+</string>
+<string id="st_cit_controller_lair_name">
+    <text>Dead City: "Cooptorg" Shop</text>
+</string>
+<string id="st_cit_dog_lair1_name">
+    <text>Dead City: "Electrical Field" Anomaly</text>
+</string>
+<string id="st_cit_dog_lair2_name">
+    <text>Dead City: Narodnaya Street</text>
+</string>
+<string id="st_cit_fleshes_lair1_name">
+    <text>Dead City: "Gravitational Field" Anomaly</text>
+</string>
+<string id="st_cit_freedom_house_name">
+    <text>Dead City: Freedom House</text>
+</string>
+<string id="st_cit_gym_lager_name">
+    <text>Dead City: Cooptorg Entrance</text>
+</string>
+<string id="st_cit_kanaliz1_name">
+    <text>Dead City: Fire Position</text>
+</string>
+<string id="st_cit_kanaliz2_name">
+    <text>Dead City: Bleak Ground</text>
+</string>
+<string id="st_cit_killers_2_name">
+    <text>Dead City: Ruined Houses</text>
+</string>
+<string id="st_cit_killers_name">
+    <text>Dead City: "Cooptorg" Shop</text>
+</string>
+<string id="st_cit_killers_vs_bandits_name">
+    <text>Dead City: Square</text>
+</string>
+<string id="st_cit_lynx_lair_name">
+    <text>Dead City: Lynx Lair</text>
+</string>
+<string id="st_cit_mercs_base_name">
+    <text>Dead City: School</text>
+</string>
+<string id="st_cit_mercs_wave_name">
+    <text>Dead City: Mercenary Wave</text>
+</string>
+<string id="st_cit_partei_lager_name">
+    <text>Dead City: Glory of the CPSU</text>
+</string>
+<string id="st_cit_patrolers_name">
+    <text>Dead City: Lenin Monument</text>
+</string>
+<string id="st_cit_poltergeist_flat_name">
+    <text>Dead City: Rooftop Sniper Position</text>
+</string>
+<string id="st_cit_poltergeist_lair_name">
+    <text>Dead City: Poltergeist Lair</text>
+</string>
+<string id="st_cit_pseudog_lair_name">
+    <text>Dead City: "Alley" Anomaly</text>
+</string>
+
+<string id="st_cit_sim_1_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_10_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_11_name">
+    <text>CNPP Vicinity: Path to Transition</text>
+</string>
+<string id="st_cit_sim_12_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_13_name">
+    <text>CNPP Vicinity: "Fire Drone" Anomaly</text>
+</string>
+<string id="st_cit_sim_14_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_15_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_16_name">
+    <text>CNPP Vicinity: Exit from Checkpoint</text>
+</string>
+<string id="st_cit_sim_17_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_18_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_19_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_2_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_20_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_21_name">
+    <text>CNPP Vicinity: Radar Base Entrance</text>
+</string>
+<string id="st_cit_sim_22_name">
+    <text>CNPP Vicinity: Road to Secret Complex</text>
+</string>
+<string id="st_cit_sim_23_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_24_name">
+    <text>CNPP Vicinity: Road past Unknown Village</text>
+</string>
+<string id="st_cit_sim_25_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_26_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_27_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_28_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_29_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_3_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_30_name">
+    <text>CNPP Vicinity: "Spider Scream" Anomaly</text>
+</string>
+<string id="st_cit_sim_31_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_32_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_33_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_34_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_35_name">
+    <text>CNPP Vicinity: "Island" Anomaly</text>
+</string>
+<string id="st_cit_sim_36_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_37_name">
+    <text>CNPP Vicinity: Reservoirs</text>
+</string>
+<string id="st_cit_sim_38_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_39_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_4_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_40_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_5_name">
+    <text>CNPP Vicinity: Abandoned SAM Site</text>
+</string>
+<string id="st_cit_sim_6_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_7_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_8_name">
+    <text>Dead City: Sector</text>
+</string>
+<string id="st_cit_sim_9_name">
+    <text>Dead City: Sector</text>
+</string>
+
+<string id="st_cit_snork_lair_name">
+    <text>Dead City: Swamp</text>
+</string>
+<string id="st_cit_stalker_base_name">
+    <text>Dead City: House by the Bridge</text>
+</string>
+<string id="st_cit_swamp_lair_name">
+    <text>Dead City: Swamp Bridge</text>
+</string>
+<string id="st_cit_swamp_lair2_name">
+    <text>Dead City: Deadly Swamp</text>
+</string>
+<string id="st_cit_zombies_graveyard_name">
+    <text>Dead City: Graveyard</text>
+</string>
+<string id="st_city_smart_terrain_1_1_name">
+    <text>City</text>
+</string>
+<string id="st_city_smart_terrain_1_2_name">
+    <text>Kurchatov: CPSU Building</text>
+</string>
+<string id="st_city_smart_terrain_1_3_name">
+    <text>Kurchatov: House of Culture</text>
+</string>
+<string id="st_city_smart_terrain_1_4_name">
+    <text>Kurchatov: "Despair" Anomaly</text>
+</string>
+<string id="st_city_smart_terrain_2_1_name">
+    <text>City</text>
+</string>
+<string id="st_city_smart_terrain_2_2_name">
+    <text>Kurchatov: Northern Playground</text>
+</string>
+<string id="st_city_smart_terrain_2_3_name">
+    <text>City</text>
+</string>
+<string id="st_city_smart_terrain_2_4_name">
+    <text>Kurchatov: Southern Courtyard</text>
+</string>
+<string id="st_city_smart_terrain_2_5_name">
+    <text>Kurchatov: Northern Courtyard</text>
+</string>
+<string id="st_city_smart_terrain_2_6_name">
+    <text>Kurchatov: Gagarin Park</text>
+</string>
+<string id="st_city_smart_terrain_2_7_name">
+    <text>Kurchatov: Western Playground</text>
+</string>
+
+<string id="st_cld_p30_name">
+    <text>Dead Lake</text>
+</string>
+
+<string id="st_coll_b1_name">
+    <text>Collector</text>
+</string>
+<string id="st_coll_b2_name">
+    <text>Collector</text>
+</string>
+<string id="st_coll_b3_name">
+    <text>Collector</text>
+</string>
+<string id="st_coll_b4_name">
+    <text>Collector</text>
+</string>
+<string id="st_coll_b5_name">
+    <text>Collector</text>
+</string>
+<string id="st_coll_b6_name">
+    <text>Collector</text>
+</string>
+<string id="st_coll_b7_name">
+    <text>Collector</text>
+</string>
+<string id="st_coll_b8_name">
+    <text>Collector</text>
+</string>
+<string id="st_coll_b9_name">
+    <text>Collector</text>
+</string>
+
+<string id="st_collaider_1_name">
+    <text>Medical Point</text>
+</string>
+<string id="st_collaider_2_name">
+    <text>Living Quarters</text>
+</string>
+<string id="st_collaider_3_name">
+    <text>Collider Entrance</text>
+</string>
+<string id="st_collaider_4_name">
+    <text>Mine Shaft</text>
+</string>
+<string id="st_collaider_5_name">
+    <text>At the Collider</text>
+</string>
+<string id="st_collaider_6_name">
+    <text>Control Center</text>
+</string>
+
+<string id="st_country_bandit_terrain1_name">
+    <text>Anomalous Fields: Village</text>
+</string>
+<string id="st_country_blockpost_name">
+    <text>Anomalous Fields: Checkpoint</text>
+</string>
+<string id="st_country_csky_terrain1_name">
+    <text>Anomalous Fields: Roadside Village</text>
+</string>
+<string id="st_country_ecolog_terrain1_name">
+    <text>Anomalous Fields: Scientific Base "Diamond"</text>
+</string>
+<string id="st_country_renegade_terrain1_name">
+    <text>Anomalous Fields: Church</text>
+</string>
+<string id="st_country_stalker_terrain1_name">
+    <text>Anomalous Fields: House near "Kislushka" Anomaly</text>
+</string>
+
+<string id="st_dam_bloodsucker_terrain1_name">
+    <text>Dam: Bloodsucker Lair</text>
+</string>
+<string id="st_dam_rat_terrain_name">
+    <text>Dam: Rat Lair</text>
+</string>
+<string id="st_dam_snork_terrain1_name">
+    <text>Dam: Snork Lair</text>
+</string>
+<string id="st_dam_station_monolith_terrain_name">
+    <text>Dam: Station, Monolith Post</text>
+</string>
+<string id="st_dam_station_snork_terrain_name">
+    <text>Dam: Station, Snork Lair</text>
+</string>
+<string id="st_dam_station_tushkano_terrain_name">
+    <text>Dam: Station, Tushkano Lair</text>
+</string>
+<string id="st_dam_station_zombie_terrain_name">
+    <text>Dam: Station, Zombie Cluster</text>
+</string>
+<string id="st_dam_zombie_entrance_terrain_name">
+    <text>Dam: Entrance, Zombie Cluster</text>
+</string>
+
+<string id="st_dar_angar_name">
+    <text>Lab X-18: Hangar</text>
+</string>
+<string id="st_dar_control_poltergeist_name">
+    <text>Lab X-18: Test Chamber</text>
+</string>
+<string id="st_dar_military_scout_name">
+    <text>Lab X-18: Capsules</text>
+</string>
+<string id="st_dar_poltergeist_ring_name">
+    <text>Lab X-18: Hall</text>
+</string>
+<string id="st_dar_poltergeist_tele_name">
+    <text>Lab X-18: Ventilation Complex</text>
+</string>
+<string id="st_dar_poltergeist_tele_round_name">
+    <text>Lab X-18: Corridors</text>
+</string>
+<string id="st_dar_smart_snork_name">
+    <text>Lab X-18: Passage</text>
+</string>
+
+<string id="st_darklab_bloodsucker1_name">
+    <text>Lab X-18: Bloodsucker Lair</text>
+</string>
+<string id="st_darklab_bloodsucker2_name">
+    <text>Lab X-18: Bloodsucker Lair</text>
+</string>
+   <string id="st_darklab_bloodsucker3_name">
+    <text>Lab X-18: Bloodsucker Lair</text>
+</string>
+<string id="st_darklab_burer1_name">
+    <text>Lab X-18: Burer Lair</text>
+</string>
+<string id="st_darklab_burer2_name">
+    <text>Lab X-18: Burer Lair</text>
+</string>
+<string id="st_darklab_burer3_name">
+    <text>Lab X-18: Burer Lair</text>
+</string>
+<string id="st_darklab_giant_name">
+    <text>Lab X-18: Pseudogiant</text>
+</string>
+<string id="st_darklab_polter1_name">
+    <text>Lab X-18: Poltergeist Lair</text>
+</string>
+<string id="st_darklab_rats1_name">
+    <text>Lab X-18: Rat Lair</text>
+</string>
+<string id="st_darklab_rats2_name">
+    <text>Lab X-18: Rat Lair</text>
+</string>
+<string id="st_darklab_rats3_name">
+    <text>Lab X-18: Rat Lair</text>
+</string>
+<string id="st_darklab_rats4_name">
+    <text>Lab X-18: Rat Lair</text>
+</string>
+<string id="st_darklab_snorks1_name">
+    <text>Lab X-18: Snork Lair</text>
+</string>
+<string id="st_darklab_snorks2_name">
+    <text>Lab X-18: Snork Lair</text>
+</string>
+<string id="st_darklab_tushkanos1_name">
+    <text>Lab X-18: Tushkano Lair</text>
+</string>
+<string id="st_darklab_zombies1_name">
+    <text>Lab X-18: Zombie Lair</text>
+</string>
+<string id="st_darklab_zombies2_name">
+    <text>Lab X-18: Zombie Lair</text>
+</string>
+<string id="st_darklab_zombies3_name">
+    <text>Lab X-18: Zombie Lair</text>
+</string>
+<string id="st_darklab_zombies4_name">
+    <text>Lab X-18: Zombie Lair</text>
+</string>
+<string id="st_darklab_zombies5_name">
+    <text>Lab X-18: Zombie Lair</text>
+</string>
+
+<string id="st_deadlake_bandits_quest_smart_name">
+    <text>Dead Lake: Unknown Camp</text>
+</string>
+<string id="st_deadlake_sim_1_name">
+    <text>Dead Lake: Area</text>
+</string>
+<string id="st_deadlake_sim_2_name">
+    <text>Dead Lake: Area</text>
+</string>
+<string id="st_deadlake_sim_3_name">
+    <text>Dead Lake: Area</text>
+</string>
+<string id="st_deadlake_sim_4_name">
+    <text>Dead Lake: Area</text>
+</string>
+
+<string id="st_depo_terrain_name">
+    <text>Jupiter: Underground</text>
+</string>
+
+<string id="st_digst_smart_terrain_0_0_name">
+    <text>Digger Station</text>
+</string>
+
+<string id="st_dl_attakers_smart_name">
+    <text>Dead Lake: Ruined Tower</text>
+</string>
+<string id="st_dl_shturm_smart_name">
+    <text>Dead Lake: Bus</text>
+</string>
+
+<string id="st_dol_bloodsucker_terrain1_name">
+    <text>Dark Valley: Bloodsucker Lair</text>
+</string>
+<string id="st_dol_boar_terrain1_name">
+    <text>Dark Valley: Boar Lair</text>
+</string>
+<string id="st_dol_cat_terrain_name">
+    <text>Silent Hills: Gravity Pit</text>
+</string>
+<string id="st_dol_dog_terrain1_name">
+    <text>Dark Valley: Dog Lair</text>
+</string>
+<string id="st_dol_flesh_terrain1_name">
+    <text>Dark Valley: Flesh Lair</text>
+</string>
+<string id="st_dol_general_terrain1_name">
+    <text>Silent Hills: Stone Mountain</text>
+</string>
+<string id="st_dol_general_terrain2_name">
+    <text>Dark Valley: Common Area</text>
+</string>
+<string id="st_dol_general_terrain3_name">
+    <text>Dark Valley: Common Area</text>
+</string>
+<string id="st_dol_general_terrain4_name">
+    <text>Silent Hills: Small Forest</text>
+</string>
+<string id="st_dol_general_terrain5_name">
+    <text>Dark Valley: Common Area</text>
+</string>
+<string id="st_dol_izlom_terrain_name">
+    <text>Dark Valley: Fracture Lair</text>
+</string>
+<string id="st_dol_poltergeist_terrain1_name">
+    <text>Dark Valley: Poltergeist Lair</text>
+</string>
+<string id="st_dol_poltergeist_terrain2_name">
+    <text>Silent Hills: Anomaly "Anomaly"</text>
+</string>
+<string id="st_dol_poltergeist_terrain3_name">
+    <text>Silent Hills: Village Cave</text>
+</string>
+<string id="st_dol_poltergeist_terrain4_name">
+    <text>Dark Valley: Poltergeist Lair</text>
+</string>
+<string id="st_dol_swampbeast_terrain_name">
+    <text>Silent Hills: Bridge</text>
+</string>
+<string id="st_dolina_bandit_base_name">
+    <text>Silent Hills: Factory</text>
+</string>
+<string id="st_dolina_military_assault_name">
+    <text>Silent Hills: X-6 Factory</text>
+</string>
+<string id="st_dolina_monolith_base_name">
+    <text>Silent Hills: X-6 Factory Entrance</text>
+</string>
+<string id="st_dolina_stables_lager_name">
+    <text>Silent Hills: South Farm Parking</text>
+</string>
+<string id="st_dolina_suit_sucker_terrain_name">
+    <text>Dark Valley: Bloodsucker Suit Cache</text>
+</string>
+<string id="st_ds_administration_name">
+    <text>Dark Hollow: Administration</text>
+</string>
+<string id="st_ds_autostop_name">
+    <text>Dark Hollow: Gas Station</text>
+</string>
+<string id="st_ds_boar_terrain1_name">
+    <text>Dark Hollow: Boar Lair</text>
+</string>
+<string id="st_ds_boar_terrain2_name">
+    <text>Dark Hollow: Boar Lair</text>
+</string>
+<string id="st_ds_boars_nest_name">
+    <text>Dark Hollow: Cliff</text>
+</string>
+<string id="st_ds_chimera_terrain1_name">
+    <text>Dark Hollow: Chimera Lair</text>
+</string>
+<string id="st_ds_dark_stalker_name">
+    <text>Dark Hollow: Mines</text>
+</string>
+<string id="st_ds_deb1_name">
+    <text>Dark Hollow: Checkpoint</text>
+</string>
+<string id="st_ds_dog_terrain1_name">
+    <text>Dark Hollow: Dog Lair</text>
+</string>
+<string id="st_ds_dog_terrain2_name">
+    <text>Dark Hollow: Dog Lair</text>
+</string>
+<string id="st_ds_dog_terrain3_name">
+    <text>Dark Hollow: Truck</text>
+</string>
+<string id="st_ds_dolg_terrain_name">
+    <text>Dark Hollow: Duty Post</text>
+</string>
+<string id="st_ds_grverfer2_name">
+    <text>Dark Hollow: Roadside Stop</text>
+</string>
+<string id="st_ds_HoC_name">
+    <text>Dark Hollow: School</text>
+</string>
+<string id="st_ds_kem1_name">
+    <text>Dark Hollow: Clearing</text>
+</string>
+<string id="st_ds_kem2_name">
+    <text>Dark Hollow: Gas Station</text>
+</string>
+<string id="st_ds_kem3_name">
+    <text>Dark Hollow: Bridge</text>
+</string>
+<string id="st_ds_market_name">
+    <text>Dark Hollow: "KoopTorg"</text>
+</string>
+<string id="st_ds_merc_terrain1_name">
+    <text>Dark Hollow: Old Barge</text>
+</string>
+<string id="st_ds_military_terrain_name">
+    <text>Dark Hollow: APC Behind Bus Stop</text>
+</string>
+<string id="st_ds_mine_bandit_name">
+    <text>Dark Hollow: Bandit Cave Camp</text>
+</string>
+  <string id="st_ds_most_terrain_name">
+    <text>Dark Hollow: Glowing Bridge</text>
+</string>
+<string id="st_ds_mutants_terrain1_name">
+    <text>Dark Hollow: Mutant Lair</text>
+</string>
+<string id="st_ds_mutants_terrain10_name">
+    <text>Dark Hollow: Bridge</text>
+</string>
+<string id="st_ds_mutants_terrain11_name">
+    <text>Dark Hollow: Northern Checkpoint</text>
+</string>
+<string id="st_ds_mutants_terrain2_name">
+    <text>Dark Hollow: Southern Checkpoint</text>
+</string>
+<string id="st_ds_mutants_terrain3_name">
+    <text>Dark Hollow: Mutant Lair</text>
+</string>
+<string id="st_ds_mutants_terrain4_name">
+    <text>Dark Hollow: Mutant Lair</text>
+</string>
+<string id="st_ds_mutants_terrain5_name">
+    <text>Dark Hollow: Harbor Cranes</text>
+</string>
+<string id="st_ds_mutants_terrain6_name">
+    <text>Dark Hollow: Mutant Lair</text>
+</string>
+<string id="st_ds_mutants_terrain7_name">
+    <text>Dark Hollow: Bus Stop</text>
+</string>
+<string id="st_ds_mutants_terrain8_name">
+    <text>Dark Hollow: Mutant Lair</text>
+</string>
+<string id="st_ds_mutants_terrain9_name">
+    <text>Dark Hollow: Mutant Lair</text>
+</string>
+
+<string id="st_ds_ptr_name">
+    <text>Dark Hollow: Railway Bridge</text>
+</string>
+<string id="st_ds_ptr2_name">
+    <text>Dark Hollow: Rest Area</text>
+</string>
+<string id="st_ds_ptr3_name">
+    <text>Dark Hollow: Radio Spot</text>
+</string>
+<string id="st_ds_ptr4_name">
+    <text>Dark Hollow: Abandoned Truck</text>
+</string>
+
+<string id="st_ds_stalker_terrain1_name">
+    <text>Dark Hollow: Lone Stalker Cave Camp</text>
+</string>
+
+<string id="st_ds_zombie_terrain1_name">
+    <text>Dark Hollow: Shed</text>
+</string>
+<string id="st_ds_zombie_terrain2_name">
+    <text>Dark Hollow: Forest Hut</text>
+</string>
+<string id="st_ds_zombie_terrain3_name">
+    <text>Dark Hollow: Zombie Lair</text>
+</string>
+
+<string id="st_ds2_domik_st_name">
+    <text>Dark Hollow: Sawmill</text>
+</string>
+<string id="st_ds2_lager_st_name">
+    <text>Dark Hollow: Hillside Camp</text>
+</string>
+<string id="st_ds2_st_dogs_name">
+    <text>Dark Hollow: Forest Rest Stop</text>
+</string>
+<string id="st_ds2_st_hoofs_name">
+    <text>Dark Hollow: Ambush</text>
+</string>
+
+<string id="st_el_merc_base_1_smart_name">
+    <text>Abandoned Lands: Village House</text>
+</string>
+<string id="st_el_sim_1_name">
+    <text>Abandoned Lands: Forest Camp</text>
+</string>
+<string id="st_el_stalker_base_1_smart_name">
+    <text>Abandoned Lands: Bar "Havchik"</text>
+</string>
+<string id="st_el_stalker_base_2_smart_name">
+    <text>Abandoned Lands: Eastern Building</text>
+</string>
+<string id="st_el_zavod_monolith_01_smart_name">
+    <text>Abandoned Lands: Factory Main Entrance</text>
+</string>
+<string id="st_el_zavod_monolith_02_smart_name">
+    <text>Abandoned Lands: Factory</text>
+</string>
+<string id="st_el_zavod_monolith_03_smart_name">
+    <text>Abandoned Lands: Reservoirs</text>
+</string>
+
+<string id="st_esc_alife_smart_random_name">
+    <text>Cordon: Random Wildlife Spot</text>
+</string>
+<string id="st_esc_assault_name">
+    <text>Cordon: Assault</text>
+</string>
+<string id="st_esc_bandit_factory_name">
+    <text>Cordon: Bandit Factory</text>
+</string>
+<string id="st_esc_blockpost_name">
+    <text>Cordon: Checkpoint</text>
+</string>
+<string id="st_esc_bloodsucker_swamp_name">
+    <text>Cordon: Bloodsucker Lair</text>
+</string>
+<string id="st_esc_boar_back_name">
+    <text>Cordon: Boar Rear Area</text>
+</string>
+<string id="st_esc_boars_lair_name">
+    <text>Cordon: Boar Lair</text>
+</string>
+<string id="st_esc_border_mutants_name">
+    <text>Cordon: Mutant Border</text>
+</string>
+<string id="st_esc_bridge_blockpost_name">
+    <text>Cordon: Bridge Checkpoint</text>
+</string>
+<string id="st_esc_dog_back_name">
+    <text>Cordon: Dog Rear Area</text>
+</string>
+<string id="st_esc_dog_gar_name">
+    <text>Cordon: Garbage Dogs</text>
+</string>
+<string id="st_esc_dog_lair_sm_name">
+    <text>Cordon: Small Dog Lair</text>
+</string>
+<string id="st_esc_dog_smart_1_name">
+    <text>Cordon: Dog Pack</text>
+</string>
+<string id="st_esc_dogs_to_fox_name">
+    <text>Cordon: Dogs to Fox</text>
+</string>
+<string id="st_esc_exit_smart_name">
+    <text>Cordon: Exit</text>
+</string>
+<string id="st_esc_factory_smart_terrain_10_name">
+    <text>Cordon: Factory</text>
+</string>
+   <string id="st_esc_flesh_lair_name">
+    <text>Cordon: Flesh Lair</text>
+</string>
+<string id="st_esc_fleshes_blockpost_name">
+    <text>Cordon: Flesh Checkpoint</text>
+</string>
+<string id="st_esc_fox_house_name">
+    <text>Cordon: Fox House</text>
+</string>
+<string id="st_esc_karlik_smart_name">
+    <text>Cordon: Dwarf Lair</text>
+</string>
+<string id="st_esc_mixed_lair_name">
+    <text>Cordon: Mixed Lair</text>
+</string>
+<string id="st_esc_poltergeist_terrain_name">
+    <text>Cordon: Poltergeist Lair</text>
+</string>
+<string id="st_esc_psevdo_lair_name">
+    <text>Cordon: Pseudodog Lair</text>
+</string>
+<string id="st_esc_rats_lair_name">
+    <text>Cordon: Rat Lair</text>
+</string>
+<string id="st_esc_sim_random_gar_name">
+    <text>Cordon: Random Route to Garbage</text>
+</string>
+
+<string id="st_esc_smart_terrain_0_0_1_name">
+    <text>Cordon</text>
+</string>
+<string id="st_esc_smart_terrain_0_0_2_name">
+    <text>East Cordon: Stalker Tent</text>
+</string>
+<string id="st_esc_smart_terrain_0_0_3_name">
+    <text>Cordon</text>
+</string>
+<string id="st_esc_smart_terrain_0_0_4_name">
+    <text>Cordon</text>
+</string>
+<string id="st_esc_smart_terrain_0_0_5_name">
+    <text>Cordon</text>
+</string>
+
+<string id="st_esc_smart_terrain_0_0_name">
+    <text>East Cordon: Barrier</text>
+</string>
+<string id="st_esc_smart_terrain_0_0_surge_name">
+    <text>Cordon: Blowout Shelter Point</text>
+</string>
+
+<string id="st_esc_smart_terrain_0_1_name">
+    <text>East Cordon: “Bakery” Anomaly</text>
+</string>
+<string id="st_esc_smart_terrain_0_1_surge_name">
+    <text>East Cordon: Elevator</text>
+</string>
+
+<string id="st_esc_smart_terrain_1_0_1_name">
+    <text>Cordon</text>
+</string>
+<string id="st_esc_smart_terrain_1_0_2_name">
+    <text>Cordon</text>
+</string>
+
+<string id="st_esc_smart_terrain_1_0_name">
+    <text>East Cordon: Eastern Transport Hub</text>
+</string>
+<string id="st_esc_smart_terrain_1_0_quest_name">
+    <text>Cordon: Quest Location</text>
+</string>
+
+<string id="st_esc_smart_terrain_1_1_2_name">
+    <text>Cordon</text>
+</string>
+<string id="st_esc_smart_terrain_1_1_bar_92_name">
+    <text>Cordon: Zone 92</text>
+</string>
+<string id="st_esc_smart_terrain_1_1_bunker_name">
+    <text>Cordon: Bunker</text>
+</string>
+
+<string id="st_esc_smart_terrain_1_1_name">
+    <text>East Cordon: Western Rookie Village</text>
+</string>
+<string id="st_esc_smart_terrain_1_1_quest_name">
+    <text>Cordon: Quest Location</text>
+</string>
+
+<string id="st_esc_smart_terrain_1_11_name">
+    <text>Cordon: Hidden Camp</text>
+</string>
+
+<string id="st_esc_smart_terrain_1_2_name">
+    <text>East Cordon: Trailer Camp</text>
+</string>
+
+<string id="st_esc_smart_terrain_11_5_name">
+    <text>Cordon</text>
+</string>
+
+<string id="st_esc_smart_terrain_2_0_name">
+    <text>East Cordon: Bandit Base</text>
+</string>
+
+<string id="st_esc_smart_terrain_2_1_name">
+    <text>East Cordon: Tunnel</text>
+</string>
+
+<string id="st_esc_smart_terrain_2_12_name">
+    <text>Cordon: Rookie Village</text>
+</string>
+
+<string id="st_esc_smart_terrain_2_14_name">
+    <text>Cordon: Campfire Under Tree</text>
+</string>
+
+<string id="st_esc_smart_terrain_2_2_name">
+    <text>East Cordon: Northern Checkpoint</text>
+</string>
+
+<string id="st_esc_smart_terrain_2_2_operation_quest_name">
+    <text>Cordon: Quest Location</text>
+</string>
+<string id="st_esc_smart_terrain_2_2_quest_stalker_name">
+    <text>Cordon: Quest Stalker Location</text>
+</string>
+
+<string id="st_esc_smart_terrain_2_2_surge_name">
+    <text>East Cordon: Village Ruins</text>
+</string>
+
+<string id="st_esc_smart_terrain_3_0_army_quest_name">
+    <text>Cordon: Military Quest Location</text>
+</string>
+
+<string id="st_esc_smart_terrain_3_16_name">
+    <text>Cordon: Southern Checkpoint</text>
+</string>
+
+<string id="st_esc_smart_terrain_3_2_quest_td_name">
+    <text>Cordon: Passage to Dark Valley</text>
+</string>
+
+<string id="st_esc_smart_terrain_3_3_quest_td_name">
+    <text>Cordon: Passage to Dark Valley</text>
+</string>
+
+<string id="st_esc_smart_terrain_3_5_name">
+    <text>East Cordon: Train</text>
+</string>
+
+<string id="st_esc_smart_terrain_3_6_name">
+    <text>East Cordon: Small Forest</text>
+</string>
+
+<string id="st_esc_smart_terrain_3_7_name">
+    <text>Cordon: Forest Campfire</text>
+</string>
+
+<string id="st_esc_smart_terrain_3_9_name">
+    <text>East Cordon: “Deaf Pit” Anomaly</text>
+</string>
+
+<string id="st_esc_smart_terrain_4_11_name">
+    <text>Cordon: Wagon Camp</text>
+</string>
+
+<string id="st_esc_smart_terrain_4_13_name">
+    <text>Cordon: Tent Camp</text>
+</string>
+
+<string id="st_esc_smart_terrain_4_9_name">
+    <text>Cordon: Bridge Campfire</text>
+</string>
+
+<string id="st_esc_smart_terrain_5_12_name">
+    <text>Cordon: Stalker Tent</text>
+</string>
+
+<string id="st_esc_smart_terrain_5_2_name">
+    <text>Cordon: Distant Checkpoint</text>
+</string>
+
+<string id="st_esc_smart_terrain_5_4_name">
+    <text>Cordon: Road Campfire</text>
+</string>
+
+<string id="st_esc_smart_terrain_5_6_name">
+    <text>Cordon: Field Rest Spot</text>
+</string>
+
+<string id="st_esc_smart_terrain_5_7_loner_mechanic_stalker_name">
+    <text>Cordon: Loner Mechanic</text>
+</string>
+
+<string id="st_esc_smart_terrain_5_7_name">
+    <text>Cordon: Old Farm</text>
+</string>
+
+<string id="st_esc_smart_terrain_5_9_name">
+    <text>Cordon: Elevator</text>
+</string>
+
+<string id="st_esc_smart_terrain_6_6_name">
+    <text>Cordon: Ruined Hamlet</text>
+</string>
+
+<string id="st_esc_smart_terrain_6_8_name">
+    <text>Cordon: Hill Church</text>
+</string>
+
+<string id="st_esc_smart_terrain_7_11_name">
+    <text>Cordon: ATP</text>
+</string>
+
+<string id="st_esc_smart_terrain_8_10_name">
+    <text>Cordon: Hill Behind ATP</text>
+</string>
+
+<string id="st_esc_smart_terrain_8_9_name">
+    <text>Cordon: Pine Forest Camp</text>
+</string>
+
+<string id="st_esc_smart_terrain_9_10_name">
+    <text>Cordon: Tunnel Campfire</text>
+</string>
+
+<string id="st_esc_smart_terrain_9_7_name">
+    <text>Cordon: Distant Camp</text>
+</string>
+
+<string id="st_esc_smart_terrain_bobik_name">
+    <text>Cordon: Bobik’s Spot</text>
+</string>
+
+<string id="st_esc_smart_terrain_controller_name">
+    <text>Cordon: Controller Lair</text>
+</string>
+
+<string id="st_esc_smart_terrain_lisiy_name">
+    <text>Cordon: Lisiy's Spot</text>
+</string>
+   <string id="st_esc_smart_terrain_q_name">
+    <text>Eastern Cordon: Burning Ground Anomaly</text>
+</string>
+<string id="st_esc_smart_terrain_quest_1_name">
+    <text>Cordon: Quest Location</text>
+</string>
+<string id="st_esc_smart_terrain_quest_2_name">
+    <text>Cordon: Quest Location</text>
+</string>
+<string id="st_esc_smart_terrain_underground_1_name">
+    <text>Cordon: Underground, Entry Gallery</text>
+</string>
+<string id="st_esc_smart_terrain_underground_2_name">
+    <text>Cordon: Underground, Lower Tunnel</text>
+</string>
+<string id="st_esc_smart_terrain_underground_3_name">
+    <text>Cordon: Underground, Laboratory Sector</text>
+</string>
+<string id="st_esc_smart_terrain_underground_4_name">
+    <text>Cordon: Underground, Pipe Exit</text>
+</string>
+<string id="st_esc_tuishkano_lair_name">
+    <text>Cordon: Tushkano Lair</text>
+</string>
+<string id="st_esc_tunnel_zombie_terrain_name">
+    <text>Cordon: Tunnel, Zombie Cluster</text>
+</string>
+<string id="st_esc_tutorial_flesh_terrain_name">
+    <text>Cordon: Flesh Tutorial Area</text>
+</string>
+<string id="st_esc_ug_zombie_terrain_name">
+    <text>Cordon: Underground, Zombie Cluster</text>
+</string>
+<string id="st_esc_village_lager_name">
+    <text>Cordon: Village Camp</text>
+</string>
+<string id="st_ex_gar_a1_name">
+    <text>Abandoned Lands: Basic Entrance</text>
+</string>
+<string id="st_ex_gar_a2_name">
+    <text>Abandoned Lands: Production Facilities</text>
+</string>
+<string id="st_ex_gar_a3_name">
+    <text>Abandoned Lands: Forest</text>
+</string>
+<string id="st_ex_gar_b1_name">
+    <text>Abandoned Lands: Bar Entrance</text>
+</string>
+<string id="st_ex_gar_b2_name">
+    <text>Abandoned Lands: Temporary Mercenary Camp</text>
+</string>
+<string id="st_ex_gar_sim_02_name">
+    <text>Abandoned Lands: Passage</text>
+</string>
+<string id="st_ex_gar_sim_03_name">
+    <text>Abandoned Lands: Acid Pool Anomaly</text>
+</string>
+<string id="st_ex_gar_sim_04_name">
+    <text>Abandoned Lands: Chemical Disaster Anomaly</text>
+</string>
+<string id="st_ex_gar_sim_05_name">
+    <text>Abandoned Lands: House by the Tower</text>
+</string>
+<string id="st_ex_gar_sim_09_name">
+    <text>Abandoned Lands: Bus Stop</text>
+</string>
+<string id="st_flst_j1_name">
+    <text>Forest Thicket</text>
+</string>
+<string id="st_flst_j3_name">
+    <text>Forest Thicket</text>
+</string>
+<string id="st_forest_bloodsucker_terrain1_name">
+    <text>Forest: Bloodsucker Lair</text>
+</string>
+<string id="st_forest_bloodsucker_terrain2_name">
+    <text>Forest: Bloodsucker Lair</text>
+</string>
+<string id="st_forest_bloodsucker_terrain3_name">
+    <text>Forest: Bloodsucker Lair</text>
+</string>
+<string id="st_forest_boar_terrain1_name">
+    <text>Forest: Boar Lair</text>
+</string>
+<string id="st_forest_boar_terrain2_name">
+    <text>Forest: Boar Lair</text>
+</string>
+<string id="st_forest_cat_terrain1_name">
+    <text>Cursed Forest: Cursed Road</text>
+</string>
+<string id="st_forest_chimera_terrain1_name">
+    <text>Forest: Chimera Lair</text>
+</string>
+<string id="st_forest_diseased_name">
+    <text>Cursed Forest: Path to the Village</text>
+</string>
+<string id="st_forest_flesh_terrain1_name">
+    <text>Forest: Flesh Lair</text>
+</string>
+<string id="st_forest_flesh_terrain2_name">
+    <text>Cursed Forest: Cursed Clearing</text>
+</string>
+<string id="st_forest_mine_bandits_name">
+    <text>Cursed Forest: Cave Entrance</text>
+</string>
+<string id="st_forest_poltergeist_terrain1_name">
+    <text>Forest: Poltergeist Lair</text>
+</string>
+<string id="st_forest_poltergeist_terrain2_name">
+    <text>Forest: Poltergeist Lair</text>
+</string>
+<string id="st_forest_poltergeist_terrain3_name">
+    <text>Forest: Poltergeist Lair</text>
+</string>
+<string id="st_forest_sim_1_name">
+    <text>Cursed Forest: Bus Stop</text>
+</string>
+<string id="st_forest_sim_2_name">
+    <text>Cursed Forest: Checkpoint</text>
+</string>
+<string id="st_forest_swampbeast_terrain1_name">
+    <text>Cursed Forest: Cursed Swamp</text>
+</string>
+<string id="st_forest_swampbeast_terrain2_name">
+    <text>Forest: Swamp Creature Lair</text>
+</string>
+<string id="st_forest_zombied_terrain1_name">
+    <text>Forest: Zombie Lair</text>
+</string>
+<string id="st_forg_bandit_terrain_name">
+    <text>Forgotten Farm: Bandit Camp</text>
+</string>
+<string id="st_forg_boar_terrain1_name">
+    <text>Forgotten Farm: Boar Lair</text>
+</string>
+<string id="st_forg_boar_terrain2_name">
+    <text>Forgotten Farm: Boar Lair</text>
+</string>
+<string id="st_forg_cat_terrain1_name">
+    <text>Forgotten Farm: Cat Lair</text>
+</string>
+<string id="st_forg_chimeras_terrain_name">
+    <text>Forgotten Farm: Chimera Lair</text>
+</string>
+<string id="st_forg_dog_terrain1_name">
+    <text>Forgotten Farm: Dog Lair</text>
+</string>
+<string id="st_forg_dog_terrain2_name">
+    <text>Forgotten Farm: Dog Lair</text>
+</string>
+<string id="st_forg_dog_terrain3_name">
+    <text>Forgotten Farm: Dog Lair</text>
+</string>
+<string id="st_forg_dog_terrain4_name">
+    <text>Forgotten Farm: Dog Lair</text>
+</string>
+<string id="st_forg_dog_terrain5_name">
+    <text>Forgotten Farm: Dog Lair</text>
+</string>
+<string id="st_forg_dog_terrain6_name">
+    <text>Forgotten Farm: Dog Lair</text>
+</string>
+<string id="st_forg_dolg_raid_terrain_name">
+    <text>Forgotten Farm: Duty Raid</text>
+</string>
+<string id="st_forg_flesh_terrain1_name">
+    <text>Forgotten Farm: Flesh Lair</text>
+</string>
+<string id="st_forg_karlito_terrain_name">
+    <text>Forgotten Farm: Karlito’s Place</text>
+</string>
+<string id="st_forg_merc_terrain_name">
+    <text>Forgotten Farm: Mercenary Camp</text>
+</string>
+   <string id="st_forg_poltergeist_terrain_name">
+    <text>Forgotten Farm: Poltergeist Lair</text>
+</string>
+<string id="st_forg_stalker_terrain_name">
+    <text>Forgotten Farm: Stalker Camp</text>
+</string>
+<string id="st_forg_zombie_terrain1_name">
+    <text>Forgotten Farm: Zombie Lair</text>
+</string>
+<string id="st_forg_zombie_terrain2_name">
+    <text>Forgotten Farm: Zombie Lair</text>
+</string>
+<string id="st_forg_zombie_terrain3_name">
+    <text>Forgotten Farm: Zombie Lair</text>
+</string>
+
+<string id="st_gar_angar_name">
+    <text>Garbage: Old Hangar</text>
+</string>
+<string id="st_gar_bandit_sniper_terrain_name">
+    <text>Central Garbage: Bandit Bridge</text>
+</string>
+<string id="st_gar_baraholka_name">
+    <text>Garbage: Flea Market</text>
+</string>
+<string id="st_gar_boars_lair1_name">
+    <text>Garbage: Boar Lair</text>
+</string>
+<string id="st_gar_boars_lair2_name">
+    <text>Garbage: Boar Lair</text>
+</string>
+<string id="st_gar_boars_lair3_name">
+    <text>Garbage: Boar Lair</text>
+</string>
+<string id="st_gar_boars_nest_name">
+    <text>Garbage: Boar Nest</text>
+</string>
+<string id="st_gar_bridge_lager_name">
+    <text>Central Garbage: Camp at Bandit Bridge</text>
+</string>
+<string id="st_gar_chimeras_lair1_name">
+    <text>Garbage: Chimera Lair 1</text>
+</string>
+<string id="st_gar_cranes_lager_name">
+    <text>Central Garbage: Crane</text>
+</string>
+<string id="st_gar_dogs_lair1_name">
+    <text>Garbage: Dog Lair</text>
+</string>
+<string id="st_gar_dogs_lair2_name">
+    <text>Central Garbage: Descent to Garbage</text>
+</string>
+<string id="st_gar_dolg_blockpost_name">
+    <text>Central Garbage: Northern Duty Checkpoint</text>
+</string>
+<string id="st_gar_dram_moment_terrain_name">
+    <text>Central Garbage: "Broken Road" Anomaly</text>
+</string>
+<string id="st_gar_dram_name">
+    <text>Garbage: Drama</text>
+</string>
+<string id="st_gar_fleshes_lair1_name">
+    <text>Garbage: Flesh Lair</text>
+</string>
+<string id="st_gar_greenhouse_lager_name">
+    <text>Central Garbage: Greenhouse</text>
+</string>
+<string id="st_gar_hangar_lager_name">
+    <text>Central Garbage: Depot Entrance</text>
+</string>
+<string id="st_gar_hangar_patrol_name">
+    <text>Central Garbage: Depot</text>
+</string>
+<string id="st_gar_mixed_lair_name">
+    <text>Garbage: Mixed Lair</text>
+</string>
+<string id="st_gar_outpost_name">
+    <text>Garbage: Northern Outpost</text>
+</string>
+<string id="st_gar_road_lager1_name">
+    <text>Central Garbage: Entrance to Garbage</text>
+</string>
+<string id="st_gar_small_hangar_name">
+    <text>Central Garbage: Small Hangar near Warehouse</text>
+</string>
+<string id="st_gar_smart_terrain_1_5_name">
+    <text>Garbage: Barricades</text>
+</string>
+<string id="st_gar_smart_terrain_1_7_name">
+    <text>Garbage: Valley Camp</text>
+</string>
+<string id="st_gar_smart_terrain_2_3_name">
+    <text>Garbage: North-West Hollow</text>
+</string>
+<string id="st_gar_smart_terrain_2_4_name">
+    <text>Garbage: Pipe Shelter</text>
+</string>
+<string id="st_gar_smart_terrain_3_3_name">
+    <text>Garbage</text>
+</string>
+<string id="st_gar_smart_terrain_3_5_name">
+    <text>Garbage: Depot</text>
+</string>
+<string id="st_gar_smart_terrain_3_6_name">
+    <text>Central Garbage: Radioactive Junk Pile</text>
+</string>
+<string id="st_gar_smart_terrain_3_7_name">
+    <text>Garbage: Vehicle Graveyard</text>
+</string>
+<string id="st_gar_smart_terrain_3_8_name">
+    <text>Garbage: Near the Transition</text>
+</string>
+<string id="st_gar_smart_terrain_4_2_name">
+    <text>Garbage: Hollow Camp</text>
+</string>
+<string id="st_gar_smart_terrain_4_5_name">
+    <text>Garbage: Bus Stop</text>
+</string>
+<string id="st_gar_smart_terrain_4_7_name">
+    <text>Garbage</text>
+</string>
+<string id="st_gar_smart_terrain_5_2_name">
+    <text>Garbage: Northern Outpost</text>
+</string>
+<string id="st_gar_smart_terrain_5_4_name">
+    <text>Garbage: Gathering Point</text>
+</string>
+<string id="st_gar_smart_terrain_5_5_name">
+    <text>Garbage: Treasure Hunters Camp</text>
+</string>
+<string id="st_gar_smart_terrain_5_6_name">
+    <text>Garbage: Crane Ruins</text>
+</string>
+<string id="st_gar_smart_terrain_5_8_name">
+    <text>Garbage: Receiver Checkpoint</text>
+</string>
+<string id="st_gar_smart_terrain_6_1_name">
+    <text>Garbage: Backlot Camp</text>
+</string>
+<string id="st_gar_smart_terrain_6_3_name">
+    <text>Garbage: Flea Market</text>
+</string>
+<string id="st_gar_smart_terrain_6_4_name">
+    <text>Garbage</text>
+</string>
+<string id="st_gar_smart_terrain_6_6_name">
+    <text>Garbage: Forest Shelter</text>
+</string>
+<string id="st_gar_smart_terrain_6_7_name">
+    <text>Garbage: Rocky Scatter</text>
+</string>
+<string id="st_gar_smart_terrain_7_4_name">
+    <text>Garbage: New Camp</text>
+</string>
+<string id="st_gar_smart_terrain_8_3_name">
+    <text>Garbage: Western Camp</text>
+</string>
+<string id="st_gar_smart_terrain_8_5_name">
+    <text>Garbage: Wolf Pit</text>
+</string>
+<string id="st_gar_smart_terrain_8_7_name">
+    <text>Garbage</text>
+</string>
+<string id="st_gar_smart_tunnel_name">
+    <text>Central Garbage: Tunnel</text>
+</string>
+<string id="st_gar_zombies_graveyard_name">
+    <text>Central Garbage: Garbage Yard</text>
+</string>
+
+<string id="st_gen_smart_terrain_cemetery_name">
+    <text>Generators: Cemetery</text>
+</string>
+<string id="st_gen_smart_terrain_forest_name">
+    <text>Generators: Supernatural Forest</text>
+</string>
+<string id="st_gen_smart_terrain_junk_name">
+    <text>Generators: Collapsed Crane</text>
+</string>
+<string id="st_gen_smart_terrain_lab_entrance_2_name">
+    <text>Generators: Abandoned Substation</text>
+</string>
+<string id="st_gen_smart_terrain_lab_entrance_name">
+    <text>Generators: Laboratory Entrance</text>
+</string>
+<string id="st_gen_smart_terrain_military_name">
+    <text>Generators: Abandoned Checkpoint</text>
+</string>
+<string id="st_gen_smart_terrain_urod_name">
+    <text>Generators: Observation Deck</text>
+</string>
+<string id="st_gen_undeground_smart_mlr_burers_name">
+    <text>Generators: Burers Nest</text>
+</string>
+<string id="st_gen_undeground_smart_mlr_controller_name">
+    <text>Generators: Controller Lair</text>
+</string>
+<string id="st_gen_undeground_smart_mlr_giant_name">
+    <text>Generators: Giant Lair</text>
+</string>
+
+<string id="st_grim_1_name">
+    <text>Devil's Hamlet: Northern Camp</text>
+</string>
+<string id="st_grim_10_name">
+    <text>Devil's Hamlet: Main Road Camp</text>
+</string>
+<string id="st_grim_11_name">
+    <text>Devil's Hamlet: Road to Abandoned Building</text>
+</string>
+<string id="st_grim_12_name">
+    <text>Devil's Hamlet: Southern Forest</text>
+</string>
+<string id="st_grim_13_name">
+    <text>Devil's Hamlet: North-East Forest</text>
+</string>
+<string id="st_grim_14_name">
+    <text>Devil's Hamlet: Eastern Forest</text>
+</string>
+<string id="st_grim_15_name">
+    <text>Devil's Hamlet: Forest Above Abandoned Building</text>
+</string>
+<string id="st_grim_16_name">
+    <text>Devil's Hamlet: Abandoned Building</text>
+</string>
+<string id="st_grim_17_name">
+    <text>Devil's Hamlet: Pond Camp</text>
+</string>
+<string id="st_grim_2_name">
+    <text>Devil's Hamlet: Checkpoint</text>
+</string>
+<string id="st_grim_3_name">
+    <text>Devil's Hamlet: South-West Grove</text>
+</string>
+<string id="st_grim_4_name">
+    <text>Devil's Hamlet: Northern Forest</text>
+</string>
+<string id="st_grim_5_name">
+    <text>Devil's Hamlet: Forest by Checkpoint</text>
+</string>
+<string id="st_grim_6_name">
+    <text>Devil's Hamlet: Clearing Under Power Lines</text>
+</string>
+<string id="st_grim_7_name">
+    <text>Devil's Hamlet: Southern Path</text>
+</string>
+<string id="st_grim_8_name">
+    <text>Devil's Hamlet: Grove Behind Pier</text>
+</string>
+<string id="st_grim_9_name">
+    <text>Devil's Hamlet: Dock</text>
+</string>
+
+<string id="st_hotel_poless_smart_alife_name">
+    <text>Pripyat: Hotel Back Area</text>
+</string>
+<string id="st_jup_a10_smart_terrain_name">
+    <text>Jupiter: Checkpoint</text>
+</string>
+<string id="st_jup_a12_bandit_cashier_name">
+    <text>Jupiter: Bandit Cashier</text>
+</string>
+<string id="st_jup_a12_bandit_guard_name">
+    <text>Jupiter: Bandit Guards</text>
+</string>
+<string id="st_jup_a12_merc_name">
+    <text>Jupiter: Road</text>
+</string>
+<string id="st_jup_a12_name">
+    <text>Jupiter: Container Yard</text>
+</string>
+   <string id="st_forg_poltergeist_terrain_name">
+    <text>Forgotten Farmstead: Poltergeist Lair</text>
+</string>
+<string id="st_forg_stalker_terrain_name">
+    <text>Forgotten Farmstead: Stalker Camp</text>
+</string>
+<string id="st_forg_zombie_terrain1_name">
+    <text>Forgotten Farmstead: Zombie Lair</text>
+</string>
+<string id="st_forg_zombie_terrain2_name">
+    <text>Forgotten Farmstead: Zombie Lair</text>
+</string>
+<string id="st_forg_zombie_terrain3_name">
+    <text>Forgotten Farmstead: Zombie Lair</text>
+</string>
+
+<string id="st_gar_angar_name">
+    <text>Garbage: Old Hangar</text>
+</string>
+<string id="st_gar_bandit_sniper_terrain_name">
+    <text>Central Garbage: Bandit Bridge</text>
+</string>
+<string id="st_gar_baraholka_name">
+    <text>Garbage: Flea Market</text>
+</string>
+<string id="st_gar_boars_lair1_name">
+    <text>Garbage: Boar Lair</text>
+</string>
+<string id="st_gar_boars_lair2_name">
+    <text>Garbage: Boar Lair</text>
+</string>
+<string id="st_gar_boars_lair3_name">
+    <text>Garbage: Boar Lair</text>
+</string>
+<string id="st_gar_boars_nest_name">
+    <text>Garbage: Boar Nest</text>
+</string>
+<string id="st_gar_bridge_lager_name">
+    <text>Central Garbage: Bandit Bridge Camp</text>
+</string>
+<string id="st_gar_chimeras_lair1_name">
+    <text>Garbage: Chimera Lair 1</text>
+</string>
+<string id="st_gar_cranes_lager_name">
+    <text>Central Garbage: Crane</text>
+</string>
+<string id="st_gar_dogs_lair1_name">
+    <text>Garbage: Dog Lair</text>
+</string>
+<string id="st_gar_dogs_lair2_name">
+    <text>Central Garbage: Descent to Garbage</text>
+</string>
+<string id="st_gar_dolg_blockpost_name">
+    <text>Central Garbage: Duty Checkpoint</text>
+</string>
+<string id="st_gar_dram_moment_terrain_name">
+    <text>Central Garbage: "Ruined Road" Anomaly</text>
+</string>
+<string id="st_gar_dram_name">
+    <text>Garbage: Drama</text>
+</string>
+<string id="st_gar_fleshes_lair1_name">
+    <text>Garbage: Flesh Lair</text>
+</string>
+<string id="st_gar_greenhouse_lager_name">
+    <text>Central Garbage: Greenhouse</text>
+</string>
+<string id="st_gar_hangar_lager_name">
+    <text>Central Garbage: Depot Entrance</text>
+</string>
+<string id="st_gar_hangar_patrol_name">
+    <text>Central Garbage: Depot</text>
+</string>
+<string id="st_gar_mixed_lair_name">
+    <text>Garbage: Mixed Lair</text>
+</string>
+<string id="st_gar_outpost_name">
+    <text>Garbage: Northern Outpost</text>
+</string>
+<string id="st_gar_road_lager1_name">
+    <text>Central Garbage: Garbage Entrance</text>
+</string>
+<string id="st_gar_small_hangar_name">
+    <text>Central Garbage: Small Hangar near Depot</text>
+</string>
+<string id="st_gar_smart_terrain_1_5_name">
+    <text>Garbage: Barricades</text>
+</string>
+<string id="st_gar_smart_terrain_1_7_name">
+    <text>Garbage: Valley Camp</text>
+</string>
+<string id="st_gar_smart_terrain_2_3_name">
+    <text>Garbage: North-West Hollow</text>
+</string>
+<string id="st_gar_smart_terrain_2_4_name">
+    <text>Garbage: Pipe Shelter</text>
+</string>
+<string id="st_gar_smart_terrain_3_3_name">
+    <text>Garbage</text>
+</string>
+<string id="st_gar_smart_terrain_3_5_name">
+    <text>Garbage: Depot</text>
+</string>
+<string id="st_gar_smart_terrain_3_6_name">
+    <text>Central Garbage: Radioactive Junk Pile</text>
+</string>
+<string id="st_gar_smart_terrain_3_7_name">
+    <text>Garbage: Vehicle Graveyard</text>
+</string>
+<string id="st_gar_smart_terrain_3_8_name">
+    <text>Garbage: Passage Point</text>
+</string>
+<string id="st_gar_smart_terrain_4_2_name">
+    <text>Garbage: Ravine Camp</text>
+</string>
+<string id="st_gar_smart_terrain_4_5_name">
+    <text>Garbage: Bus Stop</text>
+</string>
+<string id="st_gar_smart_terrain_4_7_name">
+    <text>Garbage</text>
+</string>
+<string id="st_gar_smart_terrain_5_2_name">
+    <text>Garbage: Northern Checkpoint</text>
+</string>
+<string id="st_gar_smart_terrain_5_4_name">
+    <text>Garbage: Gathering Point</text>
+</string>
+<string id="st_gar_smart_terrain_5_5_name">
+    <text>Garbage: Treasure Hunters Camp</text>
+</string>
+<string id="st_gar_smart_terrain_5_6_name">
+    <text>Garbage: Crane Wreckage</text>
+</string>
+<string id="st_gar_smart_terrain_5_8_name">
+    <text>Garbage: Receiving Outpost</text>
+</string>
+<string id="st_gar_smart_terrain_6_1_name">
+    <text>Garbage: Backwoods Camp</text>
+</string>
+<string id="st_gar_smart_terrain_6_3_name">
+    <text>Garbage: Flea Market</text>
+</string>
+<string id="st_gar_smart_terrain_6_4_name">
+    <text>Garbage</text>
+</string>
+<string id="st_gar_smart_terrain_6_6_name">
+    <text>Garbage: Forest Shelter</text>
+</string>
+<string id="st_gar_smart_terrain_6_7_name">
+    <text>Garbage: Rock Field</text>
+</string>
+<string id="st_gar_smart_terrain_7_4_name">
+    <text>Garbage: New Camp</text>
+</string>
+<string id="st_gar_smart_terrain_8_3_name">
+    <text>Garbage: Western Camp</text>
+</string>
+<string id="st_gar_smart_terrain_8_5_name">
+    <text>Garbage: Wolf Hollow</text>
+</string>
+<string id="st_gar_smart_terrain_8_7_name">
+    <text>Garbage</text>
+</string>
+<string id="st_gar_smart_tunnel_name">
+    <text>Central Garbage: Tunnel</text>
+</string>
+<string id="st_gar_zombies_graveyard_name">
+    <text>Central Garbage: Garbage Graveyard</text>
+</string>
+
+<string id="st_gen_smart_terrain_cemetery_name">
+    <text>Generators: Cemetery</text>
+</string>
+<string id="st_gen_smart_terrain_forest_name">
+    <text>Generators: Supernatural Forest</text>
+</string>
+<string id="st_gen_smart_terrain_junk_name">
+    <text>Generators: Collapsed Crane</text>
+</string>
+<string id="st_gen_smart_terrain_lab_entrance_2_name">
+    <text>Generators: Abandoned Substation</text>
+</string>
+<string id="st_gen_smart_terrain_lab_entrance_name">
+    <text>Generators: Laboratory Entrance</text>
+</string>
+<string id="st_gen_smart_terrain_military_name">
+    <text>Generators: Abandoned Checkpoint</text>
+</string>
+<string id="st_gen_smart_terrain_urod_name">
+    <text>Generators: Observation Point</text>
+</string>
+
+<string id="st_gen_undeground_smart_mlr_burers_name">
+    <text>Generators: Burer Nest</text>
+</string>
+<string id="st_gen_undeground_smart_mlr_controller_name">
+    <text>Generators: Controller Lair</text>
+</string>
+<string id="st_gen_undeground_smart_mlr_giant_name">
+    <text>Generators: Giant Lair</text>
+</string>
+
+<string id="st_grim_1_name">
+    <text>Devil’s Thicket: Northern Camp</text>
+</string>
+<string id="st_grim_10_name">
+    <text>Devil’s Thicket: Main Road Camp</text>
+</string>
+<string id="st_grim_11_name">
+    <text>Devil’s Thicket: Road to Abandoned Building</text>
+</string>
+<string id="st_grim_12_name">
+    <text>Devil’s Thicket: Southern Forest</text>
+</string>
+<string id="st_grim_13_name">
+    <text>Devil’s Thicket: North-East Forest</text>
+</string>
+<string id="st_grim_14_name">
+    <text>Devil’s Thicket: Eastern Forest</text>
+</string>
+<string id="st_grim_15_name">
+    <text>Devil’s Thicket: Forest above Abandoned Building</text>
+</string>
+<string id="st_grim_16_name">
+    <text>Devil’s Thicket: Abandoned Building</text>
+</string>
+<string id="st_grim_17_name">
+    <text>Devil’s Thicket: Pond Camp</text>
+</string>
+<string id="st_grim_2_name">
+    <text>Devil’s Thicket: Checkpoint</text>
+</string>
+<string id="st_grim_3_name">
+    <text>Devil’s Thicket: South-West Grove</text>
+</string>
+<string id="st_grim_4_name">
+    <text>Devil’s Thicket: Northern Forest</text>
+</string>
+<string id="st_grim_5_name">
+    <text>Devil’s Thicket: Forest near Checkpoint</text>
+</string>
+<string id="st_grim_6_name">
+    <text>Devil’s Thicket: Power Line Clearing</text>
+</string>
+<string id="st_grim_7_name">
+    <text>Devil’s Thicket: Southern Path</text>
+</string>
+<string id="st_grim_8_name">
+    <text>Devil’s Thicket: Grove behind Pier</text>
+</string>
+<string id="st_grim_9_name">
+    <text>Devil’s Thicket: Dock</text>
+</string>
+
+<string id="st_hotel_poless_smart_alife_name">
+    <text>Pripyat: Hotel Back Area</text>
+</string>
+<string id="st_jup_a10_smart_terrain_name">
+    <text>Jupiter: Checkpoint</text>
+</string>
+<string id="st_jup_a12_bandit_cashier_name">
+    <text>Jupiter: Bandit Cashier</text>
+</string>
+<string id="st_jup_a12_bandit_guard_name">
+    <text>Jupiter: Bandit Guard</text>
+</string>
+<string id="st_jup_a12_merc_name">
+    <text>Jupiter: Road</text>
+</string>
+<string id="st_jup_a12_name">
+    <text>Jupiter: Container Yard</text>
+</string>
+  <string id="st_jup_sim_19_name">
+    <text>Jupiter: Factory Dump</text>
+</string>
+<string id="st_jup_sim_2_name">
+    <text>Jupiter: Western Tunnel</text>
+</string>
+<string id="st_jup_sim_20_name">
+    <text>Jupiter: Collapsed Bridge</text>
+</string>
+<string id="st_jup_sim_21_name">
+    <text>Jupiter: Gloomy Refuge</text>
+</string>
+<string id="st_jup_sim_3_name">
+    <text>Jupiter: Shallow Swamp</text>
+</string>
+<string id="st_jup_sim_4_name">
+    <text>Jupiter: Abandoned Locomotive</text>
+</string>
+<string id="st_jup_sim_5_name">
+    <text>Jupiter: Fork in the Road</text>
+</string>
+<string id="st_jup_sim_6_name">
+    <text>Jupiter: Quarry Slope</text>
+</string>
+<string id="st_jup_sim_7_name">
+    <text>Jupiter: Dangerous Grove</text>
+</string>
+<string id="st_jup_sim_8_name">
+    <text>Jupiter: Swamp</text>
+</string>
+<string id="st_jup_sim_9_name">
+    <text>Jupiter: Zombie Territory</text>
+</string>
+
+<string id="st_kas_base_name">
+    <text>Kasyany: Military Base in Kasyany</text>
+</string>
+<string id="st_kas_kpp_name">
+    <text>Kasyany: Southern Checkpoint</text>
+</string>
+<string id="st_kas_kpp2_name">
+    <text>Kasyany: Northern Checkpoint</text>
+</string>
+<string id="st_kas_kpp3_name">
+    <text>Kasyany: Western Checkpoint</text>
+</string>
+<string id="st_kas_perekrestok_name">
+    <text>Kasyany: Crossroads</text>
+</string>
+<string id="st_kas_sim_1_name">
+    <text>Kasyany: Deadly Anomaly</text>
+</string>
+
+<string id="st_kas_sim_10_name">
+    <text>Kasyany: Sector</text>
+</string>
+<string id="st_kas_sim_11_name">
+    <text>Kasyany: Sector</text>
+</string>
+
+<string id="st_kas_sim_12_name">
+    <text>Kasyany: Lake</text>
+</string>
+<string id="st_kas_sim_13_name">
+    <text>Kasyany: Destroyed Tank</text>
+</string>
+<string id="st_kas_sim_14_name">
+    <text>Kasyany: Forest</text>
+</string>
+
+<string id="st_kas_sim_15_name">
+    <text>Kasyany: Sector</text>
+</string>
+<string id="st_kas_sim_16_name">
+    <text>Kasyany: Sector</text>
+</string>
+
+<string id="st_kas_sim_17_name">
+    <text>Kasyany: "Web of Lies" Anomaly</text>
+</string>
+<string id="st_kas_sim_18_name">
+    <text>Kasyany: Chemical Swamp</text>
+</string>
+
+<string id="st_kas_sim_19_name">
+    <text>Kasyany: Sector</text>
+</string>
+<string id="st_kas_sim_20_name">
+    <text>Kasyany: Sector</text>
+</string>
+
+<string id="st_kas_sim_3_name">
+    <text>Kasyany: Sector</text>
+</string>
+<string id="st_kas_sim_4_name">
+    <text>Kasyany: Sector</text>
+</string>
+<string id="st_kas_sim_5_name">
+    <text>Kasyany: Sector</text>
+</string>
+<string id="st_kas_sim_6_name">
+    <text>Kasyany: Sector</text>
+</string>
+
+<string id="st_kas_sim_7_name">
+    <text>Kasyany: Field</text>
+</string>
+
+<string id="st_kas_sim_8_name">
+    <text>Kasyany: Sector</text>
+</string>
+<string id="st_kas_sim_9_name">
+    <text>Kasyany: Sector</text>
+</string>
+
+<string id="st_kat_smart_terrain_name">
+    <text>Catacombs: Sector</text>
+</string>
+
+<string id="st_katacomb_smart_terrain_name">
+    <text>Abandoned Hospital: Abandoned Hospital</text>
+</string>
+
+<string id="st_kbo_terrain_name">
+    <text>Pripyat: KBO Entrance</text>
+</string>
+
+<string id="st_kn_b1_name">
+    <text>Canyon</text>
+</string>
+<string id="st_kn_b2_name">
+    <text>Canyon</text>
+</string>
+<string id="st_kn_b3_name">
+    <text>Canyon</text>
+</string>
+<string id="st_kn_b4_name">
+    <text>Canyon</text>
+</string>
+<string id="st_kn_b5_name">
+    <text>Canyon</text>
+</string>
+<string id="st_kn_e3_name">
+    <text>Canyon</text>
+</string>
+
+<string id="st_kup_atr_name">
+    <text>Kuplon Surroundings: VNZ "Luch"</text>
+</string>
+
+<string id="st_l2_9_baracks_name">
+    <text>Station: Barracks</text>
+</string>
+<string id="st_l2_9_buliding_name">
+    <text>Station: Buildings</text>
+</string>
+<string id="st_l2_9_house_name">
+    <text>Station: House</text>
+</string>
+<string id="st_l2_9_masterskaya_name">
+    <text>Station: Workshop</text>
+</string>
+<string id="st_l2_9_mechouse_name">
+    <text>Object L2: Mech Yard 9</text>
+</string>
+<string id="st_l2_9_prud_name">
+    <text>Station: Pond</text>
+</string>
+
+<string id="st_l2_9_sim_1_name">
+    <text>Object L2: Sector</text>
+</string>
+<string id="st_l2_9_sim_2_name">
+    <text>Object L2: Sector</text>
+</string>
+<string id="st_l2_9_sim_3_name">
+    <text>Object L2: Sector</text>
+</string>
+<string id="st_l2_9_sim_4_name">
+    <text>Object L2: Sector</text>
+</string>
+<string id="st_l2_9_sim_5_name">
+    <text>Object L2: Sector</text>
+</string>
+<string id="st_l2_9_sim_6_name">
+    <text>Object L2: Sector</text>
+</string>
+<string id="st_l2_9_sim_7_name">
+    <text>Object L2: Sector</text>
+</string>
+<string id="st_l2_9_sim_8_name">
+    <text>Object L2: Sector</text>
+</string>
+
+<string id="st_l2_9_sim_9_name">
+    <text>Station: Railway Tracks</text>
+</string>
+
+<string id="st_l2_9_stoyanka_name">
+    <text>Station: Parking Area</text>
+</string>
+<string id="st_l2_9_tank_name">
+    <text>Station: Fuel Tanks</text>
+</string>
+<string id="st_l2_9_vokzal_limansk_name">
+    <text>Station: Limansk Railway Station</text>
+</string>
+
+<string id="st_labx7_sim_1_name">
+    <text>Laboratory X-7: Sector</text>
+</string>
+<string id="st_labx7_sim_2_name">
+    <text>Laboratory X-7: Sector</text>
+</string>
+<string id="st_labx7_sim_3_name">
+    <text>Laboratory X-7: Sector</text>
+</string>
+<string id="st_labx7_sim_4_name">
+    <text>Laboratory X-7: Sector</text>
+</string>
+<string id="st_labx7_sim_5_name">
+    <text>Laboratory X-7: Sector</text>
+</string>
+<string id="st_labx7_sim_6_name">
+    <text>Laboratory X-7: Sector</text>
+</string>
+
+<string id="st_labx7_smart_terrain_bloodsuckers_sleepers_name">
+    <text>Laboratory X-7: Sleeping Bloodsuckers</text>
+</string>
+<string id="st_labx7_smart_terrain_monolith_corpus_name">
+    <text>Laboratory X-7: Monolith Corpus</text>
+</string>
+<string id="st_labx7_smart_terrain_monolith_name">
+    <text>Laboratory X-7: Monolith Camp</text>
+</string>
+<string id="st_labx7_smart_terrain_patrol_name">
+    <text>Laboratory X-7: Patrol</text>
+</string>
+
+<string id="st_lake_monster_terrain_1_name">
+    <text>Lake: Mutant Lair</text>
+</string>
+   <string id="st_lake_monster_terrain_2_name">
+    <text>Lake: Mutant Lair</text>
+</string>
+<string id="st_lake_monster_terrain_3_name">
+    <text>Lake: Mutant Lair</text>
+</string>
+<string id="st_lake_smart_terrain_1_name">
+    <text>Dead Lake: Bus Stop</text>
+</string>
+<string id="st_lake_smart_terrain_2_name">
+    <text>Dead Lake: Eastern Farm Parking Lot</text>
+</string>
+<string id="st_lake_smart_terrain_3_name">
+    <text>Dead Lake: Northern Village</text>
+</string>
+<string id="st_lake_smart_terrain_4_name">
+    <text>Dead Lake: Southern Checkpoint</text>
+</string>
+<string id="st_lake_smart_terrain_5_name">
+    <text>Dead Lake: Western Hamlet</text>
+</string>
+<string id="st_lake_smart_terrain_6_name">
+    <text>Lake</text>
+</string>
+<string id="st_lake_smart_terrain_7_name">
+    <text>Lake</text>
+</string>
+<string id="st_land_arhara_sniper_name">
+    <text>Unexplored Land: Arkhara’s Camp</text>
+</string>
+<string id="st_les_burery_ukamney_name">
+    <text>Forest: Burers by the Rocks</text>
+</string>
+<string id="st_les_chimera_sklon_name">
+    <text>Forest: Chimera Slope</text>
+</string>
+<string id="st_les_chimera_uperehoda_name">
+    <text>Forest: Chimera by the Passage</text>
+</string>
+<string id="st_les_controller_centr_name">
+    <text>Forgotten Forest: Forest</text>
+</string>
+<string id="st_les_gigant_derev_name">
+    <text>Forest: Pseudogiant at the Tree</text>
+</string>
+<string id="st_les_gigant_uholma_name">
+    <text>Forest: Pseudogiant at the Hill</text>
+</string>
+<string id="st_les_gigant_ukamn_name">
+    <text>Forest: Pseudogiant at the Rock</text>
+</string>
+<string id="st_les_grizuny_sklon_name">
+    <text>Forest: Rodents Slope</text>
+</string>
+<string id="st_les_pseudodog_polyna_name">
+    <text>Forest: Pseudodogs Clearing</text>
+</string>
+<string id="st_les_rotan_vkustah_name">
+    <text>Forgotten Forest: Transition to the Junkyard</text>
+</string>
+<string id="st_les_sosich_name">
+    <text>Forest: Sosich</text>
+</string>
+<string id="st_les_zombi_naholme_name">
+    <text>Forgotten Forest: Transition to the Clearing</text>
+</string>
+
+<string id="st_lim_bridge_name">
+    <text>Limansk: Bridge to Limansk</text>
+</string>
+<string id="st_lim_bubbles_name">
+    <text>Limansk: Spatial Anomalies</text>
+</string>
+<string id="st_lim_dyga_name">
+    <text>Limansk: “The Arc”</text>
+</string>
+<string id="st_lim_house_lesnik_name">
+    <text>Limansk: Woodsman’s House</text>
+</string>
+<string id="st_lim_mechanic_yard_name">
+    <text>Limansk: Mechanic Yard</text>
+</string>
+<string id="st_lim_nonbuild_name">
+    <text>Limansk: Construction Site</text>
+</string>
+<string id="st_lim_old_church_name">
+    <text>Limansk: Old Church</text>
+</string>
+<string id="st_lim_post_vishka_name">
+    <text>Limansk: Observation Post</text>
+</string>
+<string id="st_lim_smart_terrain_1_name">
+    <text>Limansk: Courtyard</text>
+</string>
+<string id="st_lim_smart_terrain_10_name">
+    <text>Limansk: Road to Fire Station</text>
+</string>
+<string id="st_lim_smart_terrain_2_name">
+    <text>Limansk</text>
+</string>
+<string id="st_lim_smart_terrain_3_name">
+    <text>Limansk: Courtyard with Terrace</text>
+</string>
+<string id="st_lim_smart_terrain_4_name">
+    <text>Limansk: Barricades in Dead End</text>
+</string>
+<string id="st_lim_smart_terrain_5_name">
+    <text>Limansk: Park by Garages</text>
+</string>
+<string id="st_lim_smart_terrain_6_name">
+    <text>Limansk: House on the Hill</text>
+</string>
+<string id="st_lim_smart_terrain_7_name">
+    <text>Limansk: Shelter by the Bridge</text>
+</string>
+<string id="st_lim_smart_terrain_8_name">
+    <text>Limansk: Parking by Electrical Substation</text>
+</string>
+<string id="st_lim_smart_terrain_9_name">
+    <text>Limansk: Construction Camp</text>
+</string>
+<string id="st_lim_smart_terrain_help_smart_name">
+    <text>Limansk: Aid Point</text>
+</string>
+<string id="st_lim_village_csky_name">
+    <text>Limansk: Clear Sky Base</text>
+</string>
+<string id="st_lim_water_pump_station_name">
+    <text>Limansk: Pumping Station</text>
+</string>
+<string id="st_lim_zastava_name">
+    <text>Limansk: Outpost</text>
+</string>
+
+<string id="st_lx8_smart_terrain_name">
+    <text>Laboratory X-8</text>
+</string>
+
+<string id="st_mar_smart_terrain_10_10_name">
+    <text>Marsh: Bonfire on the Shore</text>
+</string>
+<string id="st_mar_smart_terrain_10_5_name">
+    <text>Marsh: Mechanic Yard</text>
+</string>
+<string id="st_mar_smart_terrain_10_5_renegade_leader_name">
+    <text>Marsh: Renegade Leader</text>
+</string>
+<string id="st_mar_smart_terrain_10_5_renegade_tech_name">
+    <text>Marsh: Renegade Technician</text>
+</string>
+<string id="st_mar_smart_terrain_10_5_renegade_trader_name">
+    <text>Marsh: Renegade Trader</text>
+</string>
+<string id="st_mar_smart_terrain_10_7_name">
+    <text>Marsh: Camp on the Swamp</text>
+</string>
+<string id="st_mar_smart_terrain_11_11_name">
+    <text>Marsh: Southern Hamlet</text>
+</string>
+<string id="st_mar_smart_terrain_11_3_name">
+    <text>Marsh: Truck Stop</text>
+</string>
+<string id="st_mar_smart_terrain_12_2_name">
+    <text>Marsh: Northern Hamlet</text>
+</string>
+<string id="st_mar_smart_terrain_3_10_name">
+    <text>Marsh: Forked Paths</text>
+</string>
+<string id="st_mar_smart_terrain_3_3_name">
+    <text>Marsh: Boat Station</text>
+</string>
+<string id="st_mar_smart_terrain_3_7_name">
+    <text>Marsh: Boulder Island</text>
+</string>
+<string id="st_mar_smart_terrain_4_5_name">
+    <text>Marsh: Village Ruins</text>
+</string>
+<string id="st_mar_smart_terrain_4_7_name">
+    <text>Marsh: Log Rest Stop</text>
+</string>
+<string id="st_mar_smart_terrain_5_10_name">
+    <text>Marsh</text>
+</string>
+<string id="st_mar_smart_terrain_5_12_name">
+    <text>Marsh: Fisherman’s Hamlet</text>
+</string>
+<string id="st_mar_smart_terrain_5_8_name">
+    <text>Marsh: Pumping Station</text>
+</string>
+<string id="st_mar_smart_terrain_6_10_name">
+    <text>Marsh: Bald Island</text>
+</string>
+<string id="st_mar_smart_terrain_6_11_name">
+    <text>Marsh: Watchtower</text>
+</string>
+<string id="st_mar_smart_terrain_6_4_name">
+    <text>Marsh: Temporary Camp</text>
+</string>
+<string id="st_mar_smart_terrain_6_7_name">
+    <text>Marsh: Shore Barricades</text>
+</string>
+<string id="st_mar_smart_terrain_6_8_name">
+    <text>Marsh: Boat Rest Stop</text>
+</string>
+<string id="st_mar_smart_terrain_7_3_name">
+    <text>Marsh: Embankment Camp</text>
+</string>
+<string id="st_mar_smart_terrain_7_7_name">
+    <text>Marsh: Wilderness Camp</text>
+</string>
+<string id="st_mar_smart_terrain_8_11_name">
+    <text>Marsh: Old Church</text>
+</string>
+<string id="st_mar_smart_terrain_8_4_name">
+    <text>Marsh: Reed Camp</text>
+</string>
+<string id="st_mar_smart_terrain_8_8_name">
+    <text>Marsh: Burned Hamlet</text>
+</string>
+<string id="st_mar_smart_terrain_8_9_name">
+    <text>Marsh: Transfer Point</text>
+</string>
+<string id="st_mar_smart_terrain_9_10_name">
+    <text>Marsh</text>
+</string>
+
+<string id="st_mar_smart_terrain_base_doctor_name">
+    <text>Marsh: Doctor’s Base</text>
+</string>
+<string id="st_mar_smart_terrain_base_name">
+    <text>Marsh: Hidden Base</text>
+</string>
+<string id="st_mar_smart_terrain_base_stalker_leader_marsh_arszi_scout_name">
+    <text>Marsh: Stalker Base, ARSZI Scout Leader</text>
+</string>
+<string id="st_mar_smart_terrain_base_stalker_leader_marsh_name">
+    <text>Marsh: Stalker Base, Leader</text>
+</string>
+<string id="st_mar_smart_terrain_csky_respawn_name">
+    <text>Marsh: Clear Sky Spawn Point</text>
+</string>
+<string id="st_mar_smart_terrain_doc_2_name">
+    <text>Marsh: Outpost</text>
+</string>
+<string id="st_mar_smart_terrain_doc_doctor_name">
+    <text>Marsh: Doctor’s Documents</text>
+</string>
+<string id="st_mar_smart_terrain_doc_name">
+    <text>Marsh: Dugout</text>
+</string>
+
+<string id="st_merc_sim_squad_advanced_name">
+    <text>Mercenaries: Reinforced Squad</text>
+</string>
+
+<string id="st_mil_note_name">
+    <text>Military Note</text>
+</string>
+
+<string id="st_mil_smart_terrain_2_1_name">
+    <text>Army Warehouses: Camp in the Rocks</text>
+</string>
+<string id="st_mil_smart_terrain_2_10_name">
+    <text>Army Warehouses: Bloodsucker Village</text>
+</string>
+<string id="st_mil_smart_terrain_2_2_name">
+    <text>Army Warehouses: Remote Strongpoint</text>
+</string>
+<string id="st_mil_smart_terrain_2_3_name">
+    <text>Army Warehouses</text>
+</string>
+<string id="st_mil_smart_terrain_2_4_name">
+    <text>Army Warehouses: Distant Hamlet</text>
+</string>
+<string id="st_mil_smart_terrain_2_6_name">
+    <text>Army Warehouses: Crashed Helicopter</text>
+</string>
+<string id="st_mil_smart_terrain_3_2_name">
+    <text>Army Warehouses</text>
+</string>
+<string id="st_mil_smart_terrain_3_5_name">
+    <text>Army Warehouses</text>
+</string>
+<string id="st_mil_smart_terrain_3_8_monolith_side_name">
+    <text>Army Warehouses: Monolith Side</text>
+</string>
+<string id="st_mil_smart_terrain_3_8_name">
+    <text>Army Warehouses: Barrier</text>
+</string>
+<string id="st_mil_smart_terrain_4_2_name">
+    <text>Army Warehouses: Rest Stop</text>
+</string>
+<string id="st_mil_smart_terrain_4_3_name">
+    <text>Army Warehouses: Water Tower</text>
+</string>
+<string id="st_mil_smart_terrain_4_5_name">
+    <text>Army Warehouses: Crooked Ravine</text>
+</string>
+<string id="st_mil_smart_terrain_4_6_name">
+    <text>Army Warehouses</text>
+</string>
+<string id="st_mil_smart_terrain_4_7_name">
+    <text>Army Warehouses: Plank Rest Stop</text>
+</string>
+<string id="st_mil_smart_terrain_4_8_name">
+    <text>Army Warehouses: Camp</text>
+</string>
+<string id="st_mil_smart_terrain_5_2_name">
+    <text>Army Warehouses</text>
+</string>
+<string id="st_mil_smart_terrain_5_5_name">
+    <text>Army Warehouses</text>
+</string>
+<string id="st_mil_smart_terrain_5_6_name">
+    <text>Army Warehouses</text>
+</string>
+<string id="st_mil_smart_terrain_6_4_name">
+    <text>Army Warehouses</text>
+</string>
+<string id="st_mil_smart_terrain_7_10_freedom_trader_stalker_name">
+    <text>Army Warehouses: Freedom Trader</text>
+</string>
+<string id="st_mil_smart_terrain_7_10_name">
+    <text>Army Warehouses: Broken Transformer</text>
+</string>
+<string id="st_mil_smart_terrain_7_11_name">
+    <text>Army Warehouses</text>
+</string>
+<string id="st_mil_smart_terrain_7_12_name">
+    <text>Army Warehouses: Camp Between Barracks</text>
+</string>
+<string id="st_mil_smart_terrain_7_2_name">
+    <text>Army Warehouses: Road to the Bar</text>
+</string>
+<string id="st_mil_smart_terrain_7_4_name">
+    <text>Army Warehouses: Abandoned Hamlet</text>
+</string>
+<string id="st_mil_smart_terrain_7_7_freedom_bodyguard_stalker_name">
+    <text>Army Warehouses: Freedom Bodyguard</text>
+</string>
+<string id="st_mil_smart_terrain_7_7_freedom_bodyguard2_stalker_name">
+    <text>Army Warehouses: Freedom Bodyguard 2</text>
+</string>
+<string id="st_mil_smart_terrain_7_7_freedom_leader_stalker_arszi_scout_name">
+    <text>Army Warehouses: Freedom Leader & ARSZI Scout</text>
+</string>
+   <string id="st_mil_smart_terrain_7_7_freedom_leader_stalker_name">
+    <text>Army Warehouses: Freedom Leader</text>
+</string>
+<string id="st_mil_smart_terrain_7_7_freedom_mechanic_stalker_name">
+    <text>Army Warehouses: Freedom Mechanic</text>
+</string>
+<string id="st_mil_smart_terrain_7_7_name">
+    <text>Army Warehouses: Sports Ground</text>
+</string>
+<string id="st_mil_smart_terrain_7_8_name">
+    <text>Army Warehouses: Entrance to Army Warehouses</text>
+</string>
+<string id="st_mil_smart_terrain_8_3_name">
+    <text>Army Warehouses: Canopy</text>
+</string>
+
+<string id="st_mlr_terrain_name">
+    <text>Pripyat: Cinema Hall in the House of Culture</text>
+</string>
+<string id="st_monolith_snipers_smart_1_mlr_name">
+    <text>Pripyat: Dangerous Alley</text>
+</string>
+
+<string id="st_mtr_s1_name">
+    <text>Station "Sanatorium"</text>
+</string>
+<string id="st_mtr_s2_baza_name">
+    <text>Station "Sanatorium": S2 Base</text>
+</string>
+<string id="st_mtr_z1_name">
+    <text>Station "Sanatorium"</text>
+</string>
+<string id="st_mtrs_f4_name">
+    <text>Station "Sanatorium"</text>
+</string>
+<string id="st_mtrs_z1_name">
+    <text>Station "Sanatorium"</text>
+</string>
+
+<string id="st_nii_n1_name">
+    <text>Scientific Institute</text>
+</string>
+<string id="st_nii_n2_name">
+    <text>Scientific Institute</text>
+</string>
+<string id="st_nii_n3_name">
+    <text>Scientific Institute</text>
+</string>
+<string id="st_nii_n4_name">
+    <text>Scientific Institute</text>
+</string>
+
+<string id="st_nz_dog_krater_name">
+    <text>Unexplored Land: Stone Field Anomaly</text>
+</string>
+<string id="st_nz_dog_uzimovia_name">
+    <text>Unexplored Land: By the Winter Hut</text>
+</string>
+<string id="st_nz_pseudo_val_road_name">
+    <text>Unexplored Land: Road Fork</text>
+</string>
+
+<string id="st_okr_a1_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_a2_name">
+    <text>Vicinity of Chernobyl: Near Academic Building</text>
+</string>
+<string id="st_okr_a3_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_a4_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_a5_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_a6_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_a7_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+
+<string id="st_okr_av_1_name">
+    <text>Vicinity of Chernobyl: Aviation 1</text>
+</string>
+<string id="st_okr_av_2_name">
+    <text>Vicinity of Chernobyl: Aviation 2</text>
+</string>
+<string id="st_okr_av_3_name">
+    <text>Vicinity of Chernobyl: Aviation 3</text>
+</string>
+<string id="st_okr_av_4_name">
+    <text>Vicinity of Chernobyl: Aviation 4</text>
+</string>
+<string id="st_okr_av_5_name">
+    <text>Vicinity of Chernobyl: Aviation 5</text>
+</string>
+<string id="st_okr_avia_1_name">
+    <text>Vicinity of Chernobyl: Aviation 1</text>
+</string>
+
+<string id="st_okr_b1_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b10_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b11_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b12_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+
+<string id="st_okr_b13_name">
+    <text>Vicinity of Chernobyl: On the Bridge</text>
+</string>
+
+<string id="st_okr_b14_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b15_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b16_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b17_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b18_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b19_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b2_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b20_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b21_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b22_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b228_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b23_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+
+<string id="st_okr_b24_name">
+    <text>Vicinity of Chernobyl: Between Houses</text>
+</string>
+
+<string id="st_okr_b25_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b26_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b27_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b28_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b29_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b3_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b30_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b31_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b32_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b33_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b34_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b35_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b36_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b37_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b38_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b39_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b4_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b40_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b41_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b42_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b43_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b44_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b45_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b46_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b47_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b48_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b49_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b5_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b50_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b51_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+  <string id="st_okr_b52_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b53_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b54_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b6_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b7_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b8_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_b9_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+
+<string id="st_okr_base_bandit_name">
+    <text>Vicinity of Chernobyl: Unfinished Factory</text>
+</string>
+<string id="st_okr_base_csky_name">
+    <text>Vicinity of Chernobyl: Fishing Area</text>
+</string>
+<string id="st_okr_base_dolg_name">
+    <text>Vicinity of Chernobyl: Warehouse</text>
+</string>
+<string id="st_okr_base_freedom_name">
+    <text>Vicinity of Chernobyl: Hangar</text>
+</string>
+<string id="st_okr_base_greh_name">
+    <text>Vicinity of Chernobyl: Administration Building</text>
+</string>
+<string id="st_okr_base_killer_name">
+    <text>Vicinity of Chernobyl: Residential Building</text>
+</string>
+<string id="st_okr_base_monolith_name">
+    <text>Vicinity of Chernobyl: “Victory” Sanatorium</text>
+</string>
+<string id="st_okr_base_stalker_name">
+    <text>Vicinity of Chernobyl: Industrial Facility</text>
+</string>
+
+<string id="st_okr_e51_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_e53_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_l1_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_r5_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_r7_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_s1_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+
+<string id="st_okr_sim_11_name">
+    <text>Vicinity of Chernobyl: Soviet Aircraft</text>
+</string>
+<string id="st_okr_sim_13_name">
+    <text>Vicinity of Chernobyl: Bridge near Fish Factory</text>
+</string>
+<string id="st_okr_sim_18_name">
+    <text>Vicinity of Chernobyl: “Gravitational Ring” Anomaly</text>
+</string>
+<string id="st_okr_sim_22_name">
+    <text>Vicinity of Chernobyl: Airbase</text>
+</string>
+<string id="st_okr_sim_23_name">
+    <text>Vicinity of Chernobyl: Runway</text>
+</string>
+<string id="st_okr_sim_24_name">
+    <text>Vicinity of Chernobyl: Football Field</text>
+</string>
+<string id="st_okr_sim_25_name">
+    <text>Vicinity of Chernobyl: Northern Swamp</text>
+</string>
+<string id="st_okr_sim_27_name">
+    <text>Vicinity of Chernobyl: Path to Railway Station</text>
+</string>
+<string id="st_okr_sim_29_name">
+    <text>Vicinity of Chernobyl: Two Reservoirs</text>
+</string>
+<string id="st_okr_sim_33_name">
+    <text>Vicinity of Chernobyl: “Transformer Booth No. 2” Anomaly</text>
+</string>
+<string id="st_okr_sim_38_name">
+    <text>Vicinity of Chernobyl: “Fire Tandem” Anomaly</text>
+</string>
+<string id="st_okr_sim_5_name">
+    <text>Vicinity of Chernobyl: Engineering District</text>
+</string>
+<string id="st_okr_sim_7_name">
+    <text>Vicinity of Chernobyl: Helicopter in the Swamp</text>
+</string>
+<string id="st_okr_sim_8_name">
+    <text>Vicinity of Chernobyl: “Chemical Structure” Anomaly</text>
+</string>
+
+<string id="st_okr_u28_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+<string id="st_okr_v2_name">
+    <text>Vicinity of Chernobyl</text>
+</string>
+
+<string id="st_old_atp_freedom_terrain_name">
+    <text>Old Road: Freedom SE ATP</text>
+</string>
+<string id="st_old_bath_monolith_terrain_name">
+    <text>Old Road: Northern Pool</text>
+</string>
+<string id="st_old_farm_bandit_terrain_name">
+    <text>Old Road: Old Farm</text>
+</string>
+
+<string id="st_old_forest_boar_flesh_terrain_name">
+    <text>Old Location: Boar & Flesh Forest Sector</text>
+</string>
+<string id="st_old_forest_boar_flesh_terrain2_name">
+    <text>Old Location: Boar & Flesh Forest 2</text>
+</string>
+<string id="st_old_forest_boar_flesh_terrain3_name">
+    <text>Old Location: Boar & Flesh Forest 3</text>
+</string>
+<string id="st_old_forest_boar_flesh_terrain4_name">
+    <text>Old Location: Boar & Flesh Forest 4</text>
+</string>
+   <string id="st_old_sim_1_name">
+    <text>Old Road: Quiet Forest near Old Farm</text>
+</string>
+<string id="st_old_sim_10_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_11_name">
+    <text>Old Road: Forest by the Road</text>
+</string>
+<string id="st_old_sim_12_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_13_name">
+    <text>Old Road: “Symbiont” Anomaly</text>
+</string>
+<string id="st_old_sim_14_name">
+    <text>Old Road: Small Lake</text>
+</string>
+<string id="st_old_sim_15_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_16_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_17_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_18_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_19_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_2_name">
+    <text>Old Road: Quiet Forest</text>
+</string>
+<string id="st_old_sim_20_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_3_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_4_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_5_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_6_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_7_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_8_name">
+    <text>Old Location: Sector</text>
+</string>
+<string id="st_old_sim_9_name">
+    <text>Old Location: Sector</text>
+</string>
+
+<string id="st_old_stancia_stalker_terrain_name">
+    <text>Old Road: Eastern Pump Station</text>
+</string>
+<string id="st_old_swamp_swampbeast_terrain_name">
+    <text>Old Road: “Swamp Pine-Oak” Anomaly</text>
+</string>
+<string id="st_old_village_bloodsucker_terrain_name">
+    <text>Old Location: Bloodsucker Village</text>
+</string>
+<string id="st_old_village_zombie_terrain_name">
+    <text>Old Road: Zombie Village</text>
+</string>
+<string id="st_old_workshop_zombie_terrain_name">
+    <text>Old Road: Soviet Workshop</text>
+</string>
+
+<string id="st_ountry_stalker_terrain1_name">
+    <text>Countryside: Stalker Camp</text>
+</string>
+
+<string id="st_out_arrive_skyff_name">
+    <text>Outskirts: Skif Arrival</text>
+</string>
+<string id="st_out_art_hunters_name">
+    <text>Outskirts: Artifact Hunters</text>
+</string>
+<string id="st_out_b1_anomaly_name">
+    <text>Outskirts: Anomaly</text>
+</string>
+<string id="st_out_b1_base_name">
+    <text>Outskirts: Northern Base</text>
+</string>
+
+<string id="st_out_b2_anomaly_name">
+    <text>Chernobyl-1: “Spiral” Anomaly</text>
+</string>
+<string id="st_out_b2_base_name">
+    <text>Outskirts: Southern Base</text>
+</string>
+
+<string id="st_out_bandit_terrain_name">
+    <text>Outskirts: Bandit Camp</text>
+</string>
+<string id="st_out_bar_name">
+    <text>Outskirts: Bar</text>
+</string>
+
+<string id="st_out_bloodsucker_terrain1_name">
+    <text>Outskirts: Bloodsucker Lair</text>
+</string>
+<string id="st_out_boar_terrain1_name">
+    <text>Outskirts: Boar Lair</text>
+</string>
+<string id="st_out_boar_terrain2_name">
+    <text>Outskirts: Boar Lair</text>
+</string>
+<string id="st_out_cat_terrain_name">
+    <text>Outskirts: Cat Lair</text>
+</string>
+
+<string id="st_out_dam_mono_terrain_name">
+    <text>Outskirts: Monolith Sector at Dam</text>
+</string>
+
+<string id="st_out_dog_terrain1_name">
+    <text>Outskirts: Dog Lair</text>
+</string>
+<string id="st_out_dog_terrain2_name">
+    <text>Outskirts: Dog Lair</text>
+</string>
+<string id="st_out_dog_terrain3_name">
+    <text>Outskirts: Dog Lair</text>
+</string>
+
+<string id="st_out_duty_basement_terrain_name">
+    <text>Outskirts: Duty Basement</text>
+</string>
+
+<string id="st_out_faradey_zombie_name">
+    <text>Chernobyl-1: Road to Predbannik</text>
+</string>
+
+<string id="st_out_flesh_terrain1_name">
+    <text>Outskirts: Flesh Lair</text>
+</string>
+
+<string id="st_out_freedom_kamper_terrain_name">
+    <text>Outskirts: Freedom Camp</text>
+</string>
+<string id="st_out_freedom2_terrain_name">
+    <text>Outskirts: Second Freedom Camp</text>
+</string>
+
+<string id="st_out_gevara_killers_name">
+    <text>Outskirts: Guevara Mercenaries</text>
+</string>
+
+<string id="st_out_hmur_name">
+    <text>Outskirts: Khmury</text>
+</string>
+
+<string id="st_out_kgb_gevara_name">
+    <text>Outskirts: KGB Guevara</text>
+</string>
+
+<string id="st_out_kgb_go_name">
+    <text>Chernobyl-1: Training Ground</text>
+</string>
+
+<string id="st_out_killer_ambush_name">
+    <text>Outskirts: Mercenary Ambush</text>
+</string>
+
+<string id="st_out_kurier_name">
+    <text>Outskirts: Courier</text>
+</string>
+
+<string id="st_out_poltergeist_terrain1_name">
+    <text>Outskirts: Poltergeist Lair</text>
+</string>
+
+<string id="st_out_pool_room_name">
+    <text>Outskirts: Pool Room</text>
+</string>
+
+<string id="st_out_provodnik_name">
+    <text>Outskirts: Guide</text>
+</string>
+
+<string id="st_out_shturm_lager_name">
+    <text>Outskirts: Assault Camp</text>
+</string>
+
+<string id="st_out_sim_1_name">
+    <text>Chernobyl-1: Vegetable Shop</text>
+</string>
+
+<string id="st_out_sim_10_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_11_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_12_name">
+    <text>Outskirts: Sector</text>
+</string>
+
+<string id="st_out_sim_13_name">
+    <text>Chernobyl-1: Small Checkpoint</text>
+</string>
+
+<string id="st_out_sim_14_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_15_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_16_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_17_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_18_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_19_name">
+    <text>Outskirts: Sector</text>
+</string>
+
+<string id="st_out_sim_2_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_3_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_4_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_5_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_6_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_7_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_8_name">
+    <text>Outskirts: Sector</text>
+</string>
+<string id="st_out_sim_9_name">
+    <text>Outskirts: Sector</text>
+</string>
+
+<string id="st_out_smart_controz_name">
+    <text>Chernobyl-1: Entrance to Military Base X-2</text>
+</string>
+<string id="st_out_smart_escape_leaders_name">
+    <text>Outskirts: Path to Leaders at Cordon</text>
+</string>
+<string id="st_out_smart_shturm_name">
+    <text>Chernobyl-1: Road to Military Base X-2</text>
+</string>
+
+<string id="st_out_smart_terrain_1_name">
+    <text>Chernobyl-1: Northern Stalker Base</text>
+</string>
+<string id="st_out_smart_terrain_2_name">
+    <text>Outskirts</text>
+</string>
+<string id="st_out_smart_terrain_3_name">
+    <text>Chernobyl-1: Duty Camp</text>
+</string>
+<string id="st_out_smart_terrain_4_name">
+    <text>Chernobyl-1: Shelter Camp</text>
+</string>
+<string id="st_out_smart_terrain_5_name">
+    <text>Chernobyl-1: Military Base X-2</text>
+</string>
+
+<string id="st_out_sokol_name">
+    <text>Outskirts: Sokol</text>
+</string>
+
+<string id="st_out_stalker_bar_name">
+    <text>Outskirts: Stalker Bar</text>
+</string>
+
+<string id="st_out_start_controller_name">
+    <text>Chernobyl-1: Road from Predbannik</text>
+</string>
+
+<string id="st_out_start_skyff_name">
+    <text>Outskirts: Skif Start</text>
+</string>
+
+<string id="st_out_technik_smart_name">
+    <text>Outskirts: Technician Area</text>
+</string>
+
+<string id="st_out_trader_bar_name">
+    <text>Outskirts: Bar Trader</text>
+</string>
+
+<string id="st_out_vintorez_name">
+    <text>Outskirts: Vintorez</text>
+</string>
+
+<string id="st_out_walking_dead_name">
+    <text>Outskirts: Walking Dead</text>
+</string>
+
+<string id="st_out_wounded_actor_name">
+    <text>Outskirts: Wounded Actor</text>
+</string>
+
+<string id="st_out_wounded_kv_2_name">
+    <text>Chernobyl-1: Crossroad</text>
+</string>
+
+<string id="st_out_zdanie_kgb_name">
+    <text>Chernobyl-1: KGB Building</text>
+</string>
+
+<string id="st_p26_smart_terrain_name">
+    <text>Position P26</text>
+</string>
+<string id="st_p27_smart_terrain_name">
+    <text>Position P27</text>
+</string>
+
+<string id="st_pas_b400_canalisation_name">
+    <text>Pripyat-1 Pipeline: Sewers</text>
+</string>
+<string id="st_pas_b400_downstairs_name">
+    <text>Pripyat-1 Pipeline: Stairs</text>
+</string>
+<string id="st_pas_b400_elevator_name">
+    <text>Pripyat-1 Pipeline: Elevator</text>
+</string>
+<string id="st_pas_b400_fake_name">
+    <text>Pripyat-1 Pipeline: “Pripyat-1”</text>
+</string>
+<string id="st_pas_b400_hall_name">
+    <text>Pripyat-1 Pipeline: Hall</text>
+</string>
+<string id="st_pas_b400_track_name">
+    <text>Pripyat-1 Pipeline: Abandoned Vehicles</text>
+</string>
+<string id="st_pas_b400_tunnel_name">
+    <text>Pripyat-1 Pipeline: Tunnel</text>
+</string>
+<string id="st_pas_b400_way_name">
+    <text>Pripyat-1 Pipeline: Corridors</text>
+</string>
+
+<string id="st_pol_sim_1_name">
+    <text>Clearing: Factory Yard</text>
+</string>
+<string id="st_pol_smart_terrain_1_1_name">
+    <text>Clearing: Crossroads</text>
+</string>
+<string id="st_pol_smart_terrain_1_2_name">
+    <text>Clearing: Canteen</text>
+</string>
+<string id="st_pol_smart_terrain_1_3_name">
+    <text>Clearing: Bandit Camp</text>
+</string>
+<string id="st_pol_smart_terrain_1_4_name">
+    <text>Clearing</text>
+</string>
+   <string id="st_pol_smart_terrain_1_5_name">
+    <text>Clearing: Lonely House</text>
+</string>
+<string id="st_pol_smart_terrain_2_1_name">
+    <text>Clearing: Factory Administration</text>
+</string>
+<string id="st_pol_smart_terrain_2_2_name">
+    <text>Clearing: Factory Workshops</text>
+</string>
+<string id="st_pol_smart_terrain_2_3_name">
+    <text>Clearing</text>
+</string>
+<string id="st_pol_smart_terrain_zombie_yard_name">
+    <text>Clearing: Yard</text>
+</string>
+
+<string id="st_posug_1_name">
+    <text>Southern Settlement: Clearing Beyond the Swamp</text>
+</string>
+<string id="st_posug_10_name">
+    <text>Southern Settlement: Dead Clearing</text>
+</string>
+<string id="st_posug_11_name">
+    <text>Southern Settlement: Hill by the Substation</text>
+</string>
+<string id="st_posug_12_name">
+    <text>Southern Settlement: Swamp Shore</text>
+</string>
+<string id="st_posug_13_name">
+    <text>Southern Settlement: School</text>
+</string>
+<string id="st_posug_14_name">
+    <text>Southern Settlement: Kindergarten</text>
+</string>
+<string id="st_posug_15_name">
+    <text>Southern Settlement: House near Kindergarten</text>
+</string>
+<string id="st_posug_16_name">
+    <text>Southern Settlement: Pharmacy</text>
+</string>
+<string id="st_posug_17_name">
+    <text>Southern Settlement: House on the Hill</text>
+</string>
+<string id="st_posug_18_name">
+    <text>Southern Settlement: Cultural Center “Southern”</text>
+</string>
+<string id="st_posug_19_name">
+    <text>Southern Settlement: Private Sector</text>
+</string>
+<string id="st_posug_20_name">
+    <text>Southern Settlement: Abandoned Gas Station</text>
+</string>
+<string id="st_posug_21_name">
+    <text>Southern Settlement: Book Store</text>
+</string>
+<string id="st_posug_22_name">
+    <text>Southern Settlement: Main Alley</text>
+</string>
+<string id="st_posug_23_name">
+    <text>Southern Settlement: Park</text>
+</string>
+<string id="st_posug_24_name">
+    <text>Southern Settlement: Old Barracks</text>
+</string>
+<string id="st_posug_25_name">
+    <text>Southern Settlement: Clearing by the Southern Road</text>
+</string>
+<string id="st_posug_26_name">
+    <text>Southern Settlement: Dead Hills</text>
+</string>
+<string id="st_posug_27_name">
+    <text>Southern Settlement: Northern Private Sector</text>
+</string>
+<string id="st_posug_28_name">
+    <text>Southern Settlement: Intersection Between Yards</text>
+</string>
+<string id="st_posug_29_name">
+    <text>Southern Settlement: Residential House near Park</text>
+</string>
+<string id="st_posug_30_name">
+    <text>Southern Settlement: Administrative Buildings</text>
+</string>
+<string id="st_posug_31_name">
+    <text>Southern Settlement: Inner Yard with Garages</text>
+</string>
+<string id="st_posug_32_name">
+    <text>Southern Settlement: Quiet Hills</text>
+</string>
+<string id="st_posug_33_name">
+    <text>Southern Settlement: Warehouse Area</text>
+</string>
+<string id="st_posug_34_name">
+    <text>Southern Settlement: Sinister District</text>
+</string>
+<string id="st_posug_35_name">
+    <text>Southern Settlement: Car Repair Workshop</text>
+</string>
+<string id="st_posug_36_name">
+    <text>Southern Settlement: Eastern Private Sector</text>
+</string>
+<string id="st_posug_37_name">
+    <text>Southern Settlement: Edge Clearing</text>
+</string>
+<string id="st_posug_4_name">
+    <text>Southern Settlement: Cattle Yard</text>
+</string>
+<string id="st_posug_5_name">
+    <text>Southern Settlement: Wild Grove</text>
+</string>
+<string id="st_posug_6_name">
+    <text>Southern Settlement: Canyon Camp</text>
+</string>
+<string id="st_posug_7_name">
+    <text>Southern Settlement: Garages</text>
+</string>
+<string id="st_posug_8_name">
+    <text>Southern Settlement: House near Garages</text>
+</string>
+<string id="st_posug_9_name">
+    <text>Southern Settlement: Residential Quarter</text>
+</string>
+
+<string id="st_posug_sim_1_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_10_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_11_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_12_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_13_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_14_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_15_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_16_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_17_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_18_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_19_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_2_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_20_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_3_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_4_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_5_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_6_name">
+    <text>Subterrane: Sector</text>
+</string>
+ <string id="st_posug_sim_7_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_8_name">
+    <text>Subterrane: Sector</text>
+</string>
+<string id="st_posug_sim_9_name">
+    <text>Subterrane: Sector</text>
+</string>
+
+<string id="st_pre_bar_name">
+    <text>Pre-Zone: Bar</text>
+</string>
+<string id="st_pre_baza1_name">
+    <text>Pre-Zone: Military Base Entrance</text>
+</string>
+<string id="st_pre_baza2_name">
+    <text>Pre-Zone: Military Base</text>
+</string>
+<string id="st_pre_lair1_name">
+    <text>Pre-Zone: Lair 1</text>
+</string>
+<string id="st_pre_lair2_name">
+    <text>Pre-Zone: Second Lair</text>
+</string>
+<string id="st_pre_lair3_name">
+    <text>Pre-Zone: Third Lair</text>
+</string>
+<string id="st_pre_master_roman_name">
+    <text>Pre-Zone: Military Hangar</text>
+</string>
+<string id="st_pre_sim_1_name">
+    <text>Pre-Zone: Northern Checkpoint</text>
+</string>
+<string id="st_pre_sim_10_name">
+    <text>Pre-Zone: Anomaly “Butcher”</text>
+</string>
+<string id="st_pre_sim_11_name">
+    <text>Pre-Zone: Entrance to Helicopter Pad</text>
+</string>
+<string id="st_pre_sim_12_name">
+    <text>Pre-Zone: Military Helicopter Pad</text>
+</string>
+<string id="st_pre_sim_2_name">
+    <text>Pre-Zone: Hidden Stash</text>
+</string>
+<string id="st_pre_sim_3_name">
+    <text>Pre-Zone: Frog Village</text>
+</string>
+<string id="st_pre_sim_4_name">
+    <text>Pre-Zone: Dangerous Camp</text>
+</string>
+<string id="st_pre_sim_5_name">
+    <text>Pre-Zone: Toxic Oasis</text>
+</string>
+<string id="st_pre_sim_6_name">
+    <text>Pre-Zone: Shop “Goods”</text>
+</string>
+<string id="st_pre_sim_7_name">
+    <text>Pre-Zone: Tunnel Entrance</text>
+</string>
+<string id="st_pre_sim_8_name">
+    <text>Pre-Zone: Northwest Village Area</text>
+</string>
+<string id="st_pre_sim_9_name">
+    <text>Pre-Zone: Northern Shack</text>
+</string>
+<string id="st_pre_zavod_name">
+    <text>Pre-Zone: Eastern Factory</text>
+</string>
+
+<string id="st_pri_a15_documents_name">
+    <text>Pripyat: Documents</text>
+</string>
+<string id="st_pri_a15_name">
+    <text>Pripyat Outskirts: Entrance to the Pipeline</text>
+</string>
+
+<string id="st_pri_a15_wpn_ak74_name">
+    <text>Pripyat: AK-74</text>
+</string>
+<string id="st_pri_a15_wpn_ak74_unstrapped_name">
+    <text>Pripyat: AK-74 (No Sling)</text>
+</string>
+<string id="st_pri_a15_wpn_ak74u_name">
+    <text>Pripyat: AKS-74U</text>
+</string>
+<string id="st_pri_a15_wpn_ak74u_unstrapped_name">
+    <text>Pripyat: AKS-74U (No Sling)</text>
+</string>
+<string id="st_pri_a15_wpn_svu_name">
+    <text>Pripyat: SVU Rifle</text>
+</string>
+<string id="st_pri_a15_wpn_svu_unstrapped_name">
+    <text>Pripyat: SVU Rifle (No Sling)</text>
+</string>
+<string id="st_pri_a15_wpn_wincheaster1300_name">
+    <text>Pripyat: Winchester 1300 Shotgun</text>
+</string>
+<string id="st_pri_a15_wpn_wincheaster1300_unstrapped_name">
+    <text>Pripyat: Winchester 1300 Shotgun (No Sling)</text>
+</string>
+
+<string id="st_pri_a16_mlr_copy_name">
+    <text>Pripyat: Laundry Entrance</text>
+</string>
+<string id="st_pri_a16_name">
+    <text>Pripyat Outskirts: Laundry</text>
+</string>
+<string id="st_pri_a17_name">
+    <text>Pripyat Outskirts: Hospital</text>
+</string>
+<string id="st_pri_a18_smart_terrain_name">
+    <text>Pripyat Outskirts: Bookstore</text>
+</string>
+
+<string id="st_pri_a19_american_experiment_info_name">
+    <text>Notebook on Experiment</text>
+</string>
+<string id="st_pri_a19_lab_x10_info_name">
+    <text>“Rainbow” Emitter – Technical Specs</text>
+</string>
+<string id="st_pri_a19_lab_x16_info_name">
+    <text>Research Documents</text>
+</string>
+<string id="st_pri_a19_lab_x18_info_name">
+    <text>Sample Research Report</text>
+</string>
+<string id="st_pri_a19_lab_x7_info_name">
+    <text>Transfer Order</text>
+</string>
+
+<string id="st_pri_a21_smart_terrain_name">
+    <text>Pripyat Outskirts: Grocery Store</text>
+</string>
+<string id="st_pri_a22_smart_terrain_name">
+    <text>Pripyat Outskirts: Passage Between Buildings</text>
+</string>
+
+<string id="st_pri_a25_explosive_charge_descr_name">
+    <text>Pripyat: Explosives Description</text>
+</string>
+<string id="st_pri_a25_explosive_charge_item_name">
+    <text>Pripyat: Explosive Charge</text>
+</string>
+<string id="st_pri_a25_explosive_gift_name">
+    <text>Pripyat: Explosive Gift</text>
+</string>
+<string id="st_pri_a25_explosive_name_name">
+    <text>Pripyat: Explosive Name</text>
+</string>
+
+<string id="st_pri_a25_name">
+    <text>Pripyat</text>
+</string>
+
+<string id="st_pri_a25_smart_terrain_name">
+    <text>Pripyat Outskirts: Kindergarten</text>
+</string>
+
+<string id="st_pri_a28_arch_name">
+    <text>Pripyat Outskirts: Building Arch</text>
+</string>
+<string id="st_pri_a28_base_name">
+    <text>Pripyat Outskirts: Yard in Front of Laundry</text>
+</string>
+<string id="st_pri_a28_evac_name">
+    <text>Pripyat Outskirts: High-Rise Building</text>
+</string>
+<string id="st_pri_a28_heli_name">
+    <text>Pripyat Outskirts: Cinema Square</text>
+</string>
+<string id="st_pri_a28_school_name">
+    <text>Pripyat Outskirts: School Yard</text>
+</string>
+<string id="st_pri_a28_shop_name">
+    <text>Pripyat Outskirts: Beriozka Store</text>
+</string>
+
+<string id="st_pri_b301_name">
+    <text>Pripyat Outskirts: School</text>
+</string>
+<string id="st_pri_b302_name">
+    <text>Pripyat Outskirts: Stash</text>
+</string>
+<string id="st_pri_b303_name">
+    <text>Pripyat Outskirts: Old KBO</text>
+</string>
+<string id="st_pri_b304_monsters_smart_terrain_name">
+    <text>Pripyat Outskirts: Department Store</text>
+</string>
+<string id="st_pri_b305_dogs_name">
+    <text>Pripyat Outskirts: Dormitory Backyard</text>
+</string>
+<string id="st_pri_b306_envoy_pda_name">
+    <text>Batchuk’s PDA</text>
+</string>
+<string id="st_pri_b306_name">
+    <text>Pripyat Outskirts: KBO “Yubileiny”</text>
+</string>
+<string id="st_pri_b307_name">
+    <text>Pripyat Outskirts: Anomaly “Volcano”</text>
+</string>
+
+<string id="st_pri_b35_lab_x8_key_name">
+    <text>Red Keycard – “X8”</text>
+</string>
+<string id="st_pri_b35_mercs_name">
+    <text>Pripyat Outskirts: Dormitory</text>
+</string>
+   <string id="st_pri_b35_military_name">
+    <text>Pripyat Outskirts: Porch</text>
+</string>
+<string id="st_pri_b36_monolith_hiding_place_pda_name">
+    <text>Monolith Fighter PDA</text>
+</string>
+<string id="st_pri_b36_smart_terrain_name">
+    <text>Pripyat Outskirts: River Port</text>
+</string>
+
+<string id="st_pri_depot_name">
+    <text>Pripyat: Bus Station</text>
+</string>
+<string id="st_pri_followers_name">
+    <text>Pripyat: Escort</text>
+</string>
+<string id="st_pri_monolith_name">
+    <text>Pripyat: DK “Energetik”</text>
+</string>
+
+<string id="st_pri_sim_1_name">
+    <text>Pripyat Outskirts: Cinema “Prometey”</text>
+</string>
+<string id="st_pri_sim_10_name">
+    <text>Pripyat Outskirts: Devil’s Road</text>
+</string>
+<string id="st_pri_sim_11_name">
+    <text>Pripyat Outskirts: Unguarded Camp</text>
+</string>
+<string id="st_pri_sim_12_name">
+    <text>Pripyat Outskirts: Mutant Lair</text>
+</string>
+<string id="st_pri_sim_2_name">
+    <text>Pripyat Outskirts: Dead Road</text>
+</string>
+<string id="st_pri_sim_3_name">
+    <text>Pripyat Outskirts: Playground</text>
+</string>
+<string id="st_pri_sim_4_name">
+    <text>Pripyat Outskirts: Railway Station</text>
+</string>
+<string id="st_pri_sim_5_name">
+    <text>Pripyat Outskirts: Friendship of Peoples Street</text>
+</string>
+<string id="st_pri_sim_6_name">
+    <text>Pripyat Outskirts: Hospital Alley</text>
+</string>
+<string id="st_pri_sim_7_name">
+    <text>Pripyat Outskirts: Lonely Corner</text>
+</string>
+<string id="st_pri_sim_8_name">
+    <text>Pripyat Outskirts: Dog Lair</text>
+</string>
+<string id="st_pri_sim_9_name">
+    <text>Pripyat Outskirts: Camp by the Substation</text>
+</string>
+
+<string id="st_pri_smart_bloodsucker_lair1_name">
+    <text>Pripyat: Old Shop</text>
+</string>
+<string id="st_pri_smart_controler_lair1_name">
+    <text>Pripyat: Deserted Building</text>
+</string>
+<string id="st_pri_smart_controler_lair2_name">
+    <text>Pripyat: Rusted Buses</text>
+</string>
+
+<string id="st_pri_smart_dolg_stalker1_name">
+    <text>Pripyat: Duty Outpost</text>
+</string>
+<string id="st_pri_smart_freedom_stalker1_name">
+    <text>Pripyat: Freedom Outpost</text>
+</string>
+<string id="st_pri_smart_giant_lair1_name">
+    <text>Pripyat: Avangard Stadium</text>
+</string>
+
+<string id="st_pri_smart_monolith_stalker2_name">
+    <text>Pripyat: Camp</text>
+</string>
+<string id="st_pri_smart_monolith_stalker3_name">
+    <text>Pripyat: Main Road</text>
+</string>
+<string id="st_pri_smart_monolith_stalker4_name">
+    <text>Pripyat: Outpost</text>
+</string>
+<string id="st_pri_smart_monolith_stalker6_name">
+    <text>Pripyat: Stadium Entrance</text>
+</string>
+
+<string id="st_pri_smart_monster_lair1_name">
+    <text>Pripyat: Guard Post</text>
+</string>
+<string id="st_pri_smart_neutral_stalker1_name">
+    <text>Pripyat: Burned Camp</text>
+</string>
+<string id="st_pri_smart_pseudodog_lair1_name">
+    <text>Pripyat: Gloomy Camp</text>
+</string>
+<string id="st_pri_smart_snork_lair1_name">
+    <text>Pripyat: Ruins</text>
+</string>
+<string id="st_pri_smart_snork_lair2_name">
+    <text>Pripyat: Lenin Statue</text>
+</string>
+<string id="st_pri_smart_tushkano_lair1_name">
+    <text>Pripyat: Hotel “Polissya”</text>
+</string>
+
+<string id="st_pri_wave7_name">
+    <text>Pripyat: Wave Sector 7</text>
+</string>
+
+<string id="st_pro_smart_1_name">
+    <text>Industrial Zone: Sector</text>
+</string>
+<string id="st_pro_smart_2_name">
+    <text>Proving Ground: Hill Camp</text>
+</string>
+<string id="st_pro_smart_3_name">
+    <text>Proving Ground: Barrier</text>
+</string>
+
+<string id="st_pro_smart_terrain_1_0_name">
+    <text>Industrial Zone</text>
+</string>
+<string id="st_pro_smart_terrain_1_0_quest_name">
+    <text>Proving Ground: Main Entrance to Old Warehouse</text>
+</string>
+<string id="st_pro_smart_terrain_1_1_name">
+    <text>Proving Ground: Old Warehouse</text>
+</string>
+<string id="st_pro_smart_terrain_1_2_name">
+    <text>Proving Ground: Old Warehouse Basement</text>
+</string>
+<string id="st_pro_smart_terrain_2_0_name">
+    <text>Proving Ground: Control Room</text>
+</string>
+<string id="st_pro_smart_terrain_2_1_name">
+    <text>Proving Ground: Reserve</text>
+</string>
+<string id="st_pro_smart_terrain_3_0_name">
+    <text>Proving Ground: Food Storage</text>
+</string>
+<string id="st_pro_smart_terrain_4_0_quest_name">
+    <text>Industrial Zone: Quest Location</text>
+</string>
+<string id="st_pro_smart_terrain_4_1_quest_name">
+    <text>Proving Ground: Tower</text>
+</string>
+
+<string id="st_prom_1_name">
+    <text>Industrial Zone: Factory (West)</text>
+</string>
+<string id="st_prom_10_name">
+    <text>Industrial Zone: Clearing under Hill</text>
+</string>
+<string id="st_prom_11_name">
+    <text>Industrial Zone: Wagon Camp</text>
+</string>
+<string id="st_prom_12_name">
+    <text>Industrial Zone: Gas Station</text>
+</string>
+<string id="st_prom_13_name">
+    <text>Industrial Zone: Radar Camp</text>
+</string>
+<string id="st_prom_14_name">
+    <text>Industrial Zone: Radar Station</text>
+</string>
+<string id="st_prom_15_name">
+    <text>Industrial Zone: Swamp</text>
+</string>
+
+<string id="st_prom_1a_name">
+    <text>Industrial Zone: Factory (West)</text>
+</string>
+<string id="st_prom_1b_name">
+    <text>Industrial Zone: Factory (West)</text>
+</string>
+<string id="st_prom_1c_name">
+    <text>Industrial Zone: Factory (West)</text>
+</string>
+
+<string id="st_prom_2_name">
+    <text>Industrial Zone: Factory (Center)</text>
+</string>
+<string id="st_prom_2a_name">
+    <text>Industrial Zone: Factory (Center)</text>
+</string>
+
+<string id="st_prom_3_name">
+    <text>Industrial Zone: Factory (East)</text>
+</string>
+<string id="st_prom_3a_name">
+    <text>Industrial Zone: Factory (East)</text>
+</string>
+
+<string id="st_prom_4_name">
+    <text>Industrial Zone: Factory Checkpoint</text>
+</string>
+<string id="st_prom_5_name">
+    <text>Industrial Zone: Backyards</text>
+</string>
+<string id="st_prom_6_name">
+    <text>Industrial Zone: Between Paths</text>
+</string>
+<string id="st_prom_7_name">
+    <text>Industrial Zone: Tunnel</text>
+</string>
+<string id="st_prom_8_name">
+    <text>Industrial Zone: Grove near Station</text>
+</string>
+<string id="st_prom_9_name">
+    <text>Industrial Zone: Southern Station</text>
+</string>
+
+<string id="st_prom_sim_1_name">
+    <text>Industrial Zone: Sector</text>
+</string>
+<string id="st_prom_sim_2_name">
+    <text>Industrial Zone: Sector</text>
+</string>
+<string id="st_prom_sim_3_name">
+    <text>Industrial Zone: Sector</text>
+</string>
+<string id="st_prom_sim_4_name">
+    <text>Industrial Zone: Sector</text>
+</string>
+<string id="st_prom_sim_5_name">
+    <text>Industrial Zone: Sector</text>
+</string>
+<string id="st_prom_sim_6_name">
+    <text>Industrial Zone: Sector</text>
+</string>
+<string id="st_prom_sim_7_name">
+    <text>Industrial Zone: Sector</text>
+</string>
+<string id="st_prom_sim_8_name">
+    <text>Industrial Zone: Sector</text>
+</string>
+<string id="st_prom_sim_9_name">
+    <text>Industrial Zone: Sector</text>
+</string>
+<string id="st_prom_sim_10_name">
+    <text>Industrial Zone: Sector</text>
+</string>
+
+<string id="st_qwe_monster_terrain_1_name">
+    <text>Zone QWE: Mutants 1</text>
+</string>
+<string id="st_qwe_monster_terrain_2_name">
+    <text>Zone QWE: Mutants 2</text>
+</string>
+<string id="st_qwe_monster_terrain_3_name">
+    <text>Zone QWE: Mutants 3</text>
+</string>
+
+<string id="st_qwe_smart_terrain_2_name">
+    <text>Dead Lake: Western Swamp</text>
+</string>
+
+<string id="st_rad_after_tramplin_ambush_name">
+    <text>Radar: Ambush After Trampoline</text>
+</string>
+<string id="st_rad_after_valley_name">
+    <text>Radar: Wrecked Transport</text>
+</string>
+<string id="st_rad_antenna_camper_name">
+    <text>Radar: Entrance to X-10 (X-19)</text>
+</string>
+<string id="st_rad_antenna_monolith_name">
+    <text>Radar: Brain Scorcher</text>
+</string>
+<string id="st_rad_antenna_patrol_name">
+    <text>Radar: Path to the Scorcher</text>
+</string>
+<string id="st_rad_antenna_specnaz_name">
+    <text>Radar: Spec Ops Antenna</text>
+</string>
+<string id="st_rad_bloodsucker_name">
+    <text>Radar: Fence Breach</text>
+</string>
+<string id="st_rad_entrance_name">
+    <text>Radar: Destroyed Checkpoint</text>
+</string>
+   <string id="st_rad_far_road_btr_ambush_name">
+    <text>Radar: APC Ambush on the Distant Road</text>
+</string>
+<string id="st_rad_freedom_vs_duty_name">
+    <text>Radar: Road to Pripyat</text>
+</string>
+<string id="st_rad_prip_road_name">
+    <text>Radar: Concrete Slabs</text>
+</string>
+<string id="st_rad_prip_teleport_name">
+    <text>Radar: Pripyat Teleport</text>
+</string>
+<string id="st_rad_pseudodogs_name">
+    <text>Radar: Helicopter in the Forest</text>
+</string>
+<string id="st_rad_snork1_name">
+    <text>Radar: Camp Under the Cliff</text>
+</string>
+<string id="st_rad_snork2_name">
+    <text>Radar: Passage Between Rocks</text>
+</string>
+<string id="st_rad_valley_dogs_name">
+    <text>Radar: Dog Lair</text>
+</string>
+<string id="st_rad_valley_name">
+    <text>Radar: Abandoned Tank</text>
+</string>
+<string id="st_rad_zombied1_name">
+    <text>Radar: Mutant Lair</text>
+</string>
+<string id="st_rad_zombied2_name">
+    <text>Radar: Gloomy Place</text>
+</string>
+<string id="st_rad2_loner_0000_name">
+    <text>Radar: Outpost</text>
+</string>
+<string id="st_rad2_loner_0001_name">
+    <text>Radar: Checkpoint</text>
+</string>
+<string id="st_rad2_loner_0002_name">
+    <text>Radar: Sandbags</text>
+</string>
+<string id="st_rad2_prip_teleport_name">
+    <text>Radar: Secret Facility</text>
+</string>
+
+<string id="st_red_bridge_ally_smart_name">
+    <text>Red Forest: Allied Bridge Sector</text>
+</string>
+<string id="st_red_bridge_bandit_smart_skirmish_name">
+    <text>Red Forest: Road to Limansk Tunnel</text>
+</string>
+<string id="st_red_central_mine_name">
+    <text>Red Forest: Mines</text>
+</string>
+<string id="st_red_crap_name">
+    <text>Red Forest: Damned Stopping Place</text>
+</string>
+<string id="st_red_dark_yar_name">
+    <text>Red Forest: Dark Ravine</text>
+</string>
+<string id="st_red_smart_terrain_3_1_name">
+    <text>Red Forest: Roadside Camp</text>
+</string>
+<string id="st_red_smart_terrain_3_2_name">
+    <text>Red Forest: Barracks in the Mine</text>
+</string>
+<string id="st_red_smart_terrain_3_3_name">
+    <text>Red Forest: Bloodsucker Lair</text>
+</string>
+<string id="st_red_smart_terrain_4_2_name">
+    <text>Red Forest: Derrick Camp</text>
+</string>
+<string id="st_red_smart_terrain_4_3_name">
+    <text>Red Forest: Dog Camp</text>
+</string>
+<string id="st_red_smart_terrain_4_5_name">
+    <text>Red Forest: Witch Circle</text>
+</string>
+<string id="st_red_smart_terrain_5_5_name">
+    <text>Red Forest: Stalker Hideout</text>
+</string>
+<string id="st_red_smart_terrain_5_6_name">
+    <text>Red Forest: Misty Clearing</text>
+</string>
+<string id="st_red_smart_terrain_6_3_name">
+    <text>Red Forest: Damned Stopping Place</text>
+</string>
+<string id="st_red_smart_terrain_6_6_name">
+    <text>Red Forest: Dark Ravine</text>
+</string>
+<string id="st_red_smart_terrain_bridge_name">
+    <text>Red Forest: Bridge to Limansk</text>
+</string>
+<string id="st_red_smart_terrain_monsters_2_name">
+    <text>Red Forest: Mutant Lair</text>
+</string>
+<string id="st_red_smart_terrain_monsters_3_name">
+    <text>Red Forest: Forest Lair</text>
+</string>
+<string id="st_red_smart_terrain_monsters_name">
+    <text>Red Forest: Dangerous Path</text>
+</string>
+
+<string id="st_ros_smart_bloodsucker1_name">
+    <text>Rostok: Bloodsucker Lair</text>
+</string>
+<string id="st_ros_smart_killers1_name">
+    <text>Rostok Factory: Passage to Wild Territory</text>
+</string>
+<string id="st_ros_smart_monster1_name">
+    <text>Rostok: Mutant Lair</text>
+</string>
+<string id="st_ros_smart_monster2_name">
+    <text>Rostok: Mutant Lair</text>
+</string>
+<string id="st_ros_smart_monster4_name">
+    <text>Rostok Factory: Train</text>
+</string>
+<string id="st_ros_smart_monster5_name">
+    <text>Rostok Factory: Collapsed Tunnel</text>
+</string>
+<string id="st_ros_smart_monster6_name">
+    <text>Rostok: Mutant Lair</text>
+</string>
+<string id="st_ros_smart_monster7_name">
+    <text>Rostok Factory: Tunnel with “Burners”</text>
+</string>
+<string id="st_ros_smart_monster8_name">
+    <text>Rostok: Mutant Lair</text>
+</string>
+<string id="st_ros_smart_poltergeist1_name">
+    <text>Rostok: Poltergeist Lair</text>
+</string>
+<string id="st_ros_smart_poltergeist2_name">
+    <text>Rostok Factory: Railway Station</text>
+</string>
+<string id="st_ros_smart_snork1_name">
+    <text>Rostok Factory: Radioactive Shelter</text>
+</string>
+<string id="st_ros_smart_stalker_bandits1_name">
+    <text>Rostok: Bandit Camp near Stalkers</text>
+</string>
+<string id="st_ros_smart_stalker_killers1_name">
+    <text>Rostok Factory: Construction Site</text>
+</string>
+<string id="st_ros_smart_stalker1_name">
+    <text>Rostok Factory: Building Materials</text>
+</string>
+<string id="st_ros_smart_stalker2_name">
+    <text>Rostok: Stalker Camp</text>
+</string>
+<string id="st_ros_smart_stalker3_name">
+    <text>Rostok: Stalker Camp</text>
+</string>
+
+<string id="st_rosf_bloodsucker_construction_terrain_name">
+    <text>Rostok Factory: Bloodsucker Construction Site</text>
+</string>
+<string id="st_rosf_duty_bloodsucker_terrain_name">
+    <text>Rostok Factory: Duty Outpost near Bloodsucker Lair</text>
+</string>
+<string id="st_rosf_duty_construction_terrain_name">
+    <text>Metallurgical Plant: Construction Site</text>
+</string>
+<string id="st_rosf_duty_hq_name">
+    <text>Metallurgical Plant: Hotel</text>
+</string>
+<string id="st_rosf_duty_village_name">
+    <text>Metallurgical Plant: Village</text>
+</string>
+<string id="st_rosf_eco_tunnel_name">
+    <text>Metallurgical Plant: Tunnel</text>
+</string>
+<string id="st_rosf_factory_bandit_terrain_name">
+    <text>Rostok Factory: Bandit Base in the Factory</text>
+</string>
+<string id="st_rosf_factory_boar_terrain1_name">
+    <text>Rostok Factory: Boar Area 1</text>
+</string>
+<string id="st_rosf_factory_dog_terrain1_name">
+    <text>Rostok Factory: Dog Area 1</text>
+</string>
+<string id="st_rosf_factory_dog_terrain2_name">
+    <text>Rostok Factory: Dog Area 2</text>
+</string>
+<string id="st_rosf_loner_group1_name">
+    <text>Metallurgical Plant: “Goods” Shop</text>
+</string>
+<string id="st_rosf_loner_group2_name">
+    <text>Metallurgical Plant: Passage</text>
+</string>
+<string id="st_rosf_loner_group3_name">
+    <text>Rostok Factory: Loner Group 3</text>
+</string>
+<string id="st_rosf_military_blokpost_name">
+    <text>Metallurgical Plant: Military Checkpoint</text>
+</string>
+
+<string id="st_rosf_sim_1_name">
+    <text>Metallurgical Plant: Courtyard</text>
+</string>
+<string id="st_rosf_sim_10_name">
+    <text>Rostok Factory: Sector</text>
+</string>
+<string id="st_rosf_sim_2_name">
+    <text>Rostok Factory: Sector</text>
+</string>
+<string id="st_rosf_sim_3_name">
+    <text>Rostok Factory: Sector</text>
+</string>
+<string id="st_rosf_sim_4_name">
+    <text>Rostok Factory: Sector</text>
+</string>
+<string id="st_rosf_sim_5_name">
+    <text>Metallurgical Plant: Entrance</text>
+</string>
+<string id="st_rosf_sim_6_name">
+    <text>Rostok Factory: Sector</text>
+</string>
+<string id="st_rosf_sim_7_name">
+    <text>Metallurgical Plant: Anomaly “Electrical Substation”</text>
+</string>
+<string id="st_rosf_sim_8_name">
+    <text>Rostok Factory: Sector</text>
+</string>
+<string id="st_rosf_sim_9_name">
+    <text>Rostok Factory: Sector</text>
+</string>
+<string id="st_rosf_sucker_scene_terrain_name">
+    <text>Rostok Factory: Bloodsucker Lair</text>
+</string>
+
+<string id="st_sad_atr_name">
+    <text>Valley of Whispers: Courtyard</text>
+</string>
+<string id="st_sad_b1_name">
+    <text>Valley of Whispers: Stalker Camp</text>
+</string>
+<string id="st_sad_b2_name">
+    <text>Valley of Whispers: Northern Base</text>
+</string>
+<string id="st_sad_b2_stalker_barman_name">
+    <text>Valley of Whispers: Stalker Bartender</text>
+</string>
+<string id="st_sad_b2_stalker_tech_name">
+    <text>Valley of Whispers: Stalker Technician</text>
+</string>
+<string id="st_sad_b3_name">
+    <text>Valley of Whispers: Container Warehouse</text>
+</string>
+<string id="st_sad_b3_technic_name">
+    <text>Valley of Whispers: Technician</text>
+</string>
+<string id="st_sad_b3_trader_name">
+    <text>Valley of Whispers: Trader</text>
+</string>
+<string id="st_sad_b3a_name">
+    <text>Valley of Whispers: Entrance to Container Warehouse</text>
+</string>
+<string id="st_sad_b4_name">
+    <text>Valley of Whispers: Eastern Base</text>
+</string>
+<string id="st_sad_ban_name">
+    <text>Valley of Whispers: Anomaly “House on Fire”</text>
+</string>
+<string id="st_sad_cave_name">
+    <text>Valley of Whispers: Cave</text>
+</string>
+<string id="st_sad_oasis_name">
+    <text>Valley of Whispers: Oasis</text>
+</string>
+<string id="st_sad_psi_cave_name">
+    <text>Valley of Whispers: Psi Cave</text>
+</string>
+<string id="st_sad_ran_name">
+    <text>Valley of Whispers: Western Base</text>
+</string>
+<string id="st_sad_sher_name">
+    <text>Valley of Whispers: Resting Place</text>
+</string>
+<string id="st_sad_sim_1_name">
+    <text>Valley of Whispers: Psi Swamp Anomaly</text>
+</string>
+<string id="st_sad_sim_10_name">
+    <text>Valley of Whispers: Sector</text>
+</string>
+  <string id="st_sad_sim_11_name">
+    <text>Valley of Whispers: Sector</text>
+</string>
+<string id="st_sad_sim_12_name">
+    <text>Valley of Whispers: Sector</text>
+</string>
+<string id="st_sad_sim_13_name">
+    <text>Valley of Whispers: Sector</text>
+</string>
+<string id="st_sad_sim_14_name">
+    <text>Valley of Whispers: Guarded Rest Area</text>
+</string>
+<string id="st_sad_sim_15_name">
+    <text>Valley of Whispers: Anomaly “Gravitational Cracks”</text>
+</string>
+<string id="st_sad_sim_16_name">
+    <text>Valley of Whispers: Anomaly “Phenomenon”</text>
+</string>
+<string id="st_sad_sim_17_name">
+    <text>Valley of Whispers: Anomaly “Rustle”</text>
+</string>
+<string id="st_sad_sim_18_name">
+    <text>Valley of Whispers: Anomaly “Meat Grinder”</text>
+</string>
+<string id="st_sad_sim_19_name">
+    <text>Valley of Whispers: Sector</text>
+</string>
+<string id="st_sad_sim_2_name">
+    <text>Valley of Whispers: Sector</text>
+</string>
+<string id="st_sad_sim_20_name">
+    <text>Valley of Whispers: Sector</text>
+</string>
+<string id="st_sad_sim_21_name">
+    <text>Valley of Whispers: Anomaly “Acid Circle”</text>
+</string>
+<string id="st_sad_sim_22_name">
+    <text>Valley of Whispers: Sector</text>
+</string>
+<string id="st_sad_sim_23_name">
+    <text>Valley of Whispers: Car</text>
+</string>
+<string id="st_sad_sim_24_name">
+    <text>Valley of Whispers: Sector</text>
+</string>
+<string id="st_sad_sim_3_name">
+    <text>Valley of Whispers: Sector</text>
+</string>
+<string id="st_sad_sim_4_name">
+    <text>Valley of Whispers: Sector</text>
+</string>
+<string id="st_sad_sim_5_name">
+    <text>Valley of Whispers: Sector</text>
+</string>
+<string id="st_sad_sim_6_name">
+    <text>Valley of Whispers: Anomaly “Gravitational Burner”</text>
+</string>
+<string id="st_sad_sim_7_name">
+    <text>Valley of Whispers: Sector</text>
+</string>
+<string id="st_sad_sim_8_name">
+    <text>Valley of Whispers: Soviet Helicopter</text>
+</string>
+<string id="st_sad_sim_9_name">
+    <text>Valley of Whispers: Anomaly “Fire Tree”</text>
+</string>
+<string id="st_sad_start_name">
+    <text>Valley of Whispers: Anomaly “Fire Symbiont”</text>
+</string>
+
+<string id="st_sar_monolith_bloodsuckers_name">
+    <text>Sarcophagus: Control Center</text>
+</string>
+<string id="st_sar_monolith_general_name">
+    <text>Sarcophagus: Sarcophagus</text>
+</string>
+<string id="st_sar_monolith_guard_name">
+    <text>Sarcophagus: Rest Room</text>
+</string>
+<string id="st_sar_monolith_poltergeists_name">
+    <text>Sarcophagus: Cooling System</text>
+</string>
+<string id="st_sar_monolith_sklad_name">
+    <text>Sarcophagus: Storage</text>
+</string>
+<string id="st_sar_monolith_zombies_name">
+    <text>Sarcophagus: Emergency Exit</text>
+</string>
+
+<string id="st_scf_av_1_name">
+    <text>Scientific Station: Aviation 1</text>
+</string>
+<string id="st_scf_n1_name">
+    <text>Scientific Station</text>
+</string>
+<string id="st_scf_n16_name">
+    <text>Scientific Station</text>
+</string>
+
+<string id="st_scf_sim_1_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_10_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_11_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_12_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_13_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_14_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_15_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_16_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_17_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_18_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_19_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_2_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_20_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_21_name">
+    <text>Scientific Station: Sector</text>
+</string>
+  <string id="st_scf_sim_22_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_23_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_24_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_25_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_26_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_27_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_28_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_29_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_3_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_30_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_31_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_32_name">
+    <text>Scientific Station: Sector</text>
+</string>
+
+<string id="st_scf_sim_4_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_5_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_6_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_7_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_8_name">
+    <text>Scientific Station: Sector</text>
+</string>
+<string id="st_scf_sim_9_name">
+    <text>Scientific Station: Sector</text>
+</string>
+
+<string id="st_scf_v1_name">
+    <text>Scientific Station</text>
+</string>
+
+<string id="st_secret_bloodsucker_terrain_name">
+    <text>Secret Facility: Bloodsucker Lair</text>
+</string>
+
+<string id="st_secret_rats_terrain_name">
+    <text>Secret Facility: Rat Lair</text>
+</string>
+<string id="st_secret_rats_terrain2_name">
+    <text>Secret Facility: Rat Lair</text>
+</string>
+<string id="st_secret_rats_terrain3_name">
+    <text>Secret Facility: Rat Lair</text>
+</string>
+<string id="st_secret_rats_terrain4_name">
+    <text>Secret Facility: Rat Lair</text>
+</string>
+<string id="st_secret_rats_terrain5_name">
+    <text>Secret Facility: Rat Lair</text>
+</string>
+<string id="st_secret_rats_terrain6_name">
+    <text>Secret Facility: Rat Lair</text>
+</string>
+<string id="st_secret_rats_terrain7_name">
+    <text>Secret Facility: Rat Lair</text>
+</string>
+
+<string id="st_secret_zombie_terrain_name">
+    <text>Secret Facility: Zombie Lair</text>
+</string>
+
+<string id="st_svalk_antena_smart_terrain_name">
+    <text>Eastern Junkyard: Antenna</text>
+</string>
+<string id="st_svalk_depo_smart_terrain_name">
+    <text>Eastern Junkyard: Eastern Depot</text>
+</string>
+<string id="st_svalk_digger_smart_terrain_name">
+    <text>Eastern Junkyard: Excavator Parking Area</text>
+</string>
+<string id="st_svalk_konteyneri_smart_terrain_name">
+    <text>Eastern Junkyard: Eastern Flea Market</text>
+</string>
+<string id="st_svalk_kpp_smart_terrain_name">
+    <text>Eastern Junkyard: Southern Checkpoint</text>
+</string>
+<string id="st_svalk_kpp2_smart_terrain_name">
+    <text>Eastern Junkyard: Northern Duty Checkpoint</text>
+</string>
+<string id="st_svalk_perekrestok_smart_terrain_name">
+    <text>Eastern Junkyard: Crossroads</text>
+</string>
+<string id="st_svalk_piron_smart_terrain_name">
+    <text>Eastern Junkyard: Pylon</text>
+</string>
+<string id="st_svalk_sim_10_name">
+    <text>Eastern Junkyard: Junkyard Sector</text>
+</string>
+
+<string id="st_swamp_bandit_terrain1_name">
+    <text>Eastern Swamps: Hut</text>
+</string>
+<string id="st_swamp_bloodsucker_terrain1_name">
+    <text>Swamps: Bloodsucker Lair</text>
+</string>
+<string id="st_swamp_bloodsucker_terrain2_name">
+    <text>Swamps: Bloodsucker Lair</text>
+</string>
+<string id="st_swamp_boar_terrain1_name">
+    <text>Eastern Swamps: Ruined House</text>
+</string>
+<string id="st_swamp_boar_terrain2_name">
+    <text>Swamps: Boar Lair</text>
+</string>
+<string id="st_swamp_boar_terrain3_name">
+    <text>Eastern Swamps: Tuzla</text>
+</string>
+<string id="st_swamp_doc_terrain_name">
+    <text>Eastern Swamps: Swamp Doctor’s Hut</text>
+</string>
+<string id="st_swamp_flesh_terrain1_name">
+    <text>Swamps: Flesh Lair</text>
+</string>
+<string id="st_swamp_poltergeist_terrain1_name">
+    <text>Swamps: Poltergeist Lair</text>
+</string>
+
+<string id="st_swamp_sim_1_name">
+    <text>Eastern Swamps: Tuzla Barracks</text>
+</string>
+<string id="st_swamp_sim_2_name">
+    <text>Eastern Swamps: Manor</text>
+</string>
+
+<string id="st_swamp_swampbeast_terrain1_name">
+    <text>Swamps: Swamp Beast Lair</text>
+</string>
+<string id="st_swamp_swampbeast_terrain2_name">
+    <text>Eastern Swamps: House in the Swamp</text>
+</string>
+<string id="st_swamp_swampbeast_terrain3_name">
+    <text>Swamps: Swamp Beast Lair</text>
+</string>
+<string id="st_swamp_swampbeast_terrain4_name">
+    <text>Swamps: Swamp Beast Lair</text>
+</string>
+<string id="st_swamp_swampbeast_terrain5_name">
+    <text>Eastern Swamps: Anomaly “Call of Pripyat”</text>
+</string>
+<string id="st_swamp_swampbeast_terrain6_name">
+    <text>Swamps: Swamp Beast Lair</text>
+</string>
+<string id="st_swamp_swampbeast_terrain7_name">
+    <text>Swamps: Swamp Beast Lair</text>
+</string>
+   <string id="st_topi_doctor_name">
+    <text>Swamps: Doctor</text>
+</string>
+<string id="st_topi_sim_mut_1_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_10_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_11_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_12_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_13_name">
+    <text>Swamps: South-Western Forest</text>
+</string>
+<string id="st_topi_sim_mut_14_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_15_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_16_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_17_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_18_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_19_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_2_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_20_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_21_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_22_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_23_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_24_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_25_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_26_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_27_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_28_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_29_name">
+    <text>Swamps: Abandoned Farm</text>
+</string>
+<string id="st_topi_sim_mut_3_name">
+    <text>Swamps: North-Western Forest</text>
+</string>
+<string id="st_topi_sim_mut_30_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_31_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_32_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_33_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_34_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_35_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_36_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_37_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_38_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_39_name">
+    <text>Swamps: Temporary Camp</text>
+</string>
+<string id="st_topi_sim_mut_4_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_40_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_5_name">
+    <text>Swamps: Helicopter in the Forest</text>
+</string>
+<string id="st_topi_sim_mut_6_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_7_name">
+    <text>Swamps: South-Eastern Forest</text>
+</string>
+<string id="st_topi_sim_mut_8_name">
+    <text>Swamps: Mutant Lair</text>
+</string>
+<string id="st_topi_sim_mut_9_name">
+    <text>Swamps: North-Eastern Forest</text>
+</string>
+
+<string id="st_topi_sim_nps_1_name">
+    <text>Swamps: NPC Meeting Point</text>
+</string>
+<string id="st_topi_sim_nps_2_name">
+    <text>Swamps: NPC Meeting Point</text>
+</string>
+<string id="st_topi_sim_nps_3_name">
+    <text>Swamps: Chemical Anomaly</text>
+</string>
+<string id="st_topi_sim_nps_4_name">
+    <text>Swamps: NPC Meeting Point</text>
+</string>
+<string id="st_topi_sim_nps_5_name">
+    <text>Swamps: NPC Meeting Point</text>
+</string>
+<string id="st_topi_sim_nps_6_name">
+    <text>Swamps: NPC Meeting Point</text>
+</string>
+<string id="st_topi_sim_nps_7_name">
+    <text>Swamps: Village</text>
+</string>
+<string id="st_topi_sim_nps_8_name">
+    <text>Swamps: Stalker Base</text>
+</string>
+<string id="st_topi_sim_nps_9_name">
+    <text>Swamps: NPC Meeting Point</text>
+</string>
+
+<string id="st_trc_sim_1_name">
+    <text>Vehicle Graveyard: Observation Post</text>
+</string>
+<string id="st_trc_sim_10_name">
+    <text>Vehicle Graveyard: Forest Rest Stop</text>
+</string>
+<string id="st_trc_sim_11_name">
+    <text>Vehicle Graveyard: Military Vehicles</text>
+</string>
+<string id="st_trc_sim_12_name">
+    <text>Vehicle Graveyard: Forest Shelter</text>
+</string>
+<string id="st_trc_sim_13_name">
+    <text>Vehicle Graveyard: Ravine Meeting Point</text>
+</string>
+<string id="st_trc_sim_14_name">
+    <text>Vehicle Graveyard: Fire Trucks</text>
+</string>
+<string id="st_trc_sim_15_name">
+    <text>Vehicle Graveyard: Crashed Helicopters</text>
+</string>
+<string id="st_trc_sim_16_name">
+    <text>Vehicle Graveyard: Edge of the Junkyard</text>
+</string>
+<string id="st_trc_sim_17_name">
+    <text>Vehicle Graveyard: Radioactive Hills</text>
+</string>
+<string id="st_trc_sim_18_name">
+    <text>Vehicle Graveyard: Central Camp</text>
+</string>
+<string id="st_trc_sim_19_name">
+    <text>Vehicle Graveyard: Trucks</text>
+</string>
+<string id="st_trc_sim_20_name">
+    <text>Vehicle Graveyard: Eastern Checkpoint</text>
+</string>
+<string id="st_trc_sim_21_name">
+    <text>Vehicle Graveyard: Deserted Area</text>
+</string>
+
+<string id="st_trc_sim_2_name">
+    <text>Vehicle Graveyard: Container Camp</text>
+</string>
+<string id="st_trc_sim_3_name">
+    <text>Vehicle Graveyard: Road Fork</text>
+</string>
+<string id="st_trc_sim_4_name">
+    <text>Vehicle Graveyard: Burned House</text>
+</string>
+<string id="st_trc_sim_5_name">
+    <text>Vehicle Graveyard: Crossroads</text>
+</string>
+<string id="st_trc_sim_6_name">
+    <text>Vehicle Graveyard: Watchtower</text>
+</string>
+<string id="st_trc_sim_7_name">
+    <text>Vehicle Graveyard: Forest</text>
+</string>
+<string id="st_trc_sim_8_name">
+    <text>Vehicle Graveyard: Fuel Tankers</text>
+</string>
+<string id="st_trc_sim_9_name">
+    <text>Vehicle Graveyard: Hilltop</text>
+</string>
+
+<string id="st_und_u3_name">
+    <text>Underground</text>
+</string>
+<string id="st_und_u7_name">
+    <text>Underground</text>
+</string>
+<string id="st_und_u8_name">
+    <text>Underground</text>
+</string>
+
+<string id="st_val_a3_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_val_b1_name">
+    <text>Dead Lake: Pool</text>
+</string>
+<string id="st_val_escort_name">
+    <text>Dark Valley: Escort</text>
+</string>
+<string id="st_val_sim_1_name">
+    <text>Dark Valley: Sector</text>
+</string>
+<string id="st_val_sim_12_name">
+    <text>Dead Lake: Western Village</text>
+</string>
+<string id="st_val_sim_4_name">
+    <text>Dead Lake: Northern Checkpoint</text>
+</string>
+<string id="st_val_sim_7_name">
+    <text>Dark Valley: Sector</text>
+</string>
+<string id="st_val_smart_bloodsucker_lair_2_name">
+    <text>Dark Valley: Bloodsucker Lair</text>
+</string>
+   <string id="st_val_smart_monster_lair_6_name">
+    <text>Dark Valley: Mutant Lair</text>
+</string>
+<string id="st_val_smart_monster_lair_8_name">
+    <text>Dark Valley: Mutant Lair</text>
+</string>
+<string id="st_val_smart_terrain_1_2_name">
+    <text>Dark Valley: Factory above X18</text>
+</string>
+<string id="st_val_smart_terrain_3_0_name">
+    <text>Dark Valley: Bridge Barricade</text>
+</string>
+<string id="st_val_smart_terrain_4_0_name">
+    <text>Dark Valley: Farm Stash</text>
+</string>
+<string id="st_val_smart_terrain_5_10_name">
+    <text>Dark Valley: Empty Stash</text>
+</string>
+<string id="st_val_smart_terrain_5_7_name">
+    <text>Dark Valley: Outermost Checkpoint</text>
+</string>
+<string id="st_val_smart_terrain_5_8_name">
+    <text>Dark Valley: Field Camp</text>
+</string>
+<string id="st_val_smart_terrain_6_4_name">
+    <text>Dark Valley: Ruined Stash</text>
+</string>
+<string id="st_val_smart_terrain_6_5_name">
+    <text>Dark Valley: Ravine Camp</text>
+</string>
+<string id="st_val_smart_terrain_7_11_name">
+    <text>Dark Valley: Passage to Dark Hollow</text>
+</string>
+<string id="st_val_smart_terrain_7_3_bandit_mechanic_stalker_name">
+    <text>Dark Valley: Bandit Mechanic</text>
+</string>
+<string id="st_val_smart_terrain_7_3_name">
+    <text>Dark Valley: Hangar</text>
+</string>
+<string id="st_val_smart_terrain_7_4_bandit_trader_stalker_name">
+    <text>Dark Valley: Bandit Trader</text>
+</string>
+<string id="st_val_smart_terrain_7_4_name">
+    <text>Dark Valley: Northern Factory</text>
+</string>
+<string id="st_val_smart_terrain_7_5_name">
+    <text>Dark Valley: Bar</text>
+</string>
+<string id="st_val_smart_terrain_7_6_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_val_smart_terrain_7_8_name">
+    <text>Dark Valley: Swamp Camp</text>
+</string>
+<string id="st_val_smart_terrain_8_6_name">
+    <text>Dark Valley: Northern Barricades</text>
+</string>
+<string id="st_val_smart_terrain_8_7_name">
+    <text>Dark Valley: Stop</text>
+</string>
+<string id="st_val_smart_terrain_8_9_name">
+    <text>Dark Valley: Island</text>
+</string>
+<string id="st_val_smart_terrain_9_10_name">
+    <text>Dark Valley: Rocky Camp</text>
+</string>
+<string id="st_val_smart_terrain_9_2_name">
+    <text>Dark Valley: Upturned Tree</text>
+</string>
+<string id="st_val_smart_terrain_9_4_name">
+    <text>Dark Valley: Gas Station Control Room</text>
+</string>
+<string id="st_val_smart_terrain_9_5_name">
+    <text>Dark Valley</text>
+</string>
+<string id="st_val_smart_terrain_9_6_name">
+    <text>Dark Valley: Old Wagon</text>
+</string>
+<string id="st_val_tushkani_lair_1_name">
+    <text>Dark Valley: Tushkano Lair</text>
+</string>
+
+<string id="st_warlab_common_consciousness_smart_terrain_name">
+    <text>Generators: Military Laboratory</text>
+</string>
+
+<string id="st_wiz_bandits_boloto_name">
+    <text>NIIS Surroundings: Swamp</text>
+</string>
+<string id="st_wiz_bandits_squad_doroga_name">
+    <text>NIIS Surroundings: Road</text>
+</string>
+<string id="st_wiz_baza_name">
+    <text>NIIS Surroundings: Unknown Base</text>
+</string>
+<string id="st_wiz_bivsh_nii_name">
+    <text>NIIS Surroundings: Stalker Base</text>
+</string>
+<string id="st_wiz_derevnya_bandits_name">
+    <text>NIIS Surroundings: Northern Village</text>
+</string>
+<string id="st_wiz_nauch_name">
+    <text>NIIS Surroundings: Stalker Base Courtyard</text>
+</string>
+<string id="st_wiz_sim_1_name">
+    <text>NIIS Surroundings: Tunnel Camp</text>
+</string>
+<string id="st_wiz_sim_10_name">
+    <text>Bubble: Sector</text>
+</string>
+<string id="st_wiz_sim_2_name">
+    <text>NIIS Surroundings: Tunnel</text>
+</string>
+<string id="st_wiz_sim_3_name">
+    <text>NIIS Surroundings: Car Workshop</text>
+</string>
+<string id="st_wiz_sim_4_name">
+    <text>Bubble: Sector</text>
+</string>
+<string id="st_wiz_sim_6_name">
+    <text>NIIS Surroundings: Shop</text>
+</string>
+<string id="st_wiz_sim_7_name">
+    <text>NIIS Surroundings: Anomaly “Electric Circle”</text>
+</string>
+<string id="st_wiz_sim_8_name">
+    <text>NIIS Surroundings: Truck on the Road</text>
+</string>
+<string id="st_wiz_sim_9_name">
+    <text>Bubble: Sector</text>
+</string>
+<string id="st_wiz_stalkers_boloto_name">
+    <text>NIIS Surroundings: Anomaly “Acid Meat Grinder”</text>
+</string>
+<string id="st_wiz_stalkers_derevnya_name">
+    <text>NIIS Surroundings: Southern Village</text>
+</string>
+
+<string id="st_x11_smart_terrain_1_1_name">
+    <text>Laboratory X-11</text>
+</string>
+<string id="st_x11_smart_terrain_1_2_name">
+    <text>Laboratory X-11</text>
+</string>
+<string id="st_x11_smart_terrain_2_1_name">
+    <text>Laboratory X-11</text>
+</string>
+<string id="st_x11_smart_terrain_2_2_name">
+    <text>Laboratory X-11</text>
+</string>
+<string id="st_x11_smart_terrain_3_1_name">
+    <text>Laboratory X-11</text>
+</string>
+<string id="st_x11_smart_terrain_3_2_name">
+    <text>Laboratory X-11</text>
+</string>
+<string id="st_x11_smart_terrain_4_1_name">
+    <text>Laboratory X-11</text>
+</string>
+<string id="st_x11_smart_terrain_4_2_name">
+    <text>Laboratory X-11</text>
+</string>
+
+<string id="st_x162_st_burer_name">
+    <text>Laboratory X-16: Tunnel</text>
+</string>
+<string id="st_x162_st_gigant_name">
+    <text>Laboratory X-16: Generator Room</text>
+</string>
+<string id="st_x162_st_poltergeist_name">
+    <text>Laboratory X-16: Flask Chamber</text>
+</string>
+<string id="st_x162_st_snork_name">
+    <text>Laboratory X-16: Shaft</text>
+</string>
+
+<string id="st_x27_smart_terrain_1_1_name">
+    <text>Laboratory X-27</text>
+</string>
+<string id="st_x27_smart_terrain_2_1_name">
+    <text>Laboratory X-27</text>
+</string>
+<string id="st_x27_smart_terrain_3_1_name">
+    <text>Laboratory X-27</text>
+</string>
+<string id="st_x27_smart_terrain_3_2_name">
+    <text>Laboratory X-27</text>
+</string>
+<string id="st_x27_smart_terrain_3_3_name">
+    <text>Laboratory X-27</text>
+</string>
+<string id="st_x27_smart_terrain_3_4_name">
+    <text>Laboratory X-27</text>
+</string>
+<string id="st_x27_smart_terrain_3_5_name">
+    <text>Laboratory X-27</text>
+</string>
+
+<string id="st_y94_smart_1_name">
+    <text>Object Y-94: Sector</text>
+</string>
+   <string id="st_y94_smart_2_name">
+    <text>Object Y-94: Sector</text>
+</string>
+<string id="st_y94_smart_3_name">
+    <text>Object Y-94: Sector</text>
+</string>
+<string id="st_y94_smart_4_name">
+    <text>Object Y-94: Sector</text>
+</string>
+
+<string id="st_yan_bandit_gastation_terrain_name">
+    <text>Scientific Station: Gas Station</text>
+</string>
+<string id="st_yan_bloodsucker_den_name">
+    <text>Yantar: Bloodsucker Lair</text>
+</string>
+
+<string id="st_yan_boar_terrain_name">
+    <text>Scientific Station: Anomaly “Swamp Sour”</text>
+</string>
+
+<string id="st_yan_dog_terrain1_name">
+    <text>Yantar: Dog Lair</text>
+</string>
+<string id="st_yan_dog_terrain2_name">
+    <text>Scientific Station: Anomaly “Swamp Carousel”</text>
+</string>
+<string id="st_yan_dog_terrain3_name">
+    <text>Yantar: Dog Lair</text>
+</string>
+
+<string id="st_yan_dolg_terrain_name">
+    <text>Scientific Station: Swamp Camp</text>
+</string>
+
+<string id="st_yan_flesh_terrain_name">
+    <text>Yantar: Flesh Lair</text>
+</string>
+
+<string id="st_yan_fort_terrain_name">
+    <text>Scientific Station: Checkpoint</text>
+</string>
+
+<string id="st_yan_rat_terrain1_name">
+    <text>Yantar: Rat Lair</text>
+</string>
+<string id="st_yan_rat_terrain2_name">
+    <text>Scientific Station: Military Hangar</text>
+</string>
+<string id="st_yan_rat_terrain3_name">
+    <text>Scientific Station: Eastern Village</text>
+</string>
+<string id="st_yan_rat_terrain4_name">
+    <text>Yantar: Rat Lair</text>
+</string>
+
+<string id="st_yan_sci_bunker_name">
+    <text>Scientific Station: Mobile Laboratory “Yantar”</text>
+</string>
+
+<string id="st_yan_sim_1_name">
+    <text>Scientific Station: Military House</text>
+</string>
+<string id="st_yan_sim_2_name">
+    <text>Yantar: Sector</text>
+</string>
+
+<string id="st_yan_smart_terrain_1_6_name">
+    <text>Yantar: Distant Outpost</text>
+</string>
+<string id="st_yan_smart_terrain_2_4_name">
+    <text>Yantar: Factory Back Area</text>
+</string>
+<string id="st_yan_smart_terrain_2_5_name">
+    <text>Yantar: Factory Entrance</text>
+</string>
+<string id="st_yan_smart_terrain_3_4_name">
+    <text>Yantar: Hangar</text>
+</string>
+<string id="st_yan_smart_terrain_3_6_name">
+    <text>Yantar: Artifact Lowlands</text>
+</string>
+<string id="st_yan_smart_terrain_4_2_name">
+    <text>Yantar: Upturned Tree</text>
+</string>
+<string id="st_yan_smart_terrain_4_4_name">
+    <text>Yantar: Hilltop</text>
+</string>
+<string id="st_yan_smart_terrain_4_5_name">
+    <text>Yantar: Transformer Booth</text>
+</string>
+<string id="st_yan_smart_terrain_5_3_name">
+    <text>Yantar: Swamp Island</text>
+</string>
+<string id="st_yan_smart_terrain_5_5_name">
+    <text>Yantar: Transit Camp</text>
+</string>
+<string id="st_yan_smart_terrain_5_6_name">
+    <text>Yantar</text>
+</string>
+<string id="st_yan_smart_terrain_6_2_name">
+    <text>Yantar: Swamp Outpost</text>
+</string>
+<string id="st_yan_smart_terrain_6_4_name">
+    <text>Yantar: Scientists’ Camp</text>
+</string>
+
+<string id="st_yan_smart_terrain_for_squad_levsha_name">
+    <text>Yantar: Levsha Squad Location</text>
+</string>
+
+<string id="st_yan_smart_terrain_snork_u_name">
+    <text>Yantar: Snork Lair</text>
+</string>
+
+<string id="st_yan_smart_terrain_zombi_in_sci_base1_name">
+    <text>Yantar: Zombies near Science Base 1</text>
+</string>
+<string id="st_yan_smart_terrain_zombi_in_sci_base3_name">
+    <text>Yantar: Zombies near Science Base 3</text>
+</string>
+<string id="st_yan_smart_terrain_zombi_in_sci_base4_name">
+    <text>Yantar: Zombies near Science Base 4</text>
+</string>
+<string id="st_yan_smart_terrain_zombi_in_sci_base5_name">
+    <text>Yantar: Zombies near Science Base 5</text>
+</string>
+<string id="st_yan_smart_terrain_zombi_in_sci_base6_name">
+    <text>Yantar: Zombies near Science Base 6</text>
+</string>
+
+<string id="st_yan_smart_terrain_zombi_spawn_name">
+    <text>Yantar: Pipe Exit</text>
+</string>
+
+<string id="st_yan_stalker_bunker_name">
+    <text>Scientific Station: Basement</text>
+</string>
+
+<string id="st_yan_ug_zombie_terrain1_name">
+    <text>Yantar: Zombie Underground 1</text>
+</string>
+<string id="st_yan_ug_zombie_terrain2_name">
+    <text>Yantar: Zombie Underground 2</text>
+</string>
+
+<string id="st_yan_village_dog_terrain_name">
+    <text>Scientific Station: Village Center</text>
+</string>
+<string id="st_yan_village2_bandit_terrain_name">
+    <text>Scientific Station: Village</text>
+</string>
+
+<string id="st_yan_zombie_terrain1_name">
+    <text>Scientific Station: Radar Station</text>
+</string>
+<string id="st_yan_zombie_terrain2_name">
+    <text>Yantar: Zombie Lair</text>
+</string>
+
+<string id="st_zat_a1_name">
+    <text>Zaton: Distant Camp</text>
+</string>
+<string id="st_zat_a2_stalker_barmen_name">
+    <text>Zaton: Stalker Bartender</text>
+</string>
+<string id="st_zat_a2_stalker_mechanic_name">
+    <text>Zaton: Stalker Mechanic</text>
+</string>
+<string id="st_zat_a2_stalker_nimble_name">
+    <text>Nimble</text>
+</string>
+
+<string id="st_zat_a23_access_card_name">
+    <text>Zaton: Access Card</text>
+</string>
+<string id="st_zat_a23_gauss_rifle_docs_name">
+    <text>Zaton: Gauss Rifle Documents</text>
+</string>
+<string id="st_zat_a23_labx8_key_name">
+    <text>Yellow Keycard - “X8”</text>
+</string>
+
+<string id="st_zat_a23_smart_terrain_name">
+    <text>Zaton: Crashed Helicopter</text>
+</string>
+
+<string id="st_zat_b100_name">
+    <text>Zaton: Iron Forest</text>
+</string>
+   <string id="st_zat_b101_name">
+        <text>Zaton: Deadly Camp</text>
+    </string>
+    <string id="st_zat_b103_merc_smart_name">
+        <text>Zaton: Substation Workshops</text>
+    </string>
+    <string id="st_zat_b104_zombied_name">
+        <text>Zaton: Sawmill</text>
+    </string>
+    <string id="st_zat_b106_smart_terrain_name">
+        <text>Zaton: Emerald</text>
+    </string>
+    <string id="st_zat_b106_stalker_crab_name">
+        <text>Crab</text>
+    </string>
+    <string id="st_zat_b106_stalker_garmata_name">
+        <text>Garmata</text>
+    </string>
+    <string id="st_zat_b106_stalker_gonta_name">
+        <text>Gonta</text>
+    </string>
+    <string id="st_zat_b12_documents_1_name">
+        <text>Zaton: Documents 1</text>
+    </string>
+    <string id="st_zat_b12_documents_2_name">
+        <text>Zaton: Documents 2</text>
+    </string>
+    <string id="st_zat_b12_key_1_name">
+        <text>Zaton: Key 1</text>
+    </string>
+    <string id="st_zat_b12_key_2_name">
+        <text>Zaton: Key 2</text>
+    </string>
+    <string id="st_zat_b12_name">
+        <text>Zaton: Preobrazhensky Bridge</text>
+    </string>
+    <string id="st_zat_b14_smart_terrain_name">
+        <text>Zaton: Dredger</text>
+    </string>
+    <string id="st_zat_b18_name">
+        <text>Zaton: Old Barge</text>
+    </string>
+    <string id="st_zat_b18_noah_name">
+        <text>Zaton: Noah</text>
+    </string>
+    <string id="st_zat_b20_noah_pda_name">
+        <text>Noah's PDA</text>
+    </string>
+    <string id="st_zat_b20_smart_terrain_name">
+        <text>Zaton: Burnt Farmstead</text>
+    </string>
+    <string id="st_zat_b22_medic_pda_desc_name">
+        <text>Zaton: Medic's PDA Description</text>
+    </string>
+    <string id="st_zat_b22_medic_pda_name">
+        <text>Zaton: Medic's PDA</text>
+    </string>
+    <string id="st_zat_b22_stalker_medic_name">
+        <text>Zaton: Stalkers' Medic</text>
+    </string>
+    <string id="st_zat_b28_name">
+        <text>Zaton: Cold Caves</text>
+    </string>
+    <string id="st_zat_b30_owl_stalker_trader_name">
+        <text>Owl</text>
+    </string>
+    <string id="st_zat_b33_name">
+        <text>Zaton: Snork Burrow</text>
+    </string>
+    <string id="st_zat_b33_safe_container_desc_name">
+        <text>Zaton: Safe Container Description</text>
+    </string>
+    <string id="st_zat_b33_safe_container_name">
+        <text>Zaton: Safe Container</text>
+    </string>
+    <string id="st_zat_b33_safe_container_name_name">
+        <text>Zaton: Safe Container Name</text>
+    </string>
+    <string id="st_zat_b33_safe_container_name_short_name">
+        <text>Zaton: Safe Container Short Name</text>
+    </string>
+    <string id="st_zat_b38_name">
+        <text>Zaton: VNZ "Circle"</text>
+    </string>
+    <string id="st_zat_b38u_name">
+        <text>Zaton: Ventilation System</text>
+    </string>
+    <string id="st_zat_b39_joker_pda_description_name">
+        <text>Zaton: Joker's PDA Description</text>
+    </string>
+    <string id="st_zat_b39_joker_pda_name">
+        <text>Zaton: Joker's PDA</text>
+    </string>
+    <string id="st_zat_b39_joker_pda_name_name">
+        <text>Zaton: Joker's PDA Name</text>
+    </string>
+    <string id="st_zat_b39_name">
+        <text>Zaton: "Sosnodub" Anomaly</text>
+    </string>
+    <string id="st_zat_b40_notebook_name">
+        <text>Mercenaries' Laptop</text>
+    </string>
+    <string id="st_zat_b40_pda_1_name">
+        <text>Mercenary Hook's PDA</text>
+    </string>
+    <string id="st_zat_b40_pda_2_name">
+        <text>Mercenary Ridge's PDA</text>
+    </string>
+    <string id="st_zat_b40_sarge_pda_name">
+        <text>Squad Leader's PDA</text>
+    </string>
+    <string id="st_zat_b40_smart_terrain_name">
+        <text>Zaton: Waste Processing Station</text>
+    </string>
+    <string id="st_zat_b42_smart_terrain_name">
+        <text>Zaton: Old Pier</text>
+    </string>
+    <string id="st_zat_b44_barge_pda_desc_name">
+        <text>Zaton: Barge PDA Description</text>
+    </string>
+    <string id="st_zat_b44_barge_pda_name">
+        <text>Zaton: Barge PDA</text>
+    </string>
+    <string id="st_zat_b44_barge_pda_name_name">
+        <text>Zaton: Barge PDA Name</text>
+    </string>
+    <string id="st_zat_b5_smart_terrain_name">
+        <text>Zaton: Forestry</text>
+    </string>
+    <string id="st_zat_b52_name">
+        <text>Zaton: Harbor Cranes</text>
+    </string>
+    <string id="st_zat_b53_name">
+        <text>Zaton: "Cauldron" Anomaly</text>
+    </string>
+    <string id="st_zat_b54_name">
+        <text>Zaton: "Scar" Anomaly</text>
+    </string>
+    <string id="st_zat_b55_name">
+        <text>Zaton: "Claw" Anomaly</text>
+    </string>
+    <string id="st_zat_b56_name">
+        <text>Zaton: "Circus" Anomaly</text>
+    </string>
+    <string id="st_zat_b57_gas_name">
+        <text>Gas Cylinder "Perin-V3"</text>
+    </string>
+  <string id="st_zat_b7_bandit_boss_sultan_arszi_scout_name">
+        <text>Zaton: Bandit Boss Sultan ARSZI Scout</text>
+    </string>
+    <string id="st_zat_b7_bandit_boss_sultan_name">
+        <text>Sultan</text>
+    </string>
+    <string id="st_zat_b7_name">
+        <text>Zaton: "Shevchenko"</text>
+    </string>
+    <string id="st_zat_b7_stalker_raider_name">
+        <text>Zaton: Camp at "Shevchenko"</text>
+    </string>
+    <string id="st_zat_b7_stalker_victim_1_name">
+        <text>Zaton: Stalker Victim 1</text>
+    </string>
+    <string id="st_zat_medic_home_smart_name">
+        <text>Zaton: Crane House</text>
+    </string>
+    <string id="st_zat_medic_home_start_name">
+        <text>Zaton: Crane House</text>
+    </string>
+    <string id="st_zat_sim_1_name">
+        <text>Zaton: Mutant Pasture</text>
+    </string>
+    <string id="st_zat_sim_10_name">
+        <text>Zaton: Wilderness</text>
+    </string>
+    <string id="st_zat_sim_11_name">
+        <text>Zaton: Improvised Camp</text>
+    </string>
+    <string id="st_zat_sim_12_name">
+        <text>Zaton: Picnic by the Road</text>
+    </string>
+    <string id="st_zat_sim_13_name">
+        <text>Zaton: Roadside Camp</text>
+    </string>
+    <string id="st_zat_sim_14_name">
+        <text>Zaton: Southern Plateau</text>
+    </string>
+    <string id="st_zat_sim_15_name">
+        <text>Zaton: Northeastern Point</text>
+    </string>
+    <string id="st_zat_sim_16_name">
+        <text>Zaton: Mutant Lair</text>
+    </string>
+    <string id="st_zat_sim_17_name">
+        <text>Zaton: Cave Entrance</text>
+    </string>
+    <string id="st_zat_sim_18_name">
+        <text>Zaton: Quiet Hills</text>
+    </string>
+    <string id="st_zat_sim_19_name">
+        <text>Zaton: Dangerous Hills</text>
+    </string>
+    <string id="st_zat_sim_2_name">
+        <text>Zaton: Riverside Camp</text>
+    </string>
+    <string id="st_zat_sim_20_name">
+        <text>Zaton: Underground Entrance</text>
+    </string>
+    <string id="st_zat_sim_21_name">
+        <text>Zaton: Central Point</text>
+    </string>
+    <string id="st_zat_sim_22_name">
+        <text>Zaton: Slope</text>
+    </string>
+    <string id="st_zat_sim_23_name">
+        <text>Zaton: Marshy River</text>
+    </string>
+    <string id="st_zat_sim_24_name">
+        <text>Zaton: River Crossing</text>
+    </string>
+    <string id="st_zat_sim_25_name">
+        <text>Zaton: Gas Station</text>
+    </string>
+    <string id="st_zat_sim_26_name">
+        <text>Zaton: Old Forest Camp</text>
+    </string>
+    <string id="st_zat_sim_27_name">
+        <text>Zaton: Shallow River</text>
+    </string>
+    <string id="st_zat_sim_28_name">
+        <text>Zaton: Shelter by the Bridge</text>
+    </string>
+    <string id="st_zat_sim_29_name">
+        <text>Zaton: Forest Hill</text>
+    </string>
+    <string id="st_zat_sim_3_name">
+        <text>Zaton: Northern Point</text>
+    </string>
+    <string id="st_zat_sim_30_name">
+        <text>Zaton: Forgotten Hills</text>
+    </string>
+    <string id="st_zat_sim_4_name">
+        <text>Zaton: Northern Road</text>
+    </string>
+    <string id="st_zat_sim_5_name">
+        <text>Zaton: Shelter Behind Boulders</text>
+    </string>
+    <string id="st_zat_sim_6_name">
+        <text>Zaton: Abandoned Stop</text>
+    </string>
+    <string id="st_zat_sim_7_name">
+        <text>Zaton: Sparse Forest</text>
+    </string>
+    <string id="st_zat_sim_8_name">
+        <text>Zaton: Mutant Lands</text>
+    </string>
+    <string id="st_zat_sim_9_name">
+        <text>Zaton: Forest</text>
+    </string>
+    <string id="st_zat_stalker_base_smart_name">
+        <text>Zaton: "Skadovsk"</text>
+    </string>
+    <string id="st_zombie_smart_ds_mlr_1_name">
+        <text>Dead City: Dead Courtyard</text>
+    </string>
+    <string id="st_zombie_smart_ds_mlr_2_name">
+        <text>Dead City: Apartments</text>
+    </string>
+</string_table>
