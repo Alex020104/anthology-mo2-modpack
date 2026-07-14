@@ -331,6 +331,34 @@
   ],
   "folder_packages": [
     {
+      "id": "mod-st2-ammo-counter-icon-anthology-5c3ec48c28",
+      "folder": "[MOD] ST2 Ammo Counter Icon (Anthology)",
+      "mode": "full",
+      "version": "2026.07.14.9",
+      "notes": "Обновление [MOD] ST2 Ammo Counter Icon (Anthology).",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-mod-st2-ammo-counter-icon-anthology-5c3ec48c28-2026.07.14.9/anthology-folder-mod-st2-ammo-counter-icon-anthology-5c3ec48c28-2026.07.14.9.zip",
+      "asset_name": "anthology-folder-mod-st2-ammo-counter-icon-anthology-5c3ec48c28-2026.07.14.9.zip",
+      "size": 29180,
+      "sha256": "30b36ae88651a399d95cdc8790795baee0734d7d13215e3410fa993c56ad5876",
+      "files": [
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/docs/st2_ammo_counter_dynamic_preview_640x160.png",
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/docs/st2_ammo_counter_line_256x8.png",
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/docs/st2_fire_mode_icons_128x32.png",
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/gamedata/configs/text/rus/st2_ammo_counter_hud_mcm.xml",
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/gamedata/scripts/st2_ammo_counter_hud.script",
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/gamedata/scripts/st2_ammo_counter_hud_events_mcm.script",
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/gamedata/scripts/st2_ammo_counter_hud_mcm.script",
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/gamedata/scripts/st2_ammo_counter_hud_move_mcm.script",
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/gamedata/scripts/st2_ammo_counter_hud_scale_mcm.script",
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/gamedata/textures/ui/st2_ammo_counter_bg.dds",
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/gamedata/textures/ui/st2_ammo_counter_line.dds",
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/gamedata/textures/ui/st2_fire_mode_icons.dds",
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/meta.ini",
+        "[MOD] ST2 Ammo Counter Icon (Anthology)/README_RU.md"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0",
       "folder": "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]",
       "mode": "full",
