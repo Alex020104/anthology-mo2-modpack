@@ -1,0 +1,121 @@
+local PATCH_KEY = "__zzzz_anthology_western_goods_utils_fix"
+
+local state = _G[PATCH_KEY] or {}
+_G[PATCH_KEY] = state
+
+local blacklisted_comms = {
+	trader = true,
+	monster = true,
+}
+
+local function safe_call(fn)
+	if type(fn) ~= "function" then
+		return nil
+	end
+
+	local ok, result = pcall(fn)
+	if ok then
+		return result
+	end
+	return nil
+end
+
+local function usable_community(community)
+	return community and community ~= "" and not blacklisted_comms[community]
+end
+
+local function object_community(obj)
+	if not obj then
+		return nil
+	end
+
+	local community = safe_call(function()
+		if type(obj.community) == "function" then
+			return obj:community()
+		end
+	end)
+	if usable_community(community) then
+		return community
+	end
+
+	community = safe_call(function()
+		if type(obj.character_community) == "function" then
+			return obj:character_community()
+		end
+	end)
+	if usable_community(community) then
+		return community
+	end
+
+	community = safe_call(function()
+		if type(character_community) == "function" then
+			return character_community(obj)
+		end
+	end)
+	if usable_community(community) then
+		return community
+	end
+
+	return nil
+end
+
+local function squad_community(obj)
+	if not (obj and type(get_object_squad) == "function") then
+		return nil
+	end
+
+	local squad = safe_call(function()
+		return get_object_squad(obj)
+	end)
+	if not (squad and type(squad.get_squad_community) == "function") then
+		return nil
+	end
+
+	local community = safe_call(function()
+		return squad:get_squad_community()
+	end)
+	if usable_community(community) then
+		return community
+	end
+	return nil
+end
+
+local function fallback_community(obj, default)
+	local fallback = default or "stalker"
+	return object_community(obj) or squad_community(obj) or fallback
+end
+
+local function patch_western_goods_utils()
+	local module = western_goods_utils
+	if not (module and type(module.get_real_community) == "function") then
+		return false
+	end
+	if module[PATCH_KEY] then
+		return true
+	end
+
+	state.original_get_real_community = state.original_get_real_community or module.get_real_community
+	local original = state.original_get_real_community
+
+	module.get_real_community = function(obj, default)
+		local fallback = default or "stalker"
+		if not obj then
+			return fallback
+		end
+
+		local ok, community = pcall(original, obj, fallback)
+		if ok and community and community ~= "" then
+			return community
+		end
+		return fallback_community(obj, fallback)
+	end
+
+	module[PATCH_KEY] = true
+	return true
+end
+
+patch_western_goods_utils()
+
+function on_game_start()
+	patch_western_goods_utils()
+end
