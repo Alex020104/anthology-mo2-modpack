@@ -35,8 +35,8 @@ function end_slowmo()
 	UnregisterScriptCallback("actor_on_update",slowmo_on_update)
 	RegisterScriptCallback("actor_on_update",slowmo_on_end)
 	
-	if dodge and run_coef > 0 then
-		db.actor:set_actor_run_coef(run_coef)
+	if dodge then
+		speed.remove_speed("bullet_time_dodge")
 	end
 	
 	printf("slowmo end")
@@ -79,8 +79,7 @@ function on_key_press(key)
 			
 			-- dodge start effect
             if dodge then
-                run_coef = db.actor:get_actor_run_coef()
-                db.actor:set_actor_run_coef(run_coef * 3.5)
+                speed.add_speed("bullet_time_dodge", 3.5, false, true)
 			end
 
 			RegisterScriptCallback("actor_on_update",slowmo_on_update)
@@ -101,11 +100,11 @@ function slowmo_on_update()
 	end
     
     if dodge then
-        if ( time_factor <= 0.85) then
-            db.actor:set_actor_run_coef(run_coef * 1.5)
-        elseif ( time_factor <= 0.7 and coef_on == 0 ) then
-            db.actor:set_actor_run_coef(run_coef * 1.3)
+        if ( time_factor <= 0.7 and coef_on == 0 ) then
+            speed.add_speed("bullet_time_dodge", 1.3, false, true)
             coef_on = 1
+        elseif ( time_factor <= 0.85 and coef_on == 0 ) then
+            speed.add_speed("bullet_time_dodge", 1.5, false, true)
         end
     end
 
@@ -131,7 +130,17 @@ function slowmo_on_update()
 end
 
 -- MCM setup
+function actor_on_first_update()
+    slowmo_flag = 0
+    time_factor = 1
+    coef_on = 0
+    focus_coef = 0
+    get_console():execute("time_factor 1")
+    speed.remove_speed("bullet_time_dodge")
+end
+
 function on_game_start()
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
 	RegisterScriptCallback("on_option_change", loadsettings)
     RegisterScriptCallback("on_key_press",on_key_press) 
 	loadsettings()
