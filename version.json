@@ -2334,6 +2334,32 @@
       "removed_files": []
     },
     {
+      "id": "hard-realistic-fatigue-b72c80f095",
+      "folder": "[HARD] Realistic Fatigue — Реалистичная усталость",
+      "mode": "full",
+      "version": "2026.07.20.7",
+      "notes": "Обновление [HARD] Realistic Fatigue — Реалистичная усталость.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-hard-realistic-fatigue-b72c80f095-2026.07.20.7/anthology-folder-hard-realistic-fatigue-b72c80f095-2026.07.20.7.zip",
+      "asset_name": "anthology-folder-hard-realistic-fatigue-b72c80f095-2026.07.20.7.zip",
+      "size": 11337,
+      "sha256": "1edc79083564757a04167e63d40e90353965e5d495d78e451db11b20590d93c4",
+      "files": [
+        "[HARD] Realistic Fatigue — Реалистичная усталость/gamedata/configs/items/settings/fatigue_boosters.ltx",
+        "[HARD] Realistic Fatigue — Реалистичная усталость/gamedata/configs/text/eng/ui_st_fatigue.xml",
+        "[HARD] Realistic Fatigue — Реалистичная усталость/gamedata/configs/text/rus/ui_st_fatigue.xml",
+        "[HARD] Realistic Fatigue — Реалистичная усталость/gamedata/configs/ui/textures_descr/ui_fatigue_bar_descr.xml",
+        "[HARD] Realistic Fatigue — Реалистичная усталость/gamedata/configs/ui/ui_fatigue_bar.xml",
+        "[HARD] Realistic Fatigue — Реалистичная усталость/gamedata/configs/ui/ui_fatigue_bar_16.xml",
+        "[HARD] Realistic Fatigue — Реалистичная усталость/gamedata/scripts/fatigue.script",
+        "[HARD] Realistic Fatigue — Реалистичная усталость/gamedata/scripts/fatigue_hud.script",
+        "[HARD] Realistic Fatigue — Реалистичная усталость/gamedata/scripts/fatigue_mcm.script",
+        "[HARD] Realistic Fatigue — Реалистичная усталость/gamedata/scripts/speed.script",
+        "[HARD] Realistic Fatigue — Реалистичная усталость/gamedata/textures/ui/ui_fatigue_bar_texture.dds",
+        "[HARD] Realistic Fatigue — Реалистичная усталость/meta.ini"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "mod-st2-ammo-counter-icon-anthology-5c3ec48c28",
       "folder": "[MOD] ST2 Ammo Counter Icon (Anthology)",
       "mode": "full",
