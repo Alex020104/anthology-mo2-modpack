@@ -2,33 +2,146 @@ local speeds = {}
 local sprint_modifiers = {}
 local run_modifiers = {}
 local not_first_update = true
+local saved_run_coef = 1
+local saved_sprint_coef = 1
+local saved_base = nil
+local legacy_base = false
+local update_speeds
 
-local function actor_on_first_update() 
-    speeds[0] = db.actor:get_actor_run_coef()
-    speeds[1] = db.actor:get_actor_runback_coef()
-    speeds[2] = db.actor:get_actor_sprint_koef()
-    not_first_update = false
+local function normalize_coef(value)
+    value = tonumber(value) or 1
+    return value > 0 and value or 1
 end
 
+local function copy_modifiers(source)
+    local target = {}
+    if source then
+        for k,v in pairs(source) do
+            target[k] = normalize_coef(v)
+        end
+    end
+    return target
+end
+
+local function calc_coef(modifiers)
+    local coef = 1
+    for k,v in pairs(modifiers) do
+        coef = coef * normalize_coef(v)
+    end
+    return coef
+end
+
+local function guess_persistent_coefs()
+    local run_coef = 1
+    local sprint_coef = 1
+
+    if grok_gotta_go_fast_mcm and grok_gotta_go_fast_mcm.get_config then
+        run_coef = run_coef * normalize_coef(grok_gotta_go_fast_mcm.get_config("gotta_go_fast_run"))
+        sprint_coef = sprint_coef * normalize_coef(grok_gotta_go_fast_mcm.get_config("gotta_go_fast_sprint"))
+    end
+
+    return run_coef, sprint_coef
+end
+
+local function actor_on_first_update()
+    local run_coef = calc_coef(run_modifiers)
+    local sprint_coef = calc_coef(sprint_modifiers)
+
+    if saved_base then
+        speeds[0] = saved_base[0]
+        speeds[1] = saved_base[1]
+        speeds[2] = saved_base[2]
+    else
+        legacy_base = true
+        local guessed_run_coef, guessed_sprint_coef = guess_persistent_coefs()
+
+        if run_coef == 1 then
+            run_coef = normalize_coef(saved_run_coef)
+            if run_coef == 1 then
+                run_coef = guessed_run_coef
+            end
+        end
+        if sprint_coef == 1 then
+            sprint_coef = normalize_coef(saved_sprint_coef)
+            if sprint_coef == 1 then
+                sprint_coef = guessed_sprint_coef
+            end
+        end
+
+        speeds[0] = db.actor:get_actor_run_coef() / run_coef
+        speeds[1] = db.actor:get_actor_runback_coef() / run_coef
+        speeds[2] = db.actor:get_actor_sprint_koef() / sprint_coef
+    end
+
+    not_first_update = false
+
+    if update_speeds then
+        update_speeds()
+    end
+end
+
+local function save_state(mdata)
+    if not_first_update and db and db.actor then
+        actor_on_first_update()
+    end
+
+    mdata.speed_script = {
+        run_coef = calc_coef(run_modifiers),
+        sprint_coef = calc_coef(sprint_modifiers),
+        run_modifiers = copy_modifiers(run_modifiers),
+        sprint_modifiers = copy_modifiers(sprint_modifiers),
+        base_run = speeds[0],
+        base_runback = speeds[1],
+        base_sprint = speeds[2]
+    }
+end
+
+local function load_state(mdata)
+    local data = mdata.speed_script or {}
+    saved_run_coef = normalize_coef(data.run_coef)
+    saved_sprint_coef = normalize_coef(data.sprint_coef)
+    run_modifiers = copy_modifiers(data.run_modifiers)
+    sprint_modifiers = copy_modifiers(data.sprint_modifiers)
+    saved_base = (data.base_run and data.base_runback and data.base_sprint) and {
+        [0] = normalize_coef(data.base_run),
+        [1] = normalize_coef(data.base_runback),
+        [2] = normalize_coef(data.base_sprint)
+    } or nil
+end
 
 function on_game_start()
-	RegisterScriptCallback("actor_on_first_update",actor_on_first_update)
-end 
-local function update_speeds()
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+    RegisterScriptCallback("save_state", save_state)
+    RegisterScriptCallback("load_state", load_state)
+end
+
+function remove_from_base(run_coef, sprint_coef)
     if not_first_update then
         actor_on_first_update()
     end
-    local run_coef = 1
-    for k,v in pairs(run_modifiers) do
-        --printf("run " .. k .. " " .. v)
-        run_coef = run_coef * v
+
+    if not legacy_base then
+        return
     end
-    local sprint_coef = 1
-    for k,v in pairs(sprint_modifiers) do
-        --printf("sprint " .. k .. " " .. v)
-        sprint_coef = sprint_coef * v
+
+    run_coef = normalize_coef(run_coef)
+    sprint_coef = normalize_coef(sprint_coef)
+
+    speeds[0] = speeds[0] / run_coef
+    speeds[1] = speeds[1] / run_coef
+    speeds[2] = speeds[2] / sprint_coef
+    legacy_base = false
+    update_speeds()
+end
+
+update_speeds = function()
+    if not_first_update then
+        actor_on_first_update()
+        return
     end
-    -- printf("base speed: "..speeds[0])
+
+    local run_coef = calc_coef(run_modifiers)
+    local sprint_coef = calc_coef(sprint_modifiers)
     db.actor:set_actor_run_coef(clamp(speeds[0] * run_coef, 1, 10))
     db.actor:set_actor_runback_coef(clamp(speeds[1] * run_coef, 1, 10))
     db.actor:set_actor_sprint_koef(clamp(speeds[2] * sprint_coef, 1, 10))
@@ -36,38 +149,27 @@ end
 
 -- Usage: Add a speed modifier.
 -- Once a speed modifier is added, speed will be recalculated and set.
--- run_modifiers affects run and runback, sprint_modifiers affects sprint
--- Params:
--- speed_key - Name of speed multiplier you want to add
--- speed_mult - Speed multiplier as a number (e.g. 0.5 will halve speed)
--- is_sprint - Boolean, if true adds to sprint modifier and updates accordingly, false adds to run modifier
--- force - Boolean, will overwrite existing speed.
--- Returns true if speed added successfully, false if key already exists (and nothing happens as result)
+-- run_modifiers affects run and runback, sprint_modifiers affects sprint.
 function add_speed(speed_key, speed_mult, is_sprint, force)
-    if (is_sprint) then
+    speed_mult = normalize_coef(speed_mult)
+    if is_sprint then
         if force or not sprint_modifiers[speed_key] then
-            --printf("sprint: " .. speed_key .. " " .. speed_mult)
             sprint_modifiers[speed_key] = speed_mult
             update_speeds()
             return true
-        else
-            return false
         end
-    else
-        if force or not run_modifiers[speed_key] then
-            --printf("run: " .. speed_key .. " " .. speed_mult)
-            run_modifiers[speed_key] = speed_mult
-            update_speeds()
-            return true
-        else
-            return false
-        end
+        return false
     end
+
+    if force or not run_modifiers[speed_key] then
+        run_modifiers[speed_key] = speed_mult
+        update_speeds()
+        return true
+    end
+    return false
 end
 
--- Usage: Drop a speed modifier. Once a speed modifier is dropped, speed will be recalculated and set. 
--- Params
--- speed_key - Name of speed multiplier to drop. Will drop from both tables.
+-- Usage: Drop a speed modifier. Once a speed modifier is dropped, speed will be recalculated and set.
 function remove_speed(speed_key)
     if sprint_modifiers[speed_key] then
         sprint_modifiers[speed_key] = nil
@@ -76,4 +178,20 @@ function remove_speed(speed_key)
         run_modifiers[speed_key] = nil
     end
     update_speeds()
+end
+
+function print()
+    local run_coef = 1
+    for k,v in pairs(run_modifiers) do
+        printf("Run modifier %s, val %s", k, v)
+        run_coef = run_coef * v
+    end
+    printf("final run: %s", run_coef)
+
+    local spr_coef = 1
+    for k,v in pairs(sprint_modifiers) do
+        printf("Sprint modifier %s, val %s", k, v)
+        spr_coef = spr_coef * v
+    end
+    printf("final sprint: %s", spr_coef)
 end
