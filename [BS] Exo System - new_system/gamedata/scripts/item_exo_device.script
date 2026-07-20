@@ -342,7 +342,7 @@ local function reset_speed()
     if is_player_slowed then
         print_dbg("restoring speed")
         is_player_slowed = false
-        speed.add_speed("exo_speed", 1, false, true)
+        speed.remove_speed("exo_speed")
     end
 end
 
