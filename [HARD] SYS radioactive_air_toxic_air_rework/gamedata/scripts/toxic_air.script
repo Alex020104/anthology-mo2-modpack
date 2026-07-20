@@ -272,6 +272,20 @@ local function get_profile_chem_protection(entry)
 	return get_profile_toxic_reduction(entry) * MAX_TOXIC_AIR_IMMUNITY
 end
 
+local universal_filter_profiles = {
+	["af_mask_filter_homemade"] = { allowed = true, rad_reduction = 0.20, toxic_reduction = 0.40, toxic_degrade_mult = 1, ui_tier = "T1" },
+	["af_mask_filter_ms4"] = { allowed = true, rad_reduction = 0.25, toxic_reduction = 0.30, toxic_degrade_mult = 1, ui_tier = "T1" },
+	["af_mask_filter_1"] = { allowed = true, rad_reduction = 0.30, toxic_reduction = 0.30, toxic_degrade_mult = 1, ui_tier = "T1" },
+	["af_mask_filter_1sci"] = { allowed = true, rad_reduction = 0.30, toxic_reduction = 0.30, toxic_degrade_mult = 1, ui_tier = "T1" },
+	["af_mask_filter_dp1"] = { allowed = true, rad_reduction = 0.25, toxic_reduction = 0.30, toxic_degrade_mult = 1, ui_tier = "T1" },
+	["af_mask_filter_mof6"] = { allowed = true, rad_reduction = 0.35, toxic_reduction = 0.88, toxic_degrade_mult = 1, ui_tier = "T2" },
+	["af_mask_filter_2"] = { allowed = true, rad_reduction = 0.40, toxic_reduction = 0.88, toxic_degrade_mult = 1, ui_tier = "T2" },
+	["af_mask_filter_2dolg"] = { allowed = true, rad_reduction = 0.40, toxic_reduction = 0.88, toxic_degrade_mult = 1, ui_tier = "T2" },
+	["af_mask_filter_3"] = { allowed = true, rad_reduction = 0.50, toxic_reduction = 0.95, toxic_degrade_mult = 2, ui_tier = "T3" },
+	["af_mask_filter_r18"] = { allowed = true, rad_reduction = 0.45, toxic_reduction = 0.95, toxic_degrade_mult = 2, ui_tier = "T3" },
+	["af_mask_filter_3isg"] = { allowed = true, rad_reduction = 0.50, toxic_reduction = 0.95, toxic_degrade_mult = 2, ui_tier = "T3" },
+}
+
 local function is_filter_consumable_section(sec)
 	return sec and airgear_filter_consumables[sec] == true
 end
@@ -530,6 +544,63 @@ local function get_equipped_tank_item()
 	end)
 
 	return tank_item
+end
+
+local function find_filter_candidate(gear, gear_def, min_cond, limit_prot, prefer_low)
+	if not (gear and gear_def and db and db.actor) then
+		return nil
+	end
+
+	local chosen_item
+	local chosen_prot
+
+	local function check_filters(actor, itm)
+		local sec = itm:section()
+		if not (is_filter_consumable_section(sec) and can_use_filter_on_gear(gear, sec)) then
+			return
+		end
+
+		local cond = itm:condition()
+		if (cond <= 0) or (cond < min_cond) then
+			return
+		end
+
+		local profile_entry = get_filter_profile_entry(gear_def, sec)
+		local rad_prot = get_profile_rad_protection(profile_entry)
+		if rad_prot <= 0 then
+			return
+		end
+
+		if limit_prot then
+			if prefer_low and (rad_prot < limit_prot) then
+				return
+			end
+			if (not prefer_low) and (rad_prot > limit_prot) then
+				return
+			end
+		end
+
+		if not chosen_item then
+			chosen_item = itm
+			chosen_prot = rad_prot
+			return
+		end
+
+		if prefer_low then
+			if rad_prot < chosen_prot then
+				chosen_item = itm
+				chosen_prot = rad_prot
+			end
+		else
+			if rad_prot > chosen_prot then
+				chosen_item = itm
+				chosen_prot = rad_prot
+			end
+		end
+	end
+
+	db.actor:iterate_inventory(check_filters, db.actor)
+	return chosen_item
 end
 
 local function filter_slot_has_filter()
@@ -822,6 +893,16 @@ local function load_airgear_settings()
 							airgear_tank_consumables[id] = true
 						end
 					end
+				end
+			end
+		end
+
+		if airgear_profile_modes[sec] and airgear_profile_modes[sec].filter then
+			for filter_sec, entry in pairs(universal_filter_profiles) do
+				if not profile[filter_sec] then
+					profile[filter_sec] = entry
+					oxt_tbl[filter_sec] = true
+					airgear_filter_consumables[filter_sec] = true
 				end
 			end
 		end
@@ -1440,50 +1521,12 @@ function equip_filter()
 			return
 		end
 		
-		local oItem
-		local f_selected = false
 		local filter_min_cond = toxic_air_mcm.get_config("filter_min_condition")
 		local selected_max_quality = toxic_air_mcm.get_config("choose_max_quality_filter")
 		local filter_max_quality = toxic_air_mcm.get_config("filter_max_quality")
-		local max_quality = filter_max_quality * 0.062
-		local helm_rad_prot = (gear and get_helmet_radiation_protection(gear)) or 0
-		local h_rad_prot = helm_rad_prot
-		local diff_quality = 0
-			
-		local function check_filters(actor, itm)
-			if f_selected then
-				return
-			end
-				
-			local sec = itm:section()
-			if (is_filter_consumable_section(sec) and can_use_filter_on_gear(gear, sec)) then
-				local cond = itm:condition()
-				local profile_entry = get_filter_profile_entry(gear_def, sec)
-				local rad_prot = get_profile_rad_protection(profile_entry)
-					
-				if (cond > 0) and (cond >= filter_min_cond) then
-					local rad_h_diff = rad_prot - h_rad_prot
-			
-					if (not selected_max_quality) then
-						if ((rad_h_diff + diff_quality) >= 0) and (rad_h_diff <= 0.0031) then
-							f_selected = true
-							oItem = itm
-						end
-					else
-						if ((rad_h_diff + diff_quality) >= 0) and (rad_h_diff <= 0.0031) and (rad_prot <= max_quality) then
-							f_selected = true
-							oItem = itm
-						end
-					end
-				end
-			end
-		end
-		
-		while ((not f_selected) and (diff_quality < 0.062)) do
-			db.actor:iterate_inventory(check_filters, db.actor)
-			diff_quality = diff_quality + 0.0031
-		end
-		
+		local max_quality = selected_max_quality and (filter_max_quality * 0.062) or nil
+		local oItem = find_filter_candidate(gear, gear_def, filter_min_cond, max_quality, false)
+
 		if oItem then
 			install_filter_to_gear(gear, oItem, animations_enabled)
 		else
@@ -1523,50 +1566,12 @@ function mod_equip_filter()
 			return
 		end
 		
-		local oItem
-		local f_selected = false
 		local filter_min_cond = toxic_air_mcm.get_config("filter_min_condition")
 		local selected_low_quality = toxic_air_mcm.get_config("choose_low_quality_filter")
 		local filter_min_low_quality = toxic_air_mcm.get_config("filter_min_low_quality")
-		local low_quality = filter_min_low_quality * 0.062
-		local helm_rad_prot = (gear and get_helmet_radiation_protection(gear)) or 0
-		local h_rad_prot = helm_rad_prot
-		local diff_quality = 0
-			
-		local function check_filters(actor, itm)
-			if f_selected then
-				return
-			end
-				
-			local sec = itm:section()
-			if (is_filter_consumable_section(sec) and can_use_filter_on_gear(gear, sec)) then
-				local cond = itm:condition()
-				local profile_entry = get_filter_profile_entry(gear_def, sec)
-				local rad_prot = get_profile_rad_protection(profile_entry)
-					
-				if (cond > 0) and (cond >= filter_min_cond) then
-					local rad_h_diff = rad_prot - h_rad_prot
+		local low_quality = selected_low_quality and (filter_min_low_quality * 0.062) or nil
+		local oItem = find_filter_candidate(gear, gear_def, filter_min_cond, low_quality, true)
 
-					if (not selected_low_quality) then
-						if (rad_prot > diff_quality) and (rad_prot <= (diff_quality + 0.0031)) then
-							f_selected = true
-							oItem = itm
-						end
-					else
-						if (rad_prot >= (low_quality + 0.0031)) and (rad_prot < (low_quality + diff_quality)) then
-							f_selected = true
-							oItem = itm
-						end
-					end
-				end
-			end
-		end
-			
-		while ((not f_selected) and (diff_quality < 0.062)) do
-			db.actor:iterate_inventory(check_filters, db.actor)
-			diff_quality = diff_quality + 0.0031
-		end
-		
 		if oItem then
 			install_filter_to_gear(gear, oItem, animations_enabled)
 		else
@@ -1576,6 +1581,7 @@ function mod_equip_filter()
 end
 
 function filter_check()
+
 	local item = get_installed_filter_item()
 	local filter = item and get_filter_state(item:id())
 	local filter_check_msg = ""
