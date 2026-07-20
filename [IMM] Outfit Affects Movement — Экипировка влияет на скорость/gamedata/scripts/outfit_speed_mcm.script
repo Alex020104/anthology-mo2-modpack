@@ -43,6 +43,10 @@ function actor_on_item_use()
 end
 
 local last_outfit = 0
+local last_outfit_run_coef = 1
+local last_outfit_sprint_coef = 1
+local saved_outfit_run_coef = nil
+local saved_outfit_sprint_coef = nil
 
 function manage_outfit_speed()
     local outfit = db.actor:item_in_slot(7)
@@ -53,6 +57,8 @@ function manage_outfit_speed()
         local coef = outfit and get_outfit_speed(outfit, outfit_sec, false) or 1
         local sprint_coef = outfit and get_outfit_speed(outfit, outfit_sec, true) or 1
         print_dbg("Speed for %s is %s, sprint speed is %s", outfit_sec, coef, sprint_coef)
+        last_outfit_run_coef = coef
+        last_outfit_sprint_coef = sprint_coef
         speed.add_speed("outfit_speed", coef, false, true)
         speed.add_speed("outfit_sprint_speed", sprint_coef, true, true)
     end
@@ -190,12 +196,46 @@ end
 -- If you don't use MCM, change your defaults from here.
 local defaults = {
     ["weapon"] = true,
-    ["encumbrance"] = true,
+    ["encumbrance"] = false,
     ["debug"] = false
 }
 
 function get_config(key)
     if ui_mcm then return ui_mcm.get("speed/"..key) else return defaults[key] end
+end
+
+function actor_on_first_update()
+    last_check = nil
+    last_outfit = nil
+    last_weapon = nil
+    last_tot_weight = nil
+    last_max_weight = nil
+
+    local outfit = db.actor:item_in_slot(7)
+    local sec = outfit and outfit:section()
+    local run_coef = saved_outfit_run_coef or (outfit and get_outfit_speed(outfit, sec, false)) or 1
+    local sprint_coef = saved_outfit_sprint_coef or (outfit and get_outfit_speed(outfit, sec, true)) or 1
+
+    if speed.remove_from_base then
+        speed.remove_from_base(run_coef, sprint_coef)
+    end
+
+    manage_outfit_speed()
+    manage_weapon_speed()
+    manage_encumbrance()
+end
+
+local function save_state(mdata)
+    mdata.outfit_speed_mcm = {
+        outfit_run_coef = last_outfit_run_coef,
+        outfit_sprint_coef = last_outfit_sprint_coef
+    }
+end
+
+local function load_state(mdata)
+    local data = mdata.outfit_speed_mcm or {}
+    saved_outfit_run_coef = data.outfit_run_coef and tonumber(data.outfit_run_coef) or nil
+    saved_outfit_sprint_coef = data.outfit_sprint_coef and tonumber(data.outfit_sprint_coef) or nil
 end
 
 function on_mcm_load()
@@ -210,6 +250,9 @@ function on_mcm_load()
 end
 
 function on_game_start()
+    RegisterScriptCallback("actor_on_first_update",actor_on_first_update)
+    RegisterScriptCallback("save_state",save_state)
+    RegisterScriptCallback("load_state",load_state)
 	RegisterScriptCallback("actor_on_update",actor_on_update)
 	RegisterScriptCallback("actor_item_to_ruck",actor_item_to_ruck)
 	RegisterScriptCallback("actor_item_to_slot",actor_item_to_slot)

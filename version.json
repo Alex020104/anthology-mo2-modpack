@@ -2508,6 +2508,26 @@
       "removed_files": []
     },
     {
+      "id": "imm-outfit-affects-movement-cd42e2e80f",
+      "folder": "[IMM] Outfit Affects Movement — Экипировка влияет на скорость",
+      "mode": "full",
+      "version": "2026.07.20.11",
+      "notes": "Обновление [IMM] Outfit Affects Movement — Экипировка влияет на скорость.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-imm-outfit-affects-movement-cd42e2e80f-2026.07.20.11/anthology-folder-imm-outfit-affects-movement-cd42e2e80f-2026.07.20.11.zip",
+      "asset_name": "anthology-folder-imm-outfit-affects-movement-cd42e2e80f-2026.07.20.11.zip",
+      "size": 5731,
+      "sha256": "540077a06cc6cc661d857f0803d4d93e7a3723b59bc7bf3e470e7d87cbfe28cd",
+      "files": [
+        "[IMM] Outfit Affects Movement — Экипировка влияет на скорость/gamedata/configs/items/settings/outfit_speed.ltx",
+        "[IMM] Outfit Affects Movement — Экипировка влияет на скорость/gamedata/configs/text/eng/ui_st_inventory_movespeed.xml",
+        "[IMM] Outfit Affects Movement — Экипировка влияет на скорость/gamedata/configs/text/rus/ui_st_inventory_movespeed.xml",
+        "[IMM] Outfit Affects Movement — Экипировка влияет на скорость/gamedata/scripts/outfit_speed.script",
+        "[IMM] Outfit Affects Movement — Экипировка влияет на скорость/gamedata/scripts/outfit_speed_mcm.script",
+        "[IMM] Outfit Affects Movement — Экипировка влияет на скорость/meta.ini"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "mod-st2-ammo-counter-icon-anthology-5c3ec48c28",
       "folder": "[MOD] ST2 Ammo Counter Icon (Anthology)",
       "mode": "full",
