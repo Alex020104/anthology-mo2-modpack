@@ -322,7 +322,6 @@ local routes_start = {
 		{"esc","pre"},		
 	},
 	general_2 = {
-		-- esc > mar + gar + pol > val + bar + agr > trc + mil + ros > yan 
 		{"esc","mar"},
 		{"esc","gar"},
 		{"esc","dsc"},
@@ -339,11 +338,8 @@ local routes_start = {
 		{"bar","ave"},
 		{"bar","ros"},
 		{"bar","x14"},
-
-
 	},	
 	monolith = {
-		-- aes1 + aes2 > gen + pri + sar + kat > rad + lim + out > mil > bar > ros > yan
 		{"bar","mil"},
 		{"yan","ros"},
 		{"mil","rad"},
@@ -358,7 +354,6 @@ local routes_start = {
 		{"aes1","gen"},
 	},
 	killer = { 
-		-- cit > lim + mil > bar > ros + gar > yan + esc + val + agr > mar + dsc 
 		{"esc","mar"},
 		{"esc","gar"},
 		{"esc","dsc"},
@@ -375,7 +370,6 @@ local routes_start = {
 		{"lim","okrest"},
 	},
 	csky = {
-		-- mar > mar_h + esc > gar + dsc > val + bar + agr > mil ros > yan
 		{"mar","mar_h"},
 		{"esc","mar"},
 		{"esc","gar"},
@@ -390,7 +384,6 @@ local routes_start = {
 		{"trc","yan"},
 	},
 	renegade = {
-		-- mar > mar_h + esc > gar + dsc > val + bar + agr > mil ros > yan
 		{"mar","mar_h"},
 		{"esc","mar"},
 		{"esc","gar"},
@@ -405,7 +398,6 @@ local routes_start = {
 		{"trc","yan"},
 	},
 	greh = {
-		-- aes1 + aes2 > gen + pri + sar + kat > rad + lim + out > mil > bar > ros > yan
 		{"red","ano"},
 		{"mil","rad"},
 		{"pri","rad"},
@@ -439,8 +431,129 @@ local routes_start = {
 		{"sci","fot"},
 		{"sci","jup"},
 		{"sci","fgt"},	
+	},
+	milstalk = { 
+		{"city","fot"},
+		{"city","jup"},
+		{"city","swa"},
+		{"sci","g_c"},
+		{"sci","los"},
+		{"sci","fot"},
+		{"sci","jup"},
+		{"sci","fgt"},	
+	},
+	dolg = {
+		{"esc","mar"},
+		{"esc","gar"},
+		{"esc","dsc"},
+	    {"val","pol"},
+		{"val","gar"},
+		{"val","dsc"},
+		{"gar","agr"},
+		{"yan","ros"},
+		{"puz","gar"},
+		{"ave","gar"},
+		{"esc","x5"},
+		{"bar","mil"},
+		{"bar","gar"},
+		{"bar","ave"},
+		{"bar","ros"},
+		{"bar","x14"},
+	},
+	freedom = {
+		{"esc","mar"},
+		{"esc","gar"},
+		{"esc","dsc"},
+		{"val","dsc"},
+		{"gar","agr"},
+		{"gar","bar"},
+		{"val","gar"},
+		{"bar","mil"},
+		{"yan","ros"},
+		{"cit","okrest"},
+		{"cit","ros"},
+		{"cit","mil"},
+		{"cit","red"},
+		{"lim","okrest"},
+	},
+	bandit = {
+		{"esc","mar"},
+		{"esc","gar"},
+		{"esc","dsc"},
+	    {"val","pol"},
+		{"val","gar"},
+		{"val","dsc"},
+		{"gar","agr"},
+		{"yan","ros"},
+		{"puz","gar"},
+		{"ave","gar"},
+		{"esc","x5"},
+		{"bar","mil"},
+		{"bar","gar"},
+		{"bar","ave"},
+		{"bar","ros"},
+		{"bar","x14"},
+	},	
+	army = {
+		{"esc","mar"},
+		{"esc","gar"},
+		{"esc","dsc"},
+	    {"val","pol"},
+		{"val","gar"},
+		{"val","dsc"},
+		{"gar","agr"},
+		{"yan","ros"},
+		{"puz","gar"},
+		{"ave","gar"},
+		{"esc","x5"},
+		{"bar","mil"},
+		{"bar","gar"},
+		{"bar","ave"},
+		{"bar","ros"},
+		{"bar","x14"},
+	},	
+	ecolog = { 
+		{"esc","mar"},
+		{"esc","gar"},
+		{"esc","dsc"},
+		{"val","dsc"},
+		{"gar","agr"},
+		{"gar","bar"},
+		{"val","gar"},
+		{"bar","mil"},
+		{"yan","ros"},
+		{"bar","ros"}
+	},
+	stalker = {
+		{"esc","mar"},
+		{"esc","gar"},
+		{"esc","dsc"},
+	    {"val","pol"},
+		{"val","gar"},
+		{"val","dsc"},
+		{"gar","agr"},
+		{"yan","ros"},
+		{"puz","gar"},
+		{"ave","gar"},
+		{"esc","x5"},
+		{"bar","mil"},
+		{"bar","gar"},
+		{"bar","ave"},
+		{"bar","ros"},
+		{"bar","x14"},
+	},
+	atribute = {
+		{"val","gar"},
+		{"bar","mil"},
+		{"yan","ros"},
+		{"cit","okrest"},
+		{"cit","ros"},
+		{"cit","mil"},
+		{"cit","red"},
+		{"lim","okrest"},
 	}
 }
+
 
 routes = {
 	["aes1"] = { 
