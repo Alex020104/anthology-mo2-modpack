@@ -941,12 +941,12 @@
       "id": "gam-r-a-k-balance-be51e3507c",
       "folder": "[GAM] R.A.K Balance",
       "mode": "full",
-      "version": "2026.07.21.4",
+      "version": "2026.07.21.6",
       "notes": "Обновление [GAM] R.A.K Balance.",
-      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-gam-r-a-k-balance-be51e3507c-2026.07.21.4/anthology-folder-gam-r-a-k-balance-be51e3507c-2026.07.21.4.zip",
-      "asset_name": "anthology-folder-gam-r-a-k-balance-be51e3507c-2026.07.21.4.zip",
-      "size": 144517,
-      "sha256": "85eb7176ebf76f30b57cb6be0370b0e5c0a4db371a21c6558b81faf734912554",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-gam-r-a-k-balance-be51e3507c-2026.07.21.6/anthology-folder-gam-r-a-k-balance-be51e3507c-2026.07.21.6.zip",
+      "asset_name": "anthology-folder-gam-r-a-k-balance-be51e3507c-2026.07.21.6.zip",
+      "size": 144737,
+      "sha256": "2a3b7483504aa187408cd0de96fc153a653a361673639d39084cdb4e5770e218",
       "files": [
         "[GAM] R.A.K Balance/gamedata/configs/items/items/items_drugs.ltx",
         "[GAM] R.A.K Balance/gamedata/configs/items/items/items_medical.ltx",
@@ -1022,7 +1022,8 @@
         "[GAM] R.A.K Balance/gamedata/configs/items/settings/mod_cook_edit.ltx",
         "[GAM] R.A.K Balance/gamedata/configs/items/settings/mod_craft_fillable_canteens_mod.ltx",
         "[GAM] R.A.K Balance/gamedata/configs/items/settings/mod_parts_no_integrated_helmets_in_armors.ltx",
-        "[GAM] R.A.K Balance/gamedata/configs/items/settings/parts.ltx"
+        "[GAM] R.A.K Balance/gamedata/configs/items/settings/parts.ltx",
+        "[GAM] R.A.K Balance/gamedata/configs/mod_system_more_artifact_slots.ltx"
       ],
       "removed_files": []
     },
