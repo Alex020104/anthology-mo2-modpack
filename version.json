@@ -2846,8 +2846,7 @@
         "[HARD] SYS_Balance/gamedata/configs/items/settings/parts.ltx",
         "[HARD] SYS_Balance/gamedata/configs/mod_system_zzzzz_actor.ltx",
         "[HARD] SYS_Balance/gamedata/configs/mod_system_zzzzz_radiation.ltx",
-        "[HARD] SYS_Balance/gamedata/configs/mod_system_zzzzz_zones_anomaly_edit.ltx",
-        "[HARD] SYS_Balance/meta.ini"
+        "[HARD] SYS_Balance/gamedata/configs/mod_system_zzzzz_zones_anomaly_edit.ltx"
       ]
     },
     {
