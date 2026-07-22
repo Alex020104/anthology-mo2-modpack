@@ -1,11 +1,15 @@
 {
-  "version": "2026.07.23.1",
+  "version": "2026.07.23.2",
   "zip_url": "https://github.com/Alex020104/anthology-mo2-modpack/archive/refs/heads/main.zip",
   "removed_files": [
     "[FIX] SYS ANTHOLOGY - ??? ??? ????/gamedata/configs/text/eng/ui_st_seqload_fix.xml",
     "[FIX] SYS ANTHOLOGY - ??? ??? ????/gamedata/configs/text/eng/zz_st_smart_names_wtf_fix.xml",
     "[FIX] SYS ANTHOLOGY - ??? ??? ????/gamedata/configs/text/rus/ui_st_seqload_fix.xml",
     "[FIX] SYS ANTHOLOGY - ??? ??? ????/gamedata/configs/text/rus/zz_st_smart_names_wtf_fix.xml",
+    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/text/eng/ui_st_seqload_fix.xml",
+    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/text/eng/zz_st_smart_names_wtf_fix.xml",
+    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/text/rus/ui_st_seqload_fix.xml",
+    "[FIX] SYS ANTHOLOGY - Все мои фисы/gamedata/configs/text/rus/zz_st_smart_names_wtf_fix.xml",
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/misc/squad_descr/squad_descr_soc_yantar.ltx",
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/misc/task/task_manager_anthology/tm_soc_bar.ltx",
     "[FIX] SYS ANTHOLOGY - Р’СЃРµ РјРѕРё С„РёСЃС‹/gamedata/configs/mod_system_colt_patch.ltx",
