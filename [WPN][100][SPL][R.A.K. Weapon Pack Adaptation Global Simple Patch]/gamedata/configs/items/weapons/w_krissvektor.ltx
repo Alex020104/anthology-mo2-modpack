@@ -1,0 +1,2126 @@
+﻿______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|                     	Kriss Vector TCO Model+Animation+Texture+Sounds, Yukizz Port .Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                                                          |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_krissvektor]:identity_immunities,weapon_probability,default_weapon_params,wpn_p90_sounds_iwp
+
+        GroupControlSection                      = spawn_group
+        $npc                                     = on
+        $prefetch                                = 8
+        $spawn                                   = "weapons\mp5"
+        scheduled                                = off
+        cform                                    = skeleton
+        parent_section                           = wpn_krissvektor
+
+        class                                    = WP_LR300
+        slot                                     = 2
+        animation_slot                           = 8
+        ef_main_weapon_type                      = 2
+        ef_weapon_type                           = 6
+        hand_dependence                          = 1
+        single_handed                            = 0
+
+        default_to_ruck                          = false
+        sprint_allowed                           = true
+
+		hud_fov                     = 0.65
+
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        lewd_lens_hide_enabled       = true	
+        lewd_lens_hide_bone          = lens
+        lewd_lens_hide_delays        = 0.1,0
+        lewd_lens_hide_aim_mode      = true, false, false
+ ;_______________________________________________________________________________
+ 
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 4
+		inv_grid_height                          = 2
+        inv_grid_x                               = 22
+        inv_grid_y                               = 32
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 8
+        ;inv_grid_height                          = 4      
+        ;inv_grid_x                               = 10
+        ;inv_grid_y                               = 36
+		
+        ;inv_grid_scale     = 2
+
+        inv_name                                 = st_wpn_kriss_cust
+        inv_name_short                           = st_wpn_kriss_cust
+        description                              = st_wpn_kriss_cust_descr
+;____________________________________________________________________
+		
+        hud                                      = wpn_krissvektor_hud
+		visual                                   = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor.ogf
+		
+        position                         = -0.032466, -0.187117, 0.02
+        orientation					= 0, 0, 0
+
+        fire_point					= 0.0, 0.188, 0.392
+        fire_point2					= 0.0, 0.188, 0.392
+		
+        strap_position         	= -0.2,-0.22,0.12			; position (offset) and orientation of the weapon when it is strapped
+        strap_orientation      	= -10,-5,10					; (3rd person view in degrees)
+        strap_bone0             = bip01_spine2
+        strap_bone1             = bip01_spine1
+		
+        ph_mass                                  = 3
+
+;___________________________ Particles ___________________________________ 
+
+        flame_particles                          = ghost_particles\weapons\generic_smoke_eft_sil         
+        smoke_particles				             = ghost_particles\weapons\flame_eft_ak           
+        silencer_smoke_particles   		         = ghost_particles\weapons\generic_smoke_eft_sil  
+
+        shell_dir               = 0.0, 0.0, 0.4
+        shell_point                      = 0, 0.262, -0.05
+        shell_particles	 			             = weapons\9x19
+;____________________________________________________________________ 
+
+        light_disabled                           = false
+        light_color                              = 0.6, 0.5, 0.3
+        light_range                              = 5
+        light_time                               = 0.2
+        light_var_color                          = 0.05
+        light_var_range                          = 0.5
+
+;___________________________ Upgrades ___________________________________ 
+		
+        upgrades                    = up_gr_firstab_kiparis, up_gr_seconab_kiparis, up_gr_thirdab_kiparis, up_gr_fourtab_kiparis, up_gr_fifthab_kiparis, up_gr_fifthcd_kiparis
+        installed_upgrades          =
+        upgrade_scheme              = upgrade_scheme_beretta
+		
+		upgr_icon_path               = ui\krisstco_icon
+        upgr_icon_x                 = 0
+        upgr_icon_y                 = 100
+        upgr_icon_width             = 250
+        upgr_icon_height            = 150
+;____________________________________________________________________ 
+
+        fire_modes                               = 1, 2, -1
+        ammo_class                               = ammo_11.43x23_fmj, ammo_11.43x23_fmj_bad, ammo_11.43x23_fmj_verybad, ammo_11.43x23_hydro, ammo_11.43x23_hydro_bad, ammo_11.43x23_hydro_verybad
+        ammo_elapsed                             = 40
+        ammo_mag_size                            = 40
+        startup_ammo                             = 120
+
+;___________________________ Scopes ___________________________________   
+
+        scopes                      = 0kp2, 1p69, 1p87, ac10632, ac11090, acog, ado, aim_acro, aim_low, aimpoint, point_aimpro, bravo4, bossxe, c-more, compm4s, cortex, deltapoint, devo, d0cter, e0t2, e0t2_magd, e0t2_magd_off, echo1, ekp8_18, elbit_falcon2, eot, exps3, gauss, gauss_sight, hamr, hartman_mh1, hco, he510, kemper, rusak, lco1, leupold, march_f_shorty, marchf, mepro, monstrum, p1x42, p4x32, pk6, pks07, pn23, po4x34, ps320, rakurs, razorhd, rmr, romeo4, romeo8, specter, susatov, t12, tac30, trihawk, uh1_magd, uh1_magd_off, uh2, vulcan
+        scope_status                = 0
+        scope_zoom_factor           = 0
+		use_alt_aim_hud  		    = true
+
+;___________________________ Grenade launcher ___________________________________ 
+		
+        grenade_class                            = ammo_vog-25, ammo_vog-25_bad, ammo_vog-25_verybad
+        grenade_launcher_name                    = wpn_addon_grenade_launcher
+        grenade_launcher_status                  = 0
+        grenade_launcher_x                       = 126
+        grenade_launcher_y                       = 24
+        launch_speed                             = 0
+
+;___________________________ Silencer ___________________________________ 
+		
+        silencer_name                            = wpn_sil_45
+        silencer_status                          = 2
+		
+        silencer_x                  = 179		; offset in inventory icon
+        silencer_y                  = 4
+		
+        silencer_light_color                     = 0.6, 0.5, 0.3
+        silencer_light_range                     = 0.01
+        silencer_light_time                      = 0.2
+        silencer_light_var_color                 = 0.05
+        silencer_light_var_range                 = 0.5
+
+;___________________________ TTX ___________________________________ 
+
+        hit_impulse                              = 28
+        hit_power                                = 0.55, 0.55, 0.55, 0.55
+        hit_type                                 = fire_wound
+        fire_distance                            = 300
+        bullet_speed                             = 285
+        rpm                         = 1200
+        rpm_empty_click             = 120
+        fire_modes                  = 1, 2, -1
+        kind                        = w_smg
+        inv_weight                  = 2.7
+        cost                        = 54160
+        repair_type                 = pistol
+        weapon_class                = assault_rifle
+
+        use_aim_bullet                           = false
+        time_to_aim                              = 0.0 ;  3.0
+        zoom_dof                                 = 0.5, 1.0, 180
+        zoom_enabled                             = true
+        zoom_rotate_time                         = 0.25
+        reload_dof                               = 0.0, 0.5, 5, 2
+        control_inertion_factor = 1.0f
+        crosshair_inertion                       = 4.5
+		
+        fire_dispersion_base                     = 0.35
+        fire_dispersion_condition_factor         = 0.001
+
+        misfire_probability                      = 0.005
+        misfire_start_condition                  = 0.7 ;  0.82
+        misfire_start_prob                       = 0.007
+        misfire_end_condition                    = 0.12
+        misfire_end_prob                         = 0.11
+
+        condition_queue_shot_dec                 = 0.0002
+        condition_shot_dec                       = 0.0002
+
+        cam_return                               = 0
+        cam_relax_speed                          = 5
+        cam_dispersion                           = 0.31
+        cam_dispersion_frac                      = 1.0
+        cam_dispersion_inc                       = 0.0475
+        cam_max_angle                            = 36.0
+        cam_max_angle_horz                       = 36.0
+        cam_step_angle_horz                      = 1.12
+		
+        zoom_cam_relax_speed                     = 5
+        zoom_cam_dispersion                      = 0.25
+        zoom_cam_dispersion_frac                 = 1.0
+        zoom_cam_dispersion_inc                  = 0.0375
+        zoom_cam_max_angle                       = 36.0
+        zoom_cam_max_angle_horz                  = 36.0
+        zoom_cam_step_angle_horz                 = 1.12
+
+        PDM_disp_accel_factor                    = 2.155
+        PDM_disp_base                            = 0.45
+        PDM_disp_crouch                          = 1.0
+        PDM_disp_crouch_no_acc                   = 1.0
+        PDM_disp_vel_factor                      = 2.15
+
+        cam_relax_speed_ai                       = 120.75
+        zoom_cam_relax_speed_ai                  = 120.75
+		
+        holder_fov_modifier                      = 1.0
+        holder_range_modifier                    = 1.0
+		
+        min_radius                               = 0
+        max_radius                               = 500
+		
+        hit_probability_gd_novice                = 1.00
+        hit_probability_gd_stalker               = 1.00
+        hit_probability_gd_veteran               = 1.00
+        hit_probability_gd_master                = 1.00
+
+        kill_msg_x                               = 72
+        kill_msg_y                               = 82
+        kill_msg_width                           = 56
+        kill_msg_height                          = 23
+
+;_________________________________________________ Sounds ______________________________________________________
+
+        snd_draw                = weapons\kriss\draw
+        snd_holster             = weapons\kriss\holster
+        snd_reload_misfire		= weapons\kriss\unjam
+        snd_reload_empty		= weapons\kriss\reload_empty
+        snd_reload				= weapons\kriss\reload
+        snd_bore				= weapons\kriss\inspect
+        snd_switch_mode			= weapons\kriss\switch_mode
+        snd_shoot               = weapons\kriss\fire
+        snd_silncer_shot        = weapons\kriss\silenced
+        snd_empty               = weapons\kriss\empty
+
+;__________________________________________ HUD parameters ____________________________________________________   
+
+[wpn_krissvektor_hud]:hud_base
+
+        item_visual                              = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_hud.ogf
+        attach_place_idx                         = 0
+        zoom_hide_crosshair                      = true   
+		
+;======================== Hud Position =======================================================
+
+        item_position                            = 0, 0, 0
+        item_orientation                         = 0, 0, 0
+
+        hands_orientation                = 0.2048, 0.232303, 0
+        hands_orientation_16x9           = 0.2048, 0.232303, 0
+        hands_position                   = 0.07581, -0.120418, 0.185781
+        hands_position_16x9              = 0.07581, -0.120418, 0.185781
+
+        aim_hud_offset_pos               = -0.063394, 0.021161, -0.020507
+        aim_hud_offset_pos_16x9          = -0.063394, 0.021161, -0.020507
+        aim_hud_offset_rot               = -0.000012, 0.002949, 0
+        aim_hud_offset_rot_16x9          = -0.000012, 0.002949, 0
+		
+        aim_hud_offset_alt_pos           = -0.127021, -0.076571, -0.024121
+        aim_hud_offset_alt_pos_16x9      = -0.127021, -0.076571, -0.024121
+        aim_hud_offset_alt_rot           = 0.004812, 0.006166, 0.817133
+        aim_hud_offset_alt_rot_16x9      = 0.004812, 0.006166, 0.817133
+
+        gl_hud_offset_pos                        = 0, 0, 0
+        gl_hud_offset_pos_16x9                   = 0, 0, 0
+        gl_hud_offset_rot                        = 0, 0, 0
+        gl_hud_offset_rot_16x9                   = 0, 0, 0
+
+        lowered_hud_offset_pos           = 0.065484, -0.014832, -0.026345
+        lowered_hud_offset_pos_16x9      = 0.065484, -0.014832, -0.026345
+        lowered_hud_offset_rot           = -0.075984, -0.626436, 0.399664
+        lowered_hud_offset_rot_16x9      = -0.075984, -0.626436, 0.399664
+
+        lean_hud_offset_pos                      = 0, 0, 0
+        lean_hud_offset_rot                      = 0, 0, 0
+;_____________________________________ Animations _____________________________________
+
+        anm_bore                                 = kriss_grip_inspect, idle
+        anm_show                                 = kriss_grip_draw, idle
+        anm_hide                                 = kriss_grip_holster, idle
+
+        anm_idle                                 = kriss_grip_idle, idle
+        anm_idle_aim_moving                      = kriss_grip_walk, idle, 0.85  
+        anm_idle_aim_moving                      = kriss_grip_walk, idle, 0.75 
+        anm_idle_aim_moving_crouch               = kriss_grip_walk, idle, 0.8 
+        anm_idle_moving                          = kriss_grip_walk, idle, 0.85 
+        anm_idle_moving_crouch                   = kriss_grip_walk, idle 
+        anm_idle_sprint                          = kriss_grip_sprint, idle,1.3
+
+        anm_reload                               = kriss_grip_reload, reload
+        anm_reload_empty                         = kriss_grip_reload_empty_test, reload_empty_test
+        anm_reload_aim                           = kriss_grip_reload, reload
+        anm_reload_empty_aim                     = kriss_grip_reload_empty_test, reload_empty_test
+        anm_reload_misfire          			 = kriss_grip_unjam, unjam
+        anm_reload_misfire_aim          		 = kriss_grip_unjam, unjam
+        anm_switch_mode                 		 = kriss_grip_switch_mode, idle
+
+        anm_shots                                = kriss_grip_shoot, shoot
+        anm_shots_aim							 = kriss_grip_shoot, aim_shoot
+        anm_idle_aim                             = kriss_grip_aim, aim
+
+;_____________________________________ Parameters of the shells sprite for HUD __________________________
+
+        fire_bone                                = muzzle
+        fire_bone2                               = wpn_body
+        fire_point                               = 0.01, -0.06, 0.07
+        fire_point2                              = 0, 0, 0
+
+        shell_point			                     = 0, -0.1, 0.3
+        shell_dir			                     = 0,1,0
+        shell_bone			                     = wpn_body
+
+        freelook_z_offset_mul					 = 0.1
+
+;____________________________________________________ Addons _______________________________________________________________________________________________________
+
+;__________________________________________________________ ОКП-7 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_0kp2]:wpn_krissvektor
+
+        1icon_layer	       = 0kp2
+        1icon_layer_x      = 84
+        1icon_layer_y      = -17
+
+        hud		   = wpn_krissvektor_0kp2_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_0kp2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_0kp2_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_0kp2_hud.ogf
+		
+        aim_hud_offset_pos                = -0.062661, 0.026137, -0.075483
+        aim_hud_offset_pos_16x9           = -0.062661, 0.026137, -0.075483
+        aim_hud_offset_rot                = 0.003973, 0.004336, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003973, 0.004336, 0.009531
+
+;__________________________________________________________ 1P69 (Joseph_Porta_84)[3DSS Only] ___________________________________________________
+
+[wpn_krissvektor_1p69]:wpn_krissvektor
+
+        1icon_layer	       = 1p69
+        1icon_layer_x      = 69
+        1icon_layer_y      = -22
+
+        hud		           = wpn_krissvektor_1p69_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_1p69_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p59
+		
+		
+		use_alt_aim_hud    = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_1p69_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_1p69_hud.ogf
+
+        aim_hud_offset_pos                = -0.06382, 0.008146, -0.073774
+        aim_hud_offset_pos_16x9           = -0.06382, 0.008146, -0.073774
+        aim_hud_offset_rot                = 0.002047, 0.004872, 0
+        aim_hud_offset_rot_16x9           = 0.002047, 0.004872, 0
+		
+;__________________________________________________________ 1P87 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_1p87]:wpn_krissvektor
+
+        1icon_layer	   = 1p87
+        1icon_layer_x      = 84
+        1icon_layer_y      = -21
+
+        hud		   = wpn_krissvektor_1p87_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_1p87_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_1p87_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_1p87_hud.ogf
+		
+        aim_hud_offset_pos                = -0.064681, 0.008713, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064681, 0.008713, -0.075483
+        aim_hud_offset_rot                = 0.000778, 0.005133, 0.009531
+        aim_hud_offset_rot_16x9           = 0.000778, 0.005133, 0.009531
+			
+;__________________________________________________________ AC10632 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_ac10632]:wpn_krissvektor
+
+        1icon_layer	   = ac10632
+        1icon_layer_x      = 75
+        1icon_layer_y      = -24
+
+        hud		   = wpn_krissvektor_ac10632_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_ac10632_world.ogf
+
+        ms_count = 8
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_ac10632_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_ac10632_hud.ogf
+		
+        aim_hud_offset_pos                = -0.0649, 0.014332, -0.075483
+        aim_hud_offset_pos_16x9           = -0.0649, 0.014332, -0.075483
+        aim_hud_offset_rot                = 0.003405, 0.004922, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003405, 0.004922, 0.009531
+
+;__________________________________________________________ AC11090 (Party_50 and MsPizza727)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_ac11090]:wpn_krissvektor
+
+        1icon_layer	       = ac11090
+        1icon_layer_x      = 80
+        1icon_layer_y      = -20
+
+        hud		   = wpn_krissvektor_ac11090_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_ac11090_world.ogf
+
+        ms_count = 8
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_ac11090_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_ac11090_hud.ogf
+		
+        aim_hud_offset_pos                = -0.064098, 0.024783, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064098, 0.024783, -0.075483
+        aim_hud_offset_rot                = 0.003336, 0.002895, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003336, 0.002895, 0.009531
+		
+;__________________________________________________________ ACOG (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_krissvektor_acog]:wpn_krissvektor
+
+        1icon_layer	       = acog
+        1icon_layer_x      = 68
+        1icon_layer_y      = -26
+
+        hud		           = wpn_krissvektor_acog_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_acog_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_acog
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_acog_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_acog_hud.ogf
+		
+        aim_hud_offset_pos                = -0.064152, 0.01703, -0.100089
+        aim_hud_offset_pos_16x9           = -0.064152, 0.01703, -0.100089
+        aim_hud_offset_rot                = 0.016772, 0.004602, 0.009531
+        aim_hud_offset_rot_16x9           = 0.016772, 0.004602, 0.009531
+		
+;_____________________________ ADO (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_krissvektor_ado]:wpn_krissvektor
+
+        1icon_layer         = ado
+        1icon_layer_x       = 55
+        1icon_layer_y       = -28
+
+        hud                 = wpn_krissvektor_ado_hud
+        !visual				= dynamics\weapons\wpn_krissvektor\wpn_krissvektor_ado_world.ogf
+        zoom_step_count					 = 1
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        s3ds_reticle_size   = 4
+ 	    s3ds_eye_relief     = 2
+	    s3ds_exit_pupil		= 0.55		
+	    magnification 		= 9
+        min_magnification	= 3
+		
+ ;_______________________________________________________________________________
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_ado
+		
+		
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_ado_hud]:wpn_krissvektor_hud
+
+        item_visual                              = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_ado_hud.ogf
+		
+        aim_hud_offset_alt_pos            = -0.06345, -0.020606, -0.108245
+        aim_hud_offset_alt_pos_16x9       = -0.06345, -0.020606, -0.108245
+        aim_hud_offset_alt_rot            = 0.00572, 0.003823, 0.005972
+        aim_hud_offset_alt_rot_16x9       = 0.00572, 0.003823, 0.005972
+        aim_hud_offset_pos                = -0.063401, 0.01647, -0.089492
+        aim_hud_offset_pos_16x9           = -0.063401, 0.01647, -0.089492
+        aim_hud_offset_rot                = 0.003049, 0.004122, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003049, 0.004122, 0.009531
+
+		
+;__________________________________________________________ Aim Acro (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_aim_acro]:wpn_krissvektor
+
+        1icon_layer	       = aim_acro
+        1icon_layer_x      = 80
+        1icon_layer_y      = -26
+
+        hud		           = wpn_krissvektor_aim_acro_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_aim_acro_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_aim_acro_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_aim_acro_hud.ogf
+		
+        aim_hud_offset_pos                = -0.064311, 0.027636, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064311, 0.027636, -0.075483
+        aim_hud_offset_rot                = 0.002127, 0.004548, 0.009531
+        aim_hud_offset_rot_16x9           = 0.002127, 0.004548, 0.009531
+				
+;__________________________________________________________ Aim Low (BaS)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_aim_low]:wpn_krissvektor
+
+        1icon_layer	       = aim_low
+        1icon_layer_x      = 76
+        1icon_layer_y      = -22
+
+        hud		           = wpn_krissvektor_aim_low_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_aim_low_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_aim_low_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_aim_low_hud.ogf
+
+        aim_hud_offset_pos                = -0.064368, 0.032748, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064368, 0.032748, -0.075483
+        aim_hud_offset_rot                = 0.004399, 0.004336, 0.009531
+        aim_hud_offset_rot_16x9           = 0.004399, 0.004336, 0.009531
+		
+;__________________________________________________________ Aimpoint (BaS)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_aimpoint]:wpn_krissvektor
+
+        1icon_layer	       = aimpoint
+        1icon_layer_x      = 77
+        1icon_layer_y      = -29
+		
+        hud		           = wpn_krissvektor_aimpoint_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_aimpoint_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_aimpoint_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_aimpoint_hud.ogf
+
+        aim_hud_offset_pos                = -0.064087, 0.015113, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064087, 0.015113, -0.075483
+        aim_hud_offset_rot                = 0.003973, 0.004336, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003973, 0.004336, 0.009531
+		
+;__________________________________________________________ Aimpoint Pro (BaS)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_point_aimpro]:wpn_krissvektor
+
+        1icon_layer	       = point_aimpro
+        1icon_layer_x      = 84
+        1icon_layer_y      = -29
+
+        hud		           = wpn_krissvektor_point_aimpro_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_aimpoint_pro_world.ogf
+		
+		ms_count = 2
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_point_aimpro_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_aimpoint_pro_hud.ogf
+
+        aim_hud_offset_pos                = -0.064362, 0.012, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064362, 0.012, -0.075483
+        aim_hud_offset_rot                = 0.004257, 0.004707, 0.009531
+        aim_hud_offset_rot_16x9           = 0.004257, 0.004707, 0.009531
+						
+;__________________________________________________________ Bravo 4 (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_krissvektor_bravo4]:wpn_krissvektor
+
+        1icon_layer	       = bravo4
+        1icon_layer_x      = 47
+        1icon_layer_y      = -31
+
+        hud		   = wpn_krissvektor_bravo4_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_bravo4_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_hamr
+		
+
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_bravo4_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_bravo4_hud.ogf
+		
+        aim_hud_offset_alt_pos            = -0.063827, -0.030704, -0.085769
+        aim_hud_offset_alt_pos_16x9       = -0.063827, -0.030704, -0.085769
+        aim_hud_offset_alt_rot            = 0.002002, 0.004683, 0.005972
+        aim_hud_offset_alt_rot_16x9       = 0.002002, 0.004683, 0.005972
+        aim_hud_offset_pos                = -0.063776, 0.019883, -0.055647
+        aim_hud_offset_pos_16x9           = -0.063776, 0.019883, -0.055647
+        aim_hud_offset_rot                = 0.003049, 0.004122, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003049, 0.004122, 0.009531
+
+		
+;__________________________________________________________ BossXE (ATHI)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_bossxe]:wpn_krissvektor
+
+        1icon_layer	       = bossxe
+        1icon_layer_x      = 82
+        1icon_layer_y      = -22
+
+        hud		   = wpn_krissvektor_bossxe_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_bossxe_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+		
+		laser_status = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_bossxe_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_bossxe_hud.ogf
+		
+        aim_hud_offset_pos                = -0.064046, 0.007435, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064046, 0.007435, -0.075483
+        aim_hud_offset_rot                = 0.002908, 0.00423, 0.009531
+        aim_hud_offset_rot_16x9           = 0.002908, 0.00423, 0.009531
+		
+;__________________________________________________________ C-MORE (BaS)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_c-more]:wpn_krissvektor
+
+        1icon_layer	   = c-more
+        1icon_layer_x      = 84
+        1icon_layer_y      = -18
+
+        hud		   = wpn_krissvektor_c-more_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_c-more_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_c-more_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_c-more_hud.ogf
+
+        aim_hud_offset_pos                = -0.064258, 0.021589, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064258, 0.021589, -0.075483
+        aim_hud_offset_rot                = 0.003973, 0.004336, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003973, 0.004336, 0.009531
+		
+;__________________________________________________________ Compm4s (BaS)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_compm4s]:wpn_krissvektor
+
+        1icon_layer	       = compm4s
+        1icon_layer_x      = 77
+        1icon_layer_y      = -25
+
+        hud		   = wpn_krissvektor_compm4s_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_compm4s_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_compm4s_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_compm4s_hud.ogf
+
+        aim_hud_offset_pos                = -0.064524, 0.016969, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064524, 0.016969, -0.075483
+        aim_hud_offset_rot                = 0.003973, 0.004815, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003973, 0.004815, 0.009531
+		
+;_________________________________________ Cortex (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_krissvektor_cortex]:wpn_krissvektor
+
+        1icon_layer         = cortex
+        1icon_layer_x       = 55
+        1icon_layer_y       = -26
+
+        hud                 = wpn_krissvektor_cortex_hud
+        !visual				= dynamics\weapons\wpn_krissvektor\wpn_krissvektor_cortex_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_cortex
+		
+			
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_cortex_hud]:wpn_krissvektor_hud
+
+        item_visual                              = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_cortex_hud.ogf
+
+        aim_hud_offset_pos                = -0.063992, 0.005234, -0.075483
+        aim_hud_offset_pos_16x9           = -0.063992, 0.005234, -0.075483
+        aim_hud_offset_rot                = 0.003973, 0.004336, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003973, 0.004336, 0.009531
+		
+;__________________________________________________________ Deltapoint(BaS)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_deltapoint]:wpn_krissvektor
+
+        1icon_layer	       = deltapoint
+        1icon_layer_x      = 83
+        1icon_layer_y      = -22
+
+        hud		   = wpn_krissvektor_deltapoint_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_deltapoint_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_deltapoint_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_deltapoint_hud.ogf
+
+        aim_hud_offset_pos                = -0.064523, 0.015408, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064523, 0.015408, -0.075483
+        aim_hud_offset_rot                = 0.002056, 0.004814, 0.009531
+        aim_hud_offset_rot_16x9           = 0.002056, 0.004814, 0.009531
+		
+;_________________________________________ Devo (ATHI) [3DSS+PRS Only] ____________________________________________
+
+[wpn_krissvektor_devo]:wpn_krissvektor
+
+        1icon_layer         = devo
+        1icon_layer_x       = 77
+        1icon_layer_y       = -19
+
+        hud                 = wpn_krissvektor_devo_hud
+        !visual				= dynamics\weapons\wpn_krissvektor\wpn_krissvektor_devo_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 20
+        !scope_texture        = wpn_crosshair_devo
+		
+		
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_devo_hud]:wpn_krissvektor_hud
+
+        item_visual                              = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_devo_hud.ogf
+
+        aim_hud_offset_alt_pos            = -0.064677, 0.014664, -0.108245
+        aim_hud_offset_alt_pos_16x9       = -0.064677, 0.014664, -0.108245
+        aim_hud_offset_alt_rot            = 0.002739, 0.005107, 0.005972
+        aim_hud_offset_alt_rot_16x9       = 0.002739, 0.005107, 0.005972
+        aim_hud_offset_pos                = -0.06426, 0.029978, -0.117018
+        aim_hud_offset_pos_16x9           = -0.06426, 0.029978, -0.117018
+        aim_hud_offset_rot                = 0.004684, 0.004017, 0.009531
+        aim_hud_offset_rot_16x9           = 0.004684, 0.004017, 0.009531
+
+		
+;__________________________________________________________ Docter Sight III (BaS)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_d0cter]:wpn_krissvektor
+
+        1icon_layer	       = d0cter
+        1icon_layer_x      = 76
+        1icon_layer_y      = -16
+
+        hud		           = wpn_krissvektor_d0cter_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_docter_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_d0cter_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_docter_hud.ogf
+
+        aim_hud_offset_pos                = -0.064258, 0.033105, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064258, 0.033105, -0.075483
+        aim_hud_offset_rot                = 0.003973, 0.004336, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003973, 0.004336, 0.009531
+		
+;__________________________________________________________ EOTech XPS3-0 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_krissvektor_e0t2]:wpn_krissvektor
+
+        1icon_layer	       = e0t2
+        1icon_layer_x      = 84
+        1icon_layer_y      = -24
+
+        hud		           = wpn_krissvektor_e0t2_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_e0t2_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+		
+[wpn_krissvektor_e0t2_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_e0t2_hud.ogf
+
+        aim_hud_offset_pos                = -0.064735, 0.014556, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064735, 0.014556, -0.075483
+        aim_hud_offset_rot                = -0.000145, 0.004815, 0.009531
+        aim_hud_offset_rot_16x9           = -0.000145, 0.004815, 0.009531
+		
+;__________________________________________________________ EOTech XPS3-0 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_krissvektor_e0t2_magd]:wpn_krissvektor
+
+        1icon_layer	       = e0t2_magd
+        1icon_layer_x      = 58
+        1icon_layer_y      = -28
+		
+
+        hud		           = wpn_krissvektor_e0t2_magd_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_e0t2_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_eot_magn
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_e0t2_magd_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_e0t2_magd_hud.ogf
+
+        aim_hud_offset_pos                = -0.064104, 0.017105, -0.090352
+        aim_hud_offset_pos_16x9           = -0.064104, 0.017105, -0.090352
+        aim_hud_offset_rot                = 0.004115, 0.00423, 0.009531
+        aim_hud_offset_rot_16x9           = 0.004115, 0.00423, 0.009531
+
+;___________________________ Flipped ___________________________________
+
+[wpn_krissvektor_e0t2_magd_off]:wpn_krissvektor
+
+        1icon_layer	       = e0t2_magd
+        1icon_layer_x      = 58
+        1icon_layer_y      = -28
+
+        hud		           = wpn_krissvektor_e0t2_magd_off_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_e0t2_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_e0t2_magd_off_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_e0t2_magd_off_hud.ogf
+
+        aim_hud_offset_pos                = -0.064475, 0.014334, -0.084374
+        aim_hud_offset_pos_16x9           = -0.064475, 0.014334, -0.084374
+        aim_hud_offset_rot                = -0.000576, 0.004656, 0.009531
+        aim_hud_offset_rot_16x9           = -0.000576, 0.004656, 0.009531
+		
+;_________________________________________ Echo1 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_krissvektor_echo1]:wpn_krissvektor
+
+        1icon_layer         = echo1
+        1icon_layer_x       = 52
+        1icon_layer_y       = -30
+		
+        hud                 = wpn_krissvektor_echo1_hud
+        !visual				= dynamics\weapons\wpn_krissvektor\wpn_krissvektor_echo1_world.ogf
+        zoom_step_count					 = 1
+ 
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+		
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_echo1_hud]:wpn_krissvektor_hud
+
+        item_visual                              = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_echo1_hud.ogf
+	
+        aim_hud_offset_alt_pos            = -0.063554, -0.017619, -0.085276
+        aim_hud_offset_alt_pos_16x9       = -0.063554, -0.017619, -0.085276
+        aim_hud_offset_alt_rot            = 0.00572, 0.003823, 0.005972
+        aim_hud_offset_alt_rot_16x9       = 0.00572, 0.003823, 0.005972
+        aim_hud_offset_pos                = -0.063726, 0.007009, -0.075483
+        aim_hud_offset_pos_16x9           = -0.063726, 0.007009, -0.075483
+        aim_hud_offset_rot                = 0.003973, 0.004336, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003973, 0.004336, 0.009531
+
+		
+;__________________________________________________________ Кобра ЭКП-8-18 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_krissvektor_ekp8_18]:wpn_krissvektor
+
+        1icon_layer	       = ekp8_18
+        1icon_layer_x      = 83
+        1icon_layer_y      = -16
+
+        hud		           = wpn_krissvektor_ekp8_18_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_ekp8_18_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_ekp8_18_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_ekp8_18_hud.ogf
+
+        aim_hud_offset_pos                = -0.064525, 0.010364, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064525, 0.010364, -0.075483
+        aim_hud_offset_rot                = 0.003973, 0.004336, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003973, 0.004336, 0.009531
+		
+;__________________________________________________________ FALCON 2 (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_elbit_falcon2]:wpn_krissvektor
+
+        1icon_layer	       = elbit_falcon2
+        1icon_layer_x      = 72
+        1icon_layer_y      = -20
+
+        hud		           = wpn_krissvektor_elbit_falcon2_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_elbit_falcon2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_elbit_falcon2_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_elbit_falcon2_hud.ogf
+
+        aim_hud_offset_pos                = -0.064204, 0.022872, -0.09525
+        aim_hud_offset_pos_16x9           = -0.064204, 0.022872, -0.09525
+        aim_hud_offset_rot                = 0.003263, 0.004281, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003263, 0.004281, 0.009531
+		
+;__________________________________________________________ EOTech 553 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_krissvektor_eot]:wpn_krissvektor
+
+        1icon_layer	       = eot
+        1icon_layer_x      = 83
+        1icon_layer_y      = -22
+
+        hud		   = wpn_krissvektor_eot_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_eot_world.ogf
+		
+		ms_count = 6
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_eot_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_eot_hud.ogf
+
+        aim_hud_offset_pos                = -0.064574, 0.010859, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064574, 0.010859, -0.075483
+        aim_hud_offset_rot                = 0.002979, 0.004867, 0.009531
+        aim_hud_offset_rot_16x9           = 0.002979, 0.004867, 0.009531
+		
+;__________________________________________________________ Exps3 (RWAP)[PRS+MS Only] ___________________________________________________
+
+[wpn_krissvektor_exps3]:wpn_krissvektor
+
+        1icon_layer	       = exps3
+        1icon_layer_x      = 83
+        1icon_layer_y      = -26
+
+        hud		   = wpn_krissvektor_exps3_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_exps3_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_exps3_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_exps3_hud.ogf
+
+        aim_hud_offset_pos                = -0.064629, 0.012426, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064629, 0.012426, -0.075483
+        aim_hud_offset_rot                = 0.002056, 0.004814, 0.009531
+        aim_hud_offset_rot_16x9           = 0.002056, 0.004814, 0.009531
+
+;__________________________________________________________ Gauss Sight (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_krissvektor_gauss_sight]:wpn_krissvektor
+
+        1icon_layer	       = gauss_sight
+        1icon_layer_x      = 75
+        1icon_layer_y      = -19
+
+        hud		           = wpn_krissvektor_gauss_sight_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_gauss_sight_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_gauss_sight
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_gauss_sight_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_gauss_sight_hud.ogf
+
+        aim_hud_offset_pos                = -0.063621, 0.016897, -0.110762
+        aim_hud_offset_pos_16x9           = -0.063621, 0.016897, -0.110762
+        aim_hud_offset_rot                = 0.006535, 0.00097, 0.009531
+        aim_hud_offset_rot_16x9           = 0.006535, 0.00097, 0.009531
+		
+;__________________________________________________________ Gauss Sight (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_krissvektor_gauss]:wpn_krissvektor
+
+        1icon_layer	       = gauss
+        1icon_layer_x      = 58
+        1icon_layer_y      = -31
+
+        hud		           = wpn_krissvektor_gauss_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_gauss_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_gauss_sight
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_gauss_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_gauss_hud.ogf
+
+        aim_hud_offset_pos                = -0.063833, 0.011415, -0.10606
+        aim_hud_offset_pos_16x9           = -0.063833, 0.011415, -0.10606
+        aim_hud_offset_rot                = 0.003973, 0.004336, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003973, 0.004336, 0.009531
+		
+;__________________________________________________________ HAMR (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_krissvektor_hamr]:wpn_krissvektor
+
+        1icon_layer	       = hamr
+        1icon_layer_x      = 53
+        1icon_layer_y      = -30
+
+        hud		   = wpn_krissvektor_hamr_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_hamr_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_hamr
+		
+
+		use_alt_aim_hud  		    = true
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_hamr_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_hamr_hud.ogf
+		
+        aim_hud_offset_alt_pos            = -0.063663, -0.020748, -0.108245
+        aim_hud_offset_alt_pos_16x9       = -0.063663, -0.020748, -0.108245
+        aim_hud_offset_alt_rot            = 0.001826, 0.003828, 0.005972
+        aim_hud_offset_alt_rot_16x9       = 0.001826, 0.003828, 0.005972
+        aim_hud_offset_pos                = -0.064257, 0.013265, -0.082173
+        aim_hud_offset_pos_16x9           = -0.064257, 0.013265, -0.082173
+        aim_hud_offset_rot                = 0.003973, 0.004336, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003973, 0.004336, 0.009531
+
+		
+;__________________________________________________________ Hartman MH1 (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_hartman_mh1]:wpn_krissvektor
+
+        1icon_layer	       = hartman_mh1
+        1icon_layer_x      = 85
+        1icon_layer_y      = -17
+
+        hud		           = wpn_krissvektor_hartman_mh1_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_hartman_mh1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_hartman_mh1_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_hartman_mh1_hud.ogf
+
+        aim_hud_offset_pos                = -0.064789, 0.014769, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064789, 0.014769, -0.075483
+        aim_hud_offset_rot                = -0.000997, 0.005132, 0.009531
+        aim_hud_offset_rot_16x9           = -0.000997, 0.005132, 0.009531
+		
+;__________________________________________________________ HCO (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_hco]:wpn_krissvektor
+
+        1icon_layer	       = hco
+        1icon_layer_x      = 84
+        1icon_layer_y      = -24
+
+        hud		   = wpn_krissvektor_hco_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_hco_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_hco_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_hco_hud.ogf
+
+        aim_hud_offset_pos                = -0.064735, 0.012213, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064735, 0.012213, -0.075483
+        aim_hud_offset_rot                = 0.00163, 0.00492, 0.009531
+        aim_hud_offset_rot_16x9           = 0.00163, 0.00492, 0.009531
+		
+;__________________________________________________________ HE510 (RWAP)[PRS+MS Only] ___________________________________________________
+
+[wpn_krissvektor_he510]:wpn_krissvektor
+
+        1icon_layer	       = he510
+        1icon_layer_x      = 84
+        1icon_layer_y      = -24
+
+        hud		   = wpn_krissvektor_he510_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_he510_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_he510_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_he510_hud.ogf
+		
+        aim_hud_offset_pos                = -0.064682, 0.016757, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064682, 0.016757, -0.075483
+        aim_hud_offset_rot                = 0.001559, 0.00492, 0.009531
+        aim_hud_offset_rot_16x9           = 0.001559, 0.00492, 0.009531
+						
+;__________________________________________________________ Kemper (BaS)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_kemper]:wpn_krissvektor
+
+        1icon_layer	       = kemper
+        1icon_layer_x      = 80
+        1icon_layer_y      = -21
+
+        hud		           = wpn_krissvektor_kemper_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_kemper_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_kemper_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_kemper_hud.ogf
+		
+        aim_hud_offset_pos                = -0.064523, 0.015763, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064523, 0.015763, -0.075483
+        aim_hud_offset_rot                = 0.003121, 0.004548, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003121, 0.004548, 0.009531
+		
+;__________________________________________________________ Rusak (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_rusak]:wpn_krissvektor
+
+        1icon_layer	       = rusak
+        1icon_layer_x      = 75
+        1icon_layer_y      = -26
+
+        hud		           = wpn_krissvektor_rusak_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_rusak_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_rusak_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_rusak_hud.ogf
+
+        aim_hud_offset_pos                = -0.064417, 0.017601, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064417, 0.017601, -0.075483
+        aim_hud_offset_rot                = 0.002482, 0.004658, 0.009531
+        aim_hud_offset_rot_16x9           = 0.002482, 0.004658, 0.009531
+		
+;__________________________________________________________ LCO (Phant0m)[PRS+MS Only] ___________________________________________________
+
+[wpn_krissvektor_lco1]:wpn_krissvektor
+
+        1icon_layer	       = lco1
+        1icon_layer_x      = 78
+        1icon_layer_y      = -24
+
+        hud		   = wpn_krissvektor_lco1_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_lco1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_lco1_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_lco1_hud.ogf
+
+        aim_hud_offset_pos                = -0.064469, 0.014059, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064469, 0.014059, -0.075483
+        aim_hud_offset_rot                = 0.002695, 0.004709, 0.009531
+        aim_hud_offset_rot_16x9           = 0.002695, 0.004709, 0.009531
+		
+;__________________________________________________________ Leupold (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_krissvektor_leupold]:wpn_krissvektor
+
+        1icon_layer	       = leupold
+        1icon_layer_x      = 62
+        1icon_layer_y      = -21
+		
+        hud		   = wpn_krissvektor_leupold_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_leupold_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_leupold
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_leupold_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_leupold_hud.ogf
+
+        aim_hud_offset_pos                = -0.064101, 0.013554, -0.086296
+        aim_hud_offset_pos_16x9           = -0.064101, 0.013554, -0.086296
+        aim_hud_offset_rot                = 0.00376, 0.004496, 0.009531
+        aim_hud_offset_rot_16x9           = 0.00376, 0.004496, 0.009531
+			
+;__________________________________________________________ March Shorty (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_krissvektor_march_f_shorty]:wpn_krissvektor
+
+        1icon_layer	       = march_f_shorty
+        1icon_layer_x      = 58
+        1icon_layer_y      = -26
+
+        hud		           = wpn_krissvektor_march_f_shorty_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_march_f_shorty_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_march_shorty
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_march_f_shorty_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_march_f_shorty_hud.ogf
+
+        aim_hud_offset_pos                = -0.063886, 0.010781, -0.074271
+        aim_hud_offset_pos_16x9           = -0.063886, 0.010781, -0.074271
+        aim_hud_offset_rot                = 0.003973, 0.004336, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003973, 0.004336, 0.009531
+		
+;__________________________________________________________ Marchf (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_krissvektor_marchf]:wpn_krissvektor
+
+        1icon_layer	       = marchf
+        1icon_layer_x      = 57
+        1icon_layer_y      = -18
+
+        hud		   = wpn_krissvektor_marchf_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_marchf_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_marchf
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_marchf_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_marchf_hud.ogf
+
+        aim_hud_offset_pos                = -0.064098, 0.010853, -0.033028
+        aim_hud_offset_pos_16x9           = -0.064098, 0.010853, -0.033028
+        aim_hud_offset_rot                = 0.004541, 0.004282, 0.009531
+        aim_hud_offset_rot_16x9           = 0.004541, 0.004282, 0.009531
+		
+;__________________________________________________________ Mepro (BaS)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_mepro]:wpn_krissvektor
+
+        1icon_layer	       = mepro
+        1icon_layer_x      = 82
+        1icon_layer_y      = -20
+
+        hud		   = wpn_krissvektor_mepro_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_mepro_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_mepro_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_mepro_hud.ogf
+
+        aim_hud_offset_pos                = -0.064364, 0.015266, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064364, 0.015266, -0.075483
+        aim_hud_offset_rot                = 0.003121, 0.004548, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003121, 0.004548, 0.009531
+		
+;_________________________________________ Monstrum (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_krissvektor_monstrum]:wpn_krissvektor
+
+        1icon_layer         = monstrum
+        1icon_layer_x       = 72
+        1icon_layer_y       = -25
+
+        hud                 = wpn_krissvektor_monstrum_hud
+        !visual				= dynamics\weapons\wpn_krissvektor\wpn_krissvektor_monstrum_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_monstrum
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_monstrum_hud]:wpn_krissvektor_hud
+
+        item_visual                              = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_monstrum_hud.ogf
+
+        aim_hud_offset_pos                = -0.06431, 0.024938, -0.081819
+        aim_hud_offset_pos_16x9           = -0.06431, 0.024938, -0.081819
+        aim_hud_offset_rot                = 0.003192, 0.004225, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003192, 0.004225, 0.009531
+
+;__________________________________________________________ P1X42 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_p1x42]:wpn_krissvektor
+
+        1icon_layer	       = p1x42
+        1icon_layer_x      = 81
+        1icon_layer_y      = -25
+
+        hud		   = wpn_krissvektor_p1x42_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_p1x42_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_p1x42_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_p1x42_hud.ogf
+
+        aim_hud_offset_pos                = -0.065107, 0.016047, -0.075483
+        aim_hud_offset_pos_16x9           = -0.065107, 0.016047, -0.075483
+        aim_hud_offset_rot                = 0.00518, 0.006204, 0.009531
+        aim_hud_offset_rot_16x9           = 0.00518, 0.006204, 0.009531
+		
+;_________________________________________ P4X32 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_krissvektor_p4x32]:wpn_krissvektor
+
+        1icon_layer         = p4x32
+        1icon_layer_x       = 74
+        1icon_layer_y       = -21
+
+        hud                 = wpn_krissvektor_p4x32_hud
+        !visual				= dynamics\weapons\wpn_krissvektor\wpn_krissvektor_p4x32_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_p4x32_hud]:wpn_krissvektor_hud
+
+        item_visual                              = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_p4x32_hud.ogf	
+
+        aim_hud_offset_pos                = -0.064097, 0.024143, -0.099098
+        aim_hud_offset_pos_16x9           = -0.064097, 0.024143, -0.099098
+        aim_hud_offset_rot                = 0.003334, 0.004282, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003334, 0.004282, 0.009531
+		
+;__________________________________________________________ PK6 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_pk6]:wpn_krissvektor
+
+        1icon_layer	   = pk6
+        1icon_layer_x      = 78
+        1icon_layer_y      = -28
+
+        hud		   = wpn_krissvektor_pk6_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_pk6_world.ogf
+		
+		ms_count 			= 3
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_pk6_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_pk6_hud.ogf
+		
+        aim_hud_offset_pos                = -0.064363, 0.028561, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064363, 0.028561, -0.075483
+        aim_hud_offset_rot                = 0.003121, 0.004548, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003121, 0.004548, 0.009531
+
+;________________________________________________ PKS-07 (Party_50 and MsPizza727)[3DSS Only] ___________________________________________________
+
+[wpn_krissvektor_pks07]:wpn_krissvektor
+
+        1icon_layer	       = pks07
+        1icon_layer_x      = 60
+        1icon_layer_y      = -24
+
+        hud		           = wpn_krissvektor_pks07_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_pks07_world.ogf
+ 
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_pks07_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_pks07_hud.ogf
+		
+        aim_hud_offset_pos                = -0.063941, 0.017179, -0.095328
+        aim_hud_offset_pos_16x9           = -0.063941, 0.017179, -0.095328
+        aim_hud_offset_rot                = 0.004825, 0.001406, 0.009531
+        aim_hud_offset_rot_16x9           = 0.004825, 0.001406, 0.009531
+		
+;__________________________________________________________ PN23 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_krissvektor_pn23]:wpn_krissvektor
+
+        1icon_layer	       = pn23
+        1icon_layer_x      = 49
+        1icon_layer_y      = -29
+
+        hud		   = wpn_krissvektor_pn23_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_pn23_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_pn23
+		
+		
+
+;--------------------------------------------------------------------------------------
+
+[wpn_krissvektor_pn23_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_pn23_hud.ogf
+
+        aim_hud_offset_pos                = -0.063993, 0.003885, -0.096821
+        aim_hud_offset_pos_16x9           = -0.063993, 0.003885, -0.096821
+        aim_hud_offset_rot                = 0.003973, 0.004336, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003973, 0.004336, 0.009531
+
+;_________________________________________ PO4X34 (MsPizza727) [3DSS Only] ____________________________________________
+
+[wpn_krissvektor_po4x34]:wpn_krissvektor
+
+        1icon_layer         = po4x34
+        1icon_layer_x       = 74
+        1icon_layer_y       = -21
+
+        hud                 = wpn_krissvektor_po4x34_hud
+        !visual				= dynamics\weapons\wpn_krissvektor\wpn_krissvektor_po4x34_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_po4x34
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_po4x34_hud]:wpn_krissvektor_hud
+
+        item_visual                              = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_po4x34_hud.ogf
+
+        aim_hud_offset_pos                = -0.06405, 0.020025, -0.073134
+        aim_hud_offset_pos_16x9           = -0.06405, 0.020025, -0.073134
+        aim_hud_offset_rot                = 0.0017, 0.004495, 0.009531
+        aim_hud_offset_rot_16x9           = 0.0017, 0.004495, 0.009531
+		
+;_________________________________________ Valdai PS320 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_krissvektor_ps320]:wpn_krissvektor
+
+        1icon_layer         = ps320
+        1icon_layer_x       = 54
+        1icon_layer_y       = -27
+
+        hud                 = wpn_krissvektor_ps320_hud
+        !visual				= dynamics\weapons\wpn_krissvektor\wpn_krissvektor_ps320_world.ogf
+        zoom_step_count					 = 1
+
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_ps320
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_ps320_hud]:wpn_krissvektor_hud
+
+        item_visual                              = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_ps320_hud.ogf
+
+        aim_hud_offset_pos                = -0.064363, 0.016681, -0.066808
+        aim_hud_offset_pos_16x9           = -0.064363, 0.016681, -0.066808
+        aim_hud_offset_rot                = 0.003902, 0.004496, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003902, 0.004496, 0.009531
+		
+		
+;__________________________________________________________ Rakurs (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_krissvektor_rakurs]:wpn_krissvektor
+
+        1icon_layer	       = rakurs
+        1icon_layer_x      = 74
+        1icon_layer_y      = -24
+
+        hud		   = wpn_krissvektor_rakurs_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_rakurs_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_rakurs_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_rakurs_hud.ogf
+
+        aim_hud_offset_pos                = -0.064417, 0.029127, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064417, 0.029127, -0.075483
+        aim_hud_offset_rot                = 0.002553, 0.004548, 0.009531
+        aim_hud_offset_rot_16x9           = 0.002553, 0.004548, 0.009531
+		
+;__________________________________________________________ RazorHD (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_krissvektor_razorhd]:wpn_krissvektor
+
+        1icon_layer	       = razorhd
+        1icon_layer_x      = 54
+        1icon_layer_y      = -25
+
+        hud		   = wpn_krissvektor_razorhd_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_razorhd_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_razorhd
+		
+
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_razorhd_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_razorhd_hud.ogf
+
+        aim_hud_offset_alt_pos            = -0.063612, -0.040722, -0.108245
+        aim_hud_offset_alt_pos_16x9       = -0.063612, -0.040722, -0.108245
+        aim_hud_offset_alt_rot            = 0.002253, 0.004324, 0.005972
+        aim_hud_offset_alt_rot_16x9       = 0.002253, 0.004324, 0.005972
+        aim_hud_offset_pos                = -0.063781, 0.012268, -0.064678
+        aim_hud_offset_pos_16x9           = -0.063781, 0.012268, -0.064678
+        aim_hud_offset_rot                = 0.004115, 0.005139, 0.009531
+        aim_hud_offset_rot_16x9           = 0.004115, 0.005139, 0.009531
+
+		
+;__________________________________________________________ RMR (BaS)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_rmr]:wpn_krissvektor
+
+        1icon_layer	       = rmr
+        1icon_layer_x      = 83
+        1icon_layer_y      = -24
+
+        hud		   = wpn_krissvektor_rmr_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_rmr_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_rmr_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_rmr_hud.ogf
+
+        aim_hud_offset_pos                = -0.064099, 0.01839, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064099, 0.01839, -0.075483
+        aim_hud_offset_rot                = 0.00234, 0.004277, 0.009531
+        aim_hud_offset_rot_16x9           = 0.00234, 0.004277, 0.009531
+		
+;__________________________________________________________ Romeo 4 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_romeo4]:wpn_krissvektor
+
+        1icon_layer	       = romeo4
+        1icon_layer_x      = 79
+        1icon_layer_y      = -28
+
+        hud		   = wpn_krissvektor_romeo4_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_romeo4_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_romeo4_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_romeo4_hud.ogf
+
+        aim_hud_offset_pos                = -0.064253, 0.018674, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064253, 0.018674, -0.075483
+        aim_hud_offset_rot                = 0.003121, 0.004388, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003121, 0.004388, 0.009531
+		
+;__________________________________________________________ Romeo 8 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_krissvektor_romeo8]:wpn_krissvektor
+
+        1icon_layer	   = romeo8
+        1icon_layer_x      = 81
+        1icon_layer_y      = -23
+
+        hud		   = wpn_krissvektor_romeo8_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_romeo8_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_romeo8_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_romeo8_hud.ogf
+
+        aim_hud_offset_pos                = -0.064624, 0.016047, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064624, 0.016047, -0.075483
+        aim_hud_offset_rot                = 0.002695, 0.00476, 0.009531
+        aim_hud_offset_rot_16x9           = 0.002695, 0.00476, 0.009531
+		
+;__________________________________________________________ Specter (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_krissvektor_specter]:wpn_krissvektor
+
+        1icon_layer	       = specter
+        1icon_layer_x      = 58
+        1icon_layer_y      = -23
+
+        hud		           = wpn_krissvektor_specter_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_specter_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_specter
+		
+		
+		use_alt_aim_hud  		    = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_specter_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_specter_hud.ogf
+
+        aim_hud_offset_alt_pos            = -0.063714, -0.015914, -0.10036
+        aim_hud_offset_alt_pos_16x9       = -0.063714, -0.015914, -0.10036
+        aim_hud_offset_alt_rot            = 0.00157, 0.004249, 0.005972
+        aim_hud_offset_alt_rot_16x9       = 0.00157, 0.004249, 0.005972
+        aim_hud_offset_pos                = -0.063887, 0.014336, -0.110122
+        aim_hud_offset_pos_16x9           = -0.063887, 0.014336, -0.110122
+        aim_hud_offset_rot                = 0.003973, 0.004336, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003973, 0.004336, 0.009531
+
+		
+;__________________________________________________________ Susat (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_krissvektor_susatov]:wpn_krissvektor
+
+        1icon_layer	       = susatov
+        1icon_layer_x      = 72
+        1icon_layer_y      = -29
+
+        hud		   = wpn_krissvektor_susatov_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_susatov_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_susat
+		
+
+		use_alt_aim_hud  		    = true
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_susatov_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_susatov_hud.ogf
+		
+        aim_hud_offset_alt_pos            = -0.063774, -0.02231, -0.13612
+        aim_hud_offset_alt_pos_16x9       = -0.063774, -0.02231, -0.13612
+        aim_hud_offset_alt_rot            = 0.004015, 0.004534, 0.005972
+        aim_hud_offset_alt_rot_16x9       = 0.004015, 0.004534, 0.005972
+        aim_hud_offset_pos                = -0.063886, -0.000958, -0.116017
+        aim_hud_offset_pos_16x9           = -0.063886, -0.000958, -0.116017
+        aim_hud_offset_rot                = 0.002766, 0.004495, 0.009531
+        aim_hud_offset_rot_16x9           = 0.002766, 0.004495, 0.009531
+
+		
+;_________________________________________ T12 (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_krissvektor_t12]:wpn_krissvektor
+
+        1icon_layer             = t12
+        1icon_layer_x			= 81
+        1icon_layer_y			= -23
+		
+        hud					= wpn_krissvektor_t12_hud
+        !visual				= dynamics\weapons\wpn_krissvektor\wpn_krissvektor_t12_world.ogf
+		
+        scope_status            = 1
+        scope_zoom_factor                = 20
+		
+;---------------------------------------------------------------------------------------		
+	
+[wpn_krissvektor_t12_hud]:wpn_krissvektor_hud
+
+        item_visual                		= anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_t12_hud.ogf
+
+        aim_hud_offset_pos                = -0.064307, 0.030903, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064307, 0.030903, -0.075483
+        aim_hud_offset_rot                = 0.008245, 0.004922, 0.009531
+        aim_hud_offset_rot_16x9           = 0.008245, 0.004922, 0.009531
+		
+;_________________________________________ Tac30 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_krissvektor_tac30]:wpn_krissvektor
+
+        1icon_layer         = tac30
+        1icon_layer_x       = 61
+        1icon_layer_y       = -24
+
+        hud                 = wpn_krissvektor_tac30_hud
+        !visual				= dynamics\weapons\wpn_krissvektor\wpn_krissvektor_tac30_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_tac30
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_tac30_hud]:wpn_krissvektor_hud
+
+        item_visual                              = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_tac30_hud.ogf
+
+        aim_hud_offset_pos                = -0.064212, 0.01227, -0.070872
+        aim_hud_offset_pos_16x9           = -0.064212, 0.01227, -0.070872
+        aim_hud_offset_rot                = 0.00447, 0.005937, 0.009531
+        aim_hud_offset_rot_16x9           = 0.00447, 0.005937, 0.009531
+
+		
+;_________________________________________ Trihawk (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_krissvektor_trihawk]:wpn_krissvektor
+
+        1icon_layer         = trihawk
+        1icon_layer_x       = 72
+        1icon_layer_y       = -27
+
+        hud                 = wpn_krissvektor_trihawk_hud
+        !visual				= dynamics\weapons\wpn_krissvektor\wpn_krissvektor_trihawk_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 20
+        !scope_texture        = wpn_crosshair_trihawk
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_trihawk_hud]:wpn_krissvektor_hud
+
+        item_visual                              = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_trihawk_hud.ogf
+
+        aim_hud_offset_pos                = -0.063988, 0.011136, -0.087933
+        aim_hud_offset_pos_16x9           = -0.063988, 0.011136, -0.087933
+        aim_hud_offset_rot                = 0.003334, 0.004494, 0.009531
+        aim_hud_offset_rot_16x9           = 0.003334, 0.004494, 0.009531
+		
+;__________________________________________________________ UH-1 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_krissvektor_uh1_magd]:wpn_krissvektor
+
+        1icon_layer	       = uh1_magd
+        1icon_layer_x      = 60
+        1icon_layer_y      = -26
+
+        hud		           = wpn_krissvektor_uh1_magd_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_uh1_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_uh1_magn
+		
+
+;---------------------------------------------------------------------------------------
+		
+[wpn_krissvektor_uh1_magd_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_uh1_magd_hud.ogf
+
+        aim_hud_offset_pos                = -0.063938, 0.01867, -0.091914
+        aim_hud_offset_pos_16x9           = -0.063938, 0.01867, -0.091914
+        aim_hud_offset_rot                = 0.004754, 0.004017, 0.009531
+        aim_hud_offset_rot_16x9           = 0.004754, 0.004017, 0.009531
+		
+;___________________________ Flipped ___________________________________
+
+[wpn_krissvektor_uh1_magd_off]:wpn_krissvektor
+
+        1icon_layer	       = uh1_magd
+        1icon_layer_x      = 60
+        1icon_layer_y      = -26
+
+        hud		           = wpn_krissvektor_uh1_magd_off_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_uh1_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_uh1_magd_off_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_uh1_magd_off_hud.ogf
+
+        aim_hud_offset_pos                = -0.063834, 0.013411, -0.075483
+        aim_hud_offset_pos_16x9           = -0.063834, 0.013411, -0.075483
+        aim_hud_offset_rot                = 0.000564, 0.003698, 0.009531
+        aim_hud_offset_rot_16x9           = 0.000564, 0.003698, 0.009531
+		
+		
+;__________________________________________________________ UH2 (Phant0m)[PRS+MS Only] ___________________________________________________
+
+[wpn_krissvektor_uh2]:wpn_krissvektor
+
+        1icon_layer	       = uh2
+        1icon_layer_x      = 83
+        1icon_layer_y      = -28
+
+        hud		   = wpn_krissvektor_uh2_hud
+        !visual             = dynamics\weapons\wpn_krissvektor\wpn_krissvektor_uh2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_uh2_hud]:wpn_krissvektor_hud 
+
+        item_visual        = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_uh2_hud.ogf
+
+        aim_hud_offset_pos                = -0.064201, 0.013913, -0.075483
+        aim_hud_offset_pos_16x9           = -0.064201, 0.013913, -0.075483
+        aim_hud_offset_rot                = 0.000635, 0.004283, 0.009531
+        aim_hud_offset_rot_16x9           = 0.000635, 0.004283, 0.009531
+		
+;_________________________________________ Vulcan (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_krissvektor_vulcan]:wpn_krissvektor
+
+        1icon_layer         = vulcan
+        1icon_layer_x       = 62
+        1icon_layer_y       = -28
+
+        hud                 = wpn_krissvektor_vulcan_hud
+        !visual				= dynamics\weapons\wpn_krissvektor\wpn_krissvektor_vulcan_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 20
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_vulcan
+		
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_krissvektor_vulcan_hud]:wpn_krissvektor_hud
+
+        item_visual                              = anomaly_weapons\wpn_kriss_vektor\wpn_kriss_vektor_vulcan_hud.ogf
+
+        aim_hud_offset_pos                = -0.064257, 0.016041, -0.113887
+        aim_hud_offset_pos_16x9           = -0.064257, 0.016041, -0.113887
+        aim_hud_offset_rot                = 0.004399, 0.004014, 0.009531
+        aim_hud_offset_rot_16x9           = 0.004399, 0.004014, 0.009531

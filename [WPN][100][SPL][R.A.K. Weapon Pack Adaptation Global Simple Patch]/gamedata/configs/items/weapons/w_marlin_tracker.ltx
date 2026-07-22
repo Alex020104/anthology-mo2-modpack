@@ -1,0 +1,2150 @@
+﻿[wpn_marlin_tracker_snd_shoot]
+snd_1_layer                                        			      = weapon\winchester1873\win_shot
+snd_2_layer                                        			      = weapons\_distance_shooting_mid\svd_distant
+snd_3_layer                                                       = weapons\_distance_shooting_far\svd_distant
+;------------------------------------------------------------------------------------------------
+[wpn_marlin_tracker_snd_shoot_sil]
+snd_1_layer                                        			      = weapon\winchester1873\win_shot_sil
+______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|                     Marlin Tracker Jmerc75(Juan) Animations+Model+Texture.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                                                                    |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_marlin_tracker]:identity_immunities,weapon_probability,default_weapon_params,wpn_k98_sounds
+
+        GroupControlSection                      = spawn_group
+        $npc                                     = on
+        $prefetch                                = 8
+        $spawn                                   = "weapons\wpn_marlin_tracker"
+        scheduled                                = off
+        cform                                    = skeleton
+        parent_section                           = wpn_marlin_tracker
+
+        class                                    = WP_ASHTG
+        slot                                     = 2
+        animation_slot                           = 3
+        ef_main_weapon_type                      = 3
+        ef_weapon_type                           = 8
+        hand_dependence                          = 1
+        single_handed                            = 0
+
+		hud_fov                                  = 0.65
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        lewd_lens_hide_enabled       = true	
+        lewd_lens_hide_bone          = lens
+        lewd_lens_hide_delays        = 0.1,0
+        lewd_lens_hide_aim_mode      = true, false, false
+ ;_______________________________________________________________________________
+ 
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 6
+		inv_grid_height                          = 2
+        inv_grid_x                               = 259
+        inv_grid_y                               = 76
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 12
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 234
+        ;inv_grid_y                               = 76
+		
+        ;inv_grid_scale     = 2
+			
+;___________________________ Description ___________________________________
+
+        inv_name                                 = st_wpn_marlin_tracker
+        inv_name_short                           = st_wpn_marlin_tracker
+        description                              = st_wpn_marlin_tracker_descr
+;____________________________________________________________________
+
+        kind                                     = w_sniper
+        inv_weight                               = 3.9
+        cost                                     = 64321
+        repair_type                              = rifle_7
+        weapon_class                             = assault_rifle
+
+        hud                                      = wpn_marlin_tracker_hud
+        visual                                   = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_world.ogf
+		
+        position                                 = -0.026, -0.027, 0.12
+        orientation                              = 0, 30.0, 0
+
+        fire_point                               = 0.0, 0.149, 0.742
+        fire_point2                              = 0.0, 0.149, 0.742
+
+        strap_bone0                              = bip01_spine2
+        strap_bone1                              = bip01_spine1
+        strap_position                           = -0.15, -0.15, 0.45
+        strap_orientation                        = -25, -189, 65
+
+        ph_mass                                  = 3
+
+;___________________________ Particles ___________________________________
+
+        flame_particles                          = weapons\generic_weapon05
+        smoke_particles                          = weapons\generic_shoot_00
+
+        shell_point		 		                 = 0.0, 0.129, 0.192
+        ;shell_particles                         = weapons\generic_shells_shotgun
+;____________________________________________________________________
+
+        light_color                              = 0.6, 0.5, 0.3
+        light_range                              = 4.0
+        light_time                               = 0.2
+        light_var_color                          = 0.05
+        light_var_range                          = 0.5
+
+;___________________________ Upgrades ___________________________________
+
+        upgrades                                 = up_gr_firstab_k98, up_gr_seconab_k98
+        installed_upgrades                       =
+        upgrade_scheme                           = upgrade_scheme_mosin
+		
+		upgr_icon_path                           = ui\ui_rak_global_1
+        upgr_icon_x                              = 13250
+        upgr_icon_y                              = 3850
+        upgr_icon_width                          = 450
+        upgr_icon_height                         = 150
+;____________________________________________________________________
+
+        tri_state_reload                         = on
+        fire_modes                               = 1
+        ammo_class                               = ammo_7.62x51_fmj, ammo_7.62x51_fmj_bad, ammo_7.62x51_fmj_verybad, ammo_7.62x51_ap, ammo_7.62x51_ap_bad, ammo_7.62x51_ap_verybad
+        ammo_elapsed                             = 6
+        ammo_mag_size                            = 6
+        startup_ammo                             = 12
+
+;___________________________ Scopes ___________________________________
+
+        scopes                      = 0kp2, 1p69, 1p87, ac10632, ac11090, acog, ado, aim_acro, aimpoint, point_aimpro, bravo4, bossxe, c-more, compm4s, cortex, deltapoint, devo, d0cter, e0t2, e0t2_magd, e0t2_magd_off, echo1, ekp8_18, elbit_falcon2, eot, exps3, gauss, gauss_sight, hamr, hartman_mh1, hco, he510, kemper, rusak, lco1, leupold, march_f_shorty, marchf, mepro, monstrum, p1x42, p4x32, pk6, pks07, pn23, po4x34, ps320, rakurs, razorhd, rmr, romeo4, romeo8, specter, susatov, t12, tac30, trihawk, uh1_magd, uh1_magd_off, uh2, vulcan
+        scope_status                = 0
+        scope_zoom_factor           = 0
+		use_alt_aim_hud  		    = true 
+        laser_status                      = true 
+
+;___________________________ Silencer ___________________________________
+
+        silencer_name                            = wpn_sil_daniel
+        silencer_status                          = 2
+		
+        silencer_x                               = 273
+        silencer_y                               = 16	
+
+        silencer_light_color                     = 0.6, 0.5, 0.3
+        silencer_light_range                     = 0.01
+        silencer_light_time                      = 0.2
+        silencer_light_var_color                 = 0.05
+        silencer_light_var_range                 = 0.5
+
+        silencer_smoke_particles                 = weapons\generic_shoot_00
+
+;___________________________ Grenade launcher ___________________________________
+
+        grenade_launcher_status                  = 0
+
+;___________________________ TTX ___________________________________
+
+        hit_impulse                              = 46
+        hit_power                                = 0.81, 0.81, 0.81, 0.81
+        hit_type                                 = fire_wound
+        fire_distance                            = 1000
+        bullet_speed                             = 820
+        rpm                                      = 55
+        rpm_empty_click                          = 200
+
+        use_aim_bullet = false
+        time_to_aim                 = 0.0 ;  1.0
+        zoom_enabled                = true
+        zoom_rotate_time            = 0.25
+        reload_dof                  = 0, 0.5, 5, 2.2
+        control_inertion_factor = 1.0f
+        crosshair_inertion          = 9
+		
+        fire_dispersion_base        = 0.1
+        fire_dispersion_condition_factor = 0.001
+        
+        misfire_probability         = 0.005
+        misfire_start_condition     = 0.7 ;  0.85
+        misfire_start_prob          = 0.005
+        misfire_end_condition       = 0.11
+        misfire_end_prob            = 0.09
+        
+        condition_queue_shot_dec    = 0.0018
+        condition_shot_dec          = 0.0018
+        
+        cam_return                  = 1
+        cam_relax_speed             = 4.5
+        cam_dispersion              = 2.5
+        cam_dispersion_frac         = 1.0
+        cam_dispersion_inc          = 2.5
+        cam_max_angle               = 50.0
+        cam_max_angle_horz          = 50.0
+        cam_step_angle_horz         = 0.25
+		
+        zoom_cam_relax_speed        = 0.75
+        zoom_cam_dispersion         = 1.0
+        zoom_cam_dispersion_frac    = 1.0
+        zoom_cam_dispersion_inc     = 1.5
+        zoom_cam_max_angle          = 50.0
+        zoom_cam_max_angle_horz     = 50.0
+        zoom_cam_step_angle_horz    = 2.0
+        
+        PDM_disp_accel_factor       = 3.0
+        PDM_disp_base               = 1.5
+        PDM_disp_crouch             = 1.0
+        PDM_disp_crouch_no_acc      = 1.0
+        PDM_disp_vel_factor         = 3.0
+        
+        cam_relax_speed_ai          = 360
+        zoom_cam_relax_speed_ai     = 120.75
+        holder_fov_modifier         = 0.75
+        holder_range_modifier       = 2.00
+        min_radius                  = 50
+        max_radius                  = 90
+        hit_probability_gd_novice   = 1.0
+        hit_probability_gd_stalker  = 1.0
+        hit_probability_gd_veteran  = 1.0
+        hit_probability_gd_master   = 1.0
+
+        kill_msg_x                               = 72
+        kill_msg_y                               = 82
+        kill_msg_width                           = 56
+        kill_msg_height                          = 23
+
+;_________________________________________________ Sounds ______________________________________________________
+
+        snd_open_weapon          	= weapon\winchester1873\win_open
+        snd_close_weapon       		= weapon\winchester1873\win_close
+
+        snd_add_cartridge			= $no_sound
+
+        snd_reload_misfire          = weapon\winchester1873\win_misfire
+
+        scripted_snd_add_cartridge  = weapon\winchester1873\win_add_cartridge
+        scripted_snd_add_cartridge1 = weapon\winchester1873\win_add_cartridge1
+        scripted_snd_add_cartridge2 = weapon\winchester1873\win_add_cartridge2
+        scripted_snd_add_cartridge3 = weapon\winchester1873\win_add_cartridge3
+        scripted_snd_add_cartridge_empty = weapon\winchester1873\win_add_cartridge_empty
+
+        snd_draw					= weapon\winchester1873\win_show
+        snd_holster					= weapon\winchester1873\win_holster
+
+        snd_shoot					= wpn_marlin_tracker_snd_shoot
+        snd_shoot_last				= $no_sound
+        snd_silncer_shot			= wpn_marlin_tracker_snd_shoot_sil
+        scripted_snd_shot_l			= weapon\winchester1873\win_shot_last
+        ;scripted_snd_shoots_jammed	= weapon\winchester1873\win_shot_last
+		
+;__________________________________________ HUD parameters ____________________________________________________
+
+[wpn_marlin_tracker_hud]:hud_base
+
+        item_visual                              = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_hud.ogf
+        attach_place_idx                         = 0
+        zoom_hide_crosshair                      = true   
+
+;======================== Hud Position =======================================================
+
+        aim_hud_offset_pos               = -0.068566, 0.0321, -0.045503
+        aim_hud_offset_pos_16x9          = -0.068566, 0.0321, -0.045503
+        aim_hud_offset_rot               = -0.003497, 0.006252, 0.00761
+        aim_hud_offset_rot_16x9          = -0.003497, 0.006252, 0.00761
+
+        aim_hud_offset_alt_pos           = -0.121486, -0.036843, 0.02001
+        aim_hud_offset_alt_pos_16x9      = -0.121486, -0.036843, 0.02001
+        aim_hud_offset_alt_rot           = -0.011596, 0.015632, 0.397874
+        aim_hud_offset_alt_rot_16x9      = -0.011596, 0.015632, 0.397874
+		
+        hands_orientation                = 0.252821, -0.233454, 0
+        hands_orientation_16x9           = 0.252821, -0.233454, 0
+        hands_position                   = 0.000534, -0.010885, -0.017063
+        hands_position_16x9              = 0.000534, -0.010885, -0.017063
+		
+        item_orientation                 = 0, 0, 0.0001
+        item_position                    = 0, 0, 0.0001
+		
+        lowered_hud_offset_pos           = 0.040249, -0.017166, -0.011211
+        lowered_hud_offset_pos_16x9      = 0.040249, -0.017166, -0.011211
+        lowered_hud_offset_rot           = 0.027351, -0.673441, 0.270856
+        lowered_hud_offset_rot_16x9      = 0.027351, -0.673441, 0.270856
+
+        lean_hud_offset_pos                      = 0, 0, 0
+        lean_hud_offset_rot                      = 0, 0, 0
+
+;======================== BORING =======================================================
+
+		anm_bore                                 = marlint_inspect, idle
+		anm_bore_empty                           = marlint_inspect, idle_empty
+		
+		anm_bore_jammed                          = marlint_inspect, idle_empty
+		
+;======================== HIDE ==========================================================
+
+		anm_hide                                 = marlint_hide, idle
+		anm_hide_empty                           = marlint_hide, idle_empty
+		
+		anm_hide_jammed                          = marlint_hide, idle_empty
+
+;======================== SHOW ==========================================================
+
+		anm_show                                 = marlint_draw, idle
+		anm_show_empty                           = marlint_draw, idle_empty
+		
+		anm_show_jammed                          = marlint_draw, idle_empty
+
+;======================== IDLE ==========================================================
+
+        anm_idle                                 = marlint_idle, idle      
+        anm_idle_moving                          = marlint_move, idle
+
+        anm_idle_empty                           = marlint_idle, idle_empty       
+        anm_idle_moving_empty                    = marlint_move, idle_empty		
+
+        anm_idle_jammed                          = marlint_idle, idle_empty       
+        anm_idle_moving_jammed                   = marlint_move, idle_empty
+		
+;======================== SPRINT TRANSITIONS AND PATERN ====================================================
+		
+        anm_sprint_start                         = marlint_sprint_start, idle
+		anm_idle_sprint                          = marlint_sprint, idle
+        anm_sprint_end                           = marlint_sprint_end, idle, 1.2
+		
+		anm_sprint_start_empty                   = marlint_sprint_start, idle_empty
+		anm_idle_sprint_empty                    = marlint_sprint, idle_empty
+        anm_sprint_end_empty                     = marlint_sprint_end, idle_empty, 1.2
+		
+		anm_sprint_start_jammed                  = marlint_sprint_start, idle
+		anm_idle_sprint_jammed                   = marlint_sprint, idle_empty
+        anm_sprint_end_jammed                    = marlint_sprint_end, idle, 1.2
+
+;----------------------------------------------------------------------------------------
+		ts_pattern_sprint_start                  = .+, anm_idle_sprint, anm_sprint_start, 1
+		ts_pattern_sprint_end                    = anm_idle_sprint, ^anm_idle.*, anm_sprint_end
+		ts_strict_sprint_end_move                = anm_sprint_start, anm_idle_moving, anm_sprint_end
+
+;======================== AIM TRANSITIONS ====================================================
+		
+		anm_idle_aim                             = marlint_aim, idle	
+		
+		anm_idle_aim_empty                       = marlint_aim, idle_empty
+		
+		anm_idle_aim_jammed                      = marlint_aim, idle_empty
+		
+;======================== RELOAD ==========================================================
+
+        anm_add_cartridge                        = marlint_add_cartridge
+        anm_close                                = marlint_close
+       
+        anm_open                                 = marlint_open
+        anm_reload_misfire                       = marlint_mis
+               
+        anm_open_empty                           = marlint_open_empty
+        anm_add_cartridge_empty                  = marlint_add_cartridge_empty
+		
+;========================SHOOTS===========================================================
+
+		anm_shots                                = marlint_shot
+        anm_shot_l                               = marlint_shot_last
+        anm_shoots_jammed                        = marlint_shot_last
+
+;_____________________________________ Parameters of the shells sprite for HUD __________________________			
+
+		shell_bone                               = wpn_body
+		shell_dir                                = 0.0, 1.0, 0.0
+		shell_point                              = 0, 0, 0
+
+		fire_bone                                = muzzle
+		fire_point                               = 0, 0, 0
+
+;____________________________________________________ Addons _______________________________________________________________________________________________________
+
+;__________________________________________________________ ОКП-7 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_0kp2]:wpn_marlin_tracker
+
+        1icon_layer	       = 0kp2
+        1icon_layer_x      = 129
+        1icon_layer_y      = 3
+
+        hud		   = wpn_marlin_tracker_0kp2_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_0kp2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_0kp2_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_0kp2_hud.ogf
+		
+        aim_hud_offset_pos               = -0.067866, 0.015732, -0.10006
+        aim_hud_offset_pos_16x9          = -0.067866, 0.015732, -0.10006
+        aim_hud_offset_rot               = -0.002432, 0.007221, 0.011448
+        aim_hud_offset_rot_16x9          = -0.002432, 0.007221, 0.011448
+
+;__________________________________________________________ 1P69 (Joseph_Porta_84)[3DSS Only] ___________________________________________________
+
+[wpn_marlin_tracker_1p69]:wpn_marlin_tracker
+
+        1icon_layer	       = 1p69
+        1icon_layer_x      = 114
+        1icon_layer_y      = -2
+
+        hud		           = wpn_marlin_tracker_1p69_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_1p69_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p59
+		
+		
+		use_alt_aim_hud    = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_1p69_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_1p69_hud.ogf
+
+        aim_hud_offset_pos               = -0.06862, -0.000755, -0.092231
+        aim_hud_offset_pos_16x9          = -0.06862, -0.000755, -0.092231
+        aim_hud_offset_rot               = -0.002574, 0.007111, 0.00761
+        aim_hud_offset_rot_16x9          = -0.002574, 0.007111, 0.00761
+		
+;__________________________________________________________ 1P87 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_1p87]:wpn_marlin_tracker
+
+        1icon_layer	   = 1p87
+        1icon_layer_x      = 129
+        1icon_layer_y      = -1
+
+        hud		   = wpn_marlin_tracker_1p87_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_1p87_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_1p87_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_1p87_hud.ogf
+		
+        aim_hud_offset_pos               = -0.069571, -0.001121, -0.07851
+        aim_hud_offset_pos_16x9          = -0.069571, -0.001121, -0.07851
+        aim_hud_offset_rot               = -0.004633, 0.007804, 0.011448
+        aim_hud_offset_rot_16x9          = -0.004633, 0.007804, 0.011448
+			
+;__________________________________________________________ AC10632 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_ac10632]:wpn_marlin_tracker
+
+        1icon_layer	   = ac10632
+        1icon_layer_x      = 120
+        1icon_layer_y      = -4
+
+        hud		   = wpn_marlin_tracker_ac10632_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_ac10632_world.ogf
+
+        ms_count = 8
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_ac10632_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_ac10632_hud.ogf
+		
+        aim_hud_offset_pos               = -0.069198, 0.003647, -0.10006
+        aim_hud_offset_pos_16x9          = -0.069198, 0.003647, -0.10006
+        aim_hud_offset_rot               = -0.002148, 0.00685, 0.011448
+        aim_hud_offset_rot_16x9          = -0.002148, 0.00685, 0.011448
+
+;__________________________________________________________ AC11090 (Party_50 and MsPizza727)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_ac11090]:wpn_marlin_tracker
+
+        1icon_layer	       = ac11090
+        1icon_layer_x      = 125
+        1icon_layer_y      = 0
+
+        hud		   = wpn_marlin_tracker_ac11090_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_ac11090_world.ogf
+
+        ms_count = 8
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_ac11090_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_ac11090_hud.ogf
+		
+        aim_hud_offset_pos               = -0.068827, 0.014454, -0.10006
+        aim_hud_offset_pos_16x9          = -0.068827, 0.014454, -0.10006
+        aim_hud_offset_rot               = -0.001509, 0.005409, 0.011448
+        aim_hud_offset_rot_16x9          = -0.001509, 0.005409, 0.011448
+		
+;__________________________________________________________ ACOG (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_marlin_tracker_acog]:wpn_marlin_tracker
+
+        1icon_layer	       = acog
+        1icon_layer_x      = 113
+        1icon_layer_y      = -6
+
+        hud		           = wpn_marlin_tracker_acog_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_acog_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_acog
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_acog_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_acog_hud.ogf
+		
+        aim_hud_offset_pos               = -0.068662, 0.005561, -0.098926
+        aim_hud_offset_pos_16x9          = -0.068662, 0.005561, -0.098926
+        aim_hud_offset_rot               = 0.011148, 0.006744, 0.011448
+        aim_hud_offset_rot_16x9          = 0.011148, 0.006744, 0.011448
+		
+;_____________________________ ADO (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_marlin_tracker_ado]:wpn_marlin_tracker
+
+        1icon_layer         = ado
+        1icon_layer_x       = 100
+        1icon_layer_y       = -8
+
+        hud                 = wpn_marlin_tracker_ado_hud
+        !visual				= dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_ado_world.ogf
+        zoom_step_count					 = 1
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        s3ds_reticle_size   = 4
+ 	    s3ds_eye_relief     = 2
+	    s3ds_exit_pupil		= 0.55		
+	    magnification 		= 9
+        min_magnification	= 3
+		
+ ;_______________________________________________________________________________
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+        !scope_texture        = wpn_crosshair_ado
+		
+		
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_ado_hud]:wpn_marlin_tracker_hud
+
+        item_visual                              = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_ado_hud.ogf
+		
+        aim_hud_offset_pos               = -0.068244, 0.006496, -0.09117
+        aim_hud_offset_pos_16x9          = -0.068244, 0.006496, -0.09117
+        aim_hud_offset_rot               = -0.002077, 0.006899, 0.00761
+        aim_hud_offset_rot_16x9          = -0.002077, 0.006899, 0.00761
+
+		
+;__________________________________________________________ Aim Acro (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_aim_acro]:wpn_marlin_tracker
+
+        1icon_layer	       = aim_acro
+        1icon_layer_x      = 125
+        1icon_layer_y      = -6
+
+        hud		           = wpn_marlin_tracker_aim_acro_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_aim_acro_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_aim_acro_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_aim_acro_hud.ogf
+		
+        aim_hud_offset_pos               = -0.068934, 0.016584, -0.10006
+        aim_hud_offset_pos_16x9          = -0.068934, 0.016584, -0.10006
+        aim_hud_offset_rot               = -0.002929, 0.007062, 0.011448
+        aim_hud_offset_rot_16x9          = -0.002929, 0.007062, 0.011448
+				
+;__________________________________________________________ Aim Low (BaS)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_aim_low]:wpn_marlin_tracker
+
+        1icon_layer	       = aim_low
+        1icon_layer_x      = 121
+        1icon_layer_y      = -2
+
+        hud		           = wpn_marlin_tracker_aim_low_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_aim_low_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_aim_low_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_aim_low_hud.ogf
+
+        aim_hud_offset_pos               = -0.066301, 0.014208, -0.084813
+        aim_hud_offset_pos_16x9          = -0.066301, 0.014208, -0.084813
+        aim_hud_offset_rot               = 0.000723, 0.003692, -0.000034
+        aim_hud_offset_rot_16x9          = 0.000723, 0.003692, -0.000034
+		
+;__________________________________________________________ Aimpoint (BaS)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_aimpoint]:wpn_marlin_tracker
+
+        1icon_layer	       = aimpoint
+        1icon_layer_x      = 122
+        1icon_layer_y      = -9
+		
+        hud		           = wpn_marlin_tracker_aimpoint_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_aimpoint_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_aimpoint_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_aimpoint_hud.ogf
+
+        aim_hud_offset_pos               = -0.069255, 0.00471, -0.10006
+        aim_hud_offset_pos_16x9          = -0.069255, 0.00471, -0.10006
+        aim_hud_offset_rot               = -0.001154, 0.007548, 0.011448
+        aim_hud_offset_rot_16x9          = -0.001154, 0.007548, 0.011448
+		
+;__________________________________________________________ Aimpoint Pro (BaS)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_point_aimpro]:wpn_marlin_tracker
+
+        1icon_layer	       = point_aimpro
+        1icon_layer_x      = 129
+        1icon_layer_y      = -9
+
+        hud		           = wpn_marlin_tracker_point_aimpro_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_aimpoint_pro_world.ogf
+		
+		ms_count = 2
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_point_aimpro_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_aimpoint_pro_hud.ogf
+
+        aim_hud_offset_pos               = -0.069346, 0.002507, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069346, 0.002507, -0.087322
+        aim_hud_offset_rot               = -0.001081, 0.007442, 0.012217
+        aim_hud_offset_rot_16x9          = -0.001081, 0.007442, 0.012217
+						
+;__________________________________________________________ Bravo 4 (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_bravo4]:wpn_marlin_tracker
+
+        1icon_layer	       = bravo4
+        1icon_layer_x      = 92
+        1icon_layer_y      = -11
+
+        hud		   = wpn_marlin_tracker_bravo4_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_bravo4_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_hamr
+		
+
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_bravo4_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_bravo4_hud.ogf
+		
+        aim_hud_offset_pos               = -0.068671, 0.009983, -0.081794
+        aim_hud_offset_pos_16x9          = -0.068671, 0.009983, -0.081794
+        aim_hud_offset_rot               = -0.002077, 0.006899, 0.00761
+        aim_hud_offset_rot_16x9          = -0.002077, 0.006899, 0.00761
+
+		
+;__________________________________________________________ BossXE (ATHI)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_bossxe]:wpn_marlin_tracker
+
+        1icon_layer	       = bossxe
+        1icon_layer_x      = 127
+        1icon_layer_y      = -2
+
+        hud		   = wpn_marlin_tracker_bossxe_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_bossxe_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+		
+		laser_status = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_bossxe_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_bossxe_hud.ogf
+		
+        aim_hud_offset_pos               = -0.068779, -0.002557, -0.087897
+        aim_hud_offset_pos_16x9          = -0.068779, -0.002557, -0.087897
+        aim_hud_offset_rot               = -0.006076, 0.002864, -0.000051
+        aim_hud_offset_rot_16x9          = -0.006076, 0.002864, -0.000051
+
+        aim_hud_offset_alt_pos           = -0.123912, -0.061986, -0.034437
+        aim_hud_offset_alt_pos_16x9      = -0.123912, -0.061986, -0.034437
+        aim_hud_offset_alt_rot           = -0.004742, 0.004474, 0.544827
+        aim_hud_offset_alt_rot_16x9      = -0.004742, 0.004474, 0.544827
+		
+;__________________________________________________________ C-MORE (BaS)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_c-more]:wpn_marlin_tracker
+
+        1icon_layer	   = c-more
+        1icon_layer_x      = 129
+        1icon_layer_y      = 2
+
+        hud		   = wpn_marlin_tracker_c-more_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_c-more_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_c-more_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_c-more_hud.ogf
+
+        aim_hud_offset_pos               = -0.069093, 0.007905, -0.10006
+        aim_hud_offset_pos_16x9          = -0.069093, 0.007905, -0.10006
+        aim_hud_offset_rot               = -0.001154, 0.007062, 0.005973
+        aim_hud_offset_rot_16x9          = -0.001154, 0.007062, 0.005973
+		
+;__________________________________________________________ Compm4s (BaS)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_compm4s]:wpn_marlin_tracker
+
+        1icon_layer	       = compm4s
+        1icon_layer_x      = 122
+        1icon_layer_y      = -5
+
+        hud		   = wpn_marlin_tracker_compm4s_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_compm4s_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_compm4s_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_compm4s_hud.ogf
+
+        aim_hud_offset_pos               = -0.069306, 0.008473, -0.10006
+        aim_hud_offset_pos_16x9          = -0.069306, 0.008473, -0.10006
+        aim_hud_offset_rot               = -0.001296, 0.007597, 0.005973
+        aim_hud_offset_rot_16x9          = -0.001296, 0.007597, 0.005973
+		
+;_________________________________________ Cortex (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_marlin_tracker_cortex]:wpn_marlin_tracker
+
+        1icon_layer         = cortex
+        1icon_layer_x       = 100
+        1icon_layer_y       = -6
+
+        hud                 = wpn_marlin_tracker_cortex_hud
+        !visual				= dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_cortex_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+        !scope_texture        = wpn_crosshair_cortex
+		
+			
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_cortex_hud]:wpn_marlin_tracker_hud
+
+        item_visual                              = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_cortex_hud.ogf
+
+        aim_hud_offset_pos               = -0.068514, -0.00467, -0.086003
+        aim_hud_offset_pos_16x9          = -0.068514, -0.00467, -0.086003
+        aim_hud_offset_rot               = -0.000444, 0.006421, 0.010876
+        aim_hud_offset_rot_16x9          = -0.000444, 0.006421, 0.010876
+		
+;__________________________________________________________ Deltapoint(BaS)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_deltapoint]:wpn_marlin_tracker
+
+        1icon_layer	       = deltapoint
+        1icon_layer_x      = 128
+        1icon_layer_y      = -2
+
+        hud		   = wpn_marlin_tracker_deltapoint_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_deltapoint_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_deltapoint_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_deltapoint_hud.ogf
+
+        aim_hud_offset_pos               = -0.068877, 0.005418, -0.10006
+        aim_hud_offset_pos_16x9          = -0.068877, 0.005418, -0.10006
+        aim_hud_offset_rot               = -0.003359, 0.006686, 0.00404
+        aim_hud_offset_rot_16x9          = -0.003359, 0.006686, 0.00404
+		
+;_________________________________________ Devo (ATHI) [3DSS+PRS Only] ____________________________________________
+
+[wpn_marlin_tracker_devo]:wpn_marlin_tracker
+
+        1icon_layer         = devo
+        1icon_layer_x       = 122
+        1icon_layer_y       = 1
+
+        hud                 = wpn_marlin_tracker_devo_hud
+        !visual				= dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_devo_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        !scope_texture        = wpn_crosshair_devo
+		
+		
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_devo_hud]:wpn_marlin_tracker_hud
+
+        item_visual                              = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_devo_hud.ogf
+
+        aim_hud_offset_pos               = -0.068676, 0.01773, -0.131289
+        aim_hud_offset_pos_16x9          = -0.068676, 0.01773, -0.131289
+        aim_hud_offset_rot               = -0.001793, 0.006418, 0.00761
+        aim_hud_offset_rot_16x9          = -0.001793, 0.006418, 0.00761
+
+		
+;__________________________________________________________ Docter Sight III (BaS)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_d0cter]:wpn_marlin_tracker
+
+        1icon_layer	       = d0cter
+        1icon_layer_x      = 121
+        1icon_layer_y      = 4
+
+        hud		           = wpn_marlin_tracker_d0cter_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_docter_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_d0cter_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_docter_hud.ogf
+
+        aim_hud_offset_pos               = -0.068934, 0.024112, -0.10006
+        aim_hud_offset_pos_16x9          = -0.068934, 0.024112, -0.10006
+        aim_hud_offset_rot               = -0.001154, 0.007062, 0.005973
+        aim_hud_offset_rot_16x9          = -0.001154, 0.007062, 0.005973
+		
+;__________________________________________________________ EOTech XPS3-0 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_marlin_tracker_e0t2]:wpn_marlin_tracker
+
+        1icon_layer	       = e0t2
+        1icon_layer_x      = 129
+        1icon_layer_y      = -4
+
+        hud		           = wpn_marlin_tracker_e0t2_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_e0t2_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+		
+[wpn_marlin_tracker_e0t2_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_e0t2_hud.ogf
+
+        aim_hud_offset_pos               = -0.069355, 0.003998, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069355, 0.003998, -0.087322
+        aim_hud_offset_rot               = -0.005418, 0.006898, 0.012217
+        aim_hud_offset_rot_16x9          = -0.005418, 0.006898, 0.012217
+		
+;__________________________________________________________ EOTech XPS3-0 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_marlin_tracker_e0t2_magd]:wpn_marlin_tracker
+
+        1icon_layer	       = e0t2_magd
+        1icon_layer_x      = 103
+        1icon_layer_y      = -8
+		
+
+        hud		           = wpn_marlin_tracker_e0t2_magd_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_e0t2_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_eot_magn
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_e0t2_magd_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_e0t2_magd_hud.ogf
+
+        aim_hud_offset_pos               = -0.068728, 0.005928, -0.097439
+        aim_hud_offset_pos_16x9          = -0.068728, 0.005928, -0.097439
+        aim_hud_offset_rot               = -0.001793, 0.006846, 0.00761
+        aim_hud_offset_rot_16x9          = -0.001793, 0.006846, 0.00761
+
+;___________________________ Flipped ___________________________________
+
+[wpn_marlin_tracker_e0t2_magd_off]:wpn_marlin_tracker
+
+        1icon_layer	       = e0t2_magd
+        1icon_layer_x      = 103
+        1icon_layer_y      = -8
+
+        hud		           = wpn_marlin_tracker_e0t2_magd_off_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_e0t2_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_e0t2_magd_off_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_e0t2_magd_off_hud.ogf
+
+        aim_hud_offset_pos               = -0.0692, 0.00337, -0.09117
+        aim_hud_offset_pos_16x9          = -0.0692, 0.00337, -0.09117
+        aim_hud_offset_rot               = -0.005063, 0.006741, 0.018424
+        aim_hud_offset_rot_16x9          = -0.005063, 0.006741, 0.018424
+		
+;_________________________________________ Echo1 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_marlin_tracker_echo1]:wpn_marlin_tracker
+
+        1icon_layer         = echo1
+        1icon_layer_x       = 97
+        1icon_layer_y       = -10
+		
+        hud                 = wpn_marlin_tracker_echo1_hud
+        !visual				= dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_echo1_world.ogf
+        zoom_step_count					 = 1
+ 
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+		
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_echo1_hud]:wpn_marlin_tracker_hud
+
+        item_visual                              = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_echo1_hud.ogf
+	
+        aim_hud_offset_pos               = -0.068511, -0.003179, -0.09117
+        aim_hud_offset_pos_16x9          = -0.068511, -0.003179, -0.09117
+        aim_hud_offset_rot               = -0.002077, 0.006899, 0.011448
+        aim_hud_offset_rot_16x9          = -0.002077, 0.006899, 0.011448
+
+		
+;__________________________________________________________ Кобра ЭКП-8-18 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_marlin_tracker_ekp8_18]:wpn_marlin_tracker
+
+        1icon_layer	       = ekp8_18
+        1icon_layer_x      = 128
+        1icon_layer_y      = 4
+
+        hud		           = wpn_marlin_tracker_ekp8_18_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_ekp8_18_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_ekp8_18_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_ekp8_18_hud.ogf
+
+        aim_hud_offset_pos               = -0.069143, 0.001229, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069143, 0.001229, -0.087322
+        aim_hud_offset_rot               = -0.001218, 0.006737, 0.012217
+        aim_hud_offset_rot_16x9          = -0.001218, 0.006737, 0.012217
+		
+;__________________________________________________________ FALCON 2 (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_elbit_falcon2]:wpn_marlin_tracker
+
+        1icon_layer	       = elbit_falcon2
+        1icon_layer_x      = 117
+        1icon_layer_y      = 0
+
+        hud		           = wpn_marlin_tracker_elbit_falcon2_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_elbit_falcon2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_elbit_falcon2_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_elbit_falcon2_hud.ogf
+
+        aim_hud_offset_pos               = -0.069147, 0.012879, -0.09117
+        aim_hud_offset_pos_16x9          = -0.069147, 0.012879, -0.09117
+        aim_hud_offset_rot               = -0.002077, 0.006899, 0.011448
+        aim_hud_offset_rot_16x9          = -0.002077, 0.006899, 0.011448
+		
+;__________________________________________________________ EOTech 553 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_marlin_tracker_eot]:wpn_marlin_tracker
+
+        1icon_layer	       = eot
+        1icon_layer_x      = 128
+        1icon_layer_y      = -2
+
+        hud		   = wpn_marlin_tracker_eot_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_eot_world.ogf
+		
+		ms_count = 6
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_eot_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_eot_hud.ogf
+
+        aim_hud_offset_pos               = -0.069408, 0.001158, -0.07416
+        aim_hud_offset_pos_16x9          = -0.069408, 0.001158, -0.07416
+        aim_hud_offset_rot               = -0.002789, 0.007274, 0.012217
+        aim_hud_offset_rot_16x9          = -0.002789, 0.007274, 0.012217
+		
+;__________________________________________________________ Exps3 (RWAP)[PRS+MS Only] ___________________________________________________
+
+[wpn_marlin_tracker_exps3]:wpn_marlin_tracker
+
+        1icon_layer	       = exps3
+        1icon_layer_x      = 128
+        1icon_layer_y      = -6
+
+        hud		   = wpn_marlin_tracker_exps3_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_exps3_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_exps3_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_exps3_hud.ogf
+
+        aim_hud_offset_pos               = -0.069355, 0.003217, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069355, 0.003217, -0.087322
+        aim_hud_offset_rot               = -0.002791, 0.007216, 0.012217
+        aim_hud_offset_rot_16x9          = -0.002791, 0.007216, 0.012217
+
+;__________________________________________________________ Gauss Sight (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_marlin_tracker_gauss_sight]:wpn_marlin_tracker
+
+        1icon_layer	       = gauss_sight
+        1icon_layer_x      = 120
+        1icon_layer_y      = 1
+
+        hud		           = wpn_marlin_tracker_gauss_sight_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_gauss_sight_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_gauss_sight
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_gauss_sight_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_gauss_sight_hud.ogf
+
+        aim_hud_offset_pos               = -0.068202, 0.00805, -0.122605
+        aim_hud_offset_pos_16x9          = -0.068202, 0.00805, -0.122605
+        aim_hud_offset_rot               = 0.001193, 0.003375, 0.010028
+        aim_hud_offset_rot_16x9          = 0.001193, 0.003375, 0.010028
+		
+;__________________________________________________________ Gauss Sight (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_marlin_tracker_gauss]:wpn_marlin_tracker
+
+        1icon_layer	       = gauss
+        1icon_layer_x      = 103
+        1icon_layer_y      = -11
+
+        hud		           = wpn_marlin_tracker_gauss_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_gauss_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_gauss_sight
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_gauss_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_gauss_hud.ogf
+
+        aim_hud_offset_pos               = -0.06846, 0.0003, -0.139175
+        aim_hud_offset_pos_16x9          = -0.06846, 0.0003, -0.139175
+        aim_hud_offset_rot               = -0.001722, 0.006255, 0.011448
+        aim_hud_offset_rot_16x9          = -0.001722, 0.006255, 0.011448
+		
+;__________________________________________________________ HAMR (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_hamr]:wpn_marlin_tracker
+
+        1icon_layer	       = hamr
+        1icon_layer_x      = 98
+        1icon_layer_y      = -10
+
+        hud		   = wpn_marlin_tracker_hamr_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_hamr_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_hamr
+		
+
+		use_alt_aim_hud  		    = true
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_hamr_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_hamr_hud.ogf
+		
+        aim_hud_offset_pos               = -0.068831, 0.002865, -0.07866
+        aim_hud_offset_pos_16x9          = -0.068831, 0.002865, -0.07866
+        aim_hud_offset_rot               = -0.001651, 0.006898, 0.011448
+        aim_hud_offset_rot_16x9          = -0.001651, 0.006898, 0.011448
+
+		
+;__________________________________________________________ Hartman MH1 (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_hartman_mh1]:wpn_marlin_tracker
+
+        1icon_layer	       = hartman_mh1
+        1icon_layer_x      = 130
+        1icon_layer_y      = 3
+
+        hud		           = wpn_marlin_tracker_hartman_mh1_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_hartman_mh1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_hartman_mh1_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_hartman_mh1_hud.ogf
+
+        aim_hud_offset_pos               = -0.069352, 0.003927, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069352, 0.003927, -0.087322
+        aim_hud_offset_rot               = -0.006838, 0.007429, 0.012217
+        aim_hud_offset_rot_16x9          = -0.006838, 0.007429, 0.012217
+		
+;__________________________________________________________ HCO (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_hco]:wpn_marlin_tracker
+
+        1icon_layer	       = hco
+        1icon_layer_x      = 129
+        1icon_layer_y      = -4
+
+        hud		   = wpn_marlin_tracker_hco_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_hco_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_hco_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_hco_hud.ogf
+
+        aim_hud_offset_pos               = -0.069462, 0.001868, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069462, 0.001868, -0.087322
+        aim_hud_offset_rot               = -0.004209, 0.007223, 0.012217
+        aim_hud_offset_rot_16x9          = -0.004209, 0.007223, 0.012217
+		
+;__________________________________________________________ HE510 (RWAP)[PRS+MS Only] ___________________________________________________
+
+[wpn_marlin_tracker_he510]:wpn_marlin_tracker
+
+        1icon_layer	       = he510
+        1icon_layer_x      = 129
+        1icon_layer_y      = -4
+
+        hud		   = wpn_marlin_tracker_he510_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_he510_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_he510_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_he510_hud.ogf
+		
+        aim_hud_offset_pos               = -0.069196, 0.007051, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069196, 0.007051, -0.087322
+        aim_hud_offset_rot               = -0.004282, 0.007112, 0.012217
+        aim_hud_offset_rot_16x9          = -0.004282, 0.007112, 0.012217
+						
+;__________________________________________________________ Kemper (BaS)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_kemper]:wpn_marlin_tracker
+
+        1icon_layer	       = kemper
+        1icon_layer_x      = 125
+        1icon_layer_y      = -1
+
+        hud		           = wpn_marlin_tracker_kemper_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_kemper_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_kemper_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_kemper_hud.ogf
+		
+        aim_hud_offset_pos               = -0.069939, 0.00627, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069939, 0.00627, -0.087322
+        aim_hud_offset_rot               = -0.002364, 0.007488, 0.012217
+        aim_hud_offset_rot_16x9          = -0.002364, 0.007488, 0.012217
+		
+;__________________________________________________________ Rusak (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_rusak]:wpn_marlin_tracker
+
+        1icon_layer	       = rusak
+        1icon_layer_x      = 120
+        1icon_layer_y      = -6
+
+        hud		           = wpn_marlin_tracker_rusak_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_rusak_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_rusak_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_rusak_hud.ogf
+
+        aim_hud_offset_pos               = -0.069199, 0.007553, -0.10006
+        aim_hud_offset_pos_16x9          = -0.069199, 0.007553, -0.10006
+        aim_hud_offset_rot               = -0.003287, 0.007274, 0.011448
+        aim_hud_offset_rot_16x9          = -0.003287, 0.007274, 0.011448
+		
+;__________________________________________________________ LCO (Phant0m)[PRS+MS Only] ___________________________________________________
+
+[wpn_marlin_tracker_lco1]:wpn_marlin_tracker
+
+        1icon_layer	       = lco1
+        1icon_layer_x      = 123
+        1icon_layer_y      = -4
+
+        hud		   = wpn_marlin_tracker_lco1_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_lco1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_lco1_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_lco1_hud.ogf
+
+        aim_hud_offset_pos               = -0.06962, 0.004353, -0.087322
+        aim_hud_offset_pos_16x9          = -0.06962, 0.004353, -0.087322
+        aim_hud_offset_rot               = -0.002004, 0.007919, 0.012217
+        aim_hud_offset_rot_16x9          = -0.002004, 0.007919, 0.012217
+		
+;__________________________________________________________ Leupold (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_marlin_tracker_leupold]:wpn_marlin_tracker
+
+        1icon_layer	       = leupold
+        1icon_layer_x      = 107
+        1icon_layer_y      = -1
+		
+        hud		   = wpn_marlin_tracker_leupold_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_leupold_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_leupold
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_leupold_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_leupold_hud.ogf
+
+        aim_hud_offset_pos               = -0.068827, 0.00528, -0.10006
+        aim_hud_offset_pos_16x9          = -0.068827, 0.00528, -0.10006
+        aim_hud_offset_rot               = -0.000515, 0.007168, 0.011448
+        aim_hud_offset_rot_16x9          = -0.000515, 0.007168, 0.011448
+			
+;__________________________________________________________ March Shorty (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_marlin_tracker_march_f_shorty]:wpn_marlin_tracker
+
+        1icon_layer	       = march_f_shorty
+        1icon_layer_x      = 103
+        1icon_layer_y      = -6
+
+        hud		           = wpn_marlin_tracker_march_f_shorty_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_march_f_shorty_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_march_shorty
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_march_f_shorty_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_march_f_shorty_hud.ogf
+
+        aim_hud_offset_pos               = -0.068937, 0.001725, -0.089476
+        aim_hud_offset_pos_16x9          = -0.068937, 0.001725, -0.089476
+        aim_hud_offset_rot               = -0.000941, 0.007274, 0.011448
+        aim_hud_offset_rot_16x9          = -0.000941, 0.007274, 0.011448
+		
+;__________________________________________________________ Marchf (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_marlin_tracker_marchf]:wpn_marlin_tracker
+
+        1icon_layer	       = marchf
+        1icon_layer_x      = 102
+        1icon_layer_y      = 2
+
+        hud		   = wpn_marlin_tracker_marchf_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_marchf_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_marchf
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_marchf_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_marchf_hud.ogf
+
+        aim_hud_offset_pos               = -0.069043, 0.001365, -0.080164
+        aim_hud_offset_pos_16x9          = -0.069043, 0.001365, -0.080164
+        aim_hud_offset_rot               = -0.000941, 0.007168, 0.011448
+        aim_hud_offset_rot_16x9          = -0.000941, 0.007168, 0.011448
+		
+;__________________________________________________________ Mepro (BaS)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_mepro]:wpn_marlin_tracker
+
+        1icon_layer	       = mepro
+        1icon_layer_x      = 127
+        1icon_layer_y      = 0
+
+        hud		   = wpn_marlin_tracker_mepro_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_mepro_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_mepro_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_mepro_hud.ogf
+
+        aim_hud_offset_pos               = -0.069408, 0.005702, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069408, 0.005702, -0.087322
+        aim_hud_offset_rot               = -0.002004, 0.007919, 0.012217
+        aim_hud_offset_rot_16x9          = -0.002004, 0.007919, 0.012217
+		
+;_________________________________________ Monstrum (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_marlin_tracker_monstrum]:wpn_marlin_tracker
+
+        1icon_layer         = monstrum
+        1icon_layer_x       = 117
+        1icon_layer_y       = -5
+
+        hud                 = wpn_marlin_tracker_monstrum_hud
+        !visual				= dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_monstrum_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_monstrum
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_monstrum_hud]:wpn_marlin_tracker_hud
+
+        item_visual                              = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_monstrum_hud.ogf
+
+        aim_hud_offset_pos               = -0.068717, 0.015796, -0.081854
+        aim_hud_offset_pos_16x9          = -0.068717, 0.015796, -0.081854
+        aim_hud_offset_rot               = -0.001578, 0.006264, 0.012217
+        aim_hud_offset_rot_16x9          = -0.001578, 0.006264, 0.012217
+
+;__________________________________________________________ P1X42 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_p1x42]:wpn_marlin_tracker
+
+        1icon_layer	       = p1x42
+        1icon_layer_x      = 126
+        1icon_layer_y      = -5
+
+        hud		   = wpn_marlin_tracker_p1x42_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_p1x42_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_p1x42_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_p1x42_hud.ogf
+
+        aim_hud_offset_pos               = -0.069461, 0.006341, -0.082558
+        aim_hud_offset_pos_16x9          = -0.069461, 0.006341, -0.082558
+        aim_hud_offset_rot               = -0.000225, 0.008347, 0.012217
+        aim_hud_offset_rot_16x9          = -0.000225, 0.008347, 0.012217
+		
+;_________________________________________ P4X32 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_marlin_tracker_p4x32]:wpn_marlin_tracker
+
+        1icon_layer         = p4x32
+        1icon_layer_x       = 119
+        1icon_layer_y       = -1
+
+        hud                 = wpn_marlin_tracker_p4x32_hud
+        !visual				= dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_p4x32_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_p4x32_hud]:wpn_marlin_tracker_hud
+
+        item_visual                              = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_p4x32_hud.ogf	
+
+        aim_hud_offset_pos               = -0.068774, 0.015524, -0.105824
+        aim_hud_offset_pos_16x9          = -0.068774, 0.015524, -0.105824
+        aim_hud_offset_rot               = -0.000515, 0.007168, 0.011448
+        aim_hud_offset_rot_16x9          = -0.000515, 0.007168, 0.011448
+		
+;__________________________________________________________ PK6 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_pk6]:wpn_marlin_tracker
+
+        1icon_layer	   = pk6
+        1icon_layer_x      = 123
+        1icon_layer_y      = -8
+
+        hud		   = wpn_marlin_tracker_pk6_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_pk6_world.ogf
+		
+		ms_count 			= 3
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_pk6_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_pk6_hud.ogf
+		
+        aim_hud_offset_pos               = -0.069089, 0.01772, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069089, 0.01772, -0.087322
+        aim_hud_offset_rot               = -0.004063, 0.007016, 0.012217
+        aim_hud_offset_rot_16x9          = -0.004063, 0.007016, 0.012217
+
+;________________________________________________ PKS-07 (Party_50 and MsPizza727)[3DSS Only] ___________________________________________________
+
+[wpn_marlin_tracker_pks07]:wpn_marlin_tracker
+
+        1icon_layer	       = pks07
+        1icon_layer_x      = 105
+        1icon_layer_y      = -4
+
+        hud		           = wpn_marlin_tracker_pks07_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_pks07_world.ogf
+ 
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_pks07_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_pks07_hud.ogf
+		
+        aim_hud_offset_pos               = -0.068352, 0.007836, -0.097865
+        aim_hud_offset_pos_16x9          = -0.068352, 0.007836, -0.097865
+        aim_hud_offset_rot               = -0.000018, 0.003282, 0.011448
+        aim_hud_offset_rot_16x9          = -0.000018, 0.003282, 0.011448
+		
+;__________________________________________________________ PN23 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_marlin_tracker_pn23]:wpn_marlin_tracker
+
+        1icon_layer	       = pn23
+        1icon_layer_x      = 94
+        1icon_layer_y      = -9
+
+        hud		   = wpn_marlin_tracker_pn23_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_pn23_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 25
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_pn23
+		
+		
+
+;--------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_pn23_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_pn23_hud.ogf
+
+        aim_hud_offset_pos               = -0.069198, -0.004962, -0.116495
+        aim_hud_offset_pos_16x9          = -0.069198, -0.004962, -0.116495
+        aim_hud_offset_rot               = -0.000515, 0.007168, 0.011448
+        aim_hud_offset_rot_16x9          = -0.000515, 0.007168, 0.011448
+
+;_________________________________________ PO4X34 (MsPizza727) [3DSS Only] ____________________________________________
+
+[wpn_marlin_tracker_po4x34]:wpn_marlin_tracker
+
+        1icon_layer         = po4x34
+        1icon_layer_x       = 119
+        1icon_layer_y       = -1
+
+        hud                 = wpn_marlin_tracker_po4x34_hud
+        !visual				= dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_po4x34_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+        !scope_texture        = wpn_crosshair_po4x34
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_po4x34_hud]:wpn_marlin_tracker_hud
+
+        item_visual                              = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_po4x34_hud.ogf
+
+        aim_hud_offset_pos               = -0.068667, 0.011039, -0.086345
+        aim_hud_offset_pos_16x9          = -0.068667, 0.011039, -0.086345
+        aim_hud_offset_rot               = -0.003284, 0.006797, 0.011448
+        aim_hud_offset_rot_16x9          = -0.003284, 0.006797, 0.011448
+		
+;_________________________________________ Valdai PS320 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_marlin_tracker_ps320]:wpn_marlin_tracker
+
+        1icon_layer         = ps320
+        1icon_layer_x       = 99
+        1icon_layer_y       = -7
+
+        hud                 = wpn_marlin_tracker_ps320_hud
+        !visual				= dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_ps320_world.ogf
+        zoom_step_count					 = 1
+
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_ps320
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_ps320_hud]:wpn_marlin_tracker_hud
+
+        item_visual                              = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_ps320_hud.ogf
+
+        aim_hud_offset_pos               = -0.069251, 0.006771, -0.067567
+        aim_hud_offset_pos_16x9          = -0.069251, 0.006771, -0.067567
+        aim_hud_offset_rot               = -0.000444, 0.006903, 0.011448
+        aim_hud_offset_rot_16x9          = -0.000444, 0.006903, 0.011448
+		
+		
+;__________________________________________________________ Rakurs (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_marlin_tracker_rakurs]:wpn_marlin_tracker
+
+        1icon_layer	       = rakurs
+        1icon_layer_x      = 119
+        1icon_layer_y      = -4
+
+        hud		   = wpn_marlin_tracker_rakurs_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_rakurs_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_rakurs_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_rakurs_hud.ogf
+
+        aim_hud_offset_pos               = -0.069403, 0.018216, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069403, 0.018216, -0.087322
+        aim_hud_offset_rot               = -0.003353, 0.0076, 0.012217
+        aim_hud_offset_rot_16x9          = -0.003353, 0.0076, 0.012217
+		
+;__________________________________________________________ RazorHD (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_razorhd]:wpn_marlin_tracker
+
+        1icon_layer	       = razorhd
+        1icon_layer_x      = 99
+        1icon_layer_y      = -5
+
+        hud		   = wpn_marlin_tracker_razorhd_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_razorhd_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_razorhd
+		
+
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_razorhd_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_razorhd_hud.ogf
+
+        aim_hud_offset_pos               = -0.068352, 0.0018, -0.077951
+        aim_hud_offset_pos_16x9          = -0.068352, 0.0018, -0.077951
+        aim_hud_offset_rot               = -0.001225, 0.007331, 0.011448
+        aim_hud_offset_rot_16x9          = -0.001225, 0.007331, 0.011448
+
+		
+;__________________________________________________________ RMR (BaS)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_rmr]:wpn_marlin_tracker
+
+        1icon_layer	       = rmr
+        1icon_layer_x      = 128
+        1icon_layer_y      = -4
+
+        hud		   = wpn_marlin_tracker_rmr_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_rmr_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_rmr_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_rmr_hud.ogf
+
+        aim_hud_offset_pos               = -0.068764, 0.007619, -0.087322
+        aim_hud_offset_pos_16x9          = -0.068764, 0.007619, -0.087322
+        aim_hud_offset_rot               = -0.003992, 0.006694, 0.004608
+        aim_hud_offset_rot_16x9          = -0.003992, 0.006694, 0.004608
+		
+;__________________________________________________________ Romeo 4 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_romeo4]:wpn_marlin_tracker
+
+        1icon_layer	       = romeo4
+        1icon_layer_x      = 124
+        1icon_layer_y      = -8
+
+        hud		   = wpn_marlin_tracker_romeo4_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_romeo4_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_romeo4_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_romeo4_hud.ogf
+
+        aim_hud_offset_pos               = -0.069036, 0.008826, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069036, 0.008826, -0.087322
+        aim_hud_offset_rot               = -0.001862, 0.007071, 0.012217
+        aim_hud_offset_rot_16x9          = -0.001862, 0.007071, 0.012217
+		
+;__________________________________________________________ Romeo 8 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_marlin_tracker_romeo8]:wpn_marlin_tracker
+
+        1icon_layer	   = romeo8
+        1icon_layer_x      = 126
+        1icon_layer_y      = -3
+
+        hud		   = wpn_marlin_tracker_romeo8_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_romeo8_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_romeo8_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_romeo8_hud.ogf
+
+        aim_hud_offset_pos               = -0.069355, 0.006412, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069355, 0.006412, -0.087322
+        aim_hud_offset_rot               = -0.002501, 0.007175, 0.012217
+        aim_hud_offset_rot_16x9          = -0.002501, 0.007175, 0.012217
+		
+;__________________________________________________________ Specter (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_marlin_tracker_specter]:wpn_marlin_tracker
+
+        1icon_layer	       = specter
+        1icon_layer_x      = 103
+        1icon_layer_y      = -3
+
+        hud		           = wpn_marlin_tracker_specter_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_specter_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_specter
+		
+		
+		use_alt_aim_hud  		    = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_specter_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_specter_hud.ogf
+
+        aim_hud_offset_pos               = -0.069199, 0.004854, -0.11621
+        aim_hud_offset_pos_16x9          = -0.069199, 0.004854, -0.11621
+        aim_hud_offset_rot               = -0.00158, 0.007701, 0.011448
+        aim_hud_offset_rot_16x9          = -0.00158, 0.007701, 0.011448
+
+		
+;__________________________________________________________ Susat (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_marlin_tracker_susatov]:wpn_marlin_tracker
+
+        1icon_layer	       = susatov
+        1icon_layer_x      = 117
+        1icon_layer_y      = -9
+
+        hud		   = wpn_marlin_tracker_susatov_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_susatov_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_susat
+		
+
+		use_alt_aim_hud  		    = true
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_susatov_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_susatov_hud.ogf
+		
+        aim_hud_offset_pos               = -0.068773, -0.009228, -0.110946
+        aim_hud_offset_pos_16x9          = -0.068773, -0.009228, -0.110946
+        aim_hud_offset_rot               = -0.001438, 0.007062, 0.011448
+        aim_hud_offset_rot_16x9          = -0.001438, 0.007062, 0.011448
+
+		
+;_________________________________________ T12 (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_marlin_tracker_t12]:wpn_marlin_tracker
+
+        1icon_layer             = t12
+        1icon_layer_x			= 126
+        1icon_layer_y			= -3
+		
+        hud					= wpn_marlin_tracker_t12_hud
+        !visual				= dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_t12_world.ogf
+		
+        scope_status            = 1
+        scope_zoom_factor                = 25
+		
+;---------------------------------------------------------------------------------------		
+	
+[wpn_marlin_tracker_t12_hud]:wpn_marlin_tracker_hud
+
+        item_visual                		= anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_t12_hud.ogf
+
+        aim_hud_offset_pos               = -0.069196, 0.021125, -0.087322
+        aim_hud_offset_pos_16x9          = -0.069196, 0.021125, -0.087322
+        aim_hud_offset_rot               = 0.002047, 0.007707, 0.012217
+        aim_hud_offset_rot_16x9          = 0.002047, 0.007707, 0.012217
+		
+;_________________________________________ Tac30 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_marlin_tracker_tac30]:wpn_marlin_tracker
+
+        1icon_layer         = tac30
+        1icon_layer_x       = 106
+        1icon_layer_y       = -4
+
+        hud                 = wpn_marlin_tracker_tac30_hud
+        !visual				= dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_tac30_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor                = 25
+        !scope_texture        = wpn_crosshair_tac30
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_tac30_hud]:wpn_marlin_tracker_hud
+
+        item_visual                              = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_tac30_hud.ogf
+
+        aim_hud_offset_pos               = -0.068723, 0.000018, -0.087333
+        aim_hud_offset_pos_16x9          = -0.068723, 0.000018, -0.087333
+        aim_hud_offset_rot               = -0.002292, 0.008078, 0.011448
+        aim_hud_offset_rot_16x9          = -0.002292, 0.008078, 0.011448
+
+		
+;_________________________________________ Trihawk (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_marlin_tracker_trihawk]:wpn_marlin_tracker
+
+        1icon_layer         = trihawk
+        1icon_layer_x       = 117
+        1icon_layer_y       = -7
+
+        hud                 = wpn_marlin_tracker_trihawk_hud
+        !visual				= dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_trihawk_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        !scope_texture        = wpn_crosshair_trihawk
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_trihawk_hud]:wpn_marlin_tracker_hud
+
+        item_visual                              = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_trihawk_hud.ogf
+
+        aim_hud_offset_pos               = -0.068666, 0.001014, -0.097995
+        aim_hud_offset_pos_16x9          = -0.068666, 0.001014, -0.097995
+        aim_hud_offset_rot               = -0.001365, 0.006796, 0.012217
+        aim_hud_offset_rot_16x9          = -0.001365, 0.006796, 0.012217
+		
+;__________________________________________________________ UH-1 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_marlin_tracker_uh1_magd]:wpn_marlin_tracker
+
+        1icon_layer	       = uh1_magd
+        1icon_layer_x      = 105
+        1icon_layer_y      = -6
+
+        hud		           = wpn_marlin_tracker_uh1_magd_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_uh1_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_uh1_magn
+		
+
+;---------------------------------------------------------------------------------------
+		
+[wpn_marlin_tracker_uh1_magd_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_uh1_magd_hud.ogf
+
+        aim_hud_offset_pos               = -0.068881, 0.008547, -0.106253
+        aim_hud_offset_pos_16x9          = -0.068881, 0.008547, -0.106253
+        aim_hud_offset_rot               = -0.000586, 0.006797, 0.011448
+        aim_hud_offset_rot_16x9          = -0.000586, 0.006797, 0.011448
+		
+;___________________________ Flipped ___________________________________
+
+[wpn_marlin_tracker_uh1_magd_off]:wpn_marlin_tracker
+
+        1icon_layer	       = uh1_magd
+        1icon_layer_x      = 105
+        1icon_layer_y      = -6
+
+        hud		           = wpn_marlin_tracker_uh1_magd_off_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_uh1_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_uh1_magd_off_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_uh1_magd_off_hud.ogf
+
+        aim_hud_offset_pos               = -0.068775, 0.003434, -0.105821
+        aim_hud_offset_pos_16x9          = -0.068775, 0.003434, -0.105821
+        aim_hud_offset_rot               = -0.004992, 0.006634, 0.011448
+        aim_hud_offset_rot_16x9          = -0.004992, 0.006634, 0.011448
+		
+		
+;__________________________________________________________ UH2 (Phant0m)[PRS+MS Only] ___________________________________________________
+
+[wpn_marlin_tracker_uh2]:wpn_marlin_tracker
+
+        1icon_layer	       = uh2
+        1icon_layer_x      = 128
+        1icon_layer_y      = -8
+
+        hud		   = wpn_marlin_tracker_uh2_hud
+        !visual             = dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_uh2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_uh2_hud]:wpn_marlin_tracker_hud 
+
+        item_visual        = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_uh2_hud.ogf
+
+        aim_hud_offset_pos               = -0.068879, 0.003643, -0.087322
+        aim_hud_offset_pos_16x9          = -0.068879, 0.003643, -0.087322
+        aim_hud_offset_rot               = -0.004702, 0.006528, 0.012217
+        aim_hud_offset_rot_16x9          = -0.004702, 0.006528, 0.012217
+		
+;_________________________________________ Vulcan (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_marlin_tracker_vulcan]:wpn_marlin_tracker
+
+        1icon_layer         = vulcan
+        1icon_layer_x       = 107
+        1icon_layer_y       = -8
+
+        hud                 = wpn_marlin_tracker_vulcan_hud
+        !visual				= dynamics\weapons\wpn_marlin_tracker\wpn_marlin_tracker_vulcan_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_vulcan
+		
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_marlin_tracker_vulcan_hud]:wpn_marlin_tracker_hud
+
+        item_visual                              = anomaly_weapons\wpn_marlin_tracker\wpn_marlin_tracker_vulcan_hud.ogf
+
+        aim_hud_offset_pos               = -0.068881, 0.006274, -0.106391
+        aim_hud_offset_pos_16x9          = -0.068881, 0.006274, -0.106391
+        aim_hud_offset_rot               = -0.00016, 0.006902, 0.011448
+        aim_hud_offset_rot_16x9          = -0.00016, 0.006902, 0.011448

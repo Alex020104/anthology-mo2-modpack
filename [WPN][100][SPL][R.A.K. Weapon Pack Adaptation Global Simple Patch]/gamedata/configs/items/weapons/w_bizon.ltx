@@ -1,0 +1,801 @@
+﻿______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|           ��-19 ����� I.W.P(Improved Weapon Pack) Animations+Model+Texture+Sounds, Port SeDzhimol +new Animations.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                            |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_bizon]:identity_immunities,weapon_probability,default_weapon_params,wpn_bizon_sounds_iwp
+
+		GroupControlSection                      = spawn_group
+		$npc                                     = on
+		$prefetch                                = 8
+		$spawn                                   = "weapons\mp5"
+		scheduled                                = off
+		cform                                    = skeleton
+		parent_section                           = wpn_bizon
+
+		class                                    = WP_LR300
+		slot                                     = 2
+		animation_slot                           = 8
+		ef_main_weapon_type                      = 2
+		ef_weapon_type                           = 6
+		hand_dependence                          = 1
+		single_handed                            = 0
+
+		default_to_ruck                          = false
+		sprint_allowed                           = true
+
+        hud_fov                                  = 0.65
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        lewd_lens_hide_enabled       = true	
+        lewd_lens_hide_bone          = lens
+        lewd_lens_hide_delays        = 0.1,0
+        lewd_lens_hide_aim_mode      = true, false, false
+ ;_______________________________________________________________________________
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 20
+        inv_grid_y                               = 8
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 0
+        ;inv_grid_y                               = 8
+		
+        ;inv_grid_scale     = 2
+			
+;___________________________ Description ___________________________________
+
+		inv_name                                 = st_wpn_bizon
+		inv_name_short                           = st_wpn_bizon
+		description                              = st_wpn_bizon_descr
+;____________________________________________________________________
+
+		kind                                     = w_smg ;w_pistol
+		inv_weight                               = 2.3
+		cost                                     = 18560
+		repair_type                              = pistol
+		weapon_class                             = assault_rifle
+
+		hud                                      = wpn_bizon_hud
+		visual                                   = dynamics\weapons\wpn_bizon\wpn_bizon.ogf
+		
+		position           						 = -0.026,-0.215,0
+		orientation                              = 0, 0, 0
+		
+		fire_point                                         = 0.0, 0.262, 0.447
+		fire_point2                                        = 0.0, 0.262, 0.447
+		
+		strap_bone0                                        = bip01_spine2
+		strap_bone1                                        = bip01_spine1
+		strap_orientation                                  = -10,-5,10
+		strap_position                                     = -0.16,-0.36,0.15
+		ph_mass                                  = 3
+		
+;___________________________ Particles ___________________________________ 
+
+		flame_particles                          = weapons\generic_weapon05
+		smoke_particles                          = weapons\generic_shoot_00
+		grenade_flame_particles                  = weapons\generic_weapon01
+		silencer_smoke_particles                 = weapons\generic_shoot_00
+
+		shell_point			                     = 0.0, 0.188, 0.082
+		shell_dir			                     = 0.0, 1.0, 0.0
+		shell_particles	 		                 = ;weapons\9x18
+		
+;____________________________________________________________________  
+
+		light_disabled                           = false
+		light_color                              = 0.6, 0.5, 0.3
+		light_range                              = 5
+		light_time                               = 0.2
+		light_var_color                          = 0.05
+		light_var_range                          = 0.5
+
+;___________________________ Upgrades ___________________________________
+
+		upgrades                                 = up_gr_firstab_bizon, up_gr_seconab_bizon, up_gr_thirdab_bizon, up_gr_fourtab_bizon, up_gr_fifthab_bizon, up_gr_fifthcd_bizon
+		installed_upgrades                       =
+		upgrade_scheme                           = upgrade_scheme_mp5
+		
+		upgr_icon_path                           = ui\ui_rak_global_2
+		upgr_icon_height                                   = 150
+		upgr_icon_width                                    = 400
+		upgr_icon_x                                        = 1250
+		upgr_icon_y                                        = 600
+;______________________________________________________________________
+
+		fire_modes                               = 1, -1
+		ammo_class                               = ammo_9x18_fmj, ammo_9x18_fmj_bad, ammo_9x18_fmj_verybad, ammo_9x18_pmm, ammo_9x18_pmm_bad, ammo_9x18_pmm_verybad, ammo_9x18_ap, ammo_9x18_ap_bad, ammo_9x18_ap_verybad
+		ammo_elapsed                             = 64
+		ammo_mag_size                            = 64
+		startup_ammo                             = 90
+		
+;___________________________ Scopes ___________________________________
+
+		scopes                                   = wpn_addon_scope, 1p29, 1p59, 1p63, 1p76, 1p78gs, 1pn93, 1pn93n2_1gs, ekp8_02, kobra, okp, pgo7gs, pka, pso1m21, pso2, usp1
+		scope_status                             = 0
+		scope_zoom_factor                        = 0
+
+;___________________________ Silencer ___________________________________
+
+		silencer_name                            = wpn_sil_pbs1
+		silencer_status                          = 2
+		
+		silencer_x                               = 222
+		silencer_y                               = 19
+		
+		silencer_light_color                     = 0.6, 0.5, 0.3
+		silencer_light_range                     = 0.01
+		silencer_light_time                      = 0.2
+		silencer_light_var_color                 = 0.05
+		silencer_light_var_range                 = 0.5
+		
+;___________________________ Grenade launcher ___________________________________
+
+		grenade_class                            = ammo_vog-25, ammo_vog-25_bad, ammo_vog-25_verybad
+		grenade_launcher_status                  = 0
+		launch_speed                             = 0
+
+;___________________________ TTX ___________________________________
+
+		hit_impulse                              = 20
+		hit_power                                = 0.46, 0.46, 0.46, 0.46
+		hit_type                                 = fire_wound
+		fire_distance                            = 300
+		bullet_speed                             = 330
+		rpm                                      = 680
+		rpm_empty_click                          = 200
+		ap_modifier                              = 1.1
+
+		use_aim_bullet                           = false
+		time_to_aim                              = 0.0 ;  3.0
+		zoom_dof                                 = 0.5, 1.0, 180
+		zoom_enabled                             = true
+		zoom_rotate_time                         = 0.25
+		reload_dof                               = 0.0, 0.5, 5, 2
+		control_inertion_factor = 1.0f
+		crosshair_inertion                       = 4.4
+		
+		fire_dispersion_base                     = 0.57
+		fire_dispersion_condition_factor         = 0.001
+
+		misfire_probability                      = 0.005
+		misfire_start_condition                  = 0.7 ;  0.84
+		misfire_start_prob                       = 0.007
+		misfire_end_condition                    = 0.16
+		misfire_end_prob                         = 0.11
+
+		condition_queue_shot_dec                 = 0.0012
+		condition_shot_dec                       = 0.0012
+
+		cam_return                               = 0
+		cam_relax_speed                          = 10
+		cam_dispersion                           = 0.53
+		cam_dispersion_frac                      = 1.0
+		cam_dispersion_inc                       = 0.0425
+		cam_max_angle                            = 43.0
+		cam_max_angle_horz                       = 43.0
+		cam_step_angle_horz                      = 1.54
+		zoom_cam_relax_speed                     = 10
+		zoom_cam_dispersion                      = 0.32
+		zoom_cam_dispersion_frac                 = 1.0
+		zoom_cam_dispersion_inc                  = 0.0325
+		zoom_cam_max_angle                       = 43.0
+		zoom_cam_max_angle_horz                  = 43.0
+		zoom_cam_step_angle_horz                 = 1.52
+
+		PDM_disp_accel_factor                    = 1.15
+		PDM_disp_base                            = 0.55
+		PDM_disp_crouch                          = 1.0
+		PDM_disp_crouch_no_acc                   = 1.0
+		PDM_disp_vel_factor                      = 1.145
+
+		cam_relax_speed_ai                       = 120.75
+		zoom_cam_relax_speed_ai                  = 120.75
+		
+		holder_fov_modifier                      = 1.0
+		holder_range_modifier                    = 1.0
+		
+		min_radius                               = 0
+		max_radius                               = 500
+		
+		hit_probability_gd_novice                = 1.00
+		hit_probability_gd_stalker               = 1.00
+		hit_probability_gd_veteran               = 1.00
+		hit_probability_gd_master                = 1.00
+
+		kill_msg_x                               = 72
+		kill_msg_y                               = 82
+		kill_msg_width                           = 56
+		kill_msg_height                          = 23
+		
+;__________________________________________ HUD parameters ____________________________________________________
+
+[wpn_bizon_hud]:hud_base_tranzit
+
+		item_visual                              = anomaly_weapons\wpn_bizon\wpn_bizon_hud.ogf
+		attach_place_idx                         = 0
+		zoom_hide_crosshair                      = true   
+
+;======================== Hud Position =======================================================
+
+		item_position                            = 0, 0, 0
+		item_orientation                         = 0, 0, 0
+
+		hands_position							   		   = -0.025625,0.016275,-0.191324
+		hands_position_16x9								   = -0.025625,0.016275,-0.191324
+		hands_orientation								   = 0,0,0
+		hands_orientation_16x9							   = 0,0,0
+
+        aim_hud_offset_alt_pos           = -0.059415, -0.027948, 0.031993
+        aim_hud_offset_alt_pos_16x9      = -0.059415, -0.027948, 0.031993
+        aim_hud_offset_alt_rot           = -0.024961, 0.038325, 0.62834
+        aim_hud_offset_alt_rot_16x9      = -0.024961, 0.038325, 0.62834
+		
+        aim_hud_offset_pos               = 0.0035, 0.0057, -0.0007
+        aim_hud_offset_pos_16x9          = 0.0035, 0.0057, -0.0007
+        aim_hud_offset_rot               = -0.009738, 0.000242, 0
+        aim_hud_offset_rot_16x9          = -0.009738, 0.000242, 0
+		
+		lowered_hud_offset_pos           = 0.016776, -0.018184, -0.034698
+        lowered_hud_offset_pos_16x9      = 0.016776, -0.018184, -0.034698
+        lowered_hud_offset_rot           = 0.041696, -0.425815, 0.443111
+        lowered_hud_offset_rot_16x9      = 0.041696, -0.425815, 0.443111
+
+		gl_hud_offset_pos                        = 0, 0, 0
+		gl_hud_offset_pos_16x9                   = 0, 0, 0
+		gl_hud_offset_rot                        = 0, 0, 0
+		gl_hud_offset_rot_16x9                   = 0, 0, 0
+
+		lean_hud_offset_pos                      = 0, 0, 0
+		lean_hud_offset_rot                      = 0, 0, 0
+
+;======================== BORING =======================================================
+
+		anm_idle                                 = bizon_iwp_idle
+				
+;======================== HIDE ==========================================================
+
+		anm_hide                                 = bizon_iwp_holster
+
+;======================== SHOW ==========================================================
+
+		anm_show                                 = bizon_iwp_draw
+
+;======================== IDLE ==========================================================
+
+		anm_idle                                 = bizon_iwp_idle
+		anm_idle_moving_slow                     = bizon_iwp_moving_slow
+		anm_idle_moving                          = bizon_iwp_moving
+		anm_idle_moving_crouch                   = bizon_iwp_crouch
+		
+		anm_idle_aim_moving                      = bizon_iwp_moving_aim
+			
+;======================== SPRINT TRANSITIONS AND PATERN ====================================================
+
+		anm_sprint_start         				 = bizon_iwp_sprint_start
+		anm_idle_sprint         				 = bizon_iwp_sprint
+		anm_sprint_end         					 = bizon_iwp_sprint_end
+
+;----------------------------------------------------------------------------------------
+		ts_pattern_sprint_start                  = .+, anm_idle_sprint, anm_sprint_start, 1
+		ts_pattern_sprint_end                    = anm_idle_sprint, ^anm_idle.*, anm_sprint_end
+		ts_strict_sprint_end_move                = anm_sprint_start, anm_idle_moving, anm_sprint_end
+
+;======================== AIM TRANSITIONS ====================================================
+		
+		anm_idle_aim 							 = aim_idle_bizon_iwp
+		anm_idle_aim_start 						 = aim_start_bizon_iwp
+		anm_idle_aim_end   						 = aim_end_bizon_iwp		
+		
+;======================== RELOAD ==========================================================
+
+		anm_reload                               = bizon_iwp_reload, reload
+		anm_reload_empty                         = bizon_iwp_reload_empty, reload_empty
+		
+		anm_reload_misfire						 = bizon_iwp_misfire, misfire
+		anm_reload_misfire_aim					 = bizon_iwp_misfire_aim, misfire
+				
+;======================== SWITCH MODE =======================================================
+
+		anm_switch_mode                          = bizon_iwp_firemode
+		anm_switch_mode_aim                      = bizon_iwp_firemode_aim
+		
+;========================SHOOTS===========================================================
+
+		anm_shots                                = bizon_iwp_shoot
+		anm_shots_aim				     		 = bizon_iwp_shoot_aim
+		
+;_____________________________________ Parameters of the shells sprite for HUD __________________________		
+
+		shell_bone                                         = shell
+		shell_dir                                          = 0.0, 1.0, 0.0
+		shell_point                                        = 0.000000,0.020000,0.020000
+
+		fire_bone                                          = wpn_body
+		fire_bone2                                         = wpn_body
+		fire_point                                         = 0.000000,-0.006600,0.344700
+		fire_point2                                        = 0,0,0
+
+		freelook_z_offset_mul					 = 0.6
+
+;____________________________________________________ Addons _______________________________________________________________________________________________________
+
+;__________________________________________________________ WPN ADDON SCOPE ANOMALY (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_bizon_wpn_addon_scope]:wpn_bizon
+
+        1icon_layer	       = pso1m21
+        1icon_layer_x      = 55
+        1icon_layer_y      = 8
+
+        hud		   = wpn_bizon_pso1m21_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_pso1m21_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pso2_vss
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_wpn_addon_scope_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_pso1m21_hud.ogf
+		
+        aim_hud_offset_pos               = -0.049064, 0.011586, -0.062706
+        aim_hud_offset_pos_16x9          = -0.049064, 0.011586, -0.062706
+        aim_hud_offset_rot               = 0.00498, 0.009784, 0.00355
+        aim_hud_offset_rot_16x9          = 0.00498, 0.009784, 0.00355
+		
+;__________________________________________________________ 1P29 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_bizon_1p29]:wpn_bizon
+
+        1icon_layer	       = 1p29
+        1icon_layer_x      = 78
+        1icon_layer_y      = 10
+
+        hud		           = wpn_bizon_1p29_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_1p29_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p29
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_1p29_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_1p29_hud.ogf
+		
+        aim_hud_offset_pos                = 0.005244, -0.015217, -0.035357
+        aim_hud_offset_pos_16x9           = 0.005244, -0.015217, -0.035357
+        aim_hud_offset_rot                = -0.000357, 0.00067, 0
+        aim_hud_offset_rot_16x9           = -0.000357, 0.00067, 0
+
+;__________________________________________________________ 1P59 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_bizon_1p59]:wpn_bizon
+
+        1icon_layer	       = 1p59
+        1icon_layer_x      = 90
+        1icon_layer_y      = 1
+
+        hud		   = wpn_bizon_1p59_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_1p59_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p59
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_1p59_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_1p59_hud.ogf
+		
+        aim_hud_offset_pos                = 0.020439, -0.011508, -0.032473
+        aim_hud_offset_pos_16x9           = 0.020439, -0.011508, -0.032473
+        aim_hud_offset_rot                = -0.001422, 0.001905, 0
+        aim_hud_offset_rot_16x9           = -0.001422, 0.001905, 0
+			
+;__________________________________________________________ 1P63 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_bizon_1p63]:wpn_bizon
+
+        1icon_layer	       = 1p63
+        1icon_layer_x      = 90
+        1icon_layer_y      = 10
+
+        hud		   = wpn_bizon_1p63_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_1p63_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_1p63_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_1p63_hud.ogf
+		
+        aim_hud_offset_pos                = 0.006472, -0.02069, -0.035357
+        aim_hud_offset_pos_16x9           = 0.006472, -0.02069, -0.035357
+        aim_hud_offset_rot                = -0.000996, 0.001207, 0
+        aim_hud_offset_rot_16x9           = -0.000996, 0.001207, 0
+		
+;__________________________________________________________ 1P76 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_bizon_1p76]:wpn_bizon
+
+        1icon_layer	       = 1p76
+        1icon_layer_x      = 92
+        1icon_layer_y      = 12
+
+        hud		   = wpn_bizon_1p76_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_1p76_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_1p76_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_1p76_hud.ogf
+		
+        aim_hud_offset_pos                = 0.007378, -0.01223, -0.035357
+        aim_hud_offset_pos_16x9           = 0.007378, -0.01223, -0.035357
+        aim_hud_offset_rot                = -0.000357, 0.00067, 0
+        aim_hud_offset_rot_16x9           = -0.000357, 0.00067, 0
+			
+;__________________________________________________________ 1P78GS (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_bizon_1p78gs]:wpn_bizon
+
+        1icon_layer	       = 1p78gs
+        1icon_layer_x      = 92
+        1icon_layer_y      = 12
+
+        hud		   = wpn_bizon_1p78gs_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_1p78gs_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p78gs
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_1p78gs_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_1p78gs_hud.ogf
+		
+        aim_hud_offset_pos                = 0.004707, -0.022685, 0.00098
+        aim_hud_offset_pos_16x9           = 0.004707, -0.022685, 0.00098
+        aim_hud_offset_rot                = -0.000357, 0.00067, 0
+        aim_hud_offset_rot_16x9           = -0.000357, 0.00067, 0
+				
+;__________________________________________________________ 1PN93-4 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_bizon_1pn93]:wpn_bizon
+
+        1icon_layer	       = 1pn93
+        1icon_layer_x      = 67
+        1icon_layer_y      = 9
+
+        hud		   = wpn_bizon_1pn93_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_1pn93_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_1pn93
+		
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_1pn93_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_1pn93_hud.ogf
+		
+        aim_hud_offset_pos                = 0.015582, -0.018192, -0.02785
+        aim_hud_offset_pos_16x9           = 0.015582, -0.018192, -0.02785
+        aim_hud_offset_rot                = -0.000925, 0.000837, 0
+        aim_hud_offset_rot_16x9           = -0.000925, 0.000837, 0
+					
+;__________________________________________________________ 1PN93-1 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_bizon_1pn93n2_1gs]:wpn_bizon
+
+        1icon_layer	       = 1pn93n2_1gs
+        1icon_layer_x      = 67
+        1icon_layer_y      = 9
+
+        hud		   = wpn_bizon_1pn93n2_1gs_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_1pn93n2_1gs_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_2gen
+        !scope_texture        = wpn_crosshair_1pn93n2_1gs
+		
+		
+		
+		use_alt_!!aim_hud    = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_1pn93n2_1gs_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_1pn93n2_1gs_hud.ogf
+		
+        aim_hud_offset_pos                = 0.020596, -0.010798, -0.024148
+        aim_hud_offset_pos_16x9           = 0.020596, -0.010798, -0.024148
+        aim_hud_offset_rot                = -0.001422, 0.001638, 0
+        aim_hud_offset_rot_16x9           = -0.001422, 0.001638, 0
+		
+;__________________________________________________________ EKP-8-02 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_bizon_ekp8_02]:wpn_bizon
+
+        1icon_layer	       = ekp8_02
+        1icon_layer_x      = 94
+        1icon_layer_y      = 15
+
+        hud		           = wpn_bizon_ekp8_02_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_ekp8_02_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_ekp8_02_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_ekp8_02_hud.ogf
+		
+        aim_hud_offset_pos                = 0.006472, -0.017987, -0.012388
+        aim_hud_offset_pos_16x9           = 0.006472, -0.017987, -0.012388
+        aim_hud_offset_rot                = 0.000353, 0.00067, 0
+        aim_hud_offset_rot_16x9           = 0.000353, 0.00067, 0
+		
+;__________________________________________________________ ����� ��-1�-03(BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_bizon_kobra]:wpn_bizon
+
+        1icon_layer	       = kobra
+        1icon_layer_x      = 91
+        1icon_layer_y      = 11
+
+        hud		   = wpn_bizon_kobra_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_kobra_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_kobra_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_kobra_hud.ogf
+		
+        aim_hud_offset_pos                = 0.006151, -0.012661, 0.003892
+        aim_hud_offset_pos_16x9           = 0.006151, -0.012661, 0.003892
+        aim_hud_offset_rot                = -0.002061, 0.001101, 0
+        aim_hud_offset_rot_16x9           = -0.002061, 0.001101, 0
+		
+;__________________________________________________________ ���-7 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_bizon_okp]:wpn_bizon
+
+        1icon_layer	       = okp
+        1icon_layer_x      = 95
+        1icon_layer_y      = 11
+
+        hud		   = wpn_bizon_okp_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_okp_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 0
+        zoom_rotate_time      = 0.25
+
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_okp_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_okp_hud.ogf
+		
+        aim_hud_offset_pos                = 0.008176, -0.00399, -0.007128
+        aim_hud_offset_pos_16x9           = 0.008176, -0.00399, -0.007128
+        aim_hud_offset_rot                = -0.002416, 0.001094, 0
+        aim_hud_offset_rot_16x9           = -0.002416, 0.001094, 0
+
+;__________________________________________________________ PGO7GS (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_bizon_pgo7gs]:wpn_bizon
+
+        1icon_layer	       = pgo7gs
+        1icon_layer_x      = 90
+        1icon_layer_y      = 8
+
+        hud		   = wpn_bizon_pgo7gs_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_pgo7gs_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pka
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_pgo7gs_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_pgo7gs_hud.ogf
+		
+        aim_hud_offset_pos                = 0.038948, -0.006962, -0.068644
+        aim_hud_offset_pos_16x9           = 0.038948, -0.006962, -0.068644
+        aim_hud_offset_rot                = -0.040889, 0.000034, 0
+        aim_hud_offset_rot_16x9           = -0.040889, 0.000034, 0
+		
+;__________________________________________________________ ��-� (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_bizon_pka]:wpn_bizon
+
+        1icon_layer	       = pka
+        1icon_layer_x      = 68
+        1icon_layer_y      = 9
+
+        hud		   = wpn_bizon_pka_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_pka_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pka
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_pka_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_pka_hud.ogf
+		
+        aim_hud_offset_pos                = 0.01249, -0.017414, -0.022454
+        aim_hud_offset_pos_16x9           = 0.01249, -0.017414, -0.022454
+        aim_hud_offset_rot                = 0.00114, 0.001317, 0
+        aim_hud_offset_rot_16x9           = 0.00114, 0.001317, 0
+
+;__________________________________________________________ ���-1M2-1 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_bizon_pso1m21]:wpn_bizon
+
+        1icon_layer	       = pso1m21
+        1icon_layer_x      = 55
+        1icon_layer_y      = 8
+
+        hud		   = wpn_bizon_pso1m21_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_pso1m21_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pso2_vss
+		
+		
+		use_alt_!!aim_hud    = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_pso1m21_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_pso1m21_hud.ogf
+		
+        aim_hud_offset_pos                = 0.020284, -0.002338, -0.012236
+        aim_hud_offset_pos_16x9           = 0.020284, -0.002338, -0.012236
+        aim_hud_offset_rot                = -0.001138, 0.001851, 0
+        aim_hud_offset_rot_16x9           = -0.001138, 0.001851, 0
+
+;__________________________________________________________ ���-1M ��� ���������� (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_bizon_pso2]:wpn_bizon
+
+        1icon_layer	       = pso2
+        1icon_layer_x      = 55
+        1icon_layer_y      = 8
+
+        hud		   = wpn_bizon_pso2_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_pso2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pso2_vss
+		
+		
+		use_alt_!!aim_hud    = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_pso2_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_pso2_hud.ogf
+		
+        aim_hud_offset_pos                = 0.020284, -0.002338, -0.012236
+        aim_hud_offset_pos_16x9           = 0.020284, -0.002338, -0.012236
+        aim_hud_offset_rot                = -0.001138, 0.001851, 0
+        aim_hud_offset_rot_16x9           = -0.001138, 0.001851, 0
+		
+;__________________________________________________________ 1P29 ��� ���������� (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_bizon_usp1]:wpn_bizon
+
+        1icon_layer	       = usp1
+        1icon_layer_x      = 78
+        1icon_layer_y      = 10
+
+        hud		   = wpn_bizon_usp1_hud
+        !visual             = dynamics\weapons\wpn_bizon\wpn_bizon_usp1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor                = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_usp1
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_bizon_usp1_hud]:wpn_bizon_hud 
+
+        item_visual        = anomaly_weapons\wpn_bizon\wpn_bizon_usp1_hud.ogf
+		
+        aim_hud_offset_pos                = 0.005244, -0.015217, -0.035357
+        aim_hud_offset_pos_16x9           = 0.005244, -0.015217, -0.035357
+        aim_hud_offset_rot                = -0.000357, 0.00067, 0
+        aim_hud_offset_rot_16x9           = -0.000357, 0.00067, 0
+			
+			

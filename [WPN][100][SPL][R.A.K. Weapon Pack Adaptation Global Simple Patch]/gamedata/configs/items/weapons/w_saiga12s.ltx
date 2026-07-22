@@ -1,0 +1,3576 @@
+﻿______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|                     Saiga 12S I.W.P(Improved Weapon Pack) Animations+Model+Texture+Sounds, SeDzhimol Port + New Animations.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                   |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_saiga12s]:identity_immunities,weapon_probability,default_weapon_params,wpn_saiga12s_sounds_iwp
+
+        GroupControlSection                      = spawn_group
+        discovery_dependency                     =
+        $npc                                     = on
+        $prefetch                                = 8
+        $spawn                                   = "weapons\ak-74"
+        scheduled                                = off
+        cform                                    = skeleton
+        parent_section                           = wpn_saiga12s
+
+        class                                    = WP_ASHTG
+        slot                                     = 2
+        animation_slot                           = 2
+        ef_main_weapon_type                      = 2
+        ef_weapon_type                           = 6
+        hand_dependence                          = 1
+        single_handed                            = 0
+
+        default_to_ruck                          = false
+        sprint_allowed                           = true
+
+		hud_fov                     = 0.65
+
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        lewd_lens_hide_enabled       = true	
+        lewd_lens_hide_bone          = lens
+        lewd_lens_hide_delays        = 0.1,0
+        lewd_lens_hide_aim_mode      = true, false, false
+ ;_______________________________________________________________________________
+ 
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 6
+		inv_grid_height                          = 2
+        inv_grid_x                               = 141
+        inv_grid_y                               = 0
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 12
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 117
+        ;inv_grid_y                               = 0
+		
+        ;inv_grid_scale     = 2
+			
+;___________________________ Description ___________________________________
+
+        inv_name                                 = st_wpn_saiga12s
+        inv_name_short                           = st_wpn_saiga12s
+        description                              = st_wpn_saiga12s_descr
+;____________________________________________________________________
+
+        kind                                     = w_shotgun
+        inv_weight                               = 3.6
+        cost                                     = 31680
+        repair_type                              = shotgun
+        weapon_class                             = shotgun
+
+        hud                                      = wpn_saiga12s_hud
+        visual                                   = dynamics\weapons\wpn_saiga\wpn_saiga12s.ogf
+
+        position                                 = -0.026,-0.213,0.0
+        orientation                              = 0, 0, 0
+
+        fire_point                               = 0.0, 0.133, 0.686
+        fire_point2                              = 0.0, 0.103, 0.686
+
+        strap_bone0                                        = bip01_spine2
+        strap_bone1                                        = bip01_spine1
+        strap_orientation                                  = -15,-9,110
+        strap_position                                     = -0.36,-0.09,0.25
+
+        ph_mass                                  = 4
+
+;___________________________ Particles ___________________________________ 
+
+        flame_particles                          = weapons\generic_weapon05
+        smoke_particles                          = weapons\generic_shoot_00
+        grenade_flame_particles                  = weapons\generic_weapon01
+
+        shell_point						         = 0.0, 0.138, 0.07
+        shell_particles					         = ;weapons\12ga
+;____________________________________________________________________  
+
+        light_disabled                           = false
+        light_color                              = 0.6, 0.5, 0.3
+        light_range                              = 5
+        light_time                               = 0.2
+        light_var_color                          = 0.05
+        light_var_range                          = 0.5
+
+;___________________________ Upgrades ___________________________________  
+
+        upgrades                                 = up_gr_firstab_saiga12, up_gr_seconab_saiga12, up_gr_thirdab_saiga12, up_gr_fourtab_saiga12, up_gr_fifthab_saiga12
+        installed_upgrades                       =
+        upgrade_scheme                           = upgrade_scheme_ak74u
+        
+		upgr_icon_path                           = ui\ui_rak_global_2
+        upgr_icon_height                                   = 150
+        upgr_icon_width                                    = 350
+        upgr_icon_x                                        = 7350
+        upgr_icon_y                                        = 0
+;____________________________________________________________________  
+
+        fire_modes                               = 1
+        ammo_class                               = ammo_12x70_buck, ammo_12x70_buck_bad, ammo_12x70_buck_verybad, ammo_12x76_zhekan, ammo_12x76_zhekan_bad, ammo_12x76_zhekan_verybad, ammo_12x76_dart, ammo_12x76_dart_bad, ammo_12x76_dart_verybad, ammo_12x70_buck_self
+        ammo_elapsed                             = 5
+        ammo_limit                               = 210
+        ammo_mag_size                            = 5
+        startup_ammo                             = 90
+		
+;___________________________ Scopes ___________________________________ 
+
+        scopes                                   = wpn_addon_scope, 1p29, 1p59, 1p63, 1p76, 1p78gs, 1pn93, 1pn93n2_1gs, ekp8_02, kobra, okp, pgo7gs, pka, pso1m21, pso2, usp1
+        scope_status                             = 0
+        scope_zoom_factor                        = 0
+		use_alt_aim_hud  		    = true
+
+;___________________________ Silencer ___________________________________ 
+
+        silencer_name                            = wpn_sil_hexagon
+        silencer_status                          = 2
+
+        silencer_x                               = 277
+        silencer_y                               = 17
+
+        silencer_light_color                     = 0.6, 0.5, 0.3
+        silencer_light_range                     = 0.01
+        silencer_light_time                      = 0.2
+        silencer_light_var_color                 = 0.05
+        silencer_light_var_range                 = 0.5
+
+        silencer_smoke_particles                 = weapons\generic_shoot_00
+
+;___________________________ Grenade launcher ___________________________________ 
+
+        grenade_class                            = ammo_vog-25, ammo_vog-25_bad, ammo_vog-25_verybad, ammo_vog-25, ammo_vog-25_bad, ammo_vog-25_verybadp
+        grenade_launcher_name                    = wpn_addon_grenade_launcher
+        grenade_launcher_status                  = 0
+        grenade_launcher_x                       = 116
+        grenade_launcher_y                       = 15
+        launch_speed                             = 0
+		
+;___________________________ TTX ___________________________________ 
+
+        hit_impulse                              = 40
+        hit_power                                = 0.78, 0.78, 0.78, 0.78
+        hit_type                                 = fire_wound
+        fire_distance                            = 300
+        bullet_speed                             = 400
+        rpm                                      = 220
+        rpm_empty_click                          = 200
+
+        use_aim_bullet = false
+        time_to_aim                              = 0.0 ;  3.0
+        zoom_dof                                 = 0.5, 1.0, 180
+        zoom_enabled                             = true
+        zoom_rotate_time                         = 0.25
+        reload_dof                               = 0.0, 0.5, 5, 1.7
+        control_inertion_factor = 1.0f
+        crosshair_inertion                       = 6.5
+		
+        fire_dispersion_base                     = 0.46
+        fire_dispersion_condition_factor         = 0.001
+
+        misfire_probability                      = 0.005
+        misfire_start_condition                  = 0.7 ;  0.88
+        misfire_start_prob                       = 0.007
+        misfire_end_condition                    = 0.12
+        misfire_end_prob                         = 0.11
+
+        condition_queue_shot_dec                 = 0.0020
+        condition_shot_dec                       = 0.0020
+
+        cam_return                               = 0
+        cam_relax_speed                          = 10
+        cam_dispersion                           = 6.6
+        cam_dispersion_frac                      = 1.0
+        cam_dispersion_inc                       = 0.0
+        cam_max_angle                            = 50.0
+        cam_max_angle_horz                       = 50.0
+        cam_step_angle_horz                      = 1.24
+
+        zoom_cam_relax_speed                     = 9
+        zoom_cam_dispersion                      = 5.3
+        zoom_cam_dispersion_frac                 = 0.8
+        zoom_cam_dispersion_inc                  = 0.0
+        zoom_cam_max_angle                       = 50.0
+        zoom_cam_max_angle_horz                  = 50.0
+        zoom_cam_step_angle_horz                 = 1.12
+
+        PDM_disp_accel_factor                    = 2.4
+        PDM_disp_base                            = 0.96
+        PDM_disp_crouch                          = 1.0
+        PDM_disp_crouch_no_acc                   = 1.0
+        PDM_disp_vel_factor                      = 2.4
+
+        cam_relax_speed_ai                       = 360
+        zoom_cam_relax_speed_ai                  = 360
+		
+        holder_fov_modifier                      = 0.7
+        holder_range_modifier                    = 1.0
+
+        min_radius                               = 0
+        max_radius                               = 500
+
+        hit_probability_gd_novice                = 1.00
+        hit_probability_gd_stalker               = 1.00
+        hit_probability_gd_veteran               = 1.00
+        hit_probability_gd_master                = 1.00
+
+        kill_msg_x                               = 0
+        kill_msg_y                               = 28
+        kill_msg_width                           = 84
+        kill_msg_height                          = 28
+
+;_________________________________________________ Sounds ______________________________________________________
+ 
+        snd_draw                            = wpn\vepr\show
+        snd_holster                         = wpn\vepr\hide
+        snd_reload                          = wpn\vepr\rp
+        snd_reload_empty                    = wpn\vepr\rf
+        snd_reload_misfire                  = wpn\vepr\misfire
+        snd_switch_mode                     = wpn\vepr\fire_mode_switch
+        scripted_snd_ammo_check             = wpn\vepr\mag_check
+        scripted_snd_ammo_check_empty       = wpn\vepr\mag_check
+		
+;__________________________________________ HUD parameters ____________________________________________________
+
+[wpn_saiga12s_hud]:hud_base_tranzit
+
+        item_visual                              = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_hud.ogf
+        attach_place_idx                         = 0
+        zoom_hide_crosshair                      = true   
+
+;======================== Hud Position =======================================================
+       
+        item_position               = 0, 0, 0
+        item_orientation            = 0, 0, 0
+        
+        aim_hud_offset_pos               = 0.011394, 0.014986, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011394, 0.014986, 0.004192
+        aim_hud_offset_rot               = -0.001409, 0.002178, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001409, 0.002178, -0.045496
+		
+        aim_hud_offset_alt_pos           = -0.000466, 0.003341, 0.004174
+        aim_hud_offset_alt_pos_16x9      = -0.000466, 0.003341, 0.004174
+        aim_hud_offset_alt_rot           = -0.004675, -0.014723, -0.000077
+        aim_hud_offset_alt_rot_16x9      = -0.004675, -0.014723, -0.000077
+				
+        hands_orientation                = 0.944635, 0.124016, 0
+        hands_orientation_16x9           = 0.944635, 0.124016, 0
+        hands_position                   = 0.001933, 0.000563, 0.015495
+        hands_position_16x9              = 0.001933, 0.000563, 0.015495
+		
+        lowered_hud_offset_pos           = 0.032612, 0.004257, -0.008674
+        lowered_hud_offset_pos_16x9      = 0.032612, 0.004257, -0.008674
+        lowered_hud_offset_rot           = 0.14693, -0.423307, 0.1
+        lowered_hud_offset_rot_16x9      = 0.14693, -0.423307, 0.1
+        
+        gl_hud_offset_pos           = 0, 0, 0
+        gl_hud_offset_pos_16x9      = 0, 0, 0
+        gl_hud_offset_rot           = 0, 0, 0
+        gl_hud_offset_rot_16x9      = 0, 0, 0
+        
+        lean_hud_offset_pos         = 0, 0, 0
+        lean_hud_offset_rot         = 0, 0, 0
+
+;======================== BORING =======================================================
+
+        anm_bore                    = vepr12m_osmotr
+        anm_bore_empty              = vepr12m_osmotr
+        anm_bore_jammed             = vepr12m_shoot_jam
+		
+        anm_bore_aim                = vepr12m_aim_idle, idle
+        anm_bore_aim_empty          = vepr12m_aim_idle, idle
+        anm_bore_aim_jammed         = vepr12m_shoot_jam_aim
+		
+;======================== HIDE ==========================================================
+
+		anm_hide                    = vepr12m_hide
+
+;======================== SHOW ==========================================================
+
+		anm_show                    = vepr12m_draw
+		
+;======================== IDLE ==========================================================
+
+		anm_idle                    = vepr12m_idle
+		anm_idle_moving             = vepr12m_walk
+
+;======================== AIM TRANSITIONS ====================================================
+
+        anm_idle_aim                = vepr12m_aim_idle
+        anm_idle_aim_start          = vepr12m_aim_start
+        anm_idle_aim_end            = vepr12m_aim_end
+		
+        anm_idle_aim_moving         = vepr12m_walk, idle, 0.75
+        anm_idle_aim_moving_crouch  = vepr12m_walk, idle, 0.7
+		
+;======================== SPRINT AND PATERN ====================================================
+
+        anm_sprint_start            = vepr12m_sprint_start
+		anm_idle_sprint             = vepr12m_sprint
+        anm_sprint_end              = vepr12m_sprint_end
+;-----------------------------------------------------------------------------------------               
+        ts_pattern_sprint_start            = .+, anm_idle_sprint, anm_sprint_start, 1
+        ts_pattern_sprint_end              = anm_idle_sprint, ^anm_idle.*, anm_sprint_end
+        ts_strict_sprint_end_move          = anm_sprint_start, anm_idle_moving, anm_sprint_end		 
+
+;======================== RELOAD ==========================================================
+
+        anm_reload                  = saiga12s_r_part, vepr12m_r_part
+        anm_reload_empty            = saiga12s_r_full, vepr12m_r_full
+		
+        anm_reload_misfire          = vepr12m_rasklin
+        anm_reload_misfire_aim      = vepr12m_rasklin_aim, vepr12m_rasklin
+		
+;======================== MAG CHECK =========================================================
+
+        anm_ammo_check              = vepr12m_mag_check, vepr12m_mag_check
+        anm_ammo_check_empty        = vepr12m_mag_check, vepr12m_mag_check_empty
+		
+        anm_ammo_check_aim          = vepr12m_aim_idle, idle
+        anm_ammo_check_aim_empty    = vepr12m_aim_idle, idle
+		
+;======================== SWITCH MODE =======================================================
+
+        anm_switch_mode             = vepr12m_switch_mode
+		
+        anm_switch_mode_aim         = vepr12m_switch_mode_aim
+		
+;======================== SHOOTS ===========================================================
+
+        anm_shots                   = vepr12m_shoot
+		
+        anm_shots_aim               = vepr12m_shoot_aim
+		
+;_____________________________________ Parameters of the shells sprite for HUD __________________________
+   
+		fire_bone                   = muzzle
+		fire_point                  = 0,0,0
+ 
+		freelook_z_offset_mul		= 0.5
+ 
+
+;____________________________________________________ Addons _______________________________________________________________________________________________________
+
+;__________________________________________________________ WPN ADDON SCOPE ANOMALY (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12s_wpn_addon_scope]:wpn_saiga12s
+
+        1icon_layer	       = pso1m21
+        1icon_layer_x      = 50
+        1icon_layer_y      = 3
+
+        hud		   = wpn_saiga12s_pso1m21_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_pso1m21_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pso2_vss
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_wpn_addon_scope_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_pso1m21_hud.ogf
+		
+        aim_hud_offset_pos               = 0.026653, -0.006498, 0.034058
+        aim_hud_offset_pos_16x9          = 0.026653, -0.006498, 0.034058
+        aim_hud_offset_rot               = -0.001052, 0.00298, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001052, 0.00298, -0.045496
+		
+;__________________________________________________________ 1P29 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12s_1p29]:wpn_saiga12s
+
+        1icon_layer	       = 1p29
+        1icon_layer_x      = 71
+        1icon_layer_y      = 3
+
+        hud		           = wpn_saiga12s_1p29_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_1p29_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p29
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_1p29_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_1p29_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011414, -0.018011, 0.001836
+        aim_hud_offset_pos_16x9          = 0.011414, -0.018011, 0.001836
+        aim_hud_offset_rot               = -0.001409, 0.002178, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001409, 0.002178, -0.045496
+
+;__________________________________________________________ 1P59 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12s_1p59]:wpn_saiga12s
+
+        1icon_layer	       = 1p59
+        1icon_layer_x      = 80
+        1icon_layer_y      = 4
+
+        hud		   = wpn_saiga12s_1p59_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_1p59_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p59
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_1p59_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_1p59_hud.ogf
+		
+        aim_hud_offset_pos               = 0.027119, -0.014795, 0.010355
+        aim_hud_offset_pos_16x9          = 0.027119, -0.014795, 0.010355
+        aim_hud_offset_rot               = -0.001622, 0.002282, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001622, 0.002282, -0.045496
+			
+;__________________________________________________________ 1P63 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_saiga12s_1p63]:wpn_saiga12s
+
+        1icon_layer	       = 1p63
+        1icon_layer_x      = 83
+        1icon_layer_y      = 7
+
+        hud		   = wpn_saiga12s_1p63_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_1p63_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_1p63_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_1p63_hud.ogf
+		
+        aim_hud_offset_pos               = 0.012033, -0.023549, 0.004192
+        aim_hud_offset_pos_16x9          = 0.012033, -0.023549, 0.004192
+        aim_hud_offset_rot               = -0.00148, 0.003134, -0.045496
+        aim_hud_offset_rot_16x9          = -0.00148, 0.003134, -0.045496
+		
+;__________________________________________________________ 1P76 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12s_1p76]:wpn_saiga12s
+
+        1icon_layer	       = 1p76
+        1icon_layer_x      = 83
+        1icon_layer_y      = 7
+
+        hud		   = wpn_saiga12s_1p76_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_1p76_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_1p76_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_1p76_hud.ogf
+		
+        aim_hud_offset_pos               = 0.013479, -0.015443, 0.004192
+        aim_hud_offset_pos_16x9          = 0.013479, -0.015443, 0.004192
+        aim_hud_offset_rot               = -0.001408, 0.003141, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001408, 0.003141, -0.045496
+			
+;__________________________________________________________ 1P78GS (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12s_1p78gs]:wpn_saiga12s
+
+        1icon_layer	       = 1p78gs
+        1icon_layer_x      = 83
+        1icon_layer_y      = 7
+
+        hud		   = wpn_saiga12s_1p78gs_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_1p78gs_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p78gs
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_1p78gs_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_1p78gs_hud.ogf
+		
+        aim_hud_offset_pos               = 0.010969, -0.025596, 0.049201
+        aim_hud_offset_pos_16x9          = 0.010969, -0.025596, 0.049201
+        aim_hud_offset_rot               = -0.001409, 0.002178, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001409, 0.002178, -0.045496
+				
+;__________________________________________________________ 1PN93-4 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12s_1pn93]:wpn_saiga12s
+
+        1icon_layer	       = 1pn93
+        1icon_layer_x      = 56
+        1icon_layer_y      = 7
+
+        hud		   = wpn_saiga12s_1pn93_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_1pn93_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_1pn93
+		
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_1pn93_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_1pn93_hud.ogf
+		
+        aim_hud_offset_pos               = 0.021682, -0.023984, 0.005029
+        aim_hud_offset_pos_16x9          = 0.021682, -0.023984, 0.005029
+        aim_hud_offset_rot               = -0.002048, 0.002231, -0.045496
+        aim_hud_offset_rot_16x9          = -0.002048, 0.002231, -0.045496
+					
+;__________________________________________________________ 1PN93-1 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12s_1pn93n2_1gs]:wpn_saiga12s
+
+        1icon_layer	       = 1pn93n2_1gs
+        1icon_layer_x      = 56
+        1icon_layer_y      = 7
+
+        hud		   = wpn_saiga12s_1pn93n2_1gs_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_1pn93n2_1gs_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_2gen
+        !scope_texture        = wpn_crosshair_1pn93n2_1gs
+		
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_1pn93n2_1gs_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_1pn93n2_1gs_hud.ogf
+		
+        aim_hud_offset_pos               = 0.025956, -0.015086, 0.00674
+        aim_hud_offset_pos_16x9          = 0.025956, -0.015086, 0.00674
+        aim_hud_offset_rot               = -0.001409, 0.002178, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001409, 0.002178, -0.045496
+		
+;__________________________________________________________ EKP-8-02 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_saiga12s_ekp8_02]:wpn_saiga12s
+
+        1icon_layer	       = ekp8_02
+        1icon_layer_x      = 87
+        1icon_layer_y      = 10
+
+        hud		           = wpn_saiga12s_ekp8_02_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_ekp8_02_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_ekp8_02_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_ekp8_02_hud.ogf
+		
+        aim_hud_offset_pos               = 0.012305, -0.019912, 0.030505
+        aim_hud_offset_pos_16x9          = 0.012305, -0.019912, 0.030505
+        aim_hud_offset_rot               = -0.000557, 0.002438, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000557, 0.002438, -0.045496
+		
+;__________________________________________________________ Кобра ЭП-1С-03(BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_saiga12s_kobra]:wpn_saiga12s
+
+        1icon_layer	       = kobra
+        1icon_layer_x      = 82
+        1icon_layer_y      = 8
+
+        hud		   = wpn_saiga12s_kobra_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_kobra_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_kobra_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_kobra_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011291, -0.013521, 0.027943
+        aim_hud_offset_pos_16x9          = 0.011291, -0.013521, 0.027943
+        aim_hud_offset_rot               = -0.002829, 0.002664, -0.045496
+        aim_hud_offset_rot_16x9          = -0.002829, 0.002664, -0.045496
+		
+;__________________________________________________________ ОКП-7 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12s_okp]:wpn_saiga12s
+
+        1icon_layer	       = okp
+        1icon_layer_x      = 84
+        1icon_layer_y      = 6
+
+        hud		   = wpn_saiga12s_okp_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_okp_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_okp_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_okp_hud.ogf
+		
+        aim_hud_offset_pos               = 0.013791, -0.005494, 0.021324
+        aim_hud_offset_pos_16x9          = 0.013791, -0.005494, 0.021324
+        aim_hud_offset_rot               = -0.001835, 0.002928, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001835, 0.002928, -0.045496
+
+;__________________________________________________________ PGO7GS (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12s_pgo7gs]:wpn_saiga12s
+
+        1icon_layer	       = pgo7gs
+        1icon_layer_x      = 79
+        1icon_layer_y      = 3
+
+        hud		   = wpn_saiga12s_pgo7gs_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_pgo7gs_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pka
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_pgo7gs_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_pgo7gs_hud.ogf
+		
+        aim_hud_offset_pos               = 0.044149, -0.007762, -0.033779
+        aim_hud_offset_pos_16x9          = 0.044149, -0.007762, -0.033779
+        aim_hud_offset_rot               = -0.041858, -0.000955, -0.046349
+        aim_hud_offset_rot_16x9          = -0.041858, -0.000955, -0.046349
+		
+;__________________________________________________________ ПК-А (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12s_pka]:wpn_saiga12s
+
+        1icon_layer	       = pka
+        1icon_layer_x      = 59
+        1icon_layer_y      = 4
+
+        hud		   = wpn_saiga12s_pka_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_pka_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pka
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_pka_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_pka_hud.ogf
+		
+        aim_hud_offset_pos               = 0.018923, -0.019995, 0.036759
+        aim_hud_offset_pos_16x9          = 0.018923, -0.019995, 0.036759
+        aim_hud_offset_rot               = -0.0002, 0.004305, -0.045496
+        aim_hud_offset_rot_16x9          = -0.0002, 0.004305, -0.045496
+
+;__________________________________________________________ ПСО-1M2-1 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12s_pso1m21]:wpn_saiga12s
+
+        1icon_layer	       = pso1m21
+        1icon_layer_x      = 50
+        1icon_layer_y      = 3
+
+        hud		   = wpn_saiga12s_pso1m21_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_pso1m21_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pso2_vss
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_pso1m21_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_pso1m21_hud.ogf
+		
+        aim_hud_offset_pos               = 0.026653, -0.006498, 0.034058
+        aim_hud_offset_pos_16x9          = 0.026653, -0.006498, 0.034058
+        aim_hud_offset_rot               = -0.001052, 0.00298, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001052, 0.00298, -0.045496
+
+;__________________________________________________________ ПСО-1M Без Наглазника (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12s_pso2]:wpn_saiga12s
+
+        1icon_layer	       = pso2
+        1icon_layer_x      = 50
+        1icon_layer_y      = 3
+
+        hud		   = wpn_saiga12s_pso2_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_pso2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pso2_vss
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_pso2_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_pso2_hud.ogf
+		
+        aim_hud_offset_pos               = 0.026653, -0.006498, 0.034058
+        aim_hud_offset_pos_16x9          = 0.026653, -0.006498, 0.034058
+        aim_hud_offset_rot               = -0.001052, 0.00298, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001052, 0.00298, -0.045496
+		
+;__________________________________________________________ 1P29 Без наглазника (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12s_usp1]:wpn_saiga12s
+
+        1icon_layer	       = usp1
+        1icon_layer_x      = 71
+        1icon_layer_y      = 3
+
+        hud		   = wpn_saiga12s_usp1_hud
+        !visual             = dynamics\weapons\wpn_saiga12s\wpn_saiga12s_usp1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_usp1
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12s_usp1_hud]:wpn_saiga12s_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12s\wpn_saiga12s_usp1_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011414, -0.018011, 0.001836
+        aim_hud_offset_pos_16x9          = 0.011414, -0.018011, 0.001836
+        aim_hud_offset_rot               = -0.001409, 0.002178, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001409, 0.002178, -0.045496
+		
+______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|                     Saiga 12M I.W.P(Improved Weapon Pack) Animations+Model+Texture+Sounds, SeDzhimol Port + New Animations.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                   |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_saiga12m]:identity_immunities,weapon_probability,default_weapon_params,wpn_saiga12m_sounds_iwp
+
+        GroupControlSection                      = spawn_group
+        discovery_dependency                     =
+        $npc                                     = on
+        $prefetch                                = 8
+        $spawn                                   = "weapons\ak-74"
+        scheduled                                = off
+        cform                                    = skeleton
+        parent_section                           = wpn_saiga12m
+
+        class                                    = WP_ASHTG
+        slot                                     = 2
+        animation_slot                           = 2
+        ef_main_weapon_type                      = 2
+        ef_weapon_type                           = 6
+        hand_dependence                          = 1
+        single_handed                            = 0
+
+        default_to_ruck                          = false
+        sprint_allowed                           = true
+
+		hud_fov                     = 0.65
+
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        lewd_lens_hide_enabled       = true	
+        lewd_lens_hide_bone          = lens
+        lewd_lens_hide_delays        = 0.1,0
+        lewd_lens_hide_aim_mode      = true, false, false
+ ;_______________________________________________________________________________
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 6
+		inv_grid_height                          = 2
+        inv_grid_x                               = 141
+        inv_grid_y                               = 2
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 12
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 129
+        ;inv_grid_y                               = 0
+		
+        ;inv_grid_scale     = 2
+			
+;___________________________ Description ___________________________________
+
+        inv_name                                 = st_wpn_saiga12m
+        inv_name_short                           = st_wpn_saiga12m
+        description                              = st_wpn_saiga12m_descr
+;____________________________________________________________________
+
+        kind                                     = w_shotgun
+        inv_weight                                         = 4.1
+        cost                                     = 31680
+        repair_type                              = shotgun
+        weapon_class                             = shotgun
+
+        hud                                      = wpn_saiga12m_hud
+        visual                                   = dynamics\weapons\wpn_saiga\wpn_saiga12m.ogf
+
+        position                                 = -0.026,-0.213,0.0
+        orientation                              = 0, 0, 0
+
+        fire_point                               = 0.0, 0.133, 0.686
+        fire_point2                              = 0.0, 0.103, 0.686
+
+        strap_bone0                                        = bip01_spine2
+        strap_bone1                                        = bip01_spine1
+        strap_orientation                                  = -15,-9,110
+        strap_position                                     = -0.36,-0.09,0.25
+
+        ph_mass                                  = 4
+
+;___________________________ Particles ___________________________________ 
+
+        flame_particles                          = weapons\generic_weapon05
+        smoke_particles                          = weapons\generic_shoot_00
+        grenade_flame_particles                  = weapons\generic_weapon01
+
+        shell_point						         = 0.0, 0.138, 0.07
+        shell_particles					         = ;weapons\12ga
+;____________________________________________________________________ 
+
+        light_disabled                           = false
+        light_color                              = 0.6, 0.5, 0.3
+        light_range                              = 5
+        light_time                               = 0.2
+        light_var_color                          = 0.05
+        light_var_range                          = 0.5
+
+;___________________________ Upgrades ___________________________________ 
+
+        upgrades                                 = up_gr_firstab_saiga12, up_gr_seconab_saiga12, up_gr_thirdab_saiga12, up_gr_fourtab_saiga12, up_gr_fifthab_saiga12
+        installed_upgrades                       =
+        upgrade_scheme                           = upgrade_scheme_ak74u
+		
+		upgr_icon_path                           = ui\ui_rak_global_2
+        upgr_icon_height                                   = 150
+        upgr_icon_width                                    = 350
+        upgr_icon_x                                        = 7350
+        upgr_icon_y                                        = 150
+;____________________________________________________________________  
+
+        fire_modes                               = 1, -1
+        ammo_class                               = ammo_12x70_buck, ammo_12x70_buck_bad, ammo_12x70_buck_verybad, ammo_12x76_zhekan, ammo_12x76_zhekan_bad, ammo_12x76_zhekan_verybad, ammo_12x76_dart, ammo_12x76_dart_bad, ammo_12x76_dart_verybad, ammo_12x70_buck_self
+        ammo_elapsed                             = 10
+        ammo_limit                               = 210
+        ammo_mag_size                            = 10
+        startup_ammo                             = 90
+
+;___________________________ Scopes ___________________________________ 
+
+        scopes 					            = wpn_addon_scope, 0kp2, 1p29, 1p59, 1p63, 1p69, 1p76, 1p78gs, 1p87, 1pn93, 1pn93n2_1gs, ac10632, ac11090, acog, ado, aim_acro, aim_low, aimpoint, point_aimpro, bravo4, bossxe, c-more, compm4s, cortex, deltapoint, devo, d0cter, e0t2, e0t2_magd, echo1, ekp8_02, ekp8_18, elbit_falcon2, eot, exps3, gauss, gauss_sight, hamr, hartman_mh1, hco, he510, kemper, kobra, lco1, leupold, march_f_shorty, marchf, mepro, monstrum, okp, p1x42, p4x32, pgo7gs, pk6, pka, pks07, pn23, po4x34, ps320, ps01, pso1m21, pso2, rakurs, razorhd, rmr, romeo4, romeo8, rusak, specter, susatov, t12, tac30, trihawk, uh1_magd, uh2, usp1, vulcan
+		scope_status                = 0
+		scope_zoom_factor           = 0
+		scope_zoom_factor_alt             = 0
+		use_alt_aim_hud                   = true	
+
+;___________________________ Silencer ___________________________________ 
+
+        silencer_name                            = wpn_sil_hexagon
+        silencer_status                          = 2
+
+        silencer_x                                         = 28
+        silencer_y                                         = -3
+
+        silencer_light_color                     = 0.6, 0.5, 0.3
+        silencer_light_range                     = 0.01
+        silencer_light_time                      = 0.2
+        silencer_light_var_color                 = 0.05
+        silencer_light_var_range                 = 0.5
+        silencer_smoke_particles                 = weapons\generic_shoot_00
+
+;___________________________ Grenade launcher ___________________________________ 
+
+        grenade_class                            = ammo_vog-25, ammo_vog-25_bad, ammo_vog-25_verybad, ammo_vog-25, ammo_vog-25_bad, ammo_vog-25_verybadp
+        grenade_launcher_name                    = wpn_addon_grenade_launcher
+        grenade_launcher_status                  = 0
+        grenade_launcher_x                       = 116
+        grenade_launcher_y                       = 15
+        launch_speed                             = 0
+
+;___________________________ TTX ___________________________________ 
+
+        hit_impulse                              = 40
+        hit_power                                = 0.78, 0.78, 0.78, 0.78
+        hit_type                                 = fire_wound
+        fire_distance                            = 300
+        bullet_speed                             = 400
+        rpm                                      = 320
+        rpm_empty_click                          = 200
+
+        use_aim_bullet = false
+        time_to_aim                              = 0.0 ;  3.0
+        zoom_dof                                 = 0.5, 1.0, 180
+        zoom_enabled                             = true
+        zoom_rotate_time                         = 0.25
+        reload_dof                               = 0.0, 0.5, 5, 1.7
+        control_inertion_factor = 1.0f
+        crosshair_inertion                       = 6.5
+		
+        fire_dispersion_base                     = 0.46
+        fire_dispersion_condition_factor         = 0.001
+
+        misfire_probability                      = 0.005
+        misfire_start_condition                  = 0.7 ;  0.88
+        misfire_start_prob                       = 0.007
+        misfire_end_condition                    = 0.12
+        misfire_end_prob                         = 0.11
+
+        condition_queue_shot_dec                 = 0.0020
+        condition_shot_dec                       = 0.0020
+
+        cam_return                               = 0
+        cam_relax_speed                          = 10
+        cam_dispersion                           = 6.6
+        cam_dispersion_frac                      = 1.0
+        cam_dispersion_inc                       = 0.0
+        cam_max_angle                            = 50.0
+        cam_max_angle_horz                       = 50.0
+        cam_step_angle_horz                      = 1.24
+
+        zoom_cam_relax_speed                     = 9
+        zoom_cam_dispersion                      = 5.3
+        zoom_cam_dispersion_frac                 = 0.8
+        zoom_cam_dispersion_inc                  = 0.0
+        zoom_cam_max_angle                       = 50.0
+        zoom_cam_max_angle_horz                  = 50.0
+        zoom_cam_step_angle_horz                 = 1.12
+
+        PDM_disp_accel_factor                    = 2.4
+        PDM_disp_base                            = 0.96
+        PDM_disp_crouch                          = 1.0
+        PDM_disp_crouch_no_acc                   = 1.0
+        PDM_disp_vel_factor                      = 2.4
+
+        cam_relax_speed_ai                       = 360
+        zoom_cam_relax_speed_ai                  = 360
+
+        holder_fov_modifier                      = 0.7
+        holder_range_modifier                    = 1.0
+
+        min_radius                               = 0
+        max_radius                               = 500
+
+        hit_probability_gd_novice                = 1.00
+        hit_probability_gd_stalker               = 1.00
+        hit_probability_gd_veteran               = 1.00
+        hit_probability_gd_master                = 1.00
+
+        kill_msg_x                               = 0
+        kill_msg_y                               = 28
+        kill_msg_width                           = 84
+        kill_msg_height                          = 28
+
+;_________________________________________________ Sounds ______________________________________________________
+ 
+        snd_draw                            = wpn\vepr\show
+        snd_holster                         = wpn\vepr\hide
+        snd_reload                          = wpn\vepr\rp
+        snd_reload_empty                    = wpn\vepr\rf
+        snd_reload_misfire                  = wpn\vepr\misfire
+        snd_switch_mode                     = wpn\vepr\fire_mode_switch
+        scripted_snd_ammo_check             = wpn\vepr\mag_check
+        scripted_snd_ammo_check_empty       = wpn\vepr\mag_check
+
+;__________________________________________ HUD parameters ____________________________________________________
+		
+[wpn_saiga12m_hud]:hud_base_tranzit
+
+        item_visual                              = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_hud.ogf
+        attach_place_idx                         = 0
+        zoom_hide_crosshair                      = true   
+
+;======================== Hud Position =======================================================
+       
+        item_position               = 0, 0, 0
+        item_orientation            = 0, 0, 0
+        
+        aim_hud_offset_pos               = 0.011394, 0.014986, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011394, 0.014986, 0.004192
+        aim_hud_offset_rot               = -0.001409, 0.002178, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001409, 0.002178, -0.045496
+
+        aim_hud_offset_alt_pos           = -0.000466, 0.003341, 0.004174
+        aim_hud_offset_alt_pos_16x9      = -0.000466, 0.003341, 0.004174
+        aim_hud_offset_alt_rot           = -0.004675, -0.014723, -0.000077
+        aim_hud_offset_alt_rot_16x9      = -0.004675, -0.014723, -0.000077
+		
+        hands_orientation                = 0.944635, 0.124016, 0
+        hands_orientation_16x9           = 0.944635, 0.124016, 0
+        hands_position                   = 0.001933, 0.000563, 0.015495
+        hands_position_16x9              = 0.001933, 0.000563, 0.015495
+		
+        lowered_hud_offset_pos           = 0.032612, 0.004257, -0.008674
+        lowered_hud_offset_pos_16x9      = 0.032612, 0.004257, -0.008674
+        lowered_hud_offset_rot           = 0.14693, -0.423307, 0.1
+        lowered_hud_offset_rot_16x9      = 0.14693, -0.423307, 0.1
+        
+        gl_hud_offset_pos           = 0, 0, 0
+        gl_hud_offset_pos_16x9      = 0, 0, 0
+        gl_hud_offset_rot           = 0, 0, 0
+        gl_hud_offset_rot_16x9      = 0, 0, 0
+        
+        lean_hud_offset_pos         = 0, 0, 0
+        lean_hud_offset_rot         = 0, 0, 0
+
+;======================== BORING =======================================================
+
+        anm_bore                    = vepr12m_osmotr
+        anm_bore_empty              = vepr12m_osmotr
+        anm_bore_jammed             = vepr12m_shoot_jam
+		
+        anm_bore_aim                = vepr12m_aim_idle, idle
+        anm_bore_aim_empty          = vepr12m_aim_idle, idle
+        anm_bore_aim_jammed         = vepr12m_shoot_jam_aim
+		
+;======================== HIDE ==========================================================
+
+		anm_hide                    = vepr12m_hide
+
+;======================== SHOW ==========================================================
+
+		anm_show                    = vepr12m_draw
+		
+;======================== IDLE ==========================================================
+
+		anm_idle                    = vepr12m_idle
+		anm_idle_moving             = vepr12m_walk
+
+;======================== AIM TRANSITIONS ====================================================
+
+        anm_idle_aim                = vepr12m_aim_idle
+        anm_idle_aim_start          = vepr12m_aim_start
+        anm_idle_aim_end            = vepr12m_aim_end
+		
+        anm_idle_aim_moving         = vepr12m_walk, idle, 0.75
+        anm_idle_aim_moving_crouch  = vepr12m_walk, idle, 0.7
+		
+;======================== SPRINT AND PATERN ====================================================
+
+        anm_sprint_start            = vepr12m_sprint_start
+		anm_idle_sprint             = vepr12m_sprint
+        anm_sprint_end              = vepr12m_sprint_end
+;-----------------------------------------------------------------------------------------               
+        ts_pattern_sprint_start            = .+, anm_idle_sprint, anm_sprint_start, 1
+        ts_pattern_sprint_end              = anm_idle_sprint, ^anm_idle.*, anm_sprint_end
+        ts_strict_sprint_end_move          = anm_sprint_start, anm_idle_moving, anm_sprint_end		 
+
+;======================== RELOAD ==========================================================
+
+        anm_reload                  = saiga12m_r_part, vepr12m_r_part
+        anm_reload_empty            = saiga12m_r_full, vepr12m_r_full
+		
+        anm_reload_misfire          = vepr12m_rasklin
+        anm_reload_misfire_aim      = vepr12m_rasklin_aim, vepr12m_rasklin
+		
+;======================== MAG CHECK =========================================================
+
+        anm_ammo_check              = vepr12m_mag_check, vepr12m_mag_check
+        anm_ammo_check_empty        = vepr12m_mag_check, vepr12m_mag_check_empty
+		
+        anm_ammo_check_aim          = vepr12m_aim_idle, idle
+        anm_ammo_check_aim_empty    = vepr12m_aim_idle, idle
+		
+;======================== SWITCH MODE =======================================================
+
+        anm_switch_mode             = vepr12m_switch_mode
+		
+        anm_switch_mode_aim         = vepr12m_switch_mode_aim
+		
+;======================== SHOOTS ===========================================================
+
+        anm_shots                   = vepr12m_shoot
+		
+        anm_shots_aim               = vepr12m_shoot_aim
+		
+;_____________________________________ Parameters of the shells sprite for HUD __________________________
+   
+		fire_bone                   = muzzle
+		fire_point                  = 0,0,0
+ 
+		freelook_z_offset_mul		= 0.5
+ 
+;____________________________________________________ Addons _______________________________________________________________________________________________________
+
+;__________________________________________________________ WPN ADDON SCOPE ANOMALY (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_wpn_addon_scope]:wpn_saiga12m
+
+        1icon_layer	       = pso1m21
+        1icon_layer_x      = 42
+        1icon_layer_y      = -17
+
+        hud		   = wpn_saiga12m_wpn_addon_scope_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_pso1m21_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pso2_vss
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_wpn_addon_scope_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_pso1m21_hud.ogf
+		
+        aim_hud_offset_pos               = 0.026653, -0.006498, 0.034058
+        aim_hud_offset_pos_16x9          = 0.026653, -0.006498, 0.034058
+        aim_hud_offset_rot               = -0.001052, 0.00298, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001052, 0.00298, -0.045496
+		
+;__________________________________________________________ ОКП-7 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_0kp2]:wpn_saiga12m
+
+        1icon_layer	       = 0kp2
+        1icon_layer_x      = 85
+        1icon_layer_y      = -23
+
+        hud		   = wpn_saiga12m_0kp2_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_0kp2_world.ogf
+        
+		ms_count = 6
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_0kp2_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_0kp2_hud.ogf
+		
+        aim_hud_offset_pos               = 0.012781, -0.007205, 0.004192
+        aim_hud_offset_pos_16x9          = 0.012781, -0.007205, 0.004192
+        aim_hud_offset_rot               = -0.000983, 0.002231, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000983, 0.002231, -0.045496
+
+		
+;__________________________________________________________ 1P29 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_1p29]:wpn_saiga12m
+
+        1icon_layer	       = 1p29
+        1icon_layer_x       = 64
+        1icon_layer_y       = -17
+
+        hud		           = wpn_saiga12m_1p29_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p29
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_1p29_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_1p29_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011414, -0.018011, 0.001836
+        aim_hud_offset_pos_16x9          = 0.011414, -0.018011, 0.001836
+        aim_hud_offset_rot               = -0.001409, 0.002178, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001409, 0.002178, -0.045496
+
+;__________________________________________________________ 1P59 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_1p59]:wpn_saiga12m
+
+        1icon_layer	       = 1p59
+        1icon_layer_x      = 75
+        1icon_layer_y      = -17
+
+        hud		   = wpn_saiga12m_1p59_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_1p59_world.ogf
+        
+		ms_count = 6
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p59
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_1p59_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_1p59_hud.ogf
+		
+        aim_hud_offset_pos               = 0.027119, -0.014795, 0.010355
+        aim_hud_offset_pos_16x9          = 0.027119, -0.014795, 0.010355
+        aim_hud_offset_rot               = -0.001622, 0.002282, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001622, 0.002282, -0.045496
+
+		
+;__________________________________________________________ 1P63 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_1p63]:wpn_saiga12m
+
+        1icon_layer	       = 1p63
+        1icon_layer_x      = 80
+        1icon_layer_y      = -12
+
+        hud		   = wpn_saiga12m_1p63_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_1p63_world.ogf
+        
+		ms_count = 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_1p63_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_1p63_hud.ogf
+		
+        aim_hud_offset_pos               = 0.012033, -0.023549, 0.004192
+        aim_hud_offset_pos_16x9          = 0.012033, -0.023549, 0.004192
+        aim_hud_offset_rot               = -0.00148, 0.003134, -0.045496
+        aim_hud_offset_rot_16x9          = -0.00148, 0.003134, -0.045496
+
+		
+;__________________________________________________________ 1P69 (Joseph_Porta_84)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_1p69]:wpn_saiga12m
+
+        1icon_layer	       = 1p69
+        1icon_layer_x      = 73
+        1icon_layer_y      = -29
+
+        hud		   = wpn_saiga12m_1p69_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_1p69_world.ogf
+        
+		ms_count = 6
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p59
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_1p69_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_1p69_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011819, -0.021714, 0.001481
+        aim_hud_offset_pos_16x9          = 0.011819, -0.021714, 0.001481
+        aim_hud_offset_rot               = -0.001125, 0.002974, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001125, 0.002974, -0.045496
+		
+;__________________________________________________________ 1P76 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_1p76]:wpn_saiga12m
+
+        1icon_layer	       = 1p76
+        1icon_layer_x      = 80
+        1icon_layer_y      = -12
+
+        hud		   = wpn_saiga12m_1p76_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_1p76_world.ogf
+		
+		ms_count = 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_1p76_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_1p76_hud.ogf
+		
+        aim_hud_offset_pos               = 0.013479, -0.015443, 0.004192
+        aim_hud_offset_pos_16x9          = 0.013479, -0.015443, 0.004192
+        aim_hud_offset_rot               = -0.001408, 0.003141, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001408, 0.003141, -0.045496
+
+		
+;__________________________________________________________ 1P78GS (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_1p78gs]:wpn_saiga12m
+
+        1icon_layer	       = 1p78gs
+        1icon_layer_x      = 80
+        1icon_layer_y      = -12
+
+        hud		   = wpn_saiga12m_1p78gs_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_1p78gs_world.ogf
+        
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p78gs
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_1p78gs_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_1p78gs_hud.ogf
+		
+        aim_hud_offset_pos               = 0.010969, -0.025596, 0.049201
+        aim_hud_offset_pos_16x9          = 0.010969, -0.025596, 0.049201
+        aim_hud_offset_rot               = -0.001409, 0.002178, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001409, 0.002178, -0.045496
+		
+;__________________________________________________________ 1P87 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_1p87]:wpn_saiga12m
+
+        1icon_layer	   = 1p87
+        1icon_layer_x      = 84
+        1icon_layer_y      = -29
+        
+        hud		   = wpn_saiga12m_1p87_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_1p87_world.ogf
+        
+		ms_count = 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_1p87_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_1p87_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011236, -0.021206, 0.018558
+        aim_hud_offset_pos_16x9          = 0.011236, -0.021206, 0.018558
+        aim_hud_offset_rot               = -0.002119, 0.003242, -0.045496
+        aim_hud_offset_rot_16x9          = -0.002119, 0.003242, -0.045496
+
+		
+;__________________________________________________________ 1PN93-4 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_1pn93]:wpn_saiga12m
+
+        1icon_layer	       = 1pn93
+        1icon_layer_x      = 50
+        1icon_layer_y      = -18
+
+        hud		   = wpn_saiga12m_1pn93_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_1pn93_world.ogf
+        
+		ms_count = 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_1pn93
+		
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_1pn93_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_1pn93_hud.ogf
+		
+        aim_hud_offset_pos               = 0.021682, -0.023984, 0.005029
+        aim_hud_offset_pos_16x9          = 0.021682, -0.023984, 0.005029
+        aim_hud_offset_rot               = -0.002048, 0.002231, -0.045496
+        aim_hud_offset_rot_16x9          = -0.002048, 0.002231, -0.045496
+					
+;__________________________________________________________ 1PN93-1 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_1pn93n2_1gs]:wpn_saiga12m
+
+        1icon_layer	       = 1pn93n2_1gs
+        1icon_layer_x      = 50
+        1icon_layer_y      = -18
+
+        hud		   = wpn_saiga12m_1pn93n2_1gs_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_1pn93n2_1gs_world.ogf
+        
+		ms_count = 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_2gen
+        !scope_texture        = wpn_crosshair_1pn93n2_1gs
+		
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_1pn93n2_1gs_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_1pn93n2_1gs_hud.ogf
+		
+        aim_hud_offset_pos               = 0.025956, -0.015086, 0.00674
+        aim_hud_offset_pos_16x9          = 0.025956, -0.015086, 0.00674
+        aim_hud_offset_rot               = -0.001409, 0.002178, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001409, 0.002178, -0.045496
+				
+;__________________________________________________________ AC10632 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_ac10632]:wpn_saiga12m
+
+        1icon_layer	   = ac10632
+        1icon_layer_x      = 74
+        1icon_layer_y      = -28
+
+        hud		   = wpn_saiga12m_ac10632_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_ac10632_world.ogf
+        
+		ms_count = 8
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_ac10632_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_ac10632_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011339, -0.016364, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011339, -0.016364, 0.004192
+        aim_hud_offset_rot               = -0.000344, 0.002655, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000344, 0.002655, -0.045496
+
+		
+;__________________________________________________________ AC11090 (Party_50 and MsPizza727)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_ac11090]:wpn_saiga12m
+
+        1icon_layer	       = ac11090
+        1icon_layer_x      = 83
+        1icon_layer_y      = -27
+
+        hud		   = wpn_saiga12m_ac11090_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_ac11090_world.ogf
+
+        ms_count = 8
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_ac11090_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_ac11090_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011554, -0.007694, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011554, -0.007694, 0.004192
+        aim_hud_offset_rot               = -0.000201, 0.000946, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000201, 0.000946, -0.045496
+
+		
+;__________________________________________________________ ACOG (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_acog]:wpn_saiga12m
+
+        1icon_layer	       = acog
+        1icon_layer_x      = 72
+        1icon_layer_y      = -32
+
+        hud		           = wpn_saiga12m_acog_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_acog_world.ogf
+
+        ms_count 			= 4
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_acog
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_acog_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_acog_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011818, -0.015734, -0.001432
+        aim_hud_offset_pos_16x9          = 0.011818, -0.015734, -0.001432
+        aim_hud_offset_rot               = 0.013448, 0.002869, -0.045496
+        aim_hud_offset_rot_16x9          = 0.013448, 0.002869, -0.045496
+		
+;_________________________________________ ADO (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_saiga12m_ado]:wpn_saiga12m
+
+        1icon_layer         = ado
+        1icon_layer_x       = 60
+        1icon_layer_y       = -34
+
+        hud                 = wpn_saiga12m_ado_hud
+        !visual				= dynamics\weapons\wpn_saiga12m\wpn_saiga12m_ado_world.ogf
+        zoom_step_count					 = 1
+        
+		ms_count 			= 4
+		
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_ado
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_ado_hud]:wpn_saiga12m_hud
+
+        item_visual                              = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_ado_hud.ogf
+		
+        aim_hud_offset_pos               = 0.012146, -0.014741, 0.005968
+        aim_hud_offset_pos_16x9          = 0.012146, -0.014741, 0.005968
+        aim_hud_offset_rot               = -0.000129, 0.00207, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000129, 0.00207, -0.045496
+
+		
+;__________________________________________________________ Aim Acro (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_aim_acro]:wpn_saiga12m
+
+        1icon_layer	       = aim_acro
+        1icon_layer_x      = 80
+        1icon_layer_y      = -31
+
+        hud		           = wpn_saiga12m_aim_acro_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_aim_acro_world.ogf
+        
+		ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_aim_acro_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_aim_acro_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011501, -0.005464, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011501, -0.005464, 0.004192
+        aim_hud_offset_rot               = -0.001338, 0.003026, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001338, 0.003026, -0.045496
+
+		
+;__________________________________________________________ Aim Low (BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_aim_low]:wpn_saiga12m
+
+        1icon_layer	       = aim_low
+        1icon_layer_x      = 80
+        1icon_layer_y      = -27
+
+        hud		           = wpn_saiga12m_aim_low_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_aim_low_world.ogf
+
+        ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_aim_low_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_aim_low_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011454, -0.002074, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011454, -0.002074, 0.004192
+        aim_hud_offset_rot               = -0.001054, 0.002764, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001054, 0.002764, -0.045496
+
+		
+;__________________________________________________________ Aimpoint (BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_aimpoint]:wpn_saiga12m
+
+        1icon_layer	       = aimpoint
+        1icon_layer_x      = 80
+        1icon_layer_y      = -35
+
+        hud		           = wpn_saiga12m_aimpoint_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_aimpoint_world.ogf
+
+        ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_aimpoint_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_aimpoint_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011496, -0.016517, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011496, -0.016517, 0.004192
+        aim_hud_offset_rot               = -0.000343, 0.002874, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000343, 0.002874, -0.045496
+
+		
+;__________________________________________________________ Aimpoint Pro (BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_point_aimpro]:wpn_saiga12m
+
+        1icon_layer	       = point_aimpro
+        1icon_layer_x      = 87
+        1icon_layer_y      = -34
+
+        hud		           = wpn_saiga12m_point_aimpro_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_aimpoint_pro_world.ogf
+
+        ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_point_aimpro_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_aimpoint_pro_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011402, -0.018137, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011402, -0.018137, 0.004192
+        aim_hud_offset_rot               = -0.00006, 0.002987, -0.045496
+        aim_hud_offset_rot_16x9          = -0.00006, 0.002987, -0.045496
+
+		
+;__________________________________________________________ Bravo 4 (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_saiga12m_bravo4]:wpn_saiga12m
+
+        1icon_layer	       = bravo4
+        1icon_layer_x      = 52
+        1icon_layer_y      = -38
+
+        hud		   = wpn_saiga12m_bravo4_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_bravo4_world.ogf
+
+        ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_hamr
+		
+	
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_bravo4_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_bravo4_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011827, -0.011901, 0.018688
+        aim_hud_offset_pos_16x9          = 0.011827, -0.011901, 0.018688
+        aim_hud_offset_rot               = -0.000413, 0.002229, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000413, 0.002229, -0.045496
+
+		
+;__________________________________________________________ BossXE (ATHI)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_bossxe]:wpn_saiga12m
+
+        1icon_layer	       = bossxe
+        1icon_layer_x      = 78
+        1icon_layer_y      = -28
+
+        hud		   = wpn_saiga12m_bossxe_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_bossxe_world.ogf
+
+        ms_count 			= 3
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+		
+		laser_status = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_bossxe_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_bossxe_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011613, -0.022912, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011613, -0.022912, 0.004192
+        aim_hud_offset_rot               = -0.001409, 0.00239, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001409, 0.00239, -0.045496
+
+		
+;__________________________________________________________ C-MORE (BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_c-more]:wpn_saiga12m
+
+        1icon_layer	   = c-more
+        1icon_layer_x      = 88
+        1icon_layer_y      = -26
+
+        hud		   = wpn_saiga12m_c-more_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_c-more_world.ogf
+
+        ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_c-more_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_c-more_hud.ogf
+		
+        aim_hud_offset_pos               = 0.01129, -0.010397, 0.004192
+        aim_hud_offset_pos_16x9          = 0.01129, -0.010397, 0.004192
+        aim_hud_offset_rot               = -0.000414, 0.003035, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000414, 0.003035, -0.045496
+
+		
+;__________________________________________________________ Compm4s (BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_compm4s]:wpn_saiga12m
+
+        1icon_layer	       = compm4s
+        1icon_layer_x      = 80
+        1icon_layer_y      = -30
+
+        hud		   = wpn_saiga12m_compm4s_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_compm4s_world.ogf
+
+        ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_compm4s_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_compm4s_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011396, -0.014232, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011396, -0.014232, 0.004192
+        aim_hud_offset_rot               = -0.000414, 0.003035, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000414, 0.003035, -0.045496
+
+		
+;_________________________________________ Cortex (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_saiga12m_cortex]:wpn_saiga12m
+
+        1icon_layer         = cortex
+        1icon_layer_x       = 61
+        1icon_layer_y       = -32
+
+        hud                 = wpn_saiga12m_cortex_hud
+        !visual				= dynamics\weapons\wpn_saiga12m\wpn_saiga12m_cortex_world.ogf
+        zoom_step_count					 = 1
+
+        ms_count 			= 1
+		
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_cortex
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_cortex_hud]:wpn_saiga12m_hud
+
+        item_visual                              = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_cortex_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011986, -0.024765, 0.024808
+        aim_hud_offset_pos_16x9          = 0.011986, -0.024765, 0.024808
+        aim_hud_offset_rot               = -0.000129, 0.00207, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000129, 0.00207, -0.045496
+		
+;__________________________________________________________ Deltapoint(BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_deltapoint]:wpn_saiga12m
+
+        1icon_layer	       = deltapoint
+        1icon_layer_x      = 80
+        1icon_layer_y      = -26
+
+        hud		   = wpn_saiga12m_deltapoint_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_deltapoint_world.ogf
+        
+		ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_deltapoint_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_deltapoint_hud.ogf
+		
+        aim_hud_offset_pos               = 0.01161, -0.005426, 0.004192
+        aim_hud_offset_pos_16x9          = 0.01161, -0.005426, 0.004192
+        aim_hud_offset_rot               = -0.002118, 0.002344, -0.045496
+        aim_hud_offset_rot_16x9          = -0.002118, 0.002344, -0.045496
+
+		
+;_________________________________________ Devo (ATHI) [3DSS+PRS Only] ____________________________________________
+
+[wpn_saiga12m_devo]:wpn_saiga12m
+
+        1icon_layer         = devo
+        1icon_layer_x       = 68
+        1icon_layer_y       = -28
+
+        hud                 = wpn_saiga12m_devo_hud
+        !visual				= dynamics\weapons\wpn_saiga12m\wpn_saiga12m_devo_world.ogf
+        zoom_step_count					 = 1
+        
+		ms_count 			= 2
+		
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        !scope_texture        = wpn_crosshair_devo
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_devo_hud]:wpn_saiga12m_hud
+
+        item_visual                              = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_devo_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011614, -0.004221, -0.030149
+        aim_hud_offset_pos_16x9          = 0.011614, -0.004221, -0.030149
+        aim_hud_offset_rot               = -0.000129, 0.00207, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000129, 0.00207, -0.045496
+
+		
+;__________________________________________________________ Docter Sight III (BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_d0cter]:wpn_saiga12m
+
+        1icon_layer	       = d0cter
+        1icon_layer_x      = 77
+        1icon_layer_y      = -26
+
+        hud		           = wpn_saiga12m_d0cter_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_docter_world.ogf
+        
+		ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_d0cter_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_docter_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011237, -0.000314, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011237, -0.000314, 0.004192
+        aim_hud_offset_rot               = -0.000414, 0.003035, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000414, 0.003035, -0.045496
+
+		
+;__________________________________________________________ EOTech XPS3-0 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_saiga12m_e0t2]:wpn_saiga12m
+
+        1icon_layer	       = e0t2
+        1icon_layer_x      = 90
+        1icon_layer_y      = -31
+
+        hud		           = wpn_saiga12m_e0t2_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_e0t2_world.ogf
+		
+		ms_count 			= 6
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+		
+[wpn_saiga12m_e0t2_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_e0t2_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011078, -0.016504, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011078, -0.016504, 0.004192
+        aim_hud_offset_rot               = -0.003823, 0.003035, -0.045496
+        aim_hud_offset_rot_16x9          = -0.003823, 0.003035, -0.045496
+
+		
+;__________________________________________________________ EOTech XPS3-0 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_e0t2_magd]:wpn_saiga12m
+
+        1icon_layer	       = e0t2_magd
+        1icon_layer_x      = 69
+        1icon_layer_y      = -33
+
+        hud		           = wpn_saiga12m_e0t2_magd_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_e0t2_magd_world.ogf
+		
+		ms_count 			= 5
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_eot_magn
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_e0t2_magd_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_e0t2_magd_hud.ogf
+
+        aim_hud_offset_pos               = 0.011664, -0.01538, -0.000082
+        aim_hud_offset_pos_16x9          = 0.011664, -0.01538, -0.000082
+        aim_hud_offset_rot               = -0.000129, 0.00207, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000129, 0.00207, -0.045496
+
+		
+;___________________________ Flipped ___________________________________
+
+[wpn_saiga12m_e0t2_magd_off]:wpn_saiga12m
+
+        1icon_layer	       = e0t2_magd
+        1icon_layer_x      = 66
+        1icon_layer_y      = -33
+
+        hud		           = wpn_saiga12m_e0t2_magd_off_hud
+        !!visual             = dynamics\weapons\wpn_saiga12mwpn_saiga12m_e0t2_magd_world.ogf
+		
+		ms_count 			= 6
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_e0t2_magd_off_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_e0t2_magd_off_hud.ogf
+
+        aim_hud_offset_pos               = 0.010979, -0.016445, 0.005968
+        aim_hud_offset_pos_16x9          = 0.010979, -0.016445, 0.005968
+        aim_hud_offset_rot               = -0.003608, 0.003238, -0.045496
+        aim_hud_offset_rot_16x9          = -0.003608, 0.003238, -0.045496
+
+		
+;_________________________________________ Echo1 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_saiga12m_echo1]:wpn_saiga12m
+
+        1icon_layer         = echo1
+        1icon_layer_x       = 51
+        1icon_layer_y       = -38
+
+        hud                 = wpn_saiga12m_echo1_hud
+        !visual				= dynamics\weapons\wpn_saiga12m\wpn_saiga12m_echo1_world.ogf
+        zoom_step_count					 = 1
+        
+		ms_count 			= 1
+		
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_echo1_hud]:wpn_saiga12m_hud
+
+        item_visual                              = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_echo1_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011938, -0.022778, 0.022748
+        aim_hud_offset_pos_16x9          = 0.011938, -0.022778, 0.022748
+        aim_hud_offset_rot               = -0.000271, 0.001858, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000271, 0.001858, -0.045496
+
+		
+;__________________________________________________________ EKP-8-02 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_saiga12m_ekp8_02]:wpn_saiga12m
+
+        1icon_layer	       = ekp8_02
+        1icon_layer_x      = 77
+        1icon_layer_y      = -11
+
+        hud		           = wpn_saiga12m_ekp8_02_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_ekp8_02_world.ogf
+        
+		ms_count 			= 4
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_ekp8_02_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_ekp8_02_hud.ogf
+		
+        aim_hud_offset_pos               = 0.012305, -0.019912, 0.030505
+        aim_hud_offset_pos_16x9          = 0.012305, -0.019912, 0.030505
+        aim_hud_offset_rot               = -0.000557, 0.002438, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000557, 0.002438, -0.045496
+
+		
+;__________________________________________________________ Кобра ЭКП-8-18 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_saiga12m_ekp8_18]:wpn_saiga12m
+
+        1icon_layer	       = ekp8_18
+        1icon_layer_x      = 86
+        1icon_layer_y      = -23
+
+        hud		           = wpn_saiga12m_ekp8_18_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_ekp8_18_world.ogf
+        
+        ms_count 			= 4
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_ekp8_18_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_ekp8_18_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011184, -0.020125, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011184, -0.020125, 0.004192
+        aim_hud_offset_rot               = -0.000273, 0.002658, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000273, 0.002658, -0.045496
+
+		
+;__________________________________________________________ FALCON 2 (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_elbit_falcon2]:wpn_saiga12m
+
+        1icon_layer	       = elbit_falcon2
+        1icon_layer_x      = 77
+        1icon_layer_y      = -28
+
+        hud		           = wpn_saiga12m_elbit_falcon2_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_elbit_falcon2_world.ogf
+        
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_elbit_falcon2_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_elbit_falcon2_hud.ogf
+
+        aim_hud_offset_pos               = 0.011402, -0.009699, 0.005968
+        aim_hud_offset_pos_16x9          = 0.011402, -0.009699, 0.005968
+        aim_hud_offset_rot               = -0.000768, 0.002868, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000768, 0.002868, -0.045496
+
+		
+;__________________________________________________________ EOTech 553 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_saiga12m_eot]:wpn_saiga12m
+
+        1icon_layer	       = eot
+        1icon_layer_x      = 87
+        1icon_layer_y      = -29
+
+        hud		   = wpn_saiga12m_eot_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_eot_world.ogf
+        
+		ms_count 			= 6
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_eot_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_eot_hud.ogf
+		
+        aim_hud_offset_pos               = 0.010972, -0.019273, 0.022752
+        aim_hud_offset_pos_16x9          = 0.010972, -0.019273, 0.022752
+        aim_hud_offset_rot               = -0.000912, 0.003194, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000912, 0.003194, -0.045496
+
+		
+;__________________________________________________________ Exps3 (RWAP)[PRS+MS Only] ___________________________________________________
+
+[wpn_saiga12m_exps3]:wpn_saiga12m
+
+        1icon_layer	       = exps3
+        1icon_layer_x      = 92
+        1icon_layer_y      = -33
+
+        hud		   = wpn_saiga12m_exps3_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_exps3_world.ogf
+        
+		ms_count 			= 6
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_exps3_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_exps3_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011079, -0.017853, 0.018059
+        aim_hud_offset_pos_16x9          = 0.011079, -0.017853, 0.018059
+        aim_hud_offset_rot               = -0.001621, 0.00325, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001621, 0.00325, -0.045496
+
+		
+;__________________________________________________________ Gauss Sight (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_gauss]:wpn_saiga12m
+
+        1icon_layer	       = gauss
+        1icon_layer_x      = 61
+        1icon_layer_y      = -37
+
+        hud		           = wpn_saiga12m_gauss_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_gauss_world.ogf
+        
+		ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_gauss_sight
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_gauss_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_gauss_hud.ogf
+		
+        aim_hud_offset_pos               = 0.012035, -0.019222, -0.008542
+        aim_hud_offset_pos_16x9          = 0.012035, -0.019222, -0.008542
+        aim_hud_offset_rot               = -0.000129, 0.00207, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000129, 0.00207, -0.045496
+
+;__________________________________________________________ Gauss Sight (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_gauss_sight]:wpn_saiga12m
+
+        1icon_layer	       = gauss_sight
+        1icon_layer_x      = 78
+        1icon_layer_y      = -25
+
+        hud		           = wpn_saiga12m_gauss_sight_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_gauss_sight_world.ogf
+        
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_gauss_sight
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_gauss_sight_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_gauss_sight_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011825, -0.014599, -0.015295
+        aim_hud_offset_pos_16x9          = 0.011825, -0.014599, -0.015295
+        aim_hud_offset_rot               = 0.002644, -0.001193, -0.049402
+        aim_hud_offset_rot_16x9          = 0.002644, -0.001193, -0.049402
+		
+;__________________________________________________________ HAMR (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_saiga12m_hamr]:wpn_saiga12m
+
+        1icon_layer	       = hamr
+        1icon_layer_x      = 60
+        1icon_layer_y      = -34
+
+        hud		   = wpn_saiga12m_hamr_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_hamr_world.ogf
+        
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_hamr
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_hamr_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_hamr_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011719, -0.017654, 0.013787
+        aim_hud_offset_pos_16x9          = 0.011719, -0.017654, 0.013787
+        aim_hud_offset_rot               = -0.0002, 0.002013, -0.045496
+        aim_hud_offset_rot_16x9          = -0.0002, 0.002013, -0.045496
+
+		
+;__________________________________________________________ Hartman MH1 (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_hartman_mh1]:wpn_saiga12m
+
+        1icon_layer	       = hartman_mh1
+        1icon_layer_x      = 88
+        1icon_layer_y      = -24
+
+        hud		           = wpn_saiga12m_hartman_mh1_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_hartman_mh1_world.ogf
+        
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_hartman_mh1_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_hartman_mh1_hud.ogf
+
+        aim_hud_offset_pos               = 0.011341, -0.016078, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011341, -0.016078, 0.004192
+        aim_hud_offset_rot               = -0.004249, 0.002982, -0.045496
+        aim_hud_offset_rot_16x9          = -0.004249, 0.002982, -0.045496
+
+		
+;__________________________________________________________ HCO (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_hco]:wpn_saiga12m
+
+        1icon_layer	       = hco
+        1icon_layer_x      = 88
+        1icon_layer_y      = -30
+
+        hud		   = wpn_saiga12m_hco_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_hco_world.ogf
+        
+        ms_count 			= 1	
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_hco_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_hco_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011505, -0.018705, 0.016073
+        aim_hud_offset_pos_16x9          = 0.011505, -0.018705, 0.016073
+        aim_hud_offset_rot               = -0.002829, 0.002391, -0.045496
+        aim_hud_offset_rot_16x9          = -0.002829, 0.002391, -0.045496
+
+		
+;__________________________________________________________ HE510 (RWAP)[PRS+MS Only] ___________________________________________________
+
+[wpn_saiga12m_he510]:wpn_saiga12m
+
+        1icon_layer	       = he510
+        1icon_layer_x      = 88
+        1icon_layer_y      = -30
+
+        hud		   = wpn_saiga12m_he510_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_he510_world.ogf
+
+        ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_he510_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_he510_hud.ogf
+		
+        aim_hud_offset_pos               = 0.010865, -0.013522, 0.004192
+        aim_hud_offset_pos_16x9          = 0.010865, -0.013522, 0.004192
+        aim_hud_offset_rot               = -0.001054, 0.003355, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001054, 0.003355, -0.045496
+
+		
+;__________________________________________________________ Kemper (BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_kemper]:wpn_saiga12m
+
+        1icon_layer	       = kemper
+        1icon_layer_x      = 80
+        1icon_layer_y      = -27
+
+        hud		           = wpn_saiga12m_kemper_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_kemper_world.ogf
+
+        ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_kemper_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_kemper_hud.ogf
+		
+        aim_hud_offset_pos               = 0.01113, -0.014658, 0.004192
+        aim_hud_offset_pos_16x9          = 0.01113, -0.014658, 0.004192
+        aim_hud_offset_rot               = 0.000012, 0.003028, -0.043792
+        aim_hud_offset_rot_16x9          = 0.000012, 0.003028, -0.043792
+	
+		
+;__________________________________________________________ Кобра ЭП-1С-03(BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_saiga12m_kobra]:wpn_saiga12m
+
+        1icon_layer	       = kobra
+        1icon_layer_x      = 73
+        1icon_layer_y      = -13
+
+        hud		           = wpn_saiga12m_kobra_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_kobra_world.ogf
+
+        ms_count 			= 4
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_kobra_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_kobra_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011291, -0.013521, 0.027943
+        aim_hud_offset_pos_16x9          = 0.011291, -0.013521, 0.027943
+        aim_hud_offset_rot               = -0.002829, 0.002664, -0.045496
+        aim_hud_offset_rot_16x9          = -0.002829, 0.002664, -0.045496
+
+		
+;__________________________________________________________ LCO (Phant0m)[PRS+MS Only] ___________________________________________________
+
+[wpn_saiga12m_lco1]:wpn_saiga12m
+
+        1icon_layer	       = lco1
+        1icon_layer_x      = 82
+        1icon_layer_y      = -29
+
+        hud		   = wpn_saiga12m_lco1_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_lco1_world.ogf
+		
+		ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_lco1_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_lco1_hud.ogf
+		
+        aim_hud_offset_pos               = 0.010919, -0.016291, 0.004192
+        aim_hud_offset_pos_16x9          = 0.010919, -0.016291, 0.004192
+        aim_hud_offset_rot               = -0.001267, 0.003836, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001267, 0.003836, -0.045496
+
+		
+;__________________________________________________________ Leupold (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_leupold]:wpn_saiga12m
+
+        1icon_layer	       = leupold
+        1icon_layer_x      = 67
+        1icon_layer_y      = -28
+
+        hud		   = wpn_saiga12m_leupold_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_leupold_world.ogf
+        
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_leupold
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_leupold_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_leupold_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011926, -0.017018, 0.009517
+        aim_hud_offset_pos_16x9          = 0.011926, -0.017018, 0.009517
+        aim_hud_offset_rot               = 0.000155, 0.001964, -0.045496
+        aim_hud_offset_rot_16x9          = 0.000155, 0.001964, -0.045496
+		
+;__________________________________________________________ March Shorty (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_march_f_shorty]:wpn_saiga12m
+
+        1icon_layer	       = march_f_shorty
+        1icon_layer_x      = 63
+        1icon_layer_y      = -33
+        
+        hud		           = wpn_saiga12m_march_f_shorty_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_march_f_shorty_world.ogf
+        
+		ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_march_shorty
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_march_f_shorty_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_march_f_shorty_hud.ogf
+		
+        aim_hud_offset_pos               = 0.01156, -0.019645, 0.016837
+        aim_hud_offset_pos_16x9          = 0.01156, -0.019645, 0.016837
+        aim_hud_offset_rot               = -0.000129, 0.003025, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000129, 0.003025, -0.045496
+
+;__________________________________________________________ Marchf (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_marchf]:wpn_saiga12m
+
+        1icon_layer	       = marchf
+        1icon_layer_x      = 61
+        1icon_layer_y      = -25
+
+        hud		   = wpn_saiga12m_marchf_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_marchf_world.ogf
+        
+		ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_marchf
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_marchf_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_marchf_hud.ogf
+
+        aim_hud_offset_pos               = 0.011881, -0.020146, 0.054102
+        aim_hud_offset_pos_16x9          = 0.011881, -0.020146, 0.054102
+        aim_hud_offset_rot               = -0.00162, 0.001965, -0.045496
+        aim_hud_offset_rot_16x9          = -0.00162, 0.001965, -0.045496
+		
+;__________________________________________________________ Mepro (BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_mepro]:wpn_saiga12m
+
+        1icon_layer	       = mepro
+        1icon_layer_x      = 88
+        1icon_layer_y      = -28
+
+        hud		   = wpn_saiga12m_mepro_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_mepro_world.ogf
+        
+		ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_mepro_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_mepro_hud.ogf
+		
+        aim_hud_offset_pos               = 0.010919, -0.016291, 0.004192
+        aim_hud_offset_pos_16x9          = 0.010919, -0.016291, 0.004192
+        aim_hud_offset_rot               = -0.001267, 0.003836, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001267, 0.003836, -0.045496
+
+		
+;_________________________________________ Monstrum (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_saiga12m_monstrum]:wpn_saiga12m
+
+        1icon_layer         = monstrum
+        1icon_layer_x       = 76
+        1icon_layer_y       = -32
+      
+        hud                 = wpn_saiga12m_monstrum_hud
+        !visual				= dynamics\weapons\wpn_saiga12m\wpn_saiga12m_monstrum_world.ogf
+        zoom_step_count					 = 1
+        
+		ms_count 			= 2
+		
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_monstrum
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_monstrum_hud]:wpn_saiga12m_hud
+
+        item_visual                              = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_monstrum_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011553, -0.007556, 0.012715
+        aim_hud_offset_pos_16x9          = 0.011553, -0.007556, 0.012715
+        aim_hud_offset_rot               = -0.000699, 0.001926, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000699, 0.001926, -0.045496
+		
+;__________________________________________________________ ОКП-7 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_okp]:wpn_saiga12m
+
+        1icon_layer	       = okp
+        1icon_layer_x      = 76
+        1icon_layer_y      = -13
+
+        hud		   = wpn_saiga12m_okp_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_okp_world.ogf
+		
+        ms_count 			= 6
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_okp_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_okp_hud.ogf
+		
+        aim_hud_offset_pos               = 0.013791, -0.005494, 0.021324
+        aim_hud_offset_pos_16x9          = 0.013791, -0.005494, 0.021324
+        aim_hud_offset_rot               = -0.001835, 0.002928, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001835, 0.002928, -0.045496
+
+		
+;__________________________________________________________ P1X42 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_p1x42]:wpn_saiga12m
+
+        1icon_layer	       = p1x42
+        1icon_layer_x      = 82
+        1icon_layer_y      = -31
+
+
+        hud		   = wpn_saiga12m_p1x42_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_p1x42_world.ogf
+        
+		ms_count 			= 3
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_p1x42_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_p1x42_hud.ogf
+		
+        aim_hud_offset_pos               = 0.010653, -0.015084, 0.004192
+        aim_hud_offset_pos_16x9          = 0.010653, -0.015084, 0.004192
+        aim_hud_offset_rot               = 0.001644, 0.004906, -0.045496
+        aim_hud_offset_rot_16x9          = 0.001644, 0.004906, -0.045496
+
+		
+;_________________________________________ P4X32 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_saiga12m_p4x32]:wpn_saiga12m
+
+        1icon_layer         = p4x32
+        1icon_layer_x       = 66
+        1icon_layer_y       = -27
+
+        hud                 = wpn_saiga12m_p4x32_hud
+        !visual				= dynamics\weapons\wpn_saiga12m\wpn_saiga12m_p4x32_world.ogf
+        zoom_step_count					 = 1
+        
+		ms_count 			= 1
+		
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_p4x32_hud]:wpn_saiga12m_hud
+
+        item_visual                              = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_p4x32_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011616, -0.008136, 0.000423
+        aim_hud_offset_pos_16x9          = 0.011616, -0.008136, 0.000423
+        aim_hud_offset_rot               = -0.000555, 0.002335, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000555, 0.002335, -0.045496
+		
+;__________________________________________________________ PK6 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_pk6]:wpn_saiga12m
+
+        1icon_layer	   = pk6
+        1icon_layer_x      = 80
+        1icon_layer_y      = -32
+
+        hud		   = wpn_saiga12m_pk6_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_pk6_world.ogf
+        
+		ms_count 			= 3
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_pk6_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_pk6_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011184, -0.005058, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011184, -0.005058, 0.004192
+        aim_hud_offset_rot               = -0.002332, 0.002769, -0.045496
+        aim_hud_offset_rot_16x9          = -0.002332, 0.002769, -0.045496
+
+		
+;__________________________________________________________ ПК-А (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_pka]:wpn_saiga12m
+
+        1icon_layer	       = pka
+        1icon_layer_x      = 52
+        1icon_layer_y      = -17
+
+        hud		   = wpn_saiga12m_pka_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_pka_world.ogf
+        
+		ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pka
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_pka_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_pka_hud.ogf
+		
+        aim_hud_offset_pos               = 0.018923, -0.019995, 0.036759
+        aim_hud_offset_pos_16x9          = 0.018923, -0.019995, 0.036759
+        aim_hud_offset_rot               = -0.0002, 0.004305, -0.045496
+        aim_hud_offset_rot_16x9          = -0.0002, 0.004305, -0.045496
+
+;__________________________________________________________ PGO7GS (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_pgo7gs]:wpn_saiga12m
+
+        1icon_layer	       = pgo7gs
+        1icon_layer_x      = 74
+        1icon_layer_y      = -18
+
+        hud		   = wpn_saiga12m_pgo7gs_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_pgo7gs_world.ogf
+        
+		ms_count 			= 4
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pka
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_pgo7gs_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_pgo7gs_hud.ogf
+		
+        aim_hud_offset_pos               = 0.044149, -0.007762, -0.033779
+        aim_hud_offset_pos_16x9          = 0.044149, -0.007762, -0.033779
+        aim_hud_offset_rot               = -0.041858, -0.000955, -0.046349
+        aim_hud_offset_rot_16x9          = -0.041858, -0.000955, -0.046349
+		
+;________________________________________________ PKS-07 (Party_50 and MsPizza727)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_pks07]:wpn_saiga12m
+
+        1icon_layer	       = pks07
+        1icon_layer_x      = 59
+        1icon_layer_y      = -31
+
+        hud		           = wpn_saiga12m_pks07_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_pks07_world.ogf
+        
+		ms_count 			= 6
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_pks07_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_pks07_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011878, -0.014315, 0.017059
+        aim_hud_offset_pos_16x9          = 0.011878, -0.014315, 0.017059
+        aim_hud_offset_rot               = 0.001433, -0.001935, -0.045496
+        aim_hud_offset_rot_16x9          = 0.001433, -0.001935, -0.045496
+		
+;__________________________________________________________ PN23 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_pn23]:wpn_saiga12m
+
+        1icon_layer	       = pn23
+        1icon_layer_x      = 40
+        1icon_layer_y      = -36
+
+        hud		   = wpn_saiga12m_pn23_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_pn23_world.ogf
+        
+		ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 25
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_pn23
+		
+		
+
+;--------------------------------------------------------------------------------------
+
+[wpn_saiga12m_pn23_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_pn23_hud.ogf
+		
+        aim_hud_offset_pos               = 0.01172, -0.025474, 0.005402
+        aim_hud_offset_pos_16x9          = 0.01172, -0.025474, 0.005402
+        aim_hud_offset_rot               = -0.000129, 0.00207, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000129, 0.00207, -0.045496
+		
+;_________________________________________ PO4X34 (MsPizza727) [3DSS Only] ____________________________________________
+
+[wpn_saiga12m_po4x34]:wpn_saiga12m
+
+        1icon_layer         = po4x34
+        1icon_layer_x       = 65
+        1icon_layer_y       = -27
+
+        hud                 = wpn_saiga12m_po4x34_hud
+        !visual				= dynamics\weapons\wpn_saiga12m\wpn_saiga12m_po4x34_world.ogf
+        zoom_step_count					 = 1
+        
+		ms_count 			= 1
+		
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_po4x34
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_po4x34_hud]:wpn_saiga12m_hud
+
+        item_visual                              = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_po4x34_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011721, -0.012396, 0.017902
+        aim_hud_offset_pos_16x9          = 0.011721, -0.012396, 0.017902
+        aim_hud_offset_rot               = -0.003182, 0.001963, -0.045496
+        aim_hud_offset_rot_16x9          = -0.003182, 0.001963, -0.045496
+		
+;_________________________________________ Valdai PS320 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_saiga12m_ps320]:wpn_saiga12m
+
+        1icon_layer         = ps320
+        1icon_layer_x       = 58
+        1icon_layer_y       = -32
+
+        hud                 = wpn_saiga12m_ps320_hud
+        !visual				= dynamics\weapons\wpn_saiga12m\wpn_saiga12m_ps320_world.ogf
+        zoom_step_count					 = 1
+
+         
+		ms_count 			= 3
+		
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_ps320
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_ps320_hud]:wpn_saiga12m_hud
+
+        item_visual                              = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_ps320_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011563, -0.015664, 0.024735
+        aim_hud_offset_pos_16x9          = 0.011563, -0.015664, 0.024735
+        aim_hud_offset_rot               = 0.000227, 0.003023, -0.045496
+        aim_hud_offset_rot_16x9          = 0.000227, 0.003023, -0.045496
+
+;__________________________________________________________ ПСО-1M2-1 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_pso1m21]:wpn_saiga12m
+
+        1icon_layer	       = pso1m21
+        1icon_layer_x      = 42
+        1icon_layer_y      = -17
+
+        hud		   = wpn_saiga12m_pso1m21_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_pso1m21_world.ogf
+        
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pso2_vss
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_pso1m21_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_pso1m21_hud.ogf
+		
+        aim_hud_offset_pos               = 0.026653, -0.006498, 0.034058
+        aim_hud_offset_pos_16x9          = 0.026653, -0.006498, 0.034058
+        aim_hud_offset_rot               = -0.001052, 0.00298, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001052, 0.00298, -0.045496
+		
+;__________________________________________________________ ПСО-1M Без Наглазника (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_pso2]:wpn_saiga12m
+
+        1icon_layer	       = pso2
+        1icon_layer_x      = 42
+        1icon_layer_y      = -17
+		
+        hud		   = wpn_saiga12m_pso2_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_pso2_world.ogf
+        
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pso2_vss
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_pso2_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_pso2_hud.ogf
+		
+        aim_hud_offset_pos               = 0.026653, -0.006498, 0.034058
+        aim_hud_offset_pos_16x9          = 0.026653, -0.006498, 0.034058
+        aim_hud_offset_rot               = -0.001052, 0.00298, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001052, 0.00298, -0.045496
+		
+;__________________________________________________________ Rakurs (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_saiga12m_rakurs]:wpn_saiga12m
+
+        1icon_layer	       = rakurs
+        1icon_layer_x      = 77
+        1icon_layer_y      = -30
+   
+        hud		   = wpn_saiga12m_rakurs_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_rakurs_world.ogf
+	    
+		ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_rakurs_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_rakurs_hud.ogf
+		
+        aim_hud_offset_pos               = 0.01113, -0.006417, 0.004192
+        aim_hud_offset_pos_16x9          = 0.01113, -0.006417, 0.004192
+        aim_hud_offset_rot               = -0.001977, 0.003305, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001977, 0.003305, -0.045496
+
+		
+;__________________________________________________________ RazorHD (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_saiga12m_razorhd]:wpn_saiga12m
+
+        1icon_layer	       = razorhd
+        1icon_layer_x      = 52
+        1icon_layer_y      = -32
+
+        hud		   = wpn_saiga12m_razorhd_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_razorhd_world.ogf
+        
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_razorhd
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_razorhd_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_razorhd_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011782, -0.018575, 0.028215
+        aim_hud_offset_pos_16x9          = 0.011782, -0.018575, 0.028215
+        aim_hud_offset_rot               = 0.000226, 0.004419, -0.045496
+        aim_hud_offset_rot_16x9          = 0.000226, 0.004419, -0.045496
+
+		
+;__________________________________________________________ RMR (BaS)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_rmr]:wpn_saiga12m
+
+        1icon_layer	       = rmr
+        1icon_layer_x      = 80
+        1icon_layer_y      = -28
+
+        hud		   = wpn_saiga12m_rmr_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_rmr_world.ogf
+		
+		ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_rmr_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_rmr_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011555, -0.00136, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011555, -0.00136, 0.004192
+        aim_hud_offset_rot               = -0.001196, 0.002451, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001196, 0.002451, -0.045496
+
+		
+;__________________________________________________________ Romeo 4 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_romeo4]:wpn_saiga12m
+
+        1icon_layer	       = romeo4
+        1icon_layer_x      = 80
+        1icon_layer_y      = -34
+
+        hud		   = wpn_saiga12m_romeo4_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_romeo4_world.ogf
+        
+		ms_count 			= 6
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_romeo4_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_romeo4_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011506, -0.012953, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011506, -0.012953, 0.004192
+        aim_hud_offset_rot               = -0.001054, 0.002929, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001054, 0.002929, -0.045496
+
+		
+;__________________________________________________________ Romeo 8 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_romeo8]:wpn_saiga12m
+
+        1icon_layer	   = romeo8
+        1icon_layer_x      = 75
+        1icon_layer_y      = -35
+
+        hud		   = wpn_saiga12m_romeo8_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_romeo8_world.ogf
+        
+		ms_count 			= 6
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_romeo8_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_romeo8_hud.ogf
+		
+        aim_hud_offset_pos               = 0.010918, -0.015226, 0.004192
+        aim_hud_offset_pos_16x9          = 0.010918, -0.015226, 0.004192
+        aim_hud_offset_rot               = -0.001764, 0.003412, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001764, 0.003412, -0.045496
+
+		
+;__________________________________________________________ Rusak (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_saiga12m_rusak]:wpn_saiga12m
+
+        1icon_layer	       = rusak
+        1icon_layer_x      = 55
+        1icon_layer_y      = -31
+
+        hud		           = wpn_saiga12m_rusak_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_rusak_world.ogf
+        
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_rusak_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_rusak_hud.ogf
+
+        aim_hud_offset_pos               = 0.011187, -0.014102, -0.005761
+        aim_hud_offset_pos_16x9          = 0.011187, -0.014102, -0.005761
+        aim_hud_offset_rot               = -0.001691, 0.002929, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001691, 0.002929, -0.045496
+	
+		
+;__________________________________________________________ Specter (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_specter]:wpn_saiga12m
+
+        1icon_layer	       = specter
+        1icon_layer_x      = 58
+        1icon_layer_y      = -32
+
+        hud		           = wpn_saiga12m_specter_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_specter_world.ogf
+        
+		ms_count 			= 3
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_specter
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_specter_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_specter_hud.ogf
+
+        aim_hud_offset_pos               = 0.011932, -0.017085, -0.007753
+        aim_hud_offset_pos_16x9          = 0.011932, -0.017085, -0.007753
+        aim_hud_offset_rot               = -0.000768, 0.002496, -0.039815
+        aim_hud_offset_rot_16x9          = -0.000768, 0.002496, -0.039815
+
+        ;aim_hud_offset_alt_pos           = -0.002584, -0.047041, -0.070525
+        ;aim_hud_offset_alt_pos_16x9      = -0.002584, -0.047041, -0.070525
+        ;aim_hud_offset_alt_rot           = -0.017565, -0.041594, -0.00901
+        ;aim_hud_offset_alt_rot_16x9      = -0.017565, -0.041594, -0.00901		
+;__________________________________________________________ Susat (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_susatov]:wpn_saiga12m
+
+        1icon_layer	       = susatov
+        1icon_layer_x      = 69
+        1icon_layer_y      = -34
+
+        hud		   = wpn_saiga12m_susatov_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_susatov_world.ogf
+        
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_susat
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_susatov_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_susatov_hud.ogf
+		
+        aim_hud_offset_pos               = -0.003347, -0.03141, -0.085801
+        aim_hud_offset_pos_16x9          = -0.003347, -0.03141, -0.085801
+        aim_hud_offset_rot               = -0.022, -0.056948, -0.017221
+        aim_hud_offset_rot_16x9          = -0.022, -0.056948, -0.017221
+
+        ;aim_hud_offset_alt_pos           = -0.003385, -0.054081, -0.100801
+        ;aim_hud_offset_alt_pos_16x9      = -0.003385, -0.054081, -0.100801
+        ;aim_hud_offset_alt_rot           = -0.01863, -0.042176, -0.027365
+        ;aim_hud_offset_alt_rot_16x9      = -0.01863, -0.042176, -0.027365
+		
+;_________________________________________ T12 (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_saiga12m_t12]:wpn_saiga12m
+
+        1icon_layer             = t12
+        1icon_layer_x			= 83
+        1icon_layer_y			= -30
+
+        hud					= wpn_saiga12m_t12_hud
+        !visual				= dynamics\weapons\wpn_saiga12m\wpn_saiga12m_t12_world.ogf
+		
+        scope_status            = 1
+		ms_count 			= 1
+				
+;---------------------------------------------------------------------------------------		
+	
+[wpn_saiga12m_t12_hud]:wpn_saiga12m_hud
+
+        item_visual                		= anomaly_weapons\wpn_saiga12m\wpn_saiga12m_t12_hud.ogf
+		
+        aim_hud_offset_pos               = 0.01103, -0.00258, 0.007539
+        aim_hud_offset_pos_16x9          = 0.01103, -0.00258, 0.007539
+        aim_hud_offset_rot               = 0.005481, 0.00426, -0.045496
+        aim_hud_offset_rot_16x9          = 0.005481, 0.00426, -0.045496
+
+;_________________________________________ Tac30 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_saiga12m_tac30]:wpn_saiga12m
+
+        1icon_layer         = tac30
+        1icon_layer_x       = 62
+        1icon_layer_y       = -31
+
+        hud                 = wpn_saiga12m_tac30_hud
+        !visual				= dynamics\weapons\wpn_saiga12m\wpn_saiga12m_tac30_world.ogf
+        zoom_step_count					 = 1
+        
+		ms_count 			= 1
+		
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_tac30
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_tac30_hud]:wpn_saiga12m_hud
+
+        item_visual                              = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_tac30_hud.ogf
+		
+        aim_hud_offset_pos               = -0.004111, -0.021885, -0.047816
+        aim_hud_offset_pos_16x9          = -0.004111, -0.021885, -0.047816
+        aim_hud_offset_rot               = -0.020932, -0.053818, -0.020859
+        aim_hud_offset_rot_16x9          = -0.020932, -0.053818, -0.020859
+				
+;_________________________________________ Trihawk (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_saiga12m_trihawk]:wpn_saiga12m
+
+        1icon_layer         = trihawk
+        1icon_layer_x       = 74
+        1icon_layer_y       = -32
+
+        hud                 = wpn_saiga12m_trihawk_hud
+        !visual				= dynamics\weapons\wpn_saiga12m\wpn_saiga12m_trihawk_world.ogf
+		
+		ms_count 			= 5
+		
+        zoom_step_count					 = 1
+		scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        !scope_texture        = wpn_crosshair_trihawk
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_trihawk_hud]:wpn_saiga12m_hud
+
+        item_visual                              = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_trihawk_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011503, -0.019557, 0.004681
+        aim_hud_offset_pos_16x9          = 0.011503, -0.019557, 0.004681
+        aim_hud_offset_rot               = -0.000415, 0.003196, -0.045496
+        aim_hud_offset_rot_16x9          = -0.000415, 0.003196, -0.045496
+
+;__________________________________________________________ UH-1 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_uh1_magd]:wpn_saiga12m
+
+        1icon_layer	       = uh1_magd
+        1icon_layer_x      = 63
+        1icon_layer_y      = -33
+
+        hud		           = wpn_saiga12m_uh1_magd_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_uh1_magd_world.ogf
+		
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_uh1_magn
+		
+		
+;---------------------------------------------------------------------------------------
+		
+[wpn_saiga12m_uh1_magd_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_uh1_magd_hud.ogf
+
+        aim_hud_offset_pos               = -0.00326, -0.016576, -0.072165
+        aim_hud_offset_pos_16x9          = -0.00326, -0.016576, -0.072165
+        aim_hud_offset_rot               = -0.02002, -0.0577, -0.001366
+        aim_hud_offset_rot_16x9          = -0.02002, -0.0577, -0.001366
+
+		
+;___________________________ Flipped ___________________________________
+
+[wpn_saiga12m_uh1_magd_off]:wpn_saiga12m
+
+        1icon_layer	       = uh1_magd
+        1icon_layer_x      = 63
+        1icon_layer_y      = -33
+
+        hud		           = wpn_saiga12m_uh1_magd_off_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_uh1_magd_world.ogf
+		
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_uh1_magd_off_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_uh1_magd_off_hud.ogf
+
+        aim_hud_offset_pos               = -0.002994, -0.02275, -0.083292
+        aim_hud_offset_pos_16x9          = -0.002994, -0.02275, -0.083292
+        aim_hud_offset_rot               = -0.017254, -0.042343, -0.016787
+        aim_hud_offset_rot_16x9          = -0.017254, -0.042343, -0.016787
+
+		
+;__________________________________________________________ UH2 (Phant0m)[PRS+MS Only] ___________________________________________________
+
+[wpn_saiga12m_uh2]:wpn_saiga12m
+
+        1icon_layer	       = uh2
+        1icon_layer_x      = 81
+        1icon_layer_y      = -34
+
+        hud		   = wpn_saiga12m_uh2_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_uh2_world.ogf
+        
+		ms_count 			= 1
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_uh2_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_uh2_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011343, -0.016859, 0.004192
+        aim_hud_offset_pos_16x9          = 0.011343, -0.016859, 0.004192
+        aim_hud_offset_rot               = -0.003539, 0.002667, -0.045496
+        aim_hud_offset_rot_16x9          = -0.003539, 0.002667, -0.045496
+
+		
+;__________________________________________________________ 1P29 Без наглазника (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_saiga12m_usp1]:wpn_saiga12m
+
+        1icon_layer	       = usp1
+        1icon_layer_x       = 64
+        1icon_layer_y       = -17
+
+        hud		   = wpn_saiga12m_usp1_hud
+        !visual             = dynamics\weapons\wpn_saiga12m\wpn_saiga12m_usp1_world.ogf
+        
+		ms_count 			= 2
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_usp1
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_usp1_hud]:wpn_saiga12m_hud 
+
+        item_visual        = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_usp1_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011414, -0.018011, 0.001836
+        aim_hud_offset_pos_16x9          = 0.011414, -0.018011, 0.001836
+        aim_hud_offset_rot               = -0.001409, 0.002178, -0.045496
+        aim_hud_offset_rot_16x9          = -0.001409, 0.002178, -0.045496
+			
+;_________________________________________ Vulcan (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_saiga12m_vulcan]:wpn_saiga12m
+
+        1icon_layer         = vulcan
+        1icon_layer_x       = 53
+        1icon_layer_y       = -35
+
+        hud                 = wpn_saiga12m_vulcan_hud
+        !visual				= dynamics\weapons\wpn_saiga12m\wpn_saiga12m_vulcan_world.ogf
+        zoom_step_count					 = 1
+        
+		ms_count 			= 2
+		
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_vulcan
+		
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_saiga12m_vulcan_hud]:wpn_saiga12m_hud
+
+        item_visual                              = anomaly_weapons\wpn_saiga12m\wpn_saiga12m_vulcan_hud.ogf
+		
+        aim_hud_offset_pos               = 0.011396, -0.014381, -0.00883
+        aim_hud_offset_pos_16x9          = 0.011396, -0.014381, -0.00883
+        aim_hud_offset_rot               = 0.000368, 0.002767, -0.045496
+        aim_hud_offset_rot_16x9          = 0.000368, 0.002767, -0.045496
