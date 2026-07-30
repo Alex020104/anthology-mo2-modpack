@@ -2,7 +2,6 @@ local last_click = nil
 local send_tip = news_manager.send_tip
 local gc = game.translate_string
 local is_exo = item_exo_device.is_exo
-local is_exoback = item_exo_device.is_exobackpack
 local get_data = item_exo_device.get_data
 local set_data = item_exo_device.set_data
 local init_data = item_exo_device.init_data
@@ -49,14 +48,14 @@ local function on_key_press(key)
 end
 
 
--- ==== ПЕРЕМЕННЫЕ ====
+-- ==== РџР•Р Р•РњР•РќРќР«Р• ====
 local power_active = false
 local armored = false
--- ==== ОБРАБОТЧИК УРОНА ОТ ПАДЕНИЯ ====
+-- ==== РћР‘Р РђР‘РћРўР§РРљ РЈР РћРќРђ РћРў РџРђР”Р•РќРРЇ ====
 function actor_on_before_hit(s_hit, bone_id, flags)
-    -- Если активна способность "super_jump" и это физический урон (падение)
+    -- Р•СЃР»Рё Р°РєС‚РёРІРЅР° СЃРїРѕСЃРѕР±РЅРѕСЃС‚СЊ "super_jump" Рё СЌС‚Рѕ С„РёР·РёС‡РµСЃРєРёР№ СѓСЂРѕРЅ (РїР°РґРµРЅРёРµ)
     if power_active == "super_jump" and s_hit.type == 7 then
-        s_hit.power = 0 -- обнуляем силу урона
+        s_hit.power = 0 -- РѕР±РЅСѓР»СЏРµРј СЃРёР»Сѓ СѓСЂРѕРЅР°
         return false
     end
 	if armored then
@@ -64,51 +63,51 @@ function actor_on_before_hit(s_hit, bone_id, flags)
 		return false
 	end
 
-    return true -- разрешаем обычный урон
+    return true -- СЂР°Р·СЂРµС€Р°РµРј РѕР±С‹С‡РЅС‹Р№ СѓСЂРѕРЅ
 end
 
--- ==== Переменные ====
+-- ==== РџРµСЂРµРјРµРЅРЅС‹Рµ ====
 local jump_original_speed = nil
 
--- ==== Активация способности ====
+-- ==== РђРєС‚РёРІР°С†РёСЏ СЃРїРѕСЃРѕР±РЅРѕСЃС‚Рё ====
 function activate_super_jump()
-    -- Проверка наличия актёра
+    -- РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ Р°РєС‚С‘СЂР°
     if not db or not db.actor then
         return
     end
-    -- Подсказка игроку
+    -- РџРѕРґСЃРєР°Р·РєР° РёРіСЂРѕРєСѓ
     send_tip(db.actor, gc("st_act_superjump"), nil, "swiss_knife", 6000)
 
-    -- Проверка доступности функций
+    -- РџСЂРѕРІРµСЂРєР° РґРѕСЃС‚СѓРїРЅРѕСЃС‚Рё С„СѓРЅРєС†РёР№
     if not db.actor.get_actor_jump_speed or not db.actor.set_actor_jump_speed then
 
         return
     end
 
-    -- Получаем оригинальную силу прыжка
+    -- РџРѕР»СѓС‡Р°РµРј РѕСЂРёРіРёРЅР°Р»СЊРЅСѓСЋ СЃРёР»Сѓ РїСЂС‹Р¶РєР°
     if not jump_original_speed then
         jump_original_speed = db.actor:get_actor_jump_speed()
 
     end
 
-    -- Увеличиваем прыжок
+    -- РЈРІРµР»РёС‡РёРІР°РµРј РїСЂС‹Р¶РѕРє
     local new_speed = jump_original_speed * 2.0
     db.actor:set_actor_jump_speed(new_speed)
 
-    -- Визуальный эффект (с защитой)
+    -- Р’РёР·СѓР°Р»СЊРЅС‹Р№ СЌС„С„РµРєС‚ (СЃ Р·Р°С‰РёС‚РѕР№)
     if level and level.add_pp_effector then
         level.add_pp_effector("electra.ppe", 6969, true)
     end
 end
 
--- ==== Деактивация способности ====
+-- ==== Р”РµР°РєС‚РёРІР°С†РёСЏ СЃРїРѕСЃРѕР±РЅРѕСЃС‚Рё ====
 function deactivate_super_jump()
-    -- Проверяем, можно ли восстановить прыжок
+    -- РџСЂРѕРІРµСЂСЏРµРј, РјРѕР¶РЅРѕ Р»Рё РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ РїСЂС‹Р¶РѕРє
     if db and db.actor and db.actor.set_actor_jump_speed and jump_original_speed then
         db.actor:set_actor_jump_speed(jump_original_speed)
     end
 
-    -- Убираем визуальный эффект (если есть)
+    -- РЈР±РёСЂР°РµРј РІРёР·СѓР°Р»СЊРЅС‹Р№ СЌС„С„РµРєС‚ (РµСЃР»Рё РµСЃС‚СЊ)
     if level and level.remove_pp_effector then
         level.remove_pp_effector(6969)
     end
@@ -159,7 +158,7 @@ function blast()
     local pos = db.actor:position()
     local h = hit()
     local exoback = db.actor:item_in_slot(7)
-    if not (exoback and is_exoback(exoback)) then
+    if not (exoback and is_exo(exoback)) then
         return true
     end
     local id = exoback:id()
@@ -228,7 +227,7 @@ function activate_powers()
     end
 
     local exosuit = db.actor:item_in_slot(7)
-    if exosuit and is_exoback(exosuit) then
+    if exosuit and is_exo(exosuit) then
         local id = exosuit:id()
         local sec = exosuit:section()
 		
@@ -256,7 +255,7 @@ function activate_powers()
             return
         end
 
-        data.power = clamp(data.power - drain, 0, 400)
+        data.power = clamp(data.power - drain, 0, data.supply.max or 100)
         set_data(id, data)
         power_active = data.supply.ability
         sounds = st[power_active]
@@ -276,7 +275,7 @@ end
 -- continually run and watch for outfit changes
 function maintain_power(duration, cooldown)
 	local outfit = db.actor:item_in_slot(7)
-    local id = (outfit and is_exoback(outfit)) and outfit:id() or 0
+    local id = (outfit and is_exo(outfit)) and outfit:id() or 0
     -- there should be a better way to do this i think
     if not st[power_active][2]:playing() then
         print_dbg("start activate power")
@@ -353,7 +352,7 @@ function on_game_start()
     build_sound_tables()
 end
 
--- === Переменные ===
+-- === РџРµСЂРµРјРµРЅРЅС‹Рµ ===
 local invisible = false
 local cloak_texture = "nanosuit\\cloak_pattern"
 local cloak_shader = "models\\xanomaly"
@@ -409,11 +408,11 @@ local function update_weapon_cloak()
     end
 end
 
--- === Активация невидимости ===
+-- === РђРєС‚РёРІР°С†РёСЏ РЅРµРІРёРґРёРјРѕСЃС‚Рё ===
 function activate_invisibility()
     if not db.actor then return end
 	printf("activate_invis")
-    -- Сохраняем оригинальные шейдеры
+    -- РЎРѕС…СЂР°РЅСЏРµРј РѕСЂРёРіРёРЅР°Р»СЊРЅС‹Рµ С€РµР№РґРµСЂС‹
 	if not saved_already then
 		saved_shaders_hud = db.actor:get_shaders(true) -- HUD
 		saved_shaders_world = db.actor:get_shaders() -- World
@@ -425,7 +424,7 @@ function activate_invisibility()
 			end
 		end
 	end
-    -- Устанавливаем эффект невидимости
+    -- РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЌС„С„РµРєС‚ РЅРµРІРёРґРёРјРѕСЃС‚Рё
     for idx, _ in pairs(saved_shaders_hud or {}) do
         db.actor:set_shader(idx, cloak_shader, cloak_texture, true)
     end
@@ -444,21 +443,21 @@ function activate_invisibility()
     end
     update_weapon_cloak()
 	saved_already = true
-    -- Звуки
+    -- Р—РІСѓРєРё
     --cloak_sounds.activate:play_at_pos(db.actor, VEC_ZERO, 0, sound_object.s2d)
     --cloak_sounds.loop:play_at_pos(db.actor, VEC_ZERO, 0, sound_object.s2d + sound_object.looped)
 
-    -- Подписываемся на события
+    -- РџРѕРґРїРёСЃС‹РІР°РµРјСЃСЏ РЅР° СЃРѕР±С‹С‚РёСЏ
     RegisterScriptCallback("actor_on_weapon_fired", on_actor_shot)
 
     invisible = true
 end
 
--- === Деактивация невидимости ===
+-- === Р”РµР°РєС‚РёРІР°С†РёСЏ РЅРµРІРёРґРёРјРѕСЃС‚Рё ===
 function deactivate_invisibility()
     if not db.actor or not invisible then return end
 	start_time = 0
-    -- Восстанавливаем шейдеры
+    -- Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј С€РµР№РґРµСЂС‹
     for idx, save in pairs(saved_shaders_hud) do
         db.actor:set_shader(idx, save.shader, save.texture, true)
     end
@@ -482,17 +481,17 @@ function deactivate_invisibility()
     saved_shaders_world = {}
 	saved_legsshaders_world = {}
 	saved_already = false
-    -- Очищаем обработчики событий
+    -- РћС‡РёС‰Р°РµРј РѕР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕР±С‹С‚РёР№
     UnregisterScriptCallback("actor_on_weapon_fired", on_actor_shot)
 
-    -- Звуки
+    -- Р—РІСѓРєРё
     --cloak_sounds.deactivate:play_at_pos(db.actor, VEC_ZERO, 0, sound_object.s2d)
     --cloak_sounds.loop:stop()
 
     invisible = false
 end
 
--- === Обработка выстрела — выход из невидимости ===
+-- === РћР±СЂР°Р±РѕС‚РєР° РІС‹СЃС‚СЂРµР»Р° вЂ” РІС‹С…РѕРґ РёР· РЅРµРІРёРґРёРјРѕСЃС‚Рё ===
 function on_actor_shot()
     if invisible then
         printf("Cloak mode deactivated by shooting")
@@ -507,15 +506,15 @@ function actor_on_update()
     end
 end
 
--- === Изменение NPC-видимости (опционально) ===
+-- === РР·РјРµРЅРµРЅРёРµ NPC-РІРёРґРёРјРѕСЃС‚Рё (РѕРїС†РёРѕРЅР°Р»СЊРЅРѕ) ===
 local original_visibility_func = visual_memory_manager.get_visible_value
 
 visual_memory_manager.get_visible_value = function(npc, who, time_delta, time_quant, luminosity, velocity_factor, velocity, distance, object_distance, always_visible_distance)
     if invisible and who:id() == AC_ID then
         if object_distance > 10 then
-            return 0 -- не видят
+            return 0 -- РЅРµ РІРёРґСЏС‚
         else
-            return 0.2 -- минимальная видимость
+            return 0.2 -- РјРёРЅРёРјР°Р»СЊРЅР°СЏ РІРёРґРёРјРѕСЃС‚СЊ
         end
     end
 

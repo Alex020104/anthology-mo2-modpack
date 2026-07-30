@@ -361,7 +361,7 @@ function is_suitable(obj)
     if not obj then
         return false
     end
-    return obj:section() == "exobackpack_exo_outfit"
+    return item_exo_device and item_exo_device.is_exo and item_exo_device.is_exo(obj) or false
 end
 
 local is_on = false

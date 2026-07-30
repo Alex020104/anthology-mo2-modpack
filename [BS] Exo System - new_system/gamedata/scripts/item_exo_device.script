@@ -16,6 +16,8 @@ local cache = {}
 local warn = false
 local threshold = 25
 local BACKPACK_SECTION = "exobackpack_exo_outfit"
+local EXO_REPAIR_TYPE = "outfit_exo"
+local default_suit_drain = 0.025
 
 local gc                  = game.translate_string
 local function get_exo_config(key, fallback)
@@ -40,6 +42,8 @@ function init()
     if not ini_exo_device then
         return
     end
+
+    default_suit_drain = ini_exo_device:r_float_ex("settings", "default_suit_drain") or default_suit_drain
     
     -- amper_factor = ini_device:r_float_ex("settings","amper_factor") or 1000
     -- map psu props
@@ -91,6 +95,10 @@ function set_data(id, data)
     exo_devices[id] = data
 end
 
+local function get_max_power(data)
+    return data and data.supply and data.supply.max or 100
+end
+
 function init_data(id)
     local data = {}
     data.power = 0
@@ -101,7 +109,13 @@ end
 -- helpers
 -- check if obj is exo outfit
 function is_exo(obj)
-    return is_exobackpack(obj)
+    local section = obj and obj:section() or false
+    if not section then
+        return false
+    end
+
+    return section == BACKPACK_SECTION
+        or SYS_GetParam(0, section, "repair_type") == EXO_REPAIR_TYPE
 end
 
 function is_exobackpack(obj)
@@ -119,7 +133,7 @@ local function get_equipped_powered_exo()
     end
 
     local outfit = actor:item_in_slot(7)
-    if is_exobackpack(outfit) then
+    if is_exo(outfit) then
         return outfit
     end
 
@@ -220,7 +234,7 @@ function menu_battery(obj)
     local id = suit:id()
     local data = get_data(id)
     if not data then data = init_data(id) end
-    local max_power = data.supply and data.supply.max or 100
+    local max_power = get_max_power(data)
     if data.power < max_power then
         return "st_charge_exo"
     end
@@ -267,7 +281,7 @@ end
 -- use the battery to charge the suit
 function charge_exo(battery, suit, data)
     print_dbg("begin charge exo")
-    local max_restorable = (data.supply and data.supply.max or 100) - data.power
+    local max_restorable = get_max_power(data) - data.power
     local batt_power = math.ceil(battery:condition() * 100)
     local to_restore = math.min(max_restorable, batt_power)
     print_dbg("max_restorable is %s, battery power is %s. restoring %s", max_restorable, batt_power, to_restore)
@@ -312,7 +326,7 @@ local function on_item_drag_dropped(obj_d, obj_o, slot_from, slot_to)
 	local sec_d = obj_d:section() -- battery or device
     local sec_o = obj_o:section() -- suit
     print_dbg("dragged %s on %s", sec_d, sec_o)
-    if is_exobackpack(obj_o) then
+    if is_exo(obj_o) then
         local id = obj_o:id()
         local data = get_data(id)
         if not data then data = init_data(id) end
@@ -353,15 +367,15 @@ function actor_on_update()
     updated = time_global() + interval
     
     -- update power
-	if is_wearing_exobackpack() then
-        manage_backdrain()
+	if is_wearing_exo() then
+        manage_drain()
     end
 
     -- update speed
-	if not is_wearing_exobackpack() then
+	if not is_wearing_exo() then
 		reset_speed()
 	else
-		if exoback_charged() then reset_speed() else slow_player() end
+		if exo_charged() then reset_speed() else slow_player() end
 	end
 end
 
@@ -410,9 +424,9 @@ function manage_drain()
         local sec = exosuit:section()
         local data = get_data(id)
         if not data then data = init_data(id) end
-        local base_drain = cache[sec] or 0.01
+        local base_drain = cache[sec] or default_suit_drain
         base_drain = modify_drain(base_drain, data)
-        data.power = clamp(data.power - base_drain, 0, 400)
+        data.power = clamp(data.power - base_drain, 0, get_max_power(data))
         set_data(id, data)
 
         if warn and data.power > threshold then
@@ -434,9 +448,9 @@ function manage_backdrain()
         local sec = exosuit:section()
         local data = get_data(id)
         if not data then data = init_data(id) end
-        local base_drain = cache[sec] or 0.01
+        local base_drain = cache[sec] or default_suit_drain
         base_drain = modify_drain(base_drain, data)
-        data.power = clamp(data.power - base_drain, 0, 400)
+        data.power = clamp(data.power - base_drain, 0, get_max_power(data))
         set_data(id, data)
 
         if warn and data.power > threshold then
@@ -496,7 +510,7 @@ function ui_item.build_desc_header(obj, sec, str)
 
         local display_str = ""
         local power = string.format("%.2f", data.power)
-        local max_power = data.supply and data.supply.max or 100
+        local max_power = get_max_power(data)
         local clr = utils_xml.get_color_con((data.power/max_power) * 100)
         display_str =  display_str .."  " .. clr_y .. gc("st_dot") .. " " .. clr_2 ..  gc("st_power") .. " ".. clr .. power .. "/" .. max_power .. "\\n"
         local psu = gc("st_equipped_none")

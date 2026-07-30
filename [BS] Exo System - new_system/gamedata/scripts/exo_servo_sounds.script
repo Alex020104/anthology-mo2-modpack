@@ -31,7 +31,6 @@ local snd_obj_jump
 local item_exo_api = item_exo_device or {}
 local mcm_api = exo_servo_sounds_mcm or {}
 local is_exo = item_exo_api.is_exo or function() return false end
-local is_exoback = item_exo_api.is_exobackpack or function() return false end
 local get_data = item_exo_api.get_data or function() return nil end
 
 -- table used for checking exo type (0 - 29 light, 30 - 49 middle, 50+ heavy) (Could just use ifs :p)
@@ -63,9 +62,9 @@ local function get_equipped_exo()
         return nil
     end
 
-    local exoback = actor:item_in_slot(7)
-    if exoback and is_exoback(exoback) then
-        return exoback, exoback:id(), exoback:section()
+    local outfit = actor:item_in_slot(7)
+    if outfit and is_exo(outfit) then
+        return outfit, outfit:id(), outfit:section()
     end
 
     return nil
