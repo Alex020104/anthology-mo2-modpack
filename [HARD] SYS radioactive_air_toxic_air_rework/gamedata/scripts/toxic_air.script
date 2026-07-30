@@ -320,6 +320,41 @@ local function get_profile_ui_tier(entry)
 	return normalize_ui_tier_label(tier)
 end
 
+local radioactive_air_tier_degrade_mult = {
+	[1] = 2.5,
+	[2] = 1,
+	[3] = 0.25,
+}
+
+local function get_profile_tier_number(entry)
+	local tier = type(entry) == "table" and trim_value(entry.ui_tier) or ""
+	local n = tier:match("^T(%d+)$") or tier:match("^(%d+)$")
+	return tonumber(n)
+end
+
+local function get_profile_radioactive_degrade_mult(entry, scale_by_level)
+	local tier_mult = radioactive_air_tier_degrade_mult[get_profile_tier_number(entry)] or 1
+	if not scale_by_level then
+		return tier_mult
+	end
+
+	if not (mcm_rad_air and radioactive_dmg > 0) then
+		return 1
+	end
+
+	local intensity = radioactive_dmg / 0.00248
+	intensity = clamp(intensity, 0, 1)
+	return 1 + ((tier_mult - 1) * intensity)
+end
+
+local function get_tank_cond_loss(tank_sec, tank_entry)
+	local cond_loss = ini_sys:r_float_ex(tank_sec, "flow_rate") or 0
+	if tank_sec == "af_oxygen_tank_3" then
+		return cond_loss * mcm_flow_rate_mult
+	end
+	return cond_loss * mcm_flow_rate_mult * get_profile_toxic_degrade_mult(tank_entry) * get_profile_radioactive_degrade_mult(tank_entry, true)
+end
+
 local function get_profile_ui_tiers(profile)
 	if type(profile) ~= "table" then return nil end
 
@@ -544,6 +579,11 @@ local function get_equipped_tank_item()
 	end)
 
 	return tank_item
+end
+
+local function active_tank_is_scientific()
+	local tank = get_equipped_tank_item()
+	return tank and tank:section() == "af_oxygen_tank_3" and get_active_tank_entry(tank:section()) ~= nil
 end
 
 local function find_filter_candidate(gear, gear_def, min_cond, limit_prot, prefer_low)
@@ -898,9 +938,24 @@ local function load_airgear_settings()
 		end
 
 		if airgear_profile_modes[sec] and airgear_profile_modes[sec].filter then
+			local profile_toxic_reduction = 0
+			local profile_toxic_degrade_mult = 1
+			for _, profile_entry in pairs(profile) do
+				if profile_entry_allowed(profile_entry) then
+					profile_toxic_reduction = math.max(profile_toxic_reduction, get_profile_toxic_reduction(profile_entry))
+					profile_toxic_degrade_mult = math.max(profile_toxic_degrade_mult, get_profile_toxic_degrade_mult(profile_entry))
+				end
+			end
+
 			for filter_sec, entry in pairs(universal_filter_profiles) do
 				if not profile[filter_sec] then
-					profile[filter_sec] = entry
+					profile[filter_sec] = {
+						allowed = true,
+						rad_reduction = get_profile_rad_reduction(entry),
+						toxic_reduction = profile_toxic_reduction,
+						toxic_degrade_mult = profile_toxic_degrade_mult,
+						ui_tier = entry.ui_tier,
+					}
 					oxt_tbl[filter_sec] = true
 					airgear_filter_consumables[filter_sec] = true
 				end
@@ -1293,6 +1348,7 @@ function actor_on_before_hit(s_hit)
 	local airgear = get_active_airgear_item()
 	local helm_gasmask = airgear and true or false
 	local helmet = db.actor:item_in_slot(12)
+	local scientific_tank_active = active_tank_is_scientific()
 	helm_cond = (airgear and airgear:condition()) or (helmet and helmet:condition()) or 1
 	
 	if (s_hit.type == hit_type_rad) then
@@ -1334,11 +1390,16 @@ function actor_on_before_hit(s_hit)
 					hit_power = 0
 				end
 			elseif (tank_air_protection > 0) and (not hold_breathe) then
-				s_hit.power = hit_power / 2
-				if (diff_rad_tank < 0) then
-					hit_power = -diff_rad_tank
-				else
+				if scientific_tank_active then
+					s_hit.power = 0
 					hit_power = 0
+				else
+					s_hit.power = hit_power / 2
+					if (diff_rad_tank < 0) then
+						hit_power = -diff_rad_tank
+					else
+						hit_power = 0
+					end
 				end
 			else
 				if hold_breathe then
@@ -1360,12 +1421,12 @@ function actor_on_before_hit(s_hit)
 			db.actor:change_radiation(hit_power)
 		end
 		
-		if mcm_rad_penetrarion and (diff_rad_no_helm < 0) then
+		if (not scientific_tank_active) and mcm_rad_penetrarion and (diff_rad_no_helm < 0) then
 			local rad_penetration = -diff_rad_no_helm * mcm_rad_penetrarion_mult
 			db.actor:change_radiation(rad_penetration)
 		end
 		
-		if mcm_rad_damage and (diff_rad_no_helm < 0) then
+		if (not scientific_tank_active) and mcm_rad_damage and (diff_rad_no_helm < 0) then
 			local rad_damage = db.actor.health + diff_rad_no_helm * mcm_rad_damage_mult
 			db.actor:set_health_ex(rad_damage)
 		end
@@ -1386,8 +1447,13 @@ function actor_on_before_hit(s_hit)
 				filter_chem_cond()
 				chem_hit_power = (chem_hit_power * (1 - filter_toxic_reduction)) - chemical_protection
 			elseif (tank_air_protection > 0) and (not hold_breathe) then
-				s_hit.power = chem_hit_power / 2
-				chem_hit_power = (chem_hit_power * (1 - tank_toxic_reduction)) - chemical_protection
+				if scientific_tank_active then
+					s_hit.power = 0
+					chem_hit_power = 0
+				else
+					s_hit.power = chem_hit_power / 2
+					chem_hit_power = (chem_hit_power * (1 - tank_toxic_reduction)) - chemical_protection
+				end
 			else
 				if hold_breathe then
 					s_hit.power = chem_hit_power / 2
@@ -1710,14 +1776,14 @@ function filter_rad_cond()
 	local rad_immunity = get_profile_rad_protection(profile_entry)
 	if rad_immunity <= 0 then return end
 	local rad_prot = rad_immunity / 10
-	local cond_koef = rad_hit / rad_prot / filter_resist / 2
+	local cond_koef = rad_hit / rad_prot / filter_resist / 2 * get_profile_radioactive_degrade_mult(profile_entry, false)
 	--[[
 	if mcm_rad_air and (radioactive_dmg > 0) then
-		cond_koef = cond_koef + radioactive_dmg / rad_prot / filter_resist / 2
+		cond_koef = cond_koef + radioactive_dmg / rad_prot / filter_resist / 2 * get_profile_radioactive_degrade_mult(profile_entry, true)
 	end
 	]]
 	check_actor_move()
-	local condition_hit = cond_loss * cond_koef * mcm_filter_degradation_mult * move_mult * get_profile_toxic_degrade_mult(profile_entry)
+	local condition_hit = cond_loss * cond_koef * mcm_filter_degradation_mult * move_mult
 	filter_def.cond = filter_def.cond - condition_hit
 	filter_def.cond = clamp(filter_def.cond, 0, 1)
 	rad_hit = 0
@@ -1762,6 +1828,7 @@ function chemical_level_damage()
 	local airgear = get_active_airgear_item()
 	local helm_gasmask = airgear and true or false
 	local helmet = db.actor:item_in_slot(12)
+	local scientific_tank_active = active_tank_is_scientific()
 	helm_cond = (airgear and airgear:condition()) or (helmet and helmet:condition()) or 1
 
 	local t_cond = 0
@@ -1778,7 +1845,11 @@ function chemical_level_damage()
 		--	filter_chem_cond()
 			chem_hit_power = (chem_hit_power * (1 - filter_toxic_reduction)) - chemical_protection
 		elseif (tank_air_protection > 0) and (not hold_breathe) then
-			chem_hit_power = (chem_hit_power * (1 - tank_toxic_reduction)) - chemical_protection
+			if scientific_tank_active then
+				chem_hit_power = 0
+			else
+				chem_hit_power = (chem_hit_power * (1 - tank_toxic_reduction)) - chemical_protection
+			end
 		else
 			if hold_breathe then
 				chem_hit_power = 0
@@ -1855,6 +1926,7 @@ function radiation_level_damage()
 	local airgear = get_active_airgear_item()
 	local helm_gasmask = airgear and true or false
 	local helmet = db.actor:item_in_slot(12)
+	local scientific_tank_active = active_tank_is_scientific()
 	helm_cond = (airgear and airgear:condition()) or (helmet and helmet:condition()) or 1
 	
 	local has_rad_consumable = ((filter_air_protection > 0) or (tank_air_protection > 0)) and (not hold_breathe)
@@ -1877,7 +1949,9 @@ function radiation_level_damage()
 				rad_hit_power = -diff_rad_helm
 			end
 		elseif (tank_air_protection > 0) and (not hold_breathe) then
-			if (diff_rad_tank < 0) then
+			if scientific_tank_active then
+				rad_hit_power = 0
+			elseif (diff_rad_tank < 0) then
 				rad_hit_power = -diff_rad_tank
 			else
 				rad_hit_power = 0
@@ -2043,7 +2117,7 @@ function filter_cond_prot()
 		
 		if mcm_rad_air and (radioactive_dmg > 0) and (rad_immunity > 0) then
 			local rad_prot = rad_immunity / 10
-			cond_koef = cond_koef + radioactive_dmg / rad_prot / filter_resist / 2
+			cond_koef = cond_koef + radioactive_dmg / rad_prot / filter_resist / 2 * get_profile_radioactive_degrade_mult(profile_entry, true)
 		end
 		
 		if mcm_toxic_underground and (chemical_dmg > 0) and (filter_toxic_reduction > 0) then
@@ -2224,7 +2298,7 @@ function get_cond_for_ui(obj, val)
 		
 		if mcm_rad_air and (radioactive_dmg > 0) and (cond_loss_factor > 0) then
 			local rad_prot = cond_loss_factor / 10
-			cond_koef = cond_koef + radioactive_dmg / rad_prot / filter_resist / 2
+			cond_koef = cond_koef + radioactive_dmg / rad_prot / filter_resist / 2 * get_profile_radioactive_degrade_mult(profile_entry, true)
 		end
 		
 		if mcm_toxic_underground and (chemical_dmg > 0) and (toxic_reduction > 0) then
@@ -2249,7 +2323,7 @@ function get_cond_for_ui(obj, val)
 		
 		if mcm_rad_air and (radioactive_dmg > 0) and (cond_loss_factor > 0) then
 			local rad_prot = cond_loss_factor / 10
-			cond_koef = cond_koef + radioactive_dmg / rad_prot / filter_resist / 2
+			cond_koef = cond_koef + radioactive_dmg / rad_prot / filter_resist / 2 * get_profile_radioactive_degrade_mult(profile_entry, true)
 		end
 		
 		if mcm_toxic_underground and (chemical_dmg > 0) and (toxic_reduction > 0) then
@@ -2340,7 +2414,7 @@ local function build_tank_gear_tooltip(obj, str, teal_clr, red_clr, grey_clr, sa
 			local tier = get_profile_ui_tier(tank_entry) or get_consumable_ui_tiers(tank_item:section(), "tank") or "?"
 			local con = math.ceil(((tank_cond[tank_item:id()] or tank_item:condition()) or 0) * 100)
 			local cond_clr = utils_xml.get_color_con(con)
-			local cond_loss = safe_zone and 0 or ((ini_sys:r_float_ex(tank_item:section(), "flow_rate") or 0) * mcm_flow_rate_mult)
+			local cond_loss = safe_zone and 0 or get_tank_cond_loss(tank_item:section(), tank_entry)
 
 			return
 				ta_tip_line(teal_clr, grey_clr, "st_ta_ui_tank_connected") ..
@@ -2395,7 +2469,7 @@ local function build_tank_item_tooltip(obj, str, teal_clr, red_clr, grey_clr, sa
 		ta_tip_line(cond_clr, grey_clr, "st_ta_ui_tank_condition", cond_clr .. tostring(con) .. "%")
 
 	if active then
-		local cond_loss = safe_zone and 0 or ((ini_sys:r_float_ex(obj:section(), "flow_rate") or 0) * mcm_flow_rate_mult)
+		local cond_loss = safe_zone and 0 or get_tank_cond_loss(obj:section(), tank_entry)
 		result = result ..
 			ta_tip_line(teal_clr, grey_clr, "st_ta_ui_air_drain", ta_rate_per_hour(cond_loss))
 	elseif not tank_entry then
@@ -2525,10 +2599,10 @@ function ui_item.build_desc_header(obj, sec, str)
 		local rad_reduction = get_profile_rad_reduction(tank_entry)
 		local toxic_reduction = get_profile_toxic_reduction(tank_entry)
 		local resist = (rad_reduction > 0 or toxic_reduction > 0) and 1 or 0
-		local cond_loss = ini_sys:r_float_ex(obj_sec, "flow_rate") or 0
+		local cond_loss = get_tank_cond_loss(obj_sec, tank_entry)
 		local tank_rad_prot = rad_reduction * 100
 		local tank_chem_prot = toxic_reduction * 100
-		local dmg_check_str = (grey_clr_light .. round_idp(cond_loss * 10 * 60 * 100 * mcm_flow_rate_mult, 1) .. gc("st_tank_per_min"))
+		local dmg_check_str = (grey_clr_light .. round_idp(cond_loss * 10 * 60 * 100, 1) .. gc("st_tank_per_min"))
 		cond_loss_str = teal_clr .. gc("st_krug_xd") .. " " .. grey_clr .. gc("st_tank_flow_rate") .. " " .. dmg_check_str .. "\\n" .. grey_clr
 		
 	--	chem_prot_str = teal_clr .. gc("st_krug_xd") .. " " .. grey_clr .. gc("st_tank_chem_prot") .. " " .. round_idp(tank_chem_prot, 1) .. "%" .. "\\n" .. grey_clr
@@ -2994,9 +3068,8 @@ function tank_degradation_and_protection(tank)
 	if helm_gasmask then
 		
 		if not actor_in_safe_zone() and not hold_breathe then
-			local oxt_cond_hit = ini_sys:r_float_ex(tank_sec, "flow_rate") or 0
 			check_actor_move()
-			oxt_cond_hit = oxt_cond_hit * mcm_flow_rate_mult * move_mult * get_profile_toxic_degrade_mult(tank_entry)
+			local oxt_cond_hit = get_tank_cond_loss(tank_sec, tank_entry) * move_mult
 			local oxt_cond = tank:condition() - oxt_cond_hit
 			tank:set_condition(oxt_cond)
 		end
