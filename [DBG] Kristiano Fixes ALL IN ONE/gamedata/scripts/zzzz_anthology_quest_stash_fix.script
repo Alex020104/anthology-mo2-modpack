@@ -1,0 +1,254 @@
+-- Anthology 2.1 quest stash repair v1.2
+-- 1) Keeps the safe v1.1 exact target blacklist.
+-- 2) Repairs active Anthology stash tasks (types 1001-1038) whose pending
+--    treasure cache was consumed while their quest item section was missing.
+-- The item sections themselves are restored by items_zz_anthology_quest_stash_fix.ltx.
+
+local TAG = "[quest_stash_fix_v12]"
+local installed = false
+local pending_boxes = {}
+local repaired_tasks = {}
+
+local bad_names = {
+    bar_arena_inventory_box_2 = true,
+    kbo_actor_box_1 = true,
+    red_forester_radio = true,
+    red_forest_box_4_5 = true,
+    red_treasure_10 = true,
+    red_treasure_9 = true,
+    val_q7_n = true,
+    val_recover_item_2_spawn = true,
+    zat_b22_medic_inv_box = true,
+}
+
+local bad_by_level = {
+    zaton = {
+        level_prefix_inventory_box_22 = true,
+    },
+}
+
+local function log(fmt, ...)
+    if type(printf) == "function" then
+        printf(TAG .. " " .. fmt, ...)
+    end
+end
+
+local function get_level_name(se_obj)
+    if not se_obj then return nil end
+
+    local ok, result = pcall(function()
+        local sim = alife()
+        local gg = game_graph()
+        if not sim or not gg then return nil end
+        local vertex = gg:vertex(se_obj.m_game_vertex_id)
+        if not vertex then return nil end
+        return sim:level_name(vertex:level_id())
+    end)
+
+    return ok and result or nil
+end
+
+local function is_known_bad(id)
+    local se_obj = id and alife_object(id)
+    if not se_obj then return false end
+
+    local ok, raw_name = pcall(function()
+        return tostring(se_obj:name() or "")
+    end)
+    if not ok or raw_name == "" then return false end
+
+    if bad_names[raw_name] then
+        return true, raw_name
+    end
+
+    local level_name = get_level_name(se_obj)
+    if level_name and bad_by_level[level_name] and bad_by_level[level_name][raw_name] then
+        return true, level_name .. "/" .. raw_name
+    end
+
+    return false
+end
+
+local function restore_blocked(blocked)
+    for id, old_value in pairs(blocked) do
+        treasure_manager.caches[id] = old_value
+    end
+end
+
+local function install_selector_patch()
+    if not treasure_manager or type(treasure_manager.get_random_stash) ~= "function" then
+        log("treasure_manager.get_random_stash unavailable; selector patch not installed")
+        return false
+    end
+
+    local original_get_random_stash = treasure_manager.get_random_stash
+
+    function treasure_manager.get_random_stash(no_spot, hint, spawn_local, inv_box)
+        if not inv_box then
+            return original_get_random_stash(no_spot, hint, spawn_local, inv_box)
+        end
+
+        local blocked = {}
+
+        for attempt = 1, 32 do
+            local id, name, descr, out_hint = original_get_random_stash(no_spot, hint, spawn_local, inv_box)
+            if not id then
+                restore_blocked(blocked)
+                return id, name, descr, out_hint
+            end
+
+            local bad, label = is_known_bad(id)
+            if not bad then
+                restore_blocked(blocked)
+                return id, name, descr, out_hint
+            end
+
+            blocked[id] = treasure_manager.caches[id]
+            treasure_manager.caches[id] = true
+            log("rejected known bad target id=%s object=%s", tostring(id), tostring(label))
+        end
+
+        restore_blocked(blocked)
+        log("selector exhausted known-good candidates; using stock fallback")
+        return original_get_random_stash(no_spot, hint, spawn_local, inv_box)
+    end
+
+    return true
+end
+
+local function box_has_section(box, section)
+    if not box or not section then return false end
+
+    local found = false
+    local ok = pcall(function()
+        box:iterate_inventory_box(function(owner, item)
+            if item and item:section() == section then
+                found = true
+            end
+        end)
+    end)
+
+    return ok and found
+end
+
+local function active_task_table()
+    if not task_manager or type(task_manager.get_task_manager) ~= "function" then
+        return nil
+    end
+
+    local ok, tm = pcall(task_manager.get_task_manager)
+    if not ok or not tm then return nil end
+    return tm.task_info
+end
+
+local function load_task_var(task_id)
+    if not db.actor or type(load_var) ~= "function" then return nil end
+
+    local ok, var = pcall(load_var, db.actor, task_id)
+    if not ok then return nil end
+    return var
+end
+
+local function repair_task_item(task_id, var, box)
+    local typ = tonumber(var and var.stash_type)
+    if not typ or typ < 1001 or typ > 1038 then return end
+    if tonumber(var.target_id) ~= box:id() then return end
+
+    local section = "drx_sl_quest_item_" .. tostring(typ)
+
+    if not ini_sys or not ini_sys:section_exist(section) then
+        log("cannot repair task=%s box=%s: section %s is still missing", tostring(task_id), tostring(box:id()), section)
+        return
+    end
+
+    if db.actor:object(section) then
+        repaired_tasks[task_id] = true
+        return
+    end
+
+    if box_has_section(box, section) then
+        repaired_tasks[task_id] = true
+        log("quest item already present task=%s box=%s section=%s", tostring(task_id), tostring(box:id()), section)
+        return
+    end
+
+    local existing = nil
+    if type(get_story_se_item) == "function" then
+        local ok, obj = pcall(get_story_se_item, section)
+        if ok then existing = obj end
+    end
+
+    if existing then
+        log("not duplicating existing story item task=%s section=%s id=%s parent=%s", tostring(task_id), section, tostring(existing.id), tostring(existing.parent_id))
+        return
+    end
+
+    if repaired_tasks[task_id] then return end
+
+    local ok, item = pcall(alife_create_item, section, box)
+    if ok and item then
+        repaired_tasks[task_id] = true
+        log("repaired task=%s box=%s section=%s item_id=%s", tostring(task_id), tostring(box:id()), section, tostring(item.id))
+    else
+        log("repair spawn failed task=%s box=%s section=%s", tostring(task_id), tostring(box:id()), section)
+    end
+end
+
+local function repair_box(box_id)
+    pending_boxes[box_id] = nil
+
+    if not db.actor or not level then return true end
+
+    local box = level.object_by_id(box_id)
+    if not box or not IsInvbox(box) then return true end
+
+    local info = active_task_table()
+    if type(info) ~= "table" then return true end
+
+    for task_id, _ in pairs(info) do
+        local var = load_task_var(task_id)
+        if var then
+            repair_task_item(task_id, var, box)
+        end
+    end
+
+    return true
+end
+
+local function physic_object_on_use_callback(box, who)
+    if not box or not IsInvbox(box) then return end
+
+    local box_id = box:id()
+    if pending_boxes[box_id] then return end
+
+    pending_boxes[box_id] = true
+    -- Run on the next frame, after treasure_manager's own use callback has
+    -- consumed/spawned the pending cache, but before DotMarks opens the real UI.
+    CreateTimeEvent(TAG, "box_" .. tostring(box_id), 0.01, repair_box, box_id)
+end
+
+local function report_sections()
+    if not ini_sys then return end
+
+    local ready = 0
+    for typ = 1001, 1038 do
+        if ini_sys:section_exist("drx_sl_quest_item_" .. tostring(typ)) then
+            ready = ready + 1
+        end
+    end
+    log("Anthology quest item sections ready: %s/38", tostring(ready))
+end
+
+local function install_patch()
+    if installed then return end
+    installed = true
+
+    local selector_ok = install_selector_patch()
+    RegisterScriptCallback("physic_object_on_use_callback", physic_object_on_use_callback)
+    report_sections()
+    log("installed repair v1.2 selector=%s", tostring(selector_ok))
+end
+
+function on_game_start()
+    install_patch()
+end

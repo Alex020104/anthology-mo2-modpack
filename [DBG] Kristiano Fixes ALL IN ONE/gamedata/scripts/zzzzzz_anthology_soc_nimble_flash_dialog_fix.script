@@ -1,0 +1,168 @@
+-- Anthology 2.1 - SoC Nimble flash-drive dialogue fix v1.0.1 BETA
+-- Repairs the missing actor_has_item_flash info portion when the actor already
+-- owns esc_wounded_flash. This restores Sidorovich's completion dialogue.
+
+local VERSION = "1.0.1-beta"
+local installed = false
+local retry_pending = false
+local retry_attempts = 0
+local next_retry_time = 0
+
+local ITEM_SECTION = "esc_wounded_flash"
+local INFO_SOC_STARTED = "soc_start"
+local INFO_WOUNDED_STARTED = "tutorial_wounded_start"
+local INFO_ITEM_GATE = "actor_has_item_flash"
+local INFO_QUEST_COMPLETED = "esc_serious_talk"
+
+local function has_info(info_id)
+    if type(has_alife_info) == "function" then
+        local ok, result = pcall(function()
+            return has_alife_info(info_id)
+        end)
+        if ok then
+            return result == true
+        end
+    end
+
+    if db.actor then
+        local ok, result = pcall(function()
+            return db.actor:has_info(info_id)
+        end)
+        if ok then
+            return result == true
+        end
+    end
+
+    return false
+end
+
+local function actor_has_flash()
+    if not db.actor then
+        return false
+    end
+
+    local ok, item = pcall(function()
+        return db.actor:object(ITEM_SECTION)
+    end)
+    return ok and item ~= nil
+end
+
+local function give_item_gate()
+    if not db.actor then
+        return false
+    end
+
+    local ok = pcall(function()
+        db.actor:give_info_portion(INFO_ITEM_GATE)
+    end)
+    return ok and has_info(INFO_ITEM_GATE)
+end
+
+local function repair_flash_dialog_gate(reason)
+    if not db.actor then
+        return "retry"
+    end
+
+    -- The normal dialogue has already consumed the flash drive and completed
+    -- esc_flash_task. Never touch the state after that point.
+    if has_info(INFO_QUEST_COMPLETED) then
+        return "done"
+    end
+
+    -- Restrict the repair to the SoC Nimble quest chain.
+    if not has_info(INFO_SOC_STARTED) or not has_info(INFO_WOUNDED_STARTED) then
+        return "not_ready"
+    end
+
+    if not actor_has_flash() then
+        return "waiting_item"
+    end
+
+    if has_info(INFO_ITEM_GATE) then
+        return "done"
+    end
+
+    if give_item_gate() then
+        printf("[SoCFlashDialogFix] repaired missing %s (%s); Sidorovich completion dialogue unlocked",
+            INFO_ITEM_GATE, tostring(reason))
+        return "done"
+    end
+
+    return "retry"
+end
+
+local function schedule_retry()
+    retry_pending = true
+    retry_attempts = 0
+    next_retry_time = 0
+end
+
+local function try_repair(reason)
+    local result = repair_flash_dialog_gate(reason)
+
+    if result == "done" then
+        retry_pending = false
+    elseif result == "retry" or result == "not_ready" then
+        retry_pending = true
+    elseif result == "waiting_item" then
+        -- The item-take callback will arm the repair again when Nimble gives
+        -- the flash drive to the actor.
+        retry_pending = false
+    end
+
+    return result
+end
+
+local function actor_on_first_update()
+    schedule_retry()
+    try_repair("save_load")
+end
+
+local function actor_on_item_take(item)
+    if not item then
+        return
+    end
+
+    local ok, section = pcall(function()
+        return item:section()
+    end)
+    if ok and section == ITEM_SECTION then
+        -- actor_on_item_take is also emitted while a save inventory is being
+        -- restored. Do not mutate quest info portions inside that callback;
+        -- defer the repair to actor_on_update after the load/take operation.
+        schedule_retry()
+    end
+end
+
+local function actor_on_update()
+    if not retry_pending then
+        return
+    end
+
+    local now = time_global()
+    if now < next_retry_time then
+        return
+    end
+
+    next_retry_time = now + 1000
+    retry_attempts = retry_attempts + 1
+
+    local result = try_repair("retry_" .. tostring(retry_attempts))
+    if result ~= "done" and retry_attempts >= 30 then
+        retry_pending = false
+        printf("[SoCFlashDialogFix] repair not completed after %s attempts; state=%s",
+            retry_attempts, tostring(result))
+    end
+end
+
+function on_game_start()
+    if installed then
+        return
+    end
+    installed = true
+
+    printf("[SoCFlashDialogFix] Anthology SoC Nimble Flash Dialog Fix %s loaded", VERSION)
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+    RegisterScriptCallback("actor_on_item_take", actor_on_item_take)
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+end
