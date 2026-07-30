@@ -601,6 +601,26 @@
       "removed_files": []
     },
     {
+      "id": "gam-autocomplete-tasks-f439c7d78b",
+      "folder": "[GAM] Autocomplete Tasks",
+      "mode": "full",
+      "version": "2026.07.30.1",
+      "notes": "Обновление [GAM] Autocomplete Tasks.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-gam-autocomplete-tasks-f439c7d78b-2026.07.30.1/anthology-folder-gam-autocomplete-tasks-f439c7d78b-2026.07.30.1.zip",
+      "asset_name": "anthology-folder-gam-autocomplete-tasks-f439c7d78b-2026.07.30.1.zip",
+      "size": 8413,
+      "sha256": "ff172bc5c9e9b1acd1702ec2fbc5c389ff43a4d8324abb3dc27dbb92b5efc8c2",
+      "files": [
+        "[GAM] Autocomplete Tasks/gamedata/configs/text/eng/ui_mcm_autocomplete_tasks.xml",
+        "[GAM] Autocomplete Tasks/gamedata/configs/text/rus/ui_mcm_autocomplete_tasks.xml",
+        "[GAM] Autocomplete Tasks/gamedata/scripts/autocomplete_tasks_mcm.script",
+        "[GAM] Autocomplete Tasks/gamedata/scripts/autocomplete_tasks_utils.script",
+        "[GAM] Autocomplete Tasks/gamedata/scripts/z_autocomplete_tasks_core.script",
+        "[GAM] Autocomplete Tasks/meta.ini"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "gam-bullet-time-0f6136a3a3",
       "folder": "[GAM] Bullet Time — Замедление времени",
       "mode": "full",

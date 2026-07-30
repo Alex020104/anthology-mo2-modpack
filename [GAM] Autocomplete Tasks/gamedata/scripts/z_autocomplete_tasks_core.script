@@ -1,0 +1,309 @@
+-- Autocomplete Tasks (23-03-17)
+-- Autocomplete v3 (20-01-08)
+-- For Anomaly 1.5 Update 4 Hotfix 8.1 (19-12-05)
+
+local get_mcm_config = autocomplete_tasks_mcm.get_config
+local dbg_printf = autocomplete_tasks_utils.dbg_printf
+
+local CHECK_INTERVAL = 2.0
+
+-- Anthology safety policy: only ordinary combat functors are eligible.
+-- Bespoke/physical/scripted tasks stay blocked even if an old MCM preset enables them.
+local SAFE_COMBAT_FUNCTORS = {
+	["assault_task_target_functor"] = { module = "at_general_tasks", key = "assault" },
+	["general_bounty_task"] = { module = "at_general_tasks", key = "bounty" },
+	["mutants_in_map_target"] = { module = "at_special_tasks", key = "spring_clean" },
+	["veh_destroy_tf"] = { module = "at_special_tasks", key = "destroy_btrs" }
+}
+
+local PROTECTED_TASK_EFFECTS = {
+	"fetch_reward_and_remove",
+	"remove_item(",
+	"quest_item",
+	"setup_companion_task",
+	"setup_companion_special_task",
+	"remove_special_task_squad",
+	"remove_task_companion",
+	"create_squad(",
+	"give_task("
+}
+
+_task_cache = {}
+_task_compensation_prices = {}
+
+function do_autocompletion()
+	-- Check if user enabled autocompletion
+	if not get_mcm_config("at_general", "enable") then return end
+
+	-- Check if user enabled the pda check and return if actor doesn't have a pda
+	if get_mcm_config("at_general", "pda_check") and not autocomplete_tasks_utils.has_pda(db.actor) then return end
+
+	-- Interate tasks
+	local tm = task_manager.get_task_manager()
+	for tid, tsk in pairs(tm.task_info) do
+		if should_autocomplete(tid, tsk.stage) then
+			printf("[AT] Autocompleting task: %s", tid)
+			send_confirmation_message(tid, tsk.task_giver_id)
+			tm:set_task_completed(tid)
+		end
+	end
+end
+
+function should_complete_by_task_functor(task_functor_name)
+	local category = SAFE_COMBAT_FUNCTORS[task_functor_name]
+	return category and get_mcm_config(category.module, category.key) or false
+end
+
+local function task_ini_value(tid, field)
+	if not task_manager.task_ini:line_exist(tid, field) then return nil end
+	return task_manager.task_ini:r_string_ex(tid, field)
+end
+
+local function contains_protected_effect(value)
+	if not value then return false end
+	value = string.lower(tostring(value))
+	for i = 1, #PROTECTED_TASK_EFFECTS do
+		if string.find(value, PROTECTED_TASK_EFFECTS[i], 1, true) then return true end
+	end
+	return false
+end
+
+local function is_safe_anthology_combat_task(tid, tsk)
+	-- Missing metadata is unsafe: Anthology's story tasks must opt out explicitly.
+	if string.lower(tostring(tsk.storyline)) ~= "false" then return false end
+	if not SAFE_COMBAT_FUNCTORS[tsk.target_functor] then return false end
+
+	-- Item hand-ins and companion/scripted squad lifecycles must finish through dialogue.
+	if tsk.fetch_func or tsk.fetch_descr then return false end
+	if contains_protected_effect(task_ini_value(tid, "on_init")) then return false end
+	if contains_protected_effect(task_ini_value(tid, "on_complete")) then return false end
+
+	return true
+end
+
+function send_confirmation_message(tid, sender_id)
+	-- Check if task complete description exists
+	local finish_message = _task_cache[tid].task_complete_descr
+	if not finish_message then
+		dbg_printf("[AT] Couldn't send confirmation message: finish message doesn't exist")
+		return
+	end
+
+	-- Check if task giver is valid
+	local sender_obj = alife_object(sender_id)
+	if not sender_obj then
+		printf("![AT] Couldn't send confirmation message: task giver is nil")
+		return
+	end
+
+	-- Check if task giver is a squad
+	-- Note: the task giver id for the toolkit fetch tasks by technicians is the id of a squad for some reason
+	if sender_obj:clsid() == clsid.online_offline_group_s then
+		local commander_obj = alife_object(sender_obj:commander_id())
+		if not commander_obj then
+			printf("![AT] Couldn't send confirmation message: task giver is an invalid squad")
+			return
+		end
+
+		sender_obj = commander_obj
+	end
+
+	-- Still check if valid
+	if (not sender_obj.character_name) or (not sender_obj.community) or (not sender_obj.character_icon) then
+		printf("![AT] Couldn't send confirmation message: task giver is invalid with clsid %s", sender_obj.clsid and sender_obj:clsid())
+		return
+	end
+
+	xr_sound.set_sound_play(AC_ID, "pda_tips")
+	local message_title = string.format("%s, %s", sender_obj:character_name(), game.translate_string(sender_obj:community()))
+	db.actor:give_game_news(message_title, game.translate_string(finish_message), sender_obj:character_icon(), 0, 5000, 0)
+end
+
+function is_listed(list, tid)
+	if list == "none" then return false end
+
+	local tids = str_explode(list, ",")
+	for i = 1, #tids do
+		if tids[i] == tid then
+			return true
+		end
+	end
+
+	return false
+end
+
+function normalize_complete_stage(task_functor_name, stage)
+	return tonumber(stage)
+end
+
+function calculate_task_compensation(reward_table)
+	if not reward_table then return {}, 0, 0 end
+
+	local min_reward, max_reward = 0, 0
+	local cleaned_rewards = {}
+
+	for _, attrs in pairs(reward_table) do
+		if attrs and attrs[1] then
+			local attr_name, attr_args = attrs[1], attrs[3]
+
+			if attr_name == "reward_money" then
+				local money = tonumber(attr_args[1])
+				min_reward = min_reward + money
+				max_reward = max_reward + money
+
+			elseif attr_name == "reward_random_money" then
+				local money_min = tonumber(attr_args[1])
+				local money_max = tonumber(attr_args[2])
+				min_reward = min_reward + money_min
+				max_reward = max_reward + money_max
+
+			elseif attr_name == "reward_item" then
+				local cost = autocomplete_tasks_utils.get_base_cost(attr_args[1])
+				local price = cost * autocomplete_tasks_utils.get_generic_sell_discount() * get_mcm_config("at_general", "compensation_coefficient")
+				min_reward = min_reward + price
+				max_reward = max_reward + price
+
+			elseif attr_name == "reward_random_item" then
+				local low, high = math.huge, -math.huge
+				for _, item in pairs(attr_args) do
+					local cost = autocomplete_tasks_utils.get_base_cost(item)
+					local price = cost * autocomplete_tasks_utils.get_generic_sell_discount() * get_mcm_config("at_general", "compensation_coefficient")
+					if price > high then high = price end
+					if price < low then low = price end
+				end
+				min_reward = min_reward + low
+				max_reward = max_reward + high
+
+			else
+				table.insert(cleaned_rewards, attrs)
+			end
+		end
+	end
+
+	if min_reward > 0 and max_reward > 0 then
+		table.insert(cleaned_rewards, {
+			"reward_random_money", 3, { min_reward, max_reward }
+		})
+	end
+
+	return { rewards = cleaned_rewards, min = min_reward, max = max_reward }
+end
+
+
+function should_autocomplete(tid, stage)
+	-- Check if task is already cached
+	if not _task_cache[tid] then
+		-- Check if task is defined in the task manager
+		local parsed_data = utils_data.parse_ini_section_to_array(task_manager.task_ini, tid)
+		if not parsed_data then
+			printf("[AT] Unable to autocomplete task: %s", tid)
+		end
+
+		-- Add task to cache
+		_task_cache[tid] = parsed_data or {}
+	end
+
+	if not _task_compensation_prices[tid] then
+		local tm_info = task_manager.get_task_manager().task_info[tid]
+		if not tm_info then
+			printf("[AT] Unable to get task info for task: %s", tid)
+		end
+
+		if tm_info and tm_info.on_complete and tm_info.on_complete[1] and tm_info.on_complete[1][3] then
+			_task_compensation_prices[tid] = calculate_task_compensation(tm_info.on_complete[1][3])
+		end
+	end
+
+	local tsk = _task_cache[tid]
+
+	-- Absolute Anthology safety checks. Whitelist never bypasses these.
+	if not is_safe_anthology_combat_task(tid, tsk) then return false end
+
+	-- Check if task is blacklisted
+	if is_listed(get_mcm_config("at_other", "blacklist"), tid) then return false end
+
+	-- MCM category or an explicit whitelist must enable this already-safe combat task.
+	if not should_complete_by_task_functor(tsk.target_functor)
+		and not is_listed(get_mcm_config("at_other", "whitelist"), tid)
+		then return false end
+
+	-- Check if task reached last stage
+	if not stage then return false end
+	if not tsk.stage_complete then return false end
+	local normalized_stage_complete = normalize_complete_stage(tsk.target_functor, tsk.stage_complete)
+	if normalized_stage_complete ~= tonumber(stage) then return false end
+
+	return true
+end
+
+function actor_on_first_update()
+	-- Run the check every 'CHECK_INTERVAL' seconds
+	CreateTimeEvent("autocomplete_tasks", "check_autocomplete_tasks", CHECK_INTERVAL, function()
+		do_autocompletion()
+		ResetTimeEvent("autocomplete_tasks", "check_autocomplete_tasks", CHECK_INTERVAL)
+		return false
+	end)
+end
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+end
+
+local task_manager_task_callback = task_manager.task_callback
+task_manager.task_callback = function(tsk, stage)
+	-- Check if user wants to compensate items
+	if (not get_mcm_config("at_general", "enable")) or (not get_mcm_config("at_general", "compensate_item_rewards")) then
+		task_manager_task_callback(tsk, stage)
+		return
+	end
+
+	local tsk_id = tsk:get_id()
+
+	-- Check if last stage
+	if stage ~= task.completed then
+		dbg_printf("[AT] No compensation for task %s: not completed yet", tsk_id)
+		task_manager_task_callback(tsk, stage)
+		return
+	end
+
+	-- Check if task id is cached
+	if (not tsk_id) or (not _task_cache[tsk_id]) then
+		dbg_printf("[AT] No compensation for task %s: task not cached", tsk_id)
+		task_manager_task_callback(tsk, stage)
+		return
+	end
+
+	-- Check if task should get autocompleted
+	if not should_autocomplete(tsk_id, _task_cache[tsk_id].stage_complete) then
+		dbg_printf("[AT] No compensation for task %s: task category not enabled", tsk_id)
+		task_manager_task_callback(tsk, stage)
+		return
+	end
+
+	-- Get task info about task
+	local rtask = task_manager.get_task_manager().task_info[tsk_id]
+	if (not rtask) or (not rtask.on_complete) or (not rtask.on_complete[1]) or (not rtask.on_complete[1][3]) then
+		printf("![AT] No compensation for task %s: on_complete attribute is non-existent or invalid", tsk_id)
+		task_manager_task_callback(tsk, stage)
+		return
+	end
+
+	-- Get task compensation prices
+	local compensation = _task_compensation_prices[tsk_id]
+	if not compensation then
+		printf("![AT] No compensation for task %s: no compensation prices found", tsk_id)
+		task_manager_task_callback(tsk, stage)
+		return
+	end
+
+	dbg_printf("[AT] Before edit of on complete table: \n%s", utils_data.print_table(rtask.on_complete[1][3], nil, true))
+
+	-- Assign table copy to 'on_complete' rewards table for task
+	dbg_printf("[AT] Used sell discount %s for compensation", autocomplete_tasks_utils.get_generic_sell_discount())
+	dbg_printf("[AT] Total reward after item compensation with min reward %s and max reward %s", compensation.min, compensation.max)
+	rtask.on_complete[1][3] = compensation.rewards
+
+	dbg_printf("[AT] After edit of on complete table: \n%s", utils_data.print_table(rtask.on_complete[1][3], nil, true))
+
+	task_manager_task_callback(tsk, stage)
+end
