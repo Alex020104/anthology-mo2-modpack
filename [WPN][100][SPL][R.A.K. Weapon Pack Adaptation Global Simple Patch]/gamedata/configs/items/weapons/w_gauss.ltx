@@ -1,0 +1,2259 @@
+﻿
+______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|                     Gauss I.W.P Animation+Model+Texture+Sounds, SeDzhimol Port+New Animations.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                                                |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_gauss]:identity_immunities,weapon_probability,default_weapon_params,wpn_gauss_sounds_iwp
+
+        GroupControlSection         = spawn_group
+        discovery_dependency        =
+        $npc                        = on
+        $prefetch                   = 8
+        $spawn                      = "weapons\gauss"
+        scheduled                   = off
+        cform                       = skeleton
+		parent_section              = wpn_gauss
+        
+        class                       = WP_SVD
+        slot                        = 2
+        animation_slot              = 2
+        ef_main_weapon_type         = 3
+        ef_weapon_type              = 11
+        hand_dependence             = 1
+        single_handed               = 0
+        
+        default_to_ruck             = false
+        sprint_allowed              = true
+		
+		hud_fov                     = 0.65
+
+;___________________________ 3DSS Parameters ___________________________________
+ 
+        lewd_lens_hide_enabled       = true	
+        lewd_lens_hide_bone          = lens
+        lewd_lens_hide_delays        = 0.1,0
+        lewd_lens_hide_aim_mode      = true, false, false
+;_______________________________________________________________________________
+ 
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 6
+		inv_grid_height                          = 2
+        inv_grid_x                               = 64
+        inv_grid_y                               = 31
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 12
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 55
+        ;inv_grid_y                               = 37
+		
+        ;inv_grid_scale     = 2
+			
+;___________________________ Description ___________________________________
+
+        inv_name                    = st_wpn_gauss
+        inv_name_short              = st_wpn_gauss
+        description                 = st_wpn_gauss_descr
+ ;____________________________________________________________________
+ 
+        kind                        = w_sniper
+        inv_weight                  = 12.768
+        cost                        = 85860
+        weapon_class                = sniper_rifle
+        
+        hud                         = wpn_gauss_hud
+        visual                      = dynamics\weapons\wpn_gauss\wpn_gauss.ogf
+		
+        position                    = -0.026, -0.070, 0.0
+        orientation                 = 0, 0, 0
+		
+        fire_point                  = 0.00, 0.12, 0.69
+        fire_point2                 = 0.00, 0.12, 0.69
+		
+        strap_bone0                 = bip01_spine2
+        strap_bone1                 = bip01_spine1
+        strap_position              = -0.26, -0.11, 0.15
+        strap_orientation           = -15, -9, 110
+		
+        ph_mass                     = 3
+
+;___________________________ Particles ___________________________________
+       
+        flame_particles             = weapons\generic_weapon_gauss
+        smoke_particles             = weapons\generic_weapon07
+        
+		shell_point		 		    = 0.0, 0.129, 0.192
+		shell_dir		 		    = 0.0, 0.0, 0.4
+		;shell_particles	 		= weapons\generic_shells
+;____________________________________________________________________
+
+        light_disabled              = false
+        light_color                 = 1.3, 1.5, 2
+        light_range                 = 4.0
+        light_time                  = 0.5
+        light_var_color             = 0.05
+        light_var_range             = 0.5
+
+;___________________________ Upgrades ___________________________________
+       
+	    upgr_icon_path                           = ui\ui_rak_global_2
+        upgr_icon_x                 = 3400
+        upgr_icon_y                 = 1700
+        upgr_icon_width             = 450
+        upgr_icon_height            = 150
+;____________________________________________________________________
+        
+        ammo_class                  = ammo_gauss, ammo_gauss_bad, ammo_gauss_verybad, ammo_gauss_cardan
+        ammo_current                = 10
+        ammo_elapsed                = 0
+        ammo_limit                  = 60
+        ammo_mag_size               = 10
+        startup_ammo                = 10
+
+;___________________________ Scopes ___________________________________
+       
+        scopes                      = 0kp2, 1p69, 1p87, ac10632, ac11090, acog, ado, aim_acro, aim_low, aimpoint, point_aimpro, bravo4, bossxe, c-more, compm4s, cortex, deltapoint, devo, d0cter, e0t2, e0t2_magd, e0t2_magd_off, echo1, ekp8_18, elbit_falcon2, eot, exps3, gauss, gauss_sight, hamr, hartman_mh1, hco, he510, kemper, rusak, lco1, leupold, march_f_shorty, marchf, mepro, monstrum, p1x42, p4x32, pk6, pks07, pn23, po4x34, ps320, rakurs, razorhd, rmr, romeo4, romeo8, specter, susatov, t12, tac30, trihawk, uh1_magd, uh1_magd_off, uh2, vulcan
+        scope_status                = 0
+        scope_zoom_factor           = 0
+		use_alt_aim_hud  		    = true
+		
+;___________________________ Silencer ___________________________________
+        
+        silencer_status             = 0
+
+;___________________________ Grenade launcher ___________________________________ 
+       
+        grenade_launcher_status     = 0
+
+;___________________________ TTX ___________________________________ 
+        
+        hit_impulse                 = 1
+        hit_power                   = 1.0, 1.0, 1.0, 1.0
+        hit_type                    = fire_wound
+        fire_distance               = 1000
+        bullet_speed                = 15000
+        rpm                         = 30
+        rpm_empty_click             = 120
+        
+        use_aim_bullet              = false
+        time_to_aim                 = 0.0 ;  1.0
+        zoom_enabled                = true
+        reload_dof                  = 0.0, 0.5, 5, 1.7
+        control_inertion_factor = 1.0f
+        crosshair_inertion          = 10.8
+		
+        fire_dispersion_base        = 0.001
+        fire_dispersion_condition_factor = 0.001
+        
+        misfire_probability         = 0.02
+        misfire_start_condition     = 0.7 ;  0.7
+        misfire_start_prob          = 0.007
+        misfire_end_condition       = 0.1
+        misfire_end_prob            = 0.11
+        
+        condition_queue_shot_dec    = 0.0036
+        condition_shot_dec          = 0.0036
+        
+        cam_return                  = 0
+        cam_relax_speed             = 3
+        cam_dispersion              = 0.05
+        cam_dispersion_frac         = 1.1
+        cam_dispersion_inc          = 0.05
+        cam_max_angle               = 0.01
+        cam_max_angle_horz          = 0.01
+        cam_step_angle_horz         = 0.01
+        zoom_cam_relax_speed        = 3
+        zoom_cam_dispersion         = 0.01
+        zoom_cam_dispersion_frac    = 1.0
+        zoom_cam_dispersion_inc     = 0.01
+        zoom_cam_max_angle          = 0.01
+        zoom_cam_max_angle_horz     = 0.01
+        zoom_cam_step_angle_horz    = 0.01
+        
+        PDM_disp_accel_factor       = 3.05
+        PDM_disp_base               = 2.25
+        PDM_disp_crouch             = 1.0
+        PDM_disp_crouch_no_acc      = 1.0
+        PDM_disp_vel_factor         = 3.05
+        
+        cam_relax_speed_ai          = 360
+        zoom_cam_relax_speed_ai     = 360
+		
+        holder_fov_modifier         = 1.0
+        holder_range_modifier       = 2.85
+		
+        min_radius                  = 0
+        max_radius                  = 500
+		
+        hit_probability_gd_novice   = 1.00
+        hit_probability_gd_stalker  = 1.00
+        hit_probability_gd_veteran  = 1.00
+        hit_probability_gd_master   = 1.00
+        
+        kill_msg_x                  = 166
+        kill_msg_y                  = 59
+        kill_msg_width              = 82
+        kill_msg_height             = 23
+		
+;__________________________________________ HUD parameters ____________________________________________________
+
+[wpn_gauss_hud]:hud_base
+
+        item_visual                 = anomaly_weapons\wpn_gauss\wpn_gauss_base_hud.ogf
+        lowered_hud_offset_pos           = 0.019086, -0.039224, -0.001612
+        lowered_hud_offset_pos_16x9      = 0.019086, -0.039224, -0.001612
+        lowered_hud_offset_rot           = -0.070568, -0.664004, 0.340359
+        lowered_hud_offset_rot_16x9      = -0.070568, -0.664004, 0.340359
+        attach_place_idx            = 0
+        zoom_hide_crosshair         = true
+
+;======================== Hud Position =======================================================
+       
+        item_position               = 0, 0, 0
+        item_orientation            = 0, 0, 0
+        
+        hands_position								  	   = 0.003500,-0.015000,-0.022000
+        hands_position_16x9				                   = 0.003500,-0.015000,-0.022000
+        hands_orientation								   = 0,0,0
+        hands_orientation_16x9							   = 0,0,0
+        
+        aim_hud_offset_pos                                 = -0.003500,0.015100,-0.017800
+        aim_hud_offset_pos_16x9				   			   = -0.003500,0.015100,-0.017800
+        aim_hud_offset_rot                                 = 0,0,0
+        aim_hud_offset_rot_16x9				   			   = 0,0,0
+
+        aim_hud_offset_alt_pos           = -0.057703, -0.018475, 0
+        aim_hud_offset_alt_pos_16x9      = -0.057703, -0.018475, 0
+        aim_hud_offset_alt_rot           = 0.000694, 0.002341, 0.450716
+        aim_hud_offset_alt_rot_16x9      = 0.000694, 0.002341, 0.450716
+		
+        gl_hud_offset_pos           = 0, 0, 0
+        gl_hud_offset_rot           = 0, 0, 0
+        
+        lean_hud_offset_pos         = 0, 0, 0
+        lean_hud_offset_rot         = 0, 0, 0
+
+;======================== BORING =======================================================
+
+		anm_bore                                 = gauss_iwp_idle, idle
+		
+		anm_bore_empty                           = gauss_iwp_idle, idle
+				
+;======================== HIDE ==========================================================
+
+		anm_hide                                 = gauss_iwp_hide, idle
+		
+		anm_hide_empty                           = gauss_iwp_hide, idle
+
+;======================== SHOW ==========================================================
+
+		anm_show                                 = gauss_iwp_draw, gauss_draw
+		
+		anm_show_empty                           = gauss_iwp_draw, draw
+
+;======================== IDLE ==========================================================
+
+		anm_idle                                 = gauss_iwp_idle, idle
+		anm_idle_moving_slow                     = gauss_iwp_walk_slow, idle
+		anm_idle_moving                          = gauss_iwp_walk, idle
+		anm_idle_moving_crouch                   = gauss_iwp_walk_down, idle
+		
+		anm_idle_empty                           = gauss_iwp_idle, idle
+		anm_idle_moving_slow_empty               = gauss_iwp_walk_slow, idle
+		anm_idle_moving_empty                    = gauss_iwp_walk, idle
+		anm_idle_moving_crouch_empty             = gauss_iwp_walk_down, idle
+		
+;======================== SPRINT TRANSITIONS AND PATERN ====================================================
+
+		anm_sprint_start         				 = gauss_iwp_sprint_start, idle
+		anm_idle_sprint         				 = gauss_iwp_sprint, idle
+		anm_sprint_end         					 = gauss_iwp_sprint_end, idle
+
+		anm_sprint_start_empty         			 = gauss_iwp_sprint_start, idle
+		anm_idle_sprint_empty         			 = gauss_iwp_sprint, idle
+		anm_sprint_end_empty         			 = gauss_iwp_sprint_end, idle
+
+;----------------------------------------------------------------------------------------
+		ts_pattern_sprint_start                  = .+, anm_idle_sprint, anm_sprint_start, 1
+		ts_pattern_sprint_end                    = anm_idle_sprint, ^anm_idle.*, anm_sprint_end
+		ts_strict_sprint_end_move                = anm_sprint_start, anm_idle_moving, anm_sprint_end
+
+;======================== AIM TRANSITIONS ====================================================
+		
+		anm_idle_aim 							 = aim_idle_gauss_iwp, idle
+		anm_idle_aim_start 						 = aim_start_gauss_iwp, idle
+		anm_idle_aim_end   						 = aim_end_gauss_iwp, idle
+
+		anm_idle_aim_empty 						 = aim_idle_gauss_iwp, idle_empty
+		anm_idle_aim_start_empty 				 = aim_start_gauss_iwp, idle_empty
+		anm_idle_aim_end _empty  				 = aim_end_gauss_iwp, idle_empty	
+		
+		anm_idle_aim_moving                      = gauss_iwp_aim_walk, idle
+		
+		anm_idle_aim_moving_empty                = gauss_iwp_aim_walk, idle
+		
+;======================== RELOAD ==========================================================
+
+		anm_reload                               = gauss_iwp_reload, gauss_reload
+		anm_reload_empty                         = gauss_iwp_reload, gauss_reload_empty
+		
+		anm_reload_misfire						 = gauss_iwp_revival, gauss_revival
+		anm_reload_misfire_aim					 = gauss_iwp_revival_aim, gauss_revival
+		
+;========================SHOOTS===========================================================
+
+		anm_shots                                = gauss_iwp_shoot, gauss_shoot
+		anm_shot_l                               = gauss_iwp_shoot, gauss_shoot
+		
+		anm_shots_aim 			 			 	 = gauss_iwp_shoot_scope, gauss_shoot
+		anm_shot_l_aim 			 			     = gauss_iwp_shoot_scope, gauss_shoot
+		
+;_____________________________________ Parameters of the shells sprite for HUD __________________________
+        
+		shell_bone                                         = wpn_body
+		shell_dir                                          = 0.0, 1.0, 0.0
+		shell_point                                        = 0,0,0
+        
+		fire_bone                                          = wpn_body
+		fire_point										   = 0.000000,0.000000,0.243000
+
+;____________________________________________________ Addons _______________________________________________________________________________________________________
+
+;__________________________________________________________ ОКП-7 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_gauss_0kp2]:wpn_gauss
+
+        1icon_layer	       = 0kp2
+        1icon_layer_x      = 92
+        1icon_layer_y      = 6
+
+        hud		   = wpn_gauss_0kp2_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_0kp2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_0kp2_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_0kp2_hud.ogf
+		
+        aim_hud_offset_pos               = -0.00334, 0.019577, -0.0178
+        aim_hud_offset_pos_16x9          = -0.00334, 0.019577, -0.0178
+
+;__________________________________________________________ 1P69 (Joseph_Porta_84)[3DSS Only] ___________________________________________________
+
+[wpn_gauss_1p69]:wpn_gauss
+
+        1icon_layer	       = 1p69
+        1icon_layer_x      = 75
+        1icon_layer_y      = 2
+
+        hud		           = wpn_gauss_1p69_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_1p69_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p59
+		
+		
+		use_alt_!aim_hud    = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_1p69_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_1p69_hud.ogf
+
+        aim_hud_offset_pos               = -0.003561, 0.003579, -0.023214
+        aim_hud_offset_pos_16x9          = -0.003561, 0.003579, -0.023214
+        aim_hud_offset_rot               = 0.000142, 0.001703, 0
+        aim_hud_offset_rot_16x9          = 0.000142, 0.001703, 0
+		
+;__________________________________________________________ 1P87 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_gauss_1p87]:wpn_gauss
+
+        1icon_layer	   = 1p87
+        1icon_layer_x      = 91
+        1icon_layer_y      = 1
+
+        hud		   = wpn_gauss_1p87_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_1p87_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_1p87_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_1p87_hud.ogf
+		
+        aim_hud_offset_pos               = -0.004453, 0.003376, 0.006234
+        aim_hud_offset_pos_16x9          = -0.004453, 0.003376, 0.006234
+        aim_hud_offset_rot               = 0.000071, 0.001703, 0
+        aim_hud_offset_rot_16x9          = 0.000071, 0.001703, 0
+			
+;__________________________________________________________ AC10632 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_gauss_ac10632]:wpn_gauss
+
+        1icon_layer	   = ac10632
+        1icon_layer_x      = 85
+        1icon_layer_y      = 2
+
+        hud		   = wpn_gauss_ac10632_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_ac10632_world.ogf
+
+        ms_count = 8
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_ac10632_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_ac10632_hud.ogf
+		
+        aim_hud_offset_pos               = -0.003977, 0.00949, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003977, 0.00949, -0.0178
+        aim_hud_offset_rot               = 0.000781, 0.000691, 0.009528
+        aim_hud_offset_rot_16x9          = 0.000781, 0.000691, 0.009528
+
+;__________________________________________________________ AC11090 (Party_50 and MsPizza727)[PRS Only] ___________________________________________________
+
+[wpn_gauss_ac11090]:wpn_gauss
+
+        1icon_layer	       = ac11090
+        1icon_layer_x      = 88
+        1icon_layer_y      = 3
+
+        hud		   = wpn_gauss_ac11090_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_ac11090_world.ogf
+
+        ms_count = 8
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_ac11090_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_ac11090_hud.ogf
+		
+        aim_hud_offset_pos               = -0.003655, 0.020928, -0.005494
+        aim_hud_offset_pos_16x9          = -0.003655, 0.020928, -0.005494
+        aim_hud_offset_rot               = 0.000143, -0.000908, 0
+        aim_hud_offset_rot_16x9          = 0.000143, -0.000908, 0
+		
+;__________________________________________________________ ACOG (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_gauss_acog]:wpn_gauss
+
+        1icon_layer	       = acog
+        1icon_layer_x      = 77
+        1icon_layer_y      = -3
+
+        hud		           = wpn_gauss_acog_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_acog_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_acog
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_acog_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_acog_hud.ogf
+		
+        aim_hud_offset_pos               = -0.003394, 0.009335, -0.034298
+        aim_hud_offset_pos_16x9          = -0.003394, 0.009335, -0.034298
+        aim_hud_offset_rot               = 0.014147, 0.000579, 0
+        aim_hud_offset_rot_16x9          = 0.014147, 0.000579, 0
+		
+;_____________________________ ADO (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_gauss_ado]:wpn_gauss
+
+        1icon_layer         = ado
+        1icon_layer_x       = 67
+        1icon_layer_y       = -5
+
+        hud                 = wpn_gauss_ado_hud
+        !visual				= dynamics\weapons\wpn_gauss\wpn_gauss_ado_world.ogf
+        zoom_step_count					 = 1
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        s3ds_reticle_size   = 4
+ 	    s3ds_eye_relief     = 2
+	    s3ds_exit_pupil		= 0.55		
+	    magnification 		= 9
+        min_magnification	= 3
+		
+ ;_______________________________________________________________________________
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_ado
+		
+		
+		use_alt_!aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_ado_hud]:wpn_gauss_hud
+
+        item_visual                              = anomaly_weapons\wpn_gauss\wpn_gauss_ado_hud.ogf
+		
+        aim_hud_offset_pos               = -0.002758, 0.010554, -0.032297
+        aim_hud_offset_pos_16x9          = -0.002758, 0.010554, -0.032297
+        aim_hud_offset_rot               = 0.001065, 0, 0
+        aim_hud_offset_rot_16x9          = 0.001065, 0, 0
+
+        aim_hud_offset_alt_pos           = -0.003307, -0.026663, -0.043455
+        aim_hud_offset_alt_pos_16x9      = -0.003307, -0.026663, -0.043455
+        aim_hud_offset_alt_rot           = 0.002568, 0.000666, 0
+        aim_hud_offset_alt_rot_16x9      = 0.002568, 0.000666, 0
+		
+;__________________________________________________________ Aim Acro (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_gauss_aim_acro]:wpn_gauss
+
+        1icon_layer	       = aim_acro
+        1icon_layer_x      = 86
+        1icon_layer_y      = 0
+
+        hud		           = wpn_gauss_aim_acro_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_aim_acro_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_aim_acro_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_aim_acro_hud.ogf
+		
+        aim_hud_offset_pos               = -0.003978, 0.021638, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003978, 0.021638, -0.0178
+        aim_hud_offset_rot               = -0.000853, 0.000906, 0.008315
+        aim_hud_offset_rot_16x9          = -0.000853, 0.000906, 0.008315
+				
+;__________________________________________________________ Aim Low (BaS)[PRS Only] ___________________________________________________
+
+[wpn_gauss_aim_low]:wpn_gauss
+
+        1icon_layer	       = aim_low
+        1icon_layer_x      = 85
+        1icon_layer_y      = 2
+
+        hud		           = wpn_gauss_aim_low_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_aim_low_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_aim_low_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_aim_low_hud.ogf
+
+        aim_hud_offset_pos               = -0.00382, 0.026327, -0.0178
+        aim_hud_offset_pos_16x9          = -0.00382, 0.026327, -0.0178
+        aim_hud_offset_rot               = 0, 0.001173, 0
+        aim_hud_offset_rot_16x9          = 0, 0.001173, 0
+		
+;__________________________________________________________ Aimpoint (BaS)[PRS Only] ___________________________________________________
+
+[wpn_gauss_aimpoint]:wpn_gauss
+
+        1icon_layer	       = aimpoint
+        1icon_layer_x      = 83
+        1icon_layer_y      = -4
+		
+        hud		           = wpn_gauss_aimpoint_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_aimpoint_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_aimpoint_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_aimpoint_hud.ogf
+
+        aim_hud_offset_pos               = -0.003979, 0.008497, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003979, 0.008497, -0.0178
+        aim_hud_offset_rot               = 0, 0.002072, 0
+        aim_hud_offset_rot_16x9          = 0, 0.002072, 0
+		
+;__________________________________________________________ Aimpoint Pro (BaS)[PRS Only] ___________________________________________________
+
+[wpn_gauss_point_aimpro]:wpn_gauss
+
+        1icon_layer	       = point_aimpro
+        1icon_layer_x      = 90
+        1icon_layer_y      = -4
+
+        hud		           = wpn_gauss_point_aimpro_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_aimpoint_pro_world.ogf
+		
+		ms_count = 2
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_point_aimpro_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_aimpoint_pro_hud.ogf
+
+        aim_hud_offset_pos               = -0.003817, 0.006, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003817, 0.006, -0.0178
+        aim_hud_offset_rot               = 0.00213, 0.001009, 0
+        aim_hud_offset_rot_16x9          = 0.00213, 0.001009, 0
+						
+;__________________________________________________________ Bravo 4 (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_gauss_bravo4]:wpn_gauss
+
+        1icon_layer	       = bravo4
+        1icon_layer_x      = 55
+        1icon_layer_y      = -7
+
+        hud		   = wpn_gauss_bravo4_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_bravo4_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_hamr
+		
+
+		use_alt_!aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_bravo4_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_bravo4_hud.ogf
+		
+        aim_hud_offset_pos               = -0.0035, 0.013964, -0.002813
+        aim_hud_offset_pos_16x9          = -0.0035, 0.013964, -0.002813
+        aim_hud_offset_rot               = 0.000426, 0.000897, 0
+        aim_hud_offset_rot_16x9          = 0.000426, 0.000897, 0
+
+        aim_hud_offset_alt_pos           = -0.003684, -0.036257, 0
+        aim_hud_offset_alt_pos_16x9      = -0.003684, -0.036257, 0
+        aim_hud_offset_alt_rot           = -0.000903, 0.001157, 0
+        aim_hud_offset_alt_rot_16x9      = -0.000903, 0.001157, 0
+		
+;__________________________________________________________ BossXE (ATHI)[PRS Only] ___________________________________________________
+
+[wpn_gauss_bossxe]:wpn_gauss
+
+        1icon_layer	       = bossxe
+        1icon_layer_x      = 83
+        1icon_layer_y      = 2
+
+        hud		   = wpn_gauss_bossxe_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_bossxe_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+		
+		laser_status = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_bossxe_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_bossxe_hud.ogf
+		
+        aim_hud_offset_pos               = -0.003502, 0.001094, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003502, 0.001094, -0.0178
+        aim_hud_offset_rot               = 0.000355, 0.000053, 0
+        aim_hud_offset_rot_16x9          = 0.000355, 0.000053, 0
+		
+;__________________________________________________________ C-MORE (BaS)[PRS Only] ___________________________________________________
+
+[wpn_gauss_c-more]:wpn_gauss
+
+        1icon_layer	   = c-more
+        1icon_layer_x      = 90
+        1icon_layer_y      = 4
+
+        hud		   = wpn_gauss_c-more_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_c-more_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_c-more_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_c-more_hud.ogf
+
+        aim_hud_offset_pos               = -0.003924, 0.012899, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003924, 0.012899, -0.0178
+        aim_hud_offset_rot               = 0.000639, 0.00123, 0
+        aim_hud_offset_rot_16x9          = 0.000639, 0.00123, 0
+		
+;__________________________________________________________ Compm4s (BaS)[PRS Only] ___________________________________________________
+
+[wpn_gauss_compm4s]:wpn_gauss
+
+        1icon_layer	       = compm4s
+        1icon_layer_x      = 87
+        1icon_layer_y      = 0
+
+        hud		   = wpn_gauss_compm4s_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_compm4s_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_compm4s_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_compm4s_hud.ogf
+
+        aim_hud_offset_pos               = -0.003977, 0.01084, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003977, 0.01084, -0.0178
+        aim_hud_offset_rot               = 0.000568, 0.001432, 0
+        aim_hud_offset_rot_16x9          = 0.000568, 0.001432, 0
+		
+;_________________________________________ Cortex (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_gauss_cortex]:wpn_gauss
+
+        1icon_layer         = cortex
+        1icon_layer_x       = 63
+        1icon_layer_y       = -3
+
+        hud                 = wpn_gauss_cortex_hud
+        !visual				= dynamics\weapons\wpn_gauss\wpn_gauss_cortex_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_cortex
+		
+			
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_cortex_hud]:wpn_gauss_hud
+
+        item_visual                              = anomaly_weapons\wpn_gauss\wpn_gauss_cortex_hud.ogf
+
+        aim_hud_offset_pos               = -0.003073, 0.000961, -0.015315
+        aim_hud_offset_pos_16x9          = -0.003073, 0.000961, -0.015315
+        aim_hud_offset_rot               = 0.003053, -0.000319, 0
+        aim_hud_offset_rot_16x9          = 0.003053, -0.000319, 0
+		
+;__________________________________________________________ Deltapoint(BaS)[PRS Only] ___________________________________________________
+
+[wpn_gauss_deltapoint]:wpn_gauss
+
+        1icon_layer	       = deltapoint
+        1icon_layer_x      = 85
+        1icon_layer_y      = 3
+
+        hud		   = wpn_gauss_deltapoint_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_deltapoint_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_deltapoint_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_deltapoint_hud.ogf
+
+        aim_hud_offset_pos               = -0.003767, 0.021205, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003767, 0.021205, -0.0178
+        aim_hud_offset_rot               = -0.001846, 0.000958, 0
+        aim_hud_offset_rot_16x9          = -0.001846, 0.000958, 0
+		
+;_________________________________________ Devo (ATHI) [3DSS+PRS Only] ____________________________________________
+
+[wpn_gauss_devo]:wpn_gauss
+
+        1icon_layer         = devo
+        1icon_layer_x       = 62
+        1icon_layer_y       = 1
+
+        hud                 = wpn_gauss_devo_hud
+        !visual				= dynamics\weapons\wpn_gauss\wpn_gauss_devo_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        !scope_texture        = wpn_crosshair_devo
+		
+		
+		use_alt_!aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_devo_hud]:wpn_gauss_hud
+
+        item_visual                              = anomaly_weapons\wpn_gauss\wpn_gauss_devo_hud.ogf
+
+        aim_hud_offset_pos               = -0.003554, 0.022556, -0.075542
+        aim_hud_offset_pos_16x9          = -0.003554, 0.022556, -0.075542
+        aim_hud_offset_rot               = 0, 0, 0.005681
+        aim_hud_offset_rot_16x9          = 0, 0, 0.005681
+
+        aim_hud_offset_alt_pos           = -0.003997, 0.007597, -0.057383
+        aim_hud_offset_alt_pos_16x9      = -0.003997, 0.007597, -0.057383
+        aim_hud_offset_alt_rot           = -0.001221, 0.001142, 0
+        aim_hud_offset_alt_rot_16x9      = -0.001221, 0.001142, 0
+		
+;__________________________________________________________ Docter Sight III (BaS)[PRS Only] ___________________________________________________
+
+[wpn_gauss_d0cter]:wpn_gauss
+
+        1icon_layer	       = d0cter
+        1icon_layer_x      = 80
+        1icon_layer_y      = 5
+
+        hud		           = wpn_gauss_d0cter_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_docter_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_d0cter_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_docter_hud.ogf
+
+        aim_hud_offset_pos               = -0.003712, 0.027177, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003712, 0.027177, -0.0178
+        aim_hud_offset_rot               = -0.000284, 0.000109, 0.007109
+        aim_hud_offset_rot_16x9          = -0.000284, 0.000109, 0.007109
+		
+;__________________________________________________________ EOTech XPS3-0 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_gauss_e0t2]:wpn_gauss
+
+        1icon_layer	       = e0t2
+        1icon_layer_x      = 93
+        1icon_layer_y      = 1
+
+        hud		           = wpn_gauss_e0t2_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_e0t2_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+		
+[wpn_gauss_e0t2_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_e0t2_hud.ogf
+
+        aim_hud_offset_pos               = -0.003977, 0.009136, -0.019013
+        aim_hud_offset_pos_16x9          = -0.003977, 0.009136, -0.019013
+        aim_hud_offset_rot               = -0.00213, 0.001063, 0
+        aim_hud_offset_rot_16x9          = -0.00213, 0.001063, 0
+		
+;__________________________________________________________ EOTech XPS3-0 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_gauss_e0t2_magd]:wpn_gauss
+
+        1icon_layer	       = e0t2_magd
+        1icon_layer_x      = 65
+        1icon_layer_y      = -3
+		
+
+        hud		           = wpn_gauss_e0t2_magd_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_e0t2_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_eot_magn
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_e0t2_magd_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_e0t2_magd_hud.ogf
+
+        aim_hud_offset_pos               = -0.003549, 0.008991, -0.032029
+        aim_hud_offset_pos_16x9          = -0.003549, 0.008991, -0.032029
+        aim_hud_offset_rot               = 0.001068, 0.000273, 0
+        aim_hud_offset_rot_16x9          = 0.001068, 0.000273, 0
+
+;___________________________ Flipped ___________________________________
+
+[wpn_gauss_e0t2_magd_off]:wpn_gauss
+
+        1icon_layer	       = e0t2_magd
+        1icon_layer_x      = 65
+        1icon_layer_y      = -3
+
+        hud		           = wpn_gauss_e0t2_magd_off_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_e0t2_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_e0t2_magd_off_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_e0t2_magd_off_hud.ogf
+
+        aim_hud_offset_pos               = -0.003818, 0.008354, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003818, 0.008354, -0.0178
+        aim_hud_offset_rot               = -0.001917, 0.000639, 0.01095
+        aim_hud_offset_rot_16x9          = -0.001917, 0.000639, 0.01095
+		
+;_________________________________________ Echo1 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_gauss_echo1]:wpn_gauss
+
+        1icon_layer         = echo1
+        1icon_layer_x       = 55
+        1icon_layer_y       = -6
+		
+        hud                 = wpn_gauss_echo1_hud
+        !visual				= dynamics\weapons\wpn_gauss\wpn_gauss_echo1_world.ogf
+        zoom_step_count					 = 1
+ 
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+		
+		use_alt_!aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_echo1_hud]:wpn_gauss_hud
+
+        item_visual                              = anomaly_weapons\wpn_gauss\wpn_gauss_echo1_hud.ogf
+	
+        aim_hud_offset_pos               = -0.003292, -0.000053, -0.009412
+        aim_hud_offset_pos_16x9          = -0.003292, -0.000053, -0.009412
+        aim_hud_offset_rot               = 0, 0, 0.006114
+        aim_hud_offset_rot_16x9          = 0, 0, 0.006114
+
+        aim_hud_offset_alt_pos           = -0.00325, -0.025174, 0
+        aim_hud_offset_alt_pos_16x9      = -0.00325, -0.025174, 0
+        aim_hud_offset_alt_rot           = -0.000105, 0.000071, 0
+        aim_hud_offset_alt_rot_16x9      = -0.000105, 0.000071, 0
+		
+;__________________________________________________________ !Кобра ЭКП-8-18 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_gauss_ekp8_18]:wpn_gauss                                    
+
+        1icon_layer	       = ekp8_18
+        1icon_layer_x      = 90
+        1icon_layer_y      = 7
+
+        hud		           = wpn_gauss_ekp8_18_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_ekp8_18_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_ekp8_18_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_ekp8_18_hud.ogf
+
+        aim_hud_offset_pos               = -0.00371, 0.004296, -0.0178
+        aim_hud_offset_pos_16x9          = -0.00371, 0.004296, -0.0178
+        aim_hud_offset_rot               = 0.000213, 0.000583, 0
+        aim_hud_offset_rot_16x9          = 0.000213, 0.000583, 0
+		
+;__________________________________________________________ FALCON 2 (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_gauss_elbit_falcon2]:wpn_gauss
+
+        1icon_layer	       = elbit_falcon2
+        1icon_layer_x      = 69
+        1icon_layer_y      = 4
+
+        hud		           = wpn_gauss_elbit_falcon2_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_elbit_falcon2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_elbit_falcon2_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_elbit_falcon2_hud.ogf
+
+        aim_hud_offset_pos               = -0.003765, 0.017514, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003765, 0.017514, -0.0178
+        aim_hud_offset_rot               = -0.000355, 0.000693, 0
+        aim_hud_offset_rot_16x9          = -0.000355, 0.000693, 0
+		
+;__________________________________________________________ !EOTech 553 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_gauss_eot]:wpn_gauss
+
+        1icon_layer	       = eot
+        1icon_layer_x      = 92
+        1icon_layer_y      = 1
+
+        hud		   = wpn_gauss_eot_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_eot_world.ogf
+		
+		ms_count = 6
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_eot_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_eot_hud.ogf
+
+        aim_hud_offset_pos               = -0.003605, 0.006077, -0.0102
+        aim_hud_offset_pos_16x9          = -0.003605, 0.006077, -0.0102
+        aim_hud_offset_rot               = 0.000284, 0.00069, 0
+        aim_hud_offset_rot_16x9          = 0.000284, 0.00069, 0
+		
+;__________________________________________________________ Exps3 (RWAP)[PRS+MS Only] ___________________________________________________
+
+[wpn_gauss_exps3]:wpn_gauss
+
+        1icon_layer	       = exps3
+        1icon_layer_x      = 93
+        1icon_layer_y      = -2
+
+        hud		   = wpn_gauss_exps3_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_exps3_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_exps3_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_exps3_hud.ogf
+
+        aim_hud_offset_pos               = -0.003978, 0.006646, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003978, 0.006646, -0.0178
+        aim_hud_offset_rot               = -0.000497, 0.001113, 0
+        aim_hud_offset_rot_16x9          = -0.000497, 0.001113, 0
+
+;__________________________________________________________ Gauss Sight (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_gauss_gauss_sight]:wpn_gauss
+
+        1icon_layer	       = gauss_sight
+        1icon_layer_x      = 47
+        1icon_layer_y      = 5
+
+        hud		           = wpn_gauss_gauss_sight_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_gauss_sight_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_gauss_sight
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_gauss_sight_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_gauss_sight_hud.ogf
+
+        aim_hud_offset_pos               = -0.003233, 0.01084, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003233, 0.01084, -0.0178
+        aim_hud_offset_rot               = 0.005543, -0.003052, 0
+        aim_hud_offset_rot_16x9          = 0.005543, -0.003052, 0
+		
+;__________________________________________________________ Gauss Sight (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_gauss_gauss]:wpn_gauss
+
+        1icon_layer	       = gauss
+        1icon_layer_x      = 62
+        1icon_layer_y      = -6
+
+        hud		           = wpn_gauss_gauss_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_gauss_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_gauss_sight
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_gauss_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_gauss_hud.ogf
+
+        aim_hud_offset_pos               = -0.003288, 0.006361, -0.06508
+        aim_hud_offset_pos_16x9          = -0.003288, 0.006361, -0.06508
+        aim_hud_offset_rot               = 0.002844, -0.000101, 0
+        aim_hud_offset_rot_16x9          = 0.002844, -0.000101, 0
+		
+;__________________________________________________________ HAMR (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_gauss_hamr]:wpn_gauss
+
+        1icon_layer	       = hamr
+        1icon_layer_x      = 59
+        1icon_layer_y      = -4
+
+        hud		   = wpn_gauss_hamr_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_hamr_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_hamr
+		
+
+		use_alt_!aim_hud  		    = true
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_hamr_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_hamr_hud.ogf
+		
+        aim_hud_offset_pos               = -0.003552, 0.007358, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003552, 0.007358, -0.0178
+        aim_hud_offset_rot               = 0.000071, -0.000004, 0
+        aim_hud_offset_rot_16x9          = 0.000071, -0.000004, 0
+
+        aim_hud_offset_alt_pos           = -0.003679, -0.026316, 0
+        aim_hud_offset_alt_pos_16x9      = -0.003679, -0.026316, 0
+        aim_hud_offset_alt_rot           = -0.001646, 0.000792, 0
+        aim_hud_offset_alt_rot_16x9      = -0.001646, 0.000792, 0
+		
+;__________________________________________________________ Hartman MH1 (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_gauss_hartman_mh1]:wpn_gauss
+
+        1icon_layer	       = hartman_mh1
+        1icon_layer_x      = 94
+        1icon_layer_y      = 7
+
+        hud		           = wpn_gauss_hartman_mh1_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_hartman_mh1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_hartman_mh1_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_hartman_mh1_hud.ogf
+
+        aim_hud_offset_pos               = -0.003816, 0.006651, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003816, 0.006651, -0.0178
+        aim_hud_offset_rot               = -0.003695, 0.000959, 0.007179
+        aim_hud_offset_rot_16x9          = -0.003695, 0.000959, 0.007179
+		
+;__________________________________________________________ HCO (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_gauss_hco]:wpn_gauss
+
+        1icon_layer	       = hco
+        1icon_layer_x      = 94
+        1icon_layer_y      = 1
+
+        hud		   = wpn_gauss_hco_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_hco_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_hco_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_hco_hud.ogf
+
+        aim_hud_offset_pos               = -0.003871, 0.005014, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003871, 0.005014, -0.0178
+        aim_hud_offset_rot               = -0.000284, 0.000907, 0.007184
+        aim_hud_offset_rot_16x9          = -0.000284, 0.000907, 0.007184
+		
+;__________________________________________________________ HE510 (RWAP)[PRS+MS Only] ___________________________________________________
+
+[wpn_gauss_he510]:wpn_gauss
+
+        1icon_layer	       = he510
+        1icon_layer_x      = 91
+        1icon_layer_y      = 1
+
+        hud		   = wpn_gauss_he510_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_he510_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_he510_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_he510_hud.ogf
+		
+        aim_hud_offset_pos               = -0.004031, 0.012331, -0.0178
+        aim_hud_offset_pos_16x9          = -0.004031, 0.012331, -0.0178
+        aim_hud_offset_rot               = -0.000213, 0.001116, 0.00753
+        aim_hud_offset_rot_16x9          = -0.000213, 0.001116, 0.00753
+						
+;__________________________________________________________ Kemper (BaS)[PRS Only] ___________________________________________________
+
+[wpn_gauss_kemper]:wpn_gauss
+
+        1icon_layer	       = kemper
+        1icon_layer_x      = 89
+        1icon_layer_y      = 3
+
+        hud		           = wpn_gauss_kemper_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_kemper_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_kemper_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_kemper_hud.ogf
+		
+        aim_hud_offset_pos               = -0.004558, 0.012331, -0.0178
+        aim_hud_offset_pos_16x9          = -0.004558, 0.012331, -0.0178
+        aim_hud_offset_rot               = 0.001491, 0.001174, -0.001707
+        aim_hud_offset_rot_16x9          = 0.001491, 0.001174, -0.001707
+		
+;__________________________________________________________ Rusak (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_gauss_rusak]:wpn_gauss
+
+        1icon_layer	       = rusak
+        1icon_layer_x      = 58
+        1icon_layer_y      = -1
+
+        hud		           = wpn_gauss_rusak_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_rusak_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_rusak_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_rusak_hud.ogf
+
+        aim_hud_offset_pos               = -0.004405, 0.012685, -0.0178
+        aim_hud_offset_pos_16x9          = -0.004405, 0.012685, -0.0178
+        aim_hud_offset_rot               = -0.000426, 0.00197, 0
+        aim_hud_offset_rot_16x9          = -0.000426, 0.00197, 0
+		
+;__________________________________________________________ LCO (Phant0m)[PRS+MS Only] ___________________________________________________
+
+[wpn_gauss_lco1]:wpn_gauss
+
+        1icon_layer	       = lco1
+        1icon_layer_x      = 85
+        1icon_layer_y      = 0
+
+        hud		   = wpn_gauss_lco1_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_lco1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_lco1_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_lco1_hud.ogf
+
+        aim_hud_offset_pos               = -0.003974, 0.008638, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003974, 0.008638, -0.0178
+        aim_hud_offset_rot               = -0.000142, 0.001598, -0.002774
+        aim_hud_offset_rot_16x9          = -0.000142, 0.001598, -0.002774
+		
+;__________________________________________________________ Leupold (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_gauss_leupold]:wpn_gauss
+
+        1icon_layer	       = leupold
+        1icon_layer_x      = 71
+        1icon_layer_y      = 2
+		
+        hud		   = wpn_gauss_leupold_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_leupold_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_leupold
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_leupold_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_leupold_hud.ogf
+
+        aim_hud_offset_pos               = -0.003288, 0.009135, -0.02882
+        aim_hud_offset_pos_16x9          = -0.003288, 0.009135, -0.02882
+        aim_hud_offset_rot               = 0.000852, 0.000424, 0
+        aim_hud_offset_rot_16x9          = 0.000852, 0.000424, 0
+			
+;__________________________________________________________ March Shorty (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_gauss_march_f_shorty]:wpn_gauss
+
+        1icon_layer	       = march_f_shorty
+        1icon_layer_x      = 68
+        1icon_layer_y      = -2
+
+        hud		           = wpn_gauss_march_f_shorty_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_march_f_shorty_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_march_shorty
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_march_f_shorty_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_march_f_shorty_hud.ogf
+
+        aim_hud_offset_pos               = -0.003871, 0.005079, -0.018369
+        aim_hud_offset_pos_16x9          = -0.003871, 0.005079, -0.018369
+        aim_hud_offset_rot               = 0.003053, 0.001486, 0
+        aim_hud_offset_rot_16x9          = 0.003053, 0.001486, 0
+		
+;__________________________________________________________ Marchf (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_gauss_marchf]:wpn_gauss
+
+        1icon_layer	       = marchf
+        1icon_layer_x      = 69
+        1icon_layer_y      = 5
+
+        hud		   = wpn_gauss_marchf_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_marchf_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_marchf
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_marchf_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_marchf_hud.ogf
+
+        aim_hud_offset_pos               = -0.004083, 0.005011, 0.026572
+        aim_hud_offset_pos_16x9          = -0.004083, 0.005011, 0.026572
+        aim_hud_offset_rot               = 0, 0.000849, 0
+        aim_hud_offset_rot_16x9          = 0, 0.000849, 0
+		
+;__________________________________________________________ Mepro (BaS)[PRS Only] ___________________________________________________
+
+[wpn_gauss_mepro]:wpn_gauss
+
+        1icon_layer	       = mepro
+        1icon_layer_x      = 92
+        1icon_layer_y      = 3
+
+        hud		   = wpn_gauss_mepro_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_mepro_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_mepro_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_mepro_hud.ogf
+
+        aim_hud_offset_pos               = -0.003981, 0.009064, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003981, 0.009064, -0.0178
+        aim_hud_offset_rot               = -0.000071, 0.001383, 0
+        aim_hud_offset_rot_16x9          = -0.000071, 0.001383, 0
+		
+;_________________________________________ Monstrum (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_gauss_monstrum]:wpn_gauss
+
+        1icon_layer         = monstrum
+        1icon_layer_x       = 82
+        1icon_layer_y       = -1
+
+        hud                 = wpn_gauss_monstrum_hud
+        !visual				= dynamics\weapons\wpn_gauss\wpn_gauss_monstrum_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_monstrum
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_monstrum_hud]:wpn_gauss_hud
+
+        item_visual                              = anomaly_weapons\wpn_gauss\wpn_gauss_monstrum_hud.ogf
+
+        aim_hud_offset_pos               = -0.003755, 0.019715, -0.033655
+        aim_hud_offset_pos_16x9          = -0.003755, 0.019715, -0.033655
+        aim_hud_offset_rot               = -0.000071, 0.000106, 0
+        aim_hud_offset_rot_16x9          = -0.000071, 0.000106, 0
+
+;__________________________________________________________ P1X42 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_gauss_p1x42]:wpn_gauss
+
+        1icon_layer	       = p1x42
+        1icon_layer_x      = 88
+        1icon_layer_y      = -1
+
+        hud		   = wpn_gauss_p1x42_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_p1x42_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_p1x42_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_p1x42_hud.ogf
+
+        aim_hud_offset_pos               = -0.004719, 0.011692, -0.0178
+        aim_hud_offset_pos_16x9          = -0.004719, 0.011692, -0.0178
+        aim_hud_offset_rot               = 0.003053, 0.002881, 0.007818
+        aim_hud_offset_rot_16x9          = 0.003053, 0.002881, 0.007818
+		
+;_________________________________________ P4X32 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_gauss_p4x32]:wpn_gauss
+
+        1icon_layer         = p4x32
+        1icon_layer_x       = 74
+        1icon_layer_y       = 3
+
+        hud                 = wpn_gauss_p4x32_hud
+        !visual				= dynamics\weapons\wpn_gauss\wpn_gauss_p4x32_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_p4x32_hud]:wpn_gauss_hud
+
+        item_visual                              = anomaly_weapons\wpn_gauss\wpn_gauss_p4x32_hud.ogf	
+
+        aim_hud_offset_pos               = -0.003491, 0.019219, -0.040625
+        aim_hud_offset_pos_16x9          = -0.003491, 0.019219, -0.040625
+		
+;__________________________________________________________ PK6 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_gauss_pk6]:wpn_gauss
+
+        1icon_layer	   = pk6
+        1icon_layer_x      = 86
+        1icon_layer_y      = -1
+
+        hud		   = wpn_gauss_pk6_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_pk6_world.ogf
+		
+		ms_count 			= 3
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_pk6_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_pk6_hud.ogf
+		
+        aim_hud_offset_pos               = -0.003761, 0.023408, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003761, 0.023408, -0.0178
+        aim_hud_offset_rot               = -0.000781, 0.000909, 0
+        aim_hud_offset_rot_16x9          = -0.000781, 0.000909, 0
+
+;________________________________________________ PKS-07 (Party_50 and MsPizza727)[3DSS Only] ___________________________________________________
+
+[wpn_gauss_pks07]:wpn_gauss
+
+        1icon_layer	       = pks07
+        1icon_layer_x      = 60
+        1icon_layer_y      = -1
+
+        hud		           = wpn_gauss_pks07_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_pks07_world.ogf
+ 
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_pks07_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_pks07_hud.ogf
+		
+        aim_hud_offset_pos               = -0.003131, 0.011404, -0.022142
+        aim_hud_offset_pos_16x9          = -0.003131, 0.011404, -0.022142
+        aim_hud_offset_rot               = 0.003976, -0.003565, 0
+        aim_hud_offset_rot_16x9          = 0.003976, -0.003565, 0
+		
+;__________________________________________________________ PN23 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_gauss_pn23]:wpn_gauss
+
+        1icon_layer	       = pn23
+        1icon_layer_x      = 45
+        1icon_layer_y      = -6
+
+        hud		   = wpn_gauss_pn23_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_pn23_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 25
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_pn23
+		
+		
+
+;--------------------------------------------------------------------------------------
+
+[wpn_gauss_pn23_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_pn23_hud.ogf
+
+        aim_hud_offset_pos               = -0.003281, -0.001884, -0.022914
+        aim_hud_offset_pos_16x9          = -0.003281, -0.001884, -0.022914
+        aim_hud_offset_rot               = -0.000071, -0.000214, 0
+        aim_hud_offset_rot_16x9          = -0.000071, -0.000214, 0
+
+;_________________________________________ PO4X34 (MsPizza727) [3DSS Only] ____________________________________________
+
+[wpn_gauss_po4x34]:wpn_gauss
+
+        1icon_layer         = po4x34
+        1icon_layer_x       = 70
+        1icon_layer_y       = 3
+
+        hud                 = wpn_gauss_po4x34_hud
+        !visual				= dynamics\weapons\wpn_gauss\wpn_gauss_po4x34_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_po4x34
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_po4x34_hud]:wpn_gauss_hud
+
+        item_visual                              = anomaly_weapons\wpn_gauss\wpn_gauss_po4x34_hud.ogf
+
+        aim_hud_offset_pos               = -0.003553, 0.014532, -0.023286
+        aim_hud_offset_pos_16x9          = -0.003553, 0.014532, -0.023286
+        aim_hud_offset_rot               = -0.00071, 0.000477, 0
+        aim_hud_offset_rot_16x9          = -0.00071, 0.000477, 0
+		
+;_________________________________________ Valdai PS320 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_gauss_ps320]:wpn_gauss
+
+        1icon_layer         = ps320
+        1icon_layer_x       = 58
+        1icon_layer_y       = -3
+
+        hud                 = wpn_gauss_ps320_hud
+        !visual				= dynamics\weapons\wpn_gauss\wpn_gauss_ps320_world.ogf
+        zoom_step_count					 = 1
+
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_ps320
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_ps320_hud]:wpn_gauss_hud
+
+        item_visual                              = anomaly_weapons\wpn_gauss\wpn_gauss_ps320_hud.ogf
+
+        aim_hud_offset_pos               = -0.003658, 0.011336, -0.015244
+        aim_hud_offset_pos_16x9          = -0.003658, 0.011336, -0.015244
+        aim_hud_offset_rot               = 0.002272, 0.000585, 0
+        aim_hud_offset_rot_16x9          = 0.002272, 0.000585, 0
+		
+		
+;__________________________________________________________ Rakurs (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_gauss_rakurs]:wpn_gauss
+
+        1icon_layer	       = rakurs
+        1icon_layer_x      = 84
+        1icon_layer_y      = 0
+
+        hud		   = wpn_gauss_rakurs_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_rakurs_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_rakurs_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_rakurs_hud.ogf
+
+        aim_hud_offset_pos               = -0.003871, 0.019218, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003871, 0.019218, -0.0178
+        aim_hud_offset_rot               = 0, 0.001065, 0
+        aim_hud_offset_rot_16x9          = 0, 0.001065, 0
+		
+;__________________________________________________________ RazorHD (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_gauss_razorhd]:wpn_gauss
+
+        1icon_layer	       = razorhd
+        1icon_layer_x      = 58
+        1icon_layer_y      = -2
+
+        hud		   = wpn_gauss_razorhd_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_razorhd_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_razorhd
+		
+
+		use_alt_!aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_razorhd_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_razorhd_hud.ogf
+
+        aim_hud_offset_pos               = -0.003129, 0.007288, 0.004167
+        aim_hud_offset_pos_16x9          = -0.003129, 0.007288, 0.004167
+        aim_hud_offset_rot               = 0.002203, 0.001711, 0
+        aim_hud_offset_rot_16x9          = 0.002203, 0.001711, 0
+
+        aim_hud_offset_alt_pos           = -0.003321, -0.044995, -0.006255
+        aim_hud_offset_alt_pos_16x9      = -0.003321, -0.044995, -0.006255
+        aim_hud_offset_alt_rot           = -0.000735, -0.000069, 0
+        aim_hud_offset_alt_rot_16x9      = -0.000735, -0.000069, 0
+		
+;__________________________________________________________ RMR (BaS)[PRS Only] ___________________________________________________
+
+[wpn_gauss_rmr]:wpn_gauss
+
+        1icon_layer	       = rmr
+        1icon_layer_x      = 90
+        1icon_layer_y      = 1
+
+        hud		   = wpn_gauss_rmr_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_rmr_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_rmr_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_rmr_hud.ogf
+
+        aim_hud_offset_pos               = -0.004081, 0.025975, -0.0178
+        aim_hud_offset_pos_16x9          = -0.004081, 0.025975, -0.0178
+        aim_hud_offset_rot               = -0.001278, 0.0017, 0
+        aim_hud_offset_rot_16x9          = -0.001278, 0.0017, 0
+		
+;__________________________________________________________ Romeo 4 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_gauss_romeo4]:wpn_gauss
+
+        1icon_layer	       = romeo4
+        1icon_layer_x      = 85
+        1icon_layer_y      = -3
+
+        hud		   = wpn_gauss_romeo4_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_romeo4_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_romeo4_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_romeo4_hud.ogf
+		
+        aim_hud_offset_pos               = -0.003765, 0.013325, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003765, 0.013325, -0.0178
+        aim_hud_offset_rot               = 0.000426, 0.000962, 0
+        aim_hud_offset_rot_16x9          = 0.000426, 0.000962, 0
+		
+;__________________________________________________________ Romeo 8 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_gauss_romeo8]:wpn_gauss
+
+        1icon_layer	   = romeo8
+        1icon_layer_x      = 90
+        1icon_layer_y      = 0
+
+        hud		   = wpn_gauss_romeo8_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_romeo8_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_romeo8_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_romeo8_hud.ogf
+
+        aim_hud_offset_pos               = -0.004296, 0.010981, -0.007916
+        aim_hud_offset_pos_16x9          = -0.004296, 0.010981, -0.007916
+        aim_hud_offset_rot               = 0.000568, 0.000856, 0.009386
+        aim_hud_offset_rot_16x9          = 0.000568, 0.000856, 0.009386
+		
+;__________________________________________________________ Specter (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_gauss_specter]:wpn_gauss
+
+        1icon_layer	       = specter
+        1icon_layer_x      = 61
+        1icon_layer_y      = 0
+
+        hud		           = wpn_gauss_specter_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_specter_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_specter
+		
+		
+		use_alt_!aim_hud  		    = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_specter_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_specter_hud.ogf
+
+        aim_hud_offset_pos               = -0.003341, 0.008273, -0.051853
+        aim_hud_offset_pos_16x9          = -0.003341, 0.008273, -0.051853
+        aim_hud_offset_rot               = 0.000923, 0.000319, 0.007602
+        aim_hud_offset_rot_16x9          = 0.000923, 0.000319, 0.007602
+		
+;__________________________________________________________ Susat (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_gauss_susatov]:wpn_gauss
+
+        1icon_layer	       = susatov
+        1icon_layer_x      = 65
+        1icon_layer_y      = -5
+
+        hud		   = wpn_gauss_susatov_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_susatov_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_susat
+		
+
+		use_alt_!aim_hud  		    = true
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_susatov_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_susatov_hud.ogf
+		
+        aim_hud_offset_pos               = -0.003555, -0.005659, -0.059402
+        aim_hud_offset_pos_16x9          = -0.003555, -0.005659, -0.059402
+        aim_hud_offset_rot               = 0.000569, 0.000764, 0
+        aim_hud_offset_rot_16x9          = 0.000569, 0.000764, 0
+
+        aim_hud_offset_alt_pos           = -0.00357, -0.029296, -0.09792
+        aim_hud_offset_alt_pos_16x9      = -0.00357, -0.029296, -0.09792
+        aim_hud_offset_alt_rot           = -0.003409, 0.002058, 0.003479
+        aim_hud_offset_alt_rot_16x9      = -0.003409, 0.002058, 0.003479
+		
+;_________________________________________ T12 (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_gauss_t12]:wpn_gauss
+
+        1icon_layer             = t12
+        1icon_layer_x			= 89
+        1icon_layer_y			= 0
+		
+        hud					= wpn_gauss_t12_hud
+        !visual				= dynamics\weapons\wpn_gauss\wpn_gauss_t12_world.ogf
+		
+        scope_status            = 1
+		
+;---------------------------------------------------------------------------------------		
+	
+[wpn_gauss_t12_hud]:wpn_gauss_hud
+
+        item_visual                		= anomaly_weapons\wpn_gauss\wpn_gauss_t12_hud.ogf
+
+        aim_hud_offset_pos               = -0.00297, 0.025399, -0.0178
+        aim_hud_offset_pos_16x9          = -0.00297, 0.025399, -0.0178
+        aim_hud_offset_rot               = 0.002982, -0.00085, 0
+        aim_hud_offset_rot_16x9          = 0.002982, -0.00085, 0
+		
+;_________________________________________ Tac30 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_gauss_tac30]:wpn_gauss
+
+        1icon_layer         = tac30
+        1icon_layer_x       = 70
+        1icon_layer_y       = 0
+
+        hud                 = wpn_gauss_tac30_hud
+        !visual				= dynamics\weapons\wpn_gauss\wpn_gauss_tac30_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_tac30
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_tac30_hud]:wpn_gauss_hud
+
+        item_visual                              = anomaly_weapons\wpn_gauss\wpn_gauss_tac30_hud.ogf
+
+        aim_hud_offset_pos               = -0.003441, 0.006148, -0.018443
+        aim_hud_offset_pos_16x9          = -0.003441, 0.006148, -0.018443
+        aim_hud_offset_rot               = 0.002771, 0.002553, 0
+        aim_hud_offset_rot_16x9          = 0.002771, 0.002553, 0
+
+		
+;_________________________________________ Trihawk (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_gauss_trihawk]:wpn_gauss
+
+        1icon_layer         = trihawk
+        1icon_layer_x       = 81
+        1icon_layer_y       = -2
+
+        hud                 = wpn_gauss_trihawk_hud
+        !visual				= dynamics\weapons\wpn_gauss\wpn_gauss_trihawk_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        !scope_texture        = wpn_crosshair_trihawk
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_trihawk_hud]:wpn_gauss_hud
+
+        item_visual                              = anomaly_weapons\wpn_gauss\wpn_gauss_trihawk_hud.ogf
+
+        aim_hud_offset_pos               = -0.003182, 0.005652, -0.028961
+        aim_hud_offset_pos_16x9          = -0.003182, 0.005652, -0.028961
+        aim_hud_offset_rot               = 0.000213, 0.000213, 0
+        aim_hud_offset_rot_16x9          = 0.000213, 0.000213, 0
+		
+;__________________________________________________________ UH-1 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_gauss_uh1_magd]:wpn_gauss
+
+        1icon_layer	       = uh1_magd
+        1icon_layer_x      = 66
+        1icon_layer_y      = -2
+
+        hud		           = wpn_gauss_uh1_magd_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_uh1_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_uh1_magn
+		
+
+;---------------------------------------------------------------------------------------
+		
+[wpn_gauss_uh1_magd_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_uh1_magd_hud.ogf
+
+        aim_hud_offset_pos               = -0.003606, 0.010838, -0.034795
+        aim_hud_offset_pos_16x9          = -0.003606, 0.010838, -0.034795
+        aim_hud_offset_rot               = 0.001564, 0.000851, 0
+        aim_hud_offset_rot_16x9          = 0.001564, 0.000851, 0
+		
+;___________________________ Flipped ___________________________________
+
+[wpn_gauss_uh1_magd_off]:wpn_gauss
+
+        1icon_layer	       = uh1_magd
+        1icon_layer_x      = 66
+        1icon_layer_y      = -2
+
+        hud		           = wpn_gauss_uh1_magd_off_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_uh1_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_uh1_magd_off_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_uh1_magd_off_hud.ogf
+
+        aim_hud_offset_pos               = -0.00355, 0.007218, -0.037217
+        aim_hud_offset_pos_16x9          = -0.00355, 0.007218, -0.037217
+        aim_hud_offset_rot               = -0.001136, 0.000159, 0.004191
+        aim_hud_offset_rot_16x9          = -0.001136, 0.000159, 0.004191
+		
+		
+;__________________________________________________________ UH2 (Phant0m)[PRS+MS Only] ___________________________________________________
+
+[wpn_gauss_uh2]:wpn_gauss
+
+        1icon_layer	       = uh2
+        1icon_layer_x      = 91
+        1icon_layer_y      = -4
+
+        hud		   = wpn_gauss_uh2_hud
+        !visual             = dynamics\weapons\wpn_gauss\wpn_gauss_uh2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_uh2_hud]:wpn_gauss_hud 
+
+        item_visual        = anomaly_weapons\wpn_gauss\wpn_gauss_uh2_hud.ogf
+
+        aim_hud_offset_pos               = -0.003282, 0.009206, -0.0178
+        aim_hud_offset_pos_16x9          = -0.003282, 0.009206, -0.0178
+        aim_hud_offset_rot               = -0.000142, 0, 0
+        aim_hud_offset_rot_16x9          = -0.000142, 0, 0
+		
+;_________________________________________ Vulcan (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_gauss_vulcan]:wpn_gauss
+
+        1icon_layer         = vulcan
+        1icon_layer_x       = 60
+        1icon_layer_y       = -4
+
+        hud                 = wpn_gauss_vulcan_hud
+        !visual				= dynamics\weapons\wpn_gauss\wpn_gauss_vulcan_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_vulcan
+		
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_gauss_vulcan_hud]:wpn_gauss_hud
+
+        item_visual                              = anomaly_weapons\wpn_gauss\wpn_gauss_vulcan_hud.ogf
+
+        aim_hud_offset_pos               = -0.00366, 0.010128, -0.038914
+        aim_hud_offset_pos_16x9          = -0.00366, 0.010128, -0.038914
+        aim_hud_offset_rot               = 0.001635, -0.000159, 0
+        aim_hud_offset_rot_16x9          = 0.001635, -0.000159, 0
+		
+______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|                     Gauss Quest I.W.P Animation+Model+Texture+Sounds, SeDzhimol Port+New Animations.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                                          |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[pri_a17_gauss_rifle]:wpn_gauss	;Gauss UMIROTVORITEL
+
+        $spawn                      = "weapons\uniq\pri_a17_gauss_rifle"
+        
+        story_id                    = pri_a17_gauss_rifle
+        quest_item                  = false
+		parent_section              = pri_a17_gauss_rifle
+
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        s3ds_reticle_size   = 6
+ 	    s3ds_eye_relief     = 2		 
+		s3ds_image_type 	= 3
+	    s3ds_reticle_type 	= 6
+	    ms_count 			= 1
+	    magnification 		= 10
+        min_magnification	= 1		
+ ;_______________________________________________________________________________
+ 
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 6
+		inv_grid_height                          = 2
+        inv_grid_x                               = 64
+        inv_grid_y                               = 29
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 12
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 55
+        ;inv_grid_y                               = 33
+		
+        ;inv_grid_scale     = 2
+
+;___________________________ Scopes ___________________________________
+       
+        scope_status                = 1
+		
+;___________________________ Description ___________________________________
+ 
+        inv_name                    = st_wpn_umirotvoritel
+        description                 = st_wpn_umirotvoritel_descr
+;____________________________________________________________________       
+
+        hud                         = wpn_gauss_quest_hud
+        
+        upgr_icon_x                 = 3400
+        upgr_icon_y                 = 1700
+        upgr_icon_width             = 450
+        upgr_icon_height            = 150
+        
+        ammo_class                  = ammo_gauss, ammo_gauss_bad, ammo_gauss_verybad
+        ammo_current                = 10
+        ammo_elapsed                = 0
+        ammo_limit                  = 10
+        ammo_mag_size               = 10
+        
+        hit_impulse                 = 1
+        hit_power                   = 5.5, 5.5, 5.5, 5.5
+        hit_type                    = fire_wound
+        fire_distance               = 2000
+        bullet_speed                = 100000
+        
+        misfire_start_condition     = 0.7 ;  0.6
+        misfire_start_prob          = 0.007
+        misfire_end_condition       = 0.3
+        misfire_end_prob            = 0.11
+        
+        condition_queue_shot_dec    = 0.00002
+        condition_shot_dec          = 0.00001
+        
+        hit_probability_gd_novice   = 1.00
+        hit_probability_gd_stalker  = 1.00
+        hit_probability_gd_veteran  = 1.00
+        hit_probability_gd_master   = 1.00
+		
+[wpn_gauss_quest_hud]:wpn_gauss_hud
+
+        item_visual                 = anomaly_weapons\wpn_gauss\wpn_gauss_hud.ogf
+        attach_place_idx            = 0
+        zoom_hide_crosshair         = true
+
+        aim_hud_offset_pos               = -0.003382, 0.015597, -0.044047
+        aim_hud_offset_pos_16x9          = -0.003382, 0.015597, -0.044047
+        aim_hud_offset_rot               = 0.006035, -0.002605, 0
+        aim_hud_offset_rot_16x9          = 0.006035, -0.002605, 0
+
+![wpn_gauss_quest]
+		
+		hud                         = wpn_gauss_quest_hud
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        s3ds_reticle_size   = 6
+ 	    s3ds_eye_relief     = 2		 
+		s3ds_image_type 	= 3
+	    s3ds_reticle_type 	= 6
+	    ms_count 			= 1
+	    magnification 		= 10
+        min_magnification	= 1		
+ ;_______________________________________________________________________________
+ 
+ ;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 6
+		inv_grid_height                          = 2
+        inv_grid_x                               = 64
+        inv_grid_y                               = 29
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 12
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 55
+        ;inv_grid_y                               = 33
+		
+        ;inv_grid_scale     = 2
+
+;___________________________ Scopes ___________________________________
+       
+        scope_status                = 1

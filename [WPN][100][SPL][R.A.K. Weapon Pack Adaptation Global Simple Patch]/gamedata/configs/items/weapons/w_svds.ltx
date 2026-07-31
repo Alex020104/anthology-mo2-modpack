@@ -1,0 +1,946 @@
+﻿______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|                     СВДС EFT Models+Textures,Teivaz Animations, Frosty Adaptation.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                                                            |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_svds]:identity_immunities,weapon_probability,default_weapon_params,wpn_svd_sounds_iwp
+
+        GroupControlSection                      = spawn_group
+        $npc                                     = on
+        $prefetch                                = 8
+        $spawn                                   = "weapons\svd"
+        scheduled                                = off
+        cform                                    = skeleton
+        parent_section                           = wpn_svds
+
+        class                                    = WP_SVD
+        slot                                     = 2
+        animation_slot                           = 2
+        ef_main_weapon_type                      = 3
+        ef_weapon_type                           = 11
+        hand_dependence                          = 1
+        single_handed                            = 0
+
+        default_to_ruck                          = false
+        sprint_allowed                           = true
+
+		hud_fov                     = 0.65
+
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        lewd_lens_hide_enabled       = true	
+        lewd_lens_hide_bone          = lens
+        lewd_lens_hide_delays        = 0.1,0
+        lewd_lens_hide_aim_mode      = true, false, false
+ ;_______________________________________________________________________________
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_1
+		       
+        inv_grid_width                           = 6
+		inv_grid_height                          = 2
+        inv_grid_x                               = 207
+        inv_grid_y                               = 42
+		
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 12
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 195
+        ;inv_grid_y                               = 40
+		
+        ;inv_grid_scale     = 2
+			
+;___________________________ Description ___________________________________
+
+        inv_name                                 = st_wpn_svd
+        inv_name_short                           = st_wpn_svd	
+        description                              = st_wpn_svd_descr
+;____________________________________________________________________
+
+        kind                                     = w_sniper
+        inv_weight                               = 3.91
+        cost                                     = 40550
+        repair_type                              = rifle_7
+        weapon_class                             = sniper_rifle
+
+        hud                                      = wpn_svds_hud
+        visual                                   = dynamics\weapons\wpn_svd\wpn_svd.ogf
+		
+        position                                 = -0.026, -0.070, 0.003	; -0.026, -0.077, 0.00
+        orientation                              = 0.6, -8.4, 0			; 0, 0, 0
+
+        fire_point                               = 0.0, 0.140, 1.010		; 0.0, 0.129, 0.942
+        fire_point2                              = 0.0, 0.129, 0.942
+
+        strap_bone0                              = bip01_spine2
+        strap_bone1                              = bip01_spine1
+        strap_position                           = -0.15, -0.15, 0.45
+        strap_orientation                        = -25, -189, 65
+
+        ph_mass                                  = 3
+
+;___________________________ Particles ___________________________________
+
+        flame_particles                          = weapons\generic_weapon06
+        smoke_particles                          = weapons\generic_shoot_00
+
+        shell_point		 			             = 0.0, 0.129, 0.192
+        shell_dir		 			             = 0.0, 0.0, 0.4
+        shell_particles	 		                 = weapons\762x54
+;____________________________________________________________________
+
+        light_disabled                           = false
+        light_color                              = 0.6, 0.5, 0.3
+        light_range                              = 4.0
+        light_time                               = 0.2
+        light_var_color                          = 0.05
+        light_var_range                          = 0.5
+
+;___________________________ Upgrades ___________________________________
+
+        upgrades                                 = up_gr_firstab_svd, up_gr_seconab_svd, up_gr_thirdab_svd, up_gr_fourtab_svd, up_gr_fourtcd_svd, up_gr_fourtef_svd
+        installed_upgrades                       =
+        upgrade_scheme                           = upgrade_scheme_svd
+		
+		upgr_icon_path                           = ui\ui_rak_global_1
+        upgr_icon_x                              = 1750
+        upgr_icon_y                              = 200
+        upgr_icon_width                          = 300
+        upgr_icon_height                         = 100
+;____________________________________________________________________
+
+        fire_modes                               = 1
+        ammo_class                               = ammo_7.62x54_7h1, ammo_7.62x54_7h1_bad, ammo_7.62x54_7h1_verybad, ammo_7.62x54_ap, ammo_7.62x54_ap_bad, ammo_7.62x54_ap_verybad, ammo_7.62x54_7h14, ammo_7.62x54_7h14_bad, ammo_7.62x54_7h14_verybad
+        ammo_elapsed                             = 20
+        ammo_mag_size                            = 20
+        startup_ammo                             = 20
+
+;___________________________ Scopes ___________________________________
+
+        scopes                                   = wpn_addon_scope, 1p29, 1p59, 1p63, 1p76, 1p78gs, 1pn93, 1pn93n2_1gs, ekp8_02, kobra, okp, pgo7gs, pka, pso1m21, pso2, usp1
+        scope_status                             = 0
+        scope_zoom_factor                        = 0
+		use_alt_aim_hud  		    = true
+
+;___________________________ Silencer ___________________________________
+
+        silencer_name                            = wpn_sil_kzrzp
+        silencer_status                          = 2
+
+        silencer_x                               = 276
+        silencer_y                               = 24
+
+        silencer_light_color                     = 0.6, 0.5, 0.3
+        silencer_light_range                     = 0.01
+        silencer_light_time                      = 0.2
+        silencer_light_var_color                 = 0.05
+        silencer_light_var_range                 = 0.5
+
+        silencer_smoke_particles                 = weapons\generic_shoot_00
+
+;___________________________ Grenade launcher ___________________________________
+
+        grenade_launcher_status                  = 0
+		
+;___________________________ TTX ___________________________________ 
+
+        hit_impulse                              = 40
+        hit_power                                = 1.1, 1.1, 1.1, 1.1
+        hit_type                                 = fire_wound
+        fire_distance                            = 1100
+        bullet_speed                             = 820
+        rpm                                      = 60
+        rpm_empty_click                          = 200
+
+        use_aim_bullet                           = false
+        time_to_aim                              = 0.0 ;  1.0
+        zoom_enabled                             = true
+        zoom_rotate_time                         = 0.25
+        reload_dof                               = 0.0, 0.5, 5, 2.2
+        control_inertion_factor = 1.0f
+        crosshair_inertion                       = 9.3
+		
+        fire_dispersion_base                     = 0.092
+        fire_dispersion_condition_factor         = 0.001
+
+        misfire_probability                      = 0.005
+        misfire_start_condition                  = 0.7 ;  0.91
+        misfire_start_prob                       = 0.007
+        misfire_end_condition                    = 0.11
+        misfire_end_prob                         = 0.11
+
+        condition_queue_shot_dec                 = 0.0040
+        condition_shot_dec                       = 0.0040
+
+        cam_return                               = 0
+        cam_relax_speed                          = 4.5
+        cam_dispersion                           = 2.78
+        cam_dispersion_frac                      = 1.1
+        cam_dispersion_inc                       = 2.78
+        cam_max_angle                            = 50.0
+        cam_max_angle_horz                       = 50.0
+        cam_step_angle_horz                      = 0.8
+
+        zoom_cam_relax_speed                     = 0.75
+        zoom_cam_dispersion                      = 0.75
+        zoom_cam_dispersion_frac                 = 1.0
+        zoom_cam_dispersion_inc                  = 1.97
+        zoom_cam_max_angle                       = 50.0
+        zoom_cam_max_angle_horz                  = 50.0
+        zoom_cam_step_angle_horz                 = 1.65
+
+        PDM_disp_accel_factor                    = 3.05
+        PDM_disp_base                            = 1.45
+        PDM_disp_crouch                          = 1.0
+        PDM_disp_crouch_no_acc                   = 1.0
+        PDM_disp_vel_factor                      = 3.05
+
+        cam_relax_speed_ai                       = 360
+        zoom_cam_relax_speed_ai                  = 120.75
+		
+        holder_fov_modifier                      = 1.0
+        holder_range_modifier                    = 2.15
+
+        min_radius                               = 0
+        max_radius                               = 500
+
+        hit_probability_gd_novice                = 1.00
+        hit_probability_gd_stalker               = 1.00
+        hit_probability_gd_veteran               = 1.00
+        hit_probability_gd_master                = 1.00
+
+        kill_msg_x                               = 0
+        kill_msg_y                               = 0
+        kill_msg_width                           = 98
+        kill_msg_height                          = 23
+
+;_________________________________________________ Sounds ______________________________________________________
+
+        snd_bore								= $no_sounds
+        scripted_snd_bore						= weapons\svd\handling\svd_inspect1
+        scripted_snd_bore_variant1				= weapons\svd\handling\svd_inspect2
+        scripted_snd_bore_variant2				= weapons\svd\handling\svd_inspect3
+        scripted_snd_bore_empty					= weapons\svd\handling\svd_inspect_empty1
+        scripted_snd_bore_empty_variant1		= weapons\svd\handling\svd_inspect_empty2
+        scripted_snd_bore_empty_variant2		= weapons\svd\handling\svd_inspect_empty3
+        scripted_snd_bore_jammed				= weapons\svd\handling\svd_inspect_jammed1
+        scripted_snd_bore_jammed_variant1		= weapons\svd\handling\svd_inspect_jammed2
+        scripted_snd_bore_jammed_variant2		= weapons\svd\handling\svd_inspect_jammed3
+
+        snd_empty								= weapons\svd\handling\svd_dead_trigger1
+        snd_empty1								= weapons\svd\handling\svd_dead_trigger2
+        snd_empty2								= weapons\svd\handling\svd_dead_trigger3
+
+        snd_draw								= weapons\svd\handling\svd_deploy1
+        snd_draw1								= weapons\svd\handling\svd_deploy2
+        snd_draw2								= weapons\svd\handling\svd_deploy3
+        snd_draw3								= weapons\svd\handling\svd_deploy4
+
+        snd_holster								= $no_sounds
+        scripted_snd_hide						= weapons\svd\handling\svd_holster1,true
+        scripted_snd_hide_variant1				= weapons\svd\handling\svd_holster2,true
+        scripted_snd_hide_variant2				= weapons\svd\handling\svd_holster3,true
+        scripted_snd_hide_empty					= weapons\svd\handling\svd_holster1,true
+        scripted_snd_hide_empty_variant1		= weapons\svd\handling\svd_holster2,true
+        scripted_snd_hide_empty_variant2		= weapons\svd\handling\svd_holster3,true
+        scripted_snd_hide_jammed				= weapons\svd\handling\svd_holster1,true
+        scripted_snd_hide_jammed_variant1		= weapons\svd\handling\svd_holster2,true
+        scripted_snd_hide_jammed_variant2		= weapons\svd\handling\svd_holster3,true
+
+        scripted_snd_sprint_start				= weapons\svd\handling\svd_sprint_start,true
+        scripted_snd_sprint_start_empty			= weapons\svd\handling\svd_sprint_start,true
+        scripted_snd_sprint_start_jammed		= weapons\svd\handling\svd_sprint_start,true
+        scripted_snd_sprint_end					= weapons\svd\handling\svd_sprint_end,true
+        scripted_snd_sprint_end_empty			= weapons\svd\handling\svd_sprint_end,true
+        scripted_snd_sprint_end_jammed			= weapons\svd\handling\svd_sprint_end,true
+		
+        snd_idle_sprint							= weapons\svd\handling\svd_sprint_loop,1.0
+        snd_idle_sprint_empty					= weapons\svd\handling\svd_sprint_loop,1.0
+        snd_idle_sprint_jammed					= weapons\svd\handling\svd_sprint_loop,1.0
+
+        snd_reload								= weapons\svd\handling\svd_reload_partial1
+        snd_reload1								= weapons\svd\handling\svd_reload_partial2
+        snd_reload2								= weapons\svd\handling\svd_reload_partial3
+
+        snd_reload_empty						= weapons\svd\handling\svd_reload_empty1
+        snd_reload_empty1						= weapons\svd\handling\svd_reload_empty2
+        snd_reload_empty2						= weapons\svd\handling\svd_reload_empty3
+
+        snd_reload_misfire						= weapons\svd\handling\svd_unjam1
+        snd_reload_misfire1						= weapons\svd\handling\svd_unjam2
+        snd_reload_misfire2						= weapons\svd\handling\svd_unjam3
+        snd_reload_misfire3						= weapons\svd\handling\svd_unjam4
+
+        scripted_snd_ammo_check					= weapons\svd\handling\svd_magcheck1
+        scripted_snd_ammo_check_variant1		= weapons\svd\handling\svd_magcheck2
+        scripted_snd_ammo_check_variant2		= weapons\svd\handling\svd_magcheck3
+        scripted_snd_ammo_check_empty			= weapons\svd\handling\svd_magcheck1
+        scripted_snd_ammo_check_empty_variant1	= weapons\svd\handling\svd_magcheck2
+        scripted_snd_ammo_check_empty_variant2	= weapons\svd\handling\svd_magcheck3
+        scripted_snd_ammo_check_jammed			= weapons\svd\handling\svd_magcheck1
+        scripted_snd_ammo_check_jammed_variant1	= weapons\svd\handling\svd_magcheck2
+        scripted_snd_ammo_check_jammed_variant2	= weapons\svd\handling\svd_magcheck3
+        scripted_snd_ammo_check_no_mag			= weapons\svd\handling\svd_magcheck1
+        scripted_snd_ammo_check_no_mag_variant1	= weapons\svd\handling\svd_magcheck2
+        scripted_snd_ammo_check_no_mag_variant2	= weapons\svd\handling\svd_magcheck3
+
+        snd_shoot                               = wpn_svd_new_shoot
+        snd_shoot_actor                         = wpn_svd_new_shoot_actor
+        snd_silncer_shot                        = wpn_svd_new_silenced_shoot
+        snd_silncer_shot_actor                  = wpn_svd_new_silenced_shoot_actor
+
+        scripted_snd_shots                      = weapons\svd\stereo\svd_shoot_stereo_mech
+        scripted_snd_shots_variant1             = weapons\svd\stereo\svd_shoot_stereo_mech
+        scripted_snd_shots_variant2             = weapons\svd\stereo\svd_shoot_stereo_mech
+        scripted_snd_shots_variant3             = weapons\svd\stereo\svd_shoot_stereo_mech
+
+;__________________________________________ HUD parameters ____________________________________________________
+
+[wpn_svds_hud]:hud_base
+
+        item_visual                             = anomaly_weapons\wpn_svds\wpn_svds_hud.ogf
+        attach_place_idx                        = 0
+        zoom_hide_crosshair                     = true   
+
+;======================== Hud Position =======================================================
+
+        item_position                           = 0.000534, 0.000426, 0
+        item_orientation                        = 0.0, 0.0, 0.0
+
+        lowered_hud_offset_pos                  = -0.009469, -0.034213, 0.01739
+        lowered_hud_offset_pos_16x9             = -0.009469, -0.034213, 0.01739
+        lowered_hud_offset_rot                  = -0.083104, -0.723409, 0.351611
+        lowered_hud_offset_rot_16x9             = -0.083104, -0.723409, 0.351611
+
+        hands_orientation                = 2.060803, 1.789163, 0
+        hands_orientation_16x9           = 2.060803, 1.789163, 0
+        hands_position                   = 0, 0, -0.025957
+        hands_position_16x9              = 0, 0, -0.025957
+
+        aim_hud_offset_pos               = -0.072771, 0.0172, -0.01927
+        aim_hud_offset_pos_16x9          = -0.072771, 0.0172, -0.01927
+        aim_hud_offset_rot               = -0.020569, 0.002893, 0.025267
+        aim_hud_offset_rot_16x9          = -0.020569, 0.002893, 0.025267
+		
+        aim_hud_offset_alt_pos           = -0.112118, -0.074434, -0.037397
+        aim_hud_offset_alt_pos_16x9      = -0.112118, -0.074434, -0.037397
+        aim_hud_offset_alt_rot           = -0.007252, 0.004602, 0.597761
+        aim_hud_offset_alt_rot_16x9      = -0.007252, 0.004602, 0.597761
+
+        gl_hud_offset_pos                       = 0.000000, 0.000000, 0.000000
+        gl_hud_offset_pos_16x9                  = 0.000000, 0.000000, 0.000000
+        gl_hud_offset_rot                       = 0.000000, 0.000000, 0.000000
+        gl_hud_offset_rot_16x9                  = 0.000000, 0.000000, 0.000000
+
+        lean_hud_offset_pos                     = 0, 0, 0
+        lean_hud_offset_rot                     = 0, 0, 0
+
+;======================== BORING =======================================================
+
+        anm_bore                                = svdn_inspect, inspect
+        anm_bore_variant1                       = svdn_inspect, inspect
+        anm_bore_variant2                       = svdn_inspect, inspect
+		
+        anm_bore_empty                         = svdn_inspect_empty, inspect_empty
+        anm_bore_empty_variant1                = svdn_inspect_empty, inspect_empty
+        anm_bore_empty_variant2                = svdn_inspect_empty, inspect_empty
+
+        anm_bore_jammed                         = svdn_inspect_jammed, inspect_jammed
+        anm_bore_jammed_variant1                = svdn_inspect_jammed, inspect_jammed
+        anm_bore_jammed_variant2                = svdn_inspect_jammed, inspect_jammed
+		
+;======================== HIDE ==========================================================
+
+        anm_hide                                = svdn_holster, holster
+        anm_hide_variant1                       = svdn_holster, holster
+        anm_hide_variant2                       = svdn_holster, holster
+		
+        anm_hide_empty                         = svdn_holster, idle_empty
+        anm_hide_empty_variant1                = svdn_holster, idle_empty
+        anm_hide_empty_variant2                = svdn_holster, idle_empty
+		
+        anm_hide_jammed                         = svdn_holster, idle_jammed
+        anm_hide_jammed_variant1                = svdn_holster, idle_jammed
+        anm_hide_jammed_variant2                = svdn_holster, idle_jammed
+
+;======================== SHOW ==========================================================
+
+		anm_show                                = svdn_draw, idle
+		
+		anm_show_empty                          = svdn_draw, idle_empty
+
+;======================== IDLE ==========================================================
+
+		anm_idle                                = svdn_idle, idle
+        anm_idle_moving                         = svdn_walk, idle
+        anm_idle_moving_crouch                  = svdn_walk, idle, 0.9
+		
+		anm_idle_empty                          = svdn_idle, idle_empty
+        anm_idle_moving_empty                   = svdn_walk, idle_empty
+        anm_idle_moving_crouch_empty            = svdn_walk, idle_empty, 0.9		
+
+        anm_idle_jammed                         = svdn_idle, idle_jammed       
+        anm_idle_moving_jammed                  = svdn_walk, idle_jammed, 0.75
+        anm_idle_moving_crouch_jammed           = svdn_walk, idle_jammed, 0.9			
+;======================== SPRINT TRANSITIONS AND PATERN ====================================================
+
+        anm_sprint_start                     = svdn_sprint_start, idle		
+		anm_idle_sprint                      = svdn_sprint, sprint
+        anm_sprint_end                       = svdn_sprint_end, idle
+
+		anm_sprint_start_empty               = svdn_sprint_start, idle_empty
+		anm_idle_sprint_empty                = svdn_sprint, idle_empty
+		anm_sprint_end_empty                 = svdn_sprint_end, idle_empty
+		
+        anm_sprint_start_jammed              = svdn_sprint_start, idle_jammed
+        anm_idle_sprint_jammed               = svdn_sprint, idle_jammed
+		anm_sprint_end_jammed                = svdn_sprint_end, idle_jammed
+
+;----------------------------------------------------------------------------------------
+		ts_pattern_sprint_end                = anm_idle_sprint, ^anm_idle.*, anm_sprint_end
+		ts_pattern_sprint_start              = .+, anm_idle_sprint, anm_sprint_start, 1
+		ts_strict_sprint_end_move            = anm_sprint_start, anm_idle_moving, anm_sprint_end
+		
+		ts_pattern_sprint2walk_aim           = anm_sprint_start, ^anm_idle_aim.*, anm_sprint_end, 1
+		ts_strict_sprint2walk_idle           = anm_sprint_start, anm_idle, anm_sprint_end
+		ts_strict_sprint2aim                 = anm_idle_sprint, anm_idle_aim, anm_sprint_end
+		ts_strict_sprint2inspect             = anm_idle_sprint, anm_bore, anm_sprint_end
+		ts_strict_walk2sprint_inspect        = anm_sprint_start, anm_bore, anm_sprint_end
+
+;======================== AIM TRANSITIONS ====================================================
+		
+        anm_idle_aim                            = svdn_idle_aim, idle
+        anm_idle_aim_start                      = svdn_idle_aim_start, idle
+        anm_idle_aim_end                        = svdn_idle_aim_end, idle	
+
+        anm_idle_aim_start_empty                = svdn_idle_aim_start, idle_empty
+		anm_idle_aim_empty                      = svdn_idle_aim, idle_empty
+        anm_idle_aim_end_empty                  = svdn_idle_aim_end, idle_empty
+
+        anm_idle_aim_start_jammed               = svdn_idle_aim_start, idle_jammed
+		anm_idle_aim_jammed                     = svdn_idle_aim, idle_jammed
+        anm_idle_aim_end_jammed                 = svdn_idle_aim_end, idle_jammed
+		
+        anm_idle_aim_moving                     = svdn_walk, idle, 0.75
+        anm_idle_aim_moving_crouch              = svdn_walk, idle, 0.75 
+		
+;======================== RELOAD ==========================================================
+
+        anm_reload                              = svds_reload, reload
+        anm_reload_empty                        = svds_reload_empty, reload_empty
+		
+        anm_reload_misfire                      = svdn_unjam, unjam
+		
+;========================SHOOTS===========================================================
+
+        anm_shots                               = svdn_shoot, shoot
+        anm_shots_variant1                      = svdn_shoot1, shoot1
+        anm_shots_variant2                      = svdn_shoot2, shoot2
+        anm_shots_variant3                      = svdn_shoot3, shoot3
+		
+        anm_shot_l                              = svdn_shoot, shoot_last
+        anm_shot_1_variant1                     = svdn_shoot1, shoot_last1
+        anm_shot_1_variant2                     = svdn_shoot2, shoot_last2
+        anm_shot_1_variant3                     = svdn_shoot3, shoot_last3
+		
+;========================AMMO CHECK===========================================================
+
+        anm_ammo_check							= svdn_mag_check, mag_check
+        anm_ammo_check_variant1					= svdn_mag_check, mag_check
+        anm_ammo_check_variant2					= svdn_mag_check, mag_check
+		
+        anm_ammo_check_empty					= svdn_mag_check, mag_check_empty
+        anm_ammo_check_empty_variant1			= svdn_mag_check, mag_check_empty
+        anm_ammo_check_empty_variant2			= svdn_mag_check, mag_check_empty
+		
+        anm_ammo_check_jammed					= svdn_mag_check, mag_check_jammed
+        anm_ammo_check_jammed_variant1			= svdn_mag_check, mag_check_jammed
+        anm_ammo_check_jammed_variant2			= svdn_mag_check, mag_check_jammed
+		
+        anm_ammo_check_no_mag					= svdn_mag_check, mag_check
+        anm_ammo_check_no_mag_variant1			= svdn_mag_check, mag_check
+        anm_ammo_check_no_mag_variant2			= svdn_mag_check, mag_check
+
+;_____________________________________ Parameters of the shells sprite for HUD __________________________	
+
+        shell_bone                               = gilza
+        shell_dir                                = 999, 999, 999
+        shell_point                              = 999, 999, 999
+
+        fire_bone                                = muzzle
+        fire_point                               = 0, 0, 0
+
+        freelook_z_offset_mul					 = 0.45
+		
+;____________________________________________________ Addons _______________________________________________________________________________________________________
+
+;__________________________________________________________ WPN ADDON SCOPE ANOMALY (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_svds_wpn_addon_scope]:wpn_svds
+
+        1icon_layer	       = pso1m21
+        1icon_layer_x      = 47
+        1icon_layer_y      = 14
+
+        hud		   = wpn_svds_pso1m21_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_pso1m21_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pso2_vss
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_wpn_addon_scope_hud]:wpn_svds_hud, wpn_svd_shoot_scope_fix_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_pso1m21_hud.ogf
+		
+        aim_hud_offset_pos               = -0.061842, 0.007672, -0.049001
+        aim_hud_offset_pos_16x9          = -0.061842, 0.007672, -0.049001
+        aim_hud_offset_rot               = -0.008912, 0.001672, 0.025267
+        aim_hud_offset_rot_16x9          = -0.008912, 0.001672, 0.025267
+		
+;__________________________________________________________ 1P29 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_svds_1p29]:wpn_svds
+
+        1icon_layer	       = 1p29
+        1icon_layer_x      = 65
+        1icon_layer_y      = 15
+
+        hud		           = wpn_svds_1p29_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_1p29_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p29
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_1p29_hud]:wpn_svds_hud, wpn_svd_shoot_scope_fix_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_1p29_hud.ogf
+		
+        aim_hud_offset_pos               = -0.075748, -0.009822, -0.072609
+        aim_hud_offset_pos_16x9          = -0.075748, -0.009822, -0.072609
+        aim_hud_offset_rot               = -0.00756, 0.00247, 0.025267
+        aim_hud_offset_rot_16x9          = -0.00756, 0.00247, 0.025267
+
+;__________________________________________________________ 1P59 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_svds_1p59]:wpn_svds
+
+        1icon_layer	       = 1p59
+        1icon_layer_x      = 78
+        1icon_layer_y      = 15
+
+        hud		   = wpn_svds_1p59_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_1p59_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 25
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p59
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_1p59_hud]:wpn_svds_hud, wpn_svd_shoot_scope_fix_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_1p59_hud.ogf
+		
+        aim_hud_offset_pos               = -0.060506, -0.004487, -0.069055
+        aim_hud_offset_pos_16x9          = -0.060506, -0.004487, -0.069055
+        aim_hud_offset_rot               = -0.006487, 0.002408, 0.025267
+        aim_hud_offset_rot_16x9          = -0.006487, 0.002408, 0.025267
+			
+;__________________________________________________________ 1P63 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_svds_1p63]:wpn_svds
+
+        1icon_layer	       = 1p63
+        1icon_layer_x      = 79
+        1icon_layer_y      = 20
+
+        hud		   = wpn_svds_1p63_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_1p63_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_1p63_hud]:wpn_svds_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_1p63_hud.ogf
+		
+        aim_hud_offset_pos               = -0.076021, -0.010529, -0.042739
+        aim_hud_offset_pos_16x9          = -0.076021, -0.010529, -0.042739
+        aim_hud_offset_rot               = -0.007985, 0.003109, 0.025267
+        aim_hud_offset_rot_16x9          = -0.007985, 0.003109, 0.025267
+		
+;__________________________________________________________ 1P76 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_svds_1p76]:wpn_svds
+
+        1icon_layer	       = 1p76
+        1icon_layer_x      = 79
+        1icon_layer_y      = 20
+
+        hud		   = wpn_svds_1p76_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_1p76_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_1p76_hud]:wpn_svds_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_1p76_hud.ogf
+		
+        aim_hud_offset_pos               = -0.076011, -0.005127, -0.031715
+        aim_hud_offset_pos_16x9          = -0.076011, -0.005127, -0.031715
+        aim_hud_offset_rot               = -0.007486, 0.003801, 0.025267
+        aim_hud_offset_rot_16x9          = -0.007486, 0.003801, 0.025267
+			
+;__________________________________________________________ 1P78GS (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_svds_1p78gs]:wpn_svds
+
+        1icon_layer	       = 1p78gs
+        1icon_layer_x      = 79
+        1icon_layer_y      = 20
+
+        hud		   = wpn_svds_1p78gs_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_1p78gs_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_1p78gs
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_1p78gs_hud]:wpn_svds_hud, wpn_svd_shoot_scope_fix_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_1p78gs_hud.ogf
+		
+        aim_hud_offset_pos               = -0.078096, -0.011668, -0.03663
+        aim_hud_offset_pos_16x9          = -0.078096, -0.011668, -0.03663
+        aim_hud_offset_rot               = -0.007762, 0.002248, 0.025267
+        aim_hud_offset_rot_16x9          = -0.007762, 0.002248, 0.025267
+				
+;__________________________________________________________ 1PN93-4 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_svds_1pn93]:wpn_svds
+
+        1icon_layer	       = 1pn93
+        1icon_layer_x      = 52
+        1icon_layer_y      = 17
+
+        hud		   = wpn_svds_1pn93_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_1pn93_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_1pn93
+		
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_1pn93_hud]:wpn_svds_hud, wpn_svd_shoot_scope_fix_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_1pn93_hud.ogf
+		
+        aim_hud_offset_pos               = -0.066956, -0.010032, -0.063718
+        aim_hud_offset_pos_16x9          = -0.066956, -0.010032, -0.063718
+        aim_hud_offset_rot               = -0.010034, 0.001882, 0.025267
+        aim_hud_offset_rot_16x9          = -0.010034, 0.001882, 0.025267
+					
+;__________________________________________________________ 1PN93-1 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_svds_1pn93n2_1gs]:wpn_svds
+
+        1icon_layer	       = 1pn93n2_1gs
+        1icon_layer_x      = 52
+        1icon_layer_y      = 17
+
+        hud		   = wpn_svds_1pn93n2_1gs_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_1pn93n2_1gs_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_2gen
+        !scope_texture        = wpn_crosshair_1pn93n2_1gs
+		
+		
+		
+		use_alt_!!!!aim_hud    = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_1pn93n2_1gs_hud]:wpn_svds_hud, wpn_svd_shoot_scope_fix_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_1pn93n2_1gs_hud.ogf
+		
+        aim_hud_offset_pos               = -0.063015, -0.000213, -0.065496
+        aim_hud_offset_pos_16x9          = -0.063015, -0.000213, -0.065496
+        aim_hud_offset_rot               = -0.008476, 0.001831, 0.025267
+        aim_hud_offset_rot_16x9          = -0.008476, 0.001831, 0.025267
+		
+;__________________________________________________________ EKP-8-02 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_svds_ekp8_02]:wpn_svds
+
+        1icon_layer	       = ekp8_02
+        1icon_layer_x      = 85
+        1icon_layer_y      = 21
+
+        hud		           = wpn_svds_ekp8_02_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_ekp8_02_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_ekp8_02_hud]:wpn_svds_hud, wpn_svd_shoot_scope_fix_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_ekp8_02_hud.ogf
+		
+        aim_hud_offset_pos               = -0.077722, -0.006553, -0.053761
+        aim_hud_offset_pos_16x9          = -0.077722, -0.006553, -0.053761
+        aim_hud_offset_rot               = -0.007414, 0.001564, 0.025267
+        aim_hud_offset_rot_16x9          = -0.007414, 0.001564, 0.025267
+		
+;__________________________________________________________ Кобра ЭП-1С-03(BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_svds_kobra]:wpn_svds
+
+        1icon_layer	       = kobra
+        1icon_layer_x      = 77
+        1icon_layer_y      = 19
+
+        hud		   = wpn_svds_kobra_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_kobra_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_kobra_hud]:wpn_svds_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_kobra_hud.ogf
+		
+        aim_hud_offset_pos               = -0.077501, -0.004986, -0.01927
+        aim_hud_offset_pos_16x9          = -0.077501, -0.004986, -0.01927
+        aim_hud_offset_rot               = -0.010694, 0.002413, 0.025267
+        aim_hud_offset_rot_16x9          = -0.010694, 0.002413, 0.025267
+		
+;__________________________________________________________ ОКП-7 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_svds_okp]:wpn_svds
+
+        1icon_layer	       = okp
+        1icon_layer_x      = 79
+        1icon_layer_y      = 19
+
+        hud		   = wpn_svds_okp_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_okp_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_okp_hud]:wpn_svds_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_okp_hud.ogf
+		
+        aim_hud_offset_pos               = -0.07378, 0.005397, -0.018987
+        aim_hud_offset_pos_16x9          = -0.07378, 0.005397, -0.018987
+        aim_hud_offset_rot               = -0.009681, 0.002354, 0.025267
+        aim_hud_offset_rot_16x9          = -0.009681, 0.002354, 0.025267
+
+;__________________________________________________________ PGO7GS (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_svds_pgo7gs]:wpn_svds
+
+        1icon_layer	       = pgo7gs
+        1icon_layer_x      = 76
+        1icon_layer_y      = 13
+
+        hud		   = wpn_svds_pgo7gs_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_pgo7gs_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pka
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_pgo7gs_hud]:wpn_svds_hud, wpn_svd_shoot_scope_fix_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_pgo7gs_hud.ogf
+		
+        aim_hud_offset_pos               = -0.042055, -0.002347, -0.107385
+        aim_hud_offset_pos_16x9          = -0.042055, -0.002347, -0.107385
+        aim_hud_offset_rot               = -0.047232, 0.000385, 0.01823
+        aim_hud_offset_rot_16x9          = -0.047232, 0.000385, 0.01823
+		
+;__________________________________________________________ ПК-А (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_svds_pka]:wpn_svds
+
+        1icon_layer	       = pka
+        1icon_layer_x      = 55
+        1icon_layer_y      = 14
+
+        hud		   = wpn_svds_pka_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_pka_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pka
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_pka_hud]:wpn_svds_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_pka_hud.ogf
+		
+        aim_hud_offset_pos               = -0.070255, -0.006974, -0.036194
+        aim_hud_offset_pos_16x9          = -0.070255, -0.006974, -0.036194
+        aim_hud_offset_rot               = -0.006699, 0.003429, 0.025267
+        aim_hud_offset_rot_16x9          = -0.006699, 0.003429, 0.025267
+
+;__________________________________________________________ ПСО-1M2-1 (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_svds_pso1m21]:wpn_svds
+
+        1icon_layer	       = pso1m21
+        1icon_layer_x      = 47
+        1icon_layer_y      = 14
+
+        hud		   = wpn_svds_pso1m21_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_pso1m21_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pso2_vss
+		
+		
+		use_alt_!!!!aim_hud    = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_pso1m21_hud]:wpn_svds_hud, wpn_svd_shoot_scope_fix_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_pso1m21_hud.ogf
+		
+        aim_hud_offset_pos               = -0.061842, 0.007672, -0.049001
+        aim_hud_offset_pos_16x9          = -0.061842, 0.007672, -0.049001
+        aim_hud_offset_rot               = -0.008912, 0.001672, 0.025267
+        aim_hud_offset_rot_16x9          = -0.008912, 0.001672, 0.025267
+
+;__________________________________________________________ ПСО-1M Без Наглазника (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_svds_pso2]:wpn_svds
+
+        1icon_layer	       = pso2
+        1icon_layer_x      = 47
+        1icon_layer_y      = 14
+
+        hud		   = wpn_svds_pso2_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_pso2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_pso2_vss
+		
+		
+		use_alt_!!!!aim_hud    = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_pso2_hud]:wpn_svds_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_pso2_hud.ogf
+		
+        aim_hud_offset_pos               = -0.061842, 0.007672, -0.049001
+        aim_hud_offset_pos_16x9          = -0.061842, 0.007672, -0.049001
+        aim_hud_offset_rot               = -0.008912, 0.001672, 0.025267
+        aim_hud_offset_rot_16x9          = -0.008912, 0.001672, 0.025267
+		
+;__________________________________________________________ 1P29 Без наглазника (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_svds_usp1]:wpn_svds
+
+        1icon_layer	       = usp1
+        1icon_layer_x      = 65
+        1icon_layer_y      = 15
+
+        hud		   = wpn_svds_usp1_hud
+        !visual             = dynamics\weapons\wpn_svds\wpn_svds_usp1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_usp1
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_svds_usp1_hud]:wpn_svds_hud, wpn_svd_shoot_scope_fix_hud 
+
+        item_visual        = anomaly_weapons\wpn_svds\wpn_svds_usp1_hud.ogf
+		
+        aim_hud_offset_pos               = -0.075748, -0.009822, -0.072609
+        aim_hud_offset_pos_16x9          = -0.075748, -0.009822, -0.072609
+        aim_hud_offset_rot               = -0.00756, 0.00247, 0.025267
+        aim_hud_offset_rot_16x9          = -0.00756, 0.00247, 0.025267

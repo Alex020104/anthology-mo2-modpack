@@ -1,0 +1,1063 @@
+﻿[wpn_uzi_sounds]
+snd_bore                            = $no_sound
+snd_draw		            = weapons\uzi\uzi_draw
+snd_holster			    = weapons\uzi\uzi_holster
+snd_reload			    = weapons\uzi\uzi_reload
+snd_reload_empty                    = weapons\uzi\uzi_reload_empty
+snd_reload_misfire                  = weapons\uzi\uzi_unjam
+snd_shoot                                                         = wpn_mp7_snd_shoot
+snd_silncer_shot                                                  = weapons\mp7\mp7_suppressed
+
+scripted_snd_bore                   = weapons\uzi\uzi_inspect
+scripted_snd_ammo_check             = weapons\uzi\uzi_magcheck
+scripted_snd_ammo_check_empty       = weapons\uzi\uzi_magcheck
+ ______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|                     UZI SoulsCrystal Models+Textures+Animations.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                                                                              |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_uzi]:identity_immunities,weapon_probability,default_weapon_params,wpn_uzi_sounds
+
+        GroupControlSection         = spawn_group
+        $npc                        = on
+        $prefetch                   = 8
+        $spawn                      = "weapons\uzi"
+        scheduled                   = off
+        cform                       = skeleton
+        parent_section              = wpn_uzi
+        
+        class                       = WP_LR300
+        slot                        = 1
+        animation_slot              = 1
+        ef_main_weapon_type         = 2
+        ef_weapon_type              = 6
+        hand_dependence             = 1
+        single_handed               = 0
+        
+        default_to_ruck             = false
+        sprint_allowed              = true
+
+		hud_fov                                  = 0.65
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        lewd_lens_hide_enabled       = true	
+        lewd_lens_hide_bone          = lens
+        lewd_lens_hide_delays        = 0.1,0
+        lewd_lens_hide_aim_mode      = true, false, false
+ ;_______________________________________________________________________________
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 3
+		inv_grid_height                          = 2
+        inv_grid_x                               = 23
+        inv_grid_y                               = 24
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 6
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 6
+        ;inv_grid_y                               = 24
+		
+        ;inv_grid_scale     = 2
+			
+;___________________________ Description ___________________________________
+
+        inv_name                    = st_wpn_uzi
+        inv_name_short              = st_wpn_uzi
+        description                 = st_wpn_uzi_descr
+;____________________________________________________________________   
+    
+        kind                        = w_smg ;w_pistol
+        inv_weight                  = 3.5
+        cost                        = 19690
+        repair_type                 = pistol
+        weapon_class                = assault_rifle
+        
+        hud                         = wpn_uzi_hud
+        visual                      = dynamics\weapons\wpn_uzi\wpn_uzi.ogf
+		
+        orientation                      = 0, -2, -10
+        position                         = -0.035, 0.03, -0.005
+		
+        fire_point                       = 0, 0.02, 0.32
+        fire_point2                      = 0, 0.02, 0.32
+        fire_point_silencer         = 0, 0.02, 0.562
+		
+        strap_bone0                 = bip01_spine2
+        strap_bone1                 = bip01_spine1
+        strap_orientation                = -10, -10, 100
+        strap_position                   = -0.16, -0.175, 0.18
+		
+        ph_mass                     = 3
+
+;___________________________ Particles ___________________________________
+        
+        flame_particles             = weapons\generic_weapon05
+        smoke_particles             = weapons\generic_shoot_00
+        grenade_flame_particles     = weapons\generic_weapon01
+        
+        shell_point		    = 0,0.025,-0.04
+        shell_dir                   = 0,0,0.4
+        shell_particles	 	    = weapons\9x19
+;____________________________________________________________________
+
+        light_disabled              = false
+        light_color                 = 0.6, 0.5, 0.3
+        light_range                 = 5
+        light_time                  = 0.2
+        light_var_color             = 0.05
+        light_var_range             = 0.5
+
+;___________________________ Upgrades ___________________________________
+        
+        upgrades                    = up_gr_firstab_pp2000, up_gr_seconab_pp2000, up_gr_thirdab_pp2000, up_gr_fourtab_pp2000, up_gr_fifthab_uzi
+        installed_upgrades          =
+        upgrade_scheme              = upgrade_scheme_mp5
+		
+        upgr_icon_path              = ui\ui_rak_global_2
+        upgr_icon_x                 = 1350
+        upgr_icon_y                 = 1250
+        upgr_icon_width             = 350
+        upgr_icon_height            = 200
+;____________________________________________________________________
+        
+        fire_modes                  = 1, -1
+        ammo_class                  = ammo_9x19_fmj, ammo_9x19_fmj_bad, ammo_9x19_fmj_verybad, ammo_9x19_pbp, ammo_9x19_pbp_bad, ammo_9x19_pbp_verybad, ammo_9x19_ap, ammo_9x19_ap_bad, ammo_9x19_ap_verybad
+        ammo_elapsed                = 32
+        ammo_mag_size               = 32
+        startup_ammo                = 90
+
+;___________________________ Scopes ___________________________________
+      
+        scopes                      = ac10632
+        scope_status                = 0
+        scope_zoom_factor           = 0
+
+;___________________________ Silencer ___________________________________
+       
+        silencer_name               = wpn_sil_9mm
+        silencer_status             = 2
+		
+        silencer_x                  = 131
+        silencer_y                  = 3
+		
+        silencer_light_color        = 0.6, 0.5, 0.3
+        silencer_light_range        = 0.01
+        silencer_light_time         = 0.2
+        silencer_light_var_color    = 0.05
+        silencer_light_var_range    = 0.5
+		
+        silencer_flame_particles    = weapons\generic_weapon03
+        silencer_smoke_particles    = amik\weapons\smoke_particles\silencer_smoke_particles_02
+
+;___________________________ Grenade launcher _____________________________________
+        
+        grenade_class               = ammo_vog-25, ammo_vog-25_bad, ammo_vog-25_verybad
+        grenade_launcher_status     = 0
+        launch_speed                = 0
+ 
+;___________________________ TTX ___________________________________
+ 
+        hit_impulse                 = 20
+        hit_power                   = 0.47, 0.47, 0.47, 0.47
+        hit_type                    = fire_wound
+        fire_distance               = 400
+        bullet_speed                = 400
+        rpm                         = 600
+        rpm_empty_click             = 200
+        ap_modifier                 = 1.1
+        
+        use_aim_bullet              = false
+        time_to_aim                 = 0.0 ;  3.0
+        zoom_dof                    = 0.5, 1.0, 180
+        zoom_enabled                = true
+        zoom_rotate_time            = 0.225
+        reload_dof                  = 0.0, 0.5, 5, 2
+        control_inertion_factor = 1.0f
+        crosshair_inertion          = 3.9
+        fire_dispersion_base        = 0.55
+        fire_dispersion_condition_factor = 0.001
+        
+        misfire_probability         = 0.0045
+        misfire_start_condition     = 0.75
+        misfire_start_prob          = 0.007
+        misfire_end_condition       = 0.16
+        misfire_end_prob            = 0.11
+        
+        condition_queue_shot_dec    = 0.00095
+        condition_shot_dec          = 0.00095
+        
+        cam_return                  = 0
+        cam_relax_speed             = 12
+        cam_dispersion              = 0.45
+        cam_dispersion_frac         = 1.05
+        cam_dispersion_inc          = 0.0475
+        cam_max_angle               = 40.0
+        cam_max_angle_horz          = 40.0
+        cam_step_angle_horz         = 1.5
+		
+        zoom_cam_relax_speed        = 12
+        zoom_cam_dispersion         = 0.38
+        zoom_cam_dispersion_frac    = 1.0
+        zoom_cam_dispersion_inc     = 0.0375
+        zoom_cam_max_angle          = 40.0
+        zoom_cam_max_angle_horz     = 40.0
+        zoom_cam_step_angle_horz    = 1.42
+        
+        PDM_disp_accel_factor       = 1.155
+        PDM_disp_base               = 0.6
+        PDM_disp_crouch             = 1.0
+        PDM_disp_crouch_no_acc      = 1.0
+        PDM_disp_vel_factor         = 1.15
+        
+        cam_relax_speed_ai          = 120.75
+        zoom_cam_relax_speed_ai     = 120.75
+		
+        holder_fov_modifier         = 1.0
+        holder_range_modifier       = 1.0
+		
+        min_radius                  = 0
+        max_radius                  = 500
+		
+        hit_probability_gd_novice   = 1.00
+        hit_probability_gd_stalker  = 1.00
+        hit_probability_gd_veteran  = 1.00
+        hit_probability_gd_master   = 1.00
+        
+        kill_msg_x                  = 72
+        kill_msg_y                  = 82
+        kill_msg_width              = 56
+        kill_msg_height             = 23
+
+        script_binding              = hidebone_uzi_upgrade.bind
+
+;_________________________________________________ Sounds ______________________________________________________
+
+        snd_bore                            = $no_sound
+        snd_draw		            = weapons\uzi\uzi_draw
+        snd_holster			    = weapons\uzi\uzi_holster
+        snd_reload			    = weapons\uzi\uzi_reload
+        snd_reload_empty                    = weapons\uzi\uzi_reload_empty
+        snd_reload_misfire                  = weapons\uzi\uzi_unjam
+
+snd_shoot                                                         = wpn_mp7_snd_shoot
+snd_silncer_shot                                                  = weapons\mp7\mp7_suppressed
+
+        scripted_snd_bore                   = weapons\uzi\uzi_inspect
+        scripted_snd_ammo_check             = weapons\uzi\uzi_magcheck
+        scripted_snd_ammo_check_empty       = weapons\uzi\uzi_magcheck
+
+;__________________________________________ HUD parameters ____________________________________________________
+
+[wpn_uzi_hud]:hud_base
+
+        item_visual                 = anomaly_weapons\wpn_uzi\wpn_uzi_hud.ogf
+        attach_place_idx            = 0
+        zoom_hide_crosshair         = true
+
+;======================== Hud Position =======================================================
+        
+        item_position               = 0, 0, 0
+        item_orientation            = 0, 0, 0
+        
+        hands_position              = 0, 0, 0
+        hands_position_16x9         = 0, 0, 0
+        hands_orientation           = 0, 0, 0
+        hands_orientation_16x9      = 0, 0, 0
+        
+        aim_hud_offset_pos               = -0.0876, 0.03045, -0.065
+        aim_hud_offset_pos_16x9          = -0.0876, 0.03045, -0.065
+        aim_hud_offset_rot               = 0.015, 0.00075, -0.0225
+        aim_hud_offset_rot_16x9          = 0.015, 0.00075, -0.0225
+        
+        gl_hud_offset_pos           = 0, 0, 0
+        gl_hud_offset_pos_16x9      = 0, 0, 0
+        gl_hud_offset_rot           = 0, 0, 0
+        gl_hud_offset_rot_16x9      = 0, 0, 0
+
+        lowered_hud_offset_pos           = 0.04, 0, -0.01
+        lowered_hud_offset_pos_16x9      = 0.04, 0, -0.01
+        lowered_hud_offset_rot           = 0.1, -0.5, 0.15
+        lowered_hud_offset_rot_16x9      = 0.1, -0.5, 0.15
+        
+        lean_hud_offset_pos         = 0, 0, 0
+        lean_hud_offset_rot         = 0, 0, 0
+        
+
+;_____________________________________ Animations _____________________________________
+
+        anm_bore                    = h_uzi_inspect, uzi_inspect
+        anm_bore_empty              = h_uzi_inspect, uzi_inspect_empty
+
+        anm_show                    = h_uzi_draw, uzi_draw
+        anm_hide                    = h_uzi_holster, uzi_holster
+
+        anm_idle                    = h_uzi_idle, uzi_idle
+        anm_idle_aim                = h_uzi_idle_aim, uzi_idle
+        anm_idle_moving             = h_uzi_walk, uzi_walk
+        anm_idle_moving_crouch      = h_uzi_walk, uzi_walk, 0.7
+        anm_idle_sprint             = h_uzi_sprint, uzi_sprint, 1.225
+        anm_idle_lowered            = h_uzi_idle_lowered, uzi_idle
+
+        anm_reload                  = h_uzi_reload, uzi_reload
+        anm_reload_empty            = h_uzi_reload_empty, uzi_reload_empty
+
+        anm_shots                   = h_uzi_shoot, uzi_shoot
+        anm_shots_variant1          = h_uzi_shoot, uzi_shoot1
+        anm_shots_variant2          = h_uzi_shoot, uzi_shoot2
+        anm_shots_variant3          = h_uzi_shoot, uzi_shoot3
+        anm_shots_aim               = h_uzi_shoot_aim, uzi_shoot
+        anm_shots_aim_variant1      = h_uzi_shoot_aim, uzi_shoot1
+        anm_shots_aim_variant2      = h_uzi_shoot_aim, uzi_shoot2
+        anm_shots_aim_variant3      = h_uzi_shoot_aim, uzi_shoot3
+
+        anm_reload_misfire          = h_uzi_unjam, uzi_unjam
+        
+        anm_ammo_check              = h_uzi_magcheck, uzi_magcheck
+        anm_ammo_check_empty        = h_uzi_magcheck, uzi_magcheck_empty
+
+; trans
+
+        anm_idle_aim_start = h_uzi_idle2aim, uzi_idle, 1.15
+        anm_idle_aim_end = h_uzi_aim2idle, uzi_aim2idle, 1.15
+
+        ts_pattern_idle2sprint = ^anm_idle.*, ^anm_idle_sprint.*, anm_idle2sprint, 3
+        ts_pattern_s2i2sprint = anm_sprint2idle, ^anm_idle_sprint.*, anm_idle2sprint, 3
+        anm_idle2sprint = h_uzi_idle2sprint, uzi_idle2sprint, 1.225
+
+        ts_pattern_sprint2idle = ^anm_idle_sprint.*, ^anm_idle.*, anm_sprint2idle, 3
+        anm_sprint2idle = h_uzi_sprint2idle, uzi_sprint2idle, 1.225
+
+        ts_pattern_sprint2aim = ^anm_idle_sprint.*, ^anm_idle_aim.*, anm_sprint2aim, 2
+        anm_sprint2aim = h_uzi_sprint2aim, uzi_idle, 1.1
+
+
+;_____________________________________ Parameters of the shells sprite for HUD __________________________t
+
+        shell_bone                  = wpn_body
+        shell_point                 = 0, 0, -10
+        
+        fire_bone                   = muzzle
+        fire_bone2                  = muzzle
+        fire_bone_silencer          = wpn_silencer
+        fire_point                  = 0, 0, 0
+        fire_point2                 = 0, 0, 0
+        fire_point_silencer         = 0, 0, 0
+
+        strafe_aim_enabled          = true
+
+        shooting_backward_offset    = 0.01,0.005
+        shooting_ret_speed          = 5
+        shooting_ret_aim_speed      = 7.5
+ 
+	    freelook_z_offset_mul	    = 0.4
+
+______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|                    Mini UZI SoulsCrystal Models+Textures+Animations.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                                                                          |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_uzi_mini]:identity_immunities,weapon_probability,default_weapon_params,wpn_uzi_sounds
+
+        GroupControlSection         = spawn_group
+        $npc                        = on
+        $prefetch                   = 8
+        $spawn                      = "weapons\uzi_mini"
+        scheduled                   = off
+        cform                       = skeleton
+        parent_section              = wpn_uzi_mini
+        
+        class                       = WP_LR300
+        slot                        = 1
+        animation_slot              = 1
+        ef_main_weapon_type         = 2
+        ef_weapon_type              = 6
+        hand_dependence             = 1
+        single_handed               = 0
+        
+        default_to_ruck             = false
+        sprint_allowed              = true
+
+		hud_fov                                  = 0.65
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        lewd_lens_hide_enabled       = true	
+        lewd_lens_hide_bone          = lens
+        lewd_lens_hide_delays        = 0.1,0
+        lewd_lens_hide_aim_mode      = true, false, false
+ ;_______________________________________________________________________________
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 3
+		inv_grid_height                          = 2
+        inv_grid_x                               = 20
+        inv_grid_y                               = 26
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 6
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 12
+        ;inv_grid_y                               = 24
+		
+        ;inv_grid_scale     = 2
+			
+;___________________________ Description ___________________________________
+
+        inv_name                    = st_wpn_uzi_mini
+        inv_name_short              = st_wpn_uzi_mini
+        description                 = st_wpn_uzi_mini_descr
+;____________________________________________________________________
+       
+        kind                        = w_smg ;w_pistol
+        inv_weight                  = 2.7
+        cost                        = 17750
+        repair_type                 = pistol
+        weapon_class                = assault_rifle
+        
+        hud                         = wpn_uzi_mini_hud
+        visual                      = dynamics\weapons\wpn_uzi\wpn_uzi_mini.ogf
+		
+        orientation                      = 0, -2, -10
+        position                         = -0.035, 0.03, -0.005
+		
+        fire_point                       = 0, 0.02, 0.28
+        fire_point2                      = 0, 0.02, 0.28
+        fire_point_silencer         = 0, 0.02, 0.562
+		
+        strap_bone0                 = bip01_spine2
+        strap_bone1                 = bip01_spine1
+        strap_orientation                = -10, -10, 100
+        strap_position                   = -0.16, -0.175, 0.18
+		
+        ph_mass                     = 3
+
+;___________________________ Particles ___________________________________      
+ 
+        flame_particles             = weapons\generic_weapon05
+        smoke_particles             = weapons\generic_shoot_00
+        grenade_flame_particles     = weapons\generic_weapon01
+        
+        shell_point		    = 0,0.025,-0.04
+        shell_dir                   = 0,0,0.4
+        shell_particles	 	    = weapons\9x19
+;____________________________________________________________________
+
+        light_disabled              = false
+        light_color                 = 0.6, 0.5, 0.3
+        light_range                 = 5
+        light_time                  = 0.2
+        light_var_color             = 0.05
+        light_var_range             = 0.5
+
+;___________________________ Upgrades ___________________________________
+        
+        upgrades                    = up_gr_firstab_pp2000, up_gr_seconab_pp2000, up_gr_thirdab_pp2000, up_gr_fourtab_pp2000, up_gr_fifthab_uzi
+        installed_upgrades          =
+        upgrade_scheme              = upgrade_scheme_mp5
+		
+        upgr_icon_path              = ui\ui_rak_global_2
+        upgr_icon_x                 = 1750
+        upgr_icon_y                 = 1250
+        upgr_icon_width             = 350
+        upgr_icon_height            = 200
+;____________________________________________________________________
+        
+        fire_modes                  = 1, -1
+        ammo_class                  = ammo_9x19_fmj, ammo_9x19_fmj_bad, ammo_9x19_fmj_verybad, ammo_9x19_pbp, ammo_9x19_pbp_bad, ammo_9x19_pbp_verybad, ammo_9x19_ap, ammo_9x19_ap_bad, ammo_9x19_ap_verybad
+        ammo_elapsed                = 32
+        ammo_mag_size               = 32
+        startup_ammo                = 90
+
+;___________________________ Scopes ___________________________________
+       
+        scopes                      = ac10632
+        scope_status                = 0
+        scope_zoom_factor           = 0
+
+;___________________________ Silencer ___________________________________
+        
+        silencer_name               = wpn_sil_9mm
+        silencer_status             = 2
+		
+        silencer_x                  = 138
+        silencer_y                  = 5
+		
+        silencer_light_color        = 0.6, 0.5, 0.3
+        silencer_light_range        = 0.01
+        silencer_light_time         = 0.2
+        silencer_light_var_color    = 0.05
+        silencer_light_var_range    = 0.5
+		
+        silencer_flame_particles    = weapons\generic_weapon03
+        silencer_smoke_particles    = amik\weapons\smoke_particles\silencer_smoke_particles_02
+
+;___________________________ Grenade launcher _____________________________________
+        
+        grenade_class               = ammo_vog-25, ammo_vog-25_bad, ammo_vog-25_verybad
+        grenade_launcher_status     = 0
+        launch_speed                = 0
+
+;___________________________ TTX ___________________________________
+        
+        hit_impulse                 = 20
+        hit_power                   = 0.47, 0.47, 0.47, 0.47
+        hit_type                    = fire_wound
+        fire_distance               = 400
+        bullet_speed                = 400
+        rpm                         = 950
+        rpm_empty_click             = 200
+        ap_modifier                 = 1.1
+        
+        use_aim_bullet              = false
+        time_to_aim                 = 0.0 ;  3.0
+        zoom_dof                    = 0.5, 1.0, 180
+        zoom_enabled                = true
+        zoom_rotate_time            = 0.225
+        reload_dof                  = 0.0, 0.5, 5, 2
+        control_inertion_factor = 1.0f
+        crosshair_inertion          = 4.1
+		
+        fire_dispersion_base        = 0.6
+        fire_dispersion_condition_factor = 0.001
+        
+        misfire_probability         = 0.005
+        misfire_start_condition     = 0.775
+        misfire_start_prob          = 0.007
+        misfire_end_condition       = 0.16
+        misfire_end_prob            = 0.11
+        
+        condition_queue_shot_dec    = 0.001
+        condition_shot_dec          = 0.001
+        
+        cam_return                  = 0
+        cam_relax_speed             = 11
+        cam_dispersion              = 0.44
+        cam_dispersion_frac         = 1.0
+        cam_dispersion_inc          = 0.0475
+        cam_max_angle               = 41.0
+        cam_max_angle_horz          = 41.0
+        cam_step_angle_horz         = -1.8
+		
+        zoom_cam_relax_speed        = 11
+        zoom_cam_dispersion         = 0.37
+        zoom_cam_dispersion_frac    = 1.0
+        zoom_cam_dispersion_inc     = 0.0375
+        zoom_cam_max_angle          = 41.0
+        zoom_cam_max_angle_horz     = 41.0
+        zoom_cam_step_angle_horz    = -1.6
+        
+        PDM_disp_accel_factor       = 1.155
+        PDM_disp_base               = 0.6
+        PDM_disp_crouch             = 1.0
+        PDM_disp_crouch_no_acc      = 1.0
+        PDM_disp_vel_factor         = 1.15
+        
+        cam_relax_speed_ai          = 120.75
+        zoom_cam_relax_speed_ai     = 120.75
+		
+        holder_fov_modifier         = 1.0
+        holder_range_modifier       = 1.0
+		
+        min_radius                  = 0
+        max_radius                  = 500
+		
+        hit_probability_gd_novice   = 1.00
+        hit_probability_gd_stalker  = 1.00
+        hit_probability_gd_veteran  = 1.00
+        hit_probability_gd_master   = 1.00
+        
+        kill_msg_x                  = 72
+        kill_msg_y                  = 82
+        kill_msg_width              = 56
+        kill_msg_height             = 23
+
+       
+
+        script_binding              = hidebone_uzi_upgrade.bind
+
+;_________________________________________________ Sounds ______________________________________________________
+
+        snd_bore                            = $no_sound
+        snd_draw		            = weapons\uzi\uzi_draw
+        snd_holster			    = weapons\uzi\uzi_holster
+        snd_reload			    = weapons\uzi\uzi_reload
+        snd_reload_empty                    = weapons\uzi\uzi_reload_empty
+        snd_reload_misfire                  = weapons\uzi\uzi_unjam
+
+snd_shoot                                                         = wpn_mp7_snd_shoot
+snd_silncer_shot                                                  = weapons\mp7\mp7_suppressed
+
+        scripted_snd_bore                   = weapons\uzi\uzi_inspect
+        scripted_snd_ammo_check             = weapons\uzi\uzi_magcheck
+        scripted_snd_ammo_check_empty       = weapons\uzi\uzi_magcheck
+		
+		 snd_draw		    = weapons\uzi\uzi_mini_draw
+		 
+;__________________________________________ HUD parameters ____________________________________________________
+
+[wpn_uzi_mini_hud]:hud_base
+
+        item_visual                 = anomaly_weapons\wpn_uzi\wpn_uzi_mini_hud.ogf
+        attach_place_idx            = 0
+        zoom_hide_crosshair         = true
+
+;======================== Hud Position =======================================================
+        
+        item_position               = 0, 0, 0
+        item_orientation            = 0, 0, 0
+        
+        hands_position              = 0, 0, 0
+        hands_position_16x9         = 0, 0, 0
+        hands_orientation           = 0, 0, 0
+        hands_orientation_16x9      = 0, 0, 0
+        
+        aim_hud_offset_pos               = -0.0876, 0.0305, -0.065
+        aim_hud_offset_pos_16x9          = -0.0876, 0.0305, -0.065
+        aim_hud_offset_rot               = 0.018, 0.00075, -0.0225
+        aim_hud_offset_rot_16x9          = 0.018, 0.00075, -0.0225
+        
+        gl_hud_offset_pos           = 0, 0, 0
+        gl_hud_offset_pos_16x9      = 0, 0, 0
+        gl_hud_offset_rot           = 0, 0, 0
+        gl_hud_offset_rot_16x9      = 0, 0, 0
+
+        lowered_hud_offset_pos           = 0.04, 0, -0.01
+        lowered_hud_offset_pos_16x9      = 0.04, 0, -0.01
+        lowered_hud_offset_rot           = 0.1, -0.5, 0.15
+        lowered_hud_offset_rot_16x9      = 0.1, -0.5, 0.15
+        
+        lean_hud_offset_pos         = 0, 0, 0
+        lean_hud_offset_rot         = 0, 0, 0
+        
+
+;_____________________________________ Animations _____________________________________
+
+        anm_bore                    = h_uzi_mini_inspect, uzi_mini_idle
+        anm_bore_empty              = h_uzi_mini_inspect, uzi_mini_idle_empty
+
+        anm_show                    = h_uzi_mini_draw, uzi_mini_draw
+        anm_show_empty              = h_uzi_mini_draw, uzi_mini_draw_empty
+        anm_hide                    = h_uzi_mini_holster, uzi_mini_holster
+
+        anm_idle                    = h_uzi_mini_idle, uzi_mini_idle
+        anm_idle_aim                = h_uzi_mini_idle_aim, uzi_mini_idle
+        anm_idle_moving             = h_uzi_mini_walk, uzi_mini_idle
+        anm_idle_moving_crouch      = h_uzi_mini_walk, uzi_mini_idle, 0.7
+        anm_idle_sprint             = h_uzi_mini_sprint, uzi_mini_idle, 1.225
+        anm_idle_lowered            = h_uzi_mini_idle_lowered, uzi_mini_idle
+
+        anm_reload                  = h_uzi_mini_reload, uzi_mini_reload
+        anm_reload_empty            = h_uzi_mini_reload_empty, uzi_mini_reload_empty
+
+        anm_shots                   = h_uzi_mini_shoot, uzi_mini_shoot
+        anm_shots_variant1          = h_uzi_mini_shoot, uzi_mini_shoot1
+        anm_shots_variant2          = h_uzi_mini_shoot, uzi_mini_shoot2
+        anm_shots_variant3          = h_uzi_mini_shoot, uzi_mini_shoot3
+        anm_shots_aim               = h_uzi_mini_shoot_aim, uzi_mini_shoot
+        anm_shots_aim_variant1      = h_uzi_mini_shoot_aim, uzi_mini_shoot1
+        anm_shots_aim_variant2      = h_uzi_mini_shoot_aim, uzi_mini_shoot2
+        anm_shots_aim_variant3      = h_uzi_mini_shoot_aim, uzi_mini_shoot3
+
+        anm_reload_misfire          = h_uzi_mini_unjam, uzi_mini_unjam
+        
+        anm_ammo_check              = h_uzi_mini_magcheck, uzi_mini_magcheck
+        anm_ammo_check_empty        = h_uzi_mini_magcheck, uzi_mini_magcheck_empty
+
+; trans
+
+        anm_idle_aim_start = h_uzi_mini_idle2aim, uzi_mini_idle, 1.15
+        anm_idle_aim_end = h_uzi_mini_aim2idle, uzi_mini_idle, 1.15
+
+        ts_pattern_idle2sprint = ^anm_idle.*, ^anm_idle_sprint.*, anm_idle2sprint, 3
+        ts_pattern_s2i2sprint = anm_sprint2idle, ^anm_idle_sprint.*, anm_idle2sprint, 3
+        anm_idle2sprint = h_uzi_mini_idle2sprint, uzi_mini_idle, 1.225
+
+        ts_pattern_sprint2idle = ^anm_idle_sprint.*, ^anm_idle.*, anm_sprint2idle, 3
+        anm_sprint2idle = h_uzi_mini_sprint2idle, uzi_mini_idle, 1.225
+
+        ts_pattern_sprint2aim = ^anm_idle_sprint.*, ^anm_idle_aim.*, anm_sprint2aim, 2
+        anm_sprint2aim = h_uzi_mini_sprint2aim, uzi_mini_idle, 1.1
+
+
+;_____________________________________ Parameters of the shells sprite for HUD __________________________
+
+        shell_bone                  = wpn_body
+        shell_point                 = 0.015, 0.032, -0.03
+        
+        fire_bone                   = muzzle
+        fire_bone2                  = muzzle
+        fire_bone_silencer          = wpn_silencer
+        fire_point                  = 0, 0, 0
+        fire_point2                 = 0, 0, 0
+        fire_point_silencer         = 0, 0, 0
+
+        strafe_aim_enabled          = true
+
+        shooting_backward_offset    = 0.01,0.005
+        shooting_ret_speed          = 5
+        shooting_ret_aim_speed      = 7.5
+ 
+	    freelook_z_offset_mul	    = 0.4
+
+______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|                    Micro UZI SoulsCrystal Models+Textures+Animations.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                                                                         |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_uzi_micro]:identity_immunities,weapon_probability,default_weapon_params
+
+        GroupControlSection         = spawn_group
+        $npc                        = on
+        $prefetch                   = 8
+        $spawn                      = "weapons\uzi_micro"
+        scheduled                   = off
+        cform                       = skeleton
+        parent_section              = wpn_uzi_micro
+        
+        class                       = WP_LR300
+        slot                        = 1
+        animation_slot              = 1
+        ef_main_weapon_type         = 2
+        ef_weapon_type              = 5
+        hand_dependence             = 1
+        single_handed               = 0
+        
+        default_to_ruck             = false
+        sprint_allowed              = true
+
+		hud_fov                                  = 0.65
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        lewd_lens_hide_enabled       = true	
+        lewd_lens_hide_bone          = lens
+        lewd_lens_hide_delays        = 0.1,0
+        lewd_lens_hide_aim_mode      = true, false, false
+ ;_______________________________________________________________________________
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 3
+		inv_grid_height                          = 2
+        inv_grid_x                               = 23
+        inv_grid_y                               = 26
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 6
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 0
+        ;inv_grid_y                               = 28
+		
+        ;inv_grid_scale     = 2
+			
+;___________________________ Description ___________________________________
+
+        inv_name                    = st_wpn_uzi_micro
+        inv_name_short              = st_wpn_uzi_micro
+        description                 = st_wpn_uzi_micro_descr
+        
+        kind                        = w_smg ;w_pistol
+        inv_weight                  = 1.5
+        cost                        = 14200
+        repair_type                 = pistol
+        weapon_class                = assault_rifle
+        
+        hud                         = wpn_uzi_micro_hud
+        visual                      = dynamics\weapons\wpn_uzi\wpn_uzi_micro.ogf
+		
+        orientation                      = 0, -2, -10
+        position                         = -0.035, 0.03, -0.005
+		
+        fire_point                       = 0, 0.02, 0.18
+        fire_point2                      = 0, 0.02, 0.18
+        fire_point_silencer         = 0, 0.02, 0.562
+		
+        strap_bone0                 = bip01_spine2
+        strap_bone1                 = bip01_spine1
+        strap_orientation                = -10, -10, 100
+        strap_position                   = -0.16, -0.175, 0.18
+		
+        ph_mass                     = 3
+
+;___________________________ Particles ___________________________________
+       
+        flame_particles             = weapons\generic_weapon05
+        smoke_particles             = weapons\generic_shoot_00
+        grenade_flame_particles     = weapons\generic_weapon01
+        
+        shell_point		    = 0,0.025,-0.04
+        shell_dir                   = 0,0,0.4
+        shell_particles	 	    = weapons\9x19
+;____________________________________________________________________
+
+        light_disabled              = false
+        light_color                 = 0.6, 0.5, 0.3
+        light_range                 = 5
+        light_time                  = 0.2
+        light_var_color             = 0.05
+        light_var_range             = 0.5
+
+;___________________________ Upgrades ___________________________________
+       
+        upgrades                    = up_gr_firstab_pp2000, up_gr_seconab_pp2000, up_gr_thirdab_pp2000, up_gr_fourtab_pp2000, up_gr_fifthab_uzi_micro
+        installed_upgrades          =
+        upgrade_scheme              = upgrade_scheme_mp5
+		
+        upgr_icon_path              = ui\ui_rak_global_2
+        upgr_icon_x                 = 1750
+        upgr_icon_y                 = 1500
+        upgr_icon_width             = 200
+        upgr_icon_height            = 200
+;____________________________________________________________________       
+
+        fire_modes                  = 1, -1
+        ammo_class                  = ammo_9x19_fmj, ammo_9x19_fmj_bad, ammo_9x19_fmj_verybad, ammo_9x19_pbp, ammo_9x19_pbp_bad, ammo_9x19_pbp_verybad, ammo_9x19_ap, ammo_9x19_ap_bad, ammo_9x19_ap_verybad
+        ammo_elapsed                = 32
+        ammo_mag_size               = 32
+        startup_ammo                = 90
+
+;___________________________ Scopes ___________________________________
+        
+        scopes                      =
+        scope_status                = 0
+        scope_zoom_factor           = 0
+        use_alt_aim_hud		    = true
+
+;___________________________ Silencer ___________________________________        
+
+        silencer_name               = wpn_sil_9mm
+        silencer_status             = 2
+		
+        silencer_x                  = 138
+        silencer_y                  = 5
+		
+        silencer_light_color        = 0.6, 0.5, 0.3
+        silencer_light_range        = 0.01
+        silencer_light_time         = 0.2
+        silencer_light_var_color    = 0.05
+        silencer_light_var_range    = 0.5
+		
+        silencer_flame_particles    = weapons\generic_weapon03
+        silencer_smoke_particles    = amik\weapons\smoke_particles\silencer_smoke_particles_02
+
+;___________________________ Grenade launcher _____________________________________
+        
+        grenade_class               = ammo_vog-25, ammo_vog-25_bad, ammo_vog-25_verybad
+        grenade_launcher_status     = 0
+        launch_speed                = 0
+
+;___________________________ TTX ___________________________________
+        
+        hit_impulse                 = 20
+        hit_power                   = 0.46, 0.46, 0.46, 0.46
+        hit_type                    = fire_wound
+        fire_distance               = 400
+        bullet_speed                = 400
+        rpm                         = 1200
+        rpm_empty_click             = 200
+        ;ap_modifier                 = 1.1
+        
+        use_aim_bullet              = false
+        time_to_aim                 = 0.0 ;  3.0
+        zoom_dof                    = 0.5, 1.0, 180
+        zoom_enabled                = true
+        zoom_rotate_time            = 0.225
+        reload_dof                  = 0.0, 0.5, 5, 2
+        control_inertion_factor = 1.0f
+        crosshair_inertion          = 4.4
+		
+        fire_dispersion_base        = 0.669
+        fire_dispersion_condition_factor = 0.001
+        
+        misfire_probability         = 0.006
+        misfire_start_condition     = 0.8
+        misfire_start_prob          = 0.007
+        misfire_end_condition       = 0.16
+        misfire_end_prob            = 0.11
+        
+        condition_queue_shot_dec    = 0.001
+        condition_shot_dec          = 0.001
+        
+        cam_return                  = 0
+        cam_relax_speed             = 12
+        cam_dispersion              = 0.9
+        cam_dispersion_frac         = 1.0
+        cam_dispersion_inc          = 0.04
+        cam_max_angle               = 41.0
+        cam_max_angle_horz          = 41.0
+        cam_step_angle_horz         = -2.4
+		
+        zoom_cam_relax_speed        = 11
+        zoom_cam_dispersion         = 0.75
+        zoom_cam_dispersion_frac    = 1.0
+        zoom_cam_dispersion_inc     = 0.03
+        zoom_cam_max_angle          = 41.0
+        zoom_cam_max_angle_horz     = 41.0
+        zoom_cam_step_angle_horz    = -2.0
+        
+        PDM_disp_accel_factor       = 1.155
+        PDM_disp_base               = 0.6
+        PDM_disp_crouch             = 1.0
+        PDM_disp_crouch_no_acc      = 1.0
+        PDM_disp_vel_factor         = 1.15
+        
+        cam_relax_speed_ai          = 120.75
+        zoom_cam_relax_speed_ai     = 120.75
+		
+        holder_fov_modifier         = 1.0
+        holder_range_modifier       = 1.0
+		
+        min_radius                  = 0
+        max_radius                  = 500
+		
+        hit_probability_gd_novice   = 1.00
+        hit_probability_gd_stalker  = 1.00
+        hit_probability_gd_veteran  = 1.00
+        hit_probability_gd_master   = 1.00
+        
+        kill_msg_x                  = 72
+        kill_msg_y                  = 82
+        kill_msg_width              = 56
+        kill_msg_height             = 23
+
+;_________________________________________________ Sounds ______________________________________________________
+
+        snd_bore                            = $no_sound
+        snd_draw		            = weapons\uzi\uzi_draw
+        snd_holster			    = weapons\uzi\uzi_holster
+        snd_reload			    = weapons\uzi\uzi_reload
+        snd_reload_empty                    = weapons\uzi\uzi_reload_empty
+        snd_reload_misfire                  = weapons\uzi\uzi_unjam
+
+snd_shoot                                                         = wpn_mp7_snd_shoot
+snd_silncer_shot                                                  = weapons\mp7\mp7_suppressed
+
+        scripted_snd_bore                   = weapons\uzi\uzi_inspect
+        scripted_snd_ammo_check             = weapons\uzi\uzi_magcheck
+        scripted_snd_ammo_check_empty       = weapons\uzi\uzi_magcheck
+		
+        snd_draw		    = weapons\uzi\uzi_micro_draw
+        snd_holster		    = weapons\uzi\uzi_micro_holster
+
+;__________________________________________ HUD parameters ____________________________________________________
+
+[wpn_uzi_micro_hud]:hud_base
+
+        item_visual                 = anomaly_weapons\wpn_uzi\wpn_uzi_micro_hud.ogf
+        attach_place_idx            = 0
+        zoom_hide_crosshair         = true
+
+;======================== Hud Position =======================================================
+        
+        item_position               = 0, 0, 0
+        item_orientation            = 0, 0, 0
+        
+        hands_position              = 0, 0, 0
+        hands_position_16x9         = 0, 0, 0
+        hands_orientation           = 0, 0, 0
+        hands_orientation_16x9      = 0, 0, 0
+        
+        aim_hud_offset_pos               = -0.0876, 0.0405, -0.065
+        aim_hud_offset_pos_16x9          = -0.0876, 0.0405, -0.065
+        aim_hud_offset_rot               = 0.019, 0.00075, -0.0225
+        aim_hud_offset_rot_16x9          = 0.019, 0.00075, -0.0225
+
+        aim_hud_offset_alt_pos           = -0.025, -0.05, 0
+        aim_hud_offset_alt_pos_16x9      = -0.025, -0.05, 0
+        aim_hud_offset_alt_rot           = -0.02, -0.01, 0.9
+        aim_hud_offset_alt_rot_16x9      = -0.02, -0.01, 0.9
+        
+        gl_hud_offset_pos           = 0, 0, 0
+        gl_hud_offset_pos_16x9      = 0, 0, 0
+        gl_hud_offset_rot           = 0, 0, 0
+        gl_hud_offset_rot_16x9      = 0, 0, 0
+
+        lowered_hud_offset_pos           = 0.04, 0, -0.01
+        lowered_hud_offset_pos_16x9      = 0.04, 0, -0.01
+        lowered_hud_offset_rot           = 0.1, -0.5, 0.15
+        lowered_hud_offset_rot_16x9      = 0.1, -0.5, 0.15
+        
+        lean_hud_offset_pos         = 0, 0, 0
+        lean_hud_offset_rot         = 0, 0, 0
+        
+
+;_____________________________________ Animations _____________________________________
+
+        anm_bore                    = h_uzi_micro_inspect, uzi_micro_idle
+
+        anm_show                    = h_uzi_micro_draw, uzi_micro_draw
+        anm_hide                    = h_uzi_micro_holster, uzi_micro_idle
+
+        anm_idle                    = h_uzi_micro_idle, uzi_micro_idle
+        anm_idle_aim                = h_uzi_micro_idle_aim, uzi_micro_idle
+        anm_idle_moving             = h_uzi_micro_walk, uzi_micro_idle
+        anm_idle_moving_crouch      = h_uzi_micro_walk, uzi_micro_idle, 0.7
+        anm_idle_sprint             = h_uzi_micro_sprint, uzi_micro_idle, 1.225
+        anm_idle_lowered            = h_uzi_micro_idle_lowered, uzi_micro_idle
+        ;anm_idle_fast               = h_uzi_micro_idle_fast, uzi_micro_idle
+
+        anm_reload                  = h_uzi_micro_reload, uzi_micro_reload
+        anm_reload_empty            = h_uzi_micro_reload_empty, uzi_micro_reload_empty
+
+        anm_shots                   = h_uzi_micro_shoot, uzi_micro_shoot
+        anm_shots_variant1          = h_uzi_micro_shoot, uzi_micro_shoot1
+        anm_shots_variant2          = h_uzi_micro_shoot, uzi_micro_shoot2
+        anm_shots_variant3          = h_uzi_micro_shoot, uzi_micro_shoot3
+        anm_shots_aim               = h_uzi_micro_shoot_aim, uzi_micro_shoot
+        anm_shots_aim_variant1      = h_uzi_micro_shoot_aim, uzi_micro_shoot1
+        anm_shots_aim_variant2      = h_uzi_micro_shoot_aim, uzi_micro_shoot2
+        anm_shots_aim_variant3      = h_uzi_micro_shoot_aim, uzi_micro_shoot3
+
+        anm_reload_misfire          = h_uzi_micro_unjam, uzi_micro_unjam
+        
+        anm_ammo_check              = h_uzi_micro_magcheck, uzi_micro_magcheck
+        anm_ammo_check_empty        = h_uzi_micro_magcheck, uzi_micro_magcheck_empty
+
+; trans
+
+        anm_idle_aim_start = h_uzi_micro_idle2aim, uzi_micro_idle, 1.15
+        anm_idle_aim_end = h_uzi_micro_aim2idle, uzi_micro_idle, 1.15
+
+        ts_pattern_idle2sprint = ^anm_idle.*, ^anm_idle_sprint.*, anm_idle2sprint, 3
+        ts_pattern_s2i2sprint = anm_sprint2idle, ^anm_idle_sprint.*, anm_idle2sprint, 3
+        anm_idle2sprint = h_uzi_micro_idle2sprint, uzi_micro_idle, 1.225
+
+        ts_pattern_sprint2idle = ^anm_idle_sprint.*, ^anm_idle.*, anm_sprint2idle, 3
+        anm_sprint2idle = h_uzi_micro_sprint2idle, uzi_micro_idle, 1.225
+
+        ts_pattern_sprint2aim = ^anm_idle_sprint.*, ^anm_idle_aim.*, anm_sprint2aim, 2
+        anm_sprint2aim = h_uzi_micro_sprint2aim, uzi_micro_idle, 1.1
+
+
+;_____________________________________ Parameters of the shells sprite for HUD __________________________
+
+        shell_bone                  = wpn_body
+        shell_point                 = 0.015, 0.032, -0.03
+        
+        fire_bone                   = muzzle
+        fire_bone2                  = muzzle
+        fire_bone_silencer          = wpn_silencer
+        fire_point                  = 0, 0, 0
+        fire_point2                 = 0, 0, 0
+        fire_point_silencer         = 0, 0, 0
+
+        strafe_aim_enabled          = true
+
+        shooting_backward_offset    = 0.01,0.005
+        shooting_ret_speed          = 5
+        shooting_ret_aim_speed      = 7.5
+ 
+	    freelook_z_offset_mul	    = 0.4

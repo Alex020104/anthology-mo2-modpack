@@ -1,0 +1,1289 @@
+﻿______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|                     ОЦ-02 "Кипарис" SeDzhimol Animations, Meowie Model+Texture.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                                                               |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_kiparis]:identity_immunities,weapon_probability,default_weapon_params,wpn_kiparis_sounds
+
+        GroupControlSection         = spawn_group
+        $npc                        = on
+        $prefetch                   = 8
+        $spawn                      = "weapons\mp5"
+        scheduled                   = off
+        cform                       = skeleton
+        
+		kind                        = w_smg ;w_pistol
+        class                       = WP_LR300
+        slot                        = 1
+        animation_slot              = 1
+        ef_main_weapon_type         = 2
+        ef_weapon_type              = 6
+        hand_dependence             = 1
+        single_handed               = 0
+		
+		bullet_bones                = bullet_3, bullet_2, bullet_1
+        
+        default_to_ruck             = false
+        sprint_allowed              = true
+
+		hud_fov                          = 0.65
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        lewd_lens_hide_enabled       = true	
+        lewd_lens_hide_bone          = lens
+        lewd_lens_hide_delays        = 0.1,0
+        lewd_lens_hide_aim_mode      = true, false, false
+ ;_______________________________________________________________________________
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 20
+        inv_grid_y                               = 14
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 10
+        ;inv_grid_y                               = 12
+		
+        ;inv_grid_scale     = 2
+			
+;___________________________ Description ___________________________________
+
+        inv_name                    = st_wpn_kiparis
+        inv_name_short              = st_wpn_kiparis
+        description                 = st_wpn_kiparis_descr
+;____________________________________________________________________ 
+        
+        inv_weight                  = 1.6
+        cost                        = 16880
+        repair_type                 = pistol
+        weapon_class                = assault_rifle
+        
+        hud                         = wpn_kiparis_hud
+        visual                      = dynamics\weapons\wpn_kiparis\wpn_kiparis.ogf
+		
+        orientation                      = 1.186132, -3.943603, 0
+        position                         = -0.023336, 0.000226, -0.009525
+		
+        fire_point                  = 0.0, 0.188, 0.392
+        fire_point2                 = 0.0, 0.188, 0.392
+		
+        strap_bone0                 = bip01_spine2
+        strap_bone1                 = bip01_spine1
+        strap_position              = -0.126613, -0.221281, 0.116928
+        strap_orientation           = -10, -5, 10
+		
+        ph_mass                     = 3
+
+;___________________________ Particles ___________________________________
+       
+        flame_particles                          = ghost_particles\weapons\generic_smoke_eft_sil         
+        smoke_particles		   	                 = ghost_particles\weapons\flame_eft_sks  
+        silencer_smoke_particles   		         = ghost_particles\weapons\generic_smoke_eft_sil 
+        
+		shell_point			        = 0.0, 0.188, 0.082
+		shell_dir			        = 0.0, 1.0, 0.0
+		shell_particles	 		    = ;weapons\9x18
+;____________________________________________________________________
+
+        light_disabled              = false
+        light_color                 = 0.6, 0.5, 0.3
+        light_range                 = 5
+        light_time                  = 0.2
+        light_var_color             = 0.05
+        light_var_range             = 0.5
+
+;___________________________ Upgrades ___________________________________
+       
+        upgrades                    = up_gr_firstab_kiparis, up_gr_seconab_kiparis, up_gr_thirdab_kiparis, up_gr_fourtab_kiparis, up_gr_fifthab_kiparis, up_gr_fifthcd_kiparis
+        installed_upgrades          =
+        upgrade_scheme              = upgrade_scheme_beretta
+		
+		upgr_icon_path              = ui\ui_rak_global_2
+        upgr_icon_x                 = 1250
+        upgr_icon_y                 = 900
+        upgr_icon_width             = 350
+        upgr_icon_height            = 150
+;____________________________________________________________________
+       
+        fire_modes                  = 1, -1
+        ammo_class                  = ammo_9x18_fmj, ammo_9x18_fmj_bad, ammo_9x18_fmj_verybad, ammo_9x18_pmm, ammo_9x18_pmm_bad, ammo_9x18_pmm_verybad, ammo_9x18_ap, ammo_9x18_ap_bad, ammo_9x18_ap_verybad
+        ammo_elapsed                = 30
+        ammo_mag_size               = 30
+        startup_ammo                = 90
+
+;___________________________ Scopes ___________________________________
+ 
+        scope_status                = 0
+
+;___________________________ Silencer ___________________________________
+
+        silencer_name               = wpn_sil_9mm
+        silencer_status             = 2
+		
+        silencer_x                  = 206
+        silencer_y                  = 4
+		
+        silencer_light_color        = 0.6, 0.5, 0.3
+        silencer_light_range        = 0.01
+        silencer_light_time         = 0.2
+        silencer_light_var_color    = 0.05
+        silencer_light_var_range    = 0.5
+		
+        silencer_smoke_particles    = weapons\generic_shoot_00
+
+;___________________________ Grenade launcher ___________________________________
+        
+        grenade_class               = ammo_vog-25, ammo_vog-25_bad, ammo_vog-25_verybad
+        grenade_launcher_status     = 0
+        launch_speed                = 0
+
+;___________________________ TTX ___________________________________
+       
+        hit_impulse                 = 20
+        hit_power                   = 0.46, 0.46, 0.46, 0.46
+        hit_type                    = fire_wound
+        fire_distance               = 300
+        bullet_speed                = 330
+        rpm                         = 850
+        rpm_empty_click             = 200
+        ap_modifier                 = 1.1
+        
+        use_aim_bullet              = false
+        time_to_aim                 = 0.0 ;  3.0
+        zoom_dof                    = 0.5, 1.0, 180
+        zoom_enabled                = true
+        zoom_rotate_time            = 0.25
+        reload_dof                  = 0.0, 0.5, 5, 2
+        control_inertion_factor = 1.0f
+        crosshair_inertion          = 2.9
+		
+        fire_dispersion_base        = 0.59
+        fire_dispersion_condition_factor = 0.001
+        
+        misfire_probability         = 0.005
+        misfire_start_condition     = 0.7 ;  0.81
+        misfire_start_prob          = 0.007
+        misfire_end_condition       = 0.15
+        misfire_end_prob            = 0.11
+        
+        condition_queue_shot_dec    = 0.0012
+        condition_shot_dec          = 0.0012
+        
+        cam_return                  = 0
+        cam_relax_speed             = 10
+        cam_dispersion              = 0.48
+        cam_dispersion_frac         = 1.0
+        cam_dispersion_inc          = 0.0425
+        cam_max_angle               = 31.0
+        cam_max_angle_horz          = 31.0
+        cam_step_angle_horz         = 1.44
+        zoom_cam_relax_speed        = 10
+        zoom_cam_dispersion         = 0.27
+        zoom_cam_dispersion_frac    = 1.0
+        zoom_cam_dispersion_inc     = 0.0325
+        zoom_cam_max_angle          = 31.0
+        zoom_cam_max_angle_horz     = 31.0
+        zoom_cam_step_angle_horz    = 1.42
+        
+        PDM_disp_accel_factor       = 1.155
+        PDM_disp_base               = 0.65
+        PDM_disp_crouch             = 1.0
+        PDM_disp_crouch_no_acc      = 1.0
+        PDM_disp_vel_factor         = 1.15
+        
+        cam_relax_speed_ai          = 120.75
+        zoom_cam_relax_speed_ai     = 120.75
+        holder_fov_modifier         = 1.0
+        holder_range_modifier       = 1.0
+        min_radius                  = 0
+        max_radius                  = 500
+        hit_probability_gd_novice   = 1.00
+        hit_probability_gd_stalker  = 1.00
+        hit_probability_gd_veteran  = 1.00
+        hit_probability_gd_master   = 1.00
+        
+        kill_msg_x                  = 72
+        kill_msg_y                  = 82
+        kill_msg_width              = 56
+        kill_msg_height             = 23
+
+;_________________________________________________ Sounds ______________________________________________________
+
+        snd_draw                                           = wpn\kiparis\ak74_draw
+        snd_holster                                        = wpn\kiparis\p90_hide
+        snd_reload                                         = wpn\kiparis\reload_part_saw
+        snd_reload_empty                                   = wpn\kiparis\reload_empty_saw
+        snd_reload_misfire                                 = wpn\kiparis\rasklin
+        snd_switch_mode                                    = wpn\kiparis\fire_mode_switch
+
+        scripted_snd_ammo_check                            = wpn\kiparis\mag_check_saw
+        scripted_snd_ammo_check_empty                      = wpn\kiparis\mag_check_saw
+        scripted_snd_ammo_check_aim                        = $no_sound
+        scripted_snd_ammo_check_aim_empty                  = $no_sound
+        snd_bore                                           = $no_sound
+
+;__________________________________________ HUD parameters ____________________________________________________
+
+[wpn_kiparis_hud]:hud_base
+
+        item_visual                 = anomaly_weapons\wpn_kiparis\wpn_kiparis_hud.ogf
+        attach_place_idx            = 0
+        zoom_hide_crosshair         = true
+
+;======================== Hud Position =======================================================
+        
+        item_position               = 0, 0, 0
+        item_orientation            = 0, 0, 0
+        
+        aim_hud_offset_pos               = -0.06101, 0.03604, -0.072812
+        aim_hud_offset_pos_16x9          = -0.06101, 0.03604, -0.072812
+        aim_hud_offset_rot               = 0, 0.027883, -0.035053
+        aim_hud_offset_rot_16x9          = 0, 0.027883, -0.035053
+		
+        hands_orientation                = 1.401173, -0.039803, -2.645336
+        hands_orientation_16x9           = 1.401173, -0.039803, -2.645336
+        hands_position                   = -0.021327, 0.010654, 0.007948
+        hands_position_16x9              = -0.021327, 0.010654, 0.007948
+       
+        lowered_hud_offset_pos           = 0.066434, -0.004754, 0.007759
+        lowered_hud_offset_pos_16x9      = 0.066434, -0.004754, 0.007759
+        lowered_hud_offset_rot           = 0.186898, -0.469335, 0.1
+        lowered_hud_offset_rot_16x9      = 0.186898, -0.469335, 0.1
+        
+        gl_hud_offset_pos           = 0, 0, 0
+        gl_hud_offset_pos_16x9      = 0, 0, 0
+        gl_hud_offset_rot           = 0, 0, 0
+        gl_hud_offset_rot_16x9      = 0, 0, 0
+        
+        lean_hud_offset_pos         = 0, 0, 0
+        lean_hud_offset_rot         = 0, 0, 0
+
+;======================== BORING =======================================================
+
+        anm_bore                    = kiparis_osmotr_sedzhimol, idle
+        anm_bore_empty              = kiparis_osmotr_sedzhimol, idle
+		
+        anm_bore_aim                = kiparis_idle_aim_sedzhimol, idle
+        anm_bore_empty_aim          = kiparis_idle_aim_sedzhimol, idle
+							
+;======================== HIDE ==========================================================
+
+		anm_hide                    = kiparis_hide_sedzhimol
+
+;======================== SHOW ==========================================================
+        
+		anm_show                    = kiparis_draw_sedzhimol
+
+;======================== IDLE ==========================================================
+
+		anm_idle                    = kiparis_idle_sedzhimol
+		anm_idle_moving             = kiparis_moving_sedzhimol
+		
+;======================== SPRINT TRANSITIONS AND PATERN ====================================================
+        
+		anm_sprint_start            = kiparis_sprint_start_sedzhimol
+		anm_idle_sprint             = kiparis_sprint_sedzhimol
+		anm_sprint_end              = kiparis_sprint_end_sedzhimol
+		
+;----------------------------------------------------------------------------------------
+        ts_pattern_sprint_start                 = .+, anm_idle_sprint, anm_sprint_start, 1
+        ts_pattern_sprint_end                   = anm_idle_sprint, ^anm_idle.*, anm_sprint_end
+        ts_strict_sprint_end_move               = anm_sprint_start, anm_idle_moving, anm_sprint_end
+
+        ts_pattern_sprint2walk_aim              = anm_sprint_start, ^anm_idle_aim.*, anm_sprint_end, 1
+        ts_strict_sprint2walk_idle              = anm_sprint_start, anm_idle, anm_sprint_end
+        ts_strict_sprint2aim                    = anm_idle_sprint, anm_idle_aim, anm_sprint_end
+        ts_strict_sprint2inspect                = anm_idle_sprint, anm_bore, anm_sprint_end
+        ts_strict_walk2sprint_inspect           = anm_sprint_start, anm_bore, anm_sprint_end
+
+;======================== AIM TRANSITIONS ====================================================
+		
+        anm_idle_aim_start          = kiparis_aim_in_sedzhimol
+		anm_idle_aim                = kiparis_idle_aim_sedzhimol
+        anm_idle_aim_end            = kiparis_aim_in_sedzhimol
+        		
+        anm_idle_aim_moving         = kiparis_moving_sedzhimol, idle, 0.75
+        anm_idle_aim_moving_crouch  = kiparis_moving_sedzhimol, idle, 0.7
+				
+;======================== RELOAD ==========================================================
+
+        anm_reload                  = kiparis_reload_part_sedzhimol
+        anm_reload_empty            = kiparis_reload_full_sedzhimol
+		
+        anm_reload_misfire          = kiparis_misfire_sedzhimol
+
+;======================== SWITCH MODE ==========================================================		
+		
+		anm_switch_mode             = kiparis_switch_mode_sedzhimol
+
+;======================== MAG CHECK ==========================================================		
+		
+		anm_ammo_check              = kiparis_mag_check_sedzhimol, kiparis_mag_check_sedzhimol
+		anm_ammo_check_empty        = kiparis_mag_check_sedzhimol, kiparis_mag_check_empty_sedzhimol
+		anm_ammo_check_aim          = kiparis_idle_aim_sedzhimol, idle
+		anm_ammo_check_empty_aim    = kiparis_idle_aim_sedzhimol, idle
+
+		
+;========================SHOOTS===========================================================
+		
+		anm_shot_l                  = kiparis_shoot_sedzhimol
+		anm_shots                   = kiparis_shoot_sedzhimol
+		anm_shot_l_aim              = kiparis_shot_aim
+		anm_shots_aim               = kiparis_shot_aim
+		
+;_____________________________________ Parameters of the shells sprite for HUD __________________________
+       
+		shell_bone                  = wpn_body
+		shell_dir                   = 0.0, 1.0, 0.0
+		shell_point                 = 0, 0, 0
+        
+		fire_bone                   = muzzle
+		fire_bone2                  = wpn_body
+		fire_point                  = 0, 0, 0
+		fire_point2                 = 0, 0, 0
+ 
+______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|                     ОЦ-02 "Кипарис" SAW SeDzhimol Animations, Meowie Model+Texture.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                                                           |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_kiparis_saw]:wpn_kiparis
+
+		parent_section     = wpn_kiparis_saw
+
+		bullet_bones                = bullet_3, bullet_2, bullet_1
+
+;___________________________ Scopes ___________________________________
+
+		scopes             = ac10632, ac11090, acog, ado, aim_acro, aim_low, aimpoint, point_aimpro, compm4s, deltapoint, d0cter, e0t2, echo1, gauss, hco, he510, lco1, monstrum, p1x42, pk6, rakurs, rmr, romeo4, romeo8, trihawk, uh2
+		scope_status       = 0
+		scope_zoom_factor  = 0
+		laser_status                      = true
+;____________________________________________________________________
+
+		orientation                      = 1.186132, -3.943603, 0
+		position                         = -0.023336, 0.000226, -0.009525
+		
+		strap_position                   = -0.126613, -0.221281, 0.116928
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 5
+		inv_grid_height                          = 2
+        inv_grid_x                               = 20
+        inv_grid_y                               = 12
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 10
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 0
+        ;inv_grid_y                               = 12
+		
+        ;inv_grid_scale     = 2
+			
+;___________________________ Description ___________________________________
+
+		inv_name                    = st_wpn_kiparis_saw
+		inv_name_short              = st_wpn_kiparis_saw
+		description                 = st_wpn_kiparis_saw_descr
+;____________________________________________________________________
+
+		inv_weight                  = 1.6
+
+		silencer_x                  = 224
+		silencer_y                  = 14
+
+		cost               = 40000
+
+		ammo_elapsed                = 50
+		ammo_mag_size               = 50
+		startup_ammo                = 100
+
+		hud                         = wpn_kiparis_saw_hud
+		visual                      = dynamics\weapons\wpn_kiparis\wpn_kiparis_saw.ogf
+
+		upgr_icon_x                              = 1250
+		upgr_icon_y                              = 750
+		upgr_icon_width                          = 400
+		upgr_icon_height                         = 150
+		
+;_________________________________________________ Sounds ______________________________________________________
+
+		snd_reload                                         = wpn\kiparis\reload_part_saw
+		snd_reload_empty                                   = wpn\kiparis\reload_empty_saw
+
+		scripted_snd_ammo_check                            = wpn\kiparis\mag_check_saw
+		scripted_snd_ammo_check_empty                      = wpn\kiparis\mag_check_saw
+
+;__________________________________________ HUD parameters ____________________________________________________
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_hud]:wpn_kiparis_hud
+
+		item_visual                 = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_hud.ogf
+
+		hands_orientation                = 0.200534, 0.190617, -2.645336
+		hands_orientation_16x9           = 0.200534, 0.190617, -2.645336
+		
+        aim_hud_offset_pos               = -0.060748, 0.035401, -0.072741
+        aim_hud_offset_pos_16x9          = -0.060748, 0.035401, -0.072741
+        aim_hud_offset_rot               = 0.002421, 0.006564, -0.035053
+        aim_hud_offset_rot_16x9          = 0.002421, 0.006564, -0.035053
+		
+;======================== BORING =======================================================
+
+        anm_bore                    = kiparis_osmotr_sedzhimol_sk2, idle
+        anm_bore_empty              = kiparis_osmotr_sedzhimol_sk2, idle
+		
+        anm_bore_aim                = kiparis_idle_aim_sedzhimol_sk2, idle
+        anm_bore_empty_aim          = kiparis_idle_aim_sedzhimol_sk2, idle
+							
+;======================== HIDE ==========================================================
+
+		anm_hide                    = kiparis_hide_sedzhimol_sk2
+
+;======================== SHOW ==========================================================
+        
+		anm_show                    = kiparis_draw_sedzhimol_sk2
+
+;======================== IDLE ==========================================================
+
+        anm_idle                    = kiparis_idle_sedzhimol_sk2
+        anm_idle_moving             = kiparis_moving_sedzhimol_sk2
+		
+;======================== SPRINT TRANSITIONS AND PATERN ====================================================
+        
+        anm_sprint_start            = kiparis_sprint_start_sedzhimol_sk2
+		anm_idle_sprint             = kiparis_sprint_sedzhimol_sk2
+        anm_sprint_end              = kiparis_sprint_end_sedzhimol_sk2
+		
+;----------------------------------------------------------------------------------------
+        ts_pattern_sprint_start                 = .+, anm_idle_sprint, anm_sprint_start, 1
+        ts_pattern_sprint_end                   = anm_idle_sprint, ^anm_idle.*, anm_sprint_end
+        ts_strict_sprint_end_move               = anm_sprint_start, anm_idle_moving, anm_sprint_end
+
+        ts_pattern_sprint2walk_aim              = anm_sprint_start, ^anm_idle_aim.*, anm_sprint_end, 1
+        ts_strict_sprint2walk_idle              = anm_sprint_start, anm_idle, anm_sprint_end
+        ts_strict_sprint2aim                    = anm_idle_sprint, anm_idle_aim, anm_sprint_end
+        ts_strict_sprint2inspect                = anm_idle_sprint, anm_bore, anm_sprint_end
+        ts_strict_walk2sprint_inspect           = anm_sprint_start, anm_bore, anm_sprint_end
+
+;======================== AIM TRANSITIONS ====================================================
+		
+        anm_idle_aim_start          = kiparis_aim_in_sedzhimol_sk2
+		anm_idle_aim                = kiparis_idle_aim_sedzhimol_sk2
+        anm_idle_aim_end            = kiparis_aim_in_sedzhimol_sk2
+        		       
+        anm_idle_aim_moving         = kiparis_moving_sedzhimol_sk2, idle, 0.75
+        anm_idle_aim_moving_crouch  = kiparis_moving_sedzhimol_sk2, idle, 0.7
+				
+;======================== RELOAD ==========================================================
+
+        anm_reload                  = kiparis_reload_part_sedzhimol_sk2, kiparis_reload_part_sedzhimol_sk1
+        anm_reload_empty            = kiparis_reload_full_sedzhimol_sk2, kiparis_reload_full_sedzhimol_sk1
+		
+        anm_reload_misfire          = kiparis_misfire_sedzhimol_sk2, kiparis_misfire_sedzhimol
+
+;======================== SWITCH MODE ==========================================================		
+		
+		anm_switch_mode             = kiparis_switch_mode_sedzhimol_sk2
+
+;======================== MAG CHECK ==========================================================		
+		
+        anm_ammo_check              = kiparis_mag_check_sedzhimol_sk2, kiparis_mag_check_sedzhimol_sk1
+        anm_ammo_check_empty        = kiparis_mag_check_sedzhimol_sk2, kiparis_mag_check_empty_sedzhimol_sk1
+        anm_ammo_check_aim          = kiparis_idle_aim_sedzhimol_sk2, idle
+        anm_ammo_check_empty_aim    = kiparis_idle_aim_sedzhimol_sk2, idle
+	
+;========================SHOOTS===========================================================
+		
+        anm_shot_l                  = kiparis_shoot_sedzhimol_skb
+        anm_shots                   = kiparis_shoot_sedzhimol_skb
+		
+        anm_shot_l_aim              = kiparis_aim_shoot_sedzhimol_skb
+        anm_shots_aim               = kiparis_aim_shoot_sedzhimol_skb
+		
+;____________________________________________________ Addons _______________________________________________________________________________________________________
+
+;__________________________________________________________ ОКП-7 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_kiparis_saw_ac10632]:wpn_kiparis_saw
+
+        1icon_layer	   = ac10632
+        1icon_layer_x      = 107
+        1icon_layer_y      = 2
+
+        hud		   = wpn_kiparis_saw_ac10632_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_ac10632_world.ogf
+
+        ms_count = 8
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_kiparis_saw_ac10632_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_ac10632_hud.ogf
+		
+        aim_hud_offset_pos                = -0.061599, 0.010586, -0.117332
+        aim_hud_offset_pos_16x9           = -0.061599, 0.010586, -0.117332
+        aim_hud_offset_rot                = 0.001637, 0.007421, -0.035053
+        aim_hud_offset_rot_16x9           = 0.001637, 0.007421, -0.035053
+
+;__________________________________________________________ AC11090 (Party_50 and MsPizza727)[PRS Only] ___________________________________________________
+
+[wpn_kiparis_saw_ac11090]:wpn_kiparis_saw
+
+        1icon_layer	       = ac11090
+        1icon_layer_x      = 112
+        1icon_layer_y      = 6
+
+        hud		   = wpn_kiparis_saw_ac11090_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_ac11090_world.ogf
+
+        ms_count = 8
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_ac11090_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_ac11090_hud.ogf
+		
+        aim_hud_offset_pos                = -0.060535, 0.019892, -0.117332
+        aim_hud_offset_pos_16x9           = -0.060535, 0.019892, -0.117332
+        aim_hud_offset_rot                = 0.002271, 0.005333, -0.035053
+        aim_hud_offset_rot_16x9           = 0.002271, 0.005333, -0.035053
+		
+;__________________________________________________________ ACOG (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_kiparis_saw_acog]:wpn_kiparis_saw
+
+        1icon_layer	       = acog
+        1icon_layer_x      = 100
+        1icon_layer_y      = 0
+
+        hud		           = wpn_kiparis_saw_acog_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_acog_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_acog
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_kiparis_saw_acog_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_acog_hud.ogf
+		
+        aim_hud_offset_pos                = -0.060851, 0.01257, -0.106663
+        aim_hud_offset_pos_16x9           = -0.060851, 0.01257, -0.106663
+        aim_hud_offset_rot                = 0.015427, 0.007951, -0.035053
+        aim_hud_offset_rot_16x9           = 0.015427, 0.007951, -0.035053
+		
+;_____________________________ ADO (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_kiparis_saw_ado]:wpn_kiparis_saw
+
+        1icon_layer         = ado
+        1icon_layer_x       = 87
+        1icon_layer_y       = -2
+
+        hud                 = wpn_kiparis_saw_ado_hud
+        !visual				= dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_ado_world.ogf
+        zoom_step_count					 = 1
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        s3ds_reticle_size   = 4
+ 	    s3ds_eye_relief     = 2
+	    s3ds_exit_pupil		= 0.55		
+	    magnification 		= 9
+        min_magnification	= 3
+		
+ ;_______________________________________________________________________________
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_ado
+		
+		
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_ado_hud]:wpn_kiparis_saw_hud
+
+        item_visual                              = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_ado_hud.ogf
+		
+        aim_hud_offset_alt_pos            = -0.060473, -0.01878, -0.127643
+        aim_hud_offset_alt_pos_16x9       = -0.060473, -0.01878, -0.127643
+        aim_hud_offset_alt_rot            = 0.00416, 0.006616, -0.028508
+        aim_hud_offset_alt_rot_16x9       = 0.00416, 0.006616, -0.028508
+        aim_hud_offset_pos                = -0.060374, 0.012858, -0.117332
+        aim_hud_offset_pos_16x9           = -0.060374, 0.012858, -0.117332
+        aim_hud_offset_rot                = 0.002058, 0.006771, -0.035053
+        aim_hud_offset_rot_16x9           = 0.002058, 0.006771, -0.035053
+
+		
+;__________________________________________________________ Aim Acro (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_kiparis_saw_aim_acro]:wpn_kiparis_saw
+
+        1icon_layer	       = aim_acro
+        1icon_layer_x      = 112
+        1icon_layer_y      = 0
+
+        hud		           = wpn_kiparis_saw_aim_acro_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_aim_acro_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_aim_acro_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_aim_acro_hud.ogf
+		
+        aim_hud_offset_pos                = -0.061011, 0.021461, -0.117332
+        aim_hud_offset_pos_16x9           = -0.061011, 0.021461, -0.117332
+        aim_hud_offset_rot                = 0.001632, 0.007196, -0.035053
+        aim_hud_offset_rot_16x9           = 0.001632, 0.007196, -0.035053
+				
+;__________________________________________________________ Aim Low (BaS)[PRS Only] ___________________________________________________
+
+[wpn_kiparis_saw_aim_low]:wpn_kiparis_saw
+
+        1icon_layer	       = aim_low
+        1icon_layer_x      = 108
+        1icon_layer_y      = 4
+
+        hud		           = wpn_kiparis_saw_aim_low_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_aim_low_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_aim_low_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_aim_low_hud.ogf
+
+        aim_hud_offset_pos                = -0.060798, 0.026578, -0.117332
+        aim_hud_offset_pos_16x9           = -0.060798, 0.026578, -0.117332
+        aim_hud_offset_rot                = 0.002058, 0.006771, -0.035053
+        aim_hud_offset_rot_16x9           = 0.002058, 0.006771, -0.035053
+		
+;__________________________________________________________ Aimpoint (BaS)[PRS Only] ___________________________________________________
+
+[wpn_kiparis_saw_aimpoint]:wpn_kiparis_saw
+
+        1icon_layer	       = aimpoint
+        1icon_layer_x      = 109
+        1icon_layer_y      = -3
+		
+        hud		           = wpn_kiparis_saw_aimpoint_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_aimpoint_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_aimpoint_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_aimpoint_hud.ogf
+
+        aim_hud_offset_pos                = -0.061065, 0.011651, -0.117332
+        aim_hud_offset_pos_16x9           = -0.061065, 0.011651, -0.117332
+        aim_hud_offset_rot                = 0.002484, 0.007248, -0.035053
+        aim_hud_offset_rot_16x9           = 0.002484, 0.007248, -0.035053
+		
+;__________________________________________________________ Aimpoint Pro (BaS)[PRS Only] ___________________________________________________
+
+[wpn_kiparis_saw_point_aimpro]:wpn_kiparis_saw
+
+        1icon_layer	       = point_aimpro
+        1icon_layer_x      = 116
+        1icon_layer_y      = -3
+
+        hud		           = wpn_kiparis_saw_point_aimpro_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_aimpoint_pro_world.ogf
+		
+		ms_count = 2
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_point_aimpro_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_aimpoint_pro_hud.ogf
+
+        aim_hud_offset_pos                = -0.061119, 0.008808, -0.117332
+        aim_hud_offset_pos_16x9           = -0.061119, 0.008808, -0.117332
+        aim_hud_offset_rot                = 0.002981, 0.007519, -0.035053
+        aim_hud_offset_rot_16x9           = 0.002981, 0.007519, -0.035053
+						
+;__________________________________________________________ Bravo 4 (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_kiparis_saw_compm4s]:wpn_kiparis_saw
+
+        1icon_layer	       = compm4s
+        1icon_layer_x      = 109
+        1icon_layer_y      = 1
+
+        hud		   = wpn_kiparis_saw_compm4s_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_compm4s_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_compm4s_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_compm4s_hud.ogf
+
+        aim_hud_offset_pos                = -0.06117, 0.013639, -0.099553
+        aim_hud_offset_pos_16x9           = -0.06117, 0.013639, -0.099553
+        aim_hud_offset_rot                = 0.0022, 0.007572, -0.035053
+        aim_hud_offset_rot_16x9           = 0.0022, 0.007572, -0.035053
+		
+;_________________________________________ Cortex (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_kiparis_saw_deltapoint]:wpn_kiparis_saw
+
+        1icon_layer	       = deltapoint
+        1icon_layer_x      = 115
+        1icon_layer_y      = 4
+
+        hud		   = wpn_kiparis_saw_deltapoint_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_deltapoint_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_deltapoint_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_deltapoint_hud.ogf
+
+        aim_hud_offset_pos                = -0.061063, 0.022385, -0.117332
+        aim_hud_offset_pos_16x9           = -0.061063, 0.022385, -0.117332
+        aim_hud_offset_rot                = 0.000567, 0.007194, -0.035053
+        aim_hud_offset_rot_16x9           = 0.000567, 0.007194, -0.035053
+		
+;_________________________________________ Devo (ATHI) [3DSS+PRS Only] ____________________________________________
+
+[wpn_kiparis_saw_d0cter]:wpn_kiparis_saw
+
+        1icon_layer	       = d0cter
+        1icon_layer_x      = 108
+        1icon_layer_y      = 10
+
+        hud		           = wpn_kiparis_saw_d0cter_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_docter_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_d0cter_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_docter_hud.ogf
+
+        aim_hud_offset_pos                = -0.060956, 0.026795, -0.117332
+        aim_hud_offset_pos_16x9           = -0.060956, 0.026795, -0.117332
+        aim_hud_offset_rot                = 0.002058, 0.006771, -0.035053
+        aim_hud_offset_rot_16x9           = 0.002058, 0.006771, -0.035053
+		
+;__________________________________________________________ EOTech XPS3-0 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_kiparis_saw_e0t2]:wpn_kiparis_saw
+
+        1icon_layer	       = e0t2
+        1icon_layer_x      = 116
+        1icon_layer_y      = 2
+
+        hud		           = wpn_kiparis_saw_e0t2_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_e0t2_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+		
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_e0t2_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_e0t2_hud.ogf
+
+        aim_hud_offset_pos                = -0.061702, 0.010728, -0.096141
+        aim_hud_offset_pos_16x9           = -0.061702, 0.010728, -0.096141
+        aim_hud_offset_rot                = -0.000853, 0.007517, -0.035053
+        aim_hud_offset_rot_16x9           = -0.000853, 0.007517, -0.035053
+		
+;__________________________________________________________ EOTech XPS3-0 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_kiparis_saw_echo1]:wpn_kiparis_saw
+
+        1icon_layer         = echo1
+        1icon_layer_x       = 84
+        1icon_layer_y       = -4
+		
+        hud                 = wpn_kiparis_saw_echo1_hud
+        !visual				= dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_echo1_world.ogf
+        zoom_step_count					 = 1
+ 
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+		
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_echo1_hud]:wpn_kiparis_saw_hud
+
+        item_visual                              = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_echo1_hud.ogf
+	
+        aim_hud_offset_alt_pos            = -0.06042, -0.016433, -0.109369
+        aim_hud_offset_alt_pos_16x9       = -0.06042, -0.016433, -0.109369
+        aim_hud_offset_alt_rot            = 0.00416, 0.006616, -0.028508
+        aim_hud_offset_alt_rot_16x9       = 0.00416, 0.006616, -0.028508
+        aim_hud_offset_pos                = -0.060641, 0.004676, -0.099839
+        aim_hud_offset_pos_16x9           = -0.060641, 0.004676, -0.099839
+        aim_hud_offset_rot                = 0.002058, 0.006771, -0.035053
+        aim_hud_offset_rot_16x9           = 0.002058, 0.006771, -0.035053
+
+		
+;__________________________________________________________ Кобра ЭКП-8-18 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_kiparis_saw_gauss]:wpn_kiparis_saw
+
+        1icon_layer	       = gauss
+        1icon_layer_x      = 90
+        1icon_layer_y      = -5
+
+        hud		           = wpn_kiparis_saw_gauss_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_gauss_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_gauss_sight
+		
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_gauss_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_gauss_hud.ogf
+
+        aim_hud_offset_pos                = -0.06059, 0.008234, -0.133195
+        aim_hud_offset_pos_16x9           = -0.06059, 0.008234, -0.133195
+        aim_hud_offset_rot                = 0.002555, 0.006771, -0.035053
+        aim_hud_offset_rot_16x9           = 0.002555, 0.006771, -0.035053
+		
+;__________________________________________________________ HAMR (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_kiparis_saw_hco]:wpn_kiparis_saw
+
+        1icon_layer	       = hco
+        1icon_layer_x      = 116
+        1icon_layer_y      = 2
+
+        hud		   = wpn_kiparis_saw_hco_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_hco_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_hco_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_hco_hud.ogf
+
+        aim_hud_offset_pos                = -0.061545, 0.007958, -0.098487
+        aim_hud_offset_pos_16x9           = -0.061545, 0.007958, -0.098487
+        aim_hud_offset_rot                = -0.000285, 0.007787, -0.035053
+        aim_hud_offset_rot_16x9           = -0.000285, 0.007787, -0.035053
+		
+;__________________________________________________________ HE510 (RWAP)[PRS+MS Only] ___________________________________________________
+
+[wpn_kiparis_saw_he510]:wpn_kiparis_saw
+
+        1icon_layer	       = he510
+        1icon_layer_x      = 116
+        1icon_layer_y      = 2
+
+        hud		   = wpn_kiparis_saw_he510_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_he510_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_he510_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_he510_hud.ogf
+		
+        aim_hud_offset_pos                = -0.061866, 0.014491, -0.117332
+        aim_hud_offset_pos_16x9           = -0.061866, 0.014491, -0.117332
+        aim_hud_offset_rot                = 0.001561, 0.007358, -0.035053
+        aim_hud_offset_rot_16x9           = 0.001561, 0.007358, -0.035053
+						
+;__________________________________________________________ Kemper (BaS)[PRS Only] ___________________________________________________
+
+[wpn_kiparis_saw_lco1]:wpn_kiparis_saw
+
+        1icon_layer	       = lco1
+        1icon_layer_x      = 110
+        1icon_layer_y      = 2
+
+        hud		   = wpn_kiparis_saw_lco1_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_lco1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_lco1_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_lco1_hud.ogf
+
+        aim_hud_offset_pos                = -0.061544, 0.01016, -0.117332
+        aim_hud_offset_pos_16x9           = -0.061544, 0.01016, -0.117332
+        aim_hud_offset_rot                = 0.001064, 0.007726, -0.035053
+        aim_hud_offset_rot_16x9           = 0.001064, 0.007726, -0.035053
+		
+;__________________________________________________________ Leupold (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_kiparis_saw_monstrum]:wpn_kiparis_saw
+
+        1icon_layer         = monstrum
+        1icon_layer_x       = 104
+        1icon_layer_y       = 1
+
+        hud                 = wpn_kiparis_saw_monstrum_hud
+        !visual				= dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_monstrum_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_monstrum
+		
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_monstrum_hud]:wpn_kiparis_saw_hud
+
+        item_visual                              = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_monstrum_hud.ogf
+
+        aim_hud_offset_pos                = -0.060799, 0.019826, -0.11136
+        aim_hud_offset_pos_16x9           = -0.060799, 0.019826, -0.11136
+        aim_hud_offset_rot                = 0.002271, 0.006611, -0.035053
+        aim_hud_offset_rot_16x9           = 0.002271, 0.006611, -0.035053
+
+;__________________________________________________________ P1X42 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_kiparis_saw_p1x42]:wpn_kiparis_saw
+
+        1icon_layer	       = p1x42
+        1icon_layer_x      = 113
+        1icon_layer_y      = 1
+
+        hud		   = wpn_kiparis_saw_p1x42_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_p1x42_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_p1x42_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_p1x42_hud.ogf
+
+        aim_hud_offset_pos                = -0.061598, 0.01229, -0.117332
+        aim_hud_offset_pos_16x9           = -0.061598, 0.01229, -0.117332
+        aim_hud_offset_rot                = 0.003762, 0.008801, -0.035053
+        aim_hud_offset_rot_16x9           = 0.003762, 0.008801, -0.035053
+		
+;_________________________________________ P4X32 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_kiparis_saw_pk6]:wpn_kiparis_saw
+
+        1icon_layer	   = pk6
+        1icon_layer_x      = 110
+        1icon_layer_y      = -2
+
+        hud		   = wpn_kiparis_saw_pk6_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_pk6_world.ogf
+		
+		ms_count 			= 3
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_pk6_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_pk6_hud.ogf
+		
+        aim_hud_offset_pos                = -0.061283, 0.022671, -0.117332
+        aim_hud_offset_pos_16x9           = -0.061283, 0.022671, -0.117332
+        aim_hud_offset_rot                = 0.000851, 0.007516, -0.035053
+        aim_hud_offset_rot_16x9           = 0.000851, 0.007516, -0.035053
+
+;________________________________________________ PKS-07 (Party_50 and MsPizza727)[3DSS Only] ___________________________________________________
+
+[wpn_kiparis_saw_rakurs]:wpn_kiparis_saw
+
+        1icon_layer	       = rakurs
+        1icon_layer_x      = 106
+        1icon_layer_y      = 2
+
+        hud		   = wpn_kiparis_saw_rakurs_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_rakurs_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_rakurs_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_rakurs_hud.ogf
+
+        aim_hud_offset_pos                = -0.060375, 0.022093, -0.117332
+        aim_hud_offset_pos_16x9           = -0.060375, 0.022093, -0.117332
+        aim_hud_offset_rot                = 0.001987, 0.006985, -0.035053
+        aim_hud_offset_rot_16x9           = 0.001987, 0.006985, -0.035053
+		
+;__________________________________________________________ RazorHD (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_kiparis_saw_rmr]:wpn_kiparis_saw
+
+        1icon_layer	       = rmr
+        1icon_layer_x      = 115
+        1icon_layer_y      = 2
+
+        hud		   = wpn_kiparis_saw_rmr_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_rmr_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_rmr_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_rmr_hud.ogf
+
+        aim_hud_offset_pos                = -0.060957, 0.026225, -0.117332
+        aim_hud_offset_pos_16x9           = -0.060957, 0.026225, -0.117332
+        aim_hud_offset_rot                = 0.002058, 0.006771, -0.035053
+        aim_hud_offset_rot_16x9           = 0.002058, 0.006771, -0.035053
+		
+;__________________________________________________________ Romeo 4 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_kiparis_saw_romeo4]:wpn_kiparis_saw
+
+        1icon_layer	       = romeo4
+        1icon_layer_x      = 111
+        1icon_layer_y      = -2
+
+        hud		   = wpn_kiparis_saw_romeo4_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_romeo4_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_romeo4_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_romeo4_hud.ogf
+
+        aim_hud_offset_pos                = -0.061115, 0.014988, -0.117332
+        aim_hud_offset_pos_16x9           = -0.061115, 0.014988, -0.117332
+        aim_hud_offset_rot                = 0.002413, 0.007515, -0.035053
+        aim_hud_offset_rot_16x9           = 0.002413, 0.007515, -0.035053
+		
+;__________________________________________________________ Romeo 8 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_kiparis_saw_romeo8]:wpn_kiparis_saw
+
+        1icon_layer	   = romeo8
+        1icon_layer_x      = 113
+        1icon_layer_y      = 3
+
+        hud		   = wpn_kiparis_saw_romeo8_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_romeo8_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_romeo8_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_romeo8_hud.ogf
+
+        aim_hud_offset_pos                = -0.061328, 0.012574, -0.117332
+        aim_hud_offset_pos_16x9           = -0.061328, 0.012574, -0.117332
+        aim_hud_offset_rot                = 0.001348, 0.007407, -0.035053
+        aim_hud_offset_rot_16x9           = 0.001348, 0.007407, -0.035053
+		
+;__________________________________________________________ Specter (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_kiparis_saw_trihawk]:wpn_kiparis_saw
+
+        1icon_layer         = trihawk
+        1icon_layer_x       = 104
+        1icon_layer_y       = -1
+
+        hud                 = wpn_kiparis_saw_trihawk_hud
+        !visual				= dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_trihawk_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        !scope_texture        = wpn_crosshair_trihawk
+		
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_trihawk_hud]:wpn_kiparis_saw_hud
+
+        item_visual                              = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_trihawk_hud.ogf
+
+        aim_hud_offset_pos                = -0.060538, 0.007599, -0.118045
+        aim_hud_offset_pos_16x9           = -0.060538, 0.007599, -0.118045
+        aim_hud_offset_rot                = 0.001987, 0.006664, -0.035053
+        aim_hud_offset_rot_16x9           = 0.001987, 0.006664, -0.035053
+		
+;__________________________________________________________ UH-1 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_kiparis_saw_uh2]:wpn_kiparis_saw
+
+        1icon_layer	       = uh2
+        1icon_layer_x      = 115
+        1icon_layer_y      = -2
+
+        hud		   = wpn_kiparis_saw_uh2_hud
+        !visual             = dynamics\weapons\wpn_kiparis_saw\wpn_kiparis_saw_uh2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+;---------------------------------------------------------------------------------------
+[wpn_kiparis_saw_uh2_hud]:wpn_kiparis_saw_hud 
+
+        item_visual        = anomaly_weapons\wpn_kiparis\wpn_kiparis_saw_uh2_hud.ogf
+
+        aim_hud_offset_pos                = -0.060904, 0.010302, -0.117332
+        aim_hud_offset_pos_16x9           = -0.060904, 0.010302, -0.117332
+        aim_hud_offset_rot                = -0.000427, 0.006719, -0.035053
+        aim_hud_offset_rot_16x9           = -0.000427, 0.006719, -0.035053
+		
+;_________________________________________ Vulcan (ATHI) [3DSS Only] ____________________________________________
+

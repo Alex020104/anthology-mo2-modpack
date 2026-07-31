@@ -1,0 +1,239 @@
+______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|                     M79.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                                                                                                                      |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_m79]:zero_immunities,weapon_probability,default_weapon_params,wpn_m79_sounds
+
+		kind = w_explosive
+        GroupControlSection         = spawn_group
+        discovery_dependency        =
+        $npc                        = on
+        $prefetch                   = 2
+        $spawn                      = "weapons\rg-6"
+        scheduled                   = off
+        cform                       = skeleton
+        
+        class                       = WP_RG6
+        slot                        = 1
+        animation_slot              = 1
+        ef_main_weapon_type         = 4
+        ef_weapon_type              = 12
+        hand_dependence             = 1
+        single_handed               = 0
+        
+        sprint_allowed              = true
+		hud_fov                     = 0.65
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 4
+		inv_grid_height                          = 2
+        inv_grid_x                               = 77
+        inv_grid_y                               = 9
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 8
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 73
+        ;inv_grid_y                               = 24
+		
+        ;inv_grid_scale     = 2
+
+;___________________________ Description ___________________________________
+		
+        inv_name                    = st_wpn_m79
+        inv_name_short              = st_wpn_m79
+        description                 = st_wpn_m79_descr
+;____________________________________________________________________
+       
+        inv_weight                  = 2.7
+        cost                        = 26840
+        weapon_class                = heavy_weapon
+        
+        hud                         = wpn_m79_hud
+        visual                      = dynamics\weapons\wpn_m79\wpn_m79.ogf
+		
+        position                    = -0.026, -0.111, 0
+        orientation                 = 0, -9, 0
+		
+        fire_point                  = 0, 0.120, 0.452
+        fire_point2                 = 0, 0.120, 0.452
+		
+        strap_bone0                 = bip01_spine2
+        strap_bone1                 = bip01_spine1
+        strap_position              = -0.26, -0.11, 0.15
+        strap_orientation           = -15, -9, 110
+		
+        ph_mass                     = 3
+
+;___________________________ Particles ___________________________________
+       
+        flame_particles             = weapons\generic_weapon05
+        smoke_particles             = amik\weapons\smoke_particles\smoke_particles_pump_01
+        
+		shell_point				    = 0, 0.12, 0.2
+;____________________________________________________________________
+
+        light_color                 = 0.6, 0.5, 0.3
+        light_range                 = 6.0
+        light_time                  = 0.2
+        light_var_color             = 0.05
+        light_var_range             = 0.5
+
+;___________________________ Upgrades ___________________________________ 
+       
+	    upgr_icon_path              = ui\ui_rak_global_2
+        upgr_icon_x                 = 3750
+        upgr_icon_y                 = 600
+        upgr_icon_width             = 300
+        upgr_icon_height            = 150
+;____________________________________________________________________ 
+        
+        tri_state_reload            = on
+        ammo_class                  = ammo_m209, ammo_m209_bad, ammo_m209_verybad
+        ammo_current                = 60
+        ammo_elapsed                = 0
+        ammo_limit                  = 70
+        ammo_mag_size               = 1
+        startup_ammo                = 0
+
+;___________________________ Scopes ___________________________________ 
+       
+        scope_status                = 0
+
+;___________________________ Silencer ___________________________________ 
+       
+        silencer_status             = 0
+
+;___________________________ Grenade launcher ___________________________________ 
+        
+        grenade_launcher_status     = 0
+        launch_speed                = 73.5
+;___________________________ TTX ___________________________________
+        
+        hit_impulse                 = 150
+        hit_power                   = 0.8, 0.8, 0.8, 0.8
+        hit_type                    = fire_wound
+        fire_distance               = 500
+        bullet_speed                = 295
+        rpm                         = 200
+        rpm_empty_click             = 200
+        
+        zoom_dof                    = 0.5, 1.0, 180
+        zoom_enabled                = true
+        reload_dof                  = 0.0, 0.5, 5, 1.3
+        control_inertion_factor = 1.0f
+        crosshair_inertion          = 8.3
+        fire_dispersion_base        = 0.76
+        fire_dispersion_condition_factor = 0.001
+        
+        misfire_probability         = 0.005
+        misfire_start_condition     = 0.7 ;  0.86
+        misfire_start_prob          = 0.007
+        misfire_end_condition       = 0.14
+        misfire_end_prob            = 0.11
+        
+        condition_queue_shot_dec    = 0.009
+        condition_shot_dec          = 0.009
+        
+        cam_relax_speed             = 7.0
+        cam_dispersion              = 3.02
+        cam_dispersion_frac         = 0.1
+        cam_dispersion_inc          = 3.02
+        cam_max_angle               = 50
+        cam_max_angle_horz          = 50
+        cam_step_angle_horz         = 3.9
+        
+        PDM_disp_accel_factor       = 2.9
+        PDM_disp_base               = 0.95
+        PDM_disp_crouch             = 1.0
+        PDM_disp_crouch_no_acc      = 1.0
+        PDM_disp_vel_factor         = 2.9
+        
+        cam_relax_speed_ai          = 360
+        holder_fov_modifier         = 1.0
+        holder_range_modifier       = 1.0
+        min_radius                  = 0
+        max_radius                  = 500
+        hit_probability_gd_novice   = 1.00
+        hit_probability_gd_stalker  = 1.00
+        hit_probability_gd_veteran  = 1.00
+        hit_probability_gd_master   = 1.00
+        
+        kill_msg_x                  = 0
+        kill_msg_y                  = 172
+        kill_msg_width              = 68
+        kill_msg_height             = 30
+
+;_________________________________________________ Sounds ______________________________________________________
+		
+		snd_add_cartridge			= weapons\librarian_m79\reload
+		snd_reload					= weapons\librarian_m79\reload
+		snd_close_weapon			= $no_sound
+		snd_open_weapon				= $no_sound
+		snd_reload_misfire			= weapons\librarian_m79\unjam
+
+;__________________________________________ HUD parameters ____________________________________________________    
+
+[wpn_m79_hud]:hud_base
+
+        item_visual                 = anomaly_weapons\wpn_m79\wpn_m79_hud.ogf
+        attach_place_idx            = 0
+        zoom_hide_crosshair         = true
+
+;======================== Hud Position =======================================================
+       
+        item_position               = 0, 0, 0
+        item_orientation            = 0, 0, 0
+        
+        hands_orientation                = 0.0008, -0.001602, -0.00267
+        hands_orientation_16x9           = 0.0008, -0.001602, -0.00267
+        hands_position                   = 0.000106, 0.000142, -0.000568
+        hands_position_16x9              = 0.000106, 0.000142, -0.000568
+        
+        aim_hud_offset_pos               = -0.140321, -0.033516, -0.227385
+        aim_hud_offset_pos_16x9          = -0.140321, -0.033516, -0.227385
+        aim_hud_offset_rot               = -0.159877, 0.001061, 0.005687
+        aim_hud_offset_rot_16x9          = -0.159877, 0.001061, 0.005687
+		
+		lowered_hud_offset_pos           = 0.177894, 0.032285, -0.002561
+        lowered_hud_offset_pos_16x9      = 0.177894, 0.032285, -0.002561
+        lowered_hud_offset_rot           = 0.087908, -0.7888, 0.098576
+        lowered_hud_offset_rot_16x9      = 0.087908, -0.7888, 0.098576
+        
+        gl_hud_offset_pos           = 0, 0, 0
+        gl_hud_offset_rot           = 0, 0, 0
+        
+        lean_hud_offset_pos         = 0, 0, 0
+        lean_hud_offset_rot         = 0, 0, 0
+
+;_____________________________________ Animations _____________________________________
+       		
+        anm_add_cartridge           = hand_m79_reload, m79_reload
+        anm_close                   = hand_m79_kontole_tugel_jancok, m79_kontole_tugel_jancok
+        anm_hide                    = hand_m79_holster, m79_holster
+        anm_idle                    = hand_m79_idle, m79_idle
+        anm_idle_aim                = hand_m79_idle_aim, m79_idle
+        anm_idle_aim_moving         = hand_m79_moving, m79_idle, 0.75
+        anm_idle_aim_moving_crouch  = hand_m79_moving, m79_idle, 0.7
+        anm_idle_moving             = hand_m79_moving, m79_moving
+        anm_idle_sprint             = hand_m79_sprint, m79_sprint, 1.1
+        anm_open                    = hand_m79_kontole_tugel_jancok, m79_kontole_tugel_jancok
+        anm_shots                   = hand_m79_shoot, m79_shoot
+        anm_show                    = hand_m79_draw, m79_draw
+		anm_reload_misfire          = hand_m79_unjam, m79_unjam
+
+;_____________________________________ Parameters of the shells sprite for HUD __________________________
+        
+        shell_bone                  = wpn_body
+        shell_dir                   = 0, 1, 0
+        shell_point                 = 0, 0, 0
+        
+        fire_bone                   = wpn_body
+        fire_point                  = 0, 0.07, 0.513
+ 
+		freelook_z_offset_mul		= 0.3

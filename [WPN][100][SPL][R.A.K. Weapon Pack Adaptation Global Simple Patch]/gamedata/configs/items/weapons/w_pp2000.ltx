@@ -1,0 +1,1966 @@
+﻿______________________________________________________________________________________________________________________________________________________________________________________________   
+|                                                                                                                                                                                             |
+|           ПП-2000 Anomaly Model+texture, SeDzhimol Reanimation.Version 3DSS+PRS+MS.Based on G.A.M.M.A shaders                                                                               |
+|_____________________________________________________________________________________________________________________________________________________________________________________________|
+
+[wpn_pp2000]:identity_immunities,weapon_probability,default_weapon_params,wpn_sr2m_sounds
+
+        GroupControlSection         = spawn_group
+        $npc                        = on
+        $prefetch                   = 8
+        $spawn                      = "weapons\mp5"
+        scheduled                   = off
+        cform                       = skeleton
+        parent_section              = wpn_pp2000
+        
+        class                       = WP_LR300
+        slot                        = 1
+        animation_slot              = 1
+        ef_main_weapon_type         = 2
+        ef_weapon_type              = 6
+        hand_dependence             = 1
+        single_handed               = 0
+        
+        default_to_ruck             = false
+        sprint_allowed              = true
+
+		hud_fov                                  = 0.65
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        lewd_lens_hide_enabled       = true	
+        lewd_lens_hide_bone          = lens
+        lewd_lens_hide_delays        = 0.1,0
+        lewd_lens_hide_aim_mode      = true, false, false
+ ;_______________________________________________________________________________
+
+;___________________________ Icon ___________________________________
+
+        icons_texture      = ui\ui_rak_global_2
+		       
+        inv_grid_width                           = 3
+		inv_grid_height                          = 2
+        inv_grid_x                               = 20
+        inv_grid_y                               = 24
+
+;___________________________ HD Icon ___________________________________
+        
+		;inv_grid_width                           = 6
+        ;inv_grid_height                          = 4       
+        ;inv_grid_x                               = 0
+        ;inv_grid_y                               = 24
+		
+        ;inv_grid_scale     = 2
+
+;___________________________ Description ___________________________________
+		
+        inv_name                    = st_wpn_pp2000
+        inv_name_short              = st_wpn_pp2000
+        description                 = st_wpn_pp2000_descr
+;____________________________________________________________________
+        
+        kind                        = w_smg ;w_pistol
+        inv_weight                  = 1.66
+        cost                        = 19650
+        repair_type                 = pistol
+        weapon_class                = assault_rifle
+        
+        hud                         = wpn_pp2000_hud
+        visual                      = dynamics\weapons\wpn_pp2000\wpn_pp2000.ogf
+		
+        position                    = -0.021, -0.085, 0
+        orientation                 = 0, 0, 0
+		
+        fire_point                  = 0, 0.133, 0.161
+        fire_point2                 = 0, 0.133, 0.161
+		
+        strap_bone0                 = bip01_spine2
+        strap_bone1                 = bip01_spine1
+        strap_position              = -0.16, -0.36, 0.15
+        strap_orientation           = -10, -5, 10
+
+        ph_mass                     = 3
+
+;___________________________ Particles ___________________________________
+        
+        flame_particles             = weapons\generic_weapon05
+        smoke_particles             = weapons\generic_shoot_00
+        grenade_flame_particles     = weapons\generic_weapon01
+        
+		shell_point		 			= 0,0.133,0.047
+		shell_dir		 			= 0,0,0.4
+		;shell_particles	 			= weapons\9x19
+;____________________________________________________________________
+
+        light_disabled              = false
+        light_color                 = 0.6, 0.5, 0.3
+        light_range                 = 5
+        light_time                  = 0.2
+        light_var_color             = 0.05
+        light_var_range             = 0.5
+
+;___________________________ Upgrades ___________________________________
+       
+        upgrades                    = up_gr_firstab_pp2000, up_gr_seconab_pp2000, up_gr_thirdab_pp2000, up_gr_fourtab_pp2000, up_gr_fifthab_pp2000, up_gr_fifthcd_pp2000
+        installed_upgrades          =
+        upgrade_scheme              = upgrade_scheme_mp5
+		
+        upgr_icon_x                 = 900
+        upgr_icon_y                 = 400
+        upgr_icon_width             = 250
+        upgr_icon_height            = 100
+;____________________________________________________________________
+        
+        fire_modes                  = 1, 3, -1
+        ammo_class                  = ammo_9x19_fmj, ammo_9x19_fmj_bad, ammo_9x19_fmj_verybad, ammo_9x19_pbp, ammo_9x19_pbp_bad, ammo_9x19_pbp_verybad, ammo_9x19_ap, ammo_9x19_ap_bad, ammo_9x19_ap_verybad
+        ammo_elapsed                = 30
+        ammo_mag_size               = 30
+        startup_ammo                = 90
+
+;___________________________ Scopes ___________________________________
+       
+        scopes                      = 0kp2, 1p87, ac10632, ac11090, acog, ado, aim_acro, aim_low, aimpoint, point_aimpro, bravo4, bossxe, c-more, compm4s, cortex, deltapoint, d0cter, e0t2, e0t2_magd, e0t2_magd_off, echo1, ekp8_18, elbit_falcon2, exps3, gauss, gauss_sight, hamr, hartman_mh1, hco, he510, kemper, rusak, lco1, leupold, march_f_shorty, marchf, mepro, monstrum, p1x42, p4x32, pk6, pn23, po4x34, ps320, rakurs, razorhd, rmr, romeo4, romeo8, specter, t12, tac30, trihawk, uh2, vulcan
+        scope_status                = 0
+        scope_zoom_factor           = 0
+		use_alt_aim_hud  		    = true 
+
+;___________________________ Silencer ___________________________________
+       
+        silencer_name               = wpn_sil_9mm
+        silencer_status             = 2
+		
+        silencer_x                  = 140
+        silencer_y                  = -7
+		
+        silencer_light_color        = 0.6, 0.5, 0.3
+        silencer_light_range        = 0.01
+        silencer_light_time         = 0.2
+        silencer_light_var_color    = 0.05
+        silencer_light_var_range    = 0.5
+		
+        silencer_smoke_particles    = weapons\generic_shoot_00
+
+;___________________________ Grenade launcher ___________________________________
+       
+        grenade_class               = ammo_vog-25, ammo_vog-25_bad, ammo_vog-25_verybad
+        grenade_launcher_status     = 0
+        launch_speed                = 0
+
+;___________________________ TTX ___________________________________
+       
+        hit_impulse                 = 20
+        hit_power                   = 0.47, 0.47, 0.47, 0.47
+        hit_type                    = fire_wound
+        fire_distance               = 400
+        bullet_speed                = 400
+        rpm                         = 750
+        rpm_empty_click             = 200
+        ap_modifier                 = 1.1
+        
+        use_aim_bullet              = false
+        time_to_aim                 = 0.0 ;  3.0
+        zoom_dof                    = 0.5, 1.0, 180
+        zoom_enabled                = true
+        zoom_rotate_time            = 0.25
+        reload_dof                  = 0.0, 0.5, 5, 2
+        control_inertion_factor = 1.0f
+        crosshair_inertion          = 4.25
+		
+        fire_dispersion_base        = 0.53
+        fire_dispersion_condition_factor = 0.001
+        
+        misfire_probability         = 0.005
+        misfire_start_condition     = 0.7 ;  0.83
+        misfire_start_prob          = 0.007
+        misfire_end_condition       = 0.16
+        misfire_end_prob            = 0.11
+        
+        condition_queue_shot_dec    = 0.0012
+        condition_shot_dec          = 0.0012
+        
+        cam_return                  = 0
+        cam_relax_speed             = 10
+        cam_dispersion              = 0.48
+        cam_dispersion_frac         = 1.0
+        cam_dispersion_inc          = 0.0475
+        cam_max_angle               = 41.0
+        cam_max_angle_horz          = 41.0
+        cam_step_angle_horz         = 1.5
+		
+        zoom_cam_relax_speed        = 10
+        zoom_cam_dispersion         = 0.33
+        zoom_cam_dispersion_frac    = 1.0
+        zoom_cam_dispersion_inc     = 0.0375
+        zoom_cam_max_angle          = 41.0
+        zoom_cam_max_angle_horz     = 41.0
+        zoom_cam_step_angle_horz    = 1.42
+        
+        PDM_disp_accel_factor       = 1.155
+        PDM_disp_base               = 0.6
+        PDM_disp_crouch             = 1.0
+        PDM_disp_crouch_no_acc      = 1.0
+        PDM_disp_vel_factor         = 1.15
+        
+        cam_relax_speed_ai          = 120.75
+        zoom_cam_relax_speed_ai     = 120.75
+		
+        holder_fov_modifier         = 1.0
+        holder_range_modifier       = 1.0
+		
+        min_radius                  = 0
+        max_radius                  = 500
+		
+        hit_probability_gd_novice   = 1.00
+        hit_probability_gd_stalker  = 1.00
+        hit_probability_gd_veteran  = 1.00
+        hit_probability_gd_master   = 1.00
+        
+        kill_msg_x                  = 72
+        kill_msg_y                  = 82
+        kill_msg_width              = 56
+        kill_msg_height             = 23
+
+;_________________________________________________ Sounds ______________________________________________________
+
+        snd_draw = wpn\pp2000\ak74_draw
+        snd_holster = wpn\pp2000\p90_hide 
+        snd_reload = wpn\pp2000\pp2000_reload
+        snd_reload_misfire = wpn\pp2000\pp2000_reload_misfire
+        snd_reload_empty = wpn\pp2000\pp2000_reload_empty
+        snd_bore      = $no_sound
+        snd_switch_mode    = wpn\pp2000\vss_firemode
+		
+        scripted_snd_ammo_check = wpn\pp2000\pp2000_mag_check
+        scripted_snd_ammo_check_empty = wpn\pp2000\pp2000_mag_check
+
+;__________________________________________ HUD parameters ____________________________________________________
+
+[wpn_pp2000_hud]:hud_base
+
+        item_visual                 = anomaly_weapons\wpn_pp2000\wpn_pp2000_hud.ogf
+        attach_place_idx            = 0
+        zoom_hide_crosshair         = true
+
+;======================== Hud Position =======================================================
+        
+        item_position               = 0, 0, 0
+        item_orientation            = 0, 0, 0
+        
+        aim_hud_offset_pos               = -0.068123, 0.037369, -0.049845
+        aim_hud_offset_pos_16x9          = -0.068123, 0.037369, -0.049845
+        aim_hud_offset_rot               = -0.006224, 0.002506, -0.011869
+        aim_hud_offset_rot_16x9          = -0.006224, 0.002506, -0.011869
+
+        aim_hud_offset_alt_pos           = -0.120051, -0.068138, -0.050921
+        aim_hud_offset_alt_pos_16x9      = -0.120051, -0.068138, -0.050921
+        aim_hud_offset_alt_rot           = -0.005968, 0.003824, 0.662741
+        aim_hud_offset_alt_rot_16x9      = -0.005968, 0.003824, 0.662741
+		
+        hands_orientation                = 1.64036, -0.837273, -0.316453
+        hands_orientation_16x9           = 1.64036, -0.837273, -0.316453
+        hands_position                   = 0.013558, -0.018195, -0.01461
+        hands_position_16x9              = 0.013558, -0.018195, -0.01461
+		
+        lowered_hud_offset_pos           = 0.021763, 0.009807, -0.020487
+        lowered_hud_offset_pos_16x9      = 0.021763, 0.009807, -0.020487
+        lowered_hud_offset_rot           = 0.177594, -0.405038, 0.093656
+        lowered_hud_offset_rot_16x9      = 0.177594, -0.405038, 0.093656
+
+        gl_hud_offset_pos           = 0, 0, 0
+        gl_hud_offset_pos_16x9      = 0, 0, 0
+        gl_hud_offset_rot           = 0, 0, 0
+        gl_hud_offset_rot_16x9      = 0, 0, 0
+        
+        lean_hud_offset_pos         = 0, 0, 0
+        lean_hud_offset_rot         = 0, 0, 0
+
+;======================== BORING =======================================================
+
+        anm_bore                                = pp_bore, idle
+		
+		anm_bore_jammed                         = pp_bore, idle_jammed
+							
+;======================== HIDE ==========================================================
+		
+		anm_hide                                = pp_holster, idle
+		
+		anm_hide_jammed                         = pp_holster, idle_jammed
+
+;======================== SHOW ==========================================================
+        
+		anm_show                                = pp_show, idle
+		
+		anm_show_jammed                         = pp_show, idle_jammed
+
+;======================== IDLE ==========================================================
+
+        anm_idle                                = pp_idle, idle        
+        anm_idle_moving                         = pp_move, idle
+
+        anm_idle_jammed                         = pp_idle, idle_jammed         
+        anm_idle_moving_jammed                  = pp_move, idle_jammed 		
+		
+;======================== SPRINT TRANSITIONS AND PATERN ====================================================
+        
+        anm_sprint_start                        = pp_sprint_start, idle	
+		anm_idle_sprint                         = pp_sprint, idle
+        anm_sprint_end                          = pp_sprint_end, idle, 0.9
+		
+		anm_sprint_start_jammed                 = pp_sprint_start, idle_jammed
+		anm_idle_sprint_jammed                  = pp_sprint, idle_jammed 
+        anm_sprint_end_jammed                   = pp_sprint_end, idle_jammed, 0.9
+		
+;----------------------------------------------------------------------------------------
+        ts_pattern_sprint_start                 = .+, anm_idle_sprint, anm_sprint_start, 1
+        ts_pattern_sprint_end                   = anm_idle_sprint, ^anm_idle.*, anm_sprint_end
+        ts_strict_sprint_end_move               = anm_sprint_start, anm_idle_moving, anm_sprint_end
+
+;======================== AIM TRANSITIONS ====================================================
+		
+		anm_idle_aim                            = pp_aim, idle
+		
+		anm_idle_aim_jammed                     = pp_aim, idle_jammed 
+		
+;======================== RELOAD ==========================================================
+
+        anm_reload                              = pp_r
+        anm_reload_misfire                      = pp_mis
+        anm_reload_empty                        = pp_re
+
+;======================== SWITCH MODE ==========================================================		
+		
+		anm_switch_mode                         = pp_mod_switch, idle
+		
+		anm_switch_mode_jammed                  = pp_mod_switch, idle_jammed
+		
+;========================SHOOTS===========================================================
+		
+        anm_shots                               = pp_shot
+		anm_shots_aim                           = pp_shot_aim
+		
+		anm_shots_jammed                        = pp_shot, p_shot_jammed 
+		anm_shots_jammed_aim                    = pp_shot_aim, p_shot_jammed	
+
+;========================MAG CHECH===========================================================
+		
+        anm_ammo_check                           = pp_mchek
+        anm_ammo_check_empty                     = pp_mchek_emp
+		
+		anm_ammo_check_jammed                    = pp_mchek, p_mchek_jammed
+        anm_ammo_check_empty_jammed              = pp_mchek_emp, , p_mchek_jammed_emp
+		
+;_____________________________________ Parameters of the shells sprite for HUD __________________________
+  
+        shell_bone                  = wpn_body
+        shell_dir                   = 0, 1, 0
+        shell_point                 = 0.028, 0.078, 0.113
+        
+        fire_bone                   = wpn_body
+        fire_bone2                  = wpn_body
+        fire_point                  = 0, 0.039682, 0.215739
+        fire_point2                 = 0, -0.009, 0.601
+ 
+		freelook_z_offset_mul		= 0.5
+
+;____________________________________________________ Addons _______________________________________________________________________________________________________
+
+;__________________________________________________________ ОКП-7 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_0kp2]:wpn_pp2000
+
+        1icon_layer	       = 0kp2
+        1icon_layer_x      = 64
+        1icon_layer_y      = -18
+
+        hud		   = wpn_pp2000_0kp2_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_0kp2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_0kp2_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_0kp2_hud.ogf
+		
+        aim_hud_offset_pos                = -0.067644, 0.015756, -0.076946
+        aim_hud_offset_pos_16x9           = -0.067644, 0.015756, -0.076946
+        aim_hud_offset_rot                = -0.005727, 0.002347, -0.011869
+        aim_hud_offset_rot_16x9           = -0.005727, 0.002347, -0.011869
+
+;__________________________________________________________ 1P69 (Joseph_Porta_84)[3DSS Only] ___________________________________________________
+
+[wpn_pp2000_1p87]:wpn_pp2000
+
+        1icon_layer	   = 1p87
+        1icon_layer_x      = 64
+        1icon_layer_y      = -22
+
+        hud		   = wpn_pp2000_1p87_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_1p87_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_1p87_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_1p87_hud.ogf
+		
+        aim_hud_offset_pos                = -0.068019, -0.002448, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068019, -0.002448, -0.076946
+        aim_hud_offset_rot                = -0.009208, 0.002936, -0.011869
+        aim_hud_offset_rot_16x9           = -0.009208, 0.002936, -0.011869
+			
+;__________________________________________________________ AC10632 (BaS)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_ac10632]:wpn_pp2000
+
+        1icon_layer	   = ac10632
+        1icon_layer_x      = 55
+        1icon_layer_y      = -25
+
+        hud		   = wpn_pp2000_ac10632_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_ac10632_world.ogf
+
+        ms_count = 8
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_ac10632_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_ac10632_hud.ogf
+		
+        aim_hud_offset_pos                = -0.06828, 0.003883, -0.076946
+        aim_hud_offset_pos_16x9           = -0.06828, 0.003883, -0.076946
+        aim_hud_offset_rot                = -0.00665, 0.002932, -0.011869
+        aim_hud_offset_rot_16x9           = -0.00665, 0.002932, -0.011869
+
+;__________________________________________________________ AC11090 (Party_50 and MsPizza727)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_ac11090]:wpn_pp2000
+
+        1icon_layer	       = ac11090
+        1icon_layer_x      = 60
+        1icon_layer_y      = -21
+
+        hud		   = wpn_pp2000_ac11090_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_ac11090_world.ogf
+
+        ms_count = 8
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_ac11090_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_ac11090_hud.ogf
+		
+        aim_hud_offset_pos                = -0.067699, 0.014613, -0.076946
+        aim_hud_offset_pos_16x9           = -0.067699, 0.014613, -0.076946
+        aim_hud_offset_rot                = -0.006366, 0.001009, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006366, 0.001009, -0.011869
+		
+;__________________________________________________________ ACOG (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_pp2000_acog]:wpn_pp2000
+
+        1icon_layer	       = acog
+        1icon_layer_x      = 48
+        1icon_layer_y      = -27
+
+        hud		           = wpn_pp2000_acog_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_acog_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_acog
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_acog_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_acog_hud.ogf
+		
+        aim_hud_offset_pos                = -0.067644, 0.006155, -0.091742
+        aim_hud_offset_pos_16x9           = -0.067644, 0.006155, -0.091742
+        aim_hud_offset_rot                = 0.007354, 0.002984, -0.011869
+        aim_hud_offset_rot_16x9           = 0.007354, 0.002984, -0.011869
+		
+;_____________________________ ADO (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_pp2000_ado]:wpn_pp2000
+
+        1icon_layer         = ado
+        1icon_layer_x       = 35
+        1icon_layer_y       = -29
+
+        hud                 = wpn_pp2000_ado_hud
+        !visual				= dynamics\weapons\wpn_pp2000\wpn_pp2000_ado_world.ogf
+        zoom_step_count					 = 1
+		
+ ;___________________________ 3DSS Parameters ___________________________________
+ 
+        s3ds_reticle_size   = 4
+ 	    s3ds_eye_relief     = 2
+	    s3ds_exit_pupil		= 0.55		
+	    magnification 		= 9
+        min_magnification	= 3
+		
+ ;_______________________________________________________________________________
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_ado
+		
+		
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_ado_hud]:wpn_pp2000_hud
+
+        item_visual                              = anomaly_weapons\wpn_pp2000\wpn_pp2000_ado_hud.ogf
+		
+        aim_hud_offset_alt_pos            = -0.067248, -0.031306, -0.125729
+        aim_hud_offset_alt_pos_16x9       = -0.067248, -0.031306, -0.125729
+        aim_hud_offset_alt_rot            = -0.004424, 0.002185, -0.015943
+        aim_hud_offset_alt_rot_16x9       = -0.004424, 0.002185, -0.015943
+        aim_hud_offset_pos                = -0.067056, 0.006156, -0.097849
+        aim_hud_offset_pos_16x9           = -0.067056, 0.006156, -0.097849
+        aim_hud_offset_rot                = -0.006224, 0.002506, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006224, 0.002506, -0.011869
+
+		
+;__________________________________________________________ Aim Acro (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_aim_acro]:wpn_pp2000
+
+        1icon_layer	       = aim_acro
+        1icon_layer_x      = 60
+        1icon_layer_y      = -27
+
+        hud		           = wpn_pp2000_aim_acro_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_aim_acro_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_aim_acro_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_aim_acro_hud.ogf
+		
+        aim_hud_offset_pos                = -0.068011, 0.016468, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068011, 0.016468, -0.076946
+        aim_hud_offset_rot                = -0.007644, 0.002992, -0.011869
+        aim_hud_offset_rot_16x9           = -0.007644, 0.002992, -0.011869
+				
+;__________________________________________________________ Aim Low (BaS)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_aim_low]:wpn_pp2000
+
+        1icon_layer	       = aim_low
+        1icon_layer_x      = 56
+        1icon_layer_y      = -23
+
+        hud		           = wpn_pp2000_aim_low_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_aim_low_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_aim_low_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_aim_low_hud.ogf
+
+        aim_hud_offset_pos                = -0.067905, 0.021234, -0.076946
+        aim_hud_offset_pos_16x9           = -0.067905, 0.021234, -0.076946
+        aim_hud_offset_rot                = -0.006508, 0.002506, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006508, 0.002506, -0.011869
+		
+;__________________________________________________________ Aimpoint (BaS)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_aimpoint]:wpn_pp2000
+
+        1icon_layer	       = aimpoint
+        1icon_layer_x      = 57
+        1icon_layer_y      = -30
+		
+        hud		           = wpn_pp2000_aimpoint_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_aimpoint_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_aimpoint_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_aimpoint_hud.ogf
+
+        aim_hud_offset_pos                = -0.067538, 0.004167, -0.076946
+        aim_hud_offset_pos_16x9           = -0.067538, 0.004167, -0.076946
+        aim_hud_offset_rot                = -0.00665, 0.002347, -0.011869
+        aim_hud_offset_rot_16x9           = -0.00665, 0.002347, -0.011869
+		
+;__________________________________________________________ Aimpoint Pro (BaS)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_point_aimpro]:wpn_pp2000
+
+        1icon_layer	       = point_aimpro
+        1icon_layer_x      = 64
+        1icon_layer_y      = -30
+
+        hud		           = wpn_pp2000_point_aimpro_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_aimpoint_pro_world.ogf
+		
+		ms_count = 2
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_point_aimpro_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_aimpoint_pro_hud.ogf
+
+        aim_hud_offset_pos                = -0.077761, 0.013493, -0.073162
+        aim_hud_offset_pos_16x9           = -0.077761, 0.013493, -0.073162
+        aim_hud_offset_rot                = -0.031839, -0.01966, -0.000988
+        aim_hud_offset_rot_16x9           = -0.031839, -0.01966, -0.000988
+						
+;__________________________________________________________ Bravo 4 (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_pp2000_bravo4]:wpn_pp2000
+
+        1icon_layer	       = bravo4
+        1icon_layer_x      = 27
+        1icon_layer_y      = -32
+
+        hud		   = wpn_pp2000_bravo4_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_bravo4_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_hamr
+		
+
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_bravo4_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_bravo4_hud.ogf
+		
+        aim_hud_offset_alt_pos            = -0.067242, -0.042043, -0.098776
+        aim_hud_offset_alt_pos_16x9       = -0.067242, -0.042043, -0.098776
+        aim_hud_offset_alt_rot            = -0.008368, 0.002477, -0.015943
+        aim_hud_offset_alt_rot_16x9       = -0.008368, 0.002477, -0.015943
+        aim_hud_offset_pos                = -0.06759, 0.009067, -0.062724
+        aim_hud_offset_pos_16x9           = -0.06759, 0.009067, -0.062724
+        aim_hud_offset_rot                = -0.006224, 0.002506, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006224, 0.002506, -0.011869
+
+		
+;__________________________________________________________ BossXE (ATHI)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_bossxe]:wpn_pp2000
+
+        1icon_layer	       = bossxe
+        1icon_layer_x      = 62
+        1icon_layer_y      = -23
+
+        hud		   = wpn_pp2000_bossxe_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_bossxe_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+		
+		laser_status = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_bossxe_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_bossxe_hud.ogf
+		
+        aim_hud_offset_pos                = -0.068229, -0.00365, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068229, -0.00365, -0.076946
+        aim_hud_offset_rot                = -0.006863, 0.002612, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006863, 0.002612, -0.011869
+		
+;__________________________________________________________ C-MORE (BaS)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_c-more]:wpn_pp2000
+
+        1icon_layer	   = c-more
+        1icon_layer_x      = 64
+        1icon_layer_y      = -19
+
+        hud		   = wpn_pp2000_c-more_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_c-more_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_c-more_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_c-more_hud.ogf
+
+        aim_hud_offset_pos                = -0.068122, 0.007081, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068122, 0.007081, -0.076946
+        aim_hud_offset_rot                = -0.006863, 0.003092, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006863, 0.003092, -0.011869
+		
+;__________________________________________________________ Compm4s (BaS)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_compm4s]:wpn_pp2000
+
+        1icon_layer	       = compm4s
+        1icon_layer_x      = 57
+        1icon_layer_y      = -26
+
+        hud		   = wpn_pp2000_compm4s_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_compm4s_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_compm4s_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_compm4s_hud.ogf
+
+        aim_hud_offset_pos                = -0.068175, 0.005874, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068175, 0.005874, -0.076946
+        aim_hud_offset_rot                = -0.006863, 0.003092, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006863, 0.003092, -0.011869
+		
+;_________________________________________ Cortex (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_pp2000_cortex]:wpn_pp2000
+
+        1icon_layer         = cortex
+        1icon_layer_x       = 35
+        1icon_layer_y       = -27
+
+        hud                 = wpn_pp2000_cortex_hud
+        !visual				= dynamics\weapons\wpn_pp2000\wpn_pp2000_cortex_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_cortex
+		
+			
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_cortex_hud]:wpn_pp2000_hud
+
+        item_visual                              = anomaly_weapons\wpn_pp2000\wpn_pp2000_cortex_hud.ogf
+
+        aim_hud_offset_pos                = -0.067483, -0.005153, -0.062731
+        aim_hud_offset_pos_16x9           = -0.067483, -0.005153, -0.062731
+        aim_hud_offset_rot                = -0.006224, 0.002506, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006224, 0.002506, -0.011869
+		
+;__________________________________________________________ Deltapoint(BaS)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_deltapoint]:wpn_pp2000
+
+        1icon_layer	       = deltapoint
+        1icon_layer_x      = 63
+        1icon_layer_y      = -23
+
+        hud		   = wpn_pp2000_deltapoint_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_deltapoint_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_deltapoint_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_deltapoint_hud.ogf
+
+        aim_hud_offset_pos                = -0.068069, 0.004596, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068069, 0.004596, -0.076946
+        aim_hud_offset_rot                = -0.00807, 0.002986, -0.011869
+        aim_hud_offset_rot_16x9           = -0.00807, 0.002986, -0.011869
+		
+;_________________________________________ Devo (ATHI) [3DSS+PRS Only] ____________________________________________
+
+[wpn_pp2000_d0cter]:wpn_pp2000
+
+        1icon_layer	       = d0cter
+        1icon_layer_x      = 56
+        1icon_layer_y      = -17
+
+        hud		           = wpn_pp2000_d0cter_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_docter_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_d0cter_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_docter_hud.ogf
+
+        aim_hud_offset_pos                = -0.068389, 0.021945, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068389, 0.021945, -0.076946
+        aim_hud_offset_rot                = -0.006863, 0.003092, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006863, 0.003092, -0.011869
+		
+;__________________________________________________________ EOTech XPS3-0 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_pp2000_e0t2]:wpn_pp2000
+
+        1icon_layer	       = e0t2
+        1icon_layer_x      = 64
+        1icon_layer_y      = -25
+
+        hud		           = wpn_pp2000_e0t2_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_e0t2_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+		
+[wpn_pp2000_e0t2_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_e0t2_hud.ogf
+
+        aim_hud_offset_pos                = -0.068228, 0.003531, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068228, 0.003531, -0.076946
+        aim_hud_offset_rot                = -0.010839, 0.002934, -0.011869
+        aim_hud_offset_rot_16x9           = -0.010839, 0.002934, -0.011869
+		
+;__________________________________________________________ EOTech XPS3-0 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_pp2000_e0t2_magd]:wpn_pp2000
+
+        1icon_layer	       = e0t2_magd
+        1icon_layer_x      = 38
+        1icon_layer_y      = -29
+		
+
+        hud		           = wpn_pp2000_e0t2_magd_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_e0t2_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_eot_magn
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_e0t2_magd_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_e0t2_magd_hud.ogf
+
+        aim_hud_offset_pos                = -0.067804, 0.006227, -0.083494
+        aim_hud_offset_pos_16x9           = -0.067804, 0.006227, -0.083494
+        aim_hud_offset_rot                = -0.00594, 0.002983, -0.011869
+        aim_hud_offset_rot_16x9           = -0.00594, 0.002983, -0.011869
+
+;___________________________ Flipped ___________________________________
+
+[wpn_pp2000_e0t2_magd_off]:wpn_pp2000
+
+        1icon_layer	       = e0t2_magd
+        1icon_layer_x      = 38
+        1icon_layer_y      = -29
+
+        hud		           = wpn_pp2000_e0t2_magd_off_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_e0t2_magd_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_e0t2_magd_off_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_e0t2_magd_off_hud.ogf
+
+        aim_hud_offset_pos                = -0.06833, 0.004097, -0.097849
+        aim_hud_offset_pos_16x9           = -0.06833, 0.004097, -0.097849
+        aim_hud_offset_rot                = -0.010271, 0.002878, -0.011869
+        aim_hud_offset_rot_16x9           = -0.010271, 0.002878, -0.011869
+		
+;_________________________________________ Echo1 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_pp2000_echo1]:wpn_pp2000
+
+        1icon_layer         = echo1
+        1icon_layer_x       = 32
+        1icon_layer_y       = -31
+		
+        hud                 = wpn_pp2000_echo1_hud
+        !visual				= dynamics\weapons\wpn_pp2000\wpn_pp2000_echo1_world.ogf
+        zoom_step_count					 = 1
+ 
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+		
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_echo1_hud]:wpn_pp2000_hud
+
+        item_visual                              = anomaly_weapons\wpn_pp2000\wpn_pp2000_echo1_hud.ogf
+	
+        aim_hud_offset_alt_pos            = -0.067036, -0.028039, -0.079865
+        aim_hud_offset_alt_pos_16x9       = -0.067036, -0.028039, -0.079865
+        aim_hud_offset_alt_rot            = -0.004424, 0.002185, -0.015943
+        aim_hud_offset_alt_rot_16x9       = -0.004424, 0.002185, -0.015943
+        aim_hud_offset_pos                = -0.067167, -0.003659, -0.06819
+        aim_hud_offset_pos_16x9           = -0.067167, -0.003659, -0.06819
+        aim_hud_offset_rot                = -0.006224, 0.002506, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006224, 0.002506, -0.011869
+
+		
+;__________________________________________________________ Кобра ЭКП-8-18 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_pp2000_ekp8_18]:wpn_pp2000
+
+        1icon_layer	       = ekp8_18
+        1icon_layer_x      = 63
+        1icon_layer_y      = -17
+
+        hud		           = wpn_pp2000_ekp8_18_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_ekp8_18_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_ekp8_18_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_ekp8_18_hud.ogf
+
+        aim_hud_offset_pos                = -0.068441, -0.000026, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068441, -0.000026, -0.076946
+        aim_hud_offset_rot                = -0.006218, 0.002878, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006218, 0.002878, -0.011869
+		
+;__________________________________________________________ FALCON 2 (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_elbit_falcon2]:wpn_pp2000
+
+        1icon_layer	       = elbit_falcon2
+        1icon_layer_x      = 52
+        1icon_layer_y      = -21
+
+        hud		           = wpn_pp2000_elbit_falcon2_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_elbit_falcon2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_elbit_falcon2_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_elbit_falcon2_hud.ogf
+
+        aim_hud_offset_pos                = -0.068177, 0.011131, -0.097849
+        aim_hud_offset_pos_16x9           = -0.068177, 0.011131, -0.097849
+        aim_hud_offset_rot                = -0.007928, 0.002775, -0.011869
+        aim_hud_offset_rot_16x9           = -0.007928, 0.002775, -0.011869
+		
+;__________________________________________________________ EOTech 553 (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_pp2000_exps3]:wpn_pp2000
+
+        1icon_layer	       = exps3
+        1icon_layer_x      = 63
+        1icon_layer_y      = -27
+
+        hud		   = wpn_pp2000_exps3_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_exps3_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_exps3_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_exps3_hud.ogf
+
+        aim_hud_offset_pos                = -0.068175, 0.002466, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068175, 0.002466, -0.076946
+        aim_hud_offset_rot                = -0.007289, 0.003145, -0.011869
+        aim_hud_offset_rot_16x9           = -0.007289, 0.003145, -0.011869
+
+;__________________________________________________________ Gauss Sight (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_pp2000_gauss_sight]:wpn_pp2000
+
+        1icon_layer	       = gauss_sight
+        1icon_layer_x      = 55
+        1icon_layer_y      = -20
+
+        hud		           = wpn_pp2000_gauss_sight_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_gauss_sight_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_gauss_sight
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_gauss_sight_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_gauss_sight_hud.ogf
+
+        aim_hud_offset_pos                = -0.066951, 0.007292, -0.076948
+        aim_hud_offset_pos_16x9           = -0.066951, 0.007292, -0.076948
+        aim_hud_offset_rot                = -0.002529, -0.001387, -0.021612
+        aim_hud_offset_rot_16x9           = -0.002529, -0.001387, -0.021612
+		
+;__________________________________________________________ Gauss Sight (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_pp2000_gauss]:wpn_pp2000
+
+        1icon_layer	       = gauss
+        1icon_layer_x      = 38
+        1icon_layer_y      = -32
+
+        hud		           = wpn_pp2000_gauss_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_gauss_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_gauss_sight
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_gauss_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_gauss_hud.ogf
+
+        aim_hud_offset_pos                = -0.067321, 0.000606, -0.113071
+        aim_hud_offset_pos_16x9           = -0.067321, 0.000606, -0.113071
+        aim_hud_offset_rot                = -0.006224, 0.002506, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006224, 0.002506, -0.011869
+		
+;__________________________________________________________ HAMR (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_pp2000_hamr]:wpn_pp2000
+
+        1icon_layer	       = hamr
+        1icon_layer_x      = 33
+        1icon_layer_y      = -31
+
+        hud		   = wpn_pp2000_hamr_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_hamr_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_hamr
+		
+
+		use_alt_aim_hud  		    = true
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_hamr_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_hamr_hud.ogf
+		
+        aim_hud_offset_alt_pos            = -0.067248, -0.031661, -0.125729
+        aim_hud_offset_alt_pos_16x9       = -0.067248, -0.031661, -0.125729
+        aim_hud_offset_alt_rot            = -0.008264, 0.002329, -0.015943
+        aim_hud_offset_alt_rot_16x9       = -0.008264, 0.002329, -0.015943
+        aim_hud_offset_pos                = -0.067699, 0.002245, -0.071337
+        aim_hud_offset_pos_16x9           = -0.067699, 0.002245, -0.071337
+        aim_hud_offset_rot                = -0.006224, 0.002506, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006224, 0.002506, -0.011869
+
+		
+;__________________________________________________________ Hartman MH1 (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_hartman_mh1]:wpn_pp2000
+
+        1icon_layer	       = hartman_mh1
+        1icon_layer_x      = 65
+        1icon_layer_y      = -18
+
+        hud		           = wpn_pp2000_hartman_mh1_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_hartman_mh1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_hartman_mh1_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_hartman_mh1_hud.ogf
+
+        aim_hud_offset_pos                = -0.068176, 0.003531, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068176, 0.003531, -0.076946
+        aim_hud_offset_rot                = -0.010342, 0.002933, -0.011869
+        aim_hud_offset_rot_16x9           = -0.010342, 0.002933, -0.011869
+		
+;__________________________________________________________ HCO (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_hco]:wpn_pp2000
+
+        1icon_layer	       = hco
+        1icon_layer_x      = 64
+        1icon_layer_y      = -25
+
+        hud		   = wpn_pp2000_hco_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_hco_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_hco_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_hco_hud.ogf
+
+        aim_hud_offset_pos                = -0.068176, 0.000687, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068176, 0.000687, -0.076946
+        aim_hud_offset_rot                = -0.00878, 0.002827, -0.011869
+        aim_hud_offset_rot_16x9           = -0.00878, 0.002827, -0.011869
+		
+;__________________________________________________________ HE510 (RWAP)[PRS+MS Only] ___________________________________________________
+
+[wpn_pp2000_he510]:wpn_pp2000
+
+        1icon_layer	       = he510
+        1icon_layer_x      = 64
+        1icon_layer_y      = -25
+
+        hud		   = wpn_pp2000_he510_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_he510_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_he510_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_he510_hud.ogf
+		
+        aim_hud_offset_pos                = -0.068388, 0.005945, -0.088254
+        aim_hud_offset_pos_16x9           = -0.068388, 0.005945, -0.088254
+        aim_hud_offset_rot                = -0.008425, 0.003092, -0.011869
+        aim_hud_offset_rot_16x9           = -0.008425, 0.003092, -0.011869
+						
+;__________________________________________________________ Kemper (BaS)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_kemper]:wpn_pp2000
+
+        1icon_layer	       = kemper
+        1icon_layer_x      = 60
+        1icon_layer_y      = -22
+
+        hud		           = wpn_pp2000_kemper_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_kemper_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_kemper_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_kemper_hud.ogf
+		
+        aim_hud_offset_pos                = -0.068069, 0.004596, -0.080432
+        aim_hud_offset_pos_16x9           = -0.068069, 0.004596, -0.080432
+        aim_hud_offset_rot                = -0.007147, 0.002613, -0.011869
+        aim_hud_offset_rot_16x9           = -0.007147, 0.002613, -0.011869
+		
+;__________________________________________________________ Rusak (Joseph_Porta_84)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_rusak]:wpn_pp2000
+
+        1icon_layer	       = rusak
+        1icon_layer_x      = 55
+        1icon_layer_y      = -27
+
+        hud		           = wpn_pp2000_rusak_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_rusak_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_rusak_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_rusak_hud.ogf
+
+        aim_hud_offset_pos                = -0.068226, 0.007576, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068226, 0.007576, -0.076946
+        aim_hud_offset_rot                = -0.006934, 0.00304, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006934, 0.00304, -0.011869
+		
+;__________________________________________________________ LCO (Phant0m)[PRS+MS Only] ___________________________________________________
+
+[wpn_pp2000_lco1]:wpn_pp2000
+
+        1icon_layer	       = lco1
+        1icon_layer_x      = 58
+        1icon_layer_y      = -25
+
+        hud		   = wpn_pp2000_lco1_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_lco1_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_lco1_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_lco1_hud.ogf
+
+        aim_hud_offset_pos                = -0.068122, 0.003247, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068122, 0.003247, -0.076946
+        aim_hud_offset_rot                = -0.007289, 0.00304, -0.011869
+        aim_hud_offset_rot_16x9           = -0.007289, 0.00304, -0.011869
+		
+;__________________________________________________________ Leupold (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_pp2000_leupold]:wpn_pp2000
+
+        1icon_layer	       = leupold
+        1icon_layer_x      = 42
+        1icon_layer_y      = -22
+		
+        hud		   = wpn_pp2000_leupold_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_leupold_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_leupold
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_leupold_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_leupold_hud.ogf
+
+        aim_hud_offset_pos                = -0.067485, 0.004309, -0.076946
+        aim_hud_offset_pos_16x9           = -0.067485, 0.004309, -0.076946
+        aim_hud_offset_rot                = -0.005727, 0.002347, -0.011869
+        aim_hud_offset_rot_16x9           = -0.005727, 0.002347, -0.011869
+			
+;__________________________________________________________ March Shorty (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_pp2000_march_f_shorty]:wpn_pp2000
+
+        1icon_layer	       = march_f_shorty
+        1icon_layer_x      = 38
+        1icon_layer_y      = -27
+
+        hud		           = wpn_pp2000_march_f_shorty_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_march_f_shorty_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_march_shorty
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_march_f_shorty_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_march_f_shorty_hud.ogf
+
+        aim_hud_offset_pos                = -0.067543, 0.000541, -0.074176
+        aim_hud_offset_pos_16x9           = -0.067543, 0.000541, -0.074176
+        aim_hud_offset_rot                = -0.005727, 0.002347, -0.011869
+        aim_hud_offset_rot_16x9           = -0.005727, 0.002347, -0.011869
+		
+;__________________________________________________________ Marchf (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_pp2000_marchf]:wpn_pp2000
+
+        1icon_layer	       = marchf
+        1icon_layer_x      = 37
+        1icon_layer_y      = -19
+
+        hud		   = wpn_pp2000_marchf_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_marchf_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_marchf
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_marchf_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_marchf_hud.ogf
+
+        aim_hud_offset_pos                = -0.067593, 0.000829, -0.014509
+        aim_hud_offset_pos_16x9           = -0.067593, 0.000829, -0.014509
+        aim_hud_offset_rot                = -0.006366, 0.002773, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006366, 0.002773, -0.011869
+		
+;__________________________________________________________ Mepro (BaS)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_mepro]:wpn_pp2000
+
+        1icon_layer	       = mepro
+        1icon_layer_x      = 62
+        1icon_layer_y      = -21
+
+        hud		   = wpn_pp2000_mepro_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_mepro_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_mepro_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_mepro_hud.ogf
+
+        aim_hud_offset_pos                = -0.068015, 0.004312, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068015, 0.004312, -0.076946
+        aim_hud_offset_rot                = -0.007147, 0.002772, -0.011869
+        aim_hud_offset_rot_16x9           = -0.007147, 0.002772, -0.011869
+		
+;_________________________________________ Monstrum (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_pp2000_monstrum]:wpn_pp2000
+
+        1icon_layer         = monstrum
+        1icon_layer_x       = 52
+        1icon_layer_y       = -26
+
+        hud                 = wpn_pp2000_monstrum_hud
+        !visual				= dynamics\weapons\wpn_pp2000\wpn_pp2000_monstrum_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_monstrum
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_monstrum_hud]:wpn_pp2000_hud
+
+        item_visual                              = anomaly_weapons\wpn_pp2000\wpn_pp2000_monstrum_hud.ogf
+
+        aim_hud_offset_pos                = -0.067751, 0.014404, -0.077024
+        aim_hud_offset_pos_16x9           = -0.067751, 0.014404, -0.077024
+        aim_hud_offset_rot                = -0.007644, 0.002289, -0.011869
+        aim_hud_offset_rot_16x9           = -0.007644, 0.002289, -0.011869
+
+;__________________________________________________________ P1X42 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_p1x42]:wpn_pp2000
+
+        1icon_layer	       = p1x42
+        1icon_layer_x      = 61
+        1icon_layer_y      = -26
+
+        hud		   = wpn_pp2000_p1x42_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_p1x42_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_p1x42_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_p1x42_hud.ogf
+
+        aim_hud_offset_pos                = -0.068652, 0.006513, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068652, 0.006513, -0.076946
+        aim_hud_offset_rot                = -0.003952, 0.004423, -0.011869
+        aim_hud_offset_rot_16x9           = -0.003952, 0.004423, -0.011869
+		
+;_________________________________________ P4X32 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_pp2000_p4x32]:wpn_pp2000
+
+        1icon_layer         = p4x32
+        1icon_layer_x       = 54
+        1icon_layer_y       = -22
+
+        hud                 = wpn_pp2000_p4x32_hud
+        !visual				= dynamics\weapons\wpn_pp2000\wpn_pp2000_p4x32_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_p4x32_hud]:wpn_pp2000_hud
+
+        item_visual                              = anomaly_weapons\wpn_pp2000\wpn_pp2000_p4x32_hud.ogf	
+
+        aim_hud_offset_pos                = -0.067591, 0.014401, -0.089251
+        aim_hud_offset_pos_16x9           = -0.067591, 0.014401, -0.089251
+        aim_hud_offset_rot                = -0.005727, 0.002347, -0.011869
+        aim_hud_offset_rot_16x9           = -0.005727, 0.002347, -0.011869
+		
+;__________________________________________________________ PK6 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_pk6]:wpn_pp2000
+
+        1icon_layer	   = pk6
+        1icon_layer_x      = 58
+        1icon_layer_y      = -29
+
+        hud		   = wpn_pp2000_pk6_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_pk6_world.ogf
+		
+		ms_count 			= 3
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_pk6_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_pk6_hud.ogf
+		
+        aim_hud_offset_pos                = -0.069237, 0.017602, -0.076946
+        aim_hud_offset_pos_16x9           = -0.069237, 0.017602, -0.076946
+        aim_hud_offset_rot                = -0.00807, 0.002986, -0.011869
+        aim_hud_offset_rot_16x9           = -0.00807, 0.002986, -0.011869
+
+;________________________________________________ PKS-07 (Party_50 and MsPizza727)[3DSS Only] ___________________________________________________
+
+[wpn_pp2000_pn23]:wpn_pp2000
+
+        1icon_layer	       = pn23
+        1icon_layer_x      = 29
+        1icon_layer_y      = -30
+
+        hud		   = wpn_pp2000_pn23_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_pn23_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 25
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_pn23
+		
+		
+
+;--------------------------------------------------------------------------------------
+
+[wpn_pp2000_pn23_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_pn23_hud.ogf
+
+        aim_hud_offset_pos                = -0.069349, -0.006568, -0.067062
+        aim_hud_offset_pos_16x9           = -0.069349, -0.006568, -0.067062
+        aim_hud_offset_rot                = -0.006153, 0.002669, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006153, 0.002669, -0.011869
+
+;_________________________________________ PO4X34 (MsPizza727) [3DSS Only] ____________________________________________
+
+[wpn_pp2000_po4x34]:wpn_pp2000
+
+        1icon_layer         = po4x34
+        1icon_layer_x       = 54
+        1icon_layer_y       = -22
+
+        hud                 = wpn_pp2000_po4x34_hud
+        !visual				= dynamics\weapons\wpn_pp2000\wpn_pp2000_po4x34_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_po4x34
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_po4x34_hud]:wpn_pp2000_hud
+
+        item_visual                              = anomaly_weapons\wpn_pp2000\wpn_pp2000_po4x34_hud.ogf
+
+        aim_hud_offset_pos                = -0.067431, 0.009569, -0.068631
+        aim_hud_offset_pos_16x9           = -0.067431, 0.009569, -0.068631
+        aim_hud_offset_rot                = -0.007999, 0.002349, -0.011869
+        aim_hud_offset_rot_16x9           = -0.007999, 0.002349, -0.011869
+		
+;_________________________________________ Valdai PS320 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_pp2000_ps320]:wpn_pp2000
+
+        1icon_layer         = ps320
+        1icon_layer_x       = 34
+        1icon_layer_y       = -28
+
+        hud                 = wpn_pp2000_ps320_hud
+        !visual				= dynamics\weapons\wpn_pp2000\wpn_pp2000_ps320_world.ogf
+        zoom_step_count					 = 1
+
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_ps320
+		
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_ps320_hud]:wpn_pp2000_hud
+
+        item_visual                              = anomaly_weapons\wpn_pp2000\wpn_pp2000_ps320_hud.ogf
+
+        aim_hud_offset_pos                = -0.068714, 0.005729, -0.053194
+        aim_hud_offset_pos_16x9           = -0.068714, 0.005729, -0.053194
+        aim_hud_offset_rot                = -0.005727, 0.002347, -0.011869
+        aim_hud_offset_rot_16x9           = -0.005727, 0.002347, -0.011869
+		
+		
+;__________________________________________________________ Rakurs (BaS)[PRS+MS Only] ___________________________________________________
+
+[wpn_pp2000_rakurs]:wpn_pp2000
+
+        1icon_layer	       = rakurs
+        1icon_layer_x      = 54
+        1icon_layer_y      = -25
+
+        hud		   = wpn_pp2000_rakurs_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_rakurs_world.ogf
+		
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_rakurs_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_rakurs_hud.ogf
+
+        aim_hud_offset_pos                = -0.077654, 0.025565, -0.073186
+        aim_hud_offset_pos_16x9           = -0.077654, 0.025565, -0.073186
+        aim_hud_offset_rot                = -0.033118, -0.020032, -0.000958
+        aim_hud_offset_rot_16x9           = -0.033118, -0.020032, -0.000958
+		
+;__________________________________________________________ RazorHD (RWAP)[3DSS+PRS Only] ___________________________________________________
+
+[wpn_pp2000_razorhd]:wpn_pp2000
+
+        1icon_layer	       = razorhd
+        1icon_layer_x      = 34
+        1icon_layer_y      = -26
+
+        hud		   = wpn_pp2000_razorhd_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_razorhd_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_razorhd
+		
+
+		use_alt_aim_hud  		    = true
+		
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_razorhd_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_razorhd_hud.ogf
+
+        aim_hud_offset_alt_pos            = -0.067356, -0.051004, -0.125729
+        aim_hud_offset_alt_pos_16x9       = -0.067356, -0.051004, -0.125729
+        aim_hud_offset_alt_rot            = -0.00773, 0.002682, -0.015943
+        aim_hud_offset_alt_rot_16x9       = -0.00773, 0.002682, -0.015943
+        aim_hud_offset_pos                = -0.067167, 0.001895, -0.046376
+        aim_hud_offset_pos_16x9           = -0.067167, 0.001895, -0.046376
+        aim_hud_offset_rot                = -0.005727, 0.003519, -0.011869
+        aim_hud_offset_rot_16x9           = -0.005727, 0.003519, -0.011869
+
+		
+;__________________________________________________________ RMR (BaS)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_rmr]:wpn_pp2000
+
+        1icon_layer	       = rmr
+        1icon_layer_x      = 63
+        1icon_layer_y      = -25
+
+        hud		   = wpn_pp2000_rmr_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_rmr_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_rmr_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_rmr_hud.ogf
+
+        aim_hud_offset_pos                = -0.067804, 0.007295, -0.076946
+        aim_hud_offset_pos_16x9           = -0.067804, 0.007295, -0.076946
+        aim_hud_offset_rot                = -0.008709, 0.002506, -0.011869
+        aim_hud_offset_rot_16x9           = -0.008709, 0.002506, -0.011869
+		
+;__________________________________________________________ Romeo 4 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_romeo4]:wpn_pp2000
+
+        1icon_layer	       = romeo4
+        1icon_layer_x      = 59
+        1icon_layer_y      = -29
+
+        hud		   = wpn_pp2000_romeo4_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_romeo4_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_romeo4_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_romeo4_hud.ogf
+
+        aim_hud_offset_pos                = -0.067857, 0.008573, -0.076946
+        aim_hud_offset_pos_16x9           = -0.067857, 0.008573, -0.076946
+        aim_hud_offset_rot                = -0.007147, 0.002665, -0.011869
+        aim_hud_offset_rot_16x9           = -0.007147, 0.002665, -0.011869
+		
+;__________________________________________________________ Romeo 8 (Meowie)[PRS Only] ___________________________________________________
+
+[wpn_pp2000_romeo8]:wpn_pp2000
+
+        1icon_layer	   = romeo8
+        1icon_layer_x      = 61
+        1icon_layer_y      = -24
+
+        hud		   = wpn_pp2000_romeo8_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_romeo8_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_romeo8_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_romeo8_hud.ogf
+
+        aim_hud_offset_pos                = -0.068016, 0.005094, -0.076946
+        aim_hud_offset_pos_16x9           = -0.068016, 0.005094, -0.076946
+        aim_hud_offset_rot                = -0.008212, 0.002718, -0.011869
+        aim_hud_offset_rot_16x9           = -0.008212, 0.002718, -0.011869
+		
+;__________________________________________________________ Specter (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_pp2000_specter]:wpn_pp2000
+
+        1icon_layer	       = specter
+        1icon_layer_x      = 38
+        1icon_layer_y      = -24
+
+        hud		           = wpn_pp2000_specter_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_specter_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 12
+        zoom_rotate_time      = 0.25
+        !scope_texture        = wpn_crosshair_specter
+		
+		
+		use_alt_aim_hud  		    = true
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_specter_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_specter_hud.ogf
+
+        aim_hud_offset_alt_pos            = -0.067191, -0.026186, -0.089327
+        aim_hud_offset_alt_pos_16x9       = -0.067191, -0.026186, -0.089327
+        aim_hud_offset_alt_rot            = -0.008518, 0.002469, -0.015943
+        aim_hud_offset_alt_rot_16x9       = -0.008518, 0.002469, -0.015943
+        aim_hud_offset_pos                = -0.067432, 0.004096, -0.099348
+        aim_hud_offset_pos_16x9           = -0.067432, 0.004096, -0.099348
+        aim_hud_offset_rot                = -0.005727, 0.002347, -0.011869
+        aim_hud_offset_rot_16x9           = -0.005727, 0.002347, -0.011869
+
+		
+;__________________________________________________________ Susat (BaS)[3DSS Only] ___________________________________________________
+
+[wpn_pp2000_t12]:wpn_pp2000
+
+        1icon_layer             = t12
+        1icon_layer_x			= 61
+        1icon_layer_y			= -24
+		
+        hud					= wpn_pp2000_t12_hud
+        !visual				= dynamics\weapons\wpn_pp2000\wpn_pp2000_t12_world.ogf
+		
+        scope_status            = 1
+		
+;---------------------------------------------------------------------------------------		
+	
+[wpn_pp2000_t12_hud]:wpn_pp2000_hud
+
+        item_visual                		= anomaly_weapons\wpn_pp2000\wpn_pp2000_t12_hud.ogf
+
+        aim_hud_offset_pos                = -0.068709, 0.021509, -0.076591
+        aim_hud_offset_pos_16x9           = -0.068709, 0.021509, -0.076591
+        aim_hud_offset_rot                = -0.000959, 0.002556, -0.011869
+        aim_hud_offset_rot_16x9           = -0.000959, 0.002556, -0.011869
+		
+;_________________________________________ Tac30 (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_pp2000_tac30]:wpn_pp2000
+
+        1icon_layer         = tac30
+        1icon_layer_x       = 41
+        1icon_layer_y       = -25
+
+        hud                 = wpn_pp2000_tac30_hud
+        !visual				= dynamics\weapons\wpn_pp2000\wpn_pp2000_tac30_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = on
+        scope_zoom_factor     = 20
+        !scope_texture        = wpn_crosshair_tac30
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_tac30_hud]:wpn_pp2000_hud
+
+        item_visual                              = anomaly_weapons\wpn_pp2000\wpn_pp2000_tac30_hud.ogf
+
+        aim_hud_offset_pos                = -0.067535, 0.000253, -0.067066
+        aim_hud_offset_pos_16x9           = -0.067535, 0.000253, -0.067066
+        aim_hud_offset_rot                = -0.006011, 0.004099, -0.011869
+        aim_hud_offset_rot_16x9           = -0.006011, 0.004099, -0.011869
+
+		
+;_________________________________________ Trihawk (Meowie) [3DSS Only] ____________________________________________
+
+[wpn_pp2000_trihawk]:wpn_pp2000
+
+        1icon_layer         = trihawk
+        1icon_layer_x       = 52
+        1icon_layer_y       = -28
+
+        hud                 = wpn_pp2000_trihawk_hud
+        !visual				= dynamics\weapons\wpn_pp2000\wpn_pp2000_trihawk_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        !scope_texture        = wpn_crosshair_trihawk
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_trihawk_hud]:wpn_pp2000_hud
+
+        item_visual                              = anomaly_weapons\wpn_pp2000\wpn_pp2000_trihawk_hud.ogf
+
+        aim_hud_offset_pos                = -0.067485, 0.000608, -0.089178
+        aim_hud_offset_pos_16x9           = -0.067485, 0.000608, -0.089178
+        aim_hud_offset_rot                = -0.005651, 0.002661, -0.011869
+        aim_hud_offset_rot_16x9           = -0.005651, 0.002661, -0.011869
+		
+;__________________________________________________________ UH-1 MAG (Phant0m)[3DSS Only] ___________________________________________________
+
+[wpn_pp2000_uh2]:wpn_pp2000
+
+        1icon_layer	       = uh2
+        1icon_layer_x      = 63
+        1icon_layer_y      = -29
+
+        hud		   = wpn_pp2000_uh2_hud
+        !visual             = dynamics\weapons\wpn_pp2000\wpn_pp2000_uh2_world.ogf
+
+        scope_status       = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_uh2_hud]:wpn_pp2000_hud 
+
+        item_visual        = anomaly_weapons\wpn_pp2000\wpn_pp2000_uh2_hud.ogf
+
+        aim_hud_offset_pos                = -0.067592, 0.002745, -0.076946
+        aim_hud_offset_pos_16x9           = -0.067592, 0.002745, -0.076946
+        aim_hud_offset_rot                = -0.009774, 0.002293, -0.011869
+        aim_hud_offset_rot_16x9           = -0.009774, 0.002293, -0.011869
+		
+;_________________________________________ Vulcan (ATHI) [3DSS Only] ____________________________________________
+
+[wpn_pp2000_vulcan]:wpn_pp2000
+
+        1icon_layer         = vulcan
+        1icon_layer_x       = 42
+        1icon_layer_y       = -29
+
+        hud                 = wpn_pp2000_vulcan_hud
+        !visual				= dynamics\weapons\wpn_pp2000\wpn_pp2000_vulcan_world.ogf
+        zoom_step_count					 = 1
+
+        scope_status            = 1
+        scope_dynamic_zoom    = off
+        scope_zoom_factor     = 0
+        zoom_rotate_time      = 0.25
+        !nv_scope_status      = 1
+        !scope_nightvision    = !scope_nightvision_1gen
+        !scope_texture        = wpn_crosshair_vulcan
+		
+		
+
+;---------------------------------------------------------------------------------------
+
+[wpn_pp2000_vulcan_hud]:wpn_pp2000_hud
+
+        item_visual                              = anomaly_weapons\wpn_pp2000\wpn_pp2000_vulcan_hud.ogf
+
+        aim_hud_offset_pos                = -0.067644, 0.005942, -0.101409
+        aim_hud_offset_pos_16x9           = -0.067644, 0.005942, -0.101409
+        aim_hud_offset_rot                = -0.005727, 0.002347, -0.011869
+        aim_hud_offset_rot_16x9           = -0.005727, 0.002347, -0.011869
+
+   
+
+		
+
