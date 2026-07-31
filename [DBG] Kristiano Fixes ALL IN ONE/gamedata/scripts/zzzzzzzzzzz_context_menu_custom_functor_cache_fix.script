@@ -1,0 +1,130 @@
+-- Anthology 2.1 / Kristiano Context Menu Overhaul compatibility fix
+-- Prevents custom context-menu functors from being evaluated repeatedly while
+-- Context Menu Overhaul pre-scans and then delegates to vanilla InitProperties.
+-- This is especially important for repair-kit functors used by outfits with
+-- integrated helmets.
+
+local VERSION = "1.0.0-beta"
+local installed = false
+local original_cmo_init = nil
+local cached_cmo_init = nil
+
+local function log(fmt, ...)
+    if type(printf) == "function" then
+        printf("[CMOIntegratedHelmetFix %s] " .. fmt, VERSION, ...)
+    end
+end
+
+local function pack_results(...)
+    return { n = select("#", ...), ... }
+end
+
+local function unpack_results(values, first)
+    first = first or 1
+    return unpack(values, first, values.n)
+end
+
+local function make_key(method_name, obj, bag, ...)
+    local parts = {
+        method_name,
+        tostring(obj),
+        tostring(bag)
+    }
+    local count = select("#", ...)
+    for i = 1, count do
+        parts[#parts + 1] = tostring(select(i, ...))
+    end
+    return table.concat(parts, "\31")
+end
+
+local function call_with_custom_cache(self, obj, bag)
+    local inventory_class = ui_inventory and ui_inventory.UIInventory
+    if not inventory_class or type(original_cmo_init) ~= "function" then
+        return original_cmo_init(self, obj, bag)
+    end
+
+    -- The CMO pre-scan and vanilla InitProperties both call these methods for
+    -- custom_N rows. Cache their raw return values for this single menu build,
+    -- then restore the class immediately.
+    local method_names = { "Name_Custom", "Mode_Custom", "Cont_Custom" }
+    local originals = {}
+    local cache = {}
+
+    for _, method_name in ipairs(method_names) do
+        local original = inventory_class[method_name]
+        if type(original) == "function" then
+            originals[method_name] = original
+            inventory_class[method_name] = function(screen, current_obj, current_bag, ...)
+                local key = make_key(method_name, current_obj, current_bag, ...)
+                local saved = cache[key]
+                if saved ~= nil then
+                    return unpack_results(saved)
+                end
+
+                local values = pack_results(original(screen, current_obj, current_bag, ...))
+                cache[key] = values
+                return unpack_results(values)
+            end
+        end
+    end
+
+    local result = pack_results(pcall(original_cmo_init, self, obj, bag))
+
+    for method_name, original in pairs(originals) do
+        inventory_class[method_name] = original
+    end
+
+    if not result[1] then
+        error(result[2])
+    end
+
+    -- Skip pcall's success flag and preserve any original return values.
+    if result.n > 1 then
+        return unpack(result, 2, result.n)
+    end
+end
+
+local function install()
+    local cmo = context_menu_overhaul
+    local inventory_class = ui_inventory and ui_inventory.UIInventory
+    if not (cmo and inventory_class) then
+        log("installation delayed: CMO or UIInventory unavailable")
+        return false
+    end
+
+    if installed and cmo.init_properties == cached_cmo_init
+        and inventory_class.InitProperties == cached_cmo_init then
+        return true
+    end
+
+    local current = cmo.init_properties
+    if type(current) ~= "function" then
+        log("installation blocked: context_menu_overhaul.init_properties unavailable")
+        return false
+    end
+
+    if current ~= cached_cmo_init then
+        original_cmo_init = current
+    end
+
+    cached_cmo_init = call_with_custom_cache
+    cmo.init_properties = cached_cmo_init
+    inventory_class.InitProperties = cached_cmo_init
+
+    -- Keep CMO's late-install state synchronized with the replacement.
+    if type(cmo.install_hooks) == "function" then
+        pcall(cmo.install_hooks)
+    end
+
+    installed = true
+    log("custom functor cache installed; repeated custom repair predicates suppressed")
+    return true
+end
+
+function on_game_start()
+    install()
+end
+
+function on_game_load()
+    install()
+end
