@@ -1,5 +1,5 @@
--- Context Menu Overhaul 1.4.1
--- Late compatibility bootstrap for Anomaly Anthology 2.1.
+-- Context Menu Overhaul 1.4.2
+-- Late compatibility bootstrap for Anomaly Anthology 2.1 (adaptation 1.1.0 BETA).
 -- Installs and verifies UI hooks after inventory, Mags Redux, Toxic Air and WPO scripts.
 
 local function install()

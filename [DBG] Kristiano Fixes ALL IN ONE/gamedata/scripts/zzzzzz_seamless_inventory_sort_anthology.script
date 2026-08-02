@@ -4,9 +4,9 @@
     Companion to SortingPlus. SortingPlus orders the inventory when it opens, but
     the engine appends an item to the END of the list whenever it is modified or
     moved (a gun respawns on attach/detach, a looted item lands in the bottom
-    row, etc.). This script re-sorts the affected container in the same frame the
-    item is added -- before it is drawn -- so the move is never visible: no
-    flicker, no scroll jump.
+    row, etc.). This script re-sorts the affected container in place. In the
+    optimized presets, short refresh bursts are merged into one final pass, so
+    bulk transfers and purchases no longer rebuild the layout once per item.
 
     The re-sort (soft_resort) repositions existing cells into their sorted slots
     rather than rebuilding the container, so there is no blink, stacked children
@@ -17,7 +17,7 @@
     sale bag (the classic duplicate / stuck-in-basket bug).
 
     Behaviour:
-      * Inventory / loot / trade refresh        re-sort the changed bag
+      * Inventory / loot / trade refresh        batch and re-sort the changed bag
       * Pure removals (drop / sell / stash)     keep the gaps -- no repack, no shuffle (toggleable)
       * Cells already in their sorted slot      left untouched -- no repaint
       * Favorite / junk toggle (SortingPlus)    re-sort in place, no rebuild
@@ -37,18 +37,21 @@
 -- Settings
 ----------------------------------------------------------------------
 
+local VERSION = "1.1.0-beta"
+
 local DEF = {
     enable         = true,   -- master on/off
     win_inventory  = true,   -- seamless sort in the inventory window
     win_loot       = true,   -- seamless sort in the loot / stash window
     win_trade      = true,   -- seamless sort in the trade window
     fav_junk       = true,   -- seamless re-sort on favorite/junk toggle
-    keep_gaps      = false,  -- leave the gap on pure removals instead of repacking
+    keep_gaps      = true,   -- leave the gap on pure removals instead of repacking
     keep_disasm    = true,   -- freeze the bag while disassembling; settle re-sort after
     disasm_delay   = 0,      -- seconds after the last disassembly before the settle re-sort
     ammo_parts_row = true,   -- own sort category for ammo parts (cases, bullets, powder)
     ap_order       = 9.5,    -- rank of the ammo-parts category (9=ammo, 10=mutant parts)
     no_slot_jump   = true,   -- keep a modified bag weapon in the bag (no auto-equip)
+    perf_mode      = "balanced", -- instant / balanced / fps: batch refresh bursts
     osc_guard      = true,   -- anti-oscillation back-off
     osc_limit      = 8,      -- re-sorts per window before backing off
     osc_cooldown   = 1.5,    -- seconds to back off an oscillating container
@@ -78,7 +81,8 @@ local OPT_GROUP = {
     hl_new         = "siss_hl",      hl_new_r       = "siss_hl",
     hl_new_g       = "siss_hl",      hl_new_b       = "siss_hl",
     hl_new_a       = "siss_hl",
-    osc_guard      = "siss_perf",    osc_limit      = "siss_perf",
+    perf_mode      = "siss_perf",    osc_guard      = "siss_perf",
+    osc_limit      = "siss_perf",
     osc_cooldown   = "siss_perf",
 }
 
@@ -123,6 +127,12 @@ local ltt_armed  = {}  -- sort key -> an LTT reveal watcher is running
 local dis_armed  = {}  -- sort key -> a disassembly settle watcher is running
 local disasm_until = 0 -- time_global() until which a disassembly's parts may land
 
+-- Refresh bursts (buying, fast transfers, taking several items) are collapsed
+-- into one final sort. pending[key] always points at the newest state of that
+-- container; the time event reads it only after the quiet period expires.
+local pending       = {} -- key -> { self, cc, due, fp, count }
+local pending_armed = {} -- key -> batch watcher installed
+
 ----------------------------------------------------------------------
 -- Helpers
 ----------------------------------------------------------------------
@@ -139,52 +149,56 @@ local function disasm_keep(cc)
            and (cc.ID == "actor_bag")
 end
 
--- Position-aware fingerprint: changes if any id is added, removed, or moved to a
--- different cell. Order-independent sum over id<->index pairs.
-local function fingerprint(cc)
-    local h = 0
+-- Scan a container once and return everything the refresh path needs. v1.0
+-- walked the same bag several times (fingerprint, removal test, record); on
+-- large inventories those table walks were measurable even when no sort ran.
+-- When keep_gaps is off, no id/position snapshots are allocated.
+local function scan_container(cc, want_snapshot)
+    local h, count = 0, 0
+    local ids, areas
+    if want_snapshot then ids, areas = {}, {} end
+
     for id, indx in pairs(cc.indx_id) do
         h = h + id + indx * 1000003
+        count = count + 1
+        if ids then
+            ids[id] = true
+            local ci = cc.cell[indx]
+            local a = ci and (ci.ID == id) and ci.area
+            if a then areas[id] = a.y * 4096 + a.x end
+        end
     end
-    return h
+
+    return { fp = h, count = count, ids = ids, areas = areas }
 end
 
--- Record the container's layout as "handled": fingerprint, id set and each
--- parent cell's grid position. The position snapshot lets removal_only() tell
--- pure removals apart from real changes without re-sorting. Callers that
--- already computed the fingerprint pass it in so the bag is not walked twice.
-local function record(key, cc, fp)
-    last_fp[key] = fp or fingerprint(cc)
+local function fingerprint(cc)
+    return scan_container(cc, false).fp
+end
+
+-- Record the container's layout as handled. Callers normally pass the scan they
+-- already made, so no second full walk is needed.
+local function record(key, cc, scan)
+    scan = scan or scan_container(cc, opt("keep_gaps"))
+    last_fp[key] = scan.fp
     if not opt("keep_gaps") then
-        -- The snapshot is only ever read by removal_only(), which is gated on
-        -- keep_gaps; skip the two per-refresh tables when the toggle is off.
         last_ids[key], last_areas[key] = nil, nil
         return
     end
-    local ids, areas = {}, {}
-    for id, idx in pairs(cc.indx_id) do
-        ids[id] = true
-        local ci = cc.cell[idx]
-        local a = ci and (ci.ID == id) and ci.area
-        if a then areas[id] = a.y * 4096 + a.x end
-    end
-    last_ids[key], last_areas[key] = ids, areas
+    -- A scan made without snapshots is rare (watcher fallback); fill them now.
+    if not scan.ids then scan = scan_container(cc, true) end
+    last_ids[key], last_areas[key] = scan.ids, scan.areas
 end
 
--- True when the only difference since the last recorded state is removals: no
--- new ids and no surviving parent cell moved. The sorted ORDER cannot have
--- changed, so the re-sort can be skipped and the gaps kept -- dropping,
--- selling or stashing items no longer shuffles everything below them.
-local function removal_only(key, cc)
-    local ids, areas = last_ids[key], last_areas[key]
-    if not ids then return false end
-    for id, idx in pairs(cc.indx_id) do
-        if not ids[id] then return false end
-        local ci = cc.cell[idx]
-        if ci and (ci.ID == id) then
-            local a = ci.area
-            if (not a) or (areas[id] ~= a.y * 4096 + a.x) then return false end
-        end
+-- True when the only difference is removals. The current id/position set comes
+-- from the same scan used for the fingerprint, avoiding another bag traversal.
+local function removal_only(key, scan)
+    local old_ids, old_areas = last_ids[key], last_areas[key]
+    if not (old_ids and scan and scan.ids) then return false end
+    for id in pairs(scan.ids) do
+        if not old_ids[id] then return false end
+        local area, old_area = scan.areas[id], old_areas[id]
+        if area ~= old_area and (area or old_area) then return false end
     end
     return true
 end
@@ -220,6 +234,24 @@ local function win_on(self)
     if not id then return true end
     return opt(id)
 end
+
+-- Batching presets. "instant" preserves v1.0 behaviour. "balanced" keeps the
+-- UI feeling immediate but merges normal transfer bursts; "fps" waits longer
+-- and is intended for very large bags / slow CPUs. Delays are milliseconds.
+local PERF = {
+    instant  = { inventory = 0,   repair = 0,   loot = 0,   trade = 0,   large = 999999, extra = 0   },
+    balanced = { inventory = 45,  repair = 45,  loot = 80,  trade = 180, large = 80,     extra = 80  },
+    fps      = { inventory = 120, repair = 120, loot = 170, trade = 320, large = 50,     extra = 180 },
+}
+
+local function batch_delay(self, count)
+    local profile = PERF[opt("perf_mode")] or PERF.balanced
+    local mode = self and self.mode or "inventory"
+    local ms = profile[mode] or profile.inventory
+    if count and count >= profile.large then ms = ms + profile.extra end
+    return ms
+end
+
 
 -- Looted-body handling is a single MCM list ("body_mode"); these derive the
 -- three behaviours the sort logic actually needs from it.
@@ -402,6 +434,14 @@ local function check_new_loot(cell)
     return nil
 end
 
+local function repaint_new_loot(cc)
+    if not (cc and next(new_items)) then return end
+    for id in pairs(new_items) do
+        local ci = cc:GetCell_ID(id)
+        if ci and (ci.ID == id) then pcall(ci.Highlight, ci, false) end
+    end
+end
+
 ----------------------------------------------------------------------
 -- Core re-sort
 ----------------------------------------------------------------------
@@ -482,15 +522,21 @@ end
 -- arrangement is not sorted again. Soft-only: if it cannot run, order is left as
 -- is rather than doing a heavy Reinit. Returns true if any cell moved (so the
 -- caller knows whether a scroll restore is needed at all).
-local function resort_now(cc, key, fp)
+local function resort_now(cc, key, scan)
     local moved = false
     if can_soft(cc) then
         local ok, m = pcall(soft_resort, cc)
         moved = (ok and m) or false
     end
-    -- soft_resort moves cells between grid slots but never touches indx_id,
-    -- so a fingerprint taken before the sort is still valid here.
-    record(key, cc, fp)
+    -- indx_id/fingerprint stay valid, but moved cells have new areas. Refresh
+    -- only the position snapshot after a real move so keep_gaps compares against
+    -- the resulting layout rather than the pre-sort one.
+    if moved and opt("keep_gaps") then
+        local post = scan_container(cc, true)
+        post.fp = scan and scan.fp or post.fp
+        scan = post
+    end
+    record(key, cc, scan)
     return moved
 end
 
@@ -510,11 +556,12 @@ local function arm_release(cc, key)
             return true
         end
         if not shift_held() then
-            local fp = fingerprint(cc)
-            if fp ~= (last_fp[key] or -1) then
+            local scan = scan_container(cc, opt("keep_gaps"))
+            if scan.fp ~= (last_fp[key] or -1) then
                 local pos = cc.scroll:GetCurrentScrollPos()
-                if resort_now(cc, key, fp) then
+                if resort_now(cc, key, scan) then
                     cc:Scroll_SetPos(pos, true)
+                    if cc.ID == "actor_bag" then repaint_new_loot(cc) end
                 end
             end
             rel_armed[key] = false
@@ -542,8 +589,10 @@ local function arm_disasm_settle(cc, key)
         end
         if (time_global() >= disasm_until) and (not shift_held()) then
             local pos = cc.scroll:GetCurrentScrollPos()
-            if resort_now(cc, key) then
+            local scan = scan_container(cc, opt("keep_gaps"))
+            if resort_now(cc, key, scan) then
                 cc:Scroll_SetPos(pos, true)
+                if cc.ID == "actor_bag" then repaint_new_loot(cc) end
             end
             dis_armed[key] = false
             return true
@@ -573,7 +622,8 @@ local function arm_ltt_release(self, cc, key)
         if not ltt_busy(self, cc) then
             if body_sort_after() and (not shift_held()) then
                 local pos = cc.scroll:GetCurrentScrollPos()
-                if resort_now(cc, key) then
+                local scan = scan_container(cc, opt("keep_gaps"))
+                if resort_now(cc, key, scan) then
                     cc:Scroll_SetPos(pos, true)
                 end
             else
@@ -586,41 +636,34 @@ local function arm_ltt_release(self, cc, key)
     end)
 end
 
--- Decide what to do with a container right after a stock refresh. Returns true
--- if a re-sort moved cells (the caller may need to repaint highlights).
-local function handle(self, cc, key, saved_pos)
+-- Execute one final decision on the current container state. The caller passes
+-- a scan so fingerprint/removal/record all share the same traversal.
+local function handle_now(self, cc, key, saved_pos, scan)
     if not opt("enable") then return end
     if not (cc and cc:IsShown()) then return end
-    local fp = fingerprint(cc)
-    if fp == (last_fp[key] or -1) then return end
+    scan = scan or scan_container(cc, opt("keep_gaps"))
+    if scan.fp == (last_fp[key] or -1) then return end
 
     if osc_blocked(key) then
-        record(key, cc, fp)
+        record(key, cc, scan)
         return
     end
     if no_body(self, cc) then
-        record(key, cc, fp)  -- leave the corpse exactly as it is
+        record(key, cc, scan)
         return
     end
     if ltt_skip(self, cc) then
-        record(key, cc, fp)
-        if body_sort_after() then
-            arm_ltt_release(self, cc, key)
-        end
+        record(key, cc, scan)
+        if body_sort_after() then arm_ltt_release(self, cc, key) end
         return
     end
-    -- A disassembly is in progress: freeze the bag. The removal keeps its gap
-    -- (nothing repacks it) and the spawned parts stay where the stock refresh
-    -- appended them, so rapid disassembly never makes the inventory jump. One
-    -- settle re-sort after the window folds the parts into their category and
-    -- closes the gaps.
     if disasm_keep(cc) then
-        record(key, cc, fp)
+        record(key, cc, scan)
         arm_disasm_settle(cc, key)
         return
     end
-    if opt("keep_gaps") and removal_only(key, cc) then
-        record(key, cc, fp)  -- nothing new, nothing moved: keep the gaps, no shuffle
+    if opt("keep_gaps") and removal_only(key, scan) then
+        record(key, cc, scan)
         return
     end
     if shift_held() then
@@ -628,12 +671,81 @@ local function handle(self, cc, key, saved_pos)
         return
     end
 
-    local moved = resort_now(cc, key, fp)
+    local moved = resort_now(cc, key, scan)
     osc_note(key)
-    if moved and saved_pos then
-        cc:Scroll_SetPos(saved_pos, true)
-    end
+    if moved and saved_pos then cc:Scroll_SetPos(saved_pos, true) end
+    if moved and cc.ID == "actor_bag" then repaint_new_loot(cc) end
     return moved
+end
+
+-- Cancel pending work when a window is reset/closed. The installed event notices
+-- the missing entry and exits on its next tick.
+local function cancel_pending(key)
+    if key then pending[key] = nil else
+        for k in pairs(pending) do pending[k] = nil end
+    end
+end
+
+-- Arm one batch watcher per logical bag. Further refreshes only replace the
+-- pending state and push its deadline, so a purchase/transfer burst produces a
+-- single final layout rebuild instead of one rebuild per item.
+local function arm_batch(key)
+    if pending_armed[key] then return end
+    pending_armed[key] = true
+    CreateTimeEvent("siss_batch_" .. key, "siss_batch_" .. key, 0, function()
+        local q = pending[key]
+        if not q then
+            pending_armed[key] = false
+            return true
+        end
+        if not (q.cc and q.cc:IsShown()) then
+            pending[key] = nil
+            pending_armed[key] = false
+            return true
+        end
+        if time_global() < q.due then return false end
+
+        -- Remove first: if a refresh is triggered while sorting, it can safely
+        -- create a fresh pending request rather than mutating this one.
+        pending[key] = nil
+        local scan = scan_container(q.cc, opt("keep_gaps"))
+        local pos = q.cc.scroll:GetCurrentScrollPos()
+        handle_now(q.self, q.cc, key, pos, scan)
+
+        if pending[key] then return false end
+        pending_armed[key] = false
+        return true
+    end)
+end
+
+-- Entry point used by UI refresh hooks. A pending bag is not rescanned on every
+-- item in the same burst; only its deadline is extended. This is the key trade
+-- and bulk-looting optimization in v1.1.
+local function request_handle(self, cc, key, saved_pos)
+    if not (opt("enable") and cc and cc:IsShown()) then return end
+
+    local q = pending[key]
+    if q then
+        q.self, q.cc = self, cc
+        q.due = time_global() + batch_delay(self, q.count)
+        return
+    end
+
+    -- Initial change detection needs only fingerprint/count. Snapshot tables are
+    -- built once at execution time (or immediately in the instant preset).
+    local scan = scan_container(cc, false)
+    if scan.fp == (last_fp[key] or -1) then return end
+    local delay = batch_delay(self, scan.count)
+    if delay <= 0 then
+        if opt("keep_gaps") then scan = scan_container(cc, true) end
+        return handle_now(self, cc, key, saved_pos, scan)
+    end
+
+    pending[key] = {
+        self = self, cc = cc, due = time_global() + delay,
+        fp = scan.fp, count = scan.count,
+    }
+    arm_batch(key)
 end
 
 ----------------------------------------------------------------------
@@ -660,6 +772,7 @@ end
 
 local orig_IReset = ui_inventory.UIInventory.IMode_ResetInventories
 function ui_inventory.UIInventory:IMode_ResetInventories()
+    cancel_pending("actor")
     reset_new_loot()
     orig_IReset(self)
     local cc = self.CC["actor_bag"]
@@ -672,6 +785,8 @@ end
 -- sorted to begin with.
 local orig_LReset = ui_inventory.UIInventory.LMode_ResetInventories
 function ui_inventory.UIInventory:LMode_ResetInventories(reset_only)
+    cancel_pending("actor")
+    cancel_pending("npc")
     reset_new_loot()
     if not reset_only then apply_body_sort(self) end
     orig_LReset(self, reset_only)
@@ -689,6 +804,7 @@ end
 
 local orig_LResetNPC = ui_inventory.UIInventory.LMode_ResetNPCInventory
 function ui_inventory.UIInventory:LMode_ResetNPCInventory()
+    cancel_pending("npc")
     apply_body_sort(self)
     orig_LResetNPC(self)
     local cc = self.CC["npc_bag"]
@@ -697,6 +813,8 @@ end
 
 local orig_TReset = ui_inventory.UIInventory.TMode_ResetInventories
 function ui_inventory.UIInventory:TMode_ResetInventories(only_bags)
+    cancel_pending("actor_tbag")
+    cancel_pending("npc_tbag")
     orig_TReset(self, only_bags)
     local cc_a = self.CC["actor_trade_bag"]
     local cc_b = self.CC["npc_trade_bag"]
@@ -710,7 +828,7 @@ function ui_inventory.UIInventory:IMode_RefreshInventories()
     local sp_a = scroll_pos(cc_a)
     orig_IMode(self)
     if win_on(self) then
-        handle(self, cc_a, "actor", sp_a)
+        request_handle(self, cc_a, "actor", sp_a)
     end
 end
 
@@ -724,20 +842,15 @@ function ui_inventory.UIInventory:LMode_RefreshInventories()
     orig_LMode(self)
     local moved
     if win_on(self) then
-        moved = handle(self, cc_a, "actor", sp_a)
-        handle(self, cc_b, "npc", sp_b)
+        moved = request_handle(self, cc_a, "actor", sp_a)
+        request_handle(self, cc_b, "npc", sp_b)
     end
     -- Tint new pickups. Repaint only the marked cells -- the old full
     -- UpdateItems() pass over every bag per taken item was a big part of the
     -- looting lag. After a re-sort that moved cells, repaint the marked ones
     -- again so their tint survives the move.
     if cc_a and (mark_new_loot(cc_a) or moved) and next(new_items) then
-        for id in pairs(new_items) do
-            local ci = cc_a:GetCell_ID(id)
-            if ci and (ci.ID == id) then
-                pcall(ci.Highlight, ci, false)
-            end
-        end
+        repaint_new_loot(cc_a)
     end
 end
 
@@ -751,8 +864,8 @@ function ui_inventory.UIInventory:TMode_RefreshInventories()
     local sp_b = scroll_pos(cc_b)
     orig_TMode(self)
     if win_on(self) then
-        handle(self, cc_a, "actor_tbag", sp_a)
-        handle(self, cc_b, "npc_tbag",   sp_b)
+        request_handle(self, cc_a, "actor_tbag", sp_a)
+        request_handle(self, cc_b, "npc_tbag",   sp_b)
     end
 end
 
@@ -1045,7 +1158,10 @@ end
 -- GUI_on_hide at all, which is how stale tints appeared in the first place.
 
 local function on_inv_hide(name)
-    if name == "UIInventory" then reset_new_loot() end
+    if name == "UIInventory" then
+        cancel_pending()
+        reset_new_loot()
+    end
 end
 
 local function on_inv_show(name)
@@ -1056,6 +1172,7 @@ end
 
 -- Re-read the option cache (and the colour derived from it) on MCM apply.
 local function on_opts_change()
+    cancel_pending()
     refresh_opts()
     refresh_new_color()
     inject_ammo_parts_order()  -- push a changed ap_order into item_order right away
@@ -1065,6 +1182,7 @@ function on_game_start()
     on_opts_change()
     install_hooks()  -- fallback in case a hooked module loaded after us
 
+    printf("[Seamless Inventory Sort / Anthology %s] mode=%s keep_gaps=%s", VERSION, tostring(opt("perf_mode")), tostring(opt("keep_gaps")))
     if not get_sortingplus_module() then
         printf("[Seamless Inventory Sort / Anthology] SortingPlus module was not found; seamless sorting is inactive.")
     end

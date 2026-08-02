@@ -45,7 +45,7 @@
 	</string>
 	<string id="ui_mcm_seamless_sort_siss_gaps_keep_gaps"><text>Keep gaps after removing items</text></string>
 	<string id="ui_mcm_seamless_sort_siss_gaps_keep_gaps_desc">
-		<text>When you drop, sell or stash an item and nothing else moved, leave the empty slot where it was instead of repacking everything below it. The gap fills back in next time something is added. Turn off to always repack immediately on removal.</text>
+		<text>When you drop, sell or stash an item and nothing else moved, leave the empty slot where it was instead of repacking everything below it. The gap fills back in next time something is added. Enabled by default in v1.1 to reduce layout work; turn off to repack immediately on removal.</text>
 	</string>
 	<string id="ui_mcm_seamless_sort_siss_gaps_keep_disasm"><text>Keep the bag still when disassembling</text></string>
 	<string id="ui_mcm_seamless_sort_siss_gaps_keep_disasm_desc">
@@ -98,8 +98,15 @@
 
 	<!-- Performance -->
 	<string id="ui_mcm_seamless_sort_siss_perf_desc">
-		<text>Anti-oscillation guard. Some items have an unstable sort key (e.g. a magazine while it is being bound) that can make a container re-sort every refresh and visibly churn. This detects that and briefly stops re-sorting so the list settles.</text>
+		<text>Batch sorting merges a burst of purchases, transfers or pickups into one final layout pass. This reduces frame drops in large inventories. The anti-oscillation guard also stops unstable containers from sorting in a loop.</text>
 	</string>
+	<string id="ui_mcm_seamless_sort_siss_perf_perf_mode"><text>Performance mode</text></string>
+	<string id="ui_mcm_seamless_sort_siss_perf_perf_mode_desc">
+		<text>- Instant: v1.0 behaviour, sort after every change.\n- Balanced: short delay and one sort per operation burst. Recommended.\n- Maximum FPS: longer delays for trade and large inventories.</text>
+	</string>
+	<string id="seamless_sort_siss_perf_perf_mode_lst_instant"><text>Instant</text></string>
+	<string id="seamless_sort_siss_perf_perf_mode_lst_balanced"><text>Balanced</text></string>
+	<string id="seamless_sort_siss_perf_perf_mode_lst_fps"><text>Maximum FPS</text></string>
 	<string id="ui_mcm_seamless_sort_siss_perf_osc_guard"><text>Anti-oscillation guard</text></string>
 	<string id="ui_mcm_seamless_sort_siss_perf_osc_guard_desc">
 		<text>Back off from re-sorting a container that is churning. Leave on unless troubleshooting.</text>

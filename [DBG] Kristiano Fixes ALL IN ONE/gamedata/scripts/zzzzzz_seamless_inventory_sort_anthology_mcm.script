@@ -23,7 +23,7 @@ function on_mcm_load()
             { id = "siss_gaps", sh = true, gr = {
                 { id = "title", type = "slide", link = BANNER, text = "ui_mcm_menu_siss_gaps", size = {512,50}, spacing = 20 },
                 { id = "desc",  type = "desc",  text = "ui_mcm_seamless_sort_siss_gaps_desc" },
-                { id = "keep_gaps",      type = "check", val = 1, def = false },
+                { id = "keep_gaps",      type = "check", val = 1, def = true },
                 { id = "keep_disasm",    type = "check", val = 1, def = true },
                 { id = "disasm_delay",   type = "track", val = 2, min = 0, max = 8, step = 0.5, def = 0 },
                 { id = "ammo_parts_row", type = "check", val = 1, def = true },
@@ -51,6 +51,9 @@ function on_mcm_load()
             { id = "siss_perf", sh = true, gr = {
                 { id = "title", type = "slide", link = BANNER, text = "ui_mcm_menu_siss_perf", size = {512,50}, spacing = 20 },
                 { id = "desc",  type = "desc",  text = "ui_mcm_seamless_sort_siss_perf_desc" },
+                { id = "perf_mode", type = "list", val = 0, def = "balanced", content = {
+                    { "instant" }, { "balanced" }, { "fps" },
+                }},
                 { id = "osc_guard",    type = "check", val = 1, def = true },
                 { id = "osc_limit",    type = "track", val = 2, min = 3,   max = 20, step = 1,   def = 8 },
                 { id = "osc_cooldown", type = "track", val = 2, min = 0.5, max = 5,  step = 0.5, def = 1.5 },

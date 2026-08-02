@@ -44,7 +44,7 @@
 	</string>
 	<string id="ui_mcm_seamless_sort_siss_gaps_keep_gaps"><text>Сохранять пустые ячейки после удаления</text></string>
 	<string id="ui_mcm_seamless_sort_siss_gaps_keep_gaps_desc">
-		<text>При выбрасывании, продаже или перекладывании предмета оставлять освободившееся место, не сдвигая весь список. Пустота заполнится при следующем добавлении предмета.</text>
+		<text>При выбрасывании, продаже или перекладывании предмета оставлять освободившееся место, не сдвигая весь список. Пустота заполнится при следующем добавлении предмета. В версии 1.1 включено по умолчанию для снижения нагрузки.</text>
 	</string>
 	<string id="ui_mcm_seamless_sort_siss_gaps_keep_disasm"><text>Не сдвигать рюкзак во время разборки</text></string>
 	<string id="ui_mcm_seamless_sort_siss_gaps_keep_disasm_desc">
@@ -97,8 +97,15 @@
 
 	
 	<string id="ui_mcm_seamless_sort_siss_perf_desc">
-		<text>Защита от циклической сортировки. Если нестабильный ключ предмета заставляет контейнер постоянно перестраиваться, мод временно прекращает сортировку.</text>
+		<text>Режим пакетной сортировки объединяет серию покупок, переносов и подбора предметов в одну итоговую перестройку. Это уменьшает просадки FPS на больших рюкзаках. Защита от циклической сортировки дополнительно останавливает нестабильный контейнер.</text>
 	</string>
+	<string id="ui_mcm_seamless_sort_siss_perf_perf_mode"><text>Режим производительности</text></string>
+	<string id="ui_mcm_seamless_sort_siss_perf_perf_mode_desc">
+		<text>- Мгновенный: поведение версии 1.0, сортировка после каждого изменения.\n- Сбалансированный: короткая задержка, серия операций объединяется в одну сортировку. Рекомендуется.\n- Максимальный FPS: более длинная задержка для торговли и больших инвентарей.</text>
+	</string>
+	<string id="seamless_sort_siss_perf_perf_mode_lst_instant"><text>Мгновенный</text></string>
+	<string id="seamless_sort_siss_perf_perf_mode_lst_balanced"><text>Сбалансированный</text></string>
+	<string id="seamless_sort_siss_perf_perf_mode_lst_fps"><text>Максимальный FPS</text></string>
 	<string id="ui_mcm_seamless_sort_siss_perf_osc_guard"><text>Защита от циклической сортировки</text></string>
 	<string id="ui_mcm_seamless_sort_siss_perf_osc_guard_desc">
 		<text>Временно прекращать пересортировку нестабильного контейнера. Рекомендуется оставить включённым.</text>

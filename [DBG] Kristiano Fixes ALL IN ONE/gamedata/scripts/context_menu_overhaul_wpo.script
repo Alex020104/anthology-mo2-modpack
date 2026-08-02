@@ -1,10 +1,10 @@
 -- This script was generated with Anomaly Packer v0.4.0 (https://github.com/piscopancer/anomaly-packer)
 -- Author: piscopancer
--- Version: 1.4.1
--- Created at: 25.07.2026
+-- Version: 1.4.2
+-- Created at: 27.07.2026
 -- Source: https://github.com/piscopancer/stalker-anomaly-context-menu-overhaul
 -- Anthology adaptation: guarded WPO integration and text fallback
--- Adaptation version: 1.0
+-- Adaptation version: 1.1.0 BETA
 
 function part_sec(p)
   return p[2]

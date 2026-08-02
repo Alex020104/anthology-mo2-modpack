@@ -1,0 +1,346 @@
+--[[
+    Anthology Charon Red Forest Travel Fix v1.0.1 BETA
+
+    Diagnostic-confirmed cause:
+      red_forest_guid_mon -> red_bridge_bandit_smart_skirmish_mlr (missing)
+
+    Existing destination in the affected game/save:
+      red_bridge_bandit_smart_skirmish
+
+    This patch wraps mlr_utils.change_lvl using the same late-safe mechanism
+    proven by CharonTravelDiag v1.0.0. Only Charon's Red Forest route is
+    redirected; every other MLR route is forwarded unchanged.
+--]]
+
+local VERSION = "1.0.1-beta"
+local PREFIX = "[CharonRedForestFix " .. VERSION .. "]"
+local ROUTE_KEY = "red_forest_guid_mon"
+local TARGET_SMART = "red_bridge_bandit_smart_skirmish"
+local FALLBACK_SMART = "red_smart_terrain_bridge"
+
+local state = {
+    callbacks_registered = false,
+    installed = false,
+    wrapper = nil,
+    original = nil,
+    update_count = 0,
+}
+
+local function emit(fmt, ...)
+    local ok, msg = pcall(string.format, tostring(fmt), ...)
+    if not ok then
+        msg = tostring(fmt)
+    end
+    msg = PREFIX .. " " .. msg
+
+    if type(printf) == "function" then
+        printf("%s", msg)
+    elseif type(log1) == "function" then
+        log1(msg)
+    elseif type(print) == "function" then
+        print(msg)
+    end
+end
+
+local function lookup_global(name)
+    local env = nil
+    if type(getfenv) == "function" then
+        local ok_env, found_env = pcall(getfenv, 1)
+        if ok_env then
+            env = found_env
+        end
+    end
+
+    if env then
+        local ok_value, value = pcall(function() return env[name] end)
+        if ok_value and value ~= nil then
+            return value, "script_env"
+        end
+    end
+
+    if _G then
+        local ok_value, value = pcall(function() return _G[name] end)
+        if ok_value and value ~= nil then
+            return value, "_G"
+        end
+    end
+
+    return nil, "missing"
+end
+
+local function safe_field(obj, key)
+    if obj == nil then
+        return nil
+    end
+
+    local ok, value = pcall(function() return obj[key] end)
+    if ok then
+        return value
+    end
+    return nil
+end
+
+local function get_registry()
+    local simboard = lookup_global("SIMBOARD")
+    return safe_field(simboard, "smarts_by_names")
+end
+
+local function get_smart(name)
+    local registry = get_registry()
+    if not registry then
+        return nil
+    end
+    return safe_field(registry, name)
+end
+
+local function valid_smart(smart)
+    if not smart then
+        return false
+    end
+
+    local pos = safe_field(smart, "position")
+    local lvid = safe_field(smart, "m_level_vertex_id")
+    local gvid = safe_field(smart, "m_game_vertex_id")
+    return pos ~= nil and lvid ~= nil and gvid ~= nil
+end
+
+local function resolve_target()
+    local smart = get_smart(TARGET_SMART)
+    if valid_smart(smart) then
+        return smart, TARGET_SMART
+    end
+
+    smart = get_smart(FALLBACK_SMART)
+    if valid_smart(smart) then
+        return smart, FALLBACK_SMART
+    end
+
+    return nil, nil
+end
+
+local function forward_time_and_weather(actor, smart)
+    local distance = 0
+    pcall(function()
+        distance = actor:position():distance_to(smart.position)
+    end)
+
+    local hours = math.floor(distance / 1000) + math.random(0, 2)
+    local minutes = math.random(1, 59)
+
+    pcall(function()
+        level.change_game_time(0, hours, minutes)
+    end)
+
+    pcall(function()
+        local manager = surge_manager.get_surge_manager()
+        if manager then
+            manager.time_forwarded = true
+        end
+    end)
+
+    pcall(function()
+        local manager = psi_storm_manager.get_psi_storm_manager()
+        if manager then
+            manager.time_forwarded = true
+        end
+    end)
+
+    pcall(function()
+        local manager = level_weathers.get_weather_manager()
+        if manager then
+            manager:forced_weather_change()
+        end
+    end)
+end
+
+local function destination_level_name(gvid)
+    local ok, name = pcall(function()
+        local graph = game_graph()
+        local vertex = graph:vertex(gvid)
+        local level_id = vertex:level_id()
+        return alife():level_name(level_id)
+    end)
+
+    if ok then
+        return name
+    end
+    return nil
+end
+
+local function travel_to_red_forest()
+    local smart, smart_name = resolve_target()
+    if not smart then
+        emit(
+            "ERROR route=%s cancelled: neither %s nor %s exists",
+            ROUTE_KEY,
+            TARGET_SMART,
+            FALLBACK_SMART
+        )
+        return false
+    end
+
+    local db_module = lookup_global("db")
+    local actor = safe_field(db_module, "actor")
+    if not actor then
+        emit("ERROR route=%s cancelled: actor unavailable", ROUTE_KEY)
+        return false
+    end
+
+    local pos = safe_field(smart, "position")
+    local lvid = safe_field(smart, "m_level_vertex_id")
+    local gvid = safe_field(smart, "m_game_vertex_id")
+    if not (pos and lvid ~= nil and gvid ~= nil) then
+        emit("ERROR route=%s cancelled: target smart data incomplete", ROUTE_KEY)
+        return false
+    end
+
+    forward_time_and_weather(actor, smart)
+
+    local destination = destination_level_name(gvid)
+    local current_level = nil
+    pcall(function()
+        current_level = level.name()
+    end)
+
+    emit(
+        "REDIRECT route=%s smart=%s level=%s lvid=%s gvid=%s pos=%.3f,%.3f,%.3f",
+        ROUTE_KEY,
+        smart_name,
+        tostring(destination),
+        tostring(lvid),
+        tostring(gvid),
+        pos.x,
+        pos.y,
+        pos.z
+    )
+
+    if destination and current_level == destination then
+        actor:set_actor_position(pos)
+        return true
+    end
+
+    ChangeLevel(pos, lvid, gvid, vector():set(0, 0, 0))
+    return true
+end
+
+local function install_wrapper(stage)
+    local module, module_source = lookup_global("mlr_utils")
+    local current = safe_field(module, "change_lvl")
+
+    if type(current) ~= "function" then
+        emit(
+            "INSTALL WAIT stage=%s mlr_utils=%s source=%s change_lvl=%s",
+            tostring(stage),
+            type(module),
+            tostring(module_source),
+            type(current)
+        )
+        return false
+    end
+
+    if state.wrapper and current == state.wrapper then
+        state.installed = true
+        return true
+    end
+
+    if state.wrapper and current ~= state.wrapper then
+        emit("wrapper replaced before stage=%s; re-wrapping current function", tostring(stage))
+    end
+
+    state.original = current
+    local original = current
+    local wrapper = nil
+
+    wrapper = function(route_key, ...)
+        if route_key == ROUTE_KEY then
+            return travel_to_red_forest()
+        end
+        return original(route_key, ...)
+    end
+
+    module.change_lvl = wrapper
+    state.wrapper = wrapper
+    state.installed = true
+
+    emit(
+        "INSTALLED stage=%s source=%s route=%s target=%s fallback=%s",
+        tostring(stage),
+        tostring(module_source),
+        ROUTE_KEY,
+        TARGET_SMART,
+        FALLBACK_SMART
+    )
+    return true
+end
+
+local function actor_on_first_update_callback()
+    install_wrapper("actor_on_first_update")
+
+    local target = get_smart(TARGET_SMART)
+    local fallback = get_smart(FALLBACK_SMART)
+    emit(
+        "TARGET CHECK primary=%s fallback=%s",
+        valid_smart(target) and "FOUND" or "MISSING",
+        valid_smart(fallback) and "FOUND" or "MISSING"
+    )
+end
+
+local function actor_on_update_callback()
+    state.update_count = state.update_count + 1
+
+    if not state.installed then
+        install_wrapper("actor_on_update")
+        return
+    end
+
+    if state.update_count % 60 == 0 then
+        local module = lookup_global("mlr_utils")
+        local current = safe_field(module, "change_lvl")
+        if current ~= state.wrapper then
+            state.installed = false
+            install_wrapper("actor_on_update_repair")
+        end
+    end
+end
+
+local function register_callbacks(stage)
+    if state.callbacks_registered then
+        return true
+    end
+
+    if type(RegisterScriptCallback) ~= "function" then
+        emit("CALLBACK WAIT stage=%s", tostring(stage))
+        return false
+    end
+
+    local ok_first, err_first = pcall(
+        RegisterScriptCallback,
+        "actor_on_first_update",
+        actor_on_first_update_callback
+    )
+    local ok_update, err_update = pcall(
+        RegisterScriptCallback,
+        "actor_on_update",
+        actor_on_update_callback
+    )
+
+    state.callbacks_registered = ok_first and ok_update
+    emit(
+        "CALLBACKS stage=%s first=%s update=%s err_first=%s err_update=%s",
+        tostring(stage),
+        tostring(ok_first),
+        tostring(ok_update),
+        tostring(err_first),
+        tostring(err_update)
+    )
+    return state.callbacks_registered
+end
+
+function on_game_start()
+    register_callbacks("on_game_start")
+    install_wrapper("on_game_start")
+end
+
+emit("SCRIPT TOP LEVEL reached")
+register_callbacks("top_level")
+install_wrapper("top_level")

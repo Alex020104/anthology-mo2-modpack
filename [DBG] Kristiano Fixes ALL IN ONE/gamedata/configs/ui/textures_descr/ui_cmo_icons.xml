@@ -31,7 +31,7 @@
     <texture id="ui_cmo_screwdriver" x="64" y="384" width="64" height="64"/>
     <texture id="ui_cmo_components_star" x="128" y="384" width="64" height="64"/>
     <texture id="ui_cmo_oil" x="192" y="384" width="64" height="64"/>
-    <texture id="ui_cmo_pda" x="0" y="448" width="64" height="64"/>
+    <texture id="ui_cmo_eye" x="0" y="448" width="64" height="64"/>
     <texture id="ui_cmo_magazine" x="64" y="448" width="64" height="64"/>
     <texture id="ui_cmo_health" x="128" y="448" width="64" height="64"/>
     <texture id="ui_cmo_water" x="192" y="448" width="64" height="64"/>
@@ -45,5 +45,6 @@
     <texture id="ui_cmo_toolkit" x="192" y="576" width="64" height="64"/>
     <texture id="ui_cmo_merge" x="0" y="640" width="64" height="64"/>
     <texture id="ui_cmo_chevron" x="64" y="640" width="64" height="64"/>
+    <texture id="ui_cmo_pouch" x="128" y="640" width="64" height="64"/>
   </file>
 </w>
