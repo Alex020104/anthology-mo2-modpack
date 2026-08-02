@@ -754,6 +754,38 @@
       "removed_files": []
     },
     {
+      "id": "gam-campfires-placeable-anthology-credit-24c0368c7f",
+      "folder": "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX",
+      "mode": "full",
+      "version": "2026.08.02.4",
+      "notes": "Обновление [GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-gam-campfires-placeable-anthology-credit-24c0368c7f-2026.08.02.4/anthology-folder-gam-campfires-placeable-anthology-credit-24c0368c7f-2026.08.02.4.zip",
+      "asset_name": "anthology-folder-gam-campfires-placeable-anthology-credit-24c0368c7f-2026.08.02.4.zip",
+      "size": 8560175,
+      "sha256": "14b98eb2e3bbf637aa3c1a9b8d2d82b486ac8e545fe4393c6169243a4002c04f",
+      "files": [
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/anims/fade_nine_sec.ppe",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/configs/items/items/items_campfire.ltx",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/configs/models/dynamic_objects.ltx",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/configs/scripts/ph_campfiremod.ltx",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/configs/text/eng/st_items_campfires.xml",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/configs/text/eng/ui_st_items_campfires.xml",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/configs/text/rus/st_items_campfires.xml",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/configs/text/rus/ui_st_items_campfires.xml",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/meshes/dynamics/equipments/campfiremod.ogf",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/scripts/campfire_placeable.script",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/scripts/campfire_placeable_mcm.script",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/scripts/trader_autoinject.script",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/sounds/interface/axe_wood_chop.ogg",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/textures/detail/detail_grnd_earth.dds",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/textures/detail/detail_grnd_earth_bump#.dds",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/textures/detail/detail_grnd_earth_bump.dds",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/textures/ui/ui_campfire_placeable.dds",
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/meta.ini"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "gam-classes-talents-93fd4ee9d2",
       "folder": "[GAM] Classes & Talents — Классы и таланты",
       "mode": "full",

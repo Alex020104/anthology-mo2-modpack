@@ -1,0 +1,1442 @@
+
+;***************************************************************
+;*                                Õ≈ »«Ã≈Õﬂ“‹!!!!!!!!!!!!!!!                                           *
+;***************************************************************
+
+[physic_object]
+GroupControlSection = spawn_group
+$spawn        = "physics\object"
+$prefetch       = 8
+class       = O_PHYSIC ;Change to O_PHYS_S if you want to use se_item.se_physic
+remove_time     = 60; after this time  unbreaked removable bone will be removed
+script_binding      = bind_physic_object.init
+
+[physic_destroyable_object]
+GroupControlSection = spawn_group
+$spawn        = "physics\destroyable_object"
+;$prefetch      = 8
+class       = P_DSTRBL	;Change to O_DSTR_S if you want to use se_item.se_physic script binding
+remove_time     = 60; after this time  unbreaked removable bone will be removed
+script_binding      = bind_physic_object.init
+
+
+[physic_door]:physic_destroyable_object
+GroupControlSection = spawn_group
+$spawn        	= "physics\door"
+is_ai_obstacle	= false
+
+;*******************************************************************************
+;*                                ƒ¿À‹ÿ≈ ÃŒ∆ÕŒ Ã≈Õﬂ“‹:-)                                                   *
+;*******************************************************************************
+
+#include "dynamic_objects_hidden_threat.ltx"
+
+;[phys_obj_test]:physic_object
+;$spawn                        = "dynamic_objects\test_object"
+;visual                        = dynamics\equipments\novice_suit
+;startup_animation					=
+;fixed_bones							=
+
+;[phys_destroyable_obj_test]:physic_destroyable_object
+;$spawn                        = "dynamic_objects\test_destroyable_object"
+;visual                        = dynamics\equipments\novice_suit
+;startup_animation					=
+;fixed_bones							=
+
+;*** scene_objects ***************************************************************
+[jup_b43_af_fuzz_kolobok]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\jup_b43_af_fuzz_kolobok"
+visual                        = dynamics\artefacts\af_fuzz_kolobok.ogf
+startup_animation					= idle
+fixed_bones							= link
+
+[jup_b43_af_mincer_meat]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\jup_b43_af_mincer_meat"
+visual                        = dynamics\artefacts\af_mincer_meat.ogf
+startup_animation					= idle
+fixed_bones							= link
+
+[jup_b41_af_oasis_heart]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\jup_b41_af_oasis_heart"
+visual                        = dynamics\artefacts\af_cristall_plant.ogf
+startup_animation					= idle
+fixed_bones							= link
+
+[jup_b41_af_half_artifact]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\jup_b41_half_artifact"
+visual                        = dynamics\artefacts\af_psi_field.ogf
+startup_animation					= idle
+fixed_bones							= link
+
+[jup_b32_ph_scanner]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\jup_b32_ph_scanner"
+visual                        = dynamics\equipments\quest\scanner_artefact.ogf
+startup_animation  	    			= idle
+fixed_bones							= link
+custom_data 		      = models\objects\ignore_static.ltx
+
+[jup_b209_ph_scanner]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\jup_b209_ph_scanner"
+visual                        = dynamics\equipments\quest\scanner_anomaly.ogf
+custom_data 				  = scripts\jupiter\jup_b209_scanner.ltx
+startup_animation  	   			= idle
+fixed_bones					  = link
+story_id 					  = jup_b209_ph_scanner
+
+[jup_b207_depot_cover]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\jup_b207_depot_cover"
+visual                        = dynamics\fence\debris_01.ogf
+story_id 					  = jup_b207_depot_cover_id
+
+[pri_a28_actor_hideout]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\pri_a28_actor_hideout"
+visual                        = dynamics\fence\debris_01.ogf
+
+[jup_b219_gate]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\jup_b219_gate"
+visual                        = dynamics\door\door_katakomb_big_4.ogf
+story_id 					= jup_b219_gate_id
+fixed_bones					  = link
+custom_data 		      = models\objects\ignore_static.ltx
+
+[pri_a25_explosive_charge]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\pri_a25_explosive_charge"
+visual                        = dynamics\equipments\quest\explosive_charge.ogf
+startup_animation					= idle
+fixed_bones							= link
+story_id = pri_a25_explosive_charge_id
+custom_data 		      = models\objects\ignore_static.ltx
+
+[zat_b57_ph_gas]:physic_object
+$spawn                      = "dynamic_objects\scene_objects\zat_b57_ph_gas"
+visual                      = dynamics\equipments\quest\balloon_poison_gas.ogf
+startup_animation			= idle
+fixed_bones					= link
+story_id 					= zat_b57_ph_gas
+custom_data 		     	= models\objects\ignore_static.ltx
+
+[pri_a28_earth_helli_1]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\pri_a28_earth_helli_1"
+visual                        = dynamics\vehicles\mi24\veh_mi24_u_02.ogf
+startup_animation					= idle
+fixed_bones							= korpus1
+story_id = pri_a28_earth_helli_1
+custom_data 		      = models\objects\ignore_static.ltx
+
+[pri_a28_earth_helli_2]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\pri_a28_earth_helli_2"
+visual                        = dynamics\vehicles\mi24\veh_mi24_u_02.ogf
+startup_animation					= idle
+fixed_bones							= korpus1
+story_id = pri_a28_earth_helli_2
+custom_data 		      = models\objects\ignore_static.ltx
+
+[door_lab_x8]:physic_object
+$spawn        	= "physics\door_lab_x8"
+script_binding  = bind_door_labx8.bind
+
+[jup_b206_plant_ph]:physic_destroyable_object
+$spawn                        = "dynamic_objects\scene_objects\jup_b206_plant_ph"
+visual                        = dynamics\equipments\quest\anomaly_plant.ogf
+startup_animation					= idle
+fixed_bones		= link
+story_id 		= jup_b206_plant_ph
+custom_data 		      = models\objects\ignore_static.ltx
+
+;*******************************************************************************
+
+;*** armory_room ***************************************************************
+[shooting_target_1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\armory_room\shooting_target_1"
+visual                        = dynamics\armory_room\shooting_target_1.ogf
+startup_animation					= shooting_target_1_down
+fixed_bones							= link
+;*******************************************************************************
+
+;*** balon *********************************************************************
+
+[balon_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\balon\balon_01"
+visual                        = dynamics\balon\balon_01.ogf
+
+[balon_02]:physic_destroyable_object
+$spawn                        = "dynamic_objects\balon\balon_02"
+visual                        = dynamics\balon\balon_02.ogf
+
+[balon_02link]:physic_destroyable_object
+$spawn                        = "dynamic_objects\balon\balon_02link"
+visual                        = dynamics\balon\balon_02.ogf
+fixed_bones						= bone01, bone02, bone03
+
+[balon_02a]:physic_destroyable_object
+$spawn                        = "dynamic_objects\balon\balon_02a"
+visual                        = dynamics\balon\balon_02a.ogf
+
+[bidon]:physic_destroyable_object
+$spawn                        = "dynamic_objects\balon\bidon"
+visual                        = dynamics\balon\bidon.ogf
+
+[bochka_close_1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\balon\bochka_close_1"
+visual                        = dynamics\balon\bochka_close_1.ogf
+
+[bochka_close_2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\balon\bochka_close_2"
+visual                        = dynamics\balon\bochka_close_2.ogf
+
+[bochka_close_3]:physic_destroyable_object
+$spawn                        = "dynamic_objects\balon\bochka_close_3"
+visual                        = dynamics\balon\bochka_close_3.ogf
+
+[bochka_close_4]:physic_destroyable_object
+$spawn                        = "dynamic_objects\balon\bochka_close_4"
+visual                        = dynamics\balon\bochka_close_4.ogf
+
+[gaz_balon]:physic_destroyable_object
+$spawn                        = "dynamic_objects\balon\gaz_balon"
+visual                        = dynamics\balon\gaz_balon.ogf
+
+;*******************************************************************************
+
+;*** box ***********************************************************************
+;*******************************************************************************
+
+;*** el_tehnika ****************************************************************
+
+[disel_generator]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\disel_generator"
+visual                        = dynamics\el_tehnika\disel_generator.ogf
+startup_animation  	      = idle
+fixed_bones		      = link
+custom_data 		      = models\objects\ignore_static.ltx
+
+[krisagenerator]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\krisagenerator"
+visual                        = dynamics\el_tehnika\krisagenerator.ogf
+startup_animation  	      = idle
+fixed_bones		      = link
+custom_data 		      = models\objects\ignore_static.ltx
+
+[ventilator_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\ventilator_01"
+visual                        = dynamics\el_tehnika\ventilator_01.ogf
+startup_animation  	      = idle
+fixed_bones		      = link
+custom_data 		      = models\objects\ignore_static.ltx
+
+[ventilator_02]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\ventilator_02"
+visual                        = dynamics\el_tehnika\ventilator_02.ogf
+startup_animation  	      = idle
+fixed_bones		      = link
+custom_data 		      = models\objects\ignore_static.ltx
+
+[ventilator_03]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\ventilator_03"
+visual                        = dynamics\el_tehnika\ventilator_03.ogf
+startup_animation  	      = idle
+fixed_bones		      = link
+custom_data 		      = models\objects\ignore_static.ltx
+
+[ventilator_04]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\ventilator_04"
+visual                        = dynamics\el_tehnika\ventilator_04.ogf
+startup_animation  	      = idle
+fixed_bones		      = link
+custom_data 		      = models\objects\ignore_static.ltx
+
+[ventilator_05]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\ventilator_05"
+visual                        = dynamics\el_tehnika\ventilator_05.ogf
+startup_animation  	      = idle
+fixed_bones		      = link
+custom_data 		      = models\objects\ignore_static.ltx
+
+[speakerphone]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\speakerphone"
+visual                        = dynamics\el_tehnika\speakerphone.ogf
+fixed_bones		      = link
+custom_data 		      = models\objects\ignore_static.ltx
+
+[notebook]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\notebook"
+visual                        = dynamics\el_tehnika\notebook.ogf
+
+[priemnik_gorizont]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\priemnik_gorizont"
+visual                        = dynamics\el_tehnika\priemnik_gorizont.ogf
+
+[rupor]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\rupor"
+visual                        = dynamics\el_tehnika\rupor.ogf
+fixed_bones							= link
+
+[transiver]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\transiver"
+visual                        = dynamics\el_tehnika\transiver.ogf
+
+[tv_1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\tv_1"
+visual                        = dynamics\el_tehnika\tv_1.ogf
+
+[table_lamp_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\table_lamp_01"
+visual                        = dynamics\el_tehnika\table_lamp_01.ogf
+fixed_bones							= link
+
+[komp_monitor]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\komp_monitor"
+visual                        = dynamics\el_tehnika\komp_monitor.ogf
+
+[komp_klava]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\komp_klava"
+visual                        = dynamics\el_tehnika\komp_klava.ogf
+
+[komp_block]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\komp_block"
+visual                        = dynamics\el_tehnika\komp_blok.ogf
+
+;*******************************************************************************
+
+;*** fence *********************************************************************
+;*******************************************************************************
+
+[debris_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\fence\debris_01"
+visual                        = dynamics\fence\debris_01.ogf
+
+[wood_fence_1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\fence\wood_fence_1"
+fixed_bones		      = link
+visual                        = dynamics\fence\wood_fence_1.ogf
+
+[wood_fence_2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\fence\wood_fence_2"
+fixed_bones		      = link
+visual                        = dynamics\fence\wood_fence_2.ogf
+
+[wood_fence_3]:physic_destroyable_object
+$spawn                        = "dynamic_objects\fence\wood_fence_3"
+fixed_bones		      = link
+visual                        = dynamics\fence\wood_fence_3.ogf
+
+[wood_fence_4]:physic_destroyable_object
+$spawn                        = "dynamic_objects\fence\wood_fence_4"
+fixed_bones		      = link
+visual                        = dynamics\fence\wood_fence_4.ogf
+
+;*** workshop_room *************************************************************
+;*******************************************************************************
+[banka_kraski_1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\banka_kraski_1"
+visual                        = dynamics\workshop_room\banka_kraski_1.ogf
+
+[tiski]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\tiski"
+visual                        = dynamics\workshop_room\tiski.ogf
+
+[kanistra_02]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\kanistra_02"
+visual                        = dynamics\workshop_room\kanistra_02.ogf
+
+[vedro_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\vedro_01"
+visual                        = dynamics\workshop_room\vedro_01.ogf
+
+[axe]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\axe"
+visual                        = dynamics\workshop_room\axe.ogf
+
+[hammer]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\hammer"
+visual                        = dynamics\workshop_room\hammer.ogf
+
+[hatch_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\hatch_01"
+visual                        = dynamics\workshop_room\hatch_01.ogf
+
+[keyga]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\keyga"
+visual                        = dynamics\workshop_room\keyga.ogf
+
+[lopata]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\lopata"
+visual                        = dynamics\workshop_room\lopata.ogf
+
+[molot]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\molot"
+visual                        = dynamics\workshop_room\molot.ogf
+
+[pick]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\pick"
+visual                        = dynamics\workshop_room\pick.ogf
+
+[riffler]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\riffler"
+visual                        = dynamics\workshop_room\riffler.ogf
+
+[saw]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\saw"
+visual                        = dynamics\workshop_room\saw.ogf
+
+;***kitchen_room****************************************************************
+[bottle_3L]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\bottle_3L"
+visual                        = dynamics\kitchen_room\bottle_3l.ogf
+
+[freezer]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\freezer"
+visual                        = dynamics\kitchen_room\freezer.ogf
+
+[bludo]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\bludo"
+visual                        = dynamics\kitchen_room\kitchen_bludo.ogf
+
+[kastrula]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\kastrula"
+visual                        = dynamics\kitchen_room\kitchen_kastrula.ogf
+
+[kastrula_up]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\kastrula_up"
+visual                        = dynamics\kitchen_room\kitchen_kastrula_up.ogf
+
+[krujka]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\krujka"
+visual                        = dynamics\kitchen_room\kitchen_krujka.ogf
+
+[lojka]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\lojka"
+visual                        = dynamics\kitchen_room\kitchen_lojka.ogf
+
+[miska]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\miska"
+visual                        = dynamics\kitchen_room\kitchen_miska.ogf
+
+[tarelka1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\tarelka1"
+visual                        = dynamics\kitchen_room\kitchen_tarelka1.ogf
+
+[tarelka2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\tarelka2"
+visual                        = dynamics\kitchen_room\kitchen_tarelka2.ogf
+
+[teapot_1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\teapot_1"
+visual                        = dynamics\kitchen_room\teapot_1.ogf
+
+[gaz_plita]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\gaz_plita"
+visual                        = dynamics\kitchen_room\gaz_plita.ogf
+
+[gaz_plita_small]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\gaz_plita_small"
+visual                        = dynamics\kitchen_room\gaz_plita_small.ogf
+
+;*******************************************************************************
+
+;*** box ***********************************************************************
+[box_1a]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box\box_1a"
+visual                        = dynamics\box\box_1a.ogf
+
+[box_1b]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box\box_1b"
+visual                        = dynamics\box\box_1b.ogf
+
+[box_1c]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box\box_1c"
+visual                        = dynamics\box\box_1c.ogf
+
+[box_bottle_1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box\box_bottle_1"
+visual                        = dynamics\box\box_bottle_1.ogf
+
+[box_metall_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box\box_metall_01"
+visual                        = dynamics\box\box_metall_01.ogf
+
+[box_wood_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box\box_wood_01"
+visual                        = dynamics\box\box_wood_01.ogf
+
+[box_wood_02]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box\box_wood_02"
+visual                        = dynamics\box\box_wood_02.ogf
+
+[box_paper]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box\box_paper"
+visual                        = dynamics\box\box_paper.ogf
+
+;*******************************************************************************
+
+;***medical_object**************************************************************
+[kolyaska_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\medical_object\kolyaska_01"
+visual                        = dynamics\medical_object\kolyaska_01.ogf
+
+[kolyaska_01_braked]:physic_destroyable_object
+$spawn                        = "dynamic_objects\medical_object\kolyaska_01_braked"
+visual                        = dynamics\medical_object\kolyaska_01_braked.ogf
+
+[kolyaska_wheel_01_braked]:physic_destroyable_object
+$spawn                        = "dynamic_objects\medical_object\kolyaska_wheel_01_braked"
+visual                        = dynamics\medical_object\kolyaska_wheel_01_braked.ogf
+
+[wheel_litter_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\medical_object\wheel_litter_01"
+visual                        = dynamics\medical_object\wheel_litter_01.ogf
+
+[wheel_litter_01_braked]:physic_destroyable_object
+$spawn                        = "dynamic_objects\medical_object\wheel_litter_01_braked"
+visual                        = dynamics\medical_object\wheel_litter_01_braked.ogf
+
+[med_stolik_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\medical_object\med_stolik_01"
+visual                        = dynamics\medical_object\med_stolik_01.ogf
+;*******************************************************************************
+
+;*** firestation ***************************************************************
+[fire_vedro]:physic_destroyable_object
+$spawn                        = "dynamic_objects\firestation\fire_vedro"
+visual                        = dynamics\firestation\fire_vedro.ogf
+
+[ognetushitel]:physic_destroyable_object
+$spawn                        = "dynamic_objects\firestation\ognetushitel"
+visual                        = dynamics\firestation\ognetushitel.ogf
+;*******************************************************************************
+
+;*** stul **********************************************************************
+[stul_wood_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stul\stul_wood_01"
+visual                        = dynamics\stul\stul_wood_01.ogf
+
+[stul_wood_02]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stul\stul_wood_02"
+visual                        = dynamics\stul\stul_wood_02.ogf
+
+[child_bench]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stul\child_bench"
+visual                        = dynamics\stul\child_bench.ogf
+
+[stul_child_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stul\stul_child_01"
+visual                        = dynamics\stul\stul_child_01.ogf
+
+[stul_school_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stul\stul_school_01"
+visual                        = dynamics\stul\stul_school_01.ogf
+
+[stul_school_01_br]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stul\stul_school_01_br"
+visual                        = dynamics\stul\stul_school_01_br.ogf
+
+[taburet_village]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stul\taburet_village"
+visual                        = dynamics\stul\taburet_village.ogf
+
+[taburet_wood_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stul\taburet_wood_01"
+visual                        = dynamics\stul\taburet_wood_01.ogf
+
+;*******************************************************************************
+
+;*** museum weapons ************************************************************
+[museum_abakan]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_abakan"
+visual                        = dynamics\weapons\wpn_abakan\wpn_abakan.ogf
+fixed_bones							= wpn_body
+
+[museum_ak74]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_ak74"
+visual                        = dynamics\weapons\wpn_ak74\wpn_ak74.ogf
+fixed_bones							= wpn_body
+
+[museum_ak74u]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_ak74u"
+visual                        = dynamics\weapons\wpn_ak74u\wpn_ak74u.ogf
+fixed_bones							= wpn_body
+
+[museum_groza]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_groza"
+visual                        = dynamics\weapons\wpn_groza\wpn_groza.ogf
+fixed_bones							= wpn_body
+
+[museum_lr300]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_lr300"
+visual                        = dynamics\weapons\wpn_lr300\wpn_lr300.ogf
+fixed_bones							= wpn_body
+
+[museum_rg6]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_rg6"
+visual                        = dynamics\weapons\wpn_rg6\wpn_rg6.ogf
+fixed_bones							= wpn_body
+
+[museum_rpg7]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_rpg7"
+visual                        = dynamics\weapons\wpn_rpg7\wpn_rpg7.ogf
+fixed_bones							= wpn_body
+
+[museum_sig550]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_sig550"
+visual                        = dynamics\weapons\wpn_sig550\wpn_sig550.ogf
+fixed_bones							= wpn_body
+
+[museum_spas12]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_spas12"
+visual                        = dynamics\weapons\wpn_spas12\wpn_spas12.ogf
+fixed_bones							= wpn_body
+
+[museum_svd]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_svd"
+visual                        = dynamics\weapons\wpn_svd\wpn_svd.ogf
+fixed_bones							= wpn_body
+
+[museum_bm16]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_bm16"
+visual                        = dynamics\weapons\wpn_bm16\wpn_bm16.ogf
+fixed_bones							= wpn_body
+
+[museum_toz34]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_toz34"
+visual                        = dynamics\weapons\wpn_toz34\wpn_toz34.ogf
+fixed_bones							= wpn_body
+
+[museum_val]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_val"
+visual                        = dynamics\weapons\wpn_val\wpn_val.ogf
+fixed_bones							= wpn_body
+
+[museum_vintorez]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_vintorez"
+visual                        = dynamics\weapons\wpn_vintorez\wpn_vintorez.ogf
+fixed_bones							= wpn_body
+
+[museum_winchester1300]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_winchester1300"
+visual                        = dynamics\weapons\wpn_winchester1300\wpn_winchester1300.ogf
+fixed_bones							= wpn_body
+
+[museum_ammo_545x39_fmj]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_ammo_545x39_fmj"
+visual                        = dynamics\weapons\wpn_ammo\ammo_545x39_fmj.ogf
+fixed_bones							= link
+
+[museum_ammo_12x70_buck]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_ammo_12x70_buck"
+visual                        = dynamics\weapons\wpn_ammo\ammo_12x70_buck.ogf
+fixed_bones							= link
+
+[museum_ammo_762x54_7h14]:physic_destroyable_object
+$spawn                        = "dynamic_objects\museum_weapons\museum_ammo_762x54_7h14"
+visual                        = dynamics\weapons\wpn_ammo\ammo_762x54_7h14.ogf
+fixed_bones							= link
+;*******************************************************************************
+
+[balloon_poison_gas]:physic_destroyable_object
+$spawn                      = "dynamic_objects\museum_weapons\balloon_poison_gas"
+visual                      = dynamics\equipments\quest\balloon_poison_gas.ogf
+fixed_bones					= link
+
+;*********************************************************************************
+
+[ph_sleepbag]:physic_destroyable_object
+visual 					= dynamics\equipments\mattress02.ogf
+script_binding			= bind_physic_object.init
+custom_data 			= scripts\ph_sleepbag.ltx
+;custom_data 		    = models\objects\ignore_static.ltx
+;fixed_bones = bone01_(1),bone01_(2),bone01_(3),bone02_(1),bone02_(2),bone02_(3),bone03
+
+[ph_tent]:physic_destroyable_object
+visual 					= dynamics\equipments\item_tent.ogf
+script_binding			= bind_physic_object.init
+custom_data 			= scripts\ph_tent.ltx
+
+[ph_sleepbag_npc]:physic_destroyable_object
+visual 					= dynamics\equipments\mattress02.ogf
+script_binding			= bind_physic_object.init
+custom_data 		    = models\objects\ignore_static.ltx
+fixed_bones = bone01_(1),bone01_(2),bone01_(3),bone02_(1),bone02_(2),bone02_(3),bone03
+
+[artefact_monolit_ghost]:physic_destroyable_object
+$spawn                      = "dynamics\anomaly\artefact_monolit_ghost"
+visual                      = dynamics\anomaly\artefact_monolit_ghost.ogf
+story_id 					= artefact_monolit_ghost
+startup_animation			= idle
+fixed_bones					= link
+custom_data 		        = models\objects\ignore_static.ltx
+
+;************************************* HOLDER ENTITY OBJECT ****************************
+[holder_stul]
+$spawn                                   = "holders\holder_stul"
+GroupControlSection                      = spawn_group
+cform                                    = skeleton
+class                                    = O_HLDR_E
+visual                                   = dynamics\stul\stul_school_01.ogf
+
+allow_weapon							 = true
+camera_pos							 	 = 0,1.5,0
+camera_angle							 = 0,0,0				;0 to 3.14 (PI)
+exit_pos								 = 0,0,0
+lock_enter								 = false 
+lock_exit								 = false
+use_action_hint							 = st_use_action_sit
+
+
+
+
+
+
+
+
+
+
+
+
+; ---------------------------------------------------------------------------------------- SAD
+[sad_sim_16_ph_scanner]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\sad_sim_16_ph_scanner"
+visual                        = dynamics\equipments\quest\scanner_anomaly.ogf
+custom_data 				  = scripts\sad\sad_sim_16_ph_scanner.ltx
+startup_animation  	   			= idle
+fixed_bones					  = link
+story_id 					  = sad_sim_16_ph_scanner
+
+[sad_psi_cave_mostik_a]:physic_destroyable_object
+$spawn                      = "dynamic_objects\scene_objects\sad_psi_cave_mostik_a"
+visual                      = sad\banlaz_mostik_a.ogf
+fixed_bones					= link
+story_id 					= sad_psi_cave_mostik_a
+custom_data 		      	= models\objects\ignore_static.ltx
+
+[sad_psi_cave_mostik_b]:physic_destroyable_object
+$spawn                      = "dynamic_objects\scene_objects\sad_psi_cave_mostik_b"
+visual                      = sad\banlaz_mostik_b.ogf
+fixed_bones					= link
+story_id 					= sad_psi_cave_mostik_b
+custom_data 		      	= models\objects\ignore_static.ltx
+
+[sad_nauchny_explosive_charge]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\sad_nauchny_explosive_charge"
+visual                        = dynamics\equipments\quest\explosive_charge.ogf 
+startup_animation					= idle
+fixed_bones							= link
+story_id 						= sad_nauchny_explosive_charge
+custom_data 		      		= models\objects\ignore_static.ltx
+
+[sad_nauchny_explosive_grenade]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\sad_nauchny_explosive_grenade"
+visual                        = dynamics\equipments\quest\explosive_charge.ogf 
+startup_animation					= idle
+fixed_bones							= link
+story_id 						= sad_nauchny_explosive_grenade
+custom_data 		      		= models\objects\ignore_static.ltx
+
+[sad_sher_explosive_charge]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\sad_sher_explosive_charge"
+visual                        = dynamics\equipments\quest\explosive_charge.ogf 
+startup_animation					= idle
+fixed_bones							= link
+story_id 						= sad_sher_explosive_charge
+custom_data 		      		= models\objects\ignore_static.ltx
+
+[crazy_rock_object]:physic_object ; physic_destroyable_object
+$spawn						= "physics\crazy_rock_object"
+script_binding				= bind_animated_rock.bind
+;visual						= sad\crazy_rock.ogf
+;startup_animation			= idle
+;fixed_bones					= link
+;custom_data 		      	= models\objects\ignore_static.ltx
+
+[rm_kartina3]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\rozen\rm_kartina3"
+visual                        = dynamics\scene_objects\rozen\rm_kartina3.ogf
+fixed_bones							= link
+custom_data 		      = models\objects\ignore_static.ltx
+story_id 					= rm_kartina3
+
+;************************************* HOLDER ENTITY OBJECT ****************************
+[big_shkaf]:physic_destroyable_object
+$spawn                        = "dynamic_objects\big_shkaf"
+visual                        = dynamics\extra\big_shkaf.ogf
+fixed_bones							= link
+
+[bed_metal]:physic_destroyable_object
+$spawn                        = "dynamic_objects\bed_metal"
+visual                        = dynamics\extra\bed_metal.ogf
+
+[kukla]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kukla"
+visual                        = dynamics\extra\kukla.ogf
+
+[matras]:physic_destroyable_object
+$spawn                        = "dynamic_objects\matras"
+visual                        = dynamics\extra\matras.ogf
+
+[matras_scruch]:physic_destroyable_object
+$spawn                        = "dynamic_objects\matras_scruch"
+visual                        = dynamics\extra\matras_scruch.ogf
+
+[motocycle]:physic_destroyable_object
+$spawn                        = "dynamic_objects\motocycle"
+visual                        = dynamics\extra\motocycle.ogf
+
+[paket]:physic_destroyable_object
+$spawn                        = "dynamic_objects\paket"
+visual                        = dynamics\extra\paket.ogf
+
+[snork_of_rope]:physic_destroyable_object
+$spawn                        = "dynamic_objects\snork_of_rope"
+visual                        = dynamics\extra\snork_of_rope.ogf
+
+[stol]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol"
+visual                        = dynamics\extra\stol.ogf
+
+[urn]:physic_destroyable_object
+$spawn                        = "dynamic_objects\urn"
+visual                        = dynamics\extra\urn.ogf
+
+[velik]:physic_destroyable_object
+$spawn                        = "dynamic_objects\velik"
+visual                        = dynamics\extra\velik.ogf
+
+
+
+
+;04,09,17*****************************************************
+
+;ÚÛÔ˚ ‚ÒˇÍËÂ
+
+[skelet_sit_ass]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_combine_pose_00"
+visual                        = physics\dead_body\skelet_combine_pose_00.ogf
+
+[skelet_sit_ass2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_combine_pose_01"
+visual                        = physics\dead_body\skelet_combine_pose_01.ogf
+
+[skelet_sit_ass_no_hands]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_combine_pose_02"
+visual                        = physics\dead_body\skelet_combine_pose_02.ogf
+
+[skelet_fall_broken]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_combine_pose_03"
+visual                        = physics\dead_body\skelet_combine_pose_03.ogf
+
+[skelet_fall_rolled]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_combine_pose_04"
+visual                        = physics\dead_body\skelet_combine_pose_04.ogf
+
+[skelet_fall_face_down]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_combine_pose_05"
+visual                        = physics\dead_body\skelet_combine_pose_05.ogf
+
+[skelet_hanging]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_combine_pose_06"
+visual                        = physics\dead_body\skelet_combine_pose_06.ogf
+
+
+
+[skelet_crash]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_crash"
+visual                        = physics\dead_body\skelet_crash.ogf
+
+[skelet_crash_monster]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_crash_monster"
+visual                        = physics\dead_body\skelet_crash_monster.ogf
+
+[skelet_foot1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_foot1"
+visual                        = physics\dead_body\skelet_foot1.ogf
+
+[skelet_foot2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_foot2"
+visual                        = physics\dead_body\skelet_foot2.ogf
+
+[skelet_head]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_head"
+visual                        = physics\dead_body\skelet_head.ogf
+
+[skelet_hand1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_hend1"
+visual                        = physics\dead_body\skelet_hend1.ogf
+
+[skelet_hand2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_hend2"
+visual                        = physics\dead_body\skelet_hend2.ogf
+
+[skelet_torso]:physic_destroyable_object
+$spawn                        = "dynamic_objects\skelet_torso"
+visual                        = physics\dead_body\skelet_torso.ogf
+
+
+
+[trofey_boar]:physic_destroyable_object
+$spawn                        = "dynamic_objects\trofey_boar"
+visual                        = physics\dead_body\trofey_boar.ogf
+
+[trofey_cat]:physic_destroyable_object
+$spawn                        = "dynamic_objects\trofey_cat"
+visual                        = physics\dead_body\trofey_cat.ogf
+
+[trofey_chimera]:physic_destroyable_object
+$spawn                        = "dynamic_objects\trofey_chimera"
+visual                        = physics\dead_body\trofey_chimera.ogf
+
+[trupik_rope]:physic_destroyable_object
+$spawn                        = "dynamic_objects\trupik_rope"
+visual                        = physics\dead_body\trupik_rope.ogf
+
+[snork_on_rope]:physic_destroyable_object
+$spawn                        = "dynamic_objects\snork_on_rope"
+visual                        = physics\dead_body\snork_on_rope.ogf
+
+[vertel_boar]:physic_destroyable_object
+$spawn                        = "dynamic_objects\vertel_boar"
+visual                        = physics\dead_body\vertel_boar.ogf
+
+[vertel_boar_nobranch]:physic_destroyable_object
+$spawn                        = "dynamic_objects\vertel_boar_nobranch"
+visual                        = physics\dead_body\vertel_boar_nobranch.ogf
+
+;-----------------ˇ˘ËÍË
+
+[box_gorb]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box_gorb"
+visual                        = physics\box\box_gorb.ogf
+
+[box_lab_small]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box_lab_01"
+visual                        = physics\box\box_lab_01.ogf
+
+[box_lab_red]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box_lab_02"
+visual                        = physics\box\box_lab_02.ogf
+
+[box_pak_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box_pak_01"
+visual                        = physics\box\box_pak_01.ogf
+
+[box_wood_tara]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box_wood_tara"
+visual                        = physics\box\box_wood_tara.ogf
+
+[konteyner_big_grey_closed]:physic_destroyable_object
+$spawn                        = "dynamic_objects\konteyner_01"
+visual                        = physics\box\konteyner_01.ogf
+
+[konteyner_big_grey_open]:physic_destroyable_object
+$spawn                        = "dynamic_objects\konteyner_02"
+visual                        = physics\box\konteyner_02.ogf
+
+[konteyner_big_green]:physic_destroyable_object
+$spawn                        = "dynamic_objects\konteyner_03"
+visual                        = physics\box\konteyner_03.ogf
+
+[lab_box]:physic_destroyable_object
+$spawn                        = "dynamic_objects\lab_box"
+visual                        = physics\box\lab_box.ogf
+
+[medbox_white]:physic_destroyable_object
+$spawn                        = "dynamic_objects\medbox"
+visual                        = physics\box\medbox.ogf
+
+[medbox_green]:physic_destroyable_object
+$spawn                        = "dynamic_objects\medbox2"
+visual                        = physics\box\medbox2.ogf
+
+[white_box]:physic_destroyable_object
+$spawn                        = "dynamic_objects\white_box"
+visual                        = physics\box\white_box.ogf
+
+;-----------------balon
+
+
+[bochka_wood]:physic_destroyable_object
+$spawn                        = "dynamic_objects\bochka"
+visual                        = physics\box\bochka.ogf
+
+[bochka_open_1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\bochka_open_1"
+visual                        = physics\balon\bochka_open_1.ogf
+
+[bochka_open_2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\bochka_open_2"
+visual                        = physics\balon\bochka_open_2.ogf
+
+[bochka_open_3]:physic_destroyable_object
+$spawn                        = "dynamic_objects\bochka_open_3"
+visual                        = physics\balon\bochka_open_3.ogf
+
+[bochka_open_4]:physic_destroyable_object
+$spawn                        = "dynamic_objects\bochka_open_4"
+visual                        = physics\balon\bochka_open_4.ogf
+
+[balon_toxic]:physic_destroyable_object
+$spawn                        = "dynamic_objects\bomb_01"
+visual                        = physics\balon\bomb_01.ogf
+
+[balon_hexahedron]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box_lab_03"
+visual                        = physics\balon\box_lab_03.ogf
+
+
+
+;------------------decor
+
+[sandbag]:physic_destroyable_object
+$spawn                        = "dynamic_objects\bag_01"
+visual                        = physics\decor\bag_01.ogf
+
+[banka_glass]:physic_destroyable_object
+$spawn                        = "dynamic_objects\bottle_bar_1"
+visual                        = physics\decor\bottle_bar_1.ogf
+
+[stakan]:physic_destroyable_object
+$spawn                        = "dynamic_objects\bottle_bar_stakan"
+visual                        = physics\decor\bottle_bar_stakan.ogf
+
+[butilka_0]:physic_destroyable_object
+$spawn                        = "dynamic_objects\butil_1"
+visual                        = physics\decor\butil_1.ogf
+
+[butilka_1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\butilka_1"
+visual                        = physics\decor\butilka_1.ogf
+
+[butilka_2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\butilka_2"
+visual                        = physics\decor\butilka_2.ogf
+
+[butilka_2a]:physic_destroyable_object
+$spawn                        = "dynamic_objects\butilka_2a"
+visual                        = physics\decor\butilka_2a.ogf
+
+[butilka_2b]:physic_destroyable_object
+$spawn                        = "dynamic_objects\butilka_2b"
+visual                        = physics\decor\butilka_2b.ogf
+
+[kartina_gsc]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kartina03"
+visual                        = physics\decor\kartina03.ogf
+
+[kartina_gsc2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kartina04"
+visual                        = physics\decor\kartina04.ogf
+
+[kozel_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kozel_01"
+visual                        = physics\decor\kozel_01.ogf
+
+[med_stoyka_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\med_stoyka_01"
+visual                        = physics\decor\med_stoyka_01.ogf
+
+[musor_konteyner_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\musor_konteyner_01"
+visual                        = physics\decor\musor_konteyner_01.ogf
+
+[mysor_korzina_metall]:physic_destroyable_object
+$spawn                        = "dynamic_objects\mysor_korzina_2"
+visual                        = physics\decor\mysor_korzina_2.ogf
+
+[big_military_map]:physic_destroyable_object
+$spawn                        = "dynamic_objects\plakat_prop_map_01"
+visual                        = physics\decor\plakat_prop_map_01.ogf
+
+[vedro_rust]:physic_destroyable_object
+$spawn                        = "dynamic_objects\vedro_01"
+visual                        = physics\decor\vedro_01.ogf
+
+[vetrogenerator]:physic_destroyable_object
+$spawn                        = "dynamic_objects\vetrogenerator"
+visual                        = physics\decor\vetrogenerator.ogf
+
+[weapons_schit]:physic_destroyable_object
+$spawn                        = "dynamic_objects\weapons_schit"
+visual                        = physics\decor\weapons_schit.ogf
+
+[wetryak]:physic_destroyable_object
+$spawn                        = "dynamic_objects\wetryak"
+visual                        = physics\decor\wetryak.ogf
+
+;----------door
+
+[code_door_right]:physic_destroyable_object
+$spawn                        = "dynamic_objects\codedoor_right"
+visual                        = physics\door\codedoor_right.ogf
+
+[door_darkvale_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\door_darkvale_01"
+visual                        = physics\door\door_darkvale_01.ogf
+
+[door_darkvaley_nedostroika_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\door_darkvaley_nedostroika_01"
+visual                        = physics\door\door_darkvaley_nedostroika_01.ogf
+
+[door_locker]:physic_destroyable_object
+$spawn                        = "dynamic_objects\door_locker"
+visual                        = physics\door\door_locker.ogf
+
+[door_military_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\door_military_01"
+visual                        = physics\door\door_military_01.ogf
+
+[stol_small_door]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol_6_ph_door"
+visual                        = physics\door\stol_6_ph_door.ogf
+
+[box_of_table_wood]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol_8_ph_door"
+visual                        = physics\door\stol_8_ph_door.ogf
+
+[box_of_table_metall]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol_9a_ph_door"
+visual                        = physics\door\stol_9a_ph_door.ogf
+
+[tumba_village_50x120_ph_door]:physic_destroyable_object
+$spawn                        = "dynamic_objects\tumba_village_50x120_ph_door"
+visual                        = physics\door\tumba_village_50x120_ph_door.ogf
+
+[tumba_village_100x90_ph_01_door]:physic_destroyable_object
+$spawn                        = "dynamic_objects\tumba_village_100x90_ph_01_door"
+visual                        = physics\door\tumba_village_100x90_ph_01_door.ogf
+
+[tumba_village_140x60_ph_door]:physic_destroyable_object
+$spawn                        = "dynamic_objects\tumba_village_140x60_ph_door"
+visual                        = physics\door\tumba_village_140x60_ph_door.ogf
+
+
+
+;---------------------equipment_cache
+
+[box_camp_gorb]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box_camp_gorb"
+visual                        = physics\equipment_cache\box_camp_gorb.ogf
+
+[fix_camp_box_metal]:physic_destroyable_object
+$spawn                        = "dynamic_objects\fix_box_metal"
+visual                        = dynamics\extra\fix_box_metal.ogf
+
+[box_camp_wood]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box_camp_wood"
+visual                        = physics\equipment_cache\box_camp_wood.ogf
+
+[box_camp_wood_2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box_camp_wood_2"
+visual                        = physics\equipment_cache\box_camp_wood_2.ogf
+
+
+
+;---------------------large_trash
+
+[garbage_1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\garbage_1"
+visual                        = physics\large_trash\garbage_1.ogf
+
+[garbage_tube]:physic_destroyable_object
+$spawn                        = "dynamic_objects\garbage_9"
+visual                        = physics\large_trash\garbage_9.ogf
+
+[garbage_fuel_tank_kamaz]:physic_destroyable_object
+$spawn                        = "dynamic_objects\garbage_11"
+visual                        = physics\large_trash\garbage_11.ogf
+
+[door_pogreb]:physic_destroyable_object
+$spawn                        = "dynamic_objects\luk_pogreb"
+visual                        = physics\large_trash\luk_pogreb.ogf
+
+[poddon]:physic_destroyable_object
+$spawn                        = "dynamic_objects\poddon"
+visual                        = physics\large_trash\poddon.ogf
+
+[poddon_02]:physic_destroyable_object
+$spawn                        = "dynamic_objects\poddon_02"
+visual                        = physics\large_trash\poddon_02.ogf
+
+[pricep_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\pricep_01"
+visual                        = physics\large_trash\pricep_01.ogf
+
+
+
+;---------------------small_trash
+
+[sign_mine]:physic_destroyable_object
+$spawn                        = "dynamic_objects\sign_mine"
+visual                        = physics\decor\sign_mine.ogf
+
+[sign_radiation]:physic_destroyable_object
+$spawn                        = "dynamic_objects\sign_radiation"
+visual                        = physics\decor\sign_radiation.ogf
+
+[doski_br_02]:physic_destroyable_object
+$spawn                        = "dynamic_objects\doski_br_02"
+visual                        = physics\small_trash\doski_br_02.ogf
+
+[doski_br_03]:physic_destroyable_object
+$spawn                        = "dynamic_objects\doski_br_03"
+visual                        = physics\small_trash\doski_br_03.ogf
+
+[wood_board_br_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\wood_board_br_01"
+visual                        = physics\small_trash\wood_board_br_01.ogf
+
+[wood_board_big]:physic_destroyable_object
+$spawn                        = "dynamic_objects\wood_board_br_02"
+visual                        = physics\small_trash\wood_board_br_02.ogf
+
+[wood_board_big2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\wood_board_br_03"
+visual                        = physics\small_trash\wood_board_br_03.ogf
+
+
+
+;---------------------ÏÂ·ÂÎ¸
+
+[kartina_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kartina_01"
+visual                        = physics\decor\kartina_01.ogf
+
+[kartina_02]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kartina_02"
+visual                        = physics\decor\kartina_02.ogf
+
+[tv_1_br]:physic_destroyable_object
+$spawn                        = "dynamic_objects\tv_1_br"
+visual                        = physics\decor\tv_1_br.ogf
+
+[tv_2_br]:physic_destroyable_object
+$spawn                        = "dynamic_objects\tv_2_br"
+visual                        = physics\decor\tv_2_br.ogf
+
+[stol_metall]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol_4"
+visual                        = physics\stol\stol_4.ogf
+
+[stol_metall2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol_9a"
+visual                        = physics\stol\stol_9a.ogf
+
+[stol_wood]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol_6"
+visual                        = physics\stol\stol_6.ogf
+
+[stol_wood2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol_8a"
+visual                        = physics\stol\stol_8a.ogf
+
+[stol_wood3]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol_8"
+visual                        = physics\stol\stol_8.ogf
+
+[stol_obedenniy]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol_obedenniy"
+visual                        = physics\stol\stol_obedenniy.ogf
+
+[lavochka_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\lavochka_01"
+visual                        = physics\stul\lavochka_01.ogf
+
+[lavochka_02]:physic_destroyable_object
+$spawn                        = "dynamic_objects\lavochka_02"
+visual                        = physics\stul\lavochka_02.ogf
+
+[stelag_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stelag_01"
+visual                        = physics\shkaf\stelag_01.ogf
+
+[divan_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\divan_01"
+visual                        = physics\krovati\divan_01.ogf
+
+[krovat_metall_white]:physic_destroyable_object
+$spawn                        = "dynamic_objects\krovat_01"
+visual                        = physics\krovati\krovat_01.ogf
+
+[krovat_metall_black]:physic_destroyable_object
+$spawn                        = "dynamic_objects\krovat_02"
+visual                        = physics\krovati\krovat_02.ogf
+
+
+
+;---------------------ÔË·Ó˚
+
+[pribor_1c]:physic_destroyable_object
+$spawn                        = "dynamic_objects\pribor_1c"
+visual                        = physics\technica\pribor_1c.ogf
+
+[pribor_1d]:physic_destroyable_object
+$spawn                        = "dynamic_objects\pribor_1d"
+visual                        = physics\technica\pribor_1d.ogf
+
+[item_decoder]:physic_destroyable_object
+$spawn                        = "dynamic_objects\item_decoder"
+visual                        = equipments\item_decoder.ogf
+
+
+
+;---------------------vehicles
+
+[trash_zaz]:physic_destroyable_object
+$spawn                        = "dynamic_objects\veh_zaz_u_01"
+visual                        = physics\vehicles\zaz\veh_zaz_u_01.ogf
+
+[trash_moskvitch]:physic_destroyable_object
+$spawn                        = "dynamic_objects\veh_moskvitch_u_01"
+visual                        = physics\vehicles\moskvich\veh_moskvitch_u_01.ogf
+
+[trash_uaz]:physic_destroyable_object
+$spawn                        = "dynamic_objects\trash_uaz_2_lod"
+visual                        = physics\vehicles\kamaz\trash_uaz_2_lod.ogf
+
+[trash_ekskavator]:physic_destroyable_object
+$spawn                        = "dynamic_objects\ekskavator"
+visual                        = physics\vehicles\kamaz\ekskavator.ogf
+
+[trash_kamaz_korpus3]:physic_destroyable_object
+$spawn                        = "dynamic_objects\trash_kamaz_korpus3"
+visual                        = physics\vehicles\kamaz\trash_kamaz_korpus3.ogf
+
+
+
+;---------------------‚ÒˇÍ‡ˇ ‚Òˇ˜ËÌ‡
+
+[bochonok_small]:physic_destroyable_object
+$spawn                        = "dynamic_objects\bochonok_big"
+visual                        = physics\bochonok_big.ogf
+
+[budka_for_kit]:physic_destroyable_object
+$spawn                        = "dynamic_objects\budka_for_kit"
+visual                        = physics\budka_for_kit.ogf
+
+[trash_buldozer]:physic_destroyable_object
+$spawn                        = "dynamic_objects\trash_buldozer"
+visual                        = physics\trash_buldozer.ogf
+
+[trash_lada_lod]:physic_destroyable_object
+$spawn                        = "dynamic_objects\trash_lada_lod"
+visual                        = physics\trash_lada_lod.ogf
+
+[trees_3_04]:physic_destroyable_object
+$spawn                        = "dynamic_objects\trees_3_04"
+visual                        = physics\trees_3_04.ogf
+
+[trash_zil_130]:physic_destroyable_object
+$spawn                        = "dynamic_objects\veh_zil_130"
+visual                        = physics\veh_zil_130.ogf
+
+
+
+
+
+;---------------------------------------------
+;------------Ã”“¿Õ“€---------------
+;---------------------------------------------
+
+
+[cat_weak]:physic_destroyable_object
+$spawn                        = "dynamic_objects\cat_weak"
+visual                        = monsters\cat\cat_weak.ogf
+
+[cat_weak2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\cat_weak2"
+visual                        = monsters\cat\cat_weak2.ogf
+
+[cat_weak3]:physic_destroyable_object
+$spawn                        = "dynamic_objects\cat_weak3"
+visual                        = monsters\cat\cat_weak3.ogf
+
+[chimera_small]:physic_destroyable_object
+$spawn                        = "dynamic_objects\chimera_small"
+visual                        = monsters\chimera\chimera_small.ogf
+
+[controller_1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\controller_1"
+visual                        = monsters\controller\controller_1.ogf
+
+[dog_black]:physic_destroyable_object
+$spawn                        = "dynamic_objects\dog_black"
+visual                        = monsters\dog\dog_black.ogf
+
+[dog_brown]:physic_destroyable_object
+$spawn                        = "dynamic_objects\dog_brown"
+visual                        = monsters\dog\dog_brown.ogf
+
+[dog_bulterier]:physic_destroyable_object
+$spawn                        = "dynamic_objects\dog_bulterier"
+visual                        = monsters\dog\dog_bulterier.ogf
+
+[dog_red]:physic_destroyable_object
+$spawn                        = "dynamic_objects\dog_red"
+visual                        = monsters\dog\dog_red.ogf
+
+[dog_white]:physic_destroyable_object
+$spawn                        = "dynamic_objects\dog_white"
+visual                        = monsters\dog\dog_white.ogf
+
+[fracture]:physic_destroyable_object
+$spawn                        = "dynamic_objects\fracture"
+visual                        = monsters\fracture\fracture.ogf
+
+[krovosos_red]:physic_destroyable_object
+$spawn                        = "dynamic_objects\krovosos"
+visual                        = monsters\krovosos\krovosos.ogf
+
+[krovosos_green]:physic_destroyable_object
+$spawn                        = "dynamic_objects\krovosos_green"
+visual                        = monsters\krovosos\krovosos_green.ogf
+
+[krovosos_black]:physic_destroyable_object
+$spawn                        = "dynamic_objects\krovosos_strong"
+visual                        = monsters\krovosos\krovosos_strong.ogf
+
+[mutant_boar]:physic_destroyable_object
+$spawn                        = "dynamic_objects\mutant_boar"
+visual                        = monsters\mutant_boar\mutant_boar.ogf
+
+[poltergeist]:physic_destroyable_object
+$spawn                        = "dynamic_objects\poltergeist"
+visual                        = monsters\poltergeist\poltergeist.ogf
+
+[pseudodog_grey]:physic_destroyable_object
+$spawn                        = "dynamic_objects\pseudodog_grey"
+visual                        = monsters\pseudodog\pseudodog_grey.ogf
+
+[rat_2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\rat_2"
+visual                        = monsters\rat\rat_2.ogf
+
+[snork]:physic_destroyable_object
+$spawn                        = "dynamic_objects\snork"
+visual                        = monsters\snork\snork.ogf
+
+[zombie_lab]:physic_destroyable_object
+$spawn                        = "dynamic_objects\zombie_2"
+visual                        = monsters\zombie\zombie_2.ogf
+
+[zombie_rotten]:physic_destroyable_object
+$spawn                        = "dynamic_objects\zombie_3"
+visual                        = monsters\zombie\zombie_3.ogf
+
+[pribor2]:physic_object
+$spawn                        = "dynamic_objects\new_anim_decor\pribor2"
+visual                        = new_item\sinse_shtuka_5.ogf
+startup_animation					= idle
+fixed_bones			= link
+custom_data 		      = scripts\mishens_task\restr_kislota_pribor_2.ltx
+story_id = pribor2
+
+[skaner_kislota_1]:physic_object
+$spawn                        = "dynamic_objects\scene_objects\skaner_kislota_1"
+visual                        = new_item\skaner_n1.ogf
+custom_data 				  = scripts\mishens_task\restr_skaner_kislota_1.ltx
+startup_animation  	   		  = skaner_n1_stop
+fixed_bones					  = link
+story_id 					  = skaner_kislota_1
+
+;************************************* xcvb cringefires ****************************
+[ph_campfiremod]:physic_destroyable_object
+visual 					= dynamics\equipments\campfiremod.ogf
+script_binding			= bind_physic_object.init
+custom_data 			= scripts\ph_campfiremod.ltx
