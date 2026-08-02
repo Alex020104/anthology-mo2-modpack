@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="st_eft_cmskit">
+		<text>CMS SURGICAL KIT (EFT)</text>
+	</string>
+	<string id="st_eft_cmskit_descr">
+		<text>Compact surgical kit for treatment of bullet wounds and other serious injuries.\n \n
+		%c[ui_gray_3]HEALING:\n
+		%c[d_red] • %c[ui_gray_2] Restores 3.6%hp/s, total 162%\n
+		%c[ui_gray_3]PROPERTIES:\n
+		%c[d_blue] • %c[ui_gray_2] everyday item\n
+		%c[d_blue] • %c[ui_gray_2] high quality\n
+		%c[d_red] • %c[ui_gray_2] slow usage (medical kit)\n
+		%c[d_blue] • %c[ui_gray_2] immediately stops heavy bleeding\n
+		%c[d_red] • %c[ui_gray_2] prolonged body recovery time\n
+		</text>
+	</string>
+	
+</string_table>

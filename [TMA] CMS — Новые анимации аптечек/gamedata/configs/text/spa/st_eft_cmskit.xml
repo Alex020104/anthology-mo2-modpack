@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<string_table>
+
+	<string id="st_eft_cmskit">
+		<text>CMS SURGICAL KIT (EFT)</text>
+	</string>
+	<string id="st_eft_cmskit_descr">
+		<text>Kit quirúrgico compacto para el tratamiento de heridas de bala y otras lesiones graves.\n \n
+		%c[ui_gray_3]CURACIÓN:\n
+		%c[d_red] • %c[ui_gray_2] Restaura 3.6%hp/s, total 162%\n
+		%c[ui_gray_3]PROPIEDADES:\n
+		%c[d_blue] • %c[ui_gray_2] artículo de uso diario\n
+		%c[d_blue] • %c[ui_gray_2] alta calidad\n
+		%c[d_red] • %c[ui_gray_2] uso lento (kit médico)\n
+		%c[d_blue] • %c[ui_gray_2] detiene inmediatamente el sangrado abundante\n
+		%c[d_red] • %c[ui_gray_2] tiempo prolongado de recuperación del cuerpo\n
+		</text>
+	</string>
+	
+</string_table>
