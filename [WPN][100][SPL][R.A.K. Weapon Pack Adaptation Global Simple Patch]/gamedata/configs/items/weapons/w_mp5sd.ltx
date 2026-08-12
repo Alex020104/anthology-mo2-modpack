@@ -1,9 +1,9 @@
 ﻿______________________________________________________________________________________________________________________________
 |                                                                                                                            |
-|                                                            Mp5K                                                            |
+|                                                           Mp5Sd                                                            |
 |____________________________________________________________________________________________________________________________|
 
-[wpn_mp5k]:identity_immunities,weapon_probability,default_weapon_params,wpn_mp5_sounds_iwp
+[wpn_mp5sd]:identity_immunities,weapon_probability,default_weapon_params,wpn_mp5_sounds_iwp
 
         GroupControlSection                     = spawn_group
         $npc                                    = on
@@ -11,50 +11,42 @@
         $spawn                                  = "weapons\mp5"
         scheduled                               = off
         cform                                   = skeleton
-        parent_section                          = wpn_mp5k
+        parent_section                          = wpn_mp5sd
         class                                   = WP_LR300
-        slot                                    = 1
-        animation_slot                          = 1
+        slot                                    = 2
+        animation_slot                          = 8
         ef_main_weapon_type                     = 2
         ef_weapon_type                          = 8
         hand_dependence                         = 1
-        single_handed                           = 1
+        single_handed                           = 0
         default_to_ruck                         = false
         sprint_allowed                          = true
 
 		hud_fov                     = 0.65
 
- ;___________________________ 3DSS Parameters ___________________________________
- 
-        lewd_lens_hide_enabled       = true	
-        lewd_lens_hide_bone          = lens
-        lewd_lens_hide_delays        = 0.1,0
-        lewd_lens_hide_aim_mode      = true, false, false
- ;_______________________________________________________________________________
-
 ;___________________________ Icon ___________________________________
 
         icons_texture      = ui\ui_rak_global_2
 		       
-        inv_grid_width                           = 4
+        inv_grid_width                           = 5
 		inv_grid_height                          = 2
         inv_grid_x                               = 20
-        inv_grid_y                               = 96
+        inv_grid_y                               = 2
 
 ;___________________________ HD Icon ___________________________________
         
-		;inv_grid_width                           = 8
+		;inv_grid_width                           = 10
         ;inv_grid_height                          = 4       
         ;inv_grid_x                               = 10
-        ;inv_grid_y                               = 97
+        ;inv_grid_y                               = 0
 		
         ;inv_grid_scale     = 2
 
 ;___________________________ Description ___________________________________
 
-        inv_name                                = st_wpn_mp5k
-        inv_name_short                          = st_wpn_mp5k
-        description                             = st_wpn_mp5k_descr
+        inv_name                                = st_wpn_mp5sd
+        inv_name_short                          = st_wpn_mp5sd
+        description                             = st_wpn_mp5sd_descr
         kind                                    = w_smg ;w_pistol
         inv_weight                              = 2.7
         cost                                    = 20000
@@ -63,9 +55,9 @@
 
 ;____________________________________________________________________
 
-        hud                                     = wpn_mp5k_hud
-        visual                                  = dynamics\weapons\wpn_mp5k\wpn_mp5k_world.ogf
-        position                                = -0.018814, 0.029512, 0.050565
+        hud                                     = wpn_mp5sd_hud
+        visual                                  = dynamics\weapons\wpn_mp5\wpn_mp5.ogf
+        position                                = -0.020353, -0.135792, 0.014912
         orientation                             = 0, 0, 0
         fire_point                              = 0, 0.218, 0.656
         fire_point2                             = 0, 0.161, 0.583
@@ -100,15 +92,14 @@
 ;___________________________ Upgrades ___________________________________
 
         upgr_icon_path                          = ui\ui_rak_global_2
-        upgr_icon_x                             = 1250
-        upgr_icon_y                             = 4950
-        upgr_icon_width                         = 200
+        upgr_icon_x                             = 1300
+        upgr_icon_y                             = 150
+        upgr_icon_width                         = 300
         upgr_icon_height                        = 150
 		
         upgrades                                = up_gr_firstab_mp5, up_gr_seconab_mp5, up_gr_thirdab_mp5, up_gr_fourtab_mp5, up_gr_fifthab_mp5, up_gr_fifthcd_mp5
         installed_upgrades                      = 
         upgrade_scheme                          = upgrade_scheme_mp5
-
 
 ;____________________________________________________________________
 
@@ -120,19 +111,17 @@
 
 ;___________________________ Scopes ___________________________________
 
-        scopes                                  =
-        scope_status                            = 0
+        scopes                                  = 
+		scope_status                            = 0
         scope_zoom_factor                       = 0
         use_alt_aim_hud                         = true
 
 ;___________________________ Silencer ___________________________________
 
-        silencer_name                           = wpn_sil_gemtech
-        silencer_status                         = 2
-		
-        silencer_x                              = 144
-        silencer_y                              = 0
-		
+        silencer_name                           = wpn_sil_9mm
+        silencer_status                         = 1
+        silencer_x                              = 181
+        silencer_y                              = 15
         silencer_light_color                    = 0.6, 0.5, 0.3
         silencer_light_range                    = 0.01
         silencer_light_time                     = 0.2
@@ -148,11 +137,11 @@
 ;___________________________ TTX ___________________________________
 
         hit_impulse                             = 24
-        hit_power                               = 0.44, 0.44, 0.44, 0.44
+        hit_power                               = 0.47, 0.47, 0.47, 0.47
         hit_type                                = fire_wound
         fire_distance                           = 400
         bullet_speed                            = 402
-        rpm                                     = 900
+        rpm                                     = 800
         rpm_empty_click                         = 200
         ap_modifier                             = 1.1
         use_aim_bullet                          = false
@@ -163,7 +152,7 @@
         reload_dof                              = 0.0, 0.5, 5, 2
         control_inertion_factor                 = 1.0f
         crosshair_inertion                      = 3.8
-        fire_dispersion_base                    = 0.65
+        fire_dispersion_base                    = 0.57
         fire_dispersion_condition_factor        = 0.001
         misfire_probability                     = 0.005
         misfire_start_condition                 = 0.7 ;  0.86
@@ -321,11 +310,11 @@
         scripted_snd_sprint_end_jammed_empty    = weapons\mp5_new\mp5_sprint2walk
         scripted_snd_sprint_start_jammed_empty  = weapons\mp5_new\mp5_walk2sprint
         !snd_idle_sprint                         = rattle\sprint\sprint_rifle
-[wpn_mp5k_hud]:hud_base
+[wpn_mp5sd_hud]:hud_base
 
 ;__________________________________________ HUD parameters ____________________________________________________
 
-        item_visual                             = anomaly_weapons\wpn_mp5k\wpn_mp5k_hud.ogf
+        item_visual                             = anomaly_weapons\wpn_mp5sd\wpn_mp5sd_hud.ogf
         attach_place_idx                        = 0
         zoom_hide_crosshair                     = true
 
@@ -365,198 +354,198 @@
 
 ;_____________________________________ Animations _____________________________________
 
-        anm_show                                = hand_mp5k_draw, idle
-        anm_show_empty                          = hand_mp5k_draw, idle_empty
-        anm_show_jammed                         = hand_mp5k_draw, idle_jammed
-        anm_show_jammed_empty                   = hand_mp5k_draw, idle_jammed_empty
-        anm_hide                                = hand_mp5k_hide, idle
-        anm_hide_empty                          = hand_mp5k_hide, idle_empty
-        anm_hide_jammed                         = hand_mp5k_hide, idle_jammed
-        anm_hide_jammed_empty                   = hand_mp5k_hide, idle_jammed_empty
-        anm_idle                                = hand_mp5k_idle, idle
-        anm_idle_empty                          = hand_mp5k_idle, idle_empty
-        anm_idle_jammed                         = hand_mp5k_idle, idle_jammed
-        anm_idle_empty_jammed                   = hand_mp5k_idle, idle_jammed_empty
-        anm_idle_aim                            = hand_mp5k_idle_aim, idle
-        anm_idle_aim_empty                      = hand_mp5k_idle_aim, idle_empty
-        anm_idle_aim_jammed                     = hand_mp5k_idle_aim, idle_jammed
-        anm_idle_aim_empty_jammed               = hand_mp5k_idle_aim, idle_jammed_empty
-        anm_idle_moving                         = hand_mp5k_walk, idle
-        anm_idle_moving_empty                   = hand_mp5k_walk, idle_empty
-        anm_idle_moving_jammed                  = hand_mp5k_walk, idle_jammed
-        anm_idle_moving_jammed_empty            = hand_mp5k_walk, idle_jammed_empty
-        anm_idle_aim_moving                     = hand_mp5k_walk, idle
-        anm_idle_aim_moving_empty               = hand_mp5k_walk, idle_empty
-        anm_idle_aim_moving_jammed              = hand_mp5k_walk, idle_jammed
-        anm_idle_aim_moving_jammed_empty        = hand_mp5k_walk, idle_jammed_empty
-        anm_idle_moving_crouch                  = hand_mp5k_walk, idle, 0.75
-        anm_idle_moving_crouch_empty            = hand_mp5k_walk, idle_empty, 0.75
-        anm_idle_moving_crouch_jammed           = hand_mp5k_walk, idle_jammed, 0.75
-        anm_idle_moving_crouch_jammed_empty     = hand_mp5k_walk, idle_jammed_empty, 0.75
-        anm_idle_aim_moving_crouch              = hand_mp5k_walk, idle, 0.75
-        anm_idle_aim_moving_crouch_empty        = hand_mp5k_walk, idle_empty, 0.75
-        anm_idle_aim_moving_crouch_jammed       = hand_mp5k_walk, idle_jammed_3, 0.75
-        anm_idle_aim_moving_crouch_jammed_empty = hand_mp5k_walk, idle_jammed_empty, 0.75
-        anm_idle_sprint                         = hand_mp5k_sprint, idle
-        anm_idle_sprint_empty                   = hand_mp5k_sprint, idle_empty
-        anm_idle_sprint_jammed                  = hand_mp5k_sprint, idle_jammed
-        anm_idle_sprint_jammed_empty            = hand_mp5k_sprint, idle_jammed_empty
-        anm_sprint_start                        = hand_mp5k_walk2sprint, idle
-        anm_sprint_end                          = hand_mp5k_sprint2walk, idle
-        anm_reload                              = hand_mp5k_reload, mp5k_reload
-        anm_reload_ammo1                        = hand_mp5k_reload, mp5k_reload_1
-        anm_reload_ammo2                        = hand_mp5k_reload, mp5k_reload_2
-        anm_reload_ammo3                        = hand_mp5k_reload, mp5k_reload_3
-        anm_reload_ammo4                        = hand_mp5k_reload, mp5k_reload_4
-        anm_reload_ammo5                        = hand_mp5k_reload, mp5k_reload_5
-        anm_reload_ammo6                        = hand_mp5k_reload, mp5k_reload_6
-        anm_reload_ammo7                        = hand_mp5k_reload, mp5k_reload_7
-        anm_reload_ammo8                        = hand_mp5k_reload, mp5k_reload_8
-        anm_reload_ammo9                        = hand_mp5k_reload, mp5k_reload_9
-        anm_reload_ammo11                       = hand_mp5k_reload, mp5k_reload_left
-        anm_reload_ammo13                       = hand_mp5k_reload, mp5k_reload_left
-        anm_reload_ammo15                       = hand_mp5k_reload, mp5k_reload_left
-        anm_reload_ammo17                       = hand_mp5k_reload, mp5k_reload_left
-        anm_reload_ammo19                       = hand_mp5k_reload, mp5k_reload_left
-        anm_reload_ammo21                       = hand_mp5k_reload, mp5k_reload_left
-        anm_reload_ammo23                       = hand_mp5k_reload, mp5k_reload_left
-        anm_reload_ammo25                       = hand_mp5k_reload, mp5k_reload_left
-        anm_reload_ammo27                       = hand_mp5k_reload, mp5k_reload_left
-        anm_reload_ammo29                       = hand_mp5k_reload, mp5k_reload_left
-        anm_reload_ammo31                       = hand_mp5k_reload, mp5k_reload_left
-        anm_reload_empty                        = hand_mp5k_reload_empty, mp5k_reload_empty
-        anm_reload_aim                          = hand_mp5k_reload_aim, mp5k_reload_aim
-        anm_reload_aim_ammo1                    = hand_mp5k_reload_aim, mp5k_reload_1_aim
-        anm_reload_aim_ammo2                    = hand_mp5k_reload_aim, mp5k_reload_2_aim
-        anm_reload_aim_ammo3                    = hand_mp5k_reload_aim, mp5k_reload_3_aim
-        anm_reload_aim_ammo4                    = hand_mp5k_reload_aim, mp5k_reload_4_aim
-        anm_reload_aim_ammo5                    = hand_mp5k_reload_aim, mp5k_reload_5_aim
-        anm_reload_aim_ammo6                    = hand_mp5k_reload_aim, mp5k_reload_6_aim
-        anm_reload_aim_ammo7                    = hand_mp5k_reload_aim, mp5k_reload_7_aim
-        anm_reload_aim_ammo8                    = hand_mp5k_reload_aim, mp5k_reload_8_aim
-        anm_reload_aim_ammo9                    = hand_mp5k_reload_aim, mp5k_reload_9_aim
-        anm_reload_aim_ammo11                   = hand_mp5k_reload_aim, mp5k_reload_left_aim
-        anm_reload_aim_ammo13                   = hand_mp5k_reload_aim, mp5k_reload_left_aim
-        anm_reload_aim_ammo15                   = hand_mp5k_reload_aim, mp5k_reload_left_aim
-        anm_reload_aim_ammo17                   = hand_mp5k_reload_aim, mp5k_reload_left_aim
-        anm_reload_aim_ammo19                   = hand_mp5k_reload_aim, mp5k_reload_left_aim
-        anm_reload_aim_ammo21                   = hand_mp5k_reload_aim, mp5k_reload_left_aim
-        anm_reload_aim_ammo23                   = hand_mp5k_reload_aim, mp5k_reload_left_aim
-        anm_reload_aim_ammo25                   = hand_mp5k_reload_aim, mp5k_reload_left_aim
-        anm_reload_aim_ammo27                   = hand_mp5k_reload_aim, mp5k_reload_left_aim
-        anm_reload_aim_ammo29                   = hand_mp5k_reload_aim, mp5k_reload_left_aim
-        anm_reload_aim_ammo31                   = hand_mp5k_reload_aim, mp5k_reload_left_aim
-        anm_reload_empty_aim                    = hand_mp5k_reload_empty_aim, mp5k_reload_empty_aim
-        anm_shots                               = hand_mp5k_fire01, mp5k_fire01
-        anm_shots_variant1                      = hand_mp5k_fire02, mp5k_fire02
-        anm_shots_variant2                      = hand_mp5k_fire03, mp5k_fire03
-        anm_shots_jammed                        = hand_mp5k_fire_jammed, mp5k_fire_jammed
-        anm_shot_l_jammed                       = hand_mp5k_fire_jammed, mp5k_fire_jammed_empty
-        anm_shot_l                              = hand_mp5k_fire01, mp5k_fire01
-        anm_bore                                = hand_mp5k_inspect, mp5k_inspect
-        anm_bore_empty                          = hand_mp5k_inspect, mp5k_inspect_empty
-        anm_switch_mode                         = hand_mp5k_firemode, mp5k_firemode
-        anm_switch_mode_empty                   = hand_mp5k_firemode, mp5k_firemode_empty
-        anm_switch_mode_jammed                  = hand_mp5k_firemode, mp5k_firemode_jammed
-        anm_switch_mode_empty_jammed            = hand_mp5k_firemode, mp5k_firemode_jammed_empty
-        anm_switch_mode_aim                     = hand_mp5k_firemode_aim, mp5k_firemode_aim
-        anm_switch_mode_empty_aim               = hand_mp5k_firemode_aim, mp5k_firemode_aim_empty
-        anm_switch_mode_aim_jammed              = hand_mp5k_firemode_aim, mp5k_firemode_aim_jammed
-        anm_switch_mode_aim_empty_jammed        = hand_mp5k_firemode_aim, mp5k_firemode_aim_jammed_empty
-        anm_reload_misfire                      = hand_mp5k_unjam, mp5k_unjam
-        anm_reload_misfire_empty                = hand_mp5k_unjam, mp5k_unjam_empty
-        anm_reload_misfire_aim                  = hand_mp5k_unjam, mp5k_unjam_aim
-        anm_reload_misfire_empty_aim            = hand_mp5k_unjam, mp5k_unjam_aim_empty
-        anm_ammo_check                          = hand_mp5k_magcheck, mp5k_magcheck
-        anm_ammo_check_ammo1                    = hand_mp5k_magcheck, mp5k_magcheck_1
-        anm_ammo_check_ammo2                    = hand_mp5k_magcheck, mp5k_magcheck_2
-        anm_ammo_check_ammo3                    = hand_mp5k_magcheck, mp5k_magcheck_3
-        anm_ammo_check_ammo4                    = hand_mp5k_magcheck, mp5k_magcheck_4
-        anm_ammo_check_ammo5                    = hand_mp5k_magcheck, mp5k_magcheck_5
-        anm_ammo_check_ammo6                    = hand_mp5k_magcheck, mp5k_magcheck_6
-        anm_ammo_check_ammo7                    = hand_mp5k_magcheck, mp5k_magcheck_7
-        anm_ammo_check_ammo8                    = hand_mp5k_magcheck, mp5k_magcheck_8
-        anm_ammo_check_ammo9                    = hand_mp5k_magcheck, mp5k_magcheck_9
-        anm_ammo_check_ammo11                   = hand_mp5k_magcheck, mp5k_magcheck_left
-        anm_ammo_check_ammo13                   = hand_mp5k_magcheck, mp5k_magcheck_left
-        anm_ammo_check_ammo15                   = hand_mp5k_magcheck, mp5k_magcheck_left
-        anm_ammo_check_ammo17                   = hand_mp5k_magcheck, mp5k_magcheck_left
-        anm_ammo_check_ammo19                   = hand_mp5k_magcheck, mp5k_magcheck_left
-        anm_ammo_check_ammo21                   = hand_mp5k_magcheck, mp5k_magcheck_left
-        anm_ammo_check_ammo23                   = hand_mp5k_magcheck, mp5k_magcheck_left
-        anm_ammo_check_ammo25                   = hand_mp5k_magcheck, mp5k_magcheck_left
-        anm_ammo_check_ammo27                   = hand_mp5k_magcheck, mp5k_magcheck_left
-        anm_ammo_check_ammo29                   = hand_mp5k_magcheck, mp5k_magcheck_left
-        anm_ammo_check_ammo31                   = hand_mp5k_magcheck, mp5k_magcheck_left
-        anm_ammo_check_empty                    = hand_mp5k_magcheck, mp5k_magcheck_empty
-        anm_ammo_check_jammed                   = hand_mp5k_magcheck, mp5k_magcheck_jammed
-        anm_ammo_check_jammed_ammo1             = hand_mp5k_magcheck, mp5k_magcheck_jammed_1
-        anm_ammo_check_jammed_ammo2             = hand_mp5k_magcheck, mp5k_magcheck_jammed_2
-        anm_ammo_check_jammed_ammo3             = hand_mp5k_magcheck, mp5k_magcheck_jammed_3
-        anm_ammo_check_jammed_ammo4             = hand_mp5k_magcheck, mp5k_magcheck_jammed_4
-        anm_ammo_check_jammed_ammo5             = hand_mp5k_magcheck, mp5k_magcheck_jammed_5
-        anm_ammo_check_jammed_ammo6             = hand_mp5k_magcheck, mp5k_magcheck_jammed_6
-        anm_ammo_check_jammed_ammo7             = hand_mp5k_magcheck, mp5k_magcheck_jammed_7
-        anm_ammo_check_jammed_ammo8             = hand_mp5k_magcheck, mp5k_magcheck_jammed_8
-        anm_ammo_check_jammed_ammo9             = hand_mp5k_magcheck, mp5k_magcheck_jammed_9
-        anm_ammo_check_jammed_ammo10            = hand_mp5k_magcheck, mp5k_magcheck_jammed
-        anm_ammo_check_jammed_ammo11            = hand_mp5k_magcheck, mp5k_magcheck_jammed_left
-        anm_ammo_check_jammed_ammo13            = hand_mp5k_magcheck, mp5k_magcheck_jammed_left
-        anm_ammo_check_jammed_ammo15            = hand_mp5k_magcheck, mp5k_magcheck_jammed_left
-        anm_ammo_check_jammed_ammo17            = hand_mp5k_magcheck, mp5k_magcheck_jammed_left
-        anm_ammo_check_jammed_ammo19            = hand_mp5k_magcheck, mp5k_magcheck_jammed_left
-        anm_ammo_check_jammed_ammo21            = hand_mp5k_magcheck, mp5k_magcheck_jammed_left
-        anm_ammo_check_jammed_ammo23            = hand_mp5k_magcheck, mp5k_magcheck_jammed_left
-        anm_ammo_check_jammed_ammo25            = hand_mp5k_magcheck, mp5k_magcheck_jammed_left
-        anm_ammo_check_jammed_ammo27            = hand_mp5k_magcheck, mp5k_magcheck_jammed_left
-        anm_ammo_check_jammed_ammo29            = hand_mp5k_magcheck, mp5k_magcheck_jammed_left
-        anm_ammo_check_jammed_ammo31            = hand_mp5k_magcheck, mp5k_magcheck_jammed_left
-        anm_ammo_check_empty_jammed             = hand_mp5k_magcheck, mp5k_magcheck_jammed_empty
-        anm_ammo_check_aim                      = hand_mp5k_magcheck_aim, mp5k_magcheck_aim
-        anm_ammo_check_aim_ammo1                = hand_mp5k_magcheck_aim, mp5k_magcheck_1_aim
-        anm_ammo_check_aim_ammo2                = hand_mp5k_magcheck_aim, mp5k_magcheck_2_aim
-        anm_ammo_check_aim_ammo3                = hand_mp5k_magcheck_aim, mp5k_magcheck_3_aim
-        anm_ammo_check_aim_ammo4                = hand_mp5k_magcheck_aim, mp5k_magcheck_4_aim
-        anm_ammo_check_aim_ammo5                = hand_mp5k_magcheck_aim, mp5k_magcheck_5_aim
-        anm_ammo_check_aim_ammo6                = hand_mp5k_magcheck_aim, mp5k_magcheck_6_aim
-        anm_ammo_check_aim_ammo7                = hand_mp5k_magcheck_aim, mp5k_magcheck_7_aim
-        anm_ammo_check_aim_ammo8                = hand_mp5k_magcheck_aim, mp5k_magcheck_8_aim
-        anm_ammo_check_aim_ammo9                = hand_mp5k_magcheck_aim, mp5k_magcheck_9_aim
-        anm_ammo_check_aim_ammo10               = hand_mp5k_magcheck_aim, mp5k_magcheck_aim
-        anm_ammo_check_aim_ammo11               = hand_mp5k_magcheck_aim, mp5k_magcheck_left_aim
-        anm_ammo_check_aim_ammo13               = hand_mp5k_magcheck_aim, mp5k_magcheck_left_aim
-        anm_ammo_check_aim_ammo15               = hand_mp5k_magcheck_aim, mp5k_magcheck_left_aim
-        anm_ammo_check_aim_ammo17               = hand_mp5k_magcheck_aim, mp5k_magcheck_left_aim
-        anm_ammo_check_aim_ammo19               = hand_mp5k_magcheck_aim, mp5k_magcheck_left_aim
-        anm_ammo_check_aim_ammo21               = hand_mp5k_magcheck_aim, mp5k_magcheck_left_aim
-        anm_ammo_check_aim_ammo23               = hand_mp5k_magcheck_aim, mp5k_magcheck_left_aim
-        anm_ammo_check_aim_ammo25               = hand_mp5k_magcheck_aim, mp5k_magcheck_left_aim
-        anm_ammo_check_aim_ammo27               = hand_mp5k_magcheck_aim, mp5k_magcheck_left_aim
-        anm_ammo_check_aim_ammo29               = hand_mp5k_magcheck_aim, mp5k_magcheck_left_aim
-        anm_ammo_check_aim_ammo31               = hand_mp5k_magcheck_aim, mp5k_magcheck_left_aim
-        anm_ammo_check_empty_aim                = hand_mp5k_magcheck_aim, mp5k_magcheck_aim_empty
-        anm_ammo_check_aim_jammed               = hand_mp5k_magcheck_aim, mp5k_magcheck_aim_jammed
-        anm_ammo_check_aim_jammed_ammo1         = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_1_aim
-        anm_ammo_check_aim_jammed_ammo2         = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_2_aim
-        anm_ammo_check_aim_jammed_ammo3         = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_3_aim
-        anm_ammo_check_aim_jammed_ammo4         = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_4_aim
-        anm_ammo_check_aim_jammed_ammo5         = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_5_aim
-        anm_ammo_check_aim_jammed_ammo6         = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_6_aim
-        anm_ammo_check_aim_jammed_ammo7         = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_7_aim
-        anm_ammo_check_aim_jammed_ammo8         = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_8_aim
-        anm_ammo_check_aim_jammed_ammo9         = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_9_aim
-        anm_ammo_check_aim_jammed_ammo11        = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_aim_left
-        anm_ammo_check_aim_jammed_ammo13        = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_aim_left
-        anm_ammo_check_aim_jammed_ammo15        = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_aim_left
-        anm_ammo_check_aim_jammed_ammo17        = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_aim_left
-        anm_ammo_check_aim_jammed_ammo19        = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_aim_left
-        anm_ammo_check_aim_jammed_ammo21        = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_aim_left
-        anm_ammo_check_aim_jammed_ammo23        = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_aim_left
-        anm_ammo_check_aim_jammed_ammo25        = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_aim_left
-        anm_ammo_check_aim_jammed_ammo27        = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_aim_left
-        anm_ammo_check_aim_jammed_ammo29        = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_aim_left
-        anm_ammo_check_aim_jammed_ammo31        = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_aim_left
-        anm_ammo_check_empty_aim_jammed         = hand_mp5k_magcheck_aim, mp5k_magcheck_jammed_aim_empty
+        anm_show                                = hand_mp5sd_draw, idle
+        anm_show_empty                          = hand_mp5sd_draw, idle_empty
+        anm_show_jammed                         = hand_mp5sd_draw, idle_jammed
+        anm_show_jammed_empty                   = hand_mp5sd_draw, idle_jammed_empty
+        anm_hide                                = hand_mp5sd_hide, idle
+        anm_hide_empty                          = hand_mp5sd_hide, idle_empty
+        anm_hide_jammed                         = hand_mp5sd_hide, idle_jammed
+        anm_hide_jammed_empty                   = hand_mp5sd_hide, idle_jammed_empty
+        anm_idle                                = hand_mp5sd_idle, idle
+        anm_idle_empty                          = hand_mp5sd_idle, idle_empty
+        anm_idle_jammed                         = hand_mp5sd_idle, idle_jammed
+        anm_idle_empty_jammed                   = hand_mp5sd_idle, idle_jammed_empty
+        anm_idle_aim                            = hand_mp5sd_idle_aim, idle
+        anm_idle_aim_empty                      = hand_mp5sd_idle_aim, idle_empty
+        anm_idle_aim_jammed                     = hand_mp5sd_idle_aim, idle_jammed
+        anm_idle_aim_empty_jammed               = hand_mp5sd_idle_aim, idle_jammed_empty
+        anm_idle_moving                         = hand_mp5sd_walk, idle
+        anm_idle_moving_empty                   = hand_mp5sd_walk, idle_empty
+        anm_idle_moving_jammed                  = hand_mp5sd_walk, idle_jammed
+        anm_idle_moving_jammed_empty            = hand_mp5sd_walk, idle_jammed_empty
+        anm_idle_aim_moving                     = hand_mp5sd_walk, idle
+        anm_idle_aim_moving_empty               = hand_mp5sd_walk, idle_empty
+        anm_idle_aim_moving_jammed              = hand_mp5sd_walk, idle_jammed
+        anm_idle_aim_moving_jammed_empty        = hand_mp5sd_walk, idle_jammed_empty
+        anm_idle_moving_crouch                  = hand_mp5sd_walk, idle, 0.75
+        anm_idle_moving_crouch_empty            = hand_mp5sd_walk, idle_empty, 0.75
+        anm_idle_moving_crouch_jammed           = hand_mp5sd_walk, idle_jammed, 0.75
+        anm_idle_moving_crouch_jammed_empty     = hand_mp5sd_walk, idle_jammed_empty, 0.75
+        anm_idle_aim_moving_crouch              = hand_mp5sd_walk, idle, 0.75
+        anm_idle_aim_moving_crouch_empty        = hand_mp5sd_walk, idle_empty, 0.75
+        anm_idle_aim_moving_crouch_jammed       = hand_mp5sd_walk, idle_jammed_3, 0.75
+        anm_idle_aim_moving_crouch_jammed_empty = hand_mp5sd_walk, idle_jammed_empty, 0.75
+        anm_idle_sprint                         = hand_mp5sd_sprint, idle
+        anm_idle_sprint_empty                   = hand_mp5sd_sprint, idle_empty
+        anm_idle_sprint_jammed                  = hand_mp5sd_sprint, idle_jammed
+        anm_idle_sprint_jammed_empty            = hand_mp5sd_sprint, idle_jammed_empty
+        anm_sprint_start                        = hand_mp5sd_walk2sprint, idle
+        anm_sprint_end                          = hand_mp5sd_sprint2walk, idle
+        anm_reload                              = hand_mp5sd_reload, mp5_reload
+        anm_reload_ammo1                        = hand_mp5sd_reload, mp5_reload_1
+        anm_reload_ammo2                        = hand_mp5sd_reload, mp5_reload_2
+        anm_reload_ammo3                        = hand_mp5sd_reload, mp5_reload_3
+        anm_reload_ammo4                        = hand_mp5sd_reload, mp5_reload_4
+        anm_reload_ammo5                        = hand_mp5sd_reload, mp5_reload_5
+        anm_reload_ammo6                        = hand_mp5sd_reload, mp5_reload_6
+        anm_reload_ammo7                        = hand_mp5sd_reload, mp5_reload_7
+        anm_reload_ammo8                        = hand_mp5sd_reload, mp5_reload_8
+        anm_reload_ammo9                        = hand_mp5sd_reload, mp5_reload_9
+        anm_reload_ammo11                       = hand_mp5sd_reload, mp5_reload_left
+        anm_reload_ammo13                       = hand_mp5sd_reload, mp5_reload_left
+        anm_reload_ammo15                       = hand_mp5sd_reload, mp5_reload_left
+        anm_reload_ammo17                       = hand_mp5sd_reload, mp5_reload_left
+        anm_reload_ammo19                       = hand_mp5sd_reload, mp5_reload_left
+        anm_reload_ammo21                       = hand_mp5sd_reload, mp5_reload_left
+        anm_reload_ammo23                       = hand_mp5sd_reload, mp5_reload_left
+        anm_reload_ammo25                       = hand_mp5sd_reload, mp5_reload_left
+        anm_reload_ammo27                       = hand_mp5sd_reload, mp5_reload_left
+        anm_reload_ammo29                       = hand_mp5sd_reload, mp5_reload_left
+        anm_reload_ammo31                       = hand_mp5sd_reload, mp5_reload_left
+        anm_reload_empty                        = hand_mp5sd_reload_empty, mp5_reload_empty
+        anm_reload_aim                          = hand_mp5sd_reload_aim, mp5_reload_aim
+        anm_reload_aim_ammo1                    = hand_mp5sd_reload_aim, mp5_reload_1_aim
+        anm_reload_aim_ammo2                    = hand_mp5sd_reload_aim, mp5_reload_2_aim
+        anm_reload_aim_ammo3                    = hand_mp5sd_reload_aim, mp5_reload_3_aim
+        anm_reload_aim_ammo4                    = hand_mp5sd_reload_aim, mp5_reload_4_aim
+        anm_reload_aim_ammo5                    = hand_mp5sd_reload_aim, mp5_reload_5_aim
+        anm_reload_aim_ammo6                    = hand_mp5sd_reload_aim, mp5_reload_6_aim
+        anm_reload_aim_ammo7                    = hand_mp5sd_reload_aim, mp5_reload_7_aim
+        anm_reload_aim_ammo8                    = hand_mp5sd_reload_aim, mp5_reload_8_aim
+        anm_reload_aim_ammo9                    = hand_mp5sd_reload_aim, mp5_reload_9_aim
+        anm_reload_aim_ammo11                   = hand_mp5sd_reload_aim, mp5_reload_left_aim
+        anm_reload_aim_ammo13                   = hand_mp5sd_reload_aim, mp5_reload_left_aim
+        anm_reload_aim_ammo15                   = hand_mp5sd_reload_aim, mp5_reload_left_aim
+        anm_reload_aim_ammo17                   = hand_mp5sd_reload_aim, mp5_reload_left_aim
+        anm_reload_aim_ammo19                   = hand_mp5sd_reload_aim, mp5_reload_left_aim
+        anm_reload_aim_ammo21                   = hand_mp5sd_reload_aim, mp5_reload_left_aim
+        anm_reload_aim_ammo23                   = hand_mp5sd_reload_aim, mp5_reload_left_aim
+        anm_reload_aim_ammo25                   = hand_mp5sd_reload_aim, mp5_reload_left_aim
+        anm_reload_aim_ammo27                   = hand_mp5sd_reload_aim, mp5_reload_left_aim
+        anm_reload_aim_ammo29                   = hand_mp5sd_reload_aim, mp5_reload_left_aim
+        anm_reload_aim_ammo31                   = hand_mp5sd_reload_aim, mp5_reload_left_aim
+        anm_reload_empty_aim                    = hand_mp5sd_reload_empty_aim, mp5_reload_empty_aim
+        anm_shots                               = hand_mp5sd_fire01, mp5_fire01
+        anm_shots_variant1                      = hand_mp5sd_fire02, mp5_fire02
+        anm_shots_variant2                      = hand_mp5sd_fire03, mp5_fire03
+        anm_shots_jammed                        = hand_mp5sd_fire_jammed, mp5_fire_jammed
+        anm_shot_l_jammed                       = hand_mp5sd_fire_jammed, mp5_fire_jammed_empty
+        anm_shot_l                              = hand_mp5sd_fire01, mp5_fire01
+        anm_bore                                = hand_mp5sd_inspect, mp5_inspect
+        anm_bore_empty                          = hand_mp5sd_inspect, mp5_inspect_empty
+        anm_switch_mode                         = hand_mp5sd_firemode, mp5_firemode
+        anm_switch_mode_empty                   = hand_mp5sd_firemode, mp5_firemode_empty
+        anm_switch_mode_jammed                  = hand_mp5sd_firemode, mp5_firemode_jammed
+        anm_switch_mode_empty_jammed            = hand_mp5sd_firemode, mp5_firemode_jammed_empty
+        anm_switch_mode_aim                     = hand_mp5sd_firemode_aim, mp5_firemode_aim
+        anm_switch_mode_empty_aim               = hand_mp5sd_firemode_aim, mp5_firemode_aim_empty
+        anm_switch_mode_aim_jammed              = hand_mp5sd_firemode_aim, mp5_firemode_aim_jammed
+        anm_switch_mode_aim_empty_jammed        = hand_mp5sd_firemode_aim, mp5_firemode_aim_jammed_empty
+        anm_reload_misfire                      = hand_mp5sd_unjam, mp5_unjam
+        anm_reload_misfire_empty                = hand_mp5sd_unjam, mp5_unjam_empty
+        anm_reload_misfire_aim                  = hand_mp5sd_unjam, mp5_unjam_aim
+        anm_reload_misfire_empty_aim            = hand_mp5sd_unjam, mp5_unjam_aim_empty
+        anm_ammo_check                          = hand_mp5sd_magcheck, mp5_magcheck
+        anm_ammo_check_ammo1                    = hand_mp5sd_magcheck, mp5_magcheck_1
+        anm_ammo_check_ammo2                    = hand_mp5sd_magcheck, mp5_magcheck_2
+        anm_ammo_check_ammo3                    = hand_mp5sd_magcheck, mp5_magcheck_3
+        anm_ammo_check_ammo4                    = hand_mp5sd_magcheck, mp5_magcheck_4
+        anm_ammo_check_ammo5                    = hand_mp5sd_magcheck, mp5_magcheck_5
+        anm_ammo_check_ammo6                    = hand_mp5sd_magcheck, mp5_magcheck_6
+        anm_ammo_check_ammo7                    = hand_mp5sd_magcheck, mp5_magcheck_7
+        anm_ammo_check_ammo8                    = hand_mp5sd_magcheck, mp5_magcheck_8
+        anm_ammo_check_ammo9                    = hand_mp5sd_magcheck, mp5_magcheck_9
+        anm_ammo_check_ammo11                   = hand_mp5sd_magcheck, mp5_magcheck_left
+        anm_ammo_check_ammo13                   = hand_mp5sd_magcheck, mp5_magcheck_left
+        anm_ammo_check_ammo15                   = hand_mp5sd_magcheck, mp5_magcheck_left
+        anm_ammo_check_ammo17                   = hand_mp5sd_magcheck, mp5_magcheck_left
+        anm_ammo_check_ammo19                   = hand_mp5sd_magcheck, mp5_magcheck_left
+        anm_ammo_check_ammo21                   = hand_mp5sd_magcheck, mp5_magcheck_left
+        anm_ammo_check_ammo23                   = hand_mp5sd_magcheck, mp5_magcheck_left
+        anm_ammo_check_ammo25                   = hand_mp5sd_magcheck, mp5_magcheck_left
+        anm_ammo_check_ammo27                   = hand_mp5sd_magcheck, mp5_magcheck_left
+        anm_ammo_check_ammo29                   = hand_mp5sd_magcheck, mp5_magcheck_left
+        anm_ammo_check_ammo31                   = hand_mp5sd_magcheck, mp5_magcheck_left
+        anm_ammo_check_empty                    = hand_mp5sd_magcheck, mp5_magcheck_empty
+        anm_ammo_check_jammed                   = hand_mp5sd_magcheck, mp5_magcheck_jammed
+        anm_ammo_check_jammed_ammo1             = hand_mp5sd_magcheck, mp5_magcheck_jammed_1
+        anm_ammo_check_jammed_ammo2             = hand_mp5sd_magcheck, mp5_magcheck_jammed_2
+        anm_ammo_check_jammed_ammo3             = hand_mp5sd_magcheck, mp5_magcheck_jammed_3
+        anm_ammo_check_jammed_ammo4             = hand_mp5sd_magcheck, mp5_magcheck_jammed_4
+        anm_ammo_check_jammed_ammo5             = hand_mp5sd_magcheck, mp5_magcheck_jammed_5
+        anm_ammo_check_jammed_ammo6             = hand_mp5sd_magcheck, mp5_magcheck_jammed_6
+        anm_ammo_check_jammed_ammo7             = hand_mp5sd_magcheck, mp5_magcheck_jammed_7
+        anm_ammo_check_jammed_ammo8             = hand_mp5sd_magcheck, mp5_magcheck_jammed_8
+        anm_ammo_check_jammed_ammo9             = hand_mp5sd_magcheck, mp5_magcheck_jammed_9
+        anm_ammo_check_jammed_ammo10            = hand_mp5sd_magcheck, mp5_magcheck_jammed
+        anm_ammo_check_jammed_ammo11            = hand_mp5sd_magcheck, mp5_magcheck_jammed_left
+        anm_ammo_check_jammed_ammo13            = hand_mp5sd_magcheck, mp5_magcheck_jammed_left
+        anm_ammo_check_jammed_ammo15            = hand_mp5sd_magcheck, mp5_magcheck_jammed_left
+        anm_ammo_check_jammed_ammo17            = hand_mp5sd_magcheck, mp5_magcheck_jammed_left
+        anm_ammo_check_jammed_ammo19            = hand_mp5sd_magcheck, mp5_magcheck_jammed_left
+        anm_ammo_check_jammed_ammo21            = hand_mp5sd_magcheck, mp5_magcheck_jammed_left
+        anm_ammo_check_jammed_ammo23            = hand_mp5sd_magcheck, mp5_magcheck_jammed_left
+        anm_ammo_check_jammed_ammo25            = hand_mp5sd_magcheck, mp5_magcheck_jammed_left
+        anm_ammo_check_jammed_ammo27            = hand_mp5sd_magcheck, mp5_magcheck_jammed_left
+        anm_ammo_check_jammed_ammo29            = hand_mp5sd_magcheck, mp5_magcheck_jammed_left
+        anm_ammo_check_jammed_ammo31            = hand_mp5sd_magcheck, mp5_magcheck_jammed_left
+        anm_ammo_check_empty_jammed             = hand_mp5sd_magcheck, mp5_magcheck_jammed_empty
+        anm_ammo_check_aim                      = hand_mp5sd_magcheck_aim, mp5_magcheck_aim
+        anm_ammo_check_aim_ammo1                = hand_mp5sd_magcheck_aim, mp5_magcheck_1_aim
+        anm_ammo_check_aim_ammo2                = hand_mp5sd_magcheck_aim, mp5_magcheck_2_aim
+        anm_ammo_check_aim_ammo3                = hand_mp5sd_magcheck_aim, mp5_magcheck_3_aim
+        anm_ammo_check_aim_ammo4                = hand_mp5sd_magcheck_aim, mp5_magcheck_4_aim
+        anm_ammo_check_aim_ammo5                = hand_mp5sd_magcheck_aim, mp5_magcheck_5_aim
+        anm_ammo_check_aim_ammo6                = hand_mp5sd_magcheck_aim, mp5_magcheck_6_aim
+        anm_ammo_check_aim_ammo7                = hand_mp5sd_magcheck_aim, mp5_magcheck_7_aim
+        anm_ammo_check_aim_ammo8                = hand_mp5sd_magcheck_aim, mp5_magcheck_8_aim
+        anm_ammo_check_aim_ammo9                = hand_mp5sd_magcheck_aim, mp5_magcheck_9_aim
+        anm_ammo_check_aim_ammo10               = hand_mp5sd_magcheck_aim, mp5_magcheck_aim
+        anm_ammo_check_aim_ammo11               = hand_mp5sd_magcheck_aim, mp5_magcheck_left_aim
+        anm_ammo_check_aim_ammo13               = hand_mp5sd_magcheck_aim, mp5_magcheck_left_aim
+        anm_ammo_check_aim_ammo15               = hand_mp5sd_magcheck_aim, mp5_magcheck_left_aim
+        anm_ammo_check_aim_ammo17               = hand_mp5sd_magcheck_aim, mp5_magcheck_left_aim
+        anm_ammo_check_aim_ammo19               = hand_mp5sd_magcheck_aim, mp5_magcheck_left_aim
+        anm_ammo_check_aim_ammo21               = hand_mp5sd_magcheck_aim, mp5_magcheck_left_aim
+        anm_ammo_check_aim_ammo23               = hand_mp5sd_magcheck_aim, mp5_magcheck_left_aim
+        anm_ammo_check_aim_ammo25               = hand_mp5sd_magcheck_aim, mp5_magcheck_left_aim
+        anm_ammo_check_aim_ammo27               = hand_mp5sd_magcheck_aim, mp5_magcheck_left_aim
+        anm_ammo_check_aim_ammo29               = hand_mp5sd_magcheck_aim, mp5_magcheck_left_aim
+        anm_ammo_check_aim_ammo31               = hand_mp5sd_magcheck_aim, mp5_magcheck_left_aim
+        anm_ammo_check_empty_aim                = hand_mp5sd_magcheck_aim, mp5_magcheck_aim_empty
+        anm_ammo_check_aim_jammed               = hand_mp5sd_magcheck_aim, mp5_magcheck_aim_jammed
+        anm_ammo_check_aim_jammed_ammo1         = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_1_aim
+        anm_ammo_check_aim_jammed_ammo2         = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_2_aim
+        anm_ammo_check_aim_jammed_ammo3         = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_3_aim
+        anm_ammo_check_aim_jammed_ammo4         = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_4_aim
+        anm_ammo_check_aim_jammed_ammo5         = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_5_aim
+        anm_ammo_check_aim_jammed_ammo6         = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_6_aim
+        anm_ammo_check_aim_jammed_ammo7         = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_7_aim
+        anm_ammo_check_aim_jammed_ammo8         = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_8_aim
+        anm_ammo_check_aim_jammed_ammo9         = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_9_aim
+        anm_ammo_check_aim_jammed_ammo11        = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_aim_left
+        anm_ammo_check_aim_jammed_ammo13        = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_aim_left
+        anm_ammo_check_aim_jammed_ammo15        = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_aim_left
+        anm_ammo_check_aim_jammed_ammo17        = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_aim_left
+        anm_ammo_check_aim_jammed_ammo19        = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_aim_left
+        anm_ammo_check_aim_jammed_ammo21        = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_aim_left
+        anm_ammo_check_aim_jammed_ammo23        = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_aim_left
+        anm_ammo_check_aim_jammed_ammo25        = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_aim_left
+        anm_ammo_check_aim_jammed_ammo27        = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_aim_left
+        anm_ammo_check_aim_jammed_ammo29        = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_aim_left
+        anm_ammo_check_aim_jammed_ammo31        = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_aim_left
+        anm_ammo_check_empty_aim_jammed         = hand_mp5sd_magcheck_aim, mp5_magcheck_jammed_aim_empty
 
 ;_____________________________________ Parameters of the shells sprite for HUD __________________________
 

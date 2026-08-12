@@ -4065,12 +4065,12 @@
       "id": "wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0",
       "folder": "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]",
       "mode": "full",
-      "version": "2026.08.02.2",
+      "version": "2026.08.12.1",
       "notes": "Обновление [WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch].",
-      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0-2026.08.02.2/anthology-folder-wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0-2026.08.02.2.zip",
-      "asset_name": "anthology-folder-wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0-2026.08.02.2.zip",
-      "size": 7465255,
-      "sha256": "40ec998fccbe4d73d706c681f52634113a27b4817b77bcc4fd1119fa69f9a98a",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0-2026.08.12.1/anthology-folder-wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0-2026.08.12.1.zip",
+      "asset_name": "anthology-folder-wpn-100-spl-r-a-k-weapon-pack-adaptation-148a0caad0-2026.08.12.1.zip",
+      "size": 7485914,
+      "sha256": "dd9c9ab183e31b29ae470923a00bf4e02841a714a609a073e86e39963ad1be49",
       "files": [
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/settings/npc_loadouts/npc_loadouts_csky.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/settings/npc_loadouts_csky.ltx",
@@ -4094,6 +4094,7 @@
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/trade/mod_trade_stalker_flea_market_night_rak_global_blc_mod.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/trade/mod_trade_stalker_flea_market_rak_global_blc_mod.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/trade/mod_trade_stalker_loris_rak_global_blc_mod.ltx",
+        "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/trade/mod_trade_stalker_nimble_rak_global_base_mod.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/trade/mod_trade_stalker_nimble_rak_global_blc_mod.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/trade/mod_trade_stalker_owl_rak_global_blc_mod.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/trade/mod_trade_stalker_sidorovich_rak_global_blc_mod.ltx",
@@ -4115,10 +4116,13 @@
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_m79.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_mac10.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_marlin_tracker.ltx",
+        "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_mp5.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_mp5_nimble.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_mp5k.ltx",
+        "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_mp5sd.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_mp7.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_mp9.ltx",
+        "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_p38.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_pp2000.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_remington870.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_rgm40.ltx",
@@ -4134,6 +4138,8 @@
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_vintorez.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_vityaz.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_vz61.ltx",
+        "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_win1886.ltx",
+        "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_winchester1873.ltx",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/text/rus/st_items_weapons.xml",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/meshes/anomaly_weapons/wpn_toz34/wpn_toz34_bull_hud.ogf",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/meshes/dynamics/weapons/wpn_50bmg_deagle/wpn_bmg50_deagle_lod.ogf",
@@ -4144,9 +4150,7 @@
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/meshes/dynamics/weapons/wpn_ak50/wpn_ak50_world.ogf",
         "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/meta.ini"
       ],
-      "removed_files": [
-        "[WPN][100][SPL][R.A.K. Weapon Pack Adaptation Global Simple Patch]/gamedata/configs/items/weapons/w_sr2.ltx"
-      ]
+      "removed_files": []
     },
     {
       "id": "a-n-t-h-o-l-o-g-y-fix-72693c3cde",
