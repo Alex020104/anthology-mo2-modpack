@@ -2616,6 +2616,22 @@
       "removed_files": []
     },
     {
+      "id": "gfx-peak-volumetrics-1-2-1b2e1b89e8",
+      "folder": "[GFX] PEAK volumetrics 1.2 — Улучшение объёмного освещения",
+      "mode": "full",
+      "version": "2026.08.12.2",
+      "notes": "Обновление [GFX] PEAK volumetrics 1.2 — Улучшение объёмного освещения.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-gfx-peak-volumetrics-1-2-1b2e1b89e8-2026.08.12.2/anthology-folder-gfx-peak-volumetrics-1-2-1b2e1b89e8-2026.08.12.2.zip",
+      "asset_name": "anthology-folder-gfx-peak-volumetrics-1-2-1b2e1b89e8-2026.08.12.2.zip",
+      "size": 1474,
+      "sha256": "9abcabbcb217d7b0d6b5441ee6e1458367eb2189c19a5a8fd83bf78ba7708123",
+      "files": [
+        "[GFX] PEAK volumetrics 1.2 — Улучшение объёмного освещения/gamedata/shaders/r3/pfx_volumetric_light.ps",
+        "[GFX] PEAK volumetrics 1.2 — Улучшение объёмного освещения/gamedata/shaders/r3/pfx_volumetric_light.vs"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "hard-realistic-fatigue-b72c80f095",
       "folder": "[HARD] Realistic Fatigue — Реалистичная усталость",
       "mode": "full",
