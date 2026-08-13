@@ -5253,6 +5253,32 @@
       "removed_files": []
     },
     {
+      "id": "snd-anthology-st2-mutant-footstep-sound-d832faafbd",
+      "folder": "[SND] Anthology ST2 Mutant Footstep Sound",
+      "mode": "full",
+      "version": "2026.08.13.10",
+      "notes": "Обновление [SND] Anthology ST2 Mutant Footstep Sound.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-snd-anthology-st2-mutant-footstep-sound-d832faafbd-2026.08.13.10/anthology-folder-snd-anthology-st2-mutant-footstep-sound-d832faafbd-2026.08.13.10.zip",
+      "asset_name": "anthology-folder-snd-anthology-st2-mutant-footstep-sound-d832faafbd-2026.08.13.10.zip",
+      "size": 8409,
+      "sha256": "a774ea93db96c55b0e3471b5e4fcd3609682f002b0e00b7f02fa2370b474df6a",
+      "files": [
+        "[SND] Anthology ST2 Mutant Footstep Sound/CHANGELOG.txt",
+        "[SND] Anthology ST2 Mutant Footstep Sound/gamedata/materials/mod_material_pairs_ST2_bloodsucker.ltx",
+        "[SND] Anthology ST2 Mutant Footstep Sound/gamedata/materials/mod_material_pairs_ST2_chimera.ltx",
+        "[SND] Anthology ST2 Mutant Footstep Sound/gamedata/materials/mod_material_pairs_ST2_controller.ltx",
+        "[SND] Anthology ST2 Mutant Footstep Sound/gamedata/materials/mod_material_pairs_ST2_flesh.ltx",
+        "[SND] Anthology ST2 Mutant Footstep Sound/gamedata/materials/mod_material_pairs_ST2_giant.ltx",
+        "[SND] Anthology ST2 Mutant Footstep Sound/gamedata/materials/mod_material_pairs_ST2_pseudodog.ltx",
+        "[SND] Anthology ST2 Mutant Footstep Sound/gamedata/materials/mod_material_pairs_ST2_rodent.ltx",
+        "[SND] Anthology ST2 Mutant Footstep Sound/gamedata/materials/mod_material_pairs_ST2_snork.ltx",
+        "[SND] Anthology ST2 Mutant Footstep Sound/gamedata/materials/mod_material_pairs_ST2_zombie.ltx",
+        "[SND] Anthology ST2 Mutant Footstep Sound/meta.ini",
+        "[SND] Anthology ST2 Mutant Footstep Sound/README_RU.txt"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "tma-cms-f96afa5e6a",
       "folder": "[TMA] CMS — Новые анимации аптечек",
       "mode": "full",
