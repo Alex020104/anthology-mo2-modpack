@@ -1,5 +1,0 @@
-local VERSION = "1.0.0-beta"
-
-function on_game_start()
-    printf("[CatspawRuntimeFix v%s] stale-ID guards and optional MCM path guards active", VERSION)
-end

@@ -604,14 +604,20 @@
       "id": "dbg-kristiano-fixes-all-in-one-8429b7581e",
       "folder": "[DBG] Kristiano Fixes ALL IN ONE",
       "mode": "full",
-      "version": "2026.08.02.1",
-      "notes": "Обновление [DBG] Kristiano Fixes ALL IN ONE.",
-      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.02.1/anthology-folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.02.1.zip",
-      "asset_name": "anthology-folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.02.1.zip",
-      "size": 43271991,
-      "sha256": "74e1264c7b88aac72b6e7b691cc5d6117f3bf4a0604ebfe5774bc69e090f57b3",
+      "version": "2026.08.13.1",
+      "notes": "Удалена вся папка gamedata из [DBG] Kristiano Fixes ALL IN ONE.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.13.1/anthology-folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.13.1.zip",
+      "asset_name": "anthology-folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.13.1.zip",
+      "size": 5582,
+      "sha256": "83397dafad90c4d7609241dc8cb26199dba5d418420a78e3fd2d039ce110fbd1",
       "files": [
         "[DBG] Kristiano Fixes ALL IN ONE/CHANGELOG.txt",
+        "[DBG] Kristiano Fixes ALL IN ONE/MANIFEST_SHA256.txt",
+        "[DBG] Kristiano Fixes ALL IN ONE/meta.ini",
+        "[DBG] Kristiano Fixes ALL IN ONE/PATCH_AUDIT.json",
+        "[DBG] Kristiano Fixes ALL IN ONE/README_RU.txt"
+      ],
+      "removed_files": [
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/configs/items/items/items_zz_anthology_quest_stash_fix.ltx",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/configs/items/items/mod_zzzzzz_anthology_quest_story_id_fix.ltx",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/configs/misc/squad_descr/mod_squad_descr_anthology_quest_story_id_fix.ltx",
@@ -705,13 +711,8 @@
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/zzzzzzzzzzzzzz_anthology_lttz_noosphere_voice_x18_fix.script",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/sounds/burnshit/fire_whoosh.ogg",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/spawns/all.spawn",
-        "[DBG] Kristiano Fixes ALL IN ONE/gamedata/textures/ui/cmo_icons.dds",
-        "[DBG] Kristiano Fixes ALL IN ONE/MANIFEST_SHA256.txt",
-        "[DBG] Kristiano Fixes ALL IN ONE/meta.ini",
-        "[DBG] Kristiano Fixes ALL IN ONE/PATCH_AUDIT.json",
-        "[DBG] Kristiano Fixes ALL IN ONE/README_RU.txt"
-      ],
-      "removed_files": []
+        "[DBG] Kristiano Fixes ALL IN ONE/gamedata/textures/ui/cmo_icons.dds"
+      ]
     },
     {
       "id": "gam-autocomplete-tasks-f439c7d78b",
