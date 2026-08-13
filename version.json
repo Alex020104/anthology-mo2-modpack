@@ -2918,6 +2918,29 @@
       "removed_files": []
     },
     {
+      "id": "gfx-quickqk-task-status-tool-anthology-k-0e3792318b",
+      "folder": "[GFX] QuickQK Task Status Tool Anthology — Принудительное завершение заданий от Kristiano",
+      "mode": "full",
+      "version": "2026.08.13.8",
+      "notes": "Обновление [GFX] QuickQK Task Status Tool Anthology — Принудительное завершение заданий от Kristiano.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-gfx-quickqk-task-status-tool-anthology-k-0e3792318b-2026.08.13.8/anthology-folder-gfx-quickqk-task-status-tool-anthology-k-0e3792318b-2026.08.13.8.zip",
+      "asset_name": "anthology-folder-gfx-quickqk-task-status-tool-anthology-k-0e3792318b-2026.08.13.8.zip",
+      "size": 15265,
+      "sha256": "183a153f7d888fe86cbdbf66fe5a643ecfd5ec82515556cb050c7675e5da1ace",
+      "files": [
+        "[GFX] QuickQK Task Status Tool Anthology — Принудительное завершение заданий от Kristiano/CHANGELOG.txt",
+        "[GFX] QuickQK Task Status Tool Anthology — Принудительное завершение заданий от Kristiano/gamedata/configs/text/eng/ui_mcm_quickqk_anthology.xml",
+        "[GFX] QuickQK Task Status Tool Anthology — Принудительное завершение заданий от Kristiano/gamedata/configs/text/rus/ui_mcm_quickqk_anthology.xml",
+        "[GFX] QuickQK Task Status Tool Anthology — Принудительное завершение заданий от Kristiano/gamedata/scripts/zzzzzz_quickqk_task_complete_anthology.script",
+        "[GFX] QuickQK Task Status Tool Anthology — Принудительное завершение заданий от Kristiano/gamedata/scripts/zzzzzz_quickqk_task_complete_anthology_mcm.script",
+        "[GFX] QuickQK Task Status Tool Anthology — Принудительное завершение заданий от Kristiano/meta.ini",
+        "[GFX] QuickQK Task Status Tool Anthology — Принудительное завершение заданий от Kristiano/PATCH_NOTES_RU.txt",
+        "[GFX] QuickQK Task Status Tool Anthology — Принудительное завершение заданий от Kristiano/README_EN.txt",
+        "[GFX] QuickQK Task Status Tool Anthology — Принудительное завершение заданий от Kristiano/README_RU.txt"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "hard-realistic-fatigue-b72c80f095",
       "folder": "[HARD] Realistic Fatigue — Реалистичная усталость",
       "mode": "full",
