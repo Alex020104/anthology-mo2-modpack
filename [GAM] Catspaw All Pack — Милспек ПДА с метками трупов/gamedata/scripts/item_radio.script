@@ -5,8 +5,8 @@
     https://www.youtube.com/@CatspawAdventures
 	Source: https://www.moddb.com/mods/stalker-anomaly/addons/new-extensible-rf-sources/
 -- ===================================================================--]]
-script_version 				= "1.7.2"
-release_date            	= 20250314
+script_version 				= "1.8.0"
+release_date            	= 20260304
 -- =======================================================================
 --[[	Includes optional support for:
 		TB's RF Tasks (integrated)
@@ -867,7 +867,6 @@ end
 
 
 function load_sound_data()
-	local g_tonumber = tonumber
 	dl("Loading sound data")
 	local loaded_manually = {
 		["config_sfx_defaults"] = true,
@@ -907,7 +906,7 @@ function load_sound_data()
 			local startind = ind + 1
 			if rfx.insert_random then
 				vl("Inserting %s entries of random noise into %s",rfx.insert_random,sndsec)
-				for i=startind,(startind + g_tonumber(rfx.insert_random)) do
+				for i=startind,(startind + tonumber(rfx.insert_random)) do
 					snd_path_table[sndsec][i] = snd_path_table.random[math.random(1,rndcfg.sfx_max)]
 					ind = ind + 1
 				end
@@ -915,7 +914,7 @@ function load_sound_data()
 			startind = ind + 1
 			if rfx.insert_silence then
 				vl("Inserting %s entries of dead silence into %s",rfx.insert_silence,sndsec)
-				for i=startind,(startind + g_tonumber(rfx.insert_silence)) do
+				for i=startind,(startind + tonumber(rfx.insert_silence)) do
 					snd_path_table[sndsec][i] = path_silence
 					ind = ind + 1
 				end
@@ -970,7 +969,7 @@ function load_sound_data()
 				dl("%s is multi-frequency",attr)
 				local fr = str_explode(v,",")
 				for i = 1,#fr do
-					fr[i] = g_tonumber(fr[i])
+					fr[i] = tonumber(fr[i])
 					vl("valid freq for %s: %s",attr,fr[i])
 				end
 				signal_sources[key].freqs = v
@@ -978,7 +977,7 @@ function load_sound_data()
 			elseif attr == "clsid" then
 				val = clsid[v]
 			elseif typedefs[attr] == "number" then
-				val = g_tonumber(v) or 0
+				val = tonumber(v) or 0
 			elseif typedefs[attr] == "boolean" then
 				val = strbool(v)
 			end

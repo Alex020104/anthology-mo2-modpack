@@ -234,7 +234,7 @@ function on_mcm_load()
 
 	if ui_rf_widget then
 		-- Add the accessibility widget menu if that script is present
-		op.gr[#op.gr+1] = widgetmenu
+		table.insert(op.gr, widgetmenu)
 	end
 	return op
 end

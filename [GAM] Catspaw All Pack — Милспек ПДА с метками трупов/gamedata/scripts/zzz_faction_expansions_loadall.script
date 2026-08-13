@@ -20,7 +20,7 @@ end
 
 function faction_expansions.on_game_start()
 	printf("~ [zzz_faction_expansions_loadall.script] monkeypatch override of faction_expansions.on_game_start\n" ..
-			"= | Including UNISG, Sin, and Renegades when loading data for faction_expansions.factions")
+			"= | Including UNISG, Sin, Renegades and available Anthology faction profiles")
 	local ini_fact = ini_file("plugins\\faction_profile.ltx")
 	
 	-- Collect faction profiles - but without commenting out isg, renegade, greh
@@ -38,11 +38,23 @@ function faction_expansions.on_game_start()
 		["isg"] 		= true,
 		["renegade"] 	= true,
 		["greh"] 		= true,
-
-		["spectrum"] 	= true,
-    	["milstalk"] 	= true,
-    	["atribute"] 	= true,
 	}
+
+	-- Anthology can add these optional communities. Keep support from the
+	-- previous All Pack, but never read a missing faction_profile section.
+	local anthology_optional_factions = {
+		["spectrum"] 	= true,
+		["milstalk"] 	= true,
+		["atribute"] 	= true,
+	}
+	for comm,_ in pairs(anthology_optional_factions) do
+		if ini_fact:section_exist(comm) then
+			factions_list[comm] = true
+			dl("Anthology optional faction profile enabled: %s", comm)
+		else
+			dl("Anthology optional faction profile not present, skipped: %s", comm)
+		end
+	end
 
 	for k,v in pairs(factions_list) do
 		dl("Loading faction expansion data for %s", k)

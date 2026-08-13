@@ -110,12 +110,11 @@ function usr(n) return n * unsquish_ratio end
 -- =======================================================================
 
 function load_ltx_data()
-    local g_pairs = pairs
-    for w, _ in g_pairs(iconset_ltx) do
+    for w, _ in pairs(iconset_ltx) do
         local iconset_ltx_prefix = "iconset_"
         local icons_pos = string.find(w,iconset_ltx_prefix)
         if icons_pos == 1 then
-            local group = string.sub(w,icons_pos+#iconset_ltx_prefix)
+            local group = string.sub(w,icons_pos+string.len(iconset_ltx_prefix))
             local set_cfg = icon_sets_ini:collect_section(w)
 
             local name = set_cfg.name
@@ -140,13 +139,13 @@ function load_ltx_data()
             dl("Final values loaded for icon_set[%s] (%s):\nIcons: ",group,gts(name))
 
 
-            for k,v in g_pairs(ig) do
+            for k,v in pairs(ig) do
                 dl("%s = %s",k,v)
             end
         end
     end
     dl("Loading menu actions from actions_ini")
-    for w, _ in g_pairs(actions_ltx) do
+    for w, _ in pairs(actions_ltx) do
         action_codes[w] = actions_ini:collect_section(w)
         local ac = action_codes[w]
         local opt_loc = gts(pawmenu_path..ac.text)
@@ -160,7 +159,7 @@ function load_ltx_data()
         action[opt_loc] = w
         if verbose then
             vl("Initializing menu action:\n%s = %s",opt_loc,action[opt_loc])
-            for k,v in g_pairs(ac) do vl("%s = %s",k,v) end
+            for k,v in pairs(ac) do vl("%s = %s",k,v) end
             vl("action[\"%s\"] = %s",opt_loc,action[opt_loc])
         end
     end
@@ -202,7 +201,7 @@ local function populate_icon_list(group)
 		local ic = icons[icon]
 		if ic then 
 			local entry = {icon,icons[icon]}
-			content[#content+1] = entry
+			table.insert(content,entry)
 			vl("populate_icon_list adding option for group %s: {%s,%s}",group,entry[1],entry[2])
 		else
 			dl("WARNING: member %s not found in icons.ltx! Check your customizations.",icon)
@@ -253,10 +252,10 @@ function populate_autotag_menus()
 	}
 
 	if load_failed then
-		gr[#gr+1] = divider
-		gr[#gr+1] = load_error_text1
-		gr[#gr+1] = load_error_text2
-		gr[#gr+1] = divider
+		table.insert(gr,divider)
+		table.insert(gr,load_error_text1)
+		table.insert(gr,load_error_text2)
+		table.insert(gr,divider)
 		return gr
 	end
 
@@ -280,10 +279,10 @@ function populate_autotag_menus()
 			on_selection_functor = {catsy_paw_mcm.mcm_on_value_select},
 			content = populate_icon_list("smartpins")
 		}
-		gr[#gr+1] = menu_opt
-		gr[#gr+1] = enable_opt
+		table.insert(gr,menu_opt)
+		table.insert(gr,enable_opt)
 	end
-	gr[#gr+1] = divider
+	table.insert(gr,divider)
 
 	vl("results for populate_autotag_menus:")
 	if debuglogs and verbose then
@@ -306,7 +305,7 @@ function populate_set_menus()
 	local poi ="poi_icon_"
 
 	local recfaves = {{0,"pawsys_cmenu_off"},}
-	for i = 1,10 do recfaves[#recfaves+1] = {i,"paw_last_"..tostring(i)} end
+	for i = 1,10 do table.insert(recfaves,{i,"paw_last_"..tostring(i)}) end
 
 	local gr = {
 		{id = "header", 		type= "slide", 	link= "ui_paw_menuslide_pins", size= {512,50}, spacing= 20},
@@ -317,10 +316,10 @@ function populate_set_menus()
 	}
 
 	if load_failed then
-		gr[#gr+1] = divider
-		gr[#gr+1] = load_error_text1
-		gr[#gr+1] = load_error_text2
-		gr[#gr+1] = divider
+		table.insert(gr,divider)
+		table.insert(gr,load_error_text1)
+		table.insert(gr,load_error_text2)
+		table.insert(gr,divider)
 		return gr
 	end
 
@@ -333,7 +332,7 @@ function populate_set_menus()
 		on_selection_functor = {catsy_paw_mcm.mcm_on_value_select},
 		content = populate_icon_list("faves")
 	}
-	gr[#gr+1] = newentry
+	table.insert(gr,newentry)
 	for g,_ in pairs(icon_sets) do
 		if g ~= "faves" then
 			dl("populate_set_menus adding entry for icon set %s",g)
@@ -348,28 +347,28 @@ function populate_set_menus()
 				content = populate_icon_list(g)
 			}
 			dl("newentry.id %s | type %s | val %s | def %s | content: %s",newentry.id,newentry.type,newentry.val,newentry.def,newentry.content)
-			gr[#gr+1] = newentry
+			table.insert(gr,newentry)
 		end
 	end
-	gr[#gr+1] = {id = "divider", type= "line"}
-	gr[#gr+1] = {id = "header", type= "slide", link= "ui_paw_menuslide_badges", size= {512,50}, spacing= 20}
+	table.insert(gr,{id = "divider", type= "line"})
+	table.insert(gr,{id = "header", type= "slide", link= "ui_paw_menuslide_badges", size= {512,50}, spacing= 20})
 
-	gr[#gr+1] = {id = "patch_res", type= "list", val = 0, def = "badge", 
+	table.insert(gr,{id = "patch_res", type= "list", val = 0, def = "badge", 
 						content = {
 							   {"badge","pawsys_cfg_badge_res"},
 							   {"badge_hr","pawsys_cfg_badge_hr_res"},
 							   {"badge_uhr","pawsys_cfg_badge_uhr_res"},
 							}
-						}
-	gr[#gr+1] = {id = "milpda_body_icon", type= "list", val = 0, def = "bodyoff", 
+						})
+	table.insert(gr,{id = "milpda_body_icon", type= "list", val = 0, def = "bodyoff", 
 						content = {
 							   {"off","pawsys_cfg_bodyoff"},
 							   {"fac","pawsys_cfg_bodyfac"},
 							   {"set","pawsys_cfg_bodyset"},
 							}
-						}
-	gr[#gr+1] = {id = "use_custom_backpack_icon", type= "check", val = 1, def = false}
-	gr[#gr+1] = {
+						})
+	table.insert(gr,{id = "use_custom_backpack_icon", type= "check", val = 1, def = false})
+	table.insert(gr,{
 				id = "custom_backpack_icon",
 				type= "list",
 				val = 0,
@@ -377,9 +376,9 @@ function populate_set_menus()
 				ui_hook_functor = {catsy_paw_mcm.init_mcm_set_ind},
 				on_selection_functor = {catsy_paw_mcm.mcm_on_value_select},
 				content = populate_icon_list("faves")
-			}
-	gr[#gr+1] = {id = "use_custom_pin_icon", type= "check", val = 1, def = false}
-	gr[#gr+1] = {id = "custom_pin_icon", type= "input", val = 0, def = "user_defined"}
+			})
+	table.insert(gr,{id = "use_custom_pin_icon", type= "check", val = 1, def = false})
+	table.insert(gr,{id = "custom_pin_icon", type= "input", val = 0, def = "user_defined"})
 	vl("results for populate_set_menus:")
 	if verbose then
 		for k,v in pairs(gr) do

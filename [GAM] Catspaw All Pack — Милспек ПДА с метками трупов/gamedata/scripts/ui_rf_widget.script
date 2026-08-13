@@ -132,7 +132,7 @@ function UIRFWidget:SetIndicatorHeading(id)
     -- Thanks to demonized for help with this
     if not id then return end
     if not db.actor then return end
-    local obj = id and get_object_by_id(id)
+    local obj = id and utils_catspaw_common.get_game_object(id)
     if not obj then return end
     local pos = obj:position()
     local dirToPos = pos:sub(device().cam_pos):normalize()
@@ -147,7 +147,3 @@ function UIRFWidget:Update()
     if not db.actor then return end
     CUIScriptWnd.Update(self)
 end
-
-
-
-local pos = vector():set(3,0,0)
