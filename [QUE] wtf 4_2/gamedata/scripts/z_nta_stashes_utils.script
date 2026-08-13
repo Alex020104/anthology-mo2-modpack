@@ -1,0 +1,111 @@
+
+stashes_by_level = {}
+
+-- Anthology 2.1 compatibility guard.
+-- Some stash entries can contain an invalid or unresolved game-graph reference.
+-- In that case alife():level_name(level_id) may return nil. The original NTA
+-- code then attempts stashes_by_level[nil] = {}, which causes a fatal
+-- "table index is nil" during actor_on_net_spawn.
+local warned_bad_stashes = {}
+local guard_version = "1.0.1"
+
+local function guard_log(fmt, ...)
+    if printf then
+        printf("[NTA Anthology Guard v%s] " .. fmt, guard_version, ...)
+    end
+end
+
+local function resolve_stash_level(id, se_obj)
+    if not se_obj then
+        return nil, nil, nil, "no_server_object"
+    end
+
+    local game_vertex_id = se_obj.m_game_vertex_id
+    if game_vertex_id == nil then
+        return nil, nil, nil, "no_game_vertex_id"
+    end
+
+    local graph = game_graph()
+    if not graph then
+        return nil, game_vertex_id, nil, "no_game_graph"
+    end
+
+    local ok_vertex, vertex = pcall(function()
+        return graph:vertex(game_vertex_id)
+    end)
+    if not ok_vertex or not vertex then
+        return nil, game_vertex_id, nil, "invalid_game_vertex"
+    end
+
+    local ok_level_id, level_id = pcall(function()
+        return vertex:level_id()
+    end)
+    if not ok_level_id or level_id == nil then
+        return nil, game_vertex_id, nil, "no_level_id"
+    end
+
+    local sim = alife()
+    if not sim then
+        return nil, game_vertex_id, level_id, "no_alife"
+    end
+
+    local ok_level_name, level_name = pcall(function()
+        return sim:level_name(level_id)
+    end)
+    if not ok_level_name or level_name == nil or level_name == "" then
+        return nil, game_vertex_id, level_id, "no_level_name"
+    end
+
+    return level_name, game_vertex_id, level_id, nil
+end
+
+function on_game_load()
+    populate_stashes_by_levels_table()
+end
+
+function populate_stashes_by_levels_table()
+    -- Populating happens only once and is later persisted in the save file
+    -- Treasure manager already takes care of blacklisted stashes
+    stashes_by_level = {}
+
+    local caches = treasure_manager and treasure_manager.caches
+    if not caches then
+        guard_log("treasure_manager.caches is unavailable; stash table left empty")
+        return
+    end
+
+    local skipped = 0
+    for id, _ in pairs(caches) do
+        local se_obj = alife_object(id)
+        if se_obj then
+            local lvl, game_vertex_id, level_id, reason = resolve_stash_level(id, se_obj)
+            if lvl then
+                if not stashes_by_level[lvl] then
+                    stashes_by_level[lvl] = {}
+                end
+                table.insert(stashes_by_level[lvl], id)
+            else
+                skipped = skipped + 1
+                if not warned_bad_stashes[id] then
+                    warned_bad_stashes[id] = true
+                    guard_log(
+                        "skipped stash id=%s game_vertex=%s level_id=%s reason=%s",
+                        tostring(id),
+                        tostring(game_vertex_id),
+                        tostring(level_id),
+                        tostring(reason)
+                    )
+                end
+            end
+        end
+    end
+
+    if skipped > 0 then
+        guard_log("stash table built successfully; skipped invalid/unresolved stash entries: " .. tostring(skipped))
+    end
+end
+
+function on_game_start()
+    guard_log("active")
+    RegisterScriptCallback("on_game_load", on_game_load)
+end
