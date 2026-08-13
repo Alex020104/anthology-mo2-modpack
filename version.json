@@ -4088,6 +4088,32 @@
       "removed_files": []
     },
     {
+      "id": "hud-sorting-plus-c945dc1af7",
+      "folder": "[HUD] Sorting Plus — Сортировка плюс",
+      "mode": "full",
+      "version": "2026.08.13.11",
+      "notes": "Обновление [HUD] Sorting Plus — Сортировка плюс.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-hud-sorting-plus-c945dc1af7-2026.08.13.11/anthology-folder-hud-sorting-plus-c945dc1af7-2026.08.13.11.zip",
+      "asset_name": "anthology-folder-hud-sorting-plus-c945dc1af7-2026.08.13.11.zip",
+      "size": 34921,
+      "sha256": "35aa1eff3a27a12fa9a1b1790dceb26d29e9b28c35847acfc8ed1970ffb0e98a",
+      "files": [
+        "[HUD] Sorting Plus — Сортировка плюс/gamedata/configs/mod_system_zzzzzz_anthology_sorting_plus_categories_fix.ltx",
+        "[HUD] Sorting Plus — Сортировка плюс/gamedata/configs/sortingplus.ltx",
+        "[HUD] Sorting Plus — Сортировка плюс/gamedata/configs/text/eng/ui_st_sortingplus.xml",
+        "[HUD] Sorting Plus — Сортировка плюс/gamedata/configs/text/rus/ui_st_sortingplus.xml",
+        "[HUD] Sorting Plus — Сортировка плюс/gamedata/scripts/rax_dynamic_custom_functor.script",
+        "[HUD] Sorting Plus — Сортировка плюс/gamedata/scripts/rax_icon_layers.script",
+        "[HUD] Sorting Plus — Сортировка плюс/gamedata/scripts/zzz_rax_sortingplus_mcm.script",
+        "[HUD] Sorting Plus — Сортировка плюс/gamedata/textures/ui/sortingplus/icon-favourite.dds",
+        "[HUD] Sorting Plus — Сортировка плюс/gamedata/textures/ui/sortingplus/icon-favourite.thm",
+        "[HUD] Sorting Plus — Сортировка плюс/gamedata/textures/ui/sortingplus/icon-junk.dds",
+        "[HUD] Sorting Plus — Сортировка плюс/gamedata/textures/ui/sortingplus/icon-junk.thm",
+        "[HUD] Sorting Plus — Сортировка плюс/meta.ini"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "imm-gotta-go-fast-274f82796c",
       "folder": "[IMM] Gotta Go Fast — Регулируемая скорость перемещения",
       "mode": "full",
