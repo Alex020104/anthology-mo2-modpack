@@ -1,0 +1,48 @@
+-- Context Menu Overhaul 1.4.2
+-- Late compatibility bootstrap for Anomaly Anthology 2.1.
+-- Installs CMO hooks and schedules the final QAW functor override only after
+-- all on_game_start registrations and custom_functor_autoinject's queue.
+
+function install_cmo_anthology_hooks()
+    local cmo = context_menu_overhaul
+    if not (cmo and type(cmo.install_hooks) == "function") then
+        if type(printf) == "function" then
+            printf("[CMO Anthology] late install blocked: context_menu_overhaul.install_hooks is unavailable")
+        end
+        return false
+    end
+
+    if type(cmo.load_settings) == "function" then
+        pcall(cmo.load_settings)
+    end
+
+    local ok, result = pcall(cmo.install_hooks)
+    if ok and result then
+        return true
+    end
+
+    if type(printf) == "function" then
+        printf("[CMO Anthology] late install failed: %s", tostring(result))
+    end
+    return false
+end
+
+function schedule_cmo_qaw(stage)
+    local cmo = context_menu_overhaul
+    if cmo and type(cmo.cmo_qaw_schedule_late_registration) == "function" then
+        local ok, err = pcall(cmo.cmo_qaw_schedule_late_registration, stage)
+        if not ok and type(printf) == "function" then
+            printf("[CMO Anthology] QAW late schedule failed at %s: %s", tostring(stage), tostring(err))
+        end
+    end
+end
+
+function on_game_start()
+    install_cmo_anthology_hooks()
+    schedule_cmo_qaw("game_start")
+end
+
+function on_game_load()
+    install_cmo_anthology_hooks()
+    schedule_cmo_qaw("game_load")
+end
