@@ -753,6 +753,27 @@
       "removed_files": []
     },
     {
+      "id": "gam-burn-shit-97e161a851",
+      "folder": "[GAM] Burn Shit — Сжигание предметов",
+      "mode": "full",
+      "version": "2026.08.13.14",
+      "notes": "Обновление [GAM] Burn Shit — Сжигание предметов.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-gam-burn-shit-97e161a851-2026.08.13.14/anthology-folder-gam-burn-shit-97e161a851-2026.08.13.14.zip",
+      "asset_name": "anthology-folder-gam-burn-shit-97e161a851-2026.08.13.14.zip",
+      "size": 66644,
+      "sha256": "506fbef4beb2f1adec1846b20e26b00325ce96d05930dacfd563e9c384fa5833",
+      "files": [
+        "[GAM] Burn Shit — Сжигание предметов/gamedata/configs/text/eng/burnshit.xml",
+        "[GAM] Burn Shit — Сжигание предметов/gamedata/configs/text/rus/burnshit.xml",
+        "[GAM] Burn Shit — Сжигание предметов/gamedata/scripts/burnshit.script",
+        "[GAM] Burn Shit — Сжигание предметов/gamedata/scripts/burnshit_config.script",
+        "[GAM] Burn Shit — Сжигание предметов/gamedata/scripts/burnshit_mcm.script",
+        "[GAM] Burn Shit — Сжигание предметов/gamedata/sounds/burnshit/fire_whoosh.ogg",
+        "[GAM] Burn Shit — Сжигание предметов/meta.ini"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "gam-campfires-placeable-anthology-credit-24c0368c7f",
       "folder": "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX",
       "mode": "full",
