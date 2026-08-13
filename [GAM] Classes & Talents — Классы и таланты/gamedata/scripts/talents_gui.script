@@ -577,6 +577,15 @@ function TalentsMenu:BuildTalentsMenu(xml)
 
 	-- respec button
 	self.respec_btn = xml:Init3tButton("bg:main_talent:right:descr_cont:respec_btn", self.talents_descr_cont)
+
+	-- PDA compatibility: compensate the vertical offset applied to the whole
+	-- talents background so the bottom-most respec button is not clipped.
+	if self.is_pda_tab then
+		local respec_pos = self.respec_btn:GetWndPos()
+		local pda_offset_y = self.bg:GetWndPos().y
+		self.respec_btn:SetWndPos(vector2():set(respec_pos.x, respec_pos.y - pda_offset_y))
+	end
+
 	self:Register(self.respec_btn, "talents_respec_btn")
 
 
@@ -676,14 +685,40 @@ function TalentsMenu:ResetLeftTalents()
 end
 
 local picked_font = 0
+function TalentsMenu:SetRespecOverlay(active)
+	active = active == true
+
+	-- The compact PDA layout has no opaque modal background for the
+	-- confirmation container. Hide the normal right-panel widgets only
+	-- inside the PDA tab so its text and buttons do not overlap them.
+	if self.is_pda_tab then
+		for _, cont in pairs(self.tree_conts) do
+			cont:Show(not active)
+		end
+
+		if self.stat_conts and self.stat_conts.main then
+			self.stat_conts.main:Show(not active)
+		end
+
+		if self.respec_btn then
+			self.respec_btn:Show(not active)
+		end
+	end
+
+	if self.talents_tooltip_cont then
+		self.talents_tooltip_cont:Show(false)
+	end
+
+	if self.respec_cont then
+		self.respec_cont:Show(active)
+	end
+end
+
 function TalentsMenu:UpdateTalentsMenu()
 	self:UpdateTrees()
 	self:UpdateTalents()
 	self:UpdateStats()
-	self.respec_cont:Show(false)
-	if self.talents_tooltip_cont:IsShown() then
-		self.talents_tooltip_cont:Show(false)
-	end
+	self:SetRespecOverlay(false)
 end
 
 function TalentsMenu:OnSelectTalent(talent)
@@ -938,7 +973,7 @@ end
 ---------------------------------------------------------
 function TalentsMenu:OnClickRespec()
 	-- open new verification window
-	self.respec_cont:Show(true)
+	self:SetRespecOverlay(true)
 
 	-- enable/disable "yes" button based on money
 	local has_money = db.actor:money() -1 > self.respec_money
@@ -968,7 +1003,7 @@ function TalentsMenu:OnClickRespecYes()
 end
 
 function TalentsMenu:OnClickRespecNo()
-	self.respec_cont:Show(false)
+	self:SetRespecOverlay(false)
 end
 
 -- cbs, utils and close
