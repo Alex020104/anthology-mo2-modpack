@@ -1,0 +1,461 @@
+-- Anthology Aver <-> Dark Valley Runtime Fix
+-- v0.5 BETA
+--
+-- Purpose:
+--   Repair the broken pair of transitions between:
+--     aver <-> l04_darkvalley
+--
+-- Confirmed source-data problem:
+--   aver -> Dark Valley arrives at the puzir-side destination.
+--   Dark Valley -> aver arrives at the garbage-side destination.
+--
+-- v0.5 changes:
+--   * Does NOT use the too-close Dark Valley reject point from v0.4.
+--   * Uses a confirmed walkable Dark Valley patrol waypoint ~47 m inward.
+--   * Uses the orphaned aver_td_way_if_reject path as the reverse test target.
+--   * Can arm a route in on_level_changing if on_before_level_changing
+--     is skipped by an immediate/automatic transition.
+--
+-- Existing saves are supported. No all.spawn or .scop editing is performed.
+
+local VERSION = "0.6-beta-opt1"
+local TAG = "[AverDarkValleyRuntimeFix v" .. VERSION .. "]"
+
+local STORAGE_KEY = "kristiano_aver_darkvalley_runtime_fix_route_v05"
+
+local ROUTES = {
+    aver_to_darkvalley = {
+        source = "aver",
+        target = "l04_darkvalley",
+
+        -- CONFIRMED broken arrival:
+        -- copied from puzir -> Dark Valley.
+        bad_x = -157.581833,
+        bad_y = -0.140619,
+        bad_z = -433.517090,
+
+        -- v0.5 test target:
+        -- existing Dark Valley patrol point
+        -- val_smart_terrain_6_4_to_val_smart_terrain_7_3_patrol_1_walk
+        -- This point is ~47 m from val_level_changer_to_aver_1,
+        -- instead of ~11 m as in v0.4.
+        fix_x = -94.382782,
+        fix_y = -2.695015,
+        fix_z = -39.998577,
+    },
+
+    darkvalley_to_aver = {
+        source = "l04_darkvalley",
+        target = "aver",
+
+        -- CONFIRMED broken arrival:
+        -- identical to garbage -> aver.
+        bad_x = -367.536285,
+        bad_y = 6.280872,
+        bad_z = -431.521545,
+
+        -- v0.5 test target:
+        -- first point of the separate orphan patrol path
+        -- aver_td_way_if_reject.
+        -- Strong candidate for the old/intended Dark Valley side on aver.
+        fix_x = 388.674194,
+        fix_y = -9.332470,
+        fix_z = -318.518494,
+    },
+}
+
+local BAD_RADIUS_SQ = 25 * 25
+local FIX_RADIUS_SQ = 4 * 4
+local MAX_ATTEMPTS = 45
+local REPAIR_INTERVAL_MS = 100
+
+local pending_route = nil
+local repair_route = nil
+local repair_attempts = 0
+local next_repair_ms = 0
+local update_registered = false
+local last_level = nil
+
+local function log(fmt, ...)
+    local msg = tostring(fmt)
+
+    if select('#', ...) > 0 then
+        local ok, formatted = pcall(string.format, fmt, ...)
+        if ok then
+            msg = formatted
+        end
+    end
+
+    printf(TAG .. " " .. msg)
+end
+
+local function current_level()
+    local ok, name = pcall(function()
+        return level.name()
+    end)
+
+    if ok then
+        return name
+    end
+
+    return nil
+end
+
+local function state_table()
+    if alife_storage_manager and alife_storage_manager.get_state then
+        local ok, st = pcall(alife_storage_manager.get_state)
+        if ok then
+            return st
+        end
+    end
+
+    return nil
+end
+
+local function set_pending(route_name)
+    pending_route = route_name
+
+    local st = state_table()
+    if st then
+        st[STORAGE_KEY] = route_name
+    end
+end
+
+local function clear_pending()
+    pending_route = nil
+
+    local st = state_table()
+    if st then
+        st[STORAGE_KEY] = nil
+    end
+end
+
+local function get_pending()
+    if pending_route and ROUTES[pending_route] then
+        return pending_route
+    end
+
+    local st = state_table()
+    if st then
+        local route_name = st[STORAGE_KEY]
+        if route_name and ROUTES[route_name] then
+            return route_name
+        end
+    end
+
+    return nil
+end
+
+local function route_from_source(level_name)
+    if level_name == ROUTES.aver_to_darkvalley.source then
+        return "aver_to_darkvalley"
+    end
+
+    if level_name == ROUTES.darkvalley_to_aver.source then
+        return "darkvalley_to_aver"
+    end
+
+    return nil
+end
+
+local function arm_from_source(source, stage)
+    local route_name = route_from_source(source)
+    if not route_name then
+        return false
+    end
+
+    set_pending(route_name)
+
+    local route = ROUTES[route_name]
+    log(
+        "armed route=%s stage=%s source=%s expected_target=%s",
+        route_name,
+        tostring(stage),
+        tostring(source),
+        route.target
+    )
+
+    return true
+end
+
+local function dist_sq(pos, x, y, z)
+    if not pos then
+        return 1e30
+    end
+
+    local dx = pos.x - x
+    local dy = pos.y - y
+    local dz = pos.z - z
+    return dx * dx + dy * dy + dz * dz
+end
+
+local function position_text(pos)
+    if not pos then
+        return "<nil>"
+    end
+
+    return string.format("%.6f, %.6f, %.6f", pos.x, pos.y, pos.z)
+end
+
+local function teleport_actor(route)
+    if not db or not db.actor then
+        return false, "db.actor is nil"
+    end
+
+    local target = vector()
+    target:set(route.fix_x, route.fix_y, route.fix_z)
+
+    local ok, err = pcall(function()
+        db.actor:set_actor_position(target)
+    end)
+
+    if not ok then
+        return false, tostring(err)
+    end
+
+    return true, nil
+end
+
+local function unregister_repair_update()
+    if update_registered and type(UnregisterScriptCallback) == "function" then
+        UnregisterScriptCallback("actor_on_update", actor_on_update)
+        update_registered = false
+    end
+end
+
+local function register_repair_update()
+    if not update_registered and type(RegisterScriptCallback) == "function" then
+        RegisterScriptCallback("actor_on_update", actor_on_update)
+        update_registered = true
+    end
+end
+
+local function finish(reason)
+    local name = repair_route
+
+    repair_route = nil
+    repair_attempts = 0
+    next_repair_ms = 0
+    unregister_repair_update()
+    clear_pending()
+
+    log("finished route=%s reason=%s", tostring(name), tostring(reason or "done"))
+end
+
+local function try_repair(stage)
+    if not repair_route then
+        return
+    end
+
+    local route = ROUTES[repair_route]
+    if not route then
+        finish("invalid route")
+        return
+    end
+
+    if not db or not db.actor then
+        return
+    end
+
+    local lvl = current_level()
+    if lvl ~= route.target then
+        finish("target level changed to " .. tostring(lvl))
+        return
+    end
+
+    repair_attempts = repair_attempts + 1
+
+    local before = db.actor:position()
+    local bad_d2 = dist_sq(before, route.bad_x, route.bad_y, route.bad_z)
+    local fixed_d2 = dist_sq(before, route.fix_x, route.fix_y, route.fix_z)
+
+    if fixed_d2 <= FIX_RADIUS_SQ then
+        log(
+            "verified route=%s stage=%s pos=%s attempt=%d",
+            repair_route,
+            stage,
+            position_text(before),
+            repair_attempts
+        )
+        finish("target position verified")
+        return
+    end
+
+    -- Safety:
+    -- never move the actor merely because the target level matches.
+    -- The actor must also be standing close to the exact known broken
+    -- destination for this route.
+    if bad_d2 > BAD_RADIUS_SQ then
+        if repair_attempts == 1
+        or repair_attempts == 5
+        or repair_attempts == 15
+        or repair_attempts == 30 then
+            log(
+                "waiting route=%s stage=%s pos=%s bad_dist=%.2f m attempt=%d",
+                repair_route,
+                stage,
+                position_text(before),
+                math.sqrt(bad_d2),
+                repair_attempts
+            )
+        end
+
+        if repair_attempts >= MAX_ATTEMPTS then
+            finish("safety stop: actor never appeared near broken spawn")
+        end
+        return
+    end
+
+    log(
+        "broken arrival route=%s stage=%s pos=%s bad_dist=%.2f m",
+        repair_route,
+        stage,
+        position_text(before),
+        math.sqrt(bad_d2)
+    )
+
+    local ok, err = teleport_actor(route)
+    if not ok then
+        log("ERROR route=%s set_actor_position failed: %s", repair_route, tostring(err))
+
+        if repair_attempts >= MAX_ATTEMPTS then
+            finish("teleport failed repeatedly")
+        end
+
+        return
+    end
+
+    local after = db.actor:position()
+    local after_d2 = dist_sq(after, route.fix_x, route.fix_y, route.fix_z)
+
+    log(
+        "teleport route=%s target=%.6f, %.6f, %.6f now=%s target_dist=%.2f m",
+        repair_route,
+        route.fix_x,
+        route.fix_y,
+        route.fix_z,
+        position_text(after),
+        math.sqrt(after_d2)
+    )
+
+    -- Keep the repair active if transition finalization rewrites
+    -- the actor position after this callback.
+    if after_d2 <= FIX_RADIUS_SQ then
+        finish("teleport verified")
+    elseif repair_attempts >= MAX_ATTEMPTS then
+        finish("safety stop after max attempts")
+    end
+end
+
+function on_before_level_changing()
+    local lvl = current_level()
+    if lvl then
+        last_level = lvl
+    end
+    local source = lvl or last_level
+
+    if not arm_from_source(source, "on_before_level_changing") then
+        clear_pending()
+    end
+end
+
+function on_level_changing()
+    local lvl = current_level()
+    if lvl then
+        last_level = lvl
+    end
+    local route_name = get_pending()
+
+    -- Important v0.5 fallback:
+    -- An immediate transition can reach on_level_changing without the
+    -- earlier callback arming the reverse route. In that case the current
+    -- level is still the source in Anthology logs, so recover here.
+    if not route_name then
+        if arm_from_source(lvl or last_level, "on_level_changing_fallback") then
+            route_name = get_pending()
+        end
+    end
+
+    log(
+        "on_level_changing current=%s pending=%s",
+        tostring(lvl),
+        tostring(route_name)
+    )
+end
+
+function actor_on_first_update(actor_binder, npc)
+    local lvl = current_level()
+    last_level = lvl
+
+    local route_name = get_pending()
+    if not route_name then
+        return
+    end
+
+    local route = ROUTES[route_name]
+    if not route then
+        clear_pending()
+        return
+    end
+
+    if lvl == route.target then
+        repair_route = route_name
+        repair_attempts = 0
+        next_repair_ms = 0
+
+        local pos = db and db.actor and db.actor:position() or nil
+        log(
+            "target first update route=%s level=%s pos=%s",
+            route_name,
+            tostring(lvl),
+            position_text(pos)
+        )
+
+        try_repair("first_update")
+        if repair_route then
+            register_repair_update()
+        end
+        return
+    end
+
+    -- A route can be armed for another exit from the same source level.
+    -- If the actual target does not match, discard it without moving actor.
+    log(
+        "clearing route=%s on unrelated target=%s expected_target=%s",
+        route_name,
+        tostring(lvl),
+        route.target
+    )
+    clear_pending()
+end
+
+function actor_on_update(actor_binder, npc)
+    -- Hot-path optimization: outside the short post-transition repair window
+    -- this callback now returns before level.name(), pcall, position math, etc.
+    if not repair_route then
+        return
+    end
+
+    local now = time_global()
+    if now < next_repair_ms then
+        return
+    end
+
+    next_repair_ms = now + REPAIR_INTERVAL_MS
+    try_repair("actor_update")
+end
+
+function on_game_start()
+    pending_route = nil
+    repair_route = nil
+    repair_attempts = 0
+    next_repair_ms = 0
+    update_registered = false
+    last_level = nil
+
+    RegisterScriptCallback("on_before_level_changing", on_before_level_changing)
+    RegisterScriptCallback("on_level_changing", on_level_changing)
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+
+    log("callbacks registered; bidirectional routes=2; repair update is on-demand")
+end

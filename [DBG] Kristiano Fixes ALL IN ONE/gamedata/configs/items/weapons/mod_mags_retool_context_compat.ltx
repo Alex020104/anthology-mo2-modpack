@@ -1,0 +1,9 @@
+; Context Menu Overhaul + Mags Redux universal retool compatibility.
+; Route custom action 7 for every loaded magazine through the universal resolver.
+; Existing explicit retool_group values remain authoritative.
+
+![tch_mag_base]
+use7_functor        = zzzzzzzzzzzzzz_mags_retool_context_compat.retool_mag_precondition
+use7_action_functor = zzzzzzzzzzzzzz_mags_retool_context_compat.retool_mag_functor
+use7_modes          = inventory, loot, trade
+use7_containers     = actor_bag, actor_equ, actor_belt, npc_bag, actor_trade_bag, actor_trade

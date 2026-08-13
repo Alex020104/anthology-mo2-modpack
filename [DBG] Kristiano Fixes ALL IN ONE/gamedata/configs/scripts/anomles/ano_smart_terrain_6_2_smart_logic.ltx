@@ -1,0 +1,173 @@
+[logic@merc_pri_a18_mech_mlr]
+suitable = {=check_npc_name(merc_pri_a18_mech_mlr)} true, {=check_npc_mechanic} true
+prior = 200
+active = animpoint@base1
+can_select_weapon = true
+level_spot = mechanic
+trade = items\trade\trade_generic_mechanic.ltx
+dont_keep_items = true
+
+[animpoint@base1]
+cover_name = anomles_smart_cover_mlr_tech_merc
+use_camp = false
+meet = meet
+combat_ignore_cond = {=is_warfare} false, {=actor_true_enemy =check_enemy_name(actor)} false, true
+combat_ignore_keep_when_attacked = {=is_warfare} false, true
+invulnerable = {=is_warfare} false, {!actor_true_enemy} true, false
+reach_distance = 10
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+on_info1 = {+awr_merc_pri_a18_mech_mlr_access} animpoint@resting
+
+[animpoint@resting]:animpoint@base1
+avail_animations = animpoint_sit_low_drink_vodka
+meet = meet	;no_meet
+on_game_timer = 2000 | animpoint@base1 %=awr_timer_msg_off%
+
+;-------------------------------------------------------------------------
+[logic@pri_special_trader_mlr]
+suitable = {=check_npc_name(pri_special_trader_mlr)} true, {=check_npc_trader} true
+prior = 200
+active = animpoint@base2
+can_select_weapon = {=is_warfare} true, false
+level_spot = trader
+trade = items\trade\trade_mercenary_meeker.ltx
+dont_keep_items = true
+
+[animpoint@base2]
+cover_name = anomles_smart_cover_pri_special_trader_mlr
+use_camp = false
+meet = meet
+combat_ignore_cond = {=is_warfare} false, {=actor_true_enemy =check_enemy_name(actor)} false, true
+combat_ignore_keep_when_attacked = {=is_warfare} false, true
+invulnerable = {=is_warfare} false, {!actor_true_enemy} true, false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+;-------------------------------------------------------------------------
+[logic@merc_pri_grifon_mlr]
+suitable = {=check_npc_name(merc_pri_grifon_mlr)} true
+prior = 200
+; Anthology Grifon Visibility Fix v1.0.4
+; The original dedicated animpoint_stay_wall can intermittently cull Grifon's
+; rendered model on Anthology 2.1 / MT-TEST while the NPC stays interactive.
+; Keep the same NPC/story object but use a normal upright standing state.
+active = remark@grifon_visibility_fix
+can_select_weapon = true
+level_spot = quest_npc
+dont_keep_items = true
+
+[remark@grifon_visibility_fix]
+anim = wait
+meet = meet
+combat_ignore_cond = {=is_warfare} false, {=actor_true_enemy =check_enemy_name(actor)} false, true
+combat_ignore_keep_when_attacked = {=is_warfare} false, true
+invulnerable = {=is_warfare} false, {!actor_true_enemy} true, false
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[meet]
+; v1.0.4: keep the stable remark/wait visibility bypass, but let the
+; standard meet scheme turn Grifon toward the actor only at close range.
+close_anim 		= wait
+close_victim 	= actor
+far_anim 		= nil
+far_victim 		= nil
+close_distance  = 5
+far_distance 	= 0
+close_snd_distance = 3
+abuse           = false
+use = {=actor_enemy} false, true
+allow_break = false
+meet_on_talking = false
+trade_enable = false
+
+;-------------------------------------------------------------------------
+;camping
+[meet@bench]
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+close_distance  = 0
+far_distance 	= 0
+
+[logic@kamp_1]
+suitable = {!surge_started} true
+prior = 60
+active = animpoint@kamp_1
+
+[animpoint@kamp_1]
+cover_name = ano_smart_terrain_6_2_kamp_1
+use_camp = true
+turn_on_campfire = true
+meet = meet@bench
+
+[logic@kamp_2]
+suitable = {!surge_started} true
+prior = 60
+active = animpoint@kamp_2
+
+[animpoint@kamp_2]
+cover_name = ano_smart_terrain_6_2_kamp_2
+use_camp = true
+turn_on_campfire = true
+meet = meet@bench
+
+[logic@kamp_3]
+suitable = {!surge_started} true
+prior = 60
+active = animpoint@kamp_3
+
+[animpoint@kamp_3]
+cover_name = ano_smart_terrain_6_2_kamp_3
+use_camp = true
+turn_on_campfire = true
+meet = meet@bench
+
+[logic@kamp_4]
+suitable = {!surge_started} true
+prior = 60
+active = animpoint@kamp_4
+
+[animpoint@kamp_4]
+cover_name = ano_smart_terrain_6_2_kamp_4
+use_camp = true
+turn_on_campfire = true
+meet = meet@bench
+
+[logic@kamp_5]
+suitable = {!surge_started} true
+prior = 60
+active = animpoint@kamp_5
+
+[animpoint@kamp_5]
+cover_name = ano_smart_terrain_6_2_kamp_5
+use_camp = true
+turn_on_campfire = true
+meet = meet@bench
+
+[logic@kamp_6]
+suitable = {!surge_started} true
+prior = 60
+active = animpoint@kamp_6
+
+[animpoint@kamp_6]
+cover_name = ano_smart_terrain_6_2_kamp_6
+use_camp = true
+turn_on_campfire = true
+meet = meet@bench
+
+[logic@kamp_7]
+suitable = {!surge_started} true
+prior = 60
+active = animpoint@kamp_7
+
+[animpoint@kamp_7]
+cover_name = ano_smart_terrain_6_2_kamp_7
+use_camp = true
+turn_on_campfire = true
+meet = meet@bench

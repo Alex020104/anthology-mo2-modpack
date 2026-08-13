@@ -1,0 +1,425 @@
+-- Anthology 2.1 quest stash repair v1.4
+-- 1) Keeps the safe v1.1 exact target blacklist.
+-- 2) Repairs active Anthology stash tasks (types 1001-1038) whose pending
+--    treasure cache was consumed while their quest item section was missing.
+-- The item sections themselves are restored by items_zz_anthology_quest_stash_fix.ltx.
+
+local TAG = "[quest_stash_fix_v14]"
+local installed = false
+local pending_boxes = {}
+local repaired_tasks = {}
+local scan_until = 0
+local next_scan = 0
+
+local legacy_task_sections = {
+    ["jup_b6_scientist_biochemist_task_3"] = "drx_sl_quest_item_1002", -- legacy stash_type=1
+    ["jup_a6_duty_leader_task_4"] = "drx_sl_quest_item_1003", -- legacy stash_type=3
+    ["jup_a6_freedom_leader_task_4"] = "drx_sl_quest_item_1004", -- legacy stash_type=2
+    ["zat_b106_stalker_gonta_task_2"] = "drx_sl_quest_item_1005", -- legacy stash_type=3
+    ["jup_a6_stalker_barmen_task_2"] = "drx_sl_quest_item_1006", -- legacy stash_type=3
+    ["zat_a2_stalker_nimble_task_8"] = "drx_sl_quest_item_1007", -- legacy stash_type=3
+    ["zat_b30_owl_stalker_trader_task_2"] = "drx_sl_quest_item_1008", -- legacy stash_type=3
+    ["zat_b103_lost_merc_leader_task_4"] = "drx_sl_quest_item_1009", -- legacy stash_type=2
+    ["jup_a10_bandit_leader_task_4"] = "drx_sl_quest_item_1010", -- legacy stash_type=4
+    ["jup_a12_bandit_chief_task_4"] = "drx_sl_quest_item_1011", -- legacy stash_type=5
+    ["mil_svoboda_master_max_task_12"] = "drx_sl_quest_item_1012", -- legacy stash_type=5
+    ["mil_svoboda_cook_task_2"] = "drx_sl_quest_item_1013", -- legacy stash_type=7
+    ["bar_npc_dolg_svayzist_task_4"] = "drx_sl_quest_item_1014", -- legacy stash_type=6
+    ["bar_informator_mlr_task_2"] = "drx_sl_quest_item_1015", -- legacy stash_type=3
+    ["esc_2_12_stalker_fanat_task_10"] = "drx_sl_quest_item_1016", -- legacy stash_type=2
+    ["esc_2_12_stalker_wolf_task_10"] = "drx_sl_quest_item_1017", -- legacy stash_type=1
+    ["esc_m_trader_task_5"] = "drx_sl_quest_item_1018", -- legacy stash_type=3
+    ["esc_main_base_trader_mlr_task_9"] = "drx_sl_quest_item_1019", -- legacy stash_type=2
+    ["gar_bandit_leader_task_4"] = "drx_sl_quest_item_1020", -- legacy stash_type=2
+    ["gar_bandit_trader_task_4"] = "drx_sl_quest_item_1021", -- legacy stash_type=2
+    ["ratniy_task_8"] = "drx_sl_quest_item_1022", -- legacy stash_type=2
+    ["seven_task_8"] = "drx_sl_quest_item_1023", -- legacy stash_type=2
+    ["sys_sergei_task_8"] = "drx_sl_quest_item_1024", -- legacy stash_type=2
+    ["vanta_task_8"] = "drx_sl_quest_item_1025", -- legacy stash_type=2
+    ["chimik_task_5"] = "drx_sl_quest_item_1026", -- legacy stash_type=2
+    ["shura_task_8"] = "drx_sl_quest_item_1027", -- legacy stash_type=2
+    ["fenix_task_2"] = "drx_sl_quest_item_1028", -- legacy stash_type=2
+    ["daynega_task_8"] = "drx_sl_quest_item_1029", -- legacy stash_type=2
+    ["eloquent_task_4"] = "drx_sl_quest_item_1030", -- legacy stash_type=2
+    ["dmitrov_kirill_task_8"] = "drx_sl_quest_item_1031", -- legacy stash_type=3
+    ["evkor_task_4"] = "drx_sl_quest_item_1032", -- legacy stash_type=2
+    ["mar_smart_terrain_10_5_renegade_leader_task_4"] = "drx_sl_quest_item_1033", -- legacy stash_type=3
+    ["mar_smart_terrain_10_5_renegade_trader_task_2"] = "drx_sl_quest_item_1034", -- legacy stash_type=2
+    ["red_greh_trader_task_2"] = "drx_sl_quest_item_1035", -- legacy stash_type=2
+    ["red_greh_medic_task_5"] = "drx_sl_quest_item_1036", -- legacy stash_type=3
+    ["yan_fort_milstalk_trader_task_8"] = "drx_sl_quest_item_1037", -- legacy stash_type=1
+    ["rosf_isg_trader_task_5"] = "drx_sl_quest_item_1038", -- legacy stash_type=2
+}
+
+local bad_names = {
+    bar_arena_inventory_box_2 = true,
+    kbo_actor_box_1 = true,
+    red_forester_radio = true,
+    red_forest_box_4_5 = true,
+    red_treasure_10 = true,
+    red_treasure_9 = true,
+    val_q7_n = true,
+    val_recover_item_2_spawn = true,
+    zat_b22_medic_inv_box = true,
+}
+
+local bad_by_level = {
+    zaton = {
+        level_prefix_inventory_box_22 = true,
+    },
+}
+
+local function log(fmt, ...)
+    if type(printf) == "function" then
+        printf(TAG .. " " .. fmt, ...)
+    end
+end
+
+local function get_level_name(se_obj)
+    if not se_obj then return nil end
+
+    local ok, result = pcall(function()
+        local sim = alife()
+        local gg = game_graph()
+        if not sim or not gg then return nil end
+        local vertex = gg:vertex(se_obj.m_game_vertex_id)
+        if not vertex then return nil end
+        return sim:level_name(vertex:level_id())
+    end)
+
+    return ok and result or nil
+end
+
+local function is_known_bad(id)
+    local se_obj = id and alife_object(id)
+    if not se_obj then return false end
+
+    local ok, raw_name = pcall(function()
+        return tostring(se_obj:name() or "")
+    end)
+    if not ok or raw_name == "" then return false end
+
+    if bad_names[raw_name] then
+        return true, raw_name
+    end
+
+    local level_name = get_level_name(se_obj)
+    if level_name and bad_by_level[level_name] and bad_by_level[level_name][raw_name] then
+        return true, level_name .. "/" .. raw_name
+    end
+
+    return false
+end
+
+local function restore_blocked(blocked)
+    for id, old_value in pairs(blocked) do
+        treasure_manager.caches[id] = old_value
+    end
+end
+
+local function install_selector_patch()
+    if not treasure_manager or type(treasure_manager.get_random_stash) ~= "function" then
+        log("treasure_manager.get_random_stash unavailable; selector patch not installed")
+        return false
+    end
+
+    local original_get_random_stash = treasure_manager.get_random_stash
+
+    function treasure_manager.get_random_stash(no_spot, hint, spawn_local, inv_box)
+        if not inv_box then
+            return original_get_random_stash(no_spot, hint, spawn_local, inv_box)
+        end
+
+        local blocked = {}
+
+        for attempt = 1, 32 do
+            local id, name, descr, out_hint = original_get_random_stash(no_spot, hint, spawn_local, inv_box)
+            if not id then
+                restore_blocked(blocked)
+                return id, name, descr, out_hint
+            end
+
+            local bad, label = is_known_bad(id)
+            if not bad then
+                restore_blocked(blocked)
+                return id, name, descr, out_hint
+            end
+
+            blocked[id] = treasure_manager.caches[id]
+            treasure_manager.caches[id] = true
+            log("rejected known bad target id=%s object=%s", tostring(id), tostring(label))
+        end
+
+        restore_blocked(blocked)
+        log("selector exhausted known-good candidates; using stock fallback")
+        return original_get_random_stash(no_spot, hint, spawn_local, inv_box)
+    end
+
+    return true
+end
+
+local function box_has_section(box, section)
+    if not box or not section then return false end
+
+    local found = false
+    local ok = pcall(function()
+        box:iterate_inventory_box(function(owner, item)
+            if item and item:section() == section then
+                found = true
+            end
+        end)
+    end)
+
+    return ok and found
+end
+
+local function active_task_table()
+    if not task_manager or type(task_manager.get_task_manager) ~= "function" then
+        return nil
+    end
+
+    local ok, tm = pcall(task_manager.get_task_manager)
+    if not ok or not tm then return nil end
+    return tm.task_info
+end
+
+local function load_task_var(task_id)
+    if not db.actor or type(load_var) ~= "function" then return nil end
+
+    local ok, var = pcall(load_var, db.actor, task_id)
+    if not ok then return nil end
+    return var
+end
+
+local function resolve_task_section(task_id, var)
+    local typ = tonumber(var and var.stash_type)
+
+    if typ and typ >= 1001 and typ <= 1038 then
+        return "drx_sl_quest_item_" .. tostring(typ), typ, false
+    end
+
+    local mapped = legacy_task_sections[task_id]
+    if mapped then
+        return mapped, typ, true
+    end
+
+    return nil, typ, false
+end
+
+local function canonical_type_from_section(section)
+    return section and tonumber(string.match(section, "(%d+)$")) or nil
+end
+
+local function migrate_task_var(task_id, var, tsk)
+    local section, raw_type, used_legacy_map = resolve_task_section(task_id, var)
+    if not section then return nil, raw_type, false end
+
+    local canonical_type = canonical_type_from_section(section)
+    if not canonical_type then return section, raw_type, used_legacy_map end
+
+    if used_legacy_map and raw_type ~= canonical_type then
+        local old_info = raw_type and ("drx_sl_quest_item_task_" .. tostring(raw_type) .. "_started") or nil
+        local new_info = "drx_sl_quest_item_task_" .. tostring(canonical_type) .. "_started"
+
+        var.stash_type = canonical_type
+        save_var(db.actor, task_id, var)
+
+        if old_info and type(has_alife_info) == "function" and has_alife_info(old_info) then
+            pcall(function() db.actor:disable_info_portion(old_info) end)
+        end
+        if type(has_alife_info) ~= "function" or not has_alife_info(new_info) then
+            pcall(function() db.actor:give_info_portion(new_info) end)
+        end
+
+        if tsk then
+            tsk.check_time = 0
+        end
+
+        log("migrated task state task=%s stash_type=%s->%s section=%s", tostring(task_id), tostring(raw_type), tostring(canonical_type), section)
+    end
+
+    return section, canonical_type, used_legacy_map, raw_type
+end
+
+local function mark_task_ready(task_id, tsk, section, reason)
+    local first_report = not repaired_tasks[task_id]
+    repaired_tasks[task_id] = true
+    if tsk then
+        tsk.stage = 1
+        tsk.check_time = 0
+    end
+    if first_report then
+        log("task ready task=%s section=%s reason=%s", tostring(task_id), tostring(section), tostring(reason))
+    end
+end
+
+local function convert_legacy_actor_item(task_id, tsk, raw_type, canonical_type, section)
+    if not raw_type or raw_type == canonical_type then return false end
+
+    local old_section = "drx_sl_quest_item_" .. tostring(raw_type)
+    local old_item = db.actor and db.actor:object(old_section)
+    if not old_item then return false end
+
+    local ok, new_item = pcall(alife_create_item, section, db.actor)
+    if not ok or not new_item then
+        log("legacy actor item conversion failed task=%s old=%s new=%s", tostring(task_id), old_section, section)
+        return false
+    end
+
+    local old_id = old_item:id()
+    local se_old = alife_object(old_id)
+    if se_old and type(alife_release) == "function" then
+        pcall(alife_release, se_old)
+    elseif type(alife_release_id) == "function" then
+        pcall(alife_release_id, old_id)
+    end
+
+    mark_task_ready(task_id, tsk, section, "converted_actor_item")
+    log("converted legacy actor item task=%s old=%s old_id=%s new=%s new_id=%s", tostring(task_id), old_section, tostring(old_id), section, tostring(new_item.id))
+    return true
+end
+
+local function repair_task_item(task_id, var, box, tsk)
+    if tonumber(var and var.target_id) ~= box:id() then return end
+
+    local section, canonical_type, used_legacy_map, raw_type = migrate_task_var(task_id, var, tsk)
+    if not section then return end
+
+    if used_legacy_map then
+        log("legacy task mapping task=%s box=%s stash_type=%s section=%s", tostring(task_id), tostring(box:id()), tostring(raw_type), section)
+    end
+
+    if not ini_sys or not ini_sys:section_exist(section) then
+        log("cannot repair task=%s box=%s: section %s is still missing", tostring(task_id), tostring(box:id()), section)
+        return
+    end
+
+    if db.actor:object(section) then
+        mark_task_ready(task_id, tsk, section, "actor_inventory")
+        return
+    end
+
+    if convert_legacy_actor_item(task_id, tsk, raw_type, canonical_type, section) then
+        return
+    end
+
+    if box_has_section(box, section) then
+        repaired_tasks[task_id] = true
+        log("quest item already present task=%s box=%s section=%s", tostring(task_id), tostring(box:id()), section)
+        return
+    end
+
+    local existing = nil
+    if type(get_story_se_item) == "function" then
+        local ok, obj = pcall(get_story_se_item, section)
+        if ok then existing = obj end
+    end
+
+    if existing then
+        log("not duplicating existing story item task=%s section=%s id=%s parent=%s", tostring(task_id), section, tostring(existing.id), tostring(existing.parent_id))
+        return
+    end
+
+    if repaired_tasks[task_id] then return end
+
+    local ok, item = pcall(alife_create_item, section, box)
+    if ok and item then
+        repaired_tasks[task_id] = true
+        log("repaired task=%s box=%s section=%s item_id=%s", tostring(task_id), tostring(box:id()), section, tostring(item.id))
+    else
+        log("repair spawn failed task=%s box=%s section=%s", tostring(task_id), tostring(box:id()), section)
+    end
+end
+
+local function repair_box(box_id)
+    pending_boxes[box_id] = nil
+
+    if not db.actor or not level then return true end
+
+    local box = level.object_by_id(box_id)
+    if not box or not IsInvbox(box) then return true end
+
+    local info = active_task_table()
+    if type(info) ~= "table" then return true end
+
+    for task_id, tsk in pairs(info) do
+        local var = load_task_var(task_id)
+        if var then
+            repair_task_item(task_id, var, box, tsk)
+        end
+    end
+
+    return true
+end
+
+local function physic_object_on_use_callback(box, who)
+    if not box or not IsInvbox(box) then return end
+
+    local box_id = box:id()
+    if pending_boxes[box_id] then return end
+
+    pending_boxes[box_id] = true
+    -- Run on the next frame, after treasure_manager's own use callback has
+    -- consumed/spawned the pending cache, but before DotMarks opens the real UI.
+    CreateTimeEvent(TAG, "box_" .. tostring(box_id), 0.01, repair_box, box_id)
+end
+
+local function scan_active_legacy_tasks()
+    if not db.actor then return end
+
+    local info = active_task_table()
+    if type(info) ~= "table" then return end
+
+    for task_id, tsk in pairs(info) do
+        local var = load_task_var(task_id)
+        if var and legacy_task_sections[task_id] then
+            local section, canonical_type, used_legacy_map, raw_type = migrate_task_var(task_id, var, tsk)
+            if section and ini_sys and ini_sys:section_exist(section) then
+                if db.actor:object(section) then
+                    mark_task_ready(task_id, tsk, section, "startup_actor_inventory")
+                elseif used_legacy_map then
+                    convert_legacy_actor_item(task_id, tsk, raw_type, canonical_type, section)
+                end
+            end
+        end
+    end
+end
+
+local function actor_on_update()
+    local now = time_global()
+    if now > scan_until or now < next_scan then return end
+    next_scan = now + 1000
+    scan_active_legacy_tasks()
+end
+
+local function report_sections()
+    if not ini_sys then return end
+
+    local ready = 0
+    for typ = 1001, 1038 do
+        if ini_sys:section_exist("drx_sl_quest_item_" .. tostring(typ)) then
+            ready = ready + 1
+        end
+    end
+    log("Anthology quest item sections ready: %s/38", tostring(ready))
+end
+
+local function install_patch()
+    if installed then return end
+    installed = true
+
+    local selector_ok = install_selector_patch()
+    RegisterScriptCallback("physic_object_on_use_callback", physic_object_on_use_callback)
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+    report_sections()
+    log("installed repair v1.4 selector=%s legacy_maps=%s", tostring(selector_ok), 37)
+end
+
+function on_game_start()
+    install_patch()
+    repaired_tasks = {}
+    pending_boxes = {}
+    next_scan = 0
+    scan_until = time_global() + 60000
+    scan_active_legacy_tasks()
+end

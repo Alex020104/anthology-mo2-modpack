@@ -1,0 +1,508 @@
+-- Anthology 2.1 Quest Story ID Collision Fix v1.0.4 BETA - incremental ALife scan
+-- Late runtime guard. Does not replace story_objects.script.
+-- Also repairs the target and an inconsistent saved XR logic state of Levsha.
+
+local VERSION = "1.0.4-beta"
+local LOG_VERSION = "v1.0.4"
+
+local TASK_ID_LEVSHA = "yan_quest_levsha"
+local INFO_LEVSHA_DIALOG_STARTED = "yan_proriv_k_ystanovke_start"
+local LEVSHA_SECTION = "yan_stalker_levsha"
+local LEVSHA_DIALOG = "yan_levsha_hello_dialog"
+local LEVSHA_DIALOG_SECTION = "camper@timer_fire1_cut5"
+local LEVSHA_WAIT_SECTION = "camper@wait_cut5"
+local LEVSHA_SCENE_LOGIC = "scripts\\yantar\\yan_scene_6_stalker_5.ltx"
+
+local installed = false
+local repair_pending = false
+local repair_attempts = 0
+local next_repair_time = 0
+local MAX_OBJECT_ID = 65534
+local SCAN_BUDGET_PER_FRAME = 256
+local levsha_scan_next_id = 1
+local levsha_scan_complete = false
+local cached_levsha_id = nil
+
+local preference = {
+    jup_b16_oasis_artifact = {name = "jup_af_oasis_heart"},
+    main_story_19_aver_documents = {section = "main_story_19_aver_documents"},
+    main_story_14_sci_documents = {section = "main_story_14_sci_documents"},
+    main_story_16_kas_documents = {section = "main_story_16_kas_documents"},
+    main_story_17_country_documents = {section = "main_story_17_country_documents"},
+    main_story_18_los_documents = {section = "main_story_18_los_documents"},
+    yan_stalker_levsha = {section = LEVSHA_SECTION},
+    esc_village_zona_quest = {name = "esc_village_zona_quest_0000"},
+    esc_zone_atp_all = {name = "esc_zone_atp_all"},
+    labx5_lamp_118 = {name = "labx5_lamp_118_galogen_1_glass"},
+}
+
+local keep_first = {
+    jup_a9_dogs_normal = true,
+}
+
+-- These sections deliberately create five identical quest devices.
+-- Their fixed story IDs are not referenced by the supplied Anthology
+-- scripts/configs and only cause four duplicate registrations.
+local suppress_registration = {
+    bar_a2_spec_juk_item_1_id = true,
+    bar_a2_spec_juk_item_2_id = true,
+}
+
+local suppressed_logged = {}
+
+local function get_alife_object(obj_id)
+    if type(obj_id) ~= "number" then
+        return nil
+    end
+
+    local sim = alife()
+    if not sim then
+        return nil
+    end
+
+    local ok, obj = pcall(function()
+        return sim:object(obj_id)
+    end)
+    return ok and obj or nil
+end
+
+local function object_matches(obj_id, rule)
+    local obj = get_alife_object(obj_id)
+    if not obj then
+        return false
+    end
+
+    if rule.section then
+        local ok, section = pcall(function()
+            return obj:section_name()
+        end)
+        if not ok or section ~= rule.section then
+            return false
+        end
+    end
+
+    if rule.name then
+        local ok, name = pcall(function()
+            return obj:name()
+        end)
+        if not ok or name ~= rule.name then
+            return false
+        end
+    end
+
+    return true
+end
+
+local function install_registry_guard()
+    if not story_objects or type(story_objects.register) ~= "function" then
+        printf("[QuestStoryIdFix %s] story_objects.register is not ready", LOG_VERSION)
+        return false
+    end
+
+    if story_objects.ANTHOLOGY_QUEST_STORY_ID_RUNTIME_FIX_VERSION == VERSION then
+        return true
+    end
+
+    local original_register = story_objects.register
+
+    story_objects.register = function(obj_id, story_id)
+        if suppress_registration[story_id] then
+            if not suppressed_logged[story_id] then
+                suppressed_logged[story_id] = true
+                printf("[QuestStoryIdFix %s] suppressed unused repeated story_id %s",
+                    LOG_VERSION, story_id)
+            end
+            return
+        end
+
+        local by_story = story_objects.object_id_by_story_id
+        local by_object = story_objects.story_id_by_object_id
+        local current_id = type(by_story) == "table" and by_story[story_id] or nil
+
+        if current_id and current_id ~= obj_id then
+            local rule = preference[story_id]
+
+            if rule then
+                local current_preferred = object_matches(current_id, rule)
+                local incoming_preferred = object_matches(obj_id, rule)
+
+                if incoming_preferred and not current_preferred then
+                    if type(by_object) == "table" then
+                        by_object[current_id] = nil
+                        by_object[obj_id] = story_id
+                    end
+                    by_story[story_id] = obj_id
+                    printf("[QuestStoryIdFix %s] selected object %s for story_id %s (replaced %s)",
+                        LOG_VERSION, obj_id, story_id, current_id)
+                    return
+                end
+
+                if current_preferred then
+                    printf("[QuestStoryIdFix %s] ignored duplicate object %s for story_id %s",
+                        LOG_VERSION, obj_id, story_id)
+                    return
+                end
+            elseif keep_first[story_id] then
+                printf("[QuestStoryIdFix %s] kept first object %s for repeated story_id %s",
+                    LOG_VERSION, current_id, story_id)
+                return
+            end
+        end
+
+        return original_register(obj_id, story_id)
+    end
+
+    story_objects.ANTHOLOGY_QUEST_STORY_ID_RUNTIME_FIX_VERSION = VERSION
+    printf("[QuestStoryIdFix %s] late story registry guard installed", LOG_VERSION)
+    return true
+end
+
+local function find_levsha_id()
+    if story_objects and type(story_objects.object_id_by_story_id) == "table" then
+        local registered_id = story_objects.object_id_by_story_id["yan_stalker_levsha"]
+        if registered_id and object_matches(registered_id, preference.yan_stalker_levsha) then
+            cached_levsha_id = registered_id
+            return registered_id
+        end
+    end
+
+    if cached_levsha_id and object_matches(cached_levsha_id, preference.yan_stalker_levsha) then
+        return cached_levsha_id
+    end
+
+    return nil
+end
+
+local function advance_levsha_scan()
+    if levsha_scan_complete or cached_levsha_id then
+        return
+    end
+
+    local sim = alife()
+    if not sim then
+        return
+    end
+
+    local last_id = math.min(levsha_scan_next_id + SCAN_BUDGET_PER_FRAME - 1, MAX_OBJECT_ID)
+    for obj_id = levsha_scan_next_id, last_id do
+        local obj = sim:object(obj_id)
+        if obj then
+            local ok, section = pcall(function()
+                return obj:section_name()
+            end)
+            if ok and section == LEVSHA_SECTION then
+                cached_levsha_id = obj_id
+                levsha_scan_complete = true
+                printf("[QuestStoryIdFix %s] incremental scan found Levsha object %s", LOG_VERSION, obj_id)
+                return
+            end
+        end
+    end
+
+    levsha_scan_next_id = last_id + 1
+    if levsha_scan_next_id > MAX_OBJECT_ID then
+        levsha_scan_complete = true
+    end
+end
+
+local function get_task_record(task_id)
+    if not task_manager or type(task_manager.get_task_manager) ~= "function" then
+        return nil, "manager_not_ready"
+    end
+
+    local ok, manager = pcall(function()
+        return task_manager.get_task_manager()
+    end)
+    if not ok or not manager or type(manager.task_info) ~= "table" then
+        return nil, "manager_not_ready"
+    end
+
+    return manager.task_info[task_id], "ready"
+end
+
+local function update_game_task_marker(task_record, target_id)
+    if not db.actor then
+        return false
+    end
+
+    local game_task = task_record.t
+    if not game_task then
+        local ok, result = pcall(function()
+            return db.actor:get_task(TASK_ID_LEVSHA, true)
+        end)
+        if ok then
+            game_task = result
+        end
+    end
+
+    if not game_task then
+        return false
+    end
+
+    task_record.t = game_task
+
+    if task_record.spot then
+        local ok = pcall(function()
+            game_task:change_map_location(task_record.spot, target_id)
+        end)
+        if ok then
+            return true
+        end
+    end
+
+    local ok = pcall(function()
+        game_task:set_map_object_id(target_id)
+    end)
+    return ok
+end
+
+local function repair_levsha_task()
+    local task_record, state = get_task_record(TASK_ID_LEVSHA)
+    if state ~= "ready" then
+        return "retry"
+    end
+
+    if not task_record then
+        return "done"
+    end
+
+    local levsha_id = find_levsha_id()
+    if not levsha_id then
+        return "retry"
+    end
+
+    local old_target = task_record.current_target
+    if old_target == levsha_id then
+        return "done"
+    end
+
+    local old_obj = get_alife_object(old_target)
+    if old_obj then
+        local ok, old_section = pcall(function()
+            return old_obj:section_name()
+        end)
+        if ok and old_section == LEVSHA_SECTION then
+            return "done"
+        end
+    end
+
+    task_record.current_target = levsha_id
+    local marker_updated = update_game_task_marker(task_record, levsha_id)
+
+    printf("[QuestStoryIdFix %s] repaired yan_quest_levsha target: %s -> %s, marker_updated=%s",
+        LOG_VERSION, tostring(old_target), levsha_id, tostring(marker_updated))
+
+    return "done"
+end
+
+local function actor_has_info(info_id)
+    if type(has_alife_info) == "function" then
+        local ok, result = pcall(function()
+            return has_alife_info(info_id)
+        end)
+        if ok then
+            return result == true
+        end
+    end
+
+    if db.actor then
+        local ok, result = pcall(function()
+            return db.actor:has_info(info_id)
+        end)
+        if ok then
+            return result == true
+        end
+    end
+
+    return false
+end
+
+local function get_online_levsha(levsha_id)
+    local st = db.storage and db.storage[levsha_id] or nil
+    local npc = st and st.object or nil
+
+    if not npc and level and type(level.object_by_id) == "function" then
+        local ok, obj = pcall(function()
+            return level.object_by_id(levsha_id)
+        end)
+        if ok then
+            npc = obj
+        end
+    end
+
+    return npc, st
+end
+
+local function normalize_path(value)
+    if type(value) ~= "string" then
+        return ""
+    end
+    return string.lower(string.gsub(value, "/", "\\"))
+end
+
+local function arm_levsha_dialog(npc)
+    local enabled = false
+    local dialog_set = false
+
+    local ok_enable = pcall(function()
+        npc:enable_talk()
+    end)
+    enabled = ok_enable
+
+    local ok_dialog = pcall(function()
+        npc:set_start_dialog(LEVSHA_DIALOG)
+    end)
+    dialog_set = ok_dialog
+
+    return enabled and dialog_set
+end
+
+local function repair_levsha_dialog_state()
+    local task_record, state = get_task_record(TASK_ID_LEVSHA)
+    if state ~= "ready" then
+        return "retry"
+    end
+
+    if not task_record then
+        return "done"
+    end
+
+    -- Once the first Levsha dialogue has completed, the operation is already
+    -- running and the normal scene logic must not be rewound.
+    if actor_has_info(INFO_LEVSHA_DIALOG_STARTED) then
+        return "done"
+    end
+
+    local levsha_id = find_levsha_id()
+    if not levsha_id then
+        return "retry"
+    end
+
+    local npc, st = get_online_levsha(levsha_id)
+    if not npc or not st or not st.ini then
+        return "retry"
+    end
+
+    local ok_alive, alive = pcall(function()
+        return npc:alive()
+    end)
+    if ok_alive and not alive then
+        printf("[QuestStoryIdFix %s] Levsha object %s is dead; dialogue state was not changed",
+            LOG_VERSION, levsha_id)
+        return "done"
+    end
+
+    local ini_filename = normalize_path(st.ini_filename)
+    local expected_logic = normalize_path(LEVSHA_SCENE_LOGIC)
+
+    -- Do not touch Levsha after another quest/job has legitimately assigned
+    -- him a different logic file.
+    if ini_filename ~= "" and not string.find(ini_filename, expected_logic, 1, true) then
+        return "done"
+    end
+
+    local active_section = st.active_section
+
+    -- This is the normal section where the initial dialogue is enabled.
+    if active_section == LEVSHA_DIALOG_SECTION then
+        local armed = arm_levsha_dialog(npc)
+        printf("[QuestStoryIdFix %s] Levsha dialogue section is ready: %s, dialog_armed=%s",
+            LOG_VERSION, active_section, tostring(armed))
+        return "done"
+    end
+
+    -- camper@wait_cut5 is a legitimate pre-dialogue state while the opening
+    -- snork is still alive. Do not skip that encounter.
+    if active_section == LEVSHA_WAIT_SECTION then
+        return "done"
+    end
+
+    -- Any later scene section is impossible while
+    -- yan_proriv_k_ystanovke_start is absent. This is the stale saved state
+    -- seen in affected Anthology saves (for example remark@yan_give_orders).
+    local old_section = tostring(active_section)
+    local ok_switch, switched = pcall(function()
+        return xr_logic.switch_to_section(npc, st.ini, LEVSHA_DIALOG_SECTION)
+    end)
+
+    if not ok_switch then
+        printf("[QuestStoryIdFix %s] failed to repair Levsha logic from %s: switch_to_section error",
+            LOG_VERSION, old_section)
+        return "retry"
+    end
+
+    local armed = arm_levsha_dialog(npc)
+    local new_section = st.active_section
+
+    if new_section == LEVSHA_DIALOG_SECTION then
+        printf("[QuestStoryIdFix %s] repaired Levsha dialogue logic: %s -> %s, switched=%s, dialog_armed=%s",
+            LOG_VERSION, old_section, new_section, tostring(switched), tostring(armed))
+        return "done"
+    end
+
+    printf("[QuestStoryIdFix %s] Levsha logic repair did not reach %s; current=%s",
+        LOG_VERSION, LEVSHA_DIALOG_SECTION, tostring(new_section))
+    return "retry"
+end
+
+local function schedule_repair()
+    repair_pending = true
+    repair_attempts = 0
+    next_repair_time = 0
+    levsha_scan_next_id = 1
+    levsha_scan_complete = false
+    cached_levsha_id = nil
+end
+
+local function try_scheduled_repair()
+    if not repair_pending then
+        return
+    end
+
+    local now = time_global()
+    if now < next_repair_time then
+        return
+    end
+
+    next_repair_time = now + 1000
+    repair_attempts = repair_attempts + 1
+
+    install_registry_guard()
+
+    local task_result = repair_levsha_task()
+    local dialog_result = repair_levsha_dialog_state()
+
+    if task_result == "done" and dialog_result == "done" then
+        repair_pending = false
+    elseif repair_attempts >= 30 then
+        repair_pending = false
+        printf("[QuestStoryIdFix %s] Levsha repair was not completed after %s attempts",
+            LOG_VERSION, repair_attempts)
+    end
+end
+
+local function actor_on_first_update()
+    schedule_repair()
+    advance_levsha_scan()
+    try_scheduled_repair()
+end
+
+local function actor_on_update()
+    if repair_pending then
+        advance_levsha_scan()
+    end
+    try_scheduled_repair()
+end
+
+function on_game_start()
+    if installed then
+        return
+    end
+    installed = true
+
+    printf("[QuestStoryIdFix] Anthology Quest Story ID Collision Fix %s loaded", VERSION)
+    install_registry_guard()
+
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+end

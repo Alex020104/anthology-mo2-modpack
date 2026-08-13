@@ -1,0 +1,356 @@
+-- Anthology 2.1 - Central Pripyat save repair
+-- Removes one corrupted offline pseudogiant from the supplied save.
+-- The deletion is guarded by ID, section, object name, level name and offline state.
+-- v1.0.1 also repairs transition autosaves already opened on l11_pripyat,
+-- provided the target monster has not yet completed client-side spawning.
+
+local VERSION = "1.0.1-transition-autosave-beta"
+local LOG_TAG = "PripyatGigantRepair"
+
+local TARGET_ID = 40604
+local TARGET_SECTION = "gigant_normal"
+local TARGET_NAME = "gigant_normal40604"
+local TARGET_LEVEL = "l11_pripyat"
+
+local CHECK_INTERVAL_MS = 250
+local MAX_FIND_ATTEMPTS = 40
+local MAX_RELEASE_ATTEMPTS = 3
+
+local STATE_KEY = "__anthology_pripyat_gigant_repair_state"
+local state = rawget(_G, STATE_KEY)
+
+if type(state) ~= "table" then
+    state = {
+        callbacks_registered = false,
+        done = false,
+        success = false,
+        find_attempts = 0,
+        release_attempts = 0,
+        release_requested = false,
+        next_check = 0,
+        last_result = "not_started",
+    }
+    rawset(_G, STATE_KEY, state)
+end
+
+local function log_message(fmt, ...)
+    local ok, body = pcall(string.format, tostring(fmt), ...)
+    if not ok then
+        body = tostring(fmt)
+    end
+
+    local line = string.format("[%s %s] %s", LOG_TAG, VERSION, body)
+    if type(printf) == "function" then
+        printf("%s", line)
+    elseif type(print) == "function" then
+        print(line)
+    end
+end
+
+local function safe_alife()
+    if type(alife) ~= "function" then
+        return nil
+    end
+
+    local ok, sim = pcall(alife)
+    return ok and sim or nil
+end
+
+local function safe_object(sim, object_id)
+    if not sim then
+        return nil
+    end
+
+    local ok, obj = pcall(function()
+        return sim:object(object_id)
+    end)
+    return ok and obj or nil
+end
+
+local function safe_section(obj)
+    if not obj then
+        return nil
+    end
+
+    local ok, value = pcall(function()
+        return obj:section_name()
+    end)
+    return ok and value or nil
+end
+
+local function safe_name(obj)
+    if not obj then
+        return nil
+    end
+
+    local ok, value = pcall(function()
+        return obj:name()
+    end)
+    return ok and value or nil
+end
+
+local function safe_online(obj)
+    if not obj then
+        return nil
+    end
+
+    local ok, value = pcall(function()
+        return obj.online
+    end)
+    return ok and value or nil
+end
+
+local function safe_current_level_name()
+    if not level or type(level.name) ~= "function" then
+        return nil
+    end
+
+    local ok, value = pcall(level.name)
+    return ok and value or nil
+end
+
+local function safe_level_name(sim, obj)
+    if not sim or not obj then
+        return nil
+    end
+
+    local ok, value = pcall(function()
+        local graph = game_graph()
+        if not graph then
+            return nil
+        end
+
+        local vertex = graph:vertex(obj.m_game_vertex_id)
+        if not vertex then
+            return nil
+        end
+
+        return sim:level_name(vertex:level_id())
+    end)
+    return ok and value or nil
+end
+
+local function reset_for_loaded_save()
+    state.done = false
+    state.success = false
+    state.find_attempts = 0
+    state.release_attempts = 0
+    state.release_requested = false
+    state.next_check = 0
+    state.last_result = "scheduled"
+end
+
+local function finish(success, result)
+    state.done = true
+    state.success = success == true
+    state.last_result = tostring(result or "finished")
+
+    if success then
+        log_message(
+            "repair completed: removed object id=%d section=%s name=%s level=%s; make a new manual save before entering Central Pripyat",
+            TARGET_ID,
+            TARGET_SECTION,
+            TARGET_NAME,
+            TARGET_LEVEL
+        )
+    else
+        log_message("repair stopped: %s", state.last_result)
+    end
+end
+
+local function validate_target(sim, obj)
+    local section = safe_section(obj)
+    local name = safe_name(obj)
+    local level_name = safe_level_name(sim, obj)
+    local online = safe_online(obj)
+    local current_level = safe_current_level_name()
+
+    if section ~= TARGET_SECTION then
+        return false, string.format(
+            "safety block: id=%d has section=%s, expected=%s",
+            TARGET_ID,
+            tostring(section),
+            TARGET_SECTION
+        )
+    end
+
+    if name ~= TARGET_NAME then
+        return false, string.format(
+            "safety block: id=%d has name=%s, expected=%s",
+            TARGET_ID,
+            tostring(name),
+            TARGET_NAME
+        )
+    end
+
+    -- A transition autosave may already report l11_pripyat even though the target
+    -- monster is still an offline ALife object waiting in the level-spawn queue.
+    -- Deleting it is safe only before it becomes online/client-spawned.
+    if online == true then
+        return false, string.format(
+            "safety block: target id=%d is online; offline deletion was expected",
+            TARGET_ID
+        )
+    end
+
+    if level_name ~= TARGET_LEVEL then
+        return false, string.format(
+            "safety block: id=%d is on level=%s, expected=%s",
+            TARGET_ID,
+            tostring(level_name),
+            TARGET_LEVEL
+        )
+    end
+
+    return true, string.format(
+        "validated current_level=%s target_online=%s",
+        tostring(current_level),
+        tostring(online)
+    )
+end
+
+local function repair_step()
+    if state.done then
+        return
+    end
+
+    local sim = safe_alife()
+    if not sim then
+        state.find_attempts = state.find_attempts + 1
+        if state.find_attempts >= MAX_FIND_ATTEMPTS then
+            finish(false, "ALife simulator is unavailable")
+        end
+        return
+    end
+
+    local obj = safe_object(sim, TARGET_ID)
+
+    if not obj then
+        if state.release_requested then
+            finish(true, "removed")
+            return
+        end
+
+        state.find_attempts = state.find_attempts + 1
+        if state.find_attempts >= MAX_FIND_ATTEMPTS then
+            finish(false, string.format(
+                "target id=%d was not found; the save may already be repaired or may be a different save",
+                TARGET_ID
+            ))
+        end
+        return
+    end
+
+    local valid, detail = validate_target(sim, obj)
+    if not valid then
+        finish(false, detail)
+        return
+    end
+
+    log_message("%s", tostring(detail))
+
+    if state.release_attempts >= MAX_RELEASE_ATTEMPTS then
+        finish(false, string.format(
+            "release did not complete after %d attempts",
+            MAX_RELEASE_ATTEMPTS
+        ))
+        return
+    end
+
+    state.release_attempts = state.release_attempts + 1
+    state.release_requested = true
+
+    log_message(
+        "validated target; requesting release attempt=%d id=%d section=%s name=%s level=%s",
+        state.release_attempts,
+        TARGET_ID,
+        TARGET_SECTION,
+        TARGET_NAME,
+        TARGET_LEVEL
+    )
+
+    local ok, err = pcall(function()
+        sim:release(obj, true)
+    end)
+
+    if not ok then
+        state.release_requested = false
+        finish(false, string.format("release call failed: %s", tostring(err)))
+        return
+    end
+
+    if not safe_object(sim, TARGET_ID) then
+        finish(true, "removed")
+    end
+end
+
+local function actor_on_first_update()
+    reset_for_loaded_save()
+    log_message(
+        "save check scheduled for id=%d section=%s name=%s level=%s",
+        TARGET_ID,
+        TARGET_SECTION,
+        TARGET_NAME,
+        TARGET_LEVEL
+    )
+    repair_step()
+end
+
+local function actor_on_update()
+    if state.done then
+        return
+    end
+
+    local now = 0
+    if type(time_global) == "function" then
+        local ok, value = pcall(time_global)
+        if ok and type(value) == "number" then
+            now = value
+        end
+    end
+
+    if now > 0 and now < (state.next_check or 0) then
+        return
+    end
+
+    if now > 0 then
+        state.next_check = now + CHECK_INTERVAL_MS
+    end
+
+    repair_step()
+end
+
+function status()
+    log_message(
+        "status done=%s success=%s result=%s find_attempts=%d release_attempts=%d",
+        tostring(state.done),
+        tostring(state.success),
+        tostring(state.last_result),
+        tonumber(state.find_attempts) or 0,
+        tonumber(state.release_attempts) or 0
+    )
+    return state.success, state.last_result
+end
+
+function repair_now()
+    reset_for_loaded_save()
+    repair_step()
+    return status()
+end
+
+function on_game_start()
+    if state.callbacks_registered then
+        return
+    end
+
+    if type(RegisterScriptCallback) ~= "function" then
+        log_message("RegisterScriptCallback is unavailable; automatic repair was not registered")
+        return
+    end
+
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+    state.callbacks_registered = true
+
+    log_message("callbacks registered")
+end

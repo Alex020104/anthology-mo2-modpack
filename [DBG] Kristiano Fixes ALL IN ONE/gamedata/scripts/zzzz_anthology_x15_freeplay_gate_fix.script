@@ -1,0 +1,265 @@
+-- Anthology X-15 Freeplay Gate Fix v1.0.3 BETA - throttled runtime
+-- Fixes the v1.0.1 active-task detection bug.
+-- No filesystem calls. Does not replace xr_effects_contract_new_life.script.
+
+local PATCH_KEY = "__anthology_x15_freeplay_gate_fix_v103"
+local VERSION = "1.0.3-beta"
+
+local LEVEL_NAME = "l15u_pripyat_und"
+local FREEPLAY_TASK_ID = "main_22_search_labx15"
+local CONTRACT_TASK_ID = "s11_poisk_otryad_glava_2_to"
+local OPEN_INFO = "lx15m_t1_knopka_door_opened"
+local NORMAL_STORY_READY_INFO = "lx15m_t1_door_mojno_press_go"
+local NORMAL_STORY_DIALOG_INFO = "lax_a_m15_animeboy_start_dialog_talking"
+local START_DELAY_MS = 2000
+local CHECK_OUTSIDE_LEVEL_MS = 1000
+local CHECK_ON_LEVEL_MS = 100
+local CHECK_COMPLETED_MS = 5000
+
+local state = _G[PATCH_KEY] or {}
+_G[PATCH_KEY] = state
+
+local function log_message(fmt, ...)
+    if type(printf) == "function" then
+        printf("[X15GateFix v%s] " .. fmt, VERSION, ...)
+    end
+end
+
+local function actor_has_info(info_id)
+    if not (db and db.actor) then
+        return false
+    end
+
+    local ok, result = pcall(function()
+        return db.actor:has_info(info_id)
+    end)
+
+    return ok and result == true
+end
+
+local function make_no_sound_wrapper(label)
+    return function(...)
+        if not state.missing_sound_logged then
+            state.missing_sound_logged = true
+            log_message("missing optional X-15 voice effect suppressed: %s", tostring(label))
+        end
+        return nil
+    end
+end
+
+local function install_sound_guard_after_load()
+    if type(xr_effects) ~= "table" then
+        return false
+    end
+
+    if state.sound_guard_installed
+        and xr_effects.s11_lxm15_sound_give_xr == state.sound_wrapper_1
+        and xr_effects.s11_lxm15_sound_give_xr2 == state.sound_wrapper_2 then
+        return true
+    end
+
+    local current_1 = xr_effects.s11_lxm15_sound_give_xr
+    local current_2 = xr_effects.s11_lxm15_sound_give_xr2
+
+    if type(current_1) ~= "function" and type(current_2) ~= "function" then
+        return false
+    end
+
+    state.original_sound_1 = current_1
+    state.original_sound_2 = current_2
+    state.sound_wrapper_1 = make_no_sound_wrapper("s11_lxm15_sound_give_xr")
+    state.sound_wrapper_2 = make_no_sound_wrapper("s11_lxm15_sound_give_xr2")
+
+    if type(current_1) == "function" then
+        xr_effects.s11_lxm15_sound_give_xr = state.sound_wrapper_1
+    end
+
+    if type(current_2) == "function" then
+        xr_effects.s11_lxm15_sound_give_xr2 = state.sound_wrapper_2
+    end
+
+    state.sound_guard_installed = true
+    log_message("post-load sound guard installed; no filesystem calls used")
+    return true
+end
+
+local function get_task_info(task_id)
+    if not (task_manager and type(task_manager.get_task_manager) == "function") then
+        return nil
+    end
+
+    local ok, info = pcall(function()
+        local manager = task_manager.get_task_manager()
+        return manager and manager.task_info and manager.task_info[task_id] or nil
+    end)
+
+    if ok then
+        return info
+    end
+
+    return nil
+end
+
+local function task_is_active(task_id)
+    local info = get_task_info(task_id)
+    if not info then
+        return false, nil, nil
+    end
+
+    local status = info.status
+    local status_text = status ~= nil and tostring(status) or "nil"
+    local stage_text = info.stage ~= nil and tostring(info.stage) or "nil"
+
+    -- v1.0.1 incorrectly required info.stage == nil. In the affected save,
+    -- an active task is stored as status="selected", stage=0.
+    local terminal = status_text == "completed"
+        or status_text == "fail"
+        or status_text == "failed"
+
+    return not terminal, status_text, stage_text
+end
+
+local function on_x15_level()
+    if not (level and type(level.name) == "function") then
+        return false
+    end
+
+    local ok, result = pcall(level.name)
+    return ok and result == LEVEL_NAME
+end
+
+local function normal_contract_story_is_active()
+    local contract_active = task_is_active(CONTRACT_TASK_ID)
+    return contract_active
+        or actor_has_info(NORMAL_STORY_READY_INFO)
+        or actor_has_info(NORMAL_STORY_DIALOG_INFO)
+end
+
+local function log_freeplay_task_state_once()
+    if state.task_state_logged then
+        return
+    end
+
+    local active, status, stage = task_is_active(FREEPLAY_TASK_ID)
+    state.task_state_logged = true
+    log_message(
+        "freeplay task probe: exists=%s active=%s status=%s stage=%s open_info=%s",
+        tostring(status ~= nil),
+        tostring(active),
+        tostring(status),
+        tostring(stage),
+        tostring(actor_has_info(OPEN_INFO))
+    )
+end
+
+local function try_open_freeplay_gate(now)
+    if not (db and db.actor) then
+        return false
+    end
+
+    if not on_x15_level() then
+        state.on_x15 = false
+        state.entered_x15_at = nil
+        state.task_state_logged = false
+        return false
+    end
+
+    if not state.on_x15 then
+        state.on_x15 = true
+        state.entered_x15_at = now
+        state.task_state_logged = false
+        state.open_info_logged = false
+        state.story_skip_logged = false
+    end
+
+    if not install_sound_guard_after_load() then
+        return true
+    end
+
+    if now - (state.entered_x15_at or now) < START_DELAY_MS then
+        return true
+    end
+
+    log_freeplay_task_state_once()
+
+    if actor_has_info(OPEN_INFO) then
+        if not state.open_info_logged then
+            state.open_info_logged = true
+            log_message("%s is already present; no duplicate grant performed", OPEN_INFO)
+        end
+        state.completed = true
+        return true
+    end
+
+    local freeplay_active, status, stage = task_is_active(FREEPLAY_TASK_ID)
+    if not freeplay_active then
+        return true
+    end
+
+    if normal_contract_story_is_active() then
+        if not state.story_skip_logged then
+            state.story_skip_logged = true
+            log_message("normal X-15 contract storyline detected; freeplay bypass not applied")
+        end
+        return true
+    end
+
+    local ok, err = pcall(function()
+        db.actor:give_info_portion(OPEN_INFO)
+    end)
+
+    if ok then
+        state.gate_info_granted = true
+        state.completed = true
+        log_message(
+            "granted %s for active freeplay task %s (status=%s stage=%s)",
+            OPEN_INFO,
+            FREEPLAY_TASK_ID,
+            tostring(status),
+            tostring(stage)
+        )
+    else
+        log_message("failed to grant %s: %s", OPEN_INFO, tostring(err))
+        state.entered_x15_at = now
+        state.task_state_logged = false
+    end
+
+    return true
+end
+
+local function actor_on_first_update()
+    state.next_check_time = 0
+    state.on_x15 = false
+    state.entered_x15_at = nil
+    state.completed = false
+    state.task_state_logged = false
+    state.open_info_logged = false
+    state.story_skip_logged = false
+    state.missing_sound_logged = false
+    install_sound_guard_after_load()
+end
+
+local function actor_on_update()
+    local now = time_global()
+    if now < (state.next_check_time or 0) then
+        return
+    end
+
+    local interval = state.completed and CHECK_COMPLETED_MS
+        or (state.on_x15 and CHECK_ON_LEVEL_MS or CHECK_OUTSIDE_LEVEL_MS)
+    state.next_check_time = now + interval
+
+    local on_x15 = try_open_freeplay_gate(now)
+    if on_x15 and not state.completed then
+        state.next_check_time = now + CHECK_ON_LEVEL_MS
+    end
+end
+
+function on_game_start()
+    if type(RegisterScriptCallback) == "function" and not state.callbacks_registered then
+        RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+        RegisterScriptCallback("actor_on_update", actor_on_update)
+        state.callbacks_registered = true
+        log_message("callbacks registered; v1.0.3 throttled checks enabled")
+    end
+end

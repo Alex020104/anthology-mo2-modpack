@@ -1,0 +1,62 @@
+; general section
+
+[walker@gen]
+meet = no_meet
+use_camp = false
+combat_ignore_cond = true
+combat_ignore_keep_when_attacked = true
+invulnerable = true
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[wounded]
+hp_state 		= 101|hands_up_drop@nil
+hp_state_see 	= 101|hands_up_drop@nil
+hp_victim 		= 101|nil
+hp_fight 		= 101|false
+hp_cover		= 101|false
+
+[wounded@jump]
+hp_state 		= 101|sad_rob_veranda_jump@nil
+hp_state_see 	= 101|sad_rob_veranda_jump@nil
+hp_victim 		= 101|nil
+hp_fight 		= 101|false
+hp_cover		= 101|false
+
+[logic]
+active = walker@1
+
+[walker@1]:walker@gen
+path_walk = sad_sim_3_rob_actor_start
+on_info = {+sad_sim_3_cutscene_start} animpoint@2 %=sad_take_item_from_actor_slot(3:2)%
+
+[animpoint@2]:walker@gen
+cover_name = sad_sim_3_rob_actor_place
+avail_animations = guard
+reach_movement = patrol
+on_info = {=animpoint_reached} animpoint@3 %+sad_sim_3_rob_actor_on_position%
+
+[animpoint@3]:walker@gen
+cover_name = sad_sim_3_rob_actor_place
+avail_animations = guard_na
+on_info = {+sad_sim_3_rob_handsup} animpoint@4
+
+[animpoint@4]:walker@gen
+wounded = wounded
+cover_name = sad_sim_3_rob_actor_place
+can_select_weapon = false
+avail_animations = hands_up_drop
+on_timer = 4000 | animpoint@5
+on_info = {+sad_sim_3_rob_phrase_end} animpoint@5
+
+[animpoint@5]:walker@gen
+wounded = wounded@jump
+cover_name 			= sad_sim_3_rob_actor_place
+avail_animations 	= sad_rob_veranda_jump
+can_select_weapon 	= false
+on_info 			= {+sad_sim_3_rob_snorki} remark@wait
+on_timer 			= 3500 | remark@wait %+sad_sim_3_rob_snorki%
+
+[remark@wait]:walker@gen
+can_select_weapon 	= false

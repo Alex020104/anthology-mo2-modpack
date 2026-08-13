@@ -1,0 +1,280 @@
+--[[
+    NPC Loot Claim Continued — no-sorting Anthology performance adaptation.
+
+    Keeps the warning/hostility gameplay while avoiding repeated global smart
+    scans and UI re-creation. This file intentionally never calls SortingPlus.
+--]]
+
+local VERSION = "1.1.1-anthology-ui-core-container-guard"
+local RESCAN_COOLDOWN_MS = 5000
+local CLAIM_RADIUS = 50
+
+local loot_claims = {}
+local actor_looting_claimed = false
+local actor_exploit = false
+local callbacks_registered = false
+
+local function now_ms()
+    if time_global then return time_global() end
+    return 0
+end
+
+local function relation_is_enemy(squad)
+    return squad and game_relations.get_squad_relation_to_actor_by_id(squad.id) == "enemy"
+end
+
+local function is_companion_squad(squad_id)
+    return axr_companions and axr_companions.companion_squads
+        and axr_companions.companion_squads[squad_id] == true
+end
+
+local function living_sender(squad)
+    if not squad then return nil end
+    for member in squad:squad_members() do
+        local person = member and (member.object or (member.id and alife():object(member.id)))
+        if person and person.alive and person:alive() then return person end
+    end
+    return nil
+end
+
+local function sender_name(sender)
+    if sender and sender.character_name then return sender:character_name() end
+    return game.translate_string("st_unknown") or "Stalker"
+end
+
+local function sender_icon(sender)
+    if sender and sender.character_icon then return sender:character_icon() end
+    return nil
+end
+
+local function send_claim_tip(sender, faction, text_id, sound)
+    if not (dynamic_news_helper and dynamic_news_helper.send_tip) then return end
+    local rank = game.translate_string("st_dyn_news_comm_" .. tostring(faction) .. "_6")
+    local header = strformat("%s, %s", sender_name(sender), rank)
+    dynamic_news_helper.send_tip(
+        game.translate_string(text_id), header, 0, 10,
+        sender_icon(sender), sound, "npc"
+    )
+end
+
+local function check_claim(body_id, squad)
+    local claim = loot_claims[body_id]
+    if not (claim and squad) then
+        actor_looting_claimed = false
+        return
+    end
+
+    local sender = living_sender(squad)
+    if not sender then
+        actor_looting_claimed = false
+        return
+    end
+
+    actor_looting_claimed = true
+    claim.attempts = (claim.attempts or 0) + 1
+    local faction = squad:get_squad_community()
+
+    if claim.attempts == 3 then
+        send_claim_tip(sender, faction, "st_npc_loot_claim_last_" .. tostring(math.random(1, 5)), "danger")
+        return
+    end
+
+    if claim.attempts > 3 then
+        actor_looting_claimed = false
+        if not relation_is_enemy(squad) then
+            for member in squad:squad_members() do
+                local person = member and (member.object or (member.id and alife():object(member.id)))
+                if person and person.alive and person:alive() then
+                    person:force_set_goodwill(-3000, db.actor)
+                end
+            end
+            send_claim_tip(sender, faction, "st_npc_loot_claim_attack_" .. tostring(math.random(1, 5)), "danger")
+            if game_statistics and game_statistics.increment_reputation then
+                game_statistics.increment_reputation(-75)
+            end
+            if xr_effects and xr_effects.inc_faction_goodwill_to_actor then
+                xr_effects.inc_faction_goodwill_to_actor(db.actor, nil, { faction, -10 })
+            end
+            loot_claims[body_id] = nil
+        end
+        return
+    end
+
+    send_claim_tip(sender, faction, "st_npc_loot_claim_warn_" .. tostring(math.random(1, 6)), "beep_1")
+end
+
+local function valid_claim_squad(squad)
+    if not squad or squad:npc_count() <= 0 then return false end
+    local faction = squad:get_squad_community()
+    return faction ~= "zombied" and not relation_is_enemy(squad)
+end
+
+local function find_nearby_claim(claim)
+    if not (SIMBOARD and SIMBOARD.smarts_by_names and SIMBOARD.smarts) then return nil end
+    if not (simulation_objects and simulation_objects.is_on_the_same_level) then return nil end
+    if not (db.actor and alife and alife():actor()) then return nil end
+
+    local alife_actor = alife():actor()
+    local actor_pos = db.actor:position()
+    local best, best_dist
+    for _, smart in pairs(SIMBOARD.smarts_by_names) do
+        if smart and simulation_objects.is_on_the_same_level(alife_actor, smart) then
+            local board_smart = SIMBOARD.smarts[smart.id]
+            if board_smart and board_smart.squads then
+                for squad_id in pairs(board_smart.squads) do
+                    local squad = alife_object(squad_id)
+                    if squad and not is_companion_squad(squad.id) and valid_claim_squad(squad) then
+                        local faction = squad:get_squad_community()
+                        if faction == claim.victim_faction or faction == claim.killer_faction then
+                            local dist = squad.position and squad.position:distance_to(actor_pos)
+                            if dist and dist < CLAIM_RADIUS and (not best_dist or dist < best_dist) then
+                                best, best_dist = squad, dist
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return best
+end
+
+local function is_dead_stalker(obj)
+    if not obj or not IsStalker then return false end
+
+    -- GUI loot mode is also used for inventory_box/placeable_blue_box objects.
+    -- Reading obj.alive on those CScriptEntity classes throws before a normal
+    -- Lua nil check can protect us, so both type detection and alive() must be
+    -- evaluated inside protected closures.
+    local ok_stalker, stalker = pcall(function()
+        return IsStalker(obj)
+    end)
+    if not ok_stalker or not stalker then return false end
+
+    local ok_alive, alive = pcall(function()
+        return obj:alive()
+    end)
+    return ok_alive and alive == false
+end
+
+local function safe_object_id(obj)
+    if not obj then return nil end
+    local ok, id = pcall(function()
+        return obj:id()
+    end)
+    return ok and id or nil
+end
+
+local function actor_looting(npc)
+    actor_looting_claimed = false
+    if not is_dead_stalker(npc) then return end
+
+    local body_id = safe_object_id(npc)
+    local claim = body_id and loot_claims[body_id]
+    if not claim then return end
+
+    local victim_squad = claim.victim_squad and alife_object(claim.victim_squad)
+    if valid_claim_squad(victim_squad) then
+        return check_claim(body_id, victim_squad)
+    end
+
+    local killer_squad = claim.killer_squad and alife_object(claim.killer_squad)
+    if valid_claim_squad(killer_squad) then
+        return check_claim(body_id, killer_squad)
+    end
+
+    local now = now_ms()
+    if now < (claim.next_scan or 0) then return end
+    claim.next_scan = now + RESCAN_COOLDOWN_MS
+
+    local nearby = find_nearby_claim(claim)
+    if not nearby then return end
+
+    if nearby:get_squad_community() == claim.victim_faction then
+        claim.victim_squad = nearby.id
+    else
+        claim.killer_squad = nearby.id
+    end
+    claim.attempts = 0
+    check_claim(body_id, nearby)
+end
+
+local function actor_loot_attempt(hud_name)
+    if hud_name ~= "UIInventory" then return end
+
+    local mode = actor_menu and actor_menu.get_last_mode and actor_menu.get_last_mode()
+    local gui = ui_inventory and ui_inventory.GUI
+
+    if mode == 4 and gui and gui.GetPartner then
+        actor_looting(gui:GetPartner())
+    end
+
+    -- Some UI chains reopen the player inventory immediately after the claimed
+    -- corpse window is force-closed. Close that window; never construct a second
+    -- UIInventory instance or call ui_inventory.start from this callback.
+    if actor_exploit and mode == 1 then
+        hide_hud_all()
+        actor_exploit = false
+        return
+    end
+
+    if actor_looting_claimed and mode == 4 then
+        hide_hud_all()
+        actor_exploit = true
+    else
+        actor_looting_claimed = false
+    end
+end
+
+local function npc_on_death_callback(victim, killer)
+    if not victim or not IsStalker(victim) then return end
+    local victim_id = victim:id()
+    if not victim_id or loot_claims[victim_id] then return end
+
+    local killer_id = killer and killer:id()
+    if killer_id == AC_ID then return end
+
+    local killer_squad = killer and get_object_squad(killer)
+    local killer_squad_id = killer_squad and killer_squad.id
+    if not killer_squad_id or is_companion_squad(killer_squad_id) then return end
+
+    loot_claims[victim_id] = {
+        victim_squad = nil,
+        killer_squad = killer_squad_id,
+        victim_faction = character_community(victim),
+        killer_faction = killer and character_community(killer) or nil,
+        attempts = 0,
+        next_scan = 0,
+    }
+end
+
+local function inventory_catch_exception()
+    if not actor_exploit then return end
+    -- Do not destroy/recreate and restart UIInventory. Closing the accidental
+    -- trade transition is sufficient and avoids duplicate UI registration.
+    if DestroyAll_UI then DestroyAll_UI() else hide_hud_all() end
+    actor_exploit = false
+end
+
+local function game_object_on_net_destroy(obj)
+    if not obj then return end
+    local ok, id = pcall(obj.id, obj)
+    if ok and id then loot_claims[id] = nil end
+end
+
+local function on_before_level_changing()
+    loot_claims = {}
+    actor_looting_claimed = false
+    actor_exploit = false
+end
+
+function on_game_start()
+    if callbacks_registered then return end
+    callbacks_registered = true
+    RegisterScriptCallback("npc_on_death_callback", npc_on_death_callback)
+    RegisterScriptCallback("GUI_on_show", actor_loot_attempt)
+    RegisterScriptCallback("ActorMenu_on_trade_started", inventory_catch_exception)
+    RegisterScriptCallback("game_object_on_net_destroy", game_object_on_net_destroy)
+    RegisterScriptCallback("on_before_level_changing", on_before_level_changing)
+    if printf then printf("[NPC Loot Claim / Anthology UI Core %s] callbacks registered | smart_scan_cooldown=%sms container_guard=stalker_only", VERSION, RESCAN_COOLDOWN_MS) end
+end

@@ -1,0 +1,276 @@
+-- Anthology Kupol Wrong Fixed Bone Fix v1.1.0-opt1
+--
+-- Fixes the reproducible P_build_Shell / "wrong fixed bone" crash when entering
+-- az_radar (Окрестности Купола) in Anthology 2.1.
+--
+-- Optimization v1.1.0-opt1:
+--   * the normal 1..65534 ALife search is split into 256 IDs per frame;
+--   * the discovered target ID is cached;
+--   * actor_on_update unregisters itself as soon as the job is complete;
+--   * on_level_changing keeps a synchronous safety fallback so the crash fix
+--     is never sacrificed if the player transitions before background scan ends.
+--
+-- Confirmed culprit after binary isolation:
+--   name        = cit_physic_object_0014
+--   visual      = dynamics\dead_body\skelet_combine_pose_02
+--   fixed_bones = link
+--
+-- Existing saves are supported; no new game needed.
+
+local VERSION = "1.1.0-opt1"
+local TARGET_LEVEL = "az_radar"
+local TARGET_NAME = "cit_physic_object_0014"
+local TARGET_VISUAL = "dynamics\\dead_body\\skelet_combine_pose_02"
+local TARGET_FIXED = "link"
+
+local MAX_ALIFE_ID = 65534
+local SCAN_BUDGET_PER_FRAME = 256
+
+local callbacks_registered = false
+local update_registered = false
+local fixed_this_vm = false
+local scan_active = false
+local scan_id = 1
+local cached_target_id = nil
+local scan_found = 0
+local scan_mismatch = 0
+local scan_failed = 0
+
+local function report(fmt, ...)
+    printf("[KupolWrongFixedBoneFix v%s] " .. fmt, VERSION, ...)
+end
+
+local function get_sim()
+    if type(alife) ~= "function" then return nil end
+    local ok, sim = pcall(alife)
+    return ok and sim or nil
+end
+
+local function safe_name(se_obj)
+    local ok, v = pcall(function() return se_obj:name() end)
+    return ok and v or nil
+end
+
+local function safe_level_name(sim, se_obj)
+    if not (sim and se_obj and se_obj.m_game_vertex_id) then return nil end
+    local ok, name = pcall(function()
+        local gg = game_graph()
+        local gv = gg:vertex(se_obj.m_game_vertex_id)
+        if not gv then return nil end
+        return sim:level_name(gv:level_id())
+    end)
+    return ok and name or nil
+end
+
+local function safe_object(sim, id)
+    local ok, obj = pcall(function() return sim:object(id) end)
+    return ok and obj or nil
+end
+
+local function unregister_update()
+    if update_registered and type(UnregisterScriptCallback) == "function" then
+        UnregisterScriptCallback("actor_on_update", actor_on_update)
+        update_registered = false
+    end
+end
+
+local function register_update()
+    if not update_registered and type(RegisterScriptCallback) == "function" then
+        RegisterScriptCallback("actor_on_update", actor_on_update)
+        update_registered = true
+    end
+end
+
+local function stop_scan()
+    scan_active = false
+    unregister_update()
+end
+
+local function handle_target(sim, se_obj, id, reason)
+    scan_found = scan_found + 1
+    cached_target_id = id
+
+    local ok_get, data = pcall(function() return utils_stpk.get_physic_data(se_obj) end)
+    if not (ok_get and data) then
+        scan_failed = scan_failed + 1
+        report("ERROR get_physic_data failed id=%s reason=%s", tostring(id), tostring(reason))
+        return false
+    end
+
+    local visual = data.visual_name or ""
+    local fixed = data.fixed_bones or ""
+
+    if visual ~= TARGET_VISUAL then
+        scan_mismatch = scan_mismatch + 1
+        report("SKIP signature mismatch id=%s visual=%s expected_visual=%s fixed_bones=%s",
+            tostring(id), tostring(visual), TARGET_VISUAL, tostring(fixed))
+        return false
+    end
+
+    if fixed == "" then
+        fixed_this_vm = true
+        report("already fixed id=%s visual=%s reason=%s", tostring(id), tostring(visual), tostring(reason))
+        stop_scan()
+        return true
+    end
+
+    if fixed ~= TARGET_FIXED then
+        scan_mismatch = scan_mismatch + 1
+        report("SKIP signature mismatch id=%s visual=%s fixed_bones=%s expected_fixed=%s",
+            tostring(id), tostring(visual), tostring(fixed), TARGET_FIXED)
+        return false
+    end
+
+    data.fixed_bones = ""
+    local ok_set, set_err = pcall(function() utils_stpk.set_physic_data(data, se_obj) end)
+    if not ok_set then
+        scan_failed = scan_failed + 1
+        report("ERROR set_physic_data failed id=%s err=%s", tostring(id), tostring(set_err))
+        return false
+    end
+
+    local ok_verify, verify = pcall(function() return utils_stpk.get_physic_data(se_obj) end)
+    if ok_verify and verify and (verify.fixed_bones or "") == "" then
+        fixed_this_vm = true
+        report("FIXED name=%s id=%s visual=%s removed_fixed_bones=%s reason=%s",
+            TARGET_NAME, tostring(id), tostring(visual), TARGET_FIXED, tostring(reason))
+        stop_scan()
+        return true
+    end
+
+    scan_failed = scan_failed + 1
+    report("ERROR verification failed id=%s", tostring(id))
+    return false
+end
+
+local function try_cached(reason)
+    if not cached_target_id then return false end
+    if fixed_this_vm then return true end
+
+    local sim = get_sim()
+    if not sim then return false end
+
+    local se_obj = safe_object(sim, cached_target_id)
+    if not se_obj or safe_name(se_obj) ~= TARGET_NAME or safe_level_name(sim, se_obj) ~= TARGET_LEVEL then
+        cached_target_id = nil
+        return false
+    end
+
+    return handle_target(sim, se_obj, cached_target_id, reason)
+end
+
+local function scan_range(reason, budget)
+    if fixed_this_vm then
+        stop_scan()
+        return true
+    end
+
+    if not (utils_stpk and type(utils_stpk.get_physic_data) == "function" and type(utils_stpk.set_physic_data) == "function") then
+        report("ERROR physic packet helpers unavailable reason=%s", tostring(reason))
+        stop_scan()
+        return false
+    end
+
+    local sim = get_sim()
+    if not sim then
+        report("ERROR ALife simulator unavailable reason=%s", tostring(reason))
+        return false
+    end
+
+    local last_id = math.min(scan_id + budget - 1, MAX_ALIFE_ID)
+    for id = scan_id, last_id do
+        local se_obj = safe_object(sim, id)
+        if se_obj and safe_name(se_obj) == TARGET_NAME and safe_level_name(sim, se_obj) == TARGET_LEVEL then
+            if handle_target(sim, se_obj, id, reason) then
+                return true
+            end
+        end
+    end
+
+    scan_id = last_id + 1
+    if scan_id > MAX_ALIFE_ID then
+        scan_active = false
+        unregister_update()
+        report("SUMMARY reason=%s target=%s found=%s mismatch=%s failed=%s fixed=%s",
+            tostring(reason), TARGET_NAME, tostring(scan_found), tostring(scan_mismatch), tostring(scan_failed), tostring(fixed_this_vm))
+    end
+
+    return fixed_this_vm
+end
+
+local function start_background_scan(reason)
+    if fixed_this_vm then return true end
+    if try_cached(reason .. "_cached") then return true end
+
+    if not scan_active then
+        scan_active = true
+        scan_id = 1
+        scan_found = 0
+        scan_mismatch = 0
+        scan_failed = 0
+        register_update()
+        report("background scan started reason=%s budget=%s", tostring(reason), tostring(SCAN_BUDGET_PER_FRAME))
+    end
+
+    return false
+end
+
+local function complete_scan_sync(reason)
+    if fixed_this_vm then return true end
+    if try_cached(reason .. "_cached") then return true end
+
+    -- Safety fallback. Usually background scanning has already completed long
+    -- before a transition. If not, finish the remaining range synchronously so
+    -- the original crash-prevention guarantee is preserved.
+    if not scan_active then
+        scan_active = true
+        scan_id = 1
+        scan_found = 0
+        scan_mismatch = 0
+        scan_failed = 0
+    end
+
+    while scan_active and not fixed_this_vm do
+        local before_id = scan_id
+        scan_range(reason, MAX_ALIFE_ID)
+        if scan_active and scan_id == before_id then
+            -- ALife/helpers were temporarily unavailable. Do not spin forever
+            -- inside the transition callback; the next callback can retry.
+            report("synchronous fallback paused reason=%s scan_id=%s", tostring(reason), tostring(scan_id))
+            break
+        end
+    end
+
+    return fixed_this_vm
+end
+
+function actor_on_update()
+    if not scan_active or fixed_this_vm then
+        unregister_update()
+        return
+    end
+
+    scan_range("background", SCAN_BUDGET_PER_FRAME)
+end
+
+local function actor_on_first_update()
+    if type(level) == "table" and type(level.name) == "function" and level.name() == TARGET_LEVEL then
+        report("target level loaded level=%s", TARGET_LEVEL)
+        unregister_update()
+        return
+    end
+
+    start_background_scan("actor_on_first_update")
+end
+
+local function on_level_changing()
+    complete_scan_sync("on_level_changing")
+end
+
+function on_game_start()
+    if callbacks_registered or type(RegisterScriptCallback) ~= "function" then return end
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+    RegisterScriptCallback("on_level_changing", on_level_changing)
+    callbacks_registered = true
+    report("active target=%s level=%s background_budget=%s", TARGET_NAME, TARGET_LEVEL, tostring(SCAN_BUDGET_PER_FRAME))
+end

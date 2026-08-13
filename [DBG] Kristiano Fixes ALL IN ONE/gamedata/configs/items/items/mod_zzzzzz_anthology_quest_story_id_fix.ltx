@@ -1,0 +1,11 @@
+; Anthology 2.1 — Spectrum quest device story-ID cleanup
+;
+; The converter intentionally creates five copies of either device.
+; Quest logic addresses them by section and info portions, not by story_id.
+; A fixed story_id on every copy causes four duplicate registrations.
+
+![bar_a2_spec_juk_item_1]
+!story_id
+
+![bar_a2_spec_juk_item_2]
+!story_id

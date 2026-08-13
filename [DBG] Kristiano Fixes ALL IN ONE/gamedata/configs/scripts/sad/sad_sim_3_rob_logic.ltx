@@ -1,0 +1,52 @@
+[logic]
+active = sr_idle@spawn
+
+[sr_idle@spawn]
+on_info = sr_idle@wait %=spawn_corpse(sad_sim_3_novice_corpse:sad_sim_3_corpse_1) =spawn_corpse(sad_sim_3_novice_corpse:sad_sim_3_corpse_1) =spawn_corpse(sad_sim_3_novice_corpse:sad_sim_3_corpse_1)%
+
+[sr_idle@wait]
+on_info = {+sad_sim_3_rob_agree} sr_idle@10 %=give_task(sad_sim_3_rob_task)%
+on_info2 = {+sad_b4_actor_recognized} sr_idle@nil %=remove_squad(sad_b1_mudak_squad)%
+on_info3 = {+sad_mudak_enemy} sr_idle@300
+
+[sr_idle@10]
+on_info = {+sad_sim_3_rob_arrive} sr_idle@20 %=run_postprocess(fade_in:9555) =disable_ui%
+on_info2 = {+sad_b4_actor_recognized} sr_idle@nil %=remove_squad(sad_b1_mudak_squad)%
+on_info3 = {+sad_mudak_enemy} sr_idle@300
+
+[sr_idle@20]
+on_timer = 500 | sr_idle@30 %=run_postprocess(black:9556)  =teleport_actor(sad_sim_3_rob_actor_walk) +sad_b1_mudak_switch_sim_3%
+
+[sr_idle@30]
+on_timer = 1000 | sr_idle@40 %=create_cutscene_actor_with_weapon(sad_sim_3_cs_actor:sad_sim_3_rob_actor_start:0:0:3) =teleport_squad(sad_b1_mudak_squad:sad_sim_3_rob_man_1_start) =teleport_squad(sad_b1_mudak_squad:sad_sim_3_rob_man_1_start)%
+
+[sr_idle@40]
+on_timer = 3000 | sr_cutscene %=stop_postprocess(9555) =stop_postprocess(9556) +sad_sim_3_cutscene_start%
+
+[sr_cutscene]
+point = sad_sim_3_rob_actor_walk
+look = sad_sim_3_rob_actor_look
+cam_effector = scenario_cam\sad\sad_sim_3_rob_camera
+global_cameffect = true
+enable_ui_on_end = false
+outdoor = true
+fov = 50
+on_signal = cameff_end | sr_idle@100 %=run_postprocess(black:9557)%
+;on_signal2 = cam_effector_stop | sr_idle@100 %=run_postprocess(black:9557)%
+on_timer = 13000 | %+sad_sim_3_cutscene_rob_time%
+on_info = {+sad_sim_3_rob_actor_away} %=stop_sr_cutscene%
+
+[sr_idle@100]
+on_timer = 300 | {=story_object_exist(sad_sim_3_cs_actor)} sr_idle@120 %=sad_relocate_items_npc_slots_to_actor(sad_sim_3_cs_actor) =destroy_object(story:sad_sim_3_cs_actor)%, sr_idle@120
+
+[sr_idle@120]
+on_timer = 500 | sr_idle@200 %=stop_postprocess(9557) =enable_ui +sad_sim_3_cutscene_end =set_squad_enemy_to_actor(sad_b1_mudak_squad)% ; =sad_remove_actor_weapon(3)
+
+[sr_idle@200]
+on_info = {=actor_has_item(sad_mudak_pda)} sr_idle@nil %+sad_mudak_pda_have%
+on_info2 = {+sad_b4_actor_recognized} sr_idle@nil
+
+[sr_idle@300]
+on_info = {+sad_b4_actor_recognized} sr_idle@nil %=remove_squad(sad_b1_mudak_squad)%
+
+[sr_idle@nil]

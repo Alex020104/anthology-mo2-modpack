@@ -1,0 +1,38 @@
+-- Anthology Gonta Duplicate Dialog Fix v0.1.0 BETA
+-- Removes the generic/LTTZ duplicates only when the original Call of Pripyat
+-- Gonta dialog pair is present. This keeps non-CoP profiles untouched.
+
+local GONTA_ID = "zat_b106_stalker_gonta"
+
+local COP_ABOUT_HIMSELF = "zat_b106_stalker_gonta_about_himself"
+local COP_ABOUT_MUTANTS = "zat_b106_stalker_gonta_about_mutants"
+
+local GENERIC_ABOUT_HIMSELF = "gonta_about_himself"
+local GENERIC_ABOUT_MUTANTS = "gonta_about_mutants"
+
+function on_game_start()
+    RegisterScriptCallback("on_specific_character_dialog_list", function(character_id, dialog_list)
+        if character_id ~= GONTA_ID or not dialog_list then
+            return
+        end
+
+        local removed_self = false
+        local removed_mutants = false
+
+        -- Only remove a generic dialog when its original CoP counterpart exists.
+        -- This prevents breaking Gonta profiles where the generic/LTTZ pair is the only one.
+        if dialog_list:has(COP_ABOUT_HIMSELF) and dialog_list:has(GENERIC_ABOUT_HIMSELF) then
+            dialog_list:remove(GENERIC_ABOUT_HIMSELF)
+            removed_self = true
+        end
+
+        if dialog_list:has(COP_ABOUT_MUTANTS) and dialog_list:has(GENERIC_ABOUT_MUTANTS) then
+            dialog_list:remove(GENERIC_ABOUT_MUTANTS)
+            removed_mutants = true
+        end
+
+        if removed_self or removed_mutants then
+            printf("[GontaDuplicateDialogFix v0.1.0 BETA] character=%s removed_self=%s removed_mutants=%s", character_id, tostring(removed_self), tostring(removed_mutants))
+        end
+    end)
+end

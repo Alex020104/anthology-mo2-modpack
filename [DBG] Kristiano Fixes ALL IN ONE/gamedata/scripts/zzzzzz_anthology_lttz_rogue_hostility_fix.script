@@ -1,0 +1,464 @@
+-- Anthology 2.1 - Living Legend Rogue hostility repair v1.0.1 BETA - incremental ALife scan
+-- Repairs an invalid enemy relation between the actor and the initial
+-- Living Legend Rogue while lttz_ll_meet_rogue is active.
+
+local VERSION = "1.0.1-beta"
+local LOG_VERSION = "v1.0.1"
+
+local TASK_ID = "lttz_ll_meet_rogue"
+local INFO_DIALOG_STARTED = "living_legend_rogue_start"
+local INFO_ROGUE_DEAD = "stalker_rogue_dead"
+local ROGUE_SECTION = "stalker_rogue"
+local ROGUE_SQUAD_STORY_ID = "stalker_rogue"
+local ROGUE_LOGIC = "scripts\\zaton\\stalker_rogue.ltx"
+local ROGUE_SECTION_ACTIVE = "animpoint@stalker_rogue"
+
+local NEUTRAL_GOODWILL = 0
+local FRIEND_GOODWILL = 1000
+local MAX_OBJECT_ID = 65535
+
+local installed = false
+local repair_pending = false
+local repair_attempts = 0
+local next_repair_time = 0
+local cached_rogue_id = nil
+local SCAN_BUDGET_PER_FRAME = 256
+local rogue_scan_next_id = 1
+local rogue_scan_complete = false
+
+local function call_method(obj, name, ...)
+    if not obj or not name then
+        return false, nil
+    end
+
+    local fn = obj[name]
+    if type(fn) ~= "function" then
+        return false, nil
+    end
+
+    local ok, result = pcall(fn, obj, ...)
+    return ok, result
+end
+
+local function has_info(info_id)
+    if type(has_alife_info) == "function" then
+        local ok, result = pcall(function()
+            return has_alife_info(info_id)
+        end)
+        if ok then
+            return result == true
+        end
+    end
+
+    if db.actor then
+        local ok, result = pcall(function()
+            return db.actor:has_info(info_id)
+        end)
+        if ok then
+            return result == true
+        end
+    end
+
+    return false
+end
+
+local function get_task_record()
+    if not task_manager or type(task_manager.get_task_manager) ~= "function" then
+        return nil, "manager_not_ready"
+    end
+
+    local ok, manager = pcall(function()
+        return task_manager.get_task_manager()
+    end)
+    if not ok or not manager or type(manager.task_info) ~= "table" then
+        return nil, "manager_not_ready"
+    end
+
+    return manager.task_info[TASK_ID], "ready"
+end
+
+local function get_alife_object(obj_id)
+    obj_id = tonumber(obj_id)
+    if not obj_id or obj_id <= 0 or obj_id >= MAX_OBJECT_ID then
+        return nil
+    end
+
+    local sim = alife()
+    if not sim then
+        return nil
+    end
+
+    local ok, obj = pcall(function()
+        return sim:object(obj_id)
+    end)
+    return ok and obj or nil
+end
+
+local function object_section(obj)
+    if not obj then
+        return nil
+    end
+
+    local ok, section = call_method(obj, "section_name")
+    if ok then
+        return section
+    end
+
+    ok, section = call_method(obj, "section")
+    if ok then
+        return section
+    end
+
+    return nil
+end
+
+local function is_rogue_object(obj)
+    return object_section(obj) == ROGUE_SECTION
+end
+
+local function find_rogue_in_squad()
+    if type(get_story_squad) ~= "function" then
+        return nil
+    end
+
+    local ok, squad = pcall(function()
+        return get_story_squad(ROGUE_SQUAD_STORY_ID)
+    end)
+    if not ok or not squad or type(squad.squad_members) ~= "function" then
+        return nil
+    end
+
+    local ok_members, result = pcall(function()
+        for member in squad:squad_members() do
+            local se_obj = member and member.object or nil
+            local obj_id = member and member.id or nil
+            if not obj_id and se_obj then
+                obj_id = se_obj.id
+                if type(obj_id) == "function" then
+                    local ok_id, value = pcall(obj_id, se_obj)
+                    obj_id = ok_id and value or nil
+                end
+            end
+
+            if is_rogue_object(se_obj or get_alife_object(obj_id)) then
+                return tonumber(obj_id)
+            end
+        end
+        return nil
+    end)
+
+    return ok_members and result or nil
+end
+
+local function find_rogue_id(task_record)
+    if cached_rogue_id and is_rogue_object(get_alife_object(cached_rogue_id)) then
+        return cached_rogue_id
+    end
+
+    local target_id = task_record and tonumber(task_record.current_target) or nil
+    if target_id and is_rogue_object(get_alife_object(target_id)) then
+        cached_rogue_id = target_id
+        return target_id
+    end
+
+    local squad_member_id = find_rogue_in_squad()
+    if squad_member_id then
+        cached_rogue_id = squad_member_id
+        return squad_member_id
+    end
+
+    return nil
+end
+
+local function advance_rogue_scan()
+    if rogue_scan_complete or cached_rogue_id then
+        return
+    end
+
+    local sim = alife()
+    if not sim then
+        return
+    end
+
+    local last_id = math.min(rogue_scan_next_id + SCAN_BUDGET_PER_FRAME - 1, MAX_OBJECT_ID - 1)
+    for obj_id = rogue_scan_next_id, last_id do
+        local obj = sim:object(obj_id)
+        if obj and is_rogue_object(obj) then
+            cached_rogue_id = obj_id
+            rogue_scan_complete = true
+            printf("[RogueHostilityFix %s] incremental scan found Rogue object %s", LOG_VERSION, obj_id)
+            return
+        end
+    end
+
+    rogue_scan_next_id = last_id + 1
+    if rogue_scan_next_id >= MAX_OBJECT_ID then
+        rogue_scan_complete = true
+    end
+end
+
+local function get_online_rogue(rogue_id)
+    local st = db.storage and db.storage[rogue_id] or nil
+    local npc = st and st.object or nil
+
+    if not npc and level and type(level.object_by_id) == "function" then
+        local ok, obj = pcall(function()
+            return level.object_by_id(rogue_id)
+        end)
+        if ok then
+            npc = obj
+        end
+    end
+
+    return npc, st
+end
+
+local function normalize_path(value)
+    if type(value) ~= "string" then
+        return ""
+    end
+    return string.lower(string.gsub(value, "/", "\\"))
+end
+
+local function relation_value(npc)
+    if not npc or not db.actor then
+        return nil
+    end
+
+    local ok, value = call_method(npc, "relation", db.actor)
+    return ok and value or nil
+end
+
+local function goodwill_value(npc, method_name)
+    if not npc or not db.actor then
+        return nil
+    end
+
+    local ok, value = call_method(npc, method_name, db.actor)
+    return ok and value or nil
+end
+
+local function is_enemy_relation(value)
+    return type(value) == "number"
+        and game_object
+        and game_object.enemy ~= nil
+        and value >= game_object.enemy
+end
+
+local function set_squad_neutral()
+    if type(get_story_squad) ~= "function" then
+        return false
+    end
+
+    local ok, squad = pcall(function()
+        return get_story_squad(ROGUE_SQUAD_STORY_ID)
+    end)
+    if not ok or not squad then
+        return false
+    end
+
+    local changed = call_method(squad, "set_squad_relation", "neutral")
+    return changed == true
+end
+
+local function repair_offline_relation(rogue_id, goodwill)
+    if not db.actor then
+        return false
+    end
+
+    local actor_id = db.actor:id()
+    local rogue_se = get_alife_object(rogue_id)
+    local actor_se = get_alife_object(actor_id)
+    local changed = false
+
+    if rogue_se then
+        local ok = call_method(rogue_se, "force_set_goodwill", goodwill, actor_id)
+        changed = ok or changed
+    end
+
+    if actor_se then
+        local ok = call_method(actor_se, "force_set_goodwill", goodwill, rogue_id)
+        changed = ok or changed
+    end
+
+    return changed
+end
+
+local function repair_online_relation(npc, goodwill)
+    if not npc or not db.actor then
+        return false
+    end
+
+    local changed = false
+    local ok
+
+    ok = call_method(npc, "force_set_goodwill", goodwill, db.actor)
+    changed = ok or changed
+
+    ok = call_method(db.actor, "force_set_goodwill", goodwill, npc)
+    changed = ok or changed
+
+    if game_object and game_object.neutral ~= nil then
+        ok = call_method(npc, "set_relation", game_object.neutral, db.actor)
+        changed = ok or changed
+
+        ok = call_method(db.actor, "set_relation", game_object.neutral, npc)
+        changed = ok or changed
+    end
+
+    call_method(npc, "enable_talk")
+    return changed
+end
+
+local function repair_rogue_relation(reason)
+    if not db.actor then
+        return "retry"
+    end
+
+    if has_info(INFO_DIALOG_STARTED) or has_info(INFO_ROGUE_DEAD) then
+        return "done"
+    end
+
+    local task_record, state = get_task_record()
+    if state ~= "ready" then
+        return "retry"
+    end
+    if not task_record then
+        return "done"
+    end
+
+    local rogue_id = find_rogue_id(task_record)
+    if not rogue_id then
+        return "retry"
+    end
+
+    local rogue_se = get_alife_object(rogue_id)
+    if not rogue_se or not is_rogue_object(rogue_se) then
+        return "retry"
+    end
+
+    local npc, st = get_online_rogue(rogue_id)
+    if npc then
+        local ok_alive, alive = call_method(npc, "alive")
+        if ok_alive and not alive then
+            return "done"
+        end
+    end
+
+    if st then
+        local ini_filename = normalize_path(st.ini_filename)
+        local expected_logic = normalize_path(ROGUE_LOGIC)
+
+        if ini_filename ~= "" and not string.find(ini_filename, expected_logic, 1, true) then
+            return "done"
+        end
+
+        if st.active_section and st.active_section ~= ROGUE_SECTION_ACTIVE then
+            return "done"
+        end
+    end
+
+    local before_relation = relation_value(npc)
+    local before_goodwill = goodwill_value(npc, "goodwill")
+    local before_general = goodwill_value(npc, "general_goodwill")
+
+    -- Neutral is the intended state for the initial Skadovsk encounter.
+    -- If another relation source immediately forces enemy again, use the
+    -- friend goodwill value on later retries while still setting the final
+    -- relation enum to neutral.
+    local goodwill = repair_attempts >= 4 and FRIEND_GOODWILL or NEUTRAL_GOODWILL
+
+    local offline_changed = repair_offline_relation(rogue_id, goodwill)
+    local squad_changed = set_squad_neutral()
+    local online_changed = repair_online_relation(npc, goodwill)
+
+    -- actor_enemy() also checks a stored killer field. It cannot be valid for
+    -- a living Rogue during this dialogue task, so clear only this stale edge.
+    if npc and st and type(st.death) == "table" and st.death.killer == db.actor:id() then
+        st.death.killer = nil
+        printf("[RogueHostilityFix %s] cleared stale actor killer memory for living Rogue %s",
+            LOG_VERSION, rogue_id)
+    end
+
+    local after_relation = relation_value(npc)
+    local after_goodwill = goodwill_value(npc, "goodwill")
+    local after_general = goodwill_value(npc, "general_goodwill")
+
+    printf("[RogueHostilityFix %s] repair %s: id=%s relation=%s->%s goodwill=%s->%s general=%s->%s offline=%s squad=%s online=%s",
+        LOG_VERSION,
+        tostring(reason),
+        tostring(rogue_id),
+        tostring(before_relation),
+        tostring(after_relation),
+        tostring(before_goodwill),
+        tostring(after_goodwill),
+        tostring(before_general),
+        tostring(after_general),
+        tostring(offline_changed),
+        tostring(squad_changed),
+        tostring(online_changed))
+
+    if npc and not is_enemy_relation(after_relation) then
+        return "done"
+    end
+
+    -- The offline repair is persistent. Keep retrying until Rogue is online
+    -- and the actual relation can be verified.
+    return "retry"
+end
+
+local function schedule_repair()
+    repair_pending = true
+    repair_attempts = 0
+    next_repair_time = 0
+    cached_rogue_id = nil
+    rogue_scan_next_id = 1
+    rogue_scan_complete = false
+end
+
+local function try_repair(reason)
+    if not repair_pending then
+        return
+    end
+
+    local now = time_global()
+    if now < next_repair_time then
+        return
+    end
+
+    next_repair_time = now + 1000
+    repair_attempts = repair_attempts + 1
+
+    local result = repair_rogue_relation(reason .. "_" .. tostring(repair_attempts))
+    if result == "done" then
+        repair_pending = false
+    elseif repair_attempts >= 30 then
+        repair_pending = false
+        printf("[RogueHostilityFix %s] repair not verified after %s attempts",
+            LOG_VERSION, repair_attempts)
+    end
+end
+
+local function actor_on_first_update()
+    schedule_repair()
+    advance_rogue_scan()
+    try_repair("save_load")
+end
+
+local function actor_on_update()
+    if repair_pending then
+        advance_rogue_scan()
+    end
+    try_repair("update")
+end
+
+function on_game_start()
+    if installed then
+        return
+    end
+    installed = true
+
+    printf("[RogueHostilityFix] Anthology LTTZ Rogue Hostility Fix %s loaded", VERSION)
+    RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+end

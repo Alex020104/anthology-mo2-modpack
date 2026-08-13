@@ -1,0 +1,79 @@
+sad_valley_quest_fix = sad_valley_quest_fix or {}
+
+local M = sad_valley_quest_fix
+local original_activate_by_section = nil
+local installed = false
+local first_update_registered = false
+
+local function is_iliya_stash(npc)
+    return npc and type(npc.name) == "function" and npc:name() == "sad_b1_iliya_treasure"
+end
+
+local function saved_section_is_broken(ini, section)
+    if type(section) ~= "string" then
+        return false
+    end
+
+    if string.sub(section, 1, 2) == "%=" then
+        return true
+    end
+
+    return ini and type(ini.section_exist) == "function" and not ini:section_exist(section)
+end
+
+local function actor_has_key()
+    local actor = db and db.actor
+    if not actor then
+        return false
+    end
+
+    local ok, item = pcall(function()
+        return actor:object("sad_mudak_inventory_key")
+    end)
+
+    return ok and item ~= nil
+end
+
+local function install()
+    if installed then
+        return true
+    end
+
+    if not (xr_logic and type(xr_logic.activate_by_section) == "function") then
+        return false
+    end
+
+    original_activate_by_section = xr_logic.activate_by_section
+
+    function xr_logic.activate_by_section(npc, ini, section, gulag_name, loading)
+        if is_iliya_stash(npc) and saved_section_is_broken(ini, section) then
+            local old_section = tostring(section)
+            section = actor_has_key() and "ph_idle@locked" or "ph_idle@wait"
+            printf("[SadValleyQuestFix] recovered Ilya stash section [%s] -> [%s]", old_section, section)
+        end
+
+        return original_activate_by_section(npc, ini, section, gulag_name, loading)
+    end
+
+    installed = true
+    return true
+end
+
+local function actor_on_first_update(binder, delta)
+    if install() and first_update_registered and UnregisterScriptCallback then
+        UnregisterScriptCallback("actor_on_first_update", actor_on_first_update)
+        first_update_registered = false
+    end
+end
+
+function on_game_start()
+    install()
+
+    if RegisterScriptCallback and not first_update_registered then
+        RegisterScriptCallback("actor_on_first_update", actor_on_first_update)
+        first_update_registered = true
+    end
+end
+
+M.install = install
+install()

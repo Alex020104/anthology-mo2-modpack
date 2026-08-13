@@ -1,0 +1,790 @@
+
+;by 4ector
+
+[caz_sms_ohotnik_task_see]
+icon = ui_inGame2_Nochnaya_ohota
+prior = 6
+storyline = false
+title = sms_ohotnik_task_see_txt
+descr = sms_ohotnik_task_see_dsc
+target = wiz_npc_ohotnik_1
+condlist_0 = {+wiz_ohotnik_1_dialog_is_see} complete
+condlist_1 = {+ohota_fail_ohotnik_sdoxnyl_lol} fail
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[task_side_ohota_1]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 1
+storyline = false
+title = task_side_ohota_1_texts
+descr = task_side_ohota_1_descrs
+target = ohota_wiz_monster_squad_1
+condlist_0 = {+ohota_wiz_monster_squad_1_deaths} complete
+condlist_1 = {+ohota_fail_ohotnik_sdoxnyl_lol} reversed
+;reward_money = 6500
+on_complete = %=reward_random_money(6000:6500) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[task_side_ohota_2]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 2
+storyline = false
+title = task_side_ohota_1_texts
+descr = task_side_ohota_1_descrs
+target = ohota_wiz_monster_squad_2
+condlist_0 = {+ohota_wiz_monster_squad_2_deaths} complete
+condlist_1 = {+ohota_fail_ohotnik_sdoxnyl_lol} reversed
+;reward_money = 7500
+on_complete = %=reward_random_money(7000:7500) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[task_side_ohota_3]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 3
+storyline = false
+title = task_side_ohota_1_texts
+descr = task_side_ohota_1_descrs
+target = ohota_wiz_monster_squad_3
+condlist_0 = {+ohota_wiz_monster_squad_3_deaths} complete
+condlist_1 = {+ohota_fail_ohotnik_sdoxnyl_lol} reversed
+;reward_money = 8000
+on_complete = %=reward_random_money(8000:8500) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[task_side_ohota_4]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 4
+storyline = false
+title = task_side_ohota_1_texts
+descr = task_side_ohota_1_descrs
+target = ohota_wiz_monster_squad_4
+condlist_0 = {+ohota_wiz_monster_squad_4_deaths} complete
+condlist_1 = {+ohota_fail_ohotnik_sdoxnyl_lol} reversed
+;reward_money = 10000
+on_complete = %=reward_random_money(10000:10500) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[task_side_ohota_5]
+icon = ui_inGame2_PD_Ohotnik_na_mutantov
+prior = 5
+storyline = false
+title = task_side_ohota_1_texts
+descr = task_side_ohota_1_descrs
+target = ohota_wiz_monster_squad_5
+condlist_0 = {+ohota_wiz_monster_squad_5_deaths} complete
+condlist_1 = {+ohota_fail_ohotnik_sdoxnyl_lol} reversed
+;reward_money = 6000
+on_complete = %=reward_random_money(5000:6000) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[contract_pu_aeroplan_object_task]
+icon = ui_inGame2_Krazha
+prior = 2
+storyline = false
+title = contract_pu_aeroplan_object_task_name
+descr = contract_pu_aeroplan_object_task_text
+target = {!actor_has_item(caz_aeroplan_modul_id) -contract_pu_aeroplan_object_zabrals +caz_pu_aeroplan_object_black_box_use_pick}caz_aeroplan_modul_id, nil
+condlist_0 = {+contract_pu_aeroplan_object_zabrals} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[contract_pu_heli_object_task]
+icon = ui_inGame2_Krazha
+prior = 1
+storyline = false
+title = contract_pu_heli_object_task_name
+descr = contract_pu_heli_object_task_text
+target = {!actor_has_item(caz_heli_pu_black_box_id) -contract_pu_heli_object_zabrals +caz_pu_heli_object_black_box_use_pick}caz_heli_pu_black_box_id, nil
+condlist_0 = {+contract_pu_heli_object_zabrals} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+----------------------------------------------------------------------------------------------------;
+;сюжетные задания (КОНТРАКТ НА НОВУЮ ЖИЗНЬ)
+----------------------------------------------------------------------------------------------------;
+
+[caz_new_army_timer_afina_dops_task]
+icon = ui_iconsTotal_storyline
+prior = 523
+storyline = true
+title = caz_new_army_timer_afina_dops_task_text
+descr = caz_new_army_timer_afina_dops_task_desc
+target = nil
+condlist_0 = {+contract_fuck_timer_afina_sby_wtf_go_pu} complete
+
+[caz_mistic_karp_search_task]
+icon = ui_iconsTotal_storyline
+prior = 522
+storyline = true
+title = caz_mistic_karp_search_task_txt
+descr = caz_mistic_karp_search_task_dsc
+target = caz_mistic_obratno_karp
+condlist_0 = {+caz_p666_mistic_karp_dialog_talks} complete
+
+[caz_p673_help_karp_task]
+icon = ui_inGame2_kompas
+prior = 521
+storyline = true
+title = {+caz_p673_doctor_dva_dialog_talked}caz_p673_help_karp_task_txt6,{+caz_p666_artefact_compass_id_give_actor_info}caz_p673_help_karp_task_txt5,{+caz_p666_teleport_zona_actor_in_scena}caz_p673_help_karp_task_txt4,{+caz_p673_doctor_dialog_talked}caz_p673_help_karp_task_txt3,{+caz_p673_search_bolot_doc_dialog_stalkers_taget}caz_p673_help_karp_task_txt2,caz_p673_help_karp_task_txt
+descr = {+caz_p673_doctor_dva_dialog_talked}caz_p673_help_karp_task_dsc6,{+caz_p666_artefact_compass_id_give_actor_info}caz_p673_help_karp_task_dsc5,{+caz_p666_teleport_zona_actor_in_scena}caz_p673_help_karp_task_dsc4,{+caz_p673_doctor_dialog_talked}caz_p673_help_karp_task_dsc3,{+caz_p673_search_bolot_doc_dialog_stalkers_taget}caz_p673_help_karp_task_dsc2,caz_p673_help_karp_task_dsc
+target = {+caz_p673_doctor_dva_dialog_talked}caz_p673_karp,{+caz_p666_artefact_compass_id_give_actor_info}caz_p673_doctor,{+caz_p666_teleport_zona_actor_in_scena}caz_p666_artefact_compass_id,{+caz_p673_doctor_dialog_talked}contract_sr_teleport_1_id,{+caz_p673_search_bolot_doc_dialog_stalkers_taget}caz_p673_doctor,nil
+condlist_0 = {+caz_p673_karp_dva_dialog_talked} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(ecolog:200) =inc_faction_goodwill_to_actor_cop(army:200) =inc_faction_goodwill_to_actor_cop(stalker:100)%
+
+[caz_p666_out_sector_task]
+icon = ui_iconsTotal_storyline
+prior = 520
+storyline = true
+title = caz_p666_out_sector_task_txt
+descr = caz_p666_out_sector_task_dsc
+target = caz_p529_karp
+condlist_0 = {+caz_p529_karp_dialog_talked} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(army:250) =inc_faction_goodwill_to_actor_cop(bandit:150) =inc_faction_goodwill_to_actor_cop(freedom:150) =inc_faction_goodwill_to_actor_cop(dolg:150) =inc_faction_goodwill_to_actor_cop(stalker:100)%
+
+[caz_g56_to_sector_task]
+icon = ui_inGame2_Laboratoriya_X8
+prior = 519
+storyline = true
+title = {+sector_g54_y39_lx8_door_open}caz_g56_to_sector_task_txt2,caz_g56_to_sector_task_txt
+descr = {+sector_g54_y39_lx8_door_open}caz_g56_to_sector_task_dsc2,caz_g56_to_sector_task_dsc
+target = {+sector_g54_y39_lx8_door_open}nil,lx94_door_lock
+condlist_0 = {+caz_p666_solomon_final_dialog_talked} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(bandit:50) =inc_faction_goodwill_to_actor_cop(freedom:100) =inc_faction_goodwill_to_actor_cop(dolg:100) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[caz_g54_task];caz_g55_box
+icon = ui_iconsTotal_storyline
+prior = 518
+storyline = true
+title = {+caz_g54_actor_give_pda_crazy_ecolog_to_g55}caz_g54_task_txt4,{+caz_g54_good_night_crazy_ecolog_dead}caz_g54_task_txt3,{=time_interval(23:4) +about_g54_dialog_quest_metka}caz_g54_task_txt2,caz_g54_task_txt
+descr = {+caz_g54_actor_give_pda_crazy_ecolog_to_g55}caz_g54_task_dsc4,{+caz_g54_good_night_crazy_ecolog_dead}caz_g54_task_dsc3,{=time_interval(23:4) +about_g54_dialog_quest_metka}caz_g54_task_dsc2,caz_g54_task_dsc
+target = {+caz_g54_actor_give_pda_crazy_ecolog_to_g55}nil,{+caz_g54_good_night_crazy_ecolog_dead}g54_crazy_ecolog,{=time_interval(23:4) +about_g54_dialog_quest_metka}g54_crazy_ecolog,nil
+condlist_0 = {+caz_g55_actor_give_card_crazy_ecolog_maslo} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(bandit:50) =inc_faction_goodwill_to_actor_cop(freedom:50) =inc_faction_goodwill_to_actor_cop(dolg:50) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[caz_v71_task]
+icon = ui_iconsTotal_storyline
+prior = 517
+storyline = true
+title = {+caz_219_karp_dialog_sayes}caz_v71_task_txt2,caz_v71_task_txt
+descr = {+caz_219_karp_dialog_sayes}caz_v71_task_dsc2,caz_v71_task_dsc
+target = {+caz_219_karp_dialog_sayes}caz_219_afina,caz_219_karp
+condlist_0 = {+caz_afina_about_v71_dialog_talking} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(bandit:50) =inc_faction_goodwill_to_actor_cop(freedom:50) =inc_faction_goodwill_to_actor_cop(dolg:50) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[caz_quest_y94_start_game]
+icon = ui_inGame2_actor_killer_man_spot
+prior = 516
+storyline = true
+title = {+caz_y95_e218_pannel_is_activate}caz_quest_y94_start_game_txt5,{+caz_y96_pitanie_noy_solomon_in_zona}caz_quest_y94_start_game_txt4,{+y95_clear_killed_squads_swtch}caz_quest_y94_start_game_txt444,{+caz_y94y95_cutscene_the_signal_combat}caz_quest_y94_start_game_txt333,{+sector_y94_psevdogigant_is_dead_complex}caz_quest_y94_start_game_txt3,{+sector_y94_sr_elevator_1_passed +sector_y94_elevator_gates_opened}caz_quest_y94_start_game_txt2,caz_quest_y94_start_game_txt
+descr = {+caz_y95_e218_pannel_is_activate}caz_quest_y94_start_game_dsc5,{+caz_y96_pitanie_noy_solomon_in_zona}caz_quest_y94_start_game_dsc4,caz_quest_y94_start_game_dsc
+target = {+sector_95_lx8_door_open}caz_y95_solomon_squad,{+caz_y95_e218_pannel_is_activate}lx_y96_door_lock,{+caz_y96_pitanie_noy_solomon_in_zona}caz_y95_id_swither,{+y95_clear_killed_squads_swtch}caz_y95_solomon_squad,{+caz_y94y95_cutscene_the_signal_combat}nil,{+sector_y94_psevdogigant_is_dead_complex}sector_y94_solomon,{+sector_y94_sr_elevator_1_passed +sector_y94_elevator_gates_opened}sector_y94_psevdogigant,sector_y94_solomon
+condlist_0 = {+caz_y98_sr_cutscene_perec} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(bandit:50) =inc_faction_goodwill_to_actor_cop(freedom:50) =inc_faction_goodwill_to_actor_cop(dolg:50) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[contract_t5_to_s11_quest]
+icon = ui_inGame2_Laboratoriya_X8
+prior = 515
+storyline = true
+title = {+caz_m_s11_solomond_dialog_taklsayend}contract_t5_to_s11_quest_txt6,{+caz_m69_tri_furgon_dialog_end}contract_t5_to_s11_quest_txt5,{+caz_m69_benzin_naiden_go_to_furgon_tutor}contract_t5_to_s11_quest_txt4,{+caz_m69_empty_kanistra_actor_pick_item}contract_t5_to_s11_quest_txt3,{+caz_m69_furgon_dialog_talkedds}contract_t5_to_s11_quest_txt2_2,{+caz_m69_solomon_dialog_talkes}contract_t5_to_s11_quest_txt2,contract_t5_to_s11_quest_txt
+descr = {+caz_m_s11_solomond_dialog_taklsayend}contract_t5_to_s11_quest_dsc6,{+caz_m69_tri_furgon_dialog_end}contract_t5_to_s11_quest_dsc5,{+caz_m69_benzin_naiden_go_to_furgon_tutor}contract_t5_to_s11_quest_dsc4,{+caz_m69_empty_kanistra_actor_pick_item}contract_t5_to_s11_quest_dsc3,{+caz_m69_furgon_dialog_talkedds}contract_t5_to_s11_quest_dsc2_2,{+caz_m69_solomon_dialog_talkes}contract_t5_to_s11_quest_dsc2,contract_t5_to_s11_quest_dsc
+target = {+caz_m69_tri_furgon_dialog_end}caz_r25_solomon,{+caz_m69_benzin_naiden_go_to_furgon_tutor}caz_t5_furgon,{+caz_m69_empty_kanistra_actor_pick_item}nil,{+caz_m69_furgon_dialog_talkedds}caz_m69_kanistra_object,{+caz_m69_solomon_dialog_talkes}caz_t5_furgon,caz_r25_solomon
+condlist_0 = {+start_caz_m_s11_dva_solomond_dialog_taklsayend} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[contract_t5_quest]
+icon = ui_iconsTotal_storyline
+prior = 514
+storyline = true
+title = {+caz_t5_texnik_tri_metka}contract_t5_quest_txt2,contract_t5_quest_txt
+descr = {+caz_t5_texnik_tri_metka}contract_t5_quest_dsc2,contract_t5_quest_dsc
+target = {+caz_t5_texnik_tri_metka}bar_s1_mechanic_furgon,nil
+condlist_0 = {+caz_t5_furgon_dialog_says} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[contract_k54_quest]
+icon = ui_inGame2_Laboratoriya_X8
+prior = 513
+storyline = true
+title = {+caz_k54_s11_card_inv_actor_go_7_solomon}contract_k54_quest_txt3,{+caz_k54_kiparis_dialog_talkesd}contract_k54_quest_txt2,{+about_sector_11_card_poisk_dialog_quest_metka}contract_k54_quest_txt1,contract_k54_quest_txt
+descr = {+caz_k54_s11_card_inv_actor_go_7_solomon}contract_k54_quest_dsc3,{+caz_k54_kiparis_dialog_talkesd}contract_k54_quest_dsc2,{+about_sector_11_card_poisk_dialog_quest_metka}contract_k54_quest_dsc1,contract_k54_quest_dsc
+target = {+caz_k54_s11_card_inv_actor_go_7_solomon}caz_r25_solomon,{+about_sector_11_card_poisk_dialog_quest_metka}city_f31_kiparis_squad,nil
+condlist_0 = {+caz_k54_card_solomon_dialog_quest} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[contract_r25_to_s11_quest]
+icon = ui_inGame2_actor_killer_man_spot
+prior = 512
+storyline = true
+title = {+kupl_s11_pkm_killer_is_ymer +caz_new_s11_killers_ment_sdoxs +caz_r25_killers_to_is_deads +kupl_s11_is_destroy_minigun_stop}contract_r25_to_s11_quest_txt2,contract_r25_to_s11_quest_txt
+descr = {+kupl_s11_pkm_killer_is_ymer +caz_new_s11_killers_ment_sdoxs +caz_r25_killers_to_is_deads +kupl_s11_is_destroy_minigun_stop}contract_r25_to_s11_quest_dsc2,contract_r25_to_s11_quest_dsc
+target = contract_notebook_r25
+condlist_0 = {+contract_r25_information_o_sector_11_used_notebook} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(bandit:50) =inc_faction_goodwill_to_actor_cop(freedom:50) =inc_faction_goodwill_to_actor_cop(dolg:50) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[contract_l62_lx15caz_quest]
+icon = ui_inGame2_actor_killer_man_spot
+prior = 511
+storyline = true
+title = {+lx15_tutor_contract_ustanovka_x_tt_done}contract_l62_lx15caz_quest_txt3,{+lx15_karp_sr_l62_mojno_vklychat}contract_l62_lx15caz_quest_txt2,contract_l62_lx15caz_quest_txt
+descr = {+lx15_tutor_contract_ustanovka_x_tt_done}contract_l62_lx15caz_quest_dsc3,{+lx15_karp_sr_l62_mojno_vklychat}contract_l62_lx15caz_quest_dsc2,contract_l62_lx15caz_quest_dsc
+target = {+lx15_tutor_contract_ustanovka_x_tt_done}contract_l62_karp,{+lx15_karp_sr_l62_mojno_vklychat}contract_lx15_ustanovka_sr_tutorial,contract_l62_karp
+condlist_0 = {+contract_r25_karp_dialog_say} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(bandit:50) =inc_faction_goodwill_to_actor_cop(freedom:50) =inc_faction_goodwill_to_actor_cop(dolg:50) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[contract_b62_lesnik_quest]
+icon = ui_iconsTotal_storyline
+prior = 510
+storyline = false
+title = contract_b62_lesnik_quest_txt
+descr = contract_b62_lesnik_quest_dsc
+target = contract_a2_lesnik
+condlist_0 = {+contract_b62_lesnik_dialog_final_talk} complete
+condlist_1 = {+contract_b62_killer_dialog_talk -contract_b62_lesnik_dialog_final_talk} reversed
+
+[contract_d69_solomon_contect_quest]
+icon = ui_inGame2_actor_killer_man_spot
+prior = 509
+storyline = true
+title = {+caz_l62_karp_dialog_info_solomon_ska}contract_d69_solomon_contect_quest_txt4,{+caz_l62_killer_dialog_say}contract_d69_solomon_contect_quest_txt3,{+contract_b62_killer_dialog_talk}contract_d69_solomon_contect_quest_txt2,contract_d69_solomon_contect_quest_txt
+descr = contract_d69_solomon_contect_quest_dsc
+target = {+caz_b62_info_to_spot}nil,{+contract_b62_spawn_end_u}caz_b62_killer,{-contract_b62_spawn_end_u +contract_b62_lesnik_dialog_final_talk}cit_b38_to_bar_spot,nil
+condlist_0 = {+caz_r25_s11_solomon_dialog_talked} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(bandit:50) =inc_faction_goodwill_to_actor_cop(freedom:50) =inc_faction_goodwill_to_actor_cop(dolg:50) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[contract_az_spasenie_quest_pu_afin]
+icon = ui_iconsTotal_storyline
+prior = 508
+storyline = true
+title = contract_az_spasenie_quest_pu_afin_txt
+descr = contract_az_spasenie_quest_pu_afin_dsc
+target = contract_afina_pu
+condlist_0 = {+contract_b81_afina_scena_actor_in_pu_to_start} reversed
+
+[contract_sms_pidor_quest_dop]
+icon = ui_inGame2_Zalozhnik
+prior = 507
+storyline = false
+title = {+az_bar_pidor_lider_is_dead_inside_nahui =actor_has_item(az_bar_pidor_key)}contract_sms_pidor_quest_dop_txt4,{+az_bar_pidor_lider_is_dead_inside_nahui}contract_sms_pidor_quest_dop_txt3,{+az_pidor_punch_dialog_loot_to}contract_sms_pidor_quest_dop_txt2,contract_sms_pidor_quest_dop_txt
+descr = {+az_bar_pidor_lider_is_dead_inside_nahui =actor_has_item(az_bar_pidor_key)}contract_sms_pidor_quest_dop_dsc4,{+az_bar_pidor_lider_is_dead_inside_nahui}contract_sms_pidor_quest_dop_dsc3,{+az_pidor_punch_dialog_loot_to}contract_sms_pidor_quest_dop_dsc2,contract_sms_pidor_quest_dop_dsc
+target = {+az_bar_pidor_lider_is_dead_inside_nahui =actor_has_item(az_bar_pidor_key)}nil,{+az_pidor_punch_dialog_loot_to}az_pidor_lider,contract_az_pidor_sr
+condlist_0 = {+az_box_pidorasa_is_open} complete
+condlist_1 = {-az_bar_pidor_lider_is_dead_inside_nahui +azbarpidor_quest_fail_zaebis} reversed
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:100)%
+
+[contract_quest_choice_2_army_kill]
+icon = ui_inGame2_Odin_vistrel
+prior = 506
+storyline = true
+title = {+contract_army_heli_choice_pu_hitted_by_actor}contract_quest_choice_2_army_kill_txt2,contract_quest_choice_2_army_kill_txt
+descr = {+contract_army_heli_choice_pu_hitted_by_actor}contract_quest_choice_2_army_kill_dsc2,contract_quest_choice_2_army_kill_dsc
+target = {+contract_army_heli_choice_pu_hitted_by_actor}nil,contract_army_heli_glava_dva
+condlist_0 = {+contract_choice_sdelan_soldiers_army_is_dead} complete
+condlist_1 = {+contract_choice_sdelan_soldiers_army_is_live} complete
+
+[contract_wtf_timer_afina_quest]
+icon = ui_inGame2_Ohrana_uchenih
+prior = 505
+storyline = true
+title = contract_wtf_timer_afina_quest_txt
+descr = contract_wtf_timer_afina_quest_dsc
+target = contract_afina_pu
+condlist_0 = {+contract_pu_afina_dialog_wtf_is_talking} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:100) =inc_faction_goodwill_to_actor_cop(army:100)%
+
+[contract_army_heli_work_new_quest]
+icon = ui_inGame2_Razgovor_s_glazu_na_glaz
+prior = 504
+storyline = true
+title = contract_army_heli_work_new_quest_txt
+descr = contract_army_heli_work_new_quest_dsc
+target = contract_army_heli_glava_dva
+condlist_0 = {+contract_army_kovalskie_heli_work_new_quest_saying} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(army:250)%
+
+[contact_karp_in_kpp_quest]
+icon = ui_inGame2_Mesta_evakuatsii
+prior = 503
+storyline = true
+title = {+contract_afina_prototip_kpp_dialog_choice_go}contact_karp_in_kpp_quest_text3,{+contract_karp_kpp_dialog_is_end}contact_karp_in_kpp_quest_text2,contact_karp_in_kpp_quest_text
+descr = {+contract_afina_prototip_kpp_dialog_choice_go}contact_karp_in_kpp_quest_desc3,{+contract_karp_kpp_dialog_is_end}contact_karp_in_kpp_quest_desc2,contact_karp_in_kpp_quest_desc
+target = {+contract_karp_kpp_dialog_is_end}kpl_contract_girl_afina,contract_kpp_karp
+condlist_0 = {+contract_afina_prototip_kpp_dialog_is_done_vnz} complete
+
+[cit_a2_p32_off_to_pomehi_task]
+icon = ui_inGame2_Radiopomehi
+prior = 502
+storyline = true
+title = {+cit_a2_p32_pomehi_vse_off_go_info}cit_a2_p32_off_to_pomehi_task_text2,cit_a2_p32_off_to_pomehi_task_text
+descr = {+cit_a2_p32_pomehi_vse_off_go_info}cit_a2_p32_off_to_pomehi_task_desc2,cit_a2_p32_off_to_pomehi_task_desc
+target = {+cit_a2_p32_pomehi_vse_off_go_info}contract_b47_monolit_preacher,nil
+condlist_0 = {+contract_b47_mon_preacher_dead} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(freedom:50) =inc_faction_goodwill_to_actor_cop(dolg:50) =inc_faction_goodwill_to_actor_cop(bandit:50) =inc_faction_goodwill_to_actor_cop(army:350) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[contract_army_heli_out_quest]
+icon = ui_inGame2_Skat_4
+prior = 501
+storyline = true
+title = {+contract_b47_mon_preacher_dead}contract_army_heli_out_quest_text3,{+contract_army_heli_glava_dialog_talksaydone}contract_army_heli_out_quest_text2,contract_army_heli_out_quest_text
+descr = {+contract_b47_mon_preacher_dead}contract_army_heli_out_quest_desc3,{+contract_army_heli_glava_dialog_talksaydone}contract_army_heli_out_quest_desc2,contract_army_heli_out_quest_desc
+target = {+contract_b47_mon_preacher_dead}contract_army_heli_glava_dva,{+contract_army_heli_glava_dialog_talksaydone}nil,contract_army_heli_glava
+condlist_0 = {+contract_army_heli_glava_dva_dialog_okaysio} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(army:250)%
+
+[lx15_search_karty_quest]
+icon = ui_inGame2_Laboratoriya_X8
+prior = 500
+storyline = true
+title = lx15_search_karty_quest_text
+descr = lx15_search_karty_quest_desc
+target = nil
+condlist_0 = {=actor_has_item(lax_m15_card_acces_s11)} complete
+
+[contract_virus_search_quest_info]
+icon = ui_inGame2_PD_Hranitel_tayn 
+prior = 448
+storyline = true
+title = {+labx15_contract_virus_searching_actor_pick_docs}contract_virus_search_quest_info_text4,{+lx15m_t1_knopka_door_opened}contract_virus_search_quest_info_text3,{=actor_on_level(l15u_pripyat_und)}contract_virus_search_quest_info_text2,contract_virus_search_quest_info_text
+descr = {+labx15_contract_virus_searching_actor_pick_docs}contract_virus_search_quest_info_desc4,contract_virus_search_quest_info_desc
+target = {+labx15_contract_virus_searching_actor_pick_docs}kpl_contract_girl_afina,{+lx15m_t1_knopka_door_opened}lx_sosat,{=actor_on_level(l15u_pripyat_und)}lxm15_key_1_door_lock,cit_kpl_4_spot
+condlist_0 = {+lax_a_m15_done_afina_virus_dialog_talking} complete
+condlist_1 = {!actor_alive()} fail
+
+[contract_virus_ecolog_dop_quest]
+icon = ui_inGame2_Ohota_na_Burerov
+prior = 399
+storyline = false
+title = contract_virus_ecolog_dop_quest_text
+descr = contract_virus_ecolog_dop_quest_desc
+target = nil
+condlist_0 = {+lax15_group_poisk_task_done} complete
+
+[contract_help_afina_girl_quest]
+icon = ui_inGame2_Lager_naemnikov
+prior = 447
+storyline = true
+title = {+bar_stalker_dialog_s_pidorom_1_is_complate}contract_help_afina_girl_quest_text3,{+bar_actor_idet_bit_ebalo_pidorasikam}contract_help_afina_girl_quest_text2,contract_help_afina_girl_quest_text
+descr = {+bar_stalker_dialog_s_pidorom_1_is_complate}contract_help_afina_girl_quest_desc3,contract_help_afina_girl_quest_desc
+target = {+bar_stalker_dialog_s_pidorom_1_is_complate}kpl_contract_girl_afina,{+bar_actor_idet_bit_ebalo_pidorasikam}bar_pidor_1_lider,cit_b38_to_bar_spot
+condlist_0 = {+az_radar_afina_dialog_to_complate_quest_shmotki_saying} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[city_a2_contract_lesnik_searching_task]
+icon = ui_inGame2_Karti_mestnosti
+prior = 446
+storyline = true
+title = {+az_virus_contract_proffessor_metka_to_girl}city_a2_contract_lesnik_searching_task_text4, {+az_contract_karp_dialog_1_is_talking_fuck}city_a2_contract_lesnik_searching_task_text3,{+contract_a2_lesnik_dialog_search_saying}city_a2_contract_lesnik_searching_task_text2,city_a2_contract_lesnik_searching_task_text
+descr = {+az_virus_contract_proffessor_metka_to_girl}city_a2_contract_lesnik_searching_task_descs4, {+az_contract_karp_dialog_1_is_talking_fuck}city_a2_contract_lesnik_searching_task_descs3,{+contract_a2_lesnik_dialog_search_saying}city_a2_contract_lesnik_searching_task_descs2,city_a2_contract_lesnik_searching_task_descs
+target = {+az_virus_contract_proffessor_metka_to_girl}kpl_contract_girl_afina,{+az_contract_karp_dialog_1_is_talking_fuck}nil,{+contract_a2_lesnik_dialog_search_saying}contract_pu_karp,contract_a2_lesnik
+condlist_0 = {+az_virus_contract_afina_welcom_say_666} complete
+
+[contract_b39_vydy_quest_dva]
+icon = ui_inGame2_Skat_5
+prior = 445
+storyline = true
+title = {+caz_p666_mistic_karp_dva_dialog_talks}contract_b39_vydy_quest_dva_text_new_2,contract_b39_vydy_quest_dva_text
+descr = {+caz_p666_mistic_karp_dva_dialog_talks}contract_b39_vydy_quest_dva_desc_new_2,{+caz_p673_afina_dialog_sayed}contract_b39_vydy_quest_dva_desc222,contract_b39_vydy_quest_dva_desc
+target = {+caz_p666_mistic_karp_dva_dialog_talks}caz_p673_afina,{+kpl_new_sr_scen_doppikjg}nil,{+blacker_lesnik_dialog_1_talking}kupl_b33_sr_car,nil
+condlist_0 = {+caz_final_story_camera_da_syka_9_dodelal_ego} complete
+condlist_1 = {!actor_alive()} fail
+
+[contract_b39_vydy_quest]
+icon = ui_inGame2_actor_killer_man_spot  
+prior = 444
+storyline = true
+title = {+b39_deimos_effects_rw_tunnel}contract_b39_vydy_quest_text2,contract_b39_vydy_quest_text
+descr = {+b39_deimos_effects_rw_tunnel}contract_b39_vydy_quest_desc2,contract_b39_vydy_quest_desc
+target = {+b39_deimos_effects_rw_tunnel}contact_b39_start_controller_1_squad,kupl_b39_sr_view
+condlist_0 = {+contact_b39_start_controller_1_dead} complete
+
+[contract_search_lesnik_quest]
+icon = ui_iconsTotal_storyline
+prior = 443
+storyline = false
+title = contract_search_lesnik_quest_text
+descr = contract_search_lesnik_quest_desc
+target = nil
+condlist_0 = {+lax15_group_poisk_task_done} complete
+condlist_1 = {+blacker_lesnik_dialog_1_talking -city_a2_bed_and_giving_ammunition_to_actor} reversed
+
+[contract_search_provodnik_quest]
+icon = ui_iconsTotal_storyline
+prior = 442
+storyline = false
+title = contract_search_provodnik_quest_text
+descr = contract_search_provodnik_quest_desc
+target = nil
+condlist_0 = {+lax15_group_poisk_task_done} complete
+condlist_1 = {+blacker_lesnik_dialog_1_talking -city_a2_bed_and_giving_ammunition_to_actor} reversed
+
+----------------------------------------------------------------------------------------------------;
+;сюжетные задания (С-11)
+----------------------------------------------------------------------------------------------------;
+
+[lax15_group_poisk_task]
+icon = ui_inGame2_Ohota_na_Burerov
+prior = 305
+storyline = true
+title = s11_lax15_group_poisk_task_text
+descr = s11_lax15_group_poisk_task_desc
+target = nil
+condlist_0 = {+lax15_group_poisk_task_done} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(army:100)%
+
+[s11_ecologs_mutant_vs_deshifr_task];quest_myaso_snork_other_dnk
+icon = ui_inGame2_Ohota_na_Himeru
+prior = 306
+storyline = true
+title = {+s11_ecolog_deshift_mutant_trup =actor_has_item(quest_myaso_snork_other_dnk)}s11_ecologs_mutant_vs_deshifr_task_text3,{+s11_ecolog_deshift_mutant_trup}s11_ecologs_mutant_vs_deshifr_task_text2,s11_ecologs_mutant_vs_deshifr_task_text
+descr = s11_lax15_group_poisk_task_desc
+target = {+s11_ecolog_deshift_mutant_trup =actor_has_item(quest_myaso_snork_other_dnk)}atr_scientist_physicist,atr_other_mutant_quest
+condlist_0 = {+lax_a_m15_to_az_radar_professor_mutant_dialog_end} complete
+condlist_1 = {=actor_has_item(deshifrator_s11)} reversed
+condlist_2 = {=actor_has_item(lax_m15_card_acces_s11)} reversed
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:150) =inc_faction_goodwill_to_actor_cop(ecolog:300)%
+
+[s11_poisk_deshifr_quest]
+icon = ui_inGame2_Anomalnoe_rastenie
+prior = 307
+storyline = true
+title = {+kpl_b206_anomalous_grove_has_plant}s11_poisk_deshifr_quest_text2,s11_poisk_deshifr_quest_text
+descr = s11_poisk_deshifr_quest_desc
+target = {+kpl_b206_anomalous_grove_has_plant}atr_scientist_physicist,s11_quest_anomaly_flower_sr
+condlist_0 = {+lax_a_m15_to_az_radar_professor_cvetok_start} complete
+condlist_1 = {=actor_has_item(deshifrator_s11)} reversed
+condlist_2 = {=actor_has_item(lax_m15_card_acces_s11)} reversed
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:100) =inc_faction_goodwill_to_actor_cop(ecolog:100)%
+
+-----;
+
+[s11_poisk_otryad_glava_2_to]
+icon = ui_inGame2_Laboratoriya_X8
+prior = 308
+storyline = true
+title = {=actor_has_item(lax_m15_card_acces_s11)}s11_poisk_otryad_glava_2_to_text4,{=actor_has_item(deshifrator_s11)}s11_poisk_otryad_glava_2_to_text3,{+lax_a_m15_animeboy_start_dialog_talking}s11_poisk_otryad_glava_2_to_text2,s11_poisk_otryad_glava_2_to_text
+descr = {=actor_has_item(lax_m15_card_acces_s11)}s11_poisk_otryad_glava_2_to_desc4,{=actor_has_item(deshifrator_s11)}s11_poisk_otryad_glava_2_to_desc3,{+lax_a_m15_animeboy_start_dialog_talking}s11_poisk_otryad_glava_2_to_desc2,s11_poisk_otryad_glava_2_to_desc
+target = {=actor_has_item(lax_m15_card_acces_s11)}lx15m_gate_1,{=actor_has_item(deshifrator_s11)}lx15m_gate_1,{+lax_a_m15_animeboy_start_dialog_talking}nil,lx15m_gate_1
+condlist_0 = {+lx15m_t1_knopka_door_opened} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:100)%
+
+-----;
+
+[s11_poisk_otryad_glava_dva_gg_1]
+icon = ui_inGame2_Odin_vistrel
+prior = 306
+storyline = true
+title = {+killer_1_i_2_i_3_is_deads_poisk_to}s11_poisk_otryad_glava_dva_gg_exit_text3,{+killeds_zasada_s11_poisk_in_pos_info}s11_poisk_otryad_glava_dva_gg_exit_text,s11_poisk_otryad_glava_dva_gg_2_text
+descr = {+killer_1_i_2_i_3_is_deads_poisk_to}s11_poisk_otryad_glava_dva_gg_exit_desc3,{+killeds_zasada_s11_poisk_in_pos_info}s11_poisk_otryad_glava_dva_gg_exit_desc,s11_poisk_otryad_glava_dva_gg_2_desc
+target = {+killer_1_i_2_i_3_is_deads_poisk_to}kupol_changer_to_metro_15,{+killeds_zasada_s11_poisk_in_pos_info}nil,poisk_shnir_sr_control
+condlist_0 = {+actor_pervie_raz_in_m15_go_qyest} complete
+
+[s11_poisk_otryad_glava_dva_gg_2]
+icon = ui_inGame2_Odin_vistrel
+prior = 306
+storyline = true
+title = {+killer_1_i_2_i_3_is_deads_poisk_to}s11_poisk_otryad_glava_dva_gg_exit_text3,{+killeds_zasada_s11_poisk_in_pos_info}s11_poisk_otryad_glava_dva_gg_exit_text,s11_poisk_otryad_glava_dva_gg_1_text
+descr = {+killer_1_i_2_i_3_is_deads_poisk_to}s11_poisk_otryad_glava_dva_gg_exit_desc3,{+killeds_zasada_s11_poisk_in_pos_info}s11_poisk_otryad_glava_dva_gg_exit_desc,s11_poisk_otryad_glava_dva_gg_1_desc
+target = {+killer_1_i_2_i_3_is_deads_poisk_to}kupol_changer_to_metro_15,{+killeds_zasada_s11_poisk_in_pos_info}nil,s11_poisk_shnir_npc
+condlist_0 = {+actor_pervie_raz_in_m15_go_qyest} complete
+
+-----;
+
+[s11_poisk_otryad_glava_odin]
+icon = ui_inGame2_Propavshaya_razvedgruppa
+prior = 305
+storyline = true
+title = s11_to_kapitan_help_gps_my_group_text
+descr = s11_to_kapitan_help_gps_my_group_desc
+target = s11_poisk_shnir_npc
+condlist_0 = {+poisk_shnir_dialog_start_convert} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(army:100)%
+
+[city_p32_peredatchik_vkl_task]
+icon = ui_inGame2_Ekstrennaya_svyaz
+prior = 301
+storyline = true
+title = {+radio_quest_sector_gps_channel_p32_is_work}city_p32_peredatchik_vkl_task_text_2,city_p32_peredatchik_vkl_task_text
+descr = {+radio_quest_sector_gps_channel_p32_is_work}city_p32_peredatchik_vkl_task_desc_2,city_p32_peredatchik_vkl_task_desc
+target = {+radio_quest_sector_gps_channel_p32_is_work}city_p32_peredatchik_target_sr,nil
+condlist_0 = {+rad_wood_tutor_radio_x1_tt_done} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:100) =inc_faction_goodwill_to_actor_cop(army:100)%
+
+---;
+
+[city_a2_shnir_quest_dope]
+icon = ui_inGame2_Istochnik_signala
+prior = 222
+storyline = true
+title = city_a2_shnir_quest_dope_text
+descr = city_a2_shnir_quest_dope_desc
+target = city_p32_vibor_cut_scene_sr
+condlist_0 = {+kpl_p32_tigor_and_group_nety_quest_free_time} complete
+condlist_1 = {+city_p32_vibor_cut_scene_sr_noy} reversed
+
+[city_a2_shnir_quest_dope_dva]
+icon = ui_inGame2_Istochnik_signala
+prior = 222
+storyline = true
+title = city_a2_shnir_quest_dope_2_text
+descr = city_a2_shnir_quest_dope_2_desc
+target = nil
+condlist_0 = {+kpl_p32_tigor_and_group_nety_quest_free_time} complete
+condlist_1 = {+city_p32_vibor_cut_scene_sr_yes} reversed
+
+[city_p32_vibor_quest_task]
+icon = ui_inGame2_Propavshiy_chasovoy
+prior = 223
+storyline = true
+title = {+sviaz_a2_freeodinkuplaz_start_to_meh_done_talk}city_a2_shnir_quest_dope_4_text,city_a2_shnir_quest_dope_3_text
+descr = {+sviaz_a2_freeodinkuplaz_start_to_meh_done_talk}city_a2_shnir_quest_dope_4_desc,city_a2_shnir_quest_dope_3_desc
+target = {+sviaz_a2_freeodinkuplaz_start_to_meh_done_talk}a2_texnik,kupl_a2_shnir
+condlist_0 = {+sviaz_a2_kpl_texnik_dialog_talking_end} complete
+
+---;
+
+[laba_x_start_task_epilog]
+icon = ui_inGame2_Posledniy_voin
+prior = 10000
+storyline = true
+title = laba_x_start_task_epilog_one_text
+descr = laba_x_start_task_epilog_one_desc
+target = {+epilog_lax_w11_zombi_volna_spawn_1uu}lax_epilog_exit_location,nil
+condlist_0 = {+sim_control_mine_trup_generation_select_rw_restrictor} complete
+condlist_1 = {=actor_on_level(az_radar)} fail
+
+[laba_x_w106_task_epilog]
+icon = ui_inGame2_Laboratoriya_X8
+prior = 9999
+storyline = true
+title = {+au_lax_w106_c4_4_has_actor}laba_x_w106_task_epilog_dva_text,laba_x_w106_task_epilog_one_text
+descr = {+au_lax_w106_c4_4_has_actor}laba_x_w106_task_epilog_dva_desc,laba_x_w106_task_epilog_one_desc
+target = {+au_lax_w106_c4_4_has_actor}lax_w106_c4_plants_zone,nil
+condlist_0 = {+au_lax_w106_c4_4_destroy_and_planted} complete
+condlist_1 = {+sim_control_mine_trup_generation_select_rw_restrictor} reversed
+condlist_2 = {=actor_on_level(az_radar)} fail
+
+---;
+
+[city_b39_storyline_true_quest_one]
+icon = ui_iconsTotal_storyline
+prior = 1488
+storyline = true
+title = {+city_b39_warning_is_squad_dead}city_storyline_true_quest_dva_text,city_storyline_true_quest_one_text
+descr = {+city_b39_warning_is_squad_dead}city_storyline_true_quest_dva_desc,city_storyline_true_quest_one_desc
+target = {+city_b39_warning_is_squad_dead}kupl_b33_sr_car,city_b39_warning_squad
+condlist_0 = {+kupl_b33_sr_car_in_the_complate_tasks} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(army:250)%
+
+[city_a2_storyline_true_quest_tri]
+icon = ui_inGame2_Reputatsiya
+prior = 1487
+storyline = true
+title = kup_a2_znakomstvo_stalkers_storyline_true_quest_one_text
+descr = kup_a2_znakomstvo_stalkers_storyline_true_quest_one_desc
+target = cit_a2_spot
+condlist_0 = {+kpl_a2_shnir_dialog_start_it_is_done} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(army:50) =inc_faction_goodwill_to_actor_cop(stalker:50) =inc_faction_goodwill_to_actor_cop(bandit:50)%
+
+[city_a2_start_say_to_sich]
+icon = ui_inGame2_V_poiskah_Soroki
+prior = 6000
+storyline = false
+title = city_a2_start_say_to_sich_quest_text
+descr = city_a2_start_say_to_sich_quest_desc
+target = cit_a2_stalker_sich
+condlist_0 = {+cit_a2_discusion_sich_start_dialog_talking} complete
+
+[kpl_a2_line_son_wtf_task]
+icon = ui_inGame2_actor_killer_man_spot
+prior = 5500
+storyline = true
+title = kpl_line_son_wtf_task_name
+descr = kpl_line_son_wtf_task_text
+target = nil
+condlist_0 = {+kpl_a2_line_son_wtf_task_okaaaylolnik} complete
+
+;by 4ector
+
+----------------------------------------------------------------------------------------------------;
+;второстепенные задания  (Не забыть проверить недоделанные квесты - ;fix me)
+----------------------------------------------------------------------------------------------------;
+
+[az_b46_duty_founder_pda];fix me +-
+icon = ui_inGame2_Istoriya_dolga
+prior = 1	
+storyline = false
+title = radar_b46_duty_founder_pda_name
+descr = radar_b46_duty_founder_pda_text
+target = nil
+condlist_0 = {+radar_prodal_dolg_b46_duty_founder_pda_complete} complete
+condlist_1 = {+radar_prodal_sich_b46_duty_founder_pda_complete} complete
+condlist_2 = {+radar_prodal_freedom_b46_duty_founder_pda_complete} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(dolg:50) =inc_faction_goodwill_to_actor_cop(freedom:50) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[az_b46_spatial_bubble_quest];fix me
+icon = ui_inGame2_Anomalnaya_aktivnost
+prior = 1	
+storyline = false
+title = jup_b46_spatial_bubble_name
+descr = jup_b46_spatial_bubble_text
+target = radar_b46_spatial_bubble_zone
+condlist_0 = {+jup_b46_spatial_bubble_ruptured} complete
+on_complete = %+jup_b46_task_done%
+
+[atr_quest_ecolog_art_oazis_and_compass];fix me
+icon = ui_inGame2_PD_Iskatel
+prior = 420	
+storyline = false
+title = atr_quest_ecolog_art_oazis_and_compass_1_text
+descr = atr_quest_ecolog_art_oazis_and_compass_1_desc
+target = {+atr_quest_ecolog_art_oazis_and_compass_haves}az_radar_atr_trader,{=actor_on_level(l15u_pripyat_und)}nil, cit_kpl_4_spot
+condlist_0 = {+atr_quest_ecolog_art_oazis_and_compass_done} complete
+;reward_money = 15000
+on_complete = %=reward_random_money(15000:15500) =inc_faction_goodwill_to_actor_cop(ecolog:100)%
+
+[cit_a2_quest_sich_to_ecolog_posilka]
+icon = ui_inGame2_PD_Nauchniy_sotrudnik
+prior = 40	
+storyline = false
+title = cit_a2_quest_sich_to_ecolog_posilka_1_text
+descr = cit_a2_quest_sich_to_ecolog_posilka_1_desc
+target = az_radar_atr_trader
+condlist_0 = {+cit_a2_quest_sich_to_ecolog_posilka_done} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(ecolog:50) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[cit_a2_quest_night_hunting] ;Ночная охота
+icon = ui_iconsTotal_quest_night_hunting
+prior = 57
+storyline = false
+title = {+esc_quest_line_missing_connected_monstr_dead} esc_quest_night_hunting_part_3_name, {+esc_quest_night_hunting_time} esc_quest_night_hunting_part_2_name, esc_quest_night_hunting_part_1_name
+descr = {+esc_quest_line_missing_connected_monstr_dead} esc_quest_night_hunting_part_3_text, {+esc_quest_night_hunting_time} esc_quest_night_hunting_part_2_text, esc_quest_night_hunting_part_1_text
+target = {+esc_quest_line_missing_connected_monstr_dead} a2_provodnik, {+esc_quest_night_hunting_time}kupol_psy_dog_quest, nil
+condlist_0 = {+esc_quest_night_hunting_complite +esc_quest_night_hunting_complite_dialog} complete
+condlist_1 = {+esc_quest_night_hunting_fail} fail
+;reward_money = 7000
+on_complete = %=reward_random_money(7000:7500) =inc_faction_goodwill_to_actor_cop(bandit:150) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[zat_a2_veniс_box_quest]
+icon = ui_inGame2_Kopachi
+prior = 3
+storyline = false
+title = zat_a2_venic_update_name
+descr = zat_a2_venic_update_descr
+target = {=actor_has_item(venic_box_for_quest)}a2_provodnik, venic_box_for_quest_spot 
+condlist_0 = {+zat_a2_venic_complete_task_is_yes} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[city_b51_nimble_items] ;Предметы на заказ
+icon = ui_inGame2_Osobiy_zakaz
+prior = 2
+storyline = false
+title = {-zat_b51_order_ready_task} zat_b51_nimble_items_wait_order_name, mod_b51_nimble_items_zakaz_name
+descr = {-zat_b51_order_ready_task} mod_b51_nimble_items_wait_order_text, mod_b51_nimble_items_get_order_text
+target = {-zat_b51_order_ready_task} nil, city_b51_stalker_nimble_id
+condlist_0 = {-zat_b51_order_in_process -zat_b51_order_refused} complete
+condlist_1 = {-zat_b51_order_in_process +zat_b51_order_refused} reversed
+
+[kpl_b3_safe_task]
+icon = ui_inGame2_Krazha
+prior = 66
+storyline = false
+title = kpl_b3_safe_task_name
+descr = kpl_b3_safe_task_text
+target = {!actor_has_item(city_b3_kpls_container) +city_b3_safe_has_and_texnik_quest}city_b3_kpls_container, nil
+condlist_0 = {+city_b3_safe_task_done} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[kpl_b3_tech_instruments]
+icon = ui_inGame2_Instrumenti
+prior = 1
+storyline = false
+title = kpl_b3_mechanic_toolkit_search_name
+descr = kpl_b3_mechanic_toolkit_search_text
+target = a2_texnik
+condlist_0 = {+kpl_b3_all_instruments_brought} complete
+on_complete = %+zat_b3_task_end =inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[kpl_b200_tech_materials];Материалы
+icon = ui_inGame2_Radiotechnika
+prior = 2
+storyline = false
+title = {+kpl_b200_actor_found_all} kpl_b200_tech_materials_bring_to_tech, kpl_b200_tech_materials_start
+descr = {+kpl_b200_actor_found_all} kpl_b200_tech_materials_bring_to_tech_descr, kpl_b200_tech_materials_start_descr
+target = {+kpl_b200_actor_found_all} a2_texnik, kpl_b200_zombied_out_sr
+condlist_0 = {+kpl_b200_actor_brought_all} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[city_k54_medic_task]
+icon = ui_inGame2_Pered_zadaniyami_voennih
+prior = 100
+storyline = false
+title = {+cit_k54_dialog_medic_task_start =actor_has_item(city_k54_quest_container)}city_k54_medic_task_name2, city_k54_medic_task_name
+descr = {+cit_k54_dialog_medic_task_start =actor_has_item(city_k54_quest_container)}city_k54_medic_task_desc2, city_k54_medic_task_desc
+target = {+cit_k54_dialog_medic_task_start =actor_has_item(city_k54_quest_container)}cit_a2_stalker_medik, cit_k54_stalker_trup_1
+condlist_0 = {+cit_k54_dialog_medic_task_cont} complete
+condlist_1 = {+city_a2_medick_death} fail
+condlist_2 = {=is_squad_enemy_to_actor(cit_a2_stalker_medik_squad)} fail
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:100)%
+
+[city_and_derevnya_b207_kyriers_task];fix me
+icon = ui_inGame2_Ohrana_uchenih
+prior = 20	
+storyline = false
+title = {+city_and_derevnya_b207_kyriers_dialog_done}city_and_derevnya_b207_kyriers_task_name2, city_and_derevnya_b207_kyriers_task_name
+descr = {+city_and_derevnya_b207_kyriers_dialog_done}city_and_derevnya_b207_kyriers_task_desc2, city_and_derevnya_b207_kyriers_task_desc
+target = {+city_and_derevnya_b207_kyriers_dialog_done}cit_a2_stalker_medik, nil
+condlist_0 = {+city_and_derevnya_b207_kyriers_task_done} complete
+condlist_1 = {+city_a2_medick_death} fail
+condlist_2 = {=is_squad_enemy_to_actor(cit_a2_stalker_medik_squad)} fail
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:50)%
+
+[cit_a71_predatel_task];fix me
+icon = ui_inGame2_Ohrana_uchenih
+prior = 40	
+storyline = false
+title = cit_a71_predatel_task_name
+descr = cit_a71_predatel_task_desc
+target = nil
+condlist_0 = {+cit_a71_predatel_task_done} complete
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:100)%
+
+;-----; sich_pribors_quests
+
+[cit_b106_sich_task] 
+icon = ui_inGame2_Zamanchiviy_biznes 
+prior = 30 
+storyline = false 
+title = {+cit_b106_sich_quest_and_item_pribor_yes}cit_b106_sich_task_name2, cit_b106_sich_task_name 
+descr = {+cit_b106_sich_quest_and_item_pribor_yes}cit_b106_sich_task_desc2, cit_b106_sich_task_desc 
+target = {+cit_b106_sich_quest_and_item_pribor_yes}cit_a2_stalker_sich, cit_b106_sich_pribor    
+condlist_0 = {+cit_b106d_sich_quest_complete} complete 
+on_complete = %=inc_faction_goodwill_to_actor_cop(stalker:50)%   
+
+[cit_b106_sich_task_dva] 
+icon = ui_inGame2_Gipoteza 
+prior = 30 
+storyline = false 
+title = {+cit_b106_sich_quest_and_item_pribor_yes_dva}cit_b106_sich_task_name2, cit_b106_sich_task_name 
+descr = {+cit_b106_sich_quest_and_item_pribor_yes_dva}cit_b106_sich_task_desc33, cit_b106_sich_task_desc3 
+target = {+cit_b106_sich_quest_and_item_pribor_yes_dva}cit_a2_stalker_sich, cit_b106_sich_pribor_dva    
+condlist_0 = {+cit_b106d_sich_quest_dva_complete} complete 
+on_complete = %=reward_random_money(4000:4500) =inc_faction_goodwill_to_actor_cop(stalker:50)% 
+;reward_money = 4500
+
+[cit_b106_sich_task_tri] 
+icon = ui_inGame2_Bespilotniy_razvedchik 
+prior = 30 
+storyline = false 
+title = {+cit_b106_sich_quest_and_item_pribor_yes_tri}cit_b106_sich_task_name2, cit_b106_sich_task_name 
+descr = {+cit_b106_sich_quest_and_item_pribor_yes_tri}cit_b106_sich_task_desc44, cit_b106_sich_task_desc4 
+target = {+cit_b106_sich_quest_and_item_pribor_yes_tri}cit_a2_stalker_sich, cit_b106_sich_pribor_tri    
+condlist_0 = {+cit_b106d_sich_quest_tri_complete} complete 
+on_complete = %=reward_random_money(5000:5500) =inc_faction_goodwill_to_actor_cop(stalker:100)% 
+;reward_money = 5500
+
+[cit_b106_sich_task_4tr] 
+icon = ui_inGame2_Vozmezdie 
+prior = 30 
+storyline = false 
+title = {+cit_b106_sich_quest_and_item_pribor_yes_4tr}cit_b106_sich_task_name2, cit_b106_sich_task_name 
+descr = {+cit_b106_sich_quest_and_item_pribor_yes_4tr}cit_b106_sich_task_desc55, cit_b106_sich_task_desc5 
+target = {+cit_b106_sich_quest_and_item_pribor_yes_4tr}cit_a2_stalker_sich, cit_b106_sich_pribor_4tr    
+condlist_0 = {+cit_b106d_sich_quest_4tr_complete} complete 
+on_complete = %=reward_random_money(6000:6500) =inc_faction_goodwill_to_actor_cop(stalker:50)%
+;reward_money = 6500
+
+;by 4ector
+
+----------------------------------------------------------------------------------------------------;

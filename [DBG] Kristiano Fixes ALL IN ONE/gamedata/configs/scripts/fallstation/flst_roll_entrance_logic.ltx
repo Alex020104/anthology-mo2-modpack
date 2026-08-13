@@ -1,0 +1,34 @@
+[logic]
+active = sr_idle@init
+
+[sr_idle@init]
+on_info = sr_idle@wait %-flst_roll_door_call +flst_roll_enter_door_locked -flst_j1_dialog_ohr_open_ze_dver -flst_j1_told_about_upgr =anim_obj_backward(flst_roll_door)%
+
+[sr_idle@wait] 
+on_info = {+flst_roll_door_call} sr_idle@pred
+; Recovery for saves where Joker has already approved the exit,
+; but the gate controller is stuck in the entry waiting state.
+on_info2 = {+flst_j1_dialog_ohr_open_ze_dver} sr_idle@exit_1 %=anim_obj_forward(flst_roll_door) +flst_roll_enter_door_locked +flst_j1_guard_say_bye%
+
+[sr_idle@pred]
+on_timer = 1000 | sr_idle@pred_1 %=play_sound(flst_roll_zahodi)%
+
+[sr_idle@pred_1]
+on_timer = 700 | sr_idle@pred_2 %=anim_obj_forward(flst_roll_door)%
+
+[sr_idle@pred_2]
+on_timer = 6000 | sr_idle@pred_3 %=anim_obj_backward(flst_roll_door)%
+on_info = {=sad_dist_to_path_le(flst_roll_door_ohrana_look:5:0)} sr_idle@pred_3 %=anim_obj_backward(flst_roll_door)%
+
+[sr_idle@pred_3]
+on_timer = 3000 | sr_idle@lab_10 %-flst_roll_enter_door_locked +flst_j1_guard_prohodi%, sr_idle@init
+
+[sr_idle@lab_10]
+on_info = {+flst_j1_dialog_ohr_open_ze_dver} sr_idle@exit_1 %=anim_obj_forward(flst_roll_door) +flst_roll_enter_door_locked +flst_j1_guard_say_bye%
+
+[sr_idle@exit_1]
+on_timer = 10000 | sr_idle@exit_2 %=anim_obj_backward(flst_roll_door)%
+on_info = {!actor_in_zone(flst_j1_sr_ohr)} sr_idle@exit_2 %=anim_obj_backward(flst_roll_door)%
+
+[sr_idle@exit_2]
+on_timer = 4000 | {=actor_in_zone(flst_j1_sr_ohr)} sr_idle@lab_10 %-flst_roll_enter_door_locked -flst_j1_dialog_ohr_open_ze_dver +flst_j1_guard_say_again%, sr_idle@init
