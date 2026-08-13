@@ -27,23 +27,88 @@ local path_radio_session = {} 									-- File control: the path to channel x se
 local radio_ch_names = {}
 local radio_frequencies = {}
 
-local ini_channels = ini_file_ex("plugins\\placeable_radio\\base.ltx")
-local i = 1
-for _, section in pairs(ini_channels:get_sections()) do
-    path_radio_ch[i] = ini_channels:r_string_ex(section, "program")
-	path_radio_session[i] = ini_channels:r_string_ex(section, "intermission")
-	radio_ch_names[i] = ini_channels:r_string_ex(section, "name")
-	radio_frequencies[i] = ini_channels:r_string_ex(section, "frequency")
-	
-	num_of_ch = num_of_ch + 1
-	i = i + 1
+-- Anthology compatibility fix v1.0.3 CUSTOM FIRST WAVE
+-- No directory enumeration is used. The two base Anomaly stations are built
+-- from the known numbered files shipped with the game.
+local FIX_VERSION = "1.0.3-custom-first-wave"
+
+local function fix_log(message)
+	printf("[PlaceableRadioFix " .. FIX_VERSION .. "] " .. tostring(message))
 end
+
+local function numbered_files(prefix, count)
+	local result = {}
+	for n = 1, count do
+		result[n] = prefix .. tostring(n) .. ".ogg"
+	end
+	return result
+end
+
+local CH_1 = "radio\\_channel_1\\"
+local CH_2 = "radio\\_channel_2\\"
+local SESSION_1 = "radio\\_channel_1_session\\"
+local SESSION_2 = "radio\\_channel_2_session\\"
+
+local static_playlists = {
+	[CH_1] = numbered_files("track_", 21),
+	[CH_2] = numbered_files("track_", 20),
+	[SESSION_1] = numbered_files("session_", 2),
+	[SESSION_2] = numbered_files("session_", 2),
+}
+
+-- Keep the order stable. pairs(ini:get_sections()) is not guaranteed to return
+-- channel_1 before channel_2, which makes diagnostics and saved selections harder.
+local base_channel_order = { CH_1, CH_2 }
+local expected_session = {
+	[CH_1] = SESSION_1,
+	[CH_2] = SESSION_2,
+}
+
+local ini_channels = ini_file_ex("plugins\\placeable_radio\\base.ltx")
+local channel_config_by_program = {}
+
+for _, section in pairs(ini_channels:get_sections()) do
+	local program = ini_channels:r_string_ex(section, "program")
+	channel_config_by_program[program] = {
+		section = section,
+		intermission = ini_channels:r_string_ex(section, "intermission"),
+		name = ini_channels:r_string_ex(section, "name"),
+		frequency = ini_channels:r_string_ex(section, "frequency"),
+	}
+end
+
+for slot, program in ipairs(base_channel_order) do
+	local cfg = channel_config_by_program[program]
+	if cfg then
+		path_radio_ch[slot] = program
+
+		-- Use the config value when it points to a supported static session folder.
+		-- Otherwise use the matching stock base-game session folder.
+		local intermission = cfg.intermission
+		if not static_playlists[intermission] then
+			intermission = expected_session[program]
+		end
+		path_radio_session[slot] = intermission
+
+		radio_ch_names[slot] = cfg.name
+		radio_frequencies[slot] = cfg.frequency
+	else
+		fix_log("missing base channel config for program [" .. tostring(program) .. "]")
+	end
+end
+
+num_of_ch = #path_radio_ch
+fix_log("base channels enabled=" .. tostring(num_of_ch))
 
 local fileList, count, file									-- Variables for file reading
 
 local function get_sound_file_list(path)
-	printf("placeable_radio: skipping sound list [%s]", tostring(path))
-	return nil, 0
+	local list = static_playlists[path]
+	if not list then
+		fix_log("unsupported static sound path [" .. tostring(path) .. "]")
+		return {}, 0
+	end
+	return list, #list
 end
 
 
@@ -90,6 +155,7 @@ end
 class "placeable_radio_wrapper" (bind_hf_base.hf_binder_wrapper)
 -- Class constructor
 function placeable_radio_wrapper:__init(obj) super(obj)
+	fix_log("binder init started")
 	-- Radio
 	self.radio_ch    = {}										-- Multi-dimensional table: Radio channels, every channel has its tracks
 	self.radio_ch_out = {}										-- Similar, used for outer radios
@@ -100,10 +166,11 @@ function placeable_radio_wrapper:__init(obj) super(obj)
 		self.radio_ch_out[x] = {}
 		self.radio_index[x] = {}
 		self.radio_now[x] = 1
-		fileList, count = get_sound_file_list(path_radio_ch[x])															-- Get the number of files per channel x
+		fileList, count = get_sound_file_list(path_radio_ch[x])
+		fix_log("channel=" .. tostring(x) .. " program=[" .. tostring(path_radio_ch[x]) .. "] tracks=" .. tostring(count))															-- Get the number of files per channel x
 		if (count > 0) then
 			for i = 1, count do
-				file = fileList:GetAt(i - 1):sub(1, -5)								-- Get red off the extension
+				file = fileList[i]:sub(1, -5)								-- Get red off the extension
 				self.radio_ch[x][i] = sound_object(path_radio_ch[x] .. file)				-- Creating sound objects, every track in every channel
 				self.radio_ch_out[x][i] = sound_object(path_radio_ch[x] .. file)
 				self.radio_index[x][i] = i												-- Creating track index
@@ -128,11 +195,12 @@ function placeable_radio_wrapper:__init(obj) super(obj)
 		self.radio_session[x] = {}
 		self.radio_session_out[x] = {}
 		self.radio_session_now[x] = 1
-		self.radio_session_lock[x] = false
+		self.radio_session_lock[x] = true -- force a real music track before the first intermission
 		fileList, count = get_sound_file_list(path_radio_session[x])	-- Get the number of files per channel x
+		fix_log("channel=" .. tostring(x) .. " intermission=[" .. tostring(path_radio_session[x]) .. "] sessions=" .. tostring(count))
 		if (count > 0) then
 			for i = 1, count do
-				file = fileList:GetAt(i - 1):sub(1, -5)
+				file = fileList[i]:sub(1, -5)
 				self.radio_session[x][i] = sound_object(path_radio_session[x] .. file)
 				self.radio_session_out[x][i] = sound_object(path_radio_session[x] .. file)
 			end
@@ -160,6 +228,7 @@ function placeable_radio_wrapper:__init(obj) super(obj)
 	self.snd_radio_on.volume  = 2
 	self.snd_radio_off.volume = 2
 
+	fix_log("binder init completed")
 	self.object:set_tip_text(game.translate_string("st_interact"))
 end
 -- Class update
@@ -197,10 +266,12 @@ function placeable_radio_wrapper:update(delta)
 					if (math_random(3) == 1) and (not self.radio_session_lock[i]) then		-- chance of playing a session between tracks (%30)
 						self.radio_session_now[i] = math_random(#self.radio_session[i])	-- pick a session from channel i
 						self.radio_session[i][self.radio_session_now[i]]:play_at_pos(self.object, self.object:position(), 0, sound_object.s3d)	-- play it
+							fix_log("start session channel=" .. tostring(i) .. " index=" .. tostring(self.radio_session_now[i]))
 						self.radio_session_lock[i] = true
 					else	-- if no session is picked, go for radio tracks
 						self.radio_now[i] = self:radio_pick (self.radio_index[i], #self.radio_ch[i])	-- pick a track from channel i
 						self.radio_ch[i][self.radio_now[i]]:play_at_pos(self.object, self.object:position(), 0, sound_object.s3d)	-- play it
+							fix_log("start track channel=" .. tostring(i) .. " index=" .. tostring(self.radio_now[i]))
 						self.radio_session_lock[i] = false
 					end
 				end
@@ -296,6 +367,7 @@ function placeable_radio_wrapper:action_radio_ch(n) -- Rule: Switch to Channel (
 		-- get_ui():SwitchChannel(n)
 		self:radio_setVolume(0) -- set volume 0 to the previous channel
 		self.radio_selected = n
+		fix_log("active channel=" .. tostring(n) .. " program=[" .. tostring(path_radio_ch[n]) .. "] frequency=" .. tostring(radio_frequencies[n]))
 		--snd_click:play_at_pos(self.object, self.object:position(), 0, sound_object.s3d)
 		self.snd_radio_mixdown[math.random(#self.snd_radio_mixdown)]:play_at_pos(self.object, self.object:position(), 0, sound_object.s3d)
 		safety_lock = false
@@ -559,6 +631,7 @@ end
 -- Callbacks
 function UIFurnitureRadio:OnSelectChannel()
 	local channel_id = self.list_channel:CurrentID()
+	fix_log("UI selected channel id=" .. tostring(channel_id))
 	
 	local wrapper = bind_hf_base.get_wrapper(self.obj_id)
 	local result = wrapper:action_radio_ch(channel_id)
