@@ -62,6 +62,7 @@ FINISHED_QUESTS = {}
 PRIOR_COUNTER = 0
 
 NPC_QUESTS = {}
+local MACRO_GUARD_VALIDATION_ERRORS = {}
 function get_all_quests_for_npc(npc)
 	local npc_name = npc:section() ~= "m_trader" and npc:section() or npc:name()
 	if not NPC_QUESTS[npc_name] then
@@ -94,7 +95,17 @@ function is_valid_quest(tg_id, task_data, task_id)
 
 	local ok, out = pcall(Igi.try_prepare_quest, task_id, task_data, tg_id)
 	if not ok then
-		on_task_crashed(out)
+		-- Validation happens before the task exists in task_manager, so do not mark it
+		-- failed. Reject only this generated candidate and keep the rest of the board.
+		if not MACRO_GUARD_VALIDATION_ERRORS[task_id] then
+			trace_error("[WTF Macro Guard v1.0.0] Rejected generated task during validation:",
+				"task_id=" .. tostring(task_id),
+				"tg_id=" .. tostring(tg_id))
+			on_task_crashed(out)
+			MACRO_GUARD_VALIDATION_ERRORS[task_id] = true
+		end
+	else
+		MACRO_GUARD_VALIDATION_ERRORS[task_id] = nil
 	end
 	return ok and (out ~= nil)
 end

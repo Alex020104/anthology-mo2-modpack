@@ -1,5 +1,22 @@
 trace_assert  = igi_helper.trace_assert
 
+local MACRO_GUARD_VERSION = "1.0.0"
+local active_macro_path = "<unknown>"
+
+local function macro_guard_context(link_context, macro, expression)
+	local cache = link_context and link_context.CACHE
+	local quest_id = cache and (cache.quest_id or cache.id or cache.task_id) or "<unknown>"
+	local current = link_context and link_context.this
+	local entity_id = current and current ~= LinkContext._NO_THIS and
+		(current.link_id or current.id or current.section or current.name) or "<cache>"
+	return "[WTF Macro Guard v" .. MACRO_GUARD_VERSION .. "] " ..
+		"quest=" .. tostring(quest_id) ..
+		"; entity=" .. tostring(entity_id) ..
+		"; path=" .. tostring(active_macro_path) ..
+		"; macro=" .. tostring(macro and macro.orig) ..
+		"; expression=" .. tostring(expression)
+end
+
 local fCache = {}
 local function eval(v)
 	local f = fCache[v]
@@ -98,10 +115,17 @@ Macro       = {
 		igi_helper.trace_dbg("Resolving macro", self.orig)
 
 		Macro.link_context = link_context
-		local out = eval(self:_without_links())
+		local expression = self:_without_links()
+		local ok, out = pcall(eval, expression)
+		if not ok then
+			error(macro_guard_context(link_context, self, expression) ..
+				"; error=" .. tostring(out), 0)
+		end
 
-		trace_assert(out ~= nil, "Macro returned nil", self.orig)
-		trace_assert(self.is_auto or type(out) ~= "userdata", "Macro returned userdata", self.orig)
+		trace_assert(out ~= nil, "Macro returned nil", self.orig,
+			macro_guard_context(link_context, self, expression))
+		trace_assert(self.is_auto or type(out) ~= "userdata", "Macro returned userdata", self.orig,
+			macro_guard_context(link_context, self, expression))
 
 		return out
     end,
@@ -126,14 +150,23 @@ function has_macro(str)
     return Macro:new(str) ~= nil
 end
 
-local function resolve_macros(tbl, level, link_context, transient_fields)
+local function resolve_macros(tbl, level, link_context, transient_fields, path)
+	path = path or "cache"
     for k, v in pairs(tbl) do
+		local field_path = path .. "." .. tostring(k)
         if type(v) == 'table' then
-            resolve_macros(v, level, link_context, transient_fields)
+            resolve_macros(v, level, link_context, transient_fields, field_path)
         elseif type(v) == 'string' then
             local macro = Macro:new(v)
 			if (macro and macro.level == level and (not macro.is_auto)) then
-				tbl[k] = _resolve_linked_macro(macro, level, link_context, transient_fields)
+				local previous_path = active_macro_path
+				active_macro_path = field_path
+				local ok, out = pcall(_resolve_linked_macro, macro, level, link_context, transient_fields)
+				active_macro_path = previous_path
+				if not ok then
+					error(out, 0)
+				end
+				tbl[k] = out
 			end
         end
     end
@@ -166,7 +199,13 @@ local function resolve_all_links(links, level, link_context, transient_fields)
         local macro = Macro:new(before)
         if macro then
             macro:assert_level(level)
-			local out = macro:resolve(link_context:set_this(tbl))
+			local previous_path = active_macro_path
+			active_macro_path = "link[" .. tostring(link.link_id) .. "]." .. tostring(link.field)
+			local ok, out = pcall(macro.resolve, macro, link_context:set_this(tbl))
+			active_macro_path = previous_path
+			if not ok then
+				error(out, 0)
+			end
 
 			if macro.is_auto then
 				transient_fields[tbl] = transient_fields[tbl] or {}
@@ -194,28 +233,46 @@ end
 
 function resolve_table_macros(tbl, level, link_context)
 	local transient_fields = {}
-	resolve_macros(tbl, level, link_context, transient_fields)
+	local ok, out = pcall(resolve_macros, tbl, level, link_context, transient_fields, "table")
 	reset_transient_fields(transient_fields)
+	if not ok then
+		error(out, 0)
+	end
 end
 
 function resolve_and_link_cache(CACHE, level)
     local link_context = igi_text_processor.get_link_context(CACHE)
 	local transient_fields = {}
 
-    for _, entity in pairs(CACHE.entities) do
-        resolve_macros(entity, level, link_context:set_this(entity), transient_fields)
-    end
+	local ok, out = pcall(function()
+		for index, entity in pairs(CACHE.entities) do
+			local entity_id = entity.link_id or entity.id or index
+			resolve_macros(entity, level, link_context:set_this(entity), transient_fields,
+				"entity[" .. tostring(entity_id) .. "]")
+		end
 
-	resolve_macros(CACHE, level, link_context, transient_fields)
+		resolve_macros(CACHE, level, link_context, transient_fields, "cache")
+	end)
+
+	-- Always restore temporary @$ fields, even when a malformed task macro fails.
 	reset_transient_fields(transient_fields)
+	if not ok then
+		error(out, 0)
+	end
 end
 
 function eval_logic_macro(str, link_context)
     local macro = Macro:new(str)
 	trace_assert(macro and macro.is_auto and macro.level == '', "Not a @$ macro", str)
 	local transient_fields = {}
-    local resolved = _resolve_linked_macro(macro, '', link_context, transient_fields)
+	local previous_path = active_macro_path
+	active_macro_path = "logic_macro"
+	local ok, resolved = pcall(_resolve_linked_macro, macro, '', link_context, transient_fields)
+	active_macro_path = previous_path
 	reset_transient_fields(transient_fields)
+	if not ok then
+		error(resolved, 0)
+	end
 	return resolved
 end
 
