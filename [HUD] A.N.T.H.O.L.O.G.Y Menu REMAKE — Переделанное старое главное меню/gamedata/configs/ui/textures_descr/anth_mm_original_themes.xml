@@ -1,0 +1,52 @@
+<w>
+	<file name="ui\anth_soc_mainmenu">
+		<texture id="anth_soc_menu_background" x="0" y="0" width="2048" height="1536" />
+		<texture id="anth_soc_menu_move" x="14" y="1902" width="784" height="146" />
+		<texture id="anth_soc_menu_bigroll_r" x="1270" y="1756" width="172" height="172" />
+		<texture id="anth_soc_menu_bigroll_l" x="1446" y="1756" width="172" height="172" />
+		<texture id="anth_soc_menu_grating_r" x="1620" y="1756" width="110" height="134" />
+		<texture id="anth_soc_menu_grating_l" x="1730" y="1756" width="92" height="140" />
+	</file>
+
+	<file name="ui\anth_cs_mainmenu2">
+		<texture id="anth_cs_menu2_background" x="0" y="0" width="2048" height="1536" />
+		<texture id="anth_cs_menu2_move_e" x="0" y="1616" width="556" height="80" />
+		<texture id="anth_cs_menu2_highlight_one" x="1636" y="1548" width="412" height="48" />
+		<texture id="anth_cs_menu2_fog_01" x="0" y="1696" width="558" height="296" />
+		<texture id="anth_cs_menu2_fog_02" x="558" y="1536" width="536" height="152" />
+		<texture id="anth_cs_menu2_ray_01" x="558" y="1696" width="498" height="312" />
+		<texture id="anth_cs_menu2_ray_02" x="1056" y="1696" width="438" height="326" />
+	</file>
+
+	<file name="ui\anth_cs_ingame2_back_add2_w">
+		<texture id="anth_cs_ingame2_back_mmw10_l" x="136" y="0" width="204" height="1536" />
+		<texture id="anth_cs_ingame2_back_mmw10_r" x="344" y="0" width="204" height="1536" />
+	</file>
+
+	<file name="ui\anth_cs_magnifier2">
+		<texture id="anth_cs_magnifier2" x="0" y="0" width="207" height="24" />
+	</file>
+
+	<file name="ui\anth_cop_actor_main_menu">
+		<texture id="anth_cop_ingame2_background" x="0" y="0" width="2048" height="1536" />
+		<texture id="anth_cop_ingame2_slider" x="10" y="1546" width="548" height="122" />
+	</file>
+
+	<file name="ui\anth_cop_actor_widescreen_sidepanels">
+		<texture id="anth_cop_ingame2_left_widepanel" x="512" y="0" width="256" height="1536" />
+		<texture id="anth_cop_ingame2_right_widepanel" x="768" y="0" width="256" height="1536" />
+	</file>
+
+	<file name="ui\anth_cop_magnifier2">
+		<texture id="anth_cop_magnifier2" x="0" y="0" width="207" height="24" />
+	</file>
+
+	<file name="ui\anth_amk_mainmenu">
+		<texture id="anth_amk_menu_background" x="0" y="0" width="2048" height="1536" />
+		<texture id="anth_amk_menu_alfa" x="656" y="1838" width="24" height="24" />
+	</file>
+
+	<file name="ui\anth_amk_selector_marker_v27">
+		<texture id="anth_amk_menu_ramka" x="0" y="0" width="480" height="120" />
+	</file>
+</w>

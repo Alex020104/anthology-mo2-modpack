@@ -1,0 +1,1065 @@
+local themes = {
+	{
+		id = "soc",
+		name = "Shadow of Chernobyl",
+		fallback_texture = "anth_soc_menu_background",
+		["background_xml"] = [[
+<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+	<texture x="0" y="0" width="1536" height="1152">ui\anth_soc_mm_main_back_crop</texture>
+</auto_static>
+]],
+		shniaga_wnd = {x = 590, y = 379, width = 392, height = 280},
+		buttons_region = {x = 110, y = -4, width = 164, height = 280, always_show_scroll = "false"},
+		remove_buttons_region = {"vert_interval"},
+		shniaga = {x = 9, y = 0, width = 392, height = 73, stretch = 1},
+		shniaga_texture = "anth_soc_menu_move",
+		magnifire = {x = 76, y = 22, width = 232, height = 36, stretch = 1},
+		magnifire_texture = [[ui\anth_soc_magnifier]],
+		y_offset = "-3",
+		["shniaga_extra"] = [[
+<auto_static x="0" y="4" width="55" height="67" stretch="1">
+	<texture>anth_soc_menu_grating_l</texture>
+</auto_static>
+<auto_static x="337" y="4" width="55" height="67" stretch="1">
+	<texture>anth_soc_menu_grating_r</texture>
+</auto_static>
+<auto_static x="51.5" y="37" width="55" height="55" stretch="1" heading="1" alignment="c">
+	<texture>anth_soc_menu_bigroll_l</texture>
+</auto_static>
+<auto_static x="341.5" y="37" width="55" height="55" stretch="1" heading="1" alignment="c">
+	<texture>anth_soc_menu_bigroll_r</texture>
+</auto_static>
+]],
+		button_h = 30,
+		menu_attrs = {btn_height = 30, font = "graffiti19", a = 255, r = 0, g = 0, b = 0},
+		remove_menu_attrs = {"color"},
+		version_attrs = {x = 15, y = 740, width = 100, height = 30},
+		version_text_attrs = {align = "l", font = "graffiti19", r = 135, g = 123, b = 116, complex_mode = 0},
+		menu_music = [[music\mm_music\track_7]],
+	},
+	{
+		id = "cs",
+		name = "Clear Sky",
+		fallback_texture = "anth_cs_menu2_background",
+		["background_under_xml"] = [[
+<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+		<texture x="0" y="0" width="1536" height="1152">ui\anth_cs_mm2_back_video</texture>
+</auto_static>
+]],
+		shniaga_wnd = {x = 118, y = 354, width = 327, height = 350},
+		buttons_region = {x = 57, y = -13.84, width = 246, height = 344.43, always_show_scroll = "false"},
+		remove_buttons_region = {"vert_interval"},
+		shniaga = {x = 57, y = -13.84, width = 246, height = 38.27, stretch = 1},
+		shniaga_texture = "anth_cs_menu2_move_e",
+		magnifire = {x = 0, y = 0, width = 246, height = 38.27, stretch = 1},
+		magnifire_texture = "anth_cs_magnifier2",
+		y_offset = "-13.84",
+		button_h = 38.27,
+		menu_attrs = {btn_height = 38.27, font = "graffiti22", a = 255, r = 170, g = 169, b = 164},
+		remove_menu_attrs = {"color"},
+		version_attrs = {x = 15, y = 740, width = 100, height = 30},
+		version_text_attrs = {align = "l", font = "graffiti19", r = 135, g = 123, b = 116, complex_mode = 0},
+		menu_music = [[music\mm_music\track_10]],
+	},
+	{
+		id = "cop",
+		name = "Call of Pripyat",
+		fallback_texture = "anth_cop_ingame2_background",
+		["background_under_xml"] = [[
+<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+	<texture x="0" y="0" width="1536" height="1152">ui\anth_cop_video_voroni_crop</texture>
+</auto_static>
+]],
+		["background_over_xml"] = [[
+<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+	<texture x="0" y="0" width="2048" height="1536">ui\anth_cop_ui_overlay</texture>
+</auto_static>
+]],
+		shniaga_wnd = {x = 134, y = 320, width = 216, height = 380},
+		buttons_region = {x = 8, y = 0, width = 220, height = 380, always_show_scroll = "false", vert_interval = 12},
+		shniaga = {x = 7, y = -20, width = 219, height = 61, stretch = 1},
+		shniaga_texture = "anth_cop_ingame2_slider",
+		magnifire = {x = 27, y = 18, width = 162, height = 24, stretch = 1},
+		magnifire_texture = "anth_cop_magnifier2",
+		y_offset = "1",
+		button_h = 25,
+		menu_attrs = {btn_height = 34, font = "letterica18", a = 255, r = 220, g = 224, b = 218},
+		remove_menu_attrs = {"color", "a", "r", "g", "b"},
+		version_attrs = {x = 14, y = 740, width = 80, height = 30},
+		version_text_attrs = {align = "l", font = "graffiti19", r = 135, g = 123, b = 116, complex_mode = 0},
+		menu_music = [[music\_anomaly_ilya_ponomarenko_day_one]],
+	},
+	{
+		id = "amk",
+		name = "AMK 1.4.1",
+		fallback_texture = "anth_amk_menu_background",
+		["background_xml"] = [[
+<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+	<texture x="0" y="0" width="1536" height="1152">ui\anth_amk_rad_pulse</texture>
+</auto_static>
+]],
+		shniaga_wnd = {x = 324, y = 500, width = 392, height = 280},
+		buttons_region = {x = 103, y = 0, width = 164, height = 280, always_show_scroll = "false"},
+		remove_buttons_region = {"vert_interval"},
+		shniaga = {x = 70, y = 0, width = 392, height = 73, stretch = 1},
+		shniaga_texture = "anth_amk_menu_ramka",
+		magnifire = {x = 30, y = 0, width = 232, height = 30, stretch = 1},
+		magnifire_texture = "anth_amk_menu_alfa",
+		y_offset = "-4",
+		button_h = 30,
+		menu_attrs = {btn_height = 30, font = "letterica18", a = 255, r = 224, g = 226, b = 218},
+		remove_menu_attrs = {"color"},
+		version_attrs = {x = 355, y = 740, width = 100, height = 30},
+		version_text_attrs = {align = "r", font = "letterica16", r = 255, g = 255, b = 255, complex_mode = 0},
+		menu_music = [[music\mm_music\track_5]],
+	},
+}
+
+local credit_sequences = {
+	{
+		name = "Shadow of Chernobyl credits",
+		sequence = "credits_seq_soc",
+		["background_xml"] = [[
+<global_wnd x="0" y="0" width="1024" height="768">
+	<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+		<texture x="0" y="0" width="1536" height="1152">ui\anth_soc_mm_credits_back</texture>
+	</auto_static>
+	<function_on_stop>xr_effects.after_credits</function_on_stop>
+</global_wnd>
+<global_wnd_16 x="0" y="0" width="1024" height="768">
+	<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+		<texture x="0" y="0" width="1536" height="1152">ui\anth_soc_mm_credits_back</texture>
+	</auto_static>
+	<function_on_stop>xr_effects.after_credits</function_on_stop>
+</global_wnd_16>
+]],
+	},
+	{
+		name = "Call of Pripyat credits",
+		sequence = "credits_seq_cop",
+		["background_xml"] = [[
+<global_wnd width="1024" height="768">
+	<auto_static x="475" y="88" width="32" height="32" stretch="1">
+		<texture width="32" height="32">ui\video_crow</texture>
+	</auto_static>
+	<auto_static x="0" y="0" width="1024" height="768" stretch="1">
+		<texture>ui_credits_background</texture>
+	</auto_static>
+	<auto_static x="121" y="436" width="800" height="320" stretch="1">
+		<texture x="1" y="1" width="798" height="318">ui\video_tuman</texture>
+	</auto_static>
+	<function_on_stop>xr_effects.after_credits</function_on_stop>
+</global_wnd>
+<global_wnd_16 width="1024" height="768">
+	<auto_static x="481" y="88" width="28" height="32" stretch="1">
+		<texture width="32" height="32">ui\video_crow</texture>
+	</auto_static>
+	<auto_static x="85" y="0" width="854" height="768" stretch="1">
+		<texture>ui_credits_background</texture>
+	</auto_static>
+	<auto_static x="186" y="436" width="668" height="320" stretch="1">
+		<texture x="1" y="1" width="798" height="318">ui\video_tuman</texture>
+	</auto_static>
+	<auto_static x="0" y="0" width="85" height="768" stretch="1">
+		<texture>ui_credits_left_widepanel</texture>
+	</auto_static>
+	<auto_static x="939" y="0" width="85" height="768" stretch="1">
+		<texture>ui_credits_right_widepanel</texture>
+	</auto_static>
+</global_wnd_16>
+]],
+	},
+}
+
+local menu_nodes = {
+	"menu_main",
+	"menu_network_game",
+	"menu_main_logout",
+	"menu_main_last_save",
+	"menu_new_game",
+	"menu_main_single",
+	"menu_main_single_dead",
+	"menu_main_mm",
+}
+
+local selected_theme
+local seeded
+local last_theme_index
+local last_credit_sequence_index = #credit_sequences
+local selected_credit_sequence
+local credits_callbacks_registered
+local credits_callbacks_armed
+local originals_link_patched
+
+-- The engine always maps the 1024x768 UI canvas directly to the current
+-- resolution.  Keep the established 16:9 composition as the reference and
+-- counter-scale only narrower formats.  Ultrawide layouts deliberately keep
+-- the complete native XML canvas atomic.
+local reference_aspect = 16 / 9
+local aspect_safe_margin = 8
+local logged_aspect
+
+local function get_screen_aspect()
+	if device then
+		local ok, ratio = pcall(function()
+			local dev = device()
+			if dev and dev.width and dev.height and dev.height > 0 then
+				return dev.width / dev.height
+			end
+		end)
+		if ok and ratio and ratio > 0 then
+			return ratio
+		end
+	end
+
+	return reference_aspect
+end
+
+local function get_aspect_profile()
+	local ratio = get_screen_aspect()
+	local name
+	if ratio < 1.46 then
+		name = "4:3"
+	elseif ratio < 1.69 then
+		name = "16:10"
+	elseif ratio < 2.05 then
+		name = "16:9"
+	elseif ratio < 2.90 then
+		name = "21:9"
+	else
+		name = "32:9"
+	end
+
+	-- Narrow formats keep the accepted horizontal crop/counter-scale.
+	-- Ultrawide formats use the native full 1024-wide XML canvas so the
+	-- existing background, selector, text and hitboxes all share one
+	-- transform instead of putting the media in a separate 16:9 frame.
+	local x_factor = 1
+	if ratio < reference_aspect then
+		x_factor = reference_aspect / ratio
+	end
+	local background_scale_x = x_factor
+	local background_scale_y = 1
+	local background_offset_x = (1024 - 1024 * x_factor) * 0.5
+	local background_offset_y = 0
+
+	return {
+		name = name,
+		ratio = ratio,
+		x_factor = x_factor,
+		frame_x = (1024 - 1024 * x_factor) * 0.5,
+		frame_width = 1024 * x_factor,
+		background_scale_x = background_scale_x,
+		background_scale_y = background_scale_y,
+		background_offset_x = background_offset_x,
+		background_offset_y = background_offset_y,
+		background_width = 1024 * background_scale_x,
+		background_height = 768 * background_scale_y,
+	}
+end
+
+local function copy_attrs(attrs)
+	local result = {}
+	if attrs then
+		for key, value in pairs(attrs) do
+			result[key] = value
+		end
+	end
+	return result
+end
+
+local function aspect_local_attrs(attrs, profile)
+	local result = copy_attrs(attrs)
+	if result.x then
+		result.x = result.x * profile.x_factor
+	end
+	if result.width then
+		result.width = result.width * profile.x_factor
+	end
+	return result
+end
+
+local function aspect_global_attrs(attrs, profile, keep_visible)
+	local result = copy_attrs(attrs)
+	if result.x then
+		result.x = profile.frame_x + result.x * profile.x_factor
+	end
+	if result.width then
+		result.width = result.width * profile.x_factor
+	end
+
+	if keep_visible and result.x and result.width then
+		local max_width = 1024 - aspect_safe_margin * 2
+		if result.width > max_width then
+			result.width = max_width
+		end
+		local max_x = 1024 - aspect_safe_margin - result.width
+		if result.x < aspect_safe_margin then
+			result.x = aspect_safe_margin
+		elseif result.x > max_x then
+			result.x = max_x
+		end
+	end
+
+	return result
+end
+
+local function format_xml_number(value)
+	local result = string.format("%.3f", value)
+	result = result:gsub("0+$", ""):gsub("%.$", "")
+	return result
+end
+
+local function replace_xml_attr(attrs, name, value)
+	return attrs:gsub(name .. '="[^"]+"', name .. '="' .. format_xml_number(value) .. '"', 1)
+end
+
+local function aspect_background_xml(xml, profile)
+	if not xml or math.abs(profile.x_factor - 1) < 0.0005 then
+		return xml
+	end
+
+	return xml:gsub("<auto_static([^>]*)>", function(attrs)
+		local x = tonumber(attrs:match('x="([%-%d%.]+)"'))
+		local y = tonumber(attrs:match('y="([%-%d%.]+)"'))
+		local width = tonumber(attrs:match('width="([%-%d%.]+)"'))
+		local height = tonumber(attrs:match('height="([%-%d%.]+)"'))
+		if not x or not y or not width or not height then
+			return "<auto_static" .. attrs .. ">"
+		end
+
+		attrs = replace_xml_attr(
+			attrs,
+			"x",
+			profile.background_offset_x + x * profile.background_scale_x
+		)
+		attrs = replace_xml_attr(
+			attrs,
+			"y",
+			profile.background_offset_y + y * profile.background_scale_y
+		)
+		attrs = replace_xml_attr(attrs, "width", width * profile.background_scale_x)
+		attrs = replace_xml_attr(attrs, "height", height * profile.background_scale_y)
+		return "<auto_static" .. attrs .. ">"
+	end)
+end
+
+local function aspect_shniaga_extra(xml, profile)
+	if not xml or math.abs(profile.x_factor - 1) < 0.0005 then
+		return xml
+	end
+
+	return xml:gsub("<auto_static([^>]*)>", function(attrs)
+		local x = tonumber(attrs:match('x="([%-%d%.]+)"'))
+		local width = tonumber(attrs:match('width="([%-%d%.]+)"'))
+		if not x or not width then
+			return "<auto_static" .. attrs .. ">"
+		end
+
+		-- Heading-enabled gears already receive the engine's own aspect
+		-- correction.  Move their centres, but do not squeeze the gear itself.
+		local is_heading = attrs:match('heading="1"') ~= nil
+		attrs = replace_xml_attr(attrs, "x", x * profile.x_factor)
+		if not is_heading then
+			attrs = replace_xml_attr(attrs, "width", width * profile.x_factor)
+		end
+		return "<auto_static" .. attrs .. ">"
+	end)
+end
+
+local soc_gears_config = {
+	wnd = {x = 590, y = 379, width = 392, height = 280},
+	shniaga = {x = 9, y = 0, width = 392, height = 50},
+	buttons_region = {x = 110, y = -4, width = 164, height = 280},
+	magnifire = {x = 82, y = 11, width = 220, height = 28},
+	y_offset = 0,
+	button_h = 30,
+	spin_speed = 0.024,
+	["parts"] = {
+		{name = "left_roll", texture = "anth_soc_menu_bigroll_l", x = 51.5, y = 37, w = 55, h = 55, spin = 1, stretch = true},
+		{name = "right_roll", texture = "anth_soc_menu_bigroll_r", x = 341.5, y = 37, w = 55, h = 55, spin = -1, stretch = true},
+	},
+}
+
+local function seed_random()
+	if seeded then
+		return
+	end
+
+	seeded = true
+
+	local seed = os.time()
+	if device then
+		local ok, t = pcall(function()
+			return device():time_continual()
+		end)
+		if ok and t then
+			seed = seed + t
+		end
+	end
+
+	math.randomseed(seed)
+	math.random()
+end
+
+local function get_theme(force_new)
+	if selected_theme and not force_new then
+		return selected_theme
+	end
+
+	seed_random()
+	local index = math.random(1, #themes)
+	if #themes > 1 and last_theme_index == index then
+		index = (index % #themes) + 1
+	end
+
+	last_theme_index = index
+	selected_theme = themes[index]
+	printf("[anth_mm_theme] selected %s", selected_theme.name)
+	local profile = get_aspect_profile()
+	if logged_aspect ~= profile.name then
+		logged_aspect = profile.name
+		printf(
+			"[anth_mm_theme] aspect profile %s (%.4f), horizontal factor %.4f",
+			profile.name,
+			profile.ratio,
+			profile.x_factor
+		)
+	end
+	return selected_theme
+end
+
+local function get_credit_sequence()
+	seed_random()
+	local index = math.random(1, #credit_sequences)
+	if #credit_sequences > 1 and last_credit_sequence_index == index then
+		index = (index % #credit_sequences) + 1
+	end
+
+	last_credit_sequence_index = index
+	local credits = credit_sequences[index]
+	printf("[anth_mm_theme] selected %s", credits.name)
+	selected_credit_sequence = credits
+	return credits
+end
+
+local function start_random_credits()
+	-- Use Anomaly's stock credits sequence.  It already has matching normal
+	-- and widescreen XML variants selected by the engine; injecting another
+	-- tutorial sequence here caused resolution-dependent crashes.
+	local sequence = "credits_seq"
+	printf("[anth_mm_theme] starting %s", sequence)
+	game.start_tutorial(sequence)
+end
+
+local function patch_originals_link()
+	if originals_link_patched or not game or not game.open_originals_link then
+		return
+	end
+
+	local ok, err = pcall(function()
+		game.open_originals_link = start_random_credits
+	end)
+	originals_link_patched = ok
+	if not ok then
+		printf("[anth_mm_theme] failed to patch originals link: %s", tostring(err))
+	end
+end
+
+local function current_time_ms()
+	if device then
+		local ok, t = pcall(function()
+			return device():time_continual()
+		end)
+		if ok and t then
+			return t
+		end
+	end
+
+	return math.floor(os.clock() * 1000)
+end
+
+local function vec2(x, y)
+	return vector2():set(x, y)
+end
+
+local function soc_gears_active()
+	-- The original gear and grating assembly is attached directly to shniaga,
+	-- so it follows the engine's real selector position without a second,
+	-- cursor-derived coordinate system.
+	return false
+end
+
+local function soc_menu_button_count()
+	local ok, present = pcall(function()
+		return level and level.present and level.present()
+	end)
+
+	if ok and present then
+		local ok_single, is_single = pcall(function()
+			return IsGameTypeSingle and IsGameTypeSingle()
+		end)
+		if not ok_single or is_single then
+			local ok_alive, alive = pcall(function()
+				return db and db.actor and db.actor:alive()
+			end)
+			return (ok_alive and alive) and 8 or 6
+		end
+		return 5
+	end
+
+	return 6
+end
+
+local function soc_gears_destination(index)
+	local cfg = soc_gears_config
+	return (index or 0) * cfg.button_h - cfg.magnifire.y + cfg.y_offset
+end
+
+local function soc_gears_curve(y1, y2, elapsed, run_time)
+	local x = 1
+	if elapsed <= 0 then
+		x = 0
+	elseif elapsed < run_time then
+		x = math.log(1 + (elapsed * 10.0) / run_time) / math.log(11.0)
+	end
+
+	local delta = math.abs(y2 - y1) * x
+	return (y2 < y1) and (y1 - delta) or (y1 + delta)
+end
+
+local function soc_gears_run_time(y1, y2)
+	local cfg = soc_gears_config
+	local height = cfg.wnd.height
+	local distance = math.abs(y1 - y2)
+	local run_time = math.floor((math.log(1 + distance) / math.log(height)) * 300)
+	return (run_time < 100) and 100 or run_time
+end
+
+local function soc_gears_position(menu)
+	local state = menu and menu.__anth_soc_gears
+	if not state then
+		return soc_gears_config.shniaga.y
+	end
+
+	if not state.moving then
+		return state.current_y or state.destination_y or soc_gears_config.shniaga.y
+	end
+
+	local elapsed = current_time_ms() - state.start_ms
+	if elapsed >= state.run_time then
+		state.moving = false
+		state.current_y = state.destination_y
+		return state.current_y
+	end
+
+	state.current_y = soc_gears_curve(state.origin_y, state.destination_y, elapsed, state.run_time)
+	return state.current_y
+end
+
+local function soc_set_static_pos(st, local_x, local_y, shniaga_y)
+	if st then
+		local cfg = soc_gears_config
+		st:SetWndPos(vec2(cfg.wnd.x + cfg.shniaga.x + local_x, cfg.wnd.y + shniaga_y + local_y))
+	end
+end
+
+local function soc_gears_apply(menu)
+	local state = menu and menu.__anth_soc_gears
+	if not state or not state.parts then
+		return
+	end
+
+	local now = current_time_ms()
+	local dt = now - (state.last_ms or now)
+	if dt < 0 or dt > 250 then
+		dt = 16
+	end
+	state.last_ms = now
+
+	local shniaga_y = soc_gears_position(menu)
+	if state.moving then
+		state.angle = (state.angle or 0) + dt * soc_gears_config.spin_speed
+	end
+
+	for _, part in ipairs(state.parts) do
+		soc_set_static_pos(part.static, part.x, part.y, shniaga_y)
+		if part.spin and part.static then
+			part.static:SetHeading((state.angle or 0) * part.spin)
+		end
+	end
+end
+
+local function soc_gears_select(menu, index)
+	local state = menu and menu.__anth_soc_gears
+	if not state then
+		return
+	end
+
+	index = tonumber(index) or 0
+	if index < 0 then
+		index = 0
+	elseif index >= state.count then
+		index = state.count - 1
+	end
+
+	if index == state.selected and not state.moving then
+		return
+	end
+
+	local now_y = soc_gears_position(menu)
+	state.selected = index
+	state.origin_y = now_y
+	state.destination_y = soc_gears_destination(index)
+	state.start_ms = current_time_ms()
+	state.run_time = soc_gears_run_time(state.origin_y, state.destination_y)
+	state.moving = true
+	soc_gears_apply(menu)
+end
+
+local function soc_create_static(parent, part)
+	local st = CUIStatic()
+	st:SetWindowName("anth_soc_gear_" .. part.name)
+	st:InitTexture(part.texture)
+	st:SetWndSize(vec2(part.w, part.h))
+	st:SetWndPos(vec2(-4096, -4096))
+	st:SetStretchTexture(part.stretch and true or false)
+	if part.spin then
+		st:EnableHeading(true)
+		st:SetConstHeading(false)
+		st:SetHeading(0)
+	end
+	st:SetAutoDelete(true)
+	parent:AttachChild(st)
+	return st
+end
+
+local function soc_setup_gears(menu)
+	if not menu or menu.__anth_soc_gears or not soc_gears_active() then
+		return
+	end
+
+	local state = {
+		count = soc_menu_button_count(),
+		selected = -1,
+		current_y = soc_gears_config.shniaga.y,
+		destination_y = soc_gears_destination(0),
+		angle = 0,
+		parts = {},
+	}
+
+	for _, part in ipairs(soc_gears_config.parts) do
+		local item = {
+			x = part.x,
+			y = part.y,
+			spin = part.spin,
+			static = soc_create_static(menu, part),
+		}
+		table.insert(state.parts, item)
+	end
+
+	menu.__anth_soc_gears = state
+	soc_gears_select(menu, 0)
+end
+
+local function soc_poll_mouse(menu)
+	local state = menu and menu.__anth_soc_gears
+	if not state then
+		return
+	end
+
+	local ok, pos = pcall(function()
+		return GetCursorPosition()
+	end)
+	if not ok or not pos then
+		return
+	end
+
+	local cfg = soc_gears_config
+	local x1 = cfg.wnd.x + cfg.buttons_region.x
+	local y1 = cfg.wnd.y + cfg.buttons_region.y
+	local x2 = x1 + cfg.buttons_region.width
+	local y2 = y1 + math.min(cfg.buttons_region.height, state.count * cfg.button_h)
+	if pos.x < x1 or pos.x > x2 or pos.y < y1 or pos.y > y2 then
+		return
+	end
+
+	local index = math.floor((pos.y - y1) / cfg.button_h)
+	if index ~= state.selected then
+		soc_gears_select(menu, index)
+	end
+end
+
+local function soc_gears_on_keyboard(menu, dik, keyboard_action)
+	local state = menu and menu.__anth_soc_gears
+	if not state or not DIK_keys or keyboard_action ~= ui_events.WINDOW_KEY_PRESSED then
+		return
+	end
+
+	if dik == DIK_keys.DIK_UP then
+		soc_gears_select(menu, state.selected - 1)
+	elseif dik == DIK_keys.DIK_DOWN then
+		soc_gears_select(menu, state.selected + 1)
+	end
+end
+
+local function each_result(xml_obj, selector, fn)
+	local res = xml_obj:query(selector)
+	if not res then
+		return
+	end
+
+	for _, el in ipairs(res) do
+		fn(el)
+	end
+end
+
+local function set_attrs(xml_obj, selector, attrs, remove_attrs)
+	each_result(xml_obj, selector, function(el)
+		if remove_attrs then
+			xml_obj:removeElementAttr(el, remove_attrs)
+		end
+		if attrs then
+			xml_obj:setElementAttr(el, attrs)
+		end
+	end)
+end
+
+local function set_text(xml_obj, selector, text, attrs, remove_attrs)
+	each_result(xml_obj, selector, function(el)
+		if remove_attrs then
+			xml_obj:removeElementAttr(el, remove_attrs)
+		end
+		if text then
+			xml_obj:setText(el, text)
+		end
+		if attrs then
+			xml_obj:setElementAttr(el, attrs)
+		end
+	end)
+end
+
+local function hide_existing_background(xml_obj)
+	each_result(xml_obj, "background > auto_static", function(el)
+		xml_obj:setElementAttr(el, {x = -4096, y = -4096, width = 0, height = 0})
+	end)
+end
+
+local function has_query(xml_obj, selector)
+	local res = xml_obj:query(selector)
+	return res and res[1]
+end
+
+local function patch_background_include(xml_obj, theme)
+	local profile = get_aspect_profile()
+	set_attrs(xml_obj, "auto_static", {
+		x = profile.background_offset_x,
+		y = profile.background_offset_y,
+		width = profile.background_width,
+		height = profile.background_height,
+		stretch = 1,
+	})
+	set_text(xml_obj, "auto_static > texture", theme.fallback_texture, nil, {"x", "y", "width", "height", "shader", "a"})
+end
+
+local function patch_main_background(xml_obj, theme)
+	local res = xml_obj:query("background")
+	if not (res and res[1]) then
+		return
+	end
+
+	hide_existing_background(xml_obj)
+	local profile = get_aspect_profile()
+	local function insert_background(xml)
+		if xml then
+			xml_obj:insertFromXMLString(
+				"<w>" .. xml .. "</w>",
+				res[1],
+				#res[1].kids,
+				true
+			)
+		end
+	end
+
+	if theme.background_under_xml then
+		insert_background(aspect_background_xml(theme.background_under_xml, profile))
+	end
+	if theme.background_xml then
+		insert_background(aspect_background_xml(theme.background_xml, profile))
+	end
+	if theme.background_over_xml then
+		insert_background(aspect_background_xml(theme.background_over_xml, profile))
+	end
+end
+
+local function patch_shniaga(xml_obj, theme)
+	local profile = get_aspect_profile()
+	set_attrs(xml_obj, "shniaga_wnd", aspect_global_attrs(theme.shniaga_wnd, profile, true))
+	set_attrs(
+		xml_obj,
+		"shniaga_wnd > buttons_region",
+		aspect_local_attrs(theme.buttons_region, profile),
+		theme.remove_buttons_region
+	)
+	set_attrs(xml_obj, "shniaga_wnd > shniaga", aspect_local_attrs(theme.shniaga, profile))
+	set_text(xml_obj, "shniaga_wnd > shniaga > texture", theme.shniaga_texture, nil, {"x", "y", "width", "height", "shader", "a"})
+	set_attrs(
+		xml_obj,
+		"shniaga_wnd > shniaga > magnifire",
+		aspect_local_attrs(theme.magnifire, profile)
+	)
+	set_text(xml_obj, "shniaga_wnd > shniaga > magnifire > texture", theme.magnifire_texture, nil, {"x", "y", "width", "height", "shader", "a"})
+	set_text(xml_obj, "shniaga_wnd > shniaga > magnifire > y_offset", theme.y_offset)
+
+	if theme.shniaga_extra then
+		local res = xml_obj:query("shniaga_wnd > shniaga")
+		if res and res[1] then
+			local extra = aspect_shniaga_extra(theme.shniaga_extra, profile)
+			xml_obj:insertFromXMLString("<w>" .. extra .. "</w>", res[1], #res[1].kids, true)
+		end
+	end
+end
+
+local function patch_menu_layout(xml_obj, theme)
+	local profile = get_aspect_profile()
+	set_attrs(xml_obj, "button", {h = theme.button_h})
+
+	for _, node in ipairs(menu_nodes) do
+		set_attrs(xml_obj, node, theme.menu_attrs, theme.remove_menu_attrs)
+	end
+
+	set_attrs(xml_obj, "static_version", aspect_global_attrs(theme.version_attrs, profile, true))
+	set_attrs(xml_obj, "static_version > text", theme.version_text_attrs, {"color"})
+	set_text(xml_obj, "menu_sound > menu_music", theme.menu_music)
+end
+
+local function patch_dialog_background(xml_obj, texture, texture_attrs)
+	local profile = get_aspect_profile()
+	set_attrs(xml_obj, "background", {x = 0, y = 0, width = 1024, height = 768})
+	set_attrs(xml_obj, "background > auto_static", {
+		x = profile.background_offset_x,
+		y = profile.background_offset_y,
+		width = profile.background_width,
+		height = profile.background_height,
+		stretch = 1,
+	})
+	set_text(
+		xml_obj,
+		"background > auto_static > texture",
+		texture,
+		texture_attrs or {x = 0, y = 0, width = 1920, height = 1080},
+		{"shader", "a", "r", "g", "b"}
+	)
+end
+
+local function patch_root_background_static(xml_obj, texture, texture_attrs)
+	local profile = get_aspect_profile()
+	set_attrs(xml_obj, "auto_static", {
+		x = profile.background_offset_x,
+		y = profile.background_offset_y,
+		width = profile.background_width,
+		height = profile.background_height,
+		stretch = 1,
+	})
+	set_text(
+		xml_obj,
+		"auto_static > texture",
+		texture,
+		texture_attrs or {x = 0, y = 0, width = 1920, height = 1080},
+		{"shader", "a", "r", "g", "b"}
+	)
+end
+
+local function patch_credits_button(xml_obj)
+	local credit_button_xml = [[<w><btn name="btn_originals" caption="ui_mm_credits" /></w>]]
+	local nodes = {
+		"menu_main",
+		"menu_main_logout",
+		"menu_main_last_save",
+		"menu_main_single",
+		"menu_main_single_dead",
+		"menu_main_mm",
+	}
+
+	set_attrs(xml_obj, "btn[name=btn_originals]", {caption = "ui_mm_credits"})
+	set_attrs(xml_obj, "btn[name=btn_credits]", {name = "btn_originals", caption = "ui_mm_credits"})
+
+	for _, node in ipairs(nodes) do
+		local res = xml_obj:query(node)
+		if res and res[1]
+		and not has_query(xml_obj, node .. " btn[name=btn_originals]")
+		and not has_query(xml_obj, node .. " btn[name=btn_credits]")
+		then
+			local insert_at = res[1].kids and (#res[1].kids - 1) or 0
+			if insert_at < 0 then
+				insert_at = 0
+			end
+			xml_obj:insertFromXMLString(credit_button_xml, res[1], insert_at, true)
+		end
+	end
+end
+
+local function add_button_callback(menu, button_name)
+	local ok, err = pcall(function()
+		menu:AddCallback(button_name, ui_events.BUTTON_CLICKED, start_random_credits, menu)
+	end)
+	if not ok then
+		printf("[anth_mm_theme] failed to add %s callback: %s", button_name, tostring(err))
+	end
+end
+
+local function add_credits_callback(menu)
+	if menu then
+		add_button_callback(menu, "btn_credits")
+	end
+end
+
+local function patch_main_menu_credits_callback()
+	local cls = _G and _G.main_menu
+	if not cls then
+		return
+	end
+
+	if not cls.__anth_mm_credits_patched then
+		cls.__anth_mm_credits_patched = true
+		cls.OnButton_credits_clicked = start_random_credits
+		cls.OnButton_originals_clicked = start_random_credits
+
+		local base_init_callbacks = cls.InitCallBacks
+		function cls:InitCallBacks(...)
+			if base_init_callbacks then
+				base_init_callbacks(self, ...)
+			end
+			add_credits_callback(self)
+		end
+	end
+
+	if cls.__anth_mm_soc_gears_patched then
+		return
+	end
+
+	cls.__anth_mm_soc_gears_patched = true
+
+	local base_init_controls = cls.InitControls
+	function cls:InitControls(...)
+		if base_init_controls then
+			base_init_controls(self, ...)
+		end
+		soc_setup_gears(self)
+	end
+
+	local base_update = cls.Update
+	function cls:Update(...)
+		if base_update then
+			base_update(self, ...)
+		end
+		if self.__anth_soc_gears then
+			soc_poll_mouse(self)
+			soc_gears_apply(self)
+		end
+	end
+
+	local base_on_keyboard = cls.OnKeyboard
+	function cls:OnKeyboard(dik, keyboard_action, ...)
+		local ret
+		if base_on_keyboard then
+			ret = base_on_keyboard(self, dik, keyboard_action, ...)
+		end
+		soc_gears_on_keyboard(self, dik, keyboard_action)
+		return ret
+	end
+end
+
+local function on_main_menu_init(menu)
+	patch_main_menu_credits_callback()
+	add_credits_callback(menu)
+	soc_setup_gears(menu)
+end
+
+local function register_credits_callbacks()
+	patch_originals_link()
+	patch_main_menu_credits_callback()
+
+	if RegisterScriptCallback and not credits_callbacks_registered then
+		local ok, err = pcall(function()
+			RegisterScriptCallback("main_menu_on_init", on_main_menu_init)
+		end)
+		credits_callbacks_registered = ok
+		if not ok then
+			printf("[anth_mm_theme] failed to register main_menu_on_init: %s", tostring(err))
+		end
+	end
+
+	if not credits_callbacks_armed and _G and _G.main_menu and _G.main_menu.__anth_mm_credits_patched then
+		credits_callbacks_armed = true
+		printf("[anth_mm_theme] credits callback armed")
+	end
+end
+
+function on_game_start()
+	register_credits_callbacks()
+end
+
+function on_xml_read()
+	register_credits_callbacks()
+
+	RegisterScriptCallback("on_xml_read", function(xml_file_name, xml_obj)
+		if xml_file_name == [[ui\ui_options.xml]]
+		or xml_file_name == [[ui\ui_options_16.xml]]
+		or xml_file_name == [[ui\ui_options_21.xml]]
+		then
+			patch_dialog_background(xml_obj, [[redux\ui\ui_settings_background]])
+			return
+		end
+
+		if xml_file_name == [[ui\ui_options_background_16.xml]]
+		or xml_file_name == [[ui\ui_options_background_21.xml]]
+		then
+			patch_root_background_static(xml_obj, [[redux\ui\ui_settings_background]])
+			return
+		end
+
+		if xml_file_name == [[ui\ui_mm_load_dlg.xml]]
+		or xml_file_name == [[ui\ui_mm_load_dlg_16.xml]]
+		or xml_file_name == [[ui\ui_mm_load_dlg_21.xml]]
+		then
+			local theme = get_theme(false)
+			patch_dialog_background(xml_obj, theme.fallback_texture, {x = 0, y = 0, width = 2048, height = 1536})
+			return
+		end
+
+		if xml_file_name == [[ui\ui_mm_load_dlg_background_16.xml]]
+		or xml_file_name == [[ui\ui_mm_load_dlg_background_21.xml]]
+		then
+			local theme = get_theme(false)
+			patch_root_background_static(xml_obj, theme.fallback_texture, {x = 0, y = 0, width = 2048, height = 1536})
+			return
+		end
+
+		if xml_file_name == [[ui\ui_mm_main_background.xml]]
+		or xml_file_name == [[ui\ui_mm_main_background_16.xml]]
+		or xml_file_name == [[ui\ui_mm_main_background_21.xml]]
+		then
+			local theme = get_theme(false)
+			patch_background_include(xml_obj, theme)
+			return
+		end
+
+		if xml_file_name ~= [[ui\ui_mm_main.xml]]
+		and xml_file_name ~= [[ui\ui_mm_main_16.xml]]
+		and xml_file_name ~= [[ui\ui_mm_main_21.xml]]
+		then
+			return
+		end
+
+		register_credits_callbacks()
+		-- Restore the original theme cycling whenever CUIMMShniaga reloads the
+		-- main-menu XML.  The selected theme remains atomic for this callback,
+		-- so its background, selector, row geometry and hitboxes stay matched.
+		local theme = get_theme(true)
+		patch_main_background(xml_obj, theme)
+		patch_shniaga(xml_obj, theme)
+		patch_menu_layout(xml_obj, theme)
+		patch_credits_button(xml_obj)
+	end)
+end
