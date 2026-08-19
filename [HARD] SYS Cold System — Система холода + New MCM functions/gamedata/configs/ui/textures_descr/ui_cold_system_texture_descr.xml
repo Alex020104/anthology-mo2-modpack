@@ -1,0 +1,20 @@
+<w>
+    <file name = "ui\freezex\cold_system_bars">
+
+		<!-- Main Bar -->
+		<texture id = "ui_cold_system_main_background" 				x="1"  y="130"   width="120" height="14"  />
+		<texture id = "ui_cold_system_main_bar" 			 				x="1"  y="145"  width="120" height="14"  />
+		<texture id = "ui_cold_system_main_red_arrow" 				x="1"  y="160"  width="13" height="11"  />
+		<texture id = "ui_cold_system_main_blue_arrow" 				x="15" y="160"  width="13" height="11" />
+		
+		<texture id = "ui_cold_system_main_fever_background" 	x="1" y="172"  width="66" height="5" />
+		<texture id = "ui_cold_system_main_fever_bar" 				x="1" y="178"  width="66" height="5" />
+
+		<!-- Thermometer -->
+		<texture id = "ui_cold_system_thermo_background" 			x="1"  y="1"   width="26" height="128"  />
+		<texture id = "ui_cold_system_thermo_blue_bar" 			 	x="28"  y="42"  width="23" height="81"  />
+		<texture id = "ui_cold_system_thermo_red_bar" 				x="28"  y="1"  width="23" height="40"  />
+		<texture id = "ui_cold_system_thermo_yellow_indicator" 	x="28" y="124"  width="23" height="4" />
+	</file>
+
+</w> 

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_cold_system_title">
+		<text>Система холода</text>
+	</string>
+	<string id="ui_mcm_menu_cold_system">
+		<text>Система холода</text>
+	</string>
+
+			<!-- FACTORS -->
+	<string id="ui_mcm_cold_system_header_main">
+		<text>Факторы холода</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_winter">
+		<text>Зима</text>
+	</string>
+	<string id="ui_mcm_cold_system_winter_desc">
+		<text>Включает зимний режим, факторы Ветер и Время становятся более суровыми.</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_wind">
+		<text>Ветер</text>
+	</string>
+	<string id="ui_mcm_cold_system_wind_desc">
+		<text>Чем выше множитель, тем холоднее, зависит от скорости ветра и не влияет на игрока в помещении. "0" отключает фактор. \n 
+				\n По умолчанию: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_rain">
+		<text>Дождь</text>
+	</string>
+	<string id="ui_mcm_cold_system_rain_desc">
+		<text>Чем выше множитель, тем холоднее, зависит от плотности дождя и не влияет на игрока под крышами или под другими препятствиями. "0" отключает фактор \n 
+				\n По умолчанию: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_time">
+		<text>Время</text>
+	</string>
+	<string id="ui_mcm_cold_system_time_desc">
+		<text>Чем выше множитель, тем холоднее, зависит от времени суток, ночи самые холодные. "0" отключает фактор \n 
+				\n По умолчанию: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_sun">
+		<text>Солнце</text>
+	</string>
+	<string id="ui_mcm_cold_system_sun_desc">
+		<text>Чем выше множитель, тем теплее, зависит от света солнца, при этом максимальное значение - самое яркое солнце. Уменьшается вдвое в помещении. "0" отключает фактор \n 
+				\n По умолчанию: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_campfire">
+		<text>Костер</text>
+	</string>
+	<string id="ui_mcm_cold_system_campfire_desc">
+		<text>Чем выше множитель, тем теплее, дает большой прирост к снижению холода, находясь рядом с зажженным костром. "0" отключает фактор \n 
+				\n По умолчанию: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_move">
+		<text>Движение</text>
+	</string>
+	<string id="ui_mcm_cold_system_move_desc">
+		<text>Чем выше множитель, тем теплее, согревает вас во время движения, спринт самый высокий. "0" отключает фактор \n 
+				\n По умолчанию: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_outfit">
+		<text>Костюм</text>
+	</string>
+	<string id="ui_mcm_cold_system_outfit_desc">
+		<text>Чем выше множитель, тем теплее, научная и тяжелая одежда прибавляют больше всего. "0" отключает фактор \n 
+				\n По умолчанию: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_artefact">
+		<text>Артефакты/Шкуры</text>
+	</string>
+	<string id="ui_mcm_cold_system_artefact_desc">
+		<text>Множитель предметов на поясе. Термо артефкты и шкуры мутантов положительные, электра отрицательные. Значение зависит от тиера. "0" отключает фактор \n 
+				\n По умолчанию: 1.0</text>
+	</string>
+	
+	<!-- BREATH -->
+	<string id="ui_mcm_cold_system_header_breath">
+		<text>Дыхание (Пар изо рта)</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_actor">
+		<text>Пар у игрока</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_actor_desc">
+		<text>Включает или выключает визуальный эффект выдоха пара изо рта для главного героя.</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_npc">
+		<text>Пар у NPC</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_npc_desc">
+		<text>Включает или выключает визуальный эффект выдоха пара изо рта для окружающих NPC.</text>
+	</string>
+	
+	<string id="ui_mcm_cold_system_breath_preset">
+		<text>Прозрачность пара игрока</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_preset_desc">
+		<text>Позволяет выбрать визуальный пресет насыщенности и прозрачности выдыхаемого главным героем пара.\n\nДоступные варианты:\n• 100% (Обычный) — стандартный плотный пар.\n• 50% (Полупрозрачный) — умеренно прозрачный пар.\n• 30% (Легкий дымок) — едва заметный, полупрозрачный выдох.\n\nНастройка применяется только к игроку и не затрагивает остальных персонажей в игре.</text>
+	</string>
+	<string id="cold_breath_preset_100">
+		<text>100% (Обычный)</text>
+	</string>
+	<string id="cold_breath_preset_50">
+		<text>50% (Полупрозрачный)</text>
+	</string>
+	<string id="cold_breath_preset_30">
+		<text>30% (Легкий дымок)</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_radius">
+		<text>Радиус видимости NPC</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_radius_desc">
+		<text>Максимальное расстояние (в метрах) от игрока, на котором у сталкеров будет отображаться пар изо рта.\n\nДиапазон: 15 - 50 метров</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_actor_min">
+		<text>Мин. интервал дыхания ГГ</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_actor_min_desc">
+		<text>Минимальная задержка между выдохами пара у главного героя.\n\nДиапазон: 1 - 10 секунд</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_actor_max">
+		<text>Макс. интервал дыхания ГГ</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_actor_max_desc">
+		<text>Максимальная задержка между выдохами пара у главного героя.\n\nДиапазон: 1 - 10 секунд</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_npc_min">
+		<text>Мин. интервал дыхания NPC</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_npc_min_desc">
+		<text>Минимальная задержка между выдохами пара у сталкеров (NPC).\n\nДиапазон: 1 - 10 секунд</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_npc_max">
+		<text>Макс. интервал дыхания NPC</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_npc_max_desc">
+		<text>Максимальная задержка между выдохами пара у сталкеров (NPC).\n\nДиапазон: 1 - 10 секунд</text>
+	</string>
+
+			<!-- HUD -->
+	<string id="ui_mcm_cold_system_header_hud">
+		<text>HUD</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_hud">
+		<text>Показывать HUD всегда</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_keybind">
+		<text>HUD клавиша</text>
+	</string>
+	<string id="ui_mcm_cold_system_keybind_desc">
+		<text>Клавиша для отображения полоски холода.</text>
+	</string>
+
+			<!-- hud cold -->
+	<string id="ui_mcm_cold_system_main_hud_position_x">
+		<text>Позиция холода X</text>
+	</string>
+	<string id="ui_mcm_cold_system_main_hud_position_x_desc">
+		<text>По умолчанию: 884</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_main_hud_position_y">
+		<text>Позиция холода Y</text>
+	</string>
+	<string id="ui_mcm_cold_system_main_hud_position_y_desc">
+		<text>По умолчанию: 189</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_main_bar_text_mode">
+		<text>Холод Текстовый Режим</text>
+	</string>
+	<string id="ui_mcm_cold_system_main_bar_text_mode_desc">
+		<text>Включите чтобы сменить полоску холода на текстовое значение.</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_main_hud_font">
+		<text>Холод Шрифт Текстовый Режим</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_main_hud_descr_type">
+		<text>Холод Описание Текстовый Режим</text>
+	</string>
+
+			<!-- hud thermo -->
+	<string id="ui_mcm_cold_system_thermo_hud_position_x">
+		<text>Позиция термометра X</text>
+	</string>
+	<string id="ui_mcm_cold_system_thermo_hud_position_x_desc">
+		<text>По умолчанию: 980</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_thermo_hud_position_y">
+		<text>Позиция термометра Y</text>
+	</string>
+	<string id="ui_mcm_cold_system_thermo_hud_position_y_desc">
+		<text>По умолчанию: 50</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_thermo_bar_text_mode">
+		<text>Термометр Текстовый Режим</text>
+	</string>
+	<string id="ui_mcm_cold_system_thermo_bar_text_mode_desc">
+		<text>Включите чтобы сменить полоску термометра на текстовое значение.</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_thermo_hud_font">
+		<text>Термометр Шрифт Текстовый Режим</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_thermo_hud_descr_type">
+		<text>Термометр Описание Текстовый Режим</text>
+	</string>
+
+			<!-- MISC -->
+	<string id="ui_mcm_cold_system_header_misc">
+		<text>Разное</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_sickness">
+		<text>Простуда</text>
+	</string>
+	<string id="ui_mcm_cold_system_sickness_desc">
+		<text>Множитель шанса повышения простуды. \n 
+				\n По умолчанию: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_medicine">
+		<text>Медицина</text>
+	</string>
+	<string id="ui_mcm_cold_system_medicine_desc">
+		<text>Множитель уменьшения простуды при использовании медицины. \n 
+				\n По умолчанию: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_sleep">
+		<text>Сон</text>
+	</string>
+	<string id="ui_mcm_cold_system_sleep_desc">
+		<text>Множитель того, насколько сильно снижается холод во время сна, зависит от часов. "0" отключает фактор \n 
+				\n По умолчанию: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_food_cooling">
+		<text>Скорость охлаждения еды</text>
+	</string>
+	<string id="ui_mcm_cold_system_food_cooling_desc">
+		<text>Множитель того, насколько быстро еда остывает после приготовления, чем выше значение, тем быстрее. \n 
+				\n По умолчанию: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_consumables">
+		<text>Предметы</text>
+	</string>
+	<string id="ui_mcm_cold_system_consumables_desc">
+		<text>Множитель того, насколько уменьшается холод от предметов (еда, алкоголь). "0" отключает фактор \n 
+				\n По умолчанию: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_ppe">
+		<text>Эффекты экрана</text>
+	</string>
+	<string id="ui_mcm_cold_system_ppe_desc">
+		<text>Включение / выключение эффектов экрана, становящегося более белым в зависимости от уровня холода.</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_debugx">
+		<text>Дебаг</text>
+	</string>
+	<string id="ui_mcm_cold_system_debugx_desc">
+		<text>Отображает всякую хрень для дебага.</text>
+	</string>
+
+
+</string_table>

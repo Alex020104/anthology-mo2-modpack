@@ -1,0 +1,93 @@
+-- ========================================================
+-- Modified breath_particles.script for S.T.A.L.K.E.R. ANTHOLOGY
+-- Optimized independent breathing system for Actor (with presets) and NPCs
+-- ========================================================
+
+local breath_time_actor = 0
+local breath_time_npc = 0
+npc_table = {}
+BREATH_ENABLED = true
+
+-- Функция выбора путей партиклов игрока на основе пресета из MCM
+local function get_actor_breath_paths()
+	local mode = cold_system_mcm.get_config("breath_preset") or 1
+	if mode == 3 then
+		return "semitone\\characters\\actor\\cold_breath\\cold_breath_30", "semitone\\characters\\actor\\cold_breath\\cold_breath_actor_30"
+	elseif mode == 2 then
+		return "semitone\\characters\\actor\\cold_breath\\cold_breath_50", "semitone\\characters\\actor\\cold_breath\\cold_breath_actor_50"
+	end
+	return "semitone\\characters\\actor\\cold_breath\\cold_breath", "semitone\\characters\\actor\\cold_breath\\cold_breath_actor"
+end
+
+function on_update()
+	if not BREATH_ENABLED then return end
+	
+	local actor_enabled = cold_system_mcm.get_config("breath_actor")
+	local npc_enabled = cold_system_mcm.get_config("breath_npc")
+	
+	if not actor_enabled and not npc_enabled then return end
+	
+	local tg = time_global()
+	
+	-- Логика дыхания главного героя (Actor) с поддержкой пресетов
+	if actor_enabled and tg > breath_time_actor then
+		local pos = device().cam_pos
+		local dir = device().cam_dir
+		if pos:distance_to(db.actor:bone_position("bip01_head")) > 1 then
+			pos = db.actor:bone_position("bip01_head")
+			dir = db.actor:direction()
+		end
+		
+		local pg_path_1, pg_path_2 = get_actor_breath_paths()
+		local chosen_path = (math.random() > 0.5) and pg_path_1 or pg_path_2
+		
+		local actor_breath = thial_particle_cacher_br_ex.add(chosen_path, pos, false, 3000)
+		thial_particle_cacher_br_ex.get(actor_breath):set_direction(dir)
+		thial_particle_cacher_br_ex.follow_actor(actor_breath)
+		
+		local min_actor = (cold_system_mcm.get_config("breath_actor_min") * 1000) or 3000
+		local max_actor = (cold_system_mcm.get_config("breath_actor_max") * 1000) or 5000
+		if min_actor > max_actor then max_actor = min_actor end
+		
+		breath_time_actor = tg + math.random(min_actor, max_actor)
+	end
+
+	-- Логика сканирования ближайших NPC (независимая от игрока)
+	local radius = cold_system_mcm.get_config("breath_radius") or 15
+	if npc_enabled and tg > breath_time_npc then
+		level.iterate_nearest(db.actor:position(), radius, iterate_npc_for_breath)
+		breath_time_npc = tg + 3000 -- Оптимизация: сканирование списка NPC раз в 3 секунды
+	end
+
+	-- Обработка и воспроизведение стандартного пара для NPC (без изменений)
+	for k, v in pairs(npc_table) do
+		local obj = level.object_by_id(k)
+		if not obj or not IsStalker(obj) or not obj:alive() or (k == AC_ID) or (obj:position():distance_to(db.actor:position()) > radius) then
+			npc_table[k] = nil 
+		elseif v < tg then
+			local npos = obj:bone_position("bip01_head")
+			local npc_breath = thial_particle_cacher_br_ex.add("semitone\\characters\\npc\\cold_breath\\cold_breath_npc", npos, false, 3000)
+			thial_particle_cacher_br_ex.follow(npc_breath, obj:id(), "bip01_head")
+			
+			local min_npc = (cold_system_mcm.get_config("breath_npc_min") * 1000) or 3000
+			local max_npc = (cold_system_mcm.get_config("breath_npc_max") * 1000) or 5000
+			if min_npc > max_npc then max_npc = min_npc end
+			
+			npc_table[k] = tg + math.random(min_npc, max_npc)
+		end
+	end
+end
+
+function iterate_npc_for_breath(obj)
+	local tg = time_global()
+	if not IsStalker(obj) or not obj:alive() or (obj:id() == AC_ID) then
+		return 
+	end
+	if not npc_table[obj:id()] then
+		local min_npc = (cold_system_mcm.get_config("breath_npc_min") * 1000) or 3000
+		local max_npc = (cold_system_mcm.get_config("breath_npc_max") * 1000) or 5000
+		if min_npc > max_npc then max_npc = min_npc end
+		
+		npc_table[obj:id()] = tg + math.random(min_npc, max_npc)
+	end
+end

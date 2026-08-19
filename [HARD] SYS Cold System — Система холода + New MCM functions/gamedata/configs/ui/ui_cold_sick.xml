@@ -1,0 +1,15 @@
+<w>
+
+	<col1 x="900" y="60" width="32" height="32" stretch="1">
+		<texture>ui\cold_sick\cold_sick_green.dds</texture>
+	</col1>
+	
+	<col2 x="900" y="60" width="32" height="32" stretch="1">
+		<texture>ui\cold_sick\cold_sick_yellow.dds</texture>
+	</col2>
+	
+	<col3 x="900" y="60" width="32" height="32" stretch="1">
+		<texture>ui\cold_sick\cold_sick_red.dds</texture>
+	</col3>
+
+</w>

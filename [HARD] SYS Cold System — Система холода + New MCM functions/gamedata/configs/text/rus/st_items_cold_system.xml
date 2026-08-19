@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+	<string id="st_food_very_hot">
+		<text>Очень горячая</text>
+	</string>
+
+	<string id="st_food_hot">
+		<text>Горячая</text>
+	</string>
+
+	<string id="st_food_warm">
+		<text>Теплая</text>
+	</string>
+
+	<string id="st_cold_cold">
+		<text>Холод</text>
+	</string>
+
+	<string id="st_cold_fever">
+		<text>Простуда</text>
+	</string>
+
+	<string id="cold_main_hud_value">
+		<text>Значения</text>
+	</string>
+
+	<string id="cold_main_hud_percent">
+		<text>Проценты</text>
+	</string>
+
+	<string id="cold_main_sickness_val">
+		<text>простуда:</text>
+	</string>
+
+	<string id="cold_thermo_short_str">
+		<text>холод/сек: </text>
+	</string>
+
+	<string id="cold_thermo_long_env">
+		<text>Окр: </text>
+	</string>
+
+	<string id="cold_thermo_long_prot">
+		<text>Защ: </text>
+	</string>
+
+	<string id="cold_thermo_long_tot">
+		<text>Всего: </text>
+	</string>
+
+	<string id="cold_thermo_hud_short">
+		<text>Короткое</text>
+	</string>
+
+	<string id="cold_thermo_hud_long">
+		<text>Полное</text>
+	</string>
+
+</string_table>

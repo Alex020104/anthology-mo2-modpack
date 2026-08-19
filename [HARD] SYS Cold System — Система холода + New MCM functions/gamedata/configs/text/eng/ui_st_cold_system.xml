@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<!-- 
+	MCM
+-->
+<string_table>
+
+
+	<string id="ui_mcm_cold_system_title">
+		<text>Cold System</text>
+	</string>
+	<string id="ui_mcm_menu_cold_system">
+		<text>Cold System</text>
+	</string>
+
+		<!-- FACTORS -->
+	<string id="ui_mcm_cold_system_header_main">
+		<text>Cold Factors</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_winter">
+		<text>Winter</text>
+	</string>
+	<string id="ui_mcm_cold_system_winter_desc">
+		<text>Enables winter mode, Wind and Time factors becoming more harsh.</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_wind">
+		<text>Wind</text>
+	</string>
+	<string id="ui_mcm_cold_system_wind_desc">
+		<text>Higher multiplier is colder, depends on wind velocity and doesn't affect player indoors. "0" disables factor. \n 
+				\n Default: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_rain">
+		<text>Rain</text>
+	</string>
+	<string id="ui_mcm_cold_system_rain_desc">
+		<text>Higher multiplier is colder, depends on rain density and doesn't affect player under roofs or under other obstacles. "0" disables factor. \n 
+				\n Default: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_time">
+		<text>Time</text>
+	</string>
+	<string id="ui_mcm_cold_system_time_desc">
+		<text>Higher multiplier is colder, depends on time of a day with nights being the coldest. "0" disables factor. \n 
+				\n Default: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_sun">
+		<text>Sun</text>
+	</string>
+	<string id="ui_mcm_cold_system_sun_desc">
+		<text>Higher multiplier is warmer, depends on sun color with brightest sun being max value. Halved indoors. "0" disables factor. \n 
+				\n Default: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_campfire">
+		<text>Campfire</text>
+	</string>
+	<string id="ui_mcm_cold_system_campfire_desc">
+		<text>Higher multiplier is warmer, gives big boost of cold reduction while near a lit campfire. "0" disables factor. \n 
+				\n Default: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_move">
+		<text>Movement</text>
+	</string>
+	<string id="ui_mcm_cold_system_move_desc">
+		<text>Higher multiplier is warmer, warms you up while moving with sprint being highest. "0" disables factor. \n 
+				\n Default: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_outfit">
+		<text>Outfit</text>
+	</string>
+	<string id="ui_mcm_cold_system_outfit_desc">
+		<text>Higher multiplier is warmer, sci and heavy outfits gives most of it. "0" disables factor. \n 
+				\n Default: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_artefact">
+		<text>Artefacts/Hides</text>
+	</string>
+	<string id="ui_mcm_cold_system_artefact_desc">
+		<text>Multiplier of belted items. Thermo artefacts and mutant hides are positive, electra are negative. Value depends on tier. "0" disables factor. \n 
+				\n Default: 1.0</text>
+	</string>
+	
+	<!-- BREATH -->
+	<string id="ui_mcm_cold_system_header_breath">
+		<text>Breathing (Cold Breath Effects)</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_actor">
+		<text>Player Breath</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_actor_desc">
+		<text>Enables or disables the visible cold breath effect for the player character.</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_npc">
+		<text>NPC Breath</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_npc_desc">
+		<text>Enables or disables the visible cold breath effect for surrounding NPCs.</text>
+	</string>
+	
+	<string id="ui_mcm_cold_system_breath_preset">
+		<text>Player Breath Opacity</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_preset_desc">
+		<text>Selects the visual preset for the density and opacity of the player's exhaled breath.\n\nAvailable options:\n• 100% (Normal) — Standard dense breath.\n• 50% (Translucent) — Moderately transparent breath.\n• 30% (Light Wisp) — Barely noticeable, faint breath.\n\nThis setting applies only to the player and does not affect other characters in the game.</text>
+	</string>
+	<string id="cold_breath_preset_100">
+		<text>100% (Normal)</text>
+	</string>
+	<string id="cold_breath_preset_50">
+		<text>50% (Translucent)</text>
+	</string>
+	<string id="cold_breath_preset_30">
+		<text>30% (Light Wisp)</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_radius">
+		<text>NPC Render Radius</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_radius_desc">
+		<text>Maximum distance (in meters) from the player at which stalkers will display cold breath effects.\n\nRange: 15 - 50 meters</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_actor_min">
+		<text>Player Min. Breath Interval</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_actor_min_desc">
+		<text>Minimum delay between exhales for the player character.\n\nRange: 1 - 10 seconds</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_actor_max">
+		<text>Player Max. Breath Interval</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_actor_max_desc">
+		<text>Maximum delay between exhales for the player character.\n\nRange: 1 - 10 seconds</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_npc_min">
+		<text>NPC Min. Breath Interval</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_npc_min_desc">
+		<text>Minimum delay between exhales for stalkers (NPCs).\n\nRange: 1 - 10 seconds</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_breath_npc_max">
+		<text>NPC Max. Breath Interval</text>
+	</string>
+	<string id="ui_mcm_cold_system_breath_npc_max_desc">
+		<text>Maximum delay between exhales for stalkers (NPCs).\n\nRange: 1 - 10 seconds</text>
+	</string>
+
+			<!-- HUD -->
+	<string id="ui_mcm_cold_system_header_hud">
+		<text>HUD</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_hud">
+		<text>Show HUD always</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_keybind">
+		<text>HUD keybind</text>
+	</string>
+	<string id="ui_mcm_cold_system_keybind_desc">
+		<text>Keybind to display cold bar.</text>
+	</string>
+
+			<!-- hud cold -->
+	<string id="ui_mcm_cold_system_main_hud_position_x">
+		<text>Cold position X</text>
+	</string>
+	<string id="ui_mcm_cold_system_main_hud_position_x_desc">
+		<text>Default: 884</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_main_hud_position_y">
+		<text>Cold position Y</text>
+	</string>
+	<string id="ui_mcm_cold_system_main_hud_position_y_desc">
+		<text>Default: 189</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_main_bar_text_mode">
+		<text>Cold Text Mode</text>
+	</string>
+	<string id="ui_mcm_cold_system_main_bar_text_mode_desc">
+		<text>Enable to replace cold bar with text value.</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_main_hud_font">
+		<text>Cold Font (Text Mode)</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_main_hud_descr_type">
+		<text>Cold Descr (Text Mode)</text>
+	</string>
+
+			<!-- hud thermo -->
+	<string id="ui_mcm_cold_system_thermo_hud_position_x">
+		<text>Thermometer position X</text>
+	</string>
+	<string id="ui_mcm_cold_system_thermo_hud_position_x_desc">
+		<text>Default: 980</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_thermo_hud_position_y">
+		<text>Thermometer position Y</text>
+	</string>
+	<string id="ui_mcm_cold_system_thermo_hud_position_y_desc">
+		<text>Default: 50</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_thermo_bar_text_mode">
+		<text>Thermometer Text Mode</text>
+	</string>
+	<string id="ui_mcm_cold_system_thermo_bar_text_mode_desc">
+		<text>Enable to replace Thermometer bar with text value.</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_thermo_hud_font">
+		<text>Thermometer Font (Text Mode)</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_thermo_hud_descr_type">
+		<text>Thermometer Descr (Text Mode)</text>
+	</string>
+
+			<!-- MISC -->
+	<string id="ui_mcm_cold_system_header_misc">
+		<text>Misc</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_sickness">
+		<text>Fever</text>
+	</string>
+	<string id="ui_mcm_cold_system_sickness_desc">
+		<text>Multiplier of chance to get fever value. \n 
+				\n Default: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_medicine">
+		<text>Medicine</text>
+	</string>
+	<string id="ui_mcm_cold_system_medicine_desc">
+		<text>Multiplier of fever reduction for medicine. \n 
+				\n Default: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_sleep">
+		<text>Sleep</text>
+	</string>
+	<string id="ui_mcm_cold_system_sleep_desc">
+		<text>Multiplier of how much cold is reduced for sleeping, depends on hours. "0" disables factor. \n 
+				\n Default: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_food_cooling">
+		<text>Food cooling rate</text>
+	</string>
+	<string id="ui_mcm_cold_system_food_cooling_desc">
+		<text>Multiplier of how fast food is cooling down after being cooked, higher value is faster. \n 
+				\n Default: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_consumables">
+		<text>Consumables</text>
+	</string>
+	<string id="ui_mcm_cold_system_consumables_desc">
+		<text>Multiplier of how much cold is reduced from consumables (food, alcohol). "0" disables factor. \n 
+				\n Default: 1.0</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_ppe">
+		<text>Screen Effect</text>
+	</string>
+	<string id="ui_mcm_cold_system_ppe_desc">
+		<text>Enable/disable screen becoming more white-ish, depends on cold level.</text>
+	</string>
+
+	<string id="ui_mcm_cold_system_debugx">
+		<text>Debug</text>
+	</string>
+	<string id="ui_mcm_cold_system_debugx_desc">
+		<text>Displays some stuff for debugging.</text>
+	</string>
+
+
+</string_table>

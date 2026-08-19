@@ -1,0 +1,142 @@
+---========================================================
+---Created by Thial#0001
+---Date 26.01.2023
+---
+---Credit to Igigog#6387 for the CreateTimeEvent idea
+---for removing the particles automatically by themselves
+---========================================================
+---Modified by VodoXleb#vodoxlebushek
+---Date 23.07.2024
+
+---The cache collection used for storing the particles
+local cache = { }
+
+---The emergency timeout for particles that weren't given a timeout
+---but don't have a time limit configured on them which will result
+---in them playing forever with 0 particles.
+---To clean those particles from memory a fallback timeout has to be used.
+local fallback_timeout = 60000
+
+---Gets the particles_object by the particle's id
+---@param id string The id of the particle
+---@return particles_object or nil
+function get(id)
+    if id == nil or id == "" or cache[id] == nil then
+        return nil
+    end
+
+    return cache[id].object
+end
+
+---Adds a new particle to the cache
+---@param particle string - The name of the particle (the path)
+---@param position vector - The position on which the particle should be created
+---@param timeout number - The amount of milliseconds after which the particle
+---will be forcefully removed if it wasn't already. If this value is nil the particle
+---will be removed once its done playing. (Make sure that the particle has a time limit set)
+---@return string The id of the newly cached particle
+function add(particle, position, hud_mode, timeout)
+    if particle == nil or particle == "" or position == nil then
+        return nil
+    end
+
+    local time = time_global()
+    local id = "particle" .. '_' .. time .. '_'
+    for i=1, 5 do
+        id = id .. math.random(0,9)
+    end
+
+    cache[id] = {
+        object = particles_object(particle),
+        timeout = timeout and time + timeout or time + fallback_timeout
+    }
+    cache[id].object:play_at_pos(position, hud_mode)
+
+    --log("[particle_cache] Added: " .. id .. " Timeout: " .. (timeout and timeout or fallback_timeout))
+    CreateTimeEvent(id, "evaluate", 0.100, evaluate, id)
+    
+    return id
+end
+
+---Removes a particle from the cache
+---@param id string - The id of the particle
+function remove(id)
+    if id == nil or id == "" then
+        return
+    end
+
+    if cache[id] ~= nil then
+        cache[id].object:stop()
+        cache[id] = nil
+        --log("[particle_cache] Removed: "..id)
+    end    
+end
+
+---Moves the particle to a new position
+---@param id string - The id of the particle
+---@param position vector - The new position to move the particle to
+function move_to(id, position, direction)
+    if id == nil or id == "" or position == nil then
+        return
+    end
+
+    if cache[id] ~= nil and cache[id].object:playing() == true then
+        cache[id].object:move_to(position, direction or vector():set(0,0,0))
+    end
+end
+
+function follow(id, follow_id, bone_id)
+    if id == nil or id == "" or follow_id == nil or follow_id == "" then
+        return
+    end
+    if cache[id] ~= nil then
+        cache[id].follow = {
+		[1] =follow_id, 
+		[2] = bone_id}
+    end
+end
+
+function follow_actor(id)
+    if id == nil or id == "" then
+        return
+    end
+    if cache[id] ~= nil then
+        cache[id].follow_ac = true
+    end
+end
+
+---Evaluates the particle to determine if it should be removed
+---@param id string - The id of the particle
+---@return bool true if the particle was removed, false if it was not 
+function evaluate(id)
+    if id == nil or id == "" or cache[id] == nil then
+        return true
+    end
+	
+	if cache[id].follow then
+		local follow_obj = level.object_by_id(cache[id].follow[1])
+		if follow_obj then
+			local pos= follow_obj:bone_position(cache[id].follow[2])
+			local dir = follow_obj:direction()
+			cache[id].object:move_to(pos, vector():set(0,0,0))
+			cache[id].object:set_direction(dir or vector():set(0,0,0))
+		end
+	end
+	if cache[id].follow_ac then
+		local pos = device().cam_pos
+		local dir = device().cam_dir
+		if pos:distance_to(db.actor:bone_position("bip01_head")) > 1 then
+			pos = db.actor:bone_position("bip01_head")
+			dir = db.actor:direction()
+		end
+		cache[id].object:move_to(pos, vector():set(0,0,0))
+		cache[id].object:set_direction(dir or vector():set(0,0,0))
+	end
+
+    if cache[id].object:playing() == false or time_global() > cache[id].timeout then
+        remove(id)
+        return true
+    end
+
+    return false
+end
