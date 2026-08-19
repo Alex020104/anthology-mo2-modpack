@@ -1,0 +1,347 @@
+--[[
+
+	Tronex (Some code changes from Rezy)
+	2021/5/11
+	Minimap: Stalker Counter (a workaround for Blackgrowl)
+	(if you find out why default counter doesn't show, contact Tronex)
+
+	This script reads the original zone_map.xml, so you can customize how counter looks like from there
+	You just need to control the X and Y from here because it's a bit wonky
+
+	--------------------------------------------------------------------
+	[16:10 PATCH - runtime file swap]
+	The native (compiled, non-Lua) minimap widget reads zone_map_16.xml
+	directly and has no concept of a 16:10 bucket - 16:10 (1.6) always
+	falls into the same aspect bucket as 16:9 (1.34 - 1.8 in this script's
+	own thresholds), so it always loads zone_map_16.xml regardless.
+
+	Since we can't patch native/compiled code, this EXPERIMENTAL patch
+	tries to overwrite zone_map_16.xml on disk with the content of our
+	dedicated zone_map_16_10.xml BEFORE the native widget parses it, so
+	the native code ends up drawing our 16:10-tuned layout without ever
+	knowing the difference.
+
+	IMPORTANT - THIS IS UNVERIFIED AND NEEDS IN-GAME TESTING:
+	  1) It assumes Lua file write access to gamedata/configs/ui/ is
+	     actually permitted in this engine build. If io.open(path,"w")
+	     fails, check the log for "16:10 PATCH" lines - it will tell you.
+	  2) It assumes this fires early enough (on_game_start) to beat the
+	     native widget's own read of zone_map_16.xml. If the frame is
+	     still 16:9 on the FIRST level entered but corrects itself after
+	     a level transition (or game restart), that confirms option (2)
+	     is the culprit - the native widget builds once per level, so a
+	     late write still lands in time for the next level load.
+	  3) A backup of the untouched zone_map_16.xml is written once to
+	     zone_map_16.xml.orig_backup so you can restore true 16:9 support
+	     any time (e.g. delete the patch or revert manually).
+	--------------------------------------------------------------------
+--]]
+
+local radius = 50 --[meters] count stalkers within this distance from player
+local X       = 28    -- 4:3   counter X position on HUD
+local Y       = 223   -- 4:3   counter Y position on HUD
+local X_16    = 28    -- 16:9  counter X position on HUD
+local Y_16    = 179.8   -- 16:9  counter Y position on HUD
+local X_16_10 = 28    -- 16:10 counter X position on HUD
+local Y_16_10 = 160.7 -- 16:10 counter Y position on HUD
+local X_21    = 28.8    -- 21:9  counter X position on HUD
+local Y_21    = 163   -- 21:9  counter Y position on HUD
+local enable_contact_sound = true
+local enable_contact_offline = false
+
+-- same bucket thresholds the engine itself effectively uses
+local ASPECT_16_9_MIN = 1.34
+local ASPECT_21_9_MIN = 1.8
+
+-- 16:10 is narrower than the usual 16:9 bucket: 1.5 - 1.7 covers 1.6 with margin
+local ASPECT_16_10_MIN = 1.5
+local ASPECT_16_10_MAX = 1.7
+
+local CONFIG_UI_DIR   = "ui\\"
+local ZONE_MAP_16     = "zone_map_16.xml"
+local ZONE_MAP_16_10  = "zone_map_16_10.xml"
+local ZONE_MAP_BACKUP = "zone_map_16.xml.orig_backup"
+
+local function log(msg)
+	printf("[SquareDOV 16:10 patch] %s", tostring(msg))
+end
+
+-- Reads a file fully via the engine's config path resolver.
+-- Returns content string or nil, err
+local function read_gamedata_file(relative_name)
+	local fs = getFS()
+	if not fs then
+		return nil, "getFS() unavailable"
+	end
+	local file_path = fs:update_path("$game_config$", CONFIG_UI_DIR .. relative_name)
+	local f, err = io.open(file_path, "rb")
+	if not f then
+		return nil, "io.open read failed: " .. tostring(err)
+	end
+	local content = f:read("*a")
+	f:close()
+	return content
+end
+
+local function write_gamedata_file(relative_name, content)
+	local fs = getFS()
+	if not fs then
+		return false, "getFS() unavailable"
+	end
+	local file_path = fs:update_path("$game_config$", CONFIG_UI_DIR .. relative_name)
+	local f, err = io.open(file_path, "wb")
+	if not f then
+		return false, "io.open write failed: " .. tostring(err)
+	end
+	f:write(content)
+	f:close()
+	return true
+end
+
+-- Restores the untouched zone_map_16.xml from backup, if a backup exists
+-- and the current file doesn't already match it. Used whenever the
+-- detected aspect is NOT 16:10 (so a genuine 16:9 monitor always gets
+-- the real 16:9 layout, even if this same install was previously run
+-- on a 16:10 monitor and left the file patched).
+local function try_restore_zone_map_16()
+	local ok, err = pcall(function()
+		local backup_content, berr = read_gamedata_file(ZONE_MAP_BACKUP)
+		if not backup_content then
+			log("no backup found (" .. tostring(berr) .. "), nothing to restore - file is presumably already original")
+			return
+		end
+
+		local current_content, cerr = read_gamedata_file(ZONE_MAP_16)
+		if current_content == backup_content then
+			log("zone_map_16.xml already matches backup, no restore needed")
+			return
+		end
+
+		local wok, werr = write_gamedata_file(ZONE_MAP_16, backup_content)
+		if wok then
+			log("SUCCESS: zone_map_16.xml restored to original 16:9 content")
+		else
+			log("ERROR: failed to restore zone_map_16.xml: " .. tostring(werr))
+		end
+	end)
+
+	if not ok then
+		log("ERROR: restore attempt threw an exception: " .. tostring(err))
+	end
+end
+
+-- Runs once per game start. Idempotent: safe to call every launch.
+local function try_patch_zone_map_for_16_10()
+	local ok, err = pcall(function()
+		local dwWdwH = device().width / device().height
+		if not (dwWdwH > ASPECT_16_10_MIN and dwWdwH <= ASPECT_16_10_MAX) then
+			log("aspect " .. tostring(dwWdwH) .. " is not in the 16:10 bucket")
+			try_restore_zone_map_16()
+			return
+		end
+
+		log("16:10 aspect detected (" .. tostring(dwWdwH) .. "), attempting patch")
+
+		-- make a one-time backup of the real zone_map_16.xml so true 16:9
+		-- content is never lost, in case someone plays the same install on
+		-- a real 16:9 monitor later
+		local backup_content, backup_err = read_gamedata_file(ZONE_MAP_BACKUP)
+		if not backup_content then
+			local current_16, current_err = read_gamedata_file(ZONE_MAP_16)
+			if current_16 then
+				local wok, werr = write_gamedata_file(ZONE_MAP_BACKUP, current_16)
+				if wok then
+					log("backed up original zone_map_16.xml -> " .. ZONE_MAP_BACKUP)
+				else
+					log("WARNING: failed to write backup: " .. tostring(werr))
+				end
+			else
+				log("WARNING: could not read current zone_map_16.xml to back it up: " .. tostring(current_err))
+			end
+		end
+
+		local fix_content, ferr = read_gamedata_file(ZONE_MAP_16_10)
+		if not fix_content then
+			log("ERROR: could not read " .. ZONE_MAP_16_10 .. ": " .. tostring(ferr))
+			return
+		end
+
+		local wok, werr = write_gamedata_file(ZONE_MAP_16, fix_content)
+		if wok then
+			log("SUCCESS: zone_map_16.xml overwritten with 16:10 layout")
+		else
+			log("ERROR: failed to overwrite zone_map_16.xml: " .. tostring(werr))
+			log("-> Lua file write access is probably restricted in this build; runtime patch is not viable, use the manual permanent-swap approach instead")
+		end
+	end)
+
+	if not ok then
+		log("ERROR: patch attempt threw an exception: " .. tostring(err))
+	end
+end
+
+
+HUD = nil
+
+function activate_hud()
+	RegisterScriptCallback("on_console_execute",on_console_execute)
+	RegisterScriptCallback("actor_on_net_destroy",actor_on_net_destroy)
+	RegisterScriptCallback("GUI_on_show",update_hud)
+	RegisterScriptCallback("GUI_on_hide",update_hud)
+	
+	if HUD == nil then
+		HUD = UIStalkerCounter()
+		get_hud():AddDialogToRender(HUD)
+	end
+	HUD:Refresh()
+end
+
+function deactivate_hud()
+	if HUD ~= nil then
+		get_hud():RemoveDialogToRender(HUD)
+		HUD = nil
+	end
+	
+	UnregisterScriptCallback("on_console_execute",on_console_execute)
+	UnregisterScriptCallback("actor_on_net_destroy",actor_on_net_destroy)
+	UnregisterScriptCallback("GUI_on_show",update_hud)
+	UnregisterScriptCallback("GUI_on_hide",update_hud)
+end
+
+function update_hud()
+	if HUD ~= nil then
+		HUD:Refresh()
+	end
+end
+
+function actor_on_net_destroy()
+	if HUD ~= nil then
+		get_hud():RemoveDialogToRender(HUD)
+		HUD = nil
+	end
+end
+
+function on_option_change()
+	local state = ui_options.get("video/hud/show_minimap")
+	if state and (not HUD) then
+		activate_hud()
+	elseif (not state) and HUD then
+		deactivate_hud()
+	end
+end
+
+function on_console_execute(name)
+	if name == "hud_draw" and HUD then
+		HUD:Refresh()
+	end
+end
+
+function on_game_start()
+	-- run the 16:10 patch attempt as early as possible, before HUD/minimap
+	-- widgets are constructed for this session
+	try_patch_zone_map_for_16_10()
+
+	RegisterScriptCallback("on_option_change",on_option_change)
+	
+	if (ui_options.get("video/hud/show_minimap") == false) then
+		return
+	end
+	
+	local function actor_on_first_update()
+		activate_hud()
+		RegisterScriptCallback("on_console_execute",on_console_execute)
+	end
+	RegisterScriptCallback("actor_on_first_update",actor_on_first_update)
+end
+
+
+local prev_cnt = 0
+----------------------------------------------------
+class "UIStalkerCounter" (CUIScriptWnd)
+
+function UIStalkerCounter:__init() super()
+	self._tmr = time_global()
+	
+	self:InitControls()
+end
+
+function UIStalkerCounter:__finalize()
+end
+
+function UIStalkerCounter:InitControls()
+	local xml = CScriptXmlInit()
+	xml:ParseFile("zone_map.xml")
+	
+	self.dialog = xml:InitStatic("minimap:background", self)
+	self.dialog:SetTextureColor( GetARGB(0,0,0,0) ) -- invisible
+	self.dialog:Show(false)
+	
+	self.counter_dialog = xml:InitStatic("minimap:static_counter", self.dialog)
+	self.counter = xml:InitTextWnd("minimap:static_counter:text_static", self.counter_dialog)
+	
+	local dwWdwH = device().width / device().height
+	local pos = self.counter_dialog:GetWndPos()
+	
+	if (dwWdwH > ASPECT_21_9_MIN) then
+		pos.x = X_21
+		pos.y = Y_21
+	elseif (dwWdwH > ASPECT_16_10_MIN) and (dwWdwH <= ASPECT_16_10_MAX) then
+		pos.x = X_16_10
+		pos.y = Y_16_10
+	elseif (dwWdwH > ASPECT_16_9_MIN) then
+		pos.x = X_16
+		pos.y = Y_16
+	else
+		pos.x = X
+		pos.y = Y
+	end
+	
+	self.counter_dialog:SetWndPos(pos)
+end
+
+function UIStalkerCounter:Clear()
+	self.counter:SetText("")
+	self.counter_dialog:Show(false)
+end
+
+function UIStalkerCounter:Refresh()
+	self:Clear()
+	
+	if (not main_hud_shown()) then
+		return
+	end
+	
+	local cnt = 0
+	local pos = db.actor:position()
+	for i=1,#db.OnlineStalkers do
+		local id = db.OnlineStalkers[i]
+		local obj = db.storage[id] and db.storage[id].object or level.object_by_id(id)
+		if obj and obj:alive() and (pos:distance_to(obj:position()) <= radius) then
+			cnt = cnt + 1
+			if (prev_cnt < cnt) and enable_contact_sound then
+				sound = enable_contact_offline and "squaredov\\contact_2" or ("squaredov\\contact_" .. math.random(2))
+				xr_effects.play_snd(db.actor, nil, {[1] = sound})
+			end
+		end
+	end
+	if (prev_cnt > cnt) and enable_contact_sound and enable_contact_offline then
+		xr_effects.play_snd(db.actor, nil, {[1] = "squaredov\\contact_1"})
+	end
+	prev_cnt = cnt
+	self.counter_dialog:Show(true)
+	self.counter:SetText(cnt)
+	self.dialog:Show(cnt > 0)
+end
+
+function UIStalkerCounter:Update()
+	
+	local tg = time_global()
+	if self._tmr >= tg then
+		return
+	else
+		self._tmr = tg + 1000
+	end
+	
+	self:Refresh()
+	CUIScriptWnd.Update(self)
+end
