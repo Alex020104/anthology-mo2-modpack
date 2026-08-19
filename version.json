@@ -3087,6 +3087,22 @@
       "removed_files": []
     },
     {
+      "id": "gfx-weather-expansion-other-psi-storms-3006d7414e",
+      "folder": "[GFX] Weather Expansion - OTHER PSI-STORMS — Переработанная погода + Пси-шторм от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊",
+      "mode": "full",
+      "version": "2026.08.19.8",
+      "notes": "Обновление [GFX] Weather Expansion - OTHER PSI-STORMS — Переработанная погода + Пси-шторм от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-gfx-weather-expansion-other-psi-storms-3006d7414e-2026.08.19.8/anthology-folder-gfx-weather-expansion-other-psi-storms-3006d7414e-2026.08.19.8.zip",
+      "asset_name": "anthology-folder-gfx-weather-expansion-other-psi-storms-3006d7414e-2026.08.19.8.zip",
+      "size": 17098126,
+      "sha256": "3c60699b5892f22a99a0d9d18c9e92ed2450a9d0e45346f6b5804282b530200f",
+      "files": [
+        "[GFX] Weather Expansion - OTHER PSI-STORMS — Переработанная погода + Пси-шторм от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊/db/mods/zzzz_other_psi_storms.xdb0",
+        "[GFX] Weather Expansion - OTHER PSI-STORMS — Переработанная погода + Пси-шторм от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊/meta.ini"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "hard-realistic-fatigue-b72c80f095",
       "folder": "[HARD] Realistic Fatigue — Реалистичная усталость",
       "mode": "full",
