@@ -2921,6 +2921,24 @@
       "removed_files": []
     },
     {
+      "id": "gfx-atmospherics-2-68-93-hotfix3-weather-c43727d2dd",
+      "folder": "[GFX] Atmospherics 2.68.93_hotfix3 + Weather Expansion v3.7 (ADDS 21 WEATHER PRESETS) — Дополнительные погодные циклы + Атмосферикс от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊",
+      "mode": "full",
+      "version": "2026.08.19.3",
+      "notes": "Обновление [GFX] Atmospherics 2.68.93_hotfix3 + Weather Expansion v3.7 (ADDS 21 WEATHER PRESETS) — Дополнительные погодные циклы + Атмосферикс от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-gfx-atmospherics-2-68-93-hotfix3-weather-c43727d2dd-2026.08.19.3/anthology-folder-gfx-atmospherics-2-68-93-hotfix3-weather-c43727d2dd-2026.08.19.3.zip",
+      "asset_name": "anthology-folder-gfx-atmospherics-2-68-93-hotfix3-weather-c43727d2dd-2026.08.19.3.zip",
+      "size": 61510352,
+      "sha256": "5ac8a470fbb50febe74df423aa788d0013ea20e33647db8f36b0ccd04c9aad8a",
+      "files": [
+        "[GFX] Atmospherics 2.68.93_hotfix3 + Weather Expansion v3.7 (ADDS 21 WEATHER PRESETS) — Дополнительные погодные циклы + Атмосферикс от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊/appdata/default.ltx",
+        "[GFX] Atmospherics 2.68.93_hotfix3 + Weather Expansion v3.7 (ADDS 21 WEATHER PRESETS) — Дополнительные погодные циклы + Атмосферикс от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊/appdata/weather_plus.ltx",
+        "[GFX] Atmospherics 2.68.93_hotfix3 + Weather Expansion v3.7 (ADDS 21 WEATHER PRESETS) — Дополнительные погодные циклы + Атмосферикс от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊/db/mods/zzz_adds_21_new_weather_presets.xdb0",
+        "[GFX] Atmospherics 2.68.93_hotfix3 + Weather Expansion v3.7 (ADDS 21 WEATHER PRESETS) — Дополнительные погодные циклы + Атмосферикс от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊/meta.ini"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "gfx-g2x-tactical-light-presets-mcm-mcm-f1d2f40275",
       "folder": "[GFX] G2X Tactical Light Presets + MCM — Регулируемые Фонари через MCM меню от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊",
       "mode": "full",
