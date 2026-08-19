@@ -3068,6 +3068,25 @@
       "removed_files": []
     },
     {
+      "id": "gfx-s-t-a-l-k-e-r-2-legacy-lut-2021-db7b5bd4e5",
+      "folder": "[GFX] S.T.A.L.K.E.R. 2 - Legacy LUT 2021 — Цветокорекция от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊",
+      "mode": "full",
+      "version": "2026.08.19.4",
+      "notes": "Обновление [GFX] S.T.A.L.K.E.R. 2 - Legacy LUT 2021 — Цветокорекция от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-gfx-s-t-a-l-k-e-r-2-legacy-lut-2021-db7b5bd4e5-2026.08.19.4/anthology-folder-gfx-s-t-a-l-k-e-r-2-legacy-lut-2021-db7b5bd4e5-2026.08.19.4.zip",
+      "asset_name": "anthology-folder-gfx-s-t-a-l-k-e-r-2-legacy-lut-2021-db7b5bd4e5-2026.08.19.4.zip",
+      "size": 709340,
+      "sha256": "cfe4a6a066675f1bdf903e0d341abaebbad3cb43732c798d4f2858860eaa6ccb",
+      "files": [
+        "[GFX] S.T.A.L.K.E.R. 2 - Legacy LUT 2021 — Цветокорекция от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊/bin/S.T.A.L.K.E.R. 2 - Legacy LUT Addon.ini",
+        "[GFX] S.T.A.L.K.E.R. 2 - Legacy LUT 2021 — Цветокорекция от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊/gamedata/scripts/ssfx_lut.script",
+        "[GFX] S.T.A.L.K.E.R. 2 - Legacy LUT 2021 — Цветокорекция от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊/gamedata/shaders/r3/settings_screenspace_LUT.h",
+        "[GFX] S.T.A.L.K.E.R. 2 - Legacy LUT 2021 — Цветокорекция от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊/gamedata/textures/shaders/lut_atlas.dds",
+        "[GFX] S.T.A.L.K.E.R. 2 - Legacy LUT 2021 — Цветокорекция от 𝙍𝙚𝙑𝙤_𝙊𝖓𝖑𝟏𝖓𝖊/meta.ini"
+      ],
+      "removed_files": []
+    },
+    {
       "id": "hard-realistic-fatigue-b72c80f095",
       "folder": "[HARD] Realistic Fatigue — Реалистичная усталость",
       "mode": "full",
