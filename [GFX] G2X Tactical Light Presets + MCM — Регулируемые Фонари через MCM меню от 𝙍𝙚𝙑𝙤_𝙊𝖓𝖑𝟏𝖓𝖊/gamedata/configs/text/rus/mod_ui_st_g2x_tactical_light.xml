@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+    <!-- Название меню и заголовка -->
+    <string id="ui_mcm_menu_g2x_module">
+        <text>%c[255,255,255,255] Тактические Фонари G2X</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_title">
+        <text>Полная коллекция SureFire G2X Пресетов</text>
+    </string>
+
+	<string id="ui_mcm_menu_g2x">
+        <text>Пресеты фонарей</text>
+    </string>
+	
+	<string id="ui_mcm_g2x_module_attention_header">
+		<text>%c[255,255,0,0] ВНИМАНИЕ! \n \n
+		%c[255,255,0,0] Настройки ниже вступают в силу только после полного выхода из игры и загрузки заново. \n \n
+		%c[255,255,0,0] Вы можете изменять параметры ниже прямо сейчас, но их визуальное отображение в игре обновится только после полного выхода из игры и загрузки заново. \n \n
+		%c[255,255,0,0] Это техническое ограничение движка игры.</text>
+	</string>
+
+    <string id="ui_mcm_g2x_module_g2x_hl_preset">
+        <text>Налобный фонарь (Headlamp)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_preset_desc">
+        <text>Выберите готовый оптический пресет для налобного фонаря (яркость, дальность, тип диода и текстуру луча).</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_fl_preset">
+        <text>Тактический фонарь (Flashlight)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_preset_desc">
+        <text>Выберите готовый оптический пресет для ручного тактического фонаря (яркость, дальность, тип диода и текстуру луча).</text>
+    </string>
+
+    <!-- ============================================================================ -->
+    <!-- HEADLAMP PRESETS -->
+    <!-- ============================================================================ -->
+    <!-- HIGH -->
+    <string id="ui_mcm_lst_hl_mvb_800_4500k">
+        <text>MVB 800lm 4500K (Широкий, 70-80m, Тёплый нейтральный)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_mvb_800_5500k">
+        <text>MVB 800lm 5500K (Широкий, 70-80m, Нейтральный белый)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_mvb_800_6500k">
+        <text>MVB 800lm 6500K (Широкий, 70-80m, Холодный белый)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_600_4500k">
+        <text>REF 600lm 4500K (Сфоку-ный, 90-100m, Тёплый нейтральный)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_600_5500k">
+        <text>REF 600lm 5500K (Сфоку-ный, 90-100m, Нейтральный белый)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_600_6500k">
+        <text>REF 600lm 6500K (Сфоку-ный, 90-100m, Холодный белый)</text>
+    </string>
+
+    <!-- MID -->
+    <string id="ui_mcm_lst_hl_mvb_400_4500k">
+        <text>MVB 400lm 4500K (Широкий, 50-60m, Тёплый нейтральный)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_mvb_400_5500k">
+        <text>MVB 400lm 5500K (Широкий, 50-60m, Нейтральный белый)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_mvb_400_6500k">
+        <text>MVB 400lm 6500K (Широкий, 50-60m, Холодный белый)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_320_4500k">
+        <text>REF 320lm 4500K (Сфоку-ный, 70-80m, Тёплый нейтральный)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_320_5500k">
+        <text>REF 320lm 5500K (Сфоку-ный, 70-80m, Нейтральный белый)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_320_6500k">
+        <text>REF 320lm 6500K (Сфоку-ный, 70-80m, Холодный белый)</text>
+    </string>
+
+    <!-- LOW -->
+    <string id="ui_mcm_lst_hl_mvb_200_4500k">
+        <text>MVB 200lm 4500K (Широкий, 30-40m, Тёплый нейтральный)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_mvb_200_5500k">
+        <text>MVB 200lm 5500K (Широкий, 30-40m, Нейтральный белый)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_mvb_200_6500k">
+        <text>MVB 200lm 6500K (Широкий, 30-40m, Холодный белый)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_120_4500k">
+        <text>REF 120lm 4500K (Сфоку-ный, 50-60m, Тёплый нейтральный)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_120_5500k">
+        <text>REF 120lm 5500K (Сфоку-ный, 50-60m, Нейтральный белый)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_120_6500k">
+        <text>REF 120lm 6500K (Сфоку-ный, 50-60m, Холодный белый)</text>
+    </string>
+
+    <!-- SPECIAL -->
+    <string id="ui_mcm_lst_hl_6p_120_3000k">
+        <text>REF 120lm 3000K (Сфокусированный, 50-60m, Янтарный)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_diffuser_5000k">
+        <text>MVB Diffuser 5000K (Ультра-широкий, 30-40m, Высокий CRI)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_rd_ref_60_red">
+        <text>REF 60lm 650nm (Сфокусированный, 45-50m, Красный)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_sl_tir_1000lm">
+        <text>TIR 1000lm 5500K (Пятно, 200-220m, Нейтральный белый)</text>
+    </string>
+	
+	<!-- ANTHOLOGY CUSTOM PRESETS -->
+    <string id="ui_mcm_lst_hl_ixrtr_400_4000k">
+        <text>IXRTR 400lm 4000K (Широкий, 40-45m, Чистый белый)</text>
+    </string>
+
+    <!-- ============================================================================ -->
+    <!-- FLASHLIGHT PRESETS -->
+    <!-- ============================================================================ -->
+    <!-- HIGH -->
+    <string id="ui_mcm_lst_fl_tir_600_4500k">
+        <text>TIR 600lm 4500K (Пятно, 95-110m, Тёплый нейтральный)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_tir_600_5500k">
+        <text>TIR 600lm 5500K (Пятно, 95-110m, Нейтральный белый)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_tir_600_6500k">
+        <text>TIR 600lm 6500K (Пятно, 95-110m, Холодный белый)</text>
+    </string>
+
+    <!-- MID -->
+    <string id="ui_mcm_lst_fl_tir_320_4500k">
+        <text>TIR 320lm 4500K (Пятно, 80-90m, Тёплый нейтральный)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_tir_320_5500k">
+        <text>TIR 320lm 5500K (Пятно, 80-90m, Нейтральный белый)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_tir_320_6500k">
+        <text>TIR 320lm 6500K (Пятно, 80-90m, Холодный белый)</text>
+    </string>
+
+    <!-- LOW -->
+    <string id="ui_mcm_lst_fl_tir_120_4500k">
+        <text>TIR 120lm 4500K (Пятно, 60-70m, Тёплый нейтральный)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_tir_120_5500k">
+        <text>TIR 120lm 5500K (Пятно, 60-70m, Нейтральный белый)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_tir_120_6500k">
+        <text>TIR 120lm 6500K (Пятно, 60-70m, Холодный белый)</text>
+    </string>
+
+    <!-- SPECIAL -->
+    <string id="ui_mcm_lst_fl_6p_120_3000k">
+        <text>REF 120lm 3000K (Сфокусированный, 50-60m, Янтарный)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_bl_uv_365nm">
+        <text>TIR 20lm 365nm (Пятно, 20-25m, Ультрафиолет)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_diffuser_5000k">
+        <text>MVB Diffuser 5000K (Ультра-широкий, 30-40m, Высокий CRI)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_rd_tir_40_red">
+        <text>TIR 40lm 650nm (Пятно, 40-45m, Красный)</text>
+    </string>
+	
+	<!-- ANTHOLOGY CUSTOM PRESETS -->
+	<string id="ui_mcm_lst_fl_ixrtr_800_4000k">
+        <text>IXRTR 800lm 4000K (Сфокусир-ный, 60-70m, Чистый белый)</text>
+    </string>
+
+    <!-- ============================================================================ -->
+    <!-- РУЧНЫЕ НАСТРОЙКИ (MANUAL OVERRIDE LABELS & DESCRIPTIONS) -->
+    <!-- ============================================================================ -->
+    <string id="ui_mcm_g2x_module_g2x_hl_manual_override">
+        <text>Ручной режим параметров налобника</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_manual_override_desc">
+        <text>Включить перехват параметров налобника вручную. Если выключено — используются значения из выбранного пресета выше.</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_hl_omni_range_r2">
+        <text>[Налобник] Omni Range R2 (Всенаправленная дальность)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_omni_range_r2_desc">
+        <text>Радиус фоновой всенаправленной подсветки</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_hl_range_r2">
+        <text>[Налобник] Range R2 (Дальность луча)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_range_r2_desc">
+        <text>Максимальная дальность луча фонаря</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_hl_spot_angle">
+        <text>[Налобник] Spot Angle (Угол светового пучка)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_spot_angle_desc">
+        <text>Ширина конуса освещения (меньше угол — уже и дальнобойнее пучок, больше — шире охват)</text>
+    </string>
+
+    <!-- Описания слайдеров цвета налобника -->
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_r">
+        <text>[Налобник] Красный канал (Red)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_r_desc">
+        <text>Интенсивность красного цвета (от 0 до 1.00)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_g">
+        <text>[Налобник] Зеленый канал (Green)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_g_desc">
+        <text>Интенсивность зеленого цвета (от 0 до 1.00)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_b">
+        <text>[Налобник] Синий канал (Blue)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_b_desc">
+        <text>Интенсивность синего цвета (от 0 до 1.00)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_a">
+        <text>[Налобник] Альфа / Интенсивность (Alpha)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_a_desc">
+        <text>Общая яркость/прозрачность ореола света (от 0 до 1.00)</text>
+    </string>
+
+
+    <string id="ui_mcm_g2x_module_g2x_fl_manual_override">
+        <text>Ручной режим параметров тактического фонаря</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_manual_override_desc">
+        <text>Включить перехват параметров ручного фонаря вручную. Если выключено — используются значения из выбранного пресета выше.</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_fl_omni_range_r2">
+        <text>[Тактик] Omni Range R2 (Всенаправленная дальность)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_omni_range_r2_desc">
+        <text>Радиус фоновой всенаправленной подсветки ручного фонаря</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_fl_range_r2">
+        <text>[Тактик] Range R2 (Дальность луча)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_range_r2_desc">
+        <text>Максимальная дальность луча ручного фонаря</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_fl_spot_angle">
+        <text>[Тактик] Spot Angle (Угол светового пучка)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_spot_angle_desc">
+        <text>Ширина светового конуса ручного тактического фонаря</text>
+    </string>
+
+    <!-- Описания слайдеров цвета ручного фонаря -->
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_r">
+        <text>[Тактик] Красный канал (Red)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_r_desc">
+        <text>Интенсивность красного цвета (от 0 до 1.00)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_g">
+        <text>[Тактик] Зеленый канал (Green)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_g_desc">
+        <text>Интенсивность зеленого цвета (от 0 до 1.00)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_b">
+        <text>[Тактик] Синий канал (Blue)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_b_desc">
+        <text>Интенсивность синего цвета (от 0 до 1.00)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_a">
+        <text>[Тактик] Альфа / Интенсивность (Alpha)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_a_desc">
+        <text>Общая яркость/прозрачность ореола света (от 0 до 1.00)</text>
+    </string>
+
+</string_table>

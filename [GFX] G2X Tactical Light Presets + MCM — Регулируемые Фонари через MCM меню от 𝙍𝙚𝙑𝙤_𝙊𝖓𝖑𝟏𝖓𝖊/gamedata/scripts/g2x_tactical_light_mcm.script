@@ -1,0 +1,110 @@
+--==============================================================================================
+-- MCM Меню для мода SureFire G2X Presets (DX11 Optimized Version)
+--==============================================================================================
+
+function on_mcm_load()
+
+    local op = { 
+        id = "g2x", sh = true, gr = {
+
+            { id = "title", type = "slide", link = "ui_options_slider_player", text = "ui_mcm_g2x_module_g2x_title", size = {512, 50}, spacing = 20 },
+
+			-- =============== ПРЕДУПРЕЖДЕНИЕ ===============
+			{
+				id = "title",
+				type = "title",
+				text = "ui_mcm_g2x_module_attention_header",
+				align= "c",
+			},
+
+            -- ================= НАЛОБНЫЙ ФОНАРЬ =================
+            {
+                id = "hl_preset", type = "list", val = 0, 
+                content = { 
+                    -- HIGH
+                    { "hl_mvb_800_4500k", "hl_mvb_800_4500k" },
+                    { "hl_mvb_800_5500k", "hl_mvb_800_5500k" },
+                    { "hl_mvb_800_6500k", "hl_mvb_800_6500k" },
+                    { "hl_ref_600_4500k", "hl_ref_600_4500k" },
+                    { "hl_ref_600_5500k", "hl_ref_600_5500k" },
+                    { "hl_ref_600_6500k", "hl_ref_600_6500k" },
+                    -- MID
+                    { "hl_mvb_400_4500k", "hl_mvb_400_4500k" },
+                    { "hl_mvb_400_5500k", "hl_mvb_400_5500k" },
+                    { "hl_mvb_400_6500k", "hl_mvb_400_6500k" },
+                    { "hl_ref_320_4500k", "hl_ref_320_4500k" },
+                    { "hl_ref_320_5500k", "hl_ref_320_5500k" },
+                    { "hl_ref_320_6500k", "hl_ref_320_6500k" },
+                    -- LOW
+                    { "hl_mvb_200_4500k", "hl_mvb_200_4500k" },
+                    { "hl_mvb_200_5500k", "hl_mvb_200_5500k" },
+                    { "hl_mvb_200_6500k", "hl_mvb_200_6500k" },
+                    { "hl_ref_120_4500k", "hl_ref_120_4500k" },
+                    { "hl_ref_120_5500k", "hl_ref_120_5500k" },
+                    { "hl_ref_120_6500k", "hl_ref_120_6500k" },
+                    -- SPECIAL
+                    { "hl_6p_120_3000k",  "hl_6p_120_3000k" },
+                    { "hl_diffuser_5000k","hl_diffuser_5000k" },
+                    { "hl_rd_ref_60_red", "hl_rd_ref_60_red" },
+                    { "hl_sl_tir_1000lm", "hl_sl_tir_1000lm" },
+                    -- ANTHOLOGY CUSTOM
+                    { "hl_ixrtr_400_4000k", "hl_ixrtr_400_4000k" }
+                }, 
+                def = "hl_diffuser_5000k"
+            },
+            -- Налобный фонарь: Чекбокс ручного оверрайда
+            { id = "hl_manual_override", type = "check", val = 1, def = false },
+            -- Налобный фонарь: Ручные параметры (только R2 / DX11)
+            { id = "hl_omni_range_r2", type = "track", val = 2, min = 0, max = 10, step = 0.1, def = 0 },
+            { id = "hl_range_r2", type = "track", val = 2, min = 1, max = 300, step = 1, def = 40 },
+            { id = "hl_spot_angle", type = "track", val = 2, min = 1, max = 180, step = 1, def = 120 },
+            -- Налобный фонарь: Слайдеры цвета R2 (Red, Green, Blue, Alpha)
+            { id = "hl_color_r2_r", type = "track", val = 2, min = 0.0, max = 1.0, step = 0.01, def = 1.0 },
+            { id = "hl_color_r2_g", type = "track", val = 2, min = 0.0, max = 1.0, step = 0.01, def = 1.0 },
+            { id = "hl_color_r2_b", type = "track", val = 2, min = 0.0, max = 1.0, step = 0.01, def = 1.0 },
+            { id = "hl_color_r2_a", type = "track", val = 2, min = 0.0, max = 1.0, step = 0.01, def = 0.9 },
+
+            { id = "line", type = "line" },
+
+            -- ================= ТАКТИЧЕСКИЙ ФОНАРЬ =================
+            {
+                id = "fl_preset", type = "list", val = 0, 
+                content = { 
+                    -- HIGH
+                    { "fl_tir_600_4500k", "fl_tir_600_4500k" },
+                    { "fl_tir_600_5500k", "fl_tir_600_5500k" },
+                    { "fl_tir_600_6500k", "fl_tir_600_6500k" },
+                    -- MID
+                    { "fl_tir_320_4500k", "fl_tir_320_4500k" },
+                    { "fl_tir_320_5500k", "fl_tir_320_5500k" },
+                    { "fl_tir_320_6500k", "fl_tir_320_6500k" },
+                    -- LOW
+                    { "fl_tir_120_4500k", "fl_tir_120_4500k" },
+                    { "fl_tir_120_5500k", "fl_tir_120_5500k" },
+                    { "fl_tir_120_6500k", "fl_tir_120_6500k" },
+                    -- SPECIAL
+                    { "fl_6p_120_3000k",  "fl_6p_120_3000k" },
+                    { "fl_bl_uv_365nm",   "fl_bl_uv_365nm" },
+                    { "fl_diffuser_5000k","fl_diffuser_5000k" },
+                    { "fl_rd_tir_40_red", "fl_rd_tir_40_red" },
+                    -- ANTHOLOGY CUSTOM
+                    { "fl_ixrtr_800_4000k", "fl_ixrtr_800_4000k" }
+                }, 
+                def = "fl_6p_120_3000k"
+            },
+            -- Тактический фонарь: Чекбокс ручного оверрайда
+            { id = "fl_manual_override", type = "check", val = 1, def = false },
+            -- Тактический фонарь: Ручные параметры (только R2 / DX11)
+            { id = "fl_omni_range_r2", type = "track", val = 2, min = 0, max = 10, step = 0.1, def = 0.5 },
+            { id = "fl_range_r2", type = "track", val = 2, min = 1, max = 300, step = 1, def = 20 },
+            { id = "fl_spot_angle", type = "track", val = 2, min = 1, max = 180, step = 1, def = 65 },
+            -- Тактический фонарь: Слайдеры цвета R2 (Red, Green, Blue, Alpha)
+            { id = "fl_color_r2_r", type = "track", val = 2, min = 0.0, max = 1.0, step = 0.01, def = 1.0 },
+            { id = "fl_color_r2_g", type = "track", val = 2, min = 0.0, max = 1.0, step = 0.01, def = 1.0 },
+            { id = "fl_color_r2_b", type = "track", val = 2, min = 0.0, max = 1.0, step = 0.01, def = 1.0 },
+            { id = "fl_color_r2_a", type = "track", val = 2, min = 0.0, max = 1.0, step = 0.01, def = 0.9 },
+        }
+    }
+
+    return op, "g2x_module"
+end

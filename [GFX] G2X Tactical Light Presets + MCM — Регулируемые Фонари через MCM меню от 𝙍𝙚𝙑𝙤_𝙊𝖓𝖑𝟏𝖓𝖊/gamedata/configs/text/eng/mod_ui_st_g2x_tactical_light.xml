@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+
+    <!-- Menu name and title -->
+    <string id="ui_mcm_menu_g2x_module">
+        <text>%c[255,255,255,255] G2X Tactical Flashlights</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_title">
+        <text>Full Collection of SureFire G2X Presets</text>
+    </string>
+
+	<string id="ui_mcm_menu_g2x">
+        <text>Flashlight Presets</text>
+    </string>
+	
+	<string id="ui_mcm_g2x_module_attention_header">
+		<text>%c[255,255,0,0] ATTENTION! \n \n
+		%c[255,255,0,0] The settings below take effect only after completely exiting the game and reloading. \n \n
+		%c[255,255,0,0] You can change the parameters below right now, but their visual representation in-game will only update after completely exiting and reloading. \n \n
+		%c[255,255,0,0] This is a technical limitation of the game engine.</text>
+	</string>
+
+    <string id="ui_mcm_g2x_module_g2x_hl_preset">
+        <text>Headlamp</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_preset_desc">
+        <text>Select a pre-configured optical preset for your headlamp (brightness, range, emitter type, and beam texture).</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_fl_preset">
+        <text>Tactical Flashlight</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_preset_desc">
+        <text>Select a pre-configured optical preset for your handheld tactical flashlight (brightness, range, emitter type, and beam texture).</text>
+    </string>
+
+    <!-- ============================================================================ -->
+    <!-- HEADLAMP PRESETS -->
+    <!-- ============================================================================ -->
+    <!-- HIGH -->
+    <string id="ui_mcm_lst_hl_mvb_800_4500k">
+        <text>MVB 800lm 4500K (Wide, 70-80m, Warm Neutral)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_mvb_800_5500k">
+        <text>MVB 800lm 5500K (Wide, 70-80m, Neutral White)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_mvb_800_6500k">
+        <text>MVB 800lm 6500K (Wide, 70-80m, Cool White)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_600_4500k">
+        <text>REF 600lm 4500K (Focused, 90-100m, Warm Neutral)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_600_5500k">
+        <text>REF 600lm 5500K (Focused, 90-100m, Neutral White)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_600_6500k">
+        <text>REF 600lm 6500K (Focused, 90-100m, Cool White)</text>
+    </string>
+
+    <!-- MID -->
+    <string id="ui_mcm_lst_hl_mvb_400_4500k">
+        <text>MVB 400lm 4500K (Wide, 50-60m, Warm Neutral)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_mvb_400_5500k">
+        <text>MVB 400lm 5500K (Wide, 50-60m, Neutral White)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_mvb_400_6500k">
+        <text>MVB 400lm 6500K (Wide, 50-60m, Cool White)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_320_4500k">
+        <text>REF 320lm 4500K (Focused, 70-80m, Warm Neutral)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_320_5500k">
+        <text>REF 320lm 5500K (Focused, 70-80m, Neutral White)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_320_6500k">
+        <text>REF 320lm 6500K (Focused, 70-80m, Cool White)</text>
+    </string>
+
+    <!-- LOW -->
+    <string id="ui_mcm_lst_hl_mvb_200_4500k">
+        <text>MVB 200lm 4500K (Wide, 30-40m, Warm Neutral)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_mvb_200_5500k">
+        <text>MVB 200lm 5500K (Wide, 30-40m, Neutral White)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_mvb_200_6500k">
+        <text>MVB 200lm 6500K (Wide, 30-40m, Cool White)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_120_4500k">
+        <text>REF 120lm 4500K (Focused, 50-60m, Warm Neutral)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_120_5500k">
+        <text>REF 120lm 5500K (Focused, 50-60m, Neutral White)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_ref_120_6500k">
+        <text>REF 120lm 6500K (Focused, 50-60m, Cool White)</text>
+    </string>
+
+    <!-- SPECIAL -->
+    <string id="ui_mcm_lst_hl_6p_120_3000k">
+        <text>REF 120lm 3000K (Focused, 50-60m, Amber)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_diffuser_5000k">
+        <text>MVB Diffuser 5000K (Ultra-Wide, 30-40m, High CRI)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_rd_ref_60_red">
+        <text>REF 60lm 650nm (Focused, 45-50m, Red)</text>
+    </string>
+    <string id="ui_mcm_lst_hl_sl_tir_1000lm">
+        <text>TIR 1000lm 5500K (Spot, 200-220m, Neutral White)</text>
+    </string>
+	
+	<!-- ANTHOLOGY CUSTOM PRESETS -->
+    <string id="ui_mcm_lst_hl_ixrtr_400_4000k">
+        <text>IXRTR 400lm 4000K (Wide, 40-45m, Pure White)</text>
+    </string>
+
+    <!-- ============================================================================ -->
+    <!-- FLASHLIGHT PRESETS -->
+    <!-- ============================================================================ -->
+    <!-- HIGH -->
+    <string id="ui_mcm_lst_fl_tir_600_4500k">
+        <text>TIR 600lm 4500K (Spot, 95-110m, Warm Neutral)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_tir_600_5500k">
+        <text>TIR 600lm 5500K (Spot, 95-110m, Neutral White)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_tir_600_6500k">
+        <text>TIR 600lm 6500K (Spot, 95-110m, Cool White)</text>
+    </string>
+
+    <!-- MID -->
+    <string id="ui_mcm_lst_fl_tir_320_4500k">
+        <text>TIR 320lm 4500K (Spot, 80-90m, Warm Neutral)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_tir_320_5500k">
+        <text>TIR 320lm 5500K (Spot, 80-90m, Neutral White)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_tir_320_6500k">
+        <text>TIR 320lm 6500K (Spot, 80-90m, Cool White)</text>
+    </string>
+
+    <!-- LOW -->
+    <string id="ui_mcm_lst_fl_tir_120_4500k">
+        <text>TIR 120lm 4500K (Spot, 60-70m, Warm Neutral)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_tir_120_5500k">
+        <text>TIR 120lm 5500K (Spot, 60-70m, Neutral White)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_tir_120_6500k">
+        <text>TIR 120lm 6500K (Spot, 60-70m, Cool White)</text>
+    </string>
+
+    <!-- SPECIAL -->
+    <string id="ui_mcm_lst_fl_6p_120_3000k">
+        <text>REF 120lm 3000K (Focused, 50-60m, Amber)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_bl_uv_365nm">
+        <text>TIR 20lm 365nm (Spot, 20-25m, Ultraviolet)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_diffuser_5000k">
+        <text>MVB Diffuser 5000K (Ultra-Wide, 30-40m, High CRI)</text>
+    </string>
+    <string id="ui_mcm_lst_fl_rd_tir_40_red">
+        <text>TIR 40lm 650nm (Spot, 40-45m, Red)</text>
+    </string>
+	
+	<!-- ANTHOLOGY CUSTOM PRESETS -->
+	<string id="ui_mcm_lst_fl_ixrtr_800_4000k">
+        <text>IXRTR 800lm 4000K (Focused, 60-70m, Pure White)</text>
+    </string>
+
+    <!-- ============================================================================ -->
+    <!-- MANUAL OVERRIDE LABELS & DESCRIPTIONS -->
+    <!-- ============================================================================ -->
+    <string id="ui_mcm_g2x_module_g2x_hl_manual_override">
+        <text>Headlamp Manual Override</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_manual_override_desc">
+        <text>Enable manual override for headlamp parameters. If disabled, the values from the selected preset above are used.</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_hl_omni_range_r2">
+        <text>[Headlamp] Omni Range R2 (Omnidirectional Range)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_omni_range_r2_desc">
+        <text>Radius of ambient omnidirectional illumination</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_hl_range_r2">
+        <text>[Headlamp] Range R2 (Beam Range)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_range_r2_desc">
+        <text>Maximum flashlight beam range</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_hl_spot_angle">
+        <text>[Headlamp] Spot Angle (Beam Angle)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_spot_angle_desc">
+        <text>Width of the illumination cone (smaller angle means a tighter and longer-throw beam, larger means wider coverage)</text>
+    </string>
+
+    <!-- Headlamp color slider descriptions -->
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_r">
+        <text>[Headlamp] Red Channel</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_r_desc">
+        <text>Red color intensity (from 0 to 1.00)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_g">
+        <text>[Headlamp] Green Channel</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_g_desc">
+        <text>Green color intensity (from 0 to 1.00)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_b">
+        <text>[Headlamp] Blue Channel</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_b_desc">
+        <text>Blue color intensity (from 0 to 1.00)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_a">
+        <text>[Headlamp] Alpha / Intensity</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_hl_color_r2_a_desc">
+        <text>Overall brightness/transparency of the light halo (from 0 to 1.00)</text>
+    </string>
+
+
+    <string id="ui_mcm_g2x_module_g2x_fl_manual_override">
+        <text>Tactical Flashlight Manual Override</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_manual_override_desc">
+        <text>Enable manual override for handheld flashlight parameters. If disabled, the values from the selected preset above are used.</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_fl_omni_range_r2">
+        <text>[Tactical] Omni Range R2 (Omnidirectional Range)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_omni_range_r2_desc">
+        <text>Radius of ambient omnidirectional illumination for the handheld flashlight</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_fl_range_r2">
+        <text>[Tactical] Range R2 (Beam Range)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_range_r2_desc">
+        <text>Maximum beam range of the handheld flashlight</text>
+    </string>
+
+    <string id="ui_mcm_g2x_module_g2x_fl_spot_angle">
+        <text>[Tactical] Spot Angle (Beam Angle)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_spot_angle_desc">
+        <text>Width of the beam cone for the handheld tactical flashlight</text>
+    </string>
+
+    <!-- Tactical flashlight color slider descriptions -->
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_r">
+        <text>[Tactical] Red Channel</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_r_desc">
+        <text>Red color intensity (from 0 to 1.00)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_g">
+        <text>[Tactical] Green Channel</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_g_desc">
+        <text>Green color intensity (from 0 to 1.00)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_b">
+        <text>[Tactical] Blue Channel</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_b_desc">
+        <text>Blue color intensity (from 0 to 1.00)</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_a">
+        <text>[Tactical] Alpha / Intensity</text>
+    </string>
+    <string id="ui_mcm_g2x_module_g2x_fl_color_r2_a_desc">
+        <text>Overall brightness/transparency of the light halo (from 0 to 1.00)</text>
+    </string>
+
+</string_table>
