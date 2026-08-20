@@ -604,12 +604,12 @@
       "id": "dbg-kristiano-fixes-all-in-one-8429b7581e",
       "folder": "[DBG] Kristiano Fixes ALL IN ONE",
       "mode": "full",
-      "version": "2026.08.13.13",
-      "notes": "Обновление [DBG] Kristiano Fixes ALL IN ONE.",
-      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.13.13/anthology-folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.13.13.zip",
-      "asset_name": "anthology-folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.13.13.zip",
-      "size": 43480236,
-      "sha256": "df714593bc30b7e8b564ef8f55ccad6c9823e75779e4098c05031a9d98f24f68",
+      "version": "2026.08.20.1",
+      "notes": "Удалён мешающий скрипт npc_loot_claim.script.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.20.1/anthology-folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.20.1.zip",
+      "asset_name": "anthology-folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.20.1.zip",
+      "size": 43747152,
+      "sha256": "ff7d46a5e8e142e6e01f45c9fa070d4f99e34d4c895de9021aa5fe303419f53c",
       "files": [
         "[DBG] Kristiano Fixes ALL IN ONE/CHANGELOG.txt",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/configs/items/items/items_zz_anthology_quest_stash_fix.ltx",
@@ -662,7 +662,6 @@
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/context_menu_overhaul_mcm.script",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/context_menu_overhaul_utils.script",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/context_menu_overhaul_wpo.script",
-        "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/npc_loot_claim.script",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/rx_bandage.script",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/tooltip_control.script",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/tooltip_control_mcm.script",
@@ -710,7 +709,9 @@
         "[DBG] Kristiano Fixes ALL IN ONE/PATCH_AUDIT.json",
         "[DBG] Kristiano Fixes ALL IN ONE/README_RU.txt"
       ],
-      "removed_files": []
+      "removed_files": [
+        "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/npc_loot_claim.script"
+      ]
     },
     {
       "id": "gam-autocomplete-tasks-f439c7d78b",
