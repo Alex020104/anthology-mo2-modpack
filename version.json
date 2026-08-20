@@ -778,12 +778,12 @@
       "id": "gam-campfires-placeable-anthology-credit-24c0368c7f",
       "folder": "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX",
       "mode": "full",
-      "version": "2026.08.13.15",
-      "notes": "Обновление [GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX.",
-      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-gam-campfires-placeable-anthology-credit-24c0368c7f-2026.08.13.15/anthology-folder-gam-campfires-placeable-anthology-credit-24c0368c7f-2026.08.13.15.zip",
-      "asset_name": "anthology-folder-gam-campfires-placeable-anthology-credit-24c0368c7f-2026.08.13.15.zip",
-      "size": 8561825,
-      "sha256": "514dfaebbf22f97ba3e567db63705f141f342fdc959f84e4565b41404f3dde9a",
+      "version": "2026.08.20.1",
+      "notes": "Удалён мешающий скрипт trader_autoinject.script.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-gam-campfires-placeable-anthology-credit-24c0368c7f-2026.08.20.1/anthology-folder-gam-campfires-placeable-anthology-credit-24c0368c7f-2026.08.20.1.zip",
+      "asset_name": "anthology-folder-gam-campfires-placeable-anthology-credit-24c0368c7f-2026.08.20.1.zip",
+      "size": 8615229,
+      "sha256": "e0dc00f0c79efb2879ee4fae8162ec68eb2728f18670ac073d73c05dd5b5d635",
       "files": [
         "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/anims/fade_nine_sec.ppe",
         "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/configs/items/items/items_campfire.ltx",
@@ -797,7 +797,6 @@
         "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/meshes/dynamics/equipments/campfiremod.ogf",
         "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/scripts/campfire_placeable.script",
         "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/scripts/campfire_placeable_mcm.script",
-        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/scripts/trader_autoinject.script",
         "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/sounds/interface/axe_wood_chop.ogg",
         "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/textures/detail/detail_grnd_earth.dds",
         "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/textures/detail/detail_grnd_earth_bump#.dds",
@@ -805,7 +804,9 @@
         "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/textures/ui/ui_campfire_placeable.dds",
         "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/meta.ini"
       ],
-      "removed_files": []
+      "removed_files": [
+        "[GAM] Campfires_placeable_ANTHOLOGY_CreditsBVCX/gamedata/scripts/trader_autoinject.script"
+      ]
     },
     {
       "id": "gam-catspaw-all-pack-d259cc0393",
