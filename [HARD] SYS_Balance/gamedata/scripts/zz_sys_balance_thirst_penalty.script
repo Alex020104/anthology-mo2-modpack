@@ -1,0 +1,63 @@
+-- SYS Balance: make thirst penalties start at 20% hydration instead of about 71%.
+-- Vanilla actor_status_thirst uses deprivation (0 = hydrated, 1 = empty).
+
+local dehydration_threshold = 0.80 -- 20% hydration remains
+local stamina_tick_ms = 500
+local stamina_loss_min = 0.00025
+local stamina_loss_max = 0.00050
+
+local next_stamina_tick = 0
+
+local function apply_thirst_settings()
+    if not actor_status_thirst then
+        return false
+    end
+
+    -- The original value drains both stamina and HP from about 71% hydration.
+    -- Custom stamina drain below replaces it; health is never damaged by thirst.
+    actor_status_thirst.pwr_rate = 0
+
+    -- Do not force the actor to sleep or roll the vanilla thirst death chance.
+    -- Deprivation is clamped to 10000, so 10001 is deliberately unreachable.
+    actor_status_thirst.force = 10001
+    return true
+end
+
+local function actor_on_update()
+    if not (db.actor and actor_status_thirst and actor_status_thirst.get_water_deprivation) then
+        return
+    end
+
+    if get_console_cmd(1, "g_god") then
+        return
+    end
+
+    local deprivation = actor_status_thirst.get_water_deprivation(false) or 0
+    if deprivation <= dehydration_threshold then
+        return
+    end
+
+    local now = time_global()
+    if now < next_stamina_tick then
+        return
+    end
+    next_stamina_tick = now + stamina_tick_ms
+
+    -- Scale gently from 0.05%/s at 20% hydration to 0.10%/s when fully dry.
+    local severity = clamp((deprivation - dehydration_threshold) / (1 - dehydration_threshold), 0, 1)
+    local stamina_loss = stamina_loss_min + (stamina_loss_max - stamina_loss_min) * severity
+
+    if db.actor.power > 0 then
+        db.actor:change_power(-stamina_loss)
+    end
+end
+
+function on_game_start()
+    if not apply_thirst_settings() then
+        printf("! [SYS_BALANCE] Unable to apply the 20%% hydration penalty patch")
+        return
+    end
+
+    RegisterScriptCallback("actor_on_update", actor_on_update)
+    printf("~ [SYS_BALANCE] Thirst penalty: stamina only below 20%% hydration; HP damage disabled")
+end

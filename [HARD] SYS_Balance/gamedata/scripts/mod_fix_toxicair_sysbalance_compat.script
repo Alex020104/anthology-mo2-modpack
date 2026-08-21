@@ -1,0 +1,56 @@
+-- [FIX] TA_SysBalance_Compat
+-- Восстанавливает лут, теряющийся из-за того, что [HARD] SYS_Balance полностью
+-- переопределяет death_manager.spawn_cosmetics без вызова предыдущей версии,
+-- обрывая цепочку monkey-patch'ей от других модов.
+--
+-- Восстановлено:
+--   - toxic_air.spawn_oxygen_tank         (фильтры/баллоны, Toxic Air)
+--   - exo_loot.spawn_gear                 (батарейки/ПСУ для экзоскелетов, BS Exo System)
+--   - western_goods_loot.spawn_corpse_loot (доллары/евро и другие шмотки, Western Goods)
+--
+-- outfit_section для exo_loot воспроизведён по формуле его же утерянного враппера:
+-- death_manager.get_outfit_by_npc_visual(visual).
+
+local patched = false
+
+local function restore_chain()
+    if patched then return end
+
+    local ta_ready  = type(toxic_air) == "table" and type(toxic_air.spawn_oxygen_tank) == "function"
+    local exo_ready = type(exo_loot) == "table" and type(exo_loot.spawn_gear) == "function"
+    local wg_ready  = type(western_goods_loot) == "table" and type(western_goods_loot.spawn_corpse_loot) == "function"
+
+    if not (ta_ready or exo_ready or wg_ready) then
+        printf("[TA_SysBalance_Compat] ЖДУ: ни один из целевых модулей ещё не определён")
+        return
+    end
+
+    local current_cosmetics = death_manager.spawn_cosmetics -- на этот момент это версия SYS_Balance
+
+    death_manager.spawn_cosmetics = function(npc, npc_id, npc_comm, npc_rank, visual, rand_condition)
+        current_cosmetics(npc, npc_id, npc_comm, npc_rank, visual, rand_condition)
+
+        if ta_ready then
+            toxic_air.spawn_oxygen_tank(npc, npc_rank, npc_comm)
+        end
+
+        if exo_ready then
+            local visual_name = visual or (npc and npc.get_visual_name and npc:get_visual_name())
+            local tbl = visual_name and death_manager.get_outfit_by_npc_visual and death_manager.get_outfit_by_npc_visual(visual_name)
+            local outfit_section = tbl and tbl[1]
+            if outfit_section then
+                exo_loot.spawn_gear(npc, outfit_section)
+            end
+        end
+
+        if wg_ready then
+            western_goods_loot.spawn_corpse_loot(npc, npc_rank, npc_comm)
+        end
+    end
+
+    patched = true
+    printf("[TA_SysBalance_Compat] Патч применён | toxic_air=%s exo_loot=%s western_goods=%s",
+        tostring(ta_ready), tostring(exo_ready), tostring(wg_ready))
+end
+
+RegisterScriptCallback("actor_on_first_update", restore_chain)
