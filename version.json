@@ -604,12 +604,12 @@
       "id": "dbg-kristiano-fixes-all-in-one-8429b7581e",
       "folder": "[DBG] Kristiano Fixes ALL IN ONE",
       "mode": "full",
-      "version": "2026.08.20.1",
-      "notes": "Удалён мешающий скрипт npc_loot_claim.script.",
-      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.20.1/anthology-folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.20.1.zip",
-      "asset_name": "anthology-folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.20.1.zip",
-      "size": 43747152,
-      "sha256": "ff7d46a5e8e142e6e01f45c9fa070d4f99e34d4c895de9021aa5fe303419f53c",
+      "version": "2026.08.21.2",
+      "notes": "Обновление [DBG] Kristiano Fixes ALL IN ONE.",
+      "url": "https://github.com/Alex020104/anthology-mo2-modpack/releases/download/folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.21.2/anthology-folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.21.2.zip",
+      "asset_name": "anthology-folder-dbg-kristiano-fixes-all-in-one-8429b7581e-2026.08.21.2.zip",
+      "size": 43479224,
+      "sha256": "45c026c447c9c85dc32d5d2a288bd6f4fc0f22af15b95d2b190cc6d1b2fbd0f8",
       "files": [
         "[DBG] Kristiano Fixes ALL IN ONE/CHANGELOG.txt",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/configs/items/items/items_zz_anthology_quest_stash_fix.ltx",
@@ -667,6 +667,7 @@
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/tooltip_control_mcm.script",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/tooltip_control_utils.script",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/tooltip_fixes.script",
+        "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/workshop_autoinject_banjaji_compat.script",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/zzz_aver_darkvalley_runtime_fix.script",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/zzzz_anthology_gonta_duplicate_dialog_fix.script",
         "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/zzzz_anthology_kupol_wrong_fixed_bone_fix.script",
@@ -709,9 +710,7 @@
         "[DBG] Kristiano Fixes ALL IN ONE/PATCH_AUDIT.json",
         "[DBG] Kristiano Fixes ALL IN ONE/README_RU.txt"
       ],
-      "removed_files": [
-        "[DBG] Kristiano Fixes ALL IN ONE/gamedata/scripts/npc_loot_claim.script"
-      ]
+      "removed_files": []
     },
     {
       "id": "gam-autocomplete-tasks-f439c7d78b",

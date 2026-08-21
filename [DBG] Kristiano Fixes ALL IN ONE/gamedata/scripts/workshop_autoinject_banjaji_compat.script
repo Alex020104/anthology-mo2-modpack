@@ -1,0 +1,145 @@
+--[[
+	Правильная точка внедрения рецептов для этой сборки (Anthology +
+	ui_workshop_monkeypatch_Banjaji_CSI.script).
+
+	Реальный источник данных для окна крафта - НЕ LoadRecipes (устаревший
+	метод, которого тут больше нет), а функции
+	aa_load_recipes_Banjaji_CSI.get_recipes() / get_recipe_tabs(),
+	вызываемые прямо в __init окна крафта.
+
+	Оборачиваем LoadRecipesLTX() - функцию, которая реально строит
+	all_recipes/all_recipe_tabs из craft_-500 и т.д. - и добавляем свои
+	рецепты сразу после штатной сборки.
+--]]
+
+local injected = false
+
+function on_game_start()
+	if not aa_load_recipes_Banjaji_CSI then
+		printf("[WABC] ABORT: aa_load_recipes_Banjaji_CSI not found")
+		return
+	end
+	local orig = aa_load_recipes_Banjaji_CSI.LoadRecipesLTX
+	if not orig then
+		printf("[WABC] ABORT: LoadRecipesLTX not found")
+		return
+	end
+
+	function aa_load_recipes_Banjaji_CSI.LoadRecipesLTX()
+		orig()
+		printf("[WABC] LoadRecipesLTX ran, injecting custom recipes")
+
+		local recipes = aa_load_recipes_Banjaji_CSI.all_recipes
+		local tabs = aa_load_recipes_Banjaji_CSI.all_recipe_tabs
+		if not recipes or not tabs then
+			printf("[WABC] ABORT: all_recipes/all_recipe_tabs missing after LoadRecipesLTX")
+			return
+		end
+
+		-- Найти вкладку "Устройства" (title = st_ui_craft_device) по факту, а не по номеру
+		local device_tab = nil
+		for i, title in pairs(tabs) do
+			if title == "st_ui_craft_device" then
+				device_tab = i
+				break
+			end
+		end
+
+		if device_tab then
+			local list = recipes[device_tab]
+			local idx = #list + 1
+			list[idx] = {
+				identificator = "device_pda_milspec",
+				results = {["device_pda_milspec"] = 1},
+				notes = {["recipe_pda_milspec"] = 1},
+				tools = {},
+				components = {
+					["device_pda_3"] = 1,
+					["prt_o_ballistic_8"] = 1,
+					["prt_i_transistors"] = 20,
+					["prt_i_capacitors"] = 25,
+				}
+			}
+			printf("[WABC] added Milspec PDA recipe into tab %s (Устройства)", tostring(device_tab))
+		else
+			printf("[WABC] ABORT: could not find 'Устройства' tab by title")
+		end
+
+		-- Найти уже существующую вкладку "Exo System" (пустую) вместо создания дубля
+		local exo_tab_idx = nil
+		for i, title in pairs(tabs) do
+			if title == "st_exo_system_craftingtitle" then
+				exo_tab_idx = i
+				break
+			end
+		end
+		if not exo_tab_idx then
+			exo_tab_idx = #tabs + 1
+			tabs[exo_tab_idx] = "st_exo_system_craftingtitle"
+		end
+		recipes[exo_tab_idx] = recipes[exo_tab_idx] or {}
+		local exo_recipes = recipes[exo_tab_idx]
+
+		local exo_list = {
+			{
+				identificator = "exo_power_supply",
+				results = {["exo_power_supply"] = 1},
+				notes = {["recipe_basic_3"] = 1},
+				tools = {},
+				components = {["equ_small_pack"] = 1, ["batteries_exo"] = 2, ["af_full_empty_af_aam"] = 1, ["prt_i_resistors"] = 10}
+			},
+			{
+				identificator = "exo_power_supply_proto",
+				results = {["exo_power_supply_proto"] = 1},
+				notes = {["recipe_exo_1"] = 1},
+				tools = {},
+				components = {["exo_power_supply_military"] = 2, ["af_surge_up"] = 1, ["af_dummy_battery_af_aam"] = 1, ["prt_i_transistors"] = 10}
+			},
+			{
+				identificator = "exo_power_supply_tank",
+				results = {["exo_power_supply_tank"] = 1},
+				notes = {["recipe_exo_2"] = 1},
+				tools = {},
+				components = {["exo_power_supply_military"] = 1, ["af_surge"] = 1, ["af_full_empty_af_aam"] = 1, ["prt_i_resistors"] = 4}
+			},
+			{
+				identificator = "exo_power_supply_sprint",
+				results = {["exo_power_supply_sprint"] = 1},
+				notes = {["recipe_exo_3"] = 1},
+				tools = {},
+				components = {["exo_power_supply_military"] = 1, ["af_cooler"] = 1, ["af_electra_flash_af_aam"] = 1, ["prt_i_capacitors"] = 4}
+			},
+			{
+				-- дроп с трупов (10% элита/военные/эко/иные квалифиц. фракции, 3% остальные)
+				-- остаётся как есть в exo_loot.script - это ДОПОЛНИТЕЛЬНЫЙ способ получить
+				identificator = "exo_power_supply_military",
+				results = {["exo_power_supply_military"] = 1},
+				notes = {["recipe_basic_3"] = 1},
+				tools = {},
+				components = {["equ_small_military_pack"] = 1, ["batteries_exo"] = 3, ["af_cooler"] = 1, ["prt_i_capacitors"] = 12}
+			},
+			{
+				-- в оригинале нигде не спавнится (ни лутом, ни крафтом) - добавляю только крафт
+				identificator = "exo_power_supply_jump",
+				results = {["exo_power_supply_jump"] = 1},
+				notes = {["recipe_exo_3"] = 1},
+				tools = {},
+				components = {["exo_power_supply_military"] = 1, ["af_cooler"] = 1, ["af_electra_flash_af_aam"] = 1, ["prt_i_resistors"] = 4}
+			},
+			{
+				-- в оригинале нигде не спавнится (ни лутом, ни крафтом) - добавляю только крафт
+				identificator = "exo_power_supply_invisibility",
+				results = {["exo_power_supply_invisibility"] = 1},
+				notes = {["recipe_exo_1"] = 1},
+				tools = {},
+				components = {["exo_power_supply_military"] = 1, ["af_surge"] = 1, ["af_dummy_battery_af_aam"] = 1, ["prt_i_capacitors"] = 4}
+			},
+		}
+		for _, r in ipairs(exo_list) do
+			exo_recipes[#exo_recipes + 1] = r
+		end
+		printf("[WABC] Exo System tab is index %s, now has %s recipes", tostring(exo_tab_idx), tostring(#exo_recipes))
+	end
+
+	printf("[WABC] LoadRecipesLTX wrapped OK")
+end
