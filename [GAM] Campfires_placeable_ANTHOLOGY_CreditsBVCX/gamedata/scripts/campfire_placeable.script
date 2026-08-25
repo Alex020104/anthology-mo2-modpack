@@ -1,20 +1,8 @@
--- Campfires Placeable - runtime optimization opt1 for Anthology 2.1
--- Keeps exact gameplay behavior while avoiding a 1..65534 ALife scan on every level transition.
--- Existing saves are migrated once in small per-frame chunks.
-
 local ray_pos = {}
-local se_campfires = {}
+--local se_campfires = {}
 local se_anoms = {}
 local prev_level = {}
 local chop_allowed = true
-
-local SCAN_MAX_ID = 65534
-local SCAN_BUDGET_PER_FRAME = 512
-local scan_active = false
-local scan_id = 1
-local scan_mode = nil
-local scan_update_registered = false
-local tracking_migrated = false
 
 --[[
 local axes = {
@@ -30,147 +18,52 @@ local axes = {
 	["wpn_axe3"] = { degr = 5, item_to_use = "itm_xcvb_3", minutes = 45},
 }
 
-local function safe_section_name(se_obj)
-	if not se_obj then return nil end
-	local ok, section = pcall(function() return se_obj:section_name() end)
-	return ok and section or nil
-end
-
-local function release_server_object(se_obj)
-	if not se_obj then return false end
-	local ok = pcall(alife_release, se_obj)
-	return ok
-end
-
-local function release_tracked(tbl, expected_section)
-	local released = 0
-	for id in pairs(tbl) do
-		local se_obj = alife_object(id)
-		if se_obj and (not expected_section or safe_section_name(se_obj) == expected_section) then
-			if release_server_object(se_obj) then
-				released = released + 1
-			end
-		end
-		tbl[id] = nil
-	end
-	return released
-end
-
-local function stop_scan()
-	scan_active = false
-	scan_mode = nil
-	scan_id = 1
-
-	if scan_update_registered and type(UnregisterScriptCallback) == "function" then
-		UnregisterScriptCallback("actor_on_update", actor_on_update)
-		scan_update_registered = false
-	end
-end
-
-local function finish_scan()
-	local mode = scan_mode
-	if mode == "purge" then
-		se_campfires = {}
-		se_anoms = {}
-	end
-
-	tracking_migrated = true
-	printf("[CampfiresPlaceable opt1] ALife scan finished mode=%s", tostring(mode))
-	stop_scan()
-end
-
-function actor_on_update()
-	if not scan_active then return end
-
-	local last_id = math.min(scan_id + SCAN_BUDGET_PER_FRAME - 1, SCAN_MAX_ID)
-	for id = scan_id, last_id do
-		local se_obj = alife_object(id)
-		if se_obj then
-			local section = safe_section_name(se_obj)
-
-			if scan_mode == "purge" then
-				if section == "itm_campfire" or section == "ph_campfiremod" or se_anoms[id] then
-					release_server_object(se_obj)
-				end
-			elseif section == "ph_campfiremod" then
-				if scan_mode == "migrate_delete" then
-					release_server_object(se_obj)
-				else
-					se_campfires[id] = true
-				end
-			end
-		end
-	end
-
-	scan_id = last_id + 1
-	if scan_id > SCAN_MAX_ID then
-		finish_scan()
-	end
-end
-
-local function start_scan(mode)
-	scan_mode = mode
-	scan_id = 1
-	scan_active = true
-
-	if not scan_update_registered and type(RegisterScriptCallback) == "function" then
-		RegisterScriptCallback("actor_on_update", actor_on_update)
-		scan_update_registered = true
-	end
-
-	printf("[CampfiresPlaceable opt1] ALife scan started mode=%s budget=%s", tostring(mode), tostring(SCAN_BUDGET_PER_FRAME))
-end
-
 function save_state(m_data)
-	m_data.se_campfires = se_campfires
+ --   m_data.se_campfires = se_campfires
 	m_data.se_anoms = se_anoms
 	m_data.prev_level = prev_level
-	m_data.campfire_tracking_migrated = tracking_migrated
 end
 
 function load_state(m_data)
-	local stored_campfires = m_data.se_campfires
-	se_campfires = type(stored_campfires) == "table" and stored_campfires or {}
-	se_anoms = type(m_data.se_anoms) == "table" and m_data.se_anoms or {}
-	prev_level = type(m_data.prev_level) == "table" and m_data.prev_level or {}
-
-	-- Old Campfires saves did not persist physical campfire IDs. Scan once to migrate them.
-	tracking_migrated = m_data.campfire_tracking_migrated == true or stored_campfires ~= nil
+ --   se_campfires = m_data.se_campfires or {}
+	se_anoms = m_data.se_anoms or {}
+	prev_level = m_data.prev_level or {}
 end
 
 function actor_on_first_update()
-	local curr_level = level.name()
-	local previous = prev_level and prev_level.level_name or nil
-	local level_changed = previous ~= nil and previous ~= curr_level
-	local purge_requested = campfire_placeable_mcm.get_config("delete_items")
-	local delete_on_transition = campfire_placeable_mcm.get_config("transition_delete_items")
-
-	if purge_requested then
-		-- Manual purge still needs to inspect every ALife object, but does so in chunks
-		-- instead of blocking one frame with 65k lookups.
-		release_tracked(se_campfires, "ph_campfiremod")
-		release_tracked(se_anoms, nil)
-		start_scan("purge")
-	elseif level_changed and delete_on_transition then
-		local deleted_ph = release_tracked(se_campfires, "ph_campfiremod")
-		local deleted_anom = release_tracked(se_anoms, nil)
-		printf("[CampfiresPlaceable opt1] transition cleanup tracked physical=%s anomalies=%s", tostring(deleted_ph), tostring(deleted_anom))
-
-		-- One-time compatibility path for saves created by the old script where
-		-- physical campfire IDs were not stored. The old transition behavior
-		-- removed every ph_campfiremod, so migrate_delete preserves that behavior.
-		if not tracking_migrated then
-			start_scan("migrate_delete")
+	if campfire_placeable_mcm.get_config("delete_items") then
+		for i = 1, 65534 do
+			local se_obj = alife_object(i)
+			if se_obj and (se_obj:section_name() == "itm_campfire" or se_obj:section_name() == "ph_campfiremod" or se_anoms[se_obj.id]) then
+				alife_release(se_obj)
+			end
 		end
-	elseif delete_on_transition and not tracking_migrated then
-		-- Same-level load of an old save: discover existing physical campfires once
-		-- without deleting them, then all future transitions use direct tracked IDs.
-		start_scan("migrate")
+--		se_campfires = {}
+		se_anoms = {}
 	end
 
-	-- Always advance the remembered level. The original script only updated it
-	-- when transition deletion was enabled, which could leave stale state.
-	prev_level.level_name = curr_level
+	-- del obj on level change
+	local curr_level = level.name()
+	if (is_empty(prev_level)) then
+		prev_level.level_name = curr_level
+		printf("tbl is empty || .level_name is now: %s", prev_level.level_name)
+	elseif (prev_level.level_name) then
+		printf("tbl is not empty")
+		if (prev_level.level_name ~= curr_level) and (campfire_placeable_mcm.get_config("transition_delete_items")) then
+			printf(".level_name is not equal curr_level")
+			-- del
+			for i = 1, 65534 do
+				local se_obj = alife_object(i)
+				if se_obj and (se_obj:section_name() == "ph_campfiremod" or se_anoms[se_obj.id]) then
+					alife_release(se_obj)
+					printf("- Object deleted (id): %s", se_obj.id)
+				end
+			end
+			se_anoms = {}
+			prev_level.level_name = curr_level
+		end
+	end
+
 end
 
 function ray_main(add_pos_x, add_pos_y, add_pos_z, dir)
@@ -248,9 +141,7 @@ function place_campfire()
 	pos = pos:add(dir:mul(2))
 	local ph_sec = ini_sys:r_string_ex("itm_campfire", "placeable_section")
 	local se_obj = alife_create(ph_sec or "ph_campfiremod", pos, db.actor:level_vertex_id(), db.actor:game_vertex_id())
-	if se_obj then
-		se_campfires[se_obj.id] = true
-	end
+--	se_campfires[se_obj.id] = true
 	
 	CreateTimeEvent("apply_force_to_cf", "apply_force_to_cf", 0.5, apply_force_to_campfire, se_obj.id)
 
